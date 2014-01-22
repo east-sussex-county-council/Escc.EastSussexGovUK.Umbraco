@@ -1,0 +1,201 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Umbraco", "Escc.EastSussexGovUK.Umbraco.csproj", "{0F548F72-22FC-4CA4-88A9-C07928FC0121}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eastsussex.gov.uk", "..\..\Inetpub\wwwroot\eastsussex.gov.uk.csproj", "{1426FEF0-23DC-4C23-AE15-67F2527BD741}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.Data.Web", "..\..\VS Projects\_Libraries for re-use\EsccWebTeam.Data.Web\EsccWebTeam.Data.Web.csproj", "{9C56D3DD-4952-4A1B-9AD6-907A1142872F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.ServiceClosures", "..\..\VS Projects\_Libraries for re-use\EsccWebTeam.ServiceClosures\EsccWebTeam.ServiceClosures.csproj", "{CC1C7E3E-DA3D-40F2-8184-DEA36C277CAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.HouseStyle", "..\..\VS Projects\_Libraries for re-use\EsccWebTeam.HouseStyle\EsccWebTeam.HouseStyle.csproj", "{1C429378-DBF2-4AF7-88AC-C059AA163682}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.FormControls", "..\..\VS Projects\_Libraries for re-use\EsccWebTeam.FormControls\EsccWebTeam.FormControls.csproj", "{E6D5883F-99CE-4BF5-974A-66C542C43CFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.Data.ActiveDirectory", "..\..\VS Projects\_Libraries for re-use\EsccWebTeam.Data.ActiveDirectory\EsccWebTeam.Data.ActiveDirectory.csproj", "{5F1BBB42-C1C6-4110-A3E4-720420A3C27D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.Data.Xml", "..\..\VS Projects\_Libraries for re-use\EsccWebTeam.Data.Xml\EsccWebTeam.Data.Xml.csproj", "{86B2725C-9C37-44A4-93C7-F5122AFA0809}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.Egms", "..\..\VS Projects\_Standards\E-Government Metadata Standard (E-GMS)\EsccWebTeam.Egms\EsccWebTeam.Egms.csproj", "{78083DCB-B12F-4950-86C5-3A844D8604F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.Gdsc", "..\..\VS Projects\_Standards\EsccWebTeam.Gdsc\EsccWebTeam.Gdsc.csproj", "{A0024354-DD16-43E1-8574-176F8BA4F1CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.Cms", "..\..\VS Projects\eastsussex.gov.uk projects\EsccWebTeam.Cms\EsccWebTeam.Cms.csproj", "{6710E9EE-DEAB-4569-ACE6-F10159D6D447}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.Exceptions.Soap", "..\..\VS Projects\_Libraries for re-use\EsccWebTeam.Exceptions.Soap\EsccWebTeam.Exceptions.Soap.csproj", "{5A8EA0FB-D8FC-4003-B499-C6ECDB956905}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.TextStatistics", "..\..\VS Projects\_Libraries for re-use\Escc.TextStatistics\Escc.TextStatistics.csproj", "{39F93B50-BE0D-4178-9FFD-417864298D50}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{3EB16A98-F01F-4B15-A976-AA2467EABF6F}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.Feeds", "..\..\VS Projects\_Libraries for re-use\EsccWebTeam.Feeds\EsccWebTeam.Feeds.csproj", "{08008B80-1B37-41B9-935B-FDDDDB4DAE84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.NavigationControls", "..\..\VS Projects\_Libraries for re-use\EsccWebTeam.NavigationControls\EsccWebTeam.NavigationControls.csproj", "{0323F668-1723-44A1-8C94-F91DC59EF315}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 14
+		SccProjectUniqueName0 = ..\\..\\Inetpub\\wwwroot\\eastsussex.gov.uk.csproj
+		SccProjectName0 = \u0022$/eastsussex.gov.uk\u0020projects/_eastsussex.gov.uk\u0020(top\u0020level\u0020of\u0020website)\u0022,\u0020WGEAAAAA
+		SccLocalPath0 = ..\\..\\Inetpub\\wwwroot
+		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		SccProjectUniqueName1 = ..\\..\\VS\u0020Projects\\_Libraries\u0020for\u0020re-use\\EsccWebTeam.Data.Web\\EsccWebTeam.Data.Web.csproj
+		SccProjectName1 = \u0022$/_Libraries\u0020for\u0020re-use/EsccWebTeam.Data.Web\u0022,\u0020AVYEAAAA
+		SccLocalPath1 = ..\\..\\VS\u0020Projects\\_Libraries\u0020for\u0020re-use\\EsccWebTeam.Data.Web
+		SccProvider1 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		SccProjectUniqueName2 = ..\\..\\VS\u0020Projects\\_Libraries\u0020for\u0020re-use\\EsccWebTeam.ServiceClosures\\EsccWebTeam.ServiceClosures.csproj
+		SccProjectName2 = \u0022$/_Libraries\u0020for\u0020re-use/EsccWebTeam.ServiceClosures\u0022,\u0020HVYCAAAA
+		SccLocalPath2 = ..\\..\\VS\u0020Projects\\_Libraries\u0020for\u0020re-use\\EsccWebTeam.ServiceClosures
+		SccProvider2 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		SccProjectUniqueName3 = ..\\..\\VS\u0020Projects\\_Libraries\u0020for\u0020re-use\\EsccWebTeam.HouseStyle\\EsccWebTeam.HouseStyle.csproj
+		SccProjectName3 = \u0022$/_Libraries\u0020for\u0020re-use/EsccWebTeam.HouseStyle\u0022,\u0020ULBBAAAA
+		SccLocalPath3 = ..\\..\\VS\u0020Projects\\_Libraries\u0020for\u0020re-use\\EsccWebTeam.HouseStyle
+		SccProvider3 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		SccProjectUniqueName4 = ..\\..\\VS\u0020Projects\\_Libraries\u0020for\u0020re-use\\EsccWebTeam.FormControls\\EsccWebTeam.FormControls.csproj
+		SccProjectName4 = \u0022$/_Libraries\u0020for\u0020re-use/EsccWebTeam.FormControls\u0022,\u0020WWABAAAA
+		SccLocalPath4 = ..\\..\\VS\u0020Projects\\_Libraries\u0020for\u0020re-use\\EsccWebTeam.FormControls
+		SccProvider4 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		SccProjectUniqueName5 = ..\\..\\VS\u0020Projects\\_Libraries\u0020for\u0020re-use\\EsccWebTeam.Data.ActiveDirectory\\EsccWebTeam.Data.ActiveDirectory.csproj
+		SccProjectName5 = \u0022$/_Libraries\u0020for\u0020re-use/EsccWebTeam.Data.ActiveDirectory\u0022,\u0020SQZAAAAA
+		SccLocalPath5 = ..\\..\\VS\u0020Projects\\_Libraries\u0020for\u0020re-use\\EsccWebTeam.Data.ActiveDirectory
+		SccProvider5 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		SccProjectUniqueName6 = ..\\..\\VS\u0020Projects\\_Libraries\u0020for\u0020re-use\\EsccWebTeam.Data.Xml\\EsccWebTeam.Data.Xml.csproj
+		SccProjectName6 = \u0022$/_Libraries\u0020for\u0020re-use/EsccWebTeam.Data.Xml\u0022,\u0020CGHCAAAA
+		SccLocalPath6 = ..\\..\\VS\u0020Projects\\_Libraries\u0020for\u0020re-use\\EsccWebTeam.Data.Xml
+		SccProvider6 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		SccProjectUniqueName7 = ..\\..\\VS\u0020Projects\\_Standards\\E-Government\u0020Metadata\u0020Standard\u0020(E-GMS)\\EsccWebTeam.Egms\\EsccWebTeam.Egms.csproj
+		SccProjectName7 = \u0022$/_Standards/E-Government\u0020Metadata\u0020Standard\u0020(E-GMS)/EsccWebTeam.Egms\u0022,\u0020ABBBAAAA
+		SccLocalPath7 = ..\\..\\VS\u0020Projects\\_Standards\\E-Government\u0020Metadata\u0020Standard\u0020(E-GMS)\\EsccWebTeam.Egms
+		SccProvider7 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		SccProjectUniqueName8 = ..\\..\\VS\u0020Projects\\_Standards\\EsccWebTeam.Gdsc\\EsccWebTeam.Gdsc.csproj
+		SccProjectName8 = \u0022$/_Standards/EsccWebTeam.Gdsc\u0022,\u0020COBBAAAA
+		SccLocalPath8 = ..\\..\\VS\u0020Projects\\_Standards\\EsccWebTeam.Gdsc
+		SccProvider8 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		SccProjectUniqueName9 = ..\\..\\VS\u0020Projects\\eastsussex.gov.uk\u0020projects\\EsccWebTeam.Cms\\EsccWebTeam.Cms.csproj
+		SccProjectName9 = \u0022$/eastsussex.gov.uk\u0020projects/EsccWebTeam.Cms\u0022,\u0020HVABAAAA
+		SccLocalPath9 = ..\\..\\VS\u0020Projects\\eastsussex.gov.uk\u0020projects\\EsccWebTeam.Cms
+		SccProvider9 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		SccProjectUniqueName10 = ..\\..\\VS\u0020Projects\\_Libraries\u0020for\u0020re-use\\EsccWebTeam.Exceptions.Soap\\EsccWebTeam.Exceptions.Soap.csproj
+		SccProjectName10 = \u0022$/_Libraries\u0020for\u0020re-use/EsccWebTeam.Exceptions.Soap\u0022,\u0020TABBAAAA
+		SccLocalPath10 = ..\\..\\VS\u0020Projects\\_Libraries\u0020for\u0020re-use\\EsccWebTeam.Exceptions.Soap
+		SccProvider10 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		SccProjectUniqueName11 = ..\\..\\VS\u0020Projects\\_Libraries\u0020for\u0020re-use\\Escc.TextStatistics\\Escc.TextStatistics.csproj
+		SccProjectName11 = \u0022$/_Libraries\u0020for\u0020re-use/Escc.TextStatistics\u0022,\u0020TFZGAAAA
+		SccLocalPath11 = ..\\..\\VS\u0020Projects\\_Libraries\u0020for\u0020re-use\\Escc.TextStatistics
+		SccProvider11 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		SccProjectUniqueName12 = ..\\..\\VS\u0020Projects\\_Libraries\u0020for\u0020re-use\\EsccWebTeam.Feeds\\EsccWebTeam.Feeds.csproj
+		SccProjectName12 = \u0022$/_Libraries\u0020for\u0020re-use/EsccWebTeam.Feeds\u0022,\u0020BUZBAAAA
+		SccLocalPath12 = ..\\..\\VS\u0020Projects\\_Libraries\u0020for\u0020re-use\\EsccWebTeam.Feeds
+		SccProvider12 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		SccProjectUniqueName13 = ..\\..\\VS\u0020Projects\\_Libraries\u0020for\u0020re-use\\EsccWebTeam.NavigationControls\\EsccWebTeam.NavigationControls.csproj
+		SccProjectName13 = \u0022$/_Libraries\u0020for\u0020re-use/EsccWebTeam.NavigationControls\u0022,\u0020ATEAAAAA
+		SccLocalPath13 = ..\\..\\VS\u0020Projects\\_Libraries\u0020for\u0020re-use\\EsccWebTeam.NavigationControls
+		SccProvider13 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		UAT|Any CPU = UAT|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F548F72-22FC-4CA4-88A9-C07928FC0121}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F548F72-22FC-4CA4-88A9-C07928FC0121}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F548F72-22FC-4CA4-88A9-C07928FC0121}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F548F72-22FC-4CA4-88A9-C07928FC0121}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F548F72-22FC-4CA4-88A9-C07928FC0121}.UAT|Any CPU.ActiveCfg = Release|Any CPU
+		{0F548F72-22FC-4CA4-88A9-C07928FC0121}.UAT|Any CPU.Build.0 = Release|Any CPU
+		{1426FEF0-23DC-4C23-AE15-67F2527BD741}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1426FEF0-23DC-4C23-AE15-67F2527BD741}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1426FEF0-23DC-4C23-AE15-67F2527BD741}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1426FEF0-23DC-4C23-AE15-67F2527BD741}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1426FEF0-23DC-4C23-AE15-67F2527BD741}.UAT|Any CPU.ActiveCfg = Release|Any CPU
+		{1426FEF0-23DC-4C23-AE15-67F2527BD741}.UAT|Any CPU.Build.0 = Release|Any CPU
+		{9C56D3DD-4952-4A1B-9AD6-907A1142872F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C56D3DD-4952-4A1B-9AD6-907A1142872F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C56D3DD-4952-4A1B-9AD6-907A1142872F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C56D3DD-4952-4A1B-9AD6-907A1142872F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C56D3DD-4952-4A1B-9AD6-907A1142872F}.UAT|Any CPU.ActiveCfg = Release|Any CPU
+		{9C56D3DD-4952-4A1B-9AD6-907A1142872F}.UAT|Any CPU.Build.0 = Release|Any CPU
+		{CC1C7E3E-DA3D-40F2-8184-DEA36C277CAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC1C7E3E-DA3D-40F2-8184-DEA36C277CAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC1C7E3E-DA3D-40F2-8184-DEA36C277CAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC1C7E3E-DA3D-40F2-8184-DEA36C277CAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC1C7E3E-DA3D-40F2-8184-DEA36C277CAD}.UAT|Any CPU.ActiveCfg = Release|Any CPU
+		{CC1C7E3E-DA3D-40F2-8184-DEA36C277CAD}.UAT|Any CPU.Build.0 = Release|Any CPU
+		{1C429378-DBF2-4AF7-88AC-C059AA163682}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C429378-DBF2-4AF7-88AC-C059AA163682}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C429378-DBF2-4AF7-88AC-C059AA163682}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C429378-DBF2-4AF7-88AC-C059AA163682}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C429378-DBF2-4AF7-88AC-C059AA163682}.UAT|Any CPU.ActiveCfg = Release|Any CPU
+		{1C429378-DBF2-4AF7-88AC-C059AA163682}.UAT|Any CPU.Build.0 = Release|Any CPU
+		{E6D5883F-99CE-4BF5-974A-66C542C43CFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6D5883F-99CE-4BF5-974A-66C542C43CFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6D5883F-99CE-4BF5-974A-66C542C43CFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6D5883F-99CE-4BF5-974A-66C542C43CFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6D5883F-99CE-4BF5-974A-66C542C43CFB}.UAT|Any CPU.ActiveCfg = Release|Any CPU
+		{E6D5883F-99CE-4BF5-974A-66C542C43CFB}.UAT|Any CPU.Build.0 = Release|Any CPU
+		{5F1BBB42-C1C6-4110-A3E4-720420A3C27D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F1BBB42-C1C6-4110-A3E4-720420A3C27D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F1BBB42-C1C6-4110-A3E4-720420A3C27D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F1BBB42-C1C6-4110-A3E4-720420A3C27D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F1BBB42-C1C6-4110-A3E4-720420A3C27D}.UAT|Any CPU.ActiveCfg = Release|Any CPU
+		{5F1BBB42-C1C6-4110-A3E4-720420A3C27D}.UAT|Any CPU.Build.0 = Release|Any CPU
+		{86B2725C-9C37-44A4-93C7-F5122AFA0809}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86B2725C-9C37-44A4-93C7-F5122AFA0809}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86B2725C-9C37-44A4-93C7-F5122AFA0809}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86B2725C-9C37-44A4-93C7-F5122AFA0809}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86B2725C-9C37-44A4-93C7-F5122AFA0809}.UAT|Any CPU.ActiveCfg = UAT|Any CPU
+		{86B2725C-9C37-44A4-93C7-F5122AFA0809}.UAT|Any CPU.Build.0 = UAT|Any CPU
+		{78083DCB-B12F-4950-86C5-3A844D8604F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78083DCB-B12F-4950-86C5-3A844D8604F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78083DCB-B12F-4950-86C5-3A844D8604F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78083DCB-B12F-4950-86C5-3A844D8604F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78083DCB-B12F-4950-86C5-3A844D8604F3}.UAT|Any CPU.ActiveCfg = UAT|Any CPU
+		{78083DCB-B12F-4950-86C5-3A844D8604F3}.UAT|Any CPU.Build.0 = UAT|Any CPU
+		{A0024354-DD16-43E1-8574-176F8BA4F1CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0024354-DD16-43E1-8574-176F8BA4F1CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0024354-DD16-43E1-8574-176F8BA4F1CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0024354-DD16-43E1-8574-176F8BA4F1CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0024354-DD16-43E1-8574-176F8BA4F1CA}.UAT|Any CPU.ActiveCfg = Release|Any CPU
+		{A0024354-DD16-43E1-8574-176F8BA4F1CA}.UAT|Any CPU.Build.0 = Release|Any CPU
+		{6710E9EE-DEAB-4569-ACE6-F10159D6D447}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6710E9EE-DEAB-4569-ACE6-F10159D6D447}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6710E9EE-DEAB-4569-ACE6-F10159D6D447}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6710E9EE-DEAB-4569-ACE6-F10159D6D447}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6710E9EE-DEAB-4569-ACE6-F10159D6D447}.UAT|Any CPU.ActiveCfg = Release|Any CPU
+		{6710E9EE-DEAB-4569-ACE6-F10159D6D447}.UAT|Any CPU.Build.0 = Release|Any CPU
+		{5A8EA0FB-D8FC-4003-B499-C6ECDB956905}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A8EA0FB-D8FC-4003-B499-C6ECDB956905}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A8EA0FB-D8FC-4003-B499-C6ECDB956905}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A8EA0FB-D8FC-4003-B499-C6ECDB956905}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A8EA0FB-D8FC-4003-B499-C6ECDB956905}.UAT|Any CPU.ActiveCfg = Release|Any CPU
+		{5A8EA0FB-D8FC-4003-B499-C6ECDB956905}.UAT|Any CPU.Build.0 = Release|Any CPU
+		{39F93B50-BE0D-4178-9FFD-417864298D50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39F93B50-BE0D-4178-9FFD-417864298D50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39F93B50-BE0D-4178-9FFD-417864298D50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39F93B50-BE0D-4178-9FFD-417864298D50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39F93B50-BE0D-4178-9FFD-417864298D50}.UAT|Any CPU.ActiveCfg = Release|Any CPU
+		{39F93B50-BE0D-4178-9FFD-417864298D50}.UAT|Any CPU.Build.0 = Release|Any CPU
+		{08008B80-1B37-41B9-935B-FDDDDB4DAE84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08008B80-1B37-41B9-935B-FDDDDB4DAE84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08008B80-1B37-41B9-935B-FDDDDB4DAE84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08008B80-1B37-41B9-935B-FDDDDB4DAE84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08008B80-1B37-41B9-935B-FDDDDB4DAE84}.UAT|Any CPU.ActiveCfg = Release|Any CPU
+		{08008B80-1B37-41B9-935B-FDDDDB4DAE84}.UAT|Any CPU.Build.0 = Release|Any CPU
+		{0323F668-1723-44A1-8C94-F91DC59EF315}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0323F668-1723-44A1-8C94-F91DC59EF315}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0323F668-1723-44A1-8C94-F91DC59EF315}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0323F668-1723-44A1-8C94-F91DC59EF315}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0323F668-1723-44A1-8C94-F91DC59EF315}.UAT|Any CPU.ActiveCfg = Release|Any CPU
+		{0323F668-1723-44A1-8C94-F91DC59EF315}.UAT|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

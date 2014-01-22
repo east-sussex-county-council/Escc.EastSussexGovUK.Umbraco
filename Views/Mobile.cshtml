@@ -1,0 +1,47 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = null;
+}
+@Umbraco.RenderMacro("EastSussexGovUK:MasterPageControl", new {Control="HtmlTag"})
+	<head>
+		@if (@Request.Url.Host.IndexOf('.') > -1 && 
+			 @Request.Url.Host.IndexOf("escc.gov") == -1 && 
+			 !UmbracoContext.Current.InPreviewMode && 
+			 IsSectionDefined("contentExperiment")) {
+			@RenderSection("contentExperiment")
+		}
+		@Umbraco.RenderMacro("EastSussexGovUK:MasterPageControl", new {Control="MetadataMobile"})
+		@RenderSection("metadata", required: false)
+	</head>
+	@if (IsSectionDefined("body")) {
+		@RenderSection("body")
+	} else {
+		@:<body id="eastsussex-gov-uk">
+	}
+		@Umbraco.RenderMacro("EastSussexGovUK:MasterPageControl", new {Control="AboveHeaderMobile"})
+		@if (IsSectionDefined("header")) {
+			@RenderSection("header")
+		} else {
+			@Umbraco.RenderMacro("EastSussexGovUK:MasterPageControl", new {Control="HeaderMobile"})
+		}
+		<div id="main" role="main" class="body">
+			<div class="container">
+				@if (IsSectionDefined("breadcrumb")) {
+					@RenderSection("breadcrumb")
+				} else {
+					@Umbraco.RenderMacro("EastSussexGovUK:BreadcrumbTrailMobile")
+				}
+				@Umbraco.RenderMacro("EastSussexGovUK:MasterPageControl", new {Control="Alert"})
+				@RenderBody()
+				@RenderSection("supporting", required: false)
+			</div>
+		</div>
+		@if (IsSectionDefined("footer")) {
+			@RenderSection("footer")
+		} else {
+			@Umbraco.RenderMacro("EastSussexGovUK:MasterPageControl", new {Control="FooterMobile"})
+		}
+		@Umbraco.RenderMacro("EastSussexGovUK:MasterPageControl", new {Control="ScriptsMobile"})
+		@RenderSection("javascript", required: false)
+	</body>
+</html>
