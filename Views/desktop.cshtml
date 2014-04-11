@@ -1,54 +1,93 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+﻿@using System.Globalization
+@using System.Text.RegularExpressions
+@using Escc.EastSussexGovUK.Umbraco.UserControls.EastSussexGovUK
+@using EsccWebTeam.EastSussexGovUK
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
     Layout = null;
 }
-@Umbraco.RenderMacro("EastSussexGovUK:MasterPageControl", new {Control="HtmlTag"})
-	<head>
-		@if (@Request.Url.Host.IndexOf('.') > -1 && 
-			 @Request.Url.Host.IndexOf("escc.gov") == -1 && 
-			 !UmbracoContext.Current.InPreviewMode && 
-			 IsSectionDefined("contentExperiment")) {
-			@RenderSection("contentExperiment")
-		}
-		@Umbraco.RenderMacro("EastSussexGovUK:MasterPageControl", new {Control="MetadataDesktop"})
-		@RenderSection("metadata", required: false)
-	</head>
-	@if (IsSectionDefined("body")) {
-		@RenderSection("body")
-	} else {
-		@:<body id="eastsussex-gov-uk">
-	}
-		@Umbraco.RenderMacro("EastSussexGovUK:MasterPageControl", new {Control="AboveHeaderDesktop"})
-		@if (IsSectionDefined("header")) {
-			@RenderSection("header")
-		} else {
-			@Umbraco.RenderMacro("EastSussexGovUK:MasterPageControl", new {Control="HeaderDesktop"})
-		}
-		<div id="main" role="main" class="body">
-			<div class="container">
-				@if (IsSectionDefined("breadcrumb")) {
-					@RenderSection("breadcrumb")
-				} else {
-					@Umbraco.RenderMacro("EastSussexGovUK:BreadcrumbTrail")
-					@Umbraco.RenderMacro("EastSussexGovUK:BreadcrumbTrailMobile")
-				}
-				@Umbraco.RenderMacro("EastSussexGovUK:MasterPageControl", new {Control="Alert"})
-				@RenderBody()
-				@if (IsSectionDefined("supporting")) {
-					@RenderSection("supporting")
-				} else {
-					@Umbraco.RenderMacro("EastSussexGovUK:MasterPageControl", new {Control="SupportingContentDesktop"})
-					@Umbraco.RenderMacro("EastSussexGovUK:MasterPageControl", new {Control="1Space"})
-				}
-		
-			</div>
-		</div>
-		@if (IsSectionDefined("footer")) {
-			@RenderSection("footer")
-		} else {
-			@Umbraco.RenderMacro("EastSussexGovUK:MasterPageControl", new {Control="FooterDesktop"})
-		}
-		@Umbraco.RenderMacro("EastSussexGovUK:MasterPageControl", new {Control="ScriptsDesktop"})
-		@RenderSection("javascript", required: false)
-	</body>
-</html>
+@Html.Partial("~/Usercontrols/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "HtmlTag" })
+<head>
+    @if (@Request.Url.Host.IndexOf('.') > -1 &&
+             @Request.Url.Host.IndexOf("escc.gov") == -1 &&
+             !UmbracoContext.Current.InPreviewMode &&
+             IsSectionDefined("ContentExperiment"))
+    {
+        @RenderSection("ContentExperiment")
+    }
+    @Html.Partial("~/Usercontrols/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "MetadataDesktop" })
+    @RenderSection("Metadata", required: false)
+</head>
+@{
+    var siteContext = new EastSussexGovUKContext();
+    var bodyClass = String.Empty;
+    if (siteContext.TextSize > 1)
+    {
+        bodyClass = "size" + siteContext.TextSize.ToString(CultureInfo.InvariantCulture);
+    }
+}
+@if (IsSectionDefined("BodyClass"))
+{
+    @:<body class="@bodyClass @RenderSection("BodyClass")">
+    }
+else
+{
+    var body = "<body";
+    if (!String.IsNullOrEmpty(bodyClass))
+    {
+        body += " class=\"" + bodyClass + "\"";
+    }
+    body += ">";
+    @Html.Raw(body);
+}
+@Html.Partial("~/Usercontrols/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "AboveHeaderDesktop" })
+@if (IsSectionDefined("Header"))
+{
+    @RenderSection("Header")
+}
+else
+{
+    @Html.Partial("~/Usercontrols/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "HeaderDesktop" })
+}
+<div id="main" role="main" class="body">
+    <div class="container">
+        @if (IsSectionDefined("Breadcrumb"))
+        {
+            @RenderSection("Breadcrumb")
+        }
+        else
+        {
+            @Html.Partial("~/Usercontrols/EastSussexGovUK/BreadcrumbTrail.ascx")
+            @Html.Partial("~/Usercontrols/EastSussexGovUK/BreadcrumbTrailMobile.ascx")
+        }
+        @Html.Partial("~/Usercontrols/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "Alert" })
+        @RenderBody()
+        @if (IsSectionDefined("Supporting"))
+        {
+            @RenderSection("Supporting")
+        }
+        else
+        {
+            @Html.Partial("~/Usercontrols/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "SupportingContentDesktop" })
+            if (Regex.IsMatch(Request.RawUrl, "/socialcare") && 
+                Regex.IsMatch(Request.RawUrl, @"^((?!\/socialcare\/disability\/learning).)*$") &&
+                Regex.IsMatch(Request.RawUrl, @"^((?!\/socialcare\/providers\/resources\/healthpromotion).)*$"))
+            {
+                @Html.Partial("~/Usercontrols/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "1Space" })
+            }
+        }
+
+    </div>
+</div>
+@if (IsSectionDefined("Footer"))
+{
+    @RenderSection("Footer")
+}
+else
+{
+    @Html.Partial("~/Usercontrols/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "FooterDesktop" })
+}
+@Html.Partial("~/Usercontrols/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "ScriptsDesktop" })
+@RenderSection("JavaScript", required: false)
+</body>
+    </html>

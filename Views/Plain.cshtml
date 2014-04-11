@@ -1,0 +1,30 @@
+﻿@using Escc.EastSussexGovUK.Umbraco.UserControls.EastSussexGovUK
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml schema: http://schema.org/">
+<head>
+    @if (@Request.Url.Host.IndexOf('.') > -1 &&
+             @Request.Url.Host.IndexOf("escc.gov") == -1 &&
+             !UmbracoContext.Current.InPreviewMode &&
+             IsSectionDefined("ContentExperiment"))
+    {
+        @RenderSection("ContentExperiment")
+    }
+    <meta charset="UTF-8" />
+    @RenderSection("Metadata", required: false)
+</head>
+<body>
+    @Html.Partial("~/Usercontrols/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "Alert" })
+    @RenderBody()
+    @RenderSection("Supporting", required: false)
+</body>
+</html>
+
+@{  // Do not render these sections for this layout
+    if (IsSectionDefined("BodyClass")) { RenderSection("BodyClass", required: false).WriteTo(TextWriter.Null); }
+    if (IsSectionDefined("Header")) { RenderSection("Header", required: false).WriteTo(TextWriter.Null); }
+    if (IsSectionDefined("Breadcrumb")) { RenderSection("Breadcrumb", required: false).WriteTo(TextWriter.Null); }
+    if (IsSectionDefined("Footer")) { RenderSection("Footer", required: false).WriteTo(TextWriter.Null); }
+    if (IsSectionDefined("JavaScript")) { RenderSection("JavaScript", required: false).WriteTo(TextWriter.Null); }
+}

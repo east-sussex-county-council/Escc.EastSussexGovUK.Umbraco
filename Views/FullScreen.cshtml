@@ -1,0 +1,59 @@
+﻿@using System.Net.Mime
+@using Escc.EastSussexGovUK.Umbraco.UserControls.EastSussexGovUK
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@Html.Partial("~/Usercontrols/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "HtmlTag" })
+<head>
+    @if (@Request.Url.Host.IndexOf('.') > -1 &&
+             @Request.Url.Host.IndexOf("escc.gov") == -1 &&
+             !UmbracoContext.Current.InPreviewMode &&
+             IsSectionDefined("ContentExperiment"))
+    {
+        @RenderSection("ContentExperiment")
+    }
+    @Html.Partial("~/Usercontrols/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "MetadataFullScreen" })
+    @RenderSection("Metadata", required: false)
+</head>
+@if (IsSectionDefined("BodyClass"))
+{
+    @:<body class="@RenderSection("BodyClass")">
+}
+else
+{
+    @:<body>
+        }
+<div class="full-screen">
+    @if (IsSectionDefined("Header"))
+    {
+        @RenderSection("Header")
+    }
+    else
+    {
+        @:
+        <header>
+            <div class="header context">
+                @Html.Partial("~/Usercontrols/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "HeaderFullScreen" })
+                @Html.Partial("~/Usercontrols/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "AlertFullScreen" })
+                <div class="full-screen-bar">
+                    <h1>@RenderSection("FullScreenHeading", required: false)</h1>
+                    @RenderSection("FullScreenLinks", required: false)
+                </div>
+            </div>
+        </header>
+    }
+    <div id="main" role="main" class="body">
+        @RenderBody()
+    </div>
+    @if (IsSectionDefined("Footer"))
+    {
+        @RenderSection("Footer")
+    }
+    @Html.Partial("~/Usercontrols/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "ScriptsFullScreen" })
+    @RenderSection("JavaScript", required: false)
+</div>
+</body>
+</html>
+
+@{  // Do not render these sections for this layout
+    if (IsSectionDefined("Breadcrumb")) { RenderSection("Breadcrumb").WriteTo(TextWriter.Null); }
+    if (IsSectionDefined("Supporting")) { RenderSection("Supporting", required: false).WriteTo(TextWriter.Null); }
+}
