@@ -19,7 +19,4 @@
     </xsl:call-template>
   </xsl:template>
 
-  <!-- Remove files which are not included in git and not needed for deployment -->
-  <xsl:template match="msbuild:Project/msbuild:ItemGroup/msbuild:Content[@Include='Scripts\dummy.txt']" />
-
 </xsl:stylesheet>
