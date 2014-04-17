@@ -315,7 +315,6 @@
     <Content Include="Escc.EastSussexGovUK.Umbraco.csproj.xslt" />
     <Content Include="favicon.ico" />
     <Content Include="robots.txt" />
-    <Content Include="Scripts\dummy.txt" />
     <Content Include="UserControls\EastSussexGovUK\BreadcrumbTrail.ascx" />
     <Content Include="UserControls\EastSussexGovUK\BreadcrumbTrailMobile.ascx" />
     <Content Include="UserControls\EastSussexGovUK\MasterPageControl.ascx" />
@@ -330,6 +329,7 @@
     <Folder Include="masterpages\" />
     <Folder Include="Media\" />
     <Folder Include="Models\" />
+    <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\_ViewStart.cshtml" />
