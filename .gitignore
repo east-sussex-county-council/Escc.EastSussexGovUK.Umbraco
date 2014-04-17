@@ -33,6 +33,7 @@ _ReSharper*/
 *.scc
 [Ss]cripts*/
 Properties/PublishProfiles/*
+packages
 
 # Umbraco files
 [Uu]mbraco/
