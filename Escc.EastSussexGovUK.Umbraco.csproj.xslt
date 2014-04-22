@@ -12,10 +12,11 @@
   <xsl:template match="msbuild:Project/msbuild:ItemGroup/msbuild:Reference/msbuild:HintPath">
     <xsl:call-template name="UpdateHintPath">
       <xsl:with-param name="ref_1" select="'Microsoft.ApplicationBlocks.ExceptionManagement.dll'" />
-      <xsl:with-param name="ref_2" select="'AST.AzureBlobStorage.dll'" />
-      <xsl:with-param name="ref_3" select="'AzureDirectory.dll'" />
-      <xsl:with-param name="ref_4" select="'Examine.Azure.dll'" />
-      <xsl:with-param name="ref_5" select="'Moriyama.Cloud.dll'" />
+      <xsl:with-param name="ref_2" select="'Microsoft.ApplicationBlocks.Data.dll'" />
+      <xsl:with-param name="ref_3" select="'AST.AzureBlobStorage.dll'" />
+      <xsl:with-param name="ref_4" select="'AzureDirectory.dll'" />
+      <xsl:with-param name="ref_5" select="'Examine.Azure.dll'" />
+      <xsl:with-param name="ref_6" select="'Moriyama.Cloud.dll'" />
     </xsl:call-template>
   </xsl:template>
 
