@@ -3,6 +3,12 @@ Escc.EastSussexGovUK.Umbraco
 
 Core template files for configuring Umbraco v7 to work as the Content Management System for www.eastsussex.gov.uk
 
+Microsoft.ApplicationBlocks.Data
+--------------------------------
+The reference from this project to Microsoft.ApplicationBlocks.Data.dll exists to resolve a conflict between the version used by Umbraco and the version used by ESCC. We cannot use assembly binding redirects to resolve this conflict because the Umbraco version does not have a strong name but the ESCC one does, therefore they have different identities even though they share the same name. 
+
+We reference the Umbraco version so that it ends up in the bin folder, knowing that the ESCC code which uses the newer version of Microsoft.ApplicationBlocks.Data will not be called within this application scope.
+
 Remote template for www.eastsussex.gov.uk
 -----------------------------------------
 
