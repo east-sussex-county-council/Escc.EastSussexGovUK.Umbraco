@@ -371,7 +371,7 @@
     <Content Include="eastsussexcountycouncil.rdf" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Config\FileSystemProviders.example.config" />
+    <None Include="Config\FileSystemProviders.example.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
