@@ -345,7 +345,7 @@
   <ItemGroup>
     <Content Include="LICENSE.md" />
     <Content Include="README.md" />
-    <Content Include="Config\ExamineSettings.example.config" />
+    <None Include="Config\ExamineSettings.example.config" />
     <Content Include="packages.config" />
     <Content Include="Views\Web.example.config" />
     <None Include="Views\Web.config" />
