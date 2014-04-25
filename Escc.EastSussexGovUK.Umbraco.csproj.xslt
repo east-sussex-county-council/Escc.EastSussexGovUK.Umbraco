@@ -19,6 +19,8 @@
       <xsl:with-param name="ref_6" select="'Microsoft.WindowsAzure.ServiceRuntime.dll'" />
       <xsl:with-param name="ref_7" select="'Microsoft.WindowsAzure.StorageClient.dll'" />
       <xsl:with-param name="ref_8" select="'UmbracoExamine.Azure.dll'" />
+      <xsl:with-param name="ref_9" select="'Examine.dll'" />
+      <xsl:with-param name="ref_10" select="'UmbracoExamine.dll'" />
     </xsl:call-template>
   </xsl:template>
 
