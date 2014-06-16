@@ -29,13 +29,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.Exceptions.Soap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.TextStatistics", "..\Escc.TextStatistics\Escc.TextStatistics.csproj", "{39F93B50-BE0D-4178-9FFD-417864298D50}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{3EB16A98-F01F-4B15-A976-AA2467EABF6F}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.Feeds", "..\Escc.Feeds\EsccWebTeam.Feeds.csproj", "{08008B80-1B37-41B9-935B-FDDDDB4DAE84}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.NavigationControls", "..\Escc.NavigationControls\EsccWebTeam.NavigationControls.csproj", "{0323F668-1723-44A1-8C94-F91DC59EF315}"
