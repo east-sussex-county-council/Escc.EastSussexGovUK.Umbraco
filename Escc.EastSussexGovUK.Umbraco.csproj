@@ -319,7 +319,9 @@
     <Content Include="UserControls\EastSussexGovUK\BreadcrumbTrail.ascx" />
     <Content Include="UserControls\EastSussexGovUK\BreadcrumbTrailMobile.ascx" />
     <Content Include="UserControls\EastSussexGovUK\MasterPageControl.ascx" />
-    <None Include="Web.config" />
+    <None Include="Web.config">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="windows-tile.png" />
   </ItemGroup>
   <ItemGroup>
