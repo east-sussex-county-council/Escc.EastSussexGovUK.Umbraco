@@ -318,6 +318,7 @@
     <Content Include="apple-touch-icon.png" />
     <Content Include="Escc.EastSussexGovUK.Umbraco.csproj.xslt" />
     <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
     <Content Include="robots.txt" />
     <Content Include="UserControls\EastSussexGovUK\BreadcrumbTrail.ascx" />
     <Content Include="UserControls\EastSussexGovUK\BreadcrumbTrailMobile.ascx" />
