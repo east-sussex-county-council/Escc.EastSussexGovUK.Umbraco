@@ -316,14 +316,9 @@
     <Content Include="apple-touch-icon-precomposed-72x72.png" />
     <Content Include="apple-touch-icon-precomposed.png" />
     <Content Include="apple-touch-icon.png" />
-    <Content Include="css\dummy.txt" />
     <Content Include="Escc.EastSussexGovUK.Umbraco.csproj.xslt" />
     <Content Include="favicon.ico" />
-    <Content Include="masterpages\dummy.txt" />
-    <Content Include="media\dummy.txt" />
     <Content Include="robots.txt" />
-    <Content Include="scripts\dummy.txt" />
-    <Content Include="UserControls\dummy.txt" />
     <Content Include="UserControls\EastSussexGovUK\BreadcrumbTrail.ascx" />
     <Content Include="UserControls\EastSussexGovUK\BreadcrumbTrailMobile.ascx" />
     <Content Include="UserControls\EastSussexGovUK\MasterPageControl.ascx" />
@@ -335,6 +330,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
+    <Folder Include="masterpages\" />
+    <Folder Include="media\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
