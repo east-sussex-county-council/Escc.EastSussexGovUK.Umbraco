@@ -40,9 +40,11 @@ packages
 [Uu]mbraco_Client/
 [Aa]pp_Data/
 [Aa]pp_Browsers/
+[Aa]pp_Plugins/
 [Ii]nstall/
 [Cc]onfig/Splashes/
 [Dd]efault.aspx
 [Gg]lobal.asax
 [Vv]iews/[Ww]eb.config.transform
 *.backup
+dummy.txt
