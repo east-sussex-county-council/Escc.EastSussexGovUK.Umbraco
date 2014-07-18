@@ -44,7 +44,6 @@ packages
 [Ii]nstall/
 [Cc]onfig/Splashes/
 [Dd]efault.aspx
-[Gg]lobal.asax
 [Vv]iews/[Ww]eb.config.transform
 *.backup
 dummy.txt
