@@ -352,7 +352,7 @@
     <None Include="README.md" />
     <None Include="Config\ExamineSettings.example.config" />
     <None Include="packages.config" />
-    <Content Include="Views\Web.example.config" />
+    <None Include="Views\Web.example.config" />
     <None Include="Views\Web.config" />
     <None Include="Web.example.config" />
   </ItemGroup>
