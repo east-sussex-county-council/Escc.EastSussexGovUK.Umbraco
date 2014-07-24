@@ -338,13 +338,13 @@
     <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Mobile.cshtml" />
+    <Content Include="Views\Layouts\Mobile.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\article.cshtml">
+    <Content Include="Views\Article.cshtml">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="Views\Desktop.cshtml" />
+    <Content Include="Views\Layouts\Desktop.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="LICENSE.md" />
@@ -366,10 +366,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Plain.cshtml" />
+    <Content Include="Views\Layouts\Plain.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\FullScreen.cshtml" />
+    <Content Include="Views\Layouts\FullScreen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="eastsussexcountycouncil.rdf" />
