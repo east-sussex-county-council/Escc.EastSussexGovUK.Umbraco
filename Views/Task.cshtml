@@ -1,0 +1,32 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+<div class="article">
+	<article>
+		<div class="text">
+			
+			<h1>@Umbraco.Field("pageHeading")</h1>
+			
+			<div class="latestBox">
+				<section>
+					<h2 class="latest">Latest</h2>
+					@Umbraco.Field("latest")
+				</section>
+			</div>
+					
+			@Umbraco.Field("leadingText")
+					
+			<button>Start now</button>
+			
+			<h2>@Umbraco.Field("subheading1")</h2>
+			@Umbraco.Field("content1")
+					
+			<h2>@Umbraco.Field("subheading2")</h2>
+			@Umbraco.Field("content2")
+					
+			<h2>@Umbraco.Field("subheading3")</h2>
+			@Umbraco.Field("content3")
+					
+			<h2>@Umbraco.Field("subheading4")</h2>
+			@Umbraco.Field("content4")
+		</div>
+	</article>
+</div>
