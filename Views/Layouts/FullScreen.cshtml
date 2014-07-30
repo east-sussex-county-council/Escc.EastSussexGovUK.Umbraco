@@ -1,6 +1,6 @@
 ﻿@using System.Net.Mime
 @using Escc.EastSussexGovUK.Umbraco.UserControls.EastSussexGovUK
-@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.Umbraco.BaseViewModel>
 @Html.Partial("~/Usercontrols/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "HtmlTag" })
 <head>
     @if (@Request.Url.Host.IndexOf('.') > -1 &&

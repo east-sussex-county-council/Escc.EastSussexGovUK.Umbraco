@@ -1,32 +1,67 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.Umbraco.CustomerFocusTemplates.Models.TaskViewModel>
+@section Metadata
+{
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
+    <link href="/css/content.css" type="text/css" rel="stylesheet" media="screen" />
+    <title>@Model.PageHeading</title>
+}
+
 <div class="article">
-	<article>
-		<div class="text">
-			
-			<h1>@Umbraco.Field("pageHeading")</h1>
-			
-			<div class="latestBox">
-				<section>
-					<h2 class="latest">Latest</h2>
-					@Umbraco.Field("latest")
-				</section>
-			</div>
-					
-			@Umbraco.Field("leadingText")
-					
-			<button>Start now</button>
-			
-			<h2>@Umbraco.Field("subheading1")</h2>
-			@Umbraco.Field("content1")
-					
-			<h2>@Umbraco.Field("subheading2")</h2>
-			@Umbraco.Field("content2")
-					
-			<h2>@Umbraco.Field("subheading3")</h2>
-			@Umbraco.Field("content3")
-					
-			<h2>@Umbraco.Field("subheading4")</h2>
-			@Umbraco.Field("content4")
-		</div>
-	</article>
+    <article>
+        <div class="content">
+
+            <h1>@Model.PageHeading</h1>
+
+            @if (!String.IsNullOrWhiteSpace(@Model.Latest.ToString()))
+            {
+
+                <div class="latest">
+                    <section>
+                        <h2>Latest</h2>
+                        @Model.Latest
+                    </section>
+                </div>
+            }
+
+            @if (!String.IsNullOrWhiteSpace(@Model.LeadingText.ToString()))
+            {
+                <div class="lead">
+                    @Model.LeadingText
+                </div>
+            }
+
+            <button>Start now</button>
+
+            @if (!String.IsNullOrWhiteSpace(@Model.Subheading1))
+            {
+                <h2>@Model.Subheading1</h2>
+            }
+            @Model.Content1
+
+            @if (!String.IsNullOrWhiteSpace(@Model.Subheading2))
+            {
+                <h2>@Model.Subheading2</h2>
+            }
+            @Model.Content2
+
+            @if (!String.IsNullOrWhiteSpace(@Model.Subheading3))
+            {
+                <h2>@Model.Subheading3</h2>
+            }
+            @Model.Content3
+
+            @if (!String.IsNullOrWhiteSpace(@Model.Subheading4))
+            {
+                <h2>@Model.Subheading4</h2>
+            }
+            @Model.Content4
+        </div>
+    </article>
 </div>
+
+@if (!String.IsNullOrWhiteSpace(@Model.RelatedLinks.ToString()))
+{
+    <div class="supporting related-links">
+        @Model.RelatedLinks
+    </div>
+}
