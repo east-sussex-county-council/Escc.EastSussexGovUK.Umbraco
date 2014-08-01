@@ -282,6 +282,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MicrosoftCmsMigration\MicrosoftCmsCompatibleApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControls\EastSussexGovUK\BreadcrumbTrail.ascx.cs">
       <DependentUpon>BreadcrumbTrail.ascx</DependentUpon>
