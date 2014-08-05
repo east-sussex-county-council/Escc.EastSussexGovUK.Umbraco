@@ -2,7 +2,14 @@
 @section Metadata
 {
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
-    <link href="/css/content.css" type="text/css" rel="stylesheet" media="screen" />
+    @if (Request.Url.Host.Contains("azurewebsites"))
+    {
+        <link href="https://www.eastsussex.gov.uk/css/content.cssx" type="text/css" rel="stylesheet" media="screen" />
+    }
+    else
+    {
+        <link href="/css/content.cssx" type="text/css" rel="stylesheet" media="screen" />
+    }
     <title>@Model.PageHeading</title>
 }
 
