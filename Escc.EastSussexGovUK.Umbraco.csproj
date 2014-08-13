@@ -325,13 +325,13 @@
     <None Include="Escc.EastSussexGovUK.Umbraco.csproj.xslt">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="css\dummy.txt" />
+    <None Include="css\dummy.txt" />
     <Content Include="css\location.css" />
     <Content Include="css\task.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="robots.txt" />
-    <Content Include="scripts\dummy.txt" />
+    <None Include="scripts\dummy.txt" />
     <Content Include="scripts\location.js" />
     <Content Include="UserControls\EastSussexGovUK\BreadcrumbTrail.ascx" />
     <Content Include="UserControls\EastSussexGovUK\BreadcrumbTrailMobile.ascx" />
