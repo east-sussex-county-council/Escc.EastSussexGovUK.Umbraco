@@ -37,8 +37,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Mvc", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.Elibrary", "..\Escc.Elibrary\Escc.Elibrary.csproj", "{3D2240E0-D165-4C52-A97B-730542975D3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.Umbraco", "..\Escc.Umbraco\Escc.Umbraco.csproj", "{CCCBDC2C-FC06-4D2B-B9B0-B097E121A050}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -148,12 +146,6 @@ Global
 		{3D2240E0-D165-4C52-A97B-730542975D3A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3D2240E0-D165-4C52-A97B-730542975D3A}.UAT|Any CPU.ActiveCfg = Release|Any CPU
 		{3D2240E0-D165-4C52-A97B-730542975D3A}.UAT|Any CPU.Build.0 = Release|Any CPU
-		{CCCBDC2C-FC06-4D2B-B9B0-B097E121A050}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CCCBDC2C-FC06-4D2B-B9B0-B097E121A050}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CCCBDC2C-FC06-4D2B-B9B0-B097E121A050}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CCCBDC2C-FC06-4D2B-B9B0-B097E121A050}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CCCBDC2C-FC06-4D2B-B9B0-B097E121A050}.UAT|Any CPU.ActiveCfg = Release|Any CPU
-		{CCCBDC2C-FC06-4D2B-B9B0-B097E121A050}.UAT|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

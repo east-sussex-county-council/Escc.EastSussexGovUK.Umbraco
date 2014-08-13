@@ -22,7 +22,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
-    <NuGetPackageImportStamp>b5fb3eb8</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>0b9ea51b</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -81,9 +81,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\xmlrpcnet.2.5.0\lib\net20\CookComputing.XmlRpcV2.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.Umbraco.CustomerFocusTemplates">
-      <HintPath>packages\Escc.Umbraco.CustomerFocusTemplates.1.0.0\lib\net45\Escc.Umbraco.CustomerFocusTemplates.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Escc.Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Escc.Umbraco.0.1.0\lib\Escc.Umbraco.dll</HintPath>
+    </Reference>
+    <Reference Include="Escc.Umbraco.CustomerFocusTemplates, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Escc.Umbraco.CustomerFocusTemplates.0.1.0\lib\net45\Escc.Umbraco.CustomerFocusTemplates.dll</HintPath>
     </Reference>
     <Reference Include="Examine, Version=0.1.55.2941, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -321,13 +325,21 @@
     <None Include="Escc.EastSussexGovUK.Umbraco.csproj.xslt">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="css\dummy.txt" />
+    <Content Include="css\location.css" />
+    <Content Include="css\task.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="robots.txt" />
+    <Content Include="scripts\dummy.txt" />
+    <Content Include="scripts\location.js" />
     <Content Include="UserControls\EastSussexGovUK\BreadcrumbTrail.ascx" />
     <Content Include="UserControls\EastSussexGovUK\BreadcrumbTrailMobile.ascx" />
     <Content Include="UserControls\EastSussexGovUK\MasterPageControl.ascx" />
     <Content Include="Views\Task.cshtml" />
+    <Content Include="Views\Partials\_LocationOpeningTimes.cshtml" />
+    <Content Include="Views\Partials\_LocationIsOpen.cshtml" />
+    <Content Include="Views\Location.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
@@ -366,10 +378,6 @@
     <ProjectReference Include="..\Escc.EastSussexGovUK\EsccWebTeam.EastSussexGovUK.csproj">
       <Project>{1426fef0-23dc-4c23-ae15-67f2527bd741}</Project>
       <Name>EsccWebTeam.EastSussexGovUK</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Escc.Umbraco\Escc.Umbraco.csproj">
-      <Project>{CCCBDC2C-FC06-4D2B-B9B0-B097E121A050}</Project>
-      <Name>Escc.Umbraco</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -424,10 +432,10 @@
     </PropertyGroup>
     <Error Condition="!Exists('packages\UmbracoCms.7.1.4\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\UmbracoCms.7.1.4\build\UmbracoCms.props'))" />
     <Error Condition="!Exists('packages\UmbracoCms.7.1.4\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\UmbracoCms.7.1.4\build\UmbracoCms.targets'))" />
-    <Error Condition="!Exists('packages\Escc.Umbraco.CustomerFocusTemplates.1.0.0\build\Escc.Umbraco.CustomerFocusTemplates.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Umbraco.CustomerFocusTemplates.1.0.0\build\Escc.Umbraco.CustomerFocusTemplates.targets'))" />
+    <Error Condition="!Exists('packages\Escc.Umbraco.CustomerFocusTemplates.0.1.0\build\Escc.Umbraco.CustomerFocusTemplates.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Umbraco.CustomerFocusTemplates.0.1.0\build\Escc.Umbraco.CustomerFocusTemplates.targets'))" />
   </Target>
   <Import Project="packages\UmbracoCms.7.1.4\build\UmbracoCms.targets" Condition="Exists('packages\UmbracoCms.7.1.4\build\UmbracoCms.targets')" />
-  <Import Project="packages\Escc.Umbraco.CustomerFocusTemplates.1.0.0\build\Escc.Umbraco.CustomerFocusTemplates.targets" Condition="Exists('packages\Escc.Umbraco.CustomerFocusTemplates.1.0.0\build\Escc.Umbraco.CustomerFocusTemplates.targets')" />
+  <Import Project="packages\Escc.Umbraco.CustomerFocusTemplates.0.1.0\build\Escc.Umbraco.CustomerFocusTemplates.targets" Condition="Exists('packages\Escc.Umbraco.CustomerFocusTemplates.0.1.0\build\Escc.Umbraco.CustomerFocusTemplates.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
