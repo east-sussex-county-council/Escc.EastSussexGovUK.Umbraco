@@ -53,3 +53,7 @@ css
 Views/*.cshtml
 !Views/_ViewStart.cshtml
 Views/Partials
+
+# Allow NuGet package restore files
+!.nuget/NuGet.exe
+!.nuget/NuGet.config
