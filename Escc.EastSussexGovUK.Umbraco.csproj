@@ -22,7 +22,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
-    <NuGetPackageImportStamp>a4e12df6</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>082f1096</NuGetPackageImportStamp>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -91,8 +91,7 @@
       <HintPath>packages\Escc.Umbraco.0.1.0\lib\Escc.Umbraco.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.CustomerFocusTemplates">
-      <HintPath>packages\Escc.Umbraco.CustomerFocusTemplates.0.1.2\lib\net45\Escc.Umbraco.CustomerFocusTemplates.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>packages\Escc.Umbraco.CustomerFocusTemplates.0.1.3\lib\net45\Escc.Umbraco.CustomerFocusTemplates.dll</HintPath>
     </Reference>
     <Reference Include="Examine, Version=0.1.55.2941, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -172,6 +171,10 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>packages\Newtonsoft.Json.6.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Our.Umbraco.PropertyEditorConverters">
+      <HintPath>packages\Our.Umbraco.CoreValueConverters.2.0.5\lib\net45\Our.Umbraco.PropertyEditorConverters.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="SQLCE4Umbraco, Version=1.0.5261.28131, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -437,12 +440,12 @@
     </PropertyGroup>
     <Error Condition="!Exists('packages\UmbracoCms.7.1.4\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\UmbracoCms.7.1.4\build\UmbracoCms.props'))" />
     <Error Condition="!Exists('packages\UmbracoCms.7.1.4\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\UmbracoCms.7.1.4\build\UmbracoCms.targets'))" />
-    <Error Condition="!Exists('packages\Escc.Umbraco.CustomerFocusTemplates.0.1.2\build\Escc.Umbraco.CustomerFocusTemplates.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Umbraco.CustomerFocusTemplates.0.1.2\build\Escc.Umbraco.CustomerFocusTemplates.targets'))" />
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('packages\Escc.Umbraco.CustomerFocusTemplates.0.1.3\build\Escc.Umbraco.CustomerFocusTemplates.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Umbraco.CustomerFocusTemplates.0.1.3\build\Escc.Umbraco.CustomerFocusTemplates.targets'))" />
   </Target>
   <Import Project="packages\UmbracoCms.7.1.4\build\UmbracoCms.targets" Condition="Exists('packages\UmbracoCms.7.1.4\build\UmbracoCms.targets')" />
-  <Import Project="packages\Escc.Umbraco.CustomerFocusTemplates.0.1.2\build\Escc.Umbraco.CustomerFocusTemplates.targets" Condition="Exists('packages\Escc.Umbraco.CustomerFocusTemplates.0.1.2\build\Escc.Umbraco.CustomerFocusTemplates.targets')" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Import Project="packages\Escc.Umbraco.CustomerFocusTemplates.0.1.3\build\Escc.Umbraco.CustomerFocusTemplates.targets" Condition="Exists('packages\Escc.Umbraco.CustomerFocusTemplates.0.1.3\build\Escc.Umbraco.CustomerFocusTemplates.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
