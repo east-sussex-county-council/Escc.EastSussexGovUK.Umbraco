@@ -348,6 +348,7 @@
     <Content Include="Views\Partials\_LocationOpeningTimes.cshtml" />
     <Content Include="Views\Partials\_LocationIsOpen.cshtml" />
     <Content Include="Views\Location.cshtml" />
+    <Content Include="Views\Layouts\_ContentExperiment.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
