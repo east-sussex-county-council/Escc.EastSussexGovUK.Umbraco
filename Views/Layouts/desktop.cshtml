@@ -8,13 +8,7 @@
 }
 @Html.Partial("~/Usercontrols/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "HtmlTag" })
 <head>
-    @if (@Request.Url.Host.IndexOf('.') > -1 &&
-             @Request.Url.Host.IndexOf("escc.gov") == -1 &&
-             !UmbracoContext.Current.InPreviewMode &&
-             IsSectionDefined("ContentExperiment"))
-    {
-        @RenderSection("ContentExperiment")
-    }
+    @Html.Partial("~/Views/Layouts/_ContentExperiment.cshtml", Model)
     @Html.Partial("~/Usercontrols/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "MetadataDesktop" })
     @RenderSection("Metadata", required: false)
 </head>

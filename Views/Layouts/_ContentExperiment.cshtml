@@ -1,0 +1,17 @@
+﻿@using EsccWebTeam.Data.Web
+@*
+     Hide content experiment code if being requested by EsccWebTeam.Data.Xml, because it's invalid as XML.
+    This happens when you're experimenting on a page which is parsed for an iCalendar download.
+*@@if (Request.Url.Host.IndexOf('.') > -1 &&
+         Request.Url.Host.IndexOf("escc.gov", StringComparison.Ordinal) == -1 &&
+         Request.UserAgent != "EsccWebTeam.Data.Xml" &&
+         Model.IsPublishedView &&
+         Model.ContentExperimentScript != null &&
+         !String.IsNullOrWhiteSpace(Model.ContentExperimentScript.ToString()))
+{
+    // This view uses Google content experiments, so relax the content security policy to allow that
+    var policy = new ContentSecurityPolicy(HttpContext.Current.Request.Url);
+    policy.AppendFromConfig("GoogleContentExperiments");
+    policy.UpdateHeader(HttpContext.Current.Response);
+    @Model.ContentExperimentScript
+}
