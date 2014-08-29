@@ -46,6 +46,7 @@ packages
 [Cc]onfig/Splashes/
 [Dd]efault.aspx
 [Vv]iews/[Ww]eb.config.transform
+[Mm]edia
 *.backup
 dummy.txt
 
