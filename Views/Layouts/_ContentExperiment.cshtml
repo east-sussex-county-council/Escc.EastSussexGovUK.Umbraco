@@ -5,7 +5,7 @@
 *@@if (Request.Url.Host.IndexOf('.') > -1 &&
          Request.Url.Host.IndexOf("escc.gov", StringComparison.Ordinal) == -1 &&
          Request.UserAgent != "EsccWebTeam.Data.Xml" &&
-         Model.IsPublishedView &&
+         Model.IsPublicView &&
          Model.ContentExperimentScript != null &&
          !String.IsNullOrWhiteSpace(Model.ContentExperimentScript.ToString()))
 {
