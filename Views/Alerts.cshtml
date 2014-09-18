@@ -1,0 +1,12 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<IList<Escc.EastSussexGovUK.Umbraco.Models.AlertViewModel>> 
+@{
+    Layout = null;
+    Response.ContentType = "application/json";
+<text>[</text>for (var i = 0; i < Model.Count; i++)
+    {
+<text>{"alert":"@HttpUtility.JavaScriptStringEncode(Model[i].Alert.ToString())","url":"@HttpUtility.JavaScriptStringEncode(Model[i].TargetUrl.ToString())","append":@HttpUtility.JavaScriptStringEncode(Model[i].Append.ToString().ToLowerInvariant()),"cascade":@HttpUtility.JavaScriptStringEncode(Model[i].Cascade.ToString().ToLowerInvariant())}</text>if (i < Model.Count - 1)
+         {
+<text>,</text>}
+    }
+<text>]</text>
+}

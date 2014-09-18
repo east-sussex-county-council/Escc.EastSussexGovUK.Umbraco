@@ -88,7 +88,7 @@
     </Reference>
     <Reference Include="Escc.Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.Umbraco.0.2.1\lib\Escc.Umbraco.dll</HintPath>
+      <HintPath>packages\Escc.Umbraco.0.3.0\lib\Escc.Umbraco.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.CustomerFocusTemplates, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -295,7 +295,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AlertsController.cs" />
     <Compile Include="MicrosoftCmsMigration\MicrosoftCmsCompatibleApplication.cs" />
+    <Compile Include="Models\AlertViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControls\EastSussexGovUK\BreadcrumbTrail.ascx.cs">
       <DependentUpon>BreadcrumbTrail.ascx</DependentUpon>
@@ -375,10 +377,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="masterpages\" />
     <Folder Include="media\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\_ViewStart.cshtml" />
@@ -407,6 +407,7 @@
     <Content Include="Views\Partials\_1Space.cshtml" />
     <Content Include="Views\Location.cshtml" />
     <Content Include="Views\Landing.cshtml" />
+    <Content Include="Views\Alerts.cshtml" />
     <None Include="Web.example.config" />
   </ItemGroup>
   <ItemGroup>
