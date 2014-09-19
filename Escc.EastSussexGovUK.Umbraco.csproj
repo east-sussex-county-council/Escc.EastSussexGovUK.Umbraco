@@ -22,7 +22,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
-    <NuGetPackageImportStamp>37358123</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>ab16fde7</NuGetPackageImportStamp>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -88,11 +88,12 @@
     </Reference>
     <Reference Include="Escc.Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.Umbraco.0.3.0\lib\Escc.Umbraco.dll</HintPath>
+      <HintPath>packages\Escc.Umbraco.0.4.0\lib\Escc.Umbraco.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.CustomerFocusTemplates, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.Umbraco.CustomerFocusTemplates.0.6.0\lib\net45\Escc.Umbraco.CustomerFocusTemplates.dll</HintPath>
+      <HintPath>packages\Escc.Umbraco.CustomerFocusTemplates.0.6.1\lib\net45\Escc.Umbraco.CustomerFocusTemplates.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Examine, Version=0.1.55.2941, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -395,6 +396,7 @@
     <None Include="Config\ExamineSettings.example.config" />
     <None Include="packages.config" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Alerts.cshtml" />
     <Content Include="Views\Task.cshtml" />
     <Content Include="Views\Partials\_WidgetJs.cshtml" />
     <Content Include="Views\Partials\_WidgetCss.cshtml" />
@@ -407,7 +409,6 @@
     <Content Include="Views\Partials\_1Space.cshtml" />
     <Content Include="Views\Location.cshtml" />
     <Content Include="Views\Landing.cshtml" />
-    <Content Include="Views\Alerts.cshtml" />
     <None Include="Web.example.config" />
   </ItemGroup>
   <ItemGroup>
@@ -477,11 +478,11 @@
     <Error Condition="!Exists('packages\UmbracoCms.7.1.4\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\UmbracoCms.7.1.4\build\UmbracoCms.props'))" />
     <Error Condition="!Exists('packages\UmbracoCms.7.1.4\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\UmbracoCms.7.1.4\build\UmbracoCms.targets'))" />
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-    <Error Condition="!Exists('packages\Escc.Umbraco.CustomerFocusTemplates.0.6.0\build\Escc.Umbraco.CustomerFocusTemplates.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Umbraco.CustomerFocusTemplates.0.6.0\build\Escc.Umbraco.CustomerFocusTemplates.targets'))" />
+    <Error Condition="!Exists('packages\Escc.Umbraco.CustomerFocusTemplates.0.6.1\build\Escc.Umbraco.CustomerFocusTemplates.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Umbraco.CustomerFocusTemplates.0.6.1\build\Escc.Umbraco.CustomerFocusTemplates.targets'))" />
   </Target>
   <Import Project="packages\UmbracoCms.7.1.4\build\UmbracoCms.targets" Condition="Exists('packages\UmbracoCms.7.1.4\build\UmbracoCms.targets')" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Import Project="packages\Escc.Umbraco.CustomerFocusTemplates.0.6.0\build\Escc.Umbraco.CustomerFocusTemplates.targets" Condition="Exists('packages\Escc.Umbraco.CustomerFocusTemplates.0.6.0\build\Escc.Umbraco.CustomerFocusTemplates.targets')" />
+  <Import Project="packages\Escc.Umbraco.CustomerFocusTemplates.0.6.1\build\Escc.Umbraco.CustomerFocusTemplates.targets" Condition="Exists('packages\Escc.Umbraco.CustomerFocusTemplates.0.6.1\build\Escc.Umbraco.CustomerFocusTemplates.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
