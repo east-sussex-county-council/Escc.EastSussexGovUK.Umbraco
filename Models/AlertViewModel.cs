@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.Models
@@ -14,9 +15,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
         public IHtmlString Alert { get; set; }
 
         /// <summary>
-        /// Gets or sets the page URL to display the alert on.
+        /// Gets or sets the page URLs to display the alert on.
         /// </summary>
-        public Uri TargetUrl { get; set; }
+        public IList<Uri> TargetUrls { get; set; }
 
         /// <summary>
         /// Gets or sets whether this alert to those from parent pages, or replace them.

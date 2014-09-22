@@ -32,16 +32,23 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
         {
             foreach (var alertPage in model.Content.Children)
             {
-                var contentPicker = alertPage.GetPropertyValue<IPublishedContent>("whereToDisplayIt");
-                if (contentPicker == null) continue;
+                var multiNodeTreePicker = alertPage.GetPropertyValue<IEnumerable<IPublishedContent>>("whereToDisplayIt");
+                if (multiNodeTreePicker == null) continue;
 
-                alerts.Add(new AlertViewModel()
+                var alertModel = new AlertViewModel()
                 {
                     Alert = new HtmlString(alertPage.GetPropertyValue<string>("alert")),
-                    TargetUrl = new Uri(contentPicker.Url, UriKind.RelativeOrAbsolute),
+                    TargetUrls = new List<Uri>(),
                     Append = alertPage.GetPropertyValue<bool>("append"),
                     Cascade = alertPage.GetPropertyValue<bool>("cascade")
-                });
+                };
+
+                foreach (var targetUrl in multiNodeTreePicker)
+                {
+                    alertModel.TargetUrls.Add(new Uri(targetUrl.Url, UriKind.RelativeOrAbsolute));
+                }
+
+                alerts.Add(alertModel);
             }
         }
     }
