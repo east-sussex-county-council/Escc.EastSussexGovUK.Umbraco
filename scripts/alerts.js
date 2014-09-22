@@ -31,72 +31,101 @@
         }
     }
 
-    function filterByInherit(alertData) {
+    function filterByInherit(alertsData) {
         /// <summary>Filters alerts based on their inheritance settings</summary>
 
         // If inheritance is blocked, that's a new base URL. Anything matching that URL or longer is valid.
         var minimumUrl = '';
 
         // Start by getting the deepest alert URL which blocks inheritance.
-        $.each(alertData, function (key, val) {
-            if (!val.append) {
-                var minimumUrlCandidate = stripTrailingSlash(val.url);
-                if (minimumUrlCandidate.length > minimumUrl.length) minimumUrl = minimumUrlCandidate;
+        $.each(alertsData, function (key, singleAlert) {
+            if (!singleAlert.append) {
+                $.each(singleAlert.urls, function(key2, url) {
+                    if (doesUrlMatchCurrentPage(url)) {
+                        var minimumUrlCandidate = stripTrailingSlash(url);
+                        if (minimumUrlCandidate.length > minimumUrl.length) minimumUrl = minimumUrlCandidate;
+                    }
+                });
             }
         });
 
         // If nothing blocks inheritance, return unchanged data
-        if (!minimumUrl.length) return alertData;
+        if (!minimumUrl.length) return alertsData;
 
         // Otherwise go through all the alerts, and select only those matching the new base URL or longer.
         var alerts = [];
-        $.each(alertData, function (key, val) {
-            var alertUrl = stripTrailingSlash(val.url);
-            if (alertUrl.indexOf(minimumUrl) === 0) {
-                alerts.push(val);
-            }
+        $.each(alertsData, function (key, singleAlert) {
+            $.each(singleAlert.urls, function(key2, url) {
+                var alertUrl = stripTrailingSlash(url);
+                if (alertUrl.indexOf(minimumUrl) === 0) {
+                    alerts.push(singleAlert);
+                    return false;
+                }
+                return true;
+            });
         });
 
         return alerts;
     }
 
-    function filterByCascade(alertData) {
+    function filterByCascade(alertsData) {
         /// <summary>Filters alerts based on their cascade settings</summary>
         var alerts = [];
 
-        $.each(alertData, function(key, val) {
-            if (isExactUrlMatch(val) || val.cascade) {
-                alerts.push(val);
+        $.each(alertsData, function(key, singleAlert) {
+            if (isExactUrlMatch(singleAlert) || singleAlert.cascade) {
+                alerts.push(singleAlert);
             }
         });
 
         return alerts;
     }
 
-    function filterByUrl(alertData) {
+    function filterByUrl(alertsData) {
         /// <summary>Filters alerts based on whether they start from the current URL or an ancestor</summary>
         var alerts = [];
 
-        $.each(alertData, function(key, val) {
-            if (isUrlMatch(val)) {
-                alerts.push(val);
+        $.each(alertsData, function(key, singleAlert) {
+            if (alertHasUrlMatch(singleAlert)) {
+                alerts.push(singleAlert);
             }
         });
 
         return alerts;
     }
 
-    function isUrlMatch(alertData) {
+    function alertHasUrlMatch(singleAlert) {
         /// <summary>Checks whether an alert is displayed starting from the current URL or an ancestor</summary>
-        var alertUrl = stripTrailingSlash(alertData.url);
-        return (window.location.pathname.indexOf(alertUrl) === 0);
+        var match = false;
+        $.each(singleAlert.urls, function (key, url) {
+            match = doesUrlMatchCurrentPage(url);
+            return !match;
+        });
+        return match;
     }
 
-    function isExactUrlMatch(alertData) {
+    function doesUrlMatchCurrentPage(url) {
+        /// <summary>Checks whether a URL matches the current URL or an child page</summary>
+        var alertUrl = stripTrailingSlash(url);
+        if (window.location.pathname.indexOf(alertUrl) === 0) {
+            return true;
+        }
+        return false;
+    }
+
+    function isExactUrlMatch(singleAlert) {
         /// <summary>Checks whether an alert is displayed starting from the current URL</summary>
         var pageUrl = stripTrailingSlash(window.location.pathname);
-        var alertUrl = stripTrailingSlash(alertData.url);
-        return (pageUrl === alertUrl);
+        var match = false;
+        $.each(singleAlert.urls, function (key, url) {
+            var alertUrl = stripTrailingSlash(url);
+            if (pageUrl === alertUrl) {
+                match = true;
+                return false;
+            }
+            return true;
+        });
+        return match;
     }
 
     function stripTrailingSlash(str) {
