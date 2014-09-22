@@ -1,7 +1,7 @@
 ﻿if (typeof (jQuery) != 'undefined') {
     $.getJSON('/alerts/', function(data) {
         $.each(data, function(key, val) {
-            if (alertURLmatches(val)) {
+            if (isUrlMatch(val) && isCascadeMatch(val)) {
                 displayAlert(val);
             }
         });
@@ -20,9 +20,22 @@
         }
     }
 
-    function alertURLmatches(alertData) {
-        /// <summary>Checks whether an alert's URL settings match the current URL</summary>
-        return window.location.pathname.indexOf(stripTrailingSlash(alertData.url)) === 0;
+    function isCascadeMatch(alertData) {
+        /// <summary>Checks whether an alert can be displayed based on its cascade settings</summary>
+        return (isExactUrlMatch(alertData) || alertData.cascade);
+    }
+
+    function isUrlMatch(alertData) {
+        /// <summary>Checks whether an alert is displayed starting from the current URL or an ancestor</summary>
+        var alertUrl = stripTrailingSlash(alertData.url);
+        return window.location.pathname.indexOf(alertUrl) === 0;
+    }
+
+    function isExactUrlMatch(alertData) {
+        /// <summary>Checks whether an alert is displayed starting from the current URL</summary>
+        var pageUrl = stripTrailingSlash(window.location.pathname);
+        var alertUrl = stripTrailingSlash(alertData.url);
+        return (pageUrl === alertUrl);
     }
 
     function stripTrailingSlash(str) {
