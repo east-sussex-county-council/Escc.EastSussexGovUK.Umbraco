@@ -31,7 +31,7 @@ _ReSharper*/
 !*.example.config
 !packages.config
 *.scc
-[Ss]cripts*/
+[Ss]cripts*/*.js
 Properties/PublishProfiles/*
 packages
 .nuget/NuGet.targets
@@ -56,3 +56,4 @@ Views/*.cshtml
 !Views/Alerts.cshtml
 !Views/_ViewStart.cshtml
 Views/Partials
+![Ss]cripts/alerts.js

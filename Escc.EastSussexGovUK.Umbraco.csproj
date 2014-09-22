@@ -366,6 +366,7 @@
     <Content Include="Global.asax" />
     <Content Include="robots.txt" />
     <None Include="scripts\dummy.txt" />
+    <Content Include="scripts\alerts.js" />
     <Content Include="scripts\location.js" />
     <Content Include="UserControls\EastSussexGovUK\BreadcrumbTrail.ascx" />
     <Content Include="UserControls\EastSussexGovUK\BreadcrumbTrailMobile.ascx" />

@@ -11,6 +11,7 @@
     @Html.Partial("~/Views/Layouts/_ContentExperiment.cshtml", Model)
     @Html.Partial("~/Usercontrols/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "MetadataDesktop" })
     @RenderSection("Metadata", required: false)
+    <link rel="stylesheet" href="https://www.eastsussex.gov.uk/css/alert.cssx" type="text/css"/>
 </head>
 @{
     var siteContext = new EastSussexGovUKContext();
@@ -54,7 +55,6 @@ else
             @Html.Partial("~/Usercontrols/EastSussexGovUK/BreadcrumbTrail.ascx")
             @Html.Partial("~/Usercontrols/EastSussexGovUK/BreadcrumbTrailMobile.ascx")
         }
-        @Html.Partial("~/Usercontrols/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "Alert" })
         @RenderBody()
         @if (IsSectionDefined("Supporting"))
         {
@@ -83,5 +83,6 @@ else
 }
 @Html.Partial("~/Usercontrols/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "ScriptsDesktop" })
 @RenderSection("JavaScript", required: false)
+<script src="/scripts/alerts.js"></script>
 </body>
     </html>
