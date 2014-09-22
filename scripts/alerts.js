@@ -4,6 +4,7 @@
         var alerts = data;
         alerts = filterByUrl(alerts);
         alerts = filterByCascade(alerts);
+        alerts = filterByInherit(alerts);
 
         if (alerts.length) {
             displayAlerts(alerts);           
@@ -30,8 +31,37 @@
         }
     }
 
+    function filterByInherit(alertData) {
+        /// <summary>Filters alerts based on their inheritance settings</summary>
+
+        // If inheritance is blocked, that's a new base URL. Anything matching that URL or longer is valid.
+        var minimumUrl = '';
+
+        // Start by getting the deepest alert URL which blocks inheritance.
+        $.each(alertData, function (key, val) {
+            if (!val.append) {
+                var minimumUrlCandidate = stripTrailingSlash(val.url);
+                if (minimumUrlCandidate.length > minimumUrl.length) minimumUrl = minimumUrlCandidate;
+            }
+        });
+
+        // If nothing blocks inheritance, return unchanged data
+        if (!minimumUrl.length) return alertData;
+
+        // Otherwise go through all the alerts, and select only those matching the new base URL or longer.
+        var alerts = [];
+        $.each(alertData, function (key, val) {
+            var alertUrl = stripTrailingSlash(val.url);
+            if (alertUrl.indexOf(minimumUrl) === 0) {
+                alerts.push(val);
+            }
+        });
+
+        return alerts;
+    }
+
     function filterByCascade(alertData) {
-        /// <summary>Checks whether an alert can be displayed based on its cascade settings</summary>
+        /// <summary>Filters alerts based on their cascade settings</summary>
         var alerts = [];
 
         $.each(alertData, function(key, val) {
@@ -44,17 +74,22 @@
     }
 
     function filterByUrl(alertData) {
-        /// <summary>Checks whether an alert is displayed starting from the current URL or an ancestor</summary>
+        /// <summary>Filters alerts based on whether they start from the current URL or an ancestor</summary>
         var alerts = [];
 
         $.each(alertData, function(key, val) {
-            var alertUrl = stripTrailingSlash(val.url);
-            if (window.location.pathname.indexOf(alertUrl) === 0) {
+            if (isUrlMatch(val)) {
                 alerts.push(val);
             }
         });
 
         return alerts;
+    }
+
+    function isUrlMatch(alertData) {
+        /// <summary>Checks whether an alert is displayed starting from the current URL or an ancestor</summary>
+        var alertUrl = stripTrailingSlash(alertData.url);
+        return (window.location.pathname.indexOf(alertUrl) === 0);
     }
 
     function isExactUrlMatch(alertData) {
