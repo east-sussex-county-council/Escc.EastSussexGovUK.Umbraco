@@ -1,17 +1,27 @@
 ﻿if (typeof (jQuery) != 'undefined') {
     $.getJSON('/alerts/', function(data) {
-        $.each(data, function(key, val) {
-            if (isUrlMatch(val) && isCascadeMatch(val)) {
-                displayAlert(val);
-            }
-        });
+
+        var alerts = data;
+        alerts = filterByUrl(alerts);
+        alerts = filterByCascade(alerts);
+
+        if (alerts.length) {
+            displayAlerts(alerts);           
+        }
     });
 
-    function displayAlert(alertData) {
+    function displayAlerts(alertData) {
         /// <summary>Display an alert on the page</summary>
         var container = $("#main > .container");
         var breadcrumb = $(".breadcrumb, .breadcrumb-mobile", container);
-        var alertNode = $('<div class="alert">' + alertData.alert + '</div>');
+
+        var alertHtml = '';
+        $.each(alertData, function (key, val) {
+            alertHtml += val.alert;
+        });
+
+
+        var alertNode = $('<div class="alert">' + alertHtml + '</div>');
 
         if (breadcrumb.length) {
             alertNode.insertAfter(breadcrumb[breadcrumb.length - 1]);
@@ -20,15 +30,31 @@
         }
     }
 
-    function isCascadeMatch(alertData) {
+    function filterByCascade(alertData) {
         /// <summary>Checks whether an alert can be displayed based on its cascade settings</summary>
-        return (isExactUrlMatch(alertData) || alertData.cascade);
+        var alerts = [];
+
+        $.each(alertData, function(key, val) {
+            if (isExactUrlMatch(val) || val.cascade) {
+                alerts.push(val);
+            }
+        });
+
+        return alerts;
     }
 
-    function isUrlMatch(alertData) {
+    function filterByUrl(alertData) {
         /// <summary>Checks whether an alert is displayed starting from the current URL or an ancestor</summary>
-        var alertUrl = stripTrailingSlash(alertData.url);
-        return window.location.pathname.indexOf(alertUrl) === 0;
+        var alerts = [];
+
+        $.each(alertData, function(key, val) {
+            var alertUrl = stripTrailingSlash(val.url);
+            if (window.location.pathname.indexOf(alertUrl) === 0) {
+                alerts.push(val);
+            }
+        });
+
+        return alerts;
     }
 
     function isExactUrlMatch(alertData) {
