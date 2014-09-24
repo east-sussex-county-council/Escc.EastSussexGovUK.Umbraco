@@ -36,7 +36,6 @@ else
         {
             @Html.Partial("~/Usercontrols/EastSussexGovUK/BreadcrumbTrailMobile.ascx")
         }
-        @Html.Partial("~/Usercontrols/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "Alert" })
         @RenderBody()
         @RenderSection("Supporting", required: false)
     </div>

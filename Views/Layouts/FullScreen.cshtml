@@ -26,7 +26,6 @@ else
         <header>
             <div class="header context">
                 @Html.Partial("~/Usercontrols/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "HeaderFullScreen" })
-                @Html.Partial("~/Usercontrols/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "AlertFullScreen" })
                 <div class="full-screen-bar">
                     <h1>@RenderSection("FullScreenHeading", required: false)</h1>
                     @RenderSection("FullScreenLinks", required: false)
