@@ -11,7 +11,6 @@
     @Html.Partial("~/Views/Layouts/_ContentExperiment.cshtml", Model)
     @Html.Partial("~/Usercontrols/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "MetadataDesktop" })
     @RenderSection("Metadata", required: false)
-    <link rel="stylesheet" href="https://www.eastsussex.gov.uk/css/alert.cssx" type="text/css"/>
 </head>
 @{
     var siteContext = new EastSussexGovUKContext();

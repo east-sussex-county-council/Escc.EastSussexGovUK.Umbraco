@@ -13,6 +13,8 @@
 
     function displayAlerts(alertData) {
         /// <summary>Display an alert on the page</summary>
+        $("head").append('<link rel="stylesheet" href="' + esccConfig.CssHandlerPath.replace('{0}', 'alert') + '" />');
+
         var container = $("#main > .container");
         var breadcrumb = $(".breadcrumb, .breadcrumb-mobile", container);
 
@@ -21,8 +23,7 @@
             alertHtml += val.alert;
         });
 
-
-        var alertNode = $('<div class="alert">' + alertHtml + '</div>');
+        var alertNode = $('<strong class="alert" role="alert"><span class="icon"></span><article>' + alertHtml + '</article></strong>');
 
         if (breadcrumb.length) {
             alertNode.insertAfter(breadcrumb[breadcrumb.length - 1]);
