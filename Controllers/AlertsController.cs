@@ -4,6 +4,7 @@ using System.Web;
 using System.Web.Mvc;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using EsccWebTeam.Data.Web;
+using umbraco.cms.helpers;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 using Umbraco.Web.Models;
@@ -32,24 +33,60 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
         {
             foreach (var alertPage in model.Content.Children)
             {
-                var multiNodeTreePicker = alertPage.GetPropertyValue<IEnumerable<IPublishedContent>>("whereToDisplayIt");
-                if (multiNodeTreePicker == null) continue;
-
                 var alertModel = new AlertViewModel()
                 {
                     Alert = new HtmlString(alertPage.GetPropertyValue<string>("alert")),
-                    TargetUrls = new List<Uri>(),
+                    TargetUrls = GetTargetUrls(alertPage),
                     Append = alertPage.GetPropertyValue<bool>("append"),
                     Cascade = alertPage.GetPropertyValue<bool>("cascade")
                 };
 
+                if (alertModel.TargetUrls.Count > 0)
+                {
+                    alerts.Add(alertModel);
+                }
+            }
+        }
+
+        private static IList<Uri> GetTargetUrls(IPublishedContent alertPage)
+        {
+            var list = new List<Uri>();
+
+            // Get URLs from multi-node tree picker
+            var multiNodeTreePicker = alertPage.GetPropertyValue<IEnumerable<IPublishedContent>>("whereToDisplayIt");
+            if (multiNodeTreePicker != null)
+            {
                 foreach (var targetUrl in multiNodeTreePicker)
                 {
-                    alertModel.TargetUrls.Add(new Uri(targetUrl.Url, UriKind.RelativeOrAbsolute));
+                    try
+                    {
+                        list.Add(new Uri(targetUrl.Url, UriKind.RelativeOrAbsolute));
+                    }
+                    catch (UriFormatException)
+                    {
+                    }
                 }
-
-                alerts.Add(alertModel);
             }
+
+            // Get URLs from textbox
+            var urlList = alertPage.GetPropertyValue<string>("whereElseToDisplayIt");
+            if (!String.IsNullOrWhiteSpace(urlList))
+            {
+                var urlLines = urlList.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (var urlLine in urlLines)
+                {
+                    try
+                    {
+                        var url = new Uri(urlLine, UriKind.RelativeOrAbsolute);
+                        if (url.IsAbsoluteUri) url = new Uri(url.PathAndQuery, UriKind.Relative);
+                        list.Add(url);
+                    }
+                    catch (UriFormatException)
+                    {
+                    }
+                }
+            }
+            return list;
         }
     }
 }
