@@ -1,5 +1,5 @@
-﻿if (typeof (jQuery) != 'undefined') {
-    $.getJSON('/alerts/', function(data) {
+﻿if (typeof (jQuery) != 'undefined' && typeof (esccConfig) != 'undefined') {
+    $.getJSON(esccConfig.AlertsUrl, function(data) {
 
         var alerts = data;
         alerts = filterByUrl(alerts);
