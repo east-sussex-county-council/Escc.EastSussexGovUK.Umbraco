@@ -1,7 +1,10 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<IList<Escc.EastSussexGovUK.Umbraco.Models.AlertViewModel>> 
+﻿@using EsccWebTeam.Data.Web
+@using EsccWebTeam.EastSussexGovUK.MasterPages.Remote
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<IList<Escc.EastSussexGovUK.Umbraco.Models.AlertViewModel>> 
 @{
     Layout = null;
     Response.ContentType = "application/json";
+    Cors.AllowCrossOriginRequest(HttpContext.Current.Request, HttpContext.Current.Response, new RemoteMasterPageXmlConfigurationProvider().CorsAllowedOrigins());
 <text>[</text>for (var i = 0; i < Model.Count; i++)
     {
 <text>{"alert":"@HttpUtility.JavaScriptStringEncode(Model[i].Alert.ToString())","urls":[</text>for (var j = 0; j < Model[i].TargetUrls.Count; j++)
