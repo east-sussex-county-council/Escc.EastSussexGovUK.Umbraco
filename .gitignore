@@ -53,7 +53,5 @@ dummy.txt
 # Files imported by ESCC NuGet packages
 css
 Views/*.cshtml
-!Views/Alerts.cshtml
 !Views/_ViewStart.cshtml
 Views/Partials
-![Ss]cripts/alerts.js
