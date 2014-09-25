@@ -95,6 +95,10 @@
       <HintPath>packages\Escc.Umbraco.CustomerFocusTemplates.0.6.1\lib\net45\Escc.Umbraco.CustomerFocusTemplates.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EsccWebTeam.Data.Xml, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Bin\EsccWebTeam.Data.Xml.dll</HintPath>
+    </Reference>
     <Reference Include="Examine, Version=0.1.55.2941, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\UmbracoCms.Core.7.1.4\lib\Examine.dll</HintPath>

@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using EsccWebTeam.Data.Web;
+using EsccWebTeam.Data.Xml;
+using Microsoft.ApplicationBlocks.ExceptionManagement;
 using umbraco.cms.helpers;
 using Umbraco.Core.Models;
 using Umbraco.Web;
@@ -22,11 +26,41 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
             var alerts = new List<AlertViewModel>();
 
             AddAlertsFromUmbraco(model, alerts);
+            AddSchoolClosureAlerts(alerts);
 
             // Cache for speed, but not for long because content is time-sensitive
             Http.CacheFor(0, 5);
 
             return CurrentTemplate(alerts);
+        }
+
+        /// <summary>
+        /// Temporary method to get schools closures alert as HTTP request from old hosting. To be rewritten once school closures available locally.
+        /// </summary>
+        /// <param name="alerts"></param>
+        private void AddSchoolClosureAlerts(List<AlertViewModel> alerts)
+        {
+            var client = new WebClient();
+            try
+            {
+                client.Proxy = new EsccProxy(); // for www.eastsussex.gov.uk
+                if (client.Proxy != null) client.Credentials = client.Proxy.Credentials; // for webcontent
+                var alertHtml = client.DownloadString(new Uri(ConfigurationManager.AppSettings["SchoolClosureAlertsTemporaryApi"]));
+                if (!String.IsNullOrWhiteSpace(alertHtml))
+                {
+                    alerts.Add(new AlertViewModel()
+                    {
+                        Alert = new HtmlString(alertHtml),
+                        TargetUrls = new List<Uri>() { new Uri("/", UriKind.Relative) },
+                        Append = true,
+                        Cascade = true
+                    });
+                }
+            }
+            catch (WebException ex)
+            {
+                ExceptionManager.Publish(ex);
+            }
         }
 
         private static void AddAlertsFromUmbraco(RenderModel model, List<AlertViewModel> alerts)
