@@ -54,4 +54,5 @@ dummy.txt
 css
 Views/*.cshtml
 !Views/_ViewStart.cshtml
+!Views/Redirect.cshtml
 Views/Partials

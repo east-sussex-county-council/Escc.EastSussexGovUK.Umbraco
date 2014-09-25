@@ -427,6 +427,7 @@
     <Content Include="Views\Location.cshtml" />
     <Content Include="Views\Landing.cshtml" />
     <Content Include="Views\Alerts.cshtml" />
+    <Content Include="Views\Redirect.cshtml" />
     <None Include="Web.example.config" />
   </ItemGroup>
   <ItemGroup>
