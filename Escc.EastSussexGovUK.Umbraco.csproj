@@ -22,7 +22,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
-    <NuGetPackageImportStamp>c14bbf7a</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>0eced030</NuGetPackageImportStamp>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -90,9 +90,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\Escc.Umbraco.0.4.2\lib\Escc.Umbraco.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.Umbraco.Alerts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.Umbraco.Alerts.1.0.0\lib\Escc.Umbraco.Alerts.dll</HintPath>
+    <Reference Include="Escc.Umbraco.Alerts">
+      <HintPath>packages\Escc.Umbraco.Alerts.1.0.1\lib\Escc.Umbraco.Alerts.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.CustomerFocusTemplates, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -115,12 +114,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\Exceptionless.1.5.2092\lib\net45\Exceptionless.dll</HintPath>
     </Reference>
-    <Reference Include="Exceptionless.Models, Version=1.5.2092.0, Culture=neutral, PublicKeyToken=fc181f0a46f65747, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Exceptionless.Models">
       <HintPath>packages\Exceptionless.1.5.2092\lib\net45\Exceptionless.Models.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Exceptionless.Mvc">
+    <Reference Include="Exceptionless.Mvc, Version=1.5.2092.0, Culture=neutral, PublicKeyToken=fc181f0a46f65747, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\Exceptionless.Mvc.1.5.2092\lib\net45\Exceptionless.Mvc.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -499,12 +500,12 @@
     <Error Condition="!Exists('packages\UmbracoCms.7.1.4\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\UmbracoCms.7.1.4\build\UmbracoCms.targets'))" />
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
     <Error Condition="!Exists('packages\Escc.Umbraco.CustomerFocusTemplates.0.6.1\build\Escc.Umbraco.CustomerFocusTemplates.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Umbraco.CustomerFocusTemplates.0.6.1\build\Escc.Umbraco.CustomerFocusTemplates.targets'))" />
-    <Error Condition="!Exists('packages\Escc.Umbraco.Alerts.1.0.0\build\Escc.Umbraco.Alerts.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Umbraco.Alerts.1.0.0\build\Escc.Umbraco.Alerts.targets'))" />
+    <Error Condition="!Exists('packages\Escc.Umbraco.Alerts.1.0.1\build\Escc.Umbraco.Alerts.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Umbraco.Alerts.1.0.1\build\Escc.Umbraco.Alerts.targets'))" />
   </Target>
   <Import Project="packages\UmbracoCms.7.1.4\build\UmbracoCms.targets" Condition="Exists('packages\UmbracoCms.7.1.4\build\UmbracoCms.targets')" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Import Project="packages\Escc.Umbraco.CustomerFocusTemplates.0.6.1\build\Escc.Umbraco.CustomerFocusTemplates.targets" Condition="Exists('packages\Escc.Umbraco.CustomerFocusTemplates.0.6.1\build\Escc.Umbraco.CustomerFocusTemplates.targets')" />
-  <Import Project="packages\Escc.Umbraco.Alerts.1.0.0\build\Escc.Umbraco.Alerts.targets" Condition="Exists('packages\Escc.Umbraco.Alerts.1.0.0\build\Escc.Umbraco.Alerts.targets')" />
+  <Import Project="packages\Escc.Umbraco.Alerts.1.0.1\build\Escc.Umbraco.Alerts.targets" Condition="Exists('packages\Escc.Umbraco.Alerts.1.0.1\build\Escc.Umbraco.Alerts.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
