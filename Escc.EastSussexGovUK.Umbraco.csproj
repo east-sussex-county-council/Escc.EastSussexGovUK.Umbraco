@@ -22,7 +22,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
-    <NuGetPackageImportStamp>c0b3de48</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>c14bbf7a</NuGetPackageImportStamp>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -90,8 +90,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\Escc.Umbraco.0.4.2\lib\Escc.Umbraco.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.Umbraco.Alerts">
-      <HintPath>packages\Escc.Umbraco.Alerts.0.9.0\lib\Escc.Umbraco.Alerts.dll</HintPath>
+    <Reference Include="Escc.Umbraco.Alerts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Escc.Umbraco.Alerts.1.0.0\lib\Escc.Umbraco.Alerts.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.CustomerFocusTemplates, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -426,8 +427,8 @@
     <Content Include="Views\Partials\_1Space.cshtml" />
     <Content Include="Views\Location.cshtml" />
     <Content Include="Views\Landing.cshtml" />
-    <Content Include="Views\Alerts.cshtml" />
     <Content Include="Views\Redirect.cshtml" />
+    <Content Include="Views\Alerts.cshtml" />
     <None Include="Web.example.config" />
   </ItemGroup>
   <ItemGroup>
@@ -498,12 +499,12 @@
     <Error Condition="!Exists('packages\UmbracoCms.7.1.4\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\UmbracoCms.7.1.4\build\UmbracoCms.targets'))" />
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
     <Error Condition="!Exists('packages\Escc.Umbraco.CustomerFocusTemplates.0.6.1\build\Escc.Umbraco.CustomerFocusTemplates.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Umbraco.CustomerFocusTemplates.0.6.1\build\Escc.Umbraco.CustomerFocusTemplates.targets'))" />
-    <Error Condition="!Exists('packages\Escc.Umbraco.Alerts.0.9.0\build\Escc.Umbraco.Alerts.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Umbraco.Alerts.0.9.0\build\Escc.Umbraco.Alerts.targets'))" />
+    <Error Condition="!Exists('packages\Escc.Umbraco.Alerts.1.0.0\build\Escc.Umbraco.Alerts.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Umbraco.Alerts.1.0.0\build\Escc.Umbraco.Alerts.targets'))" />
   </Target>
   <Import Project="packages\UmbracoCms.7.1.4\build\UmbracoCms.targets" Condition="Exists('packages\UmbracoCms.7.1.4\build\UmbracoCms.targets')" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Import Project="packages\Escc.Umbraco.CustomerFocusTemplates.0.6.1\build\Escc.Umbraco.CustomerFocusTemplates.targets" Condition="Exists('packages\Escc.Umbraco.CustomerFocusTemplates.0.6.1\build\Escc.Umbraco.CustomerFocusTemplates.targets')" />
-  <Import Project="packages\Escc.Umbraco.Alerts.0.9.0\build\Escc.Umbraco.Alerts.targets" Condition="Exists('packages\Escc.Umbraco.Alerts.0.9.0\build\Escc.Umbraco.Alerts.targets')" />
+  <Import Project="packages\Escc.Umbraco.Alerts.1.0.0\build\Escc.Umbraco.Alerts.targets" Condition="Exists('packages\Escc.Umbraco.Alerts.1.0.0\build\Escc.Umbraco.Alerts.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
