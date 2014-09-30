@@ -22,7 +22,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
-    <NuGetPackageImportStamp>889563dc</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>164fc935</NuGetPackageImportStamp>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -90,7 +90,8 @@
       <HintPath>packages\Escc.Alerts.Website.1.0.2\lib\Escc.Alerts.Website.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Escc.CustomerFocusTemplates.Website">
+    <Reference Include="Escc.CustomerFocusTemplates.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\Escc.CustomerFocusTemplates.Website.0.2.1\lib\net45\Escc.CustomerFocusTemplates.Website.dll</HintPath>
       <Private>True</Private>
     </Reference>
@@ -103,7 +104,8 @@
       <HintPath>packages\Escc.Umbraco.0.4.2\lib\Escc.Umbraco.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.PropertyEditors">
-      <HintPath>packages\Escc.Umbraco.PropertyEditors.1.0.0\lib\Escc.Umbraco.PropertyEditors.dll</HintPath>
+      <HintPath>packages\Escc.Umbraco.PropertyEditors.1.0.1\lib\Escc.Umbraco.PropertyEditors.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="EsccWebTeam.Data.Xml, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -392,9 +394,9 @@
     <Content Include="Config\trees.config" />
     <Content Include="Config\umbracoSettings.config" />
     <Content Include="Config\UrlRewriting.config" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.BooleanPropertyEditor\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\OpeningSoon\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.BooleanPropertyEditor\package.manifest" />
     <None Include="Escc.EastSussexGovUK.Umbraco.csproj.xslt">
       <SubType>Designer</SubType>
     </None>
@@ -441,7 +443,8 @@
     <None Include="Config\ExamineSettings.example.config" />
     <None Include="packages.config" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Alerts.cshtml" />
+    <Content Include="Views\HomePage.cshtml" />
+    <Content Include="Views\HoldingPage.cshtml" />
     <Content Include="Views\Task.cshtml" />
     <Content Include="Views\Partials\_WidgetJs.cshtml" />
     <Content Include="Views\Partials\_WidgetCss.cshtml" />
@@ -454,8 +457,7 @@
     <Content Include="Views\Partials\_1Space.cshtml" />
     <Content Include="Views\Location.cshtml" />
     <Content Include="Views\Landing.cshtml" />
-    <Content Include="Views\HomePage.cshtml" />
-    <Content Include="Views\HoldingPage.cshtml" />
+    <Content Include="Views\Alerts.cshtml" />
     <None Include="Web.example.config" />
   </ItemGroup>
   <ItemGroup>
@@ -525,17 +527,17 @@
     <Error Condition="!Exists('packages\UmbracoCms.7.1.4\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\UmbracoCms.7.1.4\build\UmbracoCms.props'))" />
     <Error Condition="!Exists('packages\UmbracoCms.7.1.4\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\UmbracoCms.7.1.4\build\UmbracoCms.targets'))" />
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-    <Error Condition="!Exists('packages\Escc.Umbraco.PropertyEditors.1.0.0\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Umbraco.PropertyEditors.1.0.0\build\Escc.Umbraco.PropertyEditors.targets'))" />
-    <Error Condition="!Exists('packages\Escc.Alerts.Website.1.0.2\build\Escc.Alerts.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Alerts.Website.1.0.2\build\Escc.Alerts.Website.targets'))" />
-    <Error Condition="!Exists('packages\Escc.CustomerFocusTemplates.Website.0.2.1\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CustomerFocusTemplates.Website.0.2.1\build\Escc.CustomerFocusTemplates.Website.targets'))" />
     <Error Condition="!Exists('packages\Escc.Home.Website.0.1.1\build\Escc.Home.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Home.Website.0.1.1\build\Escc.Home.Website.targets'))" />
+    <Error Condition="!Exists('packages\Escc.CustomerFocusTemplates.Website.0.2.1\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CustomerFocusTemplates.Website.0.2.1\build\Escc.CustomerFocusTemplates.Website.targets'))" />
+    <Error Condition="!Exists('packages\Escc.Alerts.Website.1.0.2\build\Escc.Alerts.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Alerts.Website.1.0.2\build\Escc.Alerts.Website.targets'))" />
+    <Error Condition="!Exists('packages\Escc.Umbraco.PropertyEditors.1.0.1\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Umbraco.PropertyEditors.1.0.1\build\Escc.Umbraco.PropertyEditors.targets'))" />
   </Target>
   <Import Project="packages\UmbracoCms.7.1.4\build\UmbracoCms.targets" Condition="Exists('packages\UmbracoCms.7.1.4\build\UmbracoCms.targets')" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Import Project="packages\Escc.Umbraco.PropertyEditors.1.0.0\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('packages\Escc.Umbraco.PropertyEditors.1.0.0\build\Escc.Umbraco.PropertyEditors.targets')" />
-  <Import Project="packages\Escc.Alerts.Website.1.0.2\build\Escc.Alerts.Website.targets" Condition="Exists('packages\Escc.Alerts.Website.1.0.2\build\Escc.Alerts.Website.targets')" />
-  <Import Project="packages\Escc.CustomerFocusTemplates.Website.0.2.1\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('packages\Escc.CustomerFocusTemplates.Website.0.2.1\build\Escc.CustomerFocusTemplates.Website.targets')" />
   <Import Project="packages\Escc.Home.Website.0.1.1\build\Escc.Home.Website.targets" Condition="Exists('packages\Escc.Home.Website.0.1.1\build\Escc.Home.Website.targets')" />
+  <Import Project="packages\Escc.CustomerFocusTemplates.Website.0.2.1\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('packages\Escc.CustomerFocusTemplates.Website.0.2.1\build\Escc.CustomerFocusTemplates.Website.targets')" />
+  <Import Project="packages\Escc.Alerts.Website.1.0.2\build\Escc.Alerts.Website.targets" Condition="Exists('packages\Escc.Alerts.Website.1.0.2\build\Escc.Alerts.Website.targets')" />
+  <Import Project="packages\Escc.Umbraco.PropertyEditors.1.0.1\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('packages\Escc.Umbraco.PropertyEditors.1.0.1\build\Escc.Umbraco.PropertyEditors.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
