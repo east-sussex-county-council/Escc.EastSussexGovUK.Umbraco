@@ -62,12 +62,6 @@ else
         else
         {
             @Html.Partial("~/Usercontrols/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "SupportingContentDesktop" })
-            if (Regex.IsMatch(Request.RawUrl, "/socialcare") && 
-                Regex.IsMatch(Request.RawUrl, @"^((?!\/socialcare\/disability\/learning).)*$") &&
-                Regex.IsMatch(Request.RawUrl, @"^((?!\/socialcare\/providers\/resources\/healthpromotion).)*$"))
-            {
-                @Html.Partial("~/Usercontrols/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "1Space" })
-            }
         }
 
     </div>
