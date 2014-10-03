@@ -48,5 +48,4 @@ else
 
 @{  // Do not render these sections for this layout
     if (IsSectionDefined("Breadcrumb")) { RenderSection("Breadcrumb").WriteTo(TextWriter.Null); }
-    if (IsSectionDefined("Supporting")) { RenderSection("Supporting", required: false).WriteTo(TextWriter.Null); }
 }
