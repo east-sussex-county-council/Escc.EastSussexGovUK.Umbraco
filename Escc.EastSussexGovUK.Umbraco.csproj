@@ -22,7 +22,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
-    <NuGetPackageImportStamp>349ac2a6</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>6c4863bb</NuGetPackageImportStamp>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -91,8 +91,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.CustomerFocusTemplates.Website">
-      <HintPath>packages\Escc.CustomerFocusTemplates.Website.0.2.4\lib\net45\Escc.CustomerFocusTemplates.Website.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>packages\Escc.CustomerFocusTemplates.Website.0.2.5\lib\net45\Escc.CustomerFocusTemplates.Website.dll</HintPath>
+    </Reference>
+    <Reference Include="Escc.EastSussexGovUK.UmbracoViews">
+      <HintPath>packages\Escc.EastSussexGovUK.UmbracoViews.0.2.1\lib\Escc.EastSussexGovUK.UmbracoViews.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Home.Website">
       <HintPath>packages\Escc.Home.Website.0.1.4\lib\Escc.Home.Website.dll</HintPath>
@@ -333,29 +335,6 @@
   <ItemGroup>
     <Compile Include="MicrosoftCmsMigration\MicrosoftCmsCompatibleApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControls\EastSussexGovUK\BreadcrumbTrail.ascx.cs">
-      <DependentUpon>BreadcrumbTrail.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UserControls\EastSussexGovUK\BreadcrumbTrail.ascx.designer.cs">
-      <DependentUpon>BreadcrumbTrail.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\EastSussexGovUK\BreadcrumbTrailMobile.ascx.cs">
-      <DependentUpon>BreadcrumbTrailMobile.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UserControls\EastSussexGovUK\BreadcrumbTrailMobile.ascx.designer.cs">
-      <DependentUpon>BreadcrumbTrailMobile.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\EastSussexGovUK\MasterPageControl.ascx.cs">
-      <DependentUpon>MasterPageControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UserControls\EastSussexGovUK\MasterPageControl.ascx.designer.cs">
-      <DependentUpon>MasterPageControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\EastSussexGovUK\MasterPageControlData.cs" />
-    <Compile Include="UserControls\EastSussexGovUK\UmbracoBreadcrumbProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
@@ -373,6 +352,12 @@
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\controller.js" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\rte.html" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\styles.css" />
+    <Content Include="App_Plugins\OpeningSoon\OpeningSoon.Controller.js" />
+    <Content Include="App_Plugins\OpeningSoon\openingsoon.css" />
+    <Content Include="App_Plugins\OpeningSoon\openingsoon.html" />
+    <Content Include="App_Plugins\OpeningSoon\scripts\jquery.timepicker.css" />
+    <Content Include="App_Plugins\OpeningSoon\scripts\jquery.timepicker.js" />
+    <Content Include="App_Plugins\OpeningSoon\scripts\jquery.timepicker.min.js" />
     <Content Include="Config\404handlers.config" />
     <Content Include="Config\applications.config" />
     <Content Include="Config\BaseRestExtensions.config" />
@@ -393,6 +378,7 @@
     <Content Include="Config\UrlRewriting.config" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.BooleanPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\OpeningSoon\package.manifest" />
     <None Include="Escc.EastSussexGovUK.Umbraco.csproj.xslt">
       <SubType>Designer</SubType>
     </None>
@@ -407,11 +393,11 @@
     <Content Include="Global.asax" />
     <Content Include="robots.txt" />
     <None Include="scripts\dummy.txt" />
+    <None Include="UserControls\dummy.txt" />
     <Content Include="scripts\location.js" />
-    <Content Include="UserControls\EastSussexGovUK\BreadcrumbTrail.ascx" />
-    <Content Include="UserControls\EastSussexGovUK\BreadcrumbTrailMobile.ascx" />
-    <Content Include="UserControls\EastSussexGovUK\MasterPageControl.ascx" />
-    <Content Include="Views\Layouts\_ContentExperiment.cshtml" />
+    <Content Include="Views\Layouts\BreadcrumbTrail.ascx" />
+    <Content Include="Views\Layouts\BreadcrumbTrailMobile.ascx" />
+    <Content Include="Views\Layouts\MasterPageControl.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -425,34 +411,32 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\_ViewStart.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Layouts\Mobile.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Layouts\Desktop.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="LICENSE.md" />
     <None Include="README.md" />
     <None Include="Config\ExamineSettings.example.config" />
     <None Include="packages.config" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Task.cshtml" />
-    <Content Include="Views\Partials\_WidgetJs.cshtml" />
-    <Content Include="Views\Partials\_WidgetCss.cshtml" />
-    <Content Include="Views\Partials\_Twitter.cshtml" />
-    <Content Include="Views\Partials\_Share.cshtml" />
-    <Content Include="Views\Partials\_LocationOpeningTimes.cshtml" />
-    <Content Include="Views\Partials\_LocationIsOpen.cshtml" />
-    <Content Include="Views\Partials\_Latest.cshtml" />
-    <Content Include="Views\Partials\_Facebook.cshtml" />
-    <Content Include="Views\Location.cshtml" />
-    <Content Include="Views\Landing.cshtml" />
     <Content Include="Views\Alerts.cshtml" />
     <Content Include="Views\HomePage.cshtml" />
     <Content Include="Views\HoldingPage.cshtml" />
+    <Content Include="Views\Layouts\Plain.cshtml" />
+    <Content Include="Views\Layouts\Mobile.cshtml" />
+    <Content Include="Views\Layouts\FullScreen.cshtml" />
+    <Content Include="Views\Layouts\Desktop.cshtml" />
+    <Content Include="Views\Layouts\_WidgetJs.cshtml" />
+    <Content Include="Views\Layouts\_WidgetCss.cshtml" />
+    <Content Include="Views\Layouts\_Twitter.cshtml" />
+    <Content Include="Views\Layouts\_Share.cshtml" />
+    <Content Include="Views\Layouts\_Latest.cshtml" />
+    <Content Include="Views\Layouts\_Facebook.cshtml" />
+    <Content Include="Views\Layouts\_EastSussex1Space.cshtml" />
+    <Content Include="Views\Layouts\_ContentExperiment.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Task.cshtml" />
+    <Content Include="Views\Partials\_LocationOpeningTimes.cshtml" />
+    <Content Include="Views\Partials\_LocationIsOpen.cshtml" />
+    <Content Include="Views\Location.cshtml" />
+    <Content Include="Views\Landing.cshtml" />
     <None Include="Web.example.config" />
   </ItemGroup>
   <ItemGroup>
@@ -468,12 +452,6 @@
       <Project>{1c429378-dbf2-4af7-88ac-c059aa163682}</Project>
       <Name>EsccWebTeam.HouseStyle</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Layouts\Plain.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Layouts\FullScreen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="eastsussexcountycouncil.rdf" />
@@ -523,16 +501,18 @@
     <Error Condition="!Exists('packages\UmbracoCms.7.1.4\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\UmbracoCms.7.1.4\build\UmbracoCms.targets'))" />
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
     <Error Condition="!Exists('packages\Escc.Umbraco.PropertyEditors.1.0.2\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Umbraco.PropertyEditors.1.0.2\build\Escc.Umbraco.PropertyEditors.targets'))" />
-    <Error Condition="!Exists('packages\Escc.CustomerFocusTemplates.Website.0.2.4\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CustomerFocusTemplates.Website.0.2.4\build\Escc.CustomerFocusTemplates.Website.targets'))" />
     <Error Condition="!Exists('packages\Escc.Alerts.Website.1.0.5\build\Escc.Alerts.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Alerts.Website.1.0.5\build\Escc.Alerts.Website.targets'))" />
     <Error Condition="!Exists('packages\Escc.Home.Website.0.1.4\build\Escc.Home.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Home.Website.0.1.4\build\Escc.Home.Website.targets'))" />
+    <Error Condition="!Exists('packages\Escc.EastSussexGovUK.UmbracoViews.0.2.1\build\Escc.EastSussexGovUK.UmbracoViews.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.EastSussexGovUK.UmbracoViews.0.2.1\build\Escc.EastSussexGovUK.UmbracoViews.targets'))" />
+    <Error Condition="!Exists('packages\Escc.CustomerFocusTemplates.Website.0.2.5\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CustomerFocusTemplates.Website.0.2.5\build\Escc.CustomerFocusTemplates.Website.targets'))" />
   </Target>
   <Import Project="packages\UmbracoCms.7.1.4\build\UmbracoCms.targets" Condition="Exists('packages\UmbracoCms.7.1.4\build\UmbracoCms.targets')" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Import Project="packages\Escc.Umbraco.PropertyEditors.1.0.2\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('packages\Escc.Umbraco.PropertyEditors.1.0.2\build\Escc.Umbraco.PropertyEditors.targets')" />
-  <Import Project="packages\Escc.CustomerFocusTemplates.Website.0.2.4\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('packages\Escc.CustomerFocusTemplates.Website.0.2.4\build\Escc.CustomerFocusTemplates.Website.targets')" />
   <Import Project="packages\Escc.Alerts.Website.1.0.5\build\Escc.Alerts.Website.targets" Condition="Exists('packages\Escc.Alerts.Website.1.0.5\build\Escc.Alerts.Website.targets')" />
   <Import Project="packages\Escc.Home.Website.0.1.4\build\Escc.Home.Website.targets" Condition="Exists('packages\Escc.Home.Website.0.1.4\build\Escc.Home.Website.targets')" />
+  <Import Project="packages\Escc.EastSussexGovUK.UmbracoViews.0.2.1\build\Escc.EastSussexGovUK.UmbracoViews.targets" Condition="Exists('packages\Escc.EastSussexGovUK.UmbracoViews.0.2.1\build\Escc.EastSussexGovUK.UmbracoViews.targets')" />
+  <Import Project="packages\Escc.CustomerFocusTemplates.Website.0.2.5\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('packages\Escc.CustomerFocusTemplates.Website.0.2.5\build\Escc.CustomerFocusTemplates.Website.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

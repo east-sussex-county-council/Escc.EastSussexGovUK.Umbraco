@@ -52,7 +52,4 @@ dummy.txt
 
 # Files imported by ESCC NuGet packages
 css
-Views/*.cshtml
-!Views/_ViewStart.cshtml
-!Views/Redirect.cshtml
-Views/Partials
+Views/*
