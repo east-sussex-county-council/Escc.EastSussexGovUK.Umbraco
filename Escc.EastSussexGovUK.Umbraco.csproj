@@ -111,10 +111,6 @@
     <Reference Include="Escc.UmbracoDocumentTypes.Website">
       <HintPath>packages\Escc.UmbracoDocumentTypes.Website.1.1.1\lib\Escc.UmbracoDocumentTypes.Website.dll</HintPath>
     </Reference>
-    <Reference Include="EsccWebTeam.Data.Xml, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Bin\EsccWebTeam.Data.Xml.dll</HintPath>
-    </Reference>
     <Reference Include="Examine, Version=0.1.55.2941, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\UmbracoCms.Core.7.1.4\lib\Examine.dll</HintPath>
@@ -450,6 +446,10 @@
     <ProjectReference Include="..\Escc.Data.Web\EsccWebTeam.Data.Web.csproj">
       <Project>{9c56d3dd-4952-4a1b-9ad6-907a1142872f}</Project>
       <Name>EsccWebTeam.Data.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Escc.Data.Xml\EsccWebTeam.Data.Xml.csproj">
+      <Project>{86b2725c-9c37-44a4-93c7-f5122afa0809}</Project>
+      <Name>EsccWebTeam.Data.Xml</Name>
     </ProjectReference>
     <ProjectReference Include="..\Escc.EastSussexGovUK\EsccWebTeam.EastSussexGovUK.csproj">
       <Project>{1426fef0-23dc-4c23-ae15-67f2527bd741}</Project>
