@@ -22,7 +22,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
-    <NuGetPackageImportStamp>aaf4a923</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>b1a35ea8</NuGetPackageImportStamp>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -88,6 +88,10 @@
     </Reference>
     <Reference Include="Escc.Alerts.Website">
       <HintPath>packages\Escc.Alerts.Website.1.1.0\lib\Escc.Alerts.Website.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Escc.CoreLegacyTemplates.Website">
+      <HintPath>packages\Escc.CoreLegacyTemplates.Website.0.1.1\lib\Escc.CoreLegacyTemplates.Website.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.CustomerFocusTemplates.Website">
@@ -513,7 +517,7 @@
     <Error Condition="!Exists('packages\Escc.Home.Website.0.2.0\build\Escc.Home.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Home.Website.0.2.0\build\Escc.Home.Website.targets'))" />
     <Error Condition="!Exists('packages\Escc.Alerts.Website.1.1.0\build\Escc.Alerts.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Alerts.Website.1.1.0\build\Escc.Alerts.Website.targets'))" />
     <Error Condition="!Exists('packages\Escc.CustomerFocusTemplates.Website.0.5.0\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CustomerFocusTemplates.Website.0.5.0\build\Escc.CustomerFocusTemplates.Website.targets'))" />
-    <Error Condition="!Exists('packages\Escc.CoreLegacyTemplates.Website.0.1.0\build\Escc.CoreLegacyTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CoreLegacyTemplates.Website.0.1.0\build\Escc.CoreLegacyTemplates.Website.targets'))" />
+    <Error Condition="!Exists('packages\Escc.CoreLegacyTemplates.Website.0.1.1\build\Escc.CoreLegacyTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CoreLegacyTemplates.Website.0.1.1\build\Escc.CoreLegacyTemplates.Website.targets'))" />
   </Target>
   <Import Project="packages\UmbracoCms.7.1.4\build\UmbracoCms.targets" Condition="Exists('packages\UmbracoCms.7.1.4\build\UmbracoCms.targets')" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
@@ -523,7 +527,7 @@
   <Import Project="packages\Escc.Home.Website.0.2.0\build\Escc.Home.Website.targets" Condition="Exists('packages\Escc.Home.Website.0.2.0\build\Escc.Home.Website.targets')" />
   <Import Project="packages\Escc.Alerts.Website.1.1.0\build\Escc.Alerts.Website.targets" Condition="Exists('packages\Escc.Alerts.Website.1.1.0\build\Escc.Alerts.Website.targets')" />
   <Import Project="packages\Escc.CustomerFocusTemplates.Website.0.5.0\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('packages\Escc.CustomerFocusTemplates.Website.0.5.0\build\Escc.CustomerFocusTemplates.Website.targets')" />
-  <Import Project="packages\Escc.CoreLegacyTemplates.Website.0.1.0\build\Escc.CoreLegacyTemplates.Website.targets" Condition="Exists('packages\Escc.CoreLegacyTemplates.Website.0.1.0\build\Escc.CoreLegacyTemplates.Website.targets')" />
+  <Import Project="packages\Escc.CoreLegacyTemplates.Website.0.1.1\build\Escc.CoreLegacyTemplates.Website.targets" Condition="Exists('packages\Escc.CoreLegacyTemplates.Website.0.1.1\build\Escc.CoreLegacyTemplates.Website.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
