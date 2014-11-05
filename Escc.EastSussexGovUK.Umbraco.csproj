@@ -407,6 +407,8 @@
     <None Include="UserControls\dummy.txt" />
     <Content Include="scripts\location.js" />
     <Content Include="Views\LandingPageWithPictures.ascx" />
+    <Content Include="Views\Layouts\BreadcrumbTrail.ascx" />
+    <Content Include="Views\Layouts\BreadcrumbTrailMobile.ascx" />
     <Content Include="Views\Layouts\MasterPageControl.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
