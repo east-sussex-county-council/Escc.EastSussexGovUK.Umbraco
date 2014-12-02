@@ -22,7 +22,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
-    <NuGetPackageImportStamp>85f0d98b</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>946add28</NuGetPackageImportStamp>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -94,9 +94,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\Escc.CoreLegacyTemplates.Website.0.3.0\lib\Escc.CoreLegacyTemplates.Website.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.CustomerFocusTemplates.Website">
-      <HintPath>packages\Escc.CustomerFocusTemplates.Website.0.7.0\lib\net45\Escc.CustomerFocusTemplates.Website.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Escc.CustomerFocusTemplates.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Escc.CustomerFocusTemplates.Website.0.7.1\lib\net45\Escc.CustomerFocusTemplates.Website.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.UmbracoViews">
       <HintPath>packages\Escc.EastSussexGovUK.UmbracoViews.0.6.0\lib\Escc.EastSussexGovUK.UmbracoViews.dll</HintPath>
@@ -396,7 +396,6 @@
     <Content Include="Config\trees.config" />
     <Content Include="Config\umbracoSettings.config" />
     <Content Include="Config\UrlRewriting.config" />
-    <Content Include="App_Plugins\OpeningSoon\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.TwitterScriptPropertyEditor\package.manifest" />
@@ -404,6 +403,7 @@
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PhonePropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.BooleanPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\OpeningSoon\package.manifest" />
     <None Include="Escc.EastSussexGovUK.Umbraco.csproj.xslt">
       <SubType>Designer</SubType>
     </None>
@@ -430,6 +430,7 @@
     <None Include="scripts\dummy.txt" />
     <None Include="UserControls\dummy.txt" />
     <Content Include="scripts\guide-step.js" />
+    <Content Include="scripts\guide.js" />
     <Content Include="scripts\location.js" />
     <Content Include="Views\LandingPageWithPictures.ascx" />
     <Content Include="Views\Layouts\BreadcrumbTrail.ascx" />
@@ -549,8 +550,8 @@
     <Error Condition="!Exists('packages\Escc.UmbracoDocumentTypes.Website.1.5.0\build\Escc.UmbracoDocumentTypes.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.UmbracoDocumentTypes.Website.1.5.0\build\Escc.UmbracoDocumentTypes.Website.targets'))" />
     <Error Condition="!Exists('packages\Escc.Home.Website.0.3.0\build\Escc.Home.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Home.Website.0.3.0\build\Escc.Home.Website.targets'))" />
     <Error Condition="!Exists('packages\Escc.CoreLegacyTemplates.Website.0.3.0\build\Escc.CoreLegacyTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CoreLegacyTemplates.Website.0.3.0\build\Escc.CoreLegacyTemplates.Website.targets'))" />
-    <Error Condition="!Exists('packages\Escc.CustomerFocusTemplates.Website.0.7.0\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CustomerFocusTemplates.Website.0.7.0\build\Escc.CustomerFocusTemplates.Website.targets'))" />
     <Error Condition="!Exists('packages\Escc.Umbraco.PropertyEditors.1.3.3\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Umbraco.PropertyEditors.1.3.3\build\Escc.Umbraco.PropertyEditors.targets'))" />
+    <Error Condition="!Exists('packages\Escc.CustomerFocusTemplates.Website.0.7.1\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CustomerFocusTemplates.Website.0.7.1\build\Escc.CustomerFocusTemplates.Website.targets'))" />
   </Target>
   <Import Project="packages\UmbracoCms.7.1.4\build\UmbracoCms.targets" Condition="Exists('packages\UmbracoCms.7.1.4\build\UmbracoCms.targets')" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
@@ -559,8 +560,8 @@
   <Import Project="packages\Escc.UmbracoDocumentTypes.Website.1.5.0\build\Escc.UmbracoDocumentTypes.Website.targets" Condition="Exists('packages\Escc.UmbracoDocumentTypes.Website.1.5.0\build\Escc.UmbracoDocumentTypes.Website.targets')" />
   <Import Project="packages\Escc.Home.Website.0.3.0\build\Escc.Home.Website.targets" Condition="Exists('packages\Escc.Home.Website.0.3.0\build\Escc.Home.Website.targets')" />
   <Import Project="packages\Escc.CoreLegacyTemplates.Website.0.3.0\build\Escc.CoreLegacyTemplates.Website.targets" Condition="Exists('packages\Escc.CoreLegacyTemplates.Website.0.3.0\build\Escc.CoreLegacyTemplates.Website.targets')" />
-  <Import Project="packages\Escc.CustomerFocusTemplates.Website.0.7.0\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('packages\Escc.CustomerFocusTemplates.Website.0.7.0\build\Escc.CustomerFocusTemplates.Website.targets')" />
   <Import Project="packages\Escc.Umbraco.PropertyEditors.1.3.3\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('packages\Escc.Umbraco.PropertyEditors.1.3.3\build\Escc.Umbraco.PropertyEditors.targets')" />
+  <Import Project="packages\Escc.CustomerFocusTemplates.Website.0.7.1\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('packages\Escc.CustomerFocusTemplates.Website.0.7.1\build\Escc.CustomerFocusTemplates.Website.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
