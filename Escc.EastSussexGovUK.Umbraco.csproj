@@ -202,9 +202,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\MiniProfiler.2.1.0\lib\net40\MiniProfiler.dll</HintPath>
     </Reference>
-    <Reference Include="Moriyama.Cloud, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Moriyama.Cloud.dll</HintPath>
+    <Reference Include="Moriyama.Cloud">
+      <HintPath>packages\Moriyama.Cloud.1.0.0\lib\Moriyama.Cloud.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
