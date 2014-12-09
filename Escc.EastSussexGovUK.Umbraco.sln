@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Umbraco", "Escc.EastSussexGovUK.Umbraco.csproj", "{2A2881F4-EC23-4C6A-86D6-3086F957CFF5}"
 EndProject
@@ -9,11 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.EastSussexGovUK
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.Data.Web", "..\Escc.Data.Web\EsccWebTeam.Data.Web.csproj", "{9C56D3DD-4952-4A1B-9AD6-907A1142872F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.ServiceClosures", "..\Escc.ServiceClosures\EsccWebTeam.ServiceClosures.csproj", "{CC1C7E3E-DA3D-40F2-8184-DEA36C277CAD}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.HouseStyle", "..\Escc.HouseStyle\EsccWebTeam.HouseStyle.csproj", "{1C429378-DBF2-4AF7-88AC-C059AA163682}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.FormControls", "..\Escc.FormControls\EsccWebTeam.FormControls.csproj", "{E6D5883F-99CE-4BF5-974A-66C542C43CFB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.Data.ActiveDirectory", "..\Escc.Data.ActiveDirectory\EsccWebTeam.Data.ActiveDirectory.csproj", "{5F1BBB42-C1C6-4110-A3E4-720420A3C27D}"
 EndProject
@@ -63,24 +59,12 @@ Global
 		{9C56D3DD-4952-4A1B-9AD6-907A1142872F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9C56D3DD-4952-4A1B-9AD6-907A1142872F}.UAT|Any CPU.ActiveCfg = Release|Any CPU
 		{9C56D3DD-4952-4A1B-9AD6-907A1142872F}.UAT|Any CPU.Build.0 = Release|Any CPU
-		{CC1C7E3E-DA3D-40F2-8184-DEA36C277CAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CC1C7E3E-DA3D-40F2-8184-DEA36C277CAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CC1C7E3E-DA3D-40F2-8184-DEA36C277CAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CC1C7E3E-DA3D-40F2-8184-DEA36C277CAD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CC1C7E3E-DA3D-40F2-8184-DEA36C277CAD}.UAT|Any CPU.ActiveCfg = Release|Any CPU
-		{CC1C7E3E-DA3D-40F2-8184-DEA36C277CAD}.UAT|Any CPU.Build.0 = Release|Any CPU
 		{1C429378-DBF2-4AF7-88AC-C059AA163682}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1C429378-DBF2-4AF7-88AC-C059AA163682}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C429378-DBF2-4AF7-88AC-C059AA163682}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C429378-DBF2-4AF7-88AC-C059AA163682}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1C429378-DBF2-4AF7-88AC-C059AA163682}.UAT|Any CPU.ActiveCfg = Release|Any CPU
 		{1C429378-DBF2-4AF7-88AC-C059AA163682}.UAT|Any CPU.Build.0 = Release|Any CPU
-		{E6D5883F-99CE-4BF5-974A-66C542C43CFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E6D5883F-99CE-4BF5-974A-66C542C43CFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E6D5883F-99CE-4BF5-974A-66C542C43CFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E6D5883F-99CE-4BF5-974A-66C542C43CFB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E6D5883F-99CE-4BF5-974A-66C542C43CFB}.UAT|Any CPU.ActiveCfg = Release|Any CPU
-		{E6D5883F-99CE-4BF5-974A-66C542C43CFB}.UAT|Any CPU.Build.0 = Release|Any CPU
 		{5F1BBB42-C1C6-4110-A3E4-720420A3C27D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5F1BBB42-C1C6-4110-A3E4-720420A3C27D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F1BBB42-C1C6-4110-A3E4-720420A3C27D}.Release|Any CPU.ActiveCfg = Release|Any CPU
