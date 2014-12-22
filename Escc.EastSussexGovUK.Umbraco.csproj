@@ -108,7 +108,7 @@
     </Reference>
     <Reference Include="Escc.Home.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.Home.Website.0.4.0\lib\Escc.Home.Website.dll</HintPath>
+      <HintPath>packages\Escc.Home.Website.0.4.1\lib\Escc.Home.Website.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -555,7 +555,7 @@
     <Error Condition="!Exists('packages\Escc.EastSussexGovUK.UmbracoViews.0.8.0\build\Escc.EastSussexGovUK.UmbracoViews.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.EastSussexGovUK.UmbracoViews.0.8.0\build\Escc.EastSussexGovUK.UmbracoViews.targets'))" />
     <Error Condition="!Exists('packages\Escc.UmbracoDocumentTypes.Website.1.6.0\build\Escc.UmbracoDocumentTypes.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.UmbracoDocumentTypes.Website.1.6.0\build\Escc.UmbracoDocumentTypes.Website.targets'))" />
     <Error Condition="!Exists('packages\Escc.CoreLegacyTemplates.Website.0.4.0\build\Escc.CoreLegacyTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CoreLegacyTemplates.Website.0.4.0\build\Escc.CoreLegacyTemplates.Website.targets'))" />
-    <Error Condition="!Exists('packages\Escc.Home.Website.0.4.0\build\Escc.Home.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Home.Website.0.4.0\build\Escc.Home.Website.targets'))" />
+    <Error Condition="!Exists('packages\Escc.Home.Website.0.4.1\build\Escc.Home.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Home.Website.0.4.1\build\Escc.Home.Website.targets'))" />
     <Error Condition="!Exists('packages\Escc.CustomerFocusTemplates.Website.0.8.0\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CustomerFocusTemplates.Website.0.8.0\build\Escc.CustomerFocusTemplates.Website.targets'))" />
   </Target>
   <Import Project="packages\UmbracoCms.7.1.4\build\UmbracoCms.targets" Condition="Exists('packages\UmbracoCms.7.1.4\build\UmbracoCms.targets')" />
@@ -565,7 +565,7 @@
   <Import Project="packages\Escc.EastSussexGovUK.UmbracoViews.0.8.0\build\Escc.EastSussexGovUK.UmbracoViews.targets" Condition="Exists('packages\Escc.EastSussexGovUK.UmbracoViews.0.8.0\build\Escc.EastSussexGovUK.UmbracoViews.targets')" />
   <Import Project="packages\Escc.UmbracoDocumentTypes.Website.1.6.0\build\Escc.UmbracoDocumentTypes.Website.targets" Condition="Exists('packages\Escc.UmbracoDocumentTypes.Website.1.6.0\build\Escc.UmbracoDocumentTypes.Website.targets')" />
   <Import Project="packages\Escc.CoreLegacyTemplates.Website.0.4.0\build\Escc.CoreLegacyTemplates.Website.targets" Condition="Exists('packages\Escc.CoreLegacyTemplates.Website.0.4.0\build\Escc.CoreLegacyTemplates.Website.targets')" />
-  <Import Project="packages\Escc.Home.Website.0.4.0\build\Escc.Home.Website.targets" Condition="Exists('packages\Escc.Home.Website.0.4.0\build\Escc.Home.Website.targets')" />
+  <Import Project="packages\Escc.Home.Website.0.4.1\build\Escc.Home.Website.targets" Condition="Exists('packages\Escc.Home.Website.0.4.1\build\Escc.Home.Website.targets')" />
   <Import Project="packages\Escc.CustomerFocusTemplates.Website.0.8.0\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('packages\Escc.CustomerFocusTemplates.Website.0.8.0\build\Escc.CustomerFocusTemplates.Website.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
