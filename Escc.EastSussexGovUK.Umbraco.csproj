@@ -22,7 +22,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
-    <NuGetPackageImportStamp>8e7fd5c9</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>f5aeae3a</NuGetPackageImportStamp>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -96,19 +96,19 @@
     </Reference>
     <Reference Include="Escc.CoreLegacyTemplates.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.CoreLegacyTemplates.Website.0.3.0\lib\Escc.CoreLegacyTemplates.Website.dll</HintPath>
+      <HintPath>packages\Escc.CoreLegacyTemplates.Website.0.4.0\lib\Escc.CoreLegacyTemplates.Website.dll</HintPath>
     </Reference>
     <Reference Include="Escc.CustomerFocusTemplates.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.CustomerFocusTemplates.Website.0.7.1\lib\net45\Escc.CustomerFocusTemplates.Website.dll</HintPath>
+      <HintPath>packages\Escc.CustomerFocusTemplates.Website.0.8.0\lib\net45\Escc.CustomerFocusTemplates.Website.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.UmbracoViews, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.EastSussexGovUK.UmbracoViews.0.7.1\lib\Escc.EastSussexGovUK.UmbracoViews.dll</HintPath>
+      <HintPath>packages\Escc.EastSussexGovUK.UmbracoViews.0.8.0\lib\Escc.EastSussexGovUK.UmbracoViews.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Home.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.Home.Website.0.3.2\lib\Escc.Home.Website.dll</HintPath>
+      <HintPath>packages\Escc.Home.Website.0.4.0\lib\Escc.Home.Website.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -120,7 +120,7 @@
     </Reference>
     <Reference Include="Escc.UmbracoDocumentTypes.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.UmbracoDocumentTypes.Website.1.5.1\lib\Escc.UmbracoDocumentTypes.Website.dll</HintPath>
+      <HintPath>packages\Escc.UmbracoDocumentTypes.Website.1.6.0\lib\Escc.UmbracoDocumentTypes.Website.dll</HintPath>
     </Reference>
     <Reference Include="Examine, Version=0.1.55.2941, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -130,18 +130,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Examine.Azure.dll</HintPath>
     </Reference>
-    <Reference Include="Exceptionless, Version=1.5.2092.0, Culture=neutral, PublicKeyToken=fc181f0a46f65747, processorArchitecture=MSIL">
+    <Reference Include="Exceptionless, Version=1.5.2121.0, Culture=neutral, PublicKeyToken=fc181f0a46f65747, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Exceptionless.1.5.2092\lib\net45\Exceptionless.dll</HintPath>
+      <HintPath>packages\Exceptionless.1.5.2121\lib\net45\Exceptionless.dll</HintPath>
     </Reference>
-    <Reference Include="Exceptionless.Models">
-      <HintPath>packages\Exceptionless.1.5.2092\lib\net45\Exceptionless.Models.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Exceptionless.Mvc, Version=1.5.2092.0, Culture=neutral, PublicKeyToken=fc181f0a46f65747, processorArchitecture=MSIL">
+    <Reference Include="Exceptionless.Models, Version=1.5.2121.0, Culture=neutral, PublicKeyToken=fc181f0a46f65747, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Exceptionless.Mvc.1.5.2092\lib\net45\Exceptionless.Mvc.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>packages\Exceptionless.1.5.2121\lib\net45\Exceptionless.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="Exceptionless.Mvc, Version=1.5.2121.0, Culture=neutral, PublicKeyToken=fc181f0a46f65747, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Exceptionless.Mvc.1.5.2121\lib\net45\Exceptionless.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="ExCSS">
       <HintPath>packages\ExCSS.2.0.5\lib\net45\ExCSS.dll</HintPath>
@@ -440,6 +439,7 @@
     <Content Include="Views\Layouts\BreadcrumbTrail.ascx" />
     <Content Include="Views\Layouts\BreadcrumbTrailMobile.ascx" />
     <Content Include="Views\Layouts\MasterPageControl.ascx" />
+    <Content Include="Views\StandardLandingPage.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -458,17 +458,7 @@
     <None Include="Config\ExamineSettings.example.config" />
     <None Include="packages.config" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\LandingPageWithPictures.cshtml" />
-    <Content Include="Views\Task.cshtml" />
-    <Content Include="Views\Partials\_LocationOpeningTimes.cshtml" />
-    <Content Include="Views\Partials\_LocationIsOpen.cshtml" />
-    <Content Include="Views\Location.cshtml" />
-    <Content Include="Views\Landing.cshtml" />
-    <Content Include="Views\GuideStep.cshtml" />
-    <Content Include="Views\Guide.cshtml" />
     <Content Include="Views\Alerts.cshtml" />
-    <Content Include="Views\HomePage.cshtml" />
-    <Content Include="Views\HoldingPage.cshtml" />
     <Content Include="Views\Layouts\Plain.cshtml" />
     <Content Include="Views\Layouts\Mobile.cshtml" />
     <Content Include="Views\Layouts\FullScreen.cshtml" />
@@ -482,6 +472,17 @@
     <Content Include="Views\Layouts\_EastSussex1Space.cshtml" />
     <Content Include="Views\Layouts\_ContentExperiment.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\StandardLandingPage.cshtml" />
+    <Content Include="Views\LandingPageWithPictures.cshtml" />
+    <Content Include="Views\HomePage.cshtml" />
+    <Content Include="Views\HoldingPage.cshtml" />
+    <Content Include="Views\Task.cshtml" />
+    <Content Include="Views\Partials\_LocationOpeningTimes.cshtml" />
+    <Content Include="Views\Partials\_LocationIsOpen.cshtml" />
+    <Content Include="Views\Location.cshtml" />
+    <Content Include="Views\Landing.cshtml" />
+    <Content Include="Views\GuideStep.cshtml" />
+    <Content Include="Views\Guide.cshtml" />
     <None Include="Web.example.config" />
   </ItemGroup>
   <ItemGroup>
@@ -549,23 +550,23 @@
     <Error Condition="!Exists('packages\UmbracoCms.7.1.4\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\UmbracoCms.7.1.4\build\UmbracoCms.props'))" />
     <Error Condition="!Exists('packages\UmbracoCms.7.1.4\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\UmbracoCms.7.1.4\build\UmbracoCms.targets'))" />
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-    <Error Condition="!Exists('packages\Escc.CoreLegacyTemplates.Website.0.3.0\build\Escc.CoreLegacyTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CoreLegacyTemplates.Website.0.3.0\build\Escc.CoreLegacyTemplates.Website.targets'))" />
     <Error Condition="!Exists('packages\Escc.Umbraco.PropertyEditors.1.3.3\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Umbraco.PropertyEditors.1.3.3\build\Escc.Umbraco.PropertyEditors.targets'))" />
-    <Error Condition="!Exists('packages\Escc.CustomerFocusTemplates.Website.0.7.1\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CustomerFocusTemplates.Website.0.7.1\build\Escc.CustomerFocusTemplates.Website.targets'))" />
-    <Error Condition="!Exists('packages\Escc.UmbracoDocumentTypes.Website.1.5.1\build\Escc.UmbracoDocumentTypes.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.UmbracoDocumentTypes.Website.1.5.1\build\Escc.UmbracoDocumentTypes.Website.targets'))" />
     <Error Condition="!Exists('packages\Escc.Alerts.Website.1.2.0\build\Escc.Alerts.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Alerts.Website.1.2.0\build\Escc.Alerts.Website.targets'))" />
-    <Error Condition="!Exists('packages\Escc.Home.Website.0.3.2\build\Escc.Home.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Home.Website.0.3.2\build\Escc.Home.Website.targets'))" />
-    <Error Condition="!Exists('packages\Escc.EastSussexGovUK.UmbracoViews.0.7.1\build\Escc.EastSussexGovUK.UmbracoViews.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.EastSussexGovUK.UmbracoViews.0.7.1\build\Escc.EastSussexGovUK.UmbracoViews.targets'))" />
+    <Error Condition="!Exists('packages\Escc.EastSussexGovUK.UmbracoViews.0.8.0\build\Escc.EastSussexGovUK.UmbracoViews.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.EastSussexGovUK.UmbracoViews.0.8.0\build\Escc.EastSussexGovUK.UmbracoViews.targets'))" />
+    <Error Condition="!Exists('packages\Escc.UmbracoDocumentTypes.Website.1.6.0\build\Escc.UmbracoDocumentTypes.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.UmbracoDocumentTypes.Website.1.6.0\build\Escc.UmbracoDocumentTypes.Website.targets'))" />
+    <Error Condition="!Exists('packages\Escc.CoreLegacyTemplates.Website.0.4.0\build\Escc.CoreLegacyTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CoreLegacyTemplates.Website.0.4.0\build\Escc.CoreLegacyTemplates.Website.targets'))" />
+    <Error Condition="!Exists('packages\Escc.Home.Website.0.4.0\build\Escc.Home.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Home.Website.0.4.0\build\Escc.Home.Website.targets'))" />
+    <Error Condition="!Exists('packages\Escc.CustomerFocusTemplates.Website.0.8.0\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CustomerFocusTemplates.Website.0.8.0\build\Escc.CustomerFocusTemplates.Website.targets'))" />
   </Target>
   <Import Project="packages\UmbracoCms.7.1.4\build\UmbracoCms.targets" Condition="Exists('packages\UmbracoCms.7.1.4\build\UmbracoCms.targets')" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Import Project="packages\Escc.CoreLegacyTemplates.Website.0.3.0\build\Escc.CoreLegacyTemplates.Website.targets" Condition="Exists('packages\Escc.CoreLegacyTemplates.Website.0.3.0\build\Escc.CoreLegacyTemplates.Website.targets')" />
   <Import Project="packages\Escc.Umbraco.PropertyEditors.1.3.3\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('packages\Escc.Umbraco.PropertyEditors.1.3.3\build\Escc.Umbraco.PropertyEditors.targets')" />
-  <Import Project="packages\Escc.CustomerFocusTemplates.Website.0.7.1\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('packages\Escc.CustomerFocusTemplates.Website.0.7.1\build\Escc.CustomerFocusTemplates.Website.targets')" />
-  <Import Project="packages\Escc.UmbracoDocumentTypes.Website.1.5.1\build\Escc.UmbracoDocumentTypes.Website.targets" Condition="Exists('packages\Escc.UmbracoDocumentTypes.Website.1.5.1\build\Escc.UmbracoDocumentTypes.Website.targets')" />
   <Import Project="packages\Escc.Alerts.Website.1.2.0\build\Escc.Alerts.Website.targets" Condition="Exists('packages\Escc.Alerts.Website.1.2.0\build\Escc.Alerts.Website.targets')" />
-  <Import Project="packages\Escc.Home.Website.0.3.2\build\Escc.Home.Website.targets" Condition="Exists('packages\Escc.Home.Website.0.3.2\build\Escc.Home.Website.targets')" />
-  <Import Project="packages\Escc.EastSussexGovUK.UmbracoViews.0.7.1\build\Escc.EastSussexGovUK.UmbracoViews.targets" Condition="Exists('packages\Escc.EastSussexGovUK.UmbracoViews.0.7.1\build\Escc.EastSussexGovUK.UmbracoViews.targets')" />
+  <Import Project="packages\Escc.EastSussexGovUK.UmbracoViews.0.8.0\build\Escc.EastSussexGovUK.UmbracoViews.targets" Condition="Exists('packages\Escc.EastSussexGovUK.UmbracoViews.0.8.0\build\Escc.EastSussexGovUK.UmbracoViews.targets')" />
+  <Import Project="packages\Escc.UmbracoDocumentTypes.Website.1.6.0\build\Escc.UmbracoDocumentTypes.Website.targets" Condition="Exists('packages\Escc.UmbracoDocumentTypes.Website.1.6.0\build\Escc.UmbracoDocumentTypes.Website.targets')" />
+  <Import Project="packages\Escc.CoreLegacyTemplates.Website.0.4.0\build\Escc.CoreLegacyTemplates.Website.targets" Condition="Exists('packages\Escc.CoreLegacyTemplates.Website.0.4.0\build\Escc.CoreLegacyTemplates.Website.targets')" />
+  <Import Project="packages\Escc.Home.Website.0.4.0\build\Escc.Home.Website.targets" Condition="Exists('packages\Escc.Home.Website.0.4.0\build\Escc.Home.Website.targets')" />
+  <Import Project="packages\Escc.CustomerFocusTemplates.Website.0.8.0\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('packages\Escc.CustomerFocusTemplates.Website.0.8.0\build\Escc.CustomerFocusTemplates.Website.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
