@@ -22,7 +22,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
-    <NuGetPackageImportStamp>f5aeae3a</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>01a8c150</NuGetPackageImportStamp>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -100,7 +100,7 @@
     </Reference>
     <Reference Include="Escc.CustomerFocusTemplates.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.CustomerFocusTemplates.Website.0.8.0\lib\net45\Escc.CustomerFocusTemplates.Website.dll</HintPath>
+      <HintPath>packages\Escc.CustomerFocusTemplates.Website.0.8.1\lib\net45\Escc.CustomerFocusTemplates.Website.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.UmbracoViews, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -556,7 +556,7 @@
     <Error Condition="!Exists('packages\Escc.UmbracoDocumentTypes.Website.1.6.0\build\Escc.UmbracoDocumentTypes.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.UmbracoDocumentTypes.Website.1.6.0\build\Escc.UmbracoDocumentTypes.Website.targets'))" />
     <Error Condition="!Exists('packages\Escc.CoreLegacyTemplates.Website.0.4.0\build\Escc.CoreLegacyTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CoreLegacyTemplates.Website.0.4.0\build\Escc.CoreLegacyTemplates.Website.targets'))" />
     <Error Condition="!Exists('packages\Escc.Home.Website.0.4.1\build\Escc.Home.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Home.Website.0.4.1\build\Escc.Home.Website.targets'))" />
-    <Error Condition="!Exists('packages\Escc.CustomerFocusTemplates.Website.0.8.0\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CustomerFocusTemplates.Website.0.8.0\build\Escc.CustomerFocusTemplates.Website.targets'))" />
+    <Error Condition="!Exists('packages\Escc.CustomerFocusTemplates.Website.0.8.1\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CustomerFocusTemplates.Website.0.8.1\build\Escc.CustomerFocusTemplates.Website.targets'))" />
   </Target>
   <Import Project="packages\UmbracoCms.7.1.4\build\UmbracoCms.targets" Condition="Exists('packages\UmbracoCms.7.1.4\build\UmbracoCms.targets')" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
@@ -566,7 +566,7 @@
   <Import Project="packages\Escc.UmbracoDocumentTypes.Website.1.6.0\build\Escc.UmbracoDocumentTypes.Website.targets" Condition="Exists('packages\Escc.UmbracoDocumentTypes.Website.1.6.0\build\Escc.UmbracoDocumentTypes.Website.targets')" />
   <Import Project="packages\Escc.CoreLegacyTemplates.Website.0.4.0\build\Escc.CoreLegacyTemplates.Website.targets" Condition="Exists('packages\Escc.CoreLegacyTemplates.Website.0.4.0\build\Escc.CoreLegacyTemplates.Website.targets')" />
   <Import Project="packages\Escc.Home.Website.0.4.1\build\Escc.Home.Website.targets" Condition="Exists('packages\Escc.Home.Website.0.4.1\build\Escc.Home.Website.targets')" />
-  <Import Project="packages\Escc.CustomerFocusTemplates.Website.0.8.0\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('packages\Escc.CustomerFocusTemplates.Website.0.8.0\build\Escc.CustomerFocusTemplates.Website.targets')" />
+  <Import Project="packages\Escc.CustomerFocusTemplates.Website.0.8.1\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('packages\Escc.CustomerFocusTemplates.Website.0.8.1\build\Escc.CustomerFocusTemplates.Website.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
