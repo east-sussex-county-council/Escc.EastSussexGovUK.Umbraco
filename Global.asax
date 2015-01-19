@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.MicrosoftCmsCompatibleApplication" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Escc.CoreLegacyTemplates.Website.MicrosoftCmsMigration.MicrosoftCmsCompatibleApplication" Language="C#" %>

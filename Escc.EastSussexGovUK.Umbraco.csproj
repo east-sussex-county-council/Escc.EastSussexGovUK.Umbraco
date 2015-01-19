@@ -94,7 +94,7 @@
       <HintPath>packages\Escc.ClientDependencyFramework.Umbraco.1.0.2\lib\Escc.ClientDependencyFramework.dll</HintPath>
     </Reference>
     <Reference Include="Escc.CoreLegacyTemplates.Website">
-      <HintPath>packages\Escc.CoreLegacyTemplates.Website.0.5.0\lib\Escc.CoreLegacyTemplates.Website.dll</HintPath>
+      <HintPath>packages\Escc.CoreLegacyTemplates.Website.0.5.1\lib\Escc.CoreLegacyTemplates.Website.dll</HintPath>
     </Reference>
     <Reference Include="Escc.CustomerFocusTemplates.Website">
       <HintPath>packages\Escc.CustomerFocusTemplates.Website.0.9.0\lib\net45\Escc.CustomerFocusTemplates.Website.dll</HintPath>
@@ -534,16 +534,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:59418/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>
@@ -557,7 +548,7 @@
     <Error Condition="!Exists('packages\Escc.Umbraco.PropertyEditors.1.3.4\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Umbraco.PropertyEditors.1.3.4\build\Escc.Umbraco.PropertyEditors.targets'))" />
     <Error Condition="!Exists('packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.1.0.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.1.0.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets'))" />
     <Error Condition="!Exists('packages\Escc.EastSussexGovUK.UmbracoViews.1.0.0\build\Escc.EastSussexGovUK.UmbracoViews.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.EastSussexGovUK.UmbracoViews.1.0.0\build\Escc.EastSussexGovUK.UmbracoViews.targets'))" />
-    <Error Condition="!Exists('packages\Escc.CoreLegacyTemplates.Website.0.5.0\build\Escc.CoreLegacyTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CoreLegacyTemplates.Website.0.5.0\build\Escc.CoreLegacyTemplates.Website.targets'))" />
+    <Error Condition="!Exists('packages\Escc.CoreLegacyTemplates.Website.0.5.1\build\Escc.CoreLegacyTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CoreLegacyTemplates.Website.0.5.1\build\Escc.CoreLegacyTemplates.Website.targets'))" />
     <Error Condition="!Exists('packages\Escc.CustomerFocusTemplates.Website.0.9.0\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CustomerFocusTemplates.Website.0.9.0\build\Escc.CustomerFocusTemplates.Website.targets'))" />
     <Error Condition="!Exists('packages\Escc.Home.Website.0.5.0\build\Escc.Home.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Home.Website.0.5.0\build\Escc.Home.Website.targets'))" />
     <Error Condition="!Exists('packages\Escc.Alerts.Website.1.2.2\build\Escc.Alerts.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Alerts.Website.1.2.2\build\Escc.Alerts.Website.targets'))" />
@@ -566,7 +557,7 @@
   <Import Project="packages\Escc.Umbraco.PropertyEditors.1.3.4\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('packages\Escc.Umbraco.PropertyEditors.1.3.4\build\Escc.Umbraco.PropertyEditors.targets')" />
   <Import Project="packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.1.0.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets" Condition="Exists('packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.1.0.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" />
   <Import Project="packages\Escc.EastSussexGovUK.UmbracoViews.1.0.0\build\Escc.EastSussexGovUK.UmbracoViews.targets" Condition="Exists('packages\Escc.EastSussexGovUK.UmbracoViews.1.0.0\build\Escc.EastSussexGovUK.UmbracoViews.targets')" />
-  <Import Project="packages\Escc.CoreLegacyTemplates.Website.0.5.0\build\Escc.CoreLegacyTemplates.Website.targets" Condition="Exists('packages\Escc.CoreLegacyTemplates.Website.0.5.0\build\Escc.CoreLegacyTemplates.Website.targets')" />
+  <Import Project="packages\Escc.CoreLegacyTemplates.Website.0.5.1\build\Escc.CoreLegacyTemplates.Website.targets" Condition="Exists('packages\Escc.CoreLegacyTemplates.Website.0.5.1\build\Escc.CoreLegacyTemplates.Website.targets')" />
   <Import Project="packages\Escc.CustomerFocusTemplates.Website.0.9.0\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('packages\Escc.CustomerFocusTemplates.Website.0.9.0\build\Escc.CustomerFocusTemplates.Website.targets')" />
   <Import Project="packages\Escc.Home.Website.0.5.0\build\Escc.Home.Website.targets" Condition="Exists('packages\Escc.Home.Website.0.5.0\build\Escc.Home.Website.targets')" />
   <Import Project="packages\Escc.Alerts.Website.1.2.2\build\Escc.Alerts.Website.targets" Condition="Exists('packages\Escc.Alerts.Website.1.2.2\build\Escc.Alerts.Website.targets')" />

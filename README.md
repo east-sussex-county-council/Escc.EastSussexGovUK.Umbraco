@@ -8,17 +8,19 @@ This project is the root of our Umbraco installation for www.eastsussex.gov.uk. 
 2. Build the solution
 3. Grant modify permissions to the application pool account on the web root folder and all children
 4. Copy `packages\Umbraco*\Content\config\*.config` into `~\config`
-5. Drop and re-add the following NuGet packages. They should all copy their Content files on build but, although the build action runs, the files aren't copied. They are copied when you install or update the package.
+5. Drop and re-add the following NuGet packages, which makes them add their settings to `web.config` and `clientdependency.config`.
 	* Escc.Alerts.Website
 	* Escc.CustomerFocusTemplates.Website
 	* Escc.CoreLegacyTemplates.Website
-	* Escc.Home.Website
 	* Escc.EastSussexGovUK.UmbracoViews
 	* Escc.ClientDependencyFramework.Umbraco
-	* Escc.EastSussexGovUK.UmbracoDocumentTypes
-	* Escc.Umbraco.PropertyEditors
 6. In `~\web.config` set the `UmbracoConfigurationStatus` and `umbracoDbDSN`, or run the Umbraco installer.
 7. In `~\web.config` uncomment and complete the `Proxy` and `RemoteMasterPage` sections
+8. In `~\web.config` update the `bindingRedirect` for Exceptionless to:
+
+		<bindingRedirect oldVersion="0.0.0.0-1.5.2092.0" newVersion="1.5.2121.0" />
+
+	You may need to copy the Exceptionless dll files from the `~\packages\Exceptionless*.1.5.2121.0\*` to `~\bin` too.
 
 Microsoft.ApplicationBlocks.Data
 --------------------------------
