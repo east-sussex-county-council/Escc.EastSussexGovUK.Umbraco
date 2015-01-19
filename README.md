@@ -1,7 +1,24 @@
-Escc.EastSussexGovUK.Umbraco
-============================
+# Escc.EastSussexGovUK.Umbraco
 
-Core template files for configuring Umbraco v7 to work as the Content Management System for www.eastsussex.gov.uk
+This project is the root of our Umbraco installation for www.eastsussex.gov.uk. It contains little code or configuration itself, instead acting as a shell which pulls in all of its templates and features as NuGet packages.
+
+## Development setup steps
+
+1. From an Administrator command prompt, run `app-setup-dev.cmd` to set up a site in IIS.
+2. Build the solution
+3. Grant modify permissions to the application pool account on the web root folder and all children
+4. Copy `packages\Umbraco*\Content\config\*.config` into `~\config`
+5. Drop and re-add the following NuGet packages. They should all copy their Content files on build but, although the build action runs, the files aren't copied. They are copied when you install or update the package.
+	* Escc.Alerts.Website
+	* Escc.CustomerFocusTemplates.Website
+	* Escc.CoreLegacyTemplates.Website
+	* Escc.Home.Website
+	* Escc.EastSussexGovUK.UmbracoViews
+	* Escc.ClientDependencyFramework.Umbraco
+	* Escc.EastSussexGovUK.UmbracoDocumentTypes
+	* Escc.Umbraco.PropertyEditors
+6. In `~\web.config` set the `UmbracoConfigurationStatus` and `umbracoDbDSN`, or run the Umbraco installer.
+7. In `~\web.config` uncomment and complete the `Proxy` and `RemoteMasterPage` sections
 
 Microsoft.ApplicationBlocks.Data
 --------------------------------

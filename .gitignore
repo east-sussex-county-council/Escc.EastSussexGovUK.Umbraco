@@ -53,3 +53,5 @@ dummy.txt
 # Files imported by ESCC NuGet packages
 css
 Views/*
+img
+MicrosoftCmsMigration
