@@ -12,15 +12,7 @@
   <xsl:template match="msbuild:Project/msbuild:ItemGroup/msbuild:Reference/msbuild:HintPath">
     <xsl:call-template name="UpdateHintPath">
       <xsl:with-param name="ref_1" select="'Microsoft.ApplicationBlocks.ExceptionManagement.dll'" />
-     <!-- Temporarily disabled as not working with Umbraco 7.1.x
-      <xsl:with-param name="ref_3" select="'AzureDirectory.dll'" />
-      <xsl:with-param name="ref_4" select="'Examine.Azure.dll'" />
-      <xsl:with-param name="ref_6" select="'Microsoft.WindowsAzure.ServiceRuntime.dll'" />
-      <xsl:with-param name="ref_7" select="'Microsoft.WindowsAzure.StorageClient.dll'" />
-      <xsl:with-param name="ref_8" select="'UmbracoExamine.Azure.dll'" />
-      <xsl:with-param name="ref_9" select="'Examine.dll'" />
-      <xsl:with-param name="ref_10" select="'UmbracoExamine.dll'" />-->
-    </xsl:call-template>
+     </xsl:call-template>
   </xsl:template>
 
 </xsl:stylesheet>
