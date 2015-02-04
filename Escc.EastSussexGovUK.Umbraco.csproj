@@ -519,7 +519,6 @@
     <Content Include="Views\GuideStep.cshtml" />
     <Content Include="Views\Guide.cshtml" />
     <Content Include="Views\Alerts.cshtml" />
-    <None Include="Web.example.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Escc.Data.Web\EsccWebTeam.Data.Web.csproj">
