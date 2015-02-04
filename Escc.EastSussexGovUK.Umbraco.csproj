@@ -114,8 +114,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\Escc.Umbraco.1.0.2\lib\Escc.Umbraco.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.Umbraco.MediaSync">
-      <HintPath>packages\Escc.Umbraco.MediaSync.1.0.0\lib\Escc.Umbraco.MediaSync.dll</HintPath>
+    <Reference Include="Escc.Umbraco.MediaSync, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Escc.Umbraco.MediaSync.1.0.1\lib\Escc.Umbraco.MediaSync.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.PropertyEditors, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -396,7 +397,6 @@
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PhonePropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.BooleanPropertyEditor\package.manifest" />
-    <Content Include="Config\uMediaSync.config" />
     <Content Include="App_Plugins\OpeningSoon\package.manifest" />
     <Content Include="Config\UrlRewriting.config" />
     <Content Include="Config\umbracoSettings.config" />
@@ -413,6 +413,7 @@
     <Content Include="Config\BaseRestExtensions.config" />
     <Content Include="Config\applications.config" />
     <Content Include="Config\404handlers.config" />
+    <Content Include="Config\uMediaSync.config" />
     <None Include="Escc.EastSussexGovUK.Umbraco.csproj.xslt">
       <SubType>Designer</SubType>
     </None>
