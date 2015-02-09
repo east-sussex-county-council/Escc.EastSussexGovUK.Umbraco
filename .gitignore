@@ -35,6 +35,7 @@ _ReSharper*/
 Properties/PublishProfiles/*
 packages
 .nuget/NuGet.targets
+*.GhostDoc.xml
 
 # Umbraco files
 [Uu]mbraco/

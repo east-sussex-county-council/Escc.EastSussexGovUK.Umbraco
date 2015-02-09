@@ -22,7 +22,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
-    <NuGetPackageImportStamp>ce073c3c</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>ce9a244f</NuGetPackageImportStamp>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -116,7 +116,7 @@
     </Reference>
     <Reference Include="Escc.Umbraco.MediaSync, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.Umbraco.MediaSync.1.0.2\lib\Escc.Umbraco.MediaSync.dll</HintPath>
+      <HintPath>packages\Escc.Umbraco.MediaSync.1.0.3\lib\Escc.Umbraco.MediaSync.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.PropertyEditors, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -412,8 +412,8 @@
     <Content Include="Config\BaseRestExtensions.config" />
     <Content Include="Config\applications.config" />
     <Content Include="Config\404handlers.config" />
-    <Content Include="Config\uMediaSync.config" />
     <Content Include="App_Plugins\OpeningSoon\package.manifest" />
+    <Content Include="Config\uMediaSync.config" />
     <None Include="Escc.EastSussexGovUK.Umbraco.csproj.xslt">
       <SubType>Designer</SubType>
     </None>
@@ -578,24 +578,24 @@
     <Error Condition="!Exists('packages\Escc.Statistics.js.1.0.3\build\Escc.Statistics.js.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Statistics.js.1.0.3\build\Escc.Statistics.js.targets'))" />
     <Error Condition="!Exists('packages\UmbracoCms.7.1.9\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\UmbracoCms.7.1.9\build\UmbracoCms.props'))" />
     <Error Condition="!Exists('packages\UmbracoCms.7.1.9\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\UmbracoCms.7.1.9\build\UmbracoCms.targets'))" />
-    <Error Condition="!Exists('packages\Escc.Umbraco.MediaSync.1.0.2\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Umbraco.MediaSync.1.0.2\build\Escc.Umbraco.MediaSync.targets'))" />
     <Error Condition="!Exists('packages\Escc.Alerts.Website.1.3.0\build\Escc.Alerts.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Alerts.Website.1.3.0\build\Escc.Alerts.Website.targets'))" />
     <Error Condition="!Exists('packages\Escc.EastSussexGovUK.UmbracoViews.3.2.0\build\Escc.EastSussexGovUK.UmbracoViews.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.EastSussexGovUK.UmbracoViews.3.2.0\build\Escc.EastSussexGovUK.UmbracoViews.targets'))" />
     <Error Condition="!Exists('packages\Escc.CustomerFocusTemplates.Website.0.14.0\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CustomerFocusTemplates.Website.0.14.0\build\Escc.CustomerFocusTemplates.Website.targets'))" />
     <Error Condition="!Exists('packages\Escc.Home.Website.0.7.1\build\Escc.Home.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Home.Website.0.7.1\build\Escc.Home.Website.targets'))" />
     <Error Condition="!Exists('packages\Escc.CoreLegacyTemplates.Website.0.10.1\build\Escc.CoreLegacyTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CoreLegacyTemplates.Website.0.10.1\build\Escc.CoreLegacyTemplates.Website.targets'))" />
+    <Error Condition="!Exists('packages\Escc.Umbraco.MediaSync.1.0.3\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Umbraco.MediaSync.1.0.3\build\Escc.Umbraco.MediaSync.targets'))" />
   </Target>
   <Import Project="packages\Escc.Umbraco.PropertyEditors.1.3.4\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('packages\Escc.Umbraco.PropertyEditors.1.3.4\build\Escc.Umbraco.PropertyEditors.targets')" />
   <Import Project="packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.2.1.1\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets" Condition="Exists('packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.2.1.1\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" />
   <Import Project="packages\Escc.DocumentsInNewWindow.js.1.0.3\build\Escc.DocumentsInNewWindow.js.targets" Condition="Exists('packages\Escc.DocumentsInNewWindow.js.1.0.3\build\Escc.DocumentsInNewWindow.js.targets')" />
   <Import Project="packages\Escc.Statistics.js.1.0.3\build\Escc.Statistics.js.targets" Condition="Exists('packages\Escc.Statistics.js.1.0.3\build\Escc.Statistics.js.targets')" />
   <Import Project="packages\UmbracoCms.7.1.9\build\UmbracoCms.targets" Condition="Exists('packages\UmbracoCms.7.1.9\build\UmbracoCms.targets')" />
-  <Import Project="packages\Escc.Umbraco.MediaSync.1.0.2\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('packages\Escc.Umbraco.MediaSync.1.0.2\build\Escc.Umbraco.MediaSync.targets')" />
   <Import Project="packages\Escc.Alerts.Website.1.3.0\build\Escc.Alerts.Website.targets" Condition="Exists('packages\Escc.Alerts.Website.1.3.0\build\Escc.Alerts.Website.targets')" />
   <Import Project="packages\Escc.EastSussexGovUK.UmbracoViews.3.2.0\build\Escc.EastSussexGovUK.UmbracoViews.targets" Condition="Exists('packages\Escc.EastSussexGovUK.UmbracoViews.3.2.0\build\Escc.EastSussexGovUK.UmbracoViews.targets')" />
   <Import Project="packages\Escc.CustomerFocusTemplates.Website.0.14.0\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('packages\Escc.CustomerFocusTemplates.Website.0.14.0\build\Escc.CustomerFocusTemplates.Website.targets')" />
   <Import Project="packages\Escc.Home.Website.0.7.1\build\Escc.Home.Website.targets" Condition="Exists('packages\Escc.Home.Website.0.7.1\build\Escc.Home.Website.targets')" />
   <Import Project="packages\Escc.CoreLegacyTemplates.Website.0.10.1\build\Escc.CoreLegacyTemplates.Website.targets" Condition="Exists('packages\Escc.CoreLegacyTemplates.Website.0.10.1\build\Escc.CoreLegacyTemplates.Website.targets')" />
+  <Import Project="packages\Escc.Umbraco.MediaSync.1.0.3\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('packages\Escc.Umbraco.MediaSync.1.0.3\build\Escc.Umbraco.MediaSync.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
