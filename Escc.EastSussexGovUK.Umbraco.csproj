@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="packages\UmbracoCms.7.1.9\build\UmbracoCms.props" Condition="Exists('packages\UmbracoCms.7.1.9\build\UmbracoCms.props')" />
+  <Import Project="packages\UmbracoCms.7.2.1\build\UmbracoCms.props" Condition="Exists('packages\UmbracoCms.7.2.1\build\UmbracoCms.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -22,7 +22,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
-    <NuGetPackageImportStamp>ce9a244f</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>e10390bc</NuGetPackageImportStamp>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -54,25 +54,25 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\AutoMapper.3.0.0\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
-    <Reference Include="businesslogic, Version=1.0.5443.21808, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="businesslogic, Version=1.0.5462.37510, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.1.9\lib\businesslogic.dll</HintPath>
+      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\businesslogic.dll</HintPath>
     </Reference>
-    <Reference Include="ClientDependency.Core, Version=1.9.9.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ClientDependency.Core, Version=1.9.9.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\ClientDependency.1.9.9.0\lib\net45\ClientDependency.Core.dll</HintPath>
+      <HintPath>packages\ClientDependency.1.9.9.1\lib\net45\ClientDependency.Core.dll</HintPath>
     </Reference>
-    <Reference Include="ClientDependency.Core.Mvc, Version=1.7.0.4, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ClientDependency.Core.Mvc, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\ClientDependency-Mvc.1.7.0.4\lib\ClientDependency.Core.Mvc.dll</HintPath>
+      <HintPath>packages\ClientDependency-Mvc.1.8.0.0\lib\net45\ClientDependency.Core.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="cms, Version=1.0.5443.21808, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="cms, Version=1.0.5462.37511, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.1.9\lib\cms.dll</HintPath>
+      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\cms.dll</HintPath>
     </Reference>
-    <Reference Include="controls, Version=1.0.5443.21811, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="controls, Version=1.0.5462.37515, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.1.9\lib\controls.dll</HintPath>
+      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\controls.dll</HintPath>
     </Reference>
     <Reference Include="CookComputing.XmlRpcV2, Version=2.5.0.0, Culture=neutral, PublicKeyToken=a7d6e17aa302004d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -82,25 +82,25 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\Escc.AddressAndPersonalDetails.1.0.0\lib\Escc.AddressAndPersonalDetails.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.Alerts.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.Alerts.Website.1.3.0\lib\Escc.Alerts.Website.dll</HintPath>
+    <Reference Include="Escc.Alerts.Website">
+      <HintPath>packages\Escc.Alerts.Website.1.4.0\lib\Escc.Alerts.Website.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Escc.ClientDependencyFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.ClientDependencyFramework.Umbraco.1.0.2\lib\Escc.ClientDependencyFramework.dll</HintPath>
+    <Reference Include="Escc.ClientDependencyFramework">
+      <HintPath>packages\Escc.ClientDependencyFramework.Umbraco.1.0.3\lib\Escc.ClientDependencyFramework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Escc.CoreLegacyTemplates.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.CoreLegacyTemplates.Website.0.10.1\lib\Escc.CoreLegacyTemplates.Website.dll</HintPath>
+      <HintPath>packages\Escc.CoreLegacyTemplates.Website.0.11.0\lib\Escc.CoreLegacyTemplates.Website.dll</HintPath>
     </Reference>
     <Reference Include="Escc.CustomerFocusTemplates.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.CustomerFocusTemplates.Website.0.14.0\lib\net45\Escc.CustomerFocusTemplates.Website.dll</HintPath>
+      <HintPath>packages\Escc.CustomerFocusTemplates.Website.0.15.0\lib\net45\Escc.CustomerFocusTemplates.Website.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.UmbracoDocumentTypes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.2.1.1\lib\Escc.EastSussexGovUK.UmbracoDocumentTypes.dll</HintPath>
+      <HintPath>packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.3.0.0\lib\Escc.EastSussexGovUK.UmbracoDocumentTypes.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.UmbracoViews, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -108,7 +108,7 @@
     </Reference>
     <Reference Include="Escc.Home.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.Home.Website.0.7.1\lib\Escc.Home.Website.dll</HintPath>
+      <HintPath>packages\Escc.Home.Website.0.8.0\lib\Escc.Home.Website.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -120,7 +120,7 @@
     </Reference>
     <Reference Include="Escc.Umbraco.PropertyEditors, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.Umbraco.PropertyEditors.1.3.4\lib\Escc.Umbraco.PropertyEditors.dll</HintPath>
+      <HintPath>packages\Escc.Umbraco.PropertyEditors.2.0.0\lib\Escc.Umbraco.PropertyEditors.dll</HintPath>
     </Reference>
     <Reference Include="Examine, Version=0.1.57.2941, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -155,13 +155,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\ImageProcessor.Web.3.3.1.0\lib\net45\ImageProcessor.Web.dll</HintPath>
     </Reference>
-    <Reference Include="interfaces, Version=1.0.5443.21804, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="interfaces, Version=1.0.5462.37501, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.1.9\lib\interfaces.dll</HintPath>
+      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\interfaces.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.1.9\lib\log4net.dll</HintPath>
+      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Lucene.Net, Version=2.9.4.1, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -169,7 +169,7 @@
     </Reference>
     <Reference Include="Microsoft.ApplicationBlocks.Data, Version=1.0.1559.20655, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.1.9\lib\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\Microsoft.ApplicationBlocks.Data.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ApplicationBlocks.ExceptionManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -191,7 +191,7 @@
     </Reference>
     <Reference Include="Microsoft.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.1.9\lib\Microsoft.Web.Helpers.dll</HintPath>
+      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\Microsoft.Web.Helpers.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -224,26 +224,26 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Our.Umbraco.PropertyEditorConverters">
-      <HintPath>packages\Our.Umbraco.CoreValueConverters.2.0.5\lib\net45\Our.Umbraco.PropertyEditorConverters.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SQLCE4Umbraco, Version=1.0.5443.21810, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Our.Umbraco.PropertyEditorConverters, Version=2.1.5.35, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.1.9\lib\SQLCE4Umbraco.dll</HintPath>
+      <HintPath>packages\Our.Umbraco.CoreValueConverters.2.1.5\lib\net45\Our.Umbraco.PropertyEditorConverters.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLCE4Umbraco, Version=1.0.5462.37514, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\SQLCE4Umbraco.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Services.Client" />
     <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>packages\UmbracoCms.Core.7.1.9\lib\System.Data.SqlServerCe.dll</HintPath>
+      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\System.Data.SqlServerCe.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.SqlServerCe.Entity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>packages\UmbracoCms.Core.7.1.9\lib\System.Data.SqlServerCe.Entity.dll</HintPath>
+      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\System.Data.SqlServerCe.Entity.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -306,47 +306,47 @@
     </Reference>
     <Reference Include="TidyNet, Version=1.0.0.0, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.1.9\lib\TidyNet.dll</HintPath>
+      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\TidyNet.dll</HintPath>
     </Reference>
-    <Reference Include="umbraco, Version=1.0.5443.21812, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="umbraco, Version=1.0.5462.37518, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.1.9\lib\umbraco.dll</HintPath>
+      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\umbraco.dll</HintPath>
     </Reference>
-    <Reference Include="Umbraco.Core, Version=1.0.5443.21804, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Umbraco.Core, Version=1.0.5462.37503, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.1.9\lib\Umbraco.Core.dll</HintPath>
+      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\Umbraco.Core.dll</HintPath>
     </Reference>
-    <Reference Include="umbraco.DataLayer, Version=1.0.5443.21807, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="umbraco.DataLayer, Version=1.0.5462.37509, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.1.9\lib\umbraco.DataLayer.dll</HintPath>
+      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\umbraco.DataLayer.dll</HintPath>
     </Reference>
-    <Reference Include="umbraco.editorControls, Version=1.0.5443.21814, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="umbraco.editorControls, Version=1.0.5462.37523, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.1.9\lib\umbraco.editorControls.dll</HintPath>
+      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\umbraco.editorControls.dll</HintPath>
     </Reference>
     <Reference Include="Umbraco.Inception, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\Escc.Umbraco.Inception.2.1.0\lib\net45\Umbraco.Inception.dll</HintPath>
     </Reference>
-    <Reference Include="umbraco.MacroEngines, Version=1.0.5443.21815, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="umbraco.MacroEngines, Version=1.0.5462.37525, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.1.9\lib\umbraco.MacroEngines.dll</HintPath>
+      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\umbraco.MacroEngines.dll</HintPath>
     </Reference>
-    <Reference Include="umbraco.providers, Version=1.0.5443.21811, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="umbraco.providers, Version=1.0.5462.37516, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.1.9\lib\umbraco.providers.dll</HintPath>
+      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\umbraco.providers.dll</HintPath>
     </Reference>
-    <Reference Include="Umbraco.Web.UI, Version=1.0.5443.21816, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Umbraco.Web.UI, Version=1.0.5462.37527, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.1.9\lib\Umbraco.Web.UI.dll</HintPath>
+      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\Umbraco.Web.UI.dll</HintPath>
     </Reference>
-    <Reference Include="UmbracoExamine, Version=0.7.0.21809, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="UmbracoExamine, Version=0.7.0.37513, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.1.9\lib\UmbracoExamine.dll</HintPath>
+      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\UmbracoExamine.dll</HintPath>
     </Reference>
     <Reference Include="UrlRewritingNet.UrlRewriter, Version=2.0.60829.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.1.9\lib\UrlRewritingNet.UrlRewriter.dll</HintPath>
+      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\UrlRewritingNet.UrlRewriter.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -390,13 +390,8 @@
     <Content Include="App_Plugins\OpeningSoon\scripts\jquery.timepicker.min.js" />
     <Content Include="Config\ClientDependency.config" />
     <Content Include="Config\FileSystemProviders.config" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.TwitterScriptPropertyEditor\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PhonePropertyEditor\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.BooleanPropertyEditor\package.manifest" />
+    <Content Include="Config\grid.editors.config.js" />
+    <Content Include="Config\uMediaSync.config" />
     <Content Include="Config\UrlRewriting.config" />
     <Content Include="Config\umbracoSettings.config" />
     <Content Include="Config\trees.config" />
@@ -412,12 +407,20 @@
     <Content Include="Config\BaseRestExtensions.config" />
     <Content Include="Config\applications.config" />
     <Content Include="Config\404handlers.config" />
+    <None Include="app-setup-dev.cmd" />
+    <None Include="app-setup-dev.ps1" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.TwitterScriptPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PhonePropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.BooleanPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\OpeningSoon\package.manifest" />
-    <Content Include="Config\uMediaSync.config" />
     <None Include="Escc.EastSussexGovUK.Umbraco.csproj.xslt">
       <SubType>Designer</SubType>
     </None>
-    <None Include="css\dummy.txt" />
+    <Content Include="css\dummy.txt" />
     <Content Include="css\guide-step-large.css" />
     <Content Include="css\guide-step-medium.css" />
     <Content Include="css\guide-step-small.css" />
@@ -448,17 +451,16 @@
     <Content Include="MicrosoftCmsMigration\UserControls\Related.ascx" />
     <Content Include="MicrosoftCmsMigration\UserControls\SectionNavigation.ascx" />
     <Content Include="robots.txt" />
-    <Content Include="macroScripts\Web.config" />
-    <Content Include="img\web.config" />
-    <None Include="scripts\dummy.txt" />
-    <None Include="UserControls\dummy.txt" />
+    <Content Include="scripts\dummy.txt" />
     <Content Include="scripts\guide-step.js" />
     <Content Include="scripts\guide.js" />
     <Content Include="scripts\location.js" />
+    <Content Include="usercontrols\dummy.txt" />
     <Content Include="Views\LandingPageWithPictures.ascx" />
     <Content Include="Views\Layouts\BreadcrumbTrail.ascx" />
     <Content Include="Views\Layouts\BreadcrumbTrailMobile.ascx" />
     <Content Include="Views\Layouts\MasterPageControl.ascx" />
+    <Content Include="Views\Partials\dummy.txt" />
     <Content Include="Views\StandardDownloadPage.ascx" />
     <Content Include="Views\StandardLandingpage.ascx" />
     <Content Include="Views\StandardTopicPage.ascx" />
@@ -486,6 +488,7 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="img\web.config" />
     <None Include="LICENSE.md" />
     <None Include="README.md" />
     <None Include="packages.config" />
@@ -514,7 +517,6 @@
     <Content Include="eastsussexcountycouncil.rdf" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Alerts.cshtml" />
     <Content Include="Views\Layouts\Plain.cshtml" />
     <Content Include="Views\Layouts\Mobile.cshtml" />
     <Content Include="Views\Layouts\FullScreen.cshtml" />
@@ -529,6 +531,17 @@
     <Content Include="Views\Layouts\_Facebook.cshtml" />
     <Content Include="Views\Layouts\_EastSussex1Space.cshtml" />
     <Content Include="Views\Layouts\_ContentExperiment.cshtml" />
+    <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
+    <Content Include="Views\Partials\Grid\Editors\Rte.cshtml" />
+    <Content Include="Views\Partials\Grid\Editors\Media.cshtml" />
+    <Content Include="Views\Partials\Grid\Editors\Macro.cshtml" />
+    <Content Include="Views\Partials\Grid\Editors\Embed.cshtml" />
+    <Content Include="Views\Partials\Grid\Editors\Base.cshtml" />
+    <Content Include="Views\Partials\Grid\Bootstrap3.cshtml" />
+    <Content Include="Views\Partials\Grid\Bootstrap2.cshtml" />
+    <Content Include="Views\Alerts.cshtml" />
+    <Content Include="Views\HomePage.cshtml" />
+    <Content Include="Views\HoldingPage.cshtml" />
     <Content Include="Views\Task.cshtml" />
     <Content Include="Views\Partials\_LocationOpeningTimes.cshtml" />
     <Content Include="Views\Partials\_LocationIsOpen.cshtml" />
@@ -536,8 +549,6 @@
     <Content Include="Views\Landing.cshtml" />
     <Content Include="Views\GuideStep.cshtml" />
     <Content Include="Views\Guide.cshtml" />
-    <Content Include="Views\HomePage.cshtml" />
-    <Content Include="Views\HoldingPage.cshtml" />
     <Content Include="Views\StandardTopicPage.cshtml" />
     <Content Include="Views\StandardLandingPage.cshtml" />
     <Content Include="Views\StandardDownloadPage.cshtml" />
@@ -572,30 +583,30 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('packages\Escc.Umbraco.PropertyEditors.1.3.4\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Umbraco.PropertyEditors.1.3.4\build\Escc.Umbraco.PropertyEditors.targets'))" />
-    <Error Condition="!Exists('packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.2.1.1\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.2.1.1\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets'))" />
     <Error Condition="!Exists('packages\Escc.DocumentsInNewWindow.js.1.0.3\build\Escc.DocumentsInNewWindow.js.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.DocumentsInNewWindow.js.1.0.3\build\Escc.DocumentsInNewWindow.js.targets'))" />
     <Error Condition="!Exists('packages\Escc.Statistics.js.1.0.3\build\Escc.Statistics.js.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Statistics.js.1.0.3\build\Escc.Statistics.js.targets'))" />
-    <Error Condition="!Exists('packages\UmbracoCms.7.1.9\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\UmbracoCms.7.1.9\build\UmbracoCms.props'))" />
-    <Error Condition="!Exists('packages\UmbracoCms.7.1.9\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\UmbracoCms.7.1.9\build\UmbracoCms.targets'))" />
-    <Error Condition="!Exists('packages\Escc.Alerts.Website.1.3.0\build\Escc.Alerts.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Alerts.Website.1.3.0\build\Escc.Alerts.Website.targets'))" />
     <Error Condition="!Exists('packages\Escc.EastSussexGovUK.UmbracoViews.3.2.0\build\Escc.EastSussexGovUK.UmbracoViews.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.EastSussexGovUK.UmbracoViews.3.2.0\build\Escc.EastSussexGovUK.UmbracoViews.targets'))" />
-    <Error Condition="!Exists('packages\Escc.CustomerFocusTemplates.Website.0.14.0\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CustomerFocusTemplates.Website.0.14.0\build\Escc.CustomerFocusTemplates.Website.targets'))" />
-    <Error Condition="!Exists('packages\Escc.Home.Website.0.7.1\build\Escc.Home.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Home.Website.0.7.1\build\Escc.Home.Website.targets'))" />
-    <Error Condition="!Exists('packages\Escc.CoreLegacyTemplates.Website.0.10.1\build\Escc.CoreLegacyTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CoreLegacyTemplates.Website.0.10.1\build\Escc.CoreLegacyTemplates.Website.targets'))" />
     <Error Condition="!Exists('packages\Escc.Umbraco.MediaSync.1.0.3\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Umbraco.MediaSync.1.0.3\build\Escc.Umbraco.MediaSync.targets'))" />
+    <Error Condition="!Exists('packages\UmbracoCms.7.2.1\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\UmbracoCms.7.2.1\build\UmbracoCms.props'))" />
+    <Error Condition="!Exists('packages\UmbracoCms.7.2.1\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\UmbracoCms.7.2.1\build\UmbracoCms.targets'))" />
+    <Error Condition="!Exists('packages\Escc.Umbraco.PropertyEditors.2.0.0\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Umbraco.PropertyEditors.2.0.0\build\Escc.Umbraco.PropertyEditors.targets'))" />
+    <Error Condition="!Exists('packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.3.0.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.3.0.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets'))" />
+    <Error Condition="!Exists('packages\Escc.Home.Website.0.8.0\build\Escc.Home.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Home.Website.0.8.0\build\Escc.Home.Website.targets'))" />
+    <Error Condition="!Exists('packages\Escc.Alerts.Website.1.4.0\build\Escc.Alerts.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Alerts.Website.1.4.0\build\Escc.Alerts.Website.targets'))" />
+    <Error Condition="!Exists('packages\Escc.CustomerFocusTemplates.Website.0.15.0\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CustomerFocusTemplates.Website.0.15.0\build\Escc.CustomerFocusTemplates.Website.targets'))" />
+    <Error Condition="!Exists('packages\Escc.CoreLegacyTemplates.Website.0.11.0\build\Escc.CoreLegacyTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CoreLegacyTemplates.Website.0.11.0\build\Escc.CoreLegacyTemplates.Website.targets'))" />
   </Target>
-  <Import Project="packages\Escc.Umbraco.PropertyEditors.1.3.4\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('packages\Escc.Umbraco.PropertyEditors.1.3.4\build\Escc.Umbraco.PropertyEditors.targets')" />
-  <Import Project="packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.2.1.1\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets" Condition="Exists('packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.2.1.1\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" />
   <Import Project="packages\Escc.DocumentsInNewWindow.js.1.0.3\build\Escc.DocumentsInNewWindow.js.targets" Condition="Exists('packages\Escc.DocumentsInNewWindow.js.1.0.3\build\Escc.DocumentsInNewWindow.js.targets')" />
   <Import Project="packages\Escc.Statistics.js.1.0.3\build\Escc.Statistics.js.targets" Condition="Exists('packages\Escc.Statistics.js.1.0.3\build\Escc.Statistics.js.targets')" />
-  <Import Project="packages\UmbracoCms.7.1.9\build\UmbracoCms.targets" Condition="Exists('packages\UmbracoCms.7.1.9\build\UmbracoCms.targets')" />
-  <Import Project="packages\Escc.Alerts.Website.1.3.0\build\Escc.Alerts.Website.targets" Condition="Exists('packages\Escc.Alerts.Website.1.3.0\build\Escc.Alerts.Website.targets')" />
   <Import Project="packages\Escc.EastSussexGovUK.UmbracoViews.3.2.0\build\Escc.EastSussexGovUK.UmbracoViews.targets" Condition="Exists('packages\Escc.EastSussexGovUK.UmbracoViews.3.2.0\build\Escc.EastSussexGovUK.UmbracoViews.targets')" />
-  <Import Project="packages\Escc.CustomerFocusTemplates.Website.0.14.0\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('packages\Escc.CustomerFocusTemplates.Website.0.14.0\build\Escc.CustomerFocusTemplates.Website.targets')" />
-  <Import Project="packages\Escc.Home.Website.0.7.1\build\Escc.Home.Website.targets" Condition="Exists('packages\Escc.Home.Website.0.7.1\build\Escc.Home.Website.targets')" />
-  <Import Project="packages\Escc.CoreLegacyTemplates.Website.0.10.1\build\Escc.CoreLegacyTemplates.Website.targets" Condition="Exists('packages\Escc.CoreLegacyTemplates.Website.0.10.1\build\Escc.CoreLegacyTemplates.Website.targets')" />
   <Import Project="packages\Escc.Umbraco.MediaSync.1.0.3\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('packages\Escc.Umbraco.MediaSync.1.0.3\build\Escc.Umbraco.MediaSync.targets')" />
+  <Import Project="packages\UmbracoCms.7.2.1\build\UmbracoCms.targets" Condition="Exists('packages\UmbracoCms.7.2.1\build\UmbracoCms.targets')" />
+  <Import Project="packages\Escc.Umbraco.PropertyEditors.2.0.0\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('packages\Escc.Umbraco.PropertyEditors.2.0.0\build\Escc.Umbraco.PropertyEditors.targets')" />
+  <Import Project="packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.3.0.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets" Condition="Exists('packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.3.0.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" />
+  <Import Project="packages\Escc.Home.Website.0.8.0\build\Escc.Home.Website.targets" Condition="Exists('packages\Escc.Home.Website.0.8.0\build\Escc.Home.Website.targets')" />
+  <Import Project="packages\Escc.Alerts.Website.1.4.0\build\Escc.Alerts.Website.targets" Condition="Exists('packages\Escc.Alerts.Website.1.4.0\build\Escc.Alerts.Website.targets')" />
+  <Import Project="packages\Escc.CustomerFocusTemplates.Website.0.15.0\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('packages\Escc.CustomerFocusTemplates.Website.0.15.0\build\Escc.CustomerFocusTemplates.Website.targets')" />
+  <Import Project="packages\Escc.CoreLegacyTemplates.Website.0.11.0\build\Escc.CoreLegacyTemplates.Website.targets" Condition="Exists('packages\Escc.CoreLegacyTemplates.Website.0.11.0\build\Escc.CoreLegacyTemplates.Website.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

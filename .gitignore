@@ -50,6 +50,7 @@ packages
 [Mm]edia
 *.backup
 dummy.txt
+*.config.js
 
 # Files imported by ESCC NuGet packages
 css
