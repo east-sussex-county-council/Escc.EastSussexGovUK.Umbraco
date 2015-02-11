@@ -43,8 +43,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AST.AzureBlobStorage">
-      <HintPath>packages\AST.AzureMediaSync.1.0.0\lib\AST.AzureBlobStorage.dll</HintPath>
+    <Reference Include="AST.AzureBlobStorage, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\AST.AzureMediaSync.1.1.0\lib\AST.AzureBlobStorage.dll</HintPath>
     </Reference>
     <Reference Include="AutoMapper, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
