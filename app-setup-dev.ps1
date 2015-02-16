@@ -36,7 +36,6 @@ Example: C:\>set GIT_ORIGIN_URL=https://example-git-server.com/{0}"
 
 $projectName = "Escc.EastSussexGovUK.Umbraco"
 
-DownloadProjectIfMissing $parentFolderOfThisScript "Escc.EastSussexGovUK.Mvc"
 DownloadProjectIfMissing $parentFolderOfThisScript "Escc.EastSussexGovUK"
 DownloadProjectIfMissing $parentFolderOfThisScript "Escc.NavigationControls"
 DownloadProjectIfMissing $parentFolderOfThisScript "Escc.Data.Web"
@@ -57,9 +56,6 @@ CreateWebsite $projectName $pathOfThisScript
 CreateHTTPSBinding $projectName
 RemoveHTTPBindings $projectName
 CreateVirtualDirectory $projectName "Escc.EastSussexGovUK" "$parentFolderOfThisScript\Escc.EastSussexGovUK"
-
-CreateApplicationPool "Escc.EastSussexGovUK.Mvc"
-CreateVirtualDirectory $projectName "Site" "$parentFolderOfThisScript\Escc.EastSussexGovUK.Mvc" true "Escc.EastSussexGovUK.Mvc"
 
 Write-Host
 Write-Host "Done." -ForegroundColor "Green"
