@@ -22,7 +22,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
-    <NuGetPackageImportStamp>4c584208</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>807943f4</NuGetPackageImportStamp>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -88,8 +88,9 @@
     <Reference Include="Escc.ClientDependencyFramework">
       <HintPath>packages\Escc.ClientDependencyFramework.Umbraco.1.0.3\lib\Escc.ClientDependencyFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.CoreLegacyTemplates.Website">
-      <HintPath>packages\Escc.CoreLegacyTemplates.Website.0.13.1\lib\Escc.CoreLegacyTemplates.Website.dll</HintPath>
+    <Reference Include="Escc.CoreLegacyTemplates.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Escc.CoreLegacyTemplates.Website.0.13.2\lib\Escc.CoreLegacyTemplates.Website.dll</HintPath>
     </Reference>
     <Reference Include="Escc.CustomerFocusTemplates.Website">
       <HintPath>packages\Escc.CustomerFocusTemplates.Website.0.16.0\lib\net45\Escc.CustomerFocusTemplates.Website.dll</HintPath>
@@ -110,8 +111,9 @@
     <Reference Include="Escc.Umbraco.MediaSync">
       <HintPath>packages\Escc.Umbraco.MediaSync.1.0.3\lib\Escc.Umbraco.MediaSync.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.Umbraco.MicrosoftCmsMigration">
-      <HintPath>packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.0\lib\Escc.Umbraco.MicrosoftCmsMigration.dll</HintPath>
+    <Reference Include="Escc.Umbraco.MicrosoftCmsMigration, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.1\lib\Escc.Umbraco.MicrosoftCmsMigration.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.PropertyEditors">
       <HintPath>packages\Escc.Umbraco.PropertyEditors.2.0.0\lib\Escc.Umbraco.PropertyEditors.dll</HintPath>
@@ -208,8 +210,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\MiniProfiler.2.1.0\lib\net40\MiniProfiler.dll</HintPath>
     </Reference>
-    <Reference Include="Moriyama.Cloud">
-      <HintPath>packages\Moriyama.Cloud.1.0.0\lib\Moriyama.Cloud.dll</HintPath>
+    <Reference Include="Moriyama.Cloud, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Moriyama.Cloud.1.0.1\lib\Moriyama.Cloud.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -413,6 +416,7 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="css\dummy.txt" />
+    <Content Include="css\FormDownloadPage\form-download.css" />
     <Content Include="css\guide-step-large.css" />
     <Content Include="css\guide-step-medium.css" />
     <Content Include="css\guide-step-small.css" />
@@ -590,8 +594,8 @@
     <Error Condition="!Exists('packages\Escc.Alerts.Website.1.4.1\build\Escc.Alerts.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Alerts.Website.1.4.1\build\Escc.Alerts.Website.targets'))" />
     <Error Condition="!Exists('packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.3.1.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.3.1.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets'))" />
     <Error Condition="!Exists('packages\Escc.CustomerFocusTemplates.Website.0.16.0\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CustomerFocusTemplates.Website.0.16.0\build\Escc.CustomerFocusTemplates.Website.targets'))" />
-    <Error Condition="!Exists('packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.0\build\Escc.Umbraco.MicrosoftCmsMigration.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.0\build\Escc.Umbraco.MicrosoftCmsMigration.targets'))" />
-    <Error Condition="!Exists('packages\Escc.CoreLegacyTemplates.Website.0.13.1\build\Escc.CoreLegacyTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CoreLegacyTemplates.Website.0.13.1\build\Escc.CoreLegacyTemplates.Website.targets'))" />
+    <Error Condition="!Exists('packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.1\build\Escc.Umbraco.MicrosoftCmsMigration.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.1\build\Escc.Umbraco.MicrosoftCmsMigration.targets'))" />
+    <Error Condition="!Exists('packages\Escc.CoreLegacyTemplates.Website.0.13.2\build\Escc.CoreLegacyTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CoreLegacyTemplates.Website.0.13.2\build\Escc.CoreLegacyTemplates.Website.targets'))" />
   </Target>
   <Import Project="packages\Escc.Umbraco.MediaSync.1.0.3\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('packages\Escc.Umbraco.MediaSync.1.0.3\build\Escc.Umbraco.MediaSync.targets')" />
   <Import Project="packages\Escc.Umbraco.PropertyEditors.2.0.0\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('packages\Escc.Umbraco.PropertyEditors.2.0.0\build\Escc.Umbraco.PropertyEditors.targets')" />
@@ -602,8 +606,8 @@
   <Import Project="packages\Escc.Alerts.Website.1.4.1\build\Escc.Alerts.Website.targets" Condition="Exists('packages\Escc.Alerts.Website.1.4.1\build\Escc.Alerts.Website.targets')" />
   <Import Project="packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.3.1.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets" Condition="Exists('packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.3.1.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" />
   <Import Project="packages\Escc.CustomerFocusTemplates.Website.0.16.0\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('packages\Escc.CustomerFocusTemplates.Website.0.16.0\build\Escc.CustomerFocusTemplates.Website.targets')" />
-  <Import Project="packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.0\build\Escc.Umbraco.MicrosoftCmsMigration.targets" Condition="Exists('packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.0\build\Escc.Umbraco.MicrosoftCmsMigration.targets')" />
-  <Import Project="packages\Escc.CoreLegacyTemplates.Website.0.13.1\build\Escc.CoreLegacyTemplates.Website.targets" Condition="Exists('packages\Escc.CoreLegacyTemplates.Website.0.13.1\build\Escc.CoreLegacyTemplates.Website.targets')" />
+  <Import Project="packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.1\build\Escc.Umbraco.MicrosoftCmsMigration.targets" Condition="Exists('packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.1\build\Escc.Umbraco.MicrosoftCmsMigration.targets')" />
+  <Import Project="packages\Escc.CoreLegacyTemplates.Website.0.13.2\build\Escc.CoreLegacyTemplates.Website.targets" Condition="Exists('packages\Escc.CoreLegacyTemplates.Website.0.13.2\build\Escc.CoreLegacyTemplates.Website.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
