@@ -31,7 +31,7 @@ _ReSharper*/
 !*.example.config
 !packages.config
 *.scc
-[Ss]cripts*/*.js
+[Ss]cripts
 Properties/PublishProfiles/*
 packages
 .nuget/NuGet.targets
