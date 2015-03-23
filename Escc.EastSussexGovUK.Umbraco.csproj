@@ -22,7 +22,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
-    <NuGetPackageImportStamp>b5cf138e</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>a5178a47</NuGetPackageImportStamp>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -106,7 +106,7 @@
     </Reference>
     <Reference Include="Escc.Home.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.Home.Website.0.10.1\lib\Escc.Home.Website.dll</HintPath>
+      <HintPath>packages\Escc.Home.Website.1.0.1\lib\Escc.Home.Website.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Schools.TermDates.Website">
       <HintPath>packages\Escc.Schools.TermDates.Website.1.0.0\lib\Escc.Schools.TermDates.Website.dll</HintPath>
@@ -449,6 +449,7 @@
     <Content Include="default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="img\HomePage\jobs.png" />
     <Content Include="img\StandardTopicPage\childrens-library.gif" />
     <Content Include="js\libs\Escc.DocumentsInNewWindow.min.js" />
     <Content Include="js\libs\Escc.Statistics.min.js" />
@@ -569,6 +570,7 @@
     <Content Include="Views\FormDownloadPage.cshtml" />
     <Content Include="Views\HomePage.cshtml" />
     <Content Include="Views\HoldingPage.cshtml" />
+    <Content Include="Views\_HomePageJobSearch.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -612,7 +614,7 @@
     <Error Condition="!Exists('packages\Escc.Umbraco.MediaSync.1.0.5\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Umbraco.MediaSync.1.0.5\build\Escc.Umbraco.MediaSync.targets'))" />
     <Error Condition="!Exists('packages\Escc.CustomerFocusTemplates.Website.0.16.1\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CustomerFocusTemplates.Website.0.16.1\build\Escc.CustomerFocusTemplates.Website.targets'))" />
     <Error Condition="!Exists('packages\Escc.CoreLegacyTemplates.Website.0.13.3\build\Escc.CoreLegacyTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CoreLegacyTemplates.Website.0.13.3\build\Escc.CoreLegacyTemplates.Website.targets'))" />
-    <Error Condition="!Exists('packages\Escc.Home.Website.0.10.1\build\Escc.Home.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Home.Website.0.10.1\build\Escc.Home.Website.targets'))" />
+    <Error Condition="!Exists('packages\Escc.Home.Website.1.0.1\build\Escc.Home.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Home.Website.1.0.1\build\Escc.Home.Website.targets'))" />
   </Target>
   <Import Project="packages\Escc.Umbraco.PropertyEditors.2.0.0\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('packages\Escc.Umbraco.PropertyEditors.2.0.0\build\Escc.Umbraco.PropertyEditors.targets')" />
   <Import Project="packages\Escc.DocumentsInNewWindow.js.1.0.3\build\Escc.DocumentsInNewWindow.js.targets" Condition="Exists('packages\Escc.DocumentsInNewWindow.js.1.0.3\build\Escc.DocumentsInNewWindow.js.targets')" />
@@ -625,7 +627,7 @@
   <Import Project="packages\Escc.Umbraco.MediaSync.1.0.5\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('packages\Escc.Umbraco.MediaSync.1.0.5\build\Escc.Umbraco.MediaSync.targets')" />
   <Import Project="packages\Escc.CustomerFocusTemplates.Website.0.16.1\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('packages\Escc.CustomerFocusTemplates.Website.0.16.1\build\Escc.CustomerFocusTemplates.Website.targets')" />
   <Import Project="packages\Escc.CoreLegacyTemplates.Website.0.13.3\build\Escc.CoreLegacyTemplates.Website.targets" Condition="Exists('packages\Escc.CoreLegacyTemplates.Website.0.13.3\build\Escc.CoreLegacyTemplates.Website.targets')" />
-  <Import Project="packages\Escc.Home.Website.0.10.1\build\Escc.Home.Website.targets" Condition="Exists('packages\Escc.Home.Website.0.10.1\build\Escc.Home.Website.targets')" />
+  <Import Project="packages\Escc.Home.Website.1.0.1\build\Escc.Home.Website.targets" Condition="Exists('packages\Escc.Home.Website.1.0.1\build\Escc.Home.Website.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
