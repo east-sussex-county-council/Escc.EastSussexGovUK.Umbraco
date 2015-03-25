@@ -420,6 +420,8 @@
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.BooleanPropertyEditor\package.manifest" />
     <Content Include="Config\uMediaSync.config" />
     <Content Include="App_Plugins\OpeningSoon\package.manifest" />
+    <Content Include="css\Web.config" />
+    <None Include="css\Web.example.config" />
     <None Include="Escc.EastSussexGovUK.Umbraco.csproj.xslt">
       <SubType>Designer</SubType>
     </None>
@@ -504,6 +506,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="img\web.config" />
+    <None Include="js\Web.example.config" />
+    <Content Include="js\Web.config" />
     <None Include="LICENSE.md" />
     <None Include="README.md" />
     <None Include="packages.config" />
@@ -521,6 +525,10 @@
     <ProjectReference Include="..\Escc.EastSussexGovUK\EsccWebTeam.EastSussexGovUK.csproj">
       <Project>{1426fef0-23dc-4c23-ae15-67f2527bd741}</Project>
       <Name>EsccWebTeam.EastSussexGovUK</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Escc.Egms\EsccWebTeam.Egms.csproj">
+      <Project>{78083dcb-b12f-4950-86c5-3a844d8604f3}</Project>
+      <Name>EsccWebTeam.Egms</Name>
     </ProjectReference>
     <ProjectReference Include="..\Escc.HouseStyle\EsccWebTeam.HouseStyle.csproj">
       <Project>{1c429378-dbf2-4af7-88ac-c059aa163682}</Project>

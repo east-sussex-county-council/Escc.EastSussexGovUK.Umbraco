@@ -53,8 +53,8 @@ dummy.txt
 *.config.js
 
 # Files imported by ESCC NuGet packages
-css
+*.css
 Views/*
 img
-js
+*.js
 MicrosoftCmsMigration

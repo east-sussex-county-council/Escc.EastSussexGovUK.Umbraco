@@ -55,7 +55,10 @@ CreateSSLCertificate $projectName
 CreateWebsite $projectName $pathOfThisScript
 CreateHTTPSBinding $projectName
 RemoveHTTPBindings $projectName
-CreateVirtualDirectory $projectName "Escc.EastSussexGovUK" "$parentFolderOfThisScript\Escc.EastSussexGovUK"
+CreateVirtualDirectory $projectName "Escc.EastSussexGovUK" "$parentFolderOfThisScript\Escc.EastSussexGovUK" true
+
+CopyConfig "css/web.example.config" "css/web.config"
+CopyConfig "js/web.example.config" "js/web.config"
 
 Write-Host
 Write-Host "Done." -ForegroundColor "Green"
