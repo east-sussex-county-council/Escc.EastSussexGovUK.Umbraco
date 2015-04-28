@@ -22,7 +22,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
-    <NuGetPackageImportStamp>b7e47002</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>dfde3821</NuGetPackageImportStamp>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -83,8 +83,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Escc.AddressAndPersonalDetails.1.0.0\lib\Escc.AddressAndPersonalDetails.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.Alerts.Website">
-      <HintPath>..\packages\Escc.Alerts.Website.1.4.1\lib\Escc.Alerts.Website.dll</HintPath>
+    <Reference Include="Escc.Alerts.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Escc.Alerts.Website.1.4.2\lib\Escc.Alerts.Website.dll</HintPath>
     </Reference>
     <Reference Include="Escc.ClientDependencyFramework">
       <HintPath>..\packages\Escc.ClientDependencyFramework.Umbraco.1.0.3\lib\Escc.ClientDependencyFramework.dll</HintPath>
@@ -96,20 +97,21 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Escc.Content.Migration.UmbracoApi.1.0.1\lib\Escc.Content.Migration.UmbracoApi.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.CoreLegacyTemplates.Website">
-      <HintPath>..\packages\Escc.CoreLegacyTemplates.Website.0.15.0\lib\Escc.CoreLegacyTemplates.Website.dll</HintPath>
+    <Reference Include="Escc.CoreLegacyTemplates.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Escc.CoreLegacyTemplates.Website.0.16.0\lib\Escc.CoreLegacyTemplates.Website.dll</HintPath>
     </Reference>
     <Reference Include="Escc.CustomerFocusTemplates.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Escc.CustomerFocusTemplates.Website.1.1.1\lib\net45\Escc.CustomerFocusTemplates.Website.dll</HintPath>
+      <HintPath>..\packages\Escc.CustomerFocusTemplates.Website.1.1.2\lib\net45\Escc.CustomerFocusTemplates.Website.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.UmbracoDocumentTypes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.3.3.1\lib\Escc.EastSussexGovUK.UmbracoDocumentTypes.dll</HintPath>
+      <HintPath>..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.3.3.2\lib\Escc.EastSussexGovUK.UmbracoDocumentTypes.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.UmbracoViews, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Escc.EastSussexGovUK.UmbracoViews.3.4.1\lib\Escc.EastSussexGovUK.UmbracoViews.dll</HintPath>
+      <HintPath>..\packages\Escc.EastSussexGovUK.UmbracoViews.3.4.2\lib\Escc.EastSussexGovUK.UmbracoViews.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Exceptions.Soap">
       <HintPath>..\packages\Escc.Exceptions.Soap.1.0.0\lib\Escc.Exceptions.Soap.dll</HintPath>
@@ -122,13 +124,15 @@
     </Reference>
     <Reference Include="Escc.Home.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Escc.Home.Website.1.1.0\lib\Escc.Home.Website.dll</HintPath>
+      <HintPath>..\packages\Escc.Home.Website.1.1.1\lib\Escc.Home.Website.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.RubbishAndRecycling.SiteFinder.Website">
-      <HintPath>..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.1\lib\Escc.RubbishAndRecycling.SiteFinder.Website.dll</HintPath>
+    <Reference Include="Escc.RubbishAndRecycling.SiteFinder.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.2\lib\Escc.RubbishAndRecycling.SiteFinder.Website.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.Schools.TermDates.Website">
-      <HintPath>..\packages\Escc.Schools.TermDates.Website.1.0.0\lib\Escc.Schools.TermDates.Website.dll</HintPath>
+    <Reference Include="Escc.Schools.TermDates.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Escc.Schools.TermDates.Website.1.0.1\lib\Escc.Schools.TermDates.Website.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -136,15 +140,15 @@
     </Reference>
     <Reference Include="Escc.Umbraco.MediaSync, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Escc.Umbraco.MediaSync.1.1.0\lib\Escc.Umbraco.MediaSync.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.MediaSync.1.1.1\lib\Escc.Umbraco.MediaSync.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.MicrosoftCmsMigration, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.1\lib\Escc.Umbraco.MicrosoftCmsMigration.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.2\lib\Escc.Umbraco.MicrosoftCmsMigration.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.PropertyEditors, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Escc.Umbraco.PropertyEditors.2.1.1\lib\Escc.Umbraco.PropertyEditors.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.PropertyEditors.2.1.2\lib\Escc.Umbraco.PropertyEditors.dll</HintPath>
     </Reference>
     <Reference Include="Examine, Version=0.1.57.2941, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -453,7 +457,6 @@
     <Content Include="css\TinyMCE-StyleSelector-Headings.css" />
     <Content Include="css\Web.config" />
     <Content Include="Config\uMediaSync.config" />
-    <Content Include="App_Plugins\OpeningSoon\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.TwitterScriptPropertyEditor\package.manifest" />
@@ -461,6 +464,7 @@
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PhonePropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.BooleanPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\OpeningSoon\package.manifest" />
     <None Include="css\Web.example.config" />
     <None Include="Escc.EastSussexGovUK.Umbraco.csproj.xslt">
       <SubType>Designer</SubType>
@@ -544,10 +548,6 @@
       <Project>{1426fef0-23dc-4c23-ae15-67f2527bd741}</Project>
       <Name>EsccWebTeam.EastSussexGovUK</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Escc.Egms\EsccWebTeam.Egms.csproj">
-      <Project>{78083dcb-b12f-4950-86c5-3a844d8604f3}</Project>
-      <Name>EsccWebTeam.Egms</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Escc.HouseStyle\EsccWebTeam.HouseStyle.csproj">
       <Project>{1c429378-dbf2-4af7-88ac-c059aa163682}</Project>
       <Name>EsccWebTeam.HouseStyle</Name>
@@ -566,19 +566,6 @@
     <Content Include="Views\Partials\Grid\Bootstrap3.cshtml" />
     <Content Include="Views\Partials\Grid\Bootstrap2.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Alerts.cshtml" />
-    <Content Include="Views\Task.cshtml" />
-    <Content Include="Views\Partials\_LocationOpeningTimes.cshtml" />
-    <Content Include="Views\Partials\_LocationJsonLD.cshtml" />
-    <Content Include="Views\Partials\_LocationIsOpen.cshtml" />
-    <Content Include="Views\Location.cshtml" />
-    <Content Include="Views\Landing.cshtml" />
-    <Content Include="Views\GuideStep.cshtml" />
-    <Content Include="Views\Guide.cshtml" />
-    <Content Include="Views\HomePageItems.cshtml" />
-    <Content Include="Views\HomePage.cshtml" />
-    <Content Include="Views\HoldingPage.cshtml" />
-    <Content Include="Views\_HomePageJobSearch.cshtml" />
     <Content Include="Views\Layouts\Plain.cshtml" />
     <Content Include="Views\Layouts\Mobile.cshtml" />
     <Content Include="Views\Layouts\FullScreen.cshtml" />
@@ -593,6 +580,19 @@
     <Content Include="Views\Layouts\_Facebook.cshtml" />
     <Content Include="Views\Layouts\_EastSussex1Space.cshtml" />
     <Content Include="Views\Layouts\_ContentExperiment.cshtml" />
+    <Content Include="Views\Alerts.cshtml" />
+    <Content Include="Views\HomePageItems.cshtml" />
+    <Content Include="Views\HomePage.cshtml" />
+    <Content Include="Views\HoldingPage.cshtml" />
+    <Content Include="Views\_HomePageJobSearch.cshtml" />
+    <Content Include="Views\Task.cshtml" />
+    <Content Include="Views\Partials\_LocationOpeningTimes.cshtml" />
+    <Content Include="Views\Partials\_LocationJsonLD.cshtml" />
+    <Content Include="Views\Partials\_LocationIsOpen.cshtml" />
+    <Content Include="Views\Location.cshtml" />
+    <Content Include="Views\Landing.cshtml" />
+    <Content Include="Views\GuideStep.cshtml" />
+    <Content Include="Views\Guide.cshtml" />
     <Content Include="Views\StandardTopicPage.cshtml" />
     <Content Include="Views\StandardLandingPage.cshtml" />
     <Content Include="Views\StandardDownloadPage.cshtml" />
@@ -631,33 +631,33 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\UmbracoCms.7.2.1\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.2.1\build\UmbracoCms.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.3\build\Escc.DocumentsInNewWindow.js.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.DocumentsInNewWindow.js.1.0.3\build\Escc.DocumentsInNewWindow.js.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Statistics.js.1.0.3\build\Escc.Statistics.js.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Statistics.js.1.0.3\build\Escc.Statistics.js.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Alerts.Website.1.4.1\build\Escc.Alerts.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Alerts.Website.1.4.1\build\Escc.Alerts.Website.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.1\build\Escc.Umbraco.MicrosoftCmsMigration.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.1\build\Escc.Umbraco.MicrosoftCmsMigration.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Schools.TermDates.Website.1.0.0\build\Escc.Schools.TermDates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Schools.TermDates.Website.1.0.0\build\Escc.Schools.TermDates.Website.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.1.1.0\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.1.1.0\build\Escc.Umbraco.MediaSync.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.1\build\Escc.RubbishAndRecycling.SiteFinder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.1\build\Escc.RubbishAndRecycling.SiteFinder.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.CustomerFocusTemplates.Website.1.1.1\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CustomerFocusTemplates.Website.1.1.1\build\Escc.CustomerFocusTemplates.Website.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Home.Website.1.1.0\build\Escc.Home.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Home.Website.1.1.0\build\Escc.Home.Website.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.UmbracoViews.3.4.1\build\Escc.EastSussexGovUK.UmbracoViews.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.UmbracoViews.3.4.1\build\Escc.EastSussexGovUK.UmbracoViews.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.CoreLegacyTemplates.Website.0.15.0\build\Escc.CoreLegacyTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CoreLegacyTemplates.Website.0.15.0\build\Escc.CoreLegacyTemplates.Website.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.3.3.1\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.3.3.1\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.2.1.1\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.2.1.1\build\Escc.Umbraco.PropertyEditors.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.1.1.1\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.1.1.1\build\Escc.Umbraco.MediaSync.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Statistics.js.1.0.4\build\Escc.Statistics.js.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Statistics.js.1.0.4\build\Escc.Statistics.js.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.2\build\Escc.Umbraco.MicrosoftCmsMigration.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.2\build\Escc.Umbraco.MicrosoftCmsMigration.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Schools.TermDates.Website.1.0.1\build\Escc.Schools.TermDates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Schools.TermDates.Website.1.0.1\build\Escc.Schools.TermDates.Website.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.2\build\Escc.RubbishAndRecycling.SiteFinder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.2\build\Escc.RubbishAndRecycling.SiteFinder.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.3.3.2\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.3.3.2\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.2.1.2\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.2.1.2\build\Escc.Umbraco.PropertyEditors.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.UmbracoViews.3.4.2\build\Escc.EastSussexGovUK.UmbracoViews.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.UmbracoViews.3.4.2\build\Escc.EastSussexGovUK.UmbracoViews.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Alerts.Website.1.4.2\build\Escc.Alerts.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Alerts.Website.1.4.2\build\Escc.Alerts.Website.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Home.Website.1.1.1\build\Escc.Home.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Home.Website.1.1.1\build\Escc.Home.Website.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.CustomerFocusTemplates.Website.1.1.2\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CustomerFocusTemplates.Website.1.1.2\build\Escc.CustomerFocusTemplates.Website.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.CoreLegacyTemplates.Website.0.16.0\build\Escc.CoreLegacyTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CoreLegacyTemplates.Website.0.16.0\build\Escc.CoreLegacyTemplates.Website.targets'))" />
   </Target>
-  <Import Project="..\packages\Escc.DocumentsInNewWindow.js.1.0.3\build\Escc.DocumentsInNewWindow.js.targets" Condition="Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.3\build\Escc.DocumentsInNewWindow.js.targets')" />
-  <Import Project="..\packages\Escc.Statistics.js.1.0.3\build\Escc.Statistics.js.targets" Condition="Exists('..\packages\Escc.Statistics.js.1.0.3\build\Escc.Statistics.js.targets')" />
-  <Import Project="..\packages\Escc.Alerts.Website.1.4.1\build\Escc.Alerts.Website.targets" Condition="Exists('..\packages\Escc.Alerts.Website.1.4.1\build\Escc.Alerts.Website.targets')" />
-  <Import Project="..\packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.1\build\Escc.Umbraco.MicrosoftCmsMigration.targets" Condition="Exists('..\packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.1\build\Escc.Umbraco.MicrosoftCmsMigration.targets')" />
-  <Import Project="..\packages\Escc.Schools.TermDates.Website.1.0.0\build\Escc.Schools.TermDates.Website.targets" Condition="Exists('..\packages\Escc.Schools.TermDates.Website.1.0.0\build\Escc.Schools.TermDates.Website.targets')" />
-  <Import Project="..\packages\Escc.Umbraco.MediaSync.1.1.0\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.1.1.0\build\Escc.Umbraco.MediaSync.targets')" />
-  <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.1\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.1\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
-  <Import Project="..\packages\Escc.CustomerFocusTemplates.Website.1.1.1\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('..\packages\Escc.CustomerFocusTemplates.Website.1.1.1\build\Escc.CustomerFocusTemplates.Website.targets')" />
-  <Import Project="..\packages\Escc.Home.Website.1.1.0\build\Escc.Home.Website.targets" Condition="Exists('..\packages\Escc.Home.Website.1.1.0\build\Escc.Home.Website.targets')" />
-  <Import Project="..\packages\Escc.EastSussexGovUK.UmbracoViews.3.4.1\build\Escc.EastSussexGovUK.UmbracoViews.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.UmbracoViews.3.4.1\build\Escc.EastSussexGovUK.UmbracoViews.targets')" />
-  <Import Project="..\packages\Escc.CoreLegacyTemplates.Website.0.15.0\build\Escc.CoreLegacyTemplates.Website.targets" Condition="Exists('..\packages\Escc.CoreLegacyTemplates.Website.0.15.0\build\Escc.CoreLegacyTemplates.Website.targets')" />
-  <Import Project="..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.3.3.1\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.3.3.1\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" />
-  <Import Project="..\packages\Escc.Umbraco.PropertyEditors.2.1.1\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.2.1.1\build\Escc.Umbraco.PropertyEditors.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.MediaSync.1.1.1\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.1.1.1\build\Escc.Umbraco.MediaSync.targets')" />
+  <Import Project="..\packages\Escc.Statistics.js.1.0.4\build\Escc.Statistics.js.targets" Condition="Exists('..\packages\Escc.Statistics.js.1.0.4\build\Escc.Statistics.js.targets')" />
+  <Import Project="..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets" Condition="Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.2\build\Escc.Umbraco.MicrosoftCmsMigration.targets" Condition="Exists('..\packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.2\build\Escc.Umbraco.MicrosoftCmsMigration.targets')" />
+  <Import Project="..\packages\Escc.Schools.TermDates.Website.1.0.1\build\Escc.Schools.TermDates.Website.targets" Condition="Exists('..\packages\Escc.Schools.TermDates.Website.1.0.1\build\Escc.Schools.TermDates.Website.targets')" />
+  <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.2\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.2\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
+  <Import Project="..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.3.3.2\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.3.3.2\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.PropertyEditors.2.1.2\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.2.1.2\build\Escc.Umbraco.PropertyEditors.targets')" />
+  <Import Project="..\packages\Escc.EastSussexGovUK.UmbracoViews.3.4.2\build\Escc.EastSussexGovUK.UmbracoViews.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.UmbracoViews.3.4.2\build\Escc.EastSussexGovUK.UmbracoViews.targets')" />
+  <Import Project="..\packages\Escc.Alerts.Website.1.4.2\build\Escc.Alerts.Website.targets" Condition="Exists('..\packages\Escc.Alerts.Website.1.4.2\build\Escc.Alerts.Website.targets')" />
+  <Import Project="..\packages\Escc.Home.Website.1.1.1\build\Escc.Home.Website.targets" Condition="Exists('..\packages\Escc.Home.Website.1.1.1\build\Escc.Home.Website.targets')" />
+  <Import Project="..\packages\Escc.CustomerFocusTemplates.Website.1.1.2\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('..\packages\Escc.CustomerFocusTemplates.Website.1.1.2\build\Escc.CustomerFocusTemplates.Website.targets')" />
+  <Import Project="..\packages\Escc.CoreLegacyTemplates.Website.0.16.0\build\Escc.CoreLegacyTemplates.Website.targets" Condition="Exists('..\packages\Escc.CoreLegacyTemplates.Website.0.16.0\build\Escc.CoreLegacyTemplates.Website.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
