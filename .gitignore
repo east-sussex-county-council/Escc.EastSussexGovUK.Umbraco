@@ -44,7 +44,7 @@ packages
 [Aa]pp_Browsers/
 [Aa]pp_Plugins/
 [Ii]nstall/
-[Cc]onfig/Splashes/
+*/[Cc]onfig/Splashes/
 [Dd]efault.aspx
 [Vv]iews/[Ww]eb.config.transform
 [Mm]edia
@@ -54,7 +54,7 @@ dummy.txt
 
 # Files imported by ESCC NuGet packages
 *.css
-Views/*
+*/Views/*
 img
 *.js
-MicrosoftCmsMigration
+*/MicrosoftCmsMigration/*

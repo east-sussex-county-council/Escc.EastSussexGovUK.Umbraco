@@ -40,25 +40,23 @@ DownloadProjectIfMissing $parentFolderOfThisScript "Escc.EastSussexGovUK"
 DownloadProjectIfMissing $parentFolderOfThisScript "Escc.NavigationControls"
 DownloadProjectIfMissing $parentFolderOfThisScript "Escc.Data.Web"
 DownloadProjectIfMissing $parentFolderOfThisScript "Escc.Data.Xml"
-DownloadProjectIfMissing $parentFolderOfThisScript "Escc.Egms"
 DownloadProjectIfMissing $parentFolderOfThisScript "Escc.HouseStyle"
 DownloadProjectIfMissing $parentFolderOfThisScript "Escc.Feeds"
 DownloadProjectIfMissing $parentFolderOfThisScript "Escc.Data.ActiveDirectory"
 DownloadProjectIfMissing $parentFolderOfThisScript "Escc.Cms"
 DownloadProjectIfMissing $parentFolderOfThisScript "Escc.Elibrary"
-NuGetRestoreForProject $parentFolderOfThisScript "Escc.Egms"
 NuGetRestoreForProject $parentFolderOfThisScript "Escc.Cms"
 
 EnableDotNet40InIIS
 CreateApplicationPool $projectName
 CreateSSLCertificate $projectName
-CreateWebsite $projectName $pathOfThisScript
+CreateWebsite $projectName "$pathOfThisScript\$projectName"
 CreateHTTPSBinding $projectName
 RemoveHTTPBindings $projectName
 CreateVirtualDirectory $projectName "Escc.EastSussexGovUK" "$parentFolderOfThisScript\Escc.EastSussexGovUK" true
 
-CopyConfig "css/web.example.config" "css/web.config"
-CopyConfig "js/web.example.config" "js/web.config"
+CopyConfig "$pathOfThisScript\css\web.example.config" "css\web.config"
+CopyConfig "$pathOfThisScript\js\web.example.config" "js\web.config"
 
 Write-Host
 Write-Host "Done." -ForegroundColor "Green"

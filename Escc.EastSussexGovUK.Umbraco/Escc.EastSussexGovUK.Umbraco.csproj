@@ -45,154 +45,154 @@
   <ItemGroup>
     <Reference Include="AST.AzureBlobStorage, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\AST.AzureMediaSync.1.1.2\lib\AST.AzureBlobStorage.dll</HintPath>
+      <HintPath>..\packages\AST.AzureMediaSync.1.1.2\lib\AST.AzureBlobStorage.dll</HintPath>
     </Reference>
     <Reference Include="AutoMapper, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\AutoMapper.3.0.0\lib\net40\AutoMapper.dll</HintPath>
+      <HintPath>..\packages\AutoMapper.3.0.0\lib\net40\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="AutoMapper.Net4, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\AutoMapper.3.0.0\lib\net40\AutoMapper.Net4.dll</HintPath>
+      <HintPath>..\packages\AutoMapper.3.0.0\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
     <Reference Include="businesslogic, Version=1.0.5462.37510, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\businesslogic.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Core.7.2.1\lib\businesslogic.dll</HintPath>
     </Reference>
     <Reference Include="ClientDependency.Core, Version=1.9.9.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\ClientDependency.1.9.9.1\lib\net45\ClientDependency.Core.dll</HintPath>
+      <HintPath>..\packages\ClientDependency.1.9.9.1\lib\net45\ClientDependency.Core.dll</HintPath>
     </Reference>
     <Reference Include="ClientDependency.Core.Mvc, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\ClientDependency-Mvc.1.8.0.0\lib\net45\ClientDependency.Core.Mvc.dll</HintPath>
+      <HintPath>..\packages\ClientDependency-Mvc.1.8.0.0\lib\net45\ClientDependency.Core.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="cms, Version=1.0.5462.37511, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\cms.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Core.7.2.1\lib\cms.dll</HintPath>
     </Reference>
     <Reference Include="controls, Version=1.0.5462.37515, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\controls.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Core.7.2.1\lib\controls.dll</HintPath>
     </Reference>
     <Reference Include="CookComputing.XmlRpcV2, Version=2.5.0.0, Culture=neutral, PublicKeyToken=a7d6e17aa302004d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\xmlrpcnet.2.5.0\lib\net20\CookComputing.XmlRpcV2.dll</HintPath>
+      <HintPath>..\packages\xmlrpcnet.2.5.0\lib\net20\CookComputing.XmlRpcV2.dll</HintPath>
     </Reference>
     <Reference Include="Escc.AddressAndPersonalDetails, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.AddressAndPersonalDetails.1.0.0\lib\Escc.AddressAndPersonalDetails.dll</HintPath>
+      <HintPath>..\packages\Escc.AddressAndPersonalDetails.1.0.0\lib\Escc.AddressAndPersonalDetails.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Alerts.Website">
-      <HintPath>packages\Escc.Alerts.Website.1.4.1\lib\Escc.Alerts.Website.dll</HintPath>
+      <HintPath>..\packages\Escc.Alerts.Website.1.4.1\lib\Escc.Alerts.Website.dll</HintPath>
     </Reference>
     <Reference Include="Escc.ClientDependencyFramework">
-      <HintPath>packages\Escc.ClientDependencyFramework.Umbraco.1.0.3\lib\Escc.ClientDependencyFramework.dll</HintPath>
+      <HintPath>..\packages\Escc.ClientDependencyFramework.Umbraco.1.0.3\lib\Escc.ClientDependencyFramework.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Content.Migration.Domain">
-      <HintPath>packages\Escc.Content.Migration.UmbracoApi.1.0.1\lib\Escc.Content.Migration.Domain.dll</HintPath>
+      <HintPath>..\packages\Escc.Content.Migration.UmbracoApi.1.0.1\lib\Escc.Content.Migration.Domain.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Content.Migration.UmbracoApi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.Content.Migration.UmbracoApi.1.0.1\lib\Escc.Content.Migration.UmbracoApi.dll</HintPath>
+      <HintPath>..\packages\Escc.Content.Migration.UmbracoApi.1.0.1\lib\Escc.Content.Migration.UmbracoApi.dll</HintPath>
     </Reference>
     <Reference Include="Escc.CoreLegacyTemplates.Website">
-      <HintPath>packages\Escc.CoreLegacyTemplates.Website.0.15.0\lib\Escc.CoreLegacyTemplates.Website.dll</HintPath>
+      <HintPath>..\packages\Escc.CoreLegacyTemplates.Website.0.15.0\lib\Escc.CoreLegacyTemplates.Website.dll</HintPath>
     </Reference>
     <Reference Include="Escc.CustomerFocusTemplates.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.CustomerFocusTemplates.Website.1.1.0\lib\net45\Escc.CustomerFocusTemplates.Website.dll</HintPath>
+      <HintPath>..\packages\Escc.CustomerFocusTemplates.Website.1.1.1\lib\net45\Escc.CustomerFocusTemplates.Website.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.UmbracoDocumentTypes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.3.3.1\lib\Escc.EastSussexGovUK.UmbracoDocumentTypes.dll</HintPath>
+      <HintPath>..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.3.3.1\lib\Escc.EastSussexGovUK.UmbracoDocumentTypes.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.UmbracoViews, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.EastSussexGovUK.UmbracoViews.3.4.1\lib\Escc.EastSussexGovUK.UmbracoViews.dll</HintPath>
+      <HintPath>..\packages\Escc.EastSussexGovUK.UmbracoViews.3.4.1\lib\Escc.EastSussexGovUK.UmbracoViews.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Exceptions.Soap">
-      <HintPath>packages\Escc.Exceptions.Soap.1.0.0\lib\Escc.Exceptions.Soap.dll</HintPath>
+      <HintPath>..\packages\Escc.Exceptions.Soap.1.0.0\lib\Escc.Exceptions.Soap.dll</HintPath>
     </Reference>
     <Reference Include="Escc.FormControls.WebForms">
-      <HintPath>packages\Escc.FormControls.WebForms.1.0.0\lib\Escc.FormControls.WebForms.dll</HintPath>
+      <HintPath>..\packages\Escc.FormControls.WebForms.1.0.0\lib\Escc.FormControls.WebForms.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Geo">
-      <HintPath>packages\Escc.Geo.1.0.0.0\lib\Escc.Geo.dll</HintPath>
+      <HintPath>..\packages\Escc.Geo.1.0.0.0\lib\Escc.Geo.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Home.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.Home.Website.1.1.0\lib\Escc.Home.Website.dll</HintPath>
+      <HintPath>..\packages\Escc.Home.Website.1.1.0\lib\Escc.Home.Website.dll</HintPath>
     </Reference>
     <Reference Include="Escc.RubbishAndRecycling.SiteFinder.Website">
-      <HintPath>packages\Escc.RubbishAndRecycling.SiteFinder.1.0.1\lib\Escc.RubbishAndRecycling.SiteFinder.Website.dll</HintPath>
+      <HintPath>..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.1\lib\Escc.RubbishAndRecycling.SiteFinder.Website.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Schools.TermDates.Website">
-      <HintPath>packages\Escc.Schools.TermDates.Website.1.0.0\lib\Escc.Schools.TermDates.Website.dll</HintPath>
+      <HintPath>..\packages\Escc.Schools.TermDates.Website.1.0.0\lib\Escc.Schools.TermDates.Website.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.Umbraco.1.3.0\lib\Escc.Umbraco.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.1.3.0\lib\Escc.Umbraco.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.MediaSync, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.Umbraco.MediaSync.1.1.0\lib\Escc.Umbraco.MediaSync.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.MediaSync.1.1.0\lib\Escc.Umbraco.MediaSync.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.MicrosoftCmsMigration, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.1\lib\Escc.Umbraco.MicrosoftCmsMigration.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.1\lib\Escc.Umbraco.MicrosoftCmsMigration.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.PropertyEditors, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.Umbraco.PropertyEditors.2.1.1-pre\lib\Escc.Umbraco.PropertyEditors.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.PropertyEditors.2.1.1\lib\Escc.Umbraco.PropertyEditors.dll</HintPath>
     </Reference>
     <Reference Include="Examine, Version=0.1.57.2941, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Examine.0.1.57.2941\lib\Examine.dll</HintPath>
+      <HintPath>..\packages\Examine.0.1.57.2941\lib\Examine.dll</HintPath>
     </Reference>
     <Reference Include="Exceptionless">
-      <HintPath>packages\Exceptionless.1.5.2121\lib\net45\Exceptionless.dll</HintPath>
+      <HintPath>..\packages\Exceptionless.1.5.2121\lib\net45\Exceptionless.dll</HintPath>
     </Reference>
     <Reference Include="Exceptionless.Models">
-      <HintPath>packages\Exceptionless.1.5.2121\lib\net45\Exceptionless.Models.dll</HintPath>
+      <HintPath>..\packages\Exceptionless.1.5.2121\lib\net45\Exceptionless.Models.dll</HintPath>
     </Reference>
     <Reference Include="Exceptionless.Mvc">
-      <HintPath>packages\Exceptionless.Mvc.1.5.2121\lib\net45\Exceptionless.Mvc.dll</HintPath>
+      <HintPath>..\packages\Exceptionless.Mvc.1.5.2121\lib\net45\Exceptionless.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="ExCSS">
-      <HintPath>packages\ExCSS.2.0.5\lib\net45\ExCSS.dll</HintPath>
+      <HintPath>..\packages\ExCSS.2.0.5\lib\net45\ExCSS.dll</HintPath>
     </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.4.9.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="ImageProcessor, Version=1.9.5.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\ImageProcessor.1.9.5.0\lib\ImageProcessor.dll</HintPath>
+      <HintPath>..\packages\ImageProcessor.1.9.5.0\lib\ImageProcessor.dll</HintPath>
     </Reference>
     <Reference Include="ImageProcessor.Web, Version=3.3.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\ImageProcessor.Web.3.3.1.0\lib\net45\ImageProcessor.Web.dll</HintPath>
+      <HintPath>..\packages\ImageProcessor.Web.3.3.1.0\lib\net45\ImageProcessor.Web.dll</HintPath>
     </Reference>
     <Reference Include="interfaces, Version=1.0.5462.37501, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\interfaces.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Core.7.2.1\lib\interfaces.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\log4net.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Core.7.2.1\lib\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Lucene.Net, Version=2.9.4.1, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Lucene.Net.2.9.4.1\lib\net40\Lucene.Net.dll</HintPath>
+      <HintPath>..\packages\Lucene.Net.2.9.4.1\lib\net40\Lucene.Net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ApplicationBlocks.Data, Version=1.0.1559.20655, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Core.7.2.1\lib\Microsoft.ApplicationBlocks.Data.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ApplicationBlocks.ExceptionManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -202,80 +202,80 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Data.Edm, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Microsoft.Data.Edm.5.6.2\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.6.2\lib\net40\Microsoft.Data.Edm.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.OData, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Microsoft.Data.OData.5.6.2\lib\net40\Microsoft.Data.OData.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Data.OData.5.6.2\lib\net40\Microsoft.Data.OData.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Services.Client, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Microsoft.Data.Services.Client.5.6.2\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.6.2\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\Microsoft.Web.Helpers.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Core.7.2.1\lib\Microsoft.Web.Helpers.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes">
-      <HintPath>packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.1\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.1\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Configuration">
-      <HintPath>packages\Microsoft.WindowsAzure.ConfigurationManager.1.8.0.0\lib\net35-full\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.1.8.0.0\lib\net35-full\Microsoft.WindowsAzure.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.ServiceRuntime, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Microsoft.WindowsAzure.ServiceRuntime.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage">
-      <HintPath>packages\WindowsAzure.Storage.4.3.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+      <HintPath>..\packages\WindowsAzure.Storage.4.3.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
     <Reference Include="MiniProfiler, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\MiniProfiler.2.1.0\lib\net40\MiniProfiler.dll</HintPath>
+      <HintPath>..\packages\MiniProfiler.2.1.0\lib\net40\MiniProfiler.dll</HintPath>
     </Reference>
     <Reference Include="Moriyama.Cloud, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Moriyama.Cloud.1.0.1\lib\Moriyama.Cloud.dll</HintPath>
+      <HintPath>..\packages\Moriyama.Cloud.1.0.1\lib\Moriyama.Cloud.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\MySql.Data.6.6.5\lib\net40\MySql.Data.dll</HintPath>
+      <HintPath>..\packages\MySql.Data.6.6.5\lib\net40\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Our.Umbraco.PropertyEditorConverters, Version=2.1.5.35, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Our.Umbraco.CoreValueConverters.2.1.5\lib\net45\Our.Umbraco.PropertyEditorConverters.dll</HintPath>
+      <HintPath>..\packages\Our.Umbraco.CoreValueConverters.2.1.5\lib\net45\Our.Umbraco.PropertyEditorConverters.dll</HintPath>
     </Reference>
     <Reference Include="SQLCE4Umbraco, Version=1.0.5462.37514, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\SQLCE4Umbraco.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Core.7.2.1\lib\SQLCE4Umbraco.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Services.Client" />
     <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\System.Data.SqlServerCe.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Core.7.2.1\lib\System.Data.SqlServerCe.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.SqlServerCe.Entity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\System.Data.SqlServerCe.Entity.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Core.7.2.1\lib\System.Data.SqlServerCe.Entity.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Spatial, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\System.Spatial.5.6.2\lib\net40\System.Spatial.dll</HintPath>
+      <HintPath>..\packages\System.Spatial.5.6.2\lib\net40\System.Spatial.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -284,35 +284,35 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Helpers">
-      <HintPath>packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Http">
-      <HintPath>packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Http.WebHost">
-      <HintPath>packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Mvc">
-      <HintPath>packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Razor">
-      <HintPath>packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.WebPages">
-      <HintPath>packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.WebPages.Deployment">
-      <HintPath>packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.WebPages.Razor">
-      <HintPath>packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml.Linq" />
@@ -330,54 +330,53 @@
     </Reference>
     <Reference Include="TidyNet, Version=1.0.0.0, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\TidyNet.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Core.7.2.1\lib\TidyNet.dll</HintPath>
     </Reference>
     <Reference Include="umbraco, Version=1.0.5462.37518, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\umbraco.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Core.7.2.1\lib\umbraco.dll</HintPath>
     </Reference>
     <Reference Include="Umbraco.Core, Version=1.0.5462.37503, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\Umbraco.Core.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Core.7.2.1\lib\Umbraco.Core.dll</HintPath>
     </Reference>
     <Reference Include="umbraco.DataLayer, Version=1.0.5462.37509, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\umbraco.DataLayer.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Core.7.2.1\lib\umbraco.DataLayer.dll</HintPath>
     </Reference>
     <Reference Include="umbraco.editorControls, Version=1.0.5462.37523, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\umbraco.editorControls.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Core.7.2.1\lib\umbraco.editorControls.dll</HintPath>
     </Reference>
     <Reference Include="Umbraco.Inception, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.Umbraco.Inception.2.3.0\lib\net45\Umbraco.Inception.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.Inception.2.3.0\lib\net45\Umbraco.Inception.dll</HintPath>
     </Reference>
     <Reference Include="umbraco.MacroEngines, Version=1.0.5462.37525, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\umbraco.MacroEngines.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Core.7.2.1\lib\umbraco.MacroEngines.dll</HintPath>
     </Reference>
     <Reference Include="umbraco.providers, Version=1.0.5462.37516, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\umbraco.providers.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Core.7.2.1\lib\umbraco.providers.dll</HintPath>
     </Reference>
     <Reference Include="Umbraco.Web.UI, Version=1.0.5462.37527, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\Umbraco.Web.UI.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Core.7.2.1\lib\Umbraco.Web.UI.dll</HintPath>
     </Reference>
     <Reference Include="UmbracoExamine, Version=0.7.0.37513, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\UmbracoExamine.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Core.7.2.1\lib\UmbracoExamine.dll</HintPath>
     </Reference>
     <Reference Include="UrlRewritingNet.UrlRewriter, Version=2.0.60829.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\UmbracoCms.Core.7.2.1\lib\UrlRewritingNet.UrlRewriter.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Core.7.2.1\lib\UrlRewritingNet.UrlRewriter.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include=".gitignore" />
     <Content Include="apple-touch-icon-114x114.png" />
     <Content Include="apple-touch-icon-57x57.png" />
     <Content Include="apple-touch-icon-72x72.png" />
@@ -430,8 +429,6 @@
     <Content Include="Config\BaseRestExtensions.config" />
     <Content Include="Config\applications.config" />
     <Content Include="Config\404handlers.config" />
-    <None Include="app-setup-dev.cmd" />
-    <None Include="app-setup-dev.ps1" />
     <Content Include="css\FormDownloadPage\form-download.css" />
     <Content Include="css\guide-step-large.css" />
     <Content Include="css\guide-step-medium.css" />
@@ -531,21 +528,19 @@
     <Content Include="img\web.config" />
     <None Include="js\Web.example.config" />
     <Content Include="js\Web.config" />
-    <None Include="LICENSE.md" />
-    <None Include="README.md" />
     <None Include="packages.config" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Escc.Data.Web\EsccWebTeam.Data.Web.csproj">
+    <ProjectReference Include="..\..\Escc.Data.Web\EsccWebTeam.Data.Web.csproj">
       <Project>{9c56d3dd-4952-4a1b-9ad6-907a1142872f}</Project>
       <Name>EsccWebTeam.Data.Web</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Escc.Data.Xml\EsccWebTeam.Data.Xml.csproj">
+    <ProjectReference Include="..\..\Escc.Data.Xml\EsccWebTeam.Data.Xml.csproj">
       <Project>{86b2725c-9c37-44a4-93c7-f5122afa0809}</Project>
       <Name>EsccWebTeam.Data.Xml</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Escc.EastSussexGovUK\EsccWebTeam.EastSussexGovUK.csproj">
+    <ProjectReference Include="..\..\Escc.EastSussexGovUK\EsccWebTeam.EastSussexGovUK.csproj">
       <Project>{1426fef0-23dc-4c23-ae15-67f2527bd741}</Project>
       <Name>EsccWebTeam.EastSussexGovUK</Name>
     </ProjectReference>
@@ -553,7 +548,7 @@
       <Project>{78083dcb-b12f-4950-86c5-3a844d8604f3}</Project>
       <Name>EsccWebTeam.Egms</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Escc.HouseStyle\EsccWebTeam.HouseStyle.csproj">
+    <ProjectReference Include="..\..\Escc.HouseStyle\EsccWebTeam.HouseStyle.csproj">
       <Project>{1c429378-dbf2-4af7-88ac-c059aa163682}</Project>
       <Name>EsccWebTeam.HouseStyle</Name>
     </ProjectReference>
@@ -630,39 +625,39 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <Import Project="packages\UmbracoCms.7.2.1\build\UmbracoCms.targets" Condition="Exists('packages\UmbracoCms.7.2.1\build\UmbracoCms.targets')" />
+  <Import Project="..\packages\UmbracoCms.7.2.1\build\UmbracoCms.targets" Condition="Exists('..\packages\UmbracoCms.7.2.1\build\UmbracoCms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('packages\UmbracoCms.7.2.1\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\UmbracoCms.7.2.1\build\UmbracoCms.targets'))" />
-    <Error Condition="!Exists('packages\Escc.DocumentsInNewWindow.js.1.0.3\build\Escc.DocumentsInNewWindow.js.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.DocumentsInNewWindow.js.1.0.3\build\Escc.DocumentsInNewWindow.js.targets'))" />
-    <Error Condition="!Exists('packages\Escc.Statistics.js.1.0.3\build\Escc.Statistics.js.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Statistics.js.1.0.3\build\Escc.Statistics.js.targets'))" />
-    <Error Condition="!Exists('packages\Escc.Alerts.Website.1.4.1\build\Escc.Alerts.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Alerts.Website.1.4.1\build\Escc.Alerts.Website.targets'))" />
-    <Error Condition="!Exists('packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.1\build\Escc.Umbraco.MicrosoftCmsMigration.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.1\build\Escc.Umbraco.MicrosoftCmsMigration.targets'))" />
-    <Error Condition="!Exists('packages\Escc.Schools.TermDates.Website.1.0.0\build\Escc.Schools.TermDates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Schools.TermDates.Website.1.0.0\build\Escc.Schools.TermDates.Website.targets'))" />
-    <Error Condition="!Exists('packages\Escc.Umbraco.MediaSync.1.1.0\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Umbraco.MediaSync.1.1.0\build\Escc.Umbraco.MediaSync.targets'))" />
-    <Error Condition="!Exists('packages\Escc.RubbishAndRecycling.SiteFinder.1.0.1\build\Escc.RubbishAndRecycling.SiteFinder.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.RubbishAndRecycling.SiteFinder.1.0.1\build\Escc.RubbishAndRecycling.SiteFinder.targets'))" />
-    <Error Condition="!Exists('packages\Escc.CustomerFocusTemplates.Website.1.1.0\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CustomerFocusTemplates.Website.1.1.0\build\Escc.CustomerFocusTemplates.Website.targets'))" />
-    <Error Condition="!Exists('packages\Escc.Home.Website.1.1.0\build\Escc.Home.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Home.Website.1.1.0\build\Escc.Home.Website.targets'))" />
-    <Error Condition="!Exists('packages\Escc.EastSussexGovUK.UmbracoViews.3.4.1\build\Escc.EastSussexGovUK.UmbracoViews.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.EastSussexGovUK.UmbracoViews.3.4.1\build\Escc.EastSussexGovUK.UmbracoViews.targets'))" />
-    <Error Condition="!Exists('packages\Escc.CoreLegacyTemplates.Website.0.15.0\build\Escc.CoreLegacyTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.CoreLegacyTemplates.Website.0.15.0\build\Escc.CoreLegacyTemplates.Website.targets'))" />
-    <Error Condition="!Exists('packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.3.3.1\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.3.3.1\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets'))" />
-    <Error Condition="!Exists('packages\Escc.Umbraco.PropertyEditors.2.1.1-pre\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Umbraco.PropertyEditors.2.1.1-pre\build\Escc.Umbraco.PropertyEditors.targets'))" />
+    <Error Condition="!Exists('..\packages\UmbracoCms.7.2.1\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.2.1\build\UmbracoCms.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.3\build\Escc.DocumentsInNewWindow.js.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.DocumentsInNewWindow.js.1.0.3\build\Escc.DocumentsInNewWindow.js.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Statistics.js.1.0.3\build\Escc.Statistics.js.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Statistics.js.1.0.3\build\Escc.Statistics.js.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Alerts.Website.1.4.1\build\Escc.Alerts.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Alerts.Website.1.4.1\build\Escc.Alerts.Website.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.1\build\Escc.Umbraco.MicrosoftCmsMigration.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.1\build\Escc.Umbraco.MicrosoftCmsMigration.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Schools.TermDates.Website.1.0.0\build\Escc.Schools.TermDates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Schools.TermDates.Website.1.0.0\build\Escc.Schools.TermDates.Website.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.1.1.0\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.1.1.0\build\Escc.Umbraco.MediaSync.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.1\build\Escc.RubbishAndRecycling.SiteFinder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.1\build\Escc.RubbishAndRecycling.SiteFinder.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.CustomerFocusTemplates.Website.1.1.1\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CustomerFocusTemplates.Website.1.1.1\build\Escc.CustomerFocusTemplates.Website.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Home.Website.1.1.0\build\Escc.Home.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Home.Website.1.1.0\build\Escc.Home.Website.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.UmbracoViews.3.4.1\build\Escc.EastSussexGovUK.UmbracoViews.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.UmbracoViews.3.4.1\build\Escc.EastSussexGovUK.UmbracoViews.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.CoreLegacyTemplates.Website.0.15.0\build\Escc.CoreLegacyTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CoreLegacyTemplates.Website.0.15.0\build\Escc.CoreLegacyTemplates.Website.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.3.3.1\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.3.3.1\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.2.1.1\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.2.1.1\build\Escc.Umbraco.PropertyEditors.targets'))" />
   </Target>
-  <Import Project="packages\Escc.DocumentsInNewWindow.js.1.0.3\build\Escc.DocumentsInNewWindow.js.targets" Condition="Exists('packages\Escc.DocumentsInNewWindow.js.1.0.3\build\Escc.DocumentsInNewWindow.js.targets')" />
-  <Import Project="packages\Escc.Statistics.js.1.0.3\build\Escc.Statistics.js.targets" Condition="Exists('packages\Escc.Statistics.js.1.0.3\build\Escc.Statistics.js.targets')" />
-  <Import Project="packages\Escc.Alerts.Website.1.4.1\build\Escc.Alerts.Website.targets" Condition="Exists('packages\Escc.Alerts.Website.1.4.1\build\Escc.Alerts.Website.targets')" />
-  <Import Project="packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.1\build\Escc.Umbraco.MicrosoftCmsMigration.targets" Condition="Exists('packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.1\build\Escc.Umbraco.MicrosoftCmsMigration.targets')" />
-  <Import Project="packages\Escc.Schools.TermDates.Website.1.0.0\build\Escc.Schools.TermDates.Website.targets" Condition="Exists('packages\Escc.Schools.TermDates.Website.1.0.0\build\Escc.Schools.TermDates.Website.targets')" />
-  <Import Project="packages\Escc.Umbraco.MediaSync.1.1.0\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('packages\Escc.Umbraco.MediaSync.1.1.0\build\Escc.Umbraco.MediaSync.targets')" />
-  <Import Project="packages\Escc.RubbishAndRecycling.SiteFinder.1.0.1\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('packages\Escc.RubbishAndRecycling.SiteFinder.1.0.1\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
-  <Import Project="packages\Escc.CustomerFocusTemplates.Website.1.1.0\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('packages\Escc.CustomerFocusTemplates.Website.1.1.0\build\Escc.CustomerFocusTemplates.Website.targets')" />
-  <Import Project="packages\Escc.Home.Website.1.1.0\build\Escc.Home.Website.targets" Condition="Exists('packages\Escc.Home.Website.1.1.0\build\Escc.Home.Website.targets')" />
-  <Import Project="packages\Escc.EastSussexGovUK.UmbracoViews.3.4.1\build\Escc.EastSussexGovUK.UmbracoViews.targets" Condition="Exists('packages\Escc.EastSussexGovUK.UmbracoViews.3.4.1\build\Escc.EastSussexGovUK.UmbracoViews.targets')" />
-  <Import Project="packages\Escc.CoreLegacyTemplates.Website.0.15.0\build\Escc.CoreLegacyTemplates.Website.targets" Condition="Exists('packages\Escc.CoreLegacyTemplates.Website.0.15.0\build\Escc.CoreLegacyTemplates.Website.targets')" />
-  <Import Project="packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.3.3.1\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets" Condition="Exists('packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.3.3.1\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" />
-  <Import Project="packages\Escc.Umbraco.PropertyEditors.2.1.1-pre\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('packages\Escc.Umbraco.PropertyEditors.2.1.1-pre\build\Escc.Umbraco.PropertyEditors.targets')" />
+  <Import Project="..\packages\Escc.DocumentsInNewWindow.js.1.0.3\build\Escc.DocumentsInNewWindow.js.targets" Condition="Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.3\build\Escc.DocumentsInNewWindow.js.targets')" />
+  <Import Project="..\packages\Escc.Statistics.js.1.0.3\build\Escc.Statistics.js.targets" Condition="Exists('..\packages\Escc.Statistics.js.1.0.3\build\Escc.Statistics.js.targets')" />
+  <Import Project="..\packages\Escc.Alerts.Website.1.4.1\build\Escc.Alerts.Website.targets" Condition="Exists('..\packages\Escc.Alerts.Website.1.4.1\build\Escc.Alerts.Website.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.1\build\Escc.Umbraco.MicrosoftCmsMigration.targets" Condition="Exists('..\packages\Escc.Umbraco.MicrosoftCmsMigration.1.0.1\build\Escc.Umbraco.MicrosoftCmsMigration.targets')" />
+  <Import Project="..\packages\Escc.Schools.TermDates.Website.1.0.0\build\Escc.Schools.TermDates.Website.targets" Condition="Exists('..\packages\Escc.Schools.TermDates.Website.1.0.0\build\Escc.Schools.TermDates.Website.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.MediaSync.1.1.0\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.1.1.0\build\Escc.Umbraco.MediaSync.targets')" />
+  <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.1\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.1\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
+  <Import Project="..\packages\Escc.CustomerFocusTemplates.Website.1.1.1\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('..\packages\Escc.CustomerFocusTemplates.Website.1.1.1\build\Escc.CustomerFocusTemplates.Website.targets')" />
+  <Import Project="..\packages\Escc.Home.Website.1.1.0\build\Escc.Home.Website.targets" Condition="Exists('..\packages\Escc.Home.Website.1.1.0\build\Escc.Home.Website.targets')" />
+  <Import Project="..\packages\Escc.EastSussexGovUK.UmbracoViews.3.4.1\build\Escc.EastSussexGovUK.UmbracoViews.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.UmbracoViews.3.4.1\build\Escc.EastSussexGovUK.UmbracoViews.targets')" />
+  <Import Project="..\packages\Escc.CoreLegacyTemplates.Website.0.15.0\build\Escc.CoreLegacyTemplates.Website.targets" Condition="Exists('..\packages\Escc.CoreLegacyTemplates.Website.0.15.0\build\Escc.CoreLegacyTemplates.Website.targets')" />
+  <Import Project="..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.3.3.1\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.3.3.1\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.PropertyEditors.2.1.1\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.2.1.1\build\Escc.Umbraco.PropertyEditors.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

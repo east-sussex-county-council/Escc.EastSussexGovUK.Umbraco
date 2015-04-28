@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Umbraco", "Escc.EastSussexGovUK.Umbraco.csproj", "{2A2881F4-EC23-4C6A-86D6-3086F957CFF5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Umbraco", "Escc.EastSussexGovUK.Umbraco\Escc.EastSussexGovUK.Umbraco.csproj", "{2A2881F4-EC23-4C6A-86D6-3086F957CFF5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.EastSussexGovUK", "..\Escc.EastSussexGovUK\EsccWebTeam.EastSussexGovUK.csproj", "{1426FEF0-23DC-4C23-AE15-67F2527BD741}"
 EndProject
@@ -15,8 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.Data.ActiveDire
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.Data.Xml", "..\Escc.Data.Xml\EsccWebTeam.Data.Xml.csproj", "{86B2725C-9C37-44A4-93C7-F5122AFA0809}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.Egms", "..\Escc.Egms\EsccWebTeam.Egms.csproj", "{78083DCB-B12F-4950-86C5-3A844D8604F3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.Cms", "..\Escc.Cms\EsccWebTeam.Cms.csproj", "{6710E9EE-DEAB-4569-ACE6-F10159D6D447}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.Feeds", "..\Escc.Feeds\EsccWebTeam.Feeds.csproj", "{08008B80-1B37-41B9-935B-FDDDDB4DAE84}"
@@ -24,6 +22,17 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.NavigationControls", "..\Escc.NavigationControls\EsccWebTeam.NavigationControls.csproj", "{0323F668-1723-44A1-8C94-F91DC59EF315}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.Elibrary", "..\Escc.Elibrary\Escc.Elibrary.csproj", "{3D2240E0-D165-4C52-A97B-730542975D3A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{732E47C7-E861-4587-8400-33116C479A53}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		app-setup-dev.cmd = app-setup-dev.cmd
+		app-setup-dev.ps1 = app-setup-dev.ps1
+		LICENSE.md = LICENSE.md
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Umbraco.Tests", "Escc.EastSussexGovUK.Umbraco.Tests\Escc.EastSussexGovUK.Umbraco.Tests.csproj", "{D89C69B5-1F50-4CF1-83F8-AE317F7D788F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,12 +77,6 @@ Global
 		{86B2725C-9C37-44A4-93C7-F5122AFA0809}.Release|Any CPU.Build.0 = Release|Any CPU
 		{86B2725C-9C37-44A4-93C7-F5122AFA0809}.UAT|Any CPU.ActiveCfg = UAT|Any CPU
 		{86B2725C-9C37-44A4-93C7-F5122AFA0809}.UAT|Any CPU.Build.0 = UAT|Any CPU
-		{78083DCB-B12F-4950-86C5-3A844D8604F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{78083DCB-B12F-4950-86C5-3A844D8604F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{78083DCB-B12F-4950-86C5-3A844D8604F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{78083DCB-B12F-4950-86C5-3A844D8604F3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{78083DCB-B12F-4950-86C5-3A844D8604F3}.UAT|Any CPU.ActiveCfg = UAT|Any CPU
-		{78083DCB-B12F-4950-86C5-3A844D8604F3}.UAT|Any CPU.Build.0 = UAT|Any CPU
 		{6710E9EE-DEAB-4569-ACE6-F10159D6D447}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6710E9EE-DEAB-4569-ACE6-F10159D6D447}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6710E9EE-DEAB-4569-ACE6-F10159D6D447}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -98,6 +101,12 @@ Global
 		{3D2240E0-D165-4C52-A97B-730542975D3A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3D2240E0-D165-4C52-A97B-730542975D3A}.UAT|Any CPU.ActiveCfg = Release|Any CPU
 		{3D2240E0-D165-4C52-A97B-730542975D3A}.UAT|Any CPU.Build.0 = Release|Any CPU
+		{D89C69B5-1F50-4CF1-83F8-AE317F7D788F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D89C69B5-1F50-4CF1-83F8-AE317F7D788F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D89C69B5-1F50-4CF1-83F8-AE317F7D788F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D89C69B5-1F50-4CF1-83F8-AE317F7D788F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D89C69B5-1F50-4CF1-83F8-AE317F7D788F}.UAT|Any CPU.ActiveCfg = Release|Any CPU
+		{D89C69B5-1F50-4CF1-83F8-AE317F7D788F}.UAT|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
