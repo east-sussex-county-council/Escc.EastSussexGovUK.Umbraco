@@ -523,8 +523,6 @@
     <Content Include="umbraco\assets\img\installer.jpg" />
     <Content Include="umbraco\assets\img\loader.gif" />
     <Content Include="umbraco\assets\img\logo.png" />
-    <Content Include="umbraco\assets\img\mocks\big-image.jpg" />
-    <Content Include="umbraco\assets\img\mocks\big-thumb.jpg" />
     <Content Include="umbraco\assets\img\nonodesbg.jpg" />
     <Content Include="umbraco\Channels\rsd.aspx" />
     <Content Include="umbraco\Channels\wlwmanifest.aspx" />
@@ -1333,8 +1331,6 @@
     <Content Include="umbraco\lib\cssparser\cssparser.js" />
     <Content Include="umbraco\lib\datetimepicker\bootstrap-datetimepicker.js" />
     <Content Include="umbraco\lib\datetimepicker\bootstrap-datetimepicker.min.css" />
-    <Content Include="umbraco\lib\datetimepicker\bootstrap-datetimepicker.min.js" />
-    <Content Include="umbraco\lib\datetimepicker\langs\datetimepicker.pt-BR.js" />
     <Content Include="umbraco\lib\jquery\jquery-2.0.3.min.js" />
     <Content Include="umbraco\lib\jquery\jquery-ui-1.10.3.custom.min.js" />
     <Content Include="umbraco\lib\jquery\jquery-ui-1.10.4.custom.min.css" />
@@ -1368,7 +1364,6 @@
     <Content Include="umbraco\lib\jquery\jquery.upload\js\load-image.min.js" />
     <Content Include="umbraco\lib\jquery\jquery.upload\js\main.js" />
     <Content Include="umbraco\lib\jquery\jquery.upload\js\vendor\jquery.ui.widget.js" />
-    <Content Include="umbraco\lib\lazyload\empty.js" />
     <Content Include="umbraco\lib\lazyload\lazyload.min.js" />
     <Content Include="umbraco\lib\less\less-1.7.0.min.js" />
     <Content Include="umbraco\lib\markdown\markdown.converter.js" />
@@ -1613,7 +1608,6 @@
     <Content Include="umbraco\Users\PermissionsHandler.asmx" />
     <Content Include="umbraco\Views\common\dashboard.html" />
     <Content Include="umbraco\Views\common\dialogs\approvedcolorpicker.html" />
-    <Content Include="umbraco\Views\common\dialogs\contentpicker.html" />
     <Content Include="umbraco\Views\common\dialogs\content\edit.html" />
     <Content Include="umbraco\Views\common\dialogs\help.html" />
     <Content Include="umbraco\Views\common\dialogs\iconpicker.html" />
@@ -1624,7 +1618,6 @@
     <Content Include="umbraco\Views\common\dialogs\macropicker.html" />
     <Content Include="umbraco\Views\common\dialogs\mediapicker.html" />
     <Content Include="umbraco\Views\common\dialogs\membergrouppicker.html" />
-    <Content Include="umbraco\Views\common\dialogs\memberpicker.html" />
     <Content Include="umbraco\Views\common\dialogs\property.html" />
     <Content Include="umbraco\Views\common\dialogs\rteembed.html" />
     <Content Include="umbraco\Views\common\dialogs\template\querybuilder.html" />
@@ -1738,7 +1731,6 @@
     <Content Include="umbraco\Views\propertyeditors\googlemaps\googlemaps.html" />
     <Content Include="umbraco\Views\propertyeditors\grid\config\grid.default.config.js" />
     <Content Include="umbraco\Views\propertyeditors\grid\config\grid.default.rtestyles.css" />
-    <Content Include="umbraco\Views\propertyeditors\grid\css\iframe.css" />
     <Content Include="umbraco\Views\propertyeditors\grid\dialogs\additem.html" />
     <Content Include="umbraco\Views\propertyeditors\grid\dialogs\config.html" />
     <Content Include="umbraco\Views\propertyeditors\grid\dialogs\editconfig.html" />
@@ -1751,8 +1743,6 @@
     <Content Include="umbraco\Views\propertyeditors\grid\editors\textstring.html" />
     <Content Include="umbraco\Views\propertyeditors\grid\grid.html" />
     <Content Include="umbraco\Views\propertyeditors\grid\grid.prevalues.html" />
-    <Content Include="umbraco\Views\propertyeditors\grid\iframe.html" />
-    <Content Include="umbraco\Views\propertyeditors\grid\js\iframe.js" />
     <Content Include="umbraco\Views\propertyeditors\imagecropper\imagecropper.html" />
     <Content Include="umbraco\Views\propertyeditors\imagecropper\imagecropper.prevalues.html" />
     <Content Include="umbraco\Views\propertyeditors\integer\integer.html" />
@@ -1784,7 +1774,6 @@
     <Content Include="umbraco\Views\propertyeditors\ultrasimple\ultrasimple.html" />
     <Content Include="umbraco\Views\propertyeditors\urllist\urllist.html" />
     <Content Include="umbraco\Views\propertyeditors\validationtest\validationtest.html" />
-    <Content Include="umbraco\Views\templates\edit.html" />
     <Content Include="umbraco\webService.asmx" />
     <Content Include="umbraco\Webservices\ajax.js" />
     <Content Include="umbraco\Webservices\CacheRefresher.asmx" />
