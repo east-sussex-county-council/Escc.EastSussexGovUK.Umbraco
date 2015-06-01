@@ -457,7 +457,6 @@
     <Content Include="css\TinyMCE-Content.css" />
     <Content Include="css\TinyMCE-StyleSelector-Embed.css" />
     <Content Include="css\TinyMCE-StyleSelector-Headings.css" />
-    <Content Include="css\Web.config" />
     <Content Include="Config\uMediaSync.config" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\package.manifest" />
@@ -469,7 +468,6 @@
     <Content Include="App_Plugins\OpeningSoon\package.manifest" />
     <Content Include="App_Browsers\Form.browser" />
     <Content Include="App_Browsers\w3cvalidator.browser" />
-    <None Include="css\Web.example.config" />
     <None Include="Escc.EastSussexGovUK.Umbraco.csproj.xslt">
       <SubType>Designer</SubType>
     </None>
@@ -3027,8 +3025,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="img\web.config" />
-    <None Include="js\Web.example.config" />
-    <Content Include="js\Web.config" />
     <None Include="packages.config" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
