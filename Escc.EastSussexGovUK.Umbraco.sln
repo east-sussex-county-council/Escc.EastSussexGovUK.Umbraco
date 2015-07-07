@@ -17,8 +17,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.Data.Xml", "..\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.Cms", "..\Escc.Cms\EsccWebTeam.Cms.csproj", "{6710E9EE-DEAB-4569-ACE6-F10159D6D447}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.Feeds", "..\Escc.Feeds\EsccWebTeam.Feeds.csproj", "{08008B80-1B37-41B9-935B-FDDDDB4DAE84}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.NavigationControls", "..\Escc.NavigationControls\EsccWebTeam.NavigationControls.csproj", "{0323F668-1723-44A1-8C94-F91DC59EF315}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.Elibrary", "..\Escc.Elibrary\Escc.Elibrary.csproj", "{3D2240E0-D165-4C52-A97B-730542975D3A}"
@@ -83,12 +81,6 @@ Global
 		{6710E9EE-DEAB-4569-ACE6-F10159D6D447}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6710E9EE-DEAB-4569-ACE6-F10159D6D447}.UAT|Any CPU.ActiveCfg = Release|Any CPU
 		{6710E9EE-DEAB-4569-ACE6-F10159D6D447}.UAT|Any CPU.Build.0 = Release|Any CPU
-		{08008B80-1B37-41B9-935B-FDDDDB4DAE84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{08008B80-1B37-41B9-935B-FDDDDB4DAE84}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{08008B80-1B37-41B9-935B-FDDDDB4DAE84}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{08008B80-1B37-41B9-935B-FDDDDB4DAE84}.Release|Any CPU.Build.0 = Release|Any CPU
-		{08008B80-1B37-41B9-935B-FDDDDB4DAE84}.UAT|Any CPU.ActiveCfg = Release|Any CPU
-		{08008B80-1B37-41B9-935B-FDDDDB4DAE84}.UAT|Any CPU.Build.0 = Release|Any CPU
 		{0323F668-1723-44A1-8C94-F91DC59EF315}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0323F668-1723-44A1-8C94-F91DC59EF315}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0323F668-1723-44A1-8C94-F91DC59EF315}.Release|Any CPU.ActiveCfg = Release|Any CPU
