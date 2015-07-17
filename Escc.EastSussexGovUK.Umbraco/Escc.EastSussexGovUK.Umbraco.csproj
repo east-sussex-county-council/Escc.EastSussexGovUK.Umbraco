@@ -99,6 +99,10 @@
     <Reference Include="Escc.ClientDependencyFramework">
       <HintPath>..\packages\Escc.ClientDependencyFramework.Umbraco.1.0.3\lib\Escc.ClientDependencyFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Escc.ClientDependencyFramework.WebForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Escc.ClientDependencyFramework.WebForms.1.0.0\lib\Escc.ClientDependencyFramework.WebForms.dll</HintPath>
+    </Reference>
     <Reference Include="Escc.Content.Migration.Domain">
       <HintPath>..\packages\Escc.Content.Migration.UmbracoApi.1.0.1\lib\Escc.Content.Migration.Domain.dll</HintPath>
     </Reference>
@@ -3037,7 +3041,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="img\web.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
