@@ -47,6 +47,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\AST.AzureMediaSync.1.1.2\lib\AST.AzureBlobStorage.dll</HintPath>
     </Reference>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.3.0\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc">
+      <HintPath>..\packages\Autofac.Mvc4.3.1.0\lib\net40\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi">
+      <HintPath>..\packages\Autofac.WebApi.3.1.0\lib\net40\Autofac.Integration.WebApi.dll</HintPath>
+    </Reference>
     <Reference Include="AutoMapper, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\AutoMapper.3.0.0\lib\net40\AutoMapper.dll</HintPath>
@@ -149,6 +158,9 @@
     <Reference Include="Escc.Umbraco.PropertyEditors, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Escc.Umbraco.PropertyEditors.2.1.2\lib\Escc.Umbraco.PropertyEditors.dll</HintPath>
+    </Reference>
+    <Reference Include="ESCC.Umbraco.UserAccessWebService">
+      <HintPath>..\packages\ESCC.Umbraco.UserAccessWebService.1.0.1\lib\ESCC.Umbraco.UserAccessWebService.dll</HintPath>
     </Reference>
     <Reference Include="Examine, Version=0.1.57.2941, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
