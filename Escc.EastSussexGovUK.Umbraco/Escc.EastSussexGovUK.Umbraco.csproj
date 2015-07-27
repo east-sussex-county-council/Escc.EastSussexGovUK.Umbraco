@@ -3056,7 +3056,7 @@
       <Project>{86b2725c-9c37-44a4-93c7-f5122afa0809}</Project>
       <Name>EsccWebTeam.Data.Xml</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Escc.EastSussexGovUK\EsccWebTeam.EastSussexGovUK.csproj">
+    <ProjectReference Include="..\..\Escc.EastSussexGovUK\Escc.EastSussexGovUK\EsccWebTeam.EastSussexGovUK.csproj">
       <Project>{1426fef0-23dc-4c23-ae15-67f2527bd741}</Project>
       <Name>EsccWebTeam.EastSussexGovUK</Name>
     </ProjectReference>
