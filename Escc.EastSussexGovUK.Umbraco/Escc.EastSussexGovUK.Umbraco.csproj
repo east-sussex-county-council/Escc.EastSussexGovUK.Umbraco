@@ -406,7 +406,7 @@
     <Content Include="apple-touch-icon-precomposed-72x72.png" />
     <Content Include="apple-touch-icon-precomposed.png" />
     <Content Include="apple-touch-icon.png" />
-    <Content Include="App_Plugins\dummy.txt" />
+    <None Include="App_Plugins\dummy.txt" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.BooleanPropertyEditor\boolean.html" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.BooleanPropertyEditor\controller.js" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\editor.html" />
@@ -3000,14 +3000,32 @@
     <Content Include="umbraco_client\Ui\ui-lightness\images\ui-icons_ffffff_256x240.png" />
     <Content Include="umbraco_client\Ui\ui-lightness\jquery-ui.custom.css" />
     <Content Include="Views\FormDownloadPage.ascx" />
+    <Content Include="Views\LandingPageWithPictures.ascx" />
     <Content Include="Views\Layouts\BreadcrumbTrail.ascx" />
     <Content Include="Views\Layouts\BreadcrumbTrailMobile.ascx" />
     <Content Include="Views\Layouts\MasterPageControl.ascx" />
+    <Content Include="Views\Map.ascx" />
+    <Content Include="Views\StandardDownloadPage.ascx" />
+    <Content Include="Views\StandardLandingPage.ascx" />
+    <Content Include="Views\StandardTopicPage.ascx" />
     <Content Include="Views\TermDates\QuickAnswer.ascx" />
     <Content Include="Views\TermDates\QuickAnswerMvcProxy.ascx" />
     <Content Include="Views\TermDates\TermDatesTable.ascx" />
+    <Content Include="Views\Topic\FloodAlerts.ascx" />
+    <Content Include="Views\Topic\FloodAlerts.xslt" />
     <Content Include="Views\Topic\RecyclingSiteFinder.ascx" />
+    <Content Include="Views\Topic\TopicSection_Alternative.ascx" />
+    <Content Include="Views\Topic\TopicSection_ChildrenBack.ascx" />
+    <Content Include="Views\Topic\TopicSection_ChildrenLibrary.ascx" />
+    <Content Include="Views\Topic\TopicSection_FeaturedImage.ascx" />
+    <Content Include="Views\Topic\TopicSection_FloodAlerts.ascx" />
+    <Content Include="Views\Topic\TopicSection_GoogleMap.ascx" />
+    <Content Include="Views\Topic\TopicSection_ImageRow.ascx" />
+    <Content Include="Views\Topic\TopicSection_ImageRowBorderless.ascx" />
+    <Content Include="Views\Topic\TopicSection_Normal.ascx" />
     <Content Include="Views\Topic\TopicSection_RecyclingSiteFinder.ascx" />
+    <Content Include="Views\Topic\TopicSection_TermDates.ascx" />
+    <Content Include="Views\Topic\TopicSection_ToDo.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -3213,6 +3231,12 @@
     <Content Include="Views\Partials\Grid\Editors\Base.cshtml" />
     <Content Include="Views\Partials\Grid\Bootstrap3.cshtml" />
     <Content Include="Views\Partials\Grid\Bootstrap2.cshtml" />
+    <Content Include="Views\FormDownloadPage.cshtml" />
+    <Content Include="Views\LandingPageWithPictures.cshtml" />
+    <Content Include="Views\Map.cshtml" />
+    <Content Include="Views\StandardDownloadPage.cshtml" />
+    <Content Include="Views\StandardLandingPage.cshtml" />
+    <Content Include="Views\StandardTopicPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
