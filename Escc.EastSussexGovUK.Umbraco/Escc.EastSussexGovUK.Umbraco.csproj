@@ -3012,7 +3012,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="windows-tile.png" />
-    <Content Include="xslt\Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
