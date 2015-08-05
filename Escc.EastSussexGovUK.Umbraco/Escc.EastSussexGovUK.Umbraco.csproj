@@ -174,7 +174,7 @@
       <HintPath>..\packages\Escc.Umbraco.PropertyEditors.2.1.2\lib\Escc.Umbraco.PropertyEditors.dll</HintPath>
     </Reference>
     <Reference Include="ESCC.Umbraco.UserAccessWebService">
-      <HintPath>..\packages\ESCC.Umbraco.UserAccessWebService.1.0.1\lib\ESCC.Umbraco.UserAccessWebService.dll</HintPath>
+      <HintPath>..\packages\ESCC.Umbraco.UserAccessWebService.1.0.2\lib\ESCC.Umbraco.UserAccessWebService.dll</HintPath>
     </Reference>
     <Reference Include="Examine, Version=0.1.65.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Examine.0.1.65.0\lib\Examine.dll</HintPath>
