@@ -23,7 +23,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
-    <NuGetPackageImportStamp>ce278e80</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>a9ca4f6c</NuGetPackageImportStamp>
     <RestorePackages>true</RestorePackages>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -114,6 +114,10 @@
     </Reference>
     <Reference Include="Escc.CoreLegacyTemplates.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.CoreLegacyTemplates.Website.2.1.0\lib\Escc.CoreLegacyTemplates.Website.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Escc.CouncilPlan.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.CouncilPlan.Website.1.0.0\lib\Escc.CouncilPlan.Website.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.CustomerFocusTemplates.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -443,6 +447,9 @@
     <Content Include="Config\splashes\booting.aspx" />
     <Content Include="Config\splashes\noNodes.aspx" />
     <Content Include="Config\tinyMceConfig.config" />
+    <Content Include="css\CouncilPlan\council-plan-large.css" />
+    <Content Include="css\CouncilPlan\council-plan-medium.css" />
+    <Content Include="css\CouncilPlan\council-plan-small.css" />
     <Content Include="css\FormDownloadPage\form-download.css" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\package.manifest" />
@@ -498,6 +505,7 @@
     <Content Include="Global.asax" />
     <Content Include="img\HomePage\jobs.png" />
     <Content Include="img\StandardTopicPage\childrens-library.gif" />
+    <Content Include="js\CouncilPlan\council-plan.js" />
     <Content Include="js\libs\Escc.DocumentsInNewWindow.min.js" />
     <Content Include="js\libs\Escc.Statistics.min.js" />
     <Content Include="MicrosoftCmsMigration\UserControls\Latest.ascx" />
@@ -2982,6 +2990,12 @@
     <Content Include="umbraco_client\Ui\ui-lightness\images\ui-icons_ffd27a_256x240.png" />
     <Content Include="umbraco_client\Ui\ui-lightness\images\ui-icons_ffffff_256x240.png" />
     <Content Include="umbraco_client\Ui\ui-lightness\jquery-ui.custom.css" />
+    <Content Include="Views\CouncilPlanBudgetPage.ascx" />
+    <Content Include="Views\CouncilPlanHomePage.ascx" />
+    <Content Include="Views\CouncilPlanMenu.ascx" />
+    <Content Include="Views\CouncilPlanMonitoringPage.ascx" />
+    <Content Include="Views\CouncilPlanPrioritiesPage.ascx" />
+    <Content Include="Views\CouncilPlanTopicPage.ascx" />
     <Content Include="Views\FormDownloadPage.ascx" />
     <Content Include="Views\LandingPageWithPictures.ascx" />
     <Content Include="Views\Layouts\BreadcrumbTrail.ascx" />
@@ -3228,6 +3242,11 @@
     <Content Include="Views\HomePage.cshtml" />
     <Content Include="Views\HoldingPage.cshtml" />
     <Content Include="Views\_HomePageJobSearch.cshtml" />
+    <Content Include="Views\CouncilPlanTopicPage.cshtml" />
+    <Content Include="Views\CouncilPlanPrioritiesPage.cshtml" />
+    <Content Include="Views\CouncilPlanMonitoringPage.cshtml" />
+    <Content Include="Views\CouncilPlanHomePage.cshtml" />
+    <Content Include="Views\CouncilPlanBudgetPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3273,6 +3292,7 @@
     <Error Condition="!Exists('..\packages\Escc.CoreLegacyTemplates.Website.2.1.0\build\Escc.CoreLegacyTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CoreLegacyTemplates.Website.2.1.0\build\Escc.CoreLegacyTemplates.Website.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.CustomerFocusTemplates.Website.2.1.0\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CustomerFocusTemplates.Website.2.1.0\build\Escc.CustomerFocusTemplates.Website.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Home.Website.2.1.0\build\Escc.Home.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Home.Website.2.1.0\build\Escc.Home.Website.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.CouncilPlan.Website.1.0.0\build\Escc.CouncilPlan.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CouncilPlan.Website.1.0.0\build\Escc.CouncilPlan.Website.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets" Condition="Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets')" />
   <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.2\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.2\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
@@ -3288,6 +3308,7 @@
   <Import Project="..\packages\Escc.CoreLegacyTemplates.Website.2.1.0\build\Escc.CoreLegacyTemplates.Website.targets" Condition="Exists('..\packages\Escc.CoreLegacyTemplates.Website.2.1.0\build\Escc.CoreLegacyTemplates.Website.targets')" />
   <Import Project="..\packages\Escc.CustomerFocusTemplates.Website.2.1.0\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('..\packages\Escc.CustomerFocusTemplates.Website.2.1.0\build\Escc.CustomerFocusTemplates.Website.targets')" />
   <Import Project="..\packages\Escc.Home.Website.2.1.0\build\Escc.Home.Website.targets" Condition="Exists('..\packages\Escc.Home.Website.2.1.0\build\Escc.Home.Website.targets')" />
+  <Import Project="..\packages\Escc.CouncilPlan.Website.1.0.0\build\Escc.CouncilPlan.Website.targets" Condition="Exists('..\packages\Escc.CouncilPlan.Website.1.0.0\build\Escc.CouncilPlan.Website.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
