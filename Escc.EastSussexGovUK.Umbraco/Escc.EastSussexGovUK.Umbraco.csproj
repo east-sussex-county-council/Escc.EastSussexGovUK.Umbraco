@@ -23,7 +23,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
-    <NuGetPackageImportStamp>b44ec316</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>f24fc8d7</NuGetPackageImportStamp>
     <RestorePackages>true</RestorePackages>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -113,7 +113,7 @@
       <HintPath>..\packages\Escc.Content.Migration.UmbracoApi.1.0.1\lib\Escc.Content.Migration.UmbracoApi.dll</HintPath>
     </Reference>
     <Reference Include="Escc.CoreLegacyTemplates.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.CoreLegacyTemplates.Website.2.1.0\lib\Escc.CoreLegacyTemplates.Website.dll</HintPath>
+      <HintPath>..\packages\Escc.CoreLegacyTemplates.Website.2.2.0\lib\Escc.CoreLegacyTemplates.Website.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.CouncilPlan.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -450,7 +450,6 @@
     <Content Include="css\CouncilPlan\council-plan-large.css" />
     <Content Include="css\CouncilPlan\council-plan-medium.css" />
     <Content Include="css\CouncilPlan\council-plan-small.css" />
-    <Content Include="css\FormDownloadPage\form-download.css" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.TwitterScriptPropertyEditor\package.manifest" />
@@ -490,12 +489,6 @@
     <Content Include="css\landing-small.css" />
     <Content Include="css\location-large.css" />
     <Content Include="css\location-small.css" />
-    <Content Include="css\StandardDownloadPage\download-small.css" />
-    <Content Include="css\StandardLandingPage\landing-large.css" />
-    <Content Include="css\StandardLandingPage\landing-medium.css" />
-    <Content Include="css\StandardLandingPage\landing-small.css" />
-    <Content Include="css\StandardTopicPage\topic-medium.css" />
-    <Content Include="css\StandardTopicPage\topic-small.css" />
     <Content Include="css\task-small.css" />
     <Content Include="css\TinyMCE-Content.css" />
     <Content Include="css\TinyMCE-StyleSelector-Embed.css" />
@@ -504,7 +497,6 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="img\HomePage\jobs.png" />
-    <Content Include="img\StandardTopicPage\childrens-library.gif" />
     <Content Include="js\CouncilPlan\council-plan.js" />
     <Content Include="js\libs\Escc.DocumentsInNewWindow.min.js" />
     <Content Include="js\libs\Escc.Statistics.min.js" />
@@ -2996,33 +2988,17 @@
     <Content Include="Views\CouncilPlanMonitoringPage.ascx" />
     <Content Include="Views\CouncilPlanPrioritiesPage.ascx" />
     <Content Include="Views\CouncilPlanTopicPage.ascx" />
-    <Content Include="Views\FormDownloadPage.ascx" />
-    <Content Include="Views\LandingPageWithPictures.ascx" />
     <Content Include="Views\Layouts\BreadcrumbTrail.ascx" />
     <Content Include="Views\Layouts\BreadcrumbTrailMobile.ascx" />
     <Content Include="Views\Layouts\MasterPageControl.ascx" />
-    <Content Include="Views\Map.ascx" />
     <Content Include="Views\StandardDownloadPage.ascx" />
-    <Content Include="Views\StandardLandingPage.ascx" />
+    <Content Include="Views\StandardLandingpage.ascx" />
     <Content Include="Views\StandardTopicPage.ascx" />
     <Content Include="Views\TermDates\QuickAnswer.ascx" />
     <Content Include="Views\TermDates\QuickAnswerMvcProxy.ascx" />
     <Content Include="Views\TermDates\TermDatesTable.ascx" />
-    <Content Include="Views\Topic\FloodAlerts.ascx" />
-    <Content Include="Views\Topic\FloodAlerts.xslt" />
     <Content Include="Views\Topic\RecyclingSiteFinder.ascx" />
-    <Content Include="Views\Topic\TopicSection_Alternative.ascx" />
-    <Content Include="Views\Topic\TopicSection_ChildrenBack.ascx" />
-    <Content Include="Views\Topic\TopicSection_ChildrenLibrary.ascx" />
-    <Content Include="Views\Topic\TopicSection_FeaturedImage.ascx" />
-    <Content Include="Views\Topic\TopicSection_FloodAlerts.ascx" />
-    <Content Include="Views\Topic\TopicSection_GoogleMap.ascx" />
-    <Content Include="Views\Topic\TopicSection_ImageRow.ascx" />
-    <Content Include="Views\Topic\TopicSection_ImageRowBorderless.ascx" />
-    <Content Include="Views\Topic\TopicSection_Normal.ascx" />
     <Content Include="Views\Topic\TopicSection_RecyclingSiteFinder.ascx" />
-    <Content Include="Views\Topic\TopicSection_TermDates.ascx" />
-    <Content Include="Views\Topic\TopicSection_ToDo.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -3223,12 +3199,6 @@
     <Content Include="Views\Layouts\_EastSussex1Space.cshtml" />
     <Content Include="Views\Layouts\_ContentExperiment.cshtml" />
     <Content Include="Views\Layouts\_CmsPreview.cshtml" />
-    <Content Include="Views\StandardTopicPage.cshtml" />
-    <Content Include="Views\StandardLandingPage.cshtml" />
-    <Content Include="Views\StandardDownloadPage.cshtml" />
-    <Content Include="Views\Map.cshtml" />
-    <Content Include="Views\LandingPageWithPictures.cshtml" />
-    <Content Include="Views\FormDownloadPage.cshtml" />
     <Content Include="Views\Task.cshtml" />
     <Content Include="Views\Partials\_LocationTab1Content.cshtml" />
     <Content Include="Views\Partials\_LocationOpeningTimes.cshtml" />
@@ -3247,6 +3217,10 @@
     <Content Include="Views\CouncilPlanMonitoringPage.cshtml" />
     <Content Include="Views\CouncilPlanHomePage.cshtml" />
     <Content Include="Views\CouncilPlanBudgetPage.cshtml" />
+    <Content Include="Views\StandardTopicPage.cshtml" />
+    <Content Include="Views\StandardLandingPage.cshtml" />
+    <Content Include="Views\StandardDownloadPage.cshtml" />
+    <Content Include="Views\Map.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3288,11 +3262,11 @@
     <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.1.1.3\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.1.1.3\build\Escc.Umbraco.MediaSync.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.UmbracoViews.6.0.2\build\Escc.EastSussexGovUK.UmbracoViews.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.UmbracoViews.6.0.2\build\Escc.EastSussexGovUK.UmbracoViews.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.MicrosoftCmsMigration.2.1.0\build\Escc.Umbraco.MicrosoftCmsMigration.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MicrosoftCmsMigration.2.1.0\build\Escc.Umbraco.MicrosoftCmsMigration.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.CoreLegacyTemplates.Website.2.1.0\build\Escc.CoreLegacyTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CoreLegacyTemplates.Website.2.1.0\build\Escc.CoreLegacyTemplates.Website.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.CustomerFocusTemplates.Website.2.1.0\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CustomerFocusTemplates.Website.2.1.0\build\Escc.CustomerFocusTemplates.Website.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Home.Website.2.1.0\build\Escc.Home.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Home.Website.2.1.0\build\Escc.Home.Website.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.CouncilPlan.Website.1.0.0\build\Escc.CouncilPlan.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CouncilPlan.Website.1.0.0\build\Escc.CouncilPlan.Website.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.4.1.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.4.1.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.CoreLegacyTemplates.Website.2.2.0\build\Escc.CoreLegacyTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CoreLegacyTemplates.Website.2.2.0\build\Escc.CoreLegacyTemplates.Website.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets" Condition="Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets')" />
   <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.2\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.2\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
@@ -3304,11 +3278,11 @@
   <Import Project="..\packages\Escc.Umbraco.MediaSync.1.1.3\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.1.1.3\build\Escc.Umbraco.MediaSync.targets')" />
   <Import Project="..\packages\Escc.EastSussexGovUK.UmbracoViews.6.0.2\build\Escc.EastSussexGovUK.UmbracoViews.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.UmbracoViews.6.0.2\build\Escc.EastSussexGovUK.UmbracoViews.targets')" />
   <Import Project="..\packages\Escc.Umbraco.MicrosoftCmsMigration.2.1.0\build\Escc.Umbraco.MicrosoftCmsMigration.targets" Condition="Exists('..\packages\Escc.Umbraco.MicrosoftCmsMigration.2.1.0\build\Escc.Umbraco.MicrosoftCmsMigration.targets')" />
-  <Import Project="..\packages\Escc.CoreLegacyTemplates.Website.2.1.0\build\Escc.CoreLegacyTemplates.Website.targets" Condition="Exists('..\packages\Escc.CoreLegacyTemplates.Website.2.1.0\build\Escc.CoreLegacyTemplates.Website.targets')" />
   <Import Project="..\packages\Escc.CustomerFocusTemplates.Website.2.1.0\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('..\packages\Escc.CustomerFocusTemplates.Website.2.1.0\build\Escc.CustomerFocusTemplates.Website.targets')" />
   <Import Project="..\packages\Escc.Home.Website.2.1.0\build\Escc.Home.Website.targets" Condition="Exists('..\packages\Escc.Home.Website.2.1.0\build\Escc.Home.Website.targets')" />
   <Import Project="..\packages\Escc.CouncilPlan.Website.1.0.0\build\Escc.CouncilPlan.Website.targets" Condition="Exists('..\packages\Escc.CouncilPlan.Website.1.0.0\build\Escc.CouncilPlan.Website.targets')" />
   <Import Project="..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.4.1.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.4.1.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" />
+  <Import Project="..\packages\Escc.CoreLegacyTemplates.Website.2.2.0\build\Escc.CoreLegacyTemplates.Website.targets" Condition="Exists('..\packages\Escc.CoreLegacyTemplates.Website.2.2.0\build\Escc.CoreLegacyTemplates.Website.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
