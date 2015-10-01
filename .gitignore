@@ -36,6 +36,8 @@ Properties/PublishProfiles/*
 packages
 .nuget/NuGet.targets
 *.GhostDoc.xml
+Backup
+UpgradeLog.htm
 
 # Umbraco files
 [Uu]mbraco/
