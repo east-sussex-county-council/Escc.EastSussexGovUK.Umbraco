@@ -133,7 +133,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.UmbracoViews, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.EastSussexGovUK.UmbracoViews.6.1.0\lib\Escc.EastSussexGovUK.UmbracoViews.dll</HintPath>
+      <HintPath>..\packages\Escc.EastSussexGovUK.UmbracoViews.6.1.1\lib\Escc.EastSussexGovUK.UmbracoViews.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Exceptions.Soap">
@@ -482,6 +482,10 @@
     <None Include="Escc.EastSussexGovUK.Umbraco.csproj.xslt">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="css\CampaignTemplates\social-work-large.css" />
+    <Content Include="css\CampaignTemplates\social-work-medium.css" />
+    <Content Include="css\CampaignTemplates\social-work-print.css" />
+    <Content Include="css\CampaignTemplates\social-work-small.css" />
     <Content Include="css\CouncilPlan\council-plan-large.css" />
     <Content Include="css\CouncilPlan\council-plan-medium.css" />
     <Content Include="css\CouncilPlan\council-plan-small.css" />
@@ -3069,7 +3073,6 @@
     <Content Include="eastsussexcountycouncil.rdf" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Alerts.cshtml" />
     <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
     <Content Include="Views\Partials\Grid\Editors\Rte.cshtml" />
@@ -3235,28 +3238,30 @@
     <Content Include="Views\CouncilPlanMonitoringPage.cshtml" />
     <Content Include="Views\CouncilPlanHomePage.cshtml" />
     <Content Include="Views\CouncilPlanBudgetPage.cshtml" />
-    <Content Include="Views\Layouts\Plain.cshtml" />
-    <Content Include="Views\Layouts\Mobile.cshtml" />
-    <Content Include="Views\Layouts\FullScreen.cshtml" />
-    <Content Include="Views\Layouts\Desktop.cshtml" />
-    <Content Include="Views\Layouts\_Twitter.cshtml" />
-    <Content Include="Views\Layouts\_Share.cshtml" />
-    <Content Include="Views\Layouts\_ScriptsMobile.cshtml" />
-    <Content Include="Views\Layouts\_ScriptsFullScreen.cshtml" />
-    <Content Include="Views\Layouts\_ScriptsDesktop.cshtml" />
-    <Content Include="Views\Layouts\_Latest.cshtml" />
-    <Content Include="Views\Layouts\_Fonts.cshtml" />
-    <Content Include="Views\Layouts\_FeatureDependency.cshtml" />
-    <Content Include="Views\Layouts\_FeatureDependencies.cshtml" />
-    <Content Include="Views\Layouts\_Facebook.cshtml" />
-    <Content Include="Views\Layouts\_Escis.cshtml" />
-    <Content Include="Views\Layouts\_EastSussex1Space.cshtml" />
-    <Content Include="Views\Layouts\_ContentExperiment.cshtml" />
-    <Content Include="Views\Layouts\_CmsPreview.cshtml" />
-    <Content Include="Views\Layouts\_SupportingContentDesktop.cshtml" />
-    <Content Include="Views\Layouts\_Banners.cshtml" />
     <Content Include="Views\FormDownloadPage.cshtml" />
     <Content Include="Views\LandingPageWithPictures.cshtml" />
+    <Content Include="Views\Layouts\Desktop.cshtml" />
+    <Content Include="Views\Layouts\FullScreen.cshtml" />
+    <Content Include="Views\Layouts\Mobile.cshtml" />
+    <Content Include="Views\Layouts\Plain.cshtml" />
+    <Content Include="Views\Layouts\_Banners.cshtml" />
+    <Content Include="Views\Layouts\_CmsPreview.cshtml" />
+    <Content Include="Views\Layouts\_ContentExperiment.cshtml" />
+    <Content Include="Views\Layouts\_EastSussex1Space.cshtml" />
+    <Content Include="Views\Layouts\_Escis.cshtml" />
+    <Content Include="Views\Layouts\_Facebook.cshtml" />
+    <Content Include="Views\Layouts\_FeatureDependencies.cshtml" />
+    <Content Include="Views\Layouts\_FeatureDependency.cshtml" />
+    <Content Include="Views\Layouts\_Fonts.cshtml" />
+    <Content Include="Views\Layouts\_Latest.cshtml" />
+    <Content Include="Views\Layouts\_ScriptsDesktop.cshtml" />
+    <Content Include="Views\Layouts\_ScriptsFullScreen.cshtml" />
+    <Content Include="Views\Layouts\_ScriptsMobile.cshtml" />
+    <Content Include="Views\Layouts\_Share.cshtml" />
+    <Content Include="Views\Layouts\_SupportingContentDesktop.cshtml" />
+    <Content Include="Views\Layouts\_Twitter.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\SocialWorkCampaignLanding.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3302,8 +3307,8 @@
     <Error Condition="!Exists('..\packages\Escc.Umbraco.MicrosoftCmsMigration.2.1.1\build\Escc.Umbraco.MicrosoftCmsMigration.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MicrosoftCmsMigration.2.1.1\build\Escc.Umbraco.MicrosoftCmsMigration.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.CouncilPlan.Website.1.0.3\build\Escc.CouncilPlan.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CouncilPlan.Website.1.0.3\build\Escc.CouncilPlan.Website.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.2.1.3\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.2.1.3\build\Escc.Umbraco.PropertyEditors.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.UmbracoViews.6.1.0\build\Escc.EastSussexGovUK.UmbracoViews.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.UmbracoViews.6.1.0\build\Escc.EastSussexGovUK.UmbracoViews.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.CampaignTemplates.Website.1.0.0\build\Escc.CampaignTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CampaignTemplates.Website.1.0.0\build\Escc.CampaignTemplates.Website.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.UmbracoViews.6.1.1\build\Escc.EastSussexGovUK.UmbracoViews.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.UmbracoViews.6.1.1\build\Escc.EastSussexGovUK.UmbracoViews.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets" Condition="Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets')" />
   <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.2\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.2\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
@@ -3319,8 +3324,8 @@
   <Import Project="..\packages\Escc.Umbraco.MicrosoftCmsMigration.2.1.1\build\Escc.Umbraco.MicrosoftCmsMigration.targets" Condition="Exists('..\packages\Escc.Umbraco.MicrosoftCmsMigration.2.1.1\build\Escc.Umbraco.MicrosoftCmsMigration.targets')" />
   <Import Project="..\packages\Escc.CouncilPlan.Website.1.0.3\build\Escc.CouncilPlan.Website.targets" Condition="Exists('..\packages\Escc.CouncilPlan.Website.1.0.3\build\Escc.CouncilPlan.Website.targets')" />
   <Import Project="..\packages\Escc.Umbraco.PropertyEditors.2.1.3\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.2.1.3\build\Escc.Umbraco.PropertyEditors.targets')" />
-  <Import Project="..\packages\Escc.EastSussexGovUK.UmbracoViews.6.1.0\build\Escc.EastSussexGovUK.UmbracoViews.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.UmbracoViews.6.1.0\build\Escc.EastSussexGovUK.UmbracoViews.targets')" />
   <Import Project="..\packages\Escc.CampaignTemplates.Website.1.0.0\build\Escc.CampaignTemplates.Website.targets" Condition="Exists('..\packages\Escc.CampaignTemplates.Website.1.0.0\build\Escc.CampaignTemplates.Website.targets')" />
+  <Import Project="..\packages\Escc.EastSussexGovUK.UmbracoViews.6.1.1\build\Escc.EastSussexGovUK.UmbracoViews.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.UmbracoViews.6.1.1\build\Escc.EastSussexGovUK.UmbracoViews.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
