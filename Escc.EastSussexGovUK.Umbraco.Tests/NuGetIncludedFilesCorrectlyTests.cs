@@ -11,6 +11,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
     {
         [TestCase(@"Views\StandardTopicPage.cshtml")] // Escc.CoreLegacyTemplates.Website project
         [TestCase(@"Views\Location.cshtml")] // Escc.CustomerFocusTemplates.Website project
+        [TestCase(@"js\CustomerFocusTemplates\guide.js")] // Escc.CustomerFocusTemplates.Website project
+        [TestCase(@"js\CampaignTemplates\social-work-campaign-landing.js")] // Escc.CampaignTemplates.Website project
         [TestCase(@"Views\HomePage.cshtml")] // Escc.Home.Website project
         [TestCase(@"Views\Alerts.cshtml")] // Escc.Alerts.Website project
         [TestCase(@"App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\controller.js")] // Escc.Umbraco.PropertyEditors project

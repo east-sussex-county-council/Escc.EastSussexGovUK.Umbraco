@@ -37,7 +37,7 @@ packages
 .nuget/NuGet.targets
 *.GhostDoc.xml
 Backup
-UpgradeLog.htm
+UpgradeLog*.htm
 
 # Umbraco files
 [Uu]mbraco/
