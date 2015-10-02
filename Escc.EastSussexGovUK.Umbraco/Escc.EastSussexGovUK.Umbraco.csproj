@@ -514,6 +514,13 @@
     <Content Include="default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="img\CampaignTemplates\astronaut-small.jpg" />
+    <Content Include="img\CampaignTemplates\astronaut.jpg" />
+    <Content Include="img\CampaignTemplates\shape1.png" />
+    <Content Include="img\CampaignTemplates\shape2.png" />
+    <Content Include="img\CampaignTemplates\social-work-logo-medium.png" />
+    <Content Include="img\CampaignTemplates\social-work-logo-small.png" />
+    <Content Include="img\CampaignTemplates\social-work-logo.png" />
     <Content Include="img\HomePage\jobs.png" />
     <Content Include="img\StandardTopicPage\childrens-library.gif" />
     <Content Include="js\CampaignTemplates\social-work-campaign-landing.js" />
