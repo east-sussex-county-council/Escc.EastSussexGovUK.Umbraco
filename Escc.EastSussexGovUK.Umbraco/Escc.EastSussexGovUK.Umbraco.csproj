@@ -149,6 +149,10 @@
       <HintPath>..\packages\Escc.Home.Website.2.1.0\lib\Escc.Home.Website.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Escc.Net, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Net.1.0.0\lib\Escc.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Escc.RubbishAndRecycling.SiteFinder.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.2\lib\Escc.RubbishAndRecycling.SiteFinder.Website.dll</HintPath>
@@ -483,15 +487,24 @@
     <Content Include="css\CouncilPlan\council-plan-medium.css" />
     <Content Include="css\CouncilPlan\council-plan-small.css" />
     <Content Include="css\FormDownloadPage\form-download.css" />
+    <Content Include="css\guide-step-large.css" />
+    <Content Include="css\guide-step-medium.css" />
+    <Content Include="css\guide-step-small.css" />
     <Content Include="css\HomePage\home-large.css" />
     <Content Include="css\HomePage\home-medium.css" />
     <Content Include="css\HomePage\home-small.css" />
+    <Content Include="css\landing-large.css" />
+    <Content Include="css\landing-medium.css" />
+    <Content Include="css\landing-small.css" />
+    <Content Include="css\location-large.css" />
+    <Content Include="css\location-small.css" />
     <Content Include="css\StandardDownloadPage\download-small.css" />
     <Content Include="css\StandardLandingPage\landing-large.css" />
     <Content Include="css\StandardLandingPage\landing-medium.css" />
     <Content Include="css\StandardLandingPage\landing-small.css" />
     <Content Include="css\StandardTopicPage\topic-medium.css" />
     <Content Include="css\StandardTopicPage\topic-small.css" />
+    <Content Include="css\task-small.css" />
     <Content Include="css\TinyMCE-Content.css" />
     <Content Include="css\TinyMCE-StyleSelector-Embed.css" />
     <Content Include="css\TinyMCE-StyleSelector-Headings.css" />
@@ -3048,10 +3061,6 @@
       <Project>{9c56d3dd-4952-4a1b-9ad6-907a1142872f}</Project>
       <Name>EsccWebTeam.Data.Web</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Escc.Data.Xml\EsccWebTeam.Data.Xml.csproj">
-      <Project>{86b2725c-9c37-44a4-93c7-f5122afa0809}</Project>
-      <Name>EsccWebTeam.Data.Xml</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Escc.EastSussexGovUK\Escc.EastSussexGovUK\EsccWebTeam.EastSussexGovUK.csproj">
       <Project>{1426fef0-23dc-4c23-ae15-67f2527bd741}</Project>
       <Name>EsccWebTeam.EastSussexGovUK</Name>
@@ -3245,6 +3254,15 @@
     <Content Include="Views\Layouts\_Twitter.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\SocialWorkCampaignLanding.cshtml" />
+    <Content Include="Views\Guide.cshtml" />
+    <Content Include="Views\GuideStep.cshtml" />
+    <Content Include="Views\Landing.cshtml" />
+    <Content Include="Views\Location.cshtml" />
+    <Content Include="Views\Task.cshtml" />
+    <Content Include="Views\Partials\_LocationIsOpen.cshtml" />
+    <Content Include="Views\Partials\_LocationJsonLD.cshtml" />
+    <Content Include="Views\Partials\_LocationOpeningTimes.cshtml" />
+    <Content Include="Views\Partials\_LocationTab1Content.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

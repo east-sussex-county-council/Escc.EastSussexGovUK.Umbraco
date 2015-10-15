@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Umbraco", "Escc.EastSussexGovUK.Umbraco\Escc.EastSussexGovUK.Umbraco.csproj", "{2A2881F4-EC23-4C6A-86D6-3086F957CFF5}"
 EndProject
@@ -12,8 +12,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.HouseStyle", "..\Escc.HouseStyle\EsccWebTeam.HouseStyle.csproj", "{1C429378-DBF2-4AF7-88AC-C059AA163682}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.Data.ActiveDirectory", "..\Escc.Data.ActiveDirectory\EsccWebTeam.Data.ActiveDirectory.csproj", "{5F1BBB42-C1C6-4110-A3E4-720420A3C27D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.Data.Xml", "..\Escc.Data.Xml\EsccWebTeam.Data.Xml.csproj", "{86B2725C-9C37-44A4-93C7-F5122AFA0809}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.Cms", "..\Escc.Cms\EsccWebTeam.Cms.csproj", "{6710E9EE-DEAB-4569-ACE6-F10159D6D447}"
 EndProject
@@ -69,12 +67,6 @@ Global
 		{5F1BBB42-C1C6-4110-A3E4-720420A3C27D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5F1BBB42-C1C6-4110-A3E4-720420A3C27D}.UAT|Any CPU.ActiveCfg = Release|Any CPU
 		{5F1BBB42-C1C6-4110-A3E4-720420A3C27D}.UAT|Any CPU.Build.0 = Release|Any CPU
-		{86B2725C-9C37-44A4-93C7-F5122AFA0809}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{86B2725C-9C37-44A4-93C7-F5122AFA0809}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{86B2725C-9C37-44A4-93C7-F5122AFA0809}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{86B2725C-9C37-44A4-93C7-F5122AFA0809}.Release|Any CPU.Build.0 = Release|Any CPU
-		{86B2725C-9C37-44A4-93C7-F5122AFA0809}.UAT|Any CPU.ActiveCfg = UAT|Any CPU
-		{86B2725C-9C37-44A4-93C7-F5122AFA0809}.UAT|Any CPU.Build.0 = UAT|Any CPU
 		{6710E9EE-DEAB-4569-ACE6-F10159D6D447}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6710E9EE-DEAB-4569-ACE6-F10159D6D447}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6710E9EE-DEAB-4569-ACE6-F10159D6D447}.Release|Any CPU.ActiveCfg = Release|Any CPU
