@@ -150,7 +150,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Net, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Net.1.0.0\lib\Escc.Net.dll</HintPath>
+      <HintPath>..\packages\Escc.Net.1.0.1\lib\Escc.Net.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.RubbishAndRecycling.SiteFinder.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -290,8 +290,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Our.Umbraco.PropertyEditorConverters, Version=2.1.5.35, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
