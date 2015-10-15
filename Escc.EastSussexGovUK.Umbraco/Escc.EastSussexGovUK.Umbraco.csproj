@@ -509,6 +509,9 @@
     <Content Include="img\StandardTopicPage\childrens-library.gif" />
     <Content Include="js\CampaignTemplates\social-work-campaign-landing.js" />
     <Content Include="js\CouncilPlan\council-plan.js" />
+    <Content Include="js\CustomerFocusTemplates\guide-step.js" />
+    <Content Include="js\CustomerFocusTemplates\guide.js" />
+    <Content Include="js\CustomerFocusTemplates\location.js" />
     <Content Include="js\libs\Escc.DocumentsInNewWindow.min.js" />
     <Content Include="js\libs\Escc.Statistics.min.js" />
     <Content Include="MicrosoftCmsMigration\UserControls\Latest.ascx" />
@@ -3031,7 +3034,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="App_Plugins\OpeningSoon\scripts\" />
-    <Folder Include="js\CustomerFocusTemplates\" />
     <Folder Include="media\" />
   </ItemGroup>
   <ItemGroup>
