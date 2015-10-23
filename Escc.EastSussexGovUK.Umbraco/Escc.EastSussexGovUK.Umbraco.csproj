@@ -125,7 +125,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.CustomerFocusTemplates.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.CustomerFocusTemplates.Website.2.2.3\lib\Escc.CustomerFocusTemplates.Website.dll</HintPath>
+      <HintPath>..\packages\Escc.CustomerFocusTemplates.Website.2.3.0\lib\Escc.CustomerFocusTemplates.Website.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.UmbracoDocumentTypes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -3260,11 +3260,11 @@
     <Content Include="Views\Layouts\_Twitter.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\SocialWorkCampaignLanding.cshtml" />
+    <Content Include="Views\Alerts.cshtml" />
     <Content Include="Views\Partials\_LocationIsOpen.cshtml" />
     <Content Include="Views\Partials\_LocationJsonLD.cshtml" />
     <Content Include="Views\Partials\_LocationOpeningTimes.cshtml" />
     <Content Include="Views\Partials\_LocationTab1Content.cshtml" />
-    <Content Include="Views\Alerts.cshtml" />
     <Content Include="Views\Guide.cshtml" />
     <Content Include="Views\GuideStep.cshtml" />
     <Content Include="Views\Landing.cshtml" />
@@ -3316,7 +3316,7 @@
     <Error Condition="!Exists('..\packages\Escc.CampaignTemplates.Website.1.0.0\build\Escc.CampaignTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CampaignTemplates.Website.1.0.0\build\Escc.CampaignTemplates.Website.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.UmbracoViews.6.1.1\build\Escc.EastSussexGovUK.UmbracoViews.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.UmbracoViews.6.1.1\build\Escc.EastSussexGovUK.UmbracoViews.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Alerts.Website.1.4.3\build\Escc.Alerts.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Alerts.Website.1.4.3\build\Escc.Alerts.Website.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.CustomerFocusTemplates.Website.2.2.3\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CustomerFocusTemplates.Website.2.2.3\build\Escc.CustomerFocusTemplates.Website.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.CustomerFocusTemplates.Website.2.3.0\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CustomerFocusTemplates.Website.2.3.0\build\Escc.CustomerFocusTemplates.Website.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets" Condition="Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets')" />
   <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.2\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.2\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
@@ -3333,7 +3333,7 @@
   <Import Project="..\packages\Escc.CampaignTemplates.Website.1.0.0\build\Escc.CampaignTemplates.Website.targets" Condition="Exists('..\packages\Escc.CampaignTemplates.Website.1.0.0\build\Escc.CampaignTemplates.Website.targets')" />
   <Import Project="..\packages\Escc.EastSussexGovUK.UmbracoViews.6.1.1\build\Escc.EastSussexGovUK.UmbracoViews.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.UmbracoViews.6.1.1\build\Escc.EastSussexGovUK.UmbracoViews.targets')" />
   <Import Project="..\packages\Escc.Alerts.Website.1.4.3\build\Escc.Alerts.Website.targets" Condition="Exists('..\packages\Escc.Alerts.Website.1.4.3\build\Escc.Alerts.Website.targets')" />
-  <Import Project="..\packages\Escc.CustomerFocusTemplates.Website.2.2.3\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('..\packages\Escc.CustomerFocusTemplates.Website.2.2.3\build\Escc.CustomerFocusTemplates.Website.targets')" />
+  <Import Project="..\packages\Escc.CustomerFocusTemplates.Website.2.3.0\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('..\packages\Escc.CustomerFocusTemplates.Website.2.3.0\build\Escc.CustomerFocusTemplates.Website.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
