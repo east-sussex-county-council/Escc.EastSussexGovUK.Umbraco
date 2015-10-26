@@ -162,7 +162,7 @@
       <HintPath>..\packages\Escc.Schools.TermDates.Website.1.1.0\lib\Escc.Schools.TermDates.Website.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.1.4.0\lib\Escc.Umbraco.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.1.4.1\lib\Escc.Umbraco.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.Banners, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
