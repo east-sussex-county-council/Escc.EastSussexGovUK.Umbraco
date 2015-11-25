@@ -518,6 +518,7 @@
     <Content Include="default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="googledb369ad0fa294f54.html" />
     <Content Include="img\CampaignTemplates\astronaut-small.jpg" />
     <Content Include="img\CampaignTemplates\astronaut.jpg" />
     <Content Include="img\CampaignTemplates\shape1.png" />
