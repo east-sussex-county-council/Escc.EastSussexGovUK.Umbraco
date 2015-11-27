@@ -11,6 +11,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
     {
         // Escc.EastSussexGovUK.UmbracoViews project
         [TestCase(@"Views\_ViewStart.cshtml")]
+        [TestCase(@"Views\Desktop.cshtml")]
 
         // Escc.CoreLegacyTemplates.Website project
         [TestCase(@"css\FormDownloadPage\form-download.css")]
