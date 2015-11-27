@@ -23,7 +23,8 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
-    <NuGetPackageImportStamp>e7b07e10</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <RestorePackages>true</RestorePackages>
     <TargetFrameworkProfile />
     <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
@@ -154,8 +155,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.RubbishAndRecycling.SiteFinder.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.2\lib\Escc.RubbishAndRecycling.SiteFinder.Website.dll</HintPath>
+      <HintPath>..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.3\lib\Escc.RubbishAndRecycling.SiteFinder.Website.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Schools.TermDates.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Schools.TermDates.Website.1.1.1\lib\Escc.Schools.TermDates.Website.dll</HintPath>
@@ -3034,7 +3035,6 @@
     <Content Include="Views\TermDates\TermDatesTable.ascx" />
     <Content Include="Views\Topic\FloodAlerts.ascx" />
     <Content Include="Views\Topic\FloodAlerts.xslt" />
-    <Content Include="Views\Topic\RecyclingSiteFinder.ascx" />
     <Content Include="Views\Topic\TopicSection_Alternative.ascx" />
     <Content Include="Views\Topic\TopicSection_ChildrenBack.ascx" />
     <Content Include="Views\Topic\TopicSection_ChildrenLibrary.ascx" />
@@ -3044,7 +3044,6 @@
     <Content Include="Views\Topic\TopicSection_ImageRow.ascx" />
     <Content Include="Views\Topic\TopicSection_ImageRowBorderless.ascx" />
     <Content Include="Views\Topic\TopicSection_Normal.ascx" />
-    <Content Include="Views\Topic\TopicSection_RecyclingSiteFinder.ascx" />
     <Content Include="Views\Topic\TopicSection_TermDates.ascx" />
     <Content Include="Views\Topic\TopicSection_ToDo.ascx" />
     <Content Include="Web.config">
@@ -3300,7 +3299,6 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.2\build\Escc.RubbishAndRecycling.SiteFinder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.2\build\Escc.RubbishAndRecycling.SiteFinder.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Statistics.js.2.0.0\build\Escc.Statistics.js.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Statistics.js.2.0.0\build\Escc.Statistics.js.targets'))" />
     <Error Condition="!Exists('..\packages\UmbracoCms.7.2.8\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.2.8\build\UmbracoCms.props'))" />
     <Error Condition="!Exists('..\packages\UmbracoCms.7.2.8\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.2.8\build\UmbracoCms.targets'))" />
@@ -3316,9 +3314,9 @@
     <Error Condition="!Exists('..\packages\Escc.Schools.TermDates.Website.1.1.1\build\Escc.Schools.TermDates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Schools.TermDates.Website.1.1.1\build\Escc.Schools.TermDates.Website.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Home.Website.2.1.1\build\Escc.Home.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Home.Website.2.1.1\build\Escc.Home.Website.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.CoreLegacyTemplates.Website.2.2.5\build\Escc.CoreLegacyTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CoreLegacyTemplates.Website.2.2.5\build\Escc.CoreLegacyTemplates.Website.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.3\build\Escc.RubbishAndRecycling.SiteFinder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.3\build\Escc.RubbishAndRecycling.SiteFinder.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets" Condition="Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets')" />
-  <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.2\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.2\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
   <Import Project="..\packages\Escc.Statistics.js.2.0.0\build\Escc.Statistics.js.targets" Condition="Exists('..\packages\Escc.Statistics.js.2.0.0\build\Escc.Statistics.js.targets')" />
   <Import Project="..\packages\UmbracoCms.7.2.8\build\UmbracoCms.targets" Condition="Exists('..\packages\UmbracoCms.7.2.8\build\UmbracoCms.targets')" />
   <Import Project="..\packages\Escc.Umbraco.MediaSync.1.1.3\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.1.1.3\build\Escc.Umbraco.MediaSync.targets')" />
@@ -3333,6 +3331,7 @@
   <Import Project="..\packages\Escc.Schools.TermDates.Website.1.1.1\build\Escc.Schools.TermDates.Website.targets" Condition="Exists('..\packages\Escc.Schools.TermDates.Website.1.1.1\build\Escc.Schools.TermDates.Website.targets')" />
   <Import Project="..\packages\Escc.Home.Website.2.1.1\build\Escc.Home.Website.targets" Condition="Exists('..\packages\Escc.Home.Website.2.1.1\build\Escc.Home.Website.targets')" />
   <Import Project="..\packages\Escc.CoreLegacyTemplates.Website.2.2.5\build\Escc.CoreLegacyTemplates.Website.targets" Condition="Exists('..\packages\Escc.CoreLegacyTemplates.Website.2.2.5\build\Escc.CoreLegacyTemplates.Website.targets')" />
+  <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.3\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.3\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
