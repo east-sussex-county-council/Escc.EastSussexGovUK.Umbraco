@@ -191,7 +191,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.SiteMap, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.SiteMap.NuGet.1.0.1\lib\Escc.Umbraco.SiteMap.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.SiteMap.NuGet.1.0.2\lib\Escc.Umbraco.SiteMap.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ESCC.Umbraco.UserAccessWebService, Version=1.0.5819.25164, Culture=neutral, processorArchitecture=MSIL">
