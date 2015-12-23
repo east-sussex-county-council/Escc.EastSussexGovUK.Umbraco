@@ -11,7 +11,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
     {
         // Escc.EastSussexGovUK.UmbracoViews project
         [TestCase(@"Views\_ViewStart.cshtml")]
-        [TestCase(@"Views\Desktop.cshtml")]
+        [TestCase(@"Views\Layouts\Desktop.cshtml")]
 
         // Escc.CoreLegacyTemplates.Website project
         [TestCase(@"css\FormDownloadPage\form-download.css")]
@@ -25,13 +25,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         // Escc.CustomerFocusTemplates.Website project
         [TestCase(@"App_Plugins\OpeningSoon\openingsoon.html")] 
         [TestCase(@"App_Plugins\OpeningSoon\scripts\jquery.timepicker.js")] 
-        [TestCase(@"css\task-small.css")] 
+        [TestCase(@"css\CustomerFocusTemplates\task-small.css")] 
         [TestCase(@"js\CustomerFocusTemplates\guide.js")]
         [TestCase(@"Views\Partials\_LocationIsOpen.cshtml")]
         [TestCase(@"Views\Location.cshtml")]
 
         // Escc.CampaignTemplates.Website project
-        [TestCase(@"js\CampaignTemplates\social-work-campaign-landing.js")]
+        [TestCase(@"js\CampaignTemplates\campaign-landing.js")]
+        [TestCase(@"css\CampaignTemplates\campaign-landing-small.css")]
+        [TestCase(@"Views\CampaignLanding.cshtml")]
 
         // Escc.Home.Website project
         [TestCase(@"Views\HomePage.cshtml")]
