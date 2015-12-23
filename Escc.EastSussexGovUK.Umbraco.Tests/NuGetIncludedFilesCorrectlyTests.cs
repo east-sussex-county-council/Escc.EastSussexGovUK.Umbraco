@@ -32,7 +32,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
 
         // Escc.CampaignTemplates.Website project
         [TestCase(@"js\CampaignTemplates\campaign-landing.js")]
-        [TestCase(@"css\CampaignTemplates\campaign-landing-small.css")]
+        [TestCase(@"css\CampaignTemplates\campaign-small.css")]
         [TestCase(@"Views\CampaignLanding.cshtml")]
 
         // Escc.Home.Website project
