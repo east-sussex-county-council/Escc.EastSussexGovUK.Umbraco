@@ -194,8 +194,8 @@
       <HintPath>..\packages\Escc.Umbraco.SiteMap.NuGet.1.0.2\lib\Escc.Umbraco.SiteMap.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ESCC.Umbraco.UserAccessWebService, Version=1.0.5819.25164, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ESCC.Umbraco.UserAccessWebService.1.2.8\lib\ESCC.Umbraco.UserAccessWebService.dll</HintPath>
+    <Reference Include="ESCC.Umbraco.UserAccessWebService, Version=1.0.5847.15808, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ESCC.Umbraco.UserAccessWebService.1.2.9\lib\ESCC.Umbraco.UserAccessWebService.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Examine, Version=0.1.65.0, Culture=neutral, processorArchitecture=MSIL">
