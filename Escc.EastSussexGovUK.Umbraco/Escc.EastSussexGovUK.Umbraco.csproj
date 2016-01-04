@@ -105,7 +105,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.CampaignTemplates.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.CampaignTemplates.Website.2.0.1\lib\Escc.CampaignTemplates.Website.dll</HintPath>
+      <HintPath>..\packages\Escc.CampaignTemplates.Website.2.0.2\lib\Escc.CampaignTemplates.Website.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.ClientDependencyFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -3315,7 +3315,7 @@
     <Error Condition="!Exists('..\packages\Escc.Home.Website.2.1.2\build\Escc.Home.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Home.Website.2.1.2\build\Escc.Home.Website.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.UmbracoViews.6.4.0\build\Escc.EastSussexGovUK.UmbracoViews.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.UmbracoViews.6.4.0\build\Escc.EastSussexGovUK.UmbracoViews.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.CustomerFocusTemplates.Website.2.3.2\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CustomerFocusTemplates.Website.2.3.2\build\Escc.CustomerFocusTemplates.Website.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.CampaignTemplates.Website.2.0.1\build\Escc.CampaignTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CampaignTemplates.Website.2.0.1\build\Escc.CampaignTemplates.Website.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.CampaignTemplates.Website.2.0.2\build\Escc.CampaignTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CampaignTemplates.Website.2.0.2\build\Escc.CampaignTemplates.Website.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets" Condition="Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets')" />
   <Import Project="..\packages\Escc.Statistics.js.2.0.0\build\Escc.Statistics.js.targets" Condition="Exists('..\packages\Escc.Statistics.js.2.0.0\build\Escc.Statistics.js.targets')" />
@@ -3332,7 +3332,7 @@
   <Import Project="..\packages\Escc.Home.Website.2.1.2\build\Escc.Home.Website.targets" Condition="Exists('..\packages\Escc.Home.Website.2.1.2\build\Escc.Home.Website.targets')" />
   <Import Project="..\packages\Escc.EastSussexGovUK.UmbracoViews.6.4.0\build\Escc.EastSussexGovUK.UmbracoViews.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.UmbracoViews.6.4.0\build\Escc.EastSussexGovUK.UmbracoViews.targets')" />
   <Import Project="..\packages\Escc.CustomerFocusTemplates.Website.2.3.2\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('..\packages\Escc.CustomerFocusTemplates.Website.2.3.2\build\Escc.CustomerFocusTemplates.Website.targets')" />
-  <Import Project="..\packages\Escc.CampaignTemplates.Website.2.0.1\build\Escc.CampaignTemplates.Website.targets" Condition="Exists('..\packages\Escc.CampaignTemplates.Website.2.0.1\build\Escc.CampaignTemplates.Website.targets')" />
+  <Import Project="..\packages\Escc.CampaignTemplates.Website.2.0.2\build\Escc.CampaignTemplates.Website.targets" Condition="Exists('..\packages\Escc.CampaignTemplates.Website.2.0.2\build\Escc.CampaignTemplates.Website.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
