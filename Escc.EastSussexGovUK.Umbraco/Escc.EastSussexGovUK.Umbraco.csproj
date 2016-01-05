@@ -23,7 +23,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
-    <NuGetPackageImportStamp>94716161</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>2487bce3</NuGetPackageImportStamp>
     <RestorePackages>true</RestorePackages>
     <TargetFrameworkProfile />
     <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
@@ -174,7 +174,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.MediaSync, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.MediaSync.1.3.2\lib\Escc.Umbraco.MediaSync.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.MediaSync.1.3.3\lib\Escc.Umbraco.MediaSync.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.MicrosoftCmsMigration, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -3284,7 +3284,7 @@
     <Error Condition="!Exists('..\packages\Escc.CoreLegacyTemplates.Website.2.3.1\build\Escc.CoreLegacyTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CoreLegacyTemplates.Website.2.3.1\build\Escc.CoreLegacyTemplates.Website.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.6.0.1\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.6.0.1\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.CampaignTemplates.Website.2.0.2\build\Escc.CampaignTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CampaignTemplates.Website.2.0.2\build\Escc.CampaignTemplates.Website.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.1.3.2\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.1.3.2\build\Escc.Umbraco.MediaSync.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.1.3.3\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.1.3.3\build\Escc.Umbraco.MediaSync.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets" Condition="Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets')" />
   <Import Project="..\packages\Escc.Statistics.js.2.0.0\build\Escc.Statistics.js.targets" Condition="Exists('..\packages\Escc.Statistics.js.2.0.0\build\Escc.Statistics.js.targets')" />
@@ -3301,7 +3301,7 @@
   <Import Project="..\packages\Escc.CoreLegacyTemplates.Website.2.3.1\build\Escc.CoreLegacyTemplates.Website.targets" Condition="Exists('..\packages\Escc.CoreLegacyTemplates.Website.2.3.1\build\Escc.CoreLegacyTemplates.Website.targets')" />
   <Import Project="..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.6.0.1\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.6.0.1\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" />
   <Import Project="..\packages\Escc.CampaignTemplates.Website.2.0.2\build\Escc.CampaignTemplates.Website.targets" Condition="Exists('..\packages\Escc.CampaignTemplates.Website.2.0.2\build\Escc.CampaignTemplates.Website.targets')" />
-  <Import Project="..\packages\Escc.Umbraco.MediaSync.1.3.2\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.1.3.2\build\Escc.Umbraco.MediaSync.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.MediaSync.1.3.3\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.1.3.3\build\Escc.Umbraco.MediaSync.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
