@@ -494,6 +494,10 @@
     <None Include="Escc.EastSussexGovUK.Umbraco.csproj.xslt">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="css\CampaignTemplates\campaign-large.css" />
+    <Content Include="css\CampaignTemplates\campaign-medium.css" />
+    <Content Include="css\CampaignTemplates\campaign-print.css" />
+    <Content Include="css\CampaignTemplates\campaign-small.css" />
     <Content Include="css\CouncilPlan\council-plan-large.css" />
     <Content Include="css\CouncilPlan\council-plan-medium.css" />
     <Content Include="css\CouncilPlan\council-plan-small.css" />
@@ -503,9 +507,16 @@
     <Content Include="css\CustomerFocusTemplates\location-large.css" />
     <Content Include="css\CustomerFocusTemplates\location-small.css" />
     <Content Include="css\CustomerFocusTemplates\task-small.css" />
+    <Content Include="css\FormDownloadPage\form-download.css" />
     <Content Include="css\HomePage\home-large.css" />
     <Content Include="css\HomePage\home-medium.css" />
     <Content Include="css\HomePage\home-small.css" />
+    <Content Include="css\StandardDownloadPage\download-small.css" />
+    <Content Include="css\StandardLandingPage\landing-large.css" />
+    <Content Include="css\StandardLandingPage\landing-medium.css" />
+    <Content Include="css\StandardLandingPage\landing-small.css" />
+    <Content Include="css\StandardTopicPage\topic-medium.css" />
+    <Content Include="css\StandardTopicPage\topic-small.css" />
     <Content Include="css\TinyMCE-Content.css" />
     <Content Include="css\TinyMCE-StyleSelector-Embed.css" />
     <Content Include="css\TinyMCE-StyleSelector-Headings.css" />
@@ -514,6 +525,8 @@
     <Content Include="Global.asax" />
     <Content Include="googledb369ad0fa294f54.html" />
     <Content Include="img\HomePage\jobs.png" />
+    <Content Include="img\StandardTopicPage\childrens-library.gif" />
+    <Content Include="js\CampaignTemplates\campaign-landing.js" />
     <Content Include="js\CouncilPlan\council-plan.js" />
     <Content Include="js\CustomerFocusTemplates\guide.js" />
     <Content Include="js\CustomerFocusTemplates\location.js" />
@@ -3004,14 +3017,33 @@
     <Content Include="Views\CouncilPlanMonitoringPage.ascx" />
     <Content Include="Views\CouncilPlanPrioritiesPage.ascx" />
     <Content Include="Views\CouncilPlanTopicPage.ascx" />
+    <Content Include="Views\FormDownloadPage.ascx" />
+    <Content Include="Views\LandingPageWithPictures.ascx" />
     <Content Include="Views\Layouts\BreadcrumbTrail.ascx" />
     <Content Include="Views\Layouts\BreadcrumbTrailMobile.ascx" />
     <Content Include="Views\Layouts\MasterPageControl.ascx" />
+    <Content Include="Views\Map.ascx" />
+    <Content Include="Views\StandardDownloadPage.ascx" />
+    <Content Include="Views\StandardLandingPage.ascx" />
+    <Content Include="Views\StandardTopicPage.ascx" />
     <Content Include="Views\TermDates\QuickAnswer.ascx" />
     <Content Include="Views\TermDates\QuickAnswerMvcProxy.ascx" />
     <Content Include="Views\TermDates\TermDatesTable.ascx" />
+    <Content Include="Views\Topic\FloodAlerts.ascx" />
+    <Content Include="Views\Topic\FloodAlerts.xslt" />
     <Content Include="Views\Topic\RecyclingSiteFinder.ascx" />
+    <Content Include="Views\Topic\TopicSection_Alternative.ascx" />
+    <Content Include="Views\Topic\TopicSection_ChildrenBack.ascx" />
+    <Content Include="Views\Topic\TopicSection_ChildrenLibrary.ascx" />
+    <Content Include="Views\Topic\TopicSection_FeaturedImage.ascx" />
+    <Content Include="Views\Topic\TopicSection_FloodAlerts.ascx" />
+    <Content Include="Views\Topic\TopicSection_GoogleMap.ascx" />
+    <Content Include="Views\Topic\TopicSection_ImageRow.ascx" />
+    <Content Include="Views\Topic\TopicSection_ImageRowBorderless.ascx" />
+    <Content Include="Views\Topic\TopicSection_Normal.ascx" />
     <Content Include="Views\Topic\TopicSection_RecyclingSiteFinder.ascx" />
+    <Content Include="Views\Topic\TopicSection_TermDates.ascx" />
+    <Content Include="Views\Topic\TopicSection_ToDo.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -3019,8 +3051,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="css\CampaignTemplates\" />
-    <Folder Include="js\CampaignTemplates\" />
     <Folder Include="media\" />
   </ItemGroup>
   <ItemGroup>
@@ -3236,6 +3266,12 @@
     <Content Include="Views\CampaignLanding.cshtml" />
     <Content Include="Views\CampaignContentCss.cshtml" />
     <Content Include="Views\CampaignContent.cshtml" />
+    <Content Include="Views\FormDownloadPage.cshtml" />
+    <Content Include="Views\LandingPageWithPictures.cshtml" />
+    <Content Include="Views\Map.cshtml" />
+    <Content Include="Views\StandardDownloadPage.cshtml" />
+    <Content Include="Views\StandardLandingPage.cshtml" />
+    <Content Include="Views\StandardTopicPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
