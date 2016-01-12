@@ -23,7 +23,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
-    <NuGetPackageImportStamp>47dc5bcb</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>f9ef7e40</NuGetPackageImportStamp>
     <RestorePackages>true</RestorePackages>
     <TargetFrameworkProfile />
     <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
@@ -103,6 +103,10 @@
       <HintPath>..\packages\Escc.Alerts.Website.1.4.3\lib\Escc.Alerts.Website.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Escc.BasicAuthentication.WebApi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.BasicAuthentication.WebApi.1.0.2\lib\Escc.BasicAuthentication.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Escc.CampaignTemplates.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.CampaignTemplates.Website.2.0.2\lib\Escc.CampaignTemplates.Website.dll</HintPath>
       <Private>True</Private>
@@ -178,7 +182,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.MediaSync, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.MediaSync.1.3.4\lib\Escc.Umbraco.MediaSync.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.MediaSync.1.3.5\lib\Escc.Umbraco.MediaSync.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.MicrosoftCmsMigration, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -189,12 +193,16 @@
       <HintPath>..\packages\Escc.Umbraco.PropertyEditors.2.1.3\lib\Escc.Umbraco.PropertyEditors.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Escc.Umbraco.RecycleBinManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Umbraco.RecycleBinManager.1.0.3\lib\Escc.Umbraco.RecycleBinManager.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Escc.Umbraco.SiteMap, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.SiteMap.NuGet.1.0.2\lib\Escc.Umbraco.SiteMap.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ESCC.Umbraco.UserAccessWebService, Version=1.0.5847.15808, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ESCC.Umbraco.UserAccessWebService.1.2.9\lib\ESCC.Umbraco.UserAccessWebService.dll</HintPath>
+    <Reference Include="ESCC.Umbraco.UserAccessWebService, Version=1.0.5855.16727, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ESCC.Umbraco.UserAccessWebService.1.3.0\lib\ESCC.Umbraco.UserAccessWebService.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Examine, Version=0.1.65.0, Culture=neutral, processorArchitecture=MSIL">
@@ -432,9 +440,6 @@
     <Content Include="apple-touch-icon-precomposed.png" />
     <Content Include="apple-touch-icon.png" />
     <None Include="App_Plugins\dummy.txt" />
-    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.controller.js" />
-    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.html" />
-    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.resource.js" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.BooleanPropertyEditor\boolean.html" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.BooleanPropertyEditor\controller.js" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\editor.html" />
@@ -490,7 +495,6 @@
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.TwitterScriptPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\OpeningSoon\package.manifest" />
     <Content Include="Config\uMediaSync.config" />
-    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\package.manifest" />
     <None Include="Escc.EastSussexGovUK.Umbraco.csproj.xslt">
       <SubType>Designer</SubType>
     </None>
@@ -3317,8 +3321,8 @@
     <Error Condition="!Exists('..\packages\Escc.CustomerFocusTemplates.Website.2.3.2\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CustomerFocusTemplates.Website.2.3.2\build\Escc.CustomerFocusTemplates.Website.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.6.0.1\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.6.0.1\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.CampaignTemplates.Website.2.0.2\build\Escc.CampaignTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CampaignTemplates.Website.2.0.2\build\Escc.CampaignTemplates.Website.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.1.3.4\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.1.3.4\build\Escc.Umbraco.MediaSync.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.CoreLegacyTemplates.Website.2.3.2\build\Escc.CoreLegacyTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CoreLegacyTemplates.Website.2.3.2\build\Escc.CoreLegacyTemplates.Website.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.1.3.5\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.1.3.5\build\Escc.Umbraco.MediaSync.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets" Condition="Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets')" />
   <Import Project="..\packages\Escc.Statistics.js.2.0.0\build\Escc.Statistics.js.targets" Condition="Exists('..\packages\Escc.Statistics.js.2.0.0\build\Escc.Statistics.js.targets')" />
@@ -3334,8 +3338,8 @@
   <Import Project="..\packages\Escc.CustomerFocusTemplates.Website.2.3.2\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('..\packages\Escc.CustomerFocusTemplates.Website.2.3.2\build\Escc.CustomerFocusTemplates.Website.targets')" />
   <Import Project="..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.6.0.1\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.6.0.1\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" />
   <Import Project="..\packages\Escc.CampaignTemplates.Website.2.0.2\build\Escc.CampaignTemplates.Website.targets" Condition="Exists('..\packages\Escc.CampaignTemplates.Website.2.0.2\build\Escc.CampaignTemplates.Website.targets')" />
-  <Import Project="..\packages\Escc.Umbraco.MediaSync.1.3.4\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.1.3.4\build\Escc.Umbraco.MediaSync.targets')" />
   <Import Project="..\packages\Escc.CoreLegacyTemplates.Website.2.3.2\build\Escc.CoreLegacyTemplates.Website.targets" Condition="Exists('..\packages\Escc.CoreLegacyTemplates.Website.2.3.2\build\Escc.CoreLegacyTemplates.Website.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.MediaSync.1.3.5\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.1.3.5\build\Escc.Umbraco.MediaSync.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
