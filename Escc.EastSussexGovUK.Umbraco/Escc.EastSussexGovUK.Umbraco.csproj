@@ -188,8 +188,8 @@
       <HintPath>..\packages\Escc.Umbraco.RecycleBinManager.1.1.0\lib\Escc.Umbraco.RecycleBinManager.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Escc.Umbraco.SiteMap">
-      <HintPath>..\packages\Escc.Umbraco.SiteMap.NuGet.1.1.3\lib\Escc.Umbraco.SiteMap.dll</HintPath>
+    <Reference Include="Escc.Umbraco.SiteMap, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Umbraco.SiteMap.1.2.2\lib\Escc.Umbraco.SiteMap.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ESCC.Umbraco.UserAccessWebService, Version=1.0.5864.20323, Culture=neutral, processorArchitecture=MSIL">
