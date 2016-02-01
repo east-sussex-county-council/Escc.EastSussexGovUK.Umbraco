@@ -244,11 +244,6 @@
       <HintPath>..\packages\UmbracoCms.Core.7.2.8\lib\Microsoft.ApplicationBlocks.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.ApplicationBlocks.ExceptionManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>S:\_Reference DLLs\Microsoft Exception Management Application Block\Release strong-named .NET 2\Microsoft.ApplicationBlocks.ExceptionManagement.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Data.Edm, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -486,9 +481,6 @@
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.TwitterScriptPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\OpeningSoon\package.manifest" />
     <Content Include="Config\uMediaSync.config" />
-    <None Include="Escc.EastSussexGovUK.Umbraco.csproj.xslt">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="css\CampaignTemplates\campaign-large.css" />
     <Content Include="css\CampaignTemplates\campaign-medium.css" />
     <Content Include="css\CampaignTemplates\campaign-print.css" />
