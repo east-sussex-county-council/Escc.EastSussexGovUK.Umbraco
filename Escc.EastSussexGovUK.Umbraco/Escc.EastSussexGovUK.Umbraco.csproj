@@ -3056,6 +3056,10 @@
       <Project>{1426fef0-23dc-4c23-ae15-67f2527bd741}</Project>
       <Name>EsccWebTeam.EastSussexGovUK</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Escc.Elibrary\Escc.Elibrary.csproj">
+      <Project>{3d2240e0-d165-4c52-a97b-730542975d3a}</Project>
+      <Name>Escc.Elibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Escc.HouseStyle\EsccWebTeam.HouseStyle.csproj">
       <Project>{1c429378-dbf2-4af7-88ac-c059aa163682}</Project>
       <Name>EsccWebTeam.HouseStyle</Name>
