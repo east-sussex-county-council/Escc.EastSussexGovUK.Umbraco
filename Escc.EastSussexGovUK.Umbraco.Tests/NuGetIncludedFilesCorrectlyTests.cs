@@ -41,6 +41,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         // Escc.Alerts.Website project
         [TestCase(@"Views\Alerts.cshtml")]
 
+        // Escc.Umbraco project
+        [TestCase(@"App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.controller.js")]
+
         // Escc.Umbraco.PropertyEditors project
         [TestCase(@"App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\controller.js")] 
         public void NuGetPackagesCorrectlyIncludedInProject(string filePathWhichShouldBeIncluded)
