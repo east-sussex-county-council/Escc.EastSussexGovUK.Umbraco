@@ -182,7 +182,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.Banners, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.Banners.1.0.0\lib\Escc.Umbraco.Banners.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.Banners.1.0.1\lib\Escc.Umbraco.Banners.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.ContentExperiments, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -190,7 +190,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.HeatmapAnalytics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.HeatmapAnalytics.1.0.1\lib\Escc.Umbraco.HeatmapAnalytics.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.HeatmapAnalytics.1.0.2\lib\Escc.Umbraco.HeatmapAnalytics.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.MediaSync, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -202,7 +202,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.PropertyEditors, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.PropertyEditors.3.0.0\lib\Escc.Umbraco.PropertyEditors.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.PropertyEditors.3.0.1\lib\Escc.Umbraco.PropertyEditors.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.RecycleBinManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -3263,8 +3263,8 @@
     <Error Condition="!Exists('..\packages\Escc.Statistics.js.2.0.1\build\Escc.Statistics.js.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Statistics.js.2.0.1\build\Escc.Statistics.js.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.CustomerFocusTemplates.Website.2.3.4\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CustomerFocusTemplates.Website.2.3.4\build\Escc.CustomerFocusTemplates.Website.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Schools.TermDates.Website.1.1.2\build\Escc.Schools.TermDates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Schools.TermDates.Website.1.1.2\build\Escc.Schools.TermDates.Website.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.3.0.0\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.3.0.0\build\Escc.Umbraco.PropertyEditors.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.UmbracoViews.6.4.3\build\Escc.EastSussexGovUK.UmbracoViews.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.UmbracoViews.6.4.3\build\Escc.EastSussexGovUK.UmbracoViews.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.3.0.1\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.3.0.1\build\Escc.Umbraco.PropertyEditors.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets" Condition="Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets')" />
   <Import Project="..\packages\UmbracoCms.7.2.8\build\UmbracoCms.targets" Condition="Exists('..\packages\UmbracoCms.7.2.8\build\UmbracoCms.targets')" />
@@ -3280,8 +3280,8 @@
   <Import Project="..\packages\Escc.Statistics.js.2.0.1\build\Escc.Statistics.js.targets" Condition="Exists('..\packages\Escc.Statistics.js.2.0.1\build\Escc.Statistics.js.targets')" />
   <Import Project="..\packages\Escc.CustomerFocusTemplates.Website.2.3.4\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('..\packages\Escc.CustomerFocusTemplates.Website.2.3.4\build\Escc.CustomerFocusTemplates.Website.targets')" />
   <Import Project="..\packages\Escc.Schools.TermDates.Website.1.1.2\build\Escc.Schools.TermDates.Website.targets" Condition="Exists('..\packages\Escc.Schools.TermDates.Website.1.1.2\build\Escc.Schools.TermDates.Website.targets')" />
-  <Import Project="..\packages\Escc.Umbraco.PropertyEditors.3.0.0\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.3.0.0\build\Escc.Umbraco.PropertyEditors.targets')" />
   <Import Project="..\packages\Escc.EastSussexGovUK.UmbracoViews.6.4.3\build\Escc.EastSussexGovUK.UmbracoViews.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.UmbracoViews.6.4.3\build\Escc.EastSussexGovUK.UmbracoViews.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.PropertyEditors.3.0.1\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.3.0.1\build\Escc.Umbraco.PropertyEditors.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
