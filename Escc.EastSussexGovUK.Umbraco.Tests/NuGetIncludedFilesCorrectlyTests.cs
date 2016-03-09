@@ -41,6 +41,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         // Escc.Alerts.Website project
         [TestCase(@"Views\Alerts.cshtml")]
 
+        // EScc.Schools.TermDates project
+        [TestCase(@"Views\TermDates\QuickAnswer.ascx")]
+
         // Escc.Umbraco project
         [TestCase(@"App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.controller.js")]
 

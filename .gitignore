@@ -58,5 +58,6 @@ dummy.txt
 *.css
 */Views/*
 img
+images
 *.js
 */MicrosoftCmsMigration/*
