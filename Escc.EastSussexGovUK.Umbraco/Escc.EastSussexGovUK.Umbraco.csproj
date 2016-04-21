@@ -3094,9 +3094,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="eastsussexcountycouncil.rdf" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
     <Content Include="Views\Partials\Grid\Editors\Rte.cshtml" />
     <Content Include="Views\Partials\Grid\Editors\Media.cshtml" />
