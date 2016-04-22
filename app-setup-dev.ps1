@@ -39,12 +39,8 @@ $projectName = "Escc.EastSussexGovUK.Umbraco"
 DownloadProjectIfMissing $parentFolderOfThisScript "Escc.EastSussexGovUK"
 DownloadProjectIfMissing $parentFolderOfThisScript "Escc.NavigationControls"
 DownloadProjectIfMissing $parentFolderOfThisScript "Escc.Data.Web"
-DownloadProjectIfMissing $parentFolderOfThisScript "Escc.HouseStyle"
-DownloadProjectIfMissing $parentFolderOfThisScript "Escc.Data.ActiveDirectory"
-DownloadProjectIfMissing $parentFolderOfThisScript "Escc.Cms"
 DownloadProjectIfMissing $parentFolderOfThisScript "Escc.Elibrary"
 NuGetRestoreForProject $parentFolderOfThisScript "Escc.EastSussexGovUK"
-NuGetRestoreForProject $parentFolderOfThisScript "Escc.Cms"
 
 EnableDotNet40InIIS
 CreateApplicationPool $projectName
