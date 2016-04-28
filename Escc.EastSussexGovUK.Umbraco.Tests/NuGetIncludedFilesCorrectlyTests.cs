@@ -48,7 +48,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [TestCase(@"App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.controller.js")]
 
         // Escc.Umbraco.PropertyEditors project
-        [TestCase(@"App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\controller.js")] 
+        [TestCase(@"App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\controller.js")]
+
+        // Escc.Umbraco.MicrosoftCmsMigration project
+        [TestCase(@"MicrosoftCmsMigration\UserControls\Latest.ascx")]
+
         public void NuGetPackagesCorrectlyIncludedInProject(string filePathWhichShouldBeIncluded)
         {
             var commonParent = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent;
