@@ -46,6 +46,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
 
         // Escc.Umbraco project
         [TestCase(@"App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.controller.js")]
+        
+        // Escc.Umbraco.MediaSync project
+        [TestCase(@"Config\uMediaSync.config")]
 
         // Escc.Umbraco.PropertyEditors project
         [TestCase(@"App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\controller.js")]
