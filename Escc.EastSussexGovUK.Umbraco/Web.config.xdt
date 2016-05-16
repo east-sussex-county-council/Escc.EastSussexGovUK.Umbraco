@@ -72,17 +72,12 @@
     <TopicSectionLayouts>
       <SectionLayouts>
         <add name="Normal" displayName="Image on right" displayControl="~/Views/Topic/TopicSection_Normal.ascx" />
-        <add name="GoogleMap" displayName="Image on right (formerly Google map)" displayControl="~/Views/Topic/TopicSection_Normal.ascx" />
         <add name="Alternative" displayName="Image on left" displayControl="~/Views/Topic/TopicSection_Alternative.ascx" />
         <add name="FeaturedImage" displayName="Large image" displayControl="~/Views/Topic/TopicSection_FeaturedImage.ascx" />
         <add name="ImageRow" displayName="Row of images" displayControl="~/Views/Topic/TopicSection_ImageRow.ascx" />
         <add name="ImageRowBorderless" displayName="Row of images without borders" displayControl="~/Views/Topic/TopicSection_ImageRowBorderless.ascx" />
-        <add name="ChildrenLibrary" displayName="Children's library links" displayControl="~/Views/Topic/TopicSection_ChildrenLibrary.ascx" />
-        <add name="ChildrenBack" displayName="Back to children's section" displayControl="~/Views/Topic/TopicSection_ChildrenBack.ascx" />
-        <add name="SchoolClosures" displayName="School closures list" displayControl="~/Views/Topic/TopicSection_ToDo.ascx" />
+        <add name="SchoolClosures" displayName="School closures list" displayControl="~/Views/Topic/TopicSection_SchoolClosures.ascx" />
         <add name="TermDates" displayName="School term dates" displayControl="~/Views/Topic/TopicSection_TermDates.ascx" />
-        <add name="OpenElectionData" displayName="Open election data landing page" displayControl="~/Views/Topic/TopicSection_ToDo.ascx" />
-        <add name="Gritting" displayName="Gritting" displayControl="~/Views/Topic/TopicSection_ToDo.ascx" />
         <add name="FloodAlerts" displayName="Flood alerts (mobile)" displayControl="~/Views/Topic/TopicSection_FloodAlerts.ascx" />
         <add name="RecyclingSiteSearch" displayName="Find a recycling site" displayControl="~/Views/Topic/TopicSection_RecyclingSiteFinder.ascx" />
       </SectionLayouts>
@@ -98,5 +93,8 @@
     <add key="FloodAlertsRssUrl" value="http://www.environment-agency.gov.uk/homeandleisure/floods/134567.aspx" xdt:Transform="Insert"/>
     <add key="FloodAlertsXslPath" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     <add key="FloodAlertsXslPath" value="{c:\path\to\FloodAlerts.xslt}" xdt:Transform="Insert"/>
+
+    <add key="Escc.Umbraco.Inception.AuthToken" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    <add key="Escc.Umbraco.Inception.AuthToken" value="" />
   </appSettings>
 </configuration>

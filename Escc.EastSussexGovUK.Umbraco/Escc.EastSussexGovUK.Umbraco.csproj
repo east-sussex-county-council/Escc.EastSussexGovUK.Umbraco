@@ -538,20 +538,6 @@
     <Compile Include="Views\Topic\TopicSection_Alternative.ascx.designer.cs">
       <DependentUpon>TopicSection_Alternative.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Topic\TopicSection_ChildrenBack.ascx.cs">
-      <DependentUpon>TopicSection_ChildrenBack.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Topic\TopicSection_ChildrenBack.ascx.designer.cs">
-      <DependentUpon>TopicSection_ChildrenBack.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Topic\TopicSection_ChildrenLibrary.ascx.cs">
-      <DependentUpon>TopicSection_ChildrenLibrary.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Topic\TopicSection_ChildrenLibrary.ascx.designer.cs">
-      <DependentUpon>TopicSection_ChildrenLibrary.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Views\Topic\TopicSection_FeaturedImage.ascx.cs">
       <DependentUpon>TopicSection_FeaturedImage.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -565,13 +551,6 @@
     </Compile>
     <Compile Include="Views\Topic\TopicSection_FloodAlerts.ascx.designer.cs">
       <DependentUpon>TopicSection_FloodAlerts.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Topic\TopicSection_GoogleMap.ascx.cs">
-      <DependentUpon>TopicSection_GoogleMap.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Topic\TopicSection_GoogleMap.ascx.designer.cs">
-      <DependentUpon>TopicSection_GoogleMap.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\Topic\TopicSection_ImageRow.ascx.cs">
       <DependentUpon>TopicSection_ImageRow.ascx</DependentUpon>
@@ -601,12 +580,12 @@
     <Compile Include="Views\Topic\TopicSection_TermDates.ascx.designer.cs">
       <DependentUpon>TopicSection_TermDates.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Topic\TopicSection_ToDo.ascx.cs">
-      <DependentUpon>TopicSection_ToDo.ascx</DependentUpon>
+    <Compile Include="Views\Topic\TopicSection_SchoolClosures.ascx.cs">
+      <DependentUpon>TopicSection_SchoolClosures.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Topic\TopicSection_ToDo.ascx.designer.cs">
-      <DependentUpon>TopicSection_ToDo.ascx</DependentUpon>
+    <Compile Include="Views\Topic\TopicSection_SchoolClosures.ascx.designer.cs">
+      <DependentUpon>TopicSection_SchoolClosures.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -694,7 +673,6 @@
     <Content Include="Global.asax" />
     <Content Include="googledb369ad0fa294f54.html" />
     <Content Include="images\HomePage\jobs.png" />
-    <Content Include="img\StandardTopicPage\childrens-library.gif" />
     <Content Include="js\CampaignTemplates\campaign-landing.js" />
     <Content Include="js\CouncilPlan\council-plan.js" />
     <Content Include="js\CustomerFocusTemplates\guide.js" />
@@ -3202,17 +3180,14 @@
     <Content Include="Views\Topic\FloodAlerts.xslt" />
     <Content Include="Views\Topic\RecyclingSiteFinder.ascx" />
     <Content Include="Views\Topic\TopicSection_Alternative.ascx" />
-    <Content Include="Views\Topic\TopicSection_ChildrenBack.ascx" />
-    <Content Include="Views\Topic\TopicSection_ChildrenLibrary.ascx" />
     <Content Include="Views\Topic\TopicSection_FeaturedImage.ascx" />
     <Content Include="Views\Topic\TopicSection_FloodAlerts.ascx" />
-    <Content Include="Views\Topic\TopicSection_GoogleMap.ascx" />
     <Content Include="Views\Topic\TopicSection_ImageRow.ascx" />
     <Content Include="Views\Topic\TopicSection_ImageRowBorderless.ascx" />
     <Content Include="Views\Topic\TopicSection_Normal.ascx" />
     <Content Include="Views\Topic\TopicSection_RecyclingSiteFinder.ascx" />
     <Content Include="Views\Topic\TopicSection_TermDates.ascx" />
-    <Content Include="Views\Topic\TopicSection_ToDo.ascx" />
+    <Content Include="Views\Topic\TopicSection_SchoolClosures.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -3233,7 +3208,6 @@
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\package.manifest" />
     <Content Include="Config\uMediaSync.config" />
     <Content Include="App_Plugins\OpeningSoon\package.manifest" />
-    <None Include="img\StandardTopicPage\childrens-library.psd" />
     <Content Include="img\web.config" />
     <None Include="img\web.example.config" />
     <None Include="packages.config">

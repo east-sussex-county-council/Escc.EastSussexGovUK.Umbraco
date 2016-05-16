@@ -10,6 +10,6 @@
 namespace Escc.EastSussexGovUK.Umbraco.Views.Topic {
     
     
-    public partial class TopicSection_ChildrenBack {
+    public partial class TopicSection_SchoolClosures {
     }
 }
