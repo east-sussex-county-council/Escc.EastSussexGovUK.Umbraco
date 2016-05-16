@@ -1,0 +1,2 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="TopicSection_ChildrenBack.ascx.cs" Inherits="Escc.EastSussexGovUK.Umbraco.Views.Topic.TopicSection_ChildrenBack" %>
+<a href="/libraries/childrenslibrary/" class="childrenBack">Go back<span class="aural"> to children's section home</span></a>

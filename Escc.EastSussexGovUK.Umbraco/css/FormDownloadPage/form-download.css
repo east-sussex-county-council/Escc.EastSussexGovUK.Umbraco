@@ -1,0 +1,20 @@
+﻿/*************************************
+ * CMS TEMPLATE - FORM DOWNLOAD *
+ *************************************/
+
+/* Contain the ways to download, ensure following content doesn't wrap next to it */
+.downloadWays { overflow: hidden; width: 100%; }
+ 
+/* Each way to download should be a large clickable link, with room for a background image illustrating the format. */
+.formAttachment { float: left; margin: 1em 1.5em 0 0; height: 130px; min-width: 100px; text-align: center; }
+.formAttachment a { display: block; padding-top: 80px; }
+
+/* Add icons as background images, twice for IE6 to prevent flicker on hover */
+.ie6 .phPdf, .phPdf a { background: url(/escc.eastsussexgovuk/img/body/navigation.png) no-repeat 30px -248px; }
+.ie6 .phRtf, .phRtf a { background: url(/escc.eastsussexgovuk/img/body/navigation.png) no-repeat -150px -400px; }
+.ie6 .phRtfSign, .phRtfSign a { background: url(/escc.eastsussexgovuk/img/body/navigation.png) no-repeat -120px -248px; }
+.ie6 .phXhtml, .phXhtml a { background: url(/escc.eastsussexgovuk/img/body/navigation.png) no-repeat -300px -390px; }
+.ie6 .phUpload, .phUpload a { background: url(/escc.eastsussexgovuk/img/body/navigation.png) no-repeat -405px -250px; }
+.ie6 .phXls, .phXls a { background: url(/escc.eastsussexgovuk/img/body/navigation.png) no-repeat 0 -400px; }
+.ie6 .phXlsPrint, .phXlsPrint a { background: url(/escc.eastsussexgovuk/img/body/navigation.png) no-repeat -270px -248px; }
+#howToEmail { background: none; }

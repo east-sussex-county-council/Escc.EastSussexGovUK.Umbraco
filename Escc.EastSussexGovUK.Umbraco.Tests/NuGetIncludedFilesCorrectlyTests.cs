@@ -13,15 +13,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [TestCase(@"Views\_ViewStart.cshtml")]
         [TestCase(@"Views\Layouts\Desktop.cshtml")]
 
-        // Escc.CoreLegacyTemplates.Website project
-        [TestCase(@"css\FormDownloadPage\form-download.css")]
-        [TestCase(@"css\StandardDownloadPage\download-small.css")]
-        [TestCase(@"css\StandardLandingPage\landing-small.css")]
-        [TestCase(@"css\StandardTopicPage\topic-small.css")]
-        [TestCase(@"img\StandardTopicPage\childrens-library.gif")]
-        [TestCase(@"Views\Topic\FloodAlerts.ascx")] 
-        [TestCase(@"Views\StandardTopicPage.cshtml")]
-
         // Escc.CustomerFocusTemplates.Website project
         [TestCase(@"App_Plugins\OpeningSoon\openingsoon.html")] 
         [TestCase(@"App_Plugins\OpeningSoon\scripts\jquery.timepicker.js")] 
@@ -40,6 +31,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
 
         // Escc.Alerts.Website project
         [TestCase(@"Views\Alerts.cshtml")]
+        [TestCase(@"images\HomePage\jobs.png")]
 
         // EScc.Schools.TermDates project
         [TestCase(@"Views\TermDates\QuickAnswer.ascx")]

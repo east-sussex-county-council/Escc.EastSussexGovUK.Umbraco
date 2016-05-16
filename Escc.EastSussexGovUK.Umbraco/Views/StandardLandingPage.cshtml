@@ -1,0 +1,53 @@
+﻿@using ClientDependency.Core.Mvc
+@using Escc.ClientDependencyFramework
+@using Escc.EastSussexGovUK.MasterPages
+@using Escc.EastSussexGovUK.MasterPages.Features
+@using Escc.Umbraco.MicrosoftCmsMigration
+@using EsccWebTeam.EastSussexGovUK.MasterPages
+@inherits UmbracoViewPage<Escc.Umbraco.MicrosoftCmsMigration.MicrosoftCmsViewModel>
+@{ 
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout);
+    Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] { new MarriageSkin(Model.EsccWebsiteView, Model.Url) }, new DefaultSkin());
+
+    Html.RequiresCss(CssFileAlias.Resolve("LandingSmall"));
+    if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)
+    {
+        Html.RequiresCss(CssFileAlias.Resolve("LandingMedium"), MediaQueryAlias.Resolve("Medium"));
+        Html.RequiresCss(CssFileAlias.Resolve("LandingLarge"), MediaQueryAlias.Resolve("Large"));
+    }
+
+    var placeholders = CmsUtilities.Placeholders;
+    Html.Partial("~/Views/Layouts/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
+    {
+        new EmbeddedYouTubeVideos() { Html = new [] { placeholders["phDefIntro"].Value.ToString() }},
+        new EmbeddedGoogleMaps() { Html = new [] { placeholders["phDefIntro"].Value.ToString() } },
+        new EastSussex1SpaceSearch() { ShowEastSussex1SpaceSearch = Model.ShowEastSussex1SpaceWidget },
+        new EscisSearch() { ShowEscisSearch= Model.ShowEscisWidget},
+        new FacebookLikeBox() { SocialMedia = Model.SocialMedia, EsccWebsiteView = Model.EsccWebsiteView },
+        new TwitterWidget() { SocialMedia = Model.SocialMedia, EsccWebsiteView = Model.EsccWebsiteView },
+        new WebChat() { WebChatSettings = Model.WebChat }
+    });
+}
+
+@section Metadata
+{
+    <title>@Model.PageTitle &#8211; East Sussex County Council</title>
+}
+
+<div class="article">
+    <section>
+        <h1 class="text">@Model.PageTitle</h1>
+        
+        @Html.Partial("~/Views/StandardLandingPage.ascx", Model)
+
+        <div class="text">
+            @Html.Partial("~/Views/Layouts/_Share.cshtml")
+        </div>
+    </section>
+</div>
+
+@foreach (var socialMedia in Model.SocialMedia.SocialMediaOrder)
+{
+    @Html.Partial("~/Views/Layouts/_" + socialMedia + ".cshtml")
+}
+@Html.Partial("~/Views/Layouts/_SupportingContentDesktop.cshtml")

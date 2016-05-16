@@ -1,0 +1,3 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="TopicSection_GoogleMap.ascx.cs" Inherits="Escc.EastSussexGovUK.Umbraco.Views.Topic.TopicSection_GoogleMap" %>
+<CmsPlaceholders:RichHtmlPlaceholderControl id="subtitle" runat="server" editcontrolheight="50" editcontrolwidth="440" Paragraphs="false" ElementName="h2" RenderContainerElement="true" />
+<CmsPlaceholders:RichHtmlPlaceholderControl id="content" runat="server" editcontrolheight="300" editcontrolwidth="440" />

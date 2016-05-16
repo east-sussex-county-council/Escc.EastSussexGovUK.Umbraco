@@ -55,9 +55,26 @@ dummy.txt
 *.config.js
 
 # Files imported by ESCC NuGet packages
-*.css
-*/Views/*
-img
+**/CampaignTemplates/*
+**/CustomerFocusTemplates/*
+**/CouncilPlan/*
+**/HomePage/*
+**/TinyMCE-*.css
+*/Views/Layouts*
+*/Views/Campaign*
+*/Views/CouncilPlan*
+*/Views/Partials/*
+*/Views/TermDates/*
+*/Views/HomePage*
+*/Views/_HomePage*
+*/Views/Alerts*
+*/Views/Guide*
+*/Views/Task*
+*/Views/Location*
+*/Views/Landing.cshtml
+*/Views/Person*
+*RecyclingSiteFinder.ascx
+_ViewStart.cshtml
 images
 *.js
 */MicrosoftCmsMigration/*

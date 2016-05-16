@@ -1,0 +1,25 @@
+﻿/*******************************
+ * CMS TEMPLATE - LANDING PAGE *
+ *******************************/
+
+/* Image which goes with the intro */
+.intro { margin: .692308em 0; }
+
+/* Add top border to match dividing lines on h2 below. Border + margin = 1 line space. 
+   Apply hasLayout to container for IE6, otherwise some of the contents sometimes disappear. */
+.landing { border-top: .307692em solid #c7dbe4; margin: 0 0 1.076923em; }
+.ie6 .landing { display: inline-block; }
+
+/* Increase font from 13px to 14px, but keep 18px line-height. 
+   h2 vertical padding and border is one line space. */
+.landing h2 { font-size: 1.076923em; line-height: 1.285714em; padding: .5em 3.797468%; border-bottom: .285714em solid #c7dbe4; font-weight: bold; } 
+
+/* At this size only display descriptions if editing or printing */
+.landing p, .landing ul { display: none; }
+.cms-edit .landing p, .cms-edit .landing ul { display: block; }
+.cms-edit .landing h2 { padding-left: 0; padding-right: 0; }
+@media print  
+{
+    .landing p, .landing ul { display: block; } 
+    .landing h2 { padding-left: 0; padding-right: 0; }
+}

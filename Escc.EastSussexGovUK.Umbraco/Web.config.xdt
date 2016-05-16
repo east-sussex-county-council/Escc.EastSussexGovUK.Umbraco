@@ -1,0 +1,102 @@
+﻿<?xml version="1.0"?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+    <!-- There's no command for "insert if missing" so this transform uses a workaround to ensure it'll work on any config file that has at least the root <configuration /> element.
+       The workaround is to insert the element you want regardless of whether it's already there, and if there are now two remove the second one. 
+       
+       The configSections element uses a similar but different workaround from http://stackoverflow.com/questions/18737022/xdt-transform-insertbefore-locator-condition-is-ignored
+       which ensures that it's the first child of <configuration />
+       -->
+
+  <configSections xdt:Transform="InsertBefore(/configuration/*[1])" />
+  <configSections xdt:Locator="XPath(/configuration/configSections[last()])">
+    <sectionGroup name="Escc.ClientDependencyFramework" xdt:Transform="Insert" />
+    <sectionGroup name="Escc.ClientDependencyFramework" xdt:Transform="Remove" xdt:Locator="XPath(/configuration/configSections/sectionGroup[@name='Escc.ClientDependencyFramework'][2])" />
+  </configSections>
+  <configSections xdt:Transform="RemoveAll" xdt:Locator="Condition(count(*)=0)" />
+
+  <configSections>
+    <sectionGroup name="Escc.ClientDependencyFramework" xdt:Locator="Match(name)">
+      <section name="CssFiles" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xdt:Transform="Insert" />
+      <section name="CssFiles" xdt:Transform="Remove" xdt:Locator="XPath(/configuration/configSections/sectionGroup[@name='Escc.ClientDependencyFramework']/section[@name='CssFiles'][2])" />
+      <section name="ScriptFiles" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xdt:Transform="Insert" />
+      <section name="ScriptFiles" xdt:Transform="Remove" xdt:Locator="XPath(/configuration/configSections/sectionGroup[@name='Escc.ClientDependencyFramework']/section[@name='ScriptFiles'][2])" />
+    </sectionGroup>
+  </configSections>
+
+  <Escc.ClientDependencyFramework xdt:Transform="Insert" />
+  <Escc.ClientDependencyFramework xdt:Transform="Remove" xdt:Locator="XPath(/configuration/Escc.ClientDependencyFramework[2])" />
+
+  <Escc.ClientDependencyFramework>
+    <CssFiles xdt:Transform="Insert" />
+    <CssFiles xdt:Transform="Remove" xdt:Locator="XPath(/configuration/Escc.ClientDependencyFramework/CssFiles[2])" />
+  </Escc.ClientDependencyFramework>
+
+    <Escc.ClientDependencyFramework>
+    <CssFiles>
+      <add key="DownloadSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="DownloadSmall" value="/css/StandardDownloadPage/download-small.css" xdt:Transform="Insert" />
+      <add key="FormDownload" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="FormDownload" value="/css/FormDownloadPage/form-download.css" xdt:Transform="Insert" />
+      <add key="LandingSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="LandingSmall" value="/css/StandardLandingPage/landing-small.css" xdt:Transform="Insert" />
+      <add key="LandingMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="LandingMedium" value="/css/StandardLandingPage/landing-medium.css" xdt:Transform="Insert" />
+      <add key="LandingLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="LandingLarge" value="/css/StandardLandingPage/landing-large.css" xdt:Transform="Insert" />
+      <add key="TopicSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="TopicSmall" value="/css/StandardTopicPage/topic-small.css" xdt:Transform="Insert" />
+      <add key="TopicMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="TopicMedium" value="/css/StandardTopicPage/topic-medium.css" xdt:Transform="Insert" />
+      <add key="RegistrationSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="RegistrationSmall" value="/community/registration/skins/css/registration-small.css" xdt:Transform="Insert" />
+      <add key="RegistrationMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="RegistrationMedium" value="/community/registration/skins/css/registration-medium.css" xdt:Transform="Insert" />
+      <add key="RegistrationLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="RegistrationLarge" value="/community/registration/skins/css/registration-large.css" xdt:Transform="Insert" />
+    </CssFiles>
+    <ScriptFiles>
+      <add key="MarriageSkin" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="MarriageSkin" value="/community/registration/skins/js/marriage-skin.js" xdt:Transform="Insert" />
+    </ScriptFiles>
+  </Escc.ClientDependencyFramework>
+
+  <configSections>
+    <sectionGroup name="Escc.EastSussexGovUK.Umbraco" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+    <sectionGroup name="Escc.EastSussexGovUK.Umbraco" xdt:Transform="Insert">
+      <section name="TopicSectionLayouts" type="Escc.EastSussexGovUK.Umbraco.Views.Topic.SectionLayoutConfigurationSection, Escc.EastSussexGovUK.Umbraco" />
+    </sectionGroup>
+  </configSections>
+
+  <Escc.EastSussexGovUK.Umbraco xdt:Transform="Remove" />
+  <Escc.EastSussexGovUK.Umbraco xdt:Transform="Insert">
+    <TopicSectionLayouts>
+      <SectionLayouts>
+        <add name="Normal" displayName="Image on right" displayControl="~/Views/Topic/TopicSection_Normal.ascx" />
+        <add name="GoogleMap" displayName="Image on right (formerly Google map)" displayControl="~/Views/Topic/TopicSection_Normal.ascx" />
+        <add name="Alternative" displayName="Image on left" displayControl="~/Views/Topic/TopicSection_Alternative.ascx" />
+        <add name="FeaturedImage" displayName="Large image" displayControl="~/Views/Topic/TopicSection_FeaturedImage.ascx" />
+        <add name="ImageRow" displayName="Row of images" displayControl="~/Views/Topic/TopicSection_ImageRow.ascx" />
+        <add name="ImageRowBorderless" displayName="Row of images without borders" displayControl="~/Views/Topic/TopicSection_ImageRowBorderless.ascx" />
+        <add name="ChildrenLibrary" displayName="Children's library links" displayControl="~/Views/Topic/TopicSection_ChildrenLibrary.ascx" />
+        <add name="ChildrenBack" displayName="Back to children's section" displayControl="~/Views/Topic/TopicSection_ChildrenBack.ascx" />
+        <add name="SchoolClosures" displayName="School closures list" displayControl="~/Views/Topic/TopicSection_ToDo.ascx" />
+        <add name="TermDates" displayName="School term dates" displayControl="~/Views/Topic/TopicSection_TermDates.ascx" />
+        <add name="OpenElectionData" displayName="Open election data landing page" displayControl="~/Views/Topic/TopicSection_ToDo.ascx" />
+        <add name="Gritting" displayName="Gritting" displayControl="~/Views/Topic/TopicSection_ToDo.ascx" />
+        <add name="FloodAlerts" displayName="Flood alerts (mobile)" displayControl="~/Views/Topic/TopicSection_FloodAlerts.ascx" />
+        <add name="RecyclingSiteSearch" displayName="Find a recycling site" displayControl="~/Views/Topic/TopicSection_RecyclingSiteFinder.ascx" />
+      </SectionLayouts>
+    </TopicSectionLayouts>
+  </Escc.EastSussexGovUK.Umbraco>
+
+  <appSettings xdt:Transform="Insert" />
+  <appSettings xdt:Transform="Remove" xdt:Locator="XPath(/configuration/appSettings[2])" />
+
+  <appSettings>
+    <!-- For flood alerts included on a standard topic page -->
+    <add key="FloodAlertsRssUrl" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    <add key="FloodAlertsRssUrl" value="http://www.environment-agency.gov.uk/homeandleisure/floods/134567.aspx" xdt:Transform="Insert"/>
+    <add key="FloodAlertsXslPath" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    <add key="FloodAlertsXslPath" value="{c:\path\to\FloodAlerts.xslt}" xdt:Transform="Insert"/>
+  </appSettings>
+</configuration>

@@ -1,0 +1,19 @@
+﻿/********************************
+ * CMS TEMPLATE - DOWNLOAD PAGE *
+ ********************************/
+
+/* Place image on the right. Side margin is one gutter space.
+   Top margin matches that of paragraphs to line up, and bottom completes one line space, but in Chrome 14 the image is lower 
+   because it adds the top margin of the paragraph to the top margin of the image, rather than combining them as FF7/IE8 do. */
+.text .topicImageOdd { float: right; margin: .692308em 0 .692308em 18px; }
+
+/* Remove extra space when a definition list is used as the download description */
+.downloadList td dl, .downloadList td dt, .downloadList td dd  { margin: 0; font-weight: normal; }
+.downloadList td dd { margin-left: 23px; } /* same as size of file type icon */
+
+/* Remove duplicate icon because this template is non-standard */
+.downloadList dt a { background-image: none;padding:0; }
+
+/* Style second column, if used */
+.downloadList .downloadAlso { display: block; }
+.downloadList .alt { width: 26%; }

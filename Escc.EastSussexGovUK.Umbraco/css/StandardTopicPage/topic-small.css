@@ -1,0 +1,57 @@
+﻿/*****************************
+ * CMS TEMPLATE - TOPIC PAGE *
+ *****************************/
+
+/* Image is centred within text, no wrapping. Combined top/bottom margin is one line space. */
+.text .topicImageOdd, .text .topicImageEven { margin: .692308em 0; }
+.cms-edit .topicImageOdd input, .text .topicImageEven input { width: auto; }
+
+/* Set position for IE6/7, otherwise images sometimes disappear */
+.ie67 .topicImageNoWrap img { position: relative; }
+
+/* Children's library section, relates to TopicSection_ChildrenBack.ascx
+   Height + margin = 4 lines. Padding = 1 line. */
+.childrenBack { clear: both; display: block; background: url(/img/StandardTopicPage/childrens-library.gif) no-repeat 0 -43px; height: 30px; margin: 1.846154em 0 0; padding: .923077em 0 .461538em 55px; }
+
+/* Children's library section, relates to TopicSection_ChildrenLibrary.ascx 
+   Buttons are 4 lines high but measured in pixels so that background image can be placed. */
+.goodreads:link, .homeworkhelp:link, .whatson:link, .elibrary:link, .bookstart:link, .adults:link,
+.goodreads:visited, .homeworkhelp:visited, .whatson:visited, .elibrary:visited, .bookstart:visited, .adults:visited {font-size: 1.230769em;float: left;height: 58px;width: 126px;background-image: url(/img/StandardTopicPage/childrens-library.gif);background-repeat: no-repeat; background-position: 90px 34px;margin: 0 1.125em 1.125em 0;text-decoration: none;padding: 5px 9px 9px;font-weight: bold;border-radius: 5px;color: #000; }
+.goodreads:hover, .homeworkhelp:hover, .whatson:hover, .elibrary:hover, .bookstart:hover, .adults:hover { box-shadow: 0 0 5px 1px #999; }
+.goodreads { background-color: #FFCCFF; }
+.homeworkhelp { background-color: #73DEF4; }
+.whatson { background-color: #FF3366; }
+.elibrary { background-color: #FFFF5D; }
+.bookstart { background-color: #BED67D; }
+.adults { background-color: #FEDE58; }
+
+
+/* Highlighted content, related to TopicSection_Highlight.ascx
+   One line space above and below, and other split between top and bottom padding.
+   Colour is 20% tint of palette colour #ff5800 */
+.highlightBox { background: #fdc; padding: .692308em 18px; margin: 1.384615em -18px; overflow: hidden; }
+
+/* Float the partner logos when editing, rather than stacking them vertically */
+.cms-edit #ctl00_content_logos span { float: left; }
+
+/* Pull-quotes. Overflow hidden keeps paragraph margin inside box. Background colour is 20% tint of #056BOB.
+   Paragraph horizontal margins and pull-quote position are (18px gutter / (6 cols 474px - 2 x 18px .text gutters)) = 4.109589%
+   ul margin is visually lined up with that.
+*/
+.text blockquote { overflow: hidden; margin: .692308em 0; background: #cde1ce url(/escc.eastsussexgovuk/img/body/quote-open.gif) no-repeat 4.109589% 1.384615em; }
+.text blockquote:after {content: ' '; display: block; background: url(/escc.eastsussexgovuk/img/body/quote-close.gif) no-repeat 95.890411% 95%; padding-bottom: 26px; margin-top: -13px; margin-bottom: 5px; }
+.text blockquote p { margin: .692308em 4.109589%; }
+.text blockquote p:first-child { margin: 2.076923em 4.109589% .692308em; text-indent: 35px; }
+.text blockquote ul { margin-left: 11%; }
+
+/* Flood warnings in floodalert.ascx */
+.flood { overflow: hidden; width: 100%; font-size: 1.230769em; line-height: 1.125em; font-weight: bold; padding-top: 18px; }
+.flood a { font-size: .8125em; line-height: 1.384615em; display: block; font-weight: normal; }
+.flood img { float: left; margin: -6px 1em 0 0; }
+.flood-signup { margin: 1.384615em 0 0; }
+
+/* Don't let h2 placeholders wrap when editing */
+.cms-edit h2 { clear: left; }
+
+/* Images at the bottom are natuarlly inline when public, but need to be forced in edit mode */
+.cms-edit #content_logos table { float: left; }

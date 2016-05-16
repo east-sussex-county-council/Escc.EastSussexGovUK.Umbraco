@@ -1,0 +1,94 @@
+﻿@using ClientDependency.Core.Mvc
+@using Escc.ClientDependencyFramework
+@using Escc.EastSussexGovUK.MasterPages
+@using Escc.EastSussexGovUK.MasterPages.Features
+@using Escc.Umbraco.MicrosoftCmsMigration
+@using EsccWebTeam.Data.Web
+@using EsccWebTeam.EastSussexGovUK.MasterPages
+@inherits UmbracoViewPage<MicrosoftCmsViewModel>
+@{ 
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout);
+    Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] { new MarriageSkin(Model.EsccWebsiteView, Model.Url) }, new DefaultSkin());
+
+    // This view uses inline styles, so relax the content security policy to allow that
+    var policy = new ContentSecurityPolicy(HttpContext.Current.Request.Url);
+    policy.ParsePolicy("style-src 'unsafe-inline'");
+    policy.UpdateHeader(HttpContext.Current.Response);
+
+    // Include required CSS
+    Html.RequiresCss(CssFileAlias.Resolve("TopicSmall"));
+    Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));
+    if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)
+    {
+        Html.RequiresCss(CssFileAlias.Resolve("TopicMedium"), MediaQueryAlias.Resolve("Medium"));
+        Html.RequiresCss(CssFileAlias.Resolve("FormsMedium"), MediaQueryAlias.Resolve("Medium"));
+        Html.RequiresCss(CssFileAlias.Resolve("FormsLarge"), MediaQueryAlias.Resolve("Large"));
+    }
+
+    var placeholders = CmsUtilities.Placeholders;
+    var html = new string[]
+    {
+        placeholders["phDefIntro"].Value.ToString(),
+        placeholders["phDefContent01"].Value.ToString(),
+        placeholders["phDefContent02"].Value.ToString(),
+        placeholders["phDefContent03"].Value.ToString(),
+        placeholders["phDefContent04"].Value.ToString(),
+        placeholders["phDefContent05"].Value.ToString(),
+        placeholders["phDefContent06"].Value.ToString(),
+        placeholders["phDefContent07"].Value.ToString(),
+        placeholders["phDefContent08"].Value.ToString(),
+        placeholders["phDefContent09"].Value.ToString(),
+        placeholders["phDefContent10"].Value.ToString(),
+        placeholders["phDefContent11"].Value.ToString(),
+        placeholders["phDefContent12"].Value.ToString(),
+        placeholders["phDefContent13"].Value.ToString(),
+        placeholders["phDefContent14"].Value.ToString(),
+        placeholders["phDefContent15"].Value.ToString(),
+        placeholders["phDefContent16"].Value.ToString(),
+        placeholders["phDefContent17"].Value.ToString(),
+        placeholders["phDefContent18"].Value.ToString(),
+        placeholders["phDefContent19"].Value.ToString(),
+        placeholders["phDefContent20"].Value.ToString()
+    };
+    
+    Html.Partial("~/Views/Layouts/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
+    {
+        new EmbeddedYouTubeVideos() { Html = html },
+        new EmbeddedGoogleMaps() { Html = html },
+        new EastSussex1SpaceSearch() { ShowEastSussex1SpaceSearch = Model.ShowEastSussex1SpaceWidget },
+        new EscisSearch() { ShowEscisSearch= Model.ShowEscisWidget},
+        new FacebookLikeBox() { SocialMedia = Model.SocialMedia, EsccWebsiteView = Model.EsccWebsiteView },
+        new TwitterWidget() { SocialMedia = Model.SocialMedia, EsccWebsiteView = Model.EsccWebsiteView },
+        new WebChat() { WebChatSettings = Model.WebChat }
+    });
+}
+@section Metadata
+{
+    <title>@Model.PageTitle &#8211; East Sussex County Council</title>
+}
+
+<div class="article">
+    <article>
+        <h1 class="text">@Model.PageTitle</h1>
+        
+        @Html.Partial("~/Views/StandardTopicPage.ascx", Model)
+
+        <div class="text">
+            @Html.Partial("~/Views/Layouts/_Share.cshtml")
+        </div>
+    </article>
+</div>
+
+@if (Request.Url.ToString().Contains("/flooding/")) { 
+    <div class="large supporting-text">
+        <article>
+            @Html.Partial("~/Views/Topic/FloodAlerts.ascx", Model)
+        </article>
+    </div>
+}
+
+@foreach (var socialMedia in Model.SocialMedia.SocialMediaOrder)
+{
+    @Html.Partial("~/Views/Layouts/_" + socialMedia + ".cshtml")
+}
+@Html.Partial("~/Views/Layouts/_SupportingContentDesktop.cshtml")

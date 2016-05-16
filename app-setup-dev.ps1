@@ -40,7 +40,7 @@ DownloadProjectIfMissing $parentFolderOfThisScript "Escc.EastSussexGovUK"
 DownloadProjectIfMissing $parentFolderOfThisScript "Escc.NavigationControls"
 DownloadProjectIfMissing $parentFolderOfThisScript "Escc.Data.Web"
 DownloadProjectIfMissing $parentFolderOfThisScript "Escc.Elibrary"
-NuGetRestoreForProject $parentFolderOfThisScript "Escc.EastSussexGovUK"
+DownloadProjectIfMissing $parentFolderOfThisScript "Escc.Registration.Website"
 
 EnableDotNet40InIIS
 CreateApplicationPool $projectName
@@ -48,6 +48,9 @@ CreateWebsite $projectName "$pathOfThisScript\$projectName"
 CreateHTTPSBinding $projectName
 RemoveHTTPBinding $projectName 80
 CreateVirtualDirectory $projectName "Escc.EastSussexGovUK" "$parentFolderOfThisScript\Escc.EastSussexGovUK\Escc.EastSussexGovUK" true
+CreateVirtualDirectory $projectName "community" "$parentFolderOfThisScript\Escc.Registration.Website\Escc.Registration.Skins" true
+CreateVirtualDirectory $projectName "community\registration" "$parentFolderOfThisScript\Escc.Registration.Website\Escc.Registration.Skins" true
+CreateVirtualDirectory $projectName "community\registration\skins" "$parentFolderOfThisScript\Escc.Registration.Website\Escc.Registration.Skins" true
 
 Write-Host
 Write-Host "Done." -ForegroundColor "Green"

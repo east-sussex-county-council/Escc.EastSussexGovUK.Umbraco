@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Umbrac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.Elibrary", "..\Escc.Elibrary\Escc.Elibrary.csproj", "{3D2240E0-D165-4C52-A97B-730542975D3A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.Registration.Skins", "..\Escc.Registration.Website\Escc.Registration.Skins\Escc.Registration.Skins.csproj", "{3F3DC2FD-B185-4129-9557-6402EBC56B40}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,12 @@ Global
 		{3D2240E0-D165-4C52-A97B-730542975D3A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3D2240E0-D165-4C52-A97B-730542975D3A}.UAT|Any CPU.ActiveCfg = Release|Any CPU
 		{3D2240E0-D165-4C52-A97B-730542975D3A}.UAT|Any CPU.Build.0 = Release|Any CPU
+		{3F3DC2FD-B185-4129-9557-6402EBC56B40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F3DC2FD-B185-4129-9557-6402EBC56B40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F3DC2FD-B185-4129-9557-6402EBC56B40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F3DC2FD-B185-4129-9557-6402EBC56B40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F3DC2FD-B185-4129-9557-6402EBC56B40}.UAT|Any CPU.ActiveCfg = Release|Any CPU
+		{3F3DC2FD-B185-4129-9557-6402EBC56B40}.UAT|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

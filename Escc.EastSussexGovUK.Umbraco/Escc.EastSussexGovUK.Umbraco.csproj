@@ -125,10 +125,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Escc.ClientDependencyFramework.WebForms.1.0.0\lib\Escc.ClientDependencyFramework.WebForms.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.CoreLegacyTemplates.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.CoreLegacyTemplates.Website.2.3.6\lib\Escc.CoreLegacyTemplates.Website.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Escc.CouncilPlan.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.CouncilPlan.Website.1.0.3\lib\Escc.CouncilPlan.Website.dll</HintPath>
       <Private>True</Private>
@@ -449,7 +445,169 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\UmbracoSetupApiController.cs" />
+    <Compile Include="Controllers\FormDownloadPageController.cs" />
+    <Compile Include="Controllers\LandingPageWithPicturesController.cs" />
+    <Compile Include="Controllers\MapController.cs" />
+    <Compile Include="Controllers\StandardDownloadPageController.cs" />
+    <Compile Include="Controllers\StandardLandingPageController.cs" />
+    <Compile Include="Controllers\StandardTopicPageController.cs" />
+    <Compile Include="DocumentTypes\FormDownload\FormDownloadContentTab.cs" />
+    <Compile Include="DocumentTypes\FormDownload\FormDownloadDocumentType.cs" />
+    <Compile Include="DocumentTypes\LandingPageWithPictures\LandingPageWithPicturesContentTab.cs" />
+    <Compile Include="DocumentTypes\LandingPageWithPictures\LandingPageWithPicturesDocumentType.cs" />
+    <Compile Include="DocumentTypes\LegacyBase\LegacyBaseDocumentType.cs" />
+    <Compile Include="DocumentTypes\Map\MapContentTab.cs" />
+    <Compile Include="DocumentTypes\Map\MapDocumentType.cs" />
+    <Compile Include="DocumentTypes\StandardDownloadPage\StandardDownloadPageContentTab.cs" />
+    <Compile Include="DocumentTypes\StandardDownloadPage\StandardDownloadPageDocumentType.cs" />
+    <Compile Include="DocumentTypes\StandardLandingPage\LandingPageColumnsDataType.cs" />
+    <Compile Include="DocumentTypes\StandardLandingPage\LandingPageDescriptionsDataType.cs" />
+    <Compile Include="DocumentTypes\StandardLandingPage\StandardLandingPageContentTab.cs" />
+    <Compile Include="DocumentTypes\StandardLandingPage\StandardLandingPageDocumentType.cs" />
+    <Compile Include="DocumentTypes\StandardLandingPage\StandardLandingPageEventHandler.cs" />
+    <Compile Include="DocumentTypes\StandardTopicPage\StandardTopicPageContentTab.cs" />
+    <Compile Include="DocumentTypes\StandardTopicPage\StandardTopicPageDocumentType.cs" />
+    <Compile Include="DocumentTypes\StandardTopicPage\TopicPageLayoutDataType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\FormDownloadPage.ascx.cs">
+      <DependentUpon>FormDownloadPage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\FormDownloadPage.ascx.designer.cs">
+      <DependentUpon>FormDownloadPage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormDownloadPageResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FormDownloadPageResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LandingPageWithPictures.ascx.cs">
+      <DependentUpon>LandingPageWithPictures.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\LandingPageWithPictures.ascx.designer.cs">
+      <DependentUpon>LandingPageWithPictures.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Map.ascx.cs">
+      <DependentUpon>Map.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Map.ascx.designer.cs">
+      <DependentUpon>Map.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StandardDownloadPage.ascx.cs">
+      <DependentUpon>StandardDownloadPage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\StandardDownloadPage.ascx.designer.cs">
+      <DependentUpon>StandardDownloadPage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StandardLandingPage.ascx.cs">
+      <DependentUpon>StandardLandingPage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\StandardLandingPage.ascx.designer.cs">
+      <DependentUpon>StandardLandingPage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StandardTopicPage.ascx.cs">
+      <DependentUpon>StandardTopicPage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\StandardTopicPage.ascx.designer.cs">
+      <DependentUpon>StandardTopicPage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Topic\FloodAlerts.ascx.cs">
+      <DependentUpon>FloodAlerts.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Topic\FloodAlerts.ascx.designer.cs">
+      <DependentUpon>FloodAlerts.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Topic\SectionLayoutConfigurationCollection.cs" />
+    <Compile Include="Views\Topic\SectionLayoutConfigurationElement.cs" />
+    <Compile Include="Views\Topic\SectionLayoutConfigurationSection.cs" />
+    <Compile Include="Views\Topic\SectionLayoutManager.cs" />
+    <Compile Include="Views\Topic\TopicSection.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_Alternative.ascx.cs">
+      <DependentUpon>TopicSection_Alternative.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_Alternative.ascx.designer.cs">
+      <DependentUpon>TopicSection_Alternative.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_ChildrenBack.ascx.cs">
+      <DependentUpon>TopicSection_ChildrenBack.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_ChildrenBack.ascx.designer.cs">
+      <DependentUpon>TopicSection_ChildrenBack.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_ChildrenLibrary.ascx.cs">
+      <DependentUpon>TopicSection_ChildrenLibrary.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_ChildrenLibrary.ascx.designer.cs">
+      <DependentUpon>TopicSection_ChildrenLibrary.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_FeaturedImage.ascx.cs">
+      <DependentUpon>TopicSection_FeaturedImage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_FeaturedImage.ascx.designer.cs">
+      <DependentUpon>TopicSection_FeaturedImage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_FloodAlerts.ascx.cs">
+      <DependentUpon>TopicSection_FloodAlerts.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_FloodAlerts.ascx.designer.cs">
+      <DependentUpon>TopicSection_FloodAlerts.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_GoogleMap.ascx.cs">
+      <DependentUpon>TopicSection_GoogleMap.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_GoogleMap.ascx.designer.cs">
+      <DependentUpon>TopicSection_GoogleMap.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_ImageRow.ascx.cs">
+      <DependentUpon>TopicSection_ImageRow.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_ImageRow.ascx.designer.cs">
+      <DependentUpon>TopicSection_ImageRow.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_ImageRowBorderless.ascx.cs">
+      <DependentUpon>TopicSection_ImageRowBorderless.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_ImageRowBorderless.ascx.designer.cs">
+      <DependentUpon>TopicSection_ImageRowBorderless.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_Normal.ascx.cs">
+      <DependentUpon>TopicSection_Normal.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_Normal.ascx.designer.cs">
+      <DependentUpon>TopicSection_Normal.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_TermDates.ascx.cs">
+      <DependentUpon>TopicSection_TermDates.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_TermDates.ascx.designer.cs">
+      <DependentUpon>TopicSection_TermDates.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_ToDo.ascx.cs">
+      <DependentUpon>TopicSection_ToDo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_ToDo.ascx.designer.cs">
+      <DependentUpon>TopicSection_ToDo.ascx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="apple-touch-icon-114x114.png" />
@@ -535,6 +693,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="googledb369ad0fa294f54.html" />
+    <Content Include="images\HomePage\jobs.png" />
     <Content Include="img\StandardTopicPage\childrens-library.gif" />
     <Content Include="js\CampaignTemplates\campaign-landing.js" />
     <Content Include="js\CouncilPlan\council-plan.js" />
@@ -543,6 +702,7 @@
     <Content Include="js\HomePage\homepage.js" />
     <Content Include="js\HomePage\jquery-ui-1.10.4.custom.min.js" />
     <Content Include="js\libs\Escc.DocumentsInNewWindow.min.js" />
+    <Content Include="js\libs\Escc.Statistics.min.js" />
     <Content Include="MicrosoftCmsMigration\UserControls\Latest.ascx" />
     <Content Include="MicrosoftCmsMigration\UserControls\Related.ascx" />
     <Content Include="MicrosoftCmsMigration\UserControls\SectionNavigation.ascx" />
@@ -3072,8 +3232,10 @@
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.TwitterScriptPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\package.manifest" />
     <Content Include="Config\uMediaSync.config" />
-    <Content Include="img\web.config" />
     <Content Include="App_Plugins\OpeningSoon\package.manifest" />
+    <None Include="img\StandardTopicPage\childrens-library.psd" />
+    <Content Include="img\web.config" />
+    <None Include="img\web.example.config" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -3266,36 +3428,43 @@
     <Content Include="Views\Alerts.cshtml" />
     <Content Include="Views\Person.cshtml" />
     <Content Include="Views\_HomePageJobSearch.cshtml" />
-    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\CampaignContent.cshtml" />
     <Content Include="Views\CampaignContentCss.cshtml" />
     <Content Include="Views\CampaignLanding.cshtml" />
     <Content Include="Views\CampaignLandingCss.cshtml" />
-    <Content Include="Views\FormDownloadPage.cshtml" />
     <Content Include="Views\Guide.cshtml" />
     <Content Include="Views\GuideStep.cshtml" />
     <Content Include="Views\HomePage.cshtml" />
     <Content Include="Views\HomePageItems.cshtml" />
     <Content Include="Views\Landing.cshtml" />
-    <Content Include="Views\LandingPageWithPictures.cshtml" />
     <Content Include="Views\Location.cshtml" />
     <Content Include="Views\LocationVCard.cshtml" />
-    <Content Include="Views\Map.cshtml" />
-    <Content Include="Views\StandardDownloadPage.cshtml" />
-    <Content Include="Views\StandardLandingPage.cshtml" />
-    <Content Include="Views\StandardTopicPage.cshtml" />
     <Content Include="Views\Task.cshtml" />
     <Content Include="Views\Partials\_LocationIsOpen.cshtml" />
     <Content Include="Views\Partials\_LocationJsonLD.cshtml" />
     <Content Include="Views\Partials\_LocationOpeningTimes.cshtml" />
     <Content Include="Views\Partials\_LocationTab1Content.cshtml" />
     <Content Include="Views\Partials\_RelatedLinks.cshtml" />
+    <Content Include="Views\FormDownloadPage.cshtml" />
+    <Content Include="Views\LandingPageWithPictures.cshtml" />
+    <Content Include="Views\Map.cshtml" />
+    <Content Include="Views\StandardDownloadPage.cshtml" />
+    <Content Include="Views\StandardLandingPage.cshtml" />
+    <Content Include="Views\StandardTopicPage.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <None Include="Web.config.xdt" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FormDownloadPageResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FormDownloadPageResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -3335,7 +3504,6 @@
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.6.1.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.6.1.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.CoreLegacyTemplates.Website.2.3.6\build\Escc.CoreLegacyTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CoreLegacyTemplates.Website.2.3.6\build\Escc.CoreLegacyTemplates.Website.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.CustomerFocusTemplates.Website.2.5.0\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CustomerFocusTemplates.Website.2.5.0\build\Escc.CustomerFocusTemplates.Website.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Home.Website.3.0.3\build\Escc.Home.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Home.Website.3.0.3\build\Escc.Home.Website.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.CampaignTemplates.Website.3.0.2\build\Escc.CampaignTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CampaignTemplates.Website.3.0.2\build\Escc.CampaignTemplates.Website.targets'))" />
@@ -3352,7 +3520,6 @@
   <Import Project="..\packages\Escc.Schools.TermDates.Website.1.2.1\build\Escc.Schools.TermDates.Website.targets" Condition="Exists('..\packages\Escc.Schools.TermDates.Website.1.2.1\build\Escc.Schools.TermDates.Website.targets')" />
   <Import Project="..\packages\Escc.Umbraco.MicrosoftCmsMigration.2.1.4\build\Escc.Umbraco.MicrosoftCmsMigration.targets" Condition="Exists('..\packages\Escc.Umbraco.MicrosoftCmsMigration.2.1.4\build\Escc.Umbraco.MicrosoftCmsMigration.targets')" />
   <Import Project="..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.6.1.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.6.1.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" />
-  <Import Project="..\packages\Escc.CoreLegacyTemplates.Website.2.3.6\build\Escc.CoreLegacyTemplates.Website.targets" Condition="Exists('..\packages\Escc.CoreLegacyTemplates.Website.2.3.6\build\Escc.CoreLegacyTemplates.Website.targets')" />
   <Import Project="..\packages\Escc.CustomerFocusTemplates.Website.2.5.0\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('..\packages\Escc.CustomerFocusTemplates.Website.2.5.0\build\Escc.CustomerFocusTemplates.Website.targets')" />
   <Import Project="..\packages\Escc.Home.Website.3.0.3\build\Escc.Home.Website.targets" Condition="Exists('..\packages\Escc.Home.Website.3.0.3\build\Escc.Home.Website.targets')" />
   <Import Project="..\packages\Escc.CampaignTemplates.Website.3.0.2\build\Escc.CampaignTemplates.Website.targets" Condition="Exists('..\packages\Escc.CampaignTemplates.Website.3.0.2\build\Escc.CampaignTemplates.Website.targets')" />
