@@ -8,7 +8,7 @@
 @inherits UmbracoViewPage<MicrosoftCmsViewModel>
 @{ 
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout);
-    Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] { new MarriageSkin(Model.EsccWebsiteView, Model.Url) }, new DefaultSkin());
+    Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] { new PreviousMarriageSkin(Model.EsccWebsiteView, Model.Url) }, new DefaultSkin());
 
     // This view uses inline styles, so relax the content security policy to allow that
     var policy = new ContentSecurityPolicy(HttpContext.Current.Request.Url);
