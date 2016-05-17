@@ -31,23 +31,11 @@
 .ie6 .landing h2, .ie6 .landing p, .ie6 .landing ul { padding-left: 2.419355%; padding-right: 2.419355%; }
 .ie67 .landing h2 a { background: none; padding: 0; }
 
-.cms-edit .landing h2 a { background: none; padding: 0; }
-
 /*********************************************
  * CMS TEMPLATE - LANDING PAGE WITH PICTURES *
  *********************************************/
 
-/* Place images on the right. Top margin matches that of paragraphs to line up. Bottom and left are one line space. 
+/* Place images on the right. Top margin matches that of h2 to line up. Bottom and left are one line space. 
    Use overflow: hidden to contain floats. */
-.text .imageOdd { float: right; margin: 9px 0 18px 18px; }
+.text-content .imageOdd { float: right; margin: 1.421053em 0 .947368em .947368em; }
 .landingPic { overflow: hidden; width: 100%; }
-
-/****************************************
- * CMS TEMPLATE - LANDING PAGE WITH BOX *
- ****************************************/
- 
- /* .related-list builds on .related to split a single ul into two columns
-    14px either side and 14px gutter. Width allows another 14px for list bullet padding, and is based on 8 col container (which is large size, but works OK at medium too)
- */
- .related-list li:nth-child(odd), .related-list li:nth-child(even) { float: left; width: 44.514107%; }
- .related-list li:nth-child(odd) { clear: left; margin: 0 2.194357% 0 0;  }

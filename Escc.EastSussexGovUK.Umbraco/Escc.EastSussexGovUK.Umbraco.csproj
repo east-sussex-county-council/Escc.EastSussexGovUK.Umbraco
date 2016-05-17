@@ -469,6 +469,7 @@
     <Compile Include="DocumentTypes\StandardTopicPage\StandardTopicPageContentTab.cs" />
     <Compile Include="DocumentTypes\StandardTopicPage\StandardTopicPageDocumentType.cs" />
     <Compile Include="DocumentTypes\StandardTopicPage\TopicPageLayoutDataType.cs" />
+    <Compile Include="MicrosoftCmsMigration\UserControls\SectionNavigationSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\FormDownloadPage.ascx.cs">
       <DependentUpon>FormDownloadPage.ascx</DependentUpon>
@@ -495,6 +496,20 @@
     </Compile>
     <Compile Include="Views\Map.ascx.designer.cs">
       <DependentUpon>Map.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MicrosoftCmsMigration\UserControls\RelatedLinksMvc.ascx.cs">
+      <DependentUpon>RelatedLinksMvc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MicrosoftCmsMigration\UserControls\RelatedLinksMvc.ascx.designer.cs">
+      <DependentUpon>RelatedLinksMvc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MicrosoftCmsMigration\UserControls\SectionNavigationMvc.ascx.cs">
+      <DependentUpon>SectionNavigationMvc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MicrosoftCmsMigration\UserControls\SectionNavigationMvc.ascx.designer.cs">
+      <DependentUpon>SectionNavigationMvc.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\StandardDownloadPage.ascx.cs">
       <DependentUpon>StandardDownloadPage.ascx</DependentUpon>
@@ -3170,6 +3185,8 @@
     <Content Include="Views\Layouts\BreadcrumbTrailMobile.ascx" />
     <Content Include="Views\Layouts\MasterPageControl.ascx" />
     <Content Include="Views\Map.ascx" />
+    <Content Include="MicrosoftCmsMigration\UserControls\RelatedLinksMvc.ascx" />
+    <Content Include="MicrosoftCmsMigration\UserControls\SectionNavigationMvc.ascx" />
     <Content Include="Views\StandardDownloadPage.ascx" />
     <Content Include="Views\StandardLandingPage.ascx" />
     <Content Include="Views\StandardTopicPage.ascx" />

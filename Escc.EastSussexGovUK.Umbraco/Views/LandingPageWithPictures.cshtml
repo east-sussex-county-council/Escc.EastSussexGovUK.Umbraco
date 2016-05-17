@@ -2,12 +2,13 @@
 @using Escc.ClientDependencyFramework
 @using Escc.EastSussexGovUK.MasterPages
 @using Escc.EastSussexGovUK.MasterPages.Features
+@using Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.UserControls
 @using Escc.Umbraco.MicrosoftCmsMigration
 @using EsccWebTeam.EastSussexGovUK.MasterPages
 @inherits UmbracoViewPage<Escc.Umbraco.MicrosoftCmsMigration.MicrosoftCmsViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout);
-    Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] { new MarriageSkin(Model.EsccWebsiteView, Model.Url) }, new DefaultSkin());
+    Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] { new MarriageSkin(Model.EsccWebsiteView, Model.Url) }, new CustomerFocusSkin(Model.EsccWebsiteView));
 
     if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)
     {
@@ -32,18 +33,22 @@
 
 <div class="article">
     <article>
-        <h1 class="text">@Model.PageTitle</h1>
-        
-        @Html.Partial("~/Views/LandingPageWithPictures.ascx", Model)       
-
-        <div class="text">
-            @Html.Partial("~/Views/Layouts/_Share.cshtml")
+        <div class="content text-content">
+            <h1>@Model.PageTitle</h1>
+            @Html.Partial("~/Views/Layouts/_Latest.cshtml")
+            @Html.Partial("~/MicrosoftCmsMigration/UserControls/SectionNavigationMvc.ascx", new SectionNavigationSettings() { HtmlPlaceholderToBind = "highlightContent", ImagePlaceholderToBind = "highlightImage", EsccWebsiteView = Model.EsccWebsiteView })
+            @Html.Partial("~/Views/LandingPageWithPictures.ascx", Model)
         </div>
     </article>
 </div>
+
+@Html.Partial("~/MicrosoftCmsMigration/UserControls/RelatedLinksMvc.ascx", Model)
 
 @foreach (var socialMedia in Model.SocialMedia.SocialMediaOrder)
 {
     @Html.Partial("~/Views/Layouts/_" + socialMedia + ".cshtml")
 }
 @Html.Partial("~/Views/Layouts/_SupportingContentDesktop.cshtml")
+<div class="text-content content">
+    @Html.Partial("~/Views/Layouts/_Share.cshtml")
+</div>

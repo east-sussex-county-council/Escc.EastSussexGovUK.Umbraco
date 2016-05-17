@@ -77,4 +77,5 @@ dummy.txt
 _ViewStart.cshtml
 images
 *.js
-*/MicrosoftCmsMigration/*
+*/MicrosoftCmsMigration/**/*.ascx
+!*/MicrosoftCmsMigration/**/*Mvc.ascx

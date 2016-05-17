@@ -9,9 +9,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.sectionNavigation.EsccWebsiteView = Model.EsccWebsiteView;
-            this.latest.LatestHtml = Model.Latest.ToString();
-
             this.item01.Visible = (this.phListTitle01.HasContent && this.phListDesc01.HasContent);
             this.item02.Visible = (this.phListTitle02.HasContent && this.phListDesc02.HasContent);
             this.item03.Visible = (this.phListTitle03.HasContent && this.phListDesc03.HasContent);
