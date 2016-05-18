@@ -48,11 +48,11 @@
       <add key="TopicMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="TopicMedium" value="/css/StandardTopicPage/topic-medium.css" xdt:Transform="Insert" />
       <add key="RegistrationSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="RegistrationSmall" value="/community/registration/skins/css/registration-small.css" xdt:Transform="Insert" />
+      <add key="RegistrationSmall" value="/community/registration/skins/css/min/registration-small.css" xdt:Transform="Insert" />
       <add key="RegistrationMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="RegistrationMedium" value="/community/registration/skins/css/registration-medium.css" xdt:Transform="Insert" />
+      <add key="RegistrationMedium" value="/community/registration/skins/css/min/registration-medium.css" xdt:Transform="Insert" />
       <add key="RegistrationLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="RegistrationLarge" value="/community/registration/skins/css/registration-large.css" xdt:Transform="Insert" />
+      <add key="RegistrationLarge" value="/community/registration/skins/css/min/registration-large.css" xdt:Transform="Insert" />
     </CssFiles>
     <ScriptFiles>
       <add key="MarriageSkin" xdt:Transform="Remove" xdt:Locator="Match(key)" />
