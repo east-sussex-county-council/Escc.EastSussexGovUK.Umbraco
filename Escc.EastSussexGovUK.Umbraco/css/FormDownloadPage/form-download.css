@@ -6,15 +6,18 @@
 .downloadWays { overflow: hidden; width: 100%; }
  
 /* Each way to download should be a large clickable link, with room for a background image illustrating the format. */
-.formAttachment { float: left; margin: 1em 1.5em 0 0; height: 130px; min-width: 100px; text-align: center; }
-.formAttachment a { display: block; padding-top: 80px; }
+.formAttachment { float: left; margin: 1em 1.5em 0 0; height: 160px; min-width: 120px; text-align: center; }
+.formAttachment a { display: block; padding: 80px 0 0 0; }
 
 /* Add icons as background images, twice for IE6 to prevent flicker on hover */
-.ie6 .phPdf, .phPdf a { background: url(/escc.eastsussexgovuk/img/body/navigation.png) no-repeat 30px -248px; }
-.ie6 .phRtf, .phRtf a { background: url(/escc.eastsussexgovuk/img/body/navigation.png) no-repeat -150px -400px; }
-.ie6 .phRtfSign, .phRtfSign a { background: url(/escc.eastsussexgovuk/img/body/navigation.png) no-repeat -120px -248px; }
-.ie6 .phXhtml, .phXhtml a { background: url(/escc.eastsussexgovuk/img/body/navigation.png) no-repeat -300px -390px; }
-.ie6 .phUpload, .phUpload a { background: url(/escc.eastsussexgovuk/img/body/navigation.png) no-repeat -405px -250px; }
-.ie6 .phXls, .phXls a { background: url(/escc.eastsussexgovuk/img/body/navigation.png) no-repeat 0 -400px; }
-.ie6 .phXlsPrint, .phXlsPrint a { background: url(/escc.eastsussexgovuk/img/body/navigation.png) no-repeat -270px -248px; }
+.ie6 .phPdf, .phPdf a[href$=".pdf"] { background: url(/escc.eastsussexgovuk/img/body/navigation.png) no-repeat 52px -248px; }
+.ie6 .phRtf, .phRtf a[href$=".rtf"] { background: url(/escc.eastsussexgovuk/img/body/navigation.png) no-repeat -122px -400px; }
+.ie6 .phRtfSign, .phRtfSign a[href$=".rtf"] { background: url(/escc.eastsussexgovuk/img/body/navigation.png) no-repeat -96px -248px; }
+.ie6 .phXhtml, .phXhtml a { background: url(/escc.eastsussexgovuk/img/body/navigation.png) no-repeat -294px -390px; }
+.ie6 .phUpload, .phUpload a { background: url(/escc.eastsussexgovuk/img/body/navigation.png) no-repeat -385px -250px; }
+.ie6 .phXls, .phXls a[href$=".xls"] { background: url(/escc.eastsussexgovuk/img/body/navigation.png) no-repeat 17px -400px; }
+.ie6 .phXlsPrint, .phXlsPrint a[href$=".xls"] { background: url(/escc.eastsussexgovuk/img/body/navigation.png) no-repeat -229px -248px; }
 #howToEmail { background: none; }
+
+/* Reset font size from 19px to 16px for file format and size */
+.downloadDetail { font-size: .842105em;line-height: 1.125em;}

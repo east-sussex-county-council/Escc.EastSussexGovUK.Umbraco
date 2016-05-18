@@ -7,7 +7,7 @@
 @inherits UmbracoViewPage<Escc.Umbraco.MicrosoftCmsMigration.MicrosoftCmsViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout);
-    Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] {new PreviousMarriageSkin(Model.EsccWebsiteView, Model.Url)}, new DefaultSkin());
+    Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] {new MarriageSkin(Model.EsccWebsiteView, Model.Url)}, new CustomerFocusSkin(Model.EsccWebsiteView));
 
 //  <Egms:MetadataControl id="headContent" runat="server" lgtlType="Forms" lgilType="Applications for service" />
     Html.RequiresCss(CssFileAlias.Resolve("FormDownload"));
@@ -30,18 +30,21 @@
 
 <div class="article">
     <article>
-        <h1 class="text">@Model.PageTitle</h1>
-        
-        @Html.Partial("~/Views/FormDownloadPage.ascx", Model)       
-
-        <div class="text">
-            @Html.Partial("~/Views/Layouts/_Share.cshtml")
-        </div>
-    </article>
+        <div class="content text-content">
+            <h1>@Model.PageTitle</h1>
+            @Html.Partial("~/Views/Layouts/_Latest.cshtml")
+            @Html.Partial("~/Views/FormDownloadPage.ascx", Model)
+            </div>
+</article>
 </div>
+
+@Html.Partial("~/MicrosoftCmsMigration/UserControls/RelatedLinksMvc.ascx", Model)
 
 @foreach (var socialMedia in Model.SocialMedia.SocialMediaOrder)
 {
     @Html.Partial("~/Views/Layouts/_" + socialMedia + ".cshtml")
 }
 @Html.Partial("~/Views/Layouts/_SupportingContentDesktop.cshtml")
+<div class="text-content content">
+    @Html.Partial("~/Views/Layouts/_Share.cshtml")
+</div>

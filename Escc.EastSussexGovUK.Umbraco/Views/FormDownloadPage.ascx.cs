@@ -11,8 +11,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Views
     {
         protected void Page_Load(object sender, System.EventArgs e)
         {
-            this.latest.LatestHtml = Model.Latest.ToString();
-
             // check whether to display guidance notes
             bool guidanceDocs = (this.guidance1.HasContent || this.guidance2.HasContent || this.guidance3.HasContent || this.guidance4.HasContent || this.guidance5.HasContent);
             this.guidanceNotes.Visible = guidanceDocs;
