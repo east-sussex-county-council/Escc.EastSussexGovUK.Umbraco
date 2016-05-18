@@ -8,8 +8,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.latest.LatestHtml = Model.Latest.ToString();
-
             var phXhtml = CmsUtilities.Placeholders["phDefImageMapXhtml"];
 
             // reference imagemap if supplied - expects <map name="map"></map>
