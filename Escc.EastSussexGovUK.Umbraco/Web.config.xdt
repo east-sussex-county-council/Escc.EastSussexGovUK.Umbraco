@@ -56,7 +56,7 @@
     </CssFiles>
     <ScriptFiles>
       <add key="MarriageSkin" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="MarriageSkin" value="/community/registration/skins/js/marriage-skin.js" xdt:Transform="Insert" />
+      <add key="MarriageSkin" value="/community/registration/skins/js/min/marriage-skin.js" xdt:Transform="Insert" />
     </ScriptFiles>
   </Escc.ClientDependencyFramework>
 
@@ -97,4 +97,57 @@
     <add key="Escc.Umbraco.Inception.AuthToken" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     <add key="Escc.Umbraco.Inception.AuthToken" value="" />
   </appSettings>
+
+  <system.web xdt:Transform="Insert" />
+  <system.web xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.web[2])" />
+
+  <system.web>
+    <pages xdt:Transform="Insert" />
+    <pages xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.web/pages[2])" />
+  </system.web>
+
+  <system.web>
+    <pages>
+      <controls xdt:Transform="Insert" />
+      <controls xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.web/pages/controls[2])" />
+    </pages>
+  </system.web>
+
+  <system.web>
+    <compilation xdt:Transform="RemoveAttributes(debug)" />
+
+    <globalization xdt:Transform="Remove" />
+    <globalization culture="en-GB" uiCulture="en-GB" xdt:Transform="Insert"/>
+
+    <pages>
+      <controls>
+        <add tagPrefix="CmsPlaceholders" xdt:Transform="Remove" xdt:Locator="Match(tagPrefix)" />
+        <add tagPrefix="CmsPlaceholders" namespace="Escc.Umbraco.MicrosoftCmsMigration.Placeholders" assembly="Escc.Umbraco.MicrosoftCmsMigration" xdt:Transform="Insert" />
+
+        <add tagPrefix="CmsTemplates" tagName="SectionNavigation" xdt:Transform="Remove" xdt:Locator="Match(tagName)" />
+        <add tagPrefix="CmsTemplates" tagName="SectionNavigation" src="~/MicrosoftCmsMigration/UserControls/SectionNavigation.ascx" xdt:Transform="Insert" />
+
+        <add tagPrefix="CmsTemplates" tagName="Latest" xdt:Transform="Remove" xdt:Locator="Match(tagName)" />
+        <add tagPrefix="CmsTemplates" tagName="Latest" src="~/MicrosoftCmsMigration/UserControls/Latest.ascx" xdt:Transform="Insert" />
+
+        <add tagPrefix="CmsTemplates" tagName="Related" xdt:Transform="Remove" xdt:Locator="Match(tagName)" />
+        <add tagPrefix="CmsTemplates" tagName="Related" src="~/MicrosoftCmsMigration/UserControls/Related.ascx" xdt:Transform="Insert" />
+      </controls>
+    </pages>
+  </system.web>
+
+  <system.webServer xdt:Transform="Insert" />
+  <system.webServer xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer[2])" />
+
+  <system.webServer>
+    <modules xdt:Transform="Insert" />
+    <modules xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer/modules[2])" />
+  </system.webServer>
+
+  <system.webServer>
+    <modules>
+      <add name="MicrosoftCmsUrlRedirectionModule" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+      <add name="MicrosoftCmsUrlRedirectionModule" type="Escc.Umbraco.MicrosoftCmsMigration.MicrosoftCmsUrlRedirectionModule, Escc.Umbraco.MicrosoftCmsMigration" xdt:Transform="Insert" />
+    </modules>
+  </system.webServer>
 </configuration>

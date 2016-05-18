@@ -24,7 +24,7 @@
 
     <asp:PlaceHolder runat="server" ID="websitesOnly">
         <h2><%# BoxTitle2 %></h2>
-        <CmsPlaceholders:RichHtmlPlaceholderControl ID="phRelatedSitesOnly" runat="server" PlaceholderToBind="phDefRelatedLinksSites" EmbedVideo="false" />
+        <CmsPlaceholders:RichHtmlPlaceholderControl ID="phRelatedSitesOnly" runat="server" PlaceholderToBind="phDefRelatedSites" EmbedVideo="false" />
     </asp:PlaceHolder>
 </aside>
 </div>
