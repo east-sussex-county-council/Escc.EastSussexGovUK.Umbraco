@@ -15,61 +15,59 @@ namespace Escc.EastSussexGovUK.Umbraco.Views
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.latest.LatestHtml = Model.Latest.ToString();
+            int downloadRowCount = 0;
 
-                int downloadRowCount = 0;
+            // detect formats based on first file found
+            string column1format = null;
+            string column2format = null;
 
-                // detect formats based on first file found
-                string column1format = null;
-                string column2format = null;
-
-                // hide unused rows
-                for (short i = 1; i <= 40; i++)
+            // hide unused rows
+            for (short i = 1; i <= 40; i++)
+            {
+                string idNum = i.ToString(CultureInfo.InvariantCulture);
+                if (idNum.Length == 1) idNum = "0" + idNum; // add leading 0
+                HtmlTableRow row = FindControl("row" + idNum) as HtmlTableRow;
+                if (row != null)
                 {
-                    string idNum = i.ToString(CultureInfo.InvariantCulture);
-                    if (idNum.Length == 1) idNum = "0" + idNum; // add leading 0
-                    HtmlTableRow row = FindControl("row" + idNum) as HtmlTableRow;
-                    if (row != null)
+                    var fileExtension = GetFileExtensionFromPlaceholder("phFile" + idNum, this);
+                    row.Visible = (!String.IsNullOrEmpty(fileExtension));
+                    if (row.Visible)
                     {
-                        var fileExtension = GetFileExtensionFromPlaceholder("phFile" + idNum, this);
-                        row.Visible = (!String.IsNullOrEmpty(fileExtension));
-                        if (row.Visible)
+                        // detect formats based on first file found
+                        if (column1format == null)
                         {
-                            // detect formats based on first file found
-                            if (column1format == null)
-                            {
-                                column1format = fileExtension;
-                            }
-                            else
-                            {
-                                this.column1FormatIsConsistent = (this.column1FormatIsConsistent && (column1format == fileExtension || String.IsNullOrEmpty(fileExtension)));
-                            }
-
-                            fileExtension = GetFileExtensionFromPlaceholder("phFile" + idNum + "a", this);
-                            if (column2format == null)
-                            {
-                                column2format = fileExtension;
-                            }
-                            else
-                            {
-                                this.column2FormatIsConsistent = (this.column2FormatIsConsistent && (column2format == fileExtension || String.IsNullOrEmpty(fileExtension)));
-                            }
-                            downloadRowCount++;
+                            column1format = fileExtension;
                         }
+                        else
+                        {
+                            this.column1FormatIsConsistent = (this.column1FormatIsConsistent && (column1format == fileExtension || String.IsNullOrEmpty(fileExtension)));
+                        }
+
+                        fileExtension = GetFileExtensionFromPlaceholder("phFile" + idNum + "a", this);
+                        if (column2format == null)
+                        {
+                            column2format = fileExtension;
+                        }
+                        else
+                        {
+                            this.column2FormatIsConsistent = (this.column2FormatIsConsistent && (column2format == fileExtension || String.IsNullOrEmpty(fileExtension)));
+                        }
+                        downloadRowCount++;
                     }
                 }
+            }
 
-                // hide unused column
-                    HideUnusedColumn(this, column2format);
+            // hide unused column
+            HideUnusedColumn(this, column2format);
 
-                    if (downloadRowCount == 0)
-                    {
-                        downloadList.Visible = false;
-                    }
+            if (downloadRowCount == 0)
+            {
+                downloadList.Visible = false;
+            }
 
-                    // show formats in column headers
-                    this.col1head.InnerHtml = "<span class=\"" + column1format + "\">" + Server.HtmlEncode(FileFormatName(column1format)) + "</span>";
-                    this.col0.InnerHtml = "<span class=\"" + column2format + "\">" + Server.HtmlEncode(FileFormatName(column2format)) + "</span>";
+            // show formats in column headers
+            this.col1head.InnerHtml = "<span class=\"" + FileFormatCssClass(column1format) + "\">" + Server.HtmlEncode(FileFormatName(column1format)) + "</span>";
+            this.col0.InnerHtml = "<span class=\"" + FileFormatCssClass(column2format) + "\">" + Server.HtmlEncode(FileFormatName(column2format)) + "</span>";
 
             image1.Visible = (phImage01.HasContent);
             CmsUtilities.ShowCaption(phImage01.PlaceholderToBind, "phDefAltAsCaption01", caption01, alt01);
@@ -107,6 +105,33 @@ namespace Escc.EastSussexGovUK.Umbraco.Views
         }
 
         /// <summary>
+        /// Gets the CSS class of the format.
+        /// </summary>
+        /// <param name="extension">The extension.</param>
+        /// <returns></returns>
+        private static string FileFormatCssClass(string extension)
+        {
+            switch (extension)
+            {
+                case "dot":
+                case "docx":
+                case "dotx":
+                    return "doc";
+                case "xlsx":
+                case "xlt":
+                case "xltx":
+                    return "xls";
+                case "pptx":
+                case "pps":
+                case "ppsx":
+                case "pot":
+                case "potx":
+                    return "ppt";
+            }
+            return extension;
+        }
+
+        /// <summary>
         /// Gets the name of the format.
         /// </summary>
         /// <param name="extension">The extension.</param>
@@ -116,9 +141,23 @@ namespace Escc.EastSussexGovUK.Umbraco.Views
             switch (extension)
             {
                 case "pdf": return "Acrobat (PDF)";
-                case "doc": return "Word";
-                case "xls": return "Excel";
-                case "ppt": return "PowerPoint";
+                case "doc":
+                case "dot": 
+                case "docx":
+                case "dotx":
+                    return "Word";
+                case "xls":
+                case "xlsx":
+                case "xlt":
+                case "xltx":
+                    return "Excel";
+                case "ppt": 
+                case "pptx":
+                case "pps":
+                case "ppsx":
+                case "pot":
+                case "potx":
+                    return "PowerPoint";
                 case "mov": return "QuickTime";
                 case "mp3": return "MP3";
                 case "wma": return "Windows Media Audio";
