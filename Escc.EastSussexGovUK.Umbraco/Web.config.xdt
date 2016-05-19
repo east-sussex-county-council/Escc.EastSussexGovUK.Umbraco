@@ -29,6 +29,8 @@
   <Escc.ClientDependencyFramework>
     <CssFiles xdt:Transform="Insert" />
     <CssFiles xdt:Transform="Remove" xdt:Locator="XPath(/configuration/Escc.ClientDependencyFramework/CssFiles[2])" />
+    <ScriptFiles xdt:Transform="Insert" />
+    <ScriptFiles xdt:Transform="Remove" xdt:Locator="XPath(/configuration/Escc.ClientDependencyFramework/ScriptFiles[2])" />
   </Escc.ClientDependencyFramework>
 
     <Escc.ClientDependencyFramework>
