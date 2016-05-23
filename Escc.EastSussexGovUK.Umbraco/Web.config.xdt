@@ -43,8 +43,6 @@
       <add key="LandingSmall" value="/css/StandardLandingPage/landing-small.css" xdt:Transform="Insert" />
       <add key="LandingMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="LandingMedium" value="/css/StandardLandingPage/landing-medium.css" xdt:Transform="Insert" />
-      <add key="LandingLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="LandingLarge" value="/css/StandardLandingPage/landing-large.css" xdt:Transform="Insert" />
       <add key="TopicSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="TopicSmall" value="/css/StandardTopicPage/topic-small.css" xdt:Transform="Insert" />
       <add key="TopicMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />

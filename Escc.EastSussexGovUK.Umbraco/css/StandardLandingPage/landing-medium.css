@@ -2,34 +2,8 @@
  * CMS TEMPLATE - LANDING PAGE *
  *******************************/
 
-/* Landing page sits inside 10 columns (802px). Divide into 2 columns @ 374px (372px + 1px borders) flanked and separated by 3 gutters @ 18px.
-   Define the gutters as left margin only, meaning the rightmost gutter is just leftover space. Should be enough room to 
-   absorb IE6&7's pixel rounding bug, or the fact that border is 1px (if it were 1px expressed in % it would round down to 0 at some sizes). 
-   clear: left on .odd ensures the next item doesn't move into that space. 
-   min-height of 10 lines (actually 1px less to account for bottom border) should ensure boxes line up most of the time. 
-   1/2 line of bottom padding on .odd and .even matches 1/2 line bottom margin on h2 to complete one line space.
-*/
-.landing { overflow: hidden; border: none; }
-.landing .odd, .landing .even { width: 46.38404%; margin: 1.384615em 0 0 2.244389%; padding: 0 0 .692308em; float: left; min-height: 13.769231em; border: 1px solid #dae1e5; border-top: none; border-radius: 5px; box-shadow: 0 0px 3px 0 #dae1e5; }
-.landing .odd { clear: left; }
-.ie6 .landing .odd { margin-left: 1.1221945%; }
-
-/* Descriptions need a smaller min-height than links, so reduce to 6 lines less 1px for the bottom border */
-.descriptions .odd, .descriptions .even { min-height: 8.230769em; }
-
-/* Horizontal padding is 18px, same as gutters, as % of 374px (see above).
-   1/2 line of bottom margin on h2 completes line space on .odd and .even (see above).
-
-   Important to reset left-margin on .landing h2 a, as it could have .facebook or .twitter applied too
-   but the background-image here replaces the image applied by those classes.
-*/
-.landing h2 { padding: .642857em 4.83871%; margin: 0 0 .642857em; background: #C7DBE4; border: none; border-radius: 5px 5px 0 0; } 
-.landing h2 a { background: url(/escc.eastsussexgovuk/img/body/item-type.png) no-repeat right -595px; padding: 0 30px 0 0; }
-.landing p, .landing ul { display: block; padding: 0 4.83871%; }
-.landing li { margin: .692308em 0; }
-
-.ie6 .landing h2, .ie6 .landing p, .ie6 .landing ul { padding-left: 2.419355%; padding-right: 2.419355%; }
-.ie67 .landing h2 a { background: none; padding: 0; }
+/* Image which goes with the intro */
+.intro { float: right; margin: .692308em 0 .692308em 1.863354%; }
 
 /*********************************************
  * CMS TEMPLATE - LANDING PAGE WITH PICTURES *

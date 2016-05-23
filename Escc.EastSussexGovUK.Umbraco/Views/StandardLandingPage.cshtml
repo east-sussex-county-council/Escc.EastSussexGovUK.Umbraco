@@ -2,18 +2,22 @@
 @using Escc.ClientDependencyFramework
 @using Escc.EastSussexGovUK.MasterPages
 @using Escc.EastSussexGovUK.MasterPages.Features
+@using Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.UserControls
 @using Escc.Umbraco.MicrosoftCmsMigration
 @using EsccWebTeam.EastSussexGovUK.MasterPages
 @inherits UmbracoViewPage<Escc.Umbraco.MicrosoftCmsMigration.MicrosoftCmsViewModel>
 @{ 
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout);
-    Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] { new PreviousMarriageSkin(Model.EsccWebsiteView, Model.Url) }, new DefaultSkin());
+    Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] { new MarriageSkin(Model.EsccWebsiteView, Model.Url) }, new CustomerFocusSkin(Model.EsccWebsiteView));
 
     Html.RequiresCss(CssFileAlias.Resolve("LandingSmall"));
+    Html.RequiresCss(CssFileAlias.Resolve("NavigationSmall"));
     if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)
     {
         Html.RequiresCss(CssFileAlias.Resolve("LandingMedium"), MediaQueryAlias.Resolve("Medium"));
         Html.RequiresCss(CssFileAlias.Resolve("LandingLarge"), MediaQueryAlias.Resolve("Large"));
+        Html.RequiresCss(CssFileAlias.Resolve("NavigationMedium"), MediaQueryAlias.Resolve("Medium"));
+        Html.RequiresCss(CssFileAlias.Resolve("NavigationLarge"), MediaQueryAlias.Resolve("Large"));
     }
 
     var placeholders = CmsUtilities.Placeholders;
@@ -36,18 +40,22 @@
 
 <div class="article">
     <section>
-        <h1 class="text">@Model.PageTitle</h1>
-        
-        @Html.Partial("~/Views/StandardLandingPage.ascx", Model)
-
-        <div class="text">
-            @Html.Partial("~/Views/Layouts/_Share.cshtml")
-        </div>
-    </section>
+        <div class="content text-content">
+            <h1>@Model.PageTitle</h1>
+            @Html.Partial("~/Views/Layouts/_Latest.cshtml")
+            @Html.Partial("~/MicrosoftCmsMigration/UserControls/SectionNavigationMvc.ascx", new SectionNavigationSettings() { HtmlPlaceholderToBind = "highlightContent", ImagePlaceholderToBind = "highlightImage", EsccWebsiteView = Model.EsccWebsiteView })
+            @Html.Partial("~/Views/StandardLandingPage.ascx", Model)
+    </div>
+</section>
 </div>
+
+@Html.Partial("~/MicrosoftCmsMigration/UserControls/RelatedLinksMvc.ascx", Model)
 
 @foreach (var socialMedia in Model.SocialMedia.SocialMediaOrder)
 {
     @Html.Partial("~/Views/Layouts/_" + socialMedia + ".cshtml")
 }
 @Html.Partial("~/Views/Layouts/_SupportingContentDesktop.cshtml")
+<div class="text-content content">
+    @Html.Partial("~/Views/Layouts/_Share.cshtml")
+</div>

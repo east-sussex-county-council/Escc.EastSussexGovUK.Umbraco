@@ -19,9 +19,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.sectionNavigation.EsccWebsiteView = Model.EsccWebsiteView;
-            this.latest.LatestHtml = Model.Latest.ToString();
-            
             // Only show placeholders if they're in use
             HideUnusedSections();
             var visibleSections = GetVisibleSections();
@@ -36,8 +33,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Views
             var useLinks = DisplayAsListsOfLinks(descriptionsValue, page.Level);
 
             // Look for default content
-            this.container.Attributes["class"] += (useLinks) ? " links" : " descriptions";
-
             if (this.section1.Visible && !this.desc01.HasContent) PopulateDefaultContent(listTitle01, this.section1Content, useLinks, this.from1);
             if (this.section2.Visible && !this.desc02.HasContent) PopulateDefaultContent(listTitle02, this.section2Content, useLinks, this.from2);
             if (this.section3.Visible && !this.desc03.HasContent) PopulateDefaultContent(listTitle03, this.section3Content, useLinks, this.from3);
@@ -97,36 +92,34 @@ namespace Escc.EastSussexGovUK.Umbraco.Views
 
         private void AddClassesForColumns(List<HtmlGenericControl> visibleSections)
         {
-            bool odd = true;
-            var offsetPair = 1;
-            int len = visibleSections.Count;
-
-            for (var i = 0; i < len; i++)
-            {
-                // Add odd/even classes to support two column layout
-                var className = odd ? "odd" : "even";
-                odd = !odd;
-
-                // Add group1,2,3 class to support three column layout
-                className += " group" + ((i%3) + 1);
-
-                // Add offset pair classes to support alternate styles down 2 columns (divide sections into pairs, offset by 1)
-                if (odd) offsetPair = (offsetPair == 1) ? 2 : 1;
-                className += " offset-pair" + offsetPair.ToString(CultureInfo.CurrentCulture);
-
-                // Put the class name on a container element for each item
-                visibleSections[i].Attributes["class"] = className;
-            }
-
             // Switch to 3 column view if editor selected it, or based on number of boxes
+            var classForAllSections = "two-col";
+
             var columnsProp = CmsUtilities.GetCustomProperty("Columns");
             if (columnsProp != null)
             {
                 if ((columnsProp.Value == "3 columns") ||
                     ((String.IsNullOrEmpty(columnsProp.Value) || columnsProp.Value == "Auto") && visibleSections.Count > 8))
                 {
-                    this.container.Attributes["class"] += " long-landing";
+                    classForAllSections = "three-col";
                 }
+            }
+            classForAllSections += " landing-section ";
+
+            bool odd = true;
+            int len = visibleSections.Count;
+
+            for (var i = 0; i < len; i++)
+            {
+                // Add odd/even classes to support two column layout
+                var classForThisSection = odd ? "odd" : "even";
+                odd = !odd;
+
+                // Add group1,2,3 class to support three column layout
+                classForThisSection += " group" + ((i%3) + 1);
+
+                // Put the class name on a container element for each item
+                visibleSections[i].Attributes["class"] = classForAllSections + classForThisSection;
             }
         }
 
@@ -272,7 +265,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Views
                 if (!useLinks)
                 {
                     // 4b. Otherwise use the page description
-                    sectionContent.Controls.Add(new LiteralControl("<p>" + HttpUtility.HtmlEncode(posting.GetPropertyValue<string>("pageDescription")) + "</p>"));
+                    sectionContent.Controls.Add(new LiteralControl("<p class=\"medium large\">" + HttpUtility.HtmlEncode(posting.GetPropertyValue<string>("pageDescription")) + "</p>"));
 
                     from = "Description " + from;
                 }

@@ -668,7 +668,6 @@
     <Content Include="css\HomePage\home-medium.css" />
     <Content Include="css\HomePage\home-small.css" />
     <Content Include="css\StandardDownloadPage\download-small.css" />
-    <Content Include="css\StandardLandingPage\landing-large.css" />
     <Content Include="css\StandardLandingPage\landing-medium.css" />
     <Content Include="css\StandardLandingPage\landing-small.css" />
     <Content Include="css\StandardTopicPage\topic-medium.css" />

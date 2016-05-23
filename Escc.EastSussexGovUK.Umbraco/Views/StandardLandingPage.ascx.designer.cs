@@ -13,24 +13,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Views {
     public partial class StandardLandingPage {
         
         /// <summary>
-        /// sectionNavigation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Escc.Umbraco.MicrosoftCmsMigration.UserControls.SectionNavigation sectionNavigation;
-        
-        /// <summary>
-        /// latest control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Escc.Umbraco.MicrosoftCmsMigration.UserControls.Latest latest;
-        
-        /// <summary>
         /// image control.
         /// </summary>
         /// <remarks>
@@ -47,15 +29,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Views {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Escc.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl intro;
-        
-        /// <summary>
-        /// container control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl container;
         
         /// <summary>
         /// section1 control.
