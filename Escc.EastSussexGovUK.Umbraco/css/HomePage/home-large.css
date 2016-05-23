@@ -1,0 +1,44 @@
+﻿/* Top tasks group is 6 cols on 12 col grid with gutter right and below. */
+.top-tasks-group { float: left; width: 49.06832%; margin: 0 1.863354% 0 0; } 
+
+.top-tasks { clear: left; margin: 0 0 1.384615em 0; min-height: 15.230769em; box-shadow: 0 0px 12px 0 #dae1e5;}
+.report-apply-pay { clear: left; min-height: 15.230769em; margin: 0 0 1.384615em 0; box-shadow: 0 0px 12px 0 #dae1e5;}
+
+/* .text is inside 6 cols, so adjust spacing */
+.top-tasks .text { padding: 0 3.797468%; }
+
+/* Heading is now inside 6 cols, but overestimate a little because that always seems to be necessary for flush borders */
+.top-tasks h2 { padding: 0 3.9%; margin: 0 -3.9%; }
+
+/* News box is 6 cols on 12 col grid with min-height equal to both that of .top-tasks-group.
+   Move the feed icon to the right now we know features should span the full width of their box. */
+.news { float: left; width: 49.06832%; min-height: 32.153846em; }
+.news .buttons { background: #fff; }
+.news .feed { left: auto; right: 0; }
+.news .features { box-shadow: 0 0px 12px 0 #dae1e5; }
+.news .only-feature, .news .feature1 { margin-left: 0; }
+.news .feature2 { float: right; margin: 0; }
+
+.schools { overflow: hidden; box-shadow: 0 0px 12px 0 #dae1e5; }
+
+/* .final-group element exists only to control float layout for IE6 */
+.final-group { clear: both; }
+
+/* Remove spacing above bottom row boxes now that they're side-by-side.
+   Each box is 4 cols on 12 col grid with gutter right and below */
+.library, .involved, .job-search { float: left; width: 32.091097%; padding-top: 0; margin: 0 1.863354% 1.384615em 0; box-shadow: 0 0 12px 0 #dae1e5; }
+
+/* Reset spacing around h2 for 4 col context */
+.library h2, .involved h2 { padding: 0 5.806452%; margin: 0 -5.806452%; }
+
+/* Reset padding either side of text for 4 col context
+   Don't reset padding-bottom though, because that's allowing space for .buttons */ 
+.library .text, .involved .text { padding-left: 5.806452%; padding-right: 5.806452%; }
+
+/* min-height to try to equalise heights */
+.job-search, .library, .involved .context { min-height: 20.769231em; }
+.library .has-buttons, .involved .has-buttons { min-height: 16.615385em; }
+
+/* Reset clearing from medium size, and remove right margin from final box */
+.job-search { clear: left; }
+.involved { clear: none; margin-right: 0; }

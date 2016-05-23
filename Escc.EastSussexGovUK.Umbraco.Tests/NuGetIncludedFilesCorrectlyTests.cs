@@ -26,9 +26,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [TestCase(@"css\CampaignTemplates\campaign-small.css")]
         [TestCase(@"Views\CampaignLanding.cshtml")]
 
-        // Escc.Home.Website project
-        [TestCase(@"Views\HomePage.cshtml")]
-
         // Escc.Alerts.Website project
         [TestCase(@"Views\Alerts.cshtml")]
         [TestCase(@"images\HomePage\jobs.png")]

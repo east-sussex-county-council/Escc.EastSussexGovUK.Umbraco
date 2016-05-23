@@ -48,6 +48,7 @@ CreateWebsite $projectName "$pathOfThisScript\$projectName"
 CreateHTTPSBinding $projectName
 RemoveHTTPBinding $projectName 80
 CreateVirtualDirectory $projectName "Escc.EastSussexGovUK" "$parentFolderOfThisScript\Escc.EastSussexGovUK\Escc.EastSussexGovUK" true
+CreateVirtualDirectory $projectName "img" "$parentFolderOfThisScript\Escc.EastSussexGovUK\Escc.EastSussexGovUK\img" true
 CreateVirtualDirectory $projectName "community" "$parentFolderOfThisScript\Escc.Registration.Website\Escc.Registration.Skins" true
 CreateVirtualDirectory $projectName "community\registration" "$parentFolderOfThisScript\Escc.Registration.Website\Escc.Registration.Skins" true
 CreateVirtualDirectory $projectName "community\registration\skins" "$parentFolderOfThisScript\Escc.Registration.Website\Escc.Registration.Skins" true

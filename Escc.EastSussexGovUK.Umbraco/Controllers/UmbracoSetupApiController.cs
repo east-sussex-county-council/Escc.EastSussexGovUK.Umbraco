@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.FormDownload;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.HomePage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.LandingPageWithPictures;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.LegacyBase;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Map;
@@ -101,6 +102,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
 
             try
             {
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(HomePageItemDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(HomePageItemsDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(HomePageDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(WebChatDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LegacyBaseDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LandingPageWithPicturesDocumentType));

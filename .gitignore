@@ -58,15 +58,13 @@ dummy.txt
 **/CampaignTemplates/*
 **/CustomerFocusTemplates/*
 **/CouncilPlan/*
-**/HomePage/*
 **/TinyMCE-*.css
 */Views/Layouts*
 */Views/Campaign*
 */Views/CouncilPlan*
 */Views/Partials/*
 */Views/TermDates/*
-*/Views/HomePage*
-*/Views/_HomePage*
+!*/Views/TermDates/QuickAnswerMvcProxy.*
 */Views/Alerts*
 */Views/Guide*
 */Views/Task*
@@ -76,6 +74,9 @@ dummy.txt
 *RecyclingSiteFinder.ascx
 _ViewStart.cshtml
 images
-*.js
+*/js/CampaignTemplates/*
+*/js/CouncilPlan/*
+*/js/CustomerFocusTemplates/*
+*/js/libs/*
 */MicrosoftCmsMigration/**/*.ascx
 !*/MicrosoftCmsMigration/**/*Mvc.ascx

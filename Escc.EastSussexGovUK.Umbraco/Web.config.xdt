@@ -39,6 +39,12 @@
       <add key="DownloadSmall" value="/css/StandardDownloadPage/download-small.css" xdt:Transform="Insert" />
       <add key="FormDownload" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="FormDownload" value="/css/FormDownloadPage/form-download.css" xdt:Transform="Insert" />
+      <add key="HomeSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="HomeSmall" value="/css/HomePage/home-small.css" xdt:Transform="Insert" />
+      <add key="HomeMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="HomeMedium" value="/css/HomePage/home-medium.css" xdt:Transform="Insert" />
+      <add key="HomeLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="HomeLarge" value="/css/HomePage/home-large.css" xdt:Transform="Insert" />
       <add key="LandingSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="LandingSmall" value="/css/StandardLandingPage/landing-small.css" xdt:Transform="Insert" />
       <add key="LandingMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
@@ -55,6 +61,10 @@
       <add key="RegistrationLarge" value="/community/registration/skins/css/min/registration-large.css" xdt:Transform="Insert" />
     </CssFiles>
     <ScriptFiles>
+      <add key="Home" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="Home" value="/js/HomePage/homepage.js" xdt:Transform="Insert" />
+      <add key="HomeTabs" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="HomeTabs" value="/js/HomePage/jquery-ui-1.10.4.custom.min.js" xdt:Transform="Insert" />
       <add key="MarriageSkin" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="MarriageSkin" value="/community/registration/skins/js/min/marriage-skin.js" xdt:Transform="Insert" />
     </ScriptFiles>

@@ -1,0 +1,250 @@
+@using System.Text
+@using System.Web.Hosting
+@using ClientDependency.Core.Mvc
+@using Escc.ClientDependencyFramework
+@using Escc.Umbraco.PropertyTypes
+@using EsccWebTeam.EastSussexGovUK.MasterPages
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.HomePageViewModel>
+@{
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout);
+
+    Html.RequiresCss(CssFileAlias.Resolve("HomeSmall"));
+    Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));
+    Html.RequiresJs(JsFileAlias.Resolve("Home"), 100);
+    if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)
+    {
+        Html.RequiresCss(CssFileAlias.Resolve("HomeMedium"), MediaQueryAlias.Resolve("Medium"));
+        Html.RequiresCss(CssFileAlias.Resolve("HomeLarge"), MediaQueryAlias.Resolve("Large"));
+        Html.RequiresJs(JsFileAlias.Resolve("HomeTabs"), 90);
+    }
+}
+@functions{
+
+    public string DisplayAsTwoUnorderedLists(IList<HtmlLink> links)
+    {
+        var html = new StringBuilder();
+        var newList = Math.Ceiling((decimal)links.Count / 2);
+        for (var i = 0; i < links.Count; i++)
+        {
+            var link = links[i];
+            if (i == 0)
+            {
+                html.Append("<ul class=\"first\">");
+            }
+            if (i == newList)
+            {
+                html.Append("<ul class=\"second\">");
+            }
+            html.Append("<li><a href=\"").Append(HttpUtility.HtmlEncode(link.Url)).Append("\">").Append(HttpUtility.HtmlEncode(link.Text)).Append("</a></li>");
+            if (i == newList - 1 || i == links.Count - 1)
+            {
+                html.Append("</ul>");
+            }
+        }
+        return html.ToString();
+    }
+
+}
+@section Metadata
+{
+    <title>East Sussex County Council</title>
+    <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+    <link rel="schema.DCTERMS" href="http://purl.org/dc/terms/" />
+    <meta name="DC.title" content="East Sussex County Council" lang="en-GB" xml:lang="en-GB" />
+    <meta property="og:title" content="East Sussex County Council" lang="en-GB" xml:lang="en-GB" />
+    <meta name="twitter:title" content="East Sussex County Council" lang="en-GB" xml:lang="en-GB" />
+    <meta rel="canonical" content="@Request.Url.Scheme://@Request.Url.Authority/" />
+    <meta property="og:url" content="@Request.Url.Scheme://@Request.Url.Authority/" />
+    <meta name="DC.publisher" content="East Sussex County Council" lang="en-GB" xml:lang="en-GB" />
+    <meta name="DCTERMS.spatial" content="East Sussex, UK" lang="en-GB" xml:lang="en-GB" />
+    <meta name="DC.language" class="DCTERMS.ISO639-2" content="eng" />
+    <meta name="DC.description" content="East Sussex County Council&#39;s website has a wealth of advice on council services and related subjects, for residents, businesses and visitors to the county." lang="en-GB" xml:lang="en-GB" />
+    <meta name="description" content="East Sussex County Council&#39;s website has a wealth of advice on council services and related subjects, for residents, businesses and visitors to the county." lang="en-GB" xml:lang="en-GB" />
+    <meta property="og:description" content="East Sussex County Council&#39;s website has a wealth of advice on council services and related subjects, for residents, businesses and visitors to the county." lang="en-GB" xml:lang="en-GB" />
+    <meta name="twitter:description" content="East Sussex County Council&#39;s website has a wealth of advice on council services and related subjects, for residents, businesses and visitors to the county." lang="en-GB" xml:lang="en-GB" />
+    <meta property="og:type" content="government" lang="en-GB" xml:lang="en-GB" />
+    <link rel="apple-touch-icon-precomposed" href="@Request.Url.Scheme://@Request.Url.Authority/apple-touch-icon-precomposed.png" />
+    <meta name="msapplication-TileImage" content="@Request.Url.Scheme://@Request.Url.Authority/windows-tile.png" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta property="og:image" content="@Request.Url.Scheme://@Request.Url.Authority/escc.eastsussexgovuk/img/logo-for-facebook.png" />
+    <meta property="og:site_name" content="East Sussex County Council" lang="en-GB" xml:lang="en-GB" />
+    <meta property="fb:app_id" content="169406409819518" />
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:site" content="@("@eastsussexcc")" />
+    <link rel="alternate" type="application/rss+xml" href="@Request.Url.Scheme://@Request.Url.Authority/rss/features.xml" title="News - East Sussex County Council" />
+    <link rel="alternate" type="application/rss+xml" href="@Request.Url.Scheme://@Request.Url.Authority/rss/get-involved.xml" title="Get involved - East Sussex County Council" />
+    <link rel="search" type="application/opensearchdescription+xml" title="East Sussex County Council" href="@Request.Url.Scheme://@Request.Url.Authority/search/opensearch.xml" />
+    <link rel="alternate" type="application/rdf+xml" href="@Request.Url.Scheme://@Request.Url.Authority/eastsussexcountycouncil.rdf" title="RDF/XML version of this document" />
+}
+@section Breadcrumb{}
+
+<div class="top-tasks-group">
+    <div class="top-tasks">
+        <div class="text">
+            <section>
+                <h2>@Model.TopTasksTitle</h2>
+                @Html.Raw(DisplayAsTwoUnorderedLists(Model.TopTasksLinks))
+            </section>
+        </div>
+    </div>
+
+    <div class="report-apply-pay" id="rap">
+        <section>
+            <ul class="tabs">
+                <li><a href="#rap-1">Report</a></li>
+                <li><a href="#rap-2">Apply</a></li>
+                <li><a href="#rap-3">Pay</a></li>
+            </ul>
+            <div id="rap-1">
+                <h2 class="text">Report</h2>
+                @Html.Raw(DisplayAsTwoUnorderedLists(Model.ReportLinks))
+            </div>
+            <div id="rap-2">
+                <h2 class="text">Apply</h2>
+                @Html.Raw(DisplayAsTwoUnorderedLists(Model.ApplyLinks))
+            </div>
+            <div id="rap-3">
+                <h2 class="text">Pay</h2>
+                @Html.Raw(DisplayAsTwoUnorderedLists(Model.PayLinks))
+            </div>
+        </section>
+    </div>
+</div>
+
+<div class="news context" id="news">
+    <section>
+        <div class="features">
+            <header><h2 class="aural">@Model.NewsTitle</h2></header>
+
+            @if (Model.NewsRssUrl != null)
+            {
+                <a class="feed" rel="alternate" type="application/rss+xml" id="rss1" href="@Model.NewsRssUrl"><img src="/img/body/rss-27px.gif" alt="RSS feed" width="27" height="27" id="rssIcon1" /></a>
+            }
+
+            <ol>
+                @{
+                    for (var i = 0; i < Model.NewsItems.Count; i++)
+                    {
+                        <li class="feature feature@(i+1)">
+                            <a href="@Model.NewsItems[i].Link.Url">
+                                <img src="@Model.NewsItems[i].Image.ImageUrl" alt="" width="@Model.NewsItems[i].Image.Width" />
+                                <div class="caption"><p><span>@Model.NewsItems[i].Link.Text</span></p></div>
+                            </a>
+                        </li>
+                    }
+                }
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <div class="schools">
+            @Html.Partial("~/Views/TermDates/QuickAnswerMvcProxy.ascx", Model)
+
+            @if (Model.SchoolLinks.Any())
+            {
+                <footer>
+                    <div class="buttons">
+                        @{
+                foreach (var link in Model.SchoolLinks)
+                {
+                    <a href="@link.Url">@link.Text</a>
+                }
+                        }
+                    </div>
+                </footer>
+            }
+        </div>
+    </section>
+</div>
+
+<div class="final-group">
+    @Html.Partial("_HomePageJobSearch")
+
+    <div class="library">
+        @{
+            var libraryClass = Model.LibrariesLinks.Any() ? "text context has-buttons" : "text context";
+        }
+        <div class="@libraryClass">
+            <section>
+                <h2>@Model.LibrariesTitle</h2>
+                <ul>
+                    @{
+                        foreach (var link in Model.LibrariesContent)
+                        {
+                            <li><a href="@link.Url">@link.Text</a></li>
+                        }
+                    }
+                </ul>
+                @if (Model.LibrariesLinks.Any())
+                {
+                    <footer id="libraryFooter">
+                        <div class="buttons">
+                            @{
+                    foreach (var link in Model.LibrariesLinks)
+                    {
+                        <a href="@link.Url">@link.Text</a>
+                    }
+                            }
+                        </div>
+                    </footer>
+                }
+            </section>
+        </div>
+    </div>
+
+    <div class="involved">
+        @{
+            var involvedClass = Model.InvolvedLinks.Any() ? "text context has-buttons" : "text context";
+        }
+        <div class="@involvedClass">
+            <section>
+                <header><h2>@Model.InvolvedTitle</h2></header>
+                @if (Model.InvolvedRssUrl != null)
+                {
+                    <a class="feed" rel="alternate" type="application/rss+xml" id="rss4" href="@Model.InvolvedRssUrl"><img src="/img/body/rss-27px.gif" alt="RSS feed" width="27" height="27" /></a>
+                }
+                @if (Model.InvolvedItems.Any())
+                {
+                    <ul>
+                        @foreach (var item in Model.InvolvedItems)
+                        {
+                            <li>
+                                <a href="@item.Link.Url">@item.Link.Text</a>
+                                @Html.Raw(item.Description)
+                            </li>
+                        }
+                    </ul>
+                }
+
+                @if (Model.InvolvedLinks.Any())
+                {
+                    <footer id="involvedFooter">
+                        <div class="buttons">
+                            @{
+                    foreach (var link in Model.InvolvedLinks)
+                    {
+                        <a href="@link.Url">@link.Text</a>
+                    }
+                            }
+                        </div>
+                    </footer>
+                }
+            </section>
+        </div>
+    </div>
+</div>
+@section Javascript{
+    <script type="application/ld+json">
+        {
+        "@@context": "http://schema.org",
+        "@@type": "WebSite",
+        "url": "@Request.Url.Scheme://@Request.Url.Authority/",
+        "potentialAction": {
+        "@@type": "SearchAction",
+        "target": "https://new.eastsussex.gov.uk/search/search.aspx?q={q}",
+        "query-input": "required name=q"
+        }
+        }
+    </script>
+}
