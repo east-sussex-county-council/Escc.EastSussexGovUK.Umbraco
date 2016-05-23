@@ -19,7 +19,6 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage
                {"Normal",new PreValue(-1,"Image on right",1)},
                {"Alternative",new PreValue(-1,"Image on left",3)},
                {"FeaturedImage", new PreValue(-1,"Large image",4)},
-               {"ImageRow", new PreValue(-1,"Row of images",5)},
                {"ImageRowBorderless", new PreValue(-1,"Row of images without borders",6)},
                {"SchoolClosures", new PreValue(-1,"School closures list",10)},
                {"TermDates", new PreValue(-1,"School term dates",11)},

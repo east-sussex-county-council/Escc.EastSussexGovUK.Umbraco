@@ -5,22 +5,37 @@
 /* Place images on the right or left. Side margin is one gutter space.
    Top margin matches that of paragraphs to line up, and bottom completes one line space, but in Chrome 14 the image is lower 
    because it adds the top margin of the paragraph to the top margin of the image, rather than combining them as FF7/IE8 do. */
-.text .topicImageOdd { float: right; margin: .692308em 0 .692308em 18px; }
-.text .topicImageEven { float: left; margin: .692308em 18px .692308em 0; }
+.text-content .topicImageOdd { float: right; margin: .473684em 0 .473684em 18px; }
+.text-content .topicImageEven { float: left; margin: .473684em 18px .473684em 0; }
+
+.topicImageNoWrap img { display: block; }
+.topicImageNoWrap { margin: .473684em 0; }
+
+/* Image captions */
+.text-content figcaption { margin: 0 0 .947368em; }
 
 /* Row of images section layout */
 .imageRow { overflow: hidden; width: 100%; }
-.imageRow div { float: left; }
-.imageRow .topicImageEven, .imageRow .topicImageOdd { margin: 0 18px 0 0; }
-.imageRow img { display: block; }
-
-/* In edit mode at "large" size IE7 can have the footer start when the right column finishes, and .article disappears behind it. 
-   This doesn't fix the footer position (couldn't find a way), but does show .article above it in a way that's editable. */
-.ie7 .cms-edit .article { border-top: 1px solid white; position: relative; }
+.imageRow figure { float: left; margin: .473684em 18px .473684em 0; }
+.imageRow figcaption { margin: 0; }
 
 /* Pull-quotes. Width spans 4 cols in 8 with a gutter on the left. 
    Paragraph horizontal margins and pull-quote position are (18px gutter / (4 cols 310px - 18px .text gutter)) = 6.164384%
 */
-.text blockquote { float: right; margin: .692308em 0 .692308em 2.821317%; width: 48.58934%; background-position: 6.164384% 1.384615em; border-radius: 5px; }
-.text blockquote p { margin: .692308em 6.164384%; }
-.text blockquote p:first-child { margin: 2.076923em 6.164384% .692308em; }
+.text-content blockquote { float: right; margin: .473684em 0 .473684em 2.821317%; width: 48.58934%; background-position: 6.164384% .947368em; border-radius: 5px; }
+.text-content blockquote p { margin: .473684em 6.164384%; }
+.text-content blockquote p:first-child { margin: 1.421053em 6.164384% .473684em; }
+
+/* Flood warnings in floodalert.ascx
+   15px above and 12px below h2, based on 30px h2 font size, is 27px on the grid and lines up with the baseline of the h1
+   Adjust other styles to the 19px base font size - warnings are now 24/27px
+*/
+.flood-warnings h2 { margin-top: .5em; margin-bottom: .4em; }
+.flood { font-size: 1.263158em; line-height: 1.125em; padding-top: .75em; }
+.flood a { font-size: .7916em; line-height: 1.421053em; }
+.flood-warnings .flood-signup { margin: 1.421053em 0 0; }
+
+/* For severe warnings, move some of the padding onto the image only as the text wraps in this context */
+.large .flood.severe { padding-top: .3em; }
+.large .flood.severe img { padding-top: .45em;}
+

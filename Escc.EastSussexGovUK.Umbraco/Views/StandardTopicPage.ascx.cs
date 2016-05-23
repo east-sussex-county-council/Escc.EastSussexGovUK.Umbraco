@@ -15,9 +15,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Views
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         protected void Page_Load(object sender, System.EventArgs e)
         {
-            this.sectionNavigation.EsccWebsiteView = Model.EsccWebsiteView;
-            this.latest.LatestHtml = Model.Latest.ToString();
-
             // Need to do this here, not in OnInit, because otherwise the code-behind for the usercontrols
             // doesn't run when you edit a posting and then click "Exit".
             var placeholders = CmsUtilities.Placeholders;

@@ -13,24 +13,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Views {
     public partial class StandardTopicPage {
         
         /// <summary>
-        /// sectionNavigation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Escc.Umbraco.MicrosoftCmsMigration.UserControls.SectionNavigation sectionNavigation;
-        
-        /// <summary>
-        /// latest control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Escc.Umbraco.MicrosoftCmsMigration.UserControls.Latest latest;
-        
-        /// <summary>
         /// openContent control.
         /// </summary>
         /// <remarks>

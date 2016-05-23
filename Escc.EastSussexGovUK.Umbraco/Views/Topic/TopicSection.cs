@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
+using Escc.Umbraco.MicrosoftCmsMigration.Placeholders;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 
@@ -115,7 +116,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Views.Topic
         /// <param name="captionControl">The caption control.</param>
         /// <param name="imagePlaceholderName">Name of the image placeholder.</param>
         /// <param name="altAsCaptionPlaceholderName">Name of the alt as caption placeholder.</param>
-        protected static void DisplayCaption(Control captionControl, string imagePlaceholderName, string altAsCaptionPlaceholderName)
+        protected static void DisplayCaption(TextPlaceholderControl captionControl, string imagePlaceholderName, string altAsCaptionPlaceholderName)
         {
             if (captionControl == null) throw new ArgumentNullException("captionControl");
 
@@ -136,7 +137,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Views.Topic
             }
             else
             {
-                captionControl.Visible = true;
+                captionControl.Parent.Visible = captionControl.HasContent;
             }
         }
     }

@@ -38,9 +38,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Views.Topic
             DisplayCaption(this.caption2, this.PlaceholderToBindImage02, this.PlaceholderToBindAltAsCaption02);
             DisplayCaption(this.caption3, this.PlaceholderToBindImage03, this.PlaceholderToBindAltAsCaption03);
 
-            RestrictImageContainer(this.image1, this.PlaceholderToBindImage01, 10);
-            RestrictImageContainer(this.image2, this.PlaceholderToBindImage02, 10);
-            RestrictImageContainer(this.image3, this.PlaceholderToBindImage03, 10);
+            // Restrict the container so that a long caption wraps rather than expanding far beyond the image
+            RestrictImageContainer(this.image1, this.PlaceholderToBindImage01, 0);
+            RestrictImageContainer(this.image2, this.PlaceholderToBindImage02, 0);
+            RestrictImageContainer(this.image3, this.PlaceholderToBindImage03, 0);
 
             // Set id of subtitle so that it's compatible with existing within-page links, but do it late 
             // because if you do it during Page_Load and then access the page in Preview mode from Edit mode, 

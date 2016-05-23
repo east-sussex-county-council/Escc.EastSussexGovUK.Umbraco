@@ -3,6 +3,7 @@ using System.Configuration;
 using System.Globalization;
 using System.IO;
 using System.Net;
+using System.Web.Hosting;
 using System.Web.Mvc;
 using System.Xml.XPath;
 using System.Xml.Xsl;
@@ -20,9 +21,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Views.Topic
             // Do nothing unless we're on a page where this control is visible
             if (!this.Visible) return;
 
-            // Do nothing if the URL or XSLT isn't in web.config
+            // Do nothing if the URL isn't in web.config
             if (String.IsNullOrEmpty(ConfigurationManager.AppSettings["FloodAlertsRssUrl"])) return;
-            if (String.IsNullOrEmpty(ConfigurationManager.AppSettings["FloodAlertsXslPath"])) return;
 
             // Caching ensures we only get data once every 10 minutes, and only when it's working
             const string htmlCache = "EsccWebTeam.EastSussexCC.FloodAlerts.Html";
@@ -87,7 +87,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Views.Topic
 
             // Transform the XML data to HTML
             var xslt = new XslCompiledTransform();
-            xslt.Load(ConfigurationManager.AppSettings["FloodAlertsXslPath"]);
+            xslt.Load(HostingEnvironment.MapPath("~/Views/Topic/FloodAlerts.xslt"));
             using (var transformed = new StringWriter(CultureInfo.CurrentCulture))
             {
                 xslt.Transform(sourceXml, xsltArguments, transformed);

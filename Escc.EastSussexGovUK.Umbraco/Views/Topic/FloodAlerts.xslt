@@ -31,7 +31,7 @@
          -->
     <xsl:choose>
       <xsl:when test="contains($warningText, 'Severe Flood Warning')">
-        <p class="flood">
+        <p class="flood severe">
           <img src="/escc.eastsussexgovuk/img/body/flood-severe.png" alt="Severe flood warning sign" width="45" height="42" />
           <xsl:value-of select="$number"/>
           <xsl:choose>
