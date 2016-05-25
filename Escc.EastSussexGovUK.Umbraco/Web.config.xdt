@@ -97,7 +97,6 @@
     <GeneralSettings>
       <add key="MasterPageParameterName" value="template" />
       <add key="DesktopMasterPage" value="~/views/layouts/desktop.cshtml" />
-      <add key="MobileMasterPage" value="~/views/layouts/mobile.cshtml" />
       <add key="FullScreenMasterPage" value="~/views/layouts/fullscreen.cshtml" />
       <add key="PlainMasterPage" value="~/views/layouts/plain.cshtml" />
     </GeneralSettings>
