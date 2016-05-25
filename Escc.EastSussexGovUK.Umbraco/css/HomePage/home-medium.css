@@ -1,42 +1,44 @@
-﻿/* .text is inside 10 cols, so adjust spacing */
-.top-tasks .text { padding: 0 2.244389%; }
+﻿/* Now inside 10 cols, so adjust spacing */
+.top-tasks .gutters, .report-apply-pay .gutters, .library-search.gutters, .features.gutters { padding: 0 2.244389%; }
 
-/* Heading is now inside 10 cols, but overestimate a little because that always seems to be necessary for flush borders */
-.top-tasks h2 { padding: 0 2.5%; margin: 0 -2.5%; }
+.top-tasks h2 {  }
 
 /* Inside top task boxes, two 3 col wide lists of links, but widths adjusted to allow margins on lists which give 14px padding with 18px gutter between. 
    9px above and below lists is one line space. */
-.top-tasks, .report-apply-pay { overflow: hidden; }
-.top-tasks ul.first, .report-apply-pay ul.first { float: left; width: 48.10127%; margin: .692308em 0; }
-.top-tasks ul.second, .report-apply-pay ul.second { float: right; width: 45.147684%; margin: .692308em 2.953586% .692308em 0; }
+.top-tasks, .report-apply-pay, .library-search { overflow: hidden; }
+.top-tasks li, .report-apply-pay li, .library-search li { background-position: 0 -990px; }
+.top-tasks ul.first, .report-apply-pay ul.first, .library-search ul.first { float: left; width: 48.10127%; margin: .692308em 0; }
+.top-tasks ul.second, .report-apply-pay ul.second, .library-search ul.second { float: right; width: 45.147684%; margin: .692308em 2.953586% .692308em 0; }
 
 /* If there are 2 features, these styles are applied to place them side-by-side rather than in a stack. 
    Under 50% width leaves a white border between the two. Left margin adjusted for 10 col grid. */
 .news { clear: none; }
-.news .feed { left: 2.244389%; }
-.news ol { overflow: hidden; margin: 0 0 1.384615em; }
-.news .only-feature, .news .feature1 { margin-left: 2.244389%; }
-.news .feature1 { width: 49.8%; float: left; }
-.news .feature2 { width: 49.8%; float: left; margin: 0 0 0 4px; }
+.features h2 { margin-top: .3em; }
+.news ol { overflow: hidden; margin: 0 0 .947368em; }
+.news .feature { margin-left: 0; }
+.news .feature1 { width: 49.8%; float: left; margin-right: 4px; }
+.news .feature2 { width: 49.8%; float: left; }
+
+.schools { padding: .947368em 0;margin: 0; }
 
 /* Get involved box is 5 cols on 10 col grid, wth gutter between. */
-.library, .involved { float: left; width: 48.87781%; }
-.library { margin-right: 2.244389%; }
+.recycle, .involved { float: left; width: 48.87781%; }
+.recycle { margin-right: 2.244389%;  border: none; }
 
 /* Padding therefore becomes a gutter width inside 5 cols */
-.library .text, .involved .text { padding: 0 4.591837%; overflow: hidden; }
-.library h2, .involved h2 { padding: 0 4.591837%; margin: 0 -4.591837%; }
+.recycle .gutters, .involved .gutters { padding: 0 4.591837%; overflow: hidden; }
+.recycle h2, .involved h2 { line-height: 1.8em; padding: 0 4.591837%; margin: 0 -4.591837%;  border-bottom: 1px solid #dae1e5; }
 
 /* min-height to try to equalise heights when presented side-by-side */
-.library .context { min-height: 16.615385em; }
+.recycle .context { min-height: 16.615385em; }
 .involved .context { min-height: 19.384615em; }
-.library .has-buttons, .involved .has-buttons { min-height: 15.230769em; }
+
+.involved li { padding: 9px 18px 9px; margin: -1px -18px 0; border-top: 1px solid #dae1e5; }
 
 /* Links displayed as buttons use triple line-height, less 1px for border. They are absolutely positioned at the bottom of 
    a positioning context, which has a 3-line bottom padding to allow them to fit. Needs to be bigger for editing though. 
 
    Using the "body" selector adds a little extra weight that sorts out IE6/7.
 */
-body .library .has-buttons, body .involved .has-buttons { padding-bottom: 4.153846em; }
-.buttons { position: absolute; bottom: 0; } 
-.news .buttons { position: static; }
+body .recycle .has-buttons, body .involved .has-buttons { padding-bottom: 3.789474em; }
+.buttons { position: absolute; bottom: 0; line-height: 3.789474em;width: 100%;border-top: 1px solid #dae1e5;   } 

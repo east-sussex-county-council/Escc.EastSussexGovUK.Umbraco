@@ -8,13 +8,13 @@
 */
 .top-tasks, .report-apply-pay { margin: 0 0 1.384615em 0; background: #fff; padding: 0; width: 100%; }
 
-/* .text is inside 6 cols, so adjust spacing */
-.top-tasks .text { padding: 0 3.797468%; }
+/* .gutters is inside 6 cols */
+@media screen {
+    .top-tasks .gutters, .report-apply-pay .gutters, .features.gutters, .library-search.gutters, .recycle .gutters, .involved .gutters { padding: 0 3.797468%; }
+}
 
-/* Customise top tasks header from the default appearance of .text h2.
-   Assumes one line of text, therefore line-height + border = 36px = 2 lines
-   Padding/margin is one gutter inside 6 cols, but overestimate a little because that always seems to be necessary for flush borders  */
-.top-tasks h2 { line-height: 1.9375em; border-bottom: 5px solid #44697D; padding: 0 4.2%; margin: 0 -4.2%; }
+/* Remove additional vertical space around heading */
+.top-tasks h2 { margin: .5625em 0 0; }
 
 /* Report/apply/pay header is hidden in published mode, because tabs are used.
    Lots more CSS for tabs at the bottom of this stylesheet.*/
@@ -22,9 +22,9 @@
 .no-js .tabs { display: none; }
 
 /* 9px above and below lists is one line space. position: relative is to stop disappearing bullets in IE6 */
-.report-apply-pay ul, .top-tasks ul.first, .report-apply-pay ul.first { margin: .692308em 0 0; position: relative; }
-.top-tasks ul.second, .report-apply-pay ul.second { margin: 0 2.953586% .692308em 0; position: relative; }
-.top-tasks li, .report-apply-pay li { list-style: none; background: url(/img/body/item-type.png) no-repeat 0 -995px; padding-left: 16px; }
+.report-apply-pay ul, .top-tasks ul.first, .report-apply-pay ul.first, .library-search ul.first { margin: .692308em 0 0; position: relative; }
+.top-tasks ul.second, .report-apply-pay ul.second, .library-search ul.second { margin: 0 2.953586% .692308em 0; position: relative; }
+.top-tasks li, .report-apply-pay li, .library-search li { list-style: none; background: url(/img/body/item-type.png?v=2) no-repeat 0 -992px; padding-left: 16px; }
 
 
 /*************
@@ -32,11 +32,12 @@
  *************/
 
 /* News box is 5 cols on 10 col grid with line space below */
-.news { clear: both; margin: 0 0 1.384615em 0; }
+.news { clear: both; margin: 0 0 1.384615em 0;border-top: 1px solid #dae1e5;}
 .ie67 .news { display: inline-block; }
 
-/* Feed icon starts on left, because the feature it sits on top of may not span the whole width */
-.news .feed { left: 3.797468%; right: auto; }
+/* Feed icon and 9px above header */
+.news .feed { left: auto; right: 0; }
+.features h2 { margin-top: .346154em; }
 
 /* News feature story. A single link surrounds the whole feature so that hovering over it highlights the link text. */
 .news .feature a:link, .news .feature a:visited { text-decoration: none; color: #fff; }
@@ -46,75 +47,86 @@
    list-item also has a server-generated max-width to ensure the caption can't extend beyond the image. 
    Caption is 16px on 18px font, absolutely positioned within the feature item.
 */
-.news .feature { position: relative; list-style: none;max-width: 236px; }
+.news .feature { position: relative; list-style: none; margin: 0 0 .692308em;}
 .ie6 .news .feature { display: inline-block; }
 .news .feature img { max-width: 100%; display: block; }
 .ie6 .news .feature img { width: 100%; }
-.news .caption { position: absolute; bottom: 0; width: 100%; background-color: #003c69; background-color: rgba(0, 78, 126, .8); font-size: 1.230769em; line-height: 1.125em; font-weight: bold; }
-.ie67 .news .caption { background-color: #003c69; }
-.news .caption p { padding: 3%; }
-.news .caption span { padding: 0 20px 0 0; background: url(/img/body/item-type.png) no-repeat right -1095px; }
-.ie67 .news .caption span { background: none; }
+@media screen {
+    .news .feature { max-width: 236px; }
+    .news .caption { position: absolute; bottom: 0; width: 100%; background-color: #003c69; background-color: rgba(0, 78, 126, .8); font-size: 1em; line-height: 1.125em; font-weight: bold; }
+    .ie67 .news .caption { background-color: #003c69; }
+    .news .caption p { padding: 0 3%; }
+    .news .caption span { padding: 0 20px 0 0; background: url(/img/body/item-type.png) no-repeat right -1091px; }
+    .ie67 .news .caption span { background: none; }
+}
 
 /* li.first removes the border from the top .headline, to stop it showing when there's a feature */
 .news li.first { border: 0; }
 
-/* A second feature gets a different colour caption and some space */
-.news .feature2 { margin: .692308em 0; }
+/* A second feature gets a different colour caption */
 .news .feature2 .caption { background-color: #056b0b; background-color: rgba(5,107,11,.8); }
 .ie67 .news .feature2 .caption { background-color: #056b0b; }
 
-/* At small size, both features need to be indented from left */
-.news .only-feature, .news .feature1, .news .feature2 { margin-left: 3.797468%; }
-
-/* List style shared between news, get involved and events */
+/* List style shared between news, get involved */
 .news ol, .involved ul { margin: 0; background: #fff; }
-.news .headline { clear: both; display: block; border-top: 1px solid #dae1e5; padding: .692308em 3.797468%; margin: -1px 0 0; overflow: hidden; list-style: none; }
-.involved li { border-top: 1px solid #dae1e5; padding: 9px 18px 9px; margin: -1px -18px 0; overflow: hidden; list-style: none; }
-.news .headline img, .involved li img { float: left; margin: 0 18px 1px 0; }
 
-/* Buttons don't have to break out of .text here */
-.news .buttons { margin: 0; }
+/**************
+ * TERM DATES *
+ **************/
 
-/* Change standard quick answer colour */
-.quick-answer { background: #fff; }
+.schools {padding: 1.125em;margin: 1.125em 0 1.6875em; background: #CDE1CE; }
+.schools .quick-answer { padding: 0; background: none;}
+.schools ul {display: block; text-align: center;margin-left: 18px;margin-right: 18px; }
+.schools li { display: inline-block; }
+.schools a { padding: 0 32px 0 0;background: url(/img/body/item-type.png?v=2) no-repeat right -590px; }
+
+/*************
+   LIBRARIES
+ *************/
+
+body .library-search .form { background: none;padding: 0;margin-bottom: 0;}
+#libraryTerm { width: 65%; }
 
 /**************
  * BOTTOM ROW *
  **************/
 
-/* Spacing above last three boxes to ensure clear separation when stacked at small sizes */
-.library, .involved, .job-search { padding-top: 1.384615em; }
-
 /* Heading style shared across row 3. Padding/margin are one gutter space within 6 columns. */
-.library h2, .involved h2 { font-size: 1.153846em; line-height: 1.8em; border-bottom: 1px solid #dae1e5; padding: 0 3.797468%; margin: 0 -3.797468%; }
+.recycle h2, .involved h2 { padding: 0 3.797468%; margin: 0 -3.797468%; }
 
 /* Position RSS feeds at right of headers. Width required for IE8. */
 .feed { position: absolute; top: 0; right: 0; z-index: 999; width: 27px; }
 
-/* Content is a bulleted list of links */
-.library ul { margin-left: 0; position: relative; }
-.library li { list-style: none; background: url(/img/body/item-type.png) no-repeat 0 -995px; padding-left: 16px; }
+/* Replace default form background */
+.recycle .form { background: transparent;padding: 0; }
+.recycle select { max-width: 100%; }
 
-/* Links displayed as buttons below last three sections. */
-.buttons { line-height: 4.076923em; border-top: 1px solid #dae1e5; width: 100%; margin: 0 -18px; } 
-.buttons a { padding: 5px; margin: 0 -7px 0 18px; border-radius: 3px; background: #44697D; color: #fff; font-weight: bold; text-decoration: none; }
-
-/* Library box has gutter below */
-.library { margin: 0 0 1.384615em; background: #fff; }
-.ie67 .library .context { display: inline-block; }
+/* Recycle box has gutter below */
+.recycle { margin: 0 0 1.384615em; border-bottom: 1px solid #dae1e5; background: #fff; }
+.ie67 .recycle .context { display: inline-block; }
 
 /* Get involved box */
 .involved { background: #fff;  }
 .ie67 .involved .context { display: inline-block; }
 .involved ul a { display: block; }
 .involved ul p { margin: 0; }
+.involved li { padding: 9px 0 9px; margin: 0; overflow: hidden; list-style: none; }
+.involved li img { float: left; margin: 0 18px 1px 0; }
+
+/* Links displayed as buttons below involved section. */
+.buttons { line-height: 3.375em; margin: 0 -18px; } 
+.buttons a { padding: 5px 12px; margin: 0 -7px 0 18px; border-radius: 3px; background: #1e5b83; color: #fff; font-weight: bold; text-decoration: none;white-space: nowrap; }
 
 /* Jobs box */
-.job-search { clear: left; background: #fff; }
+.job-search { clear: left; background: #fff;border-top: 1px solid #dae1e5;border-bottom: 1px solid #dae1e5;margin-bottom: 1.125em; }
 .job-search .form { background: transparent;margin: 0; }
 .job-search input[type=search] { width: 100%; }
 .job-search select { max-width: 100%;}
+@media print {
+     .job-search .form { padding-left: 0; }
+     .buttons { margin: 0; } 
+     .buttons a {display: block;padding: 0; margin: 0 18px 0 0; }
+}
 
 /**
  * JQuery UI CSS for tabs widget, but with some colours and sizes changed and irrelevant CSS removed, 
@@ -123,7 +135,7 @@
  */
 .report-apply-pay .ui-helper-hidden { display: none; }
 .report-apply-pay .ui-helper-hidden-accessible { position: absolute !important; clip: rect(1px 1px 1px 1px); clip: rect(1px,1px,1px,1px); }
-.report-apply-pay .ui-helper-reset { margin: 0; padding: 0; border: 0; outline: 0; line-height: 1.3; text-decoration: none; font-size: 100%; list-style: none; }
+.report-apply-pay .ui-helper-reset { margin: 0; border: 0; outline: 0; line-height: 1.3; text-decoration: none; font-size: 100%; list-style: none; }
 .report-apply-pay .ui-helper-clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 .report-apply-pay .ui-helper-clearfix { display: inline-block; }
 /* required comment for clearfix to work in Opera \*/
@@ -151,12 +163,11 @@
 .report-apply-pay .ui-state-default { border-top-right-radius: 5px; }
 
 /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
-.ui-tabs { font-size: 1em; position: relative; zoom: 1; } 
-.ui-tabs .ui-tabs-nav { margin: 0; padding: .2em .2em 0; border-radius: 0; }
+.ui-tabs { position: relative; zoom: 1; } 
+.ui-tabs .ui-tabs-nav { margin: 0; border-radius: 0; }
 .ui-tabs .ui-tabs-nav li { list-style: none; float: left; position: relative; top: 1px; margin: 0 .2em 1px 0; border-bottom: 0 !important; padding: 0; white-space: nowrap; }
 .ui-tabs .ui-tabs-nav li a { float: left; padding: .4em 1em; text-decoration: none; }
 .ui-tabs .ui-tabs-nav li.ui-tabs-selected { margin-bottom: 0; }
 .ui-tabs .ui-tabs-nav li.ui-tabs-selected a { cursor: text; }
 .ui-tabs .ui-tabs-nav li a, .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a { cursor: pointer; } /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
-.ui-tabs .ui-tabs-panel { padding: 9px 18px; }
 .ui-tabs .ui-tabs-hide { display: none !important; }

@@ -18,7 +18,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
             PayLinks = new List<HtmlLink>();
             SchoolLinks = new List<HtmlLink>();
             LibrariesContent = new List<HtmlLink>();
-            LibrariesLinks = new List<HtmlLink>();
             InvolvedItems = new List<HomePageItemViewModel>();
             InvolvedLinks = new List<HtmlLink>();
             NewsItems = new List<HomePageItemViewModel>();
@@ -40,7 +39,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
 
         public string LibrariesTitle { get; set; }
         public IList<HtmlLink> LibrariesContent { get; private set; }
-        public IList<HtmlLink> LibrariesLinks { get; private set; }
+        public string RecyclingTitle { get; set; }
 
         public string InvolvedTitle { get; set; }
         public IList<HomePageItemViewModel> InvolvedItems { get; set; } 

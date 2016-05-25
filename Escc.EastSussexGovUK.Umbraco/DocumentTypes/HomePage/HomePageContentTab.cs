@@ -42,12 +42,13 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.HomePage
         [UmbracoProperty("Libraries: Content", "LibrariesContent", BuiltInUmbracoDataTypes.RelatedLinks, SortOrder = 11)]
         public string LibrariesContent { get; set; }
 
-        [UmbracoProperty("Libraries: Footer links", "LibrariesLinks", BuiltInUmbracoDataTypes.RelatedLinks, SortOrder = 12)]
-        public string LibrariesLinks { get; set; }
+        /* Recycling */
+        [UmbracoProperty("Recycling sites: Title", "RecyclingTitle", BuiltInUmbracoDataTypes.Textbox, SortOrder = 12)]
+        public string RecyclingTitle { get; set; }
 
         /* Involved 
-           Note: Make sure the related links field is not last, as a bug in Umbraco 7.2.1 means it cannot be edited in that position
-         */
+                   Note: Make sure the related links field is not last, as a bug in Umbraco 7.2.1 means it cannot be edited in that position
+                 */
         [UmbracoProperty("Get involved: Footer links", "InvolvedLinks", BuiltInUmbracoDataTypes.RelatedLinks, SortOrder = 13)]
         public string InvolvedLinks { get; set; } 
         

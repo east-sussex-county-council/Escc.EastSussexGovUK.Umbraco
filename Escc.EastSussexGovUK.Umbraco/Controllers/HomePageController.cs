@@ -44,6 +44,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
                 TopTasksTitle = publishedContent.GetPropertyValue<string>("TopTasksTitle_Content"),
                 NewsTitle = publishedContent.GetPropertyValue<string>("NewsTitle_Content"),
                 LibrariesTitle = publishedContent.GetPropertyValue<string>("LibrariesTitle_Content"),
+                RecyclingTitle = publishedContent.GetPropertyValue<string>("RecyclingTitle_Content"),
                 InvolvedTitle = publishedContent.GetPropertyValue<string>("InvolvedTitle_Content")
             };
 
@@ -90,7 +91,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
             ((List<HtmlLink>)model.PayLinks).AddRange(relatedLinksService.BuildRelatedLinksViewModelFromUmbracoContent(publishedContent, "PayTab_Content"));
             ((List<HtmlLink>)model.SchoolLinks).AddRange(relatedLinksService.BuildRelatedLinksViewModelFromUmbracoContent(publishedContent, "SchoolLinks_Content"));
             ((List<HtmlLink>)model.LibrariesContent).AddRange(relatedLinksService.BuildRelatedLinksViewModelFromUmbracoContent(publishedContent, "LibrariesContent_Content"));
-            ((List<HtmlLink>)model.LibrariesLinks).AddRange(relatedLinksService.BuildRelatedLinksViewModelFromUmbracoContent(publishedContent, "LibrariesLinks_Content"));
             ((List<HtmlLink>)model.InvolvedLinks).AddRange(relatedLinksService.BuildRelatedLinksViewModelFromUmbracoContent(publishedContent, "InvolvedLinks_Content"));
 
             return model;
