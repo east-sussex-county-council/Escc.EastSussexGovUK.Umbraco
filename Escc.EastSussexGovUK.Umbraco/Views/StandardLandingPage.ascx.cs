@@ -107,6 +107,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Views
             classForAllSections += " landing-section ";
 
             bool odd = true;
+            var offsetPair = 1;
             int len = visibleSections.Count;
 
             for (var i = 0; i < len; i++)
@@ -118,6 +119,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Views
                 // Add group1,2,3 class to support three column layout
                 classForThisSection += " group" + ((i%3) + 1);
 
+                // Add offset pair classes to support alternate styles down 2 columns (divide sections into pairs, offset by 1)
+                if (odd) offsetPair = (offsetPair == 1) ? 2 : 1;
+                classForThisSection += " offset-pair" + offsetPair.ToString(CultureInfo.CurrentCulture);
+                
                 // Put the class name on a container element for each item
                 visibleSections[i].Attributes["class"] = classForAllSections + classForThisSection;
             }
