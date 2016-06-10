@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.EastSussexGovUK
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.Data.Web", "..\Escc.Data.Web\EsccWebTeam.Data.Web.csproj", "{9C56D3DD-4952-4A1B-9AD6-907A1142872F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.NavigationControls", "..\Escc.NavigationControls\EsccWebTeam.NavigationControls.csproj", "{0323F668-1723-44A1-8C94-F91DC59EF315}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{732E47C7-E861-4587-8400-33116C479A53}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
@@ -49,12 +47,6 @@ Global
 		{9C56D3DD-4952-4A1B-9AD6-907A1142872F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9C56D3DD-4952-4A1B-9AD6-907A1142872F}.UAT|Any CPU.ActiveCfg = Release|Any CPU
 		{9C56D3DD-4952-4A1B-9AD6-907A1142872F}.UAT|Any CPU.Build.0 = Release|Any CPU
-		{0323F668-1723-44A1-8C94-F91DC59EF315}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0323F668-1723-44A1-8C94-F91DC59EF315}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0323F668-1723-44A1-8C94-F91DC59EF315}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0323F668-1723-44A1-8C94-F91DC59EF315}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0323F668-1723-44A1-8C94-F91DC59EF315}.UAT|Any CPU.ActiveCfg = Release|Any CPU
-		{0323F668-1723-44A1-8C94-F91DC59EF315}.UAT|Any CPU.Build.0 = Release|Any CPU
 		{D89C69B5-1F50-4CF1-83F8-AE317F7D788F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D89C69B5-1F50-4CF1-83F8-AE317F7D788F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D89C69B5-1F50-4CF1-83F8-AE317F7D788F}.Release|Any CPU.ActiveCfg = Release|Any CPU
