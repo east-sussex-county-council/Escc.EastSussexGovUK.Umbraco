@@ -194,6 +194,14 @@
       <add verb="GET" path="*.cssx" name="CombineStaticFilesHandlerCss" type="Escc.ClientDependencyFramework.WebForms.CombineStaticFilesHandler, Escc.ClientDependencyFramework.WebForms" xdt:Transform="Insert" />
       <add name="CombineStaticFilesHandlerJs" xdt:Transform="Remove" xdt:Locator="Match(name)" />
       <add verb="GET" path="*.jsx" name="CombineStaticFilesHandlerJs" type="Escc.ClientDependencyFramework.WebForms.CombineStaticFilesHandler, Escc.ClientDependencyFramework.WebForms" xdt:Transform="Insert" />
+
+      <!-- For Escc.Registration.MarriageSkin -->
+      <add name="Static for js" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+      <add verb="GET" path="/MarriageSkin/js/min/*.js" name="Static for js" type="System.Web.StaticFileHandler" xdt:Transform="Insert" />
+      <add name="Static for css" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+      <add verb="GET" path="/MarriageSkin/css/min/*.css" name="Static for css" type="System.Web.StaticFileHandler" xdt:Transform="Insert" />
+      <add name="Static for jpg" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+      <add verb="GET" path="/MarriageSkin/img/*.jpg" name="Static for jpg" type="System.Web.StaticFileHandler" xdt:Transform="Insert" />
     </handlers>
     <modules>
       <add name="MicrosoftCmsUrlRedirectionModule" xdt:Transform="Remove" xdt:Locator="Match(name)" />
