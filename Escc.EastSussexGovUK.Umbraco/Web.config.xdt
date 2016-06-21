@@ -53,12 +53,10 @@
       <add key="TopicSmall" value="/css/StandardTopicPage/topic-small.css" xdt:Transform="Insert" />
       <add key="TopicMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="TopicMedium" value="/css/StandardTopicPage/topic-medium.css" xdt:Transform="Insert" />
-      <add key="RegistrationSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="RegistrationSmall" value="/community/registration/skins/css/min/registration-small.css" xdt:Transform="Insert" />
-      <add key="RegistrationMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="RegistrationMedium" value="/community/registration/skins/css/min/registration-medium.css" xdt:Transform="Insert" />
-      <add key="RegistrationLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="RegistrationLarge" value="/community/registration/skins/css/min/registration-large.css" xdt:Transform="Insert" />
+      <add key="MarriageSkinSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="MarriageSkinSmall" value="/MarriageSkin/css/min/marriage-skin-small.css" xdt:Transform="Insert" />
+      <add key="MarriageSkinMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="MarriageSkinMedium" value="/MarriageSkin/css/min/marriage-skin-medium.css" xdt:Transform="Insert" />
     </CssFiles>
     <ScriptFiles>
       <add key="Home" xdt:Transform="Remove" xdt:Locator="Match(key)" />
@@ -66,7 +64,7 @@
       <add key="HomeTabs" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="HomeTabs" value="/js/HomePage/jquery-ui-1.10.4.custom.min.js" xdt:Transform="Insert" />
       <add key="MarriageSkin" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="MarriageSkin" value="/community/registration/skins/js/min/marriage-skin.js" xdt:Transform="Insert" />
+      <add key="MarriageSkin" value="/MarriageSkin/js/min/marriage-skin.js" xdt:Transform="Insert" />
     </ScriptFiles>
   </Escc.ClientDependencyFramework>
 
