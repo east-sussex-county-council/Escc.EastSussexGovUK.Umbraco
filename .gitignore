@@ -80,3 +80,4 @@ images
 */js/libs/*
 */MicrosoftCmsMigration/**/*.ascx
 !*/MicrosoftCmsMigration/**/*Mvc.ascx
+*/MarriageSkin/*

@@ -93,10 +93,6 @@
       <HintPath>..\packages\Dapper.1.42\lib\net45\Dapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="EmbeddedResourceVirtualPathProvider, Version=1.0.5918.17881, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.EmbeddedResourceVirtualPathProvider.1.0.0\lib\EmbeddedResourceVirtualPathProvider.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Escc.ActiveDirectory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.ActiveDirectory.1.0.0\lib\Escc.ActiveDirectory.dll</HintPath>
       <Private>True</Private>
@@ -172,7 +168,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Registration.MarriageSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Registration.MarriageSkin.1.0.0\lib\Escc.Registration.MarriageSkin.dll</HintPath>
+      <HintPath>..\packages\Escc.Registration.MarriageSkin.1.0.1\lib\Escc.Registration.MarriageSkin.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.RubbishAndRecycling.SiteFinder.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -451,13 +447,8 @@
       <HintPath>..\packages\UmbracoCms.Core.7.2.8\lib\UrlRewritingNet.UrlRewriter.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
-      <HintPath>..\packages\WebActivatorEx.2.1.0\lib\net40\WebActivatorEx.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\Escc_Registration_MarriageSkin_Startup.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\HomePageItemsController.cs" />
     <Compile Include="Controllers\UmbracoSetupApiController.cs" />
@@ -718,6 +709,12 @@
     <Content Include="js\HomePage\jquery-ui-1.10.4.custom.min.js" />
     <Content Include="js\libs\Escc.DocumentsInNewWindow.min.js" />
     <Content Include="js\libs\Escc.Statistics.min.js" />
+    <Content Include="MarriageSkin\css\min\marriage-skin-medium.css" />
+    <Content Include="MarriageSkin\css\min\marriage-skin-small.css" />
+    <Content Include="MarriageSkin\img\marriage-banner.jpg" />
+    <Content Include="MarriageSkin\img\marriage-landing-blue.jpg" />
+    <Content Include="MarriageSkin\img\marriage-landing-red.jpg" />
+    <Content Include="MarriageSkin\js\min\marriage-skin.js" />
     <Content Include="MicrosoftCmsMigration\UserControls\Latest.ascx" />
     <Content Include="MicrosoftCmsMigration\UserControls\Related.ascx" />
     <Content Include="MicrosoftCmsMigration\UserControls\SectionNavigation.ascx" />
@@ -3246,6 +3243,7 @@
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.TwitterScriptPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\package.manifest" />
+    <Content Include="MarriageSkin\img\web.config" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -3512,6 +3510,7 @@
     <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.3.0.2\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.3.0.2\build\Escc.Umbraco.PropertyEditors.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.UmbracoViews.6.6.4\build\Escc.EastSussexGovUK.UmbracoViews.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.UmbracoViews.6.6.4\build\Escc.EastSussexGovUK.UmbracoViews.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.MicrosoftCmsMigration.2.1.5\build\Escc.Umbraco.MicrosoftCmsMigration.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MicrosoftCmsMigration.2.1.5\build\Escc.Umbraco.MicrosoftCmsMigration.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Registration.MarriageSkin.1.0.1\build\Escc.Registration.MarriageSkin.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Registration.MarriageSkin.1.0.1\build\Escc.Registration.MarriageSkin.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets" Condition="Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets')" />
   <Import Project="..\packages\UmbracoCms.7.2.8\build\UmbracoCms.targets" Condition="Exists('..\packages\UmbracoCms.7.2.8\build\UmbracoCms.targets')" />
@@ -3527,6 +3526,7 @@
   <Import Project="..\packages\Escc.Umbraco.PropertyEditors.3.0.2\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.3.0.2\build\Escc.Umbraco.PropertyEditors.targets')" />
   <Import Project="..\packages\Escc.EastSussexGovUK.UmbracoViews.6.6.4\build\Escc.EastSussexGovUK.UmbracoViews.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.UmbracoViews.6.6.4\build\Escc.EastSussexGovUK.UmbracoViews.targets')" />
   <Import Project="..\packages\Escc.Umbraco.MicrosoftCmsMigration.2.1.5\build\Escc.Umbraco.MicrosoftCmsMigration.targets" Condition="Exists('..\packages\Escc.Umbraco.MicrosoftCmsMigration.2.1.5\build\Escc.Umbraco.MicrosoftCmsMigration.targets')" />
+  <Import Project="..\packages\Escc.Registration.MarriageSkin.1.0.1\build\Escc.Registration.MarriageSkin.targets" Condition="Exists('..\packages\Escc.Registration.MarriageSkin.1.0.1\build\Escc.Registration.MarriageSkin.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

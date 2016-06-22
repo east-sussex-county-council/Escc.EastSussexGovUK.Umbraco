@@ -45,6 +45,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         // Escc.Umbraco.MicrosoftCmsMigration project
         [TestCase(@"MicrosoftCmsMigration\UserControls\Latest.ascx")]
 
+        // Escc.Registration.MarriageSkin project
+        [TestCase(@"MarriageSkin\js\min\marriage-skin.js")]
+        [TestCase(@"MarriageSkin\css\min\marriage-skin-small.css")]
+        [TestCase(@"MarriageSkin\img\marriage-banner.jpg")]
+
         public void NuGetPackagesCorrectlyIncludedInProject(string filePathWhichShouldBeIncluded)
         {
             var commonParent = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent;
