@@ -1,0 +1,169 @@
+﻿/* 18px margin and padding on h1 on 6 column grid. Font size is 16px/18px. */
+h1 { font-weight: bold; font-size: 1.230769em; line-height: 1.125em; margin: .875em 0 .25em; color: #272727; border-radius: 5px; }
+@media screen 
+{
+    h1 { margin: .875em 3.797468% .25em; padding: .5625em 3.797468%; }
+}
+
+/* Change the colour of various elements to reflect the identity colour for the current Council Plan priority */
+.council-plan h1, a.council-plan, em.council-plan, li.council-plan { background: #196ba6; color: #fff; }
+.economic-growth h1, .economic-growth thead th, a.economic-growth, em.economic-growth, .economic-growth .button-nav a, li.economic-growth { background: #15807F; color: #fff; }
+.vulnerable-people h1, .vulnerable-people thead th, a.vulnerable-people, em.vulnerable-people, .vulnerable-people .button-nav a, li.vulnerable-people { background: #056b0b; color: #fff; }
+.building-resilience h1, .building-resilience thead th, a.building-resilience, em.building-resilience, .building-resilience .button-nav a, li.building-resilience { background: #622F92; color: #fff; }
+.best-use-of-resources h1, .best-use-of-resources thead th, a.best-use-of-resources, em.best-use-of-resources, .best-use-of-resources .button-nav a, li.best-use-of-resources { background: #B21313; color: #fff; }
+
+/* Hover colour is two shades darker on http://0to255.com */
+a.council-plan:hover, a.council-plan:focus, a.council-plan:active, em.council-plan { background: #155888; }
+a.economic-growth:hover, a.economic-growth:focus, a.economic-growth:active, em.economic-growth { background: #106362; }
+a.vulnerable-people:hover, a.vulnerable-people:focus, a.vulnerable-people:active, em.vulnerable-people { background: #034b08; }
+a.building-resilience:hover, a.building-resilience:focus, a.building-resilience:active, em.building-resilience { background: #512778; } 
+a.best-use-of-resources:hover, a.best-use-of-resources:focus, a.best-use-of-resources:active, em.best-use-of-resources { background: #931010; }
+
+/* Selected border is 50% tint from www.splintered.co.uk, because 0to255.com is now blocked */
+em.council-plan { border-left: 5px solid #8cb5d2; }
+em.economic-growth { border-left: 5px solid #8abfbf; }
+em.vulnerable-people { border-left: 5px solid #82b585; }
+em.building-resilience { border-left: 5px solid #b097c8; }
+em.best-use-of-resources { border-left: 5px solid #d88989; }
+
+/* Change table borders to match priority colour. Starting point is the .text style so we have spacing consistent with the rest of the website. 
+   Two separate selectors because IE8 will ignore the entire rule if it contains :nth-child. */
+.council-plan .aims-box { border: 1px solid #196ba6; }
+
+.economic-growth table, .economic-growth tbody, .economic-growth tr, .economic-growth th, .economic-growth td,
+.economic-growth .aims-box, .economic-growth .images img { border: 1px solid #8abfbf; }
+
+.economic-growth table:nth-child(2n+1), .economic-growth table:nth-child(2n), 
+.economic-growth thead tr:nth-child(2n+1), .economic-growth thead tr:nth-child(2n),
+.economic-growth tr:nth-child(2n+1), .economic-growth tr:nth-child(2n) { border: 1px solid #15807F; }
+
+.vulnerable-people table, .vulnerable-people tbody, .vulnerable-people tr, .vulnerable-people th, .vulnerable-people td, 
+.vulnerable-people .aims-box, .vulnerable-people .images img { border: 1px solid #82b585; }
+
+.vulnerable-people table:nth-child(2n+1), .vulnerable-people table:nth-child(2n), 
+.vulnerable-people thead tr:nth-child(2n+1), .vulnerable-people thead tr:nth-child(2n),
+.vulnerable-people tr:nth-child(2n+1), .vulnerable-people tr:nth-child(2n) { border: 1px solid #056b0b; }
+
+.building-resilience table, .building-resilience tbody, .building-resilience tr, .building-resilience th, .building-resilience td, 
+.building-resilience .aims-box, .building-resilience .images img { border: 1px solid #b097c8; }
+
+.building-resilience table:nth-child(2n+1), .building-resilience table:nth-child(2n), 
+.building-resilience thead tr:nth-child(2n+1), .building-resilience thead tr:nth-child(2n),
+.building-resilience tr:nth-child(2n+1), .building-resilience tr:nth-child(2n) { border: 1px solid #622F92; }
+
+.best-use-of-resources table, .best-use-of-resources tbody, .best-use-of-resources tr, .best-use-of-resources th, .best-use-of-resources td,
+.best-use-of-resources .aims-box, .best-use-of-resources .images img { border: 1px solid #d88989; }
+
+.best-use-of-resources table:nth-child(2n+1), .best-use-of-resources table:nth-child(2n), 
+.best-use-of-resources thead tr:nth-child(2n+1), .best-use-of-resources thead tr:nth-child(2n),
+.best-use-of-resources tr:nth-child(2n+1), .best-use-of-resources tr:nth-child(2n) { border: 1px solid #B21313; }
+
+/* Modify some borders to be thicker and curved */
+.plan-content .aims-box { border-width: 2px; border-radius: 5px; }
+
+/* Change text size and colour */
+.highlighted { font-size: 1.230769em; line-height: 1.125em; margin: .875em 0 .25em; } /* 16px/18px */
+.council-plan .highlighted { color: #196ba6; }
+.economic-growth .highlighted { color: #15807F; }
+.vulnerable-people .highlighted { color: #056b0b; }
+.building-resilience .highlighted { color: #622F92; }
+.best-use-of-resources .highlighted { color: #B21313; }
+
+/* Navigation menu within the Council Plan */
+ol.plan-nav { margin: 0; }
+ol.plan-nav a, ol.plan-nav em { display: block; padding: .692308em 9px; margin: .692308em 0; text-decoration: none; border-radius: 5px; }
+ol.plan-nav span { display: block; font-weight: bold; }
+
+/* Padding for .aims-box is 18px within context of (6 grid columns less two outer gutters) */ 
+.aims-box { clear: both; padding-left: 4.109589%; padding-right: 4.109589%; }
+.cms-edit .aims-box { padding: 0; }
+
+/* Photos of leader/chief exec on topic template */
+.person { float: left; margin: .692308em .692308em .692308em 0; }
+.person img { display: block; margin: .692308em 0; }
+.person p { margin: 0; }
+.person .position { font-weight: bold; }
+
+/* Logos on topic template */
+.logos img { float: left; margin: .692308em .692308em .692308em 0; }
+
+/* Images at bottom of topic template */
+.images { margin: 1.384615em 0 0; float: left; width: 100%; }
+.plan-content .images img { float: left; margin: 0 .692308em .692308em 0; border-width: 2px; border-radius: 5px; }
+
+/* Undo published-mode styling for image placeholders in edit mode */
+.cms-edit .person table, .cms-edit .person tr, .cms-edit .person td,
+.cms-edit .logos table, .cms-edit .logos tr, .cms-edit .logos td,
+.cms-edit .images table, .cms-edit .images tr, .cms-edit .images td { border: none; }
+
+.cms-edit .images table { float: left; margin-right: 18px; }
+.cms-edit .images table table { float: none; margin: 0; }
+
+.cms-edit .images img { float: none; border: none; border-radius: 0; }
+
+/* Projects template
+   Padding is 9px within 6 grid columns */
+.plan-content .projects { margin: 0; list-style: none; overflow: hidden; }
+.projects li { padding: .692308em 1.898734%; margin: .692308em 0; border-radius: 5px; overflow: hidden; }
+.projects p { margin: 0; text-align: center; }
+.cms-edit .projects p { text-align: left; margin: .692308em 0 0; }
+
+.project-amount { font-size: 1.846153em; line-height: 1em; font-weight: bold; } /* 24px/24px */
+.project-image { text-align: center; }
+
+.top, .bottom { width: 100%; overflow: hidden; }
+
+.top.caption { margin: 0 0 .692308em; }
+/* Mockup called for caption on right, but we're not using that
+.top.caption img { float: left; margin: 0 .692308em 0 0; } */
+
+.bottom { margin: .692308em 0 0; }
+.bottom.caption p { vertical-align: middle; display: inline; }
+.bottom.caption img { vertical-align: middle; margin: 0 .692308em 0 0; }
+
+.projects .project-image.left, .projects .project-image.right { max-width: 50%; }
+.left.no-caption img, .right.no-caption img { display: block; }
+
+.left { float: left; margin: 0 .692308em 0 0; }
+.right { float: right; margin: 0 0 0 .692308em; }
+
+/* SVG budget diagrams. Don't let PNG image resize if it has an image map, as the coordinates would be wrong. */
+object { margin: 1.384615em 0 0; width:100%; min-width: 400px; background: #fff; }
+object img { margin: 1.384615em 0 0; background: #fff; }
+object img.image-map { max-width: none; }
+
+/* Priorities template 
+   h2 padding matches that of h1
+*/
+@media screen {
+    .priorities h2 { padding: .5625em 3.797468%; border-radius: 5px; }
+}
+.priorities .building-resilience h2 { background: #622F92; color: #fff; }
+.priorities .economic-growth h2 { background: #15807F; color: #fff; }
+.priorities .best-use-of-resources h2 { background: #B21313; color: #fff; }
+.priorities .vulnerable-people h2 { background: #056b0b; color: #fff; }
+.priorities object { margin: 1.384615em auto; min-width: 0; max-width: 250px; width: auto; display: block; }
+
+/*
+    For some reason, there is CSS elsewhere / above that reassigns colours to classes, making the Priorities page display
+    incorrectly on the new template. This CSS should put the class definitions back to normal. #yukkyhack
+*/
+.group .building-resilience h2 {
+    background: #15807f;
+    color: #fff;
+}
+
+.group .economic-growth h2 {
+    background: #056b0b;
+    color: #fff;
+}
+
+.group .best-use-of-resources h2 {
+    background: #622f92;
+    color: #fff;
+}
+
+.group .vulnerable-people h2 {
+    background: #b21313;
+    color: #fff;
+}

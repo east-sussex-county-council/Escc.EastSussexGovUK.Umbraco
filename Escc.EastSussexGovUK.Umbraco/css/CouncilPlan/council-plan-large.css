@@ -1,0 +1,41 @@
+﻿/* Adapt 18px margin and padding on h1 to 12 column grid */
+@media screen 
+{
+    h1 { margin: .875em 1.863354% .25em; padding: .5625em 1.863354%; } 
+}
+
+/* Move navigation to the side, occupying the first 2 grid columns with a gutter to the right, 
+   within a context of .text which is 12 grid columns - 2 gutters (930px) */
+ol.plan-nav { margin: 0 1.863354% 0 0; float: left; width: 13.763441%; }
+.plan-content { margin-left: 15.698925%; }
+
+/* Some templates feature two columns. Context is .plan-content, which is 10 columns less 1 gutter (784px).
+   .column1 is 5 grid columns within that context.
+   .column2 is the remaining 5 grid columns less the right gutter */
+.columns { overflow: hidden; }
+.column1 { float: left; width: 50%; margin-right: -47.704082%; padding-right: 47.704082%; }
+.column2 { float: right; width: 47.704082%; }
+
+/* Context for aims box is the width of .column2: 374px 
+   Padding is 18px gutter within that context. */
+.aims-box { padding-left: 4.83871%; padding-right: 4.83871%; margin: .692308em 0; }
+
+/* Undo default style for .full-page */
+.full-page .plan-content h2, .full-page .plan-content h3, .full-page .plan-content h4, .full-page .plan-content h5, .full-page .plan-content p, .full-page .plan-content ul, .full-page .plan-content ol { max-width: none; }
+
+/* Projects template 
+   Context for % would be 10 grid columns less the 18px margin of .text BUT
+   there's a 9px margin on the right of each li and an extra -9px on .projects for the last li to fit into rather than wrap.
+   That makes the context 10 grid columns less just 9px, or 793px.
+   Within that context padding is 9px, margin is 9px and width is 171px (not sure why 171px but it works!)
+   */
+.plan-content .projects { margin: 0 -1.134931% 0 0;  }
+.plan-content .projects li { clear: none; padding: .692308em 1.134931%; margin: 0 1.134931% .692308em 0; width: 21.563682%; float: left; }
+.plan-content .projects .group { clear: both; }
+
+/* Priorities template
+Width is (5 cols - 9px in context of 10 cols - 18px) = (383px in 784px). 9px off the grid unfortunately, 
+because the way these templates were set up makes that necessary.
+*/
+.priorities .building-resilience, .priorities .best-use-of-resources { width: 48.852041%; }
+.priorities .economic-growth, .priorities .vulnerable-people { width: 48.852041%; }

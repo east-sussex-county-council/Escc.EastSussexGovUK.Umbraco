@@ -57,11 +57,9 @@ dummy.txt
 # Files imported by ESCC NuGet packages
 **/CampaignTemplates/*
 **/CustomerFocusTemplates/*
-**/CouncilPlan/*
 **/TinyMCE-*.css
 */Views/Layouts*
 */Views/Campaign*
-*/Views/CouncilPlan*
 */Views/Partials/*
 */Views/TermDates/*
 !*/Views/TermDates/QuickAnswerMvcProxy.*
@@ -75,7 +73,6 @@ dummy.txt
 _ViewStart.cshtml
 images
 */js/CampaignTemplates/*
-*/js/CouncilPlan/*
 */js/CustomerFocusTemplates/*
 */js/libs/*
 */MicrosoftCmsMigration/**/*.ascx

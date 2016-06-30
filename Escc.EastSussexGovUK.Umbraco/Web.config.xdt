@@ -35,6 +35,12 @@
 
     <Escc.ClientDependencyFramework>
     <CssFiles>
+      <add key="CouncilPlanSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="CouncilPlanSmall" value="/css/CouncilPlan/council-plan-small.css" xdt:Transform="Insert" />
+      <add key="CouncilPlanMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="CouncilPlanMedium" value="/css/CouncilPlan/council-plan-medium.css" xdt:Transform="Insert" />
+      <add key="CouncilPlanLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="CouncilPlanLarge" value="/css/CouncilPlan/council-plan-large.css" xdt:Transform="Insert" />
       <add key="DownloadSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="DownloadSmall" value="/css/StandardDownloadPage/download-small.css" xdt:Transform="Insert" />
       <add key="FormDownload" xdt:Transform="Remove" xdt:Locator="Match(key)" />
@@ -59,6 +65,8 @@
       <add key="MarriageSkinMedium" value="/MarriageSkin/css/min/marriage-skin-medium.css" xdt:Transform="Insert" />
     </CssFiles>
     <ScriptFiles>
+      <add key="CouncilPlan" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="CouncilPlan" value="/js/CouncilPlan/council-plan.js" xdt:Transform="Insert" />
       <add key="Home" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Home" value="/js/HomePage/homepage.js" xdt:Transform="Insert" />
       <add key="HomeTabs" xdt:Transform="Remove" xdt:Locator="Match(key)" />

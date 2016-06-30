@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CouncilPlan;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.FormDownload;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.HomePage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.LandingPageWithPictures;
@@ -80,6 +81,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
 
                 TopicPageLayoutDataType.CreateDataType();
 
+                // Council Plan
+                PriorityDataType.CreateDataType();
+
+
                 return Request.CreateResponse(HttpStatusCode.Created);
             }
             catch (Exception e)
@@ -113,6 +118,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(StandardDownloadPageDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(MapDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(FormDownloadDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CouncilPlanHomePageDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CouncilPlanBudgetPageDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CouncilPlanMonitoringPageDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CouncilPlanPrioritiesPageDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CouncilPlanTopicPageDocumentType));
 
                 return Request.CreateResponse(HttpStatusCode.Created);
             }

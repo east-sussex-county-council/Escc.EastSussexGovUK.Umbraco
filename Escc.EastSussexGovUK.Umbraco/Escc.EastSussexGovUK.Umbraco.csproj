@@ -125,10 +125,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Escc.ClientDependencyFramework.WebForms.1.0.0\lib\Escc.ClientDependencyFramework.WebForms.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.CouncilPlan.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.CouncilPlan.Website.1.0.3\lib\Escc.CouncilPlan.Website.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Escc.CustomerFocusTemplates.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.CustomerFocusTemplates.Website.2.5.1\lib\Escc.CustomerFocusTemplates.Website.dll</HintPath>
       <Private>True</Private>
@@ -449,6 +445,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CouncilPlanBudgetPageController.cs" />
+    <Compile Include="Controllers\CouncilPlanHomePageController.cs" />
+    <Compile Include="Controllers\CouncilPlanMonitoringPageController.cs" />
+    <Compile Include="Controllers\CouncilPlanPrioritiesPageController.cs" />
+    <Compile Include="Controllers\CouncilPlanTopicPageController.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\HomePageItemsController.cs" />
     <Compile Include="Controllers\UmbracoSetupApiController.cs" />
@@ -458,6 +459,17 @@
     <Compile Include="Controllers\StandardDownloadPageController.cs" />
     <Compile Include="Controllers\StandardLandingPageController.cs" />
     <Compile Include="Controllers\StandardTopicPageController.cs" />
+    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanBudgetPageContentTab.cs" />
+    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanBudgetPageDocumentType.cs" />
+    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanHomePageContentTab.cs" />
+    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanHomePageDocumentType.cs" />
+    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanMonitoringPageContentTab.cs" />
+    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanMonitoringPageDocumentType.cs" />
+    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanPrioritiesPageContentTab.cs" />
+    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanPrioritiesPageDocumentType.cs" />
+    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanTopicPageContentTab.cs" />
+    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanTopicPageDocumentType.cs" />
+    <Compile Include="DocumentTypes\CouncilPlan\PriorityDataType.cs" />
     <Compile Include="DocumentTypes\FormDownload\FormDownloadContentTab.cs" />
     <Compile Include="DocumentTypes\FormDownload\FormDownloadDocumentType.cs" />
     <Compile Include="DocumentTypes\HomePage\HomePageContentTab.cs" />
@@ -485,6 +497,49 @@
     <Compile Include="Models\HomePageViewModel.cs" />
     <Compile Include="Models\RssViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\CouncilPlanBudgetPage.ascx.cs">
+      <DependentUpon>CouncilPlanBudgetPage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\CouncilPlanBudgetPage.ascx.designer.cs">
+      <DependentUpon>CouncilPlanBudgetPage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CouncilPlanHomePage.ascx.cs">
+      <DependentUpon>CouncilPlanHomePage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\CouncilPlanHomePage.ascx.designer.cs">
+      <DependentUpon>CouncilPlanHomePage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CouncilPlanMenu.ascx.cs">
+      <DependentUpon>CouncilPlanMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\CouncilPlanMenu.ascx.designer.cs">
+      <DependentUpon>CouncilPlanMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CouncilPlanMonitoringPage.ascx.cs">
+      <DependentUpon>CouncilPlanMonitoringPage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\CouncilPlanMonitoringPage.ascx.designer.cs">
+      <DependentUpon>CouncilPlanMonitoringPage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CouncilPlanPrioritiesPage.ascx.cs">
+      <DependentUpon>CouncilPlanPrioritiesPage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\CouncilPlanPrioritiesPage.ascx.designer.cs">
+      <DependentUpon>CouncilPlanPrioritiesPage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CouncilPlanTopicPage.ascx.cs">
+      <DependentUpon>CouncilPlanTopicPage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\CouncilPlanTopicPage.ascx.designer.cs">
+      <DependentUpon>CouncilPlanTopicPage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CouncilPlanUtility.cs" />
     <Compile Include="Views\FormDownloadPage.ascx.cs">
       <DependentUpon>FormDownloadPage.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3402,11 +3457,6 @@
     <Content Include="umbraco\Xslt\Web.config" />
     <Content Include="umbraco_client\CodeMirror\Js\Mode\Razor\LICENSE" />
     <Content Include="umbraco_client\CodeMirror\Js\Mode\Sieve\LICENSE" />
-    <Content Include="Views\CouncilPlanTopicPage.cshtml" />
-    <Content Include="Views\CouncilPlanPrioritiesPage.cshtml" />
-    <Content Include="Views\CouncilPlanMonitoringPage.cshtml" />
-    <Content Include="Views\CouncilPlanHomePage.cshtml" />
-    <Content Include="Views\CouncilPlanBudgetPage.cshtml" />
     <Content Include="Views\Alerts.cshtml" />
     <Content Include="Views\CampaignContent.cshtml" />
     <Content Include="Views\CampaignContentCss.cshtml" />
@@ -3454,6 +3504,11 @@
     <Content Include="Views\Layouts\_SupportingContentDesktop.cshtml" />
     <Content Include="Views\Layouts\_Twitter.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\CouncilPlanBudgetPage.cshtml" />
+    <Content Include="Views\CouncilPlanHomePage.cshtml" />
+    <Content Include="Views\CouncilPlanMonitoringPage.cshtml" />
+    <Content Include="Views\CouncilPlanPrioritiesPage.cshtml" />
+    <Content Include="Views\CouncilPlanTopicPage.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -3496,7 +3551,6 @@
     <Error Condition="!Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets'))" />
     <Error Condition="!Exists('..\packages\UmbracoCms.7.2.8\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.2.8\build\UmbracoCms.props'))" />
     <Error Condition="!Exists('..\packages\UmbracoCms.7.2.8\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.2.8\build\UmbracoCms.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.CouncilPlan.Website.1.0.3\build\Escc.CouncilPlan.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CouncilPlan.Website.1.0.3\build\Escc.CouncilPlan.Website.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.3\build\Escc.RubbishAndRecycling.SiteFinder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.3\build\Escc.RubbishAndRecycling.SiteFinder.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.1.3.7\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.1.3.7\build\Escc.Umbraco.MediaSync.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Statistics.js.2.0.1\build\Escc.Statistics.js.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Statistics.js.2.0.1\build\Escc.Statistics.js.targets'))" />
@@ -3514,7 +3568,6 @@
   </Target>
   <Import Project="..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets" Condition="Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets')" />
   <Import Project="..\packages\UmbracoCms.7.2.8\build\UmbracoCms.targets" Condition="Exists('..\packages\UmbracoCms.7.2.8\build\UmbracoCms.targets')" />
-  <Import Project="..\packages\Escc.CouncilPlan.Website.1.0.3\build\Escc.CouncilPlan.Website.targets" Condition="Exists('..\packages\Escc.CouncilPlan.Website.1.0.3\build\Escc.CouncilPlan.Website.targets')" />
   <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.3\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.3\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
   <Import Project="..\packages\Escc.Umbraco.MediaSync.1.3.7\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.1.3.7\build\Escc.Umbraco.MediaSync.targets')" />
   <Import Project="..\packages\Escc.Statistics.js.2.0.1\build\Escc.Statistics.js.targets" Condition="Exists('..\packages\Escc.Statistics.js.2.0.1\build\Escc.Statistics.js.targets')" />

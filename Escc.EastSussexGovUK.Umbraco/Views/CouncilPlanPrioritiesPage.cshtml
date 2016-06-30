@@ -1,0 +1,59 @@
+﻿@using System.Web.Mvc.Html
+@using ClientDependency.Core.Mvc
+@using Escc.ClientDependencyFramework
+@using Escc.EastSussexGovUK.MasterPages
+@using Escc.EastSussexGovUK.MasterPages.Features
+@using Escc.EastSussexGovUK.Umbraco.Views
+@using Escc.Umbraco.MicrosoftCmsMigration
+@using EsccWebTeam.EastSussexGovUK.MasterPages
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<MicrosoftCmsViewModel>
+@{
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout);
+
+    Html.RequiresCss(CssFileAlias.Resolve("CouncilPlanSmall"));
+    Html.RequiresCss(CssFileAlias.Resolve("MobileControls"));
+    Html.RequiresCss(CssFileAlias.Resolve("CouncilPlanMedium"), MediaQueryAlias.Resolve("Medium"));
+    Html.RequiresCss(CssFileAlias.Resolve("CouncilPlanLarge"), MediaQueryAlias.Resolve("Large"));
+
+    var placeholders = CmsUtilities.Placeholders;
+    var html = new[]
+    {
+        placeholders["phDefContent"].Value.ToString(),
+        placeholders["phDefObjectives1"].Value.ToString(),
+        placeholders["phDefObjectives2"].Value.ToString(),
+        placeholders["phDefObjectives3"].Value.ToString(),
+        placeholders["phDefObjectives4"].Value.ToString()
+    };
+    Html.Partial("~/Views/Layouts/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
+    {
+        new EmbeddedYouTubeVideos() { Html = html },
+        new EmbeddedGoogleMaps() { Html = html }
+    });
+
+    var selectedClass = CouncilPlanUtility.PriorityClass();
+}
+@section Metadata
+{
+    <title>@Model.PageTitle &#8211; East Sussex County Council</title>
+}
+
+<div class="full-page">
+    <article>
+        <div class="@selectedClass">
+            @Html.Partial("~/views/CouncilPlanPrioritiesPage.ascx", Model)
+        </div>
+
+        <div class="text">
+            @Html.Partial("~/Views/Layouts/_Share.cshtml")
+        </div>
+    </article>
+</div>
+
+@foreach (var socialMedia in Model.SocialMedia.SocialMediaOrder)
+{
+    @Html.Partial("~/Views/Layouts/_" + socialMedia + ".cshtml")
+}
+
+@{
+    Html.RequiresJs(JsFileAlias.Resolve("CouncilPlan"));
+}

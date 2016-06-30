@@ -1,0 +1,25 @@
+﻿/* Adapt 18px margin and padding on h1 to 10 column grid */
+@media screen 
+{
+    h1 { margin: .875em 2.244389% .25em; padding: .5625em 2.244389%; } 
+}
+
+/* Padding for .aims-box is 18px within context of (10 grid columns less two outer gutters) */ 
+.aims-box { padding-left: 2.349869%; padding-right: 2.349869%; }
+
+/* Projects template 
+   Context is 10 grid columns. Padding is 9px. Width is 5 grid columns less the padding. */
+.projects li { padding: .692308em 1.122195%; min-height: 13.230769em; }
+.projects .odd { clear: both; float: left; width: 46.633416%; }
+.projects .even { float: right; width: 46.633416%; }
+
+/* This vertically centres the content within the li. 
+   Width is odd: it causes the box to expand to fill the li a bit like changing from display inline to block. */
+.projects .wrapper { display: table-cell; vertical-align: middle; height: 9.692308em; width: 392px; }
+
+/* Priorities template - now in two columns
+Width is (5 cols - 27px in context of 10 cols - 54px) = (365px in 748px).
+*/
+.priorities .group { overflow: hidden; }
+.priorities .building-resilience, .priorities .best-use-of-resources { float: left; width: 48.796791%; }
+.priorities .economic-growth, .priorities .vulnerable-people { float: right; width: 48.796791%; }
