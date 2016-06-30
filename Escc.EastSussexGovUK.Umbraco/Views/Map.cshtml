@@ -3,9 +3,9 @@
 @using Escc.EastSussexGovUK.MasterPages
 @using Escc.EastSussexGovUK.MasterPages.Features
 @using Escc.Registration.MarriageSkin
-@using Escc.Umbraco.MicrosoftCmsMigration
+@using Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration
 @using EsccWebTeam.EastSussexGovUK.MasterPages
-@inherits UmbracoViewPage<Escc.Umbraco.MicrosoftCmsMigration.MicrosoftCmsViewModel>
+@inherits UmbracoViewPage<MicrosoftCmsViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout);
     Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] { new MarriageSkin(Model.EsccWebsiteView, Model.Url) }, new CustomerFocusSkin(Model.EsccWebsiteView));

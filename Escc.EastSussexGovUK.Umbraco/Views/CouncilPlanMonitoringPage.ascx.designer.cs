@@ -19,7 +19,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Views {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Escc.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl phTitle;
+        protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl phTitle;
         
         /// <summary>
         /// phContent control.
@@ -28,7 +28,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Views {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Escc.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl phContent;
+        protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl phContent;
         
         /// <summary>
         /// aims control.

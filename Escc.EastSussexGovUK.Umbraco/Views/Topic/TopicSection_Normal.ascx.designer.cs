@@ -28,7 +28,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Views.Topic {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Escc.Umbraco.MicrosoftCmsMigration.Placeholders.XhtmlImagePlaceholderControl phImage1;
+        protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.XhtmlImagePlaceholderControl phImage1;
         
         /// <summary>
         /// caption1 control.
@@ -37,7 +37,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Views.Topic {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Escc.Umbraco.MicrosoftCmsMigration.Placeholders.TextPlaceholderControl caption1;
+        protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.TextPlaceholderControl caption1;
         
         /// <summary>
         /// image2 control.
@@ -55,7 +55,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Views.Topic {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Escc.Umbraco.MicrosoftCmsMigration.Placeholders.XhtmlImagePlaceholderControl phImage2;
+        protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.XhtmlImagePlaceholderControl phImage2;
         
         /// <summary>
         /// caption2 control.
@@ -64,7 +64,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Views.Topic {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Escc.Umbraco.MicrosoftCmsMigration.Placeholders.TextPlaceholderControl caption2;
+        protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.TextPlaceholderControl caption2;
         
         /// <summary>
         /// image3 control.
@@ -82,7 +82,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Views.Topic {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Escc.Umbraco.MicrosoftCmsMigration.Placeholders.XhtmlImagePlaceholderControl phImage3;
+        protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.XhtmlImagePlaceholderControl phImage3;
         
         /// <summary>
         /// caption3 control.
@@ -91,7 +91,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Views.Topic {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Escc.Umbraco.MicrosoftCmsMigration.Placeholders.TextPlaceholderControl caption3;
+        protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.TextPlaceholderControl caption3;
         
         /// <summary>
         /// subtitle control.
@@ -100,7 +100,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Views.Topic {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Escc.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl subtitle;
+        protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl subtitle;
         
         /// <summary>
         /// content control.
@@ -109,6 +109,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Views.Topic {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Escc.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl content;
+        protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl content;
     }
 }

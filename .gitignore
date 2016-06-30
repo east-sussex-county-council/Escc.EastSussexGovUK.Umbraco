@@ -75,6 +75,4 @@ images
 */js/CampaignTemplates/*
 */js/CustomerFocusTemplates/*
 */js/libs/*
-*/MicrosoftCmsMigration/**/*.ascx
-!*/MicrosoftCmsMigration/**/*Mvc.ascx
 */MarriageSkin/*

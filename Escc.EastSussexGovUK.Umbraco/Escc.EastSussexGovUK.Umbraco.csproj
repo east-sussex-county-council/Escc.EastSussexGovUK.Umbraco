@@ -195,10 +195,6 @@
       <HintPath>..\packages\Escc.Umbraco.MediaSync.1.3.7\lib\Escc.Umbraco.MediaSync.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Escc.Umbraco.MicrosoftCmsMigration, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.MicrosoftCmsMigration.2.1.5\lib\Escc.Umbraco.MicrosoftCmsMigration.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Escc.Umbraco.PropertyEditors, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.PropertyEditors.3.0.2\lib\Escc.Umbraco.PropertyEditors.dll</HintPath>
       <Private>True</Private>
@@ -492,6 +488,33 @@
     <Compile Include="DocumentTypes\StandardTopicPage\StandardTopicPageContentTab.cs" />
     <Compile Include="DocumentTypes\StandardTopicPage\StandardTopicPageDocumentType.cs" />
     <Compile Include="DocumentTypes\StandardTopicPage\TopicPageLayoutDataType.cs" />
+    <Compile Include="MicrosoftCmsMigration\CmsUtilities.cs" />
+    <Compile Include="MicrosoftCmsMigration\CustomProperty.cs" />
+    <Compile Include="MicrosoftCmsMigration\MicrosoftCmsPageController.cs" />
+    <Compile Include="MicrosoftCmsMigration\MicrosoftCmsUrlRedirectionModule.cs" />
+    <Compile Include="MicrosoftCmsMigration\MicrosoftCmsViewModel.cs" />
+    <Compile Include="MicrosoftCmsMigration\Placeholders\AlternativeAttachmentPlaceholderControl.cs" />
+    <Compile Include="MicrosoftCmsMigration\Placeholders\FormAttachmentPlaceholderControl.cs" />
+    <Compile Include="MicrosoftCmsMigration\Placeholders\FormUrlPlaceholderControl.cs" />
+    <Compile Include="MicrosoftCmsMigration\Placeholders\MainAttachmentPlaceholderControl.cs" />
+    <Compile Include="MicrosoftCmsMigration\Placeholders\Placeholder.cs" />
+    <Compile Include="MicrosoftCmsMigration\Placeholders\PlaceholderCollection.cs" />
+    <Compile Include="MicrosoftCmsMigration\Placeholders\PlaceholderControlEventArgs.cs" />
+    <Compile Include="MicrosoftCmsMigration\Placeholders\PlaceholderResources.Designer.cs" />
+    <Compile Include="MicrosoftCmsMigration\Placeholders\RawXhtmlPlaceholderControl.cs" />
+    <Compile Include="MicrosoftCmsMigration\Placeholders\RichHtmlPlaceholderControl.cs" />
+    <Compile Include="MicrosoftCmsMigration\Placeholders\SingleAttachmentPlaceholderControl.cs" />
+    <Compile Include="MicrosoftCmsMigration\Placeholders\TextPlaceholderControl.cs" />
+    <Compile Include="MicrosoftCmsMigration\Placeholders\XhtmlAttachmentPlaceholderControl.cs" />
+    <Compile Include="MicrosoftCmsMigration\Placeholders\XhtmlImagePlaceholderControl.cs" />
+    <Compile Include="MicrosoftCmsMigration\PresentationModeContainer.cs" />
+    <Compile Include="MicrosoftCmsMigration\UserControls\Related.ascx.cs">
+      <DependentUpon>Related.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MicrosoftCmsMigration\UserControls\Related.ascx.designer.cs">
+      <DependentUpon>Related.ascx</DependentUpon>
+    </Compile>
     <Compile Include="MicrosoftCmsMigration\UserControls\SectionNavigationSettings.cs" />
     <Compile Include="Models\HomePageItemViewModel.cs" />
     <Compile Include="Models\HomePageViewModel.cs" />
@@ -770,9 +793,7 @@
     <Content Include="MarriageSkin\img\marriage-landing-blue.jpg" />
     <Content Include="MarriageSkin\img\marriage-landing-red.jpg" />
     <Content Include="MarriageSkin\js\min\marriage-skin.js" />
-    <Content Include="MicrosoftCmsMigration\UserControls\Latest.ascx" />
     <Content Include="MicrosoftCmsMigration\UserControls\Related.ascx" />
-    <Content Include="MicrosoftCmsMigration\UserControls\SectionNavigation.ascx" />
     <Content Include="robots.txt" />
     <Content Include="umbraco\Actions\delete.aspx" />
     <Content Include="umbraco\Actions\editContent.aspx" />
@@ -3520,6 +3541,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="MicrosoftCmsMigration\Placeholders\PlaceholderResources.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FormDownloadPageResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>FormDownloadPageResources.Designer.cs</LastGenOutput>
@@ -3563,7 +3587,6 @@
     <Error Condition="!Exists('..\packages\Escc.CustomerFocusTemplates.Website.2.5.1\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CustomerFocusTemplates.Website.2.5.1\build\Escc.CustomerFocusTemplates.Website.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.3.0.2\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.3.0.2\build\Escc.Umbraco.PropertyEditors.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.UmbracoViews.6.6.4\build\Escc.EastSussexGovUK.UmbracoViews.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.UmbracoViews.6.6.4\build\Escc.EastSussexGovUK.UmbracoViews.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Umbraco.MicrosoftCmsMigration.2.1.5\build\Escc.Umbraco.MicrosoftCmsMigration.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MicrosoftCmsMigration.2.1.5\build\Escc.Umbraco.MicrosoftCmsMigration.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Registration.MarriageSkin.1.0.1\build\Escc.Registration.MarriageSkin.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Registration.MarriageSkin.1.0.1\build\Escc.Registration.MarriageSkin.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets" Condition="Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets')" />
@@ -3578,7 +3601,6 @@
   <Import Project="..\packages\Escc.CustomerFocusTemplates.Website.2.5.1\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('..\packages\Escc.CustomerFocusTemplates.Website.2.5.1\build\Escc.CustomerFocusTemplates.Website.targets')" />
   <Import Project="..\packages\Escc.Umbraco.PropertyEditors.3.0.2\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.3.0.2\build\Escc.Umbraco.PropertyEditors.targets')" />
   <Import Project="..\packages\Escc.EastSussexGovUK.UmbracoViews.6.6.4\build\Escc.EastSussexGovUK.UmbracoViews.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.UmbracoViews.6.6.4\build\Escc.EastSussexGovUK.UmbracoViews.targets')" />
-  <Import Project="..\packages\Escc.Umbraco.MicrosoftCmsMigration.2.1.5\build\Escc.Umbraco.MicrosoftCmsMigration.targets" Condition="Exists('..\packages\Escc.Umbraco.MicrosoftCmsMigration.2.1.5\build\Escc.Umbraco.MicrosoftCmsMigration.targets')" />
   <Import Project="..\packages\Escc.Registration.MarriageSkin.1.0.1\build\Escc.Registration.MarriageSkin.targets" Condition="Exists('..\packages\Escc.Registration.MarriageSkin.1.0.1\build\Escc.Registration.MarriageSkin.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

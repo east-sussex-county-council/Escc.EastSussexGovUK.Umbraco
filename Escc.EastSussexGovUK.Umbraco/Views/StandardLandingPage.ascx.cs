@@ -8,8 +8,8 @@ using System.Web.Mvc;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using Escc.Umbraco.MicrosoftCmsMigration;
-using Escc.Umbraco.MicrosoftCmsMigration.Placeholders;
+using Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration;
+using Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders;
 using Exceptionless;
 using Umbraco.Web;
 

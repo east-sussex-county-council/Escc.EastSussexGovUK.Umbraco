@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="StandardLandingPage.ascx.cs" Inherits="Escc.EastSussexGovUK.Umbraco.Views.StandardLandingPage" %>
-<%@ Register TagPrefix="Cms" Namespace="Escc.Umbraco.MicrosoftCmsMigration.CmsControls" Assembly="Escc.Umbraco.MicrosoftCmsMigration" %>
+<%@ Register TagPrefix="Cms" Namespace="Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration" Assembly="Escc.EastSussexGovUK.Umbraco" %>
 
 <CmsPlaceholders:XhtmlImagePlaceholderControl runat="server" PlaceholderToBind="defImage" CssClass="intro" id="image" />
 <CmsPlaceholders:RichHtmlPlaceholderControl id="intro" runat="server" editcontrolwidth="455" placeholdertobind="phDefIntro"

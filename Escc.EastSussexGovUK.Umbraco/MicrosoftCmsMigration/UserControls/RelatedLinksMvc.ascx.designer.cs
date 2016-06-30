@@ -37,7 +37,7 @@ namespace Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.UserControls {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Escc.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl phRelatedPages;
+        protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl phRelatedPages;
         
         /// <summary>
         /// docs control.
@@ -64,7 +64,7 @@ namespace Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.UserControls {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Escc.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl phRelatedPagesOnly;
+        protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl phRelatedPagesOnly;
         
         /// <summary>
         /// docsOnly control.
@@ -91,7 +91,7 @@ namespace Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.UserControls {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Escc.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl phRelatedSites;
+        protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl phRelatedSites;
         
         /// <summary>
         /// websitesOnly control.
@@ -109,6 +109,6 @@ namespace Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.UserControls {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Escc.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl phRelatedSitesOnly;
+        protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl phRelatedSitesOnly;
     }
 }

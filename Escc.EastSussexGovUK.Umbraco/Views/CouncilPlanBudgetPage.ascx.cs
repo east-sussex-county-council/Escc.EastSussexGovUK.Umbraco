@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Text;
 using System.Web.Mvc;
 using AST.AzureBlobStorage.Helper;
-using Escc.Umbraco.MicrosoftCmsMigration;
+using Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration;
 using Umbraco.Core.Models;
 
 namespace Escc.EastSussexGovUK.Umbraco.Views

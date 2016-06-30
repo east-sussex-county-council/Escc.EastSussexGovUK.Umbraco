@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
-using Escc.Umbraco.MicrosoftCmsMigration;
-using Escc.Umbraco.MicrosoftCmsMigration.Placeholders;
+using Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration;
+using Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders;
 
 namespace Escc.EastSussexGovUK.Umbraco.Views
 {

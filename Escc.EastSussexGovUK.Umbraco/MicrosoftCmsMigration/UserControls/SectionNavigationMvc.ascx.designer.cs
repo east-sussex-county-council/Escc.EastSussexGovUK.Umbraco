@@ -28,7 +28,7 @@ namespace Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.UserControls {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Escc.Umbraco.MicrosoftCmsMigration.Placeholders.XhtmlImagePlaceholderControl highlightImage;
+        protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.XhtmlImagePlaceholderControl highlightImage;
         
         /// <summary>
         /// highlightContent control.
@@ -37,6 +37,6 @@ namespace Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.UserControls {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Escc.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl highlightContent;
+        protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl highlightContent;
     }
 }

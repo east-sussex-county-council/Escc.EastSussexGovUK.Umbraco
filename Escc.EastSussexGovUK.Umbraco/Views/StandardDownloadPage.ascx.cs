@@ -3,8 +3,8 @@ using System.Globalization;
 using System.Web.Mvc;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
-using Escc.Umbraco.MicrosoftCmsMigration;
-using Escc.Umbraco.MicrosoftCmsMigration.Placeholders;
+using Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration;
+using Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders;
 
 namespace Escc.EastSussexGovUK.Umbraco.Views
 {

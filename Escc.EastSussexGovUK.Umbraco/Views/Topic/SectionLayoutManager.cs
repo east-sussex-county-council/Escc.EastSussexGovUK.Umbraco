@@ -4,7 +4,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web.UI;
-using Escc.Umbraco.MicrosoftCmsMigration.Placeholders;
+using Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders;
 
 namespace Escc.EastSussexGovUK.Umbraco.Views.Topic
 {
