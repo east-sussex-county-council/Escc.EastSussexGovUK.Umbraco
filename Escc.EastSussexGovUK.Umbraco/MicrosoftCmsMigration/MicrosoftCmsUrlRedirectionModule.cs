@@ -42,11 +42,6 @@ namespace Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration
                     Http.Status301MovedPermanently(rewriteUrl);
                 }
             }
-            catch (ThreadAbortException)
-            {
-                // Just catch the expected exception, don't report it. Don't call Thread.ResetAbort() because, 
-                // in an Umbraco context, it causes problems with updating the cache.
-            }
             catch (Exception e)
             {
                 e.ToExceptionless().Submit();
