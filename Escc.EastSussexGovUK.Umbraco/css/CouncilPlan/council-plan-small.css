@@ -112,4 +112,4 @@ object img.image-map { max-width: none; }
 .plan-content table, .monitoring table { width: 100%; }
 
 /* Heading spacing not required in tables (headings not required, but they get used anyway) */
-.plan-content table h2, .plan-content table h3 { margin: 0; }
+.plan-content table h2, .plan-content table h3, .monitoring table h2, .monitoring .table h3 { margin: 0; }
