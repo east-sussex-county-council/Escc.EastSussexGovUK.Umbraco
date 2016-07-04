@@ -1,9 +1,10 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CouncilPlanHomePage.ascx.cs" Inherits="Escc.EastSussexGovUK.Umbraco.Views.CouncilPlanHomePage" EnableViewState="false"  %>
 <%@ Register Src="~/views/CouncilPlanMenu.ascx" TagPrefix="CouncilPlan" TagName="Menu" %>
+<%@ Register tagPrefix="CouncilPlan" tagName="Related" src="~/Views/CouncilPlanRelated.ascx" %>
 
-<CmsPlaceholders:RichHtmlPlaceholderControl runat="server" PlaceholderToBind="phDefTitle" Paragraphs="false" EditControlClass="h1" ElementName="h1" ID="phTitle" />
+<div class="content text-content">
+    <CmsPlaceholders:RichHtmlPlaceholderControl runat="server" PlaceholderToBind="phDefTitle" Paragraphs="false" EditControlClass="h1" ElementName="h1" ID="phTitle" />
 
-<div class="text">
     <CouncilPlan:Menu runat="server" />
     <div class="plan-content">
         <div class="columns" id="columns" runat="server">
@@ -54,7 +55,6 @@
             <CmsPlaceholders:XhtmlImagePlaceholderControl runat="server" PlaceholderToBind="phDefImage07" ID="image3" />
             <CmsPlaceholders:XhtmlImagePlaceholderControl runat="server" PlaceholderToBind="phDefImage08" ID="image4" />
         </div>
+        <CouncilPlan:Related runat="server" />
     </div>
 </div>
-
-<CmsTemplates:Related runat="server" />

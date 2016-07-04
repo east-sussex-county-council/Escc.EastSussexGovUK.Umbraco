@@ -1,11 +1,11 @@
 using System;
 
-namespace Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.UserControls
+namespace Escc.EastSussexGovUK.Umbraco.Views
 {
     /// <summary>
     ///		Standard placeholders for related info
     /// </summary>
-    public partial class Related : System.Web.UI.UserControl
+    public partial class CouncilPlanRelated : System.Web.UI.UserControl
     {
 
         /// <summary>

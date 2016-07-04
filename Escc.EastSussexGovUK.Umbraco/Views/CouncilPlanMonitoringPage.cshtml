@@ -9,6 +9,7 @@
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<MicrosoftCmsViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout);
+    Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
 
     Html.RequiresCss(CssFileAlias.Resolve("CouncilPlanSmall"));
     Html.RequiresCss(CssFileAlias.Resolve("MobileControls"));
@@ -35,7 +36,7 @@
             @Html.Partial("~/views/CouncilPlanMonitoringPage.ascx", Model)
         </div>
 
-        <div class="text">
+        <div class="content text-content">
             @Html.Partial("~/Views/Layouts/_Share.cshtml")
         </div>
 </article>

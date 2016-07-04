@@ -169,9 +169,6 @@
         <add tagPrefix="CmsPlaceholders" xdt:Transform="Remove" xdt:Locator="Match(tagPrefix)" />
         <add tagPrefix="CmsPlaceholders" namespace="Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders" assembly="Escc.EastSussexGovUK.Umbraco" xdt:Transform="Insert" />
 
-        <add tagPrefix="CmsTemplates" tagName="Related" xdt:Transform="Remove" xdt:Locator="Match(tagName)" />
-        <add tagPrefix="CmsTemplates" tagName="Related" src="~/MicrosoftCmsMigration/UserControls/Related.ascx" xdt:Transform="Insert" />
-
         <add tagPrefix="EastSussexGovUK" xdt:Transform="Remove" xdt:Locator="Match(tagPrefix)" />
         <add tagPrefix="EastSussexGovUK" namespace="EsccWebTeam.EastSussexGovUK" assembly="EsccWebTeam.EastSussexGovUK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f" xdt:Transform="Insert" />
       </controls>

@@ -1,10 +1,10 @@
-<%@ Control Language="c#" AutoEventWireup="True" CodeBehind="Related.ascx.cs" Inherits="Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.UserControls.Related" %>
-<div class="related" role="navigation" id="related" runat="server">
+<%@ Control Language="c#" AutoEventWireup="True" CodeBehind="CouncilPlanRelated.ascx.cs" Inherits="Escc.EastSussexGovUK.Umbraco.Views.CouncilPlanRelated" %>
+<div class="related-links columns" role="navigation" id="related" runat="server">
 <aside>
-    <div class="section" id="pages" runat="server">
+    <div class="column1" id="pages" runat="server">
     <section>
         <h2><%# BoxTitle1 %></h2>
-        <CmsPlaceholders:RichHtmlPlaceholderControl ID="phRelatedPages" runat="server" PlaceholderToBind="phDefRelatedPages" EmbedVideo="false" EditControlClass="no-formatselect no-numlist no-blockquote" />
+        <CmsPlaceholders:RichHtmlPlaceholderControl ID="phRelatedPages" runat="server" PlaceholderToBind="phDefRelatedPages" EmbedVideo="false" />
         <asp:Literal runat="server" ID="docs" />
     </section>
     </div>
@@ -15,10 +15,10 @@
         <asp:Literal runat="server" ID="docsOnly" />
     </asp:PlaceHolder>
 
-    <div class="section" id="websites" runat="server">
+    <div class="column2" id="websites" runat="server">
         <section>
             <h2><%# BoxTitle2 %></h2>
-            <CmsPlaceholders:RichHtmlPlaceholderControl ID="phRelatedSites" runat="server" PlaceholderToBind="phDefRelatedSites" EmbedVideo="false" EditControlClass="no-formatselect no-numlist no-blockquote" />
+            <CmsPlaceholders:RichHtmlPlaceholderControl ID="phRelatedSites" runat="server" PlaceholderToBind="phDefRelatedSites" EmbedVideo="false" />
         </section>
     </div>
 

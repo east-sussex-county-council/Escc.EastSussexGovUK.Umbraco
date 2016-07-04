@@ -22,6 +22,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Views {
         protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl phTitle;
         
         /// <summary>
+        /// aimsLink1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor aimsLink1;
+        
+        /// <summary>
         /// phContent control.
         /// </summary>
         /// <remarks>
@@ -31,21 +40,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Views {
         protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl phContent;
         
         /// <summary>
-        /// aims control.
+        /// aimsLink2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl aims;
-        
-        /// <summary>
-        /// aimsLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor aimsLink;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor aimsLink2;
     }
 }

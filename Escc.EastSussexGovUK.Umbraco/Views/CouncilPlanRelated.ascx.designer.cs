@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.UserControls {
+namespace Escc.EastSussexGovUK.Umbraco.Views {
     
     
-    public partial class Related {
+    public partial class CouncilPlanRelated {
         
         /// <summary>
         /// related control.

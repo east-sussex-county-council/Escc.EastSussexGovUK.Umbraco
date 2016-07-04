@@ -508,12 +508,12 @@
     <Compile Include="MicrosoftCmsMigration\Placeholders\XhtmlAttachmentPlaceholderControl.cs" />
     <Compile Include="MicrosoftCmsMigration\Placeholders\XhtmlImagePlaceholderControl.cs" />
     <Compile Include="MicrosoftCmsMigration\PresentationModeContainer.cs" />
-    <Compile Include="MicrosoftCmsMigration\UserControls\Related.ascx.cs">
-      <DependentUpon>Related.ascx</DependentUpon>
+    <Compile Include="Views\CouncilPlanRelated.ascx.cs">
+      <DependentUpon>CouncilPlanRelated.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MicrosoftCmsMigration\UserControls\Related.ascx.designer.cs">
-      <DependentUpon>Related.ascx</DependentUpon>
+    <Compile Include="Views\CouncilPlanRelated.ascx.designer.cs">
+      <DependentUpon>CouncilPlanRelated.ascx</DependentUpon>
     </Compile>
     <Compile Include="MicrosoftCmsMigration\UserControls\SectionNavigationSettings.cs" />
     <Compile Include="Models\HomePageItemViewModel.cs" />
@@ -793,7 +793,7 @@
     <Content Include="MarriageSkin\img\marriage-landing-blue.jpg" />
     <Content Include="MarriageSkin\img\marriage-landing-red.jpg" />
     <Content Include="MarriageSkin\js\min\marriage-skin.js" />
-    <Content Include="MicrosoftCmsMigration\UserControls\Related.ascx" />
+    <Content Include="Views\CouncilPlanRelated.ascx" />
     <Content Include="robots.txt" />
     <Content Include="umbraco\Actions\delete.aspx" />
     <Content Include="umbraco\Actions\editContent.aspx" />

@@ -16,7 +16,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Views
             var currentPage = umbracoHelper.TypedContent(Model.PageId);
             var parentPage = currentPage.Parent;
 
-            aimsLink.HRef = parentPage.Url;
+            aimsLink1.HRef = parentPage.Url;
+            aimsLink2.HRef = parentPage.Url;
         }
     }
 }
