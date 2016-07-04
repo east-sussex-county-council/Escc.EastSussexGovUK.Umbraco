@@ -1,7 +1,8 @@
-﻿/* Adapt 18px horizontal padding on h1 to 10 column grid, and 27px vertical padding to 48px base font */
+﻿/* Adapt 18px horizontal padding on h1 to 10 column grid.
+   Reset base font to 45px/54px to accommodate the title "Equality of opportunity and fair treatment for all" on one line at full width, and adjust 27px vertical padding to new base font */
 @media screen 
 {
-    h1 {padding: .5625em 2.244389%; } 
+    .text-content h1 {font-size: 2.368421em;line-height: 1.2em; padding: .6em 2.244389%;margin: 0 0 .4em; } 
 }
 
 /* Maintain padding/margin at 9px on new base font size */

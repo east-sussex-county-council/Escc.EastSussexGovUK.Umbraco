@@ -1,8 +1,8 @@
 ﻿/* 18px horizontal padding on h1 on 6 column grid, and 18px vertical padding on 30px base font. */
-h1 { border-radius: 5px; }
+.text-content h1 { border-radius: 5px; }
 @media screen 
 {
-    h1 { padding: .6em 3.797468%; }
+    .text-content h1 { padding: .6em 3.797468%; }
 }
 
 /* Change the colour of various elements to reflect the identity colour for the current Council Plan priority */
@@ -109,7 +109,7 @@ object img.image-map { max-width: none; }
 .priorities object { margin: 1.125em auto; min-width: 0; max-width: 250px; width: auto; display: block; }
 
 /* Monitoring template - ensure table makes best use of space */
-.plan-content table { width: 100%; }
+.plan-content table, .monitoring table { width: 100%; }
 
 /* Heading spacing not required in tables (headings not required, but they get used anyway) */
 .plan-content table h2, .plan-content table h3 { margin: 0; }
