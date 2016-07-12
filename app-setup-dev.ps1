@@ -37,10 +37,6 @@ Example: C:\>set GIT_ORIGIN_URL=https://example-git-server.com/{0}"
 $projectName = "Escc.EastSussexGovUK.Umbraco"
 
 DownloadProjectIfMissing $parentFolderOfThisScript "Escc.EastSussexGovUK"
-DownloadProjectIfMissing $parentFolderOfThisScript "Escc.NavigationControls"
-DownloadProjectIfMissing $parentFolderOfThisScript "Escc.Data.Web"
-DownloadProjectIfMissing $parentFolderOfThisScript "Escc.Elibrary"
-DownloadProjectIfMissing $parentFolderOfThisScript "Escc.Registration.Website"
 
 EnableDotNet40InIIS
 CreateApplicationPool $projectName
@@ -48,6 +44,7 @@ CreateWebsite $projectName "$pathOfThisScript\$projectName"
 CreateHTTPSBinding $projectName
 RemoveHTTPBinding $projectName 80
 CreateVirtualDirectory $projectName "Escc.EastSussexGovUK" "$parentFolderOfThisScript\Escc.EastSussexGovUK\Escc.EastSussexGovUK" true
+CreateVirtualDirectory $projectName "masterpages" "$parentFolderOfThisScript\Escc.EastSussexGovUK\Escc.EastSussexGovUK\masterpages" true
 CreateVirtualDirectory $projectName "img" "$parentFolderOfThisScript\Escc.EastSussexGovUK\Escc.EastSussexGovUK\img" true
 
 Write-Host

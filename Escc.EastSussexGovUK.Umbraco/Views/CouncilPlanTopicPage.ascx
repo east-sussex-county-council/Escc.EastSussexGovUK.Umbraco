@@ -9,7 +9,7 @@
     <div class="plan-content">
         <div class="columns" id="columns" runat="server">
             <div class="column column1" id="column1" runat="server">
-                <CmsPlaceholders:TextPlaceholderControl runat="server" PlaceholderToBind="phDefPriorityTitle" ID="phDefPriorityTitle" ElementName="p" CssClass="highlighted" />
+                <CmsPlaceholders:TextPlaceholderControl runat="server" PlaceholderToBind="phDefPriorityTitle" ID="phDefPriorityTitle" ElementName="h2" CssClass="highlighted" />
 
                 <CmsPlaceholders:RichHtmlPlaceholderControl runat="server" PlaceholderToBind="phDefContent01" EditControlHeight="700" ID="phContent01" />
                                 

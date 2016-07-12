@@ -10,6 +10,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Views
         {
             CouncilPlanUtility.SetContentPolicy();
 
+            // This placeholder is intended as a title, but sometimes used as a paragraph. Assume more than 6 words means they intended a paragraph.
+            var title = CmsUtilities.Placeholders["phDefPriorityTitle"].Value.ToString().Split(' ');
+            if (title.Length > 6) phDefPriorityTitle.ElementName = "p";
+
             leader.Visible = leaderPhoto.HasContent;
             chiefExec.Visible = chiefExecPhoto.HasContent;
             logo1.Visible = logo1.HasContent;

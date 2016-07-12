@@ -63,11 +63,11 @@ em.best-use-of-resources { border-left: 5px solid #d88989; }
 
 /* Change text size and colour */
 .highlighted { font-size: 1.25em; line-height: 1.35em; margin: .9em 0 .45em; } /* 20px/27px, 18px+9px margin */
-.council-plan .highlighted { color: #196ba6; }
-.economic-growth .highlighted { color: #15807F; }
-.vulnerable-people .highlighted { color: #056b0b; }
-.building-resilience .highlighted { color: #622F92; }
-.best-use-of-resources .highlighted { color: #B21313; }
+.council-plan .highlighted, .council-plan h2 { color: #196ba6; }
+.economic-growth .highlighted, .economic-growth h2 { color: #15807F; }
+.vulnerable-people .highlighted, .vulnerable-people h2 { color: #056b0b; }
+.building-resilience .highlighted, .building-resilience h2 { color: #622F92; }
+.best-use-of-resources .highlighted, .best-use-of-resources h2 { color: #B21313; }
 
 /* Navigation menu within the Council Plan */
 ol.plan-nav { margin: 0; }
