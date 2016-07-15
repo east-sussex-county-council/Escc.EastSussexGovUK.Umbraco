@@ -35,6 +35,14 @@
 
     <Escc.ClientDependencyFramework>
     <CssFiles>
+      <add key="CampaignSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="CampaignSmall" value="/css/campaigntemplates/campaign-small.css" xdt:Transform="Insert" />
+      <add key="CampaignMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="CampaignMedium" value="/css/campaigntemplates/campaign-medium.css" xdt:Transform="Insert" />
+      <add key="CampaignLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="CampaignLarge" value="/css/campaigntemplates/campaign-large.css" xdt:Transform="Insert" />
+      <add key="CampaignPrint" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="CampaignPrint" value="/css/campaigntemplates/campaign-print.css" xdt:Transform="Insert" />
       <add key="CouncilPlanSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="CouncilPlanSmall" value="/css/CouncilPlan/council-plan-small.css" xdt:Transform="Insert" />
       <add key="CouncilPlanMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
@@ -65,6 +73,8 @@
       <add key="MarriageSkinMedium" value="/MarriageSkin/css/min/marriage-skin-medium.css" xdt:Transform="Insert" />
     </CssFiles>
     <ScriptFiles>
+      <add key="CampaignLanding" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="CampaignLanding" value="/js/campaigntemplates/campaign-landing.js" xdt:Transform="Insert" />
       <add key="CouncilPlan" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="CouncilPlan" value="/js/CouncilPlan/council-plan.js" xdt:Transform="Insert" />
       <add key="Home" xdt:Transform="Remove" xdt:Locator="Match(key)" />

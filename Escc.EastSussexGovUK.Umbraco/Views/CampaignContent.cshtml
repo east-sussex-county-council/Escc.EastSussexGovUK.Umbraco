@@ -1,0 +1,76 @@
+﻿@using ClientDependency.Core.Mvc
+@using Escc.ClientDependencyFramework
+@using Escc.EastSussexGovUK.MasterPages
+@using Escc.EastSussexGovUK.MasterPages.Features
+@using EsccWebTeam.Data.Web
+@using EsccWebTeam.EastSussexGovUK.MasterPages
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.CampaignContentViewModel>
+@{
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout);
+    Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
+
+    Html.RequiresCss(CssFileAlias.Resolve("CampaignSmall"));
+    Html.RequiresCss(CssFileAlias.Resolve("NavigationSmall"));
+    Html.RequiresCss(CssFileAlias.Resolve("MobileControls"));
+    Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=CampaignContentCss&media-query=small", 101);
+    if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)
+    {
+        Html.RequiresCss(CssFileAlias.Resolve("CampaignMedium"), MediaQueryAlias.Resolve("Medium"));
+        Html.RequiresCss(CssFileAlias.Resolve("CampaignLarge"), MediaQueryAlias.Resolve("Large"));
+        Html.RequiresCss(CssFileAlias.Resolve("NavigationMedium"), MediaQueryAlias.Resolve("Medium"));
+        Html.RequiresCss(CssFileAlias.Resolve("NavigationLarge"), MediaQueryAlias.Resolve("Large"));
+        Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=CampaignContentCss&media-query=large", 101, MediaQueryAlias.Resolve("Large"));
+    }
+    Html.RequiresCss(CssFileAlias.Resolve("CampaignPrint"), new Dictionary<string, string>() { { "media", "print" } });
+
+    Html.RequiresJs(JsFileAlias.Resolve("Navigation"));
+
+    Html.Partial("~/Views/Layouts/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
+    {
+        new EmbeddedYouTubeVideos() { Html = new [] { Model.ContentPart1.ToString(), Model.ContentPart2.ToString(), Model.ContentPart3.ToString(), Model.ContentPart4.ToString() }}
+    });
+
+    var bodyClass = "campaign-content";
+    if (!String.IsNullOrEmpty(Model.FinalQuote)) { bodyClass += " with-final-quote";}
+}
+@section Metadata
+{
+    <title>@Model.PageTitle &#8211; East Sussex County Council</title>
+}
+@section BodyClass {@bodyClass}
+<div class="article">
+    <article>
+        <div class="content text-content">
+            <h1>@Model.PageTitle</h1>
+
+            @Html.Partial("~/Views/Layouts/_GuideNavigation.cshtml", Model.CampaignPages)
+
+            @Model.ContentPart1
+            @if (!String.IsNullOrEmpty(Model.UpperQuote))
+            {
+                <blockquote class="pull-quote"><span class="open">“</span>@Model.UpperQuote<span class="close">”</span></blockquote>
+            }
+            @Model.ContentPart2
+            @if (!String.IsNullOrEmpty(Model.CentralQuote) && Model.CentralQuoteImage != null)
+            {
+                <blockquote class="pull-quote-with-image">
+                    <div>
+                        <img src="@Model.CentralQuoteImage.ImageUrl" alt="@Model.CentralQuoteImage.AlternativeText" />
+                        <p><span class="open">“</span>@Model.CentralQuote<span class="close">”</span></p>
+                    </div>
+                </blockquote>
+            }
+            @Model.ContentPart3
+            @if (!String.IsNullOrEmpty(Model.LowerQuote))
+            {
+                <blockquote class="pull-quote"><span class="open">“</span>@Model.LowerQuote<span class="close">”</span></blockquote>
+            }
+            @Model.ContentPart4
+            @if (!String.IsNullOrEmpty(Model.FinalQuote) && Model.FinalQuoteImage != null)
+            {
+                <blockquote class="final-quote">“@Model.FinalQuote”</blockquote>
+                <img src="@Model.FinalQuoteImage.ImageUrl" class="final-quote" alt="@Model.FinalQuoteImage.AlternativeText" />
+            }
+        </div>
+    </article>
+</div>

@@ -112,10 +112,6 @@
       <HintPath>..\packages\Escc.BasicAuthentication.WebApi.1.0.2\lib\Escc.BasicAuthentication.WebApi.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Escc.CampaignTemplates.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.CampaignTemplates.Website.3.0.2\lib\Escc.CampaignTemplates.Website.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Escc.ClientDependencyFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.ClientDependencyFramework.Umbraco.1.0.5\lib\Escc.ClientDependencyFramework.dll</HintPath>
       <Private>True</Private>
@@ -440,6 +436,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CampaignContentController.cs" />
+    <Compile Include="Controllers\CampaignLandingController.cs" />
     <Compile Include="Controllers\CouncilPlanBudgetPageController.cs" />
     <Compile Include="Controllers\CouncilPlanHomePageController.cs" />
     <Compile Include="Controllers\CouncilPlanMonitoringPageController.cs" />
@@ -454,6 +452,13 @@
     <Compile Include="Controllers\StandardDownloadPageController.cs" />
     <Compile Include="Controllers\StandardLandingPageController.cs" />
     <Compile Include="Controllers\StandardTopicPageController.cs" />
+    <Compile Include="DocumentTypes\CampaignTemplates\CampaignContentContentTab.cs" />
+    <Compile Include="DocumentTypes\CampaignTemplates\CampaignContentDesignTab.cs" />
+    <Compile Include="DocumentTypes\CampaignTemplates\CampaignContentDocumentType.cs" />
+    <Compile Include="DocumentTypes\CampaignTemplates\CampaignLandingContentTab.cs" />
+    <Compile Include="DocumentTypes\CampaignTemplates\CampaignLandingDesignTab.cs" />
+    <Compile Include="DocumentTypes\CampaignTemplates\CampaignLandingDocumentType.cs" />
+    <Compile Include="DocumentTypes\CampaignTemplates\QuoteColourDataType.cs" />
     <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanBudgetPageContentTab.cs" />
     <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanBudgetPageDocumentType.cs" />
     <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanHomePageContentTab.cs" />
@@ -507,6 +512,8 @@
     <Compile Include="MicrosoftCmsMigration\Placeholders\XhtmlAttachmentPlaceholderControl.cs" />
     <Compile Include="MicrosoftCmsMigration\Placeholders\XhtmlImagePlaceholderControl.cs" />
     <Compile Include="MicrosoftCmsMigration\PresentationModeContainer.cs" />
+    <Compile Include="Models\CampaignContentViewModel.cs" />
+    <Compile Include="Models\CampaignLandingViewModel.cs" />
     <Compile Include="Views\CouncilPlanRelated.ascx.cs">
       <DependentUpon>CouncilPlanRelated.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3477,10 +3484,6 @@
     <Content Include="umbraco_client\CodeMirror\Js\Mode\Razor\LICENSE" />
     <Content Include="umbraco_client\CodeMirror\Js\Mode\Sieve\LICENSE" />
     <Content Include="Views\Alerts.cshtml" />
-    <Content Include="Views\CampaignContent.cshtml" />
-    <Content Include="Views\CampaignContentCss.cshtml" />
-    <Content Include="Views\CampaignLanding.cshtml" />
-    <Content Include="Views\CampaignLandingCss.cshtml" />
     <Content Include="Views\FormDownloadPage.cshtml" />
     <Content Include="Views\LandingPageWithPictures.cshtml" />
     <Content Include="Views\Map.cshtml" />
@@ -3528,6 +3531,10 @@
     <Content Include="Views\CouncilPlanMonitoringPage.cshtml" />
     <Content Include="Views\CouncilPlanPrioritiesPage.cshtml" />
     <Content Include="Views\CouncilPlanTopicPage.cshtml" />
+    <Content Include="Views\CampaignContent.cshtml" />
+    <Content Include="Views\CampaignContentCss.cshtml" />
+    <Content Include="Views\CampaignLanding.cshtml" />
+    <Content Include="Views\CampaignLandingCss.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -3580,7 +3587,6 @@
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.6.1.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.6.1.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.CampaignTemplates.Website.3.0.2\build\Escc.CampaignTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CampaignTemplates.Website.3.0.2\build\Escc.CampaignTemplates.Website.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.CustomerFocusTemplates.Website.2.5.1\build\Escc.CustomerFocusTemplates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.CustomerFocusTemplates.Website.2.5.1\build\Escc.CustomerFocusTemplates.Website.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.3.0.2\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.3.0.2\build\Escc.Umbraco.PropertyEditors.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.UmbracoViews.6.6.4\build\Escc.EastSussexGovUK.UmbracoViews.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.UmbracoViews.6.6.4\build\Escc.EastSussexGovUK.UmbracoViews.targets'))" />
@@ -3594,7 +3600,6 @@
   <Import Project="..\packages\Escc.Alerts.Website.1.4.4\build\Escc.Alerts.Website.targets" Condition="Exists('..\packages\Escc.Alerts.Website.1.4.4\build\Escc.Alerts.Website.targets')" />
   <Import Project="..\packages\Escc.Schools.TermDates.Website.1.2.1\build\Escc.Schools.TermDates.Website.targets" Condition="Exists('..\packages\Escc.Schools.TermDates.Website.1.2.1\build\Escc.Schools.TermDates.Website.targets')" />
   <Import Project="..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.6.1.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.6.1.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" />
-  <Import Project="..\packages\Escc.CampaignTemplates.Website.3.0.2\build\Escc.CampaignTemplates.Website.targets" Condition="Exists('..\packages\Escc.CampaignTemplates.Website.3.0.2\build\Escc.CampaignTemplates.Website.targets')" />
   <Import Project="..\packages\Escc.CustomerFocusTemplates.Website.2.5.1\build\Escc.CustomerFocusTemplates.Website.targets" Condition="Exists('..\packages\Escc.CustomerFocusTemplates.Website.2.5.1\build\Escc.CustomerFocusTemplates.Website.targets')" />
   <Import Project="..\packages\Escc.Umbraco.PropertyEditors.3.0.2\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.3.0.2\build\Escc.Umbraco.PropertyEditors.targets')" />
   <Import Project="..\packages\Escc.EastSussexGovUK.UmbracoViews.6.6.4\build\Escc.EastSussexGovUK.UmbracoViews.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.UmbracoViews.6.6.4\build\Escc.EastSussexGovUK.UmbracoViews.targets')" />

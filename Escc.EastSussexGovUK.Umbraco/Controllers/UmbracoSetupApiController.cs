@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CouncilPlan;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.FormDownload;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.HomePage;
@@ -84,6 +85,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
                 // Council Plan
                 PriorityDataType.CreateDataType();
 
+                // Campaign templates
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(QuoteColourDataType));
 
                 return Request.CreateResponse(HttpStatusCode.Created);
             }
@@ -123,6 +126,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CouncilPlanMonitoringPageDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CouncilPlanPrioritiesPageDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CouncilPlanTopicPageDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CampaignLandingDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CampaignContentDocumentType));
 
                 return Request.CreateResponse(HttpStatusCode.Created);
             }

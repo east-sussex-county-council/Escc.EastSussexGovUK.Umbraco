@@ -55,11 +55,9 @@ dummy.txt
 *.config.js
 
 # Files imported by ESCC NuGet packages
-**/CampaignTemplates/*
 **/CustomerFocusTemplates/*
 **/TinyMCE-*.css
 */Views/Layouts*
-*/Views/Campaign*
 */Views/Partials/*
 */Views/TermDates/*
 !*/Views/TermDates/QuickAnswerMvcProxy.*
@@ -72,7 +70,6 @@ dummy.txt
 *RecyclingSiteFinder.ascx
 _ViewStart.cshtml
 images
-*/js/CampaignTemplates/*
 */js/CustomerFocusTemplates/*
 */js/libs/*
 */MarriageSkin/*

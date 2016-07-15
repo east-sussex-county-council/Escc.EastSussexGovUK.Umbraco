@@ -1,0 +1,55 @@
+﻿/* Update gutter for medium grid */
+.campaign-landing .body .container { padding-left: 2.244389%;padding-right: 2.244389%;}
+
+/*
+    p is 26px/36px
+    .campaign-landing .intro width and horizontal padding add up to 50%. Padding is 18px calculated on (10 cols - 36px gutters = 766px) context.
+*/
+.campaign-landing .lead h1 { font-size: 2.769231em;line-height: 1em; }
+.campaign-landing .intro { background: #E3E8EB; } /* fallback colour for IE8 */
+.campaign-landing .intro { width: 45.300261%; background: rgba(255,255,255,.5); border-radius: 10px; padding: .692308em 2.349869%; } 
+.campaign-landing .lead p { font-size: 2em;line-height: 1.384615em; }
+
+/* Landing tiles stack across left half of layout */
+.campaign-landing .landing-section { display: block;margin-right: 0;width: 50%; }
+.campaign-landing .landing-section h2 { margin: .5em 0;}
+.campaign-landing .landing-section h2 { background: rgba(174, 225, 244, .9);}
+
+/* Buttons stack across left half of layout.
+   Update padding to work within context of 50% wide minus a gutter
+*/
+.campaign-landing .buttons { margin-top: 0;width: 50%;}
+.campaign-landing .buttons a { margin: .692308em 0; padding-left: 4.699739%;padding-right: 4.699739%;}
+
+/* 1 grid line of space above video - not calced */
+.video { margin: 1.384615em 0 0;}
+
+/* Pull quotes now have room to float with text around. Increase font size to 27/36px on new base font of 19px. 
+   Vertical margin and padding remain 27px, but based on new base font size.
+   
+   Total width is 5 cols -18px due to right margin of .content, within 10 col context less 2x18px gutters of .content = 374/766*100 = 48.825065% 
+   That's split between 36px padding each side, with the width property taking up the rest. It's also the positioning context for the quote marks.
+   Left margin is one 18px gutter.
+*/
+blockquote.pull-quote {font-size: 1.421053em;line-height: 1.33em; float: right; width: 39.425587%; padding: 1em 4.699739%;margin: 1em 0 1em 2.349869%; }
+
+blockquote.pull-quote .open { top: 2px; left: 9.625668%;} 
+blockquote.pull-quote .close { bottom: -32px; right: 9.625668%;}
+
+/* Central quote. Adjust all measurements to new font-size and grid.
+   Text is now 25px/27px on a base font of 19px, but quotes remain 60px/27px
+   Top/bottom/left padding increases to 36px, calculated in the context of 10 cols less 2x18px gutters of .content = 36/766*100 
+*/
+.pull-quote-with-image { min-height: 7.578947em; padding: 1.894737em 190px 1.894737em 4.699739%;margin: .947368em 0;}
+.pull-quote-with-image img { max-width: 180px; }
+.pull-quote-with-image p { font-size: 1.315789em;line-height: 1.08em;}
+.pull-quote-with-image span { font-size: 2.4em; }
+
+/* Final quote adjusted to 29/36px on 19px base font, with 3 lines (27px) vertical margin.
+   
+   padding-right/max-width for the image are both 3 columns (228px), but calculated within different contexts. 
+   blockquote is within the context of .content, which is 10 cols - 2 gutters. Because the 3 col space is offset by the right gutter of .content, it creates a gutter to the left of the image.
+   img is absolutely positioned within the full 10 col width of .container.
+*/
+.with-final-quote blockquote.final-quote {margin: .931034em 0; font-size: 1.526316em; line-height: 1.241379em; padding-right: 29.765013%;}
+.with-final-quote img.final-quote { max-width: 28.42893%; }

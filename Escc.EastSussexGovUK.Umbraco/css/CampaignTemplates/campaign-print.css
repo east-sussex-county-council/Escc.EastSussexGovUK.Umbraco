@@ -1,0 +1,7 @@
+﻿body .campaign-landing .lead h1 { position: relative; margin-bottom: .5em; }
+body .campaign-landing .lead { min-height: 0; padding: 0; }
+body .campaign-landing .buttons a { padding: 0; box-shadow: none; }
+body .campaign-landing .buttons h2 { margin-top: .5em; }
+body .campaign-landing .content iframe { display: none; }
+
+body .campaign-content .article { padding-top: 0; }

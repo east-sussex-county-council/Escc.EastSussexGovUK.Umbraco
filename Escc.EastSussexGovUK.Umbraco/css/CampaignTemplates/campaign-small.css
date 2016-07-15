@@ -1,0 +1,85 @@
+﻿/* Create a positioning context for the background image, and let is show through .full-page */
+body .body { position: relative;overflow: hidden;font-family: 'Source Sans Pro';background-repeat: repeat-x; background-position: center top; }
+.campaign-landing .full-page { background: none; }
+
+/* Create a gutter either side of the content */
+.campaign-landing .body .container { padding-left: 3.797468%;padding-right: 3.797468%;}
+
+/* 
+    h1 is 36/36px
+    p is 20/27px
+*/
+.campaign-landing .lead { padding: 1.125em 0;position: relative;z-index: 1;}
+.campaign-landing .lead h1 { font-size: 2.4em;line-height: 1.2em; font-weight: bold;}
+.campaign-landing .lead p { font-size: 1.538462em;line-height: 1.35em;color: #222;}
+
+/* Position buttons, with some opacity because they'll be covering part of the campaign brand image 
+   h2 is 26px/27px with a 9px bottom margin
+   p is 16/18px
+
+   Hex colours for buttons: Blue #3E6B96, Green #055b0b, Red #EE555B
+*/
+.campaign-landing .buttons {position: relative;z-index: 1;}
+.campaign-landing .buttons a {background: rgb(62,107,150);} /* fallback colour for IE8 */
+.campaign-landing .buttons a {display: block;padding: 1.384615em 3.797468%;box-shadow: rgba(0,0,0,.4) 2px 2px 5px;background: rgba(62,107,150,.8);}
+.campaign-landing .buttons a:first-child { background: rgb(238,85,91);} /* fallback colour for IE8 */
+.campaign-landing .buttons a:first-child { background: rgba(238,85,91,.8);}
+.campaign-landing .buttons a.button-3 { background: rgb(5,91,11);}  /* fallback colour and selector for IE8 a:last-child rule */
+.campaign-landing .buttons a:last-child { background: rgba(5,91,11,.8);} 
+.campaign-landing .buttons a:link, .campaign-landing .buttons a:visited {color: #fff;text-decoration: none; }
+.campaign-landing .buttons h2 { font-size: 2em;line-height: 1.038462em; margin-bottom: .346154em;}
+.campaign-landing .buttons p { font-size: 1.230769em;line-height: 1.125em;}
+
+/* Simple style to make text legible in no-JavaScript scenario */
+.no-js .campaign-landing .content { background: #fff; padding: 18px; position: relative; }
+
+/* Add a grid line of vertical space either side of the video */
+.video { margin: 1.384615em 0;position: relative;}
+
+/* Change .share-page colours to white */
+.campaign-landing .share-page { margin: 0 0 1.384615em;}
+.campaign-landing .share-page a:link, .campaign-landing .share-page a:visited { color: #fff; }
+
+.campaign-landing .share-page [href*="facebook.com"] { background-position: 0 -1846px; }
+.campaign-landing .share-page [href*="twitter.com"] { background-position: 0 -795px; }
+.campaign-landing .share-page .email { background-position: 0 -895px; }
+
+/* Pull quotes are 23px/27px calculated from a 16px base font. Vertical margins and padding are also 27px (3 lines each).
+   Horizontal padding and quote position is one gutter width (18px) within 6 col context (474px) less the 2x18px gutters of .content (18px/438px*100).
+   Opening and closing quote marks appear in a span element, and 'position: relative' on .pull-quote sets up a context to position them within. 
+   As quote marks are absolutely positioned off the baseline grid, size and vertical positioning is by eye.
+*/
+blockquote.pull-quote { font-size: 1.4375em; line-height: 1.173913em; letter-spacing: -.03em; position: relative; padding: 1.173913em 4.109589%;margin: 1.173913em 0; background: #3E6C96; color: #fff; }
+
+blockquote.pull-quote span { position: absolute; font-size: 3.5em; font-weight: bold; color: #91C872; }
+blockquote.pull-quote .open { top: 4px; left: 4.109589%;} 
+blockquote.pull-quote .close { bottom: -27px; right: 4.109589%;}
+
+/* Central quote.
+   
+   Establish a positioning context within which to position the image, and set overflow: hidden to contain the image within the box. 
+   Because it should be a person, it should be OK to cut off the bottom so long as we set a minimum height (10 lines / 180px) allowing reasonable space for a head shot.
+   
+   Set an image max-width in pixels, not %, because we don't want it to get any smaller. Set padding-right to match it with a small gutter. 
+   
+   Text is 20px/27px on base font of 16px. Vertical margin is 2 lines (18px). Top/bottom/left padding is 18px.
+
+*/
+.pull-quote-with-image { position: relative;overflow: hidden; min-height: 11.25em; padding: 1.125em 160px 1.125em 4.109589%;margin: 1.125em 0;background: #50A030;color: white;}
+.pull-quote-with-image p { margin: 0;font-size: 1.25em;line-height: 1.35em;font-weight: bold;}
+.pull-quote-with-image img { max-width: 150px; position: absolute; right: 0; top: 10px; border-bottom: 6px solid #222;}
+
+/* Quote marks are contained within spans. Move them onto their own lines to make a feature of them. 60/27px font. */
+.pull-quote-with-image span { display: block; font-size: 3em;line-height: .45em; position: relative; }
+.pull-quote-with-image .open { top: .1em;}
+.pull-quote-with-image .close { text-align: right; top: .1em;}
+
+
+/* Pull quote with image to finish the page. Image should sit on footer, so remove all padding at the bottom of the page and use display: block on the image. 
+   Text is 23px/27px calculated from a 16px base font. Vertical margin is 2 lines (18px).
+   Padding-right matches the max-width of the image with a little extra space. Using a pixel rather than % width as we want to ensure a reasonable-sized image and have the text adapt to it rather than vice versa.
+   Padding-left matches text-indent to create hanging punctuation.
+*/
+.with-final-quote .article, .with-final-quote .body .container { padding-bottom: 0; }
+blockquote.final-quote { font-size: 1.4375em; line-height: 1.173913em; font-weight: bold; letter-spacing: -.05em;text-indent: -.4em;margin: 1.125em 0; color: #E53A45; padding: 0 140px 0 .4em; }
+img.final-quote {display: block;position: absolute;right: 0;bottom: 0;max-width: 130px; }

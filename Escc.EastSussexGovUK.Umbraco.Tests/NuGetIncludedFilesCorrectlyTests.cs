@@ -21,11 +21,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [TestCase(@"Views\Partials\_LocationIsOpen.cshtml")]
         [TestCase(@"Views\Location.cshtml")]
 
-        // Escc.CampaignTemplates.Website project
-        [TestCase(@"js\CampaignTemplates\campaign-landing.js")]
-        [TestCase(@"css\CampaignTemplates\campaign-small.css")]
-        [TestCase(@"Views\CampaignLanding.cshtml")]
-
         // Escc.Alerts.Website project
         [TestCase(@"Views\Alerts.cshtml")]
         [TestCase(@"images\HomePage\jobs.png")]
@@ -41,9 +36,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
 
         // Escc.Umbraco.PropertyEditors project
         [TestCase(@"App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\controller.js")]
-
-        // Escc.Umbraco.MicrosoftCmsMigration project
-        [TestCase(@"MicrosoftCmsMigration\UserControls\Latest.ascx")]
 
         // Escc.Registration.MarriageSkin project
         [TestCase(@"MarriageSkin\js\min\marriage-skin.js")]

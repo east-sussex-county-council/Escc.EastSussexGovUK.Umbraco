@@ -1,0 +1,36 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.CampaignContentViewModel>
+@{
+    Layout = null;
+    Response.ContentType = "text/css";
+    @* Note: sizes here aren't based on the baseline grid. They move the whole page down so don't need to align with other elements. Pixel sizes match image sizes. *@
+}
+@if (Model.BannerImageSmall != null && Request.QueryString["media-query"] == "small") {
+@:.campaign-content .body { background: #fff url(@Model.BannerImageSmall.ImageUrl) repeat-x center 1.5em; }
+@:.campaign-content .article { padding-top: 75px; }
+}
+@if (Model.BannerImageLarge != null && Request.QueryString["media-query"] == "large")
+{
+@:.campaign-content .body { background: #fff url(@Model.BannerImageLarge.ImageUrl) repeat-x center top; }
+@:.campaign-content .body .container { padding-top: 290px; }
+@:.campaign-content .article { padding-top: 0; }
+}
+@if (!String.IsNullOrEmpty(Model.PullQuoteBackgroundColour))
+{
+    @:blockquote.pull-quote { background: #@Model.PullQuoteBackgroundColour;}
+}
+@if (!String.IsNullOrEmpty(Model.PullQuoteQuotationMarksColour))
+{
+    @:blockquote.pull-quote span { color: #@Model.PullQuoteQuotationMarksColour; }
+}
+@if (!String.IsNullOrEmpty(Model.CentralQuoteBackgroundColour))
+{
+    @:.pull-quote-with-image { background: #@Model.CentralQuoteBackgroundColour; }
+}
+@if (!String.IsNullOrEmpty(Model.FinalQuoteTextColour))
+{
+@:blockquote.final-quote { color: #@Model.FinalQuoteTextColour }
+}
+@if (Request.QueryString["media-query"] == "large")
+{
+    @Model.CustomCssLargeScreen;
+}

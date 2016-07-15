@@ -1,0 +1,77 @@
+﻿@using ClientDependency.Core.Mvc
+@using Escc.ClientDependencyFramework
+@using EsccWebTeam.Data.Web
+@using EsccWebTeam.EastSussexGovUK.MasterPages
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.CampaignLandingViewModel>
+@{
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout);
+    Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
+
+    Html.RequiresCss(CssFileAlias.Resolve("CampaignSmall"));
+    Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=CampaignLandingCss&media-query=small", 101);
+    if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)
+    {
+        Html.RequiresCss(CssFileAlias.Resolve("CampaignMedium"), MediaQueryAlias.Resolve("Medium"));
+        Html.RequiresCss(CssFileAlias.Resolve("CampaignLarge"), MediaQueryAlias.Resolve("Large"));
+        Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=CampaignLandingCss&media-query=medium", 101, MediaQueryAlias.Resolve("Medium"));
+        Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=CampaignLandingCss&media-query=large", 101, MediaQueryAlias.Resolve("Large"));
+
+    }
+    Html.RequiresCss(CssFileAlias.Resolve("CampaignPrint"), new Dictionary<string, string>() { { "media", "print" } });
+    Html.RequiresJs(JsFileAlias.Resolve("CampaignLanding"), 1000);
+
+    if (Model.LandingNavigation.Sections.Count > 0)
+    {
+        Html.RequiresCss(CssFileAlias.Resolve("NavigationSmall"));
+        if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)
+        {
+            Html.RequiresCss(CssFileAlias.Resolve("NavigationMedium"), MediaQueryAlias.Resolve("Medium"));
+            Html.RequiresCss(CssFileAlias.Resolve("NavigationLarge"), MediaQueryAlias.Resolve("Large"));
+        }
+    }
+
+    var policy = new ContentSecurityPolicy(HttpContext.Current.Request.Url);
+    policy.ParsePolicy(HttpContext.Current.Response.Headers["Content-Security-Policy"], true);
+    policy.AppendFromConfig("YouTube");
+    policy.UpdateHeader(HttpContext.Current.Response);
+}
+@section Metadata
+{
+    <title>@Model.PageTitle &#8211; East Sussex County Council</title>
+}
+@section BodyClass {
+    campaign-landing
+}
+<div class="full-page">
+    <div class="lead">
+        <h1>@Model.PageTitle</h1>
+        @if (!String.IsNullOrEmpty(Model.Introduction.ToHtmlString()))
+        {
+            <div class="intro">@Model.Introduction</div>
+        }
+        @if (Model.LandingNavigation.Sections.Count > 0)
+        {
+            <div class="text-content">
+                @Html.Partial("~/Views/Layouts/_LandingNavigation.cshtml", Model.LandingNavigation)
+            </div>
+        }
+    </div>
+
+    <div class="buttons">
+        @{
+            var i = 0;
+            foreach (var link in Model.ButtonTargets)
+            {
+                <a href="@link.Url" class="button-@(i+1)">
+                    <h2>@link.Text</h2>
+                    <p>@Model.ButtonDescriptions.ElementAt(i)</p>
+                </a>
+                i++;
+            }
+        }
+    </div>
+    <div class="text-content">
+        @Model.Content
+        @Html.Partial("~/Views/Layouts/_Share.cshtml", Model)
+    </div>
+</div>

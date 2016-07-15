@@ -1,0 +1,29 @@
+﻿@using Escc.Umbraco.PropertyTypes
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.CampaignLandingViewModel>
+@{
+    Layout = null;
+    Response.ContentType = "text/css";
+    Image image = null;
+    IHtmlString customCss = null;
+    if (Request.QueryString["media-query"] == "small")
+    {
+        image = Model.BackgroundImageSmall;
+        customCss = Model.CustomCssSmallScreen;
+    }
+    if (Request.QueryString["media-query"] == "medium")
+    {
+        image = Model.BackgroundImageMedium;
+        customCss = Model.CustomCssMediumScreen;
+    }
+    if (Request.QueryString["media-query"] == "large")
+    {
+        image = Model.BackgroundImageLarge;
+        customCss = Model.CustomCssLargeScreen;
+    }
+
+    if (image != null)
+    {
+         @:body .body { background-image: url(@image.ImageUrl); }
+    }
+    @customCss
+}
