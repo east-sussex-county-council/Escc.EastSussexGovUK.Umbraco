@@ -1,0 +1,58 @@
+﻿@using ClientDependency.Core.Mvc
+@using Escc.ClientDependencyFramework
+@using Escc.EastSussexGovUK.MasterPages
+@using Escc.EastSussexGovUK.MasterPages.Features
+@using EsccWebTeam.Data.Web
+@using EsccWebTeam.EastSussexGovUK.MasterPages
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.GuideViewModel>
+@{
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout);
+    Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] { new CoronerSkin(Model.EsccWebsiteView, Request.Url) }, new CustomerFocusSkin(Model.EsccWebsiteView));
+
+    // This is a print view so, if not requested as such, redirect
+    if (Request.Url != null && !Request.Url.AbsolutePath.EndsWith("/print", StringComparison.OrdinalIgnoreCase))
+    {
+        var firstStep = Model.Steps.First();
+        if (firstStep != null && firstStep.Steps.Any())
+        {
+            Http.Status303SeeOther(firstStep.Steps.First().Url);
+        }
+    }
+
+    // Get the guide title from the first step
+    var guideTitle = Model.Steps.Any() ? Model.Steps.First().GuideTitle : String.Empty;
+
+    // Embed YouTube videos and Google maps which can print
+    var html = Model.Steps.Select(step => step.StepContent.ToString()).ToArray();
+    Html.Partial("~/Views/Layouts/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
+    {
+        new EmbeddedYouTubeVideos() { Html = html },
+        new EmbeddedGoogleMaps() { Html = html }
+    });
+
+    Html.RequiresJs(JsFileAlias.Resolve("GuideTemplate"));
+}
+
+@section Metadata
+{
+    <title>@guideTitle &#8211; East Sussex County Council</title>
+    <meta name="robots" content="none"/>
+}
+
+<div class="full-page">
+    <article>
+        <div class="content text-content">
+            <h1>@guideTitle</h1>
+
+            @{
+                var stepNumber = 0;
+                foreach (var step in Model.Steps)
+                {
+                    stepNumber++;
+                    <h2>@stepNumber. @step.PageTitle</h2>
+                    @step.StepContent
+                }
+            }
+        </div>
+    </article>
+</div>

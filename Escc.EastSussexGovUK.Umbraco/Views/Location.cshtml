@@ -1,0 +1,251 @@
+﻿@using ClientDependency.Core.Mvc
+@using Escc.AddressAndPersonalDetails
+@using Escc.ClientDependencyFramework
+@using Escc.EastSussexGovUK.MasterPages
+@using Escc.EastSussexGovUK.MasterPages.Features
+@using EsccWebTeam.Data.Web
+@using EsccWebTeam.EastSussexGovUK
+@using EsccWebTeam.EastSussexGovUK.MasterPages
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.LocationViewModel>
+@{
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout);
+    Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
+
+    // This view always uses Google maps, so relax the content security policy to allow that
+    var policy = new ContentSecurityPolicy(HttpContext.Current.Request.Url);
+    policy.AppendFromConfig("GoogleMaps");
+    policy.UpdateHeader(HttpContext.Current.Response);
+
+    Html.RequiresJs(JsFileAlias.Resolve("GoogleMaps"), 90);
+
+    Html.RequiresCss(CssFileAlias.Resolve("LocationTemplateSmall"));
+    if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)
+    {
+        Html.RequiresCss(CssFileAlias.Resolve("LocationTemplateLarge"), MediaQueryAlias.Resolve("Large"));
+    }
+    Html.RequiresJs(JsFileAlias.Resolve("LocationTemplate"));
+
+    Html.Partial("~/Views/Layouts/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
+    {
+        new EmbeddedYouTubeVideos() { Html = new [] { Model.Content.ToString(), Model.Tab1Content.ToString(), Model.Tab2Content.ToString(), Model.Tab3Content.ToString() }},
+        new EastSussex1SpaceSearch() { ShowEastSussex1SpaceSearch = Model.ShowEastSussex1SpaceWidget },
+        new EscisSearch() { ShowEscisSearch = Model.ShowEscisWidget },
+        new FacebookLikeBox() { SocialMedia = Model.SocialMedia, EsccWebsiteView = Model.EsccWebsiteView },
+        new TwitterWidget() { SocialMedia = Model.SocialMedia, EsccWebsiteView = Model.EsccWebsiteView },
+        new WebChat() { WebChatSettings = Model.WebChat }
+    });
+}
+@section Metadata
+{
+    <title>@Model.PageTitle &#8211; East Sussex County Council</title>
+}
+<div class="article location">
+    <article>
+        <div class="content text-content">
+
+            <h1>@Model.PageTitle</h1>
+
+            @Html.Partial("~/Views/Layouts/_Latest.cshtml")
+            @Html.Partial("_LocationIsOpen")
+            @Html.Partial("_LocationOpeningTimes")
+
+            @if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)
+            {
+                <div class="large">
+                    @if (!String.IsNullOrEmpty(Model.Content.ToString()))
+                    {
+                        @Model.Content
+                    }
+
+                    @if (!String.IsNullOrEmpty(Model.Tab1Title) || !String.IsNullOrEmpty(Model.Tab2Title) || !String.IsNullOrEmpty(Model.Tab3Title))
+                    {
+                        <div class="tablist" role="application">
+                            <ul role="tablist">
+                                @if (!String.IsNullOrEmpty(Model.Tab1Title))
+                                {
+                                    <li id="tab1" aria-controls="tab1content" role="tab">@Model.Tab1Title</li>
+                                }
+
+                                @if (!String.IsNullOrEmpty(Model.Tab2Title))
+                                {
+                                    <li id="tab2" aria-controls="tab2content" role="tab">@Model.Tab2Title</li>
+                                }
+
+                                @if (!String.IsNullOrEmpty(Model.Tab3Title))
+                                {
+                                    <li id="tab3" aria-controls="tab3content" role="tab">@Model.Tab3Title</li>
+                                }
+                            </ul>
+
+                            @* When the location is a recycling site, the first tab will contain the waste types. For other locations it's free text. *@
+                            @if (!String.IsNullOrEmpty(Model.Tab1Content.ToString()) || Model.WasteTypesRecycled.Any() || Model.WasteTypesAccepted.Any())
+                            {
+                                <div id="tab1content" aria-labelledby="tab1" role="tabpanel">
+                                    <h2 class="aural">@Model.Tab1Title</h2>
+                                    @Html.Partial("_LocationTab1Content")
+                                </div>
+                            }
+
+                            @if (!String.IsNullOrEmpty(Model.Tab2Content.ToString()))
+                            {
+                                <div id="tab2content" aria-labelledby="tab2" role="tabpanel">
+                                    <h2 class="aural">@Model.Tab2Title</h2>
+                                    @Model.Tab2Content
+                                </div>
+                            }
+
+                            @if (!String.IsNullOrEmpty(Model.Tab3Content.ToString()))
+                            {
+                                <div id="tab3content" aria-labelledby="tab3" role="tabpanel">
+                                    <h2 class="aural">@Model.Tab3Title</h2>
+                                    @Model.Tab3Content
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </article>
+
+</div>
+
+<div class="supporting text-content content-small content-medium">
+    @if (@Model.Photo != null)
+    {
+        <img src="@Model.Photo.ImageUrl" alt="@Model.Photo.AlternativeText" width="@Model.Photo.Width" height="@Model.Photo.Height" />
+    }
+
+    <h2>How to find us</h2>
+    @if (Model.Location != null && Model.Location.GeoCoordinate != null)
+    {
+        <div id="map" data-lat="@Model.Location.GeoCoordinate.Latitude" data-lon="@Model.Location.GeoCoordinate.Longitude"></div>
+        <p><a href="https://www.google.com/maps/dir//@HttpUtility.UrlEncode(Model.Location.GeoCoordinate.Latitude.ToString()),@HttpUtility.UrlEncode(Model.Location.GeoCoordinate.Longitude.ToString())">Get directions in Google Maps</a></p>
+    }
+
+    @{ var vcardUrl = Request.Url.TrimPathEndSlash() + ".vcf"; }
+    <p><a href="@vcardUrl" type="text/vcard">Save to contacts</a></p>
+
+    @if (Model.Location != null && Model.Location.BS7666Address != null && Model.Location.BS7666Address.HasAddress())
+    {
+        <h3>Address</h3>
+        <p>@Model.Location.BS7666Address.GetSimpleAddress().ToString()</p>
+    }
+    @if (!String.IsNullOrEmpty(Model.Email1) || !String.IsNullOrEmpty(Model.Email2))
+    {
+        var emailTransformer = new WebsiteFormEmailAddressTransformer(Request.Url);
+        <h3>Email</h3>
+        if (!String.IsNullOrEmpty(Model.Email1))
+        {
+            var label = String.IsNullOrEmpty(Model.Email1Label) ? "Send email" : Model.Email1Label;
+            <p>
+                <a href="@emailTransformer.TransformEmailAddress(new ContactEmail(Model.Email1, Model.PageTitle))">@label</a>
+            </p>
+        }
+        if (!String.IsNullOrEmpty(Model.Email2))
+        {
+            var label = String.IsNullOrEmpty(Model.Email2Label) ? "Send email" : Model.Email2Label;
+            <p>
+                <a href="@emailTransformer.TransformEmailAddress(new ContactEmail(Model.Email2, Model.PageTitle))">@label</a>
+            </p>
+        }
+    }
+    @if (!String.IsNullOrEmpty(Model.Phone1) || !String.IsNullOrEmpty(Model.Phone2))
+    {
+        <h3>Phone</h3>
+        if (!String.IsNullOrEmpty(Model.Phone1))
+        {
+            <p>
+                @if (!String.IsNullOrEmpty(Model.Phone1Label))
+                {
+                    @Model.Phone1Label<text>:</text>
+                }
+                @Model.Phone1
+            </p>
+        }
+        if (!String.IsNullOrEmpty(Model.Phone2))
+        {
+            <p>
+                @if (!String.IsNullOrEmpty(Model.Phone2Label))
+                {
+                    @Model.Phone2Label<text>:</text>
+                }
+                @Model.Phone2
+            </p>
+        }
+    }
+    @if (!String.IsNullOrEmpty(Model.Fax1))
+    {
+        <h3>Fax</h3>
+        if (!String.IsNullOrEmpty(Model.Fax1))
+        {
+            <p>
+                @if (!String.IsNullOrEmpty(Model.Fax1Label))
+                {
+                    @Model.Fax1Label<text>:</text>
+                }
+                @Model.Fax1
+            </p>
+        }
+        if (!String.IsNullOrEmpty(Model.Fax2))
+        {
+            <p>
+                @if (!String.IsNullOrEmpty(Model.Fax2Label))
+                {
+                    @Model.Fax2Label<text>:</text>
+                }
+                @Model.Fax2
+            </p>
+        }
+    }
+
+    @if (!String.IsNullOrEmpty(Model.Content.ToString()))
+    {
+        <div class="small medium">
+            @Model.Content
+        </div>
+    }
+    @if (!String.IsNullOrEmpty(Model.Tab1Title) || !String.IsNullOrEmpty(Model.Tab2Title) || !String.IsNullOrEmpty(Model.Tab3Title))
+    {
+        <div class="small medium accordion" role="application">
+            @if (!String.IsNullOrEmpty(Model.Tab1Title))
+            {
+                <h2 id="accordion1" aria-controls="accordion1content" role="tab">@Model.Tab1Title</h2>
+                <div id="accordion1content" aria-labelledby="accordion1" role="tabpanel">
+                    @Html.Partial("_LocationTab1Content")
+                </div>
+            }
+
+            @if (!String.IsNullOrEmpty(Model.Tab2Title))
+            {
+                <h2 id="accordion2" aria-controls="accordion2content" role="tab">@Model.Tab2Title</h2>
+                <div id="accordion2content" aria-labelledby="accordion2" role="tabpanel">@Model.Tab2Content</div>
+            }
+
+            @if (!String.IsNullOrEmpty(Model.Tab3Title))
+            {
+                <h2 id="accordion3" aria-controls="accordion3content" role="tab">@Model.Tab3Title</h2>
+                <div id="accordion3content" aria-labelledby="accordion3" role="tabpanel">@Model.Tab3Content</div>
+            }
+        </div>
+    }
+
+    @if (!String.IsNullOrEmpty(Model.ResponsibleAuthority))
+    {
+        <h3>Responsible authority</h3>
+        <p>@Model.ResponsibleAuthority</p>
+    }
+</div>
+@Html.Partial("~/Views/Partials/_RelatedLinks.cshtml", Model.RelatedLinksGroups)
+
+@foreach (var socialMedia in Model.SocialMedia.SocialMediaOrder)
+{
+    @Html.Partial("~/Views/Layouts/_" + socialMedia + ".cshtml")
+}
+@Html.Partial("~/Views/Layouts/_SupportingContentDesktop.cshtml")
+<div class="text-content content">
+    @Html.Partial("~/Views/Layouts/_Share.cshtml")
+</div>
+@section JavaScript{
+    @Html.Partial("_LocationJsonLD")
+}

@@ -1,0 +1,62 @@
+﻿@using ClientDependency.Core.Mvc
+@using Escc.ClientDependencyFramework
+@using Escc.EastSussexGovUK.Umbraco.Models
+@using Escc.EastSussexGovUK.MasterPages
+@using Escc.EastSussexGovUK.MasterPages.Features
+@using EsccWebTeam.EastSussexGovUK.MasterPages
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<LandingViewModel>
+@{
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout);
+    Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
+
+    Html.RequiresCss(CssFileAlias.Resolve("NavigationSmall"));
+    if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)
+    {
+        Html.RequiresCss(CssFileAlias.Resolve("NavigationMedium"), MediaQueryAlias.Resolve("Medium"));
+        Html.RequiresCss(CssFileAlias.Resolve("NavigationLarge"), MediaQueryAlias.Resolve("Large"));
+    }
+
+    var webChat = new WebChat() {WebChatSettings = Model.WebChat};
+    Html.Partial("~/Views/Layouts/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
+    {
+        new EastSussex1SpaceSearch() { ShowEastSussex1SpaceSearch = Model.ShowEastSussex1SpaceWidget },
+        new EscisSearch() { ShowEscisSearch = Model.ShowEscisWidget },
+        new FacebookLikeBox() { SocialMedia = Model.SocialMedia, EsccWebsiteView = Model.EsccWebsiteView },
+        new TwitterWidget() { SocialMedia = Model.SocialMedia, EsccWebsiteView = Model.EsccWebsiteView },
+        webChat
+    });
+
+    // Decide whether to span 8 cols or 12 at large sizes
+    var extend = !Model.ShowEastSussex1SpaceWidget;
+    extend = extend && !Model.ShowEscisWidget;
+    extend = extend && !webChat.IsRequired();
+    extend = extend && (Model.SocialMedia.TwitterWidgetScript == null && String.IsNullOrEmpty(Model.SocialMedia.TwitterAccount));
+    extend = extend && Model.SocialMedia.FacebookPageUrl == null;
+
+    var pageClass = extend ? "full-page" : "article";
+}
+@section Metadata
+{
+    <title>@Model.PageTitle &#8211; East Sussex County Council</title>
+}
+
+<div class="@pageClass">
+    <article>
+        <div class="content text-content">
+
+            <h1>@Model.PageTitle</h1>
+
+            @Html.Partial("~/Views/Layouts/_Latest.cshtml")
+            @Html.Partial("~/Views/Layouts/_LandingNavigation.cshtml", Model.Navigation)
+        </div>
+    </article>
+</div>
+
+@foreach (var socialMedia in Model.SocialMedia.SocialMediaOrder)
+{
+    @Html.Partial("~/Views/Layouts/_" + socialMedia + ".cshtml")
+}
+@Html.Partial("~/Views/Layouts/_SupportingContentDesktop.cshtml")
+<div class="text-content content">
+    @Html.Partial("~/Views/Layouts/_Share.cshtml")
+</div>

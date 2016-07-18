@@ -63,6 +63,12 @@
       <add key="LandingSmall" value="/css/StandardLandingPage/landing-small.css" xdt:Transform="Insert" />
       <add key="LandingMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="LandingMedium" value="/css/StandardLandingPage/landing-medium.css" xdt:Transform="Insert" />
+      <add key="LocationTemplateSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="LocationTemplateSmall" value="/css/customerfocustemplates/location-small.css" xdt:Transform="Insert" />
+      <add key="LocationTemplateLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="LocationTemplateLarge" value="/css/customerfocustemplates/location-large.css" xdt:Transform="Insert" />
+      <add key="TaskTemplateSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="TaskTemplateSmall" value="/css/customerfocustemplates/task-small.css" xdt:Transform="Insert" />
       <add key="TopicSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="TopicSmall" value="/css/StandardTopicPage/topic-small.css" xdt:Transform="Insert" />
       <add key="TopicMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
@@ -77,10 +83,14 @@
       <add key="CampaignLanding" value="/js/campaigntemplates/campaign-landing.js" xdt:Transform="Insert" />
       <add key="CouncilPlan" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="CouncilPlan" value="/js/CouncilPlan/council-plan.js" xdt:Transform="Insert" />
+      <add key="GuideTemplate" xdt:Transform="Remove" xdt:Locator="Match(key) "/>
+      <add key="GuideTemplate" value="/js/CustomerFocusTemplates/guide.js" xdt:Transform="Insert" />
       <add key="Home" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Home" value="/js/HomePage/homepage.js" xdt:Transform="Insert" />
       <add key="HomeTabs" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="HomeTabs" value="/js/HomePage/jquery-ui-1.10.4.custom.min.js" xdt:Transform="Insert" />
+      <add key="LocationTemplate" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="LocationTemplate" value="/js/CustomerFocusTemplates/location.js" xdt:Transform="Insert" />
       <add key="MarriageSkin" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="MarriageSkin" value="/MarriageSkin/js/min/marriage-skin.js" xdt:Transform="Insert" />
     </ScriptFiles>

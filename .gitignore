@@ -31,7 +31,6 @@ _ReSharper*/
 !*.example.config
 !packages.config
 *.scc
-[Ss]cripts
 Properties/PublishProfiles/*
 packages
 .nuget/NuGet.targets
@@ -44,7 +43,8 @@ UpgradeLog*.htm
 [Uu]mbraco_Client/
 [Aa]pp_Data/
 [Aa]pp_Browsers/
-[Aa]pp_Plugins/
+Escc.EastSussexGovUK.Umbraco/App_Plugins/Escc.Umbraco.PropertyEditors.*/*
+Escc.EastSussexGovUK.Umbraco/App_Plugins/Escc.Umbraco.DataTypes.MediaUsage
 [Ii]nstall/
 */[Cc]onfig/Splashes/
 [Dd]efault.aspx
@@ -53,23 +53,16 @@ UpgradeLog*.htm
 *.backup
 dummy.txt
 *.config.js
+*/Views/Partials/Grid/*
 
 # Files imported by ESCC NuGet packages
-**/CustomerFocusTemplates/*
 **/TinyMCE-*.css
 */Views/Layouts*
-*/Views/Partials/*
 */Views/TermDates/*
 !*/Views/TermDates/QuickAnswerMvcProxy.*
 */Views/Alerts*
-*/Views/Guide*
-*/Views/Task*
-*/Views/Location*
-*/Views/Landing.cshtml
-*/Views/Person*
 *RecyclingSiteFinder.ascx
 _ViewStart.cshtml
 images
-*/js/CustomerFocusTemplates/*
 */js/libs/*
 */MarriageSkin/*

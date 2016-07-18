@@ -1,0 +1,99 @@
+﻿@using ClientDependency.Core.Mvc
+@using Escc.ClientDependencyFramework
+@using Escc.EastSussexGovUK.MasterPages
+@using Escc.EastSussexGovUK.MasterPages.Features
+@using EsccWebTeam.EastSussexGovUK.MasterPages
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.GuideStepViewModel>
+@{
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout);
+    Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] { new CoronerSkin(Model.EsccWebsiteView, Request.Url)}, new CustomerFocusSkin(Model.EsccWebsiteView));
+
+    Html.RequiresCss(CssFileAlias.Resolve("NavigationSmall"));
+    if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)
+    {
+        Html.RequiresCss(CssFileAlias.Resolve("NavigationMedium"), MediaQueryAlias.Resolve("Medium"));
+        Html.RequiresCss(CssFileAlias.Resolve("NavigationLarge"), MediaQueryAlias.Resolve("Large"));
+    }
+    Html.RequiresCss(CssFileAlias.Resolve("MobileControls"));
+    Html.RequiresJs(JsFileAlias.Resolve("Navigation"));
+
+    Html.Partial("~/Views/Layouts/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
+    {
+        new EmbeddedYouTubeVideos() { Html = new [] { Model.StepContent.ToString() }},
+        new EmbeddedGoogleMaps() { Html = new [] { Model.StepContent.ToString() }},
+        new EastSussex1SpaceSearch() { ShowEastSussex1SpaceSearch = Model.ShowEastSussex1SpaceWidget },
+        new EscisSearch() { ShowEscisSearch = Model.ShowEscisWidget },
+        new FacebookLikeBox() { SocialMedia = Model.SocialMedia, EsccWebsiteView = Model.EsccWebsiteView },
+        new TwitterWidget() { SocialMedia = Model.SocialMedia, EsccWebsiteView = Model.EsccWebsiteView },
+        new WebChat() { WebChatSettings = Model.WebChat }
+    });
+
+    var thisStep = 1;
+    for (var i =0; i < Model.Steps.Count;i++)
+    {
+        if (Model.Steps[i].IsCurrentPage)
+        {
+            thisStep = i;
+            break;
+        }
+    }
+}
+@section Metadata
+{
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css' />
+    <title>@Model.PageTitle &#8211; @Model.GuideTitle &#8211; East Sussex County Council</title>
+}
+
+<div class="article guide-step">
+    <article>
+        <div class="content text-content">
+
+            <h1>@Model.GuideTitle</h1>
+
+            @Html.Partial("~/Views/Layouts/_Latest.cshtml")
+            @Html.Partial("~/Views/Layouts/_GuideNavigation.cshtml", Model.Steps)
+
+            <h2>@(thisStep + 1). @Model.PageTitle</h2>
+
+            @Model.StepContent
+
+            @foreach (var image in Model.PartnerImages)
+            {
+                <img src="@image.ImageUrl" alt="@image.AlternativeText" width="@image.Width" height="@image.Height" />
+            }
+
+            @if (Model.Steps.Count > 1)
+            {
+                <footer>
+                    <nav role="navigation" title="Previous and next pages">
+                        <div class="prev-next">
+                            @if (thisStep > 0)
+                            {
+                                <p><a href="@Model.Steps[thisStep - 1].Url" rel="prev"><em>Previous</em> <span>@Model.Steps[thisStep - 1].Text</span></a></p>
+                            }
+
+                            @if (thisStep < Model.Steps.Count - 1)
+                            {
+                                <p><a href="@Model.Steps[thisStep + 1].Url" rel="next"><em>Next</em> <span>@Model.Steps[thisStep + 1].Text</span></a></p>
+                            }
+                        </div>
+                    </nav>
+                </footer>
+            }
+
+            @{ var printUrl = Model.GuideUrl + "print"; }
+            <p class="screen"><a href="@printUrl" target="_blank" rel="nofollow">Print entire guide</a></p>
+        </div>
+    </article>
+</div>
+
+@Html.Partial("~/Views/Partials/_RelatedLinks.cshtml", Model.RelatedLinksGroups)
+
+@foreach (var socialMedia in Model.SocialMedia.SocialMediaOrder)
+{
+    @Html.Partial("~/Views/Layouts/_" + socialMedia + ".cshtml")
+}
+@Html.Partial("~/Views/Layouts/_SupportingContentDesktop.cshtml")
+<div class="text-content content">
+    @Html.Partial("~/Views/Layouts/_Share.cshtml")
+</div>

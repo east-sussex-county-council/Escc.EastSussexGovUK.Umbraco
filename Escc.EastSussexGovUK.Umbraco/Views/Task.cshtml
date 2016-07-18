@@ -1,0 +1,88 @@
+﻿@using ClientDependency.Core.Mvc
+@using Escc.ClientDependencyFramework
+@using Escc.EastSussexGovUK.MasterPages
+@using Escc.EastSussexGovUK.MasterPages.Features
+@using EsccWebTeam.EastSussexGovUK.MasterPages
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.TaskViewModel>
+@{
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout); 
+    Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
+
+    Html.RequiresCss(CssFileAlias.Resolve("TaskTemplateSmall"));
+
+    Html.Partial("~/Views/Layouts/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
+    {
+        new EmbeddedYouTubeVideos() { Html = new [] { Model.LeadingText.ToString(), Model.Content1.ToString(), Model.Content2.ToString(), Model.Content3.ToString(), Model.Content4.ToString() }},
+        new EmbeddedGoogleMaps() { Html = new [] { Model.LeadingText.ToString(), Model.Content1.ToString(), Model.Content2.ToString(), Model.Content3.ToString(), Model.Content4.ToString() }},
+        new EastSussex1SpaceSearch() { ShowEastSussex1SpaceSearch = Model.ShowEastSussex1SpaceWidget },
+        new EscisSearch() { ShowEscisSearch = Model.ShowEscisWidget },
+        new FacebookLikeBox() { SocialMedia = Model.SocialMedia, EsccWebsiteView = Model.EsccWebsiteView },
+        new TwitterWidget() { SocialMedia = Model.SocialMedia, EsccWebsiteView = Model.EsccWebsiteView },
+        new WebChat() { WebChatSettings = Model.WebChat }
+    });
+}
+@section Metadata
+{
+    <title>@Model.PageTitle &#8211; East Sussex County Council</title>
+}
+
+<div class="article task">
+    <article>
+        <div class="content text-content">
+
+            <h1>@Model.PageTitle</h1>
+
+            @Html.Partial("~/Views/Layouts/_Latest.cshtml")
+
+            @if (!String.IsNullOrWhiteSpace(@Model.LeadingText.ToString()))
+            {
+                <div class="lead">
+                    @Model.LeadingText
+                </div>
+            }
+
+            <p class="main-action"><a href="@Model.StartPageUrl">@Model.StartButtonText</a></p>
+
+            @if (!String.IsNullOrWhiteSpace(@Model.Subheading1))
+            {
+                <h2>@Model.Subheading1</h2>
+            }
+            @Model.Content1
+
+            @if (!String.IsNullOrWhiteSpace(@Model.Subheading2))
+            {
+                <h2>@Model.Subheading2</h2>
+            }
+            @Model.Content2
+
+            @if (!String.IsNullOrWhiteSpace(@Model.Subheading3))
+            {
+                <h2>@Model.Subheading3</h2>
+            }
+            @Model.Content3
+
+            @if (!String.IsNullOrWhiteSpace(@Model.Subheading4))
+            {
+                <h2>@Model.Subheading4</h2>
+            }
+            @Model.Content4
+            
+            @foreach (var image in Model.PartnerImages)
+            {
+                <img src="@image.ImageUrl" alt="@image.AlternativeText" width="@image.Width" height="@image.Height"/>
+            }
+            
+        </div>
+    </article>
+</div>
+
+@Html.Partial("~/Views/Partials/_RelatedLinks.cshtml", Model.RelatedLinksGroups)
+
+@foreach (var socialMedia in Model.SocialMedia.SocialMediaOrder)
+{
+    @Html.Partial("~/Views/Layouts/_" + socialMedia + ".cshtml")
+}
+@Html.Partial("~/Views/Layouts/_SupportingContentDesktop.cshtml")
+<div class="text-content content">
+    @Html.Partial("~/Views/Layouts/_Share.cshtml")
+</div>

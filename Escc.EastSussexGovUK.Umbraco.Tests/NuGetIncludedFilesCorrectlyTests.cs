@@ -13,17 +13,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [TestCase(@"Views\_ViewStart.cshtml")]
         [TestCase(@"Views\Layouts\Desktop.cshtml")]
 
-        // Escc.CustomerFocusTemplates.Website project
-        [TestCase(@"App_Plugins\OpeningSoon\openingsoon.html")] 
-        [TestCase(@"App_Plugins\OpeningSoon\scripts\jquery.timepicker.js")] 
-        [TestCase(@"css\CustomerFocusTemplates\task-small.css")] 
-        [TestCase(@"js\CustomerFocusTemplates\guide.js")]
-        [TestCase(@"Views\Partials\_LocationIsOpen.cshtml")]
-        [TestCase(@"Views\Location.cshtml")]
-
         // Escc.Alerts.Website project
         [TestCase(@"Views\Alerts.cshtml")]
-        [TestCase(@"images\HomePage\jobs.png")]
 
         // EScc.Schools.TermDates project
         [TestCase(@"Views\TermDates\QuickAnswer.ascx")]

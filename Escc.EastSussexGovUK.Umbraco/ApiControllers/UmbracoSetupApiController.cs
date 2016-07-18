@@ -6,14 +6,20 @@ using System.Net.Http;
 using System.Web.Http;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CouncilPlan;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CustomerFocusBase;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.FormDownload;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Guide;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.HomePage;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Landing;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.LandingPageWithPictures;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.LegacyBase;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Map;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Person;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardDownloadPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardLandingPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task;
 using Escc.EastSussexGovUK.UmbracoDocumentTypes.Css;
 using Escc.EastSussexGovUK.UmbracoDocumentTypes.DataTypes;
 using Escc.EastSussexGovUK.UmbracoDocumentTypes.Features.Latest;
@@ -26,7 +32,7 @@ using ExCSS;
 using Umbraco.Inception.CodeFirst;
 using Umbraco.Web.WebApi;
 
-namespace Escc.EastSussexGovUK.Umbraco.Controllers
+namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
 {
     /// <summary>
     /// Create Umbraco document types needed for this project
@@ -88,6 +94,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
                 // Campaign templates
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(QuoteColourDataType));
 
+                // Customer focus templates
+                EmailAddressDataType.CreateDataType();
+                PhoneNumberDataType.CreateDataType();
+                LandingPageLayoutDataType.CreateLandingPageLayoutDataType();
+                OpeningHoursDataType.CreateDataType();
+                UkLocationDataType.CreateDataType(showEastingNorthing: false);
+
+                // For recycling site document type
+                ResponsibleAuthorityDataType.CreateDataType();
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(WasteTypesDataType));
+
                 return Request.CreateResponse(HttpStatusCode.Created);
             }
             catch (Exception e)
@@ -128,6 +145,23 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CouncilPlanTopicPageDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CampaignLandingDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CampaignContentDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(WebChatDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CustomerFocusBaseDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LandingDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(TaskDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LocationDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(GuideStepDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(GuideDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(RecyclingSiteDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LibraryDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(MobileLibraryStopDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(ChildcareDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CouncilOfficeDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(SportLocationDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(ParkDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(RegistrationOfficeDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(DayCentreDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(PersonDocumentType));
 
                 return Request.CreateResponse(HttpStatusCode.Created);
             }
