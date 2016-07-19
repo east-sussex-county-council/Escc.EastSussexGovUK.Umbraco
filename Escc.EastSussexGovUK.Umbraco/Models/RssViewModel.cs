@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Escc.EastSussexGovUK.UmbracoViews.ViewModels;
 
 namespace Escc.EastSussexGovUK.Umbraco.Models
 {

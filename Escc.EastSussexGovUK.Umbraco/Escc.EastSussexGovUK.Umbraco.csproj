@@ -128,10 +128,6 @@
       <HintPath>..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.6.1.0\lib\Escc.EastSussexGovUK.UmbracoDocumentTypes.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Escc.EastSussexGovUK.UmbracoViews, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.EastSussexGovUK.UmbracoViews.6.6.4\lib\Escc.EastSussexGovUK.UmbracoViews.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Escc.Elibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Elibrary.1.0.0\lib\Escc.Elibrary.dll</HintPath>
       <Private>True</Private>
@@ -434,8 +430,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiControllers\LocationController.cs" />
+    <Compile Include="ApiControllers\MediaController.cs" />
     <Compile Include="ApiControllers\UmbracoSetupApiController.cs" />
     <Compile Include="ApiControllers\WasteTypesController.cs" />
+    <Compile Include="ApiControllers\WebApiConfig.cs" />
+    <Compile Include="ApiControllers\WebChatController.cs" />
     <Compile Include="ContentFinders\GuidePrintViewContentFinder.cs" />
     <Compile Include="ContentFinders\GuidePrintViewEventHandler.cs" />
     <Compile Include="Controllers\CampaignContentController.cs" />
@@ -534,6 +533,10 @@
     <Compile Include="DocumentTypes\StandardTopicPage\TopicPageLayoutDataType.cs" />
     <Compile Include="DocumentTypes\Task\TaskContentTab.cs" />
     <Compile Include="DocumentTypes\Task\TaskDocumentType.cs" />
+    <Compile Include="Errors\HttpStatusFromConfiguration.cs" />
+    <Compile Include="Errors\NotFoundContentFinder.cs" />
+    <Compile Include="Errors\RegisterErrorsEventHandler.cs" />
+    <Compile Include="Errors\UmbracoCustomErrorsModule.cs" />
     <Compile Include="MicrosoftCmsMigration\CmsUtilities.cs" />
     <Compile Include="MicrosoftCmsMigration\CustomProperty.cs" />
     <Compile Include="MicrosoftCmsMigration\MicrosoftCmsPageController.cs" />
@@ -564,7 +567,24 @@
     <Compile Include="Models\OpeningTimes.cs" />
     <Compile Include="Models\PersonViewModel.cs" />
     <Compile Include="Models\TaskViewModel.cs" />
+    <Compile Include="RichTextHtmlFormatters\ElibraryLinkFormatter.cs" />
+    <Compile Include="RichTextHtmlFormatters\UseFormForEmailLinksFormatter.cs" />
+    <Compile Include="Services\BaseViewModelBuilder.cs" />
+    <Compile Include="Services\IPageTitleFilter.cs" />
     <Compile Include="Services\RelatedLinksModelBuilder.cs" />
+    <Compile Include="Services\RemoveUmbracoNumericSuffixFilter.cs" />
+    <Compile Include="Services\UmbracoEastSussex1SpaceService.cs" />
+    <Compile Include="Services\UmbracoEscisService.cs" />
+    <Compile Include="Services\UmbracoLatestService.cs" />
+    <Compile Include="Services\UmbracoSocialMediaService.cs" />
+    <Compile Include="Services\UmbracoWebChatSettingsService.cs" />
+    <Compile Include="Models\BaseViewModel.cs" />
+    <Compile Include="Models\BaseViewModelWithInheritedContent.cs" />
+    <Compile Include="Models\GuideNavigationLink.cs" />
+    <Compile Include="Models\LandingNavigationLayout.cs" />
+    <Compile Include="Models\LandingNavigationViewModel.cs" />
+    <Compile Include="Models\LandingSectionViewModel.cs" />
+    <Compile Include="Models\UmbracoMediaApiResult.cs" />
     <Compile Include="Views\CouncilPlanRelated.ascx.cs">
       <DependentUpon>CouncilPlanRelated.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -639,6 +659,29 @@
     <Compile Include="Views\LandingPageWithPictures.ascx.designer.cs">
       <DependentUpon>LandingPageWithPictures.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Layouts\BreadcrumbTrail.ascx.cs">
+      <DependentUpon>BreadcrumbTrail.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Layouts\BreadcrumbTrail.ascx.designer.cs">
+      <DependentUpon>BreadcrumbTrail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Layouts\BreadcrumbTrailMobile.ascx.cs">
+      <DependentUpon>BreadcrumbTrailMobile.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Layouts\BreadcrumbTrailMobile.ascx.designer.cs">
+      <DependentUpon>BreadcrumbTrailMobile.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Layouts\MasterPageControl.ascx.cs">
+      <DependentUpon>MasterPageControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Layouts\MasterPageControl.ascx.designer.cs">
+      <DependentUpon>MasterPageControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Layouts\MasterPageControlData.cs" />
+    <Compile Include="Views\Layouts\UmbracoBreadcrumbProvider.cs" />
     <Compile Include="Views\Map.ascx.cs">
       <DependentUpon>Map.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3544,27 +3587,6 @@
     <Content Include="Views\_HomePageJobSearch.cshtml" />
     <Content Include="Views\HomePage.cshtml" />
     <Content Include="Views\HomePageItems.cshtml" />
-    <Content Include="Views\Layouts\Desktop.cshtml" />
-    <Content Include="Views\Layouts\FullScreen.cshtml" />
-    <Content Include="Views\Layouts\Plain.cshtml" />
-    <Content Include="Views\Layouts\_Banners.cshtml" />
-    <Content Include="Views\Layouts\_CmsPreview.cshtml" />
-    <Content Include="Views\Layouts\_ContentExperiment.cshtml" />
-    <Content Include="Views\Layouts\_EastSussex1Space.cshtml" />
-    <Content Include="Views\Layouts\_Escis.cshtml" />
-    <Content Include="Views\Layouts\_Facebook.cshtml" />
-    <Content Include="Views\Layouts\_FeatureDependencies.cshtml" />
-    <Content Include="Views\Layouts\_FeatureDependency.cshtml" />
-    <Content Include="Views\Layouts\_Fonts.cshtml" />
-    <Content Include="Views\Layouts\_GuideNavigation.cshtml" />
-    <Content Include="Views\Layouts\_LandingNavigation.cshtml" />
-    <Content Include="Views\Layouts\_Latest.cshtml" />
-    <Content Include="Views\Layouts\_ScriptsDesktop.cshtml" />
-    <Content Include="Views\Layouts\_ScriptsFullScreen.cshtml" />
-    <Content Include="Views\Layouts\_Share.cshtml" />
-    <Content Include="Views\Layouts\_SupportingContentDesktop.cshtml" />
-    <Content Include="Views\Layouts\_Twitter.cshtml" />
-    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\CouncilPlanBudgetPage.cshtml" />
     <Content Include="Views\CouncilPlanHomePage.cshtml" />
     <Content Include="Views\CouncilPlanMonitoringPage.cshtml" />
@@ -3587,6 +3609,27 @@
     <Content Include="Views\Partials\_LocationTab1Content.cshtml" />
     <Content Include="Views\Partials\_RelatedLinks.cshtml" />
     <None Include="UrlRewriting.config.xdt" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Layouts\Desktop.cshtml" />
+    <Content Include="Views\Layouts\FullScreen.cshtml" />
+    <Content Include="Views\Layouts\Plain.cshtml" />
+    <Content Include="Views\Layouts\_Banners.cshtml" />
+    <Content Include="Views\Layouts\_CmsPreview.cshtml" />
+    <Content Include="Views\Layouts\_ContentExperiment.cshtml" />
+    <Content Include="Views\Layouts\_EastSussex1Space.cshtml" />
+    <Content Include="Views\Layouts\_Escis.cshtml" />
+    <Content Include="Views\Layouts\_Facebook.cshtml" />
+    <Content Include="Views\Layouts\_FeatureDependencies.cshtml" />
+    <Content Include="Views\Layouts\_FeatureDependency.cshtml" />
+    <Content Include="Views\Layouts\_Fonts.cshtml" />
+    <Content Include="Views\Layouts\_GuideNavigation.cshtml" />
+    <Content Include="Views\Layouts\_LandingNavigation.cshtml" />
+    <Content Include="Views\Layouts\_Latest.cshtml" />
+    <Content Include="Views\Layouts\_ScriptsDesktop.cshtml" />
+    <Content Include="Views\Layouts\_ScriptsFullScreen.cshtml" />
+    <Content Include="Views\Layouts\_Share.cshtml" />
+    <Content Include="Views\Layouts\_SupportingContentDesktop.cshtml" />
+    <Content Include="Views\Layouts\_Twitter.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -3640,7 +3683,6 @@
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.6.1.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.6.1.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.3.0.2\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.3.0.2\build\Escc.Umbraco.PropertyEditors.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.UmbracoViews.6.6.4\build\Escc.EastSussexGovUK.UmbracoViews.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.UmbracoViews.6.6.4\build\Escc.EastSussexGovUK.UmbracoViews.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Registration.MarriageSkin.1.0.1\build\Escc.Registration.MarriageSkin.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Registration.MarriageSkin.1.0.1\build\Escc.Registration.MarriageSkin.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Statistics.js.2.0.0\build\Escc.Statistics.js.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Statistics.js.2.0.0\build\Escc.Statistics.js.targets'))" />
   </Target>
@@ -3652,7 +3694,6 @@
   <Import Project="..\packages\Escc.Schools.TermDates.Website.1.2.1\build\Escc.Schools.TermDates.Website.targets" Condition="Exists('..\packages\Escc.Schools.TermDates.Website.1.2.1\build\Escc.Schools.TermDates.Website.targets')" />
   <Import Project="..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.6.1.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.6.1.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" />
   <Import Project="..\packages\Escc.Umbraco.PropertyEditors.3.0.2\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.3.0.2\build\Escc.Umbraco.PropertyEditors.targets')" />
-  <Import Project="..\packages\Escc.EastSussexGovUK.UmbracoViews.6.6.4\build\Escc.EastSussexGovUK.UmbracoViews.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.UmbracoViews.6.6.4\build\Escc.EastSussexGovUK.UmbracoViews.targets')" />
   <Import Project="..\packages\Escc.Registration.MarriageSkin.1.0.1\build\Escc.Registration.MarriageSkin.targets" Condition="Exists('..\packages\Escc.Registration.MarriageSkin.1.0.1\build\Escc.Registration.MarriageSkin.targets')" />
   <Import Project="..\packages\Escc.Statistics.js.2.0.0\build\Escc.Statistics.js.targets" Condition="Exists('..\packages\Escc.Statistics.js.2.0.0\build\Escc.Statistics.js.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

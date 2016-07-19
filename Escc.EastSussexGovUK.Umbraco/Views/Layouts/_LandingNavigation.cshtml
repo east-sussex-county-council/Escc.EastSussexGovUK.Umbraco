@@ -1,0 +1,33 @@
+﻿@model LandingNavigationViewModel
+@using Escc.EastSussexGovUK.Umbraco.Models
+
+@{
+    var odd = true;
+    var group = 1;
+}
+@foreach (var landingSection in Model.Sections)
+{
+    var colClass = Model.LandingNavigationLayout == LandingNavigationLayout.TwoColumn ? "two-col" : "three-col";
+
+    // Split into 2 groups for 2 column layout with no nth-child support in IE8
+    var oddClass = odd ? "odd" : "even";
+    odd = !odd;
+
+    // Split into 3 groups for 3 column layout with no nth-child support in IE8
+    var groupClass = "group" + group;
+    group++;
+    if (group == 4) { group = 1; }
+
+    // IMPORTANT: formatting ensures no space between </div><div class="landing-section">
+<div class="landing-section @colClass @oddClass @groupClass">
+        <h2><a href="@landingSection.Heading.Url">@landingSection.Heading.Text</a></h2>
+        @if (landingSection.Links != null && landingSection.Links.Any())
+        {
+            <ul class="medium large">
+                @foreach (var link in landingSection.Links)
+                {
+                    <li><a href="@link.Url">@link.Text</a></li>
+                }
+            </ul>
+        }
+    </div>}

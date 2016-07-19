@@ -1,0 +1,17 @@
+﻿@model Escc.EastSussexGovUK.Umbraco.Models.BaseViewModelWithInheritedContent
+@using EsccWebTeam.EastSussexGovUK.MasterPages
+@{
+    var showWidget = Model.SocialMedia.TwitterWidgetScript != null && Model.EsccWebsiteView == EsccWebsiteView.Desktop;
+    if (!String.IsNullOrEmpty(Model.SocialMedia.TwitterAccount) && Model.EsccWebsiteView == EsccWebsiteView.Desktop)
+    {
+        var twitterUrl = "https://twitter.com/" + Model.SocialMedia.TwitterAccount;
+        var twitterClass = showWidget ? "small medium text text-content content-small content-medium" : "supporting " + Model.EsccWebsiteSkin.SupportingTextContentClass;
+        <div class="@twitterClass">
+            <p class="twitter twitter-account">Read updates on Twitter: <a href="@twitterUrl">Tweets by &#64;@Model.SocialMedia.TwitterAccount</a></p>
+        </div>
+    }
+    if (showWidget)
+    {
+        <div class="supporting large">@Model.SocialMedia.TwitterWidgetScript</div>
+    }
+}

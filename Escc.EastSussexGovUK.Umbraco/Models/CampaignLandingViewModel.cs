@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Web;
-using Escc.EastSussexGovUK.UmbracoViews.ViewModels;
 using Escc.Umbraco.PropertyTypes;
 
 namespace Escc.EastSussexGovUK.Umbraco.Models

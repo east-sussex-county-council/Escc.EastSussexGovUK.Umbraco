@@ -9,10 +9,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
     [TestFixture]
     public class NuGetIncludedFilesCorrectlyTests
     {
-        // Escc.EastSussexGovUK.UmbracoViews project
-        [TestCase(@"Views\_ViewStart.cshtml")]
-        [TestCase(@"Views\Layouts\Desktop.cshtml")]
-
         // Escc.Alerts.Website project
         [TestCase(@"Views\Alerts.cshtml")]
 

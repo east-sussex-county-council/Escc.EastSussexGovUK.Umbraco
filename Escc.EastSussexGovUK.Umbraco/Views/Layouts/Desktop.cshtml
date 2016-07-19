@@ -1,0 +1,83 @@
+﻿@using System.Globalization
+@using System.Web.Mvc.Html
+@using ClientDependency.Core.Mvc
+@using Escc.ClientDependencyFramework
+@using Escc.EastSussexGovUK.Umbraco.Views.Layouts
+@using EsccWebTeam.Data.Web
+@using EsccWebTeam.EastSussexGovUK
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.BaseViewModel>
+@{
+    Layout = null;
+    Html.Partial("~/Views/Layouts/_FeatureDependency.cshtml", Model.EsccWebsiteSkin);
+    Html.Partial("~/Views/Layouts/_CmsPreview.cshtml", Model);
+}
+@Html.Partial("~/Views/Layouts/MasterPageControl.ascx", new MasterPageControlData { Control = "HtmlTag" })
+<head>
+    @Html.Partial("~/Views/Layouts/_ContentExperiment.cshtml", Model)
+    @Html.Partial("~/Views/Layouts/MasterPageControl.ascx", new MasterPageControlData { Control = "MetadataDesktop" })
+    @Html.Partial("~/Views/Layouts/_Fonts.cshtml", Model.EsccWebsiteSkin)
+    @Html.RenderCssHere()
+    @RenderSection("Metadata", required: false)
+    @if (!String.IsNullOrEmpty(Model.PageId))
+    {
+        <meta name="eGMS.systemID" content="@Model.PageId" />
+    }
+</head>
+@{
+    var siteContext = new EastSussexGovUKContext();
+    var bodyClass = String.Empty;
+    if (siteContext.TextSize > 1)
+    {
+        bodyClass = "size" + siteContext.TextSize.ToString(CultureInfo.InvariantCulture);
+    }
+}
+@if (IsSectionDefined("BodyClass"))
+{
+    @:<body class="@bodyClass @RenderSection("BodyClass")">
+    }
+else
+{
+    var body = "<body";
+    if (!String.IsNullOrEmpty(bodyClass))
+    {
+        body += " class=\"" + bodyClass + "\"";
+    }
+    body += ">";
+    @Html.Raw(body);
+}
+@Html.Partial("~/Views/Layouts/MasterPageControl.ascx", new MasterPageControlData { Control = "AboveHeaderDesktop" })
+@if (IsSectionDefined("Header"))
+{
+    @RenderSection("Header")
+}
+else
+{
+    @Html.Partial("~/Views/Layouts/MasterPageControl.ascx", new MasterPageControlData { Control = "HeaderDesktop" })
+}
+<div id="main" role="main" class="body">
+    <div class="container">
+        @if (IsSectionDefined("Breadcrumb"))
+        {
+            @RenderSection("Breadcrumb")
+        }
+        else
+        {
+            @Html.Partial("~/Views/Layouts/BreadcrumbTrail.ascx")
+            @Html.Partial("~/Views/Layouts/BreadcrumbTrailMobile.ascx")
+        }
+        @RenderBody()
+    </div>
+</div>
+@if (IsSectionDefined("Footer"))
+{
+    @RenderSection("Footer")
+}
+else
+{
+    @Html.Partial("~/Views/Layouts/MasterPageControl.ascx", new MasterPageControlData { Control = "FooterDesktop" })
+}
+@Html.Partial("~/Views/Layouts/_ScriptsDesktop.cshtml")
+@Html.RenderJsHere()
+@RenderSection("JavaScript", required: false)
+</body>
+</html>

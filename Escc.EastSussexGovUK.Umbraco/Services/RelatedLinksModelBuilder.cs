@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Escc.EastSussexGovUK.UmbracoViews.ViewModels;
+using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.Umbraco.PropertyTypes;
 
 namespace Escc.EastSussexGovUK.Umbraco.Services

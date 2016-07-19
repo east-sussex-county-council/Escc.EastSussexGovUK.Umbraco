@@ -1,0 +1,30 @@
+﻿@using ClientDependency.Core.Mvc
+@using Escc.ClientDependencyFramework
+@using EsccWebTeam.Data.Web
+@model Escc.EastSussexGovUK.MasterPages.IClientDependencySet
+@{
+    foreach (var requiredCss in Model.RequiresCss())
+    {
+        if (String.IsNullOrEmpty(requiredCss.MediaQueryAlias))
+        {
+            Html.RequiresCss(CssFileAlias.Resolve(requiredCss.CssFileAlias), requiredCss.Priority);
+        }
+        else
+        {
+            Html.RequiresCss(CssFileAlias.Resolve(requiredCss.CssFileAlias), requiredCss.Priority, MediaQueryAlias.Resolve(requiredCss.MediaQueryAlias));
+        }
+    }
+
+    foreach (var requiredJs in Model.RequiresJavaScript())
+    {
+        Html.RequiresJs(JsFileAlias.Resolve(requiredJs.JsFileAlias), requiredJs.Priority);
+    }
+
+    foreach (var requiredPolicy in Model.RequiresContentSecurityPolicy())
+    {
+        var policy = new ContentSecurityPolicy(HttpContext.Current.Request.Url);
+        policy.ParsePolicy(HttpContext.Current.Response.Headers["Content-Security-Policy"], true);
+        policy.AppendFromConfig(requiredPolicy.Alias);
+        policy.UpdateHeader(HttpContext.Current.Response);
+    }
+}

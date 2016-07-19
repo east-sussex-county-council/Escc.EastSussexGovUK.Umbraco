@@ -1,0 +1,16 @@
+﻿@using Escc.ClientDependencyFramework
+@model EsccWebTeam.EastSussexGovUK.MasterPages.IEsccWebsiteSkin
+@{
+    foreach (var font in Model.RequiresGoogleFonts())
+    {
+        <link href="@font.FontUrl" rel="stylesheet" type="text/css" />
+    }
+
+    if (Model.RequiresTypekitFonts().Any()) { 
+        foreach (var font in Model.RequiresTypekitFonts())
+        {
+            <script src="@font.TypekitUrl"></script>
+        }
+        <script src="@JsFileAlias.Resolve("Typekit")"></script>
+    }
+}

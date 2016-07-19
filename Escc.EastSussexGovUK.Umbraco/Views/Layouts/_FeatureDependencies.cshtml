@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Escc.EastSussexGovUK.MasterPages.IClientDependencySet>
+@{
+    foreach (var feature in Model)
+    {
+        if (feature.IsRequired())
+        {
+            Html.Partial("~/Views/Layouts/_FeatureDependency.cshtml", feature);
+        }
+    }
+}

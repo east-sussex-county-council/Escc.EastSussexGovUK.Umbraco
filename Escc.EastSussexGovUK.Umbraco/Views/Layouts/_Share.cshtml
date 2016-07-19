@@ -1,0 +1,14 @@
+﻿@model Escc.EastSussexGovUK.Umbraco.Models.BaseViewModel
+@{
+    var encodedPageUrl = HttpUtility.UrlEncode(Request.Url.ToString());
+    // strip double-quotes because when this link is picked up by a link checker and exported to CSV, the quotes are misinterpreted as a CSV delimiter
+    var encodedTitle = HttpUtility.UrlEncode(Model.PageTitle.Replace("\"", String.Empty));
+}
+<aside>
+    <p class="screen share-page">
+        <a href="https://www.facebook.com/sharer.php?u=@encodedPageUrl" target="_blank">Share<span class="aural"> this page on Facebook</span></a>
+        <a href="https://twitter.com/intent/tweet?text=@encodedTitle+@encodedPageUrl+via+&#64;eastsussexcc" target="_blank">Tweet<span class="aural"> this page</span></a>
+        <a href="https://www.eastsussex.gov.uk/contactus/emailus/friend.aspx?url=@encodedPageUrl" class="email">Email this page</a>
+        <a href="https://www.eastsussex.gov.uk/contactus/emailus/feedback.aspx?option=web&amp;url=@encodedPageUrl&amp;title=@encodedTitle" class="email" accesskey="9">Comment on this page</a>
+    </p>
+</aside>

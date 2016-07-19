@@ -5,7 +5,7 @@ using Umbraco.Inception.Attributes;
 namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location
 {
     /// <summary>
-    /// An Umbraco document type for a recycling site, which gets most of its properties from the base <see cref="Escc.CustomerFocusTemplates.Website.DocumentTypes.Location"/> data type
+    /// An Umbraco document type for a recycling site, which gets most of its properties from the base <see cref="Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location"/> data type
     /// </summary>
     [UmbracoContentType("Recycling site", "RecyclingSite", new Type[]
         {

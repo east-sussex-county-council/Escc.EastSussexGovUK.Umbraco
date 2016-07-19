@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Escc.Umbraco.PropertyTypes;
 using Escc.EastSussexGovUK.Umbraco.Services;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 

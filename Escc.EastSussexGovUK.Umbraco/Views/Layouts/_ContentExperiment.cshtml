@@ -1,0 +1,41 @@
+﻿@using ClientDependency.Core.Mvc
+@using EsccWebTeam.Data.Web
+@model Escc.EastSussexGovUK.Umbraco.Models.BaseViewModel
+@*
+     Hide content experiment code if being requested by EsccWebTeam.Data.Xml, because it's invalid as XML.
+    This happens when you're experimenting on a page which is parsed for an iCalendar download.
+*@
+@{
+    var hasContentExperiment = (Request.Url.Host.IndexOf('.') > -1 &&
+                                  Request.Url.Host.IndexOf("escc.gov", StringComparison.Ordinal) == -1 &&
+                                  Model.IsPublicView &&
+                                  Model.ContentExperimentPageSettings != null
+        );
+    var showContentExperimentScript = (hasContentExperiment &&
+                                       Request.UserAgent != "EsccWebTeam.Data.Xml" &&
+                                       !String.IsNullOrWhiteSpace(Model.ContentExperimentPageSettings.ContentExperimentScript.ToString()));
+    if (hasContentExperiment)
+    {
+        // This view uses Google content experiments, so relax the content security policy to allow that
+        var policy = new ContentSecurityPolicy(HttpContext.Current.Request.Url);
+        policy.ParsePolicy(HttpContext.Current.Response.Headers["Content-Security-Policy"], true);
+        policy.AppendFromConfig("GoogleContentExperiments");
+        policy.UpdateHeader(HttpContext.Current.Response);
+
+        foreach (var scriptUrl in Model.ContentExperimentPageSettings.ScriptUrls)
+        {
+            // 1000 priority loads this script after any others
+            Html.RequiresJs(scriptUrl.ToString(), 1000);
+        }
+
+        foreach (var cssUrl in Model.ContentExperimentPageSettings.StylesheetUrls)
+        {
+            // 1000 priority loads this script after any others
+            Html.RequiresCss(cssUrl.ToString(), 1000);
+        }
+    }
+}
+@if (showContentExperimentScript)
+{
+    @Model.ContentExperimentPageSettings.ContentExperimentScript
+}

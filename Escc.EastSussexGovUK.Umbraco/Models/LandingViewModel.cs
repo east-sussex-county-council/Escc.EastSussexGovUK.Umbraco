@@ -1,6 +1,4 @@
-﻿using Escc.EastSussexGovUK.UmbracoViews.ViewModels;
-
-namespace Escc.EastSussexGovUK.Umbraco.Models
+﻿namespace Escc.EastSussexGovUK.Umbraco.Models
 {
     /// <summary>
     /// View model for the landing template

@@ -45,6 +45,7 @@ UpgradeLog*.htm
 [Aa]pp_Browsers/
 Escc.EastSussexGovUK.Umbraco/App_Plugins/Escc.Umbraco.PropertyEditors.*/*
 Escc.EastSussexGovUK.Umbraco/App_Plugins/Escc.Umbraco.DataTypes.MediaUsage
+Escc.EastSussexGovUK.Umbraco.Tests/App_Plugins/
 [Ii]nstall/
 */[Cc]onfig/Splashes/
 [Dd]efault.aspx
@@ -57,12 +58,10 @@ dummy.txt
 
 # Files imported by ESCC NuGet packages
 **/TinyMCE-*.css
-*/Views/Layouts*
 */Views/TermDates/*
 !*/Views/TermDates/QuickAnswerMvcProxy.*
 */Views/Alerts*
 *RecyclingSiteFinder.ascx
-_ViewStart.cshtml
 images
 */js/libs/*
 */MarriageSkin/*

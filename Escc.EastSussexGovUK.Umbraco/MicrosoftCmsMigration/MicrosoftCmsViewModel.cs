@@ -1,4 +1,4 @@
-﻿using Escc.EastSussexGovUK.UmbracoViews.ViewModels;
+﻿using Escc.EastSussexGovUK.Umbraco.Models;
 
 namespace Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration
 {
