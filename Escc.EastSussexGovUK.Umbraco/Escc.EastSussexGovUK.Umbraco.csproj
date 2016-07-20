@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\UmbracoCms.7.2.8\build\UmbracoCms.props" Condition="Exists('..\packages\UmbracoCms.7.2.8\build\UmbracoCms.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
-  <Import Project="..\packages\UmbracoCms.7.2.8\build\UmbracoCms.props" Condition="Exists('..\packages\UmbracoCms.7.2.8\build\UmbracoCms.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -10,29 +10,21 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{2A2881F4-EC23-4C6A-86D6-3086F957CFF5}</ProjectGuid>
-    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <ProjectGuid>{D893DAC9-C4E3-4118-9346-82BD34E33AF6}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Escc.EastSussexGovUK.Umbraco</RootNamespace>
     <AssemblyName>Escc.EastSussexGovUK.Umbraco</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
+    <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <RestorePackages>true</RestorePackages>
-    <TargetFrameworkProfile />
-    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <OldToolsVersion>12.0</OldToolsVersion>
-    <UpgradeBackupLocation />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,6 +34,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>S:\_Standards\VS.net Code Analysis\EsccWebTeam.CodeAnalysis.WebApp.Strict.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -57,24 +51,24 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="AutoMapper, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\AutoMapper.3.0.0\lib\net40\AutoMapper.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="AutoMapper.Net4, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\AutoMapper.3.0.0\lib\net40\AutoMapper.Net4.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="businesslogic, Version=1.0.5675.23468, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.2.8\lib\businesslogic.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ClientDependency.Core, Version=1.9.9.1, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\ClientDependency.1.9.9.1\lib\net45\ClientDependency.Core.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="ClientDependency.Core.Mvc, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\ClientDependency-Mvc.1.8.0.0\lib\net45\ClientDependency.Core.Mvc.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="cms, Version=1.0.5675.23468, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.2.8\lib\cms.dll</HintPath>
@@ -85,23 +79,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="CookComputing.XmlRpcV2, Version=2.5.0.0, Culture=neutral, PublicKeyToken=a7d6e17aa302004d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\xmlrpcnet.2.5.0\lib\net20\CookComputing.XmlRpcV2.dll</HintPath>
-    </Reference>
-    <Reference Include="Dapper, Version=1.40.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dapper.1.42\lib\net45\Dapper.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Escc.ActiveDirectory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.ActiveDirectory.1.0.0\lib\Escc.ActiveDirectory.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.AddressAndPersonalDetails, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Escc.AddressAndPersonalDetails.2.0.0\lib\Escc.AddressAndPersonalDetails.dll</HintPath>
-    </Reference>
-    <Reference Include="Escc.AddressAndPersonalDetails.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.AddressAndPersonalDetails.Controls.2.0.0\lib\Escc.AddressAndPersonalDetails.Controls.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Alerts.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -116,10 +98,6 @@
       <HintPath>..\packages\Escc.ClientDependencyFramework.Umbraco.1.0.5\lib\Escc.ClientDependencyFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Escc.ClientDependencyFramework.WebForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Escc.ClientDependencyFramework.WebForms.1.0.0\lib\Escc.ClientDependencyFramework.WebForms.dll</HintPath>
-    </Reference>
     <Reference Include="Escc.Dates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Dates.2.0.1\lib\Escc.Dates.dll</HintPath>
       <Private>True</Private>
@@ -132,18 +110,20 @@
       <HintPath>..\packages\Escc.Elibrary.1.0.0\lib\Escc.Elibrary.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Escc.Exceptions.Soap">
+    <Reference Include="Escc.Exceptions.Soap, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Exceptions.Soap.1.0.0\lib\Escc.Exceptions.Soap.dll</HintPath>
-    </Reference>
-    <Reference Include="Escc.FormControls.WebForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.FormControls.WebForms.1.1.2\lib\Escc.FormControls.WebForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Escc.Geo">
+    <Reference Include="Escc.FormControls.WebForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.FormControls.WebForms.1.1.3\lib\Escc.FormControls.WebForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Escc.Geo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Geo.1.0.0.0\lib\Escc.Geo.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Html, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Html.1.1.0\lib\Escc.Html.dll</HintPath>
+      <HintPath>..\packages\Escc.Html.2.0.0\lib\Escc.Html.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Net, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
@@ -183,7 +163,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.PropertyEditors, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.PropertyEditors.3.0.2\lib\Escc.Umbraco.PropertyEditors.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.PropertyEditors.3.0.3\lib\Escc.Umbraco.PropertyEditors.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.RecycleBinManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -198,45 +178,45 @@
       <HintPath>..\packages\Escc.Umbraco.UserAccessWebService.2.0.0\lib\Escc.Umbraco.UserAccessWebService.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Escc.Web.Metadata, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Web.Metadata.1.1.1\lib\Escc.Web.Metadata.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Examine, Version=0.1.65.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Examine.0.1.65.0\lib\Examine.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Exceptionless">
+    <Reference Include="Exceptionless, Version=1.5.2121.0, Culture=neutral, PublicKeyToken=fc181f0a46f65747, processorArchitecture=MSIL">
       <HintPath>..\packages\Exceptionless.1.5.2121\lib\net45\Exceptionless.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Exceptionless.Models">
+    <Reference Include="Exceptionless.Models, Version=1.5.2121.0, Culture=neutral, PublicKeyToken=fc181f0a46f65747, processorArchitecture=MSIL">
       <HintPath>..\packages\Exceptionless.1.5.2121\lib\net45\Exceptionless.Models.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Exceptionless.Mvc">
+    <Reference Include="Exceptionless.Mvc, Version=1.5.2121.0, Culture=neutral, PublicKeyToken=fc181f0a46f65747, processorArchitecture=MSIL">
       <HintPath>..\packages\Exceptionless.Mvc.1.5.2121\lib\net45\Exceptionless.Mvc.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="ExCSS">
-      <HintPath>..\packages\ExCSS.2.0.5\lib\net45\ExCSS.dll</HintPath>
+    <Reference Include="ExCSS, Version=2.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExCSS.2.0.5\lib\net451\ExCSS.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.4.9.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Humanizer, Version=2.0.1.0, Culture=neutral, PublicKeyToken=979442b78dfc278e, processorArchitecture=MSIL">
-      <HintPath>..\packages\Humanizer.Core.2.0.1\lib\dotnet\Humanizer.dll</HintPath>
+    <Reference Include="Humanizer, Version=2.1.0.0, Culture=neutral, PublicKeyToken=979442b78dfc278e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Humanizer.Core.2.1.0\lib\netstandard1.0\Humanizer.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="ImageProcessor, Version=1.9.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\ImageProcessor.1.9.5.0\lib\ImageProcessor.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="ImageProcessor.Web, Version=3.3.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\ImageProcessor.Web.3.3.1.0\lib\net45\ImageProcessor.Web.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="interfaces, Version=1.0.5675.23466, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.2.8\lib\interfaces.dll</HintPath>
@@ -247,8 +227,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Lucene.Net, Version=2.9.4.1, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Lucene.Net.2.9.4.1\lib\net40\Lucene.Net.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.ApplicationBlocks.Data, Version=1.0.1559.20655, Culture=neutral">
       <HintPath>..\packages\UmbracoCms.Core.7.2.8\lib\Microsoft.ApplicationBlocks.Data.dll</HintPath>
@@ -260,45 +240,43 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Data.Edm, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Data.Edm.5.6.2\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Data.OData, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Data.OData.5.6.2\lib\net40\Microsoft.Data.OData.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Data.Services.Client, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Data.Services.Client.5.6.2\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes">
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.1\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Configuration">
+    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.1.8.0.0\lib\net35-full\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.ServiceRuntime, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Microsoft.WindowsAzure.ServiceRuntime.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Storage">
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=4.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WindowsAzure.Storage.4.3.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="MiniProfiler, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\MiniProfiler.2.1.0\lib\net40\MiniProfiler.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Moriyama.Cloud, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Moriyama.Cloud.1.0.2\lib\Moriyama.Cloud.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.9.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySql.Data.6.9.7\lib\net45\MySql.Data.dll</HintPath>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -306,17 +284,13 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Our.Umbraco.PropertyEditorConverters, Version=2.1.5.35, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Our.Umbraco.CoreValueConverters.2.1.5\lib\net45\Our.Umbraco.PropertyEditorConverters.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="SQLCE4Umbraco, Version=1.0.5675.23469, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.2.8\lib\SQLCE4Umbraco.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data.Services.Client" />
     <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.2.8\lib\System.Data.SqlServerCe.dll</HintPath>
       <Private>True</Private>
@@ -325,64 +299,65 @@
       <HintPath>..\packages\UmbracoCms.Core.7.2.8\lib\System.Data.SqlServerCe.Entity.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
     </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Spatial, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\System.Spatial.5.6.2\lib\net40\System.Spatial.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Helpers">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.Http">
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.Http.WebHost">
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.Mvc">
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.Razor">
-      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.WebPages">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.WebPages.Deployment">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.WebPages.Razor">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Abstractions" />
-    <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="System.Net.Http">
-    </Reference>
-    <Reference Include="System.Net.Http.WebRequest">
-    </Reference>
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="TidyNet, Version=1.0.0.0, Culture=neutral">
       <HintPath>..\packages\UmbracoCms.Core.7.2.8\lib\TidyNet.dll</HintPath>
       <Private>True</Private>
@@ -429,373 +404,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiControllers\LocationController.cs" />
-    <Compile Include="ApiControllers\MediaController.cs" />
-    <Compile Include="ApiControllers\UmbracoSetupApiController.cs" />
-    <Compile Include="ApiControllers\WasteTypesController.cs" />
-    <Compile Include="ApiControllers\WebApiConfig.cs" />
-    <Compile Include="ApiControllers\WebChatController.cs" />
-    <Compile Include="ContentFinders\GuidePrintViewContentFinder.cs" />
-    <Compile Include="ContentFinders\GuidePrintViewEventHandler.cs" />
-    <Compile Include="Controllers\CampaignContentController.cs" />
-    <Compile Include="Controllers\CampaignLandingController.cs" />
-    <Compile Include="Controllers\ChildcareController.cs" />
-    <Compile Include="Controllers\CouncilOfficeController.cs" />
-    <Compile Include="Controllers\CouncilPlanBudgetPageController.cs" />
-    <Compile Include="Controllers\CouncilPlanHomePageController.cs" />
-    <Compile Include="Controllers\CouncilPlanMonitoringPageController.cs" />
-    <Compile Include="Controllers\CouncilPlanPrioritiesPageController.cs" />
-    <Compile Include="Controllers\CouncilPlanTopicPageController.cs" />
-    <Compile Include="Controllers\DayCentreController.cs" />
-    <Compile Include="Controllers\GuideController.cs" />
-    <Compile Include="Controllers\GuideStepController.cs" />
-    <Compile Include="Controllers\HomePageController.cs" />
-    <Compile Include="Controllers\HomePageItemsController.cs" />
-    <Compile Include="Controllers\LandingController.cs" />
-    <Compile Include="Controllers\LibraryController.cs" />
-    <Compile Include="Controllers\LocationController.cs" />
-    <Compile Include="Controllers\MobileLibraryStopController.cs" />
-    <Compile Include="Controllers\ParkController.cs" />
-    <Compile Include="Controllers\PersonController.cs" />
-    <Compile Include="Controllers\RecyclingSiteController.cs" />
-    <Compile Include="Controllers\RegistrationOfficeController.cs" />
-    <Compile Include="Controllers\SportLocationController.cs" />
-    <Compile Include="Controllers\TaskController.cs" />
-    <Compile Include="Controllers\FormDownloadPageController.cs" />
-    <Compile Include="Controllers\LandingPageWithPicturesController.cs" />
-    <Compile Include="Controllers\MapController.cs" />
-    <Compile Include="Controllers\StandardDownloadPageController.cs" />
-    <Compile Include="Controllers\StandardLandingPageController.cs" />
-    <Compile Include="Controllers\StandardTopicPageController.cs" />
-    <Compile Include="DocumentTypes\CampaignTemplates\CampaignContentContentTab.cs" />
-    <Compile Include="DocumentTypes\CampaignTemplates\CampaignContentDesignTab.cs" />
-    <Compile Include="DocumentTypes\CampaignTemplates\CampaignContentDocumentType.cs" />
-    <Compile Include="DocumentTypes\CampaignTemplates\CampaignLandingContentTab.cs" />
-    <Compile Include="DocumentTypes\CampaignTemplates\CampaignLandingDesignTab.cs" />
-    <Compile Include="DocumentTypes\CampaignTemplates\CampaignLandingDocumentType.cs" />
-    <Compile Include="DocumentTypes\CampaignTemplates\QuoteColourDataType.cs" />
-    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanBudgetPageContentTab.cs" />
-    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanBudgetPageDocumentType.cs" />
-    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanHomePageContentTab.cs" />
-    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanHomePageDocumentType.cs" />
-    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanMonitoringPageContentTab.cs" />
-    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanMonitoringPageDocumentType.cs" />
-    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanPrioritiesPageContentTab.cs" />
-    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanPrioritiesPageDocumentType.cs" />
-    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanTopicPageContentTab.cs" />
-    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanTopicPageDocumentType.cs" />
-    <Compile Include="DocumentTypes\CouncilPlan\PriorityDataType.cs" />
-    <Compile Include="DocumentTypes\CustomerFocusBase\CustomerFocusBaseDocumentType.cs" />
-    <Compile Include="DocumentTypes\FormDownload\FormDownloadContentTab.cs" />
-    <Compile Include="DocumentTypes\FormDownload\FormDownloadDocumentType.cs" />
-    <Compile Include="DocumentTypes\Guide\GuideDocumentType.cs" />
-    <Compile Include="DocumentTypes\Guide\GuideStepContentTab.cs" />
-    <Compile Include="DocumentTypes\Guide\GuideStepDocumentType.cs" />
-    <Compile Include="DocumentTypes\HomePage\HomePageContentTab.cs" />
-    <Compile Include="DocumentTypes\HomePage\HomePageDocumentType.cs" />
-    <Compile Include="DocumentTypes\HomePage\HomePageItemContentTab.cs" />
-    <Compile Include="DocumentTypes\HomePage\HomePageItemDocumentType.cs" />
-    <Compile Include="DocumentTypes\HomePage\HomePageItemsDocumentType.cs" />
-    <Compile Include="DocumentTypes\LandingPageWithPictures\LandingPageWithPicturesContentTab.cs" />
-    <Compile Include="DocumentTypes\LandingPageWithPictures\LandingPageWithPicturesDocumentType.cs" />
-    <Compile Include="DocumentTypes\Landing\LandingContentTab.cs" />
-    <Compile Include="DocumentTypes\Landing\LandingDocumentType.cs" />
-    <Compile Include="DocumentTypes\Landing\LandingPageLayoutDataType.cs" />
-    <Compile Include="DocumentTypes\LegacyBase\LegacyBaseDocumentType.cs" />
-    <Compile Include="DocumentTypes\Location\ChildcareDocumentType.cs" />
-    <Compile Include="DocumentTypes\Location\CouncilOfficeDocumentType.cs" />
-    <Compile Include="DocumentTypes\Location\DayCentreDocumentType.cs" />
-    <Compile Include="DocumentTypes\Location\LibraryDocumentType.cs" />
-    <Compile Include="DocumentTypes\Location\LocationContentTab.cs" />
-    <Compile Include="DocumentTypes\Location\LocationDocumentType.cs" />
-    <Compile Include="DocumentTypes\Location\MobileLibraryStopDocumentType.cs" />
-    <Compile Include="DocumentTypes\Location\OpeningHoursDataType.cs" />
-    <Compile Include="DocumentTypes\Location\ParkDocumentType.cs" />
-    <Compile Include="DocumentTypes\Location\RecyclingSiteContentTab.cs" />
-    <Compile Include="DocumentTypes\Location\RecyclingSiteDocumentType.cs" />
-    <Compile Include="DocumentTypes\Location\RegistrationOfficeDocumentType.cs" />
-    <Compile Include="DocumentTypes\Location\ResponsibleAuthorityDataType.cs" />
-    <Compile Include="DocumentTypes\Location\SportLocationDocumentType.cs" />
-    <Compile Include="DocumentTypes\Location\WasteTypesDataType.cs" />
-    <Compile Include="DocumentTypes\Map\MapContentTab.cs" />
-    <Compile Include="DocumentTypes\Map\MapDocumentType.cs" />
-    <Compile Include="DocumentTypes\Person\PersonContentTab.cs" />
-    <Compile Include="DocumentTypes\Person\PersonDocumentType.cs" />
-    <Compile Include="DocumentTypes\StandardDownloadPage\StandardDownloadPageContentTab.cs" />
-    <Compile Include="DocumentTypes\StandardDownloadPage\StandardDownloadPageDocumentType.cs" />
-    <Compile Include="DocumentTypes\StandardLandingPage\LandingPageColumnsDataType.cs" />
-    <Compile Include="DocumentTypes\StandardLandingPage\LandingPageDescriptionsDataType.cs" />
-    <Compile Include="DocumentTypes\StandardLandingPage\StandardLandingPageContentTab.cs" />
-    <Compile Include="DocumentTypes\StandardLandingPage\StandardLandingPageDocumentType.cs" />
-    <Compile Include="DocumentTypes\StandardLandingPage\StandardLandingPageEventHandler.cs" />
-    <Compile Include="DocumentTypes\StandardTopicPage\StandardTopicPageContentTab.cs" />
-    <Compile Include="DocumentTypes\StandardTopicPage\StandardTopicPageDocumentType.cs" />
-    <Compile Include="DocumentTypes\StandardTopicPage\TopicPageLayoutDataType.cs" />
-    <Compile Include="DocumentTypes\Task\TaskContentTab.cs" />
-    <Compile Include="DocumentTypes\Task\TaskDocumentType.cs" />
-    <Compile Include="Errors\HttpStatusFromConfiguration.cs" />
-    <Compile Include="Errors\NotFoundContentFinder.cs" />
-    <Compile Include="Errors\RegisterErrorsEventHandler.cs" />
-    <Compile Include="Errors\UmbracoCustomErrorsModule.cs" />
-    <Compile Include="MicrosoftCmsMigration\CmsUtilities.cs" />
-    <Compile Include="MicrosoftCmsMigration\CustomProperty.cs" />
-    <Compile Include="MicrosoftCmsMigration\MicrosoftCmsPageController.cs" />
-    <Compile Include="MicrosoftCmsMigration\MicrosoftCmsUrlRedirectionModule.cs" />
-    <Compile Include="MicrosoftCmsMigration\MicrosoftCmsViewModel.cs" />
-    <Compile Include="MicrosoftCmsMigration\Placeholders\AlternativeAttachmentPlaceholderControl.cs" />
-    <Compile Include="MicrosoftCmsMigration\Placeholders\FormAttachmentPlaceholderControl.cs" />
-    <Compile Include="MicrosoftCmsMigration\Placeholders\FormUrlPlaceholderControl.cs" />
-    <Compile Include="MicrosoftCmsMigration\Placeholders\MainAttachmentPlaceholderControl.cs" />
-    <Compile Include="MicrosoftCmsMigration\Placeholders\Placeholder.cs" />
-    <Compile Include="MicrosoftCmsMigration\Placeholders\PlaceholderCollection.cs" />
-    <Compile Include="MicrosoftCmsMigration\Placeholders\PlaceholderControlEventArgs.cs" />
-    <Compile Include="MicrosoftCmsMigration\Placeholders\PlaceholderResources.Designer.cs" />
-    <Compile Include="MicrosoftCmsMigration\Placeholders\RawXhtmlPlaceholderControl.cs" />
-    <Compile Include="MicrosoftCmsMigration\Placeholders\RichHtmlPlaceholderControl.cs" />
-    <Compile Include="MicrosoftCmsMigration\Placeholders\SingleAttachmentPlaceholderControl.cs" />
-    <Compile Include="MicrosoftCmsMigration\Placeholders\TextPlaceholderControl.cs" />
-    <Compile Include="MicrosoftCmsMigration\Placeholders\XhtmlAttachmentPlaceholderControl.cs" />
-    <Compile Include="MicrosoftCmsMigration\Placeholders\XhtmlImagePlaceholderControl.cs" />
-    <Compile Include="MicrosoftCmsMigration\PresentationModeContainer.cs" />
-    <Compile Include="Models\CampaignContentViewModel.cs" />
-    <Compile Include="Models\CampaignLandingViewModel.cs" />
-    <Compile Include="Models\GuideStepViewModel.cs" />
-    <Compile Include="Models\GuideViewModel.cs" />
-    <Compile Include="Models\LandingViewModel.cs" />
-    <Compile Include="Models\LocationApiResult.cs" />
-    <Compile Include="Models\LocationViewModel.cs" />
-    <Compile Include="Models\OpeningTimes.cs" />
-    <Compile Include="Models\PersonViewModel.cs" />
-    <Compile Include="Models\TaskViewModel.cs" />
-    <Compile Include="RichTextHtmlFormatters\ElibraryLinkFormatter.cs" />
-    <Compile Include="RichTextHtmlFormatters\UseFormForEmailLinksFormatter.cs" />
-    <Compile Include="Services\BaseViewModelBuilder.cs" />
-    <Compile Include="Services\IPageTitleFilter.cs" />
-    <Compile Include="Services\RelatedLinksModelBuilder.cs" />
-    <Compile Include="Services\RemoveUmbracoNumericSuffixFilter.cs" />
-    <Compile Include="Services\UmbracoEastSussex1SpaceService.cs" />
-    <Compile Include="Services\UmbracoEscisService.cs" />
-    <Compile Include="Services\UmbracoLatestService.cs" />
-    <Compile Include="Services\UmbracoSocialMediaService.cs" />
-    <Compile Include="Services\UmbracoWebChatSettingsService.cs" />
-    <Compile Include="Models\BaseViewModel.cs" />
-    <Compile Include="Models\BaseViewModelWithInheritedContent.cs" />
-    <Compile Include="Models\GuideNavigationLink.cs" />
-    <Compile Include="Models\LandingNavigationLayout.cs" />
-    <Compile Include="Models\LandingNavigationViewModel.cs" />
-    <Compile Include="Models\LandingSectionViewModel.cs" />
-    <Compile Include="Models\UmbracoMediaApiResult.cs" />
-    <Compile Include="Views\CouncilPlanRelated.ascx.cs">
-      <DependentUpon>CouncilPlanRelated.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\CouncilPlanRelated.ascx.designer.cs">
-      <DependentUpon>CouncilPlanRelated.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="MicrosoftCmsMigration\UserControls\SectionNavigationSettings.cs" />
-    <Compile Include="Models\HomePageItemViewModel.cs" />
-    <Compile Include="Models\HomePageViewModel.cs" />
-    <Compile Include="Models\RssViewModel.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\CouncilPlanBudgetPage.ascx.cs">
-      <DependentUpon>CouncilPlanBudgetPage.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\CouncilPlanBudgetPage.ascx.designer.cs">
-      <DependentUpon>CouncilPlanBudgetPage.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\CouncilPlanHomePage.ascx.cs">
-      <DependentUpon>CouncilPlanHomePage.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\CouncilPlanHomePage.ascx.designer.cs">
-      <DependentUpon>CouncilPlanHomePage.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\CouncilPlanMenu.ascx.cs">
-      <DependentUpon>CouncilPlanMenu.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\CouncilPlanMenu.ascx.designer.cs">
-      <DependentUpon>CouncilPlanMenu.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\CouncilPlanMonitoringPage.ascx.cs">
-      <DependentUpon>CouncilPlanMonitoringPage.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\CouncilPlanMonitoringPage.ascx.designer.cs">
-      <DependentUpon>CouncilPlanMonitoringPage.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\CouncilPlanPrioritiesPage.ascx.cs">
-      <DependentUpon>CouncilPlanPrioritiesPage.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\CouncilPlanPrioritiesPage.ascx.designer.cs">
-      <DependentUpon>CouncilPlanPrioritiesPage.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\CouncilPlanTopicPage.ascx.cs">
-      <DependentUpon>CouncilPlanTopicPage.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\CouncilPlanTopicPage.ascx.designer.cs">
-      <DependentUpon>CouncilPlanTopicPage.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\CouncilPlanUtility.cs" />
-    <Compile Include="Views\FormDownloadPage.ascx.cs">
-      <DependentUpon>FormDownloadPage.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\FormDownloadPage.ascx.designer.cs">
-      <DependentUpon>FormDownloadPage.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\FormDownloadPageResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FormDownloadPageResources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\LandingPageWithPictures.ascx.cs">
-      <DependentUpon>LandingPageWithPictures.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\LandingPageWithPictures.ascx.designer.cs">
-      <DependentUpon>LandingPageWithPictures.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Layouts\BreadcrumbTrail.ascx.cs">
-      <DependentUpon>BreadcrumbTrail.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Layouts\BreadcrumbTrail.ascx.designer.cs">
-      <DependentUpon>BreadcrumbTrail.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Layouts\BreadcrumbTrailMobile.ascx.cs">
-      <DependentUpon>BreadcrumbTrailMobile.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Layouts\BreadcrumbTrailMobile.ascx.designer.cs">
-      <DependentUpon>BreadcrumbTrailMobile.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Layouts\MasterPageControl.ascx.cs">
-      <DependentUpon>MasterPageControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Layouts\MasterPageControl.ascx.designer.cs">
-      <DependentUpon>MasterPageControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Layouts\MasterPageControlData.cs" />
-    <Compile Include="Views\Layouts\UmbracoBreadcrumbProvider.cs" />
-    <Compile Include="Views\Map.ascx.cs">
-      <DependentUpon>Map.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Map.ascx.designer.cs">
-      <DependentUpon>Map.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="MicrosoftCmsMigration\UserControls\RelatedLinksMvc.ascx.cs">
-      <DependentUpon>RelatedLinksMvc.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MicrosoftCmsMigration\UserControls\RelatedLinksMvc.ascx.designer.cs">
-      <DependentUpon>RelatedLinksMvc.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="MicrosoftCmsMigration\UserControls\SectionNavigationMvc.ascx.cs">
-      <DependentUpon>SectionNavigationMvc.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MicrosoftCmsMigration\UserControls\SectionNavigationMvc.ascx.designer.cs">
-      <DependentUpon>SectionNavigationMvc.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\StandardDownloadPage.ascx.cs">
-      <DependentUpon>StandardDownloadPage.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\StandardDownloadPage.ascx.designer.cs">
-      <DependentUpon>StandardDownloadPage.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\StandardLandingPage.ascx.cs">
-      <DependentUpon>StandardLandingPage.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\StandardLandingPage.ascx.designer.cs">
-      <DependentUpon>StandardLandingPage.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\StandardTopicPage.ascx.cs">
-      <DependentUpon>StandardTopicPage.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\StandardTopicPage.ascx.designer.cs">
-      <DependentUpon>StandardTopicPage.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\TermDates\QuickAnswerMvcProxy.ascx.cs">
-      <DependentUpon>QuickAnswerMvcProxy.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\TermDates\QuickAnswerMvcProxy.ascx.designer.cs">
-      <DependentUpon>QuickAnswerMvcProxy.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Topic\FloodAlerts.ascx.cs">
-      <DependentUpon>FloodAlerts.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Topic\FloodAlerts.ascx.designer.cs">
-      <DependentUpon>FloodAlerts.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Topic\SectionLayoutConfigurationCollection.cs" />
-    <Compile Include="Views\Topic\SectionLayoutConfigurationElement.cs" />
-    <Compile Include="Views\Topic\SectionLayoutConfigurationSection.cs" />
-    <Compile Include="Views\Topic\SectionLayoutManager.cs" />
-    <Compile Include="Views\Topic\TopicSection.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Topic\TopicSection_Alternative.ascx.cs">
-      <DependentUpon>TopicSection_Alternative.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Topic\TopicSection_Alternative.ascx.designer.cs">
-      <DependentUpon>TopicSection_Alternative.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Topic\TopicSection_FeaturedImage.ascx.cs">
-      <DependentUpon>TopicSection_FeaturedImage.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Topic\TopicSection_FeaturedImage.ascx.designer.cs">
-      <DependentUpon>TopicSection_FeaturedImage.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Topic\TopicSection_FloodAlerts.ascx.cs">
-      <DependentUpon>TopicSection_FloodAlerts.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Topic\TopicSection_FloodAlerts.ascx.designer.cs">
-      <DependentUpon>TopicSection_FloodAlerts.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Topic\TopicSection_ImageRowBorderless.ascx.cs">
-      <DependentUpon>TopicSection_ImageRowBorderless.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Topic\TopicSection_ImageRowBorderless.ascx.designer.cs">
-      <DependentUpon>TopicSection_ImageRowBorderless.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Topic\TopicSection_Normal.ascx.cs">
-      <DependentUpon>TopicSection_Normal.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Topic\TopicSection_Normal.ascx.designer.cs">
-      <DependentUpon>TopicSection_Normal.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Topic\TopicSection_TermDates.ascx.cs">
-      <DependentUpon>TopicSection_TermDates.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Topic\TopicSection_TermDates.ascx.designer.cs">
-      <DependentUpon>TopicSection_TermDates.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Topic\TopicSection_SchoolClosures.ascx.cs">
-      <DependentUpon>TopicSection_SchoolClosures.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Topic\TopicSection_SchoolClosures.ascx.designer.cs">
-      <DependentUpon>TopicSection_SchoolClosures.ascx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="apple-touch-icon-114x114.png" />
     <Content Include="apple-touch-icon-57x57.png" />
     <Content Include="apple-touch-icon-72x72.png" />
@@ -804,7 +412,6 @@
     <Content Include="apple-touch-icon-precomposed-72x72.png" />
     <Content Include="apple-touch-icon-precomposed.png" />
     <Content Include="apple-touch-icon.png" />
-    <None Include="App_Plugins\dummy.txt" />
     <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.controller.js" />
     <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.html" />
     <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.resource.js" />
@@ -822,6 +429,9 @@
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\styles.css" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.TwitterScriptPropertyEditor\editor.html" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.TwitterScriptPropertyEditor\validate.js" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\editor.html" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\UKLocationPropertyEditor.css" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\UKLocationPropertyEditor.js" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\editor.html" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\validate.js" />
     <Content Include="App_Plugins\OpeningSoon\OpeningSoon.Controller.js" />
@@ -830,28 +440,6 @@
     <Content Include="App_Plugins\OpeningSoon\scripts\jquery.timepicker.css" />
     <Content Include="App_Plugins\OpeningSoon\scripts\jquery.timepicker.js" />
     <Content Include="App_Plugins\OpeningSoon\scripts\jquery.timepicker.min.js" />
-    <Content Include="Config\ClientDependency.config" />
-    <Content Include="Config\FileSystemProviders.config" />
-    <Content Include="Config\grid.editors.config.js" />
-    <Content Include="Config\splashes\booting.aspx" />
-    <Content Include="Config\splashes\noNodes.aspx" />
-    <Content Include="Config\tinyMceConfig.config" />
-    <Content Include="App_Browsers\Form.browser" />
-    <Content Include="App_Browsers\w3cvalidator.browser" />
-    <Content Include="Config\UrlRewriting.config" />
-    <Content Include="Config\umbracoSettings.config" />
-    <Content Include="Config\trees.config" />
-    <Content Include="Config\scripting.config" />
-    <Content Include="Config\metablogConfig.config" />
-    <Content Include="Config\log4net.config" />
-    <Content Include="Config\feedProxy.config" />
-    <Content Include="Config\ExamineSettings.config" />
-    <Content Include="Config\ExamineIndex.config" />
-    <Content Include="Config\EmbeddedMedia.config" />
-    <Content Include="Config\Dashboard.config" />
-    <Content Include="Config\BaseRestExtensions.config" />
-    <Content Include="Config\applications.config" />
-    <Content Include="Config\404handlers.config" />
     <Content Include="css\CampaignTemplates\campaign-large.css" />
     <Content Include="css\CampaignTemplates\campaign-medium.css" />
     <Content Include="css\CampaignTemplates\campaign-print.css" />
@@ -874,9 +462,7 @@
     <Content Include="css\TinyMCE-Content.css" />
     <Content Include="css\TinyMCE-StyleSelector-Embed.css" />
     <Content Include="css\TinyMCE-StyleSelector-Headings.css" />
-    <Content Include="default.aspx" />
     <Content Include="favicon.ico" />
-    <Content Include="Global.asax" />
     <Content Include="googledb369ad0fa294f54.html" />
     <Content Include="images\HomePage\jobs.png" />
     <Content Include="js\CampaignTemplates\campaign-landing.js" />
@@ -885,14 +471,13 @@
     <Content Include="js\CustomerFocusTemplates\location.js" />
     <Content Include="js\HomePage\homepage.js" />
     <Content Include="js\HomePage\jquery-ui-1.10.4.custom.min.js" />
-    <Content Include="js\libs\Escc.DocumentsInNewWindow.min.js" />
     <Content Include="MarriageSkin\css\min\marriage-skin-medium.css" />
     <Content Include="MarriageSkin\css\min\marriage-skin-small.css" />
     <Content Include="MarriageSkin\img\marriage-banner.jpg" />
     <Content Include="MarriageSkin\img\marriage-landing-blue.jpg" />
     <Content Include="MarriageSkin\img\marriage-landing-red.jpg" />
     <Content Include="MarriageSkin\js\min\marriage-skin.js" />
-    <Content Include="Views\CouncilPlanRelated.ascx" />
+    <None Include="packages.config" />
     <Content Include="robots.txt" />
     <Content Include="umbraco\Actions\delete.aspx" />
     <Content Include="umbraco\Actions\editContent.aspx" />
@@ -3372,6 +2957,7 @@
     <Content Include="Views\CouncilPlanMenu.ascx" />
     <Content Include="Views\CouncilPlanMonitoringPage.ascx" />
     <Content Include="Views\CouncilPlanPrioritiesPage.ascx" />
+    <Content Include="Views\CouncilPlanRelated.ascx" />
     <Content Include="Views\CouncilPlanTopicPage.ascx" />
     <Content Include="Views\FormDownloadPage.ascx" />
     <Content Include="Views\LandingPageWithPictures.ascx" />
@@ -3379,10 +2965,7 @@
     <Content Include="Views\Layouts\BreadcrumbTrailMobile.ascx" />
     <Content Include="Views\Layouts\MasterPageControl.ascx" />
     <Content Include="Views\Map.ascx" />
-    <Content Include="MicrosoftCmsMigration\UserControls\RelatedLinksMvc.ascx" />
-    <Content Include="MicrosoftCmsMigration\UserControls\SectionNavigationMvc.ascx" />
     <Content Include="Views\StandardDownloadPage.ascx" />
-    <Content Include="Views\StandardLandingPage.ascx" />
     <Content Include="Views\StandardTopicPage.ascx" />
     <Content Include="Views\TermDates\QuickAnswer.ascx" />
     <Content Include="Views\TermDates\QuickAnswerMvcProxy.ascx" />
@@ -3396,45 +2979,9 @@
     <Content Include="Views\Topic\TopicSection_ImageRowBorderless.ascx" />
     <Content Include="Views\Topic\TopicSection_Normal.ascx" />
     <Content Include="Views\Topic\TopicSection_RecyclingSiteFinder.ascx" />
-    <Content Include="Views\Topic\TopicSection_TermDates.ascx" />
     <Content Include="Views\Topic\TopicSection_SchoolClosures.ascx" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="windows-tile.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\" />
-    <Folder Include="media\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\package.manifest" />
-    <Content Include="Config\uMediaSync.config" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.BooleanPropertyEditor\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PhonePropertyEditor\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.TwitterScriptPropertyEditor\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\package.manifest" />
-    <Content Include="MarriageSkin\img\web.config" />
-    <Content Include="App_Plugins\OpeningSoon\package.manifest" />
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
+    <Content Include="Views\Topic\TopicSection_TermDates.ascx" />
     <Content Include="Views\Web.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\umbraco728\Escc.Data.Web\EsccWebTeam.Data.Web.csproj">
-      <Project>{9c56d3dd-4952-4a1b-9ad6-907a1142872f}</Project>
-      <Name>EsccWebTeam.Data.Web</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\umbraco728\Escc.EastSussexGovUK\Escc.EastSussexGovUK\EsccWebTeam.EastSussexGovUK.csproj">
-      <Project>{1426fef0-23dc-4c23-ae15-67f2527bd741}</Project>
-      <Name>EsccWebTeam.EastSussexGovUK</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
     <Content Include="Views\Partials\Grid\Editors\Rte.cshtml" />
     <Content Include="Views\Partials\Grid\Editors\Media.cshtml" />
@@ -3443,6 +2990,32 @@
     <Content Include="Views\Partials\Grid\Editors\Base.cshtml" />
     <Content Include="Views\Partials\Grid\Bootstrap3.cshtml" />
     <Content Include="Views\Partials\Grid\Bootstrap2.cshtml" />
+    <Content Include="Config\UrlRewriting.config" />
+    <Content Include="Config\umbracoSettings.config" />
+    <Content Include="Config\trees.config" />
+    <Content Include="Config\tinyMceConfig.config" />
+    <Content Include="Config\scripting.config" />
+    <Content Include="Config\metablogConfig.config" />
+    <Content Include="Config\log4net.config" />
+    <Content Include="Config\FileSystemProviders.config" />
+    <Content Include="Config\feedProxy.config" />
+    <Content Include="Config\ExamineSettings.config" />
+    <Content Include="Config\ExamineIndex.config" />
+    <Content Include="Config\EmbeddedMedia.config" />
+    <Content Include="Config\Dashboard.config" />
+    <Content Include="Config\ClientDependency.config" />
+    <Content Include="Config\BaseRestExtensions.config" />
+    <Content Include="Config\applications.config" />
+    <Content Include="Config\404handlers.config" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.BooleanPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PhonePropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.TwitterScriptPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\package.manifest" />
+    <Content Include="App_Browsers\Form.browser" />
+    <Content Include="App_Browsers\w3cvalidator.browser" />
     <Content Include="umbraco\assets\fonts\helveticons\helveticons.eot" />
     <Content Include="umbraco\assets\fonts\helveticons\helveticons.ttf" />
     <Content Include="umbraco\assets\fonts\helveticons\helveticons.woff" />
@@ -3577,42 +3150,16 @@
     <Content Include="umbraco\Xslt\Web.config" />
     <Content Include="umbraco_client\CodeMirror\Js\Mode\Razor\LICENSE" />
     <Content Include="umbraco_client\CodeMirror\Js\Mode\Sieve\LICENSE" />
-    <Content Include="Views\Alerts.cshtml" />
-    <Content Include="Views\FormDownloadPage.cshtml" />
-    <Content Include="Views\LandingPageWithPictures.cshtml" />
-    <Content Include="Views\Map.cshtml" />
-    <Content Include="Views\StandardDownloadPage.cshtml" />
-    <Content Include="Views\StandardLandingPage.cshtml" />
-    <Content Include="Views\StandardTopicPage.cshtml" />
-    <Content Include="Views\_HomePageJobSearch.cshtml" />
-    <Content Include="Views\HomePage.cshtml" />
-    <Content Include="Views\HomePageItems.cshtml" />
-    <Content Include="Views\CouncilPlanBudgetPage.cshtml" />
-    <Content Include="Views\CouncilPlanHomePage.cshtml" />
-    <Content Include="Views\CouncilPlanMonitoringPage.cshtml" />
-    <Content Include="Views\CouncilPlanPrioritiesPage.cshtml" />
-    <Content Include="Views\CouncilPlanTopicPage.cshtml" />
-    <Content Include="Views\CampaignContent.cshtml" />
-    <Content Include="Views\CampaignContentCss.cshtml" />
-    <Content Include="Views\CampaignLanding.cshtml" />
-    <Content Include="Views\CampaignLandingCss.cshtml" />
-    <Content Include="Views\Guide.cshtml" />
-    <Content Include="Views\GuideStep.cshtml" />
-    <Content Include="Views\Landing.cshtml" />
-    <Content Include="Views\Location.cshtml" />
-    <Content Include="Views\LocationVCard.cshtml" />
-    <Content Include="Views\Person.cshtml" />
-    <Content Include="Views\Task.cshtml" />
-    <Content Include="Views\Partials\_LocationIsOpen.cshtml" />
-    <Content Include="Views\Partials\_LocationJsonLD.cshtml" />
-    <Content Include="Views\Partials\_LocationOpeningTimes.cshtml" />
-    <Content Include="Views\Partials\_LocationTab1Content.cshtml" />
-    <Content Include="Views\Partials\_RelatedLinks.cshtml" />
+    <Content Include="App_Plugins\OpeningSoon\package.manifest" />
     <None Include="UrlRewriting.config.xdt" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Layouts\Desktop.cshtml" />
-    <Content Include="Views\Layouts\FullScreen.cshtml" />
-    <Content Include="Views\Layouts\Plain.cshtml" />
+    <None Include="Web.config.xdt">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="windows-tile.png" />
+    <Content Include="Views\Alerts.cshtml" />
+    <Content Include="MarriageSkin\img\web.config" />
+    <Content Include="Config\uMediaSync.config" />
+    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\package.manifest" />
     <Content Include="Views\Layouts\_Banners.cshtml" />
     <Content Include="Views\Layouts\_CmsPreview.cshtml" />
     <Content Include="Views\Layouts\_ContentExperiment.cshtml" />
@@ -3630,15 +3177,432 @@
     <Content Include="Views\Layouts\_Share.cshtml" />
     <Content Include="Views\Layouts\_SupportingContentDesktop.cshtml" />
     <Content Include="Views\Layouts\_Twitter.cshtml" />
-    <None Include="Web.config.xdt">
-      <SubType>Designer</SubType>
-    </None>
+    <Content Include="Views\Layouts\Desktop.cshtml" />
+    <Content Include="Views\Layouts\FullScreen.cshtml" />
+    <Content Include="Views\Layouts\Plain.cshtml" />
+    <Content Include="Views\_HomePageJobSearch.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\CampaignContent.cshtml" />
+    <Content Include="Views\CampaignContentCss.cshtml" />
+    <Content Include="Views\CampaignLanding.cshtml" />
+    <Content Include="Views\CampaignLandingCss.cshtml" />
+    <Content Include="Views\CouncilPlanBudgetPage.cshtml" />
+    <Content Include="Views\CouncilPlanHomePage.cshtml" />
+    <Content Include="Views\CouncilPlanMonitoringPage.cshtml" />
+    <Content Include="Views\CouncilPlanPrioritiesPage.cshtml" />
+    <Content Include="Views\CouncilPlanTopicPage.cshtml" />
+    <Content Include="Views\FormDownloadPage.cshtml" />
+    <Content Include="Views\Guide.cshtml" />
+    <Content Include="Views\GuideStep.cshtml" />
+    <Content Include="Views\HomePage.cshtml" />
+    <Content Include="Views\HomePageItems.cshtml" />
+    <Content Include="Views\Landing.cshtml" />
+    <Content Include="Views\LandingPageWithPictures.cshtml" />
+    <Content Include="Views\Location.cshtml" />
+    <Content Include="Views\LocationVCard.cshtml" />
+    <Content Include="Views\Map.cshtml" />
+    <Content Include="Views\Person.cshtml" />
+    <Content Include="Views\StandardDownloadPage.cshtml" />
+    <Content Include="Views\StandardLandingPage.cshtml" />
+    <Content Include="Views\StandardTopicPage.cshtml" />
+    <Content Include="Views\Task.cshtml" />
+    <Content Include="Views\Partials\_LocationIsOpen.cshtml" />
+    <Content Include="Views\Partials\_LocationJsonLD.cshtml" />
+    <Content Include="Views\Partials\_LocationOpeningTimes.cshtml" />
+    <Content Include="Views\Partials\_LocationTab1Content.cshtml" />
+    <Content Include="Views\Partials\_RelatedLinks.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\grid.editors.config.js" />
+    <Content Include="default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="MicrosoftCmsMigration\UserControls\RelatedLinksMvc.ascx" />
+    <Content Include="MicrosoftCmsMigration\UserControls\SectionNavigationMvc.ascx" />
+    <Content Include="Views\StandardLandingPage.ascx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApiControllers\LocationController.cs" />
+    <Compile Include="ApiControllers\MediaController.cs" />
+    <Compile Include="ApiControllers\UmbracoSetupApiController.cs" />
+    <Compile Include="ApiControllers\WasteTypesController.cs" />
+    <Compile Include="ApiControllers\WebApiConfig.cs" />
+    <Compile Include="ApiControllers\WebChatController.cs" />
+    <Compile Include="ContentFinders\GuidePrintViewContentFinder.cs" />
+    <Compile Include="ContentFinders\GuidePrintViewEventHandler.cs" />
+    <Compile Include="Controllers\CampaignContentController.cs" />
+    <Compile Include="Controllers\CampaignLandingController.cs" />
+    <Compile Include="Controllers\ChildcareController.cs" />
+    <Compile Include="Controllers\CouncilOfficeController.cs" />
+    <Compile Include="Controllers\CouncilPlanBudgetPageController.cs" />
+    <Compile Include="Controllers\CouncilPlanHomePageController.cs" />
+    <Compile Include="Controllers\CouncilPlanMonitoringPageController.cs" />
+    <Compile Include="Controllers\CouncilPlanPrioritiesPageController.cs" />
+    <Compile Include="Controllers\CouncilPlanTopicPageController.cs" />
+    <Compile Include="Controllers\DayCentreController.cs" />
+    <Compile Include="Controllers\FormDownloadPageController.cs" />
+    <Compile Include="Controllers\GuideController.cs" />
+    <Compile Include="Controllers\GuideStepController.cs" />
+    <Compile Include="Controllers\HomePageController.cs" />
+    <Compile Include="Controllers\HomePageItemsController.cs" />
+    <Compile Include="Controllers\LandingController.cs" />
+    <Compile Include="Controllers\LandingPageWithPicturesController.cs" />
+    <Compile Include="Controllers\LibraryController.cs" />
+    <Compile Include="Controllers\LocationController.cs" />
+    <Compile Include="Controllers\MapController.cs" />
+    <Compile Include="Controllers\MobileLibraryStopController.cs" />
+    <Compile Include="Controllers\ParkController.cs" />
+    <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\RecyclingSiteController.cs" />
+    <Compile Include="Controllers\RegistrationOfficeController.cs" />
+    <Compile Include="Controllers\SportLocationController.cs" />
+    <Compile Include="Controllers\StandardDownloadPageController.cs" />
+    <Compile Include="Controllers\StandardLandingPageController.cs" />
+    <Compile Include="Controllers\StandardTopicPageController.cs" />
+    <Compile Include="Controllers\TaskController.cs" />
+    <Compile Include="DocumentTypes\CampaignTemplates\CampaignContentContentTab.cs" />
+    <Compile Include="DocumentTypes\CampaignTemplates\CampaignContentDesignTab.cs" />
+    <Compile Include="DocumentTypes\CampaignTemplates\CampaignContentDocumentType.cs" />
+    <Compile Include="DocumentTypes\CampaignTemplates\CampaignLandingContentTab.cs" />
+    <Compile Include="DocumentTypes\CampaignTemplates\CampaignLandingDesignTab.cs" />
+    <Compile Include="DocumentTypes\CampaignTemplates\CampaignLandingDocumentType.cs" />
+    <Compile Include="DocumentTypes\CampaignTemplates\QuoteColourDataType.cs" />
+    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanBudgetPageContentTab.cs" />
+    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanBudgetPageDocumentType.cs" />
+    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanHomePageContentTab.cs" />
+    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanHomePageDocumentType.cs" />
+    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanMonitoringPageContentTab.cs" />
+    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanMonitoringPageDocumentType.cs" />
+    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanPrioritiesPageContentTab.cs" />
+    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanPrioritiesPageDocumentType.cs" />
+    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanTopicPageContentTab.cs" />
+    <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanTopicPageDocumentType.cs" />
+    <Compile Include="DocumentTypes\CouncilPlan\PriorityDataType.cs" />
+    <Compile Include="DocumentTypes\CustomerFocusBase\CustomerFocusBaseDocumentType.cs" />
+    <Compile Include="DocumentTypes\FormDownload\FormDownloadContentTab.cs" />
+    <Compile Include="DocumentTypes\FormDownload\FormDownloadDocumentType.cs" />
+    <Compile Include="DocumentTypes\Guide\GuideDocumentType.cs" />
+    <Compile Include="DocumentTypes\Guide\GuideStepContentTab.cs" />
+    <Compile Include="DocumentTypes\Guide\GuideStepDocumentType.cs" />
+    <Compile Include="DocumentTypes\HomePage\HomePageContentTab.cs" />
+    <Compile Include="DocumentTypes\HomePage\HomePageDocumentType.cs" />
+    <Compile Include="DocumentTypes\HomePage\HomePageItemContentTab.cs" />
+    <Compile Include="DocumentTypes\HomePage\HomePageItemDocumentType.cs" />
+    <Compile Include="DocumentTypes\HomePage\HomePageItemsDocumentType.cs" />
+    <Compile Include="DocumentTypes\LandingPageWithPictures\LandingPageWithPicturesContentTab.cs" />
+    <Compile Include="DocumentTypes\LandingPageWithPictures\LandingPageWithPicturesDocumentType.cs" />
+    <Compile Include="DocumentTypes\Landing\LandingContentTab.cs" />
+    <Compile Include="DocumentTypes\Landing\LandingDocumentType.cs" />
+    <Compile Include="DocumentTypes\Landing\LandingPageLayoutDataType.cs" />
+    <Compile Include="DocumentTypes\LegacyBase\LegacyBaseDocumentType.cs" />
+    <Compile Include="DocumentTypes\Location\ChildcareDocumentType.cs" />
+    <Compile Include="DocumentTypes\Location\CouncilOfficeDocumentType.cs" />
+    <Compile Include="DocumentTypes\Location\DayCentreDocumentType.cs" />
+    <Compile Include="DocumentTypes\Location\LibraryDocumentType.cs" />
+    <Compile Include="DocumentTypes\Location\LocationContentTab.cs" />
+    <Compile Include="DocumentTypes\Location\LocationDocumentType.cs" />
+    <Compile Include="DocumentTypes\Location\MobileLibraryStopDocumentType.cs" />
+    <Compile Include="DocumentTypes\Location\OpeningHoursDataType.cs" />
+    <Compile Include="DocumentTypes\Location\ParkDocumentType.cs" />
+    <Compile Include="DocumentTypes\Location\RecyclingSiteContentTab.cs" />
+    <Compile Include="DocumentTypes\Location\RecyclingSiteDocumentType.cs" />
+    <Compile Include="DocumentTypes\Location\RegistrationOfficeDocumentType.cs" />
+    <Compile Include="DocumentTypes\Location\ResponsibleAuthorityDataType.cs" />
+    <Compile Include="DocumentTypes\Location\SportLocationDocumentType.cs" />
+    <Compile Include="DocumentTypes\Location\WasteTypesDataType.cs" />
+    <Compile Include="DocumentTypes\Map\MapContentTab.cs" />
+    <Compile Include="DocumentTypes\Map\MapDocumentType.cs" />
+    <Compile Include="DocumentTypes\Person\PersonContentTab.cs" />
+    <Compile Include="DocumentTypes\Person\PersonDocumentType.cs" />
+    <Compile Include="DocumentTypes\StandardDownloadPage\StandardDownloadPageContentTab.cs" />
+    <Compile Include="DocumentTypes\StandardDownloadPage\StandardDownloadPageDocumentType.cs" />
+    <Compile Include="DocumentTypes\StandardLandingPage\LandingPageColumnsDataType.cs" />
+    <Compile Include="DocumentTypes\StandardLandingPage\LandingPageDescriptionsDataType.cs" />
+    <Compile Include="DocumentTypes\StandardLandingPage\StandardLandingPageContentTab.cs" />
+    <Compile Include="DocumentTypes\StandardLandingPage\StandardLandingPageDocumentType.cs" />
+    <Compile Include="DocumentTypes\StandardLandingPage\StandardLandingPageEventHandler.cs" />
+    <Compile Include="DocumentTypes\StandardTopicPage\StandardTopicPageContentTab.cs" />
+    <Compile Include="DocumentTypes\StandardTopicPage\StandardTopicPageDocumentType.cs" />
+    <Compile Include="DocumentTypes\StandardTopicPage\TopicPageLayoutDataType.cs" />
+    <Compile Include="DocumentTypes\Task\TaskContentTab.cs" />
+    <Compile Include="DocumentTypes\Task\TaskDocumentType.cs" />
+    <Compile Include="Errors\HttpStatusFromConfiguration.cs" />
+    <Compile Include="Errors\NotFoundContentFinder.cs" />
+    <Compile Include="Errors\RegisterErrorsEventHandler.cs" />
+    <Compile Include="Errors\UmbracoCustomErrorsModule.cs" />
+    <Compile Include="MicrosoftCmsMigration\CmsUtilities.cs" />
+    <Compile Include="MicrosoftCmsMigration\CustomProperty.cs" />
+    <Compile Include="MicrosoftCmsMigration\MicrosoftCmsPageController.cs" />
+    <Compile Include="MicrosoftCmsMigration\MicrosoftCmsUrlRedirectionModule.cs" />
+    <Compile Include="MicrosoftCmsMigration\MicrosoftCmsViewModel.cs" />
+    <Compile Include="MicrosoftCmsMigration\Placeholders\AlternativeAttachmentPlaceholderControl.cs" />
+    <Compile Include="MicrosoftCmsMigration\Placeholders\FormAttachmentPlaceholderControl.cs" />
+    <Compile Include="MicrosoftCmsMigration\Placeholders\FormUrlPlaceholderControl.cs" />
+    <Compile Include="MicrosoftCmsMigration\Placeholders\MainAttachmentPlaceholderControl.cs" />
+    <Compile Include="MicrosoftCmsMigration\Placeholders\Placeholder.cs" />
+    <Compile Include="MicrosoftCmsMigration\Placeholders\PlaceholderCollection.cs" />
+    <Compile Include="MicrosoftCmsMigration\Placeholders\PlaceholderControlEventArgs.cs" />
+    <Compile Include="MicrosoftCmsMigration\Placeholders\PlaceholderResources.Designer.cs" />
+    <Compile Include="MicrosoftCmsMigration\Placeholders\RawXhtmlPlaceholderControl.cs" />
+    <Compile Include="MicrosoftCmsMigration\Placeholders\RichHtmlPlaceholderControl.cs" />
+    <Compile Include="MicrosoftCmsMigration\Placeholders\SingleAttachmentPlaceholderControl.cs" />
+    <Compile Include="MicrosoftCmsMigration\Placeholders\TextPlaceholderControl.cs" />
+    <Compile Include="MicrosoftCmsMigration\Placeholders\XhtmlAttachmentPlaceholderControl.cs" />
+    <Compile Include="MicrosoftCmsMigration\Placeholders\XhtmlImagePlaceholderControl.cs" />
+    <Compile Include="MicrosoftCmsMigration\PresentationModeContainer.cs" />
+    <Compile Include="MicrosoftCmsMigration\UserControls\RelatedLinksMvc.ascx.cs">
+      <DependentUpon>RelatedLinksMvc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MicrosoftCmsMigration\UserControls\RelatedLinksMvc.ascx.designer.cs">
+      <DependentUpon>RelatedLinksMvc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MicrosoftCmsMigration\UserControls\SectionNavigationMvc.ascx.cs">
+      <DependentUpon>SectionNavigationMvc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MicrosoftCmsMigration\UserControls\SectionNavigationMvc.ascx.designer.cs">
+      <DependentUpon>SectionNavigationMvc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MicrosoftCmsMigration\UserControls\SectionNavigationSettings.cs" />
+    <Compile Include="Models\BaseViewModel.cs" />
+    <Compile Include="Models\BaseViewModelWithInheritedContent.cs" />
+    <Compile Include="Models\CampaignContentViewModel.cs" />
+    <Compile Include="Models\CampaignLandingViewModel.cs" />
+    <Compile Include="Models\GuideNavigationLink.cs" />
+    <Compile Include="Models\GuideStepViewModel.cs" />
+    <Compile Include="Models\GuideViewModel.cs" />
+    <Compile Include="Models\HomePageItemViewModel.cs" />
+    <Compile Include="Models\HomePageViewModel.cs" />
+    <Compile Include="Models\LandingNavigationLayout.cs" />
+    <Compile Include="Models\LandingNavigationViewModel.cs" />
+    <Compile Include="Models\LandingSectionViewModel.cs" />
+    <Compile Include="Models\LandingViewModel.cs" />
+    <Compile Include="Models\LocationApiResult.cs" />
+    <Compile Include="Models\LocationViewModel.cs" />
+    <Compile Include="Models\OpeningTimes.cs" />
+    <Compile Include="Models\PersonViewModel.cs" />
+    <Compile Include="Models\RssViewModel.cs" />
+    <Compile Include="Models\TaskViewModel.cs" />
+    <Compile Include="Models\UmbracoMediaApiResult.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RichTextHtmlFormatters\ElibraryLinkFormatter.cs" />
+    <Compile Include="RichTextHtmlFormatters\UseFormForEmailLinksFormatter.cs" />
+    <Compile Include="Services\BaseViewModelBuilder.cs" />
+    <Compile Include="Services\IPageTitleFilter.cs" />
+    <Compile Include="Services\RelatedLinksModelBuilder.cs" />
+    <Compile Include="Services\RemoveUmbracoNumericSuffixFilter.cs" />
+    <Compile Include="Services\UmbracoEastSussex1SpaceService.cs" />
+    <Compile Include="Services\UmbracoEscisService.cs" />
+    <Compile Include="Services\UmbracoLatestService.cs" />
+    <Compile Include="Services\UmbracoSocialMediaService.cs" />
+    <Compile Include="Services\UmbracoWebChatSettingsService.cs" />
+    <Compile Include="Views\CouncilPlanBudgetPage.ascx.cs">
+      <DependentUpon>CouncilPlanBudgetPage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\CouncilPlanBudgetPage.ascx.designer.cs">
+      <DependentUpon>CouncilPlanBudgetPage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CouncilPlanHomePage.ascx.cs">
+      <DependentUpon>CouncilPlanHomePage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\CouncilPlanHomePage.ascx.designer.cs">
+      <DependentUpon>CouncilPlanHomePage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CouncilPlanMenu.ascx.cs">
+      <DependentUpon>CouncilPlanMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\CouncilPlanMenu.ascx.designer.cs">
+      <DependentUpon>CouncilPlanMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CouncilPlanMonitoringPage.ascx.cs">
+      <DependentUpon>CouncilPlanMonitoringPage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\CouncilPlanMonitoringPage.ascx.designer.cs">
+      <DependentUpon>CouncilPlanMonitoringPage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CouncilPlanPrioritiesPage.ascx.cs">
+      <DependentUpon>CouncilPlanPrioritiesPage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\CouncilPlanPrioritiesPage.ascx.designer.cs">
+      <DependentUpon>CouncilPlanPrioritiesPage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CouncilPlanRelated.ascx.cs">
+      <DependentUpon>CouncilPlanRelated.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\CouncilPlanRelated.ascx.designer.cs">
+      <DependentUpon>CouncilPlanRelated.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CouncilPlanTopicPage.ascx.cs">
+      <DependentUpon>CouncilPlanTopicPage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\CouncilPlanTopicPage.ascx.designer.cs">
+      <DependentUpon>CouncilPlanTopicPage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CouncilPlanUtility.cs" />
+    <Compile Include="Views\FormDownloadPage.ascx.cs">
+      <DependentUpon>FormDownloadPage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\FormDownloadPage.ascx.designer.cs">
+      <DependentUpon>FormDownloadPage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormDownloadPageResources.Designer.cs">
+      <DependentUpon>FormDownloadPageResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\LandingPageWithPictures.ascx.cs">
+      <DependentUpon>LandingPageWithPictures.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\LandingPageWithPictures.ascx.designer.cs">
+      <DependentUpon>LandingPageWithPictures.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Layouts\BreadcrumbTrail.ascx.cs">
+      <DependentUpon>BreadcrumbTrail.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Layouts\BreadcrumbTrail.ascx.designer.cs">
+      <DependentUpon>BreadcrumbTrail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Layouts\BreadcrumbTrailMobile.ascx.cs">
+      <DependentUpon>BreadcrumbTrailMobile.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Layouts\BreadcrumbTrailMobile.ascx.designer.cs">
+      <DependentUpon>BreadcrumbTrailMobile.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Layouts\MasterPageControl.ascx.cs">
+      <DependentUpon>MasterPageControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Layouts\MasterPageControl.ascx.designer.cs">
+      <DependentUpon>MasterPageControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Layouts\MasterPageControlData.cs" />
+    <Compile Include="Views\Layouts\UmbracoBreadcrumbProvider.cs" />
+    <Compile Include="Views\Map.ascx.cs">
+      <DependentUpon>Map.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Map.ascx.designer.cs">
+      <DependentUpon>Map.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StandardDownloadPage.ascx.cs">
+      <DependentUpon>StandardDownloadPage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\StandardDownloadPage.ascx.designer.cs">
+      <DependentUpon>StandardDownloadPage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StandardLandingPage.ascx.cs">
+      <DependentUpon>StandardLandingPage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\StandardLandingPage.ascx.designer.cs">
+      <DependentUpon>StandardLandingPage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StandardTopicPage.ascx.cs">
+      <DependentUpon>StandardTopicPage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\StandardTopicPage.ascx.designer.cs">
+      <DependentUpon>StandardTopicPage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TermDates\QuickAnswerMvcProxy.ascx.cs">
+      <DependentUpon>QuickAnswerMvcProxy.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\TermDates\QuickAnswerMvcProxy.ascx.designer.cs">
+      <DependentUpon>QuickAnswerMvcProxy.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Topic\FloodAlerts.ascx.cs">
+      <DependentUpon>FloodAlerts.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Topic\FloodAlerts.ascx.designer.cs">
+      <DependentUpon>FloodAlerts.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Topic\SectionLayoutConfigurationCollection.cs" />
+    <Compile Include="Views\Topic\SectionLayoutConfigurationElement.cs" />
+    <Compile Include="Views\Topic\SectionLayoutConfigurationSection.cs" />
+    <Compile Include="Views\Topic\SectionLayoutManager.cs" />
+    <Compile Include="Views\Topic\TopicSection.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_Alternative.ascx.cs">
+      <DependentUpon>TopicSection_Alternative.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_Alternative.ascx.designer.cs">
+      <DependentUpon>TopicSection_Alternative.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_FeaturedImage.ascx.cs">
+      <DependentUpon>TopicSection_FeaturedImage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_FeaturedImage.ascx.designer.cs">
+      <DependentUpon>TopicSection_FeaturedImage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_FloodAlerts.ascx.cs">
+      <DependentUpon>TopicSection_FloodAlerts.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_FloodAlerts.ascx.designer.cs">
+      <DependentUpon>TopicSection_FloodAlerts.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_ImageRowBorderless.ascx.cs">
+      <DependentUpon>TopicSection_ImageRowBorderless.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_ImageRowBorderless.ascx.designer.cs">
+      <DependentUpon>TopicSection_ImageRowBorderless.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_Normal.ascx.cs">
+      <DependentUpon>TopicSection_Normal.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_Normal.ascx.designer.cs">
+      <DependentUpon>TopicSection_Normal.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_SchoolClosures.ascx.cs">
+      <DependentUpon>TopicSection_SchoolClosures.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_SchoolClosures.ascx.designer.cs">
+      <DependentUpon>TopicSection_SchoolClosures.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_TermDates.ascx.cs">
+      <DependentUpon>TopicSection_TermDates.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Topic\TopicSection_TermDates.ascx.designer.cs">
+      <DependentUpon>TopicSection_TermDates.ascx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\umbraco728\Escc.Data.Web\EsccWebTeam.Data.Web.csproj">
+      <Project>{9c56d3dd-4952-4a1b-9ad6-907a1142872f}</Project>
+      <Name>EsccWebTeam.Data.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\umbraco728\Escc.EastSussexGovUK\Escc.EastSussexGovUK\EsccWebTeam.EastSussexGovUK.csproj">
+      <Project>{1426fef0-23dc-4c23-ae15-67f2527bd741}</Project>
+      <Name>EsccWebTeam.EastSussexGovUK</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MicrosoftCmsMigration\Placeholders\PlaceholderResources.resx">
@@ -3649,6 +3613,7 @@
       <LastGenOutput>FormDownloadPageResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -3656,9 +3621,6 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
-  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
-    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
-  </Target>
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
@@ -3670,36 +3632,33 @@
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets'))" />
-    <Error Condition="!Exists('..\packages\UmbracoCms.7.2.8\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.2.8\build\UmbracoCms.props'))" />
-    <Error Condition="!Exists('..\packages\UmbracoCms.7.2.8\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.2.8\build\UmbracoCms.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.3\build\Escc.RubbishAndRecycling.SiteFinder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.3\build\Escc.RubbishAndRecycling.SiteFinder.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.1.3.7\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.1.3.7\build\Escc.Umbraco.MediaSync.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Alerts.Website.1.4.4\build\Escc.Alerts.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Alerts.Website.1.4.4\build\Escc.Alerts.Website.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Schools.TermDates.Website.1.2.1\build\Escc.Schools.TermDates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Schools.TermDates.Website.1.2.1\build\Escc.Schools.TermDates.Website.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-    <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.6.1.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.6.1.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.3.0.2\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.3.0.2\build\Escc.Umbraco.PropertyEditors.targets'))" />
+    <Error Condition="!Exists('..\packages\UmbracoCms.7.2.8\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.2.8\build\UmbracoCms.props'))" />
+    <Error Condition="!Exists('..\packages\UmbracoCms.7.2.8\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.2.8\build\UmbracoCms.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.3.0.3\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.3.0.3\build\Escc.Umbraco.PropertyEditors.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Alerts.Website.1.4.4\build\Escc.Alerts.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Alerts.Website.1.4.4\build\Escc.Alerts.Website.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Schools.TermDates.Website.1.2.1\build\Escc.Schools.TermDates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Schools.TermDates.Website.1.2.1\build\Escc.Schools.TermDates.Website.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Registration.MarriageSkin.1.0.1\build\Escc.Registration.MarriageSkin.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Registration.MarriageSkin.1.0.1\build\Escc.Registration.MarriageSkin.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Statistics.js.2.0.0\build\Escc.Statistics.js.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Statistics.js.2.0.0\build\Escc.Statistics.js.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.1.3.7\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.1.3.7\build\Escc.Umbraco.MediaSync.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.3\build\Escc.RubbishAndRecycling.SiteFinder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.3\build\Escc.RubbishAndRecycling.SiteFinder.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.6.1.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.6.1.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets'))" />
   </Target>
-  <Import Project="..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets" Condition="Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets')" />
   <Import Project="..\packages\UmbracoCms.7.2.8\build\UmbracoCms.targets" Condition="Exists('..\packages\UmbracoCms.7.2.8\build\UmbracoCms.targets')" />
-  <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.3\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.3\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
-  <Import Project="..\packages\Escc.Umbraco.MediaSync.1.3.7\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.1.3.7\build\Escc.Umbraco.MediaSync.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.PropertyEditors.3.0.3\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.3.0.3\build\Escc.Umbraco.PropertyEditors.targets')" />
   <Import Project="..\packages\Escc.Alerts.Website.1.4.4\build\Escc.Alerts.Website.targets" Condition="Exists('..\packages\Escc.Alerts.Website.1.4.4\build\Escc.Alerts.Website.targets')" />
   <Import Project="..\packages\Escc.Schools.TermDates.Website.1.2.1\build\Escc.Schools.TermDates.Website.targets" Condition="Exists('..\packages\Escc.Schools.TermDates.Website.1.2.1\build\Escc.Schools.TermDates.Website.targets')" />
-  <Import Project="..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.6.1.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.6.1.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" />
-  <Import Project="..\packages\Escc.Umbraco.PropertyEditors.3.0.2\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.3.0.2\build\Escc.Umbraco.PropertyEditors.targets')" />
   <Import Project="..\packages\Escc.Registration.MarriageSkin.1.0.1\build\Escc.Registration.MarriageSkin.targets" Condition="Exists('..\packages\Escc.Registration.MarriageSkin.1.0.1\build\Escc.Registration.MarriageSkin.targets')" />
-  <Import Project="..\packages\Escc.Statistics.js.2.0.0\build\Escc.Statistics.js.targets" Condition="Exists('..\packages\Escc.Statistics.js.2.0.0\build\Escc.Statistics.js.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.MediaSync.1.3.7\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.1.3.7\build\Escc.Umbraco.MediaSync.targets')" />
+  <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.3\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.3\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
+  <Import Project="..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.6.1.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.UmbracoDocumentTypes.6.1.0\build\Escc.EastSussexGovUK.UmbracoDocumentTypes.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
   <Target Name="AfterBuild">
-  </Target> -->
+  </Target>
+  -->
 </Project>

@@ -1,8 +1,11 @@
 ﻿using System;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CouncilPlan;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.FormDownload;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.LandingPageWithPictures;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.LegacyBase;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Map;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Person;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardDownloadPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage;
 using Escc.EastSussexGovUK.UmbracoDocumentTypes;
@@ -15,7 +18,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardLandingPage
         typeof(TaskDocumentTypeAlias), 
         typeof(LandingDocumentTypeAlias), 
         typeof(LocationDocumentTypeAlias), 
-        typeof(PersonDocumentTypeAlias),
+        typeof(PersonDocumentType),
         typeof(GuideDocumentTypeAlias),
         typeof(StandardLandingPageDocumentType),
         typeof(StandardTopicPageDocumentType), 
@@ -31,8 +34,8 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardLandingPage
         typeof(RecyclingSiteDocumentTypeAlias),
         typeof(RegistrationOfficeDocumentTypeAlias),
         typeof(SportLocationDocumentTypeAlias),
-        typeof(CampaignLandingDocumentTypeAlias),
-        typeof(CouncilPlanHomePageDocumentTypeAlias)
+        typeof(CampaignLandingDocumentType),
+        typeof(CouncilPlanHomePageDocumentType)
     }, true, BuiltInUmbracoContentTypeIcons.IconBulletedList, "", false, false, 
     Description = "Older-style landing page. For new pages, use the 'Landing' template instead.")]
     public class StandardLandingPageDocumentType : LegacyBaseDocumentType

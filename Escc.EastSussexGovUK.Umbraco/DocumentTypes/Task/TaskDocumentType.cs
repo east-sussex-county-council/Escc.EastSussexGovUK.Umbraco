@@ -1,6 +1,8 @@
 ﻿using System;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CustomerFocusBase;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Person;
 using Escc.EastSussexGovUK.UmbracoDocumentTypes;
 using Umbraco.Inception.Attributes;
 
@@ -27,8 +29,8 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task
         typeof(ParkDocumentType),
         typeof(RegistrationOfficeDocumentType),
         typeof(DayCentreDocumentType),
-        typeof(CampaignLandingDocumentTypeAlias),
-        typeof(PersonDocumentTypeAlias)
+        typeof(CampaignLandingDocumentType),
+        typeof(PersonDocumentType)
     }, true, allowAtRoot: false, icon: BuiltInUmbracoContentTypeIcons.IconShipping, 
     Description = "Something a resident wants to get done, which the council can help with. For example, pay for a service or apply for a scheme.")]
     public class TaskDocumentType : CustomerFocusBaseDocumentType

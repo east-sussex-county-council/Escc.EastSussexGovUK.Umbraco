@@ -1,7 +1,10 @@
 ﻿using System;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CouncilPlan;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.LandingPageWithPictures;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.LegacyBase;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Map;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Person;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardDownloadPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardLandingPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage;
@@ -16,7 +19,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.FormDownload
         typeof(TaskDocumentTypeAlias), 
         typeof(LandingDocumentTypeAlias), 
         typeof(LocationDocumentTypeAlias), 
-        typeof(PersonDocumentTypeAlias),
+        typeof(PersonDocumentType),
         typeof(GuideDocumentTypeAlias),
         typeof(StandardLandingPageDocumentType),
         typeof(StandardTopicPageDocumentType), 
@@ -32,8 +35,8 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.FormDownload
         typeof(RecyclingSiteDocumentTypeAlias),
         typeof(RegistrationOfficeDocumentTypeAlias),
         typeof(SportLocationDocumentTypeAlias),
-        typeof(CampaignLandingDocumentTypeAlias),
-        typeof(CouncilPlanHomePageDocumentTypeAlias)
+        typeof(CampaignLandingDocumentType),
+        typeof(CouncilPlanHomePageDocumentType)
     }, true, BuiltInUmbracoContentTypeIcons.IconAutofill, "", false, false, 
     Description = "Introduction page for a form. For new pages, use the 'Task' template instead.")]
     public class FormDownloadDocumentType : LegacyBaseDocumentType

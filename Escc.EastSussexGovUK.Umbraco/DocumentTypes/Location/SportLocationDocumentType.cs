@@ -1,4 +1,6 @@
 ﻿using System;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Person;
 using Escc.EastSussexGovUK.UmbracoDocumentTypes;
 using Umbraco.Inception.Attributes;
 
@@ -28,8 +30,8 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location
         typeof(ParkDocumentType),
         typeof(RegistrationOfficeDocumentType),
         typeof(DayCentreDocumentType),
-        typeof(CampaignLandingDocumentTypeAlias),
-        typeof(PersonDocumentTypeAlias)
+        typeof(CampaignLandingDocumentType),
+        typeof(PersonDocumentType)
        }, 
         true, MasterTemplate = "Location", Icon = BuiltInUmbracoContentTypeIcons.IconTShirt,
         Description = "A sport venue, such as a playing field or watersports centre.")]

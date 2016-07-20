@@ -1,4 +1,6 @@
 ﻿using System;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Person;
 using Escc.EastSussexGovUK.UmbracoDocumentTypes;
 using Escc.EastSussexGovUK.UmbracoDocumentTypes.Features.Latest;
 using Escc.EastSussexGovUK.UmbracoDocumentTypes.Features.SocialMedia;
@@ -17,7 +19,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.HomePage
         typeof(LandingDocumentTypeAlias),
         typeof(TaskDocumentTypeAlias),
         typeof(LocationDocumentTypeAlias),
-        typeof(PersonDocumentTypeAlias),
+        typeof(PersonDocumentType),
         typeof(LandingPageWithPicturesDocumentTypeAlias),
         typeof(GuideDocumentTypeAlias),
         typeof(StandardLandingPageDocumentTypeAlias), 
@@ -35,7 +37,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.HomePage
         typeof(RecyclingSiteDocumentTypeAlias),
         typeof(RegistrationOfficeDocumentTypeAlias),
         typeof(SportLocationDocumentTypeAlias),
-        typeof(CampaignLandingDocumentTypeAlias)
+        typeof(CampaignLandingDocumentType)
     }, true, BuiltInUmbracoContentTypeIcons.IconHome, "", true, Description = "The starting page for browsing the entire site.")]
     public class HomePageDocumentType : UmbracoGeneratedBase
     {

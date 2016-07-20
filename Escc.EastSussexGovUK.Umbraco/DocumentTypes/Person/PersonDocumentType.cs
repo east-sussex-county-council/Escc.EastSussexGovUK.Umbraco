@@ -1,4 +1,5 @@
 ﻿using System;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CustomerFocusBase;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location;
 using Escc.EastSussexGovUK.UmbracoDocumentTypes;
@@ -33,8 +34,8 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Person
         typeof(ParkDocumentType),
         typeof(RegistrationOfficeDocumentType),
         typeof(DayCentreDocumentType),
-        typeof(CampaignLandingDocumentTypeAlias),
-        typeof(PersonDocumentTypeAlias)
+        typeof(CampaignLandingDocumentType),
+        typeof(PersonDocumentType)
     }, true, allowAtRoot: false, icon: BuiltInUmbracoContentTypeIcons.IconUserFemale, 
     Description = "A profile of an ESCC employee and their role, such as the Chief Executive.")]
     public class PersonDocumentType : CustomerFocusBaseDocumentType

@@ -15,11 +15,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         // EScc.Schools.TermDates project
         [TestCase(@"Views\TermDates\QuickAnswer.ascx")]
 
-        // Escc.Umbraco project
-        [TestCase(@"App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.controller.js")]
-        
         // Escc.Umbraco.MediaSync project
         [TestCase(@"Config\uMediaSync.config")]
+        [TestCase(@"App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.controller.js")]
 
         // Escc.Umbraco.PropertyEditors project
         [TestCase(@"App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\controller.js")]

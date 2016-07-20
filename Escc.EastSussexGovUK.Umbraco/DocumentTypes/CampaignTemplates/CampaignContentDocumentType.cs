@@ -1,4 +1,5 @@
 ﻿using System;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Person;
 using Escc.EastSussexGovUK.UmbracoDocumentTypes;
 using Escc.EastSussexGovUK.UmbracoDocumentTypes.RichTextPropertyEditor;
 using Escc.Umbraco.PropertyEditors;
@@ -12,7 +13,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates
         typeof(LandingDocumentTypeAlias), 
         typeof(LocationDocumentTypeAlias),
         typeof(TaskDocumentTypeAlias), 
-        typeof(PersonDocumentTypeAlias),
+        typeof(PersonDocumentType),
         typeof(LandingPageWithPicturesDocumentTypeAlias),
         typeof(GuideDocumentTypeAlias),
         typeof(StandardLandingPageDocumentTypeAlias),
