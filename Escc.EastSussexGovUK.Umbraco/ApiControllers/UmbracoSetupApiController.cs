@@ -4,9 +4,14 @@ using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CouncilPlan;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CustomerFocusBase;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Features;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Features.Latest;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Features.SocialMedia;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Features.WebChat;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.FormDownload;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Guide;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.HomePage;
@@ -20,13 +25,10 @@ using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardDownloadPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardLandingPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task;
-using Escc.EastSussexGovUK.UmbracoDocumentTypes.Css;
-using Escc.EastSussexGovUK.UmbracoDocumentTypes.DataTypes;
-using Escc.EastSussexGovUK.UmbracoDocumentTypes.Features.Latest;
-using Escc.EastSussexGovUK.UmbracoDocumentTypes.Features.SocialMedia;
-using Escc.EastSussexGovUK.UmbracoDocumentTypes.Features.WebChat;
-using Escc.EastSussexGovUK.UmbracoDocumentTypes.RichTextPropertyEditor;
+using Escc.Umbraco.PropertyEditors.DataTypes;
+using Escc.Umbraco.PropertyEditors.RichTextPropertyEditor;
 using Escc.Umbraco.PropertyEditors.Stylesheets;
+using Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor;
 using Exceptionless;
 using ExCSS;
 using Umbraco.Inception.CodeFirst;
@@ -62,7 +64,7 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
             try
             {
                 // Create stylesheets for properties using rich text editor
-                TinyMceStylesheets.CreateStylesheets(new StylesheetService(), new Parser());
+                css.TinyMceStylesheets.CreateStylesheets(new StylesheetService(), new Parser());
 
                 // Insert data types before the document types that use them, otherwise the relevant property is not created
                 CheckboxDataType.CreateCheckboxDataType();

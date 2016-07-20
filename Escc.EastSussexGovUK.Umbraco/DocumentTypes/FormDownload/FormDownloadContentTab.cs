@@ -1,7 +1,7 @@
 ﻿using System;
-using Escc.EastSussexGovUK.UmbracoDocumentTypes.DataTypes;
-using Escc.EastSussexGovUK.UmbracoDocumentTypes.RichTextPropertyEditor;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Features;
 using Escc.Umbraco.PropertyEditors;
+using Escc.Umbraco.PropertyEditors.DataTypes;
 using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
 

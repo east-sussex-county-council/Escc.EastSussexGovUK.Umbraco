@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Escc.EastSussexGovUK.UmbracoDocumentTypes.DataTypes;
+using Escc.Umbraco.PropertyEditors.DataTypes;
 using Umbraco.Core.Models;
 using Umbraco.Inception.Attributes;
 

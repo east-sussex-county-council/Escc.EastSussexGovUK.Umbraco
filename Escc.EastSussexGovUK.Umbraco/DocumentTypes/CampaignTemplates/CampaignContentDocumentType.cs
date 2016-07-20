@@ -1,8 +1,17 @@
 ﻿using System;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.FormDownload;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Guide;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Landing;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.LandingPageWithPictures;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Map;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Person;
-using Escc.EastSussexGovUK.UmbracoDocumentTypes;
-using Escc.EastSussexGovUK.UmbracoDocumentTypes.RichTextPropertyEditor;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardDownloadPage;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardLandingPage;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task;
 using Escc.Umbraco.PropertyEditors;
+using Escc.Umbraco.PropertyEditors.RichTextPropertyEditor;
 using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
 
@@ -10,26 +19,26 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates
 {
     [UmbracoContentType("Campaign content page", "CampaignContent", new Type[]
     {
-        typeof(LandingDocumentTypeAlias), 
-        typeof(LocationDocumentTypeAlias),
-        typeof(TaskDocumentTypeAlias), 
+        typeof(LandingDocumentType), 
+        typeof(LocationDocumentType),
+        typeof(TaskDocumentType), 
         typeof(PersonDocumentType),
-        typeof(LandingPageWithPicturesDocumentTypeAlias),
-        typeof(GuideDocumentTypeAlias),
-        typeof(StandardLandingPageDocumentTypeAlias),
-        typeof(StandardTopicPageDocumentTypeAlias),
-        typeof(StandardDownloadPageDocumentTypeAlias),
-        typeof(MapDocumentTypeAlias),
-        typeof(FormDownloadPageDocumentTypeAlias),
-        typeof(RecyclingSiteDocumentTypeAlias),
-        typeof(LibraryDocumentTypeAlias),
-        typeof(MobileLibraryStopDocumentTypeAlias),
-        typeof(ChildcareDocumentTypeAlias),
-        typeof(CouncilOfficeDocumentTypeAlias),
-        typeof(SportLocationDocumentTypeAlias),
-        typeof(ParkDocumentTypeAlias),
-        typeof(RegistrationOfficeDocumentTypeAlias),
-        typeof(DayCentreDocumentTypeAlias),
+        typeof(LandingPageWithPicturesDocumentType),
+        typeof(GuideDocumentType),
+        typeof(StandardLandingPageDocumentType),
+        typeof(StandardTopicPageDocumentType),
+        typeof(StandardDownloadPageDocumentType),
+        typeof(MapDocumentType),
+        typeof(FormDownloadDocumentType),
+        typeof(RecyclingSiteDocumentType),
+        typeof(LibraryDocumentType),
+        typeof(MobileLibraryStopDocumentType),
+        typeof(ChildcareDocumentType),
+        typeof(CouncilOfficeDocumentType),
+        typeof(SportLocationDocumentType),
+        typeof(ParkDocumentType),
+        typeof(RegistrationOfficeDocumentType),
+        typeof(DayCentreDocumentType),
         typeof(CampaignLandingDocumentType),
         typeof(CampaignContentDocumentType)
     }, true, BuiltInUmbracoContentTypeIcons.IconParachuteDrop, 

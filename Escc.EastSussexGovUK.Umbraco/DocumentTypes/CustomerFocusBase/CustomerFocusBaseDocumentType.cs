@@ -1,8 +1,8 @@
 ﻿using System;
-using Escc.EastSussexGovUK.UmbracoDocumentTypes.Features.Latest;
-using Escc.EastSussexGovUK.UmbracoDocumentTypes.Features.SocialMedia;
-using Escc.EastSussexGovUK.UmbracoDocumentTypes.RichTextPropertyEditor;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Features.Latest;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Features.SocialMedia;
 using Escc.Umbraco.PropertyEditors;
+using Escc.Umbraco.PropertyEditors.RichTextPropertyEditor;
 using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
 

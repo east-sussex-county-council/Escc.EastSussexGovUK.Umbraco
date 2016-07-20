@@ -1,0 +1,2 @@
+﻿/* These styles can be made available in the TinyMCE style selector */
+.embed {-umbraco-stylesheet-property: 'Embed link (eg video, map)'; outline: 2px dotted #ccc;padding: 2px;}

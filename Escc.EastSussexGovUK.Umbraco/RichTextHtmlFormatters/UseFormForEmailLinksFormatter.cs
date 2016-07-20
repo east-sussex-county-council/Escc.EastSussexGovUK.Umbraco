@@ -3,7 +3,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 using Escc.AddressAndPersonalDetails;
-using Escc.Umbraco.PropertyEditors.RichTextPropertyValueConverter;
+using Escc.Umbraco.PropertyEditors.RichTextPropertyEditor;
 using EsccWebTeam.EastSussexGovUK;
 using Humanizer;
 
