@@ -34,7 +34,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
                     new UmbracoSocialMediaService(model.Content, new EastSussexGovUKContext().DoNotTrack),
                     new UmbracoEastSussex1SpaceService(model.Content),
                     new UmbracoWebChatSettingsService(model.Content, new UrlListReader()),
-                    new RelatedLinksService(),
+                    new UmbracoOnAzureRelatedLinksService(),
                     new ContentExperimentSettingsService(),
                     new UmbracoEscisService(model.Content));
 

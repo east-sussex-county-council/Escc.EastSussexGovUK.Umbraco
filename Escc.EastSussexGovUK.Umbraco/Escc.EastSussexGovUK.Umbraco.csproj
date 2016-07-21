@@ -139,7 +139,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.1.5.2\lib\Escc.Umbraco.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.1.5.3\lib\Escc.Umbraco.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.Banners, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -3413,6 +3413,7 @@
     <Compile Include="Services\UmbracoEastSussex1SpaceService.cs" />
     <Compile Include="Services\UmbracoEscisService.cs" />
     <Compile Include="Services\UmbracoLatestService.cs" />
+    <Compile Include="Services\UmbracoOnAzureRelatedLinksService.cs" />
     <Compile Include="Services\UmbracoSocialMediaService.cs" />
     <Compile Include="Services\UmbracoWebChatSettingsService.cs" />
     <Compile Include="Views\CouncilPlanBudgetPage.ascx.cs">

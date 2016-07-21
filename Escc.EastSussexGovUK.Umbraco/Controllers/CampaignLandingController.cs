@@ -30,7 +30,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
         {
             if (model == null) throw new ArgumentNullException("model");
 
-            var viewModel = MapUmbracoContentToViewModel(model.Content, new ContentExperimentSettingsService(), new RelatedLinksService());
+            var viewModel = MapUmbracoContentToViewModel(model.Content, new ContentExperimentSettingsService(), new UmbracoOnAzureRelatedLinksService());
 
             new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" });
 
