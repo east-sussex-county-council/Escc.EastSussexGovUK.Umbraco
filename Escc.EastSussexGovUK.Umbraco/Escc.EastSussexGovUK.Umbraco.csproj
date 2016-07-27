@@ -131,7 +131,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.RubbishAndRecycling.SiteFinder.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.4\lib\Escc.RubbishAndRecycling.SiteFinder.Website.dll</HintPath>
+      <HintPath>..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.5\lib\Escc.RubbishAndRecycling.SiteFinder.Website.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Schools.TermDates.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -3030,13 +3030,11 @@
     <Content Include="Views\TermDates\TermDatesTable.ascx" />
     <Content Include="Views\Topic\FloodAlerts.ascx" />
     <Content Include="Views\Topic\FloodAlerts.xslt" />
-    <Content Include="Views\Topic\RecyclingSiteFinder.ascx" />
     <Content Include="Views\Topic\TopicSection_Alternative.ascx" />
     <Content Include="Views\Topic\TopicSection_FeaturedImage.ascx" />
     <Content Include="Views\Topic\TopicSection_FloodAlerts.ascx" />
     <Content Include="Views\Topic\TopicSection_ImageRowBorderless.ascx" />
     <Content Include="Views\Topic\TopicSection_Normal.ascx" />
-    <Content Include="Views\Topic\TopicSection_RecyclingSiteFinder.ascx" />
     <Content Include="Views\Topic\TopicSection_SchoolClosures.ascx" />
     <Content Include="Views\Topic\TopicSection_TermDates.ascx" />
     <Content Include="Views\Web.config" />
@@ -3682,7 +3680,7 @@
     <Error Condition="!Exists('..\packages\UmbracoCms.7.4.3\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.4.3\build\UmbracoCms.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.5.0.0\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.5.0.0\build\Escc.Umbraco.PropertyEditors.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Alerts.Website.2.0.0\build\Escc.Alerts.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Alerts.Website.2.0.0\build\Escc.Alerts.Website.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.4\build\Escc.RubbishAndRecycling.SiteFinder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.4\build\Escc.RubbishAndRecycling.SiteFinder.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.5\build\Escc.RubbishAndRecycling.SiteFinder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.5\build\Escc.RubbishAndRecycling.SiteFinder.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.Schools.TermDates.Website.1.2.1\build\Escc.Schools.TermDates.Website.targets" Condition="Exists('..\packages\Escc.Schools.TermDates.Website.1.2.1\build\Escc.Schools.TermDates.Website.targets')" />
   <Import Project="..\packages\Escc.Registration.MarriageSkin.1.0.1\build\Escc.Registration.MarriageSkin.targets" Condition="Exists('..\packages\Escc.Registration.MarriageSkin.1.0.1\build\Escc.Registration.MarriageSkin.targets')" />
@@ -3691,7 +3689,7 @@
   <Import Project="..\packages\UmbracoCms.7.4.3\build\UmbracoCms.targets" Condition="Exists('..\packages\UmbracoCms.7.4.3\build\UmbracoCms.targets')" />
   <Import Project="..\packages\Escc.Umbraco.PropertyEditors.5.0.0\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.5.0.0\build\Escc.Umbraco.PropertyEditors.targets')" />
   <Import Project="..\packages\Escc.Alerts.Website.2.0.0\build\Escc.Alerts.Website.targets" Condition="Exists('..\packages\Escc.Alerts.Website.2.0.0\build\Escc.Alerts.Website.targets')" />
-  <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.4\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.4\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
+  <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.5\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.5\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
