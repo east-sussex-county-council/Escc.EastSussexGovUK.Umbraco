@@ -299,8 +299,8 @@
       <HintPath>..\packages\MiniProfiler.2.1.0\lib\net40\MiniProfiler.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.8\lib\net45\MySql.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -3030,11 +3030,13 @@
     <Content Include="Views\TermDates\TermDatesTable.ascx" />
     <Content Include="Views\Topic\FloodAlerts.ascx" />
     <Content Include="Views\Topic\FloodAlerts.xslt" />
+    <Content Include="Views\Topic\RecyclingSiteFinder.ascx" />
     <Content Include="Views\Topic\TopicSection_Alternative.ascx" />
     <Content Include="Views\Topic\TopicSection_FeaturedImage.ascx" />
     <Content Include="Views\Topic\TopicSection_FloodAlerts.ascx" />
     <Content Include="Views\Topic\TopicSection_ImageRowBorderless.ascx" />
     <Content Include="Views\Topic\TopicSection_Normal.ascx" />
+    <Content Include="Views\Topic\TopicSection_RecyclingSiteFinder.ascx" />
     <Content Include="Views\Topic\TopicSection_SchoolClosures.ascx" />
     <Content Include="Views\Topic\TopicSection_TermDates.ascx" />
     <Content Include="Views\Web.config" />
