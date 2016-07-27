@@ -1,5 +1,6 @@
-﻿@using EsccWebTeam.Data.Web
+﻿@using Escc.Html
 @using EsccWebTeam.EastSussexGovUK.MasterPages
+@using umbraco.cms.businesslogic.packager
 @model Escc.EastSussexGovUK.Umbraco.Models.BaseViewModelWithInheritedContent
 @{
     if (Model.SocialMedia != null && Model.SocialMedia.FacebookPageUrl != null)
@@ -12,7 +13,7 @@
             var facebookClass = showWidget ? "text text-content content-small content-medium small medium" : "supporting " + Model.EsccWebsiteSkin.SupportingTextContentClass;
 
             <div class="@facebookClass">
-                <p class="facebook">Find us on Facebook: <a href="@Model.SocialMedia.FacebookPageUrl">@Iri.ShortenForDisplay(Model.SocialMedia.FacebookPageUrl)</a></p>
+                <p class="facebook">Find us on Facebook: <a href="@Model.SocialMedia.FacebookPageUrl">@(new HtmlLinkFormatter().AbbreviateUrl(Model.SocialMedia.FacebookPageUrl))</a></p>
             </div>
         }
         

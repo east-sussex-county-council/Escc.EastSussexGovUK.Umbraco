@@ -8,7 +8,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            CouncilPlanUtility.SetContentPolicy();
+            CouncilPlanUtility.SetContentPolicy(Response.Headers);
 
             // This placeholder is intended as a title, but sometimes used as a paragraph. Assume more than 6 words means they intended a paragraph.
             var title = CmsUtilities.Placeholders["phDefPriorityTitle"].Value.ToString().Split(' ');

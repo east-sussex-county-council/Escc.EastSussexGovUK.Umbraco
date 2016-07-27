@@ -1,6 +1,6 @@
 ﻿@using ClientDependency.Core.Mvc
 @using Escc.ClientDependencyFramework
-@using EsccWebTeam.Data.Web
+@using Escc.Web
 @model Escc.EastSussexGovUK.Umbraco.Models.BaseViewModel
 
 @{
@@ -11,9 +11,8 @@
 
         // Add content security policy that allows the 'In preview mode - click to end' sash to work.
         // The sash appears when you preview a page, then click the link from the Properties tab to open it as well.
-        var policy = new ContentSecurityPolicy(HttpContext.Current.Request.Url);
-        policy.ParsePolicy(HttpContext.Current.Response.Headers["Content-Security-Policy"], true);
-        policy.AppendFromConfig("CmsPreview");
-        policy.UpdateHeader(HttpContext.Current.Response);
+        var policy = new ContentSecurityPolicyHeaders(Response.Headers);
+        policy.AppendPolicy(new ContentSecurityPolicyFromConfig().Policies["CmsPreview"]);
+        policy.UpdateHeaders();
     }
 }

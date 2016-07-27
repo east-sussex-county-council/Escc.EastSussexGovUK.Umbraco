@@ -27,10 +27,8 @@ using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task;
 using Escc.Umbraco.PropertyEditors.DataTypes;
 using Escc.Umbraco.PropertyEditors.RichTextPropertyEditor;
-using Escc.Umbraco.PropertyEditors.Stylesheets;
 using Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor;
 using Exceptionless;
-using ExCSS;
 using Umbraco.Inception.CodeFirst;
 using Umbraco.Web.WebApi;
 
@@ -63,9 +61,6 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
 
             try
             {
-                // Create stylesheets for properties using rich text editor
-                css.TinyMceStylesheets.CreateStylesheets(new StylesheetService(), new Parser());
-
                 // Insert data types before the document types that use them, otherwise the relevant property is not created
                 CheckboxDataType.CreateCheckboxDataType();
                 CacheDataType.CreateCacheDataType();
@@ -147,7 +142,6 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CouncilPlanTopicPageDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CampaignLandingDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CampaignContentDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(WebChatDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CustomerFocusBaseDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LandingDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(TaskDocumentType));

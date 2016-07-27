@@ -9,7 +9,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            CouncilPlanUtility.SetContentPolicy();
+            CouncilPlanUtility.SetContentPolicy(Response.Headers);
 
             // Get the parent page
             var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);

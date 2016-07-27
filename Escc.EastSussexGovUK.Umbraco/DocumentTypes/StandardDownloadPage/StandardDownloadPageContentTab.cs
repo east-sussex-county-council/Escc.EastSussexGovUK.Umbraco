@@ -14,7 +14,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardDownloadPage
         [UmbracoProperty("Caption for image", "phDefCaption01", BuiltInUmbracoDataTypes.Textbox, sortOrder: 2)] 
         public string PhDefCaption01 { get; set; }
 
-        [UmbracoProperty("Use image's alt text as its caption", "phDefAltAsCaption01", PropertyEditorAliases.BooleanPropertyEditor, CheckboxDataType.DataTypeName, sortOrder: 3)]
+        [UmbracoProperty("Use image's alt text as its caption", "phDefAltAsCaption01", CheckboxDataType.PropertyEditorAlias, CheckboxDataType.DataTypeName, sortOrder: 3)]
         public string PhDefAltAsCaption01 { get; set; }
 
         [UmbracoProperty("Introductory text", "phDefIntro", PropertyEditorAliases.RichTextPropertyEditor, dataTypeInstanceName: RichTextEsccWithFormattingDataType.DataTypeName, sortOrder: 4)]

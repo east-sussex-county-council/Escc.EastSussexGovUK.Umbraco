@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Web;
-using EsccWebTeam.Data.Web;
+using Escc.Web;
 using Exceptionless;
 
 namespace Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration
@@ -39,7 +39,7 @@ namespace Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration
                     var suffixToRemove = requestedUrl.AbsolutePath.EndsWith("/default.htm", StringComparison.OrdinalIgnoreCase) ? 11 : 4;
                     var rewriteUrl = requestedUrl.AbsolutePath.Substring(0, requestedUrl.AbsolutePath.Length - suffixToRemove);
                     if (requestedUrl.Query.Length > 0) rewriteUrl += requestedUrl.Query;
-                    Http.Status301MovedPermanently(rewriteUrl);
+                    new HttpStatus().MovedPermanently(rewriteUrl);
                 }
             }
             catch (Exception e)

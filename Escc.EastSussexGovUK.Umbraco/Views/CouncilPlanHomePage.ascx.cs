@@ -8,7 +8,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            CouncilPlanUtility.SetContentPolicy();
+            CouncilPlanUtility.SetContentPolicy(Response.Headers);
 
             leader.Visible = leaderPhoto.HasContent;
             chiefExec.Visible = chiefExecPhoto.HasContent;

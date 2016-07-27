@@ -1,5 +1,5 @@
 ﻿@using ClientDependency.Core.Mvc
-@using EsccWebTeam.Data.Web
+@using Escc.Web
 @model Escc.EastSussexGovUK.Umbraco.Models.BaseViewModel
 @*
      Hide content experiment code if being requested by EsccWebTeam.Data.Xml, because it's invalid as XML.
@@ -12,15 +12,14 @@
                                   Model.ContentExperimentPageSettings != null
         );
     var showContentExperimentScript = (hasContentExperiment &&
-                                       Request.UserAgent != "EsccWebTeam.Data.Xml" &&
+                                       Request.UserAgent != "Escc.Net.HttpRequestClient" &&
                                        !String.IsNullOrWhiteSpace(Model.ContentExperimentPageSettings.ContentExperimentScript.ToString()));
     if (hasContentExperiment)
     {
         // This view uses Google content experiments, so relax the content security policy to allow that
-        var policy = new ContentSecurityPolicy(HttpContext.Current.Request.Url);
-        policy.ParsePolicy(HttpContext.Current.Response.Headers["Content-Security-Policy"], true);
-        policy.AppendFromConfig("GoogleContentExperiments");
-        policy.UpdateHeader(HttpContext.Current.Response);
+        var policy = new ContentSecurityPolicyHeaders(Response.Headers);
+        policy.AppendPolicy(new ContentSecurityPolicyFromConfig().Policies["GoogleContentExperiments"]);
+        policy.UpdateHeaders();
 
         foreach (var scriptUrl in Model.ContentExperimentPageSettings.ScriptUrls)
         {

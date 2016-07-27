@@ -1,6 +1,6 @@
 ﻿@using ClientDependency.Core.Mvc
 @using Escc.ClientDependencyFramework
-@using EsccWebTeam.Data.Web
+@using Escc.Web
 @using EsccWebTeam.EastSussexGovUK.MasterPages
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.CampaignLandingViewModel>
 @{
@@ -30,10 +30,9 @@
         }
     }
 
-    var policy = new ContentSecurityPolicy(HttpContext.Current.Request.Url);
-    policy.ParsePolicy(HttpContext.Current.Response.Headers["Content-Security-Policy"], true);
-    policy.AppendFromConfig("YouTube");
-    policy.UpdateHeader(HttpContext.Current.Response);
+    var policy = new ContentSecurityPolicyHeaders(Response.Headers);
+    policy.AppendPolicy(new ContentSecurityPolicyFromConfig().Policies["YouTube"]);
+    policy.UpdateHeaders();
 }
 @section Metadata
 {

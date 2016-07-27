@@ -1,6 +1,6 @@
 ﻿@using ClientDependency.Core.Mvc
 @using Escc.ClientDependencyFramework
-@using EsccWebTeam.Data.Web
+@using Escc.Web
 @model Escc.EastSussexGovUK.MasterPages.IClientDependencySet
 @{
     foreach (var requiredCss in Model.RequiresCss())
@@ -22,9 +22,8 @@
 
     foreach (var requiredPolicy in Model.RequiresContentSecurityPolicy())
     {
-        var policy = new ContentSecurityPolicy(HttpContext.Current.Request.Url);
-        policy.ParsePolicy(HttpContext.Current.Response.Headers["Content-Security-Policy"], true);
-        policy.AppendFromConfig(requiredPolicy.Alias);
-        policy.UpdateHeader(HttpContext.Current.Response);
+        var policy = new ContentSecurityPolicyHeaders(Response.Headers);
+        policy.AppendPolicy(new ContentSecurityPolicyFromConfig().Policies[requiredPolicy.Alias]);
+        policy.UpdateHeaders();
     }
 }

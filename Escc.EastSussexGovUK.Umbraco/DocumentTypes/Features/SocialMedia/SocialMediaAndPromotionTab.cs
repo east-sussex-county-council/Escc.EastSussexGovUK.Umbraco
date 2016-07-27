@@ -20,7 +20,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Features.SocialMedia
         [UmbracoProperty("Twitter: paste widget script", "twitterScript", TwitterScriptDataType.PropertyEditorAlias, TwitterScriptDataType.DataTypeName, description: "Copy from https://twitter.com/settings/widgets", sortOrder: 2)]
         public string TwitterScript { get; set; }
 
-        [UmbracoProperty("Twitter: inherit widget?", "twitterInherit", PropertyEditorAliases.BooleanPropertyEditor, "Checkbox (true by default)", sortOrder: 3)]
+        [UmbracoProperty("Twitter: inherit widget?", "twitterInherit", CheckboxDataType.PropertyEditorAlias, CheckboxDataType.DataTypeName, sortOrder: 3)]
         public string TwitterInherit { get; set; }
 
         [UmbracoProperty("Facebook: page URL", "facebookPageUrl", FacebookUrlDataType.PropertyEditorAlias, FacebookUrlDataType.DataTypeName, sortOrder: 4)]
@@ -29,7 +29,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Features.SocialMedia
         [UmbracoProperty("Facebook: widget settings", "facebookWidgetSettings", BuiltInUmbracoDataTypes.CheckBoxList, "Facebook widget settings", sortOrder: 5)]
         public string FacebookWidgetSettings { get; set; }
 
-        [UmbracoProperty("Facebook: inherit widget?", "facebookInherit", PropertyEditorAliases.BooleanPropertyEditor, "Checkbox (true by default)", sortOrder: 6)]
+        [UmbracoProperty("Facebook: inherit widget?", "facebookInherit", CheckboxDataType.PropertyEditorAlias, CheckboxDataType.DataTypeName, sortOrder: 6)]
         public string FacebookInherit { get; set; }
 
         [UmbracoProperty("EastSussex1Space: show widget?", "eastsussex1space", ShowWidgetDataType.PropertyEditor, ShowWidgetDataType.DataTypeName, sortOrder: 7)]

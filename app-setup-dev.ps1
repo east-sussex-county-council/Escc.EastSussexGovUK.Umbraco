@@ -36,7 +36,6 @@ Example: C:\>set GIT_ORIGIN_URL=https://example-git-server.com/{0}"
 
 $projectName = "Escc.EastSussexGovUK.Umbraco"
 
-DownloadProjectIfMissing $parentFolderOfThisScript "Escc.Data.Web"
 DownloadProjectIfMissing $parentFolderOfThisScript "Escc.EastSussexGovUK"
 
 EnableDotNet40InIIS

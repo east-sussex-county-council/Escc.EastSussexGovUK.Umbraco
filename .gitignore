@@ -45,9 +45,10 @@ UpgradeLog*.htm
 [Aa]pp_Browsers/
 Escc.EastSussexGovUK.Umbraco/App_Plugins/Escc.Umbraco.PropertyEditors.*/*
 Escc.EastSussexGovUK.Umbraco/App_Plugins/Escc.Umbraco.DataTypes.MediaUsage
+Escc.EastSussexGovUK.Umbraco/App_Plugins/ModelsBuilder
 Escc.EastSussexGovUK.Umbraco.Tests/App_Plugins/
 [Ii]nstall/
-*/[Cc]onfig/Splashes/
+*/[Cc]onfig/
 [Dd]efault.aspx
 [Vv]iews/[Ww]eb.config.transform
 [Mm]edia

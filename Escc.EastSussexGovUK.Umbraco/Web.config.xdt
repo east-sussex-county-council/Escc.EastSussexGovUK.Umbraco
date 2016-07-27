@@ -155,12 +155,35 @@
   <appSettings xdt:Transform="Remove" xdt:Locator="XPath(/configuration/appSettings[2])" />
 
   <appSettings>
+    <!-- START: Configure Umbraco -->
+    <add key="umbracoConfigurationStatus" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    <add key="umbracoConfigurationStatus" value="7.4.3" xdt:Transform="Insert" />
+
+    <add key="umbracoReservedPaths" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    <add key="umbracoReservedPaths" value="~/umbraco,~/install/,~/escc.eastsussexgovuk/,~/masterpages" xdt:Transform="Insert" />
+
+    <add key="umbracoUseSSL" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    <add key="umbracoUseSSL" value="true" xdt:Transform="Insert" />
+
+    <add key="Umbraco.ModelsBuilder.Enable" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    <add key="Umbraco.ModelsBuilder.Enable" value="false" xdt:Transform="Insert" />
+
+    <add key="Umbraco.ModelsBuilder.ModelsMode" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    <add key="Umbraco.ModelsBuilder.ModelsMode" value="Nothing" xdt:Transform="Insert" />
+    <!-- END: Configure Umbraco -->
+
+    <!-- START: AST Azure media sync settings -->
+    <add key="useCDN" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    <add key="useCDN" value="true" xdt:Transform="Insert" />
+    <!-- END: AST Azure media sync settings -->
+
     <!-- For flood alerts included on a standard topic page -->
     <add key="FloodAlertsRssUrl" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     <add key="FloodAlertsRssUrl" value="http://www.environment-agency.gov.uk/homeandleisure/floods/134567.aspx" xdt:Transform="Insert"/>
 
-    <add key="Escc.Umbraco.Inception.AuthToken" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-    <add key="Escc.Umbraco.Inception.AuthToken" value="" />
+    <!-- Escc.Umbraco.SiteMap -->
+    <add key="sitemapMediaFilesExclusions" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    <add key="sitemapMediaFilesExclusions" value="jpeg, jpg, png, gif, bmp, svg" xdt:Transform="Insert" />
   </appSettings>
 
   <system.web xdt:Transform="Insert" />
@@ -180,6 +203,7 @@
 
   <system.web>
     <compilation xdt:Transform="RemoveAttributes(debug)" />
+    <compilation targetFramework="4.5.2" xdt:Transform="SetAttributes(targetFramework)" />
 
     <globalization xdt:Transform="Remove" />
     <globalization culture="en-GB" uiCulture="en-GB" xdt:Transform="Insert"/>
@@ -203,6 +227,8 @@
     <handlers xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer/handlers[2])" />
     <modules xdt:Transform="Insert" />
     <modules xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer/modules[2])" />
+    <staticContent xdt:Transform="Insert" />
+    <staticContent xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer/staticContent[2])" />
   </system.webServer>
 
   <system.webServer>
@@ -217,7 +243,108 @@
     <modules>
       <add name="MicrosoftCmsUrlRedirectionModule" xdt:Transform="Remove" xdt:Locator="Match(name)" />
       <add name="MicrosoftCmsUrlRedirectionModule" type="Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.MicrosoftCmsUrlRedirectionModule, Escc.EastSussexGovUK.Umbraco" xdt:Transform="Insert" />
+
+      <add name="ExceptionlessModule" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+      <add name="ExceptionlessModule" type="Exceptionless.Mvc.ExceptionlessModule, Exceptionless.Mvc" xdt:Transform="Insert" />
+
+      <add name="UmbracoCustomErrorsModule" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+      <add name="UmbracoCustomErrorsModule" type="Escc.EastSussexGovUK.Umbraco.Errors.UmbracoCustomErrorsModule, Escc.EastSussexGovUK.Umbraco" xdt:Transform="Insert" />
     </modules>
+
+    <staticContent>
+      <remove fileExtension=".pdf" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <remove fileExtension=".pdf" xdt:Transform="Insert" />
+      <mimeMap fileExtension=".pdf" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <mimeMap fileExtension=".pdf" mimeType="application/pdf" xdt:Transform="Insert" />
+      <remove fileExtension=".rtf" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <remove fileExtension=".rtf" xdt:Transform="Insert" />
+      <mimeMap fileExtension=".rtf" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <mimeMap fileExtension=".rtf" mimeType="application/rtf" xdt:Transform="Insert" />
+      <remove fileExtension=".csv" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <remove fileExtension=".csv" xdt:Transform="Insert" />
+      <mimeMap fileExtension=".csv" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <mimeMap fileExtension=".csv" mimeType="text/csv" xdt:Transform="Insert" />
+      <remove fileExtension=".xls" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <remove fileExtension=".xls" xdt:Transform="Insert" />
+      <mimeMap fileExtension=".xls" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <mimeMap fileExtension=".xls" mimeType="application/vnd.ms-excel" xdt:Transform="Insert" />
+      <remove fileExtension=".xlt" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <remove fileExtension=".xlt" xdt:Transform="Insert" />
+      <mimeMap fileExtension=".xlt" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <mimeMap fileExtension=".xlt" mimeType="application/vnd.ms-excel" xdt:Transform="Insert" />
+      <remove fileExtension=".xlsx" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <remove fileExtension=".xlsx" xdt:Transform="Insert" />
+      <mimeMap fileExtension=".xlsx" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <mimeMap fileExtension=".xlsx" mimeType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" xdt:Transform="Insert" />
+      <remove fileExtension=".xltx" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <remove fileExtension=".xltx" xdt:Transform="Insert" />
+      <mimeMap fileExtension=".xltx" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <mimeMap fileExtension=".xltx" mimeType="application/vnd.openxmlformats-officedocument.spreadsheetml.template" xdt:Transform="Insert" />
+      <remove fileExtension=".ppt" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <remove fileExtension=".ppt" xdt:Transform="Insert" />
+      <mimeMap fileExtension=".ppt" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <mimeMap fileExtension=".ppt"  mimeType="application/vnd.ms-powerpoint" xdt:Transform="Insert" />
+      <remove fileExtension=".pps" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <remove fileExtension=".pps" xdt:Transform="Insert" />
+      <mimeMap fileExtension=".pps" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)"  />
+      <mimeMap fileExtension=".pps" mimeType="application/vnd.ms-powerpoint" xdt:Transform="Insert" />
+      <remove fileExtension=".pot" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <remove fileExtension=".pot" xdt:Transform="Insert" />
+      <mimeMap fileExtension=".pot" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <mimeMap fileExtension=".pot" mimeType="application/vnd.ms-powerpoint" xdt:Transform="Insert" />
+      <remove fileExtension=".potx" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <remove fileExtension=".potx" xdt:Transform="Insert" />
+      <mimeMap fileExtension=".potx" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <mimeMap fileExtension=".potx" mimeType="application/vnd.openxmlformats-officedocument.presentationml.template" xdt:Transform="Insert" />
+      <remove fileExtension=".ppsx" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <remove fileExtension=".ppsx" xdt:Transform="Insert" />
+      <mimeMap fileExtension=".ppsx" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <mimeMap fileExtension=".ppsx" mimeType="application/vnd.openxmlformats-officedocument.presentationml.slideshow" xdt:Transform="Insert" />
+      <remove fileExtension=".pptx" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <remove fileExtension=".pptx" xdt:Transform="Insert" />
+      <mimeMap fileExtension=".pptx" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <mimeMap fileExtension=".pptx" mimeType="application/vnd.openxmlformats-officedocument.presentationml.presentation" xdt:Transform="Insert" />
+      <remove fileExtension=".sldx" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <remove fileExtension=".sldx" xdt:Transform="Insert" />
+      <mimeMap fileExtension=".sldx" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <mimeMap fileExtension=".sldx" mimeType="application/vnd.openxmlformats-officedocument.presentationml.slide" xdt:Transform="Insert" />
+      <remove fileExtension=".doc" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <remove fileExtension=".doc" xdt:Transform="Insert" />
+      <mimeMap fileExtension=".doc" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <mimeMap fileExtension=".doc"  mimeType="application/msword" xdt:Transform="Insert" />
+      <remove fileExtension=".dot" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <remove fileExtension=".dot" xdt:Transform="Insert" />
+      <mimeMap fileExtension=".dot" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <mimeMap fileExtension=".dot"  mimeType="application/msword" xdt:Transform="Insert" />
+      <remove fileExtension=".docx" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <remove fileExtension=".docx" xdt:Transform="Insert" />
+      <mimeMap fileExtension=".docx" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <mimeMap fileExtension=".docx" mimeType="application/vnd.openxmlformats-officedocument.wordprocessingml.document" xdt:Transform="Insert" />
+      <remove fileExtension=".dotx" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <remove fileExtension=".dotx" xdt:Transform="Insert" />
+      <mimeMap fileExtension=".dotx" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <mimeMap fileExtension=".dotx" mimeType="application/vnd.openxmlformats-officedocument.wordprocessingml.template" xdt:Transform="Insert" />
+      <remove fileExtension=".mp3" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <remove fileExtension=".mp3" xdt:Transform="Insert" />
+      <mimeMap fileExtension=".mp3" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <mimeMap fileExtension=".mp3"  mimeType="audio/mpeg" xdt:Transform="Insert" />
+      <remove fileExtension=".mov" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <remove fileExtension=".mov" xdt:Transform="Insert" />
+      <mimeMap fileExtension=".mov" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <mimeMap fileExtension=".mov"  mimeType="video/quicktime" xdt:Transform="Insert" />
+      <remove fileExtension=".wmv" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <remove fileExtension=".wmv" xdt:Transform="Insert" />
+      <mimeMap fileExtension=".wmv" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <mimeMap fileExtension=".wmv"  mimeType="video/x-ms-wmv" xdt:Transform="Insert" />
+      <remove fileExtension=".wma" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <remove fileExtension=".wma" xdt:Transform="Insert" />
+      <mimeMap fileExtension=".wma" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <mimeMap fileExtension=".wma" mimeType="audio/x-ms-wma" xdt:Transform="Insert" />
+      <remove fileExtension=".zip" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <remove fileExtension=".zip" xdt:Transform="Insert" />
+      <mimeMap fileExtension=".zip" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
+      <mimeMap fileExtension=".zip"  mimeType="application/x-zip-compressed" xdt:Transform="Insert" />
+    </staticContent>
   </system.webServer>
 
   <!-- Add C#6 support in Razor views -->

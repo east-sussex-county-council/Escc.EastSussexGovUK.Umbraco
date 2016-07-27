@@ -27,6 +27,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [TestCase(@"MarriageSkin\css\min\marriage-skin-small.css")]
         [TestCase(@"MarriageSkin\img\marriage-banner.jpg")]
 
+        // Escc.RubbishAndRecycling.SiteFinder package
+        [TestCase(@"Views\Topic\RecyclingSiteFinder.ascx")]
+
         public void NuGetPackagesCorrectlyIncludedInProject(string filePathWhichShouldBeIncluded)
         {
             var commonParent = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent;

@@ -1,5 +1,6 @@
-﻿using System.Web;
-using EsccWebTeam.Data.Web;
+﻿using System.Collections.Specialized;
+using System.Web;
+using Escc.Web;
 using Umbraco.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.Views
@@ -52,12 +53,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Views
             return rtn;
         }
 
-        public static void SetContentPolicy()
+        public static void SetContentPolicy(NameValueCollection responseHeaders)
         {
-            var policy = new ContentSecurityPolicy(HttpContext.Current.Request.Url);
-            policy.ParsePolicy(HttpContext.Current.Response.Headers["Content-Security-Policy"], true);
-            policy.AppendFromConfig("CouncilPlan");
-            policy.UpdateHeader(HttpContext.Current.Response);
+            var policy = new ContentSecurityPolicyHeaders(responseHeaders);
+            policy.AppendPolicy(new ContentSecurityPolicyFromConfig().Policies["CouncilPlan"]);
+            policy.UpdateHeaders();
         }
     }
 }

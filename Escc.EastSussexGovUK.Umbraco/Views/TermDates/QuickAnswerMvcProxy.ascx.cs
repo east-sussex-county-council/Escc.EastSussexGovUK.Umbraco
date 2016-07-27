@@ -3,7 +3,6 @@ using System.Web;
 using System.Web.Mvc;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.Schools.TermDates.Website;
-using EsccWebTeam.Data.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.Views.TermDates
 {
@@ -14,7 +13,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Views.TermDates
             if (Model.TermDatesDataUrl != null)
             {
                 var control = (QuickAnswer) LoadControl("~/Views/TermDates/QuickAnswer.ascx");
-                control.TermDatesDataProvider = new UrlProvider(Iri.MakeAbsolute(Model.TermDatesDataUrl), HttpContext.Current.Cache);
+                control.TermDatesDataProvider = new UrlProvider(new Uri(Request.Url, Model.TermDatesDataUrl), HttpContext.Current.Cache);
                 this.Controls.Add(control);
             }
         }

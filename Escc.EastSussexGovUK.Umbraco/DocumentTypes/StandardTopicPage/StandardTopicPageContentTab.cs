@@ -28,7 +28,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage
         [UmbracoProperty("Caption for image 1", "phDefCaption01", BuiltInUmbracoDataTypes.Textbox, sortOrder: 6)]
         public string PhDefCaption01 { get; set; }
 
-        [UmbracoProperty("Use image 1's alt text as its caption", "phDefAltAsCaption01", PropertyEditorAliases.BooleanPropertyEditor, CheckboxDataType.DataTypeName, sortOrder: 7)] 
+        [UmbracoProperty("Use image 1's alt text as its caption", "phDefAltAsCaption01", CheckboxDataType.PropertyEditorAlias, CheckboxDataType.DataTypeName, sortOrder: 7)] 
         public string PhDefAltAsCaption01 { get; set; }
 
         [UmbracoProperty("Section 1: image 2", "phDefImage04", BuiltInUmbracoDataTypes.MediaPicker, sortOrder: 8)]
@@ -37,7 +37,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage
         [UmbracoProperty("Caption for image 2", "phDefCaption04", BuiltInUmbracoDataTypes.Textbox, sortOrder: 9)]
         public string PhDefCaption04 { get; set; }
 
-        [UmbracoProperty("Use image 2's alt text as its caption", "phDefAltAsCaption04", PropertyEditorAliases.BooleanPropertyEditor, CheckboxDataType.DataTypeName, sortOrder: 10)]
+        [UmbracoProperty("Use image 2's alt text as its caption", "phDefAltAsCaption04", CheckboxDataType.PropertyEditorAlias, CheckboxDataType.DataTypeName, sortOrder: 10)]
         public string PhDefAltAsCaption04 { get; set; }
 
         [UmbracoProperty("Section 1: image 3", "phDefImage05", BuiltInUmbracoDataTypes.MediaPicker, sortOrder: 11)]
@@ -46,7 +46,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage
         [UmbracoProperty("Caption for image 3", "phDefCaption05", BuiltInUmbracoDataTypes.Textbox, sortOrder: 12)]
         public string PhDefCaption05 { get; set; }
 
-        [UmbracoProperty("Use image 3's alt text as its caption", "phDefAltAsCaption05", PropertyEditorAliases.BooleanPropertyEditor, CheckboxDataType.DataTypeName, sortOrder: 13)]
+        [UmbracoProperty("Use image 3's alt text as its caption", "phDefAltAsCaption05", CheckboxDataType.PropertyEditorAlias, CheckboxDataType.DataTypeName, sortOrder: 13)]
         public string PhDefAltAsCaption05 { get; set; }
 
         [UmbracoProperty("Section 1: subtitle", "phDefSubtitle01", BuiltInUmbracoDataTypes.Textbox, sortOrder: 14)]
@@ -66,7 +66,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage
         [UmbracoProperty("Caption for image 1", "phDefCaption14", BuiltInUmbracoDataTypes.Textbox, sortOrder: 18)]
         public string PhDefCaption14 { get; set; }
 
-        [UmbracoProperty("Use image 1's alt text as its caption", "phDefAltAsCaption14", PropertyEditorAliases.BooleanPropertyEditor, CheckboxDataType.DataTypeName, sortOrder: 19)]
+        [UmbracoProperty("Use image 1's alt text as its caption", "phDefAltAsCaption14", CheckboxDataType.PropertyEditorAlias, CheckboxDataType.DataTypeName, sortOrder: 19)]
         public string PhDefAltAsCaption14 { get; set; }
 
         [UmbracoProperty("Section 2: image 2", "phDefImage06", BuiltInUmbracoDataTypes.MediaPicker, sortOrder: 20)]
@@ -75,7 +75,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage
         [UmbracoProperty("Caption for image 2", "phDefCaption06", BuiltInUmbracoDataTypes.Textbox, sortOrder: 21)]
         public string PhDefCaption06 { get; set; }
 
-        [UmbracoProperty("Use image 2's alt text as its caption", "phDefAltAsCaption06", PropertyEditorAliases.BooleanPropertyEditor, CheckboxDataType.DataTypeName, sortOrder: 22)]
+        [UmbracoProperty("Use image 2's alt text as its caption", "phDefAltAsCaption06", CheckboxDataType.PropertyEditorAlias, CheckboxDataType.DataTypeName, sortOrder: 22)]
         public string PhDefAltAsCaption06 { get; set; }
 
         [UmbracoProperty("Section 2: image 3", "phDefImage07", BuiltInUmbracoDataTypes.MediaPicker, sortOrder: 23)]
@@ -84,7 +84,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage
         [UmbracoProperty("Caption for image 3", "phDefCaption07", BuiltInUmbracoDataTypes.Textbox, sortOrder: 24)]
         public string PhDefCaption07 { get; set; }
 
-        [UmbracoProperty("Use image 3's alt text as its caption", "phDefAltAsCaption07", PropertyEditorAliases.BooleanPropertyEditor, CheckboxDataType.DataTypeName, sortOrder: 25)]
+        [UmbracoProperty("Use image 3's alt text as its caption", "phDefAltAsCaption07", CheckboxDataType.PropertyEditorAlias, CheckboxDataType.DataTypeName, sortOrder: 25)]
         public string PhDefAltAsCaption07 { get; set; }
 
         [UmbracoProperty("Section 2: subtitle", "phDefSubtitle02", BuiltInUmbracoDataTypes.Textbox, sortOrder: 26)]
@@ -104,7 +104,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage
         [UmbracoProperty("Caption for image 1", "phDefCaption02", BuiltInUmbracoDataTypes.Textbox, sortOrder: 30)]
         public string PhDefCaption02 { get; set; }
 
-        [UmbracoProperty("Use image 1's alt text as its caption", "phDefAltAsCaption02", PropertyEditorAliases.BooleanPropertyEditor, CheckboxDataType.DataTypeName, sortOrder: 31)]
+        [UmbracoProperty("Use image 1's alt text as its caption", "phDefAltAsCaption02", CheckboxDataType.PropertyEditorAlias, CheckboxDataType.DataTypeName, sortOrder: 31)]
         public string PhDefAltAsCaption02 { get; set; }
 
         [UmbracoProperty("Section 3: image 2", "phDefImage08", BuiltInUmbracoDataTypes.MediaPicker, sortOrder: 32)]
@@ -113,7 +113,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage
         [UmbracoProperty("Caption for image 2", "phDefCaption08", BuiltInUmbracoDataTypes.Textbox, sortOrder: 33)]
         public string PhDefCaption08 { get; set; }
 
-        [UmbracoProperty("Use image 2's alt text as its caption", "phDefAltAsCaption08", PropertyEditorAliases.BooleanPropertyEditor, CheckboxDataType.DataTypeName, sortOrder: 34)]
+        [UmbracoProperty("Use image 2's alt text as its caption", "phDefAltAsCaption08", CheckboxDataType.PropertyEditorAlias, CheckboxDataType.DataTypeName, sortOrder: 34)]
         public string PhDefAltAsCaption08 { get; set; }
 
         [UmbracoProperty("Section 3: image 3", "phDefImage09", BuiltInUmbracoDataTypes.MediaPicker, sortOrder: 35)]
@@ -122,7 +122,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage
         [UmbracoProperty("Caption for image 3", "phDefCaption09", BuiltInUmbracoDataTypes.Textbox, sortOrder: 36)]
         public string PhDefCaption09 { get; set; }
 
-        [UmbracoProperty("Use image 3's alt text as its caption", "phDefAltAsCaption09", PropertyEditorAliases.BooleanPropertyEditor, CheckboxDataType.DataTypeName, sortOrder: 37)]
+        [UmbracoProperty("Use image 3's alt text as its caption", "phDefAltAsCaption09", CheckboxDataType.PropertyEditorAlias, CheckboxDataType.DataTypeName, sortOrder: 37)]
         public string PhDefAltAsCaption09 { get; set; }
 
         [UmbracoProperty("Section 3: subtitle", "phDefSubtitle03", BuiltInUmbracoDataTypes.Textbox, sortOrder: 38)]
@@ -142,7 +142,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage
         [UmbracoProperty("Caption for image 1", "phDefCaption03", BuiltInUmbracoDataTypes.Textbox, sortOrder: 42)]
         public string PhDefCaption03 { get; set; }
 
-        [UmbracoProperty("Use image 1's alt text as its caption", "phDefAltAsCaption03", PropertyEditorAliases.BooleanPropertyEditor, CheckboxDataType.DataTypeName, sortOrder: 43)]
+        [UmbracoProperty("Use image 1's alt text as its caption", "phDefAltAsCaption03", CheckboxDataType.PropertyEditorAlias, CheckboxDataType.DataTypeName, sortOrder: 43)]
         public string PhDefAltAsCaption03 { get; set; }
 
         [UmbracoProperty("Section 4: image 2", "phDefImage10", BuiltInUmbracoDataTypes.MediaPicker, sortOrder: 44)]
@@ -151,7 +151,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage
         [UmbracoProperty("Caption for image 2", "phDefCaption10", BuiltInUmbracoDataTypes.Textbox, sortOrder: 45)]
         public string PhDefCaption10 { get; set; }
 
-        [UmbracoProperty("Use image 2's alt text as its caption", "phDefAltAsCaption10", PropertyEditorAliases.BooleanPropertyEditor, CheckboxDataType.DataTypeName, sortOrder: 46)]
+        [UmbracoProperty("Use image 2's alt text as its caption", "phDefAltAsCaption10", CheckboxDataType.PropertyEditorAlias, CheckboxDataType.DataTypeName, sortOrder: 46)]
         public string PhDefAltAsCaption10 { get; set; }
 
         [UmbracoProperty("Section 4: image 3", "phDefImage11", BuiltInUmbracoDataTypes.MediaPicker, sortOrder: 47)]
@@ -160,7 +160,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage
         [UmbracoProperty("Caption for image 3", "phDefCaption11", BuiltInUmbracoDataTypes.Textbox, sortOrder: 48)]
         public string PhDefCaption11 { get; set; }
 
-        [UmbracoProperty("Use image 3's alt text as its caption", "phDefAltAsCaption11", PropertyEditorAliases.BooleanPropertyEditor, CheckboxDataType.DataTypeName, sortOrder: 49)]
+        [UmbracoProperty("Use image 3's alt text as its caption", "phDefAltAsCaption11", CheckboxDataType.PropertyEditorAlias, CheckboxDataType.DataTypeName, sortOrder: 49)]
         public string PhDefAltAsCaption11 { get; set; }
 
         [UmbracoProperty("Section 4: subtitle", "phDefSubtitle04", BuiltInUmbracoDataTypes.Textbox, sortOrder: 50)]
@@ -180,7 +180,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage
         [UmbracoProperty("Caption for image 1", "phDefCaption15", BuiltInUmbracoDataTypes.Textbox, sortOrder: 54)]
         public string PhDefCaption15 { get; set; }
 
-        [UmbracoProperty("Use image 1's alt text as its caption", "phDefAltAsCaption15", PropertyEditorAliases.BooleanPropertyEditor, CheckboxDataType.DataTypeName, sortOrder: 55)]
+        [UmbracoProperty("Use image 1's alt text as its caption", "phDefAltAsCaption15", CheckboxDataType.PropertyEditorAlias, CheckboxDataType.DataTypeName, sortOrder: 55)]
         public string PhDefAltAsCaption15 { get; set; }
 
         [UmbracoProperty("Section 5: image 2", "phDefImage12", BuiltInUmbracoDataTypes.MediaPicker, sortOrder: 56)]
@@ -189,7 +189,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage
         [UmbracoProperty("Caption for image 2", "phDefCaption12", BuiltInUmbracoDataTypes.Textbox, sortOrder: 57)]
         public string PhDefCaption12 { get; set; }
 
-        [UmbracoProperty("Use image 2's alt text as its caption", "phDefAltAsCaption12", PropertyEditorAliases.BooleanPropertyEditor, CheckboxDataType.DataTypeName, sortOrder: 58)]
+        [UmbracoProperty("Use image 2's alt text as its caption", "phDefAltAsCaption12", CheckboxDataType.PropertyEditorAlias, CheckboxDataType.DataTypeName, sortOrder: 58)]
         public string PhDefAltAsCaption12 { get; set; }
 
         [UmbracoProperty("Section 5: image 3", "phDefImage13", BuiltInUmbracoDataTypes.MediaPicker, sortOrder: 59)]
@@ -198,7 +198,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage
         [UmbracoProperty("Caption for image 3", "phDefCaption13", BuiltInUmbracoDataTypes.Textbox, sortOrder: 60)]
         public string PhDefCaption13 { get; set; }
 
-        [UmbracoProperty("Use image 3's alt text as its caption", "phDefAltAsCaption13", PropertyEditorAliases.BooleanPropertyEditor, CheckboxDataType.DataTypeName, sortOrder: 61)]
+        [UmbracoProperty("Use image 3's alt text as its caption", "phDefAltAsCaption13", CheckboxDataType.PropertyEditorAlias, CheckboxDataType.DataTypeName, sortOrder: 61)]
         public string PhDefAltAsCaption13 { get; set; }
 
         [UmbracoProperty("Section 5: subtitle", "phDefSubtitle05", BuiltInUmbracoDataTypes.Textbox, sortOrder: 62)]
@@ -218,7 +218,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage
         [UmbracoProperty("Caption for image 1", "phDefCaption16", BuiltInUmbracoDataTypes.Textbox, sortOrder: 66)]
         public string PhDefCaption16 { get; set; }
 
-        [UmbracoProperty("Use image 1's alt text as its caption", "phDefAltAsCaption16", PropertyEditorAliases.BooleanPropertyEditor, CheckboxDataType.DataTypeName, sortOrder: 67)]
+        [UmbracoProperty("Use image 1's alt text as its caption", "phDefAltAsCaption16", CheckboxDataType.PropertyEditorAlias, CheckboxDataType.DataTypeName, sortOrder: 67)]
         public string PhDefAltAsCaption16 { get; set; }
 
         [UmbracoProperty("Section 6: image 2", "phDefImage17", BuiltInUmbracoDataTypes.MediaPicker, sortOrder: 68)]
@@ -227,7 +227,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage
         [UmbracoProperty("Caption for image 2", "phDefCaption17", BuiltInUmbracoDataTypes.Textbox, sortOrder: 69)]
         public string PhDefCaption17 { get; set; }
 
-        [UmbracoProperty("Use image 2's alt text as its caption", "phDefAltAsCaption17", PropertyEditorAliases.BooleanPropertyEditor, CheckboxDataType.DataTypeName, sortOrder: 70)]
+        [UmbracoProperty("Use image 2's alt text as its caption", "phDefAltAsCaption17", CheckboxDataType.PropertyEditorAlias, CheckboxDataType.DataTypeName, sortOrder: 70)]
         public string PhDefAltAsCaption17 { get; set; }
 
         [UmbracoProperty("Section 6: image 3", "phDefImage18", BuiltInUmbracoDataTypes.MediaPicker, sortOrder: 71)]
@@ -236,7 +236,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage
         [UmbracoProperty("Caption for image 3", "phDefCaption18", BuiltInUmbracoDataTypes.Textbox, sortOrder: 72)]
         public string PhDefCaption18 { get; set; }
 
-        [UmbracoProperty("Use image 3's alt text as its caption", "phDefAltAsCaption18", PropertyEditorAliases.BooleanPropertyEditor, CheckboxDataType.DataTypeName, sortOrder: 73)]
+        [UmbracoProperty("Use image 3's alt text as its caption", "phDefAltAsCaption18", CheckboxDataType.PropertyEditorAlias, CheckboxDataType.DataTypeName, sortOrder: 73)]
         public string PhDefAltAsCaption18 { get; set; }
 
         [UmbracoProperty("Section 6: subtitle", "phDefSubtitle06", BuiltInUmbracoDataTypes.Textbox, sortOrder: 74)]

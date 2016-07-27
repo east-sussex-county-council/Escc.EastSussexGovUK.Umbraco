@@ -3,7 +3,7 @@
 @using Escc.ClientDependencyFramework
 @using Escc.EastSussexGovUK.MasterPages
 @using Escc.EastSussexGovUK.MasterPages.Features
-@using EsccWebTeam.Data.Web
+@using Escc.Web
 @using EsccWebTeam.EastSussexGovUK
 @using EsccWebTeam.EastSussexGovUK.MasterPages
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.LocationViewModel>
@@ -12,9 +12,9 @@
     Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
 
     // This view always uses Google maps, so relax the content security policy to allow that
-    var policy = new ContentSecurityPolicy(HttpContext.Current.Request.Url);
-    policy.AppendFromConfig("GoogleMaps");
-    policy.UpdateHeader(HttpContext.Current.Response);
+    var policy = new ContentSecurityPolicyHeaders(Response.Headers);
+    policy.AppendPolicy(new ContentSecurityPolicyFromConfig().Policies["GoogleMaps"]);
+    policy.UpdateHeaders();
 
     Html.RequiresJs(JsFileAlias.Resolve("GoogleMaps"), 90);
 

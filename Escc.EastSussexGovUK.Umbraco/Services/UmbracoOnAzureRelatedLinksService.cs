@@ -27,7 +27,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             links = new List<HtmlLink>(links);
             foreach (var link in links)
             {
-                link.Url = ContentHelper.TransformUrl(link.Url);
+                if (link.Url != null)
+                {
+                    link.Url = ContentHelper.TransformUrl(link.Url);
+                }
             }
 
             return links;
