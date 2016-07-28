@@ -37,6 +37,7 @@ packages
 *.GhostDoc.xml
 Backup
 UpgradeLog*.htm
+Microsoft.CodeDom.Providers.DotNetCompilerPlatform.*
 
 # Umbraco files
 [Uu]mbraco/

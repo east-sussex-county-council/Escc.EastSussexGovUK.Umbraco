@@ -20,6 +20,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [TestCase(@"App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.controller.js")]
 
         // Escc.Umbraco.PropertyEditors project
+        [TestCase(@"css\TinyMCE-Content.css")]
+        [TestCase(@"css\TinyMCE-StyleSelector-Headings.css")]
         [TestCase(@"App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\controller.js")]
 
         // Escc.Registration.MarriageSkin project
