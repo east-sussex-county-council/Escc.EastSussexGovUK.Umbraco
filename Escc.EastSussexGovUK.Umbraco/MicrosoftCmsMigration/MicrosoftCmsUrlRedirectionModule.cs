@@ -32,7 +32,7 @@ namespace Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration
             try
             {
                 var requestedUrl = HttpContext.Current.Request.Url;
-                if (requestedUrl.AbsolutePath.EndsWith(".htm", StringComparison.OrdinalIgnoreCase))
+                if (requestedUrl.AbsolutePath.EndsWith(".htm", StringComparison.OrdinalIgnoreCase) && !requestedUrl.AbsolutePath.ToUpperInvariant().Contains("APP_PLUGINS"))
                 {
                     // The default page in a Microsoft CMS channel was usually called default.htm, and we took the channel name as the Umbraco page name,
                     // so strip /default.htm from the URL to get back to the URL for its channel. For other pages, just remove the .htm extension
