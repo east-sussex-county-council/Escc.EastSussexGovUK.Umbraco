@@ -61,7 +61,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
                         involvedRss.Children<IPublishedContent>()
                         .Where(child => child.ContentType.Alias == "HomePageItem")
                         .Take(5)
-                        .Select(HomePageItemsController.MapUmbracoContentToItemViewModel)
+                        .Select(child => new HomePageItemFromUmbraco(child).GetHomePageItem())
                         );
             }
 
@@ -75,7 +75,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
                     newsRss.Children<IPublishedContent>()
                     .Where(child => child.ContentType.Alias == "HomePageItem" && !String.IsNullOrEmpty(child.GetPropertyValue<string>("Image_Content")))
                     .Take(2)
-                    .Select(HomePageItemsController.MapUmbracoContentToItemViewModel)
+                    .Select(child => new HomePageItemFromUmbraco(child).GetHomePageItem())
                     );          
             }
 

@@ -18,7 +18,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
     /// <summary>
     /// The controller for the Home Page document type
     /// </summary>
-    public class HomePageItemsController : RenderMvcController
+    public class HomePageItemController : RenderMvcController
     {
         /// <summary>
         /// The default action to render the front-end view
@@ -30,26 +30,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
         {
             if (model == null) throw new ArgumentNullException("model");
 
-            var viewModel = MapUmbracoContentToViewModel(model.Content);
-
-            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" });
+            var viewModel = new HomePageItemFromUmbraco(model.Content).GetHomePageItem();
 
             return CurrentTemplate(viewModel);
-        }
-
-        private static RssViewModel MapUmbracoContentToViewModel(IPublishedContent publishedContent)
-        {
-            var model = new RssViewModel()
-            {
-                PageTitle = publishedContent.Name,
-                Description = publishedContent.GetPropertyValue<string>("pageDescription_Content")
-            };
-            ((List<HomePageItemViewModel>)model.Items).AddRange(
-                publishedContent.Children<IPublishedContent>()
-                .Where(child => child.ContentType.Alias == "HomePageItem")
-                .Select(child => new HomePageItemFromUmbraco(child).GetHomePageItem())
-                );
-            return model;
         }
     }
 }

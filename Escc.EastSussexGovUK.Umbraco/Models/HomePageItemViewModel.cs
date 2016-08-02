@@ -6,7 +6,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
     /// <summary>
     /// A small piece of content which is used to build up the home page
     /// </summary>
-    public class HomePageItemViewModel
+    public class HomePageItemViewModel : BaseViewModel
     {
         public HtmlLink Link { get; set; }
         public string Description { get; set; }

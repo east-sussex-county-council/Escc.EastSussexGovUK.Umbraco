@@ -126,10 +126,7 @@
                     for (var i = 0; i < Model.NewsItems.Count; i++)
                     {
                         <li class="feature feature@(i+1)">
-                            <a href="@Model.NewsItems[i].Link.Url">
-                                <img src="@Model.NewsItems[i].Image.ImageUrl" alt="" width="@Model.NewsItems[i].Image.Width" />
-                                <div class="caption"><p><span>@Model.NewsItems[i].Link.Text</span></p></div>
-                            </a>
+                            @Html.Partial("~/Views/_HomePageNewsItem.cshtml", @Model.NewsItems[i])
                         </li>
                     }
                 }

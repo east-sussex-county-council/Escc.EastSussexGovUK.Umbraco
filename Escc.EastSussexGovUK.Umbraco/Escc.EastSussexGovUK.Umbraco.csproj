@@ -3181,6 +3181,8 @@
     <Content Include="Views\Partials\Grid\Bootstrap3.cshtml" />
     <Content Include="Views\Partials\Grid\Bootstrap2.cshtml" />
     <Content Include="Views\Alerts.cshtml" />
+    <Content Include="Views\HomePageItem.cshtml" />
+    <Content Include="Views\_HomePageNewsItem.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -3277,7 +3279,10 @@
     <Compile Include="Controllers\GuideController.cs" />
     <Compile Include="Controllers\GuideStepController.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
+    <Compile Include="Controllers\HomePageItemController.cs" />
     <Compile Include="Controllers\HomePageItemsController.cs" />
+    <Compile Include="Services\HomePageItemFromUmbraco.cs" />
+    <Compile Include="Services\IHomePageItemProvider.cs" />
     <Compile Include="Controllers\LandingController.cs" />
     <Compile Include="Controllers\LandingPageWithPicturesController.cs" />
     <Compile Include="Controllers\LibraryController.cs" />

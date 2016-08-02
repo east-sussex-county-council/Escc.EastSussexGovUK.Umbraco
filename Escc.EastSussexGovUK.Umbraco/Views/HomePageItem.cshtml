@@ -1,0 +1,22 @@
+﻿@using ClientDependency.Core.Mvc
+@using Escc.ClientDependencyFramework
+@using EsccWebTeam.EastSussexGovUK.MasterPages
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.HomePageItemViewModel>
+@{
+    /* Note: This view is intended only for editors using the preview option in Umbraco. 
+       This content is normally displayed by HomePage.cshtml. */
+
+    Model.EsccWebsiteSkin = new CustomerFocusSkin(EsccWebsiteView.Desktop);
+    Html.RequiresCss(CssFileAlias.Resolve("HomeSmall"));
+    Html.RequiresCss(CssFileAlias.Resolve("HomeMedium"), MediaQueryAlias.Resolve("Medium"));
+    Html.RequiresCss(CssFileAlias.Resolve("HomeLarge"), MediaQueryAlias.Resolve("Large"));
+}
+<div class="news context">
+    <div class="features text-content gutters">
+        <ol>
+            <li class="feature feature1">
+                @Html.Partial("~/Views/_HomePageNewsItem.cshtml", Model)
+            </li>
+        </ol>
+    </div>
+</div>

@@ -9,7 +9,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.HomePage
     /// <summary>
     /// Specification for the 'Home page item' document type in Umbraco, which is a small piece of content which appears on the home page
     /// </summary>
-    [UmbracoContentType("Home page item", "HomePageItem", new Type[0], false, icon: BuiltInUmbracoContentTypeIcons.IconPlugin, Description="A short piece of content used to build up the home page.")]
+    [UmbracoContentType("Home page item", "HomePageItem", new Type[0], true, icon: BuiltInUmbracoContentTypeIcons.IconPlugin, Description="A short piece of content used to build up the home page.")]
     public class HomePageItemDocumentType : UmbracoGeneratedBase
     {
         [UmbracoTab("Content", SortOrder=1)]
