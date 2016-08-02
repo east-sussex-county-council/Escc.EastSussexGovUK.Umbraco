@@ -73,7 +73,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
 
                 ((List<HomePageItemViewModel>)model.NewsItems).AddRange(
                     newsRss.Children<IPublishedContent>()
-                    .Where(child => child.ContentType.Alias == "HomePageItem")
+                    .Where(child => child.ContentType.Alias == "HomePageItem" && !String.IsNullOrEmpty(child.GetPropertyValue<string>("Image_Content")))
                     .Take(2)
                     .Select(HomePageItemsController.MapUmbracoContentToItemViewModel)
                     );          
