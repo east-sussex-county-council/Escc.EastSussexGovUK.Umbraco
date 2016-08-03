@@ -12,26 +12,26 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
     /// <summary>
     /// Creates a <see cref="HomePageItemViewModel"/> from an Umbraco content node
     /// </summary>
-    /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Services.IHomePageItemProvider" />
-    public class HomePageItemFromUmbraco : IHomePageItemProvider
+    /// <seealso cref="IHomePageItemViewModelBuilder" />
+    public class HomePageItemViewModelFromUmbraco : IHomePageItemViewModelBuilder
     {
         private readonly IPublishedContent _umbracoContent;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HomePageItemFromUmbraco"/> class.
+        /// Initializes a new instance of the <see cref="HomePageItemViewModelFromUmbraco"/> class.
         /// </summary>
-        /// <param name="umbracoUmbracoContent">An instance of Umbraco content using the <see cref="HomePageItemDocumentType"/> document type.</param>
-        public HomePageItemFromUmbraco(IPublishedContent umbracoUmbracoContent)
+        /// <param name="umbracoContent">An instance of Umbraco content using the <see cref="HomePageItemDocumentType"/> document type.</param>
+        public HomePageItemViewModelFromUmbraco(IPublishedContent umbracoContent)
         {
-            if (umbracoUmbracoContent == null) throw new ArgumentNullException(nameof(umbracoUmbracoContent));
-            _umbracoContent = umbracoUmbracoContent;
+            if (umbracoContent == null) throw new ArgumentNullException(nameof(umbracoContent));
+            _umbracoContent = umbracoContent;
         }
 
         /// <summary>
         /// Gets the home page item.
         /// </summary>
         /// <returns></returns>
-        public HomePageItemViewModel GetHomePageItem()
+        public HomePageItemViewModel BuildModel()
         {
             var model = new HomePageItemViewModel()
             {

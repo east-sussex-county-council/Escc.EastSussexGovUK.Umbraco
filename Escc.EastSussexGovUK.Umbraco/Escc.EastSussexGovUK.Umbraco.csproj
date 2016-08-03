@@ -103,7 +103,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Elibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Elibrary.1.0.0\lib\Escc.Elibrary.dll</HintPath>
+      <HintPath>..\packages\Escc.Elibrary.1.1.0\lib\Escc.Elibrary.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Exceptions.Soap, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
@@ -3281,8 +3281,8 @@
     <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\HomePageItemController.cs" />
     <Compile Include="Controllers\HomePageItemsController.cs" />
-    <Compile Include="Services\HomePageItemFromUmbraco.cs" />
-    <Compile Include="Services\IHomePageItemProvider.cs" />
+    <Compile Include="Services\HomePageItemViewModelFromUmbraco.cs" />
+    <Compile Include="Services\IHomePageItemViewModelBuilder.cs" />
     <Compile Include="Controllers\LandingController.cs" />
     <Compile Include="Controllers\LandingPageWithPicturesController.cs" />
     <Compile Include="Controllers\LibraryController.cs" />
@@ -3443,8 +3443,10 @@
     <Compile Include="RichTextHtmlFormatters\UseFormForEmailLinksFormatter.cs" />
     <Compile Include="Services\BaseViewModelBuilder.cs" />
     <Compile Include="Services\IPageTitleFilter.cs" />
+    <Compile Include="Services\ITaskViewModelBuilder.cs" />
     <Compile Include="Services\RelatedLinksModelBuilder.cs" />
     <Compile Include="Services\RemoveUmbracoNumericSuffixFilter.cs" />
+    <Compile Include="Services\TaskViewModelFromUmbraco.cs" />
     <Compile Include="Services\UmbracoEastSussex1SpaceService.cs" />
     <Compile Include="Services\UmbracoEscisService.cs" />
     <Compile Include="Services\UmbracoLatestService.cs" />

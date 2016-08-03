@@ -47,7 +47,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
             ((List<HomePageItemViewModel>)model.Items).AddRange(
                 publishedContent.Children<IPublishedContent>()
                 .Where(child => child.ContentType.Alias == "HomePageItem")
-                .Select(child => new HomePageItemFromUmbraco(child).GetHomePageItem())
+                .Select(child => new HomePageItemViewModelFromUmbraco(child).BuildModel())
                 );
             return model;
         }

@@ -30,7 +30,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
         {
             if (model == null) throw new ArgumentNullException("model");
 
-            var viewModel = new HomePageItemFromUmbraco(model.Content).GetHomePageItem();
+            var viewModel = new HomePageItemViewModelFromUmbraco(model.Content).BuildModel();
 
             return CurrentTemplate(viewModel);
         }
