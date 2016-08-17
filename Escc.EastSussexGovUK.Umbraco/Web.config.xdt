@@ -227,8 +227,17 @@
     <handlers xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer/handlers[2])" />
     <modules xdt:Transform="Insert" />
     <modules xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer/modules[2])" />
+    <rewrite xdt:Transform="Insert" />
+    <rewrite xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer/rewrite[2])" />
     <staticContent xdt:Transform="Insert" />
     <staticContent xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer/staticContent[2])" />
+  </system.webServer>
+
+  <system.webServer>
+    <rewrite>
+      <rules xdt:Transform="Insert" />
+      <rules xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer/rewrite/rules[2])" />
+    </rewrite>
   </system.webServer>
 
   <system.webServer>
@@ -240,6 +249,7 @@
       <add name="CombineStaticFilesHandlerJs" xdt:Transform="Remove" xdt:Locator="Match(name)" />
       <add verb="GET" path="*.jsx" name="CombineStaticFilesHandlerJs" type="Escc.ClientDependencyFramework.WebForms.CombineStaticFilesHandler, Escc.ClientDependencyFramework.WebForms" xdt:Transform="Insert" />
     </handlers>
+    
     <modules>
       <add name="MicrosoftCmsUrlRedirectionModule" xdt:Transform="Remove" xdt:Locator="Match(name)" />
       <add name="MicrosoftCmsUrlRedirectionModule" type="Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.MicrosoftCmsUrlRedirectionModule, Escc.EastSussexGovUK.Umbraco" xdt:Transform="Insert" />
@@ -250,6 +260,22 @@
       <add name="UmbracoCustomErrorsModule" xdt:Transform="Remove" xdt:Locator="Match(name)" />
       <add name="UmbracoCustomErrorsModule" type="Escc.EastSussexGovUK.Umbraco.Errors.UmbracoCustomErrorsModule, Escc.EastSussexGovUK.Umbraco" xdt:Transform="Insert" />
     </modules>
+    
+    <!-- Ensure SSL is used even when strict transport security is not supported
+           https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples#redirect-http-traffic-to-https -->
+    <rewrite>
+      <rules>
+        <rule name="Force HTTPS" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+        <rule name="Force HTTPS" enabled="true" stopProcessing="true" xdt:Transform="Insert">
+          <match url="(.*)" ignoreCase="false" />
+          <conditions>
+            <add input="{HTTPS}" pattern="off" />
+            <add input="{WARMUP_REQUEST}" pattern="1" negate="true" />
+          </conditions>
+          <action type="Redirect" url="https://{HTTP_HOST}/{R:1}" appendQueryString="true" redirectType="Permanent" />
+        </rule>
+      </rules>
+    </rewrite>
 
     <staticContent>
       <remove fileExtension=".pdf" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
