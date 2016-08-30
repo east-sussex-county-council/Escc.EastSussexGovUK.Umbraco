@@ -95,7 +95,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.ClientDependencyFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.ClientDependencyFramework.Umbraco.1.0.5\lib\Escc.ClientDependencyFramework.dll</HintPath>
+      <HintPath>..\packages\Escc.ClientDependencyFramework.Umbraco.1.0.7\lib\Escc.ClientDependencyFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Dates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
@@ -171,11 +171,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.UserAccessWebService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.UserAccessWebService.3.0.0\lib\Escc.Umbraco.UserAccessWebService.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.UserAccessWebService.3.0.1\lib\Escc.Umbraco.UserAccessWebService.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Web.1.0.0\lib\Escc.Web.dll</HintPath>
+      <HintPath>..\packages\Escc.Web.1.0.1\lib\Escc.Web.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Examine, Version=0.1.68.0, Culture=neutral, processorArchitecture=MSIL">

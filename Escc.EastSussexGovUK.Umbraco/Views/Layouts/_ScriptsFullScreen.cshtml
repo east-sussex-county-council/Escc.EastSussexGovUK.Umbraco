@@ -1,7 +1,7 @@
 ﻿@using ClientDependency.Core.Mvc
 @using Escc.ClientDependencyFramework
 @* Grab Google CDN's jQuery, with a protocol relative URL; fall back to local JQuery if necessary *@
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 @{
     Html.RequiresJs(JsFileAlias.Resolve("JQueryLoad"), 1);
     Html.RequiresJs(JsFileAlias.Resolve("Config"), 1);
