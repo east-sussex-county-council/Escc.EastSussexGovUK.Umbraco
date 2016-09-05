@@ -266,13 +266,21 @@
     <rewrite>
       <rules>
         <rule name="Force HTTPS" xdt:Transform="Remove" xdt:Locator="Match(name)" />
-        <rule name="Force HTTPS" enabled="true" stopProcessing="true" xdt:Transform="Insert">
+        <rule name="Force HTTPS" stopProcessing="true" xdt:Transform="Insert">
           <match url="(.*)" ignoreCase="false" />
           <conditions>
             <add input="{HTTPS}" pattern="off" />
             <add input="{WARMUP_REQUEST}" pattern="1" negate="true" />
           </conditions>
           <action type="Redirect" url="https://{HTTP_HOST}/{R:1}" appendQueryString="true" redirectType="Permanent" />
+        </rule>
+        <rule name="Make new.eastsussex.gov.uk obsolete" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+        <rule name="Make new.eastsussex.gov.uk obsolete" stopProcessing="true" xdt:Transform="Insert">
+            <match url="(.*)" />
+            <conditions>
+                <add input="{HTTP_HOST}" pattern="^new.eastsussex.gov.uk$" />
+            </conditions>
+            <action type="Redirect" url="https://www.eastsussex.gov.uk/{R:1}" appendQueryString="true" redirectType="Permanent" />
         </rule>
       </rules>
     </rewrite>
