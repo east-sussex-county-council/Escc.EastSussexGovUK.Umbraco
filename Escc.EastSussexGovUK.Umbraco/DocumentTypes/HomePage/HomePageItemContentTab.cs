@@ -14,7 +14,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.HomePage
         [UmbracoProperty("Description", "ItemDescription", PropertyEditorAliases.RichTextPropertyEditor, dataTypeInstanceName: RichTextEsccStandardDataType.DataTypeName, description: "Add a short description", SortOrder = 2)]
         public string Description { get; set; }
 
-        [UmbracoProperty("Image", "Image", BuiltInUmbracoDataTypes.MediaPicker, SortOrder = 3)]
+        [UmbracoProperty("Image", "Image", BuiltInUmbracoDataTypes.MediaPicker, SortOrder = 3, Description= "Your image should be 236px wide by 198px high.")]
         public string Image { get; set; }
     }
 }
