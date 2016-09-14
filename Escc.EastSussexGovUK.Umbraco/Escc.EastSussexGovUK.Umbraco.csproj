@@ -3256,8 +3256,10 @@
     <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\HomePageItemController.cs" />
     <Compile Include="Controllers\HomePageItemsController.cs" />
+    <Compile Include="Services\CampaignContentViewModelFromUmbraco.cs" />
+    <Compile Include="Services\CampaignLandingViewModelFromUmbraco.cs" />
     <Compile Include="Services\HomePageItemViewModelFromUmbraco.cs" />
-    <Compile Include="Services\IHomePageItemViewModelBuilder.cs" />
+    <Compile Include="Services\IViewModelBuilder.cs" />
     <Compile Include="Controllers\LandingController.cs" />
     <Compile Include="Controllers\LandingPageWithPicturesController.cs" />
     <Compile Include="Controllers\LibraryController.cs" />
@@ -3418,7 +3420,6 @@
     <Compile Include="RichTextHtmlFormatters\UseFormForEmailLinksFormatter.cs" />
     <Compile Include="Services\BaseViewModelBuilder.cs" />
     <Compile Include="Services\IPageTitleFilter.cs" />
-    <Compile Include="Services\ITaskViewModelBuilder.cs" />
     <Compile Include="Services\RelatedLinksModelBuilder.cs" />
     <Compile Include="Services\RemoveUmbracoNumericSuffixFilter.cs" />
     <Compile Include="Services\TaskViewModelFromUmbraco.cs" />

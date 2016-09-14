@@ -30,90 +30,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
         {
             if (model == null) throw new ArgumentNullException("model");
 
-            var viewModel = MapUmbracoContentToViewModel(model.Content, new ContentExperimentSettingsService(), new UmbracoOnAzureRelatedLinksService());
+            var mediaUrlTransformer = new AzureMediaUrlTransformer(GlobalHelper.GetCdnDomain(), GlobalHelper.GetDomainsToReplace());
+            var viewModel = new CampaignLandingViewModelFromUmbraco(model.Content, new UmbracoOnAzureRelatedLinksService(mediaUrlTransformer), mediaUrlTransformer).BuildModel();
+
+            // Add common properties to the model
+            var modelBuilder = new BaseViewModelBuilder();
+            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode);
 
             new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" });
 
             return CurrentTemplate(viewModel);
-        }
-
-        private static CampaignLandingViewModel MapUmbracoContentToViewModel(IPublishedContent content, IContentExperimentSettingsService contentExperimentSettingsService, IRelatedLinksService relatedLinksService)
-        {
-            var model = new CampaignLandingViewModel();
-
-            model.Introduction = new HtmlString(content.GetPropertyValue<string>("Introduction_Content"));
-
-            model.LandingNavigation.Sections = BuildLandingLinksViewModelFromUmbracoContent(content, relatedLinksService);
-
-            var buttonLinks = relatedLinksService.BuildRelatedLinksViewModelFromUmbracoContent(content, "ButtonNavigation_Content");
-
-            for (var i = 0; i <= 2 && i < buttonLinks.Count; i++)
-            {
-                var target = buttonLinks[i];
-                if (target != null)
-                {
-                    model.ButtonTargets.Add(target);
-                    model.ButtonDescriptions.Add(content.GetPropertyValue<string>("Button" + (i+1) + "Description_Content"));
-                }
-            }
-            
-            model.Content = new HtmlString(content.GetPropertyValue<string>("Content_Content"));
-
-            var imageData = content.GetPropertyValue<IPublishedContent>("BackgroundSmall_Design");
-            if (imageData != null)
-            {
-                model.BackgroundImageSmall = new Image()
-                {
-                    ImageUrl = ContentHelper.TransformUrl(new Uri(imageData.Url, UriKind.Relative))
-                };
-            }
-            imageData = content.GetPropertyValue<IPublishedContent>("BackgroundMedium_Design");
-            if (imageData != null)
-            {
-                model.BackgroundImageMedium = new Image()
-                {
-                    ImageUrl = ContentHelper.TransformUrl(new Uri(imageData.Url, UriKind.Relative))
-                };
-            }
-            imageData = content.GetPropertyValue<IPublishedContent>("BackgroundLarge_Design");
-            if (imageData != null)
-            {
-                model.BackgroundImageLarge = new Image()
-                {
-                    ImageUrl = ContentHelper.TransformUrl(new Uri(imageData.Url, UriKind.Relative))
-                };
-            }
-            model.CustomCssSmallScreen = new HtmlString(content.GetPropertyValue<string>("CssSmall_Design"));
-            model.CustomCssMediumScreen = new HtmlString(content.GetPropertyValue<string>("CssMedium_Design"));
-            model.CustomCssLargeScreen = new HtmlString(content.GetPropertyValue<string>("CssLarge_Design"));
-            
-            // Add common properties to the model
-            var modelBuilder = new BaseViewModelBuilder();
-            modelBuilder.PopulateBaseViewModel(model, content, contentExperimentSettingsService, UmbracoContext.Current.InPreviewMode);
-
-            return model;
-        }
-
-        /// <summary>
-        /// For each related link, create a <see cref="LandingSectionViewModel" />
-        /// </summary>
-        /// <param name="content">The content.</param>
-        /// <param name="relatedLinksService">The related links service.</param>
-        /// <returns></returns>
-        private static IList<LandingSectionViewModel> BuildLandingLinksViewModelFromUmbracoContent(IPublishedContent content, IRelatedLinksService relatedLinksService)
-        {
-            var sections = new List<LandingSectionViewModel>() {};
-            var relatedLinks = relatedLinksService.BuildRelatedLinksViewModelFromUmbracoContent(content, "LandingNavigation_Content");
-            foreach (var link in relatedLinks)
-            { 
-                var section = new LandingSectionViewModel()
-                {
-                    Heading = link,
-                    Links = new HtmlLink[0]
-                };
-                sections.Add(section);
-            }
-            return sections;
         }
     }
 }

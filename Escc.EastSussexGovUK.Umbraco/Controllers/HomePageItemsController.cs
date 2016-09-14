@@ -44,10 +44,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
                 PageTitle = publishedContent.Name,
                 Description = publishedContent.GetPropertyValue<string>("pageDescription_Content")
             };
+            var mediaUrlTransformer = new AzureMediaUrlTransformer(GlobalHelper.GetCdnDomain(), GlobalHelper.GetDomainsToReplace());
+
             ((List<HomePageItemViewModel>)model.Items).AddRange(
                 publishedContent.Children<IPublishedContent>()
                 .Where(child => child.ContentType.Alias == "HomePageItem")
-                .Select(child => new HomePageItemViewModelFromUmbraco(child).BuildModel())
+                .Select(child => new HomePageItemViewModelFromUmbraco(child, mediaUrlTransformer).BuildModel())
                 );
             return model;
         }

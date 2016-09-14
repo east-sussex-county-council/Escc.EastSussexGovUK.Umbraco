@@ -8,6 +8,7 @@ using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Umbraco.Caching;
 using Escc.Umbraco.PropertyTypes;
+using Umbraco.Core;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 using Umbraco.Web.Models;
@@ -30,7 +31,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
         {
             if (model == null) throw new ArgumentNullException("model");
 
-            var viewModel = new HomePageItemViewModelFromUmbraco(model.Content).BuildModel();
+            var mediaUrlTransformer = new AzureMediaUrlTransformer(GlobalHelper.GetCdnDomain(), GlobalHelper.GetDomainsToReplace());
+            var viewModel = new HomePageItemViewModelFromUmbraco(model.Content, mediaUrlTransformer).BuildModel();
 
             return CurrentTemplate(viewModel);
         }

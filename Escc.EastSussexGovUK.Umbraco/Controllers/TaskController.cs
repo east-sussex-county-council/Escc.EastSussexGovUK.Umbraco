@@ -29,9 +29,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
         {
             if (model == null) throw new ArgumentNullException("model");
 
+            var mediaUrlTransformer = new AzureMediaUrlTransformer(GlobalHelper.GetCdnDomain(), GlobalHelper.GetDomainsToReplace());
             var viewModel = new TaskViewModelFromUmbraco(model.Content,
-                    new UmbracoOnAzureRelatedLinksService(),
-                    new ElibraryProxyLinkConverter(new SpydusUrlBuilder())
+                    new UmbracoOnAzureRelatedLinksService(mediaUrlTransformer),
+                    new ElibraryProxyLinkConverter(new SpydusUrlBuilder()),
+                    mediaUrlTransformer
                     ).BuildModel();
 
             // Add common properties to the model

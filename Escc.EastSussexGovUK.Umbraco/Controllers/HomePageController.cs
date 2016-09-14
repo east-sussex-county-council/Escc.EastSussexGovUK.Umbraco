@@ -30,7 +30,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
         {
             if (model == null) throw new ArgumentNullException("model");
 
-            var viewModel = MapUmbracoContentToViewModel(model.Content, new UmbracoOnAzureRelatedLinksService(), new ContentExperimentSettingsService());
+            var viewModel = MapUmbracoContentToViewModel(model.Content, new UmbracoOnAzureRelatedLinksService(new AzureMediaUrlTransformer(GlobalHelper.GetCdnDomain(), GlobalHelper.GetDomainsToReplace())), new ContentExperimentSettingsService());
 
             new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" });
 
@@ -51,6 +51,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
             var modelBuilder = new BaseViewModelBuilder();
             modelBuilder.PopulateBaseViewModel(model, publishedContent, contentExperimentSettingsService, UmbracoContext.Current.InPreviewMode);
 
+            var mediaUrlTransformer = new AzureMediaUrlTransformer(GlobalHelper.GetCdnDomain(), GlobalHelper.GetDomainsToReplace());
+
             var involvedRss = publishedContent.Children<IPublishedContent>()
                 .FirstOrDefault(child => child.ContentType.Alias == "HomePageItems" && child.Name.ToUpperInvariant().Contains("INVOLVED"));
             if (involvedRss != null)
@@ -61,7 +63,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
                         involvedRss.Children<IPublishedContent>()
                         .Where(child => child.ContentType.Alias == "HomePageItem")
                         .Take(5)
-                        .Select(child => new HomePageItemViewModelFromUmbraco(child).BuildModel())
+                        .Select(child => new HomePageItemViewModelFromUmbraco(child, mediaUrlTransformer).BuildModel())
                         );
             }
 
@@ -75,14 +77,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
                     newsRss.Children<IPublishedContent>()
                     .Where(child => child.ContentType.Alias == "HomePageItem" && !String.IsNullOrEmpty(child.GetPropertyValue<string>("Image_Content")))
                     .Take(2)
-                    .Select(child => new HomePageItemViewModelFromUmbraco(child).BuildModel())
+                    .Select(child => new HomePageItemViewModelFromUmbraco(child, mediaUrlTransformer).BuildModel())
                     );          
             }
 
             var termDates = publishedContent.GetPropertyValue<IPublishedContent>("TermDatesData_Content");
             if (termDates != null && !String.IsNullOrEmpty(termDates.Url))
             {
-                model.TermDatesDataUrl = ContentHelper.TransformUrl(new Uri(termDates.Url, UriKind.Relative));
+                model.TermDatesDataUrl = mediaUrlTransformer.TransformMediaUrl(new Uri(termDates.Url, UriKind.Relative));
             }
 
             ((List<HtmlLink>)model.TopTasksLinks).AddRange(relatedLinksService.BuildRelatedLinksViewModelFromUmbracoContent(publishedContent, "TopTasksContent_Content"));

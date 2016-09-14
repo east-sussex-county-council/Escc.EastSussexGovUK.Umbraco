@@ -14,6 +14,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
     /// <seealso cref="Escc.Umbraco.PropertyTypes.IRelatedLinksService" />
     public class UmbracoOnAzureRelatedLinksService : IRelatedLinksService
     {
+        private readonly IMediaUrlTransformer _mediaUrlTransformer;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UmbracoOnAzureRelatedLinksService"/> class.
+        /// </summary>
+        /// <param name="mediaUrlTransformer">The media URL transformer.</param>
+        public UmbracoOnAzureRelatedLinksService(IMediaUrlTransformer mediaUrlTransformer)
+        {
+            if (mediaUrlTransformer == null) throw new ArgumentNullException(nameof(mediaUrlTransformer));
+            _mediaUrlTransformer = mediaUrlTransformer;
+        }
+
         /// <summary>
         /// Builds the content of the related links view model from Umbraco.
         /// </summary>
@@ -29,7 +41,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             {
                 if (link.Url != null)
                 {
-                    link.Url = ContentHelper.TransformUrl(link.Url);
+                    link.Url = _mediaUrlTransformer.TransformMediaUrl(link.Url);
                 }
             }
 

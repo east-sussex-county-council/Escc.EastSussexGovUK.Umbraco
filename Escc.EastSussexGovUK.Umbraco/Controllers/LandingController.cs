@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Web.Mvc;
+using AST.AzureBlobStorage.Helper;
 using Escc.EastSussexGovUK.MasterPages.Features;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.EastSussexGovUK.Umbraco.Services;
@@ -35,7 +36,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
                 new UmbracoSocialMediaService(model.Content, new EastSussexGovUKContext().DoNotTrack), 
                 new UmbracoEastSussex1SpaceService(model.Content), 
                 new UmbracoWebChatSettingsService(model.Content, new UrlListReader()), 
-                new UmbracoOnAzureRelatedLinksService(), 
+                new UmbracoOnAzureRelatedLinksService(new AzureMediaUrlTransformer(GlobalHelper.GetCdnDomain(), GlobalHelper.GetDomainsToReplace())), 
                 new ContentExperimentSettingsService(), 
                 new UmbracoEscisService(model.Content));
 

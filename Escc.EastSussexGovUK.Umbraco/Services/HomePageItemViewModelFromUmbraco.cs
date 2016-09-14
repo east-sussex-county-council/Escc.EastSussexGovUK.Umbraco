@@ -12,19 +12,24 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
     /// <summary>
     /// Creates a <see cref="HomePageItemViewModel"/> from an Umbraco content node
     /// </summary>
-    /// <seealso cref="IHomePageItemViewModelBuilder" />
-    public class HomePageItemViewModelFromUmbraco : IHomePageItemViewModelBuilder
+    /// <seealso cref="IViewModelBuilder&lt;T&gt;" />
+    public class HomePageItemViewModelFromUmbraco : IViewModelBuilder<HomePageItemViewModel>
     {
         private readonly IPublishedContent _umbracoContent;
+        private readonly IMediaUrlTransformer _mediaUrlTransformer;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HomePageItemViewModelFromUmbraco"/> class.
         /// </summary>
         /// <param name="umbracoContent">An instance of Umbraco content using the <see cref="HomePageItemDocumentType"/> document type.</param>
-        public HomePageItemViewModelFromUmbraco(IPublishedContent umbracoContent)
+        /// <param name="mediaUrlTransformer">A service to links to items in the media library</param>
+        public HomePageItemViewModelFromUmbraco(IPublishedContent umbracoContent, IMediaUrlTransformer mediaUrlTransformer)
         {
             if (umbracoContent == null) throw new ArgumentNullException(nameof(umbracoContent));
+            if (mediaUrlTransformer == null) throw new ArgumentNullException(nameof(mediaUrlTransformer));
+
             _umbracoContent = umbracoContent;
+            _mediaUrlTransformer = mediaUrlTransformer;
         }
 
         /// <summary>
@@ -56,7 +61,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             {
                 model.Image = new Image()
                 {
-                    ImageUrl = ContentHelper.TransformUrl(new Uri(imageData.Url, UriKind.Relative)),
+                    ImageUrl = _mediaUrlTransformer.TransformMediaUrl(new Uri(imageData.Url, UriKind.Relative)),
                     Width = imageData.GetPropertyValue<int>("umbracoWidth"),
                     Height = imageData.GetPropertyValue<int>("umbracoHeight")
                 };
