@@ -2,7 +2,7 @@
 using System.Text;
 using System.Web;
 using Escc.Dates;
-using Escc.EastSussexGovUK.MasterPages.Features;
+using Escc.EastSussexGovUK.Features;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 
@@ -23,18 +23,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
         {
             this.content = content;
         }
-
-        /// <summary>
-        /// Build a composite 'latest' from the current page and its ancestors
-        /// </summary>
-        /// <returns></returns>
-        public IHtmlString BuildLatest()
-        {
-            var latestHtml = new StringBuilder();
-            GetLatestRecursive(this.content, latestHtml, false);
-            return new HtmlString(latestHtml.ToString());
-        }
-
+        
         /// <summary>
         /// Gather 'latest' content from the current page and its ancestors
         /// </summary>
@@ -53,7 +42,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             if (documentTypeSupportsLatest)
             {
                 var now = DateTime.Now.ToUkDateTime();
-                if (!String.IsNullOrWhiteSpace(latest.LatestHtml)
+                if (!String.IsNullOrWhiteSpace(latest.LatestHtml.ToHtmlString())
                     && (!latest.PublishDate.HasValue || now >= latest.PublishDate)
                     && (!latest.UnpublishDate.HasValue || now <= latest.UnpublishDate)
                     && (!isRecursiveRequest || latest.Cascade)
@@ -85,7 +74,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
 
             var model = new LatestSettings()
             {
-                LatestHtml = latestHtml
+                LatestHtml = new HtmlString(latestHtml)
             };
 
             // Latests can be published before or until given dates.
@@ -101,6 +90,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             model.Cascade = content.GetPropertyValue<bool>("latestCascade_Latest");
 
             return model;
+        }
+
+        public LatestSettings ReadLatestSettings()
+        {
+            var latestHtml = new StringBuilder();
+            GetLatestRecursive(this.content, latestHtml, false);
+            return new LatestSettings()
+            {
+                LatestHtml = new HtmlString(latestHtml.ToString())
+            };
         }
     }
 }

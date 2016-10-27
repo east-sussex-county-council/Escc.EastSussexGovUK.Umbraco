@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Web;
-using Escc.EastSussexGovUK.MasterPages.Features;
+using Escc.EastSussexGovUK.Features;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 
@@ -13,18 +13,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
     /// </summary>
     public class UmbracoSocialMediaService : ISocialMediaService
     {
-        private bool? doNotTrack;
         private IPublishedContent content;
 
         /// <summary>
         /// Creates a new instance of <see cref="UmbracoSocialMediaService"/>
         /// </summary>
         /// <param name="content">The content.</param>
-        /// <param name="doNotTrack">Do Not Track setting.</param>
-        public UmbracoSocialMediaService(IPublishedContent content, bool? doNotTrack)
+        public UmbracoSocialMediaService(IPublishedContent content)
         {
             this.content = content;
-            this.doNotTrack = doNotTrack;
         }
 
         /// <summary>
@@ -39,8 +36,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             AddFacebookPropertiesToModelFromUmbracoContent(this.content, model);
             AddTwitterPropertiesToModelFromUmbracoContent(this.content, model);
             SetSocialMediaOrderFromUmbracoContent(this.content, model);
-
-            model.DoNotTrack = (this.doNotTrack != null && this.doNotTrack.Value);
 
             return model;
         }

@@ -1,11 +1,12 @@
 ﻿@using ClientDependency.Core.Mvc
 @using Escc.ClientDependencyFramework
-@using Escc.EastSussexGovUK.MasterPages
-@using Escc.EastSussexGovUK.MasterPages.Features
-@using EsccWebTeam.EastSussexGovUK.MasterPages
+@using Escc.EastSussexGovUK
+@using Escc.EastSussexGovUK.Features
+@using Escc.EastSussexGovUK.Skins
+@using Escc.EastSussexGovUK.Views
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.CampaignContentViewModel>
 @{
-    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout);
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
 
     Html.RequiresCss(CssFileAlias.Resolve("CampaignSmall"));
@@ -24,7 +25,7 @@
 
     Html.RequiresJs(JsFileAlias.Resolve("Navigation"));
 
-    Html.Partial("~/Views/Layouts/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
+    Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
     {
         new EmbeddedYouTubeVideos() { Html = new [] { Model.ContentPart1.ToString(), Model.ContentPart2.ToString(), Model.ContentPart3.ToString(), Model.ContentPart4.ToString() }}
     });
@@ -32,15 +33,11 @@
     var bodyClass = "campaign-content";
     if (!String.IsNullOrEmpty(Model.FinalQuote)) { bodyClass += " with-final-quote";}
 }
-@section Metadata
-{
-    <title>@Model.PageTitle &#8211; East Sussex County Council</title>
-}
 @section BodyClass {@bodyClass}
 <div class="article">
     <article>
         <div class="content text-content">
-            <h1>@Model.PageTitle</h1>
+            <h1>@Model.Metadata.Title</h1>
 
             @Html.Partial("~/Views/Layouts/_GuideNavigation.cshtml", Model.CampaignPages)
 

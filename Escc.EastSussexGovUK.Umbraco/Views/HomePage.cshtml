@@ -2,11 +2,13 @@
 @using System.Web.Hosting
 @using ClientDependency.Core.Mvc
 @using Escc.ClientDependencyFramework
+@using Escc.EastSussexGovUK
+@using Escc.EastSussexGovUK.Skins
+@using Escc.EastSussexGovUK.Views
 @using Escc.Umbraco.PropertyTypes
-@using EsccWebTeam.EastSussexGovUK.MasterPages
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.HomePageViewModel>
 @{
-    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout);
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
 
     Html.RequiresCss(CssFileAlias.Resolve("HomeSmall"));
@@ -20,6 +22,10 @@
         Html.RequiresCss(CssFileAlias.Resolve("HomeLarge"), MediaQueryAlias.Resolve("Large"));
         Html.RequiresJs(JsFileAlias.Resolve("HomeTabs"), 90);
     }
+
+    var baseUrl = new HostingEnvironmentContext().BaseUrl?.TrimPathEndSlash();
+
+    Model.Metadata.OpenGraphType = "government";
 }
 @functions{
 
@@ -50,33 +56,8 @@
 }
 @section Metadata
 {
-    <title>East Sussex County Council</title>
-    <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
-    <link rel="schema.DCTERMS" href="http://purl.org/dc/terms/" />
-    <meta name="DC.title" content="East Sussex County Council" lang="en-GB" xml:lang="en-GB" />
-    <meta property="og:title" content="East Sussex County Council" lang="en-GB" xml:lang="en-GB" />
-    <meta name="twitter:title" content="East Sussex County Council" lang="en-GB" xml:lang="en-GB" />
-    <meta rel="canonical" content="@Request.Url.Scheme://@Request.Url.Authority/" />
-    <meta property="og:url" content="@Request.Url.Scheme://@Request.Url.Authority/" />
-    <meta name="DC.publisher" content="East Sussex County Council" lang="en-GB" xml:lang="en-GB" />
-    <meta name="DCTERMS.spatial" content="East Sussex, UK" lang="en-GB" xml:lang="en-GB" />
-    <meta name="DC.language" class="DCTERMS.ISO639-2" content="eng" />
-    <meta name="DC.description" content="East Sussex County Council&#39;s website has a wealth of advice on council services and related subjects, for residents, businesses and visitors to the county." lang="en-GB" xml:lang="en-GB" />
-    <meta name="description" content="East Sussex County Council&#39;s website has a wealth of advice on council services and related subjects, for residents, businesses and visitors to the county." lang="en-GB" xml:lang="en-GB" />
-    <meta property="og:description" content="East Sussex County Council&#39;s website has a wealth of advice on council services and related subjects, for residents, businesses and visitors to the county." lang="en-GB" xml:lang="en-GB" />
-    <meta name="twitter:description" content="East Sussex County Council&#39;s website has a wealth of advice on council services and related subjects, for residents, businesses and visitors to the county." lang="en-GB" xml:lang="en-GB" />
-    <meta property="og:type" content="government" lang="en-GB" xml:lang="en-GB" />
-    <link rel="apple-touch-icon-precomposed" href="@Request.Url.Scheme://@Request.Url.Authority/apple-touch-icon-precomposed.png" />
-    <meta name="msapplication-TileImage" content="@Request.Url.Scheme://@Request.Url.Authority/windows-tile.png" />
-    <meta name="msapplication-TileColor" content="#ffffff" />
-    <meta property="og:image" content="@Request.Url.Scheme://@Request.Url.Authority/escc.eastsussexgovuk/img/logo-for-facebook.png" />
-    <meta property="og:site_name" content="East Sussex County Council" lang="en-GB" xml:lang="en-GB" />
-    <meta property="fb:app_id" content="169406409819518" />
-    <meta property="twitter:card" content="summary" />
-    <meta property="twitter:site" content="@("@eastsussexcc")" />
     <link rel="alternate" type="application/rss+xml" href="@Request.Url.Scheme://@Request.Url.Authority/home-news-items/>" title="News - East Sussex County Council" />
     <link rel="alternate" type="application/rss+xml" href="@Request.Url.Scheme://@Request.Url.Authority/home-get-involved/>" title="Get involved - East Sussex County Council" />
-    <link rel="search" type="application/opensearchdescription+xml" title="East Sussex County Council" href="@Request.Url.Scheme://@Request.Url.Authority/search/opensearch.xml" />
 }
 @section Breadcrumb{}
 
@@ -118,7 +99,7 @@
 
             @if (Model.NewsRssUrl != null)
             {
-                <a class="feed screen" rel="alternate" type="application/rss+xml" id="rss1" href="@Model.NewsRssUrl"><img src="/img/body/rss-27px.gif" alt="RSS feed" width="27" height="27" id="rssIcon1" /></a>
+                <a class="feed screen" rel="alternate" type="application/rss+xml" id="rss1" href="@Model.NewsRssUrl"><img src="@baseUrl/img/body/rss-27px.gif" alt="RSS feed" width="27" height="27" id="rssIcon1" /></a>
             }
 
             <ol>
@@ -188,7 +169,7 @@
                 <header><h2>@Model.InvolvedTitle</h2></header>
                 @if (Model.InvolvedRssUrl != null)
                 {
-                    <a class="feed screen" rel="alternate" type="application/rss+xml" id="rss4" href="@Model.InvolvedRssUrl"><img src="/img/body/rss-27px.gif" alt="RSS feed" width="27" height="27" /></a>
+                    <a class="feed screen" rel="alternate" type="application/rss+xml" id="rss4" href="@Model.InvolvedRssUrl"><img src="@baseUrl/img/body/rss-27px.gif" alt="RSS feed" width="27" height="27" /></a>
                 }
                 @if (Model.InvolvedItems.Any())
                 {

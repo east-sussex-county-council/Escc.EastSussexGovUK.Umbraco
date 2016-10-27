@@ -1,10 +1,16 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.BaseViewModel>
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Mvc.BaseViewModel>
+@using Escc.EastSussexGovUK.Views
+@{
+    if (Model == null) { throw new NotSupportedException("This view requires a model based on Escc.EastSussexGovUK.Mvc.BaseViewModel"); }
+    Model.EsccWebsiteView = EsccWebsiteView.Plain;
+}
 <!DOCTYPE html>
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#"
       xmlns:fb="https://www.facebook.com/2008/fbml" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml schema: http://schema.org/">
 <head>
-    @Html.Partial("~/Views/Layouts/_ContentExperiment.cshtml", Model)
+    @{ Html.RenderPartial("~/Views/Layouts/_ContentExperiment.cshtml", Model); }
     <meta charset="UTF-8" />
+    @{ Html.RenderPartial("~/Views/EastSussexGovUK/MetadataControl.ascx", Model.Metadata); }
     @RenderSection("Metadata", required: false)
 </head>
 <body>

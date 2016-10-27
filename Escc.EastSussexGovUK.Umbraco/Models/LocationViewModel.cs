@@ -9,7 +9,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
     /// <summary>
     /// A model of a service location to be displayed using the Location view
     /// </summary>
-    public class LocationViewModel : BaseViewModelWithInheritedContent
+    public class LocationViewModel : BaseViewModel
     {
         public LocationViewModel()
         {

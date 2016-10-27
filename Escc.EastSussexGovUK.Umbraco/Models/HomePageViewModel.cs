@@ -7,7 +7,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
     /// <summary>
     /// The content to be displayed on the website home page
     /// </summary>
-    public class HomePageViewModel : BaseViewModelWithInheritedContent
+    public class HomePageViewModel : BaseViewModel
     {
         public HomePageViewModel()
         {

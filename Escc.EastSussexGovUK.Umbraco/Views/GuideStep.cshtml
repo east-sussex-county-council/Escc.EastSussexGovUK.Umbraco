@@ -1,11 +1,12 @@
 ﻿@using ClientDependency.Core.Mvc
 @using Escc.ClientDependencyFramework
-@using Escc.EastSussexGovUK.MasterPages
-@using Escc.EastSussexGovUK.MasterPages.Features
-@using EsccWebTeam.EastSussexGovUK.MasterPages
+@using Escc.EastSussexGovUK
+@using Escc.EastSussexGovUK.Features
+@using Escc.EastSussexGovUK.Skins
+@using Escc.EastSussexGovUK.Views
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.GuideStepViewModel>
 @{
-    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout);
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] { new CoronerSkin(Model.EsccWebsiteView, Request.Url)}, new CustomerFocusSkin(Model.EsccWebsiteView));
 
     Html.RequiresCss(CssFileAlias.Resolve("NavigationSmall"));
@@ -17,14 +18,10 @@
     Html.RequiresCss(CssFileAlias.Resolve("MobileControls"));
     Html.RequiresJs(JsFileAlias.Resolve("Navigation"));
 
-    Html.Partial("~/Views/Layouts/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
+    Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
     {
         new EmbeddedYouTubeVideos() { Html = new [] { Model.StepContent.ToString() }},
         new EmbeddedGoogleMaps() { Html = new [] { Model.StepContent.ToString() }},
-        new EastSussex1SpaceSearch() { ShowEastSussex1SpaceSearch = Model.ShowEastSussex1SpaceWidget },
-        new EscisSearch() { ShowEscisSearch = Model.ShowEscisWidget },
-        new FacebookLikeBox() { SocialMedia = Model.SocialMedia, EsccWebsiteView = Model.EsccWebsiteView },
-        new TwitterWidget() { SocialMedia = Model.SocialMedia, EsccWebsiteView = Model.EsccWebsiteView },
         new WebChat() { WebChatSettings = Model.WebChat }
     });
 
@@ -37,11 +34,13 @@
             break;
         }
     }
+
+    var stepTitle = Model.Metadata.Title;
+    Model.Metadata.Title = Model.Metadata.Title + " – " + Model.GuideTitle;
 }
 @section Metadata
 {
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css' />
-    <title>@Model.PageTitle &#8211; @Model.GuideTitle &#8211; East Sussex County Council</title>
 }
 
 <div class="article guide-step">
@@ -50,10 +49,10 @@
 
             <h1>@Model.GuideTitle</h1>
 
-            @Html.Partial("~/Views/Layouts/_Latest.cshtml")
+            @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
             @Html.Partial("~/Views/Layouts/_GuideNavigation.cshtml", Model.Steps)
 
-            <h2>@(thisStep + 1). @Model.PageTitle</h2>
+            <h2>@(thisStep + 1). @stepTitle</h2>
 
             @Model.StepContent
 
@@ -87,13 +86,13 @@
     </article>
 </div>
 
-@Html.Partial("~/Views/Partials/_RelatedLinks.cshtml", Model.RelatedLinksGroups)
+@Html.Partial("~/Views/Layouts/_RelatedLinks.cshtml", Model.RelatedLinksGroups)
 
 @foreach (var socialMedia in Model.SocialMedia.SocialMediaOrder)
 {
-    @Html.Partial("~/Views/Layouts/_" + socialMedia + ".cshtml")
+    @Html.Partial("~/Views/EastSussexGovUK/Features/_" + socialMedia + ".cshtml")
 }
-@Html.Partial("~/Views/Layouts/_SupportingContentDesktop.cshtml")
+@Html.Partial("~/Views/EastSussexGovUK/Features/_SupportingContentDesktop.cshtml")
 <div class="text-content content">
-    @Html.Partial("~/Views/Layouts/_Share.cshtml")
+    @Html.Partial("~/Views/EastSussexGovUK/Features/_Share.cshtml")
 </div>

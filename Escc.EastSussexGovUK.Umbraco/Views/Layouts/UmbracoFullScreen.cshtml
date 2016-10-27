@@ -1,0 +1,48 @@
+﻿@using ClientDependency.Core.Mvc
+@using Escc.EastSussexGovUK.Mvc.Views.EastSussexGovUK
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Mvc.BaseViewModel>
+@{
+    Layout = "~/Views/EastSussexGovUK/fullscreen.cshtml";
+}
+@section ContentExperiment {
+    @{ Html.RenderPartial("~/Views/Layouts/_ContentExperiment.cshtml", Model); }
+}
+@section Metadata
+{
+    @{ Html.RenderPartial("~/Views/Layouts/_CmsPreview.cshtml", Model); }
+    @RenderSection("Metadata", required: false)
+}
+@section BodyClass{@RenderSection("BodyClass", required: false)}
+@section Header {
+    @if (IsSectionDefined("Header"))
+    {
+        @RenderSection("Header")
+    }
+    else
+    {
+        @:
+        <header>
+            <div class="header context">
+                @{ Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData {Control = "HeaderFullScreen", BreadcrumbProvider = Model.BreadcrumbProvider}); }
+                <div class="full-screen-bar">
+                    <h1>@RenderSection("FullScreenHeading", required: false)</h1>
+                    @RenderSection("FullScreenLinks", required: false)
+                </div>
+            </div>
+        </header>    
+    }
+}
+@RenderBody()
+@section Footer {
+    @if (IsSectionDefined("Footer"))
+    {
+        @RenderSection("Footer")
+    }
+}
+@section JavaScript
+{
+    @RenderSection("JavaScript", required: false)
+}
+@{  // Do not render these sections for this layout
+    if (IsSectionDefined("Breadcrumb")) { RenderSection("Breadcrumb").WriteTo(TextWriter.Null); }
+}

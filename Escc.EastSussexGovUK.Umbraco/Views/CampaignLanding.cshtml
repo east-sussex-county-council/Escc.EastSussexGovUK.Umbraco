@@ -1,10 +1,11 @@
 ﻿@using ClientDependency.Core.Mvc
 @using Escc.ClientDependencyFramework
+@using Escc.EastSussexGovUK.Skins
+@using Escc.EastSussexGovUK.Views
 @using Escc.Web
-@using EsccWebTeam.EastSussexGovUK.MasterPages
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.CampaignLandingViewModel>
 @{
-    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout);
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
 
     Html.RequiresCss(CssFileAlias.Resolve("CampaignSmall"));
@@ -34,16 +35,12 @@
     policy.AppendPolicy(new ContentSecurityPolicyFromConfig().Policies["YouTube"]);
     policy.UpdateHeaders();
 }
-@section Metadata
-{
-    <title>@Model.PageTitle &#8211; East Sussex County Council</title>
-}
 @section BodyClass {
     campaign-landing
 }
 <div class="full-page">
     <div class="lead">
-        <h1>@Model.PageTitle</h1>
+        <h1>@Model.Metadata.Title</h1>
         @if (!String.IsNullOrEmpty(Model.Introduction.ToHtmlString()))
         {
             <div class="intro">@Model.Introduction</div>
@@ -71,6 +68,6 @@
     </div>
     <div class="text-content">
         @Model.Content
-        @Html.Partial("~/Views/Layouts/_Share.cshtml", Model)
+        @Html.Partial("~/Views/EastSussexGovUK/Features/_Share.cshtml", Model)
     </div>
 </div>

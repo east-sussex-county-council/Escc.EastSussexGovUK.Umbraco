@@ -3,8 +3,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 using Escc.AddressAndPersonalDetails;
+using Escc.EastSussexGovUK.Features;
 using Escc.Umbraco.PropertyEditors.RichTextPropertyEditor;
-using EsccWebTeam.EastSussexGovUK;
 using Humanizer;
 
 namespace Escc.EastSussexGovUK.Umbraco.RichTextHtmlFormatters

@@ -5,7 +5,7 @@ using Escc.Umbraco.PropertyTypes;
 
 namespace Escc.EastSussexGovUK.Umbraco.Models
 {
-    public class TaskViewModel : BaseViewModelWithInheritedContent
+    public class TaskViewModel : BaseViewModel
     {
         public TaskViewModel()
         {

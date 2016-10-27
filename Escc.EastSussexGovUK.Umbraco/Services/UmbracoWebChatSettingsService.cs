@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Escc.EastSussexGovUK.MasterPages.Features;
+using Escc.EastSussexGovUK.Features;
 using Escc.Umbraco.PropertyTypes;
 using Umbraco.Core.Models;
 using Umbraco.Web;

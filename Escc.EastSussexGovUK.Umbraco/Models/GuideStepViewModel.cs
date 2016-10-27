@@ -5,7 +5,7 @@ using Escc.Umbraco.PropertyTypes;
 
 namespace Escc.EastSussexGovUK.Umbraco.Models
 {
-    public class GuideStepViewModel : BaseViewModelWithInheritedContent
+    public class GuideStepViewModel : BaseViewModel
     {
         public GuideStepViewModel()
         {

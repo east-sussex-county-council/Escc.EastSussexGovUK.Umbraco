@@ -1,40 +1,45 @@
 ﻿@using ClientDependency.Core.Mvc
 @using Escc.Web
-@model Escc.EastSussexGovUK.Umbraco.Models.BaseViewModel
+@model Escc.EastSussexGovUK.Mvc.BaseViewModel
 @*
-     Hide content experiment code if being requested by EsccWebTeam.Data.Xml, because it's invalid as XML.
+     Hide content experiment code if being requested by Escc.Net, because it's invalid as XML.
     This happens when you're experimenting on a page which is parsed for an iCalendar download.
 *@
 @{
-    var hasContentExperiment = (Request.Url.Host.IndexOf('.') > -1 &&
-                                  Request.Url.Host.IndexOf("escc.gov", StringComparison.Ordinal) == -1 &&
-                                  Model.IsPublicView &&
-                                  Model.ContentExperimentPageSettings != null
-        );
-    var showContentExperimentScript = (hasContentExperiment &&
-                                       Request.UserAgent != "Escc.Net.HttpRequestClient" &&
-                                       !String.IsNullOrWhiteSpace(Model.ContentExperimentPageSettings.ContentExperimentScript.ToString()));
-    if (hasContentExperiment)
+    var contentExperimentModel = Model as Escc.EastSussexGovUK.Umbraco.Models.BaseViewModel;
+    if (contentExperimentModel != null)
     {
-        // This view uses Google content experiments, so relax the content security policy to allow that
-        var policy = new ContentSecurityPolicyHeaders(Response.Headers);
-        policy.AppendPolicy(new ContentSecurityPolicyFromConfig().Policies["GoogleContentExperiments"]);
-        policy.UpdateHeaders();
-
-        foreach (var scriptUrl in Model.ContentExperimentPageSettings.ScriptUrls)
+        var hasContentExperiment = (Request.Url.Host.IndexOf('.') > -1 &&
+                                    Request.Url.Host.IndexOf("escc.gov", StringComparison.Ordinal) == -1 &&
+                                    Model.IsPublicView &&
+                                    contentExperimentModel.ContentExperimentPageSettings != null
+            );
+        var showContentExperimentScript = (hasContentExperiment &&
+                                           Request.UserAgent != "Escc.Net.HttpRequestClient" &&
+                                           !String.IsNullOrWhiteSpace(contentExperimentModel.ContentExperimentPageSettings.ContentExperimentScript.ToString()));
+        if (hasContentExperiment)
         {
-            // 1000 priority loads this script after any others
-            Html.RequiresJs(scriptUrl.ToString(), 1000);
+            // This view uses Google content experiments, so relax the content security policy to allow that
+            var policy = new ContentSecurityPolicyHeaders(Response.Headers);
+            policy.AppendPolicy(new ContentSecurityPolicyFromConfig().Policies["GoogleContentExperiments"]);
+            policy.UpdateHeaders();
+
+            foreach (var scriptUrl in contentExperimentModel.ContentExperimentPageSettings.ScriptUrls)
+            {
+                // 1000 priority loads this script after any others
+                Html.RequiresJs(scriptUrl.ToString(), 1000);
+            }
+
+            foreach (var cssUrl in contentExperimentModel.ContentExperimentPageSettings.StylesheetUrls)
+            {
+                // 1000 priority loads this script after any others
+                Html.RequiresCss(cssUrl.ToString(), 1000);
+            }
         }
 
-        foreach (var cssUrl in Model.ContentExperimentPageSettings.StylesheetUrls)
+        if (showContentExperimentScript)
         {
-            // 1000 priority loads this script after any others
-            Html.RequiresCss(cssUrl.ToString(), 1000);
+            @contentExperimentModel.ContentExperimentPageSettings.ContentExperimentScript
         }
     }
-}
-@if (showContentExperimentScript)
-{
-    @Model.ContentExperimentPageSettings.ContentExperimentScript
 }

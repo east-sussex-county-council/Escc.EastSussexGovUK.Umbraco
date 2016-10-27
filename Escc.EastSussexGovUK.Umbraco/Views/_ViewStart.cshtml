@@ -1,3 +1,4 @@
-﻿@{
-    Layout = EsccWebTeam.EastSussexGovUK.MasterPages.ViewSelector.SelectView(Request.Cookies, HttpContext.Current.Session, Request.QueryString, Request.UserAgent);
+﻿@using Escc.EastSussexGovUK.Views
+@{
+    Layout = Escc.EastSussexGovUK.Views.ViewSelector.SelectView(Request.QueryString, Request.UserAgent, ViewEngine.Mvc, Request.Cookies);
 }

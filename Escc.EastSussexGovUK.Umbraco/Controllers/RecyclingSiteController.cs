@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Escc.EastSussexGovUK.MasterPages.Features;
+using Escc.EastSussexGovUK.Features;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.Umbraco.ContentExperiments;
 using Escc.Umbraco.PropertyTypes;

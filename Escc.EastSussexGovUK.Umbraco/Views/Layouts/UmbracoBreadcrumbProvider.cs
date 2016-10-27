@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using EsccWebTeam.EastSussexGovUK.MasterPages.Controls;
+using Escc.EastSussexGovUK.Features;
 using Umbraco.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.Views.Layouts
@@ -22,22 +22,25 @@ namespace Escc.EastSussexGovUK.Umbraco.Views.Layouts
             // Start with the parent node of the current node, which is effectively its folder,
             // unless we're only one folder deep because then we want to have the main section 
             // highlighted.
-            var node = umbraco.TypedContent(UmbracoContext.Current.PageId);
-            if (node.Parent != null && node.Parent.Parent == null)
+            if (UmbracoContext.Current.PageId.HasValue)
             {
-                isTopLevelSection = true;
-            }
-            else
-            {
-                node = node.Parent;
-            }
+                var node = umbraco.TypedContent(UmbracoContext.Current.PageId);
+                if (node.Parent != null && node.Parent.Parent == null)
+                {
+                    isTopLevelSection = true;
+                }
+                else
+                {
+                    node = node.Parent;
+                }
 
-            // Add data for each ancestor node in the hierarchy
-            while (node != null)
-            {
-                breadcrumb.Add(node.Name,  isTopLevelSection ? string.Empty : umbraco.NiceUrlWithDomain(node.Id));
-                node = node.Parent;
-                if (isTopLevelSection) isTopLevelSection = false;
+                // Add data for each ancestor node in the hierarchy
+                while (node != null)
+                {
+                    breadcrumb.Add(node.Name, isTopLevelSection ? string.Empty : umbraco.NiceUrlWithDomain(node.Id));
+                    node = node.Parent;
+                    if (isTopLevelSection) isTopLevelSection = false;
+                }
             }
 
             // Reverse it so we start from the root, and return

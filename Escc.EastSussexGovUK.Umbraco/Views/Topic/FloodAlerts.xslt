@@ -32,7 +32,7 @@
     <xsl:choose>
       <xsl:when test="contains($warningText, 'Severe Flood Warning')">
         <p class="flood severe">
-          <img src="/escc.eastsussexgovuk/img/body/flood-severe.png" alt="Severe flood warning sign" width="45" height="42" />
+          <img src="/images/flood-severe.png" alt="Severe flood warning sign" width="45" height="42" />
           <xsl:value-of select="$number"/>
           <xsl:choose>
             <xsl:when test="$number = 1">
@@ -52,7 +52,7 @@
 
       <xsl:when test="contains($warningText, 'Flood Warning')">
         <p class="flood">
-          <img src="/escc.eastsussexgovuk/img/body/flood-warning.png" alt="Flood warning sign" width="45" height="42" />
+          <img src="/images/flood-warning.png" alt="Flood warning sign" width="45" height="42" />
           <xsl:value-of select="$number"/>
           <xsl:choose>
             <xsl:when test="$number = 1">
@@ -72,7 +72,7 @@
       
       <xsl:when test="contains($warningText, 'Flood Alert')">
         <p class="flood">
-          <img src="/escc.eastsussexgovuk/img/body/flood-alert.png" alt="Flood alert sign" width="45" height="42" />
+          <img src="/images/flood-alert.png" alt="Flood alert sign" width="45" height="42" />
           <xsl:value-of select="$number"/>
           <xsl:choose>
             <xsl:when test="$number = 1">

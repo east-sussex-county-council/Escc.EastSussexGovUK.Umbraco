@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using EsccWebTeam.EastSussexGovUK.MasterPages;
+using Escc.EastSussexGovUK.Views;
 
 namespace Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.UserControls
 {

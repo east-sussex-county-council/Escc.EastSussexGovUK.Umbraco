@@ -8,6 +8,7 @@ using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Umbraco.Caching;
 using Escc.Umbraco.PropertyTypes;
+using Escc.Web.Metadata;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 using Umbraco.Web.Models;
@@ -39,11 +40,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
 
         private static RssViewModel MapUmbracoContentToViewModel(IPublishedContent publishedContent)
         {
-            var model = new RssViewModel()
-            {
-                PageTitle = publishedContent.Name,
-                Description = publishedContent.GetPropertyValue<string>("pageDescription_Content")
-            };
+            var model = new RssViewModel();
+            model.Metadata.Title = publishedContent.Name;
+            model.Metadata.Description = publishedContent.GetPropertyValue<string>("pageDescription_Content");
+
             var mediaUrlTransformer = new AzureMediaUrlTransformer(GlobalHelper.GetCdnDomain(), GlobalHelper.GetDomainsToReplace());
 
             ((List<HomePageItemViewModel>)model.Items).AddRange(

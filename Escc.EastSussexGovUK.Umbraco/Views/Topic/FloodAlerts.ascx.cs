@@ -25,8 +25,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Views.Topic
             if (String.IsNullOrEmpty(ConfigurationManager.AppSettings["FloodAlertsRssUrl"])) return;
 
             // Caching ensures we only get data once every 10 minutes, and only when it's working
-            const string htmlCache = "EsccWebTeam.EastSussexCC.FloodAlerts.Html";
-            const string errorCache = "EsccWebTeam.EastSussexCC.FloodAlerts.Error";
+            const string htmlCache = "Escc.FloodAlerts.Html";
+            const string errorCache = "Escc.FloodAlerts.Error";
 
             // If there's been an error recently, don't retry for the next 10 minutes (per application).
             if (Cache[errorCache] != null) return;

@@ -1,40 +1,32 @@
 ﻿@using ClientDependency.Core.Mvc
 @using Escc.ClientDependencyFramework
-@using Escc.EastSussexGovUK.MasterPages
-@using Escc.EastSussexGovUK.MasterPages.Features
+@using Escc.EastSussexGovUK
+@using Escc.EastSussexGovUK.Features
+@using Escc.EastSussexGovUK.Skins
+@using Escc.EastSussexGovUK.Views
 @using Escc.Registration.MarriageSkin
 @using Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration
-@using EsccWebTeam.EastSussexGovUK.MasterPages
-@inherits UmbracoViewPage<MicrosoftCmsViewModel>
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<MicrosoftCmsViewModel>
 @{ 
-    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout);
-    Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] { new MarriageSkin(Model.EsccWebsiteView, Model.Url) }, new CustomerFocusSkin(Model.EsccWebsiteView));
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
+    Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] { new MarriageSkin(Model.EsccWebsiteView, Model.Metadata.PageUrl) }, new CustomerFocusSkin(Model.EsccWebsiteView));
 
     Html.RequiresCss(CssFileAlias.Resolve("DownloadSmall"));
     
     var placeholders = CmsUtilities.Placeholders;
-    Html.Partial("~/Views/Layouts/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
+    Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
     {
         new EmbeddedYouTubeVideos() { Html = new [] { placeholders["phDefIntro"].Value.ToString() }},
         new EmbeddedGoogleMaps() { Html = new [] { placeholders["phDefIntro"].Value.ToString() } },
-        new EastSussex1SpaceSearch() { ShowEastSussex1SpaceSearch = Model.ShowEastSussex1SpaceWidget },
-        new EscisSearch() { ShowEscisSearch= Model.ShowEscisWidget},
-        new FacebookLikeBox() { SocialMedia = Model.SocialMedia, EsccWebsiteView = Model.EsccWebsiteView },
-        new TwitterWidget() { SocialMedia = Model.SocialMedia, EsccWebsiteView = Model.EsccWebsiteView },
         new WebChat() { WebChatSettings = Model.WebChat }
     });
-}
-
-@section Metadata
-{
-    <title>@Model.PageTitle &#8211; East Sussex County Council</title>
 }
 
 <div class="article">
     <article>
         <div class="content text-content">
-            <h1>@Model.PageTitle</h1>
-            @Html.Partial("~/Views/Layouts/_Latest.cshtml")
+            <h1>@Model.Metadata.Title</h1>
+            @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
             @Html.Partial("~/Views/StandardDownloadPage.ascx", Model)
         </div>
     </article>
@@ -44,9 +36,9 @@
 
 @foreach (var socialMedia in Model.SocialMedia.SocialMediaOrder)
 {
-    @Html.Partial("~/Views/Layouts/_" + socialMedia + ".cshtml")
+    @Html.Partial("~/Views/EastSussexGovUK/Features/_" + socialMedia + ".cshtml")
 }
-@Html.Partial("~/Views/Layouts/_SupportingContentDesktop.cshtml")
+@Html.Partial("~/Views/EastSussexGovUK/Features/_SupportingContentDesktop.cshtml")
 <div class="text-content content">
-    @Html.Partial("~/Views/Layouts/_Share.cshtml")
+    @Html.Partial("~/Views/EastSussexGovUK/Features/_Share.cshtml")
 </div>

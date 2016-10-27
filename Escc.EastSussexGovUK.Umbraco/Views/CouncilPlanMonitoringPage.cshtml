@@ -1,14 +1,15 @@
 ﻿@using System.Web.Mvc.Html
 @using ClientDependency.Core.Mvc
 @using Escc.ClientDependencyFramework
-@using Escc.EastSussexGovUK.MasterPages
-@using Escc.EastSussexGovUK.MasterPages.Features
+@using Escc.EastSussexGovUK
+@using Escc.EastSussexGovUK.Features
+@using Escc.EastSussexGovUK.Skins
 @using Escc.EastSussexGovUK.Umbraco.Views
 @using Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration
-@using EsccWebTeam.EastSussexGovUK.MasterPages
+@using Escc.EastSussexGovUK.Views
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<MicrosoftCmsViewModel>
 @{
-    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout);
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
 
     Html.RequiresCss(CssFileAlias.Resolve("CouncilPlanSmall"));
@@ -17,17 +18,13 @@
     Html.RequiresCss(CssFileAlias.Resolve("CouncilPlanLarge"), MediaQueryAlias.Resolve("Large"));
 
     var placeholders = CmsUtilities.Placeholders;
-    Html.Partial("~/Views/Layouts/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
+    Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
     {
         new EmbeddedYouTubeVideos() { Html = new [] { placeholders["phDefContent"].Value.ToString() }},
         new EmbeddedGoogleMaps() { Html = new [] { placeholders["phDefContent"].Value.ToString() } },
     });
 
     var selectedClass = CouncilPlanUtility.PriorityClass();
-}
-@section Metadata
-{
-    <title>@Model.PageTitle &#8211; East Sussex County Council</title>
 }
 
 <div class="full-page">
@@ -37,14 +34,14 @@
         </div>
 
         <div class="content text-content">
-            @Html.Partial("~/Views/Layouts/_Share.cshtml")
+            @Html.Partial("~/Views/EastSussexGovUK/Features/_Share.cshtml")
         </div>
 </article>
 </div>
 
 @foreach (var socialMedia in Model.SocialMedia.SocialMediaOrder)
 {
-    @Html.Partial("~/Views/Layouts/_" + socialMedia + ".cshtml")
+    @Html.Partial("~/Views/EastSussexGovUK/Features/_" + socialMedia + ".cshtml")
 }
 
 @{

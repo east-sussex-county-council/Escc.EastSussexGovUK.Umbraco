@@ -9,7 +9,6 @@ using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Umbraco.Caching;
 using Escc.Umbraco.ContentExperiments;
 using Escc.Umbraco.PropertyTypes;
-using EsccWebTeam.EastSussexGovUK;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 using Umbraco.Web.Models;
@@ -42,7 +41,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
         {
             return GuideStepController.MapUmbracoContentToViewModel(content,
                 new UmbracoLatestService(content),
-                new UmbracoSocialMediaService(content, new EastSussexGovUKContext().DoNotTrack),
+                new UmbracoSocialMediaService(content),
                 new UmbracoEastSussex1SpaceService(content),
                 new UmbracoWebChatSettingsService(content, new UrlListReader()),
                 new UmbracoOnAzureRelatedLinksService(new AzureMediaUrlTransformer(GlobalHelper.GetCdnDomain(), GlobalHelper.GetDomainsToReplace())),

@@ -5,7 +5,7 @@ using Escc.Umbraco.PropertyTypes;
 
 namespace Escc.EastSussexGovUK.Umbraco.Models
 {
-    public class PersonViewModel : BaseViewModelWithInheritedContent
+    public class PersonViewModel : BaseViewModel
     {
         public PersonViewModel()
         {

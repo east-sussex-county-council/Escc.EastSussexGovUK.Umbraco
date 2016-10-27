@@ -2,7 +2,7 @@
 
 namespace Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration
 {
-    public class MicrosoftCmsViewModel : BaseViewModelWithInheritedContent
+    public class MicrosoftCmsViewModel : BaseViewModel
     {
     }
 }

@@ -1,5 +1,5 @@
 ﻿using System;
-using Escc.EastSussexGovUK.MasterPages.Features;
+using Escc.EastSussexGovUK.Features;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 

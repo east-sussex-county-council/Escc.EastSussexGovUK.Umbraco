@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Globalization;
-using Escc.EastSussexGovUK.MasterPages.Features;
+using Escc.EastSussexGovUK.Features;
 using Escc.EastSussexGovUK.Umbraco.Models;
+using Escc.EastSussexGovUK.Umbraco.Views.Layouts;
 using Escc.Umbraco.ContentExperiments;
 using Umbraco.Core.Models;
 using Umbraco.Web;
@@ -28,19 +29,21 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             if (model == null) throw new ArgumentNullException("model");
             if (content == null) throw new ArgumentNullException("content");
 
-            model.PageTitle = content.Name;
-            model.PageTitle = new RemoveUmbracoNumericSuffixFilter().Apply(model.PageTitle);
+            model.BreadcrumbProvider = new UmbracoBreadcrumbProvider();
 
-            model.Url = new Uri(content.UrlAbsolute());
-            model.PageDescription = content.GetPropertyValue<string>("pageDescription");
+            model.Metadata.Title = content.Name;
+            model.Metadata.Title = new RemoveUmbracoNumericSuffixFilter().Apply(model.Metadata.Title);
+
+            model.Metadata.PageUrl = new Uri(content.UrlAbsolute());
+            model.Metadata.Description = content.GetPropertyValue<string>("pageDescription");
             model.PageType = content.DocumentTypeAlias;
-            model.PageId = content.Id.ToString(CultureInfo.InvariantCulture);
+            model.Metadata.SystemId = content.Id.ToString(CultureInfo.InvariantCulture);
             model.IsPublicView = !inUmbracoPreviewMode;
             if (contentExperimentSettingsService != null) { model.ContentExperimentPageSettings = contentExperimentSettingsService.LookupSettingsForPage(content.Id); }
         }
 
         /// <summary>
-        /// Populates the properties of <see cref="BaseViewModelWithInheritedContent" /> not inherited from <see cref="BaseViewModel" />
+        /// Populates the properties of <see cref="BaseViewModel" /> which can be inherited from parent nodes
         /// </summary>
         /// <param name="model">The model.</param>
         /// <param name="latestService">The latest service.</param>
@@ -49,11 +52,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
         /// <param name="webChatSettingsService">The web chat settings service.</param>
         /// <param name="escisService">The ESCIS service.</param>
         /// <exception cref="System.ArgumentNullException">model</exception>
-        public void PopulateBaseViewModelWithInheritedContent(BaseViewModelWithInheritedContent model, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IEscisService escisService)
+        public void PopulateBaseViewModelWithInheritedContent(BaseViewModel model, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IEscisService escisService)
         {
             if (model == null) throw new ArgumentNullException("model");
             
-            if (latestService != null) model.Latest = latestService.BuildLatest();
+            if (latestService != null) model.Latest = latestService.ReadLatestSettings().LatestHtml;
             if (eastSussex1SpaceService != null) model.ShowEastSussex1SpaceWidget = eastSussex1SpaceService.ShowSearch();
             if (escisService != null) model.ShowEscisWidget = escisService.ShowSearch();
             if (socialMediaService != null) model.SocialMedia = socialMediaService.ReadSocialMediaSettings();

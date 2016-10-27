@@ -1,0 +1,53 @@
+﻿@using ClientDependency.Core.Mvc
+@using Escc.ClientDependencyFramework
+@using Escc.EastSussexGovUK.Mvc.Views.EastSussexGovUK
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Mvc.BaseViewModel>
+@{
+    Layout = "~/Views/EastSussexGovUK/desktop.cshtml";
+    Html.RequiresJs(JsFileAlias.Resolve("DocumentMetadata"));
+}
+@section ContentExperiment {
+    @{ Html.RenderPartial("~/Views/Layouts/_ContentExperiment.cshtml", Model); }
+}
+@section Metadata
+{
+    @{ Html.RenderPartial("~/Views/Layouts/_CmsPreview.cshtml", Model); }
+    @RenderSection("Metadata", required: false)
+}
+@section BodyClass{@RenderSection("BodyClass", required: false)}
+@section Header {
+    @if (IsSectionDefined("Header"))
+    {
+        @RenderSection("Header")
+    }
+    else
+    {
+        Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData {Control = "HeaderDesktop", BreadcrumbProvider = Model.BreadcrumbProvider});
+    }
+}
+@section Breadcrumb {
+   @if (IsSectionDefined("Breadcrumb"))
+   {
+        @RenderSection("Breadcrumb")
+   }
+   else
+   {
+        Html.RenderPartial("~/Views/EastSussexGovUK/BreadcrumbTrail.ascx", Model.BreadcrumbProvider);
+        Html.RenderPartial("~/Views/EastSussexGovUK/BreadcrumbTrailMobile.ascx", Model.BreadcrumbProvider);
+   }
+}
+@RenderBody()
+@section Footer {
+    @if (IsSectionDefined("Footer"))
+    {
+        @RenderSection("Footer")
+    }
+    else
+    {
+        Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData {Control = "FooterDesktop", BreadcrumbProvider = Model.BreadcrumbProvider});
+    }
+}
+@section JavaScript
+{
+    @RenderSection("JavaScript", required: false)
+}

@@ -19,8 +19,8 @@
    Paragraph horizontal margins and pull-quote position are (18px gutter / (6 cols 474px - 2 x 18px gutters)) = 4.109589%
    ul margin is visually lined up with that.
 */
-.text-content blockquote { overflow: hidden; margin: .5625em 0; background: #cde1ce url(/escc.eastsussexgovuk/img/body/quote-open.gif) no-repeat 4.109589% 1.125em; }
-.text-content blockquote:after {content: ' '; display: block; background: url(/escc.eastsussexgovuk/img/body/quote-close.gif) no-repeat 93% 95%; padding-bottom: 26px; margin-top: -4px; margin-bottom: 14px; }
+.text-content blockquote { overflow: hidden; margin: .5625em 0; background: #cde1ce url(/images/quote-open.gif) no-repeat 4.109589% 1.125em; }
+.text-content blockquote:after {content: ' '; display: block; background: url(/images/quote-close.gif) no-repeat 93% 95%; padding-bottom: 26px; margin-top: -4px; margin-bottom: 14px; }
 .text-content blockquote p { margin: .5625em 4.109589%; }
 .text-content blockquote p:first-child { margin: 1.6875em 4.109589% .5625em; text-indent: 35px; }
 .text-content blockquote ul { margin-left: 11%; }

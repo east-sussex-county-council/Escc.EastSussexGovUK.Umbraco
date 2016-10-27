@@ -6,12 +6,12 @@
 @{
     Layout = null;
     Response.ContentType = "text/vcard";
-    Response.AddHeader("Content-Disposition", "attachment; filename=" + Regex.Replace(Model.PageTitle.ToLower(CultureInfo.CurrentCulture).Replace(" ", "-"), "[^a-z0-9-]", String.Empty) + ".vcf");
+    Response.AddHeader("Content-Disposition", "attachment; filename=" + Regex.Replace(Model.Metadata.Title.ToLower(CultureInfo.CurrentCulture).Replace(" ", "-"), "[^a-z0-9-]", String.Empty) + ".vcf");
 
     var vcard = new StringBuilder();
     vcard.AppendLine("BEGIN:VCARD");
     vcard.AppendLine("VERSION:4.0");
-    vcard.AppendLine("FN:" + Model.PageTitle);
+    vcard.AppendLine("FN:" + Model.Metadata.Title);
     vcard.AppendLine("URL:" + Request.Url.Scheme + "://" + Request.Url.Authority + Request.Url.AbsolutePath);
     if (!String.IsNullOrEmpty(Model.Phone1))
     {

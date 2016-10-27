@@ -56,8 +56,8 @@
     @Html.Raw(email)
     @Html.Raw(fax)
     @Html.Raw(phone)
-    "name": "@Model.PageTitle",
-    "description": "@Model.PageDescription",
+    "name": "@Model.Metadata.Title",
+    "description": "@Model.Metadata.Description",
     "address": {
         "@@type": "PostalAddress",
         "streetAddress": "@Model.Location.BS7666Address.StreetName",

@@ -82,8 +82,20 @@
       <HintPath>..\packages\xmlrpcnet.2.5.0\lib\net20\CookComputing.XmlRpcV2.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Dapper, Version=1.40.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.42\lib\net45\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EmbeddedResourceVirtualPathProvider, Version=1.0.5918.17881, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.EmbeddedResourceVirtualPathProvider.1.0.0\lib\EmbeddedResourceVirtualPathProvider.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Escc.AddressAndPersonalDetails, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.AddressAndPersonalDetails.2.0.0\lib\Escc.AddressAndPersonalDetails.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Escc.AddressAndPersonalDetails.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.AddressAndPersonalDetails.Controls.2.0.1\lib\Escc.AddressAndPersonalDetails.Controls.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Alerts.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -95,11 +107,19 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.ClientDependencyFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.ClientDependencyFramework.Umbraco.1.0.7\lib\Escc.ClientDependencyFramework.dll</HintPath>
+      <HintPath>..\packages\Escc.ClientDependencyFramework.1.0.8\lib\Escc.ClientDependencyFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Dates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Dates.2.0.1\lib\Escc.Dates.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Escc.EastSussexGovUK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.EastSussexGovUK.1.0.1\lib\Escc.EastSussexGovUK.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Escc.EastSussexGovUK.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.EastSussexGovUK.Mvc.2.0.0\lib\Escc.EastSussexGovUK.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Elibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
@@ -126,12 +146,16 @@
       <HintPath>..\packages\Escc.Net.1.0.1\lib\Escc.Net.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Escc.Redirects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Redirects.1.1.0\lib\Escc.Redirects.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Escc.Registration.MarriageSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Registration.MarriageSkin.1.0.1\lib\Escc.Registration.MarriageSkin.dll</HintPath>
+      <HintPath>..\packages\Escc.Registration.MarriageSkin.1.0.3\lib\Escc.Registration.MarriageSkin.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.RubbishAndRecycling.SiteFinder.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.5\lib\Escc.RubbishAndRecycling.SiteFinder.Website.dll</HintPath>
+      <HintPath>..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.7\lib\Escc.RubbishAndRecycling.SiteFinder.Website.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Schools.TermDates.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -139,7 +163,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.2.0.0\lib\Escc.Umbraco.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.2.0.1\lib\Escc.Umbraco.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.Banners, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -176,6 +200,10 @@
     </Reference>
     <Reference Include="Escc.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Web.1.0.1\lib\Escc.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Escc.Web.Metadata, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Web.Metadata.1.1.2\lib\Escc.Web.Metadata.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Examine, Version=0.1.68.0, Culture=neutral, processorArchitecture=MSIL">
@@ -303,8 +331,8 @@
       <HintPath>..\packages\MySql.Data.6.9.8\lib\net45\MySql.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Our.Umbraco.PropertyEditorConverters, Version=2.1.5.35, Culture=neutral, processorArchitecture=MSIL">
@@ -446,6 +474,10 @@
       <HintPath>..\packages\UrlRewritingNet.2.0.7\lib\UrlRewritingNet.UrlRewriter.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.1.0\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="apple-touch-icon-114x114.png" />
@@ -459,6 +491,23 @@
     <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.controller.js" />
     <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.html" />
     <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.resource.js" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\editor.html" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\validate.js" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PhonePropertyEditor\editor.html" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PhonePropertyEditor\PhonePropertyEditor.js" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\controller.js" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\prevalues.controller.js" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\quote.png" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\rte.html" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\rte.prevalues.html" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\styles.css" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.TwitterScriptPropertyEditor\editor.html" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.TwitterScriptPropertyEditor\validate.js" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\editor.html" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\UKLocationPropertyEditor.css" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\UKLocationPropertyEditor.js" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\editor.html" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\validate.js" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.controller.js" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.htm" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.resource.js" />
@@ -508,24 +557,24 @@
     <Content Include="css\StandardLandingPage\landing-small.css" />
     <Content Include="css\StandardTopicPage\topic-medium.css" />
     <Content Include="css\StandardTopicPage\topic-small.css" />
+    <Content Include="css\TinyMCE-Content.css" />
     <Content Include="css\TinyMCE-StyleSelector-Embed.css" />
+    <Content Include="css\TinyMCE-StyleSelector-Headings.css" />
     <Content Include="default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="googledb369ad0fa294f54.html" />
+    <Content Include="images\flood-alert.png" />
+    <Content Include="images\flood-severe.png" />
+    <Content Include="images\flood-warning.png" />
     <Content Include="images\HomePage\jobs.png" />
     <Content Include="js\CampaignTemplates\campaign-landing.js" />
     <Content Include="js\CouncilPlan\council-plan.js" />
     <Content Include="js\CustomerFocusTemplates\guide.js" />
     <Content Include="js\CustomerFocusTemplates\location.js" />
+    <Content Include="js\document-metadata.js" />
     <Content Include="js\HomePage\homepage.js" />
     <Content Include="js\HomePage\jquery-ui-1.10.4.custom.min.js" />
-    <Content Include="MarriageSkin\css\min\marriage-skin-medium.css" />
-    <Content Include="MarriageSkin\css\min\marriage-skin-small.css" />
-    <Content Include="MarriageSkin\img\marriage-banner.jpg" />
-    <Content Include="MarriageSkin\img\marriage-landing-blue.jpg" />
-    <Content Include="MarriageSkin\img\marriage-landing-red.jpg" />
-    <Content Include="MarriageSkin\js\min\marriage-skin.js" />
     <Content Include="App_Plugins\ModelsBuilder\package.manifest" />
     <Content Include="Config\UrlRewriting.config" />
     <Content Include="Config\umbracoSettings.config" />
@@ -541,7 +590,22 @@
     <Content Include="Config\BaseRestExtensions.config" />
     <Content Include="Config\applications.config" />
     <Content Include="Config\404handlers.config" />
+    <Content Include="MarriageSkin\css\min\marriage-skin-medium.css" />
+    <Content Include="MarriageSkin\css\min\marriage-skin-small.css" />
+    <Content Include="MarriageSkin\img\web.config" />
+    <Content Include="images\web.config" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PhonePropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.TwitterScriptPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\package.manifest" />
+    <None Include="images\Web.example.config" />
     <None Include="packages.config" />
+    <Content Include="MarriageSkin\img\marriage-banner.jpg" />
+    <Content Include="MarriageSkin\img\marriage-landing-blue.jpg" />
+    <Content Include="MarriageSkin\img\marriage-landing-red.jpg" />
+    <Content Include="MarriageSkin\js\min\marriage-skin.js" />
     <Content Include="robots.txt" />
     <Content Include="Umbraco\Actions\delete.aspx" />
     <Content Include="Umbraco\Actions\editContent.aspx" />
@@ -2995,9 +3059,6 @@
     <Content Include="Views\CouncilPlanTopicPage.ascx" />
     <Content Include="Views\FormDownloadPage.ascx" />
     <Content Include="Views\LandingPageWithPictures.ascx" />
-    <Content Include="Views\Layouts\BreadcrumbTrail.ascx" />
-    <Content Include="Views\Layouts\BreadcrumbTrailMobile.ascx" />
-    <Content Include="Views\Layouts\MasterPageControl.ascx" />
     <Content Include="Views\Map.ascx" />
     <Content Include="Views\StandardDownloadPage.ascx" />
     <Content Include="Views\StandardTopicPage.ascx" />
@@ -3158,33 +3219,19 @@
     <Content Include="Views\Alerts.cshtml" />
     <Content Include="Views\HomePageItem.cshtml" />
     <Content Include="Views\_HomePageNewsItem.cshtml" />
+    <Content Include="Views\Layouts\UmbracoDesktop.cshtml" />
+    <Content Include="Views\Layouts\UmbracoFullScreen.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
     <Content Include="windows-tile.png" />
-    <Content Include="MarriageSkin\img\web.config" />
     <Content Include="Config\uMediaSync.config" />
     <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\package.manifest" />
-    <Content Include="Views\Layouts\_Banners.cshtml" />
     <Content Include="Views\Layouts\_CmsPreview.cshtml" />
     <Content Include="Views\Layouts\_ContentExperiment.cshtml" />
-    <Content Include="Views\Layouts\_EastSussex1Space.cshtml" />
-    <Content Include="Views\Layouts\_Escis.cshtml" />
-    <Content Include="Views\Layouts\_Facebook.cshtml" />
-    <Content Include="Views\Layouts\_FeatureDependencies.cshtml" />
-    <Content Include="Views\Layouts\_FeatureDependency.cshtml" />
-    <Content Include="Views\Layouts\_Fonts.cshtml" />
     <Content Include="Views\Layouts\_GuideNavigation.cshtml" />
     <Content Include="Views\Layouts\_LandingNavigation.cshtml" />
-    <Content Include="Views\Layouts\_Latest.cshtml" />
-    <Content Include="Views\Layouts\_ScriptsDesktop.cshtml" />
-    <Content Include="Views\Layouts\_ScriptsFullScreen.cshtml" />
-    <Content Include="Views\Layouts\_Share.cshtml" />
-    <Content Include="Views\Layouts\_SupportingContentDesktop.cshtml" />
-    <Content Include="Views\Layouts\_Twitter.cshtml" />
-    <Content Include="Views\Layouts\Desktop.cshtml" />
-    <Content Include="Views\Layouts\FullScreen.cshtml" />
-    <Content Include="Views\Layouts\Plain.cshtml" />
+    <Content Include="Views\Layouts\UmbracoPlain.cshtml" />
     <Content Include="Views\_HomePageJobSearch.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\CampaignContent.cshtml" />
@@ -3211,11 +3258,11 @@
     <Content Include="Views\StandardLandingPage.cshtml" />
     <Content Include="Views\StandardTopicPage.cshtml" />
     <Content Include="Views\Task.cshtml" />
-    <Content Include="Views\Partials\_LocationIsOpen.cshtml" />
-    <Content Include="Views\Partials\_LocationJsonLD.cshtml" />
-    <Content Include="Views\Partials\_LocationOpeningTimes.cshtml" />
-    <Content Include="Views\Partials\_LocationTab1Content.cshtml" />
-    <Content Include="Views\Partials\_RelatedLinks.cshtml" />
+    <Content Include="Views\_LocationIsOpen.cshtml" />
+    <Content Include="Views\_LocationJsonLD.cshtml" />
+    <Content Include="Views\_LocationOpeningTimes.cshtml" />
+    <Content Include="Views\_LocationTab1Content.cshtml" />
+    <Content Include="Views\Layouts\_RelatedLinks.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3238,6 +3285,7 @@
     <Compile Include="ApiControllers\WasteTypesController.cs" />
     <Compile Include="ApiControllers\WebApiConfig.cs" />
     <Compile Include="ApiControllers\WebChatController.cs" />
+    <Compile Include="App_Start\EastSussexGovUK_Mvc.cs" />
     <Compile Include="ContentFinders\GuidePrintViewContentFinder.cs" />
     <Compile Include="ContentFinders\GuidePrintViewEventHandler.cs" />
     <Compile Include="Controllers\CampaignContentController.cs" />
@@ -3395,7 +3443,6 @@
     </Compile>
     <Compile Include="MicrosoftCmsMigration\UserControls\SectionNavigationSettings.cs" />
     <Compile Include="Models\BaseViewModel.cs" />
-    <Compile Include="Models\BaseViewModelWithInheritedContent.cs" />
     <Compile Include="Models\CampaignContentViewModel.cs" />
     <Compile Include="Models\CampaignLandingViewModel.cs" />
     <Compile Include="Models\GuideNavigationLink.cs" />
@@ -3498,28 +3545,6 @@
     <Compile Include="Views\LandingPageWithPictures.ascx.designer.cs">
       <DependentUpon>LandingPageWithPictures.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Layouts\BreadcrumbTrail.ascx.cs">
-      <DependentUpon>BreadcrumbTrail.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Layouts\BreadcrumbTrail.ascx.designer.cs">
-      <DependentUpon>BreadcrumbTrail.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Layouts\BreadcrumbTrailMobile.ascx.cs">
-      <DependentUpon>BreadcrumbTrailMobile.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Layouts\BreadcrumbTrailMobile.ascx.designer.cs">
-      <DependentUpon>BreadcrumbTrailMobile.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Layouts\MasterPageControl.ascx.cs">
-      <DependentUpon>MasterPageControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Layouts\MasterPageControl.ascx.designer.cs">
-      <DependentUpon>MasterPageControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Layouts\MasterPageControlData.cs" />
     <Compile Include="Views\Layouts\UmbracoBreadcrumbProvider.cs" />
     <Compile Include="Views\Map.ascx.cs">
       <DependentUpon>Map.ascx</DependentUpon>
@@ -3629,12 +3654,6 @@
       <LastGenOutput>FormDownloadPageResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Escc.EastSussexGovUK\Escc.EastSussexGovUK\EsccWebTeam.EastSussexGovUK.csproj">
-      <Project>{1426fef0-23dc-4c23-ae15-67f2527bd741}</Project>
-      <Name>EsccWebTeam.EastSussexGovUK</Name>
-    </ProjectReference>
-  </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -3659,21 +3678,21 @@
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\Escc.Schools.TermDates.Website.1.2.1\build\Escc.Schools.TermDates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Schools.TermDates.Website.1.2.1\build\Escc.Schools.TermDates.Website.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Registration.MarriageSkin.1.0.1\build\Escc.Registration.MarriageSkin.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Registration.MarriageSkin.1.0.1\build\Escc.Registration.MarriageSkin.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.1.3.8\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.1.3.8\build\Escc.Umbraco.MediaSync.targets'))" />
     <Error Condition="!Exists('..\packages\UmbracoCms.7.4.3\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.4.3\build\UmbracoCms.props'))" />
     <Error Condition="!Exists('..\packages\UmbracoCms.7.4.3\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.4.3\build\UmbracoCms.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Alerts.Website.2.0.0\build\Escc.Alerts.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Alerts.Website.2.0.0\build\Escc.Alerts.Website.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.5\build\Escc.RubbishAndRecycling.SiteFinder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.5\build\Escc.RubbishAndRecycling.SiteFinder.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.5.0.1\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.5.0.1\build\Escc.Umbraco.PropertyEditors.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Registration.MarriageSkin.1.0.3\build\Escc.Registration.MarriageSkin.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Registration.MarriageSkin.1.0.3\build\Escc.Registration.MarriageSkin.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.7\build\Escc.RubbishAndRecycling.SiteFinder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.7\build\Escc.RubbishAndRecycling.SiteFinder.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.Schools.TermDates.Website.1.2.1\build\Escc.Schools.TermDates.Website.targets" Condition="Exists('..\packages\Escc.Schools.TermDates.Website.1.2.1\build\Escc.Schools.TermDates.Website.targets')" />
-  <Import Project="..\packages\Escc.Registration.MarriageSkin.1.0.1\build\Escc.Registration.MarriageSkin.targets" Condition="Exists('..\packages\Escc.Registration.MarriageSkin.1.0.1\build\Escc.Registration.MarriageSkin.targets')" />
   <Import Project="..\packages\Escc.Umbraco.MediaSync.1.3.8\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.1.3.8\build\Escc.Umbraco.MediaSync.targets')" />
   <Import Project="..\packages\UmbracoCms.7.4.3\build\UmbracoCms.targets" Condition="Exists('..\packages\UmbracoCms.7.4.3\build\UmbracoCms.targets')" />
   <Import Project="..\packages\Escc.Alerts.Website.2.0.0\build\Escc.Alerts.Website.targets" Condition="Exists('..\packages\Escc.Alerts.Website.2.0.0\build\Escc.Alerts.Website.targets')" />
-  <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.5\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.5\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
   <Import Project="..\packages\Escc.Umbraco.PropertyEditors.5.0.1\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.5.0.1\build\Escc.Umbraco.PropertyEditors.targets')" />
+  <Import Project="..\packages\Escc.Registration.MarriageSkin.1.0.3\build\Escc.Registration.MarriageSkin.targets" Condition="Exists('..\packages\Escc.Registration.MarriageSkin.1.0.3\build\Escc.Registration.MarriageSkin.targets')" />
+  <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.7\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.7\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

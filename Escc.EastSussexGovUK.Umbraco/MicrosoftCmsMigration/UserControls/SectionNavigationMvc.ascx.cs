@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using System.Web.Mvc;
-using EsccWebTeam.EastSussexGovUK.MasterPages;
+using Escc.EastSussexGovUK.Views;
 
 namespace Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.UserControls
 {
