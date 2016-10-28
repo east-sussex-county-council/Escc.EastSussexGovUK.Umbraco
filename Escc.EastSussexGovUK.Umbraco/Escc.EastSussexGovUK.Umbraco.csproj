@@ -90,6 +90,10 @@
       <HintPath>..\packages\Escc.EmbeddedResourceVirtualPathProvider.1.0.0\lib\EmbeddedResourceVirtualPathProvider.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Escc.ActiveDirectory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.ActiveDirectory.1.0.0\lib\Escc.ActiveDirectory.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Escc.AddressAndPersonalDetails, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.AddressAndPersonalDetails.2.0.0\lib\Escc.AddressAndPersonalDetails.dll</HintPath>
       <Private>True</Private>
@@ -108,6 +112,10 @@
     </Reference>
     <Reference Include="Escc.ClientDependencyFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.ClientDependencyFramework.1.0.8\lib\Escc.ClientDependencyFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Escc.ClientDependencyFramework.WebForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.ClientDependencyFramework.WebForms.1.0.2\lib\Escc.ClientDependencyFramework.WebForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Dates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
@@ -601,7 +609,9 @@
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\package.manifest" />
     <None Include="images\Web.example.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="MarriageSkin\img\marriage-banner.jpg" />
     <Content Include="MarriageSkin\img\marriage-landing-blue.jpg" />
     <Content Include="MarriageSkin\img\marriage-landing-red.jpg" />
