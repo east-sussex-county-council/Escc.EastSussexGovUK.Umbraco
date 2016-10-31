@@ -1,27 +1,6 @@
 ﻿/* Update gutter for large grid. */
 .campaign-landing .body .container {position: relative; padding-left: 1.863354%;padding-right: 1.863354%;}
 
-/* 
-    Lay out buttons using flexbox when supported. Standard gutter (margin) between buttons means it aligns to the grid.
-*/
-.flexbox .campaign-landing .buttons { display: flex; flex-direction: row;}
-.flexbox .campaign-landing .buttons a {margin: 0 1.863354%;flex-grow: 1;width: 100%;padding-left: 1.863354%;padding-right: 1.863354%; }
-.flexbox .campaign-landing .buttons a:first-child { margin: 0;}
-.flexbox .campaign-landing .buttons a:last-child { margin: 0;}
-.flexbox .campaign-landing .buttons a.button-2:last-child { margin: 0 0 0 1.863354%;}
-
-
-/*
-    Inside 12 col container we have 3 x 4 column boxes. Gutter width (margin) is standard 18px.
-    However, each box is -36px for padding both sides.
-    
-    Vertical padding is one line on standard 13px base font.
-    Minimum height of 4 grid lines is the best way to make the buttons the same height.
-*/
-.no-flexbox .campaign-landing .buttons { overflow: hidden; }
-.no-flexbox .campaign-landing .buttons a { float: left;width: 28.364389%;margin-left: 1.863354%; padding: 1.384615em 1.863354%;min-height: 5.538462em;}
-.no-flexbox .campaign-landing .buttons a:first-child { margin-left: 0;}
-
 /* In this design the breadcrumb indent looks very odd, so remove it. */
 .campaign-landing .breadcrumb { padding-left: 0;}
 

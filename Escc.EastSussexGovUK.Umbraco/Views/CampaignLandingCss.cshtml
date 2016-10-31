@@ -1,24 +1,34 @@
-﻿@using Escc.Umbraco.PropertyTypes
+﻿@using System.Text
+@using Escc.Umbraco.PropertyTypes
+@using File = System.IO.File
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.CampaignLandingViewModel>
 @{
     Layout = null;
     Response.ContentType = "text/css";
     Image image = null;
-    IHtmlString customCss = null;
+    var customCss = new StringBuilder();
     if (Request.QueryString["media-query"] == "small")
     {
         image = Model.BackgroundImageSmall;
-        customCss = Model.CustomCssSmallScreen;
+        customCss.Append(Model.CustomCssSmallScreen.ToHtmlString());
     }
     if (Request.QueryString["media-query"] == "medium")
     {
         image = Model.BackgroundImageMedium;
-        customCss = Model.CustomCssMediumScreen;
+        customCss.Append(Model.CustomCssMediumScreen.ToHtmlString());
+        if (Model.ButtonsHorizontalAtMedium)
+        {
+            customCss.Append(File.ReadAllText(Server.MapPath("~/css/CampaignTemplates/horizontal-buttons.css")));
+        }
     }
     if (Request.QueryString["media-query"] == "large")
     {
         image = Model.BackgroundImageLarge;
-        customCss = Model.CustomCssLargeScreen;
+        customCss.Append(Model.CustomCssLargeScreen.ToHtmlString());
+        if (!Model.ButtonsHorizontalAtMedium)
+        {
+            customCss.Append(File.ReadAllText(Server.MapPath("~/css/CampaignTemplates/horizontal-buttons.css")));
+        }
     }
 
     if (image != null)

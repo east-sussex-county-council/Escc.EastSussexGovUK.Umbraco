@@ -22,6 +22,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
         public LandingNavigationViewModel LandingNavigation { get; set;} = new LandingNavigationViewModel();
         public IList<HtmlLink> ButtonTargets { get; set; }
         public IList<string> ButtonDescriptions { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether buttons should be stacked or horizontal at medium size. Buttons are always horizontal at large sizes.
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if buttons horizontal at medium; <c>false</c> if stacked.
+        /// </value>
+        public bool ButtonsHorizontalAtMedium { get; set; }
         public IHtmlString Content { get; set; }
         public IHtmlString CustomCssSmallScreen { get; set; }
         public IHtmlString CustomCssMediumScreen { get; set; }

@@ -90,6 +90,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             model.CustomCssMediumScreen = new HtmlString(_umbracoContent.GetPropertyValue<string>("CssMedium_Design"));
             model.CustomCssLargeScreen = new HtmlString(_umbracoContent.GetPropertyValue<string>("CssLarge_Design"));
 
+            model.ButtonsHorizontalAtMedium = _umbracoContent.GetPropertyValue<bool>("ButtonsHorizontalAtMedium_Design");
+
             return model;
         }
 

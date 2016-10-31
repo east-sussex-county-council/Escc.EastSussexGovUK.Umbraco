@@ -1,4 +1,5 @@
-﻿using Umbraco.Inception.Attributes;
+﻿using System.ComponentModel;
+using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
 
 namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates
@@ -19,6 +20,10 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates
         [UmbracoProperty("Background image (large screens)", "BackgroundLarge", BuiltInUmbracoDataTypes.MediaPicker, sortOrder: 3,
             Description = "Background image for large screens such as laptops.")]
         public string BackgroundImageLarge { get; set; }
+
+        [UmbracoProperty("Arrange buttons horizontally on medium screens", "ButtonsHorizontalAtMedium", BuiltInUmbracoDataTypes.Boolean, sortOrder: 4, 
+            Description="Buttons are stacked on small screens and arranged horizontally on large screens, but you can choose what happens at medium sizes.")]
+        public string ButtonsHorizontalAtMedium { get; set; }
 
         [UmbracoProperty("Custom CSS (small screens)", "CssSmall", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 6,
              Description="Custom CSS to apply to small screens such as mobiles. This will still apply at larger sizes but may be overridden by the CSS for medium and large screens.")]
