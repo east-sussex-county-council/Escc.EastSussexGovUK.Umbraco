@@ -17,7 +17,22 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
         public IHtmlString ContentPart4 { get; set; }
         public string UpperQuote { get; set; }
         public string CentralQuote { get; set; }
+
+        /// <summary>
+        /// Gets or sets the image which illustrates the central quote; typically the speaker.
+        /// </summary>
+        /// <value>
+        /// The central quote image.
+        /// </value>
         public Image CentralQuoteImage { get; set; }
+
+        /// <summary>
+        /// Gets or sets whetther the central pull quote image is a cutout of a person.
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if the central pull quote image is a cutout; <c>false</c> otherwise.
+        /// </value>
+        public bool CentralQuoteImageIsCutout { get; set; }
         public string LowerQuote { get; set; }
         public string FinalQuote { get; set; }
         public Image FinalQuoteImage { get; set; }

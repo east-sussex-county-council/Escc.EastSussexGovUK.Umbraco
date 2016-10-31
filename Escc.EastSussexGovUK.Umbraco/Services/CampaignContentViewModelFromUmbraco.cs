@@ -55,6 +55,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             model.CentralQuoteBackgroundColour = _umbracoContent.GetPropertyValue<string>("CentralQuoteBackground_Design");
             model.FinalQuoteTextColour = _umbracoContent.GetPropertyValue<string>("FinalQuoteColour_Design");
 
+            model.CentralQuoteImageIsCutout = _umbracoContent.GetPropertyValue<bool>("CentralQuoteImageIsCutout_Design");
+
             var imageData = _umbracoContent.GetPropertyValue<IPublishedContent>("BannerImageSmall_Design");
             if (imageData != null)
             {

@@ -1,4 +1,5 @@
-﻿using Umbraco.Inception.Attributes;
+﻿using Escc.Umbraco.PropertyEditors.DataTypes;
+using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
 
 namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates
@@ -28,7 +29,11 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates
             Description="Must contrast with white text.")]
         public string CentralQuoteBackground { get; set; }
 
-        [UmbracoProperty("Final pull quote: text colour", "FinalQuoteColour", QuoteColourDataType.PropertyEditor, QuoteColourDataType.DataTypeName, sortOrder: 6,
+        [UmbracoProperty("Central pull quote image is a cutout of a person", "CentralQuoteImageIsCutout", BuiltInUmbracoDataTypes.Boolean, sortOrder: 6,
+Description = "This will add a line below the image which shows up if the quote is taller than the image.")]
+        public string CentralQuoteImageIsCutout { get; set; }
+
+        [UmbracoProperty("Final pull quote: text colour", "FinalQuoteColour", QuoteColourDataType.PropertyEditor, QuoteColourDataType.DataTypeName, sortOrder: 7,
             Description = "Must contrast with a white background.")]
         public string FinalQuoteColour { get; set; }
 

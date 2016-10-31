@@ -49,7 +49,8 @@
             @Model.ContentPart2
             @if (!String.IsNullOrEmpty(Model.CentralQuote) && Model.CentralQuoteImage != null)
             {
-                <blockquote class="pull-quote-with-image">
+                var cutoutClass = Model.CentralQuoteImageIsCutout ? "pull-quote-with-cutout-image" : String.Empty;
+                <blockquote class="pull-quote-with-image @cutoutClass">
                     <div>
                         <img src="@Model.CentralQuoteImage.ImageUrl" alt="@Model.CentralQuoteImage.AlternativeText" />
                         <p><span class="open">“</span>@Model.CentralQuote<span class="close">”</span></p>
