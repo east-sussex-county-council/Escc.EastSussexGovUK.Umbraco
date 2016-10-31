@@ -2,27 +2,20 @@
 .campaign-landing .body .container { padding-left: 2.244389%;padding-right: 2.244389%;}
 
 /*
+    h1 remains 36px/36px
     p is 26px/36px
-    .campaign-landing .intro width and horizontal padding add up to 50%. Padding is 18px calculated on (10 cols - 36px gutters = 766px) context.
 */
-.campaign-landing .lead h1 { font-size: 2.769231em;line-height: 1em; }
-.campaign-landing .intro { background: #E3E8EB; } /* fallback colour for IE8 */
-.campaign-landing .intro { width: 45.300261%; background: rgba(255,255,255,.5); border-radius: 10px; padding: .692308em 2.349869%; } 
+.campaign-landing .lead h1 { font-size: 2.769231em;line-height: 1em; margin-bottom: .5em; }
 .campaign-landing .lead p { font-size: 2em;line-height: 1.384615em; }
 
-/* Landing tiles stack across left half of layout */
-.campaign-landing .landing-section { display: block;margin-right: 0;width: 50%; }
-.campaign-landing .landing-section h2 { margin: .5em 0;}
+/* Landing tiles, with some opacity because they'll be covering part of the campaign brand image */
 .campaign-landing .landing-section h2 { background: rgba(174, 225, 244, .9);}
 
-/* Buttons stack across left half of layout.
-   Update padding to work within context of 50% wide minus a gutter
-*/
-.campaign-landing .buttons { margin-top: 0;width: 50%;}
-.campaign-landing .buttons a { margin: .692308em 0; padding-left: 4.699739%;padding-right: 4.699739%;}
+/* Update padding to work within context of 50% wide minus a gutter */
+.campaign-landing .buttons a { padding-left: 4.699739%;padding-right: 4.699739%;}
 
-/* 1 grid line of space above video - not calced */
-.video { margin: 1.384615em 0 0;}
+/* 1 grid line of space above video */
+.campaign-landing .landing-content  { margin: .947368em 0 0;}
 
 /* Pull quotes now have room to float with text around. Increase font size to 27/36px on new base font of 19px. 
    Vertical margin and padding remain 27px, but based on new base font size.

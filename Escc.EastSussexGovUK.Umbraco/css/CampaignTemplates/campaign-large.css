@@ -1,11 +1,6 @@
 ﻿/* Update gutter for large grid. */
 .campaign-landing .body .container {position: relative; padding-left: 1.863354%;padding-right: 1.863354%;}
 
-.campaign-landing .intro { background: none; padding: 0; width: auto; }
-
-/* Minimum 2 grid lines of space (ie 36px) above buttons --- TO DO, recalculate */
-.campaign-landing .buttons { margin-top: 2.769231em; width: 100%; }
-
 /* 
     Lay out buttons using flexbox when supported. Standard gutter (margin) between buttons means it aligns to the grid.
 */
@@ -13,6 +8,8 @@
 .flexbox .campaign-landing .buttons a {margin: 0 1.863354%;flex-grow: 1;width: 100%;padding-left: 1.863354%;padding-right: 1.863354%; }
 .flexbox .campaign-landing .buttons a:first-child { margin: 0;}
 .flexbox .campaign-landing .buttons a:last-child { margin: 0;}
+.flexbox .campaign-landing .buttons a.button-2:last-child { margin: 0 0 0 1.863354%;}
+
 
 /*
     Inside 12 col container we have 3 x 4 column boxes. Gutter width (margin) is standard 18px.

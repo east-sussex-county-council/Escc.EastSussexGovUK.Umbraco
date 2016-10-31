@@ -12,7 +12,7 @@ body .body { position: relative;overflow: hidden;background-repeat: repeat-x; ba
     p is 20/27px
 */
 .campaign-landing .lead { padding: 1.125em 0;position: relative;z-index: 1;}
-.campaign-landing .lead h1 { font-size: 2.4em;line-height: 1.2em; font-weight: bold;}
+.campaign-landing .lead h1 { font-size: 2.4em;line-height: 1.2em; font-weight: bold;margin-bottom: .25em; }
 .campaign-landing .lead p { font-size: 1.538462em;line-height: 1.35em;color: #222;}
 
 /* Position buttons, with some opacity because they'll be covering part of the campaign brand image 
@@ -23,7 +23,7 @@ body .body { position: relative;overflow: hidden;background-repeat: repeat-x; ba
 */
 .campaign-landing .buttons {position: relative;z-index: 1;}
 .campaign-landing .buttons a {background: rgb(62,107,150);} /* fallback colour for IE8 */
-.campaign-landing .buttons a {display: block;padding: 1.384615em 3.797468%;box-shadow: rgba(0,0,0,.4) 2px 2px 5px;background: rgba(62,107,150,.8);}
+.campaign-landing .buttons a {display: block;margin: .692308em 0; padding: 1.384615em 3.797468%;box-shadow: rgba(0,0,0,.4) 2px 2px 5px;background: rgba(62,107,150,.8);}
 .campaign-landing .buttons a:first-child { background: rgb(238,85,91);} /* fallback colour for IE8 */
 .campaign-landing .buttons a:first-child { background: rgba(238,85,91,.8);}
 .campaign-landing .buttons a.button-3 { background: rgb(5,91,11);}  /* fallback colour and selector for IE8 a:last-child rule */
@@ -35,8 +35,8 @@ body .body { position: relative;overflow: hidden;background-repeat: repeat-x; ba
 /* Simple style to make text legible in no-JavaScript scenario */
 .no-js .campaign-landing .content { background: #fff; padding: 18px; position: relative; }
 
-/* Add a grid line of vertical space either side of the video */
-.video { margin: 1.384615em 0;position: relative;}
+/* Add a grid line of vertical space either side of the main text or video */
+.campaign-landing .landing-content { margin: 1.125em 0;position: relative;}
 
 /* Change .share-page colours to white */
 .campaign-landing .share-page { margin: 0 0 1.384615em;}
