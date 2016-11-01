@@ -6,33 +6,46 @@
     Layout = null;
     Response.ContentType = "text/css";
     Image image = null;
-    var customCss = new StringBuilder();
+    var css = new StringBuilder();
+    var customCss = String.Empty;
     if (Request.QueryString["media-query"] == "small")
     {
         image = Model.BackgroundImageSmall;
-        customCss.Append(Model.CustomCssSmallScreen.ToHtmlString());
+        customCss = Model.CustomCssSmallScreen.ToHtmlString();
+        if (Model.ButtonsTopMarginSmall.HasValue)
+        {
+            css.Append(".buttons { margin-top: ").Append(Model.ButtonsTopMarginSmall).Append("px; }");
+        }
     }
     if (Request.QueryString["media-query"] == "medium")
     {
         image = Model.BackgroundImageMedium;
-        customCss.Append(Model.CustomCssMediumScreen.ToHtmlString());
+        customCss = Model.CustomCssMediumScreen.ToHtmlString();
+        if (Model.ButtonsTopMarginMedium.HasValue)
+        {
+            css.Append(".buttons { margin-top: ").Append(Model.ButtonsTopMarginMedium).Append("px; }");
+        }
         if (Model.ButtonsHorizontalAtMedium)
         {
-            customCss.Append(File.ReadAllText(Server.MapPath("~/css/CampaignTemplates/horizontal-buttons.css")));
+            css.Append(File.ReadAllText(Server.MapPath("~/css/CampaignTemplates/horizontal-buttons.css")));
         }
     }
     if (Request.QueryString["media-query"] == "large")
     {
         image = Model.BackgroundImageLarge;
-        customCss.Append(Model.CustomCssLargeScreen.ToHtmlString());
+        customCss = Model.CustomCssLargeScreen.ToHtmlString();
+        if (Model.ButtonsTopMarginLarge.HasValue)
+        {
+            css.Append(".buttons { margin-top: ").Append(Model.ButtonsTopMarginLarge).Append("px; }");
+        }
         if (!Model.ButtonsHorizontalAtMedium)
         {
-            customCss.Append(File.ReadAllText(Server.MapPath("~/css/CampaignTemplates/horizontal-buttons.css")));
+            css.Append(File.ReadAllText(Server.MapPath("~/css/CampaignTemplates/horizontal-buttons.css")));
         }
     }
     if (!String.IsNullOrEmpty(Model.BackgroundColour))
     {
-        @:body .body { background-color: @Model.BackgroundColour; }
+        css.Append("body .body { background-color: ").Append(Model.BackgroundColour).Append("; }");
     }
     if (image != null)
     {
@@ -48,7 +61,8 @@
         {
             repeat = "repeat-y";
         }
-        @:body .body { background-image: url(@image.ImageUrl); background-repeat: @repeat; }
+        css.Append("body .body { background-image: url(").Append(image.ImageUrl).Append("; background-repeat: ").Append(repeat).Append("; }");
     }
-    @customCss
+    css.Append(customCss);
+    @css
 }

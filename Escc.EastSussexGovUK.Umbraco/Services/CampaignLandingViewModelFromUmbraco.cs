@@ -60,6 +60,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
                 }
             }
 
+            model.ButtonsTopMarginSmall = _umbracoContent.GetPropertyValue<int?>("ButtonsTopMarginSmall_Design");
+            model.ButtonsTopMarginMedium = _umbracoContent.GetPropertyValue<int?>("ButtonsTopMarginMedium_Design");
+            model.ButtonsTopMarginLarge = _umbracoContent.GetPropertyValue<int?>("ButtonsTopMarginLarge_Design");
+
             model.Content = new HtmlString(_mediaUrlTransformer.ParseAndTransformMediaUrlsInHtml(_umbracoContent.GetPropertyValue<string>("Content_Content")));
 
             var imageData = _umbracoContent.GetPropertyValue<IPublishedContent>("BackgroundSmall_Design");

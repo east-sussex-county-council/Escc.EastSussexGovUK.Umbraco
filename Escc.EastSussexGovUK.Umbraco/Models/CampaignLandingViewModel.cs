@@ -26,7 +26,45 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
         /// </value>
         public IHtmlString Introduction { get; set; }
         public LandingNavigationViewModel LandingNavigation { get; set;} = new LandingNavigationViewModel();
+
+        /// <summary>
+        /// Gets or sets the space above the buttons on small screens.
+        /// </summary>
+        /// <value>
+        /// Amount of space in pixels
+        /// </value>
+        public int? ButtonsTopMarginSmall { get; set; }
+
+        /// <summary>
+        /// Gets or sets the space above the buttons on medium screens.
+        /// </summary>
+        /// <value>
+        /// Amount of space in pixels
+        /// </value>
+        public int? ButtonsTopMarginMedium { get; set; }
+
+        /// <summary>
+        /// Gets or sets the space above the buttons on large screens.
+        /// </summary>
+        /// <value>
+        /// Amount of space in pixels
+        /// </value>
+        public int? ButtonsTopMarginLarge { get; set; }
+
+        /// <summary>
+        /// Gets or sets the URLs the buttons should link to
+        /// </summary>
+        /// <value>
+        /// The button targets.
+        /// </value>
         public IList<HtmlLink> ButtonTargets { get; set; }
+
+        /// <summary>
+        /// Gets or sets the optional descriptions to appear below links on buttons.
+        /// </summary>
+        /// <value>
+        /// The button descriptions.
+        /// </value>
         public IList<string> ButtonDescriptions { get; set; }
 
         /// <summary>

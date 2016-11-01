@@ -53,5 +53,17 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates
             Description = "Videos are resized automatically based on an initial aspect ratio. Set the height higher or lower than 250 to change the aspect ratio.")]
         public string VideoHeight { get; set; }
 
+        [UmbracoProperty("Space above buttons (small screens)", "ButtonsTopMarginSmall", BuiltInUmbracoDataTypes.Textbox, sortOrder: 12, ValidationRegularExpression = "^(|[0-9]{1,4})$",
+            Description = "Additional space, in pixels, for the background image to show between the heading or intro and the buttons. This will still apply at larger sizes but may be overridden by the medium and large screen settings.")]
+        public string ButtonsTopMarginSmall { get; set; }
+
+        [UmbracoProperty("Space above buttons (medium screens)", "ButtonsTopMarginMedium", BuiltInUmbracoDataTypes.Textbox, sortOrder: 13, ValidationRegularExpression = "^(|[0-9]{1,4})$",
+            Description = "Additional space, in pixels, for the background image to show between the heading or intro and the buttons. This will still apply at larger sizes but may be overridden by the large screen setting.")]
+        public string ButtonsTopMarginMedium { get; set; }
+
+        [UmbracoProperty("Space above buttons (large screens)", "ButtonsTopMarginLarge", BuiltInUmbracoDataTypes.Textbox, sortOrder: 14, ValidationRegularExpression = "^(|[0-9]{1,4})$",
+            Description = "Additional space, in pixels, for the background image to show between the heading or intro and the buttons on large screens.")]
+        public string ButtonsTopMarginLarge { get; set; }
+
     }
 }
