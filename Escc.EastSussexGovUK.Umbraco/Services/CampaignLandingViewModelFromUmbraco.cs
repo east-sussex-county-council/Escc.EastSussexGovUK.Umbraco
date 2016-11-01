@@ -44,7 +44,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
         {
             var model = new CampaignLandingViewModel();
 
+            model.HeadingColour = _umbracoContent.GetPropertyValue<string>("HeadingColour_Design");
             model.Introduction = new HtmlString(_mediaUrlTransformer.ParseAndTransformMediaUrlsInHtml(_umbracoContent.GetPropertyValue<string>("Introduction_Content")));
+            model.IntroductionColour = _umbracoContent.GetPropertyValue<string>("IntroductionColour_Design");
 
             model.LandingNavigation.Sections = BuildLandingLinksViewModelFromUmbracoContent(_umbracoContent, _relatedLinksService);
 
@@ -65,6 +67,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             model.ButtonsTopMarginLarge = _umbracoContent.GetPropertyValue<int?>("ButtonsTopMarginLarge_Design");
 
             model.Content = new HtmlString(_mediaUrlTransformer.ParseAndTransformMediaUrlsInHtml(_umbracoContent.GetPropertyValue<string>("Content_Content")));
+            model.ContentColour = _umbracoContent.GetPropertyValue<string>("ContentColour_Design");
 
             var imageData = _umbracoContent.GetPropertyValue<IPublishedContent>("BackgroundSmall_Design");
             if (imageData != null)

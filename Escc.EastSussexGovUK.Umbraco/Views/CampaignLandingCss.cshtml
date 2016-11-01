@@ -16,6 +16,22 @@
     var buttonsAlignedAtLarge = Model.AlignButtonsLarge == "Left" || Model.AlignButtonsLarge == "Right";
     if (Request.QueryString["media-query"] == "small")
     {
+        if (!String.IsNullOrEmpty(Model.BackgroundColour))
+        {
+            css.Append("body .body { background-color: ").Append(Model.BackgroundColour).Append("; }");
+        }
+        if (!String.IsNullOrEmpty(Model.HeadingColour))
+        {
+            css.Append("h1 { color: ").Append(Model.HeadingColour).Append("; }");
+        }
+        if (!String.IsNullOrEmpty(Model.IntroductionColour))
+        {
+            css.Append(".intro p { color: ").Append(Model.IntroductionColour).Append("; }");
+        }
+        if (!String.IsNullOrEmpty(Model.ContentColour))
+        {
+            css.Append(".landing-content * { color: ").Append(Model.ContentColour).Append("; }");
+        }
         image = Model.BackgroundImageSmall;
         customCss = Model.CustomCssSmallScreen.ToHtmlString();
         if (Model.ButtonsTopMarginSmall.HasValue)
@@ -85,10 +101,6 @@
         {
             css.Append(".buttons { margin-top: ").Append(Model.ButtonsTopMarginLarge).Append("px; }");
         }
-    }
-    if (!String.IsNullOrEmpty(Model.BackgroundColour))
-    {
-        css.Append("body .body { background-color: ").Append(Model.BackgroundColour).Append("; }");
     }
     if (image != null)
     {

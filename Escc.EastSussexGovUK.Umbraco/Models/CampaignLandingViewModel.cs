@@ -19,12 +19,22 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
         }
 
         /// <summary>
+        /// Gets or sets colour of the h1 heading.
+        /// </summary>
+        public string HeadingColour { get; set; }
+
+        /// <summary>
         /// Gets or sets the introductory HTML text.
         /// </summary>
         /// <value>
         /// The introduction.
         /// </value>
         public IHtmlString Introduction { get; set; }
+
+        /// <summary>
+        /// Gets or sets colour of the introduction text.
+        /// </summary>
+        public string IntroductionColour { get; set; }
 
         /// <summary>
         /// Gets or sets the alignment of the introduction on medium screens.
@@ -101,7 +111,19 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
         /// </value>
         public IList<string> ButtonDescriptions { get; set; }
 
+        /// <summary>
+        /// The main HTML content
+        /// </summary>
+        /// <value>
+        /// The content.
+        /// </value>
         public IHtmlString Content { get; set; }
+
+        /// <summary>
+        /// Gets or sets colour of the main HTML content
+        /// </summary>
+        public string ContentColour { get; set; }
+
         public IHtmlString CustomCssSmallScreen { get; set; }
         public IHtmlString CustomCssMediumScreen { get; set; }
         public IHtmlString CustomCssLargeScreen { get; set; }

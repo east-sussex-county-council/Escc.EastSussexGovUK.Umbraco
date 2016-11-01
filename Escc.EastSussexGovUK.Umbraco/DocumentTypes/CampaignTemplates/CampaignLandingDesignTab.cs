@@ -33,67 +33,76 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates
             Description = "If the page is longer than the background image, wrap the image vertically. If you turn this off, the background colour shows instead.")]
         public string BackgroundImageWrapsVertically { get; set; }
 
+        [UmbracoProperty("Heading text colour", "HeadingColour", ColourPickerDataType.PropertyEditor, ColourPickerDataType.DataTypeName, sortOrder: 7)]
+        public string HeadingColour { get; set; }
+
+        [UmbracoProperty("Introduction text colour", "IntroductionColour", ColourPickerDataType.PropertyEditor, ColourPickerDataType.DataTypeName, sortOrder: 8)]
+        public string IntroductionColour { get; set; }
+        
         /// <summary>
         /// Gets or sets how to align the introduction on medium screens
         /// </summary>
-        [UmbracoProperty("Align introduction (medium screens)", "AlignIntroductionMedium", AlignmentDataType.PropertyEditor, AlignmentDataType.DataTypeName, sortOrder: 7)]
+        [UmbracoProperty("Align introduction (medium screens)", "AlignIntroductionMedium", AlignmentDataType.PropertyEditor, AlignmentDataType.DataTypeName, sortOrder: 9)]
         public string AlignIntroductionMedium { get; set; }
 
         /// <summary>
         /// Gets or sets how to align the landing navigation on medium screens
         /// </summary>
-        [UmbracoProperty("Align landing navigation (medium screens)", "AlignLandingNavigationMedium", AlignmentDataType.PropertyEditor, AlignmentDataType.DataTypeName, sortOrder: 8)]
+        [UmbracoProperty("Align landing navigation (medium screens)", "AlignLandingNavigationMedium", AlignmentDataType.PropertyEditor, AlignmentDataType.DataTypeName, sortOrder: 10)]
         public string AlignLandingNavigationMedium { get; set; }
 
         /// <summary>
         /// Gets or sets how to align the buttons on medium screens
         /// </summary>
-        [UmbracoProperty("Align buttons (medium screens)", "AlignButtonsMedium", AlignmentDataType.PropertyEditor, AlignmentDataType.DataTypeName, sortOrder: 9)]
+        [UmbracoProperty("Align buttons (medium screens)", "AlignButtonsMedium", AlignmentDataType.PropertyEditor, AlignmentDataType.DataTypeName, sortOrder: 11)]
         public string AlignButtonsMedium { get; set; }
 
         /// <summary>
         /// Gets or sets how to align the introduction on large screens
         /// </summary>
-        [UmbracoProperty("Align introduction (large screens)", "AlignIntroductionLarge", AlignmentDataType.PropertyEditor, AlignmentDataType.DataTypeName, sortOrder: 10)]
+        [UmbracoProperty("Align introduction (large screens)", "AlignIntroductionLarge", AlignmentDataType.PropertyEditor, AlignmentDataType.DataTypeName, sortOrder: 12)]
         public string AlignIntroductionLarge { get; set; }
 
         /// <summary>
         /// Gets or sets how to align the landing navigation on large screens
         /// </summary>
-        [UmbracoProperty("Align landing navigation (large screens)", "AlignLandingNavigationLarge", AlignmentDataType.PropertyEditor, AlignmentDataType.DataTypeName, sortOrder: 11)]
+        [UmbracoProperty("Align landing navigation (large screens)", "AlignLandingNavigationLarge", AlignmentDataType.PropertyEditor, AlignmentDataType.DataTypeName, sortOrder: 13)]
         public string AlignLandingNavigationLarge { get; set; }
 
         /// <summary>
         /// Gets or sets how to align the buttons on large screens
         /// </summary>
-        [UmbracoProperty("Align buttons (large screens)", "AlignButtonsLarge", AlignmentDataType.PropertyEditor, AlignmentDataType.DataTypeName, sortOrder: 12)]
+        [UmbracoProperty("Align buttons (large screens)", "AlignButtonsLarge", AlignmentDataType.PropertyEditor, AlignmentDataType.DataTypeName, sortOrder: 14)]
         public string AlignButtonsLarge { get; set; }
 
-        [UmbracoProperty("Space above buttons (small screens)", "ButtonsTopMarginSmall", BuiltInUmbracoDataTypes.Textbox, sortOrder: 14, ValidationRegularExpression = "^(|[0-9]{1,4})$",
+        [UmbracoProperty("Space above buttons (small screens)", "ButtonsTopMarginSmall", BuiltInUmbracoDataTypes.Textbox, sortOrder: 15, ValidationRegularExpression = "^(|[0-9]{1,4})$",
             Description = "Additional space, in pixels, for the background image to show between the heading or intro and the buttons. This will still apply at larger sizes but may be overridden by the medium and large screen settings.")]
         public string ButtonsTopMarginSmall { get; set; }
 
-        [UmbracoProperty("Space above buttons (medium screens)", "ButtonsTopMarginMedium", BuiltInUmbracoDataTypes.Textbox, sortOrder: 15, ValidationRegularExpression = "^(|[0-9]{1,4})$",
+        [UmbracoProperty("Space above buttons (medium screens)", "ButtonsTopMarginMedium", BuiltInUmbracoDataTypes.Textbox, sortOrder: 16, ValidationRegularExpression = "^(|[0-9]{1,4})$",
             Description = "Additional space, in pixels, for the background image to show between the heading or intro and the buttons. This will still apply at larger sizes but may be overridden by the large screen setting.")]
         public string ButtonsTopMarginMedium { get; set; }
 
-        [UmbracoProperty("Space above buttons (large screens)", "ButtonsTopMarginLarge", BuiltInUmbracoDataTypes.Textbox, sortOrder: 16, ValidationRegularExpression = "^(|[0-9]{1,4})$",
+        [UmbracoProperty("Space above buttons (large screens)", "ButtonsTopMarginLarge", BuiltInUmbracoDataTypes.Textbox, sortOrder: 17, ValidationRegularExpression = "^(|[0-9]{1,4})$",
             Description = "Additional space, in pixels, for the background image to show between the heading or intro and the buttons on large screens.")]
         public string ButtonsTopMarginLarge { get; set; }
 
-        [UmbracoProperty("Video height", "VideoHeight", BuiltInUmbracoDataTypes.Textbox, sortOrder: 17, ValidationRegularExpression = "^(|[0-9]{1,4})$",
+        [UmbracoProperty("Video height", "VideoHeight", BuiltInUmbracoDataTypes.Textbox, sortOrder: 18, ValidationRegularExpression = "^(|[0-9]{1,4})$",
             Description = "Videos are resized automatically based on an initial aspect ratio. Set the height higher or lower than 250 to change the aspect ratio.")]
         public string VideoHeight { get; set; }
 
-        [UmbracoProperty("Custom CSS (small screens)", "CssSmall", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 18,
+        [UmbracoProperty("Content text colour", "ContentColour", ColourPickerDataType.PropertyEditor, ColourPickerDataType.DataTypeName, sortOrder: 19)]
+        public string ContentColour { get; set; }
+
+        [UmbracoProperty("Custom CSS (small screens)", "CssSmall", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 20,
              Description = "Custom CSS to apply to small screens such as mobiles. This will still apply at larger sizes but may be overridden by the CSS for medium and large screens.")]
         public string CssSmall { get; set; }
 
-        [UmbracoProperty("Custom CSS (medium screens)", "CssMedium", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 19,
+        [UmbracoProperty("Custom CSS (medium screens)", "CssMedium", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 21,
              Description = "Custom CSS to apply to medium screens such as tablets. This will still apply at larger sizes but may be overridden by the CSS for large screens.")]
         public string CssMedium { get; set; }
 
-        [UmbracoProperty("Custom CSS (large screens)", "CssLarge", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 20,
+        [UmbracoProperty("Custom CSS (large screens)", "CssLarge", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 22,
             Description = "Custom CSS to apply to large screens such as laptops. This is added to and can override the CSS for small and medium screens.")]
         public string CssLarge { get; set; }
     }
