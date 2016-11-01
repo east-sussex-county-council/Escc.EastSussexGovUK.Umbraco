@@ -1,0 +1,7 @@
+﻿/* Optional alignment for landing navigation - reset overrides used at medium level to values copied from sitewide CSS */
+.landing-nav.medium-left, .landing-nav.medium-right {margin-left: 0; width: auto; }
+.landing-nav.medium-left .landing-section,
+.landing-nav.medium-right .landing-section { display: inline-block;margin-right: 0;width: 32.043011%; }
+.landing-nav.medium-left .group1, .landing-nav.medium-left .group2,
+.landing-nav.medium-right .group1, .landing-nav.medium-right .group2 { margin-right: 1.935484%;} 
+.landing-nav.medium-left h2, .landing-nav.medium-right h2 { margin: .9em 0 .3em;}

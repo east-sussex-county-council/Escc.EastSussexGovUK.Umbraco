@@ -83,7 +83,7 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
                 LandingPageColumnsDataType.CreateDataType();
                 LandingPageDescriptionsDataType.CreateDataType();
 
-                TopicPageLayoutDataType.CreateDataType();
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(TopicPageLayoutDataType));
 
                 // Council Plan
                 PriorityDataType.CreateDataType();
@@ -91,6 +91,7 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
                 // Campaign templates
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(CampaignQuoteColourDataType));
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(ColourPickerDataType));
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(AlignmentDataType));
 
                 // Customer focus templates
                 EmailAddressDataType.CreateDataType();

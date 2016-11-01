@@ -8,6 +8,12 @@
     Image image = null;
     var css = new StringBuilder();
     var customCss = String.Empty;
+    var introAlignedAtMedium = Model.AlignIntroductionMedium == "Left" || Model.AlignIntroductionMedium == "Right";
+    var introAlignedAtLarge = Model.AlignIntroductionLarge == "Left" || Model.AlignIntroductionLarge == "Right";
+    var landingNavAlignedAtMedium = Model.AlignLandingNavigationMedium == "Left" || Model.AlignLandingNavigationMedium == "Right";
+    var landingNavAlignedAtLarge = Model.AlignLandingNavigationLarge == "Left" || Model.AlignLandingNavigationLarge == "Right";
+    var buttonsAlignedAtMedium = Model.AlignButtonsMedium == "Left" || Model.AlignButtonsMedium == "Right";
+    var buttonsAlignedAtLarge = Model.AlignButtonsLarge == "Left" || Model.AlignButtonsLarge == "Right";
     if (Request.QueryString["media-query"] == "small")
     {
         image = Model.BackgroundImageSmall;
@@ -21,26 +27,63 @@
     {
         image = Model.BackgroundImageMedium;
         customCss = Model.CustomCssMediumScreen.ToHtmlString();
+        if (introAlignedAtMedium)
+        {
+            css.Append(File.ReadAllText(Server.MapPath("~/css/CampaignTemplates/align-intro-medium.css")));
+        }
+        if (landingNavAlignedAtMedium)
+        {
+            css.Append(File.ReadAllText(Server.MapPath("~/css/CampaignTemplates/align-landing-nav-medium.css")));
+        }
+        if (buttonsAlignedAtMedium)
+        {
+            css.Append(File.ReadAllText(Server.MapPath("~/css/CampaignTemplates/align-buttons-medium.css")));
+        }
+        else
+        {
+            css.Append(File.ReadAllText(Server.MapPath("~/css/CampaignTemplates/align-buttons-flex.css")));
+        }
         if (Model.ButtonsTopMarginMedium.HasValue)
         {
             css.Append(".buttons { margin-top: ").Append(Model.ButtonsTopMarginMedium).Append("px; }");
-        }
-        if (Model.ButtonsHorizontalAtMedium)
-        {
-            css.Append(File.ReadAllText(Server.MapPath("~/css/CampaignTemplates/horizontal-buttons.css")));
         }
     }
     if (Request.QueryString["media-query"] == "large")
     {
         image = Model.BackgroundImageLarge;
         customCss = Model.CustomCssLargeScreen.ToHtmlString();
+        if (introAlignedAtMedium && !introAlignedAtLarge)
+        {
+            css.Append(File.ReadAllText(Server.MapPath("~/css/CampaignTemplates/align-intro-reset.css")));
+        }
+        if (introAlignedAtLarge)
+        {
+            css.Append(File.ReadAllText(Server.MapPath("~/css/CampaignTemplates/align-intro-large.css")));
+        }
+        if (landingNavAlignedAtMedium && !landingNavAlignedAtLarge)
+        {
+            css.Append(File.ReadAllText(Server.MapPath("~/css/CampaignTemplates/align-landing-nav-reset.css")));
+        }
+        if (landingNavAlignedAtLarge)
+        {
+            css.Append(File.ReadAllText(Server.MapPath("~/css/CampaignTemplates/align-landing-nav-large.css")));
+        }
+        if (buttonsAlignedAtMedium && !buttonsAlignedAtLarge)
+        {
+            css.Append(File.ReadAllText(Server.MapPath("~/css/CampaignTemplates/align-buttons-reset.css")));
+            css.Append(File.ReadAllText(Server.MapPath("~/css/CampaignTemplates/align-buttons-flex.css")));
+        }
+        if (buttonsAlignedAtLarge)
+        {
+            if (!buttonsAlignedAtMedium)
+            {
+                css.Append(File.ReadAllText(Server.MapPath("~/css/CampaignTemplates/align-buttons-reset-flex.css")));
+            }
+            css.Append(File.ReadAllText(Server.MapPath("~/css/CampaignTemplates/align-buttons-large.css")));
+        }
         if (Model.ButtonsTopMarginLarge.HasValue)
         {
             css.Append(".buttons { margin-top: ").Append(Model.ButtonsTopMarginLarge).Append("px; }");
-        }
-        if (!Model.ButtonsHorizontalAtMedium)
-        {
-            css.Append(File.ReadAllText(Server.MapPath("~/css/CampaignTemplates/horizontal-buttons.css")));
         }
     }
     if (!String.IsNullOrEmpty(Model.BackgroundColour))

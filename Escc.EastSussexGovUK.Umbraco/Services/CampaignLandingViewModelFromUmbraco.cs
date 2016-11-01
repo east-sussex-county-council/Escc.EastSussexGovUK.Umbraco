@@ -94,11 +94,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             model.BackgroundImageWrapsHorizontally = _umbracoContent.GetPropertyValue<bool>("BackgroundImageWrapsHorizontally_Design");
             model.BackgroundImageWrapsVertically = _umbracoContent.GetPropertyValue<bool>("BackgroundImageWrapsVertically_Design");
 
+            model.AlignIntroductionMedium = _umbracoContent.GetPropertyValue<string>("AlignIntroductionMedium_Design");
+            model.AlignIntroductionLarge = _umbracoContent.GetPropertyValue<string>("AlignIntroductionLarge_Design");
+            model.AlignLandingNavigationMedium = _umbracoContent.GetPropertyValue<string>("AlignLandingNavigationMedium_Design");
+            model.AlignLandingNavigationLarge = _umbracoContent.GetPropertyValue<string>("AlignLandingNavigationLarge_Design");
+            model.AlignButtonsMedium = _umbracoContent.GetPropertyValue<string>("AlignButtonsMedium_Design");
+            model.AlignButtonsLarge = _umbracoContent.GetPropertyValue<string>("AlignButtonsLarge_Design");
+
             model.CustomCssSmallScreen = new HtmlString(_umbracoContent.GetPropertyValue<string>("CssSmall_Design"));
             model.CustomCssMediumScreen = new HtmlString(_umbracoContent.GetPropertyValue<string>("CssMedium_Design"));
             model.CustomCssLargeScreen = new HtmlString(_umbracoContent.GetPropertyValue<string>("CssLarge_Design"));
-
-            model.ButtonsHorizontalAtMedium = _umbracoContent.GetPropertyValue<bool>("ButtonsHorizontalAtMedium_Design");
 
             model.VideoHeight = _umbracoContent.GetPropertyValue<int?>("VideoHeight_Design");
 

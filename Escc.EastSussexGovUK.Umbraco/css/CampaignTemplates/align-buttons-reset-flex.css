@@ -1,0 +1,8 @@
+﻿/* Optional alignment for buttons - reset overrides used at medium level */
+.flexbox .buttons { display: block; }
+.flexbox .buttons a, 
+.flexbox .buttons a:first-child, .flexbox .buttons a:last-child, 
+.flexbox .buttons a.button-2:last-child,
+.no-flexbox .buttons a, 
+.no-flexbox .buttons a:first-child
+{float: none; width: auto; margin: .692308em 0; padding-left: 4.699739%;padding-right: 4.699739%;}

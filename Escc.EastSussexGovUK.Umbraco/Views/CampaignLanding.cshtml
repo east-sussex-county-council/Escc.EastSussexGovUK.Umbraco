@@ -43,29 +43,38 @@
         <h1>@Model.Metadata.Title</h1>
         @if (!String.IsNullOrEmpty(Model.Introduction.ToHtmlString()))
         {
-            <div class="intro">@Model.Introduction</div>
+            var alignIntroMedium = (Model.AlignIntroductionMedium == "Left" || Model.AlignIntroductionMedium == "Right") ? "medium-" + Model.AlignIntroductionMedium.ToLowerInvariant() : String.Empty;
+            var alignIntroLarge = (Model.AlignIntroductionLarge == "Left" || Model.AlignIntroductionLarge == "Right") ? "large-" + Model.AlignIntroductionLarge.ToLowerInvariant() : String.Empty;
+            <div class="intro @alignIntroMedium @alignIntroLarge">@Model.Introduction</div>
         }
         @if (Model.LandingNavigation.Sections.Count > 0)
         {
-            <div class="text-content">
+            var alignLandingNavMedium = (Model.AlignLandingNavigationMedium == "Left" || Model.AlignLandingNavigationMedium == "Right") ? "medium-" + Model.AlignLandingNavigationMedium.ToLowerInvariant() : String.Empty;
+            var alignLandingNavLarge = (Model.AlignLandingNavigationLarge == "Left" || Model.AlignLandingNavigationLarge == "Right") ? "large-" + Model.AlignLandingNavigationLarge.ToLowerInvariant() : String.Empty;
+            <div class="text-content landing-nav @alignLandingNavMedium @alignLandingNavLarge">
                 @Html.Partial("~/Views/Layouts/_LandingNavigation.cshtml", Model.LandingNavigation)
             </div>
         }
     </div>
 
-    <div class="buttons">
-        @{
-            var i = 0;
-            foreach (var link in Model.ButtonTargets)
-            {
-                <a href="@link.Url" class="button-@(i + 1)">
-                    <h2>@link.Text</h2>
-                    <p>@Model.ButtonDescriptions.ElementAt(i)</p>
-                </a>
-                i++;
+    @if (Model.ButtonTargets.Any())
+    {
+        var alignButtonsMedium = (Model.AlignButtonsMedium == "Left" || Model.AlignButtonsMedium == "Right") ? "medium-" + Model.AlignButtonsMedium.ToLowerInvariant() : String.Empty;
+        var alignButtonsLarge = (Model.AlignButtonsLarge == "Left" || Model.AlignButtonsLarge == "Right") ? "large-" + Model.AlignButtonsLarge.ToLowerInvariant() : String.Empty;
+        <div class="buttons @alignButtonsMedium @alignButtonsLarge">
+            @{
+                var i = 0;
+                foreach (var link in Model.ButtonTargets)
+                {
+                    <a href="@link.Url" class="button-@(i + 1)">
+                        <h2>@link.Text</h2>
+                        <p>@Model.ButtonDescriptions.ElementAt(i)</p>
+                    </a>
+                    i++;
+                }
             }
-        }
-    </div>
+        </div>
+    }
     @if (!String.IsNullOrWhiteSpace(Model.Content.ToHtmlString()))
     {
         <div class="text-content landing-content">

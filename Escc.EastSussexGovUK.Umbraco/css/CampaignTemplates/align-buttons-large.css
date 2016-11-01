@@ -1,0 +1,3 @@
+﻿/* Optional alignment for buttons */
+.buttons.large-left {margin-left: 0;width: 50%; }
+.buttons.large-right {margin-left: 50%; width: 50%; }

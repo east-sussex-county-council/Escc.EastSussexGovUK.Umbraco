@@ -1,0 +1,2 @@
+﻿/* Optional alignment for buttons - reset overrides used at medium level */
+.buttons.medium-left, .buttons.medium-right {margin-left: 0; width: auto; }

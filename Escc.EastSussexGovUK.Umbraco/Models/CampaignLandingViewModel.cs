@@ -25,7 +25,31 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
         /// The introduction.
         /// </value>
         public IHtmlString Introduction { get; set; }
+
+        /// <summary>
+        /// Gets or sets the alignment of the introduction on medium screens.
+        /// </summary>
+        public string AlignIntroductionMedium { get; set; }
+
+        /// <summary>
+        /// Gets or sets the alignment of the introduction on large screens.
+        /// </summary>
+        public string AlignIntroductionLarge { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the landing navigation links.
+        /// </summary>
         public LandingNavigationViewModel LandingNavigation { get; set;} = new LandingNavigationViewModel();
+
+        /// <summary>
+        /// Gets or sets the alignment of the landing navigation on medium screens.
+        /// </summary>
+        public string AlignLandingNavigationMedium { get; set; }
+
+        /// <summary>
+        /// Gets or sets the alignment of the landing navigation on large screens.
+        /// </summary>
+        public string AlignLandingNavigationLarge { get; set; }
 
         /// <summary>
         /// Gets or sets the space above the buttons on small screens.
@@ -52,6 +76,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
         public int? ButtonsTopMarginLarge { get; set; }
 
         /// <summary>
+        /// Gets or sets the alignment of the buttons on medium screens.
+        /// </summary>
+        public string AlignButtonsMedium { get; set; }
+
+        /// <summary>
+        /// Gets or sets the alignment of the buttons on large screens.
+        /// </summary>
+        public string AlignButtonsLarge { get; set; }
+
+        /// <summary>
         /// Gets or sets the URLs the buttons should link to
         /// </summary>
         /// <value>
@@ -67,13 +101,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
         /// </value>
         public IList<string> ButtonDescriptions { get; set; }
 
-        /// <summary>
-        /// Gets or sets whether buttons should be stacked or horizontal at medium size. Buttons are always horizontal at large sizes.
-        /// </summary>
-        /// <value>
-        /// <c>true</c> if buttons horizontal at medium; <c>false</c> if stacked.
-        /// </value>
-        public bool ButtonsHorizontalAtMedium { get; set; }
         public IHtmlString Content { get; set; }
         public IHtmlString CustomCssSmallScreen { get; set; }
         public IHtmlString CustomCssMediumScreen { get; set; }

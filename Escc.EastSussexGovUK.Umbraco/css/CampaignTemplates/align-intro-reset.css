@@ -1,0 +1,2 @@
+﻿/* Optional alignment for intro - reset overrides used at medium level */
+.intro.medium-left, .intro.medium-right {margin-left: 0; width: auto; }

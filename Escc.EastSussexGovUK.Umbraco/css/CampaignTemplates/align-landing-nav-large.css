@@ -1,0 +1,6 @@
+﻿/* Optional alignment for intro and landing navigation */
+.landing-nav.large-left {margin-left: 0;width: 50%; }
+.landing-nav.large-right {margin-left: 50%; width: 50%; }
+.landing-nav.large-left .landing-section, 
+.landing-nav.large-right .landing-section { display: block;margin-right: 0;width: 100%;}
+.landing-nav.large-left h2, .landing-nav.large-right h2 { margin: .5em 0;}
