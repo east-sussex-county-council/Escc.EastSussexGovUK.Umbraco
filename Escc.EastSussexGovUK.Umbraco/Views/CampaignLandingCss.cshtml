@@ -30,10 +30,25 @@
             customCss.Append(File.ReadAllText(Server.MapPath("~/css/CampaignTemplates/horizontal-buttons.css")));
         }
     }
-
+    if (!String.IsNullOrEmpty(Model.BackgroundColour))
+    {
+        @:body .body { background-color: @Model.BackgroundColour; }
+    }
     if (image != null)
     {
-         @:body .body { background-image: url(@image.ImageUrl); }
+        var repeat = "no-repeat";
+        if (Model.BackgroundImageWrapsHorizontally && Model.BackgroundImageWrapsVertically)
+        {
+            repeat = "repeat";
+        }
+        else if (Model.BackgroundImageWrapsHorizontally)
+        {
+            repeat = "repeat-x";
+        } else if (Model.BackgroundImageWrapsVertically)
+        {
+            repeat = "repeat-y";
+        }
+        @:body .body { background-image: url(@image.ImageUrl); background-repeat: @repeat; }
     }
     @customCss
 }

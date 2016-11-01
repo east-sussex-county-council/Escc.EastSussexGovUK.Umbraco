@@ -17,15 +17,15 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates
             Description = "Banner image at the top of the page on large screens like laptops. 290px high, and tiles horizontally.")]
         public string BannerImageLarge { get; set; }
 
-        [UmbracoProperty("Upper/lower pull quote: background colour", "PullQuoteBackground", QuoteColourDataType.PropertyEditor, QuoteColourDataType.DataTypeName, sortOrder: 3,
+        [UmbracoProperty("Upper/lower pull quote: background colour", "PullQuoteBackground", CampaignQuoteColourDataType.PropertyEditor, CampaignQuoteColourDataType.DataTypeName, sortOrder: 3,
             Description = "Must contrast with white text and the selected colour for quotation marks.")]
         public string PullQuoteBackground { get; set; }
 
-        [UmbracoProperty("Upper/lower pull quote: quotation marks colour", "PullQuoteMarks", QuoteColourDataType.PropertyEditor, QuoteColourDataType.DataTypeName, sortOrder: 4,
+        [UmbracoProperty("Upper/lower pull quote: quotation marks colour", "PullQuoteMarks", CampaignQuoteColourDataType.PropertyEditor, CampaignQuoteColourDataType.DataTypeName, sortOrder: 4,
             Description = "Must contrast with white text and the selected background colour.")]
         public string PullQuoteQuotations { get; set; }
 
-        [UmbracoProperty("Central pull quote: background colour", "CentralQuoteBackground", QuoteColourDataType.PropertyEditor, QuoteColourDataType.DataTypeName, sortOrder: 5,
+        [UmbracoProperty("Central pull quote: background colour", "CentralQuoteBackground", CampaignQuoteColourDataType.PropertyEditor, CampaignQuoteColourDataType.DataTypeName, sortOrder: 5,
             Description="Must contrast with white text.")]
         public string CentralQuoteBackground { get; set; }
 
@@ -33,7 +33,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates
 Description = "This will add a line below the image which shows up if the quote is taller than the image.")]
         public string CentralQuoteImageIsCutout { get; set; }
 
-        [UmbracoProperty("Final pull quote: text colour", "FinalQuoteColour", QuoteColourDataType.PropertyEditor, QuoteColourDataType.DataTypeName, sortOrder: 7,
+        [UmbracoProperty("Final pull quote: text colour", "FinalQuoteColour", CampaignQuoteColourDataType.PropertyEditor, CampaignQuoteColourDataType.DataTypeName, sortOrder: 7,
             Description = "Must contrast with a white background.")]
         public string FinalQuoteColour { get; set; }
 

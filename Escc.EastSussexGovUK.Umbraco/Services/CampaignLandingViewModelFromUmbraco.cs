@@ -86,6 +86,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
                     ImageUrl = _mediaUrlTransformer.TransformMediaUrl(new Uri(imageData.Url, UriKind.Relative))
                 };
             }
+            model.BackgroundColour = _umbracoContent.GetPropertyValue<string>("BackgroundColour_Design");
+            model.BackgroundImageWrapsHorizontally = _umbracoContent.GetPropertyValue<bool>("BackgroundImageWrapsHorizontally_Design");
+            model.BackgroundImageWrapsVertically = _umbracoContent.GetPropertyValue<bool>("BackgroundImageWrapsVertically_Design");
+
             model.CustomCssSmallScreen = new HtmlString(_umbracoContent.GetPropertyValue<string>("CssSmall_Design"));
             model.CustomCssMediumScreen = new HtmlString(_umbracoContent.GetPropertyValue<string>("CssMedium_Design"));
             model.CustomCssLargeScreen = new HtmlString(_umbracoContent.GetPropertyValue<string>("CssLarge_Design"));

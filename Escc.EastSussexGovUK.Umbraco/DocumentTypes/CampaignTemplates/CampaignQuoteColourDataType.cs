@@ -9,10 +9,10 @@ using Umbraco.Inception.BL;
 namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates
 {
     /// <summary>
-    /// Umbraco data type for selecting which colours for quotes on a campaign content template
+    /// Umbraco data type for selecting colours on a campaign template
     /// </summary>
-    [UmbracoDataType(DataTypeName, PropertyEditor, typeof(QuoteColourDataType), DataTypeDatabaseType.Nvarchar)]
-    internal class QuoteColourDataType : IPreValueProvider
+    [UmbracoDataType(DataTypeName, PropertyEditor, typeof(CampaignQuoteColourDataType), DataTypeDatabaseType.Nvarchar)]
+    internal class CampaignQuoteColourDataType : IPreValueProvider
     {
         internal const string DataTypeName = "Campaign quote colour";
         internal const string PropertyEditor = BuiltInUmbracoDataTypes.ColorPicker;
@@ -28,9 +28,9 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates
         };
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="QuoteColourDataType"/> class.
+        /// Initializes a new instance of the <see cref="CampaignQuoteColourDataType"/> class.
         /// </summary>
-        public QuoteColourDataType()
+        public CampaignQuoteColourDataType()
         {
             PreValues = CreatePreValues();
         }

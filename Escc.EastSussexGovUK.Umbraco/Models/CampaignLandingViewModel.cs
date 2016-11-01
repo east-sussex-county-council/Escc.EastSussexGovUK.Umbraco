@@ -34,8 +34,53 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
         public IHtmlString CustomCssSmallScreen { get; set; }
         public IHtmlString CustomCssMediumScreen { get; set; }
         public IHtmlString CustomCssLargeScreen { get; set; }
+
+        /// <summary>
+        /// Gets or sets the background colour of the page.
+        /// </summary>
+        /// <value>
+        /// The background colour.
+        /// </value>
+        public string BackgroundColour { get; set; }
+
+        /// <summary>
+        /// Gets or sets the background image which shows from small screens until it's overridden.
+        /// </summary>
+        /// <value>
+        /// The background image.
+        /// </value>
         public Image BackgroundImageSmall { get; set; }
+
+        /// <summary>
+        /// Gets or sets the background image which overrides the small screen background.
+        /// </summary>
+        /// <value>
+        /// The background image.
+        /// </value>
         public Image BackgroundImageMedium{ get; set; }
+        
+        /// <summary>
+        /// Gets or sets the background image which overrides the small or medium background
+        /// </summary>
+        /// <value>
+        /// The background image large.
+        /// </value>
         public Image BackgroundImageLarge{ get; set; }
+
+        /// <summary>
+        /// Gets or sets a value whether to wrap the background image horizontally
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> to wrap the background image horizontally; otherwise, <c>false</c>.
+        /// </value>
+        public bool BackgroundImageWrapsHorizontally { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value whether to wrap the background image vertically
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> to wrap the background image vertically; otherwise, <c>false</c>.
+        /// </value>
+        public bool BackgroundImageWrapsVertically { get; set; }
     }
 }

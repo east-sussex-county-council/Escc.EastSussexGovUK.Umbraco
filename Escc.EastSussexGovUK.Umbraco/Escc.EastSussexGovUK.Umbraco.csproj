@@ -525,6 +525,10 @@
     <Content Include="App_Plugins\OpeningSoon\scripts\jquery.timepicker.css" />
     <Content Include="App_Plugins\OpeningSoon\scripts\jquery.timepicker.js" />
     <Content Include="App_Plugins\OpeningSoon\scripts\jquery.timepicker.min.js" />
+    <Content Include="App_Plugins\SpectrumColorPicker\lib\spectrum\spectrum.css" />
+    <Content Include="App_Plugins\SpectrumColorPicker\lib\spectrum\spectrum.js" />
+    <Content Include="App_Plugins\SpectrumColorPicker\SpectrumColorPicker.controller.js" />
+    <Content Include="App_Plugins\SpectrumColorPicker\SpectrumColorPicker.html" />
     <Content Include="Config\grid.editors.config.js" />
     <Content Include="Config\Lang\cs-CZ.user.xml" />
     <Content Include="Config\Lang\da-DK.user.xml" />
@@ -609,6 +613,7 @@
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.TwitterScriptPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\SpectrumColorPicker\package.manifest" />
     <None Include="images\Web.example.config" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -3315,6 +3320,7 @@
     <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\HomePageItemController.cs" />
     <Compile Include="Controllers\HomePageItemsController.cs" />
+    <Compile Include="DocumentTypes\CampaignTemplates\ColourPickerDataType.cs" />
     <Compile Include="Services\CampaignContentViewModelFromUmbraco.cs" />
     <Compile Include="Services\CampaignLandingViewModelFromUmbraco.cs" />
     <Compile Include="Services\HomePageItemViewModelFromUmbraco.cs" />
@@ -3341,7 +3347,7 @@
     <Compile Include="DocumentTypes\CampaignTemplates\CampaignLandingContentTab.cs" />
     <Compile Include="DocumentTypes\CampaignTemplates\CampaignLandingDesignTab.cs" />
     <Compile Include="DocumentTypes\CampaignTemplates\CampaignLandingDocumentType.cs" />
-    <Compile Include="DocumentTypes\CampaignTemplates\QuoteColourDataType.cs" />
+    <Compile Include="DocumentTypes\CampaignTemplates\CampaignQuoteColourDataType.cs" />
     <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanBudgetPageContentTab.cs" />
     <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanBudgetPageDocumentType.cs" />
     <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanHomePageContentTab.cs" />
