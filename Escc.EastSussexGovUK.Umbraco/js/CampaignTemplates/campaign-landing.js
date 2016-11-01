@@ -38,7 +38,12 @@
 
             // Embed YouTube videos
             var youTube = new RegExp(/^https?:\/\/(youtu.be\/|www.youtube.com\/watch\?v=)([A-Za-z0-9_-]+)$/);
-            var youTubeWidth = 450, youTubeHeight = 318;
+            var youTubeWidth = 450, youTubeHeight = 250;
+
+            var customHeight = parseInt($("[data-video-height]").data("video-height"));
+            if (customHeight) {
+                youTubeHeight = customHeight;
+            }
 
             $("a.embed").filter(function (index) {
                 return youTube.test(this.href);

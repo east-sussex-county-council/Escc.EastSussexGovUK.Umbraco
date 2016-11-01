@@ -18,6 +18,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
             ButtonDescriptions = new List<string>();
         }
 
+        /// <summary>
+        /// Gets or sets the introductory HTML text.
+        /// </summary>
+        /// <value>
+        /// The introduction.
+        /// </value>
         public IHtmlString Introduction { get; set; }
         public LandingNavigationViewModel LandingNavigation { get; set;} = new LandingNavigationViewModel();
         public IList<HtmlLink> ButtonTargets { get; set; }
@@ -82,5 +88,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
         ///   <c>true</c> to wrap the background image vertically; otherwise, <c>false</c>.
         /// </value>
         public bool BackgroundImageWrapsVertically { get; set; }
+
+        /// <summary>
+        /// Gets or sets a custom height for videos on this page
+        /// </summary>
+        /// <value>
+        /// The height of the video.
+        /// </value>
+        public int? VideoHeight { get; set; }
     }
 }

@@ -38,7 +38,7 @@
 @section BodyClass {
     campaign-landing
 }
-<div class="full-page">
+<div class="full-page" data-video-height="@Model.VideoHeight">
     <div class="lead">
         <h1>@Model.Metadata.Title</h1>
         @if (!String.IsNullOrEmpty(Model.Introduction.ToHtmlString()))

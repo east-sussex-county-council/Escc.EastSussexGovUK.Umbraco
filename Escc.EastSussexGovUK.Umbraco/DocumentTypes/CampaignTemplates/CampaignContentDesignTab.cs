@@ -40,5 +40,13 @@ Description = "This will add a line below the image which shows up if the quote 
         [UmbracoProperty("Custom CSS (large screens)", "CssLarge", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 9,
         Description = "Custom CSS to apply to large screens such as laptops. This is added to and can override the CSS for small and medium screens.")]
         public string CssLarge { get; set; }
+
+        [UmbracoProperty("Video width", "VideoWidth", BuiltInUmbracoDataTypes.Textbox, sortOrder: 11, ValidationRegularExpression = "^(|[0-9]{1,4})$",
+    Description = "Change the default width of videos on this page")]
+        public string VideoWidth { get; set; }
+
+        [UmbracoProperty("Video height", "VideoHeight", BuiltInUmbracoDataTypes.Textbox, sortOrder: 12, ValidationRegularExpression = "^(|[0-9]{1,4})$",
+    Description = "Change the default height of videos on this page.")]
+        public string VideoHeight { get; set; }
     }
 }

@@ -42,5 +42,21 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
         public string CentralQuoteBackgroundColour { get; set; }
         public string FinalQuoteTextColour { get; set; }
         public IHtmlString CustomCssLargeScreen { get; set; }
+
+        /// <summary>
+        /// Gets or sets a custom height for videos on this page
+        /// </summary>
+        /// <value>
+        /// The height of the video.
+        /// </value>
+        public int? VideoWidth { get; set; }
+
+        /// <summary>
+        /// Gets or sets a custom height for videos on this page
+        /// </summary>
+        /// <value>
+        /// The height of the video.
+        /// </value>
+        public int? VideoHeight { get; set; }
     }
 }

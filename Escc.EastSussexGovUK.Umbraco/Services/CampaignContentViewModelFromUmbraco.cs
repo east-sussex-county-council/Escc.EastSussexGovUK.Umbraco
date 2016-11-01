@@ -94,6 +94,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
 
             model.CustomCssLargeScreen = new HtmlString(_umbracoContent.GetPropertyValue<string>("CssLarge_Design"));
 
+            model.VideoWidth = _umbracoContent.GetPropertyValue<int?>("VideoWidth_Design");
+            model.VideoHeight = _umbracoContent.GetPropertyValue<int?>("VideoHeight_Design");
+
             // Add sibling pages
             foreach (var sibling in _umbracoContent.Siblings<IPublishedContent>())
             {

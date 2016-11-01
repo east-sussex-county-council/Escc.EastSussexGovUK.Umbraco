@@ -34,7 +34,7 @@
     if (!String.IsNullOrEmpty(Model.FinalQuote)) { bodyClass += " with-final-quote";}
 }
 @section BodyClass {@bodyClass}
-<div class="article">
+<div class="article" data-video-width="@Model.VideoWidth" data-video-height="@Model.VideoHeight">
     <article>
         <div class="content text-content">
             <h1>@Model.Metadata.Title</h1>

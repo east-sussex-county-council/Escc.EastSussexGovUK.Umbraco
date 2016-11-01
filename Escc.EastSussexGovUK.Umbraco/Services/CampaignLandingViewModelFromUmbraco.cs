@@ -96,6 +96,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
 
             model.ButtonsHorizontalAtMedium = _umbracoContent.GetPropertyValue<bool>("ButtonsHorizontalAtMedium_Design");
 
+            model.VideoHeight = _umbracoContent.GetPropertyValue<int?>("VideoHeight_Design");
+
             return model;
         }
 

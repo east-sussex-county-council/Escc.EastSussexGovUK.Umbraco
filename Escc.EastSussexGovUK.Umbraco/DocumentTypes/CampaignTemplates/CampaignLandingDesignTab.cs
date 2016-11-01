@@ -48,5 +48,10 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates
         [UmbracoProperty("Custom CSS (large screens)", "CssLarge", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 10,
             Description="Custom CSS to apply to large screens such as laptops. This is added to and can override the CSS for small and medium screens.")]
         public string CssLarge { get; set; }
+
+        [UmbracoProperty("Video height", "VideoHeight", BuiltInUmbracoDataTypes.Textbox, sortOrder: 11, ValidationRegularExpression = "^(|[0-9]{1,4})$",
+            Description = "Videos are resized automatically based on an initial aspect ratio. Set the height higher or lower than 250 to change the aspect ratio.")]
+        public string VideoHeight { get; set; }
+
     }
 }
