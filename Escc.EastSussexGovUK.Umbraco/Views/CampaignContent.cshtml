@@ -65,8 +65,18 @@
             @Model.ContentPart4
             @if (!String.IsNullOrEmpty(Model.FinalQuote) && Model.FinalQuoteImage != null)
             {
+                if (Model.ContentPart5 != null && !String.IsNullOrWhiteSpace(Model.ContentPart5.ToHtmlString()))
+                {
+                    <div class="before-final-quote">
+                        @Model.ContentPart5
+                    </div>
+                }
                 <blockquote class="final-quote">“@Model.FinalQuote”</blockquote>
                 <img src="@Model.FinalQuoteImage.ImageUrl" class="final-quote" alt="@Model.FinalQuoteImage.AlternativeText" />
+            }
+            else if (Model.ContentPart5 != null && !String.IsNullOrWhiteSpace(Model.ContentPart5.ToHtmlString()))
+            {
+                @Model.ContentPart5
             }
         </div>
     </article>

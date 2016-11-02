@@ -43,6 +43,8 @@ blockquote.pull-quote .close { bottom: -32px; right: 9.625668%;}
    padding-right/max-width for the image are both 3 columns (228px), but calculated within different contexts. 
    blockquote is within the context of .content, which is 10 cols - 2 gutters. Because the 3 col space is offset by the right gutter of .content, it creates a gutter to the left of the image.
    img is absolutely positioned within the full 10 col width of .container.
+   .before-final-quote now wraps text earlier (based on the max-width of the image) so that the absolutely-positioned image can fit into the gap created
 */
+.before-final-quote {margin-bottom: 0; margin-right: 30%; }
 .with-final-quote blockquote.final-quote {margin: .931034em 0; font-size: 1.526316em; line-height: 1.241379em; padding-right: 29.765013%;}
 .with-final-quote img.final-quote { max-width: 28.42893%; }

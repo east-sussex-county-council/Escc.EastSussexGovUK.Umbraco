@@ -45,16 +45,21 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates
         public string LowerQuote { get; set; }
 
         [UmbracoProperty("Content part 4", "Content4", PropertyEditorAliases.RichTextPropertyEditor, RichTextEsccWithFormattingDataType.DataTypeName, sortOrder: 8,
-            Description = "Text which appears between the lower and the bottom pull quote."
+            Description = "Text which appears between the lower and the final pull quote."
             )]
         public string Content4 { get; set; }
 
-        [UmbracoProperty("Final pull quote", "FinalQuote", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 9,
+        [UmbracoProperty("Content part 5", "Content5", PropertyEditorAliases.RichTextPropertyEditor, RichTextEsccWithFormattingDataType.DataTypeName, sortOrder: 9,
+        Description = "Text which appears alongside the final pull quote image."
+        )]
+        public string Content5 { get; set; }
+
+        [UmbracoProperty("Final pull quote", "FinalQuote", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 10,
             Description="Appears at the end of the text together with an image."
             )]
         public string BottomQuote { get; set; }
 
-        [UmbracoProperty("Final pull quote image", "FinalQuoteImage", BuiltInUmbracoDataTypes.MediaPicker, sortOrder: 10,
+        [UmbracoProperty("Final pull quote image", "FinalQuoteImage", BuiltInUmbracoDataTypes.MediaPicker, sortOrder: 11,
             Description = "An 310px wide cutout image of the speaker for the final pull quote.")]
         public string BottomQuoteImage { get; set; }
     }

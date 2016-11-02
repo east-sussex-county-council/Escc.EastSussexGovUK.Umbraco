@@ -76,7 +76,9 @@ blockquote.pull-quote .close { bottom: -27px; right: 4.109589%;}
    Text is 23px/27px calculated from a 16px base font. Vertical margin is 2 lines (18px).
    Padding-right matches the max-width of the image with a little extra space. Using a pixel rather than % width as we want to ensure a reasonable-sized image and have the text adapt to it rather than vice versa.
    Padding-left matches text-indent to create hanging punctuation.
+   .before-final-quote adds space (45px - 2.5 gridlines) below the final paragraph so that the absolutely-positioned image can fit into the gap created
 */
+.before-final-quote { margin-bottom: 2.8125em; }
 .with-final-quote .article, .with-final-quote .body .container { padding-bottom: 0; }
 blockquote.final-quote { font-size: 1.4375em; line-height: 1.173913em; font-weight: bold; letter-spacing: -.05em;text-indent: -.4em;margin: 1.125em 0; color: #E53A45; padding: 0 140px 0 .4em; }
 img.final-quote {display: block;position: absolute;right: 0;bottom: 0;max-width: 130px; }

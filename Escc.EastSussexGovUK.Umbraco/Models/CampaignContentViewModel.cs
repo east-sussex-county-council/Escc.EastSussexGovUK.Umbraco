@@ -15,6 +15,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
         public IHtmlString ContentPart2 { get; set; }
         public IHtmlString ContentPart3 { get; set; }
         public IHtmlString ContentPart4 { get; set; }
+        public IHtmlString ContentPart5 { get; set; }
         public string UpperQuote { get; set; }
         public string CentralQuote { get; set; }
 
