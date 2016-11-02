@@ -35,12 +35,25 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
         /// </value>
         public bool CentralQuoteImageIsCutout { get; set; }
         public string LowerQuote { get; set; }
-        public string FinalQuote { get; set; }
-        public Image FinalQuoteImage { get; set; }
         public IList<GuideNavigationLink> CampaignPages { get; set; } = new List<GuideNavigationLink>();
         public string PullQuoteBackgroundColour { get; set; }
         public string PullQuoteQuotationMarksColour { get; set; }
         public string CentralQuoteBackgroundColour { get; set; }
+        /// <summary>
+        /// Gets or sets the final pull quote which ends the content.
+        /// </summary>
+        public string FinalQuote { get; set; }
+        /// <summary>
+        /// Gets or sets the name of the speaker for the final pull quote
+        /// </summary>
+        public string FinalQuoteAttribution { get; set; }
+        /// <summary>
+        /// Gets or sets the image of the speaker for the final pull quote
+        /// </summary>
+        public Image FinalQuoteImage { get; set; }
+        /// <summary>
+        /// Gets or sets the text colour for the final pull quote.
+        /// </summary>
         public string FinalQuoteTextColour { get; set; }
         public IHtmlString CustomCssLargeScreen { get; set; }
 

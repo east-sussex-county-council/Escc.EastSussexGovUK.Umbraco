@@ -71,7 +71,14 @@
                         @Model.ContentPart5
                     </div>
                 }
-                <blockquote class="final-quote">“@Model.FinalQuote”</blockquote>
+                if (String.IsNullOrEmpty(Model.FinalQuoteAttribution))
+                {
+                    <blockquote class="final-quote">“@Model.FinalQuote”</blockquote>
+                }
+                else
+                {
+                    <blockquote class="final-quote">“@Model.FinalQuote”<span class="attribution"> &#8211; @Model.FinalQuoteAttribution</span></blockquote>
+                }
                 <img src="@Model.FinalQuoteImage.ImageUrl" class="final-quote" alt="@Model.FinalQuoteImage.AlternativeText" />
             }
             else if (Model.ContentPart5 != null && !String.IsNullOrWhiteSpace(Model.ContentPart5.ToHtmlString()))

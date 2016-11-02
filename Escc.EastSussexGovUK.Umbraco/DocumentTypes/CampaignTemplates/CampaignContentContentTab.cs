@@ -62,5 +62,10 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates
         [UmbracoProperty("Final pull quote image", "FinalQuoteImage", BuiltInUmbracoDataTypes.MediaPicker, sortOrder: 11,
             Description = "An 310px wide cutout image of the speaker for the final pull quote.")]
         public string BottomQuoteImage { get; set; }
+
+        [UmbracoProperty("Final pull quote attribution", "FinalQuoteAttribution", BuiltInUmbracoDataTypes.Textbox, sortOrder: 12,
+            Description = "The name of the speaker in the final pull quote."
+            )]
+        public string BottomQuoteAttribution { get; set; }
     }
 }

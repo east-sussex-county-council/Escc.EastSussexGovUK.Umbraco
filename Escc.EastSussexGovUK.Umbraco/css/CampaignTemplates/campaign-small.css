@@ -82,3 +82,4 @@ blockquote.pull-quote .close { bottom: -27px; right: 4.109589%;}
 .with-final-quote .article, .with-final-quote .body .container { padding-bottom: 0; }
 blockquote.final-quote { font-size: 1.4375em; line-height: 1.173913em; font-weight: bold; letter-spacing: -.05em;text-indent: -.4em;margin: 1.125em 0; color: #E53A45; padding: 0 140px 0 .4em; }
 img.final-quote {display: block;position: absolute;right: 0;bottom: 0;max-width: 130px; }
+.final-quote .attribution { color: #131313; font-size: .695652em; font-weight: normal; letter-spacing: 0; padding-left: .5em; white-space: nowrap; }

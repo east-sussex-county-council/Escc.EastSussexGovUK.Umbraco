@@ -35,3 +35,4 @@ blockquote.pull-quote {float: none; position: absolute; right: 0; width: 24.6376
 .before-final-quote { margin-right: 0; }
 .with-final-quote blockquote.final-quote {margin: .771429em 0; font-size: 1.842105em; line-height: 1.285714em;padding-right: 0; }
 .with-final-quote img.final-quote { max-width: 32.0911%; }
+.final-quote .attribution {font-size: .542857em; position: relative; top: -2px; }

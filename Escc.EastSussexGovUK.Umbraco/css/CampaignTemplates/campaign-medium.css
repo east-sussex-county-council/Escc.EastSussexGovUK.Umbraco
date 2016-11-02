@@ -48,3 +48,4 @@ blockquote.pull-quote .close { bottom: -32px; right: 9.625668%;}
 .before-final-quote {margin-bottom: 0; margin-right: 30%; }
 .with-final-quote blockquote.final-quote {margin: .931034em 0; font-size: 1.526316em; line-height: 1.241379em; padding-right: 29.765013%;}
 .with-final-quote img.final-quote { max-width: 28.42893%; }
+.final-quote .attribution {font-size: .655172em; }
