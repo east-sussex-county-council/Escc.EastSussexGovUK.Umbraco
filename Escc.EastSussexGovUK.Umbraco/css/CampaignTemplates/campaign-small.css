@@ -38,14 +38,6 @@ body .body { position: relative;overflow: hidden; background-position: center to
 /* Add a grid line of vertical space either side of the main text or video */
 .campaign-landing .landing-content { margin: 1.125em 0;position: relative;}
 
-/* Change .share-page colours to white */
-.campaign-landing .share-page { margin: 0 0 1.384615em;}
-.campaign-landing .share-page a:link, .campaign-landing .share-page a:visited { color: #fff; }
-
-.campaign-landing .share-page [href*="facebook.com"] { background-position: 0 -1846px; }
-.campaign-landing .share-page [href*="twitter.com"] { background-position: 0 -795px; }
-.campaign-landing .share-page .email { background-position: 0 -895px; }
-
 /* Pull quotes are 23px/27px calculated from a 16px base font. Vertical margins and padding are also 27px (3 lines each).
    Horizontal padding and quote position is one gutter width (18px) within 6 col context (474px) less the 2x18px gutters of .content (18px/438px*100).
    Opening and closing quote marks appear in a span element, and 'position: relative' on .pull-quote sets up a context to position them within. 

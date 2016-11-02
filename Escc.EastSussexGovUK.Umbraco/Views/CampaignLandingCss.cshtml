@@ -38,6 +38,15 @@
         {
             css.Append(".buttons { margin-top: ").Append(Model.ButtonsTopMarginSmall).Append("px; }");
         }
+        if (Model.ShareStyle == "White")
+        {
+            css.Append(File.ReadAllText(Server.MapPath("~/css/CampaignTemplates/share-white.css")));
+        }
+        else if (Model.ShareStyle == "White on a dark panel")
+        {
+            css.Append(File.ReadAllText(Server.MapPath("~/css/CampaignTemplates/share-white.css")));
+            css.Append(File.ReadAllText(Server.MapPath("~/css/CampaignTemplates/share-panel.css")));
+        }
     }
     if (Request.QueryString["media-query"] == "medium")
     {
@@ -119,5 +128,5 @@
         css.Append("body .body { background-image: url(").Append(image.ImageUrl).Append("; background-repeat: ").Append(repeat).Append("; }");
     }
     css.Append(customCss);
-    @css
+    @Html.Raw(@css);
 }

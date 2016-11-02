@@ -565,6 +565,8 @@
     <Content Include="css\CampaignTemplates\campaign-print.css" />
     <Content Include="css\CampaignTemplates\campaign-small.css" />
     <Content Include="css\CampaignTemplates\align-buttons-flex.css" />
+    <Content Include="css\CampaignTemplates\share-panel.css" />
+    <Content Include="css\CampaignTemplates\share-white.css" />
     <Content Include="css\CouncilPlan\council-plan-large.css" />
     <Content Include="css\CouncilPlan\council-plan-medium.css" />
     <Content Include="css\CouncilPlan\council-plan-small.css" />
@@ -3330,6 +3332,7 @@
     <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\HomePageItemController.cs" />
     <Compile Include="Controllers\HomePageItemsController.cs" />
+    <Compile Include="DocumentTypes\CampaignTemplates\ShareStyleDataType.cs" />
     <Compile Include="DocumentTypes\CampaignTemplates\AlignmentDataType.cs" />
     <Compile Include="DocumentTypes\CampaignTemplates\ColourPickerDataType.cs" />
     <Compile Include="Services\CampaignContentViewModelFromUmbraco.cs" />

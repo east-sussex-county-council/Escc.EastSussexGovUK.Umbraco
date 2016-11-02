@@ -94,15 +94,19 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates
         [UmbracoProperty("Content text colour", "ContentColour", ColourPickerDataType.PropertyEditor, ColourPickerDataType.DataTypeName, sortOrder: 19)]
         public string ContentColour { get; set; }
 
-        [UmbracoProperty("Custom CSS (small screens)", "CssSmall", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 20,
+        [UmbracoProperty("Share links colour", "ShareStyle", ShareStyleDataType.PropertyEditor, ShareStyleDataType.DataTypeName, sortOrder: 20,
+            Description="Sets the colour of the icons and text for the social media and comment links at the end of the page. Must contrast with the background colour.")]
+        public string ShareStyle { get; set; }
+
+        [UmbracoProperty("Custom CSS (small screens)", "CssSmall", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 21,
              Description = "Custom CSS to apply to small screens such as mobiles. This will still apply at larger sizes but may be overridden by the CSS for medium and large screens.")]
         public string CssSmall { get; set; }
 
-        [UmbracoProperty("Custom CSS (medium screens)", "CssMedium", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 21,
+        [UmbracoProperty("Custom CSS (medium screens)", "CssMedium", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 22,
              Description = "Custom CSS to apply to medium screens such as tablets. This will still apply at larger sizes but may be overridden by the CSS for large screens.")]
         public string CssMedium { get; set; }
 
-        [UmbracoProperty("Custom CSS (large screens)", "CssLarge", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 22,
+        [UmbracoProperty("Custom CSS (large screens)", "CssLarge", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 23,
             Description = "Custom CSS to apply to large screens such as laptops. This is added to and can override the CSS for small and medium screens.")]
         public string CssLarge { get; set; }
     }

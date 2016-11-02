@@ -110,6 +110,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
 
             model.VideoHeight = _umbracoContent.GetPropertyValue<int?>("VideoHeight_Design");
 
+            model.ShareStyle = _umbracoContent.GetPropertyValue<string>("ShareStyle_Design");
+
             return model;
         }
 

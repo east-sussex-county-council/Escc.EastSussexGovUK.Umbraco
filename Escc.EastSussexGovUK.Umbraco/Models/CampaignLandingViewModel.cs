@@ -183,5 +183,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
         /// The height of the video.
         /// </value>
         public int? VideoHeight { get; set; }
+
+        /// <summary>
+        /// Gets or sets the style for the share links
+        /// </summary>
+        public string ShareStyle { get; set; }
     }
 }
