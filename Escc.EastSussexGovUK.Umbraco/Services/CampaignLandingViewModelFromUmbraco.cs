@@ -49,6 +49,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             model.IntroductionColour = _umbracoContent.GetPropertyValue<string>("IntroductionColour_Design");
 
             model.LandingNavigation.Sections = BuildLandingLinksViewModelFromUmbracoContent(_umbracoContent, _relatedLinksService);
+            model.LandingNavigationBackgroundColour = _umbracoContent.GetPropertyValue<string>("LandingNavigationBackgroundColour_Design");
+            model.LandingNavigationTextColour = _umbracoContent.GetPropertyValue<string>("LandingNavigationTextColour_Design");
 
             var buttonLinks = _relatedLinksService.BuildRelatedLinksViewModelFromUmbracoContent(_umbracoContent, "ButtonNavigation_Content");
 

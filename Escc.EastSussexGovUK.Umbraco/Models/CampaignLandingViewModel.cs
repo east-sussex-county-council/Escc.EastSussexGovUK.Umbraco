@@ -62,6 +62,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
         public string AlignLandingNavigationLarge { get; set; }
 
         /// <summary>
+        /// Gets or sets the landing navigation background colour.
+        /// </summary>
+        public string LandingNavigationBackgroundColour { get; set; }
+
+        /// <summary>
+        /// Gets or sets the landing navigation text colour.
+        /// </summary>
+        public string LandingNavigationTextColour { get; set; }
+
+        /// <summary>
         /// Gets or sets the space above the buttons on small screens.
         /// </summary>
         /// <value>

@@ -8,17 +8,20 @@
     /// Convert a hex colour to an RGBA colour with 80% opacity
     /// </summary>
     /// <param name="colour">#ABC123</param>
+    /// <param name="opacity">.8</param>
     /// <returns>rgb(11,22,33,.8)</returns>
-    public string HexToRgba(string colour)
+    public string HexToRgba(string colour, string opacity)
     {
-        if (!String.IsNullOrEmpty(colour))
+        if (!String.IsNullOrEmpty(colour) && colour.StartsWith("#", StringComparison.Ordinal))
         {
             var red = int.Parse(colour.Substring(1, 2), System.Globalization.NumberStyles.HexNumber);
             var green = int.Parse(colour.Substring(3, 2), System.Globalization.NumberStyles.HexNumber);
             var blue = int.Parse(colour.Substring(5, 2), System.Globalization.NumberStyles.HexNumber);
-            return new StringBuilder("rgba(").Append(red).Append(",").Append(green).Append(",").Append(blue).Append(",.8)").ToString();
+            return new StringBuilder("rgba(").Append(red).Append(",").Append(green).Append(",").Append(blue).Append(",").Append(opacity).Append(")").ToString();
         }
-        return null;
+
+        // If it wasn't a hex colour just return it unchanged
+        return colour;
     }
 }
 @{
@@ -54,6 +57,15 @@
         }
         image = Model.BackgroundImageSmall;
         customCss = Model.CustomCssSmallScreen.ToHtmlString();
+        if (!String.IsNullOrEmpty(Model.LandingNavigationBackgroundColour))
+        {
+            css.Append(".campaign-landing .landing-section h2 { background: ").Append(HexToRgba(Model.LandingNavigationBackgroundColour, ".9")).Append("; }");
+        }
+        if (!String.IsNullOrEmpty(Model.LandingNavigationTextColour))
+        {
+            css.Append(".landing-section a:link, .landing-section a:visited {color: ").Append(Model.LandingNavigationTextColour).Append("; }");
+            css.Append(".landing-section h2 a:after { padding-right: 0; content: none; }");
+        }
         if (Model.ButtonsTopMarginSmall.HasValue)
         {
             css.Append(".buttons { margin-top: ").Append(Model.ButtonsTopMarginSmall).Append("px; }");
@@ -70,7 +82,7 @@
 
         if (!String.IsNullOrEmpty(Model.Button1BackgroundColour))
         {
-            css.Append(".campaign-landing a.button-1 { background: ").Append(HexToRgba(Model.Button1BackgroundColour)).Append("; }");
+            css.Append(".campaign-landing a.button-1 { background: ").Append(HexToRgba(Model.Button1BackgroundColour, ".8")).Append("; }");
         }
         if (!String.IsNullOrEmpty(Model.Button1TextColour))
         {
@@ -78,7 +90,7 @@
         }
         if (!String.IsNullOrEmpty(Model.Button2BackgroundColour))
         {
-            css.Append(".campaign-landing a.button-2 { background: ").Append(HexToRgba(Model.Button2BackgroundColour)).Append("; }");
+            css.Append(".campaign-landing a.button-2 { background: ").Append(HexToRgba(Model.Button2BackgroundColour, ".8")).Append("; }");
         }
         if (!String.IsNullOrEmpty(Model.Button2TextColour))
         {
@@ -86,7 +98,7 @@
         }
         if (!String.IsNullOrEmpty(Model.Button3BackgroundColour))
         {
-            css.Append(".campaign-landing a.button-3 { background: ").Append(HexToRgba(Model.Button3BackgroundColour)).Append("; }");
+            css.Append(".campaign-landing a.button-3 { background: ").Append(HexToRgba(Model.Button3BackgroundColour, ".8")).Append("; }");
         }
         if (!String.IsNullOrEmpty(Model.Button3TextColour))
         {
