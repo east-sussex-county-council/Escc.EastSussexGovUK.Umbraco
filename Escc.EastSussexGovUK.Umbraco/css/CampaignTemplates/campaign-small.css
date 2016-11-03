@@ -1,7 +1,7 @@
-﻿/* Create a positioning context for the background image, and let is show through .full-page 
+﻿/* Create a default position for the background image, and let it show through .full-page 
    Change the font at .full-page level so that alerts are not affected.
 */
-body .body { position: relative;overflow: hidden; background-position: center top; }
+body .body { background-position: center top; }
 .campaign-landing .full-page { background: none; font-family: 'Source Sans Pro', Arial, 'Helvetica Neue', Helvetica, sans-serif;}
 
 /* Create a gutter either side of the content */
@@ -22,12 +22,13 @@ body .body { position: relative;overflow: hidden; background-position: center to
    Hex colours for buttons: Blue #3E6B96, Green #055b0b, Red #EE555B
 */
 .campaign-landing .buttons {position: relative;z-index: 1;}
-.campaign-landing .buttons a {background: rgb(62,107,150);} /* fallback colour for IE8 */
-.campaign-landing .buttons a {display: block;margin: .692308em 0; padding: 1.384615em 3.797468%;box-shadow: rgba(0,0,0,.4) 2px 2px 5px;background: rgba(62,107,150,.8);}
-.campaign-landing .buttons a:first-child { background: rgb(238,85,91);} /* fallback colour for IE8 */
-.campaign-landing .buttons a:first-child { background: rgba(238,85,91,.8);}
-.campaign-landing .buttons a.button-3 { background: rgb(5,91,11);}  /* fallback colour and selector for IE8 a:last-child rule */
-.campaign-landing .buttons a:last-child { background: rgba(5,91,11,.8);} 
+.campaign-landing .buttons a {display: block;margin: .692308em 0; padding: 1.384615em 3.797468%;box-shadow: rgba(0,0,0,.4) 2px 2px 5px;}
+.campaign-landing a.button-1 { background: rgb(238,85,91);} /* fallback colour for IE8 */
+.campaign-landing a.button-1 { background: rgba(238,85,91,.8);}
+.campaign-landing a.button-2 {background: rgb(62,107,150);} /* fallback colour for IE8 */
+.campaign-landing a.button-2 {background: rgba(62,107,150,.8);}
+.campaign-landing a.button-3 { background: rgb(5,91,11);}  /* fallback colour and selector for IE8 a:last-child rule */
+.campaign-landing a.button-3 { background: rgba(5,91,11,.8);} 
 .campaign-landing .buttons a:link, .campaign-landing .buttons a:visited {color: #fff;text-decoration: none; }
 .campaign-landing .buttons h2 { font-size: 2em;line-height: 1.038462em; margin-bottom: .346154em;}
 .campaign-landing .buttons p { font-size: 1.230769em;line-height: 1.125em;}

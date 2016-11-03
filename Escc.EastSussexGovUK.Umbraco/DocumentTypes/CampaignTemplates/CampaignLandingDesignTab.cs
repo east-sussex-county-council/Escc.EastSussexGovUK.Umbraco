@@ -33,10 +33,12 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates
             Description = "If the page is longer than the background image, wrap the image vertically. If you turn this off, the background colour shows instead.")]
         public string BackgroundImageWrapsVertically { get; set; }
 
-        [UmbracoProperty("Heading text colour", "HeadingColour", ColourPickerDataType.PropertyEditor, ColourPickerDataType.DataTypeName, sortOrder: 7)]
+        [UmbracoProperty("Heading text colour", "HeadingColour", ColourPickerDataType.PropertyEditor, ColourPickerDataType.DataTypeName, sortOrder: 7,
+            Description = "Text must contrast with its background to meet legal accessibility standards. Check at http://tinyurl.com/wcag-contrast")]
         public string HeadingColour { get; set; }
 
-        [UmbracoProperty("Introduction text colour", "IntroductionColour", ColourPickerDataType.PropertyEditor, ColourPickerDataType.DataTypeName, sortOrder: 8)]
+        [UmbracoProperty("Introduction text colour", "IntroductionColour", ColourPickerDataType.PropertyEditor, ColourPickerDataType.DataTypeName, sortOrder: 8,
+            Description = "Text must contrast with its background to meet legal accessibility standards. Check at http://tinyurl.com/wcag-contrast")]
         public string IntroductionColour { get; set; }
         
         /// <summary>
@@ -87,26 +89,51 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates
             Description = "Additional space, in pixels, for the background image to show between the heading or intro and the buttons on large screens.")]
         public string ButtonsTopMarginLarge { get; set; }
 
-        [UmbracoProperty("Video height", "VideoHeight", BuiltInUmbracoDataTypes.Textbox, sortOrder: 18, ValidationRegularExpression = "^(|[0-9]{1,4})$",
+        [UmbracoProperty("Button 1 background colour", "Button1BackgroundColour", ColourPickerDataType.PropertyEditor, ColourPickerDataType.DataTypeName, sortOrder: 19,
+            Description = "Text must contrast with its background to meet legal accessibility standards. Check at http://tinyurl.com/wcag-contrast")]
+        public string Button1BackgroundColour { get; set; }
+
+        [UmbracoProperty("Button 1 text colour", "Button1TextColour", ColourPickerDataType.PropertyEditor, ColourPickerDataType.DataTypeName, sortOrder: 20,
+            Description = "Text must contrast with its background to meet legal accessibility standards. Check at http://tinyurl.com/wcag-contrast")]
+        public string Button1TextColour { get; set; }
+
+        [UmbracoProperty("Button 2 background colour", "Button2BackgroundColour", ColourPickerDataType.PropertyEditor, ColourPickerDataType.DataTypeName, sortOrder: 21,
+            Description = "Text must contrast with its background to meet legal accessibility standards. Check at http://tinyurl.com/wcag-contrast")]
+        public string Button2BackgroundColour { get; set; }
+
+        [UmbracoProperty("Button 2 text colour", "Button2TextColour", ColourPickerDataType.PropertyEditor, ColourPickerDataType.DataTypeName, sortOrder: 22,
+            Description = "Text must contrast with its background to meet legal accessibility standards. Check at http://tinyurl.com/wcag-contrast")]
+        public string Button2TextColour { get; set; }
+
+        [UmbracoProperty("Button 3 background colour", "Button3BackgroundColour", ColourPickerDataType.PropertyEditor, ColourPickerDataType.DataTypeName, sortOrder: 23,
+            Description = "Text must contrast with its background to meet legal accessibility standards. Check at http://tinyurl.com/wcag-contrast")]
+        public string Button3BackgroundColour { get; set; }
+
+        [UmbracoProperty("Button 3 text colour", "Button3TextColour", ColourPickerDataType.PropertyEditor, ColourPickerDataType.DataTypeName, sortOrder: 24,
+            Description = "Text must contrast with its background to meet legal accessibility standards. Check at http://tinyurl.com/wcag-contrast")]
+        public string Button3TextColour { get; set; }
+
+        [UmbracoProperty("Video height", "VideoHeight", BuiltInUmbracoDataTypes.Textbox, sortOrder: 25, ValidationRegularExpression = "^(|[0-9]{1,4})$",
             Description = "Videos are resized automatically based on an initial aspect ratio. Set the height higher or lower than 250 to change the aspect ratio.")]
         public string VideoHeight { get; set; }
 
-        [UmbracoProperty("Content text colour", "ContentColour", ColourPickerDataType.PropertyEditor, ColourPickerDataType.DataTypeName, sortOrder: 19)]
+        [UmbracoProperty("Content text colour", "ContentColour", ColourPickerDataType.PropertyEditor, ColourPickerDataType.DataTypeName, sortOrder: 26, 
+            Description= "Text must contrast with its background to meet legal accessibility standards. Check at http://tinyurl.com/wcag-contrast")]
         public string ContentColour { get; set; }
 
-        [UmbracoProperty("Share links colour", "ShareStyle", ShareStyleDataType.PropertyEditor, ShareStyleDataType.DataTypeName, sortOrder: 20,
+        [UmbracoProperty("Share links colour", "ShareStyle", ShareStyleDataType.PropertyEditor, ShareStyleDataType.DataTypeName, sortOrder: 27,
             Description="Sets the colour of the icons and text for the social media and comment links at the end of the page. Must contrast with the background colour.")]
         public string ShareStyle { get; set; }
 
-        [UmbracoProperty("Custom CSS (small screens)", "CssSmall", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 21,
+        [UmbracoProperty("Custom CSS (small screens)", "CssSmall", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 28,
              Description = "Custom CSS to apply to small screens such as mobiles. This will still apply at larger sizes but may be overridden by the CSS for medium and large screens.")]
         public string CssSmall { get; set; }
 
-        [UmbracoProperty("Custom CSS (medium screens)", "CssMedium", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 22,
+        [UmbracoProperty("Custom CSS (medium screens)", "CssMedium", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 29,
              Description = "Custom CSS to apply to medium screens such as tablets. This will still apply at larger sizes but may be overridden by the CSS for large screens.")]
         public string CssMedium { get; set; }
 
-        [UmbracoProperty("Custom CSS (large screens)", "CssLarge", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 23,
+        [UmbracoProperty("Custom CSS (large screens)", "CssLarge", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 30,
             Description = "Custom CSS to apply to large screens such as laptops. This is added to and can override the CSS for small and medium screens.")]
         public string CssLarge { get; set; }
     }

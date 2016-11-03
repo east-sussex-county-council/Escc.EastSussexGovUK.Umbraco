@@ -112,6 +112,37 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
         public IList<string> ButtonDescriptions { get; set; }
 
         /// <summary>
+        /// Gets or sets the background colour for the first button.
+        /// </summary>
+        public string Button1BackgroundColour { get; set; }
+
+        /// <summary>
+        /// Gets or sets the text colour for the first button.
+        /// </summary>
+        public string Button1TextColour { get; set; }
+
+        /// <summary>
+        /// Gets or sets the background colour for the second button.
+        /// </summary>
+        public string Button2BackgroundColour { get; set; }
+
+        /// <summary>
+        /// Gets or sets the text colour for the second button.
+        /// </summary>
+        public string Button2TextColour { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets the background colour for the third button.
+        /// </summary>
+        public string Button3BackgroundColour { get; set; }
+
+        /// <summary>
+        /// Gets or sets the text colour for the third button.
+        /// </summary>
+        public string Button3TextColour { get; set; }
+        
+        /// <summary>
         /// The main HTML content
         /// </summary>
         /// <value>

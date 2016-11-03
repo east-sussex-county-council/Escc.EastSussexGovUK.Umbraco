@@ -66,6 +66,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             model.ButtonsTopMarginMedium = _umbracoContent.GetPropertyValue<int?>("ButtonsTopMarginMedium_Design");
             model.ButtonsTopMarginLarge = _umbracoContent.GetPropertyValue<int?>("ButtonsTopMarginLarge_Design");
 
+            model.Button1BackgroundColour = _umbracoContent.GetPropertyValue<string>("Button1BackgroundColour_Design");
+            model.Button1TextColour = _umbracoContent.GetPropertyValue<string>("Button1TextColour_Design");
+            model.Button2BackgroundColour = _umbracoContent.GetPropertyValue<string>("Button2BackgroundColour_Design");
+            model.Button2TextColour = _umbracoContent.GetPropertyValue<string>("Button2TextColour_Design");
+            model.Button3BackgroundColour = _umbracoContent.GetPropertyValue<string>("Button3BackgroundColour_Design");
+            model.Button3TextColour = _umbracoContent.GetPropertyValue<string>("Button3TextColour_Design");
+
             model.Content = new HtmlString(_mediaUrlTransformer.ParseAndTransformMediaUrlsInHtml(_umbracoContent.GetPropertyValue<string>("Content_Content")));
             model.ContentColour = _umbracoContent.GetPropertyValue<string>("ContentColour_Design");
 

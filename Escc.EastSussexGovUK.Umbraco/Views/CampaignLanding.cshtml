@@ -68,7 +68,10 @@
                 {
                     <a href="@link.Url" class="button-@(i + 1)">
                         <h2>@link.Text</h2>
-                        <p>@Model.ButtonDescriptions.ElementAt(i)</p>
+                        @if (!String.IsNullOrWhiteSpace(Model.ButtonDescriptions.ElementAt(i)))
+                        {
+                            <p>@Model.ButtonDescriptions.ElementAt(i)</p>
+                        }
                     </a>
                     i++;
                 }

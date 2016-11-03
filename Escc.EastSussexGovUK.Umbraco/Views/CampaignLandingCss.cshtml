@@ -2,6 +2,25 @@
 @using Escc.Umbraco.PropertyTypes
 @using File = System.IO.File
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.CampaignLandingViewModel>
+@functions
+{
+    /// <summary>
+    /// Convert a hex colour to an RGBA colour with 80% opacity
+    /// </summary>
+    /// <param name="colour">#ABC123</param>
+    /// <returns>rgb(11,22,33,.8)</returns>
+    public string HexToRgba(string colour)
+    {
+        if (!String.IsNullOrEmpty(colour))
+        {
+            var red = int.Parse(colour.Substring(1, 2), System.Globalization.NumberStyles.HexNumber);
+            var green = int.Parse(colour.Substring(3, 2), System.Globalization.NumberStyles.HexNumber);
+            var blue = int.Parse(colour.Substring(5, 2), System.Globalization.NumberStyles.HexNumber);
+            return new StringBuilder("rgba(").Append(red).Append(",").Append(green).Append(",").Append(blue).Append(",.8)").ToString();
+        }
+        return null;
+    }
+}
 @{
     Layout = null;
     Response.ContentType = "text/css";
@@ -14,6 +33,7 @@
     var landingNavAlignedAtLarge = Model.AlignLandingNavigationLarge == "Left" || Model.AlignLandingNavigationLarge == "Right";
     var buttonsAlignedAtMedium = Model.AlignButtonsMedium == "Left" || Model.AlignButtonsMedium == "Right";
     var buttonsAlignedAtLarge = Model.AlignButtonsLarge == "Left" || Model.AlignButtonsLarge == "Right";
+
     if (Request.QueryString["media-query"] == "small")
     {
         if (!String.IsNullOrEmpty(Model.BackgroundColour))
@@ -46,6 +66,31 @@
         {
             css.Append(File.ReadAllText(Server.MapPath("~/css/CampaignTemplates/share-white.css")));
             css.Append(File.ReadAllText(Server.MapPath("~/css/CampaignTemplates/share-panel.css")));
+        }
+
+        if (!String.IsNullOrEmpty(Model.Button1BackgroundColour))
+        {
+            css.Append(".campaign-landing a.button-1 { background: ").Append(HexToRgba(Model.Button1BackgroundColour)).Append("; }");
+        }
+        if (!String.IsNullOrEmpty(Model.Button1TextColour))
+        {
+            css.Append(".campaign-landing a.button-1:link, .campaign-landing a.button-1:visited {color: ").Append(Model.Button1TextColour).Append("; }");
+        }
+        if (!String.IsNullOrEmpty(Model.Button2BackgroundColour))
+        {
+            css.Append(".campaign-landing a.button-2 { background: ").Append(HexToRgba(Model.Button2BackgroundColour)).Append("; }");
+        }
+        if (!String.IsNullOrEmpty(Model.Button2TextColour))
+        {
+            css.Append(".campaign-landing .button-2 a.button-2:link, .campaign-landing a.button-2:visited {color: ").Append(Model.Button2TextColour).Append("; }");
+        }
+        if (!String.IsNullOrEmpty(Model.Button3BackgroundColour))
+        {
+            css.Append(".campaign-landing a.button-3 { background: ").Append(HexToRgba(Model.Button3BackgroundColour)).Append("; }");
+        }
+        if (!String.IsNullOrEmpty(Model.Button3TextColour))
+        {
+            css.Append(".campaign-landing a.button-3:link, .campaign-landing a.button-3:visited {color: ").Append(Model.Button3TextColour).Append("; }");
         }
     }
     if (Request.QueryString["media-query"] == "medium")
@@ -125,7 +170,7 @@
         {
             repeat = "repeat-y";
         }
-        css.Append("body .body { background-image: url(").Append(image.ImageUrl).Append("; background-repeat: ").Append(repeat).Append("; }");
+        css.Append("body .body { background-image: url(").Append(image.ImageUrl).Append("); background-repeat: ").Append(repeat).Append("; }");
     }
     css.Append(customCss);
     @Html.Raw(@css);
