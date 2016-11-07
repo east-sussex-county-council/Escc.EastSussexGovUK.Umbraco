@@ -17,6 +17,9 @@
 /* 1 grid line of space above video */
 .campaign-landing .landing-content  { margin: .947368em 0 0;}
 
+/* Upper and lower images on campaign content pages can now have content wrap around them */
+.campaign-image img {float: right; margin: .947368em 0 .947368em .947368em;max-width: 50%; }
+
 /* Pull quotes now have room to float with text around. Increase font size to 27/36px on new base font of 19px. 
    Vertical margin and padding remain 27px, but based on new base font size.
    

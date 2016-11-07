@@ -53,7 +53,11 @@
             @Model.ContentPart1
             @if (!String.IsNullOrEmpty(Model.UpperQuote))
             {
-                <blockquote class="pull-quote"><span class="open">“</span>@Model.UpperQuote<span class="close">”</span></blockquote>
+                <blockquote class="pull-quote upper-quote"><span class="open">“</span>@Model.UpperQuote<span class="close">”</span></blockquote>
+            }
+            @if (Model.UpperImage != null)
+            {
+                <div class="campaign-image upper-image"><img src="@Model.UpperImage.ImageUrl" alt="@Model.UpperImage.AlternativeText" /></div>
             }
             @Model.ContentPart2
             @if (!String.IsNullOrEmpty(Model.CentralQuote) && Model.CentralQuoteImage != null)
@@ -69,7 +73,11 @@
             @Model.ContentPart3
             @if (!String.IsNullOrEmpty(Model.LowerQuote))
             {
-                <blockquote class="pull-quote"><span class="open">“</span>@Model.LowerQuote<span class="close">”</span></blockquote>
+                <blockquote class="pull-quote lower-quote"><span class="open">“</span>@Model.LowerQuote<span class="close">”</span></blockquote>
+            }
+            @if (Model.LowerImage != null)
+            {
+                <div class="campaign-image lower-image"><img src="@Model.LowerImage.ImageUrl" alt="@Model.LowerImage.AlternativeText" /></div>
             }
             @Model.ContentPart4
             @if (!String.IsNullOrEmpty(Model.FinalQuote) && Model.FinalQuoteImage != null)

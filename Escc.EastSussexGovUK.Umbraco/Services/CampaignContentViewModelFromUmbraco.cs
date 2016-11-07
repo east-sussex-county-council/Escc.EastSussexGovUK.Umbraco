@@ -68,40 +68,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
 
             model.CentralQuoteImageIsCutout = _umbracoContent.GetPropertyValue<bool>("CentralQuoteImageIsCutout_Design");
 
-            var imageData = _umbracoContent.GetPropertyValue<IPublishedContent>("BannerImageSmall_Design");
-            if (imageData != null)
-            {
-                model.BannerImageSmall = new Image()
-                {
-                    ImageUrl = _mediaUrlTransformer.TransformMediaUrl(new Uri(imageData.Url, UriKind.Relative))
-                };
-            }
-            imageData = _umbracoContent.GetPropertyValue<IPublishedContent>("BannerImageLarge_Design");
-            if (imageData != null)
-            {
-                model.BannerImageLarge = new Image()
-                {
-                    ImageUrl = _mediaUrlTransformer.TransformMediaUrl(new Uri(imageData.Url, UriKind.Relative))
-                };
-            }
-            imageData = _umbracoContent.GetPropertyValue<IPublishedContent>("CentralQuoteImage_Content");
-            if (imageData != null)
-            {
-                model.CentralQuoteImage = new Image()
-                {
-                    ImageUrl = _mediaUrlTransformer.TransformMediaUrl(new Uri(imageData.Url, UriKind.Relative)),
-                    AlternativeText = imageData.Name
-                };
-            }
-            imageData = _umbracoContent.GetPropertyValue<IPublishedContent>("FinalQuoteImage_Content");
-            if (imageData != null)
-            {
-                model.FinalQuoteImage = new Image()
-                {
-                    ImageUrl = _mediaUrlTransformer.TransformMediaUrl(new Uri(imageData.Url, UriKind.Relative)),
-                    AlternativeText = imageData.Name
-                };
-            }
+            model.BannerImageSmall = BuildImage("BannerImageSmall_Design");
+            model.BannerImageLarge = BuildImage("BannerImageLarge_Design");
+            model.UpperImage = BuildImage("UpperImage_Content");
+            model.CentralQuoteImage = BuildImage("CentralQuoteImage_Content");
+            model.LowerImage = BuildImage("LowerImage_Content");
+            model.FinalQuoteImage = BuildImage("FinalQuoteImage_Content");
 
             model.CustomCssSmallScreen = new HtmlString(_umbracoContent.GetPropertyValue<string>("CssSmall_Design"));
             model.CustomCssMediumScreen = new HtmlString(_umbracoContent.GetPropertyValue<string>("CssMedium_Design"));
@@ -125,5 +97,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             return model;
         }
 
+        private Image BuildImage(string propertyAlias)
+        {
+            var imageData = _umbracoContent.GetPropertyValue<IPublishedContent>(propertyAlias);
+            if (imageData != null)
+            {
+                return new Image()
+                {
+                    ImageUrl = _mediaUrlTransformer.TransformMediaUrl(new Uri(imageData.Url, UriKind.Relative)),
+                    AlternativeText = imageData.Name
+                };
+            }
+            return null;
+        }
     }
 }

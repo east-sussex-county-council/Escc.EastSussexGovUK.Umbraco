@@ -39,6 +39,9 @@ body .body { background-position: center top; }
 /* Add a grid line of vertical space either side of the main text or video */
 .campaign-landing .landing-content { margin: 1.125em 0;position: relative;}
 
+/* Upper and lower images on campaign content pages should start as centred */
+.campaign-image img { display: block;margin: 1.125em auto; }
+
 /* Pull quotes are 23px/27px calculated from a 16px base font. Vertical margins and padding are also 27px (3 lines each).
    Horizontal padding and quote position is one gutter width (18px) within 6 col context (474px) less the 2x18px gutters of .content (18px/438px*100).
    Opening and closing quote marks appear in a span element, and 'position: relative' on .pull-quote sets up a context to position them within. 

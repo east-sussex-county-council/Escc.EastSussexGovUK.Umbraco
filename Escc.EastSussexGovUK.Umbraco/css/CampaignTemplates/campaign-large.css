@@ -7,6 +7,12 @@
 /* Make the container a positioning context so that we can place elements on the right. */
 .campaign-content .body .container {position: relative; }
 
+/* Upper and lower images should move into in the right column alongside .article. 
+   Max-width now equates to 4 columns within 12 col context of 966px.
+*/
+.campaign-image { position: absolute; right: 0;width: 32.0911%;text-align: center; }
+.campaign-image img { float: none;display: inline-block; margin: 0;max-width: 100%; }
+
 /* Pull quotes should move into in the right column alongside .article.
   Quote now occupies 4 columns within 12 col context of 966px. Horizontal padding remains 36px and width is the remainder.
 */

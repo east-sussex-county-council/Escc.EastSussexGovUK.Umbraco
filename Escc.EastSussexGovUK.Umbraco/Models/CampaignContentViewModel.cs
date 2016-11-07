@@ -16,7 +16,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
         public IHtmlString ContentPart3 { get; set; }
         public IHtmlString ContentPart4 { get; set; }
         public IHtmlString ContentPart5 { get; set; }
+
+        /// <summary>
+        /// Gets or sets a pull quote which appears in the upper half of the page
+        /// </summary>
         public string UpperQuote { get; set; }
+
+        /// <summary>
+        /// Gets or sets the an image which appears in the upper half of the page.
+        /// </summary>
+        public Image UpperImage { get; set; }
+
         public string CentralQuote { get; set; }
 
         /// <summary>
@@ -34,7 +44,20 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
         /// <c>true</c> if the central pull quote image is a cutout; <c>false</c> otherwise.
         /// </value>
         public bool CentralQuoteImageIsCutout { get; set; }
+
+        /// <summary>
+        /// Gets or sets a pull quote which appears in the lower half of the page.
+        /// </summary>
+        /// <value>
+        /// The lower quote.
+        /// </value>
         public string LowerQuote { get; set; }
+
+        /// <summary>
+        /// Gets or sets the an image which appears in the lower half of the page.
+        /// </summary>
+        public Image LowerImage { get; set; }
+
         public IList<GuideNavigationLink> CampaignPages { get; set; } = new List<GuideNavigationLink>();
         /// <summary>
         /// Gets or sets the upper and lower pull quote text colour.
