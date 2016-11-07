@@ -79,6 +79,7 @@ blockquote.pull-quote .close { bottom: -27px; right: 4.109589%;}
    Padding-left matches text-indent to create hanging punctuation.
    .before-final-quote adds space (45px - 2.5 gridlines) below the final paragraph so that the absolutely-positioned image can fit into the gap created
 */
+.campaign-content .body .container { position: relative; }
 .before-final-quote { margin-bottom: 2.8125em; }
 .with-final-quote .article, .with-final-quote .body .container { padding-bottom: 0; }
 blockquote.final-quote { font-size: 1.4375em; line-height: 1.173913em; font-weight: bold; letter-spacing: -.05em;text-indent: -.4em;margin: 1.125em 0; color: #E53A45; padding: 0 140px 0 .4em; }
