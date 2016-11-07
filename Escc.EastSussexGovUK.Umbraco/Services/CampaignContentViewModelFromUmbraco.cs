@@ -94,6 +94,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
                 };
             }
 
+            model.CustomCssSmallScreen = new HtmlString(_umbracoContent.GetPropertyValue<string>("CssSmall_Design"));
+            model.CustomCssMediumScreen = new HtmlString(_umbracoContent.GetPropertyValue<string>("CssMedium_Design"));
             model.CustomCssLargeScreen = new HtmlString(_umbracoContent.GetPropertyValue<string>("CssLarge_Design"));
 
             model.VideoWidth = _umbracoContent.GetPropertyValue<int?>("VideoWidth_Design");

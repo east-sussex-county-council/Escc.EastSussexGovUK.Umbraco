@@ -55,6 +55,27 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
         /// Gets or sets the text colour for the final pull quote.
         /// </summary>
         public string FinalQuoteTextColour { get; set; }
+
+        /// <summary>
+        /// Gets or sets the custom CSS for small screens and above.
+        /// </summary>
+        /// <value>
+        /// The custom CSS small screen.
+        /// </value>
+        public IHtmlString CustomCssSmallScreen { get; set; }
+        /// <summary>
+        /// Gets or sets the custom CSS for medium screens and above, overriding the small screen CSS.
+        /// </summary>
+        /// <value>
+        /// The custom CSS medium screen.
+        /// </value>
+        public IHtmlString CustomCssMediumScreen { get; set; }
+        /// <summary>
+        /// Gets or sets the custom CSS for large screens, overriding the small and medium screen CSS.
+        /// </summary>
+        /// <value>
+        /// The custom CSS large screen.
+        /// </value>
         public IHtmlString CustomCssLargeScreen { get; set; }
 
         /// <summary>

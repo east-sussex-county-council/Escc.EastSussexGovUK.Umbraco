@@ -19,6 +19,7 @@
         Html.RequiresCss(CssFileAlias.Resolve("CampaignLarge"), MediaQueryAlias.Resolve("Large"));
         Html.RequiresCss(CssFileAlias.Resolve("NavigationMedium"), MediaQueryAlias.Resolve("Medium"));
         Html.RequiresCss(CssFileAlias.Resolve("NavigationLarge"), MediaQueryAlias.Resolve("Large"));
+        Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=CampaignContentCss&media-query=medium", 101, MediaQueryAlias.Resolve("Medium"));
         Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=CampaignContentCss&media-query=large", 101, MediaQueryAlias.Resolve("Large"));
     }
     Html.RequiresCss(CssFileAlias.Resolve("CampaignPrint"), new Dictionary<string, string>() { { "media", "print" } });
