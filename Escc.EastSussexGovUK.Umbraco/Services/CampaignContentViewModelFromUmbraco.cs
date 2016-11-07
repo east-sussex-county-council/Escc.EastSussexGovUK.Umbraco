@@ -52,8 +52,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             model.FinalQuote = _umbracoContent.GetPropertyValue<string>("FinalQuote_Content");
             model.FinalQuoteAttribution = _umbracoContent.GetPropertyValue<string>("FinalQuoteAttribution_Content");
 
+            model.PullQuoteTextColour = _umbracoContent.GetPropertyValue<string>("PullQuoteTextColour_Design");
             model.PullQuoteBackgroundColour = _umbracoContent.GetPropertyValue<string>("PullQuoteBackground_Design");
             model.PullQuoteQuotationMarksColour = _umbracoContent.GetPropertyValue<string>("PullQuoteMarks_Design");
+            model.CentralQuoteTextColour = _umbracoContent.GetPropertyValue<string>("CentralQuoteTextColour_Design");
             model.CentralQuoteBackgroundColour = _umbracoContent.GetPropertyValue<string>("CentralQuoteBackground_Design");
             model.FinalQuoteTextColour = _umbracoContent.GetPropertyValue<string>("FinalQuoteColour_Design");
 

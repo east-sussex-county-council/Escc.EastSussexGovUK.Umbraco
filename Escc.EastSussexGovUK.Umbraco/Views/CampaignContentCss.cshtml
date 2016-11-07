@@ -12,6 +12,31 @@
 @:.campaign-content .body { background: #fff url(@Model.BannerImageSmall.ImageUrl) repeat-x center 1.5em; }
 @:.campaign-content .article { padding-top: 75px; }
     }
+    if (!String.IsNullOrEmpty(Model.PullQuoteTextColour))
+    {
+@:blockquote.pull-quote { color: @Model.PullQuoteTextColour;}
+    }
+    if (!String.IsNullOrEmpty(Model.PullQuoteBackgroundColour))
+    {
+@:blockquote.pull-quote { background: @Model.PullQuoteBackgroundColour;}
+    }
+    if (!String.IsNullOrEmpty(Model.PullQuoteQuotationMarksColour))
+    {
+@:blockquote.pull-quote span { color: @Model.PullQuoteQuotationMarksColour; }
+    }
+    if (!String.IsNullOrEmpty(Model.CentralQuoteTextColour))
+    {
+         @:.pull-quote-with-image { color: @Model.CentralQuoteTextColour; }
+    }
+    if (!String.IsNullOrEmpty(Model.CentralQuoteBackgroundColour))
+    {
+@:.pull-quote-with-image { background: @Model.CentralQuoteBackgroundColour; }
+    }
+    if (!String.IsNullOrEmpty(Model.FinalQuoteTextColour))
+    {
+@:blockquote.final-quote { color: @Model.FinalQuoteTextColour }
+    }
+
     customCss.Append(Model.CustomCssSmallScreen);
 }
 @if (Request.QueryString["media-query"] == "medium")
@@ -27,21 +52,5 @@
 @:.campaign-content .article { padding-top: 0; }
     }
     customCss.Append(Model.CustomCssLargeScreen);
-}
-@if (!String.IsNullOrEmpty(Model.PullQuoteBackgroundColour))
-{
-    @:blockquote.pull-quote { background: #@Model.PullQuoteBackgroundColour;}
-}
-@if (!String.IsNullOrEmpty(Model.PullQuoteQuotationMarksColour))
-{
-    @:blockquote.pull-quote span { color: #@Model.PullQuoteQuotationMarksColour; }
-}
-@if (!String.IsNullOrEmpty(Model.CentralQuoteBackgroundColour))
-{
-    @:.pull-quote-with-image { background: #@Model.CentralQuoteBackgroundColour; }
-}
-@if (!String.IsNullOrEmpty(Model.FinalQuoteTextColour))
-{
-@:blockquote.final-quote { color: #@Model.FinalQuoteTextColour }
 }
 @customCss;

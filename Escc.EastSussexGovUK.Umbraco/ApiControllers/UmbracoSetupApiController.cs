@@ -89,7 +89,6 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
                 PriorityDataType.CreateDataType();
 
                 // Campaign templates
-                UmbracoCodeFirstInitializer.CreateDataType(typeof(CampaignQuoteColourDataType));
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(ColourPickerDataType));
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(AlignmentDataType));
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(ShareStyleDataType));

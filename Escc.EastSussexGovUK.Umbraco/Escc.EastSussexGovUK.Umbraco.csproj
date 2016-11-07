@@ -3361,7 +3361,6 @@
     <Compile Include="DocumentTypes\CampaignTemplates\CampaignLandingContentTab.cs" />
     <Compile Include="DocumentTypes\CampaignTemplates\CampaignLandingDesignTab.cs" />
     <Compile Include="DocumentTypes\CampaignTemplates\CampaignLandingDocumentType.cs" />
-    <Compile Include="DocumentTypes\CampaignTemplates\CampaignQuoteColourDataType.cs" />
     <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanBudgetPageContentTab.cs" />
     <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanBudgetPageDocumentType.cs" />
     <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanHomePageContentTab.cs" />
