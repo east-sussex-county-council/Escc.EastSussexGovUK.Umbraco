@@ -61,7 +61,7 @@ blockquote.pull-quote .close { bottom: -27px; right: 4.109589%;}
 
 */
 .pull-quote-with-image { position: relative;overflow: hidden; min-height: 11.25em; padding: 1.125em 160px 1.125em 4.109589%;margin: 1.125em 0;background: #50A030;color: white;}
-.pull-quote-with-image p { margin: 0;font-size: 1.25em;line-height: 1.35em;font-weight: bold;}
+.pull-quote-with-image p { margin: 0;font-size: 1.25em;line-height: 1.35em;}
 .pull-quote-with-image img { max-width: 150px; position: absolute; right: 0; top: 10px; }
 
 /* If the text is taller than the image, the image floats in space. Typically this is a cutout of a person, and it looks better with a baseline when that happens. */

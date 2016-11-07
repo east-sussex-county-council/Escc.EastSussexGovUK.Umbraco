@@ -1,4 +1,5 @@
 ﻿@using System.Text
+@using Escc.EastSussexGovUK.Umbraco.Services
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.CampaignContentViewModel>
 @{
     Layout = null;
@@ -35,6 +36,19 @@
     if (!String.IsNullOrEmpty(Model.FinalQuoteTextColour))
     {
 @:blockquote.final-quote { color: @Model.FinalQuoteTextColour }
+    }
+    if (!String.IsNullOrEmpty(Model.QuoteFontFamily))
+    {
+        var formatter = new GoogleFontFamilyFormatter();
+@:blockquote.pull-quote, .pull-quote-with-image, blockquote.final-quote { font-family: @formatter.FormatAsCssFontName(Model.QuoteFontFamily), 'Source Sans Pro', Arial, 'Helvetica Neue', Helvetica, sans-serif; letter-spacing: 0; }
+    }
+    if (Model.QuotesInBold)
+    {
+@:blockquote.pull-quote, .pull-quote-with-image, blockquote.final-quote { font-weight: bold; }
+    }
+    if (Model.QuotesInItalic)
+    {
+@:blockquote.pull-quote, .pull-quote-with-image, blockquote.final-quote { font-style: italic; }
     }
 
     customCss.Append(Model.CustomCssSmallScreen);

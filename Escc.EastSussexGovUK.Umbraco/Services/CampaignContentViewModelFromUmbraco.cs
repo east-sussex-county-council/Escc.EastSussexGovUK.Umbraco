@@ -21,12 +21,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
         private readonly IMediaUrlTransformer _mediaUrlTransformer;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CampaignContentViewModelFromUmbraco"/> class.
+        /// Initializes a new instance of the <see cref="CampaignContentViewModelFromUmbraco" /> class.
         /// </summary>
         /// <param name="umbracoContent">The content.</param>
         /// <param name="mediaUrlTransformer">The media URL transformer.</param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
+        /// umbracoContent
+        /// or
+        /// mediaUrlTransformer
         /// </exception>
+        /// <exception cref="ArgumentNullException"></exception>
         public CampaignContentViewModelFromUmbraco(IPublishedContent umbracoContent, IMediaUrlTransformer mediaUrlTransformer)
         {
             if (umbracoContent == null) throw new ArgumentNullException(nameof(umbracoContent));
@@ -58,6 +62,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             model.CentralQuoteTextColour = _umbracoContent.GetPropertyValue<string>("CentralQuoteTextColour_Design");
             model.CentralQuoteBackgroundColour = _umbracoContent.GetPropertyValue<string>("CentralQuoteBackground_Design");
             model.FinalQuoteTextColour = _umbracoContent.GetPropertyValue<string>("FinalQuoteColour_Design");
+            model.QuoteFontFamily = _umbracoContent.GetPropertyValue<string>("QuoteFontFamily_Design");
+            model.QuotesInBold = _umbracoContent.GetPropertyValue<bool>("QuotesInBold_Design");
+            model.QuotesInItalic = _umbracoContent.GetPropertyValue<bool>("QuotesInItalic_Design");
 
             model.CentralQuoteImageIsCutout = _umbracoContent.GetPropertyValue<bool>("CentralQuoteImageIsCutout_Design");
 
@@ -117,5 +124,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
 
             return model;
         }
+
     }
 }

@@ -74,6 +74,28 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
         public string FinalQuoteTextColour { get; set; }
 
         /// <summary>
+        /// Gets or sets whether to set pull quotes in bold type
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if quotes in bold; otherwise, <c>false</c>.
+        /// </value>
+        public bool QuotesInBold { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value whether to set pull quotes in italic type
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if quotes in italic; otherwise, <c>false</c>.
+        /// </value>
+        public bool QuotesInItalic { get; set; }
+
+        /// <summary>
+        /// Gets or sets the font family to use for all pull quotes, as a Google Fonts URL segment.
+        /// </summary>
+        /// <example>Cormorant+Garamond:400,400i</example>
+        public string QuoteFontFamily { get; set; }
+
+        /// <summary>
         /// Gets or sets the custom CSS for small screens and above.
         /// </summary>
         /// <value>

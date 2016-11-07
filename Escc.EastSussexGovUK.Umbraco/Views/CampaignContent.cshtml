@@ -3,6 +3,7 @@
 @using Escc.EastSussexGovUK
 @using Escc.EastSussexGovUK.Features
 @using Escc.EastSussexGovUK.Skins
+@using Escc.EastSussexGovUK.Umbraco.Services
 @using Escc.EastSussexGovUK.Views
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.CampaignContentViewModel>
 @{
@@ -33,6 +34,13 @@
 
     var bodyClass = "campaign-content";
     if (!String.IsNullOrEmpty(Model.FinalQuote)) { bodyClass += " with-final-quote";}
+}
+@section Metadata {
+    @if (!String.IsNullOrEmpty(Model.QuoteFontFamily))
+    {
+        var formatter = new GoogleFontFamilyFormatter();
+        @formatter.FormatAsFontReference(Model.QuoteFontFamily);
+    }
 }
 @section BodyClass {@bodyClass}
 <div class="article" data-video-width="@Model.VideoWidth" data-video-height="@Model.VideoHeight">
