@@ -49,6 +49,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             model.ContentPart3 = new HtmlString(_mediaUrlTransformer.ParseAndTransformMediaUrlsInHtml(_umbracoContent.GetPropertyValue<string>("Content3_Content")));
             model.ContentPart4 = new HtmlString(_mediaUrlTransformer.ParseAndTransformMediaUrlsInHtml(_umbracoContent.GetPropertyValue<string>("Content4_Content")));
             model.ContentPart5 = new HtmlString(_mediaUrlTransformer.ParseAndTransformMediaUrlsInHtml(_umbracoContent.GetPropertyValue<string>("Content5_Content")));
+            model.ContentPart6 = new HtmlString(_mediaUrlTransformer.ParseAndTransformMediaUrlsInHtml(_umbracoContent.GetPropertyValue<string>("Content6_Content")));
 
             model.UpperQuote = _umbracoContent.GetPropertyValue<string>("UpperQuote_Content");
             model.CentralQuote = _umbracoContent.GetPropertyValue<string>("CentralQuote_Content");

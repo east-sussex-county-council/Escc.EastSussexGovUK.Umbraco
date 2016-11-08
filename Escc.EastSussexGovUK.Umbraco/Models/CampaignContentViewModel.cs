@@ -16,6 +16,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
         public IHtmlString ContentPart3 { get; set; }
         public IHtmlString ContentPart4 { get; set; }
         public IHtmlString ContentPart5 { get; set; }
+        public IHtmlString ContentPart6 { get; set; }
 
         /// <summary>
         /// Gets or sets a pull quote which appears in the upper half of the page

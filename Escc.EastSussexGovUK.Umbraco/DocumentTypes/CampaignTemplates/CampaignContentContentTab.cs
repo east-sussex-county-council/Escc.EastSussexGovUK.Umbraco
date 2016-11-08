@@ -58,20 +58,25 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates
         public string Content4 { get; set; }
 
         [UmbracoProperty("Content part 5", "Content5", PropertyEditorAliases.RichTextPropertyEditor, RichTextEsccWithFormattingDataType.DataTypeName, sortOrder: 11,
-        Description = "Text which appears alongside the final pull quote image."
+        Description = "Text which appears alongside the final pull quote image on medium screens."
         )]
         public string Content5 { get; set; }
 
-        [UmbracoProperty("Final pull quote", "FinalQuote", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 12,
+        [UmbracoProperty("Content part 6", "Content6", PropertyEditorAliases.RichTextPropertyEditor, RichTextEsccWithFormattingDataType.DataTypeName, sortOrder: 12,
+        Description = "Text which appears alongside the final pull quote image on small and medium screens."
+        )]
+        public string Content6 { get; set; }
+
+        [UmbracoProperty("Final pull quote", "FinalQuote", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 13,
             Description="Appears at the end of the text together with an image."
             )]
         public string BottomQuote { get; set; }
 
-        [UmbracoProperty("Final pull quote image", "FinalQuoteImage", BuiltInUmbracoDataTypes.MediaPicker, sortOrder: 13,
+        [UmbracoProperty("Final pull quote image", "FinalQuoteImage", BuiltInUmbracoDataTypes.MediaPicker, sortOrder: 14,
             Description = "An 310px wide cutout image of the speaker for the final pull quote.")]
         public string BottomQuoteImage { get; set; }
 
-        [UmbracoProperty("Final pull quote attribution", "FinalQuoteAttribution", BuiltInUmbracoDataTypes.Textbox, sortOrder: 14,
+        [UmbracoProperty("Final pull quote attribution", "FinalQuoteAttribution", BuiltInUmbracoDataTypes.Textbox, sortOrder: 15,
             Description = "The name of the speaker in the final pull quote."
             )]
         public string BottomQuoteAttribution { get; set; }

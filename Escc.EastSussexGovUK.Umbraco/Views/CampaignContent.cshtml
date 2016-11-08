@@ -84,8 +84,14 @@
             {
                 if (Model.ContentPart5 != null && !String.IsNullOrWhiteSpace(Model.ContentPart5.ToHtmlString()))
                 {
-                    <div class="before-final-quote">
+                    <div class="before-final-quote-medium">
                         @Model.ContentPart5
+                    </div>
+                }
+                if (Model.ContentPart6 != null && !String.IsNullOrWhiteSpace(Model.ContentPart6.ToHtmlString()))
+                {
+                    <div class="before-final-quote">
+                        @Model.ContentPart6
                     </div>
                 }
                 if (String.IsNullOrEmpty(Model.FinalQuoteAttribution))
