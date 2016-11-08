@@ -50,7 +50,7 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
         } 
         
         /// <summary>
-        /// Creates the supporting types (eg data types) needed for <see cref="CreateUmbracoDocumentTypes"/> to succeed.
+        /// Creates the supporting types (eg data types) needed for <see cref="CreateUmbracoDocumentTypes"/> and <see cref="CreateCampaignDocumentTypes"/> to succeed.
         /// </summary>
         /// <returns></returns>
         [SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling"), SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
@@ -142,8 +142,6 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CouncilPlanMonitoringPageDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CouncilPlanPrioritiesPageDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CouncilPlanTopicPageDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CampaignLandingDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CampaignContentDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CustomerFocusBaseDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LandingDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(TaskDocumentType));
@@ -160,6 +158,30 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(RegistrationOfficeDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(DayCentreDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(PersonDocumentType));
+
+                return Request.CreateResponse(HttpStatusCode.Created);
+            }
+            catch (Exception e)
+            {
+                e.ToExceptionless().Submit();
+                return Request.CreateResponse(HttpStatusCode.InternalServerError);
+            }
+        }
+
+        /// <summary>
+        /// Creates the Umbraco document types for the campaign templates.
+        /// </summary>
+        /// <remarks>Having separate methods reduces the risk of timeouts when running this code on Azure</remarks>
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
+        [AcceptVerbs("POST")]
+        public HttpResponseMessage CreateCampaignDocumentTypes([FromUri] string token)
+        {
+            if (!CheckAuthorisationToken(token)) return Request.CreateResponse(HttpStatusCode.Forbidden);
+
+            try
+            {
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CampaignLandingDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CampaignContentDocumentType));
 
                 return Request.CreateResponse(HttpStatusCode.Created);
             }
