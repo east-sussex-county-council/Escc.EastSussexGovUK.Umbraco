@@ -39,8 +39,8 @@
             <h1>@Model.Metadata.Title</h1>
 
             @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
-            @Html.Partial("_LocationIsOpen")
-            @Html.Partial("_LocationOpeningTimes")
+            @Html.Partial("~/Views/_LocationIsOpen.cshtml")
+            @Html.Partial("~/Views/_LocationOpeningTimes.cshtml")
 
             @if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)
             {
@@ -75,7 +75,7 @@
                             {
                                 <div id="tab1content" aria-labelledby="tab1" role="tabpanel">
                                     <h2 class="aural">@Model.Tab1Title</h2>
-                                    @Html.Partial("_LocationTab1Content")
+                                    @Html.Partial("~/Views/_LocationTab1Content.cshtml")
                                 </div>
                             }
 
@@ -205,7 +205,7 @@
             {
                 <h2 id="accordion1" aria-controls="accordion1content" role="tab">@Model.Tab1Title</h2>
                 <div id="accordion1content" aria-labelledby="accordion1" role="tabpanel">
-                    @Html.Partial("_LocationTab1Content")
+                    @Html.Partial("~/Views/_LocationTab1Content.cshtml")
                 </div>
             }
 
@@ -240,5 +240,5 @@
     @Html.Partial("~/Views/EastSussexGovUK/Features/_Share.cshtml")
 </div>
 @section JavaScript{
-    @Html.Partial("_LocationJsonLD")
+    @Html.Partial("~/Views/_LocationJsonLD.cshtml")
 }
