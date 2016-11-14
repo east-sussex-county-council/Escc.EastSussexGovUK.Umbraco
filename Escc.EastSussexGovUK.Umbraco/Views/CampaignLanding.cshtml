@@ -1,6 +1,7 @@
 ﻿@using ClientDependency.Core.Mvc
 @using Escc.ClientDependencyFramework
 @using Escc.EastSussexGovUK.Skins
+@using Escc.EastSussexGovUK.Umbraco.Services
 @using Escc.EastSussexGovUK.Views
 @using Escc.Web
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.CampaignLandingViewModel>
@@ -31,8 +32,13 @@
         }
     }
 
+    var nonce = Guid.NewGuid().ToString().Replace("-", String.Empty);
     var policy = new ContentSecurityPolicyHeaders(Response.Headers);
     policy.AppendPolicy(new ContentSecurityPolicyFromConfig().Policies["YouTube"]);
+    if (!String.IsNullOrEmpty(Model.GoogleAdWordsTag))
+    {
+        policy.AppendPolicy($"script-src 'nonce-{nonce}' https://www.googleadservices.com; img-src https://www.googleadservices.com");
+    }
     policy.UpdateHeaders();
 }
 @section BodyClass {
@@ -83,8 +89,24 @@
         <div class="text-content landing-content">
             @Model.Content
         </div>
-    } 
+    }
     <div class="text-content share-container">
         @Html.Partial("~/Views/EastSussexGovUK/Features/_Share.cshtml", Model)
     </div>
 </div>
+@section JavaScript {
+    @{
+        if (!String.IsNullOrEmpty(Model.GoogleAdWordsTag))
+        {
+            var parser = new GoogleAdWordsTagParser();
+            if (parser.ParseTag(Model.GoogleAdWordsTag))
+            {
+                <script nonce="@nonce">
+                    @Html.Raw(parser.JavaScript)
+                </script>
+                <script src="//www.googleadservices.com/pagead/conversion.js"></script>
+                <noscript><img height="1" width="1" alt="" src="@parser.ImageUrl" /></noscript>
+            }
+        }
+    }
+}

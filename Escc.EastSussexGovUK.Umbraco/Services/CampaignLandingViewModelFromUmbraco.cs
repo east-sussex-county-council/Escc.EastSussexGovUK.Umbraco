@@ -121,6 +121,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
 
             model.ShareStyle = _umbracoContent.GetPropertyValue<string>("ShareStyle_Design");
 
+            model.GoogleAdWordsTag = _umbracoContent.GetPropertyValue<string>("GoogleAdWordsTag");
+
             return model;
         }
 

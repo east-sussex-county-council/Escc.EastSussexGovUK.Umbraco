@@ -29,7 +29,11 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates
         [UmbracoProperty("Description", "pageDescription", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 1, mandatory: true)]
         public string Description { get; set; }
 
-        [UmbracoProperty("Author notes", "authorNotes", PropertyEditorAliases.RichTextPropertyEditor, RichTextAuthorNotesDataType.DataTypeName, sortOrder: 2)]
+        [UmbracoProperty("Google AdWords tag", "GoogleAdWordsTag", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 2,
+            Description="When tracking conversions from a Google AdWords campaign, paste the tag code here")]
+        public string GoogleAdWordsTag { get; set; }
+
+        [UmbracoProperty("Author notes", "authorNotes", PropertyEditorAliases.RichTextPropertyEditor, RichTextAuthorNotesDataType.DataTypeName, sortOrder: 3)]
         public string AuthorNotes { get; set; }
 
         [UmbracoProperty("Cache", "cache", BuiltInUmbracoDataTypes.DropDown, "Cache", sortOrder: 101, description: "Pages are cached for 24 hours by default.  If this page is particularly time-sensitive, pick shorter time.")]

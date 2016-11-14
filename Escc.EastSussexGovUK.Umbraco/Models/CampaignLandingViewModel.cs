@@ -229,5 +229,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
         /// Gets or sets the style for the share links
         /// </summary>
         public string ShareStyle { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tag code supplied for Google AdWords
+        /// </summary>
+        public string GoogleAdWordsTag { get; set; }
     }
 }

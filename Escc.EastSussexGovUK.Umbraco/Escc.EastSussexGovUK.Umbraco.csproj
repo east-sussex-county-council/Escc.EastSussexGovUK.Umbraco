@@ -3335,6 +3335,7 @@
     <Compile Include="DocumentTypes\CampaignTemplates\ShareStyleDataType.cs" />
     <Compile Include="DocumentTypes\CampaignTemplates\AlignmentDataType.cs" />
     <Compile Include="DocumentTypes\CampaignTemplates\ColourPickerDataType.cs" />
+    <Compile Include="Services\GoogleAdWordsTagParser.cs" />
     <Compile Include="Services\CampaignContentViewModelFromUmbraco.cs" />
     <Compile Include="Services\CampaignLandingViewModelFromUmbraco.cs" />
     <Compile Include="Services\GoogleFontFamilyFormatter.cs" />

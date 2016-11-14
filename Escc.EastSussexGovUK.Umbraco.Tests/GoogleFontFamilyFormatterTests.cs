@@ -20,7 +20,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             var result = new GoogleFontFamilyFormatter().FormatAsFontReference(pastedText);
 
-            Assert.AreEqual(expected, result);
+            Assert.AreEqual(expected, result.ToHtmlString());
         }
 
         [TestCase("<link href=\"https://fonts.googleapis.com/css?family=Cormorant+Garamond:400,400i\" rel=\"stylesheet\">", "'Cormorant Garamond'")]
@@ -32,7 +32,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             var result = new GoogleFontFamilyFormatter().FormatAsCssFontName(pastedText);
 
-            Assert.AreEqual(expected, result);
+            Assert.AreEqual(expected, result.ToHtmlString());
         }
     }
 }
