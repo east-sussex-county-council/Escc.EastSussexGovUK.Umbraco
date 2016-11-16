@@ -1,0 +1,11 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.JobsHomeViewModel>
+@{
+    Layout = null;
+    Response.ContentType = "text/css";
+}
+@if (Model.HeaderBackgroundImage != null)
+{
+@:body .body { background-image: url('@Model.HeaderBackgroundImage.ImageUrl'); background-repeat: repeat-x; background-position: center top; }
+@:.full-page { background: none;}
+@:.jobs-header { min-height: @{@Model.HeaderBackgroundImage.Height}px; }
+}

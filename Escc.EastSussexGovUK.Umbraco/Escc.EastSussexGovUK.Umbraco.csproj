@@ -577,6 +577,7 @@
     <Content Include="css\HomePage\home-large.css" />
     <Content Include="css\HomePage\home-medium.css" />
     <Content Include="css\HomePage\home-small.css" />
+    <Content Include="css\Jobs\jobs-small.css" />
     <Content Include="css\StandardDownloadPage\download-small.css" />
     <Content Include="css\StandardLandingPage\landing-medium.css" />
     <Content Include="css\StandardLandingPage\landing-small.css" />
@@ -3249,6 +3250,12 @@
     <Content Include="Views\_HomePageNewsItem.cshtml" />
     <Content Include="Views\Layouts\UmbracoDesktop.cshtml" />
     <Content Include="Views\Layouts\UmbracoFullScreen.cshtml" />
+    <Content Include="Views\JobsHome.cshtml" />
+    <Content Include="Views\JobSearchResults.cshtml" />
+    <Content Include="Views\JobsComponent.cshtml" />
+    <Content Include="Views\JobsHomeCss.cshtml" />
+    <Content Include="Views\JobSearchResultsCss.cshtml" />
+    <Content Include="Views\JobsButtons.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -3332,9 +3339,24 @@
     <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\HomePageItemController.cs" />
     <Compile Include="Controllers\HomePageItemsController.cs" />
+    <Compile Include="Controllers\JobsComponentController.cs" />
+    <Compile Include="Controllers\JobSearchResultsController.cs" />
+    <Compile Include="Controllers\JobsHomeController.cs" />
+    <Compile Include="Models\JobSearchResultsViewModel.cs" />
+    <Compile Include="Services\BaseJobsViewModelFromUmbracoBuilder.cs" />
+    <Compile Include="Services\JobSearchResultsViewModelFromUmbraco.cs" />
+    <Compile Include="Services\JobsHomeViewModelFromUmbraco.cs" />
     <Compile Include="DocumentTypes\CampaignTemplates\ShareStyleDataType.cs" />
     <Compile Include="DocumentTypes\CampaignTemplates\AlignmentDataType.cs" />
     <Compile Include="DocumentTypes\CampaignTemplates\ColourPickerDataType.cs" />
+    <Compile Include="DocumentTypes\Jobs\JobSearchResultsContentTab.cs" />
+    <Compile Include="DocumentTypes\Jobs\JobsComponentContentTab.cs" />
+    <Compile Include="DocumentTypes\Jobs\JobsComponentDocumentType.cs" />
+    <Compile Include="DocumentTypes\Jobs\JobsHomeContentTab.cs" />
+    <Compile Include="DocumentTypes\Jobs\JobSearchResultsDocumentType.cs" />
+    <Compile Include="DocumentTypes\Jobs\JobsHomeDocumentType.cs" />
+    <Compile Include="Models\JobsComponentViewModel.cs" />
+    <Compile Include="Models\JobsHomeViewModel.cs" />
     <Compile Include="Services\GoogleAdWordsTagParser.cs" />
     <Compile Include="Services\CampaignContentViewModelFromUmbraco.cs" />
     <Compile Include="Services\CampaignLandingViewModelFromUmbraco.cs" />

@@ -1,0 +1,18 @@
+﻿@using Escc.EastSussexGovUK.Skins
+@using Escc.EastSussexGovUK.Views
+@using Escc.Web
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.JobsComponentViewModel>
+@{
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
+    Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
+
+    new ContentSecurityPolicyHeaders(Response.Headers).AppendPolicy(new ContentSecurityPolicyFromConfig().Policies["TalentLink"]).UpdateHeaders();
+}
+<div class="full-page">
+    <div class="content text-content">
+        <h1>@Model.Metadata.Title</h1>
+        <script src="@Model.ScriptUrl"></script>
+        <noscript><a href="@Model.LinkUrl">@Model.Metadata.Title</a></noscript>
+    </div>
+</div>
+

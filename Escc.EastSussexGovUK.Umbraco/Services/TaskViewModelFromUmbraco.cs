@@ -24,9 +24,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
         private readonly IMediaUrlTransformer _mediaUrlTransformer;
 
         /// <summary>
-        /// Tasks the view model from umbraco.
+        /// Builds a <see cref="TaskViewModel"/> from Umbraco content
         /// </summary>
-        /// <param name="umbracoContent">Content of the umbraco.</param>
+        /// <param name="umbracoContent">Content from Umbraco.</param>
         /// <param name="relatedLinksService">The related links service.</param>
         /// <param name="elibraryLinkConverter">The elibrary link converter.</param>
         /// <param name="mediaUrlTransformer">A service to links to items in the media library</param>

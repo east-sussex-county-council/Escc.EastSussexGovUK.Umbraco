@@ -15,6 +15,7 @@ using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Features.WebChat;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.FormDownload;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Guide;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.HomePage;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Jobs;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Landing;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.LandingPageWithPictures;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.LegacyBase;
@@ -158,6 +159,9 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(RegistrationOfficeDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(DayCentreDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(PersonDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(JobsHomeDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(JobSearchResultsDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(JobsComponentDocumentType));
 
                 return Request.CreateResponse(HttpStatusCode.Created);
             }

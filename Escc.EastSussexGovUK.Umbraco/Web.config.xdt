@@ -153,6 +153,20 @@
     </TopicSectionLayouts>
   </Escc.EastSussexGovUK.Umbraco>
 
+  <Escc.Web xdt:Transform="Insert" />
+  <Escc.Web xdt:Transform="Remove" xdt:Locator="XPath(/configuration/Escc.Web[2])" />
+
+  <Escc.Web>
+    <ContentSecurityPolicies xdt:Transform="Insert" />
+    <ContentSecurityPolicies xdt:Transform="Remove" xdt:Locator="XPath(/configuration/Escc.Web/ContentSecurityPolicies[2])" />
+
+    <ContentSecurityPolicies>
+      <add key="TalentLink" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="TalentLink" value="script-src https://emea3.recruitmentplatform.com 'unsafe-inline'" xdt:Transform="Insert" />
+    </ContentSecurityPolicies>
+  </Escc.Web>
+
+
   <appSettings xdt:Transform="Insert" />
   <appSettings xdt:Transform="Remove" xdt:Locator="XPath(/configuration/appSettings[2])" />
 
