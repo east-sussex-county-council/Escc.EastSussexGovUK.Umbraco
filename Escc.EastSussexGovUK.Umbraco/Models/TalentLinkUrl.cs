@@ -19,7 +19,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
 
         public Uri ScriptUrl { get { return new Uri(_scriptUrl);} }
 
-        public Uri LinkUrl { get { return new Uri(_scriptUrl.Replace("laydisplayrapido.cfm", "jsoutputinitrapido.cfm").Replace("&browserchk=no", String.Empty)); }  }
+        public Uri LinkUrl { get { return new Uri(_scriptUrl.Replace("laydisplayrapido.cfm", "jsoutputinitrapido.cfm")); }  }
 
         public string Id { get { return _queryString["id"]; } }
 

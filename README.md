@@ -20,6 +20,14 @@ This is designed for the 'Find a library' and 'Find a recycling site' features. 
 
 If no term dates data is selected, the term dates section is left blank. If the wrong kind of file is selected an `XmlException` is thrown with the message "Invalid character in the given encoding. Line 1, position 1."
 
+## Configuring jobs pages
+
+Most elements of the jobs pages are configured in the back-office, but API requests use a URL format specified in `web.config`:
+
+	<appSettings>
+    	<add key="TalentLinkHtmlUrl" value="https://talentlink-hostname/path/to/jsoutputinitrapido.cfm?ID={0}&amp;mask={1}&amp;component=lay9999_src350a"/>
+	</appSettings>
+
 ## Development setup steps
 
 1. From an Administrator command prompt, run `app-setup-dev.cmd` to set up a site in IIS.

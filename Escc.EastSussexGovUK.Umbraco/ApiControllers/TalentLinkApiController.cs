@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -18,40 +19,28 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
         [AcceptVerbs("GET")]
         public async Task<HttpResponseMessage> SearchFieldsHtml(string id, string mask)
         {
-            var url = $"https://emea3.recruitmentplatform.com/syndicated/lay/jsoutputinitrapido.cfm?ID={id}&mask={mask}&component=lay9999_src350a";
+            var url = String.Format(ConfigurationManager.AppSettings["TalentLinkHtmlUrl"], id, mask);
 
-            var handler = new HttpClientHandler()
-            {
-                Proxy = new ConfigurationProxyProvider().CreateProxy()
-            };
-            var client = new HttpClient(handler);
-            var html = await client.GetStringAsync(url);
+            var htmlSource = new TalentLinkHtmlFromHttpRequest(new Uri(url), new ConfigurationProxyProvider());
+            var htmlStream = await htmlSource.ReadHtml();
 
             var parsedHtml = new HtmlDocument();
-            parsedHtml.LoadHtml(html);
-            var body = (HtmlNodeNavigator)parsedHtml.CreateNavigator().SelectSingleNode("/html/body/div");
-            if (body == null) return null;
+            parsedHtml.Load(htmlStream);
 
-            var keywords = (HtmlNodeNavigator)body.SelectSingleNode("//div[@id='div-srcparam1']");
-            if (keywords != null) keywords.CurrentNode.ParentNode.RemoveChild(keywords.CurrentNode);
-
-
-            var actions = (HtmlNodeNavigator)body.SelectSingleNode("//div[@id='actions']");
-            if (actions != null) actions.CurrentNode.ParentNode.RemoveChild(actions.CurrentNode);
-
-            var inlineStyles = parsedHtml.DocumentNode.SelectNodes("//*[@style]");
-            foreach (var node in inlineStyles)
+            var filters = new IHtmlAgilityPackFilter[] { new RemoveOuterHtmlFromSearchFieldsFilter(), 
+                                                         new RemoveElementByIdFilter("div-srcparam1"),
+                                                         new RemoveElementByIdFilter("actions"),
+                                                         new RemoveAttributeFilter("style")
+                                                       };
+            foreach (var filter in filters)
             {
-                node.Attributes.Remove("style");
+                filter.Filter(parsedHtml);
             }
 
-
-            // HTML Agility Pack can isolate the form element but can't correctly select its children, so fall back on regex to remove the outer element
-            var form = body.CurrentNode.InnerHtml;
-            form = Regex.Replace(form, "</?form[^>]*>", String.Empty);
-
-            var response = new HttpResponseMessage();
-            response.Content = new StringContent(form);
+            var response = new HttpResponseMessage
+            {
+                Content = new StringContent(parsedHtml.DocumentNode.InnerHtml)
+            };
             response.Content.Headers.ContentType = new MediaTypeHeaderValue("text/html");
             return response;
         }

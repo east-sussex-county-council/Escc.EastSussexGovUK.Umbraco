@@ -320,7 +320,9 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -330,8 +332,12 @@
     <Compile Include="NuGetIncludedFilesCorrectlyTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RelatedLinksModelBuilderTests.cs" />
+    <Compile Include="RemoveOuterHtmlFromSearchFieldsFilterTests.cs" />
+    <Compile Include="RemoveAttributeFilterTests.cs" />
+    <Compile Include="RemoveElementByIdFilterTests.cs" />
     <Compile Include="RemoveUmbracoNumericSuffixFilterTests.cs" />
     <Compile Include="TinyMceEmbedClassFormatterTests.cs" />
+    <Compile Include="TalentLinkUrlTests.cs" />
     <Compile Include="UseFormForEmailLinksFormatterTests.cs" />
   </ItemGroup>
   <ItemGroup>

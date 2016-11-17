@@ -3316,8 +3316,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiControllers\TalentLinkHtmlFromHttpRequest.cs" />
+    <Compile Include="ApiControllers\IHtmlAgilityPackFilter.cs" />
     <Compile Include="ApiControllers\LocationController.cs" />
     <Compile Include="ApiControllers\MediaController.cs" />
+    <Compile Include="ApiControllers\RemoveAttributeFilter.cs" />
+    <Compile Include="ApiControllers\RemoveElementByIdFilter.cs" />
+    <Compile Include="ApiControllers\RemoveOuterHtmlFromSearchFieldsFilter.cs" />
     <Compile Include="ApiControllers\TalentLinkApiController.cs" />
     <Compile Include="ApiControllers\UmbracoSetupApiController.cs" />
     <Compile Include="ApiControllers\WasteTypesController.cs" />
