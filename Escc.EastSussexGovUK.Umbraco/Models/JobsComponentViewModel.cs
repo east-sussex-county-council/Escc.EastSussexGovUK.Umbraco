@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Escc.Umbraco.PropertyTypes;
 
 namespace Escc.EastSussexGovUK.Umbraco.Models
 {
@@ -12,19 +13,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
     public class JobsComponentViewModel : BaseViewModel
     {
         /// <summary>
-        /// Gets or sets the URL of the script to embed the component in the page.
+        /// Gets or sets the logo for the jobs service
         /// </summary>
-        /// <value>
-        /// The script URL.
-        /// </value>
-        public Uri ScriptUrl { get; set; }
+        public Image JobsLogo { get; set; }
 
         /// <summary>
-        /// Gets or sets the URL to link to the component on a separate page.
+        /// Gets or sets the background image for the header
         /// </summary>
-        /// <value>
-        /// The link URL.
-        /// </value>
-        public Uri LinkUrl { get; set; }
+        public Image HeaderBackgroundImage { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the URL of the script to embed the component in the page.
+        /// </summary>
+        public TalentLinkUrl ScriptUrl { get; set; }
     }
 }

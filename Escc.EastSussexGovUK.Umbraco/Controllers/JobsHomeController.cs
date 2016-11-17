@@ -31,9 +31,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
 
             var mediaUrlTransformer = new AzureMediaUrlTransformer(GlobalHelper.GetCdnDomain(), GlobalHelper.GetDomainsToReplace());
             var viewModel = new JobsHomeViewModelFromUmbraco(model.Content,
-                    new UmbracoOnAzureRelatedLinksService(mediaUrlTransformer),
-                    mediaUrlTransformer
-                    ).BuildModel();
+                mediaUrlTransformer
+,
+                new UmbracoOnAzureRelatedLinksService(mediaUrlTransformer)).BuildModel();
 
             // Add common properties to the model
             var modelBuilder = new BaseViewModelBuilder();

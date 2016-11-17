@@ -1,18 +1,33 @@
-﻿@using Escc.EastSussexGovUK.Skins
+﻿@using ClientDependency.Core.Mvc
+@using Escc.EastSussexGovUK.Skins
 @using Escc.EastSussexGovUK.Views
 @using Escc.Web
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.JobsComponentViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
+    Html.RequiresCss("~/css/jobs/jobs-small.css");
+    Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=JobsComponentCss&media-query=small", 101);
 
     new ContentSecurityPolicyHeaders(Response.Headers).AppendPolicy(new ContentSecurityPolicyFromConfig().Policies["TalentLink"]).UpdateHeaders();
+
+    var headerClass = Model.HeaderBackgroundImage != null ? "with-image" : String.Empty;
 }
+@section Breadcrumb {}
+<div class="jobs-header @headerClass">
+    <div class="text-content">
+        @if (Model.JobsLogo != null)
+        {
+            <h1><img src="@Model.JobsLogo.ImageUrl" alt="@Model.Metadata.Title" width="@Model.JobsLogo.Width" /></h1>
+        }
+    </div>
+</div>
+
 <div class="full-page">
     <div class="content text-content">
         <h1>@Model.Metadata.Title</h1>
-        <script src="@Model.ScriptUrl"></script>
-        <noscript><a href="@Model.LinkUrl">@Model.Metadata.Title</a></noscript>
+        <script src="@Model.ScriptUrl.ScriptUrl"></script>
+        <noscript><a href="@Model.ScriptUrl.LinkUrl">@Model.Metadata.Title</a></noscript>
     </div>
 </div>
 

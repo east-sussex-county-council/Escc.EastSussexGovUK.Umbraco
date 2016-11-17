@@ -15,13 +15,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
         /// Initializes a new instance of the <see cref="JobsHomeViewModelFromUmbraco" /> class.
         /// </summary>
         /// <param name="umbracoContent">Content from Umbraco using the 'Jobs' document type.</param>
-        /// <param name="relatedLinksService">The related links service.</param>
         /// <param name="mediaUrlTransformer">The media URL transformer.</param>
+        /// <param name="relatedLinksService">The related links service.</param>
         /// <exception cref="System.ArgumentNullException">umbracoContent
         /// or
         /// mediaUrlTransformer</exception>
-        public JobsHomeViewModelFromUmbraco(IPublishedContent umbracoContent, IRelatedLinksService relatedLinksService, IMediaUrlTransformer mediaUrlTransformer) :
-            base(umbracoContent, relatedLinksService, mediaUrlTransformer)
+        public JobsHomeViewModelFromUmbraco(IPublishedContent umbracoContent, IMediaUrlTransformer mediaUrlTransformer, IRelatedLinksService relatedLinksService) :
+            base(umbracoContent, mediaUrlTransformer, relatedLinksService)
         {
         }
 

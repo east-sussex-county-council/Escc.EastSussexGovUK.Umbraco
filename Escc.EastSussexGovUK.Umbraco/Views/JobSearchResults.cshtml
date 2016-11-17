@@ -8,12 +8,13 @@
     Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
     Html.RequiresCss("~/css/jobs/jobs-small.css");
     Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=JobSearchResultsCss&media-query=small", 101);
+    Html.RequiresJs("~/js/jobs/job-search-results.js");
     new ContentSecurityPolicyHeaders(Response.Headers).AppendPolicy(new ContentSecurityPolicyFromConfig().Policies["TalentLink"]).UpdateHeaders();
 
     var headerClass = Model.HeaderBackgroundImage != null ? "with-image" : String.Empty;
 }
 @section Breadcrumb {}
-<div class="jobs-header @headerClass">
+<div class="jobs-header @headerClass" data-jobs-id="@(Model.ResultsUrl?.Id)" data-jobs-mask="@(Model.ResultsUrl?.Mask)" data-alerts-url="@(Model.JobAlertsPage?.Url)">
     <div class="text-content">
         @if (Model.JobsLogo != null)
         {
@@ -23,12 +24,34 @@
         {
             <p class="login"><a href="@Model.LoginPage.Url">@Model.LoginPage.Text</a></p>
         }
+        <form action="@Request.Url.AbsolutePath" method="GET" class="jobs-search">
+            <div>
+                <input type="search" name="keywords" value="@Request.QueryString["keywords"].TrimEnd(new char[] {','})"/>
+                <input type="submit" value="Search"/>
+            </div>
+            <div class="job-filters"></div>
+
+            <div class="job-alerts">
+                Choose your job alert frequency:
+                <input type="radio" name="vDeliveryFrequency" value="1" id="vDeliveryFrequency1"><label for="vDeliveryFrequency1">Once a day</label>
+                <input type="radio" name="vDeliveryFrequency" value="7" id="vDeliveryFrequency7" checked="checked"><label for="vDeliveryFrequency7">Once a week</label>
+
+                Choose when your job alerts end:
+                <input type="radio" name="dExpirationDate" value="15" id="dExpirationDate15"><label for="dExpirationDate15">2 weeks</label>
+                <input type="radio" name="dExpirationDate" value="30" id="dExpirationDate30" checked="checked"><label for="dExpirationDate30">1 month</label>
+                <input type="radio" name="dExpirationDate" value="90" id="dExpirationDate90"><label for="dExpirationDate90">3 months</label>
+                <input type="radio" name="dExpirationDate" value="180" id="dExpirationDate180"><label for="dExpirationDate180">6 months</label>
+
+                <input type="email" name="semail" />
+                <input type="submit" value="Get alerts" />
+            </div>
+        </form>
     </div>
 </div>
 <div class="jobs-content full-page">
     <div class="content text-content">
-        <script src="@Model.ResultsScriptUrl"></script>
-        <noscript><a href="@Model.ResultsLinkUrl">@Model.Metadata.Title</a></noscript>
+        <script src="@Model.ResultsUrl.ScriptUrl"></script>
+        <noscript><a href="@Model.ResultsUrl.LinkUrl">@Model.Metadata.Title</a></noscript>
         @Html.Partial("~/Views/JobsButtons.cshtml")
     </div>
 </div>

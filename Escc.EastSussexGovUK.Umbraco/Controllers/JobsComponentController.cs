@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AST.AzureBlobStorage.Helper;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Umbraco.ContentExperiments;
@@ -23,9 +24,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
         {
             if (model == null) throw new ArgumentNullException(nameof(model));
 
-            var viewModel = new JobsComponentViewModel();
-            viewModel.ScriptUrl = new Uri(model.Content.GetPropertyValue<string>("ScriptUrl_Content"));
-            viewModel.LinkUrl = new Uri(viewModel.ScriptUrl.ToString().Replace("laydisplayrapido.cfm", "jsoutputinitrapido.cfm").Replace("&browserchk=no", String.Empty));
+            var mediaUrlTransformer = new AzureMediaUrlTransformer(GlobalHelper.GetCdnDomain(), GlobalHelper.GetDomainsToReplace());
+            var viewModel = new JobsComponentViewModelFromUmbraco(model.Content, mediaUrlTransformer).BuildModel();
 
             var modelBuilder = new BaseViewModelBuilder();
             modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode);

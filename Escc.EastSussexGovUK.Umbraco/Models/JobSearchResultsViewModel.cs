@@ -28,20 +28,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
         public HtmlLink LoginPage { get; set; }
 
         /// <summary>
+        /// Gets or sets the job alerts page
+        /// </summary>
+        public HtmlLink JobAlertsPage { get; set; }
+
+        /// <summary>
         /// Gets or sets the URL of the script to embed the component in the page.
         /// </summary>
         /// <value>
         /// The script URL.
         /// </value>
-        public Uri ResultsScriptUrl { get; set; }
-
-        /// <summary>
-        /// Gets or sets the URL to link to the component on a separate page.
-        /// </summary>
-        /// <value>
-        /// The link URL.
-        /// </value>
-        public Uri ResultsLinkUrl { get; set; }
+        public TalentLinkUrl ResultsUrl { get; set; }
 
         /// <summary>
         /// Gets or sets the URLs the buttons should link to

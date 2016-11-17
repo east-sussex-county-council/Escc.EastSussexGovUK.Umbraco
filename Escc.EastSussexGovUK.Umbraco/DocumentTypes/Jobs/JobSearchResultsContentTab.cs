@@ -36,7 +36,16 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Jobs
         [UmbracoProperty("Login page", "LoginPage", BuiltInUmbracoDataTypes.ContentPickerAlias, sortOrder: 3, Description = "Select the jobs login page, based on the 'Jobs component' document type")]
         public string LoginPage { get; set; }
 
-        [UmbracoProperty("Search results script URL", "ResultsScriptUrl", UrlDataType.PropertyEditorAlias, UrlDataType.DataTypeName, sortOrder: 4, mandatory: true,
+        /// <summary>
+        /// Gets or sets the job alerts page
+        /// </summary>
+        /// <value>
+        /// A reference to the Umbraco node for the job alerts page
+        /// </value>
+        [UmbracoProperty("Job alerts page", "JobAlertsPage", BuiltInUmbracoDataTypes.ContentPickerAlias, sortOrder: 4, Description = "Select the job alerts page, based on the 'Jobs component' document type")]
+        public string JobAlertsPage { get; set; }
+
+        [UmbracoProperty("Search results script URL", "ResultsScriptUrl", UrlDataType.PropertyEditorAlias, UrlDataType.DataTypeName, sortOrder: 5, mandatory: true,
             Description = "A standard TalentLink component is embedded into a page by referencing a script. Paste the URL of the search results component here.")]
         public Uri ScriptUrl { get; set; }
 
@@ -46,14 +55,14 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Jobs
         /// <value>
         /// The button navigation.
         /// </value>
-        [UmbracoProperty("Button navigation", "ButtonNavigation", BuiltInUmbracoDataTypes.RelatedLinks, sortOrder: 5,
+        [UmbracoProperty("Button navigation", "ButtonNavigation", BuiltInUmbracoDataTypes.RelatedLinks, sortOrder: 6,
             Description = "Buttons and adverts, which can be customised using the images below. Set the caption to a space or hyphen to link the image without text.")]
         public string ButtonNavigation { get; set; }
 
         /// <summary>
         /// Gets or sets the images to be linked using <see cref="ButtonNavigation"/>
         /// </summary>
-        [UmbracoProperty("Button images", "ButtonImages", BuiltInUmbracoDataTypes.MultipleMediaPicker, sortOrder: 6,
+        [UmbracoProperty("Button images", "ButtonImages", BuiltInUmbracoDataTypes.MultipleMediaPicker, sortOrder: 7,
             Description = "Select the images to link to pages selected for button navigation, above.")]
         public string ButtonImages { get; set; }
     }

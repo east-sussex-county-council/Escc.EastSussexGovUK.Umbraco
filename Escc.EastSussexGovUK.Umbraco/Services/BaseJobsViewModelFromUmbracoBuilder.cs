@@ -20,15 +20,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
         /// Initializes a new instance of a type derived from <see cref="BaseJobsViewModelFromUmbracoBuilder" />.
         /// </summary>
         /// <param name="umbracoContent">Content from Umbraco.</param>
-        /// <param name="relatedLinksService">The related links service.</param>
         /// <param name="mediaUrlTransformer">The media URL transformer.</param>
+        /// <param name="relatedLinksService">The related links service.</param>
         /// <exception cref="System.ArgumentNullException">umbracoContent
         /// or
         /// mediaUrlTransformer</exception>
-        protected BaseJobsViewModelFromUmbracoBuilder(IPublishedContent umbracoContent, IRelatedLinksService relatedLinksService, IMediaUrlTransformer mediaUrlTransformer)
+        protected BaseJobsViewModelFromUmbracoBuilder(IPublishedContent umbracoContent, IMediaUrlTransformer mediaUrlTransformer, IRelatedLinksService relatedLinksService=null)
         {
             if (umbracoContent == null) throw new ArgumentNullException(nameof(umbracoContent));
-            if (relatedLinksService == null) throw new ArgumentNullException(nameof(relatedLinksService));
             if (mediaUrlTransformer == null) throw new ArgumentNullException(nameof(mediaUrlTransformer));
 
             UmbracoContent = umbracoContent;
@@ -50,6 +49,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
         protected Image BuildImage(string alias)
         {
             var imageData = UmbracoContent.GetPropertyValue<IPublishedContent>(alias);
+            if (imageData == null) return null;
             return BuildImageFromMediaItem(imageData);
         }
 
