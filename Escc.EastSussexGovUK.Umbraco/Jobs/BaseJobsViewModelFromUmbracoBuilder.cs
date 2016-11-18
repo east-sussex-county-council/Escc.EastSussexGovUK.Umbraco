@@ -5,10 +5,10 @@ using Escc.Umbraco.PropertyTypes;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 
-namespace Escc.EastSussexGovUK.Umbraco.Services
+namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
     /// <summary>
-    /// 
+    /// Base class for building jobs view models from Umbraco content
     /// </summary>
     public abstract class BaseJobsViewModelFromUmbracoBuilder
     {

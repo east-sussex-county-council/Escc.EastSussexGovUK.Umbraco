@@ -1,12 +1,10 @@
-using System;
-using System.Collections.Generic;
 using AST.AzureBlobStorage.Helper;
 using Escc.EastSussexGovUK.Umbraco.Models;
-using Escc.Umbraco.PropertyTypes;
+using Escc.EastSussexGovUK.Umbraco.Services;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 
-namespace Escc.EastSussexGovUK.Umbraco.Services
+namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
     public class JobsComponentViewModelFromUmbraco : BaseJobsViewModelFromUmbracoBuilder, IViewModelBuilder<JobsComponentViewModel>
     {

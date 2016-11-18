@@ -1,13 +1,13 @@
-﻿using System;
-using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Features;
-using Escc.Umbraco.PropertyEditors;
-using Escc.Umbraco.PropertyEditors.DataTypes;
-using Umbraco.Inception.Attributes;
+﻿using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Jobs
+namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
-    public class JobSearchResultsContentTab : TabBase
+    /// <summary>
+    /// Content fields for <see cref="JobsHomeDocumentType"/>
+    /// </summary>
+    /// <seealso cref="Umbraco.Inception.BL.TabBase" />
+    public class JobsHomeContentTab : TabBase
     {
         /// <summary>
         /// Gets or sets the jobs service logo
@@ -15,7 +15,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Jobs
         /// <value>
         /// The jobs logo.
         /// </value>
-        [UmbracoProperty("Logo", "JobsLogo", BuiltInUmbracoDataTypes.MediaPicker, sortOrder: 1, Description = "Select the logo for the jobs service")]
+        [UmbracoProperty("Logo", "JobsLogo", BuiltInUmbracoDataTypes.MediaPicker, sortOrder: 1, Description="Select the logo for the jobs service")]
         public string JobsLogo { get; set; }
 
         /// <summary>
@@ -37,17 +37,13 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Jobs
         public string LoginPage { get; set; }
 
         /// <summary>
-        /// Gets or sets the job alerts page
+        /// Gets or sets the search results page
         /// </summary>
         /// <value>
-        /// A reference to the Umbraco node for the job alerts page
+        /// A reference to the Umbraco node for the results page
         /// </value>
-        [UmbracoProperty("Job alerts page", "JobAlertsPage", BuiltInUmbracoDataTypes.ContentPickerAlias, sortOrder: 4, Description = "Select the job alerts page, based on the 'Jobs component' document type")]
-        public string JobAlertsPage { get; set; }
-
-        [UmbracoProperty("Search results script URL", "ResultsScriptUrl", UrlDataType.PropertyEditorAlias, UrlDataType.DataTypeName, sortOrder: 5, mandatory: true,
-            Description = "A standard TalentLink component is embedded into a page by referencing a script. Paste the URL of the search results component here.")]
-        public Uri ScriptUrl { get; set; }
+        [UmbracoProperty("Search results page", "SearchResultsPage", BuiltInUmbracoDataTypes.ContentPickerAlias, sortOrder: 4, Description = "Select the search results page, based on the 'Job search results' document type")]
+        public string SearchResultsPage { get; set; }
 
         /// <summary>
         /// Gets or sets the button navigation.
@@ -55,14 +51,14 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Jobs
         /// <value>
         /// The button navigation.
         /// </value>
-        [UmbracoProperty("Button navigation", "ButtonNavigation", BuiltInUmbracoDataTypes.RelatedLinks, sortOrder: 6,
+        [UmbracoProperty("Button navigation", "ButtonNavigation", BuiltInUmbracoDataTypes.RelatedLinks, sortOrder: 5,
             Description = "Buttons and adverts, which can be customised using the images below. Set the caption to a space or hyphen to link the image without text.")]
         public string ButtonNavigation { get; set; }
 
         /// <summary>
         /// Gets or sets the images to be linked using <see cref="ButtonNavigation"/>
         /// </summary>
-        [UmbracoProperty("Button images", "ButtonImages", BuiltInUmbracoDataTypes.MultipleMediaPicker, sortOrder: 7,
+        [UmbracoProperty("Button images", "ButtonImages", BuiltInUmbracoDataTypes.MultipleMediaPicker, sortOrder: 6,
             Description = "Select the images to link to pages selected for button navigation, above.")]
         public string ButtonImages { get; set; }
     }

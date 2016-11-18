@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
+using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.Umbraco.PropertyTypes;
 
-namespace Escc.EastSussexGovUK.Umbraco.Models
+namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
     /// <summary>
-    /// The model for the search results page of the jobs service
+    /// The model for the start page of the jobs service
     /// </summary>
     /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Models.BaseViewModel" />
-    public class JobSearchResultsViewModel : BaseViewModel
+    public class JobsHomeViewModel : BaseViewModel
     {
         /// <summary>
         /// Gets or sets the logo for the jobs service
@@ -28,17 +26,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
         public HtmlLink LoginPage { get; set; }
 
         /// <summary>
-        /// Gets or sets the job alerts page
+        /// Gets or sets the search results page
         /// </summary>
-        public HtmlLink JobAlertsPage { get; set; }
-
-        /// <summary>
-        /// Gets or sets the URL of the script to embed the component in the page.
-        /// </summary>
-        /// <value>
-        /// The script URL.
-        /// </value>
-        public TalentLinkUrl ResultsUrl { get; set; }
+        public HtmlLink SearchResultsPage { get; set; }
 
         /// <summary>
         /// Gets or sets the URLs the buttons should link to
@@ -48,6 +38,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
         /// <summary>
         /// Gets or sets the images to link using <see cref="ButtonNavigation"/>
         /// </summary>
-        public IList<Image> ButtonImages { get; set; }
+        public IList<Image> ButtonImages { get; set; } 
     }
 }

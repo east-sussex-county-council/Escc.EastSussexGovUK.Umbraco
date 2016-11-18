@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web;
 using Escc.Net;
 
-namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
+namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
     /// <summary>
     /// Loads TalentLink HTML by making an HTTP request to a TalentLink server

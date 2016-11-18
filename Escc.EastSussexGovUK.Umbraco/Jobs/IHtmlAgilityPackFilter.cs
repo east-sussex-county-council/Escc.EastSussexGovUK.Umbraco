@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HtmlAgilityPack;
+﻿using HtmlAgilityPack;
 
-namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
+namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
     /// <summary>
     /// A filter to modify an HTML string parsed using the HTML Agility Pack

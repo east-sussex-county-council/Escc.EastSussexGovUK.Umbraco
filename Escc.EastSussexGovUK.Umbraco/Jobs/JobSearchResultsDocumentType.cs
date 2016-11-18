@@ -14,9 +14,13 @@ using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task;
 using Umbraco.Inception.Attributes;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Jobs
+namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
-    [UmbracoContentType("Jobs", "JobsHome", new Type[]
+    /// <summary>
+    /// Definition for the Umbraco 'Job search results' document type
+    /// </summary>
+    /// <seealso cref="Escc.EastSussexGovUK.Umbraco.DocumentTypes.CustomerFocusBase.CustomerFocusBaseDocumentType" />
+    [UmbracoContentType("Job search results", "JobSearchResults", new Type[]
     {
         typeof(LandingDocumentType), 
         typeof(LocationDocumentType),
@@ -30,17 +34,15 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Jobs
         typeof(FormDownloadDocumentType),
         typeof(CouncilOfficeDocumentType),
         typeof(CampaignLandingDocumentType),
-        typeof(PersonDocumentType),
-        typeof(JobSearchResultsDocumentType),
-        typeof(JobsComponentDocumentType)
-    }, true, allowAtRoot: false, icon: BuiltInUmbracoContentTypeIcons.IconReception, 
-    Description = "The start page for the jobs section of the website.")]
-    public class JobsHomeDocumentType : CustomerFocusBaseDocumentType
+        typeof(PersonDocumentType)
+    }, true, allowAtRoot: false, icon: BuiltInUmbracoContentTypeIcons.IconDirections, 
+    Description = "Search results page for the jobs section of the website.")]
+    public class JobSearchResultsDocumentType : CustomerFocusBaseDocumentType
     {
-        [UmbracoTemplate(DisplayName = "Jobs CSS", Alias = "JobsHomeCss")]
+        [UmbracoTemplate(DisplayName = "Job search results CSS", Alias = "JobSearchResultsCss")]
         public string JobsCss { get; set; }
 
         [UmbracoTab("Content")]
-        public JobsHomeContentTab Content { get; set; }
+        public JobSearchResultsContentTab Content { get; set; }
     }
 }

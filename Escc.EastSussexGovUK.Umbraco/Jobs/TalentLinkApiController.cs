@@ -1,21 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Escc.EastSussexGovUK.Umbraco.ApiControllers;
 using Escc.Net;
 using HtmlAgilityPack;
 using Umbraco.Web.WebApi;
 
-namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
+namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
+    /// <summary>
+    /// Web API which acts as a facade for data from the TalentLink system
+    /// </summary>
+    /// <seealso cref="Umbraco.Web.WebApi.UmbracoApiController" />
     public class TalentLinkApiController : UmbracoApiController
     {
+        /// <summary>
+        /// Gets the HTML for the search fields from inside the search form
+        /// </summary>
+        /// <param name="id">The TalentLink account id.</param>
+        /// <param name="mask">The TalentLink site id.</param>
+        /// <returns></returns>
         [AcceptVerbs("GET")]
         public async Task<HttpResponseMessage> SearchFieldsHtml(string id, string mask)
         {
@@ -27,7 +34,7 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
             var parsedHtml = new HtmlDocument();
             parsedHtml.Load(htmlStream);
 
-            var filters = new IHtmlAgilityPackFilter[] { new RemoveOuterHtmlFromSearchFieldsFilter(), 
+            var filters = new IHtmlAgilityPackFilter[] { new RemoveOuterHtmlFromSearchFieldsFilter(),
                                                          new RemoveElementByIdFilter("div-srcparam1"),
                                                          new RemoveElementByIdFilter("actions"),
                                                          new RemoveAttributeFilter("style")

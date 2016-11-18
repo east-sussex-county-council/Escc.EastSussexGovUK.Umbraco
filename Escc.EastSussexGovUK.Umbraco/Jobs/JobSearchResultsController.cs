@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Web;
 using System.Web.Mvc;
 using AST.AzureBlobStorage.Helper;
 using Escc.EastSussexGovUK.Umbraco.Services;
-using Escc.Elibrary;
 using Escc.Umbraco.Caching;
 using Escc.Umbraco.ContentExperiments;
 using Escc.Umbraco.PropertyTypes;
@@ -12,7 +10,7 @@ using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
 
-namespace Escc.EastSussexGovUK.Umbraco.Controllers
+namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
     /// <summary>
     /// Controller for pages based on the 'Job search results' Umbraco document type
@@ -31,8 +29,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
 
             var mediaUrlTransformer = new AzureMediaUrlTransformer(GlobalHelper.GetCdnDomain(), GlobalHelper.GetDomainsToReplace());
             var viewModel = new JobSearchResultsViewModelFromUmbraco(model.Content,
-                mediaUrlTransformer
-,
+                mediaUrlTransformer,
                 new UmbracoOnAzureRelatedLinksService(mediaUrlTransformer)).BuildModel();
 
             // Add common properties to the model

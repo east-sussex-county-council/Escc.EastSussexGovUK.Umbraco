@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Escc.EastSussexGovUK.Umbraco.ApiControllers;
+using Escc.EastSussexGovUK.Umbraco.Jobs;
 using HtmlAgilityPack;
 using NUnit.Framework;
 

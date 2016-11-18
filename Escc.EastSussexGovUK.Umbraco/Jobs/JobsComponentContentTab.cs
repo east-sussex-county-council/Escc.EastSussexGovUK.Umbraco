@@ -3,8 +3,12 @@ using Escc.Umbraco.PropertyEditors.DataTypes;
 using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Jobs
+namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
+    /// <summary>
+    /// Content tab for <see cref="JobsComponentDocumentType"/>
+    /// </summary>
+    /// <seealso cref="Umbraco.Inception.BL.TabBase" />
     public class JobsComponentContentTab : TabBase
     {
         /// <summary>
