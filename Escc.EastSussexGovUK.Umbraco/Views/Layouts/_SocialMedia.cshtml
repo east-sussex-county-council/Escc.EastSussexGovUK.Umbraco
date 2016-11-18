@@ -1,0 +1,10 @@
+﻿@model Escc.EastSussexGovUK.Mvc.BaseViewModel
+@if (Model.SocialMedia.FacebookPageUrl != null || !String.IsNullOrEmpty(Model.SocialMedia.TwitterAccount) || Model.SocialMedia.TwitterWidgetScript != null)
+{
+    <div class="supporting">
+        @foreach (var socialMedia in Model.SocialMedia.SocialMediaOrder)
+        {
+            @Html.Partial("~/Views/EastSussexGovUK/Features/_" + socialMedia + ".cshtml")
+        }
+    </div>
+}

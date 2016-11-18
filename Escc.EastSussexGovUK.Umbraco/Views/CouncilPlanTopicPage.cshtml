@@ -52,11 +52,7 @@
 </article>
 </div>
 
-@foreach (var socialMedia in Model.SocialMedia.SocialMediaOrder)
-{
-    @Html.Partial("~/Views/EastSussexGovUK/Features/_" + socialMedia + ".cshtml")
-}
-
+@Html.Partial("~/Views/Layouts/_SocialMedia.cshtml")
 @{
     Html.RequiresJs(JsFileAlias.Resolve("CouncilPlan"));
 }

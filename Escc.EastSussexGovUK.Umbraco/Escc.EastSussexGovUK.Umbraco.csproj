@@ -127,7 +127,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.EastSussexGovUK.Mvc.2.0.0\lib\Escc.EastSussexGovUK.Mvc.dll</HintPath>
+      <HintPath>..\packages\Escc.EastSussexGovUK.Mvc.2.0.1\lib\Escc.EastSussexGovUK.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Elibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
@@ -3258,6 +3258,7 @@
     <Content Include="Views\JobsComponentCss.cshtml" />
     <Content Include="Views\JobsButtons.cshtml" />
     <Content Include="Views\JobSearchResultsCss.cshtml" />
+    <Content Include="Views\Layouts\_SocialMedia.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -3316,6 +3317,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\EastSussexGovUK_Mvc.cs" />
     <Compile Include="Jobs\TalentLinkHtmlFromHttpRequest.cs" />
     <Compile Include="Jobs\IHtmlAgilityPackFilter.cs" />
     <Compile Include="ApiControllers\LocationController.cs" />
@@ -3328,7 +3330,6 @@
     <Compile Include="ApiControllers\WasteTypesController.cs" />
     <Compile Include="ApiControllers\WebApiConfig.cs" />
     <Compile Include="ApiControllers\WebChatController.cs" />
-    <Compile Include="App_Start\EastSussexGovUK_Mvc.cs" />
     <Compile Include="ContentFinders\GuidePrintViewContentFinder.cs" />
     <Compile Include="ContentFinders\GuidePrintViewEventHandler.cs" />
     <Compile Include="Controllers\CampaignContentController.cs" />
