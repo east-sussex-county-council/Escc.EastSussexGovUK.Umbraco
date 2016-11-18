@@ -34,7 +34,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         typeof(FormDownloadDocumentType),
         typeof(CouncilOfficeDocumentType),
         typeof(CampaignLandingDocumentType),
-        typeof(PersonDocumentType)
+        typeof(PersonDocumentType),
+        typeof(JobsRssDocumentType)
     }, true, allowAtRoot: false, icon: BuiltInUmbracoContentTypeIcons.IconDirections, 
     Description = "Search results page for the jobs section of the website.")]
     public class JobSearchResultsDocumentType : CustomerFocusBaseDocumentType

@@ -3259,6 +3259,7 @@
     <Content Include="Views\JobsButtons.cshtml" />
     <Content Include="Views\JobSearchResultsCss.cshtml" />
     <Content Include="Views\Layouts\_SocialMedia.cshtml" />
+    <Content Include="Views\JobsRss.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -3318,6 +3319,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\EastSussexGovUK_Mvc.cs" />
+    <Compile Include="Jobs\JobsRssController.cs" />
+    <Compile Include="Jobs\JobsRssContentTab.cs" />
+    <Compile Include="Jobs\JobsRssDocumentType.cs" />
     <Compile Include="Jobs\TalentLinkHtmlFromHttpRequest.cs" />
     <Compile Include="Jobs\IHtmlAgilityPackFilter.cs" />
     <Compile Include="ApiControllers\LocationController.cs" />
