@@ -21,7 +21,8 @@
 
 /*** DRAFT: MAKE THIS A SHARED COMPONENT WITH THE HOME PAGE ***/
 /* News feature story. A single link surrounds the whole feature so that hovering over it highlights the link text. */
-.jobs-buttons ul { margin: 0; background: #fff; }
+.jobs-buttons ul { margin: 0; padding: 0;background: #fff; }
+.jobs-buttons li { list-style: none;}
 .jobs-buttons .feature a:link, .jobs-buttons .feature a:visited { text-decoration: none; color: #fff; }
 .jobs-buttons .feature a:hover, .jobs-buttons .feature a:focus, .jobs-buttons .feature a:active { text-decoration: underline; }
 
@@ -42,6 +43,14 @@
 .jobs-buttons .feature:nth-child(even) .caption { background-color: #056b0b; background-color: rgba(5,107,11,.8); }
 
 
-.jobs-buttons .feature { float: left;margin-right: 10px;margin-bottom: 10px; }
-
 /*** END DRAFT FEATURE LAYOUT ***/
+
+/* Job search results */
+.Lst-Tabel th, .Lst-Tabel td { display: inline-block;border: none; }
+.Lst-Tabel td { padding: 0;}
+.Lst-Tabel tr { display: block; line-height: 1.125em;padding-bottom: 1em; margin-bottom: 1em;border-bottom: 1px solid #ccc; }
+.Lst-Tabel td[headers=th1] { display: block;margin-bottom: 9px; }
+.Lst-Tabel .Lst-Head2, .Lst-Tabel td[headers=th2] {display: none; }
+.Lst-Tabel td[headers=th3] { width: 30%; }
+.Lst-Tabel td[headers=th4] { width: 43%; }
+.Lst-Tabel td[headers=th5] { text-align: right;width: 25%;}

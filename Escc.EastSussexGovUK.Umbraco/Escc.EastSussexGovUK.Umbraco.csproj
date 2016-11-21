@@ -577,6 +577,8 @@
     <Content Include="css\HomePage\home-large.css" />
     <Content Include="css\HomePage\home-medium.css" />
     <Content Include="css\HomePage\home-small.css" />
+    <Content Include="css\Jobs\jobs-large.css" />
+    <Content Include="css\Jobs\jobs-medium.css" />
     <Content Include="css\Jobs\jobs-small.css" />
     <Content Include="css\StandardDownloadPage\download-small.css" />
     <Content Include="css\StandardLandingPage\landing-medium.css" />

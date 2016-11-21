@@ -1,4 +1,5 @@
 ﻿@using ClientDependency.Core.Mvc
+@using Escc.ClientDependencyFramework
 @using Escc.EastSussexGovUK.Skins
 @using Escc.EastSussexGovUK.Views
 @using Escc.Web
@@ -7,6 +8,8 @@
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
     Html.RequiresCss("~/css/jobs/jobs-small.css");
+    Html.RequiresCss("~/css/jobs/jobs-medium.css", MediaQueryAlias.Resolve("Medium"));
+    Html.RequiresCss("~/css/jobs/jobs-large.css", MediaQueryAlias.Resolve("Large"));
     Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=JobSearchResultsCss&media-query=small", 101);
     Html.RequiresJs("~/js/jobs/job-search-results.js");
     new ContentSecurityPolicyHeaders(Response.Headers).AppendPolicy(new ContentSecurityPolicyFromConfig().Policies["TalentLink"]).UpdateHeaders();
