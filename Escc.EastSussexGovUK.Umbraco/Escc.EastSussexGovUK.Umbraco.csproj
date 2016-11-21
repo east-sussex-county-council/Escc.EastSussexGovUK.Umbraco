@@ -587,6 +587,11 @@
     <Content Include="css\TinyMCE-StyleSelector-Embed.css" />
     <Content Include="css\TinyMCE-StyleSelector-Headings.css" />
     <Content Include="default.aspx" />
+    <Content Include="EastSussexGovUK\Rss\escc-logo-for-feed.gif" />
+    <Content Include="EastSussexGovUK\Rss\escc-logo.gif" />
+    <Content Include="EastSussexGovUK\Rss\header.png" />
+    <Content Include="EastSussexGovUK\Rss\rss-xslt.css" />
+    <Content Include="EastSussexGovUK\Rss\rss.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="googledb369ad0fa294f54.html" />
@@ -628,6 +633,7 @@
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\SpectrumColorPicker\package.manifest" />
+    <Content Include="EastSussexGovUK\Rss\rss-to-html.ashx" />
     <None Include="images\Web.example.config" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -3319,10 +3325,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\EastSussexGovUK_Mvc.cs" />
+    <Compile Include="Jobs\IJobResultsParser.cs" />
+    <Compile Include="Jobs\IJobsDataProvider.cs" />
+    <Compile Include="Jobs\Job.cs" />
+    <Compile Include="Jobs\JobResultsHtmlParser.cs" />
+    <Compile Include="Jobs\JobsParseResult.cs" />
     <Compile Include="Jobs\JobsRssController.cs" />
     <Compile Include="Jobs\JobsRssContentTab.cs" />
     <Compile Include="Jobs\JobsRssDocumentType.cs" />
-    <Compile Include="Jobs\TalentLinkHtmlFromHttpRequest.cs" />
+    <Compile Include="Jobs\JobsDataFromTalentLink.cs" />
     <Compile Include="Jobs\IHtmlAgilityPackFilter.cs" />
     <Compile Include="ApiControllers\LocationController.cs" />
     <Compile Include="ApiControllers\MediaController.cs" />
@@ -3357,6 +3368,7 @@
     <Compile Include="Jobs\JobsHomeController.cs" />
     <Compile Include="Jobs\JobsComponentViewModel.cs" />
     <Compile Include="Jobs\JobSearchResultsViewModel.cs" />
+    <Compile Include="Jobs\UserInterfaceHtmlFromTalentLink.cs" />
     <Compile Include="Models\TalentLinkUrl.cs" />
     <Compile Include="Jobs\BaseJobsViewModelFromUmbracoBuilder.cs" />
     <Compile Include="Jobs\JobSearchResultsViewModelFromUmbraco.cs" />

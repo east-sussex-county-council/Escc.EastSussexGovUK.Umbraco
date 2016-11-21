@@ -28,7 +28,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         {
             var url = String.Format(ConfigurationManager.AppSettings["TalentLinkHtmlUrl"], id, mask);
 
-            var htmlSource = new TalentLinkHtmlFromHttpRequest(new Uri(url), new ConfigurationProxyProvider());
+            var htmlSource = new UserInterfaceHtmlFromTalentLink(new Uri(url), new ConfigurationProxyProvider());
             var htmlStream = await htmlSource.ReadHtml();
 
             var parsedHtml = new HtmlDocument();

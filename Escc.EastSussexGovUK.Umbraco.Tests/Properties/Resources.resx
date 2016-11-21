@@ -1,0 +1,727 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="JobResultsOuterHtml" xml:space="preserve">
+    <value>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" " http://www.w3.org/TR/html4/strict.dtd"&gt;&lt;html lang="en-GB" xmlns="http://www.w3.org/1999/xhtml" xmlns:addthis="http://www.addthis.com/help/api-spec" &gt;&lt;head&gt;&lt;meta name="GENERATOR" content="MrTed"&gt;&lt;meta name="TEMPLATEBASE" content="Accessible HTML"&gt;&lt;meta name="LASTUPDATED" content="18/08/05 10:05:33"&gt;&lt;meta name="author" content="MrTed"&gt;&lt;meta name="keywords" content="Jobs, Career Section, Candidate Portal"&gt;&lt;meta name="description" content="Mrted Talentlink syndication components"&gt;&lt;meta http-equiv="Content-Style-Type" content="text/css"&gt;&lt;meta http-equiv="Content-Script-Type" content="text/javascript"&gt;&lt;meta name="language" http-equiv="Content-Language" content="en-GB"&gt;&lt;title&gt;Jobs&lt;/title&gt;
+&lt;meta HTTP-EQUIV="Content-Type" content="text/html; charset=UTF-8"&gt;
+&lt;LINK REL="STYLESHEET" TYPE="text/css" HREF="/syndicated/syd_style/PFOFK026203F3VBQB7968LOH0-36.css"&gt;
+&lt;/head&gt;&lt;body class="bodyRapido"&gt;
+&lt;div id="LstContent"&gt;
+&lt;div id="LstA-SrCrtLabel" class="Lst-CriteriaLabel"&gt;Search criteria selected:&lt;/div&gt;
+&lt;div id="LstA-SrCrt0" class="Lst-CrtLabel"&gt;&lt;/div&gt;&lt;div id="LstA-SrCrt1" class="Lst-CrtLabel"&gt;&lt;/div&gt;
+&lt;div id="TableJobs"&gt;
+&lt;table cellpadding="0" cellspacing="0" border="0" class="Lst-Tabel" summary="" title=""&gt;
+&lt;caption class="Lst-CountLabel"&gt;Number of jobs which match your criteria: 190&lt;/caption&gt;
+&lt;tr class="Lst-Header"&gt;
+&lt;th id="th1" class="Lst-HeadT"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;pagenum=1&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;option=21&amp;amp;sort=ASC" class="Lst-Subheading" title="Click here to sort the result by Job Title" tabindex="1"&gt;Job Title&lt;/a&gt;
+&lt;/th&gt;
+&lt;th id="th2" class="Lst-Head2"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;pagenum=1&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;option=138&amp;amp;sort=ASC" class="Lst-Subheading" title="Click here to sort the result by Organisation" tabindex="2"&gt;Organisation&lt;/a&gt;
+&lt;/th&gt;
+&lt;th id="th3" class="Lst-Head3"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;pagenum=1&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;option=139&amp;amp;sort=ASC" class="Lst-Subheading" title="Click here to sort the result by Location" tabindex="3"&gt;Location&lt;/a&gt;
+&lt;/th&gt;
+&lt;th id="th4" class="Lst-Head4"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;pagenum=1&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;option=150&amp;amp;sort=ASC" class="Lst-Subheading" title="Click here to sort the result by Salary" tabindex="4"&gt;Salary&lt;/a&gt;
+&lt;/th&gt;
+&lt;th id="th5" class="Lst-Head5"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;pagenum=1&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;option=48&amp;amp;sort=ASC" class="Lst-Subheading" title="Click here to sort the result by Closing Date" tabindex="5"&gt;Closing Date&lt;/a&gt;
+&lt;/th&gt;
+{0}
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div id="bottomact"&gt;
+&lt;div id="backToSearch"&gt;
+&lt;span class="linkbracket"&gt;[&lt;/span&gt;&lt;a class="Lst-ButtonFace" href="jsoutputinitrapido.cfm?component=lay9999_src350a&amp;amp;&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;ID=PFOFK026203F3VBQB7968LOH0" title="New search" tabindex="34"&gt;New search&lt;/a&gt;&lt;span class="linkbracket"&gt;]&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id="gotoSearchAgent"&gt;
+&lt;span class="linkbracket"&gt;[&lt;/span&gt;&lt;a class="Lst-ButtonFace" href="jsoutputinitrapido.cfm?component=lay9999_sa350a&amp;amp;charset=UTF-8&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;backpage=2" title="Create job alert" tabindex="35"&gt;Create job alert&lt;/a&gt;&lt;span class="linkbracket"&gt;]&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</value>
+  </data>
+  <data name="LastPageOfJobs" xml:space="preserve">
+    <value>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" " http://www.w3.org/TR/html4/strict.dtd"&gt;&lt;html lang="en-GB" xmlns="http://www.w3.org/1999/xhtml" xmlns:addthis="http://www.addthis.com/help/api-spec" &gt;&lt;head&gt;&lt;meta name="GENERATOR" content="MrTed"&gt;&lt;meta name="TEMPLATEBASE" content="Accessible HTML"&gt;&lt;meta name="LASTUPDATED" content="18/08/05 10:05:33"&gt;&lt;meta name="author" content="MrTed"&gt;&lt;meta name="keywords" content="Jobs, Career Section, Candidate Portal"&gt;&lt;meta name="description" content="Mrted Talentlink syndication components"&gt;&lt;meta http-equiv="Content-Style-Type" content="text/css"&gt;&lt;meta http-equiv="Content-Script-Type" content="text/javascript"&gt;&lt;meta name="language" http-equiv="Content-Language" content="en-GB"&gt;&lt;title&gt;Jobs&lt;/title&gt;
+&lt;meta HTTP-EQUIV="Content-Type" content="text/html; charset=UTF-8"&gt;
+&lt;LINK REL="STYLESHEET" TYPE="text/css" HREF="/syndicated/syd_style/PFOFK026203F3VBQB7968LOH0-36.css"&gt;
+&lt;/head&gt;&lt;body class="bodyRapido"&gt;
+&lt;div id="LstContent"&gt;
+&lt;div id="LstA-SrCrtLabel" class="Lst-CriteriaLabel"&gt;Search criteria selected:&lt;/div&gt;
+&lt;div id="LstA-SrCrt0" class="Lst-CrtLabel"&gt;&lt;/div&gt;&lt;div id="LstA-SrCrt1" class="Lst-CrtLabel"&gt;&lt;/div&gt;
+&lt;div id="TableJobs"&gt;
+&lt;table cellpadding="0" cellspacing="0" border="0" class="Lst-Tabel" summary="" title=""&gt;
+&lt;caption class="Lst-CountLabel"&gt;Number of jobs which match your criteria: 190&lt;/caption&gt;
+&lt;tr class="Lst-Header"&gt;
+&lt;th id="th1" class="Lst-HeadT"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;pagenum=19&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;option=21&amp;amp;sort=ASC" class="Lst-Subheading" title="Click here to sort the result by Job Title" tabindex="1"&gt;Job Title&lt;/a&gt;
+&lt;/th&gt;
+&lt;th id="th2" class="Lst-Head2"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;pagenum=19&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;option=138&amp;amp;sort=ASC" class="Lst-Subheading" title="Click here to sort the result by Organisation" tabindex="2"&gt;Organisation&lt;/a&gt;
+&lt;/th&gt;
+&lt;th id="th3" class="Lst-Head3"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;pagenum=19&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;option=139&amp;amp;sort=ASC" class="Lst-Subheading" title="Click here to sort the result by Location" tabindex="3"&gt;Location&lt;/a&gt;
+&lt;/th&gt;
+&lt;th id="th4" class="Lst-Head4"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;pagenum=19&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;option=150&amp;amp;sort=ASC" class="Lst-Subheading" title="Click here to sort the result by Salary" tabindex="4"&gt;Salary&lt;/a&gt;
+&lt;/th&gt;
+&lt;th id="th5" class="Lst-Head5"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;pagenum=19&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;option=48&amp;amp;sort=ASC" class="Lst-Subheading" title="Click here to sort the result by Closing Date" tabindex="5"&gt;Closing Date&lt;/a&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr class="Lst-BG1"&gt;
+&lt;td headers="th1" class="Lst-Desc1T"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_jdesc100a&amp;amp;nPostingID=15923&amp;amp;nPostingTargetID=31688&amp;amp;option=52&amp;amp;sort=DESC&amp;amp;respnr=19&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext" class="lstA-desc1" title="Click here to see the job description: Instructor (CSD01674) (ID31688)" tabindex="6"&gt;Instructor (CSD01674)&lt;/a&gt;
+&lt;/td&gt;
+&lt;td headers="th2" class="Lst-Desc12"&gt;
+East Sussex County Council
+&lt;/td&gt;
+&lt;td headers="th3" class="Lst-Desc13"&gt;
+Eastbourne
+&lt;/td&gt;
+&lt;td headers="th4" class="Lst-Desc14"&gt;
+&amp;#163;15,000 to &amp;#163;19,999
+&lt;/td&gt;
+&lt;td headers="th5" class="Lst-Desc15"&gt;
+27/11/2016
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="Lst-BG2"&gt;
+&lt;td headers="th1" class="Lst-Desc2T"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_jdesc100a&amp;amp;nPostingID=15897&amp;amp;nPostingTargetID=31695&amp;amp;option=52&amp;amp;sort=DESC&amp;amp;respnr=19&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext" class="lstA-desc2" title="Click here to see the job description: Senior Instructor (CSD01669) (ID31695)" tabindex="7"&gt;Senior Instructor (CSD01669)&lt;/a&gt;
+&lt;/td&gt;
+&lt;td headers="th2" class="Lst-Desc22"&gt;
+East Sussex County Council
+&lt;/td&gt;
+&lt;td headers="th3" class="Lst-Desc23"&gt;
+Eastbourne
+&lt;/td&gt;
+&lt;td headers="th4" class="Lst-Desc24"&gt;
+&amp;#163;15,000 to &amp;#163;19,999
+&lt;/td&gt;
+&lt;td headers="th5" class="Lst-Desc25"&gt;
+27/11/2016
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="Lst-BG1"&gt;
+&lt;td headers="th1" class="Lst-Desc1T"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_jdesc100a&amp;amp;nPostingID=16045&amp;amp;nPostingTargetID=31768&amp;amp;option=52&amp;amp;sort=DESC&amp;amp;respnr=19&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext" class="lstA-desc1" title="Click here to see the job description: English Teacher (Rye College) (ID31768)" tabindex="8"&gt;English Teacher (Rye College)&lt;/a&gt;
+&lt;/td&gt;
+&lt;td headers="th2" class="Lst-Desc12"&gt;
+Academies
+&lt;/td&gt;
+&lt;td headers="th3" class="Lst-Desc13"&gt;
+Rye
+&lt;/td&gt;
+&lt;td headers="th4" class="Lst-Desc14"&gt;
+Teachers' Pay Scale
+&lt;/td&gt;
+&lt;td headers="th5" class="Lst-Desc15"&gt;
+31/12/2016
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="Lst-BG2"&gt;
+&lt;td headers="th1" class="Lst-Desc2T"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_jdesc100a&amp;amp;nPostingID=15383&amp;amp;nPostingTargetID=30100&amp;amp;option=52&amp;amp;sort=DESC&amp;amp;respnr=19&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext" class="lstA-desc2" title="Click here to see the job description: Instrumental and Vocal Teacher (CSD01592) (ID30100)" tabindex="9"&gt;Instrumental and Vocal Teacher (CSD01592)&lt;/a&gt;
+&lt;/td&gt;
+&lt;td headers="th2" class="Lst-Desc22"&gt;
+East Sussex County Council
+&lt;/td&gt;
+&lt;td headers="th3" class="Lst-Desc23"&gt;
+Countywide
+&lt;/td&gt;
+&lt;td headers="th4" class="Lst-Desc24"&gt;
+Teachers' Pay Scale
+&lt;/td&gt;
+&lt;td headers="th5" class="Lst-Desc25"&gt;
+03/09/2017
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="Lst-BG1"&gt;
+&lt;td headers="th1" class="Lst-Desc1T"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_jdesc100a&amp;amp;nPostingID=15140&amp;amp;nPostingTargetID=29346&amp;amp;option=52&amp;amp;sort=DESC&amp;amp;respnr=19&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext" class="lstA-desc1" title="Click here to see the job description: Level 3 Nursery Practitioner (Micklefield Nursery School) (ID29346)" tabindex="10"&gt;Level 3 Nursery Practitioner (Micklefield Nursery School)&lt;/a&gt;
+&lt;/td&gt;
+&lt;td headers="th2" class="Lst-Desc12"&gt;
+Partnership
+&lt;/td&gt;
+&lt;td headers="th3" class="Lst-Desc13"&gt;
+Seaford
+&lt;/td&gt;
+&lt;td headers="th4" class="Lst-Desc14"&gt;
+&amp;#163;0 to &amp;#163;9,999
+&lt;/td&gt;
+&lt;td headers="th5" class="Lst-Desc15"&gt;
+30/11/2016
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="Lst-BG2"&gt;
+&lt;td headers="th1" class="Lst-Desc2T"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_jdesc100a&amp;amp;nPostingID=14944&amp;amp;nPostingTargetID=28287&amp;amp;option=52&amp;amp;sort=DESC&amp;amp;respnr=19&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext" class="lstA-desc2" title="Click here to see the job description: Relief Residential Childcare Worker (CSD01506) (ID28287)" tabindex="11"&gt;Relief Residential Childcare Worker (CSD01506)&lt;/a&gt;
+&lt;/td&gt;
+&lt;td headers="th2" class="Lst-Desc22"&gt;
+East Sussex County Council
+&lt;/td&gt;
+&lt;td headers="th3" class="Lst-Desc23"&gt;
+Countywide
+&lt;/td&gt;
+&lt;td headers="th4" class="Lst-Desc24"&gt;
+&amp;#163;20,000 to &amp;#163;24,999
+&lt;/td&gt;
+&lt;td headers="th5" class="Lst-Desc25"&gt;
+27/11/2016
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="Lst-BG1"&gt;
+&lt;td headers="th1" class="Lst-Desc1T"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_jdesc100a&amp;amp;nPostingID=15056&amp;amp;nPostingTargetID=28127&amp;amp;option=52&amp;amp;sort=DESC&amp;amp;respnr=19&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext" class="lstA-desc1" title="Click here to see the job description: Support Provider/Landlord (with property)(East Sussex Supported Accommodation &amp; Shared Lives Team) (ID28127)" tabindex="12"&gt;Support Provider/Landlord (with property)(East Sussex Supported Accommodation &amp; Shared Lives Team)&lt;/a&gt;
+&lt;/td&gt;
+&lt;td headers="th2" class="Lst-Desc12"&gt;
+Partnership
+&lt;/td&gt;
+&lt;td headers="th3" class="Lst-Desc13"&gt;
+Countywide
+&lt;/td&gt;
+&lt;td headers="th4" class="Lst-Desc14"&gt;
+&amp;#163;0 to &amp;#163;9,999
+&lt;/td&gt;
+&lt;td headers="th5" class="Lst-Desc15"&gt;
+01/01/2017
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="Lst-BG2"&gt;
+&lt;td headers="th1" class="Lst-Desc2T"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_jdesc100a&amp;amp;nPostingID=9591&amp;amp;nPostingTargetID=19974&amp;amp;option=52&amp;amp;sort=DESC&amp;amp;respnr=19&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext" class="lstA-desc2" title="Click here to see the job description: Senior Social Workers (Children's Services) (CSD00807) (ID19974)" tabindex="13"&gt;Senior Social Workers (Children's Services) (CSD00807)&lt;/a&gt;
+&lt;/td&gt;
+&lt;td headers="th2" class="Lst-Desc22"&gt;
+East Sussex County Council
+&lt;/td&gt;
+&lt;td headers="th3" class="Lst-Desc23"&gt;
+Countywide
+&lt;/td&gt;
+&lt;td headers="th4" class="Lst-Desc24"&gt;
+&amp;#163;35,000 - &amp;#163;49,999
+&lt;/td&gt;
+&lt;td headers="th5" class="Lst-Desc25"&gt;
+01/01/2017
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="Lst-BG1"&gt;
+&lt;td headers="th1" class="Lst-Desc1T"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_jdesc100a&amp;amp;nPostingID=10713&amp;amp;nPostingTargetID=19862&amp;amp;option=52&amp;amp;sort=DESC&amp;amp;respnr=19&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext" class="lstA-desc1" title="Click here to see the job description: Befriending with Respite Volunteer (Association of Carers) (ID19862)" tabindex="14"&gt;Befriending with Respite Volunteer (Association of Carers)&lt;/a&gt;
+&lt;/td&gt;
+&lt;td headers="th2" class="Lst-Desc12"&gt;
+Partnership
+&lt;/td&gt;
+&lt;td headers="th3" class="Lst-Desc13"&gt;
+Countywide
+&lt;/td&gt;
+&lt;td headers="th4" class="Lst-Desc14"&gt;
+&amp;#163;0 to &amp;#163;9,999
+&lt;/td&gt;
+&lt;td headers="th5" class="Lst-Desc15"&gt;
+31/12/2016
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="Lst-BG2"&gt;
+&lt;td headers="th1" class="Lst-Desc2T"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_jdesc100a&amp;amp;nPostingID=8217&amp;amp;nPostingTargetID=16315&amp;amp;option=52&amp;amp;sort=DESC&amp;amp;respnr=19&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext" class="lstA-desc2" title="Click here to see the job description: Social Workers (Children's Services) (CSD00612) (ID16315)" tabindex="15"&gt;Social Workers (Children's Services) (CSD00612)&lt;/a&gt;
+&lt;/td&gt;
+&lt;td headers="th2" class="Lst-Desc22"&gt;
+East Sussex County Council
+&lt;/td&gt;
+&lt;td headers="th3" class="Lst-Desc23"&gt;
+Countywide
+&lt;/td&gt;
+&lt;td headers="th4" class="Lst-Desc24"&gt;
+&amp;#163;25,000 - &amp;#163;34,999
+&lt;/td&gt;
+&lt;td headers="th5" class="Lst-Desc25"&gt;
+01/01/2017
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="Lst-ResNav" colspan="5"&gt;
+&lt;span class="Lst-NavPagelabel"&gt;Search results: &lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=1&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 1 to 10" tabindex="16"&gt;1 to 10&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=2&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 11 to 20" tabindex="17"&gt;11 to 20&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=3&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 21 to 30" tabindex="18"&gt;21 to 30&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=4&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 31 to 40" tabindex="19"&gt;31 to 40&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=5&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 41 to 50" tabindex="20"&gt;41 to 50&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=6&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 51 to 60" tabindex="21"&gt;51 to 60&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=7&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 61 to 70" tabindex="22"&gt;61 to 70&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=8&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 71 to 80" tabindex="23"&gt;71 to 80&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=9&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 81 to 90" tabindex="24"&gt;81 to 90&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=10&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 91 to 100" tabindex="25"&gt;91 to 100&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=11&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 101 to 110" tabindex="26"&gt;101 to 110&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=12&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 111 to 120" tabindex="27"&gt;111 to 120&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=13&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 121 to 130" tabindex="28"&gt;121 to 130&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=14&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 131 to 140" tabindex="29"&gt;131 to 140&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=15&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 141 to 150" tabindex="30"&gt;141 to 150&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=16&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 151 to 160" tabindex="31"&gt;151 to 160&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=17&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 161 to 170" tabindex="32"&gt;161 to 170&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=18&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 171 to 180" tabindex="33"&gt;171 to 180&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+181 to 190
+&lt;/span&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div id="bottomact"&gt;
+&lt;div id="backToSearch"&gt;
+&lt;span class="linkbracket"&gt;[&lt;/span&gt;&lt;a class="Lst-ButtonFace" href="jsoutputinitrapido.cfm?component=lay9999_src350a&amp;amp;&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;ID=PFOFK026203F3VBQB7968LOH0" title="New search" tabindex="34"&gt;New search&lt;/a&gt;&lt;span class="linkbracket"&gt;]&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id="gotoSearchAgent"&gt;
+&lt;span class="linkbracket"&gt;[&lt;/span&gt;&lt;a class="Lst-ButtonFace" href="jsoutputinitrapido.cfm?component=lay9999_sa350a&amp;amp;charset=UTF-8&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;backpage=2" title="Create job alert" tabindex="35"&gt;Create job alert&lt;/a&gt;&lt;span class="linkbracket"&gt;]&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</value>
+  </data>
+  <data name="MultipleJobResults" xml:space="preserve">
+    <value>&lt;tr class="Lst-BG1"&gt;
+&lt;td headers="th1" class="Lst-Desc1T"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_jdesc100a&amp;amp;nPostingID=16476&amp;amp;nPostingTargetID=33720&amp;amp;option=52&amp;amp;sort=DESC&amp;amp;respnr=8&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext" class="lstA-desc1" title="Click here to see the job description: Civil Enforcement Officer (NSL Ltd) (ID33720)" tabindex="6"&gt;Civil Enforcement Officer (NSL Ltd)&lt;/a&gt;
+&lt;/td&gt;
+&lt;td headers="th2" class="Lst-Desc12"&gt;
+Partnership
+&lt;/td&gt;
+&lt;td headers="th3" class="Lst-Desc13"&gt;
+Countywide
+&lt;/td&gt;
+&lt;td headers="th4" class="Lst-Desc14"&gt;
+&amp;#163;15,000 to &amp;#163;19,999
+&lt;/td&gt;
+&lt;td headers="th5" class="Lst-Desc15"&gt;
+30/11/2016
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="Lst-BG2"&gt;
+&lt;td headers="th1" class="Lst-Desc2T"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_jdesc100a&amp;amp;nPostingID=16499&amp;amp;nPostingTargetID=33745&amp;amp;option=52&amp;amp;sort=DESC&amp;amp;respnr=8&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext" class="lstA-desc2" title="Click here to see the job description: Floating Support Assistant (Southdown Housing Association) (ID33745)" tabindex="7"&gt;Floating Support Assistant (Southdown Housing Association)&lt;/a&gt;
+&lt;/td&gt;
+&lt;td headers="th2" class="Lst-Desc22"&gt;
+Partnership
+&lt;/td&gt;
+&lt;td headers="th3" class="Lst-Desc23"&gt;
+Countywide
+&lt;/td&gt;
+&lt;td headers="th4" class="Lst-Desc24"&gt;
+&amp;#163;15,000 to &amp;#163;19,999
+&lt;/td&gt;
+&lt;td headers="th5" class="Lst-Desc25"&gt;
+29/11/2016
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="Lst-BG1"&gt;
+&lt;td headers="th1" class="Lst-Desc1T"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_jdesc100a&amp;amp;nPostingID=16503&amp;amp;nPostingTargetID=33746&amp;amp;option=52&amp;amp;sort=DESC&amp;amp;respnr=8&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext" class="lstA-desc1" title="Click here to see the job description: Floating Support Officers (Southdown Housing Association) (ID33746)" tabindex="8"&gt;Floating Support Officers (Southdown Housing Association)&lt;/a&gt;
+&lt;/td&gt;
+&lt;td headers="th2" class="Lst-Desc12"&gt;
+Partnership
+&lt;/td&gt;
+&lt;td headers="th3" class="Lst-Desc13"&gt;
+Countywide
+&lt;/td&gt;
+&lt;td headers="th4" class="Lst-Desc14"&gt;
+&amp;#163;20,000 to &amp;#163;24,999
+&lt;/td&gt;
+&lt;td headers="th5" class="Lst-Desc15"&gt;
+29/11/2016
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="Lst-BG2"&gt;
+&lt;td headers="th1" class="Lst-Desc2T"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_jdesc100a&amp;amp;nPostingID=16481&amp;amp;nPostingTargetID=33736&amp;amp;option=52&amp;amp;sort=DESC&amp;amp;respnr=8&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext" class="lstA-desc2" title="Click here to see the job description: Level 3 Nursery Practitioner/Lunchtime supervisor AND INA (Micklefield Nursery School) (ID33736)" tabindex="9"&gt;Level 3 Nursery Practitioner/Lunchtime supervisor AND INA (Micklefield Nursery School)&lt;/a&gt;
+&lt;/td&gt;
+&lt;td headers="th2" class="Lst-Desc22"&gt;
+Partnership
+&lt;/td&gt;
+&lt;td headers="th3" class="Lst-Desc23"&gt;
+Countywide
+&lt;/td&gt;
+&lt;td headers="th4" class="Lst-Desc24"&gt;
+&amp;#163;0 to &amp;#163;9,999
+&lt;/td&gt;
+&lt;td headers="th5" class="Lst-Desc25"&gt;
+30/01/2017
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="Lst-BG1"&gt;
+&lt;td headers="th1" class="Lst-Desc1T"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_jdesc100a&amp;amp;nPostingID=16504&amp;amp;nPostingTargetID=33747&amp;amp;option=52&amp;amp;sort=DESC&amp;amp;respnr=8&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext" class="lstA-desc1" title="Click here to see the job description: SENCO (Annan School) (ID33747)" tabindex="10"&gt;SENCO (Annan School)&lt;/a&gt;
+&lt;/td&gt;
+&lt;td headers="th2" class="Lst-Desc12"&gt;
+Partnership
+&lt;/td&gt;
+&lt;td headers="th3" class="Lst-Desc13"&gt;
+Countywide
+&lt;/td&gt;
+&lt;td headers="th4" class="Lst-Desc14"&gt;
+&amp;#163;25,000 - &amp;#163;34,999
+&lt;/td&gt;
+&lt;td headers="th5" class="Lst-Desc15"&gt;
+23/11/2016
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="Lst-BG2"&gt;
+&lt;td headers="th1" class="Lst-Desc2T"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_jdesc100a&amp;amp;nPostingID=16460&amp;amp;nPostingTargetID=33650&amp;amp;option=52&amp;amp;sort=DESC&amp;amp;respnr=8&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext" class="lstA-desc2" title="Click here to see the job description: Additional Learning Support Manager (Sussex Downs College) (ID33650)" tabindex="11"&gt;Additional Learning Support Manager (Sussex Downs College)&lt;/a&gt;
+&lt;/td&gt;
+&lt;td headers="th2" class="Lst-Desc22"&gt;
+Sussex Downs College
+&lt;/td&gt;
+&lt;td headers="th3" class="Lst-Desc23"&gt;
+Countywide
+&lt;/td&gt;
+&lt;td headers="th4" class="Lst-Desc24"&gt;
+&amp;#163;35,000 - &amp;#163;49,999
+&lt;/td&gt;
+&lt;td headers="th5" class="Lst-Desc25"&gt;
+28/11/2016
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="Lst-BG1"&gt;
+&lt;td headers="th1" class="Lst-Desc1T"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_jdesc100a&amp;amp;nPostingID=16463&amp;amp;nPostingTargetID=33658&amp;amp;option=52&amp;amp;sort=DESC&amp;amp;respnr=8&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext" class="lstA-desc1" title="Click here to see the job description: English Teacher (Ark Schools - Helenswood Academy) (ID33658)" tabindex="12"&gt;English Teacher (Ark Schools - Helenswood Academy)&lt;/a&gt;
+&lt;/td&gt;
+&lt;td headers="th2" class="Lst-Desc12"&gt;
+Partnership
+&lt;/td&gt;
+&lt;td headers="th3" class="Lst-Desc13"&gt;
+Hastings
+&lt;/td&gt;
+&lt;td headers="th4" class="Lst-Desc14"&gt;
+Teachers' Pay Scale
+&lt;/td&gt;
+&lt;td headers="th5" class="Lst-Desc15"&gt;
+28/11/2016
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="Lst-BG2"&gt;
+&lt;td headers="th1" class="Lst-Desc2T"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_jdesc100a&amp;amp;nPostingID=16464&amp;amp;nPostingTargetID=33659&amp;amp;option=52&amp;amp;sort=DESC&amp;amp;respnr=8&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext" class="lstA-desc2" title="Click here to see the job description: Food Technology Teacher (Maternity) (Ark Schools - Helenswood Academy) (ID33659)" tabindex="13"&gt;Food Technology Teacher (Maternity) (Ark Schools - Helenswood Academy)&lt;/a&gt;
+&lt;/td&gt;
+&lt;td headers="th2" class="Lst-Desc22"&gt;
+Partnership
+&lt;/td&gt;
+&lt;td headers="th3" class="Lst-Desc23"&gt;
+Hastings
+&lt;/td&gt;
+&lt;td headers="th4" class="Lst-Desc24"&gt;
+Teachers' Pay Scale
+&lt;/td&gt;
+&lt;td headers="th5" class="Lst-Desc25"&gt;
+28/11/2016
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="Lst-BG1"&gt;
+&lt;td headers="th1" class="Lst-Desc1T"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_jdesc100a&amp;amp;nPostingID=16453&amp;amp;nPostingTargetID=33634&amp;amp;option=52&amp;amp;sort=DESC&amp;amp;respnr=8&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext" class="lstA-desc1" title="Click here to see the job description: Learner Support Assistant &amp;#8211; Bank Staff (Sussex Downs College) (ID33634)" tabindex="14"&gt;Learner Support Assistant &amp;#8211; Bank Staff (Sussex Downs College)&lt;/a&gt;
+&lt;/td&gt;
+&lt;td headers="th2" class="Lst-Desc12"&gt;
+Sussex Downs College
+&lt;/td&gt;
+&lt;td headers="th3" class="Lst-Desc13"&gt;
+Countywide
+&lt;/td&gt;
+&lt;td headers="th4" class="Lst-Desc14"&gt;
+&amp;#163;0 to &amp;#163;9,999
+&lt;/td&gt;
+&lt;td headers="th5" class="Lst-Desc15"&gt;
+28/11/2016
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="Lst-BG2"&gt;
+&lt;td headers="th1" class="Lst-Desc2T"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_jdesc100a&amp;amp;nPostingID=16447&amp;amp;nPostingTargetID=33638&amp;amp;option=52&amp;amp;sort=DESC&amp;amp;respnr=8&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext" class="lstA-desc2" title="Click here to see the job description: Learning Technologist (Sussex Downs College) (ID33638)" tabindex="15"&gt;Learning Technologist (Sussex Downs College)&lt;/a&gt;
+&lt;/td&gt;
+&lt;td headers="th2" class="Lst-Desc22"&gt;
+Sussex Downs College
+&lt;/td&gt;
+&lt;td headers="th3" class="Lst-Desc23"&gt;
+Countywide
+&lt;/td&gt;
+&lt;td headers="th4" class="Lst-Desc24"&gt;
+&amp;#163;20,000 to &amp;#163;24,999
+&lt;/td&gt;
+&lt;td headers="th5" class="Lst-Desc25"&gt;
+02/12/2016
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="Lst-ResNav" colspan="5"&gt;
+&lt;span class="Lst-NavPagelabel"&gt;Search results: &lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=1&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 1 to 10" tabindex="16"&gt;1 to 10&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=2&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 11 to 20" tabindex="17"&gt;11 to 20&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=3&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 21 to 30" tabindex="18"&gt;21 to 30&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=4&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 31 to 40" tabindex="19"&gt;31 to 40&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=5&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 41 to 50" tabindex="20"&gt;41 to 50&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=6&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 51 to 60" tabindex="21"&gt;51 to 60&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=7&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 61 to 70" tabindex="22"&gt;61 to 70&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+71 to 80
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=9&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 81 to 90" tabindex="23"&gt;81 to 90&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=10&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 91 to 100" tabindex="24"&gt;91 to 100&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=11&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 101 to 110" tabindex="25"&gt;101 to 110&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=12&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 111 to 120" tabindex="26"&gt;111 to 120&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=13&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 121 to 130" tabindex="27"&gt;121 to 130&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=14&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 131 to 140" tabindex="28"&gt;131 to 140&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=15&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 141 to 150" tabindex="29"&gt;141 to 150&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=16&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 151 to 160" tabindex="30"&gt;151 to 160&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=17&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 161 to 170" tabindex="31"&gt;161 to 170&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=18&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 171 to 180" tabindex="32"&gt;171 to 180&lt;/a&gt;
+&amp;nbsp;/&amp;nbsp;
+&lt;/span&gt;
+&lt;span class="Lst-NavPage"&gt;
+&lt;a href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;page=jsoutputinitrapido.cfm&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;pagenum=19&amp;amp;option=52&amp;amp;sort=DESC" class="Lst-NavPage" title="Search results: 181 to 190" tabindex="33"&gt;181 to 190&lt;/a&gt;
+&lt;/span&gt;
+&lt;/td&gt;
+&lt;/tr&gt;</value>
+  </data>
+  <data name="NoJobsResult" xml:space="preserve">
+    <value>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" " http://www.w3.org/TR/html4/strict.dtd"&gt;&lt;html lang="en-GB" xmlns="http://www.w3.org/1999/xhtml" xmlns:addthis="http://www.addthis.com/help/api-spec" &gt;&lt;head&gt;&lt;meta name="GENERATOR" content="MrTed"&gt;&lt;meta name="TEMPLATEBASE" content="Accessible HTML"&gt;&lt;meta name="LASTUPDATED" content="18/08/05 10:05:33"&gt;&lt;meta name="author" content="MrTed"&gt;&lt;meta name="keywords" content="Jobs, Career Section, Candidate Portal"&gt;&lt;meta name="description" content="Mrted Talentlink syndication components"&gt;&lt;meta http-equiv="Content-Style-Type" content="text/css"&gt;&lt;meta http-equiv="Content-Script-Type" content="text/javascript"&gt;&lt;meta name="language" http-equiv="Content-Language" content="en-GB"&gt;&lt;title&gt;Jobs&lt;/title&gt;
+&lt;meta HTTP-EQUIV="Content-Type" content="text/html; charset=UTF-8"&gt;
+&lt;LINK REL="STYLESHEET" TYPE="text/css" HREF="/syndicated/syd_style/PFOFK026203F3VBQB7968LOH0-36.css"&gt;
+&lt;/head&gt;&lt;body class="bodyRapido"&gt;
+&lt;div id="LstContent"&gt;
+&lt;div id="LstA-SrCrtLabel" class="Lst-CriteriaLabel"&gt;Search criteria selected:&lt;/div&gt;
+&lt;div id="LstA-SrCrt0" class="Lst-CrtLabel"&gt;&lt;/div&gt;&lt;div id="LstA-SrCrt1" class="Lst-CrtLabel"&gt;&lt;/div&gt;
+&lt;div id="Lst-NoJob" class="Lst-NoJobs"&gt;There are no job openings available which match your criteria.&lt;/div&gt;
+&lt;div id="bottomact"&gt;
+&lt;div id="backToSearch"&gt;
+&lt;span class="linkbracket"&gt;[&lt;/span&gt;&lt;a class="Lst-ButtonFace" href="jsoutputinitrapido.cfm?component=lay9999_src350a&amp;amp;&amp;amp;Resultsperpage=100&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;ID=PFOFK026203F3VBQB7968LOH0" title="New search" tabindex="1"&gt;New search&lt;/a&gt;&lt;span class="linkbracket"&gt;]&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id="gotoSearchAgent"&gt;
+&lt;span class="linkbracket"&gt;[&lt;/span&gt;&lt;a class="Lst-ButtonFace" href="jsoutputinitrapido.cfm?component=lay9999_sa350a&amp;amp;charset=UTF-8&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=100&amp;amp;lg=UK&amp;amp;mask=esccext&amp;backpage=2" title="Create job alert" tabindex="2"&gt;Create job alert&lt;/a&gt;&lt;span class="linkbracket"&gt;]&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</value>
+  </data>
+</root>

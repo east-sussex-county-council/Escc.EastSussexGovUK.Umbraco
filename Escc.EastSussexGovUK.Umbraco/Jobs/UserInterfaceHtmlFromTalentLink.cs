@@ -7,20 +7,20 @@ using Escc.Net;
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
     /// <summary>
-    /// Loads TalentLink HTML by making an HTTP request to a TalentLink server
+    /// Loads TalentLink UI HTML by making an HTTP request to a TalentLink server
     /// </summary>
-    public class TalentLinkHtmlFromHttpRequest
+    public class UserInterfaceHtmlFromTalentLink
     {
         private readonly Uri _sourceUrl;
         private readonly IProxyProvider _proxy;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TalentLinkHtmlFromHttpRequest"/> class.
+        /// Initializes a new instance of the <see cref="UserInterfaceHtmlFromTalentLink"/> class.
         /// </summary>
         /// <param name="sourceUrl">The source URL.</param>
         /// <param name="proxy">The proxy (optional).</param>
         /// <exception cref="System.ArgumentNullException">sourceUrl</exception>
-        public TalentLinkHtmlFromHttpRequest(Uri sourceUrl, IProxyProvider proxy)
+        public UserInterfaceHtmlFromTalentLink(Uri sourceUrl, IProxyProvider proxy)
         {
             if (sourceUrl == null) throw new ArgumentNullException(nameof(sourceUrl));
             _sourceUrl = sourceUrl;

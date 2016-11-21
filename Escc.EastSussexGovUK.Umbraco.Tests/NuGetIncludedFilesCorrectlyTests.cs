@@ -32,6 +32,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         // Escc.RubbishAndRecycling.SiteFinder package
         [TestCase(@"Views\Topic\RecyclingSiteFinder.ascx")]
 
+        // Escc.EastSussexGovUK.Rss project
+        [TestCase(@"EastSussexGovUK\Rss\rss-to-html.ashx")]
+
         public void NuGetPackagesCorrectlyIncludedInProject(string filePathWhichShouldBeIncluded)
         {
             var commonParent = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent;

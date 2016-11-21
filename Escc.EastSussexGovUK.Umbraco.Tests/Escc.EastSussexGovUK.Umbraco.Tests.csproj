@@ -331,6 +331,11 @@
     <Compile Include="GoogleFontFamilyFormatterTests.cs" />
     <Compile Include="NuGetIncludedFilesCorrectlyTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="RelatedLinksModelBuilderTests.cs" />
     <Compile Include="RemoveOuterHtmlFromSearchFieldsFilterTests.cs" />
     <Compile Include="RemoveAttributeFilterTests.cs" />
@@ -338,6 +343,7 @@
     <Compile Include="RemoveUmbracoNumericSuffixFilterTests.cs" />
     <Compile Include="TinyMceEmbedClassFormatterTests.cs" />
     <Compile Include="TalentLinkUrlTests.cs" />
+    <Compile Include="JobResultsParserTests.cs" />
     <Compile Include="UseFormForEmailLinksFormatterTests.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -349,6 +355,12 @@
       <Project>{d893dac9-c4e3-4118-9346-82bd34e33af6}</Project>
       <Name>Escc.EastSussexGovUK.Umbraco</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

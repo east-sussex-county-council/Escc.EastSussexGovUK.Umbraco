@@ -29,7 +29,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
         /// <exception cref="System.ArgumentNullException">model</exception>
         public override ActionResult Index(RenderModel model)
         {
-            if (model == null) throw new ArgumentNullException("model");
+            if (model == null) throw new ArgumentNullException(nameof(model));
 
             var viewModel = MapUmbracoContentToViewModel(model.Content);
 
@@ -38,9 +38,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
             return CurrentTemplate(viewModel);
         }
 
-        private static RssViewModel MapUmbracoContentToViewModel(IPublishedContent publishedContent)
+        private static RssViewModel<HomePageItemViewModel> MapUmbracoContentToViewModel(IPublishedContent publishedContent)
         {
-            var model = new RssViewModel();
+            var model = new RssViewModel<HomePageItemViewModel>();
             model.Metadata.Title = publishedContent.Name;
             model.Metadata.Description = publishedContent.GetPropertyValue<string>("pageDescription_Content");
 

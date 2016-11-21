@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
+using Escc.Dates;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.Net;
 using Escc.Umbraco.Caching;
 using Escc.Umbraco.PropertyTypes;
-using HtmlAgilityPack;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 using Umbraco.Web.Models;
@@ -30,46 +29,22 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         {
             if (model == null) throw new ArgumentNullException(nameof(model));
 
-            var viewModel = new RssViewModel();
+            var viewModel = new RssViewModel<Job>();
             viewModel.Metadata.Title = model.Content.Name;
             viewModel.Metadata.Description = model.Content.GetPropertyValue<string>("pageDescription_Content");
 
-            // TODO: Need to follow link to page 2
-
+            var sourceUrl = new TalentLinkUrl(model.Content.GetPropertyValue<string>("ResultsScriptUrl_Content")).LinkUrl;
             var detailPage = model.Content.GetPropertyValue<IPublishedContent>("JobDetailPage_Content");
-            var sourceUrl = new TalentLinkUrl(model.Content.GetPropertyValue<string>("ResultsScriptUrl_Content")).LinkUrl + "&resultsperpage=200";
-            var jobsData = new TalentLinkHtmlFromHttpRequest(new Uri(sourceUrl), new ConfigurationProxyProvider());
-            var htmlStream = await jobsData.ReadHtml();
 
-            var parsedHtml = new HtmlDocument();
-            parsedHtml.Load(htmlStream);
+            var parser = new JobResultsHtmlParser(detailPage != null ? new Uri(detailPage.UrlWithDomain()) : Request.Url);
+            var jobsProvider = new JobsDataFromTalentLink(sourceUrl, new ConfigurationProxyProvider(), parser);
 
-            var links = parsedHtml.DocumentNode.SelectNodes("//td[@headers='th1']/a");
-            foreach (var link in links)
+            var jobs = await jobsProvider.ReadJobs();
+
+            foreach (var job in jobs)
             {
-                var jobUrl = HttpUtility.HtmlDecode(link.Attributes["href"].Value);
-                var absoluteJobUrl = new Uri(Request.Url, jobUrl);
-                var query = HttpUtility.ParseQueryString(absoluteJobUrl.Query);
-                if (detailPage != null)
-                {
-                    absoluteJobUrl = new Uri(detailPage.UrlWithDomain() + "?nPostingTargetID=" + query["nPostingTargetId"]);
-                }
-                var organisation = link.ParentNode.ParentNode.SelectSingleNode("./td[@headers='th2']").InnerText.Trim();
-                var location = link.ParentNode.ParentNode.SelectSingleNode("./td[@headers='th3']").InnerText.Trim();
-                var salary = link.ParentNode.ParentNode.SelectSingleNode("./td[@headers='th4']").InnerText.Trim();
-                var closingDate = link.ParentNode.ParentNode.SelectSingleNode("./td[@headers='th5']").InnerText.Trim();
-                viewModel.Items.Add(new HomePageItemViewModel()
-                {
-                    Link = new HtmlLink()
-                    {
-                        Url = absoluteJobUrl,
-                        Text = link.InnerText
-                    },
-                    Id = query["nPostingTargetId"],
-                    Description = organisation + " / " + location + " / " + salary + " / " + closingDate
-                });
+                viewModel.Items.Add(job);
             }
-
 
             new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache);
 

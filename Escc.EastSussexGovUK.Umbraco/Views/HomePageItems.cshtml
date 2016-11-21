@@ -1,5 +1,5 @@
 ﻿@using Escc.Dates
-@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.RssViewModel>
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.RssViewModel<Escc.EastSussexGovUK.Umbraco.Models.HomePageItemViewModel>>
 @{
     Layout = null;
     Response.ContentType = "text/xml";
@@ -10,7 +10,7 @@
 <rss version="2.0">
     <channel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
         <title>@Model.Metadata.Title.Replace("Home: ", String.Empty).Trim() - East Sussex County Council</title>
-        <description>@Model.Description</description>
+        <description>@Model.Metadata.Description</description>
         <link>@Request.Url.Scheme://@Request.Url.Authority/</link>
         <language>en-GB</language>
         <copyright>@DateTime.Now.Year East Sussex County Council</copyright>

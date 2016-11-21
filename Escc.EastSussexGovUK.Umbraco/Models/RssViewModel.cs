@@ -2,14 +2,24 @@
 
 namespace Escc.EastSussexGovUK.Umbraco.Models
 {
-    public class RssViewModel : BaseViewModel
+    /// <summary>
+    /// Model for an RSS feed
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Models.BaseViewModel" />
+    public class RssViewModel<T> : BaseViewModel
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RssViewModel{T}"/> class.
+        /// </summary>
         public RssViewModel()
         {
-            Items = new List<HomePageItemViewModel>();
+            Items = new List<T>();
         }
 
-        public string Description { get; set; }
-        public IList<HomePageItemViewModel> Items { get; private set; } 
+        /// <summary>
+        /// Gets the items to include in the feed
+        /// </summary>
+        public IList<T> Items { get; private set; } 
     }
 }
