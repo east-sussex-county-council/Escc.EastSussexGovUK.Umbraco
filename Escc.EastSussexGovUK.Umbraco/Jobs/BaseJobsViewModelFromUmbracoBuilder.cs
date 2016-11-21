@@ -35,6 +35,20 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             MediaUrlTransformer = mediaUrlTransformer;
         }
 
+        protected HtmlLink BuildLinkToPage(string alias)
+        {
+            var linkedPage = UmbracoContent.GetPropertyValue<IPublishedContent>(alias);
+            if (linkedPage != null)
+            {
+                return new HtmlLink()
+                {
+                    Text = linkedPage.Name,
+                    Url = new Uri(linkedPage.UrlAbsolute())
+                };
+            }
+            return null;
+        }
+
         protected IList<Image> BuildImages(string alias)
         {
             var imagesData = UmbracoContent.GetPropertyValue<IEnumerable<IPublishedContent>>(alias);

@@ -35,6 +35,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             {
                 JobsLogo = BuildImage("JobsLogo_Content"),
                 HeaderBackgroundImage = BuildImage("HeaderBackgroundImage_Content"),
+                JobsHomePage = BuildLinkToPage("JobsHomePage_Content"),
                 LoginPage = BuildLinkToPage("LoginPage_Content"),
                 JobAlertsPage = BuildLinkToPage("JobAlertsPage_Content"),
                 ResultsUrl = BuildUri("ResultsScriptUrl_Content"),
@@ -51,20 +52,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             if (!String.IsNullOrEmpty(url))
             {
                 return new TalentLinkUrl(url);
-            }
-            return null;
-        }
-
-        private HtmlLink BuildLinkToPage(string alias)
-        {
-            var linkedPage = UmbracoContent.GetPropertyValue<IPublishedContent>(alias);
-            if (linkedPage != null)
-            {
-                return new HtmlLink()
-                {
-                    Text = linkedPage.Name,
-                    Url = new Uri(linkedPage.UrlAbsolute())
-                };
             }
             return null;
         }

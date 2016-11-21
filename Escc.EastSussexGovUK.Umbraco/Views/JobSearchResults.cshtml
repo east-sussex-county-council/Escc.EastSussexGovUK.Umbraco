@@ -18,7 +18,16 @@
     <div class="text-content">
         @if (Model.JobsLogo != null)
         {
-            <h1><img src="@Model.JobsLogo.ImageUrl" alt="@Model.Metadata.Title" width="@Model.JobsLogo.Width"/></h1>
+            <h1>
+                @if (Model.JobsHomePage != null)
+                {
+                    <a href="@Model.JobsHomePage.Url"><img src="@Model.JobsLogo.ImageUrl" alt="@Model.Metadata.Title" width="@Model.JobsLogo.Width" /></a>
+                }
+                else
+                {
+                    <img src="@Model.JobsLogo.ImageUrl" alt="@Model.Metadata.Title" width="@Model.JobsLogo.Width" />
+                }
+            </h1>
         }
         @if (Model.LoginPage != null)
         {

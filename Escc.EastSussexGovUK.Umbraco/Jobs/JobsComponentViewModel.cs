@@ -15,6 +15,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public Image JobsLogo { get; set; }
 
         /// <summary>
+        /// Gets or sets the home page for the jobs service
+        /// </summary>
+        public HtmlLink JobsHomePage { get; set; }
+
+        /// <summary>
         /// Gets or sets the background image for the header
         /// </summary>
         public Image HeaderBackgroundImage { get; set; }
