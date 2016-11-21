@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using System.Web.Caching;
 using Escc.Dates;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.Net;
@@ -33,13 +34,23 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             viewModel.Metadata.Title = model.Content.Name;
             viewModel.Metadata.Description = model.Content.GetPropertyValue<string>("pageDescription_Content");
 
-            var sourceUrl = new TalentLinkUrl(model.Content.GetPropertyValue<string>("ResultsScriptUrl_Content")).LinkUrl;
-            var detailPage = model.Content.GetPropertyValue<IPublishedContent>("JobDetailPage_Content");
+            List<Job> jobs = null;
+            if (HttpContext.Cache["Jobs"] == null || Request.QueryString["ForceCacheRefresh"] == "1")
+            {
+                var sourceUrl = new TalentLinkUrl(model.Content.GetPropertyValue<string>("ResultsScriptUrl_Content")).LinkUrl;
+                var detailPage = model.Content.GetPropertyValue<IPublishedContent>("JobDetailPage_Content");
 
-            var parser = new JobResultsHtmlParser(detailPage != null ? new Uri(detailPage.UrlWithDomain()) : Request.Url);
-            var jobsProvider = new JobsDataFromTalentLink(sourceUrl, new ConfigurationProxyProvider(), parser);
+                var parser = new JobResultsHtmlParser(detailPage != null ? new Uri(detailPage.UrlWithDomain()) : Request.Url);
+                var jobsProvider = new JobsDataFromTalentLink(sourceUrl, new ConfigurationProxyProvider(), parser);
 
-            var jobs = await jobsProvider.ReadJobs();
+                jobs = await jobsProvider.ReadJobs();
+
+                HttpContext.Cache.Insert("Jobs", jobs, null, DateTime.Now.AddHours(1), Cache.NoSlidingExpiration);
+            }
+            else
+            {
+                jobs = (List<Job>) HttpContext.Cache["Jobs"];
+            }
 
             foreach (var job in jobs)
             {

@@ -9,7 +9,7 @@
 <?xml-stylesheet type="text/css" href="@Request.Url.Scheme://@Request.Url.Authority/eastsussexgovuk/rss/rss.css" ?>
 <rss version="2.0">
     <channel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-        <title>@Model.Metadata.Title.Replace("Home: ", String.Empty).Trim() - East Sussex County Council</title>
+        <title>@Model.Metadata.Title.Replace("Home: ", String.Empty).Trim()</title>
         <description>@Model.Metadata.Description</description>
         <link>@Request.Url.Scheme://@Request.Url.Authority/</link>
         <language>en-GB</language>
