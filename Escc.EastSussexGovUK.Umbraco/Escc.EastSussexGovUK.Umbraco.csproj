@@ -496,6 +496,9 @@
     <Content Include="apple-touch-icon-precomposed-72x72.png" />
     <Content Include="apple-touch-icon-precomposed.png" />
     <Content Include="apple-touch-icon.png" />
+    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.controller.js" />
+    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.html" />
+    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.resource.js" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\editor.html" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\validate.js" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PhonePropertyEditor\editor.html" />
@@ -591,6 +594,7 @@
     <Content Include="EastSussexGovUK\Rss\header.png" />
     <Content Include="EastSussexGovUK\Rss\rss-xslt.css" />
     <Content Include="EastSussexGovUK\Rss\rss.css" />
+    <Content Include="EastSussexGovUK\Rss\rss-to-html.ashx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="googledb369ad0fa294f54.html" />
@@ -632,7 +636,7 @@
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\SpectrumColorPicker\package.manifest" />
-    <Content Include="EastSussexGovUK\Rss\rss-to-html.ashx" />
+    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\package.manifest" />
     <None Include="images\Web.example.config" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -3256,7 +3260,7 @@
     <Content Include="Views\_HomePageNewsItem.cshtml" />
     <Content Include="Views\Layouts\UmbracoDesktop.cshtml" />
     <Content Include="Views\Layouts\UmbracoFullScreen.cshtml" />
-    <Content Include="Views\JobsHome.cshtml" />
+    <Content Include="Views\TextSize\Change.cshtml" />
     <Content Include="Views\JobSearchResults.cshtml" />
     <Content Include="Views\JobsComponent.cshtml" />
     <Content Include="Views\JobsHomeCss.cshtml" />
@@ -3342,6 +3346,42 @@
     <Compile Include="ApiControllers\WasteTypesController.cs" />
     <Compile Include="ApiControllers\WebApiConfig.cs" />
     <Compile Include="ApiControllers\WebChatController.cs" />
+    <Compile Include="ContentFinders\GuidePrintViewContentFinder.cs" />
+    <Compile Include="ContentFinders\GuidePrintViewEventHandler.cs" />
+    <Compile Include="Controllers\CampaignContentController.cs" />
+    <Compile Include="Controllers\CampaignLandingController.cs" />
+    <Compile Include="Controllers\ChildcareController.cs" />
+    <Compile Include="Controllers\CouncilOfficeController.cs" />
+    <Compile Include="Controllers\CouncilPlanBudgetPageController.cs" />
+    <Compile Include="Controllers\CouncilPlanHomePageController.cs" />
+    <Compile Include="Controllers\CouncilPlanMonitoringPageController.cs" />
+    <Compile Include="Controllers\CouncilPlanPrioritiesPageController.cs" />
+    <Compile Include="Controllers\CouncilPlanTopicPageController.cs" />
+    <Compile Include="Controllers\DayCentreController.cs" />
+    <Compile Include="Controllers\FormDownloadPageController.cs" />
+    <Compile Include="Controllers\GuideController.cs" />
+    <Compile Include="Controllers\GuideStepController.cs" />
+    <Compile Include="Controllers\HomePageController.cs" />
+    <Compile Include="Controllers\HomePageItemController.cs" />
+    <Compile Include="Controllers\HomePageItemsController.cs" />
+    <Compile Include="ContentFinders\GuidePrintViewContentFinder.cs" />
+    <Compile Include="ContentFinders\GuidePrintViewEventHandler.cs" />
+    <Compile Include="Controllers\CampaignContentController.cs" />
+    <Compile Include="Controllers\CampaignLandingController.cs" />
+    <Compile Include="Controllers\ChildcareController.cs" />
+    <Compile Include="Controllers\CouncilOfficeController.cs" />
+    <Compile Include="Controllers\CouncilPlanBudgetPageController.cs" />
+    <Compile Include="Controllers\CouncilPlanHomePageController.cs" />
+    <Compile Include="Controllers\CouncilPlanMonitoringPageController.cs" />
+    <Compile Include="Controllers\CouncilPlanPrioritiesPageController.cs" />
+    <Compile Include="Controllers\CouncilPlanTopicPageController.cs" />
+    <Compile Include="Controllers\DayCentreController.cs" />
+    <Compile Include="Controllers\FormDownloadPageController.cs" />
+    <Compile Include="Controllers\GuideController.cs" />
+    <Compile Include="Controllers\GuideStepController.cs" />
+    <Compile Include="Controllers\HomePageController.cs" />
+    <Compile Include="Controllers\HomePageItemController.cs" />
+    <Compile Include="Controllers\HomePageItemsController.cs" />
     <Compile Include="ContentFinders\GuidePrintViewContentFinder.cs" />
     <Compile Include="ContentFinders\GuidePrintViewEventHandler.cs" />
     <Compile Include="Controllers\CampaignContentController.cs" />
@@ -3555,6 +3595,9 @@
     <Compile Include="Services\UmbracoOnAzureRelatedLinksService.cs" />
     <Compile Include="Services\UmbracoSocialMediaService.cs" />
     <Compile Include="Services\UmbracoWebChatSettingsService.cs" />
+    <Compile Include="TextSize\RegisterTextSizeRoute.cs" />
+    <Compile Include="TextSize\TextSizeController.cs" />
+    <Compile Include="TextSize\TextSizeViewModel.cs" />
     <Compile Include="Views\CouncilPlanBudgetPage.ascx.cs">
       <DependentUpon>CouncilPlanBudgetPage.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
