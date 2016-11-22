@@ -496,6 +496,9 @@
     <Content Include="apple-touch-icon-precomposed-72x72.png" />
     <Content Include="apple-touch-icon-precomposed.png" />
     <Content Include="apple-touch-icon.png" />
+    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.controller.js" />
+    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.html" />
+    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.resource.js" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\editor.html" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\validate.js" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PhonePropertyEditor\editor.html" />
@@ -623,6 +626,7 @@
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\SpectrumColorPicker\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\package.manifest" />
     <None Include="images\Web.example.config" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -3246,6 +3250,7 @@
     <Content Include="Views\_HomePageNewsItem.cshtml" />
     <Content Include="Views\Layouts\UmbracoDesktop.cshtml" />
     <Content Include="Views\Layouts\UmbracoFullScreen.cshtml" />
+    <Content Include="Views\TextSize\Change.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -3504,6 +3509,9 @@
     <Compile Include="Services\UmbracoOnAzureRelatedLinksService.cs" />
     <Compile Include="Services\UmbracoSocialMediaService.cs" />
     <Compile Include="Services\UmbracoWebChatSettingsService.cs" />
+    <Compile Include="TextSize\RegisterTextSizeRoute.cs" />
+    <Compile Include="TextSize\TextSizeController.cs" />
+    <Compile Include="TextSize\TextSizeViewModel.cs" />
     <Compile Include="Views\CouncilPlanBudgetPage.ascx.cs">
       <DependentUpon>CouncilPlanBudgetPage.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
