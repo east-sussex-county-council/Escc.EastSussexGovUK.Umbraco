@@ -43,9 +43,6 @@ CreateApplicationPool $projectName
 CreateWebsite $projectName "$pathOfThisScript\$projectName"
 CreateHTTPSBinding $projectName
 RemoveHTTPBinding $projectName 80
-CreateVirtualDirectory $projectName "Escc.EastSussexGovUK" "$parentFolderOfThisScript\Escc.EastSussexGovUK\Escc.EastSussexGovUK" true
-CreateVirtualDirectory $projectName "masterpages" "$parentFolderOfThisScript\Escc.EastSussexGovUK\Escc.EastSussexGovUK\masterpages" true
-CreateVirtualDirectory $projectName "img" "$parentFolderOfThisScript\Escc.EastSussexGovUK\Escc.EastSussexGovUK\img" true
 
 Write-Host
 Write-Host "Done." -ForegroundColor "Green"
