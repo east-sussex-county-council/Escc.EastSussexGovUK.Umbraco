@@ -17,7 +17,10 @@ namespace Escc.EastSussexGovUK.Umbraco {
 		{
             System.Web.Hosting.HostingEnvironment.RegisterVirtualPathProvider(new EmbeddedResourceVirtualPathProvider.Vpp(typeof(Escc.EastSussexGovUK.Mvc.BaseViewModel).Assembly));
 
-            RouteTable.Routes.MapRoute("HttpStatus", "{controller}/{action}", null, new { controller = "HttpStatus" });
+            if (RouteTable.Routes["HttpStatus"] == null)
+            {
+				RouteTable.Routes.MapRoute("HttpStatus", "{controller}/{action}", null, new { controller = "HttpStatus" });
+			}
         }
     }
 }
