@@ -3261,6 +3261,7 @@
     <Content Include="Views\Layouts\UmbracoDesktop.cshtml" />
     <Content Include="Views\Layouts\UmbracoFullScreen.cshtml" />
     <Content Include="Views\TextSize\Change.cshtml" />
+    <Content Include="Views\Layouts\_SocialMedia.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>

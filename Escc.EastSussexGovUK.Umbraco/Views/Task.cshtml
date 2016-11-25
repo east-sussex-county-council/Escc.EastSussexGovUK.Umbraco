@@ -71,10 +71,7 @@
 
 @Html.Partial("~/Views/Layouts/_RelatedLinks.cshtml", Model.RelatedLinksGroups)
 
-@foreach (var socialMedia in Model.SocialMedia.SocialMediaOrder)
-{
-    @Html.Partial("~/Views/EastSussexGovUK/Features/_" + socialMedia + ".cshtml")
-}
+@Html.Partial("~/Views/Layouts/_SocialMedia.cshtml")
 @Html.Partial("~/Views/EastSussexGovUK/Features/_SupportingContentDesktop.cshtml")
 <div class="text-content content">
     @Html.Partial("~/Views/EastSussexGovUK/Features/_Share.cshtml")
