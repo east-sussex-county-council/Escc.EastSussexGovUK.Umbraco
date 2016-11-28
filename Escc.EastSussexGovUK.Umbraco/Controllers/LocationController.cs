@@ -159,6 +159,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
                     Width = imageData.GetPropertyValue<int>("umbracoWidth"),
                     Height = imageData.GetPropertyValue<int>("umbracoHeight")
                 };
+                model.Metadata.PageImageUrl = new Uri(Request.Url, model.Photo.ImageUrl).ToString();
             }
 
             // Add common properties to the model

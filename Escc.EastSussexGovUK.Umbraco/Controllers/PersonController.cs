@@ -41,7 +41,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
             return CurrentTemplate(viewModel);
         }
 
-        private static PersonViewModel MapUmbracoContentToViewModel(IPublishedContent content, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IRelatedLinksService relatedLinksService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService)
+        private PersonViewModel MapUmbracoContentToViewModel(IPublishedContent content, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IRelatedLinksService relatedLinksService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService)
         {
             var model = new PersonViewModel
             {
@@ -54,12 +54,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
                 Contact = new HtmlString(ContentHelper.ParseContent(content.GetPropertyValue<string>("contact_Content")))
             };
 
-            model.Person.Name.Titles.Add(content.GetPropertyValue<string>("HonorificTitle_Content"));
-            model.Person.Name.GivenNames.Add(content.GetPropertyValue<string>("GivenName_Content"));
-            model.Person.Name.FamilyName = content.GetPropertyValue<string>("FamilyName_Content");
-            model.Person.Name.Suffixes.Add(content.GetPropertyValue<string>("HonorificSuffix_Content"));
-            model.Person.EmailAddresses.Add(content.GetPropertyValue<string>("email_Content"));
-            model.Person.TelephoneNumbers.Add(content.GetPropertyValue<string>("phone_Content"));
+            model.Metadata.PersonAbout.Name.Titles.Add(content.GetPropertyValue<string>("HonorificTitle_Content"));
+            model.Metadata.PersonAbout.Name.GivenNames.Add(content.GetPropertyValue<string>("GivenName_Content"));
+            model.Metadata.PersonAbout.Name.FamilyName = content.GetPropertyValue<string>("FamilyName_Content");
+            model.Metadata.PersonAbout.Name.Suffixes.Add(content.GetPropertyValue<string>("HonorificSuffix_Content"));
+            model.Metadata.PersonAbout.EmailAddresses.Add(content.GetPropertyValue<string>("email_Content"));
+            model.Metadata.PersonAbout.TelephoneNumbers.Add(content.GetPropertyValue<string>("phone_Content"));
+            model.Metadata.Person = model.Metadata.PersonAbout.Name.ToString();
+            if (!String.IsNullOrEmpty(model.JobTitle))
+            {
+                model.Metadata.Person += ", " + model.JobTitle;
+            }
 
             var relatedLinksGroups = new RelatedLinksModelBuilder().OrganiseAsHeadingsAndSections(relatedLinksService.BuildRelatedLinksViewModelFromUmbracoContent(content, "relatedLinks_Content"));
             foreach (var linkGroup in relatedLinksGroups)
@@ -76,6 +81,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
                     Width = imageData.GetPropertyValue<int>("umbracoWidth"),
                     Height = imageData.GetPropertyValue<int>("umbracoHeight")
                 };
+                model.Metadata.PageImageUrl = new Uri(Request.Url, model.Photo.ImageUrl).ToString();
             }
 
             // Add common properties to the model

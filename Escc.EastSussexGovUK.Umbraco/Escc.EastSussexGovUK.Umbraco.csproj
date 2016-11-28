@@ -3350,6 +3350,7 @@
     <Compile Include="Services\CampaignContentViewModelFromUmbraco.cs" />
     <Compile Include="Services\CampaignLandingViewModelFromUmbraco.cs" />
     <Compile Include="Services\GoogleFontFamilyFormatter.cs" />
+    <Compile Include="Services\GuideStepViewModelFromUmbraco.cs" />
     <Compile Include="Services\HomePageItemViewModelFromUmbraco.cs" />
     <Compile Include="Services\IFontFamilyFormatter.cs" />
     <Compile Include="Services\IViewModelBuilder.cs" />

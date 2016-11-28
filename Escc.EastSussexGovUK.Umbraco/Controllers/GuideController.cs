@@ -23,7 +23,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
     {
         public override ActionResult Index(RenderModel model)
         {
-            if (model == null) throw new ArgumentNullException("model");
+            if (model == null) throw new ArgumentNullException(nameof(model));
 
             var viewModel = MapUmbracoContentToViewModel(model.Content);
 
@@ -39,14 +39,23 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
 
         private static GuideStepViewModel MapUmbracoContentToGuideStepViewModel(IPublishedContent content)
         {
-            return GuideStepController.MapUmbracoContentToViewModel(content,
+            var mediaUrlTransformer = new AzureMediaUrlTransformer(GlobalHelper.GetCdnDomain(), GlobalHelper.GetDomainsToReplace());
+            var viewModel = new GuideStepViewModelFromUmbraco(content,
+                    new UmbracoOnAzureRelatedLinksService(mediaUrlTransformer),
+                    mediaUrlTransformer
+                    ).BuildModel();
+
+            // Add common properties to the model
+            var modelBuilder = new BaseViewModelBuilder();
+            modelBuilder.PopulateBaseViewModel(viewModel, content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode);
+            modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel,
                 new UmbracoLatestService(content),
                 new UmbracoSocialMediaService(content),
                 new UmbracoEastSussex1SpaceService(content),
                 new UmbracoWebChatSettingsService(content, new UrlListReader()),
-                new UmbracoOnAzureRelatedLinksService(new AzureMediaUrlTransformer(GlobalHelper.GetCdnDomain(), GlobalHelper.GetDomainsToReplace())),
-                new ContentExperimentSettingsService(),
                 new UmbracoEscisService(content));
+
+            return viewModel;
         }
 
         private static GuideViewModel MapUmbracoContentToViewModel(IPublishedContent content)

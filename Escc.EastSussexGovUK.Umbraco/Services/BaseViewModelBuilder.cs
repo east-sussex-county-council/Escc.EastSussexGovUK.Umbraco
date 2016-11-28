@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using Escc.Dates;
 using Escc.EastSussexGovUK.Features;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.EastSussexGovUK.Umbraco.Views.Layouts;
@@ -38,6 +39,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             model.Metadata.Description = content.GetPropertyValue<string>("pageDescription");
             model.PageType = content.DocumentTypeAlias;
             model.Metadata.SystemId = content.Id.ToString(CultureInfo.InvariantCulture);
+            model.Metadata.DateCreated = content.CreateDate.ToIso8601Date();
+            model.Metadata.DateModified = content.UpdateDate.ToIso8601Date();
+            var expiryDate = content.GetPropertyValue<DateTime>("unpublishAt");
+            if (expiryDate != DateTime.MinValue) model.Metadata.DateReview = expiryDate.ToIso8601Date();
+
             model.IsPublicView = !inUmbracoPreviewMode;
             if (contentExperimentSettingsService != null) { model.ContentExperimentPageSettings = contentExperimentSettingsService.LookupSettingsForPage(content.Id); }
         }
