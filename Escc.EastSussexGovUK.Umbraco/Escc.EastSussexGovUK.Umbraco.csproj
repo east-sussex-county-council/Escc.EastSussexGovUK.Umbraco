@@ -637,6 +637,7 @@
     <Content Include="App_Plugins\SpectrumColorPicker\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\package.manifest" />
     <Content Include="EastSussexGovUK\Rss\rss-to-html.ashx" />
+    <Content Include="Config\uMediaSync.config" />
     <None Include="images\Web.example.config" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -3346,6 +3347,8 @@
     <Compile Include="DocumentTypes\CampaignTemplates\ShareStyleDataType.cs" />
     <Compile Include="DocumentTypes\CampaignTemplates\AlignmentDataType.cs" />
     <Compile Include="DocumentTypes\CampaignTemplates\ColourPickerDataType.cs" />
+    <Compile Include="DocumentTypes\HomePage\HomePageItemsAnalyticsTab.cs" />
+    <Compile Include="Services\CampaignTrackingUrlTransformer.cs" />
     <Compile Include="Services\GoogleAdWordsTagParser.cs" />
     <Compile Include="Services\CampaignContentViewModelFromUmbraco.cs" />
     <Compile Include="Services\CampaignLandingViewModelFromUmbraco.cs" />
@@ -3353,6 +3356,7 @@
     <Compile Include="Services\GuideStepViewModelFromUmbraco.cs" />
     <Compile Include="Services\HomePageItemViewModelFromUmbraco.cs" />
     <Compile Include="Services\IFontFamilyFormatter.cs" />
+    <Compile Include="Services\IUrlTransformer.cs" />
     <Compile Include="Services\IViewModelBuilder.cs" />
     <Compile Include="Controllers\LandingController.cs" />
     <Compile Include="Controllers\LandingPageWithPicturesController.cs" />

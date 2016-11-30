@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Globalization;
 using System.Linq;
 using System.Web.Mvc;
@@ -44,12 +45,23 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
             model.Metadata.Title = publishedContent.Name;
             model.Metadata.Description = publishedContent.GetPropertyValue<string>("pageDescription_Content");
 
+            CampaignTrackingUrlTransformer linkUrlTransformer = null;
+            var source = publishedContent.GetPropertyValue<string>("CampaignTrackingSource_Analytics");
+            var medium = publishedContent.GetPropertyValue<string>("CampaignTrackingMedium_Analytics");
+            var content = publishedContent.GetPropertyValue<string>("CampaignTrackingContent_Analytics");
+            var campaign = publishedContent.GetPropertyValue<string>("CampaignTrackingCampaign_Analytics");
+            var regex = publishedContent.GetPropertyValue<string>("CampaignTrackingRegex_Analytics");
+            if (!String.IsNullOrEmpty(source) && !String.IsNullOrEmpty(medium) && !String.IsNullOrEmpty(campaign))
+            {
+                linkUrlTransformer = new CampaignTrackingUrlTransformer(source, medium, campaign, content, regex);
+            }
+            
             var mediaUrlTransformer = new AzureMediaUrlTransformer(GlobalHelper.GetCdnDomain(), GlobalHelper.GetDomainsToReplace());
 
             ((List<HomePageItemViewModel>)model.Items).AddRange(
                 publishedContent.Children<IPublishedContent>()
                 .Where(child => child.ContentType.Alias == "HomePageItem")
-                .Select(child => new HomePageItemViewModelFromUmbraco(child, mediaUrlTransformer).BuildModel())
+                .Select(child => new HomePageItemViewModelFromUmbraco(child, mediaUrlTransformer, linkUrlTransformer).BuildModel())
                 );
             return model;
         }

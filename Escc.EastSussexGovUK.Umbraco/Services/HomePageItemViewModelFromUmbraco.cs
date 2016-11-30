@@ -16,19 +16,27 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
     public class HomePageItemViewModelFromUmbraco : IViewModelBuilder<HomePageItemViewModel>
     {
         private readonly IPublishedContent _umbracoContent;
+        private readonly IUrlTransformer _linkUrlTransformer;
         private readonly IMediaUrlTransformer _mediaUrlTransformer;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HomePageItemViewModelFromUmbraco"/> class.
+        /// Initializes a new instance of the <see cref="HomePageItemViewModelFromUmbraco" /> class.
         /// </summary>
-        /// <param name="umbracoContent">An instance of Umbraco content using the <see cref="HomePageItemDocumentType"/> document type.</param>
+        /// <param name="umbracoContent">An instance of Umbraco content using the <see cref="HomePageItemDocumentType" /> document type.</param>
         /// <param name="mediaUrlTransformer">A service to links to items in the media library</param>
-        public HomePageItemViewModelFromUmbraco(IPublishedContent umbracoContent, IMediaUrlTransformer mediaUrlTransformer)
+        /// <param name="linkUrlTransformer">The link URL transformer.</param>
+        /// <exception cref="System.ArgumentNullException">
+        /// umbracoContent
+        /// or
+        /// mediaUrlTransformer
+        /// </exception>
+        public HomePageItemViewModelFromUmbraco(IPublishedContent umbracoContent, IMediaUrlTransformer mediaUrlTransformer, IUrlTransformer linkUrlTransformer=null)
         {
             if (umbracoContent == null) throw new ArgumentNullException(nameof(umbracoContent));
             if (mediaUrlTransformer == null) throw new ArgumentNullException(nameof(mediaUrlTransformer));
 
             _umbracoContent = umbracoContent;
+            _linkUrlTransformer = linkUrlTransformer;
             _mediaUrlTransformer = mediaUrlTransformer;
         }
 
@@ -53,6 +61,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
                     Url = new Uri(targetUrl, UriKind.RelativeOrAbsolute),
                     Text = _umbracoContent.Name
                 };
+                if (_linkUrlTransformer != null)
+                {
+                    model.Link.Url = _linkUrlTransformer.TransformUrl(model.Link.Url);
+                }
             }
 
             // Photo
