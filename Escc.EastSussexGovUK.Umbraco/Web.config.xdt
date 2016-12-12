@@ -281,6 +281,14 @@
             </conditions>
             <action type="Redirect" url="https://www.eastsussex.gov.uk/{R:1}" appendQueryString="true" redirectType="Permanent" />
         </rule>
+        <rule name="Redirect bare domain to www" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+        <rule name="Redirect bare domain to www" stopProcessing="true" xdt:Transform="Insert">
+          <match url="(.*)" />
+          <conditions>
+            <add input="{HTTP_HOST}" pattern="^eastsussex.gov.uk$" />
+          </conditions>
+          <action type="Redirect" url="https://www.eastsussex.gov.uk/{R:1}" appendQueryString="true" redirectType="Permanent" />
+        </rule>
       </rules>
     </rewrite>
 
