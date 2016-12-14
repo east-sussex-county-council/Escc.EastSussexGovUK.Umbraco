@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using AST.AzureBlobStorage.Helper;
 using Escc.EastSussexGovUK.Features;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Guide;
 using Escc.EastSussexGovUK.Umbraco.Models;
@@ -82,7 +81,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
                 var image = new Image()
                 {
                     AlternativeText = imageData.Name,
-                    ImageUrl = _mediaUrlTransformer.TransformMediaUrl(new Uri(imageData.Url, UriKind.Relative)),
+                    ImageUrl = new Uri(imageData.Url, UriKind.Relative),
                     Width = imageData.GetPropertyValue<int>("umbracoWidth"),
                     Height = imageData.GetPropertyValue<int>("umbracoHeight")
                 };

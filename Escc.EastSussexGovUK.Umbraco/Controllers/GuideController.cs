@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using AST.AzureBlobStorage.Helper;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Umbraco.Caching;
@@ -39,7 +38,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
 
         private static GuideStepViewModel MapUmbracoContentToGuideStepViewModel(IPublishedContent content)
         {
-            var mediaUrlTransformer = new AzureMediaUrlTransformer(GlobalHelper.GetCdnDomain(), GlobalHelper.GetDomainsToReplace());
+            var mediaUrlTransformer = new RemoveMediaDomainUrlTransformer();
             var viewModel = new GuideStepViewModelFromUmbraco(content,
                     new UmbracoOnAzureRelatedLinksService(mediaUrlTransformer),
                     mediaUrlTransformer

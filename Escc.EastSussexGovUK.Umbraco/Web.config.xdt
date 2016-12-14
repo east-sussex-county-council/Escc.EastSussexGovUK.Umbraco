@@ -174,11 +174,6 @@
     <add key="Umbraco.ModelsBuilder.ModelsMode" value="Nothing" xdt:Transform="Insert" />
     <!-- END: Configure Umbraco -->
 
-    <!-- START: AST Azure media sync settings -->
-    <add key="useCDN" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-    <add key="useCDN" value="true" xdt:Transform="Insert" />
-    <!-- END: AST Azure media sync settings -->
-
     <!-- For flood alerts included on a standard topic page -->
     <add key="FloodAlertsRssUrl" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     <add key="FloodAlertsRssUrl" value="http://www.environment-agency.gov.uk/homeandleisure/floods/134567.aspx" xdt:Transform="Insert"/>

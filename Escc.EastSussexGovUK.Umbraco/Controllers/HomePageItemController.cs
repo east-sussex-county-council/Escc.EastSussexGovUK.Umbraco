@@ -4,7 +4,6 @@ using System.Configuration;
 using System.Globalization;
 using System.Linq;
 using System.Web.Mvc;
-using AST.AzureBlobStorage.Helper;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Umbraco.Caching;
@@ -32,8 +31,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
         {
             if (model == null) throw new ArgumentNullException("model");
 
-            var mediaUrlTransformer = new AzureMediaUrlTransformer(GlobalHelper.GetCdnDomain(), GlobalHelper.GetDomainsToReplace());
-            var viewModel = new HomePageItemViewModelFromUmbraco(model.Content, mediaUrlTransformer).BuildModel();
+            var viewModel = new HomePageItemViewModelFromUmbraco(model.Content).BuildModel();
 
             return CurrentTemplate(viewModel);
         }

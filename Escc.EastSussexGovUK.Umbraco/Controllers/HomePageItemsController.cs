@@ -4,7 +4,6 @@ using System.Configuration;
 using System.Globalization;
 using System.Linq;
 using System.Web.Mvc;
-using AST.AzureBlobStorage.Helper;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Umbraco.Caching;
@@ -56,12 +55,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
                 linkUrlTransformer = new CampaignTrackingUrlTransformer(source, medium, campaign, content, regex);
             }
             
-            var mediaUrlTransformer = new AzureMediaUrlTransformer(GlobalHelper.GetCdnDomain(), GlobalHelper.GetDomainsToReplace());
-
             ((List<HomePageItemViewModel>)model.Items).AddRange(
                 publishedContent.Children<IPublishedContent>()
                 .Where(child => child.ContentType.Alias == "HomePageItem")
-                .Select(child => new HomePageItemViewModelFromUmbraco(child, mediaUrlTransformer, linkUrlTransformer).BuildModel())
+                .Select(child => new HomePageItemViewModelFromUmbraco(child, linkUrlTransformer).BuildModel())
                 );
             return model;
         }

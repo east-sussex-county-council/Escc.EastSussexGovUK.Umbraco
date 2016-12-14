@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Escc.EastSussexGovUK.Features;
 using Escc.EastSussexGovUK.Umbraco.Models;
+using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Umbraco.ContentExperiments;
 using Escc.Umbraco.PropertyTypes;
 using Umbraco.Core.Models;
@@ -14,9 +15,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
     /// </summary>
     public class RecyclingSiteController : LocationController
     {
-        protected override LocationViewModel MapUmbracoContentToViewModel(IPublishedContent content, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IRelatedLinksService relatedLinksService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService)
+        protected override LocationViewModel MapUmbracoContentToViewModel(IPublishedContent content, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IRelatedLinksService relatedLinksService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService, IMediaUrlTransformer mediaUrlTransformer)
         {
-            var model = base.MapUmbracoContentToViewModel(content, latestService, socialMediaService, eastSussex1SpaceService, webChatSettingsService, relatedLinksService, contentExperimentSettingsService, escisService);
+            var model = base.MapUmbracoContentToViewModel(content, latestService, socialMediaService, eastSussex1SpaceService, webChatSettingsService, relatedLinksService, contentExperimentSettingsService, escisService, mediaUrlTransformer);
 
             // Get the types of waste which have been selected for this recycling site
             var recycledTypes = ReadWasteTypesFromProperty(content, "wasteTypes_Content");

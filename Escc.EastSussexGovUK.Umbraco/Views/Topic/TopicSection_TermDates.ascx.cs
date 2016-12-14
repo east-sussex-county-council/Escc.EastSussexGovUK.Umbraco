@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Web;
-using AST.AzureBlobStorage.Helper;
 using Escc.Schools.TermDates.Website;
 using Umbraco.Core.Models;
 using Umbraco.Web;
@@ -26,7 +25,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Views.Topic
             if (termDates != null && !String.IsNullOrEmpty(termDates.Url))
             {
                 var cache = UmbracoContext.Current.InPreviewMode ? null : HttpContext.Current.Cache;
-                var termDatesDataUrl = ContentHelper.TransformUrl(new Uri(termDates.Url, UriKind.Relative));
+                var termDatesDataUrl = new Uri(termDates.Url, UriKind.Relative);
                 var provider = new UrlProvider(new Uri(Request.Url, termDatesDataUrl), cache);
 
                 var quickAnswer = (QuickAnswer)LoadControl("~/Views/TermDates/QuickAnswer.ascx");

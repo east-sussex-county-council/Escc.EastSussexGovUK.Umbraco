@@ -2,7 +2,6 @@
 using System.Text;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using AST.AzureBlobStorage.Helper;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 
@@ -95,7 +94,7 @@ namespace Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders
                 Image = new Escc.Umbraco.PropertyTypes.Image()
                 {
                     AlternativeText = imageData.Name,
-                    ImageUrl = ContentHelper.TransformUrl(new Uri(imageData.Url, UriKind.Relative)),
+                    ImageUrl = new Uri(imageData.Url, UriKind.Relative),
                     Width = imageData.GetPropertyValue<int>("umbracoWidth"),
                     Height = imageData.GetPropertyValue<int>("umbracoHeight")
                 };

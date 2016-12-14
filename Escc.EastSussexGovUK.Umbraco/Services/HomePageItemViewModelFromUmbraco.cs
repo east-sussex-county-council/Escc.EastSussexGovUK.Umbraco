@@ -1,6 +1,5 @@
 using System;
 using System.Globalization;
-using AST.AzureBlobStorage.Helper;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.HomePage;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.Umbraco.PropertyTypes;
@@ -17,27 +16,23 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
     {
         private readonly IPublishedContent _umbracoContent;
         private readonly IUrlTransformer _linkUrlTransformer;
-        private readonly IMediaUrlTransformer _mediaUrlTransformer;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HomePageItemViewModelFromUmbraco" /> class.
         /// </summary>
         /// <param name="umbracoContent">An instance of Umbraco content using the <see cref="HomePageItemDocumentType" /> document type.</param>
-        /// <param name="mediaUrlTransformer">A service to links to items in the media library</param>
         /// <param name="linkUrlTransformer">The link URL transformer.</param>
         /// <exception cref="System.ArgumentNullException">
         /// umbracoContent
         /// or
         /// mediaUrlTransformer
         /// </exception>
-        public HomePageItemViewModelFromUmbraco(IPublishedContent umbracoContent, IMediaUrlTransformer mediaUrlTransformer, IUrlTransformer linkUrlTransformer=null)
+        public HomePageItemViewModelFromUmbraco(IPublishedContent umbracoContent, IUrlTransformer linkUrlTransformer=null)
         {
             if (umbracoContent == null) throw new ArgumentNullException(nameof(umbracoContent));
-            if (mediaUrlTransformer == null) throw new ArgumentNullException(nameof(mediaUrlTransformer));
 
             _umbracoContent = umbracoContent;
             _linkUrlTransformer = linkUrlTransformer;
-            _mediaUrlTransformer = mediaUrlTransformer;
         }
 
         /// <summary>
@@ -73,7 +68,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             {
                 model.Image = new Image()
                 {
-                    ImageUrl = _mediaUrlTransformer.TransformMediaUrl(new Uri(imageData.Url, UriKind.Relative)),
+                    ImageUrl = new Uri(imageData.Url, UriKind.Relative),
                     Width = imageData.GetPropertyValue<int>("umbracoWidth"),
                     Height = imageData.GetPropertyValue<int>("umbracoHeight")
                 };

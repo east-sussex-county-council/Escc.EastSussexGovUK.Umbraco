@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using AST.AzureBlobStorage.Helper;
 using Escc.Umbraco.Media;
 using Umbraco.Web;
 
@@ -96,11 +95,6 @@ namespace Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders
                 {
                     media.MoveNext();
                     _value = new MediaValues(media.Current);
-
-                    if (_value.Values.ContainsKey("umbracoFile") && !String.IsNullOrEmpty(_value.Values["umbracoFile"]))
-                    {
-                       _value.Values["umbracoFile"] = ContentHelper.TransformUrl(new Uri(_value.Values["umbracoFile"], UriKind.Relative)).ToString();
-                    }
                 }
             }
         }

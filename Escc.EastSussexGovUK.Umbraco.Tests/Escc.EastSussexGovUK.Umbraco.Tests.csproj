@@ -327,6 +327,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="RemoveMediaDomainUrlTransformerTests.cs" />
     <Compile Include="GoogleAdWordsTagParserTests.cs" />
     <Compile Include="GoogleFontFamilyFormatterTests.cs" />
     <Compile Include="NuGetIncludedFilesCorrectlyTests.cs" />

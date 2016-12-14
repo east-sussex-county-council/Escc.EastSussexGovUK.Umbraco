@@ -2,7 +2,6 @@
 using System.Globalization;
 using System.Text;
 using System.Web.Mvc;
-using AST.AzureBlobStorage.Helper;
 using Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration;
 using Umbraco.Core.Models;
 
@@ -19,11 +18,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Views
             IPublishedContent phDefSvg = (IPublishedContent) CmsUtilities.Placeholders["phDefSvg"].Value;
             if (phDefSvg != null)
             {
-                svgImageUrl = ContentHelper.TransformUrl(new Uri(phDefSvg.Url, UriKind.Relative));
+                svgImageUrl = new Uri(phDefSvg.Url, UriKind.Relative);
             }
 
             var phDefFallbackImage = (IPublishedContent)CmsUtilities.Placeholders["phDefFallbackImage"].Value;
-            var fallbackImageUrl = ContentHelper.TransformUrl(new Uri(phDefFallbackImage.Url, UriKind.Relative));
+            var fallbackImageUrl = new Uri(phDefFallbackImage.Url, UriKind.Relative);
 
             var imageMapXhtml = CmsUtilities.Placeholders["phDefFallbackHtml"].XmlAsString;
 
