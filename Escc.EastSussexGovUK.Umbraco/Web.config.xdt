@@ -383,6 +383,17 @@
     </staticContent>
   </system.webServer>
 
+  <!-- Enable UmbracoFileSystemProviders.Azure to download media -->
+  <location path="media" xdt:Transform="Remove" xdt:Locator="Match(path)" />
+  <location path="media" xdt:Transform="Insert">
+    <system.webServer>
+      <handlers>
+        <remove name="StaticFileHandler" />
+        <add name="StaticFileHandler" path="*" verb="*" preCondition="integratedMode" type="System.Web.StaticFileHandler" />
+      </handlers>
+    </system.webServer>
+  </location>
+
   <!-- Add C#6 support in Razor views -->
   <system.codedom xdt:Transform="Remove" />
   <system.codedom xdt:Transform="Insert">
