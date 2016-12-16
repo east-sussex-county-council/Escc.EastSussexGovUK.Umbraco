@@ -42,6 +42,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             Assert.AreEqual("/media/1234/some-media-item-in-umbraco.pdf", url.ToString());
         }
 
+        [TestMethod]
+        public void UnrelatedAbsoluteUrlIsNotUpdated()
+        {
+            var url = new Uri("https://www.accesseastsussex.org/jobs/index.aspx");
+
+            var linkTransformer = new RemoveMediaDomainUrlTransformer();
+            url = linkTransformer.TransformMediaUrl(url);
+
+            Assert.AreEqual("https://www.accesseastsussex.org/jobs/index.aspx", url.ToString());
+        }
+
         [TestCase("<p><img src=\"/media/1234/some-media-item-in-umbraco.jpg\" alt=\"Test\" /></p>", "<p><img src=\"/media/1234/some-media-item-in-umbraco.jpg\" alt=\"Test\" /></p>")]
         [TestCase("<p><a href=\"/media/1234/some-media-item-in-umbraco.pdf\">Some text</a></p>", "<p><a href=\"/media/1234/some-media-item-in-umbraco.pdf\">Some text</a></p>")]
         public void RelativeUrlIsNotUpdatedInHtml(string before, string expected)

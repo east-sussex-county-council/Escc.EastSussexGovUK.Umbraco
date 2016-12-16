@@ -20,7 +20,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
         {
             if (mediaUrl == null) throw new ArgumentNullException(nameof(mediaUrl));
 
-            if (mediaUrl.IsAbsoluteUri) return new Uri(mediaUrl.PathAndQuery, UriKind.Relative);
+            if (mediaUrl.IsAbsoluteUri && mediaUrl.PathAndQuery.ToUpperInvariant().StartsWith("/MEDIA/"))
+            {
+                return new Uri(mediaUrl.PathAndQuery, UriKind.Relative);
+            }
 
             return mediaUrl;
         }
