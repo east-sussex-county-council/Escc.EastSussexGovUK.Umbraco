@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using AST.AzureBlobStorage.Helper;
 using Escc.Umbraco.PropertyTypes;
 using Umbraco.Core.Models;
 

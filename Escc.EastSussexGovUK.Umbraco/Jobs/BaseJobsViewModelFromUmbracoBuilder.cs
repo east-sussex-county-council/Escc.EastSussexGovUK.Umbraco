@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using AST.AzureBlobStorage.Helper;
+using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Umbraco.PropertyTypes;
 using Umbraco.Core.Models;
 using Umbraco.Web;
@@ -14,25 +14,21 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
     {
         protected IPublishedContent UmbracoContent { get; }
         protected IRelatedLinksService RelatedLinksService { get; }
-        protected IMediaUrlTransformer MediaUrlTransformer { get; }
 
         /// <summary>
         /// Initializes a new instance of a type derived from <see cref="BaseJobsViewModelFromUmbracoBuilder" />.
         /// </summary>
         /// <param name="umbracoContent">Content from Umbraco.</param>
-        /// <param name="mediaUrlTransformer">The media URL transformer.</param>
         /// <param name="relatedLinksService">The related links service.</param>
         /// <exception cref="System.ArgumentNullException">umbracoContent
         /// or
         /// mediaUrlTransformer</exception>
-        protected BaseJobsViewModelFromUmbracoBuilder(IPublishedContent umbracoContent, IMediaUrlTransformer mediaUrlTransformer, IRelatedLinksService relatedLinksService=null)
+        protected BaseJobsViewModelFromUmbracoBuilder(IPublishedContent umbracoContent, IRelatedLinksService relatedLinksService=null)
         {
             if (umbracoContent == null) throw new ArgumentNullException(nameof(umbracoContent));
-            if (mediaUrlTransformer == null) throw new ArgumentNullException(nameof(mediaUrlTransformer));
 
             UmbracoContent = umbracoContent;
             RelatedLinksService = relatedLinksService;
-            MediaUrlTransformer = mediaUrlTransformer;
         }
 
         protected HtmlLink BuildLinkToPage(string alias)
@@ -72,7 +68,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             var image = new Image()
             {
                 AlternativeText = imageData.Name,
-                ImageUrl = MediaUrlTransformer.TransformMediaUrl(new Uri(imageData.Url, UriKind.Relative)),
+                ImageUrl = new Uri(imageData.Url, UriKind.Relative),
                 Width = imageData.GetPropertyValue<int>("umbracoWidth"),
                 Height = imageData.GetPropertyValue<int>("umbracoHeight")
             };

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
-using AST.AzureBlobStorage.Helper;
 using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Umbraco.Caching;
 using Escc.Umbraco.ContentExperiments;
@@ -26,7 +25,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
         {
             if (model == null) throw new ArgumentNullException(nameof(model));
 
-            var urlTransformer = new AzureMediaUrlTransformer(GlobalHelper.GetCdnDomain(), GlobalHelper.GetDomainsToReplace());
+            var urlTransformer = new RemoveMediaDomainUrlTransformer();
             var viewModel = new CampaignContentViewModelFromUmbraco(model.Content, urlTransformer).BuildModel();
 
             // Add common properties to the model

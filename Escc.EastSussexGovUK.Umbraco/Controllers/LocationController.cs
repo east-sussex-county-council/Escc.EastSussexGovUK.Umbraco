@@ -6,7 +6,6 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Web;
 using System.Web.Mvc;
-using AST.AzureBlobStorage.Helper;
 using Escc.AddressAndPersonalDetails;
 using Escc.Dates;
 using Escc.EastSussexGovUK.Features;
@@ -35,14 +34,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
         {
             if (model == null) throw new ArgumentNullException("model");
 
+            var mediaUrlTransformer = new RemoveMediaDomainUrlTransformer();
             var viewModel = MapUmbracoContentToViewModel(model.Content,
                     new UmbracoLatestService(model.Content),
                     new UmbracoSocialMediaService(model.Content),
                     new UmbracoEastSussex1SpaceService(model.Content),
                     new UmbracoWebChatSettingsService(model.Content, new UrlListReader()),
-                    new UmbracoOnAzureRelatedLinksService(new AzureMediaUrlTransformer(GlobalHelper.GetCdnDomain(), GlobalHelper.GetDomainsToReplace())),
+                    new UmbracoOnAzureRelatedLinksService(mediaUrlTransformer),
                     new ContentExperimentSettingsService(),
-                    new UmbracoEscisService(model.Content));
+                    new UmbracoEscisService(model.Content), 
+                    mediaUrlTransformer);
 
             SetupHttpCaching(model, viewModel);
 
@@ -87,7 +88,24 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
         /// <param name="webChatSettingsService">The web chat settings service.</param>
         /// <param name="relatedLinksService">The related links service.</param>
         /// <param name="contentExperimentSettingsService">The content experiment settings service.</param>
+        /// <param name="escisService">The escis service.</param>
+        /// <param name="mediaUrlTransformer">The media URL transformer.</param>
         /// <returns></returns>
+        /// <exception cref="System.ArgumentNullException">
+        /// content
+        /// or
+        /// latestService
+        /// or
+        /// socialMediaService
+        /// or
+        /// eastSussex1SpaceService
+        /// or
+        /// webChatSettingsService
+        /// or
+        /// relatedLinksService
+        /// or
+        /// contentExperimentSettingsService
+        /// </exception>
         /// <exception cref="ArgumentNullException">content
         /// or
         /// latestService
@@ -102,7 +120,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
         /// <remarks>
         /// Method is virtual so that document types which inherit from the 'Location' type can also inherit and extend the controller
         /// </remarks>
-        protected virtual LocationViewModel MapUmbracoContentToViewModel(IPublishedContent content, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IRelatedLinksService relatedLinksService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService)
+        protected virtual LocationViewModel MapUmbracoContentToViewModel(IPublishedContent content, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IRelatedLinksService relatedLinksService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService, IMediaUrlTransformer mediaUrlTransformer)
         {
             if (content == null) throw new ArgumentNullException("content");
             if (latestService == null) throw new ArgumentNullException("latestService");
@@ -114,14 +132,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
 
             var model = new LocationViewModel
             {
-                Content = new HtmlString(ContentHelper.ParseContent(content.GetPropertyValue<string>("content_Content"))),
-                OpeningHoursDetails = new HtmlString(ContentHelper.ParseContent(content.GetPropertyValue<string>("openingHoursDetails_Content"))),
+                Content = new HtmlString(mediaUrlTransformer.ParseAndTransformMediaUrlsInHtml(content.GetPropertyValue<string>("content_Content"))),
+                OpeningHoursDetails = new HtmlString(mediaUrlTransformer.ParseAndTransformMediaUrlsInHtml(content.GetPropertyValue<string>("openingHoursDetails_Content"))),
                 Tab1Title = content.GetPropertyValue<string>("tab1title_Content"),
-                Tab1Content = new HtmlString(ContentHelper.ParseContent(content.GetPropertyValue<string>("tab1content_Content"))),
+                Tab1Content = new HtmlString(mediaUrlTransformer.ParseAndTransformMediaUrlsInHtml(content.GetPropertyValue<string>("tab1content_Content"))),
                 Tab2Title = content.GetPropertyValue<string>("tab2title_Content"),
-                Tab2Content = new HtmlString(ContentHelper.ParseContent(content.GetPropertyValue<string>("tab2content_Content"))),
+                Tab2Content = new HtmlString(mediaUrlTransformer.ParseAndTransformMediaUrlsInHtml(content.GetPropertyValue<string>("tab2content_Content"))),
                 Tab3Title = content.GetPropertyValue<string>("tab3title_Content"),
-                Tab3Content = new HtmlString(ContentHelper.ParseContent(content.GetPropertyValue<string>("tab3content_Content"))),
+                Tab3Content = new HtmlString(mediaUrlTransformer.ParseAndTransformMediaUrlsInHtml(content.GetPropertyValue<string>("tab3content_Content"))),
                 Location = content.GetPropertyValue<AddressInfo>("location_Content"),
                 Email1Label = content.GetPropertyValue<string>("email1label_Content"),
                 Email2Label = content.GetPropertyValue<string>("email2label_Content"),
@@ -155,10 +173,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
                 model.Photo = new Image()
                 {
                     AlternativeText = imageData.Name,
-                    ImageUrl = ContentHelper.TransformUrl(new Uri(imageData.Url, UriKind.Relative)),
+                    ImageUrl = new Uri(imageData.Url, UriKind.Relative),
                     Width = imageData.GetPropertyValue<int>("umbracoWidth"),
                     Height = imageData.GetPropertyValue<int>("umbracoHeight")
                 };
+                model.Metadata.PageImageUrl = new Uri(Request.Url, model.Photo.ImageUrl).ToString();
             }
 
             // Add common properties to the model

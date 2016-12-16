@@ -3,7 +3,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using AST.AzureBlobStorage.Helper;
+using Escc.EastSussexGovUK.Umbraco.Services;
 using Umbraco.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders
@@ -141,7 +141,8 @@ namespace Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders
             var content = UmbracoContext.Current.ContentCache.GetById(UmbracoContext.Current.PageId.Value);
             if (content == null) return;
 
-            Html = ContentHelper.ParseContent(content.GetPropertyValue<string>(this.PlaceholderToBind + "_Content"));
+            var transformer = new RemoveMediaDomainUrlTransformer();
+            Html = transformer.ParseAndTransformMediaUrlsInHtml(content.GetPropertyValue<string>(this.PlaceholderToBind + "_Content"));
 
             HasContent = !String.IsNullOrWhiteSpace(Html);
         }

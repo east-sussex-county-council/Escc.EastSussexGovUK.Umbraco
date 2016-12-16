@@ -1,4 +1,3 @@
-using AST.AzureBlobStorage.Helper;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.EastSussexGovUK.Umbraco.Services;
 using Umbraco.Core.Models;
@@ -13,12 +12,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// Initializes a new instance of the <see cref="JobsHomeViewModelFromUmbraco" /> class.
         /// </summary>
         /// <param name="umbracoContent">Content from Umbraco using the 'Jobs' document type.</param>
-        /// <param name="mediaUrlTransformer">The media URL transformer.</param>
         /// <exception cref="System.ArgumentNullException">umbracoContent
         /// or
         /// mediaUrlTransformer</exception>
-        public JobsComponentViewModelFromUmbraco(IPublishedContent umbracoContent, IMediaUrlTransformer mediaUrlTransformer) :
-            base(umbracoContent, mediaUrlTransformer)
+        public JobsComponentViewModelFromUmbraco(IPublishedContent umbracoContent) :
+            base(umbracoContent)
         {
         }
 

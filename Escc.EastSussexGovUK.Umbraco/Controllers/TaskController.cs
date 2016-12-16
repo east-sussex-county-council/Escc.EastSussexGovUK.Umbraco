@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
-using AST.AzureBlobStorage.Helper;
 using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Elibrary;
 using Escc.Umbraco.Caching;
@@ -26,7 +25,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
         {
             if (model == null) throw new ArgumentNullException("model");
 
-            var mediaUrlTransformer = new AzureMediaUrlTransformer(GlobalHelper.GetCdnDomain(), GlobalHelper.GetDomainsToReplace());
+            var mediaUrlTransformer = new RemoveMediaDomainUrlTransformer();
             var viewModel = new TaskViewModelFromUmbraco(model.Content,
                     new UmbracoOnAzureRelatedLinksService(mediaUrlTransformer),
                     new ElibraryProxyLinkConverter(new SpydusUrlBuilder()),

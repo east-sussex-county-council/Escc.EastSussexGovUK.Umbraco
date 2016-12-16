@@ -188,11 +188,6 @@
     <add key="Umbraco.ModelsBuilder.ModelsMode" value="Nothing" xdt:Transform="Insert" />
     <!-- END: Configure Umbraco -->
 
-    <!-- START: AST Azure media sync settings -->
-    <add key="useCDN" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-    <add key="useCDN" value="true" xdt:Transform="Insert" />
-    <!-- END: AST Azure media sync settings -->
-
     <!-- For flood alerts included on a standard topic page -->
     <add key="FloodAlertsRssUrl" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     <add key="FloodAlertsRssUrl" value="http://www.environment-agency.gov.uk/homeandleisure/floods/134567.aspx" xdt:Transform="Insert"/>
@@ -295,6 +290,14 @@
             </conditions>
             <action type="Redirect" url="https://www.eastsussex.gov.uk/{R:1}" appendQueryString="true" redirectType="Permanent" />
         </rule>
+        <rule name="Redirect bare domain to www" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+        <rule name="Redirect bare domain to www" stopProcessing="true" xdt:Transform="Insert">
+          <match url="(.*)" />
+          <conditions>
+            <add input="{HTTP_HOST}" pattern="^eastsussex.gov.uk$" />
+          </conditions>
+          <action type="Redirect" url="https://www.eastsussex.gov.uk/{R:1}" appendQueryString="true" redirectType="Permanent" />
+        </rule>
       </rules>
     </rewrite>
 
@@ -393,6 +396,17 @@
       <mimeMap fileExtension=".zip"  mimeType="application/x-zip-compressed" xdt:Transform="Insert" />
     </staticContent>
   </system.webServer>
+
+  <!-- Enable UmbracoFileSystemProviders.Azure to download media -->
+  <location path="media" xdt:Transform="Remove" xdt:Locator="Match(path)" />
+  <location path="media" xdt:Transform="Insert">
+    <system.webServer>
+      <handlers>
+        <remove name="StaticFileHandler" />
+        <add name="StaticFileHandler" path="*" verb="*" preCondition="integratedMode" type="System.Web.StaticFileHandler" />
+      </handlers>
+    </system.webServer>
+  </location>
 
   <!-- Add C#6 support in Razor views -->
   <system.codedom xdt:Transform="Remove" />

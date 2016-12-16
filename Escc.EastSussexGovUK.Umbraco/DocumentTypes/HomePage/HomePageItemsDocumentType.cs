@@ -9,13 +9,15 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.HomePage
     [UmbracoContentType("Home page items", "HomePageItems", new Type[] { typeof(HomePageItemDocumentType)}, true, enableListView: true, icon: BuiltInUmbracoContentTypeIcons.IconLayersAlt, Description="A group of short pieces of content used to build up the home page.")]
     public class HomePageItemsDocumentType : UmbracoGeneratedBase
     {
+        [UmbracoTab("Analytics")]
+        public HomePageItemsAnalyticsTab Analytics { get; set; }
 
         [UmbracoProperty("Page URL", "umbracoUrlName", BuiltInUmbracoDataTypes.Textbox, sortOrder: 0)]
         public Uri UmbracoUrlName { get; set; }
 
         [UmbracoProperty("Description", "pageDescription", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 1, mandatory: true)]
         public string Description { get; set; }
-        
+
         [UmbracoProperty("Author notes", "phDefAuthorNotes", PropertyEditorAliases.RichTextPropertyEditor, dataTypeInstanceName: RichTextAuthorNotesDataType.DataTypeName, sortOrder: 2)]
         public string AuthorNotes { get; set; }
 

@@ -83,6 +83,7 @@
     </div>
 }
 @Html.Partial("~/Views/Layouts/_SocialMedia.cshtml")
+@foreach (var socialMedia in Model.SocialMedia.SocialMediaOrder)
 @Html.Partial("~/Views/EastSussexGovUK/Features/_SupportingContentDesktop.cshtml")
 <div class="text-content content">
     @Html.Partial("~/Views/EastSussexGovUK/Features/_Share.cshtml")

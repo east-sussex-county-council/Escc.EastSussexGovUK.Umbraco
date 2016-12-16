@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
-using AST.AzureBlobStorage.Helper;
 using Escc.EastSussexGovUK.Features;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.EastSussexGovUK.Umbraco.Services;
@@ -27,39 +26,46 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
         {
             if (model == null) throw new ArgumentNullException("model");
 
+            var mediaUrlTransformer = new RemoveMediaDomainUrlTransformer();
             var viewModel = MapUmbracoContentToViewModel(model.Content,
                     new UmbracoLatestService(model.Content),
                     new UmbracoSocialMediaService(model.Content),
                     new UmbracoEastSussex1SpaceService(model.Content),
                     new UmbracoWebChatSettingsService(model.Content, new UrlListReader()),
-                    new UmbracoOnAzureRelatedLinksService(new AzureMediaUrlTransformer(GlobalHelper.GetCdnDomain(), GlobalHelper.GetDomainsToReplace())),
+                    new UmbracoOnAzureRelatedLinksService(mediaUrlTransformer),
                     new ContentExperimentSettingsService(),
-                    new UmbracoEscisService(model.Content));
+                    new UmbracoEscisService(model.Content), 
+                    mediaUrlTransformer);
 
             new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" });
 
             return CurrentTemplate(viewModel);
         }
 
-        private static PersonViewModel MapUmbracoContentToViewModel(IPublishedContent content, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IRelatedLinksService relatedLinksService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService)
+        private PersonViewModel MapUmbracoContentToViewModel(IPublishedContent content, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IRelatedLinksService relatedLinksService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService, IMediaUrlTransformer mediaUrlTransformer)
         {
             var model = new PersonViewModel
             {
                 JobTitle = content.GetPropertyValue<string>("jobTitle_Content"),
-                LeadingText = new HtmlString(ContentHelper.ParseContent(content.GetPropertyValue<string>("leadingText_Content"))),
+                LeadingText = new HtmlString(mediaUrlTransformer.ParseAndTransformMediaUrlsInHtml(content.GetPropertyValue<string>("leadingText_Content"))),
                 Subheading1 = content.GetPropertyValue<string>("subheading1_Content"),
-                Content1 = new HtmlString(ContentHelper.ParseContent(content.GetPropertyValue<string>("content1_Content"))),
+                Content1 = new HtmlString(mediaUrlTransformer.ParseAndTransformMediaUrlsInHtml(content.GetPropertyValue<string>("content1_Content"))),
                 Subheading2 = content.GetPropertyValue<string>("subheading2_Content"),
-                Content2 = new HtmlString(ContentHelper.ParseContent(content.GetPropertyValue<string>("content2_Content"))),
-                Contact = new HtmlString(ContentHelper.ParseContent(content.GetPropertyValue<string>("contact_Content")))
+                Content2 = new HtmlString(mediaUrlTransformer.ParseAndTransformMediaUrlsInHtml(content.GetPropertyValue<string>("content2_Content"))),
+                Contact = new HtmlString(mediaUrlTransformer.ParseAndTransformMediaUrlsInHtml(content.GetPropertyValue<string>("contact_Content")))
             };
 
-            model.Person.Name.Titles.Add(content.GetPropertyValue<string>("HonorificTitle_Content"));
-            model.Person.Name.GivenNames.Add(content.GetPropertyValue<string>("GivenName_Content"));
-            model.Person.Name.FamilyName = content.GetPropertyValue<string>("FamilyName_Content");
-            model.Person.Name.Suffixes.Add(content.GetPropertyValue<string>("HonorificSuffix_Content"));
-            model.Person.EmailAddresses.Add(content.GetPropertyValue<string>("email_Content"));
-            model.Person.TelephoneNumbers.Add(content.GetPropertyValue<string>("phone_Content"));
+            model.Metadata.PersonAbout.Name.Titles.Add(content.GetPropertyValue<string>("HonorificTitle_Content"));
+            model.Metadata.PersonAbout.Name.GivenNames.Add(content.GetPropertyValue<string>("GivenName_Content"));
+            model.Metadata.PersonAbout.Name.FamilyName = content.GetPropertyValue<string>("FamilyName_Content");
+            model.Metadata.PersonAbout.Name.Suffixes.Add(content.GetPropertyValue<string>("HonorificSuffix_Content"));
+            model.Metadata.PersonAbout.EmailAddresses.Add(content.GetPropertyValue<string>("email_Content"));
+            model.Metadata.PersonAbout.TelephoneNumbers.Add(content.GetPropertyValue<string>("phone_Content"));
+            model.Metadata.Person = model.Metadata.PersonAbout.Name.ToString();
+            if (!String.IsNullOrEmpty(model.JobTitle))
+            {
+                model.Metadata.Person += ", " + model.JobTitle;
+            }
 
             var relatedLinksGroups = new RelatedLinksModelBuilder().OrganiseAsHeadingsAndSections(relatedLinksService.BuildRelatedLinksViewModelFromUmbracoContent(content, "relatedLinks_Content"));
             foreach (var linkGroup in relatedLinksGroups)
@@ -72,10 +78,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
                 model.Photo = new Image()
                 {
                     AlternativeText = imageData.Name,
-                    ImageUrl = ContentHelper.TransformUrl(new Uri(imageData.Url, UriKind.Relative)),
+                    ImageUrl = new Uri(imageData.Url, UriKind.Relative),
                     Width = imageData.GetPropertyValue<int>("umbracoWidth"),
                     Height = imageData.GetPropertyValue<int>("umbracoHeight")
                 };
+                model.Metadata.PageImageUrl = new Uri(Request.Url, model.Photo.ImageUrl).ToString();
             }
 
             // Add common properties to the model

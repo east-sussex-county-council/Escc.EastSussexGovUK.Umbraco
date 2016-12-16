@@ -1,6 +1,5 @@
 using System;
 using System.Globalization;
-using AST.AzureBlobStorage.Helper;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.HomePage;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.Umbraco.PropertyTypes;
@@ -16,20 +15,24 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
     public class HomePageItemViewModelFromUmbraco : IViewModelBuilder<HomePageItemViewModel>
     {
         private readonly IPublishedContent _umbracoContent;
-        private readonly IMediaUrlTransformer _mediaUrlTransformer;
+        private readonly IUrlTransformer _linkUrlTransformer;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HomePageItemViewModelFromUmbraco"/> class.
+        /// Initializes a new instance of the <see cref="HomePageItemViewModelFromUmbraco" /> class.
         /// </summary>
-        /// <param name="umbracoContent">An instance of Umbraco content using the <see cref="HomePageItemDocumentType"/> document type.</param>
-        /// <param name="mediaUrlTransformer">A service to links to items in the media library</param>
-        public HomePageItemViewModelFromUmbraco(IPublishedContent umbracoContent, IMediaUrlTransformer mediaUrlTransformer)
+        /// <param name="umbracoContent">An instance of Umbraco content using the <see cref="HomePageItemDocumentType" /> document type.</param>
+        /// <param name="linkUrlTransformer">The link URL transformer.</param>
+        /// <exception cref="System.ArgumentNullException">
+        /// umbracoContent
+        /// or
+        /// mediaUrlTransformer
+        /// </exception>
+        public HomePageItemViewModelFromUmbraco(IPublishedContent umbracoContent, IUrlTransformer linkUrlTransformer=null)
         {
             if (umbracoContent == null) throw new ArgumentNullException(nameof(umbracoContent));
-            if (mediaUrlTransformer == null) throw new ArgumentNullException(nameof(mediaUrlTransformer));
 
             _umbracoContent = umbracoContent;
-            _mediaUrlTransformer = mediaUrlTransformer;
+            _linkUrlTransformer = linkUrlTransformer;
         }
 
         /// <summary>
@@ -53,6 +56,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
                     Url = new Uri(targetUrl, UriKind.RelativeOrAbsolute),
                     Text = _umbracoContent.Name
                 };
+                if (_linkUrlTransformer != null)
+                {
+                    model.Link.Url = _linkUrlTransformer.TransformUrl(model.Link.Url);
+                }
             }
 
             // Photo
@@ -61,7 +68,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             {
                 model.Image = new Image()
                 {
-                    ImageUrl = _mediaUrlTransformer.TransformMediaUrl(new Uri(imageData.Url, UriKind.Relative)),
+                    ImageUrl = new Uri(imageData.Url, UriKind.Relative),
                     Width = imageData.GetPropertyValue<int>("umbracoWidth"),
                     Height = imageData.GetPropertyValue<int>("umbracoHeight")
                 };

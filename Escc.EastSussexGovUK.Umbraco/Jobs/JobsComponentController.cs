@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Web.Mvc;
-using AST.AzureBlobStorage.Helper;
 using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Umbraco.ContentExperiments;
 using Umbraco.Web;
@@ -20,8 +19,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         {
             if (model == null) throw new ArgumentNullException(nameof(model));
 
-            var mediaUrlTransformer = new AzureMediaUrlTransformer(GlobalHelper.GetCdnDomain(), GlobalHelper.GetDomainsToReplace());
-            var viewModel = new JobsComponentViewModelFromUmbraco(model.Content, mediaUrlTransformer).BuildModel();
+            var viewModel = new JobsComponentViewModelFromUmbraco(model.Content).BuildModel();
 
             var modelBuilder = new BaseViewModelBuilder();
             modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode);
