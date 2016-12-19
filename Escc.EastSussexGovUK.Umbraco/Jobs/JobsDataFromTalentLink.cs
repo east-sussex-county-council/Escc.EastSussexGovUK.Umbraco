@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Configuration;
 using System.Globalization;
 using System.IO;
@@ -19,7 +20,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         private readonly Uri _searchUrl;
         private readonly Uri _resultsUrl;
         private readonly IProxyProvider _proxy;
-        private readonly IJobTypesParser _jobTypesParser;
+        private readonly IJobLookupValuesParser _lookupValuesParser;
         private readonly IJobResultsParser _jobResultsParser;
 
         /// <summary>
@@ -28,10 +29,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// <param name="searchUrl">The search URL.</param>
         /// <param name="resultsUrl">The source URL.</param>
         /// <param name="proxy">The proxy (optional).</param>
-        /// <param name="jobTypesParser">The job types parser.</param>
+        /// <param name="lookupValuesParser">The parser for lookup values in the TalentLink HTML.</param>
         /// <param name="jobResultsParser">The job results parser.</param>
         /// <exception cref="System.ArgumentNullException">sourceUrl</exception>
-        public JobsDataFromTalentLink(Uri searchUrl, Uri resultsUrl, IProxyProvider proxy, IJobTypesParser jobTypesParser, IJobResultsParser jobResultsParser)
+        public JobsDataFromTalentLink(Uri searchUrl, Uri resultsUrl, IProxyProvider proxy, IJobLookupValuesParser lookupValuesParser, IJobResultsParser jobResultsParser)
         {
             if (searchUrl == null) throw new ArgumentNullException(nameof(searchUrl));
             if (resultsUrl == null) throw new ArgumentNullException(nameof(resultsUrl));
@@ -39,7 +40,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             _searchUrl = searchUrl;
             _resultsUrl = resultsUrl;
             _proxy = proxy;
-            _jobTypesParser = jobTypesParser;
+            _lookupValuesParser = lookupValuesParser;
             _jobResultsParser = jobResultsParser;
         }
 
@@ -50,17 +51,21 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// <returns></returns>
         public async Task<List<Job>> ReadJobs(JobSearchFilter filter)
         {
-            if (_jobTypesParser == null) throw new ArgumentNullException(nameof(_jobTypesParser));
+            if (_lookupValuesParser == null) throw new ArgumentNullException(nameof(_lookupValuesParser));
             if (_jobResultsParser == null) throw new ArgumentNullException(nameof(_jobResultsParser));
 
             var jobs = new List<Job>();
 
-            var jobTypes = await ReadJobTypesFromTalentLink(_jobTypesParser);
+            var locations = await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV39");
+            var jobTypes = await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV40");
+            var organisations = await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV52");
+            var salaryRanges = await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV46");
+            var workingHours = await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV50");
 
             var currentPage = 1;
             while (true)
             {
-                var stream = await ReadJobsFromTalentLink(currentPage, filter, jobTypes);
+                var stream = await ReadJobsFromTalentLink(currentPage, filter, locations, jobTypes, organisations, salaryRanges, workingHours);
                 var parseResult = _jobResultsParser.Parse(stream);
 
                 if (parseResult.Jobs.Count > 0)
@@ -89,33 +94,58 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// Initiates an HTTP request and returns the HTML.
         /// </summary>
         /// <returns></returns>
-        private async Task<Stream> ReadJobsFromTalentLink(int currentPage, JobSearchFilter filter, Dictionary<int,string> jobTypes)
+        private async Task<Stream> ReadJobsFromTalentLink(int currentPage, JobSearchFilter filter, Dictionary<int,string> locations, Dictionary<int,string> jobTypes, Dictionary<int,string> organisations, Dictionary<int,string> salaryRanges, Dictionary<int,string> workingHours)
         {
-            var pagedSourceUrl = new StringBuilder(_resultsUrl.ToString()).Append($"&resultsperpage=200&pagenum={currentPage}");
+            var query = HttpUtility.ParseQueryString(_resultsUrl.Query);
+            UpdateQueryString(query, "resultsperpage", "200");
+            UpdateQueryString(query, "pagenum", currentPage.ToString(CultureInfo.InvariantCulture));
+
             if (filter != null)
             {
-                foreach (var jobType in filter.JobTypes)
-                {
-                    foreach (var knownJobType in jobTypes)
-                    {
-                        if (knownJobType.Value == jobType)
-                        {
-                            pagedSourceUrl.Append("&LOV40=").Append(HttpUtility.UrlEncode(knownJobType.Key.ToString(CultureInfo.InvariantCulture)));
-                        }
-                    }
-                }
+                UpdateQueryString(query, "keywords", filter.Keywords);
+                UpdateQueryString(query, "jobnum", filter.JobReference);
+                AddLookupValueToQueryString(query, "LOV39", locations, new [] { filter.Location});
+                AddLookupValueToQueryString(query, "LOV40", jobTypes, filter.JobTypes);
+                AddLookupValueToQueryString(query, "LOV52", organisations, new [] { filter.Organisation});
+                AddLookupValueToQueryString(query, "LOV46", salaryRanges, new [] { filter.SalaryRange});
+                AddLookupValueToQueryString(query, "LOV50", workingHours, filter.WorkingHours);
             }
+
+            var pagedSourceUrl = new StringBuilder(_resultsUrl.Scheme).Append("://").Append(_resultsUrl.Authority).Append(_resultsUrl.AbsolutePath).Append("?").Append(query);
 
             return await ReadHtml(new Uri(pagedSourceUrl.ToString()), _proxy);
         }
 
-        private async Task<Dictionary<int,string>> ReadJobTypesFromTalentLink(IJobTypesParser parser)
+        private static void AddLookupValueToQueryString(NameValueCollection query, string parameter, Dictionary<int, string> lookupValues, IList<string> searchTerms)
+        {
+            foreach (var searchTerm in searchTerms)
+            {
+                foreach (var knownValue in lookupValues)
+                {
+                    if (knownValue.Value?.ToUpperInvariant() == searchTerm?.ToUpperInvariant())
+                    {
+                        UpdateQueryString(query, parameter, knownValue.Key.ToString(CultureInfo.InvariantCulture), false);
+                    }
+                }
+            }
+        }
+
+        private static void UpdateQueryString(NameValueCollection query, string parameter, string value, bool replaceExistingValue=true)
+        {
+            if (!String.IsNullOrEmpty(value))
+            {
+                if (replaceExistingValue) query.Remove(parameter);
+                query.Add(parameter, HttpUtility.UrlEncode(value));
+            }
+        }
+
+        private async Task<Dictionary<int,string>> ReadLookupValuesFromTalentLink(IJobLookupValuesParser parser, string fieldName)
         {
             var htmlStream = await ReadHtml(_searchUrl, _proxy);
 
             using (var reader = new StreamReader(htmlStream))
             {
-                return parser.ParseJobTypes(reader.ReadToEnd());
+                return parser.ParseLookupValues(reader.ReadToEnd(), fieldName);
             }
         }
 

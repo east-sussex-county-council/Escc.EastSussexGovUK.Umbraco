@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -38,7 +39,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
 
             List<Job> jobs = null;
 
-            var filter = GetSearchFilter(model.Content);
+            var filter = GetSearchFilter(model.Content, Request.QueryString);
             var filterCacheKey = "Jobs" + filter.ToHash();
 
             if (HttpContext.Cache[filterCacheKey] == null || Request.QueryString["ForceCacheRefresh"] == "1")
@@ -47,9 +48,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 var resultsUrl = new TalentLinkUrl(model.Content.GetPropertyValue<string>("ResultsScriptUrl_Content")).LinkUrl;
                 var detailPage = model.Content.GetPropertyValue<IPublishedContent>("JobDetailPage_Content");
 
-                var jobTypesParser = new JobTypesHtmlParser();
+                var lookupValuesParser = new JobLookupValuesHtmlParser();
                 var jobResultsParser = new JobResultsHtmlParser(detailPage != null ? new Uri(detailPage.UrlWithDomain()) : Request.Url);
-                var jobsProvider = new JobsDataFromTalentLink(searchUrl, resultsUrl, new ConfigurationProxyProvider(), jobTypesParser, jobResultsParser);
+                var jobsProvider = new JobsDataFromTalentLink(searchUrl, resultsUrl, new ConfigurationProxyProvider(), lookupValuesParser, jobResultsParser);
 
                 jobs = await jobsProvider.ReadJobs(filter);
 
@@ -70,15 +71,54 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             return CurrentTemplate(viewModel);
         }
 
-        private static JobSearchFilter GetSearchFilter(IPublishedContent content)
+        private static JobSearchFilter GetSearchFilter(IPublishedContent content, NameValueCollection queryString)
         {
             var filter = new JobSearchFilter();
+
+            if (!String.IsNullOrEmpty(queryString["keywords"]))
+            {
+                filter.Keywords = queryString["keywords"];
+            }
+
+            if (!String.IsNullOrEmpty(queryString["location"]))
+            {
+                filter.Keywords = queryString["location"];
+            }
+
+            if (!String.IsNullOrEmpty(queryString["type"]))
+            {
+                filter.JobTypes.Add(queryString["type"]);
+            }
 
             var jobTypes = content.GetPropertyValue<string>("JobTypes_Content");
             var jobTypesToFilter = Regex.Replace(Regex.Replace(jobTypes, "\r", String.Empty), "\n", Environment.NewLine).SplitAndTrim(Environment.NewLine);
             foreach (var jobType in jobTypesToFilter)
             {
                 filter.JobTypes.Add(jobType);
+            }
+
+            if (!String.IsNullOrEmpty(queryString["org"]))
+            {
+                filter.Organisation = queryString["org"];
+            }
+
+            if (!String.IsNullOrEmpty(queryString["salary"]))
+            {
+                filter.SalaryRange = queryString["salary"];
+            }
+
+            if (!String.IsNullOrEmpty(queryString["ref"]))
+            {
+                filter.JobReference = queryString["ref"];
+            }
+
+            if (!String.IsNullOrEmpty(queryString["hours"]))
+            {
+                var values = queryString["hours"].SplitAndTrim(",");
+                foreach (var value in values)
+                {
+                    filter.WorkingHours.Add(value);
+                }
             }
 
             return filter;

@@ -3356,7 +3356,7 @@
     <Compile Include="App_Start\EastSussexGovUK_Mvc.cs" />
     <Compile Include="Jobs\IJobResultsParser.cs" />
     <Compile Include="Jobs\IJobsDataProvider.cs" />
-    <Compile Include="Jobs\IJobTypesParser.cs" />
+    <Compile Include="Jobs\IJobLookupValuesParser.cs" />
     <Compile Include="Jobs\Job.cs" />
     <Compile Include="Jobs\JobResultsHtmlParser.cs" />
     <Compile Include="Jobs\JobSearchFilter.cs" />
@@ -3368,7 +3368,7 @@
     <Compile Include="Jobs\IHtmlAgilityPackFilter.cs" />
     <Compile Include="ApiControllers\LocationController.cs" />
     <Compile Include="ApiControllers\MediaController.cs" />
-    <Compile Include="Jobs\JobTypesHtmlParser.cs" />
+    <Compile Include="Jobs\JobLookupValuesHtmlParser.cs" />
     <Compile Include="Jobs\RemoveAttributeFilter.cs" />
     <Compile Include="Jobs\RemoveElementByIdFilter.cs" />
     <Compile Include="Jobs\RemoveOuterHtmlFromSearchFieldsFilter.cs" />
