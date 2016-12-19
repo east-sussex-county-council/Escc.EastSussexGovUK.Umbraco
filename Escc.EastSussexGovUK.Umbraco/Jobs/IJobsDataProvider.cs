@@ -10,9 +10,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
     public interface IJobsDataProvider
     {
         /// <summary>
+        /// Reads the HTML for the search fields
+        /// </summary>
+        /// <returns></returns>
+        Task<Stream> ReadSearchFieldsHtml();
+        
+        /// <summary>
         /// Gets the jobs
         /// </summary>
         /// <returns></returns>
-        Task<List<Job>> ReadJobs();
+        Task<List<Job>> ReadJobs(JobSearchFilter filter);
     }
 }

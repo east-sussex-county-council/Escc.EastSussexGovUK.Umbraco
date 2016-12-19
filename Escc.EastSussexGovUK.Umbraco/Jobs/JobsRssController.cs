@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Caching;
@@ -8,6 +9,7 @@ using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.Net;
 using Escc.Umbraco.Caching;
 using Escc.Umbraco.PropertyTypes;
+using Exceptionless.Extensions;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 using Umbraco.Web.Models;
@@ -35,21 +37,27 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             viewModel.Metadata.Description = model.Content.GetPropertyValue<string>("pageDescription_Content");
 
             List<Job> jobs = null;
-            if (HttpContext.Cache["Jobs"] == null || Request.QueryString["ForceCacheRefresh"] == "1")
+
+            var filter = GetSearchFilter(model.Content);
+            var filterCacheKey = "Jobs" + filter.ToHash();
+
+            if (HttpContext.Cache[filterCacheKey] == null || Request.QueryString["ForceCacheRefresh"] == "1")
             {
-                var sourceUrl = new TalentLinkUrl(model.Content.GetPropertyValue<string>("ResultsScriptUrl_Content")).LinkUrl;
+                var searchUrl = new TalentLinkUrl(model.Content.GetPropertyValue<string>("SearchScriptUrl_Content")).LinkUrl;
+                var resultsUrl = new TalentLinkUrl(model.Content.GetPropertyValue<string>("ResultsScriptUrl_Content")).LinkUrl;
                 var detailPage = model.Content.GetPropertyValue<IPublishedContent>("JobDetailPage_Content");
 
-                var parser = new JobResultsHtmlParser(detailPage != null ? new Uri(detailPage.UrlWithDomain()) : Request.Url);
-                var jobsProvider = new JobsDataFromTalentLink(sourceUrl, new ConfigurationProxyProvider(), parser);
+                var jobTypesParser = new JobTypesHtmlParser();
+                var jobResultsParser = new JobResultsHtmlParser(detailPage != null ? new Uri(detailPage.UrlWithDomain()) : Request.Url);
+                var jobsProvider = new JobsDataFromTalentLink(searchUrl, resultsUrl, new ConfigurationProxyProvider(), jobTypesParser, jobResultsParser);
 
-                jobs = await jobsProvider.ReadJobs();
+                jobs = await jobsProvider.ReadJobs(filter);
 
-                HttpContext.Cache.Insert("Jobs", jobs, null, DateTime.Now.AddHours(1), Cache.NoSlidingExpiration);
+                HttpContext.Cache.Insert(filterCacheKey, jobs, null, DateTime.Now.AddHours(1), Cache.NoSlidingExpiration);
             }
             else
             {
-                jobs = (List<Job>) HttpContext.Cache["Jobs"];
+                jobs = (List<Job>) HttpContext.Cache[filterCacheKey];
             }
 
             foreach (var job in jobs)
@@ -60,6 +68,20 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache);
 
             return CurrentTemplate(viewModel);
+        }
+
+        private static JobSearchFilter GetSearchFilter(IPublishedContent content)
+        {
+            var filter = new JobSearchFilter();
+
+            var jobTypes = content.GetPropertyValue<string>("JobTypes_Content");
+            var jobTypesToFilter = Regex.Replace(Regex.Replace(jobTypes, "\r", String.Empty), "\n", Environment.NewLine).SplitAndTrim(Environment.NewLine);
+            foreach (var jobType in jobTypesToFilter)
+            {
+                filter.JobTypes.Add(jobType);
+            }
+
+            return filter;
         }
     }
 }

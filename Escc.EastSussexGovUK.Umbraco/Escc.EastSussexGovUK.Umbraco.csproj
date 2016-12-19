@@ -3356,8 +3356,10 @@
     <Compile Include="App_Start\EastSussexGovUK_Mvc.cs" />
     <Compile Include="Jobs\IJobResultsParser.cs" />
     <Compile Include="Jobs\IJobsDataProvider.cs" />
+    <Compile Include="Jobs\IJobTypesParser.cs" />
     <Compile Include="Jobs\Job.cs" />
     <Compile Include="Jobs\JobResultsHtmlParser.cs" />
+    <Compile Include="Jobs\JobSearchFilter.cs" />
     <Compile Include="Jobs\JobsParseResult.cs" />
     <Compile Include="Jobs\JobsRssController.cs" />
     <Compile Include="Jobs\JobsRssContentTab.cs" />
@@ -3366,6 +3368,7 @@
     <Compile Include="Jobs\IHtmlAgilityPackFilter.cs" />
     <Compile Include="ApiControllers\LocationController.cs" />
     <Compile Include="ApiControllers\MediaController.cs" />
+    <Compile Include="Jobs\JobTypesHtmlParser.cs" />
     <Compile Include="Jobs\RemoveAttributeFilter.cs" />
     <Compile Include="Jobs\RemoveElementByIdFilter.cs" />
     <Compile Include="Jobs\RemoveOuterHtmlFromSearchFieldsFilter.cs" />
@@ -3397,7 +3400,6 @@
     <Compile Include="Jobs\JobsHomeController.cs" />
     <Compile Include="Jobs\JobsComponentViewModel.cs" />
     <Compile Include="Jobs\JobSearchResultsViewModel.cs" />
-    <Compile Include="Jobs\UserInterfaceHtmlFromTalentLink.cs" />
     <Compile Include="Models\TalentLinkUrl.cs" />
     <Compile Include="Jobs\BaseJobsViewModelFromUmbracoBuilder.cs" />
     <Compile Include="Jobs\JobSearchResultsViewModelFromUmbraco.cs" />

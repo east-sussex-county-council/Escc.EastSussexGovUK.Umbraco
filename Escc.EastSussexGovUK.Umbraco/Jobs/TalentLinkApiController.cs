@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -7,6 +9,7 @@ using System.Web.Http;
 using Escc.EastSussexGovUK.Umbraco.ApiControllers;
 using Escc.Net;
 using HtmlAgilityPack;
+using Umbraco.Core;
 using Umbraco.Web.WebApi;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
@@ -14,7 +17,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
     /// <summary>
     /// Web API which acts as a facade for data from the TalentLink system
     /// </summary>
-    /// <seealso cref="Umbraco.Web.WebApi.UmbracoApiController" />
+    /// <seealso cref="UmbracoApiController"/>
     public class TalentLinkApiController : UmbracoApiController
     {
         /// <summary>
@@ -28,8 +31,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         {
             var url = String.Format(ConfigurationManager.AppSettings["TalentLinkHtmlUrl"], id, mask);
 
-            var htmlSource = new UserInterfaceHtmlFromTalentLink(new Uri(url), new ConfigurationProxyProvider());
-            var htmlStream = await htmlSource.ReadHtml();
+            var htmlSource = new JobsDataFromTalentLink(new Uri(url), new Uri(url), new ConfigurationProxyProvider(), null, null);
+            var htmlStream = await htmlSource.ReadSearchFieldsHtml();
 
             var parsedHtml = new HtmlDocument();
             parsedHtml.Load(htmlStream);
