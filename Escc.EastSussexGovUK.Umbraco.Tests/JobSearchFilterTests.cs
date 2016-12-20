@@ -14,7 +14,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [Test]
         public void KeywordsChangesHash()
         {
-            var filter = new JobSearchFilter();
+            var filter = new JobSearchQuery();
 
             var hashBefore = filter.ToHash();
             filter.Keywords = "test";
@@ -26,7 +26,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [Test]
         public void LocationChangesHash()
         {
-            var filter = new JobSearchFilter();
+            var filter = new JobSearchQuery();
 
             var hashBefore = filter.ToHash();
             filter.Locations = "test";
@@ -38,7 +38,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [Test]
         public void JobTypeChangesHash()
         {
-            var filter = new JobSearchFilter();
+            var filter = new JobSearchQuery();
 
             var hashBefore = filter.ToHash();
             filter.JobTypes.Add("test");
@@ -50,7 +50,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [Test]
         public void WorkingHoursChangesHash()
         {
-            var filter = new JobSearchFilter();
+            var filter = new JobSearchQuery();
 
             var hashBefore = filter.ToHash();
             filter.WorkPatterns.Add("test");
@@ -62,7 +62,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [Test]
         public void OrganisationChangesHash()
         {
-            var filter = new JobSearchFilter();
+            var filter = new JobSearchQuery();
 
             var hashBefore = filter.ToHash();
             filter.Organisations = "test";
@@ -74,7 +74,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [Test]
         public void SalaryRangeChangesHash()
         {
-            var filter = new JobSearchFilter();
+            var filter = new JobSearchQuery();
 
             var hashBefore = filter.ToHash();
             filter.SalaryRanges = "test";
@@ -86,7 +86,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [Test]
         public void JobReferenceChangesHash()
         {
-            var filter = new JobSearchFilter();
+            var filter = new JobSearchQuery();
 
             var hashBefore = filter.ToHash();
             filter.JobReference = "test";
@@ -98,11 +98,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [Test]
         public void KeywordHashIsDifferentToLocation()
         {
-            var keywordsFilter = new JobSearchFilter();
+            var keywordsFilter = new JobSearchQuery();
             keywordsFilter.Keywords = "test";
             var hashKeywords = keywordsFilter.ToHash();
 
-            var locationFilter = new JobSearchFilter();
+            var locationFilter = new JobSearchQuery();
             locationFilter.Locations = "test";
             var hashLocation = locationFilter.ToHash();
 

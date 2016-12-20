@@ -11,7 +11,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
     /// Settings to filter a list of jobs by
     /// </summary>
     /// <remarks>IList properties need to have externally-visible setters to support MVC model binding</remarks>
-    public class JobSearchFilter
+    public class JobSearchQuery
     {
         /// <summary>
         /// Gets or sets the keywords to search by, using an OR operator between words
@@ -67,6 +67,32 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public string JobReference { get; set; }
 
         /// <summary>
+        /// Gets or sets the field to sort results by
+        /// </summary>
+        /// <value>
+        /// The sort by.
+        /// </value>
+        public JobsSortOrder SortBy { get; set; } = JobsSortOrder.None;
+
+        /// <summary>
+        /// The possible sort orders supported by the jobs service
+        /// </summary>
+        public enum JobsSortOrder
+        {
+            None,
+            JobTitleAscending,
+            JobTitleDescending,
+            OrganisationAscending,
+            OrganisationDescending,
+            LocationAscending,
+            LocationDescending,
+            SalaryRangeAscending,
+            SalaryRangeDescending,
+            ClosingDateAscending,
+            ClosingDateDescending
+        }
+
+        /// <summary>
         /// Gets a unique hash of the filter settings
         /// </summary>
         /// <returns></returns>
@@ -85,6 +111,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             foreach (var value in JobTypes) allContent.Append(value);
             allContent.Append("workpatterns");
             foreach (var value in WorkPatterns) allContent.Append(value);
+            allContent.Append("sort").Append(SortBy);
 
             HashAlgorithm algorithm = SHA1.Create();
             var bytes = Encoding.UTF8.GetBytes(allContent.ToString());

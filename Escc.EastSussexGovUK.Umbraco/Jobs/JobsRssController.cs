@@ -37,29 +37,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             viewModel.Metadata.Title = model.Content.Name;
             viewModel.Metadata.Description = model.Content.GetPropertyValue<string>("pageDescription_Content");
 
-            List<Job> jobs = null;
-
-            var filter = GetSearchFilter(model.Content, Request.QueryString);
-            var filterCacheKey = "Jobs" + filter.ToHash();
-
-            if (HttpContext.Cache[filterCacheKey] == null || Request.QueryString["ForceCacheRefresh"] == "1")
-            {
-                var searchUrl = new TalentLinkUrl(model.Content.GetPropertyValue<string>("SearchScriptUrl_Content")).LinkUrl;
-                var resultsUrl = new TalentLinkUrl(model.Content.GetPropertyValue<string>("ResultsScriptUrl_Content")).LinkUrl;
-                var detailPage = model.Content.GetPropertyValue<IPublishedContent>("JobDetailPage_Content");
-
-                var lookupValuesParser = new JobLookupValuesHtmlParser();
-                var jobResultsParser = new JobResultsHtmlParser(detailPage != null ? new Uri(detailPage.UrlWithDomain()) : Request.Url);
-                var jobsProvider = new JobsDataFromTalentLink(searchUrl, resultsUrl, new ConfigurationProxyProvider(), lookupValuesParser, jobResultsParser);
-
-                jobs = await jobsProvider.ReadJobs(filter);
-
-                HttpContext.Cache.Insert(filterCacheKey, jobs, null, DateTime.Now.AddHours(1), Cache.NoSlidingExpiration);
-            }
-            else
-            {
-                jobs = (List<Job>) HttpContext.Cache[filterCacheKey];
-            }
+            var jobs = await ReadJobs(model);
 
             foreach (var job in jobs)
             {
@@ -71,57 +49,40 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             return CurrentTemplate(viewModel);
         }
 
-        private static JobSearchFilter GetSearchFilter(IPublishedContent content, NameValueCollection queryString)
+        private async Task<List<Job>> ReadJobs(RenderModel model)
         {
-            var filter = new JobSearchFilter();
+            List<Job> jobs = null;
 
-            if (!String.IsNullOrEmpty(queryString["keywords"]))
-            {
-                filter.Keywords = queryString["keywords"];
-            }
+            var query = new JobSearchQueryFactory().CreateFromQueryString(Request.QueryString);
 
-            if (!String.IsNullOrEmpty(queryString["location"]))
-            {
-                filter.Keywords = queryString["location"];
-            }
-
-            if (!String.IsNullOrEmpty(queryString["type"]))
-            {
-                filter.JobTypes.Add(queryString["type"]);
-            }
-
-            var jobTypes = content.GetPropertyValue<string>("JobTypes_Content");
+            var jobTypes = model.Content.GetPropertyValue<string>("JobTypes_Content");
             var jobTypesToFilter = Regex.Replace(Regex.Replace(jobTypes, "\r", String.Empty), "\n", Environment.NewLine).SplitAndTrim(Environment.NewLine);
             foreach (var jobType in jobTypesToFilter)
             {
-                filter.JobTypes.Add(jobType);
+                query.JobTypes.Add(jobType);
             }
 
-            if (!String.IsNullOrEmpty(queryString["org"]))
+            var cacheKey = "Jobs" + query.ToHash();
+
+            if (HttpContext.Cache[cacheKey] == null || Request.QueryString["ForceCacheRefresh"] == "1")
             {
-                filter.Organisations.Add(queryString["org"]);
-            }
+                var searchUrl = new TalentLinkUrl(model.Content.GetPropertyValue<string>("SearchScriptUrl_Content")).LinkUrl;
+                var resultsUrl = new TalentLinkUrl(model.Content.GetPropertyValue<string>("ResultsScriptUrl_Content")).LinkUrl;
+                var detailPage = model.Content.GetPropertyValue<IPublishedContent>("JobDetailPage_Content");
 
-            if (!String.IsNullOrEmpty(queryString["salary"]))
+                var lookupValuesParser = new JobLookupValuesHtmlParser();
+                var jobResultsParser = new JobResultsHtmlParser(detailPage != null ? new Uri(detailPage.UrlWithDomain()) : Request.Url);
+                var jobsProvider = new JobsDataFromTalentLink(searchUrl, resultsUrl, new ConfigurationProxyProvider(), lookupValuesParser, jobResultsParser);
+
+                jobs = await jobsProvider.ReadJobs(query);
+
+                HttpContext.Cache.Insert(cacheKey, jobs, null, DateTime.Now.AddHours(1), Cache.NoSlidingExpiration);
+            }
+            else
             {
-                filter.SalaryRanges.Add(queryString["salary"]);
+                jobs = (List<Job>) HttpContext.Cache[cacheKey];
             }
-
-            if (!String.IsNullOrEmpty(queryString["ref"]))
-            {
-                filter.JobReference = queryString["ref"];
-            }
-
-            if (!String.IsNullOrEmpty(queryString["hours"]))
-            {
-                var values = queryString["hours"].SplitAndTrim(",");
-                foreach (var value in values)
-                {
-                    filter.WorkPatterns.Add(value);
-                }
-            }
-
-            return filter;
+            return jobs;
         }
     }
 }

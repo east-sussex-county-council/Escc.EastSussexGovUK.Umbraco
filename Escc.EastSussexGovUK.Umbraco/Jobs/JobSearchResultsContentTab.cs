@@ -56,9 +56,23 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         [UmbracoProperty("Job alerts page", "JobAlertsPage", BuiltInUmbracoDataTypes.ContentPickerAlias, sortOrder: 5, Description = "Select the job alerts page, based on the 'Jobs component' document type")]
         public string JobAlertsPage { get; set; }
 
-        [UmbracoProperty("Search results script URL", "ResultsScriptUrl", UrlDataType.PropertyEditorAlias, UrlDataType.DataTypeName, sortOrder: 6, mandatory: true,
+        /// <summary>
+        /// Gets or sets the job detail page
+        /// </summary>
+        /// <value>
+        /// A reference to the Umbraco node for the detail page
+        /// </value>
+        [UmbracoProperty("Job detail page", "JobDetailPage", BuiltInUmbracoDataTypes.ContentPickerAlias, sortOrder: 6,
+            Description = "Select the job detail page used to display a single job advert, based on the 'Jobs component' document type")]
+        public string JobDetailPage { get; set; }
+
+        [UmbracoProperty("Search script URL", "SearchScriptUrl", UrlDataType.PropertyEditorAlias, UrlDataType.DataTypeName, sortOrder: 7, mandatory: true,
+        Description = "A standard TalentLink component is embedded into a page by referencing a script. Paste the URL of the search component here.")]
+        public Uri SearchScriptUrl { get; set; }
+
+        [UmbracoProperty("Search results script URL", "ResultsScriptUrl", UrlDataType.PropertyEditorAlias, UrlDataType.DataTypeName, sortOrder: 8, mandatory: true,
             Description = "A standard TalentLink component is embedded into a page by referencing a script. Paste the URL of the search results component here.")]
-        public Uri ScriptUrl { get; set; }
+        public Uri ResultsScriptUrl { get; set; }
 
         /// <summary>
         /// Gets or sets the button navigation.
@@ -66,14 +80,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// <value>
         /// The button navigation.
         /// </value>
-        [UmbracoProperty("Button navigation", "ButtonNavigation", BuiltInUmbracoDataTypes.RelatedLinks, sortOrder: 7,
+        [UmbracoProperty("Button navigation", "ButtonNavigation", BuiltInUmbracoDataTypes.RelatedLinks, sortOrder: 9,
             Description = "Buttons and adverts, which can be customised using the images below. Set the caption to a space or hyphen to link the image without text.")]
         public string ButtonNavigation { get; set; }
 
         /// <summary>
         /// Gets or sets the images to be linked using <see cref="ButtonNavigation"/>
         /// </summary>
-        [UmbracoProperty("Button images", "ButtonImages", BuiltInUmbracoDataTypes.MultipleMediaPicker, sortOrder: 8,
+        [UmbracoProperty("Button images", "ButtonImages", BuiltInUmbracoDataTypes.MultipleMediaPicker, sortOrder: 10,
             Description = "Select the images to link to pages selected for button navigation, above.")]
         public string ButtonImages { get; set; }
     }

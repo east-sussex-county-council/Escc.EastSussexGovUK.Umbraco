@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.Umbraco.PropertyTypes;
+using X.PagedList;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
@@ -36,6 +37,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public HtmlLink JobAlertsPage { get; set; }
 
         /// <summary>
+        /// Gets or sets the job detail page.
+        /// </summary>
+        public HtmlLink JobDetailPage { get; set; }
+
+        /// <summary>
         /// Gets or sets the URL of the script to embed the component in the page.
         /// </summary>
         /// <value>
@@ -52,5 +58,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// Gets or sets the images to link using <see cref="ButtonNavigation"/>
         /// </summary>
         public IList<Image> ButtonImages { get; set; }
+
+        /// <summary>
+        /// Gets the jobs to display
+        /// </summary>
+        public IPagedList<Job> Jobs { get; set; }
     }
 }

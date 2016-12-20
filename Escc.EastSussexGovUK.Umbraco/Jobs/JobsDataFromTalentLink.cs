@@ -48,7 +48,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// Reads the jobs from pages of data provided by the <see cref="IJobsDataProvider"/>
         /// </summary>
         /// <returns></returns>
-        public async Task<List<Job>> ReadJobs(JobSearchFilter filter)
+        public async Task<List<Job>> ReadJobs(JobSearchQuery query)
         {
             if (_lookupValuesParser == null) throw new ArgumentNullException(nameof(_lookupValuesParser));
             if (_jobResultsParser == null) throw new ArgumentNullException(nameof(_jobResultsParser));
@@ -64,7 +64,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             var currentPage = 1;
             while (true)
             {
-                var stream = await ReadJobsFromTalentLink(currentPage, filter, locations, jobTypes, organisations, salaryRanges, workPatterns);
+                var stream = await ReadJobsFromTalentLink(currentPage, query, locations, jobTypes, organisations, salaryRanges, workPatterns);
                 var parseResult = _jobResultsParser.Parse(stream);
 
                 if (parseResult.Jobs.Count > 0)
@@ -112,26 +112,74 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// Initiates an HTTP request and returns the HTML.
         /// </summary>
         /// <returns></returns>
-        private async Task<Stream> ReadJobsFromTalentLink(int currentPage, JobSearchFilter filter, IList<JobsLookupValue> locations, IList<JobsLookupValue> jobTypes, IList<JobsLookupValue> organisations, IList<JobsLookupValue> salaryRanges, IList<JobsLookupValue> workPatterns)
+        private async Task<Stream> ReadJobsFromTalentLink(int currentPage, JobSearchQuery query, IList<JobsLookupValue> locations, IList<JobsLookupValue> jobTypes, IList<JobsLookupValue> organisations, IList<JobsLookupValue> salaryRanges, IList<JobsLookupValue> workPatterns)
         {
-            var query = HttpUtility.ParseQueryString(_resultsUrl.Query);
-            UpdateQueryString(query, "resultsperpage", "200");
-            UpdateQueryString(query, "pagenum", currentPage.ToString(CultureInfo.InvariantCulture));
+            var queryString = HttpUtility.ParseQueryString(_resultsUrl.Query);
+            UpdateQueryString(queryString, "resultsperpage", "200");
+            UpdateQueryString(queryString, "pagenum", currentPage.ToString(CultureInfo.InvariantCulture));
 
-            if (filter != null)
+            if (query != null)
             {
-                UpdateQueryString(query, "keywords", filter.Keywords);
-                UpdateQueryString(query, "jobnum", filter.JobReference);
-                AddLookupValueToQueryString(query, "LOV39", locations, filter.Locations);
-                AddLookupValueToQueryString(query, "LOV40", jobTypes, filter.JobTypes);
-                AddLookupValueToQueryString(query, "LOV52", organisations, filter.Organisations);
-                AddLookupValueToQueryString(query, "LOV46", salaryRanges, filter.SalaryRanges);
-                AddLookupValueToQueryString(query, "LOV50", workPatterns, filter.WorkPatterns);
+                UpdateQueryString(queryString, "keywords", query.Keywords);
+                UpdateQueryString(queryString, "jobnum", query.JobReference);
+                AddLookupValueToQueryString(queryString, "LOV39", locations, query.Locations);
+                AddLookupValueToQueryString(queryString, "LOV40", jobTypes, query.JobTypes);
+                AddLookupValueToQueryString(queryString, "LOV52", organisations, query.Organisations);
+                AddLookupValueToQueryString(queryString, "LOV46", salaryRanges, query.SalaryRanges);
+                AddLookupValueToQueryString(queryString, "LOV50", workPatterns, query.WorkPatterns);
+                AddSortOrderToQueryString(queryString, query.SortBy);
             }
 
-            var pagedSourceUrl = new StringBuilder(_resultsUrl.Scheme).Append("://").Append(_resultsUrl.Authority).Append(_resultsUrl.AbsolutePath).Append("?").Append(query);
+            var pagedSourceUrl = new StringBuilder(_resultsUrl.Scheme).Append("://").Append(_resultsUrl.Authority).Append(_resultsUrl.AbsolutePath).Append("?").Append(queryString);
 
             return await ReadHtml(new Uri(pagedSourceUrl.ToString()), _proxy);
+        }
+
+        private void AddSortOrderToQueryString(NameValueCollection queryString, JobSearchQuery.JobsSortOrder sortBy)
+        {
+            switch (sortBy)
+            {
+                case JobSearchQuery.JobsSortOrder.JobTitleAscending:
+                    UpdateQueryString(queryString, "option", "21");
+                    UpdateQueryString(queryString, "sort", "ASC");
+                    break;
+                case JobSearchQuery.JobsSortOrder.JobTitleDescending:
+                    UpdateQueryString(queryString, "option", "21");
+                    UpdateQueryString(queryString, "sort", "DESC");
+                    break;
+                case JobSearchQuery.JobsSortOrder.OrganisationAscending:
+                    UpdateQueryString(queryString, "option", "138");
+                    UpdateQueryString(queryString, "sort", "ASC");
+                    break;
+                case JobSearchQuery.JobsSortOrder.OrganisationDescending:
+                    UpdateQueryString(queryString, "option", "138");
+                    UpdateQueryString(queryString, "sort", "DESC");
+                    break;
+                case JobSearchQuery.JobsSortOrder.LocationAscending:
+                    UpdateQueryString(queryString, "option", "139");
+                    UpdateQueryString(queryString, "sort", "ASC");
+                    break;
+                case JobSearchQuery.JobsSortOrder.LocationDescending:
+                    UpdateQueryString(queryString, "option", "139");
+                    UpdateQueryString(queryString, "sort", "DESC");
+                    break;
+                case JobSearchQuery.JobsSortOrder.SalaryRangeAscending:
+                    UpdateQueryString(queryString, "option", "150");
+                    UpdateQueryString(queryString, "sort", "ASC");
+                    break;
+                case JobSearchQuery.JobsSortOrder.SalaryRangeDescending:
+                    UpdateQueryString(queryString, "option", "150");
+                    UpdateQueryString(queryString, "sort", "DESC");
+                    break;
+                case JobSearchQuery.JobsSortOrder.ClosingDateAscending:
+                    UpdateQueryString(queryString, "option", "48");
+                    UpdateQueryString(queryString, "sort", "ASC");
+                    break;
+                case JobSearchQuery.JobsSortOrder.ClosingDateDescending:
+                    UpdateQueryString(queryString, "option", "48");
+                    UpdateQueryString(queryString, "sort", "DESC");
+                    break;
+            }
         }
 
         private static void AddLookupValueToQueryString(NameValueCollection query, string parameter, IList<JobsLookupValue> lookupValues, IList<string> searchTerms)

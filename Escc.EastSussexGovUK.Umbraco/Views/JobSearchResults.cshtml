@@ -1,8 +1,12 @@
-﻿@using ClientDependency.Core.Mvc
+﻿@using System.Text.RegularExpressions
+@using ClientDependency.Core.Mvc
 @using Escc.ClientDependencyFramework
+@using Escc.Dates
 @using Escc.EastSussexGovUK.Skins
+@using Escc.EastSussexGovUK.Umbraco.Jobs
 @using Escc.EastSussexGovUK.Views
 @using Escc.Web
+@using X.PagedList.Mvc
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Jobs.JobSearchResultsViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
@@ -15,6 +19,18 @@
     new ContentSecurityPolicyHeaders(Response.Headers).AppendPolicy(new ContentSecurityPolicyFromConfig().Policies["TalentLink"]).UpdateHeaders();
 
     var headerClass = Model.HeaderBackgroundImage != null ? "with-image" : String.Empty;
+
+    var query = HttpUtility.ParseQueryString(Request.Url.Query);
+    JobSearchQuery.JobsSortOrder sort = JobSearchQuery.JobsSortOrder.None;
+    Enum.TryParse(query["sort"], true, out sort);
+
+    var queryWithoutSort = HttpUtility.ParseQueryString(Request.Url.Query);
+    queryWithoutSort["sort"] = String.Empty;
+    var urlWithoutSort = Request.Url.AbsolutePath + "?" + queryWithoutSort;
+
+    var queryWithoutPage = HttpUtility.ParseQueryString(Request.Url.Query);
+    queryWithoutPage["page"] = String.Empty;
+    var urlWithoutPage = Request.Url.AbsolutePath + "?" + queryWithoutPage;
 }
 @section Breadcrumb {}
 <div class="jobs-header @headerClass" data-jobs-id="@(Model.ResultsUrl?.Id)" data-jobs-mask="@(Model.ResultsUrl?.Mask)" data-alerts-url="@(Model.JobAlertsPage?.Url)">
@@ -62,8 +78,42 @@
 </div>
 <div class="jobs-content full-page">
     <div class="content text-content">
-        <script src="@Model.ResultsUrl.ScriptUrl"></script>
-        <noscript><a href="@Model.ResultsUrl.LinkUrl">@Model.Metadata.Title</a></noscript>
+
+        <table>
+            <thead>
+                <tr>
+                    <th><a href="@urlWithoutSort@(sort == JobSearchQuery.JobsSortOrder.JobTitleAscending ? "jobtitledescending" : "jobtitleascending")">Job title</a></th>
+                    <th>Organisation</th>
+                    <th><a href="@urlWithoutSort@(sort == JobSearchQuery.JobsSortOrder.LocationAscending ? "locationdescending" : "locationascending")">Location</a></th>
+                    <th>Salary range</th>
+                    <th><a href="@urlWithoutSort@(sort == JobSearchQuery.JobsSortOrder.ClosingDateAscending ? "closingdatedescending" : "closingdateascending")">Closing date</a></th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var job in Model.Jobs)
+            {
+                <tr>
+                    @if (Model.JobDetailPage != null)
+                    {
+                        <td><a href="@Model.JobDetailPage.Url?nPostingTargetID=@job.Id">@job.JobTitle</a></td>
+                    }
+                    else
+                    {
+                        <td>@job.JobTitle</td>
+                    }
+                    <td>@job.Organisation</td>
+                    <td>@job.Location</td>
+                    <td>@job.Salary</td>
+                    <td>@job.ClosingDate.ToBritishDate()</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+        @{
+            var htmlToRewrite = Html.PagedListPager(Model.Jobs, page => urlWithoutPage + page, new PagedListRenderOptions() {DisplayLinkToFirstPage = PagedListDisplayMode.Never, DisplayLinkToLastPage = PagedListDisplayMode.Never, LinkToPreviousPageFormat = "&lt; Prev", LinkToNextPageFormat = "Next &gt;", DisplayItemSliceAndTotal = true, ItemSliceAndTotalFormat = "{0}–{1} of {2} items", MaximumPageNumbersToDisplay = 5, ContainerDivClasses = new[] { "infoBar"}, UlElementClasses = new[] { "pagingPages" } });
+            @Html.Raw(Regex.Replace(htmlToRewrite.ToHtmlString(), "<ul class=\"pagingPages\">(.*)<li class=\"disabled PagedList-pageCountAndLocation\"><a>(.*?)</a></li>", "<div class=\"pagingResultsInContext\">$2</div><ul class=\"pagination\">$1"))
+        }
+
         @Html.Partial("~/Views/JobsButtons.cshtml")
     </div>
 </div>

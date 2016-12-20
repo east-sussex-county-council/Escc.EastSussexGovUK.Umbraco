@@ -15,22 +15,22 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
     {
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult Search(JobSearchFilter filter)
+        public ActionResult Search(JobSearchQuery query)
         {
             var resultsPage = CurrentPage.GetPropertyValue<IPublishedContent>("SearchResultsPage_Content");
             if (resultsPage == null) return null;
 
-            var query = new NameValueCollection();
-            if (!String.IsNullOrEmpty(filter.Keywords)) query.Add("keywords", filter.Keywords);
-            if (!String.IsNullOrEmpty(filter.JobReference)) query.Add("jobnum", filter.JobReference);
+            var queryString = new NameValueCollection();
+            if (!String.IsNullOrEmpty(query.Keywords)) queryString.Add("keywords", query.Keywords);
+            if (!String.IsNullOrEmpty(query.JobReference)) queryString.Add("jobnum", query.JobReference);
 
-            foreach (var value in filter.JobTypes) query.Add("LOV40", value);
-            foreach (var value in filter.Locations) query.Add("LOV39", value);
-            foreach (var value in filter.Organisations) query.Add("LOV52", value);
-            foreach (var value in filter.SalaryRanges) query.Add("LOV46", value);
-            foreach (var value in filter.WorkPatterns) query.Add("LOV50", value);
+            foreach (var value in query.JobTypes) queryString.Add("LOV40", value);
+            foreach (var value in query.Locations) queryString.Add("LOV39", value);
+            foreach (var value in query.Organisations) queryString.Add("LOV52", value);
+            foreach (var value in query.SalaryRanges) queryString.Add("LOV46", value);
+            foreach (var value in query.WorkPatterns) queryString.Add("LOV50", value);
 
-            return new RedirectToUmbracoPageResult(resultsPage, query);
+            return new RedirectToUmbracoPageResult(resultsPage, queryString);
         }
     }
 }
