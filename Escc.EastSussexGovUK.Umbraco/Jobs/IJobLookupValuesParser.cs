@@ -10,6 +10,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// <param name="sourceData">The source data for the job types.</param>
         /// <param name="fieldName">Name of the field containing the lookup values.</param>
         /// <returns></returns>
-        Dictionary<int,string> ParseLookupValues(string sourceData, string fieldName);
+        IList<JobsLookupValue> ParseLookupValues(string sourceData, string fieldName);
     }
 }

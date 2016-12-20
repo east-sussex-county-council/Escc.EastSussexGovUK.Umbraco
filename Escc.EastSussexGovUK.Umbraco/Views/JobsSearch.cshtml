@@ -45,9 +45,9 @@
                 <div>
                     <label for="locations">Location</label>
                     <select multiple="multiple" name="locations" id="locations">
-                        @foreach (var location in Model.Locations.Keys)
+                        @foreach (var location in Model.Locations)
                         {
-                        <option value="@location">@Model.Locations[location]</option>
+                        <option value="@location.Id">@location.Text (@location.Count)</option>
                         }
                     </select>
                 </div>
@@ -55,26 +55,26 @@
                 <div>
                     <label for="jobTypes">Category</label>
                     <select multiple="multiple" name="jobTypes" id="jobTypes">
-                        @foreach (var jobType in Model.JobTypes.Keys)
+                        @foreach (var jobType in Model.JobTypes)
                         {
-                        <option value="@jobType">@Model.JobTypes[jobType]</option>
+                        <option value="@jobType.Id">@jobType.Text (@jobType.Count)</option>
                         }
                     </select>
                 </div>
 
                 <fieldset>
                     <legend>Salary</legend>
-                    @foreach (var salaryRange in Model.SalaryRanges.Keys)
+                    @foreach (var salaryRange in Model.SalaryRanges)
                     {
-                    <label><input type="checkbox" value="@salaryRange" name="salaryRanges" /> @Model.SalaryRanges[salaryRange]</label>
+                    <label><input type="checkbox" value="@salaryRange.Id" name="salaryRanges" /> @salaryRange.Text (@salaryRange.Count)</label>
                     }
                 </fieldset>
 
                 <fieldset>
                     <legend>Work pattern</legend>
-                    @foreach (var workPattern in Model.WorkPatterns.Keys)
+                    @foreach (var workPattern in Model.WorkPatterns)
                     {
-                        <label><input type="checkbox" value="@workPattern" name="workPatterns"/> @Model.WorkPatterns[workPattern]</label>
+                        <label><input type="checkbox" value="@workPattern.Id" name="workPatterns"/> @workPattern.Text (@workPattern.Count)</label>
                     }
                 </fieldset>
 

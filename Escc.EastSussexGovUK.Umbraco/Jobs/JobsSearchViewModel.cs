@@ -26,17 +26,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// <summary>
         /// Gets the locations where jobs can be based
         /// </summary>
-        public Dictionary<int,string> Locations { get; } = new Dictionary<int, string>();
+        public IList<JobsLookupValue> Locations { get; } = new List<JobsLookupValue>();
 
         /// <summary>
         /// Gets the job types.
         /// </summary>
-        public Dictionary<int, string> JobTypes { get; } = new Dictionary<int, string>();
+        public IList<JobsLookupValue> JobTypes { get; } = new List<JobsLookupValue>();
 
         /// <summary>
         /// Gets the salary ranges.
         /// </summary>
-        public Dictionary<int, string> SalaryRanges { get; } = new Dictionary<int, string>();
+        public IList<JobsLookupValue> SalaryRanges { get; } = new List<JobsLookupValue>();
 
         /// <summary>
         /// Gets the work patterns.
@@ -44,6 +44,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// <value>
         /// The work patterns.
         /// </value>
-        public Dictionary<int, string> WorkPatterns { get; } = new Dictionary<int, string>();
+        public IList<JobsLookupValue> WorkPatterns { get; } = new List<JobsLookupValue>();
     }
 }

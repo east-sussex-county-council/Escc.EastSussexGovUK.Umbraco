@@ -3362,6 +3362,7 @@
     <Compile Include="Jobs\Job.cs" />
     <Compile Include="Jobs\JobResultsHtmlParser.cs" />
     <Compile Include="Jobs\JobSearchFilter.cs" />
+    <Compile Include="Jobs\JobsLookupValue.cs" />
     <Compile Include="Jobs\JobsParseResult.cs" />
     <Compile Include="Jobs\JobsRssController.cs" />
     <Compile Include="Jobs\JobsRssContentTab.cs" />

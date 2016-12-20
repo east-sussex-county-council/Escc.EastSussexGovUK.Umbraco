@@ -19,11 +19,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// <remarks>
         /// Can't use <see cref="HtmlAgilityPack" /> here because it parses all the options as one element
         /// </remarks>
-        public Dictionary<int,string> ParseLookupValues(string sourceData, string fieldName)
+        public IList<JobsLookupValue> ParseLookupValues(string sourceData, string fieldName)
         {
             if (String.IsNullOrEmpty(sourceData)) return null;
 
-            var lookupValues = new Dictionary<int,string>();
+            var lookupValues = new List<JobsLookupValue>();
 
             sourceData = Regex.Replace(Regex.Replace(sourceData, "\r", String.Empty), "\n", String.Empty);
 
@@ -42,7 +42,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             return lookupValues;
         }
 
-        private static void AddValuesFromSelect(Match selectList, Dictionary<int, string> lookupValues)
+        private static void AddValuesFromSelect(Match selectList, IList<JobsLookupValue> lookupValues)
         {
             var options = Regex.Matches(selectList.Value, "<option value=\"([0-9]+)\"[^>]*>(.*?)</option>", RegexOptions.Multiline);
             foreach (Match option in options)
@@ -51,11 +51,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             }
         }
 
-        private static void CleanAndAddValue(string matchedKey, string matchedValue, Dictionary<int, string> lookupValues)
+        private static void CleanAndAddValue(string matchedKey, string matchedValue, IList<JobsLookupValue> lookupValues)
         {
             var value = HttpUtility.HtmlDecode(matchedValue);
+            var count = Regex.Match(value, @" \(([0-9]+)\)$");
             value = Regex.Replace(value, @" \([0-9]+\)$", String.Empty);
-            lookupValues.Add(Int32.Parse(matchedKey), value);
+            int parsedCount;
+            Int32.TryParse(count.Groups[1].Value, out parsedCount);
+            lookupValues.Add(new JobsLookupValue() { Id = matchedKey, Text = value, Count = parsedCount});
         }
     }
 }

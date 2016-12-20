@@ -84,21 +84,21 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             return jobs;
         }
 
-        public async Task<Dictionary<int, string>> ReadLocations()
+        public async Task<IList<JobsLookupValue>> ReadLocations()
         {
             return await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV39");
         }
 
-        public async Task<Dictionary<int, string>> ReadJobTypes()
+        public async Task<IList<JobsLookupValue>> ReadJobTypes()
         {
             return await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV40");
         }
 
-        public async Task<Dictionary<int, string>> ReadSalaryRanges()
+        public async Task<IList<JobsLookupValue>> ReadSalaryRanges()
         {
             return await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV46");
         }
-        public async Task<Dictionary<int, string>> ReadWorkPatterns()
+        public async Task<IList<JobsLookupValue>> ReadWorkPatterns()
         {
             return await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV50");
         }
@@ -112,7 +112,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// Initiates an HTTP request and returns the HTML.
         /// </summary>
         /// <returns></returns>
-        private async Task<Stream> ReadJobsFromTalentLink(int currentPage, JobSearchFilter filter, Dictionary<int,string> locations, Dictionary<int,string> jobTypes, Dictionary<int,string> organisations, Dictionary<int,string> salaryRanges, Dictionary<int,string> workPatterns)
+        private async Task<Stream> ReadJobsFromTalentLink(int currentPage, JobSearchFilter filter, IList<JobsLookupValue> locations, IList<JobsLookupValue> jobTypes, IList<JobsLookupValue> organisations, IList<JobsLookupValue> salaryRanges, IList<JobsLookupValue> workPatterns)
         {
             var query = HttpUtility.ParseQueryString(_resultsUrl.Query);
             UpdateQueryString(query, "resultsperpage", "200");
@@ -134,15 +134,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             return await ReadHtml(new Uri(pagedSourceUrl.ToString()), _proxy);
         }
 
-        private static void AddLookupValueToQueryString(NameValueCollection query, string parameter, Dictionary<int, string> lookupValues, IList<string> searchTerms)
+        private static void AddLookupValueToQueryString(NameValueCollection query, string parameter, IList<JobsLookupValue> lookupValues, IList<string> searchTerms)
         {
             foreach (var searchTerm in searchTerms)
             {
                 foreach (var knownValue in lookupValues)
                 {
-                    if (knownValue.Value?.ToUpperInvariant() == searchTerm?.ToUpperInvariant())
+                    if (knownValue.Text?.ToUpperInvariant() == searchTerm?.ToUpperInvariant())
                     {
-                        UpdateQueryString(query, parameter, knownValue.Key.ToString(CultureInfo.InvariantCulture), false);
+                        UpdateQueryString(query, parameter, knownValue.Id.ToString(CultureInfo.InvariantCulture), false);
                     }
                 }
             }
@@ -157,7 +157,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             }
         }
 
-        private async Task<Dictionary<int,string>> ReadLookupValuesFromTalentLink(IJobLookupValuesParser parser, string fieldName)
+        private async Task<IList<JobsLookupValue>> ReadLookupValuesFromTalentLink(IJobLookupValuesParser parser, string fieldName)
         {
             var htmlStream = await ReadHtml(_searchUrl, _proxy);
 

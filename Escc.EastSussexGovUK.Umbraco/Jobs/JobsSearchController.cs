@@ -15,7 +15,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
     /// <summary>
     /// Controller for pages based on the 'Jobs search' Umbraco document type
     /// </summary>
-    /// <seealso cref="CoRenderMvcController/>
     public class JobsSearchController : RenderMvcController
     {
         // GET: TalentLinkComponent
@@ -33,27 +32,27 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             var dataSource = new JobsDataFromTalentLink(searchFieldsUrl, null, new ConfigurationProxyProvider(), new JobLookupValuesHtmlParser(), null);
 
             var locations = Task.Run(async () => await dataSource.ReadLocations());
-            foreach (var location in locations.Result.Keys)
+            foreach (var location in locations.Result)
             {
-                viewModel.Locations.Add(location, locations.Result[location]);
+                viewModel.Locations.Add(location);
             }
 
             var jobTypes = Task.Run(async () => await dataSource.ReadJobTypes());
-            foreach (var jobType in jobTypes.Result.Keys)
+            foreach (var jobType in jobTypes.Result)
             {
-                viewModel.JobTypes.Add(jobType, jobTypes.Result[jobType]);
+                viewModel.JobTypes.Add(jobType);
             }
 
             var salaryRanges = Task.Run(async () => await dataSource.ReadSalaryRanges());
-            foreach (var salaryRange in salaryRanges.Result.Keys)
+            foreach (var salaryRange in salaryRanges.Result)
             {
-                viewModel.SalaryRanges.Add(salaryRange, salaryRanges.Result[salaryRange]);
+                viewModel.SalaryRanges.Add(salaryRange);
             }
 
             var workPatterns = Task.Run(async () => await dataSource.ReadWorkPatterns());
-            foreach (var workPattern in workPatterns.Result.Keys)
+            foreach (var workPattern in workPatterns.Result)
             {
-                viewModel.WorkPatterns.Add(workPattern, workPatterns.Result[workPattern]);
+                viewModel.WorkPatterns.Add(workPattern);
             }
 
             return CurrentTemplate(viewModel);
