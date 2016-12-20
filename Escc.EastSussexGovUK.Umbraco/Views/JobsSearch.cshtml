@@ -1,0 +1,85 @@
+﻿@using ClientDependency.Core.Mvc
+@using Escc.EastSussexGovUK.Skins
+@using Escc.EastSussexGovUK.Umbraco.Jobs
+@using Escc.EastSussexGovUK.Views
+@using Escc.Web
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Jobs.JobsSearchViewModel>
+    @{
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
+    Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
+    Html.RequiresCss("~/css/jobs/jobs-small.css");
+    }
+    @section Breadcrumb {}
+    <div class="jobs-header">
+        <div class="text-content">
+            @if (Model.JobsLogo != null)
+            {
+            <h1>
+                @if (Model.JobsHomePage != null)
+                {
+                <a href="@Model.JobsHomePage.Url"><img src="@Model.JobsLogo.ImageUrl" alt="@Model.Metadata.Title" width="@Model.JobsLogo.Width" /></a>
+                }
+                else
+                {
+                <img src="@Model.JobsLogo.ImageUrl" alt="@Model.Metadata.Title" width="@Model.JobsLogo.Width" />
+                }
+            </h1>
+            }
+        </div>
+    </div>
+
+    <div class="full-page">
+        <div class="content text-content">
+            <h1>@Model.Metadata.Title</h1>
+
+            @using (Html.BeginUmbracoForm<JobsSearchSurfaceController>
+                ("Search"))
+                {
+                @Html.AntiForgeryToken();
+
+                <div>
+                    <label for="keywords">Keywords</label>
+                    <input type="search" name="keywords" id="keywords" />
+                </div>
+
+                <div>
+                    <label for="locations">Location</label>
+                    <select multiple="multiple" name="locations" id="locations">
+                        @foreach (var location in Model.Locations.Keys)
+                        {
+                        <option value="@location">@Model.Locations[location]</option>
+                        }
+                    </select>
+                </div>
+
+                <div>
+                    <label for="jobTypes">Category</label>
+                    <select multiple="multiple" name="jobTypes" id="jobTypes">
+                        @foreach (var jobType in Model.JobTypes.Keys)
+                        {
+                        <option value="@jobType">@Model.JobTypes[jobType]</option>
+                        }
+                    </select>
+                </div>
+
+                <fieldset>
+                    <legend>Salary</legend>
+                    @foreach (var salaryRange in Model.SalaryRanges.Keys)
+                    {
+                    <label><input type="checkbox" value="@salaryRange" name="salaryRanges" /> @Model.SalaryRanges[salaryRange]</label>
+                    }
+                </fieldset>
+
+                <fieldset>
+                    <legend>Work pattern</legend>
+                    @foreach (var workPattern in Model.WorkPatterns.Keys)
+                    {
+                        <label><input type="checkbox" value="@workPattern" name="workPatterns"/> @Model.WorkPatterns[workPattern]</label>
+                    }
+                </fieldset>
+
+                <input type="submit" />
+                }
+        </div>
+    </div>
+

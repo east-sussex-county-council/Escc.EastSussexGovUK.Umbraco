@@ -38,7 +38,7 @@
         }
         <form action="@Request.Url.AbsolutePath" method="GET" class="jobs-search">
             <div>
-                <input type="search" name="keywords" value="@Request.QueryString["keywords"].TrimEnd(new char[] {','})"/>
+                <input type="search" name="keywords" value="@(Request.QueryString["keywords"]?.TrimEnd(new char[] {','}))"/>
                 <input type="submit" value="Search"/>
             </div>
             <div class="job-filters"></div>

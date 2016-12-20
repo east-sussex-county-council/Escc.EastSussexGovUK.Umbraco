@@ -10,6 +10,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
     /// <summary>
     /// Settings to filter a list of jobs by
     /// </summary>
+    /// <remarks>IList properties need to have externally-visible setters to support MVC model binding</remarks>
     public class JobSearchFilter
     {
         /// <summary>
@@ -23,7 +24,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// <value>
         /// The location.
         /// </value>
-        public string Location { get; set; }
+        public IList<string> Locations { get; set; } = new List<string>();
 
         /// <summary>
         /// Gets the job types or categories to limit results to.
@@ -31,7 +32,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// <value>
         /// The job types.
         /// </value>
-        public IList<string> JobTypes { get; } = new List<string>();
+        public IList<string> JobTypes { get; set; } = new List<string>();
 
         /// <summary>
         /// Gets the working hours, eg full-time or part-time
@@ -39,7 +40,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// <value>
         /// The working hours.
         /// </value>
-        public IList<string> WorkingHours { get; } = new List<string>();
+        public IList<string> WorkPatterns { get; set; } = new List<string>();
 
         /// <summary>
         /// Gets or sets the organisation advertising the job
@@ -47,7 +48,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// <value>
         /// The organisation.
         /// </value>
-        public string Organisation { get; set; }
+        public IList<string> Organisations { get; set; } = new List<string>();
 
         /// <summary>
         /// Gets or sets the salary band.
@@ -55,7 +56,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// <value>
         /// The salary band.
         /// </value>
-        public string SalaryRange { get; set; }
+        public IList<string> SalaryRanges { get; set; } = new List<string>();
 
         /// <summary>
         /// Gets or sets the job reference.
@@ -73,14 +74,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         {
             var allContent = new StringBuilder();
             allContent.Append("keywords").Append(Keywords);
-            allContent.Append("location").Append(Location);
-            allContent.Append("organisation").Append(Organisation);
-            allContent.Append("salary").Append(SalaryRange);
+            allContent.Append("location");
+            foreach (var value in Locations) allContent.Append(value);
+            allContent.Append("organisation");
+            foreach (var value in Organisations) allContent.Append(value);
+            allContent.Append("salary");
+            foreach (var value in SalaryRanges) allContent.Append(value);
             allContent.Append("ref").Append(JobReference);
             allContent.Append("types");
-            foreach (var jobType in JobTypes) allContent.Append(jobType);
-            allContent.Append("hours");
-            foreach (var hours in WorkingHours) allContent.Append(hours);
+            foreach (var value in JobTypes) allContent.Append(value);
+            allContent.Append("workpatterns");
+            foreach (var value in WorkPatterns) allContent.Append(value);
 
             HashAlgorithm algorithm = SHA1.Create();
             var bytes = Encoding.UTF8.GetBytes(allContent.ToString());

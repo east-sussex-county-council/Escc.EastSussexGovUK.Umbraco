@@ -3297,6 +3297,8 @@
     <Content Include="Views\JobSearchResultsCss.cshtml" />
     <Content Include="Views\Layouts\_SocialMedia.cshtml" />
     <Content Include="Views\JobsRss.cshtml" />
+    <Content Include="Views\JobsHome.cshtml" />
+    <Content Include="Views\JobsSearch.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -3369,6 +3371,11 @@
     <Compile Include="ApiControllers\LocationController.cs" />
     <Compile Include="ApiControllers\MediaController.cs" />
     <Compile Include="Jobs\JobLookupValuesHtmlParser.cs" />
+    <Compile Include="Jobs\JobsSearchContentTab.cs" />
+    <Compile Include="Jobs\JobsSearchController.cs" />
+    <Compile Include="Jobs\JobsSearchDocumentType.cs" />
+    <Compile Include="Jobs\JobsSearchSurfaceController.cs" />
+    <Compile Include="Jobs\JobsSearchViewModel.cs" />
     <Compile Include="Jobs\RemoveAttributeFilter.cs" />
     <Compile Include="Jobs\RemoveElementByIdFilter.cs" />
     <Compile Include="Jobs\RemoveOuterHtmlFromSearchFieldsFilter.cs" />
@@ -3779,6 +3786,9 @@
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\JobsSearchSurface\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

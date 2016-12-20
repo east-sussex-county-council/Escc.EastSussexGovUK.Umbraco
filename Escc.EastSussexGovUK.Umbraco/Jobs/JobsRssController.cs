@@ -99,12 +99,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
 
             if (!String.IsNullOrEmpty(queryString["org"]))
             {
-                filter.Organisation = queryString["org"];
+                filter.Organisations.Add(queryString["org"]);
             }
 
             if (!String.IsNullOrEmpty(queryString["salary"]))
             {
-                filter.SalaryRange = queryString["salary"];
+                filter.SalaryRanges.Add(queryString["salary"]);
             }
 
             if (!String.IsNullOrEmpty(queryString["ref"]))
@@ -117,7 +117,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 var values = queryString["hours"].SplitAndTrim(",");
                 foreach (var value in values)
                 {
-                    filter.WorkingHours.Add(value);
+                    filter.WorkPatterns.Add(value);
                 }
             }
 

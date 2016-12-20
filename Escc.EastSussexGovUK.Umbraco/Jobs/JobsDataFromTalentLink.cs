@@ -35,7 +35,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public JobsDataFromTalentLink(Uri searchUrl, Uri resultsUrl, IProxyProvider proxy, IJobLookupValuesParser lookupValuesParser, IJobResultsParser jobResultsParser)
         {
             if (searchUrl == null) throw new ArgumentNullException(nameof(searchUrl));
-            if (resultsUrl == null) throw new ArgumentNullException(nameof(resultsUrl));
 
             _searchUrl = searchUrl;
             _resultsUrl = resultsUrl;
@@ -56,16 +55,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
 
             var jobs = new List<Job>();
 
-            var locations = await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV39");
-            var jobTypes = await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV40");
+            var locations = await ReadLocations();
+            var jobTypes = await ReadJobTypes();
             var organisations = await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV52");
-            var salaryRanges = await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV46");
-            var workingHours = await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV50");
+            var salaryRanges = await ReadSalaryRanges();
+            var workPatterns = await ReadWorkPatterns();
 
             var currentPage = 1;
             while (true)
             {
-                var stream = await ReadJobsFromTalentLink(currentPage, filter, locations, jobTypes, organisations, salaryRanges, workingHours);
+                var stream = await ReadJobsFromTalentLink(currentPage, filter, locations, jobTypes, organisations, salaryRanges, workPatterns);
                 var parseResult = _jobResultsParser.Parse(stream);
 
                 if (parseResult.Jobs.Count > 0)
@@ -85,6 +84,25 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             return jobs;
         }
 
+        public async Task<Dictionary<int, string>> ReadLocations()
+        {
+            return await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV39");
+        }
+
+        public async Task<Dictionary<int, string>> ReadJobTypes()
+        {
+            return await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV40");
+        }
+
+        public async Task<Dictionary<int, string>> ReadSalaryRanges()
+        {
+            return await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV46");
+        }
+        public async Task<Dictionary<int, string>> ReadWorkPatterns()
+        {
+            return await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV50");
+        }
+
         public async Task<Stream> ReadSearchFieldsHtml()
         {
             return await ReadHtml(_searchUrl, _proxy);
@@ -94,7 +112,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// Initiates an HTTP request and returns the HTML.
         /// </summary>
         /// <returns></returns>
-        private async Task<Stream> ReadJobsFromTalentLink(int currentPage, JobSearchFilter filter, Dictionary<int,string> locations, Dictionary<int,string> jobTypes, Dictionary<int,string> organisations, Dictionary<int,string> salaryRanges, Dictionary<int,string> workingHours)
+        private async Task<Stream> ReadJobsFromTalentLink(int currentPage, JobSearchFilter filter, Dictionary<int,string> locations, Dictionary<int,string> jobTypes, Dictionary<int,string> organisations, Dictionary<int,string> salaryRanges, Dictionary<int,string> workPatterns)
         {
             var query = HttpUtility.ParseQueryString(_resultsUrl.Query);
             UpdateQueryString(query, "resultsperpage", "200");
@@ -104,11 +122,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             {
                 UpdateQueryString(query, "keywords", filter.Keywords);
                 UpdateQueryString(query, "jobnum", filter.JobReference);
-                AddLookupValueToQueryString(query, "LOV39", locations, new [] { filter.Location});
+                AddLookupValueToQueryString(query, "LOV39", locations, filter.Locations);
                 AddLookupValueToQueryString(query, "LOV40", jobTypes, filter.JobTypes);
-                AddLookupValueToQueryString(query, "LOV52", organisations, new [] { filter.Organisation});
-                AddLookupValueToQueryString(query, "LOV46", salaryRanges, new [] { filter.SalaryRange});
-                AddLookupValueToQueryString(query, "LOV50", workingHours, filter.WorkingHours);
+                AddLookupValueToQueryString(query, "LOV52", organisations, filter.Organisations);
+                AddLookupValueToQueryString(query, "LOV46", salaryRanges, filter.SalaryRanges);
+                AddLookupValueToQueryString(query, "LOV50", workPatterns, filter.WorkPatterns);
             }
 
             var pagedSourceUrl = new StringBuilder(_resultsUrl.Scheme).Append("://").Append(_resultsUrl.Authority).Append(_resultsUrl.AbsolutePath).Append("?").Append(query);

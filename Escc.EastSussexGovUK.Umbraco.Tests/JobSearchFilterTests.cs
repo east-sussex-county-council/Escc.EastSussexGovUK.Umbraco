@@ -29,7 +29,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             var filter = new JobSearchFilter();
 
             var hashBefore = filter.ToHash();
-            filter.Location = "test";
+            filter.Locations = "test";
             var hashAfter = filter.ToHash();
 
             Assert.AreNotEqual(hashBefore, hashAfter);
@@ -53,7 +53,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             var filter = new JobSearchFilter();
 
             var hashBefore = filter.ToHash();
-            filter.WorkingHours.Add("test");
+            filter.WorkPatterns.Add("test");
             var hashAfter = filter.ToHash();
 
             Assert.AreNotEqual(hashBefore, hashAfter);
@@ -65,7 +65,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             var filter = new JobSearchFilter();
 
             var hashBefore = filter.ToHash();
-            filter.Organisation = "test";
+            filter.Organisations = "test";
             var hashAfter = filter.ToHash();
 
             Assert.AreNotEqual(hashBefore, hashAfter);
@@ -77,7 +77,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             var filter = new JobSearchFilter();
 
             var hashBefore = filter.ToHash();
-            filter.SalaryRange = "test";
+            filter.SalaryRanges = "test";
             var hashAfter = filter.ToHash();
 
             Assert.AreNotEqual(hashBefore, hashAfter);
@@ -103,7 +103,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             var hashKeywords = keywordsFilter.ToHash();
 
             var locationFilter = new JobSearchFilter();
-            locationFilter.Location = "test";
+            locationFilter.Locations = "test";
             var hashLocation = locationFilter.ToHash();
 
             Assert.AreNotEqual(hashKeywords, hashLocation);

@@ -163,6 +163,7 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(JobSearchResultsDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(JobsComponentDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(JobsRssDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(JobsSearchDocumentType));
 
                 return Request.CreateResponse(HttpStatusCode.Created);
             }
