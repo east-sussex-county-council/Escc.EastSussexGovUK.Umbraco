@@ -670,7 +670,6 @@
     <Content Include="Config\BaseRestExtensions.config" />
     <Content Include="Config\applications.config" />
     <Content Include="Config\404handlers.config" />
-    <Content Include="js\Jobs\job-search-results.js" />
     <Content Include="MarriageSkin\css\min\marriage-skin-medium.css" />
     <Content Include="MarriageSkin\css\min\marriage-skin-small.css" />
     <Content Include="MarriageSkin\img\web.config" />
@@ -3391,7 +3390,6 @@
     <Compile Include="Jobs\JobsRssContentTab.cs" />
     <Compile Include="Jobs\JobsRssDocumentType.cs" />
     <Compile Include="Jobs\JobsDataFromTalentLink.cs" />
-    <Compile Include="Jobs\IHtmlAgilityPackFilter.cs" />
     <Compile Include="ApiControllers\LocationController.cs" />
     <Compile Include="ApiControllers\MediaController.cs" />
     <Compile Include="Jobs\JobLookupValuesHtmlParser.cs" />
@@ -3400,10 +3398,6 @@
     <Compile Include="Jobs\JobsSearchDocumentType.cs" />
     <Compile Include="Jobs\JobsSearchSurfaceController.cs" />
     <Compile Include="Jobs\JobsSearchViewModel.cs" />
-    <Compile Include="Jobs\RemoveAttributeFilter.cs" />
-    <Compile Include="Jobs\RemoveElementByIdFilter.cs" />
-    <Compile Include="Jobs\RemoveOuterHtmlFromSearchFieldsFilter.cs" />
-    <Compile Include="Jobs\TalentLinkApiController.cs" />
     <Compile Include="ApiControllers\UmbracoSetupApiController.cs" />
     <Compile Include="ApiControllers\WasteTypesController.cs" />
     <Compile Include="ApiControllers\WebApiConfig.cs" />

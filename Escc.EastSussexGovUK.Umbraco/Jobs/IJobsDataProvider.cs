@@ -10,15 +10,33 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
     public interface IJobsDataProvider
     {
         /// <summary>
-        /// Reads the HTML for the search fields
-        /// </summary>
-        /// <returns></returns>
-        Task<Stream> ReadSearchFieldsHtml();
-        
-        /// <summary>
-        /// Gets the jobs
+        /// Gets the jobs matching the supplied query
         /// </summary>
         /// <returns></returns>
         Task<List<Job>> ReadJobs(JobSearchQuery query);
+
+        /// <summary>
+        /// Reads the locations where jobs can be based
+        /// </summary>
+        /// <returns></returns>
+        Task<IList<JobsLookupValue>> ReadLocations();
+
+        /// <summary>
+        /// Reads the job types or categories
+        /// </summary>
+        /// <returns></returns>
+        Task<IList<JobsLookupValue>> ReadJobTypes();
+
+        /// <summary>
+        /// Reads the salary ranges that jobs can be categorised as
+        /// </summary>
+        /// <returns></returns>
+        Task<IList<JobsLookupValue>> ReadSalaryRanges();
+
+        /// <summary>
+        /// Reads the work patterns, eg full time or part time
+        /// </summary>
+        /// <returns></returns>
+        Task<IList<JobsLookupValue>> ReadWorkPatterns();
     }
 }

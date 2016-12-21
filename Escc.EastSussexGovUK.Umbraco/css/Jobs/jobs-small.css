@@ -10,11 +10,9 @@
 .jobs-search input[type=search] { font-size: 16px;padding: 9px;border-radius: 5px;border: 2px solid #ccc;width: 89%;}
 .jobs-search input[type=submit] { font-size: 16px;padding: 9px;border-radius: 5px;border: 2px solid #ccc;width: 10%;}
 
-.job-filters legend { display: none; }
-.job-filters > fieldset > div { display: inline-block; color: #fff; }
-
-.job-alerts { margin-top: 18px;color: #fff;}
+.job-alerts { margin-top: 18px;}
 .job-alerts input[type=email]{ font-size: 16px;padding: 9px;border-radius: 5px;border: 2px solid #ccc;width: 87%;}
+.job-alerts input[type=submit] { font-size: 16px;padding: 9px;border-radius: 5px;border: 2px solid #ccc;width: 10%;}
 
 .jobs-content { padding-top: 18px; }
 

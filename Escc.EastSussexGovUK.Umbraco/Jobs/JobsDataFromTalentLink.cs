@@ -84,28 +84,39 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             return jobs;
         }
 
+        /// <summary>
+        /// Reads the locations where jobs can be based
+        /// </summary>
+        /// <returns></returns>
         public async Task<IList<JobsLookupValue>> ReadLocations()
         {
             return await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV39");
         }
 
+        /// <summary>
+        /// Reads the job types or categories
+        /// </summary>
+        /// <returns></returns>
         public async Task<IList<JobsLookupValue>> ReadJobTypes()
         {
             return await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV40");
         }
 
+        /// <summary>
+        /// Reads the salary ranges that jobs can be categorised as
+        /// </summary>
+        /// <returns></returns>
         public async Task<IList<JobsLookupValue>> ReadSalaryRanges()
         {
             return await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV46");
         }
+        /// <summary>
+        /// Reads the work patterns, eg full time or part time
+        /// </summary>
+        /// <returns></returns>
         public async Task<IList<JobsLookupValue>> ReadWorkPatterns()
         {
             return await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV50");
-        }
-
-        public async Task<Stream> ReadSearchFieldsHtml()
-        {
-            return await ReadHtml(_searchUrl, _proxy);
         }
 
         /// <summary>

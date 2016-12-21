@@ -339,9 +339,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="RelatedLinksModelBuilderTests.cs" />
-    <Compile Include="RemoveOuterHtmlFromSearchFieldsFilterTests.cs" />
-    <Compile Include="RemoveAttributeFilterTests.cs" />
-    <Compile Include="RemoveElementByIdFilterTests.cs" />
     <Compile Include="RemoveUmbracoNumericSuffixFilterTests.cs" />
     <Compile Include="JobLookupValuesHtmlParserTests.cs" />
     <Compile Include="TinyMceEmbedClassFormatterTests.cs" />
