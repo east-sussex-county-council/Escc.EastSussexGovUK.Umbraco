@@ -50,16 +50,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public TalentLinkUrl ResultsUrl { get; set; }
 
         /// <summary>
-        /// Gets or sets the URLs the buttons should link to
-        /// </summary>
-        public IList<HtmlLink> ButtonNavigation { get; set; }
-
-        /// <summary>
-        /// Gets or sets the images to link using <see cref="ButtonNavigation"/>
-        /// </summary>
-        public IList<Image> ButtonImages { get; set; }
-
-        /// <summary>
         /// Gets the jobs to display
         /// </summary>
         public IPagedList<Job> Jobs { get; set; }

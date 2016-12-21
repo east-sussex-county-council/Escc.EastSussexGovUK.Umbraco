@@ -37,9 +37,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 JobDetailPage = BuildLinkToPage("JobDetailPage_Content"),
                 LoginPage = BuildLinkToPage("LoginPage_Content"),
                 JobAlertsPage = BuildLinkToPage("JobAlertsPage_Content"),
-                ResultsUrl = BuildUri("ResultsScriptUrl_Content"),
-                ButtonNavigation = RelatedLinksService.BuildRelatedLinksViewModelFromUmbracoContent(UmbracoContent, "ButtonNavigation_Content"),
-                ButtonImages = BuildImages("ButtonImages_Content")
+                ResultsUrl = BuildUri("ResultsScriptUrl_Content")
             };
 
             return model;

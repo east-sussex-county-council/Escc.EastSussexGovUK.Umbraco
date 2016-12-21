@@ -113,8 +113,6 @@
             var htmlToRewrite = Html.PagedListPager(Model.Jobs, page => urlWithoutPage + page, new PagedListRenderOptions() {DisplayLinkToFirstPage = PagedListDisplayMode.Never, DisplayLinkToLastPage = PagedListDisplayMode.Never, LinkToPreviousPageFormat = "&lt; Prev", LinkToNextPageFormat = "Next &gt;", DisplayItemSliceAndTotal = true, ItemSliceAndTotalFormat = "{0}–{1} of {2} items", MaximumPageNumbersToDisplay = 5, ContainerDivClasses = new[] { "infoBar"}, UlElementClasses = new[] { "pagingPages" } });
             @Html.Raw(Regex.Replace(htmlToRewrite.ToHtmlString(), "<ul class=\"pagingPages\">(.*)<li class=\"disabled PagedList-pageCountAndLocation\"><a>(.*?)</a></li>", "<div class=\"pagingResultsInContext\">$2</div><ul class=\"pagination\">$1"))
         }
-
-        @Html.Partial("~/Views/JobsButtons.cshtml")
     </div>
 </div>
 
