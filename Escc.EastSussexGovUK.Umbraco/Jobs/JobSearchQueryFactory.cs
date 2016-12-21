@@ -28,7 +28,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
 
             if (!String.IsNullOrEmpty(queryString["location"]))
             {
-                query.Keywords = queryString["location"];
+                query.Locations.Add(queryString["location"]);
             }
 
             if (!String.IsNullOrEmpty(queryString["type"]))

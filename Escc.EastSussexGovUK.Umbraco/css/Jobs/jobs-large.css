@@ -1,4 +1,4 @@
 ﻿/* Job search results */
-.Lst-Tabel .Lst-Head2, .Lst-Tabel td[headers=th2] {display: table-cell; }
+.job-results .organisation {display: table-cell; }
 
 .jobs-buttons li { flex-basis: 33%;}

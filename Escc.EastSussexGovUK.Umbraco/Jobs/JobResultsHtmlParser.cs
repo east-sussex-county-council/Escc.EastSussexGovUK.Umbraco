@@ -25,8 +25,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// </exception>
         public JobResultsHtmlParser(Uri baseUrlForJobDetails)
         {
-            if (baseUrlForJobDetails == null) throw new ArgumentNullException(nameof(baseUrlForJobDetails));
-
             _baseUrlForJobDetails = baseUrlForJobDetails;
         }
 
@@ -85,10 +83,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                     var job = new Job();
 
                     var jobUrl = HttpUtility.HtmlDecode(link.Attributes["href"].Value);
-                    job.Url = new Uri(_baseUrlForJobDetails, jobUrl);
-                    var query = HttpUtility.ParseQueryString(job.Url.Query);
+                    var absoluteUrl = new Uri(new Uri("http://example.org"), jobUrl);
+                    var query = HttpUtility.ParseQueryString(absoluteUrl.Query);
                     job.Id = query["nPostingTargetId"];
-                    job.Url = new Uri(_baseUrlForJobDetails + "?nPostingTargetID=" + query["nPostingTargetId"]);
+                    if (_baseUrlForJobDetails != null)
+                    {
+                        job.Url = new Uri(_baseUrlForJobDetails + "?nPostingTargetID=" + job.Id);
+                    }
                     job.JobTitle = HttpUtility.HtmlDecode(link.InnerText);
                     job.Organisation = HttpUtility.HtmlDecode(link.ParentNode.ParentNode.SelectSingleNode("./td[@headers='th2']")?.InnerText?.Trim());
                     job.Location = HttpUtility.HtmlDecode(link.ParentNode.ParentNode.SelectSingleNode("./td[@headers='th3']")?.InnerText?.Trim());

@@ -50,10 +50,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 null);
 
 
-            var detailPage = model.Content.GetPropertyValue<IPublishedContent>("JobDetailPage_Content");
-            var detailPageUrl = detailPage != null ? new Uri(detailPage.UrlWithDomain()) : Request.Url;
-
-            var jobs = Task.Run(async() => await ReadJobs(model, detailPageUrl));
+            viewModel.Query = new JobSearchQueryFactory().CreateFromQueryString(Request.QueryString);
+            var jobs = Task.Run(async() => await ReadJobs(model, viewModel.Query, viewModel.JobDetailPage?.Url));
             var page = String.IsNullOrWhiteSpace(Request.QueryString["page"]) ? 1 : Int32.Parse(Request.QueryString["page"]);
             viewModel.Jobs = jobs.Result.ToPagedList(page, 10);
 
@@ -62,11 +60,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             return CurrentTemplate(viewModel);
         }
 
-        private async Task<List<Job>> ReadJobs(RenderModel model, Uri detailPageUrl)
+        private async Task<List<Job>> ReadJobs(RenderModel model, JobSearchQuery query, Uri detailPageUrl)
         {
             List<Job> jobs = null;
 
-            var query = new JobSearchQueryFactory().CreateFromQueryString(Request.QueryString);
             var cacheKey = "Jobs" + query.ToHash();
 
             if (HttpContext.Cache[cacheKey] == null || Request.QueryString["ForceCacheRefresh"] == "1")

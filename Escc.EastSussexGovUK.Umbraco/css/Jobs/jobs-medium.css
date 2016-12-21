@@ -1,11 +1,12 @@
 ﻿/* Job search results */
-.Lst-Tabel th, .Lst-Tabel td, .Lst-Tabel td[headers] { display: table-cell;border: .052631em solid #ccc;margin: 0;width: auto;text-align: left; }
-.Lst-Tabel td { padding: .421053em;}
-.Lst-Tabel tr { display: table-row; line-height: inherit; padding-bottom: 0; margin-bottom: 0;border-bottom: none; }
-.Lst-Tabel .Lst-ResNav { border: none;padding-left: 0;padding-right: 0;}
+.job-results thead { display: table-header-group;}
+.jobs-content .job-results th, .jobs-content .job-results td { display: table-cell;border: .052631em solid #ccc;width: auto;text-align: left; }
+.job-results td { padding: .421053em;}
+.job-results tr { display: table-row; line-height: inherit; padding-bottom: 0; border-bottom: none; }
+.job-results td.closing-date span { display: none;}
 
 /* Still hide organisation column */
-.Lst-Tabel .Lst-Head2, .Lst-Tabel td[headers=th2] {display: none; }
+.jobs-content .job-results .organisation {display: none; }
 
 .jobs-buttons { display: flex;flex-wrap: wrap;justify-content: center; }
 .jobs-buttons li { flex-basis: 45%;}

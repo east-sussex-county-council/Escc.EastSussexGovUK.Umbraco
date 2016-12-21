@@ -1,21 +1,20 @@
-﻿.body .container { padding-top: 0;}
+﻿/* Remove any space between the main menu and the background of .jobs-header */
+.body .container { padding-top: 0;}
+.header { border-bottom: none;}
 
-.jobs-header { position: relative;}
-.jobs-header h1 { margin: 0;}
-.jobs-header.with-image img { position: absolute;top: 20px;left: 0; }
-.jobs-header .login { position: absolute;right: 0;top: 0;}
-.jobs-header.with-image .login { padding: 9px;background: rgba(255, 255, 255, .8);border-radius: 5px;}
+/* Fix paging layout - needs to go into sitewide styles */
+ul.pagingPages { margin: 0;}
+.pagingPages li { display: inline;list-style: none;margin-right:.2em;}
+
+.jobs-header .context { position: relative; top: 36px;}
+.jobs-header .login { position: absolute;right: 0;top: 0;margin: 0;}
+.jobs-header.with-image .login { padding: 9px;background: #fff;border-radius: 5px;}
 
 .jobs-search {  position: absolute; bottom: 20px; width: 100%; }
 .jobs-search input[type=search] { font-size: 16px;padding: 9px;border-radius: 5px;border: 2px solid #ccc;width: 89%;}
 .jobs-search input[type=submit] { font-size: 16px;padding: 9px;border-radius: 5px;border: 2px solid #ccc;width: 10%;}
 
-.job-alerts { margin-top: 18px;}
-.job-alerts input[type=email]{ font-size: 16px;padding: 9px;border-radius: 5px;border: 2px solid #ccc;width: 87%;}
-.job-alerts input[type=submit] { font-size: 16px;padding: 9px;border-radius: 5px;border: 2px solid #ccc;width: 10%;}
-
 .jobs-content { padding-top: 18px; }
-
 
 /*** DRAFT: MAKE THIS A SHARED COMPONENT WITH THE HOME PAGE ***/
 /* News feature story. A single link surrounds the whole feature so that hovering over it highlights the link text. */
@@ -44,11 +43,9 @@
 /*** END DRAFT FEATURE LAYOUT ***/
 
 /* Job search results */
-.Lst-Tabel th, .Lst-Tabel td { display: inline-block;border: none; }
-.Lst-Tabel td { padding: 0;}
-.Lst-Tabel tr { display: block; line-height: 1.125em;padding-bottom: 1em; margin-bottom: 1em;border-bottom: 1px solid #ccc; }
-.Lst-Tabel td[headers=th1] { display: block;margin-bottom: 9px; }
-.Lst-Tabel .Lst-Head2, .Lst-Tabel td[headers=th2] {display: none; }
-.Lst-Tabel td[headers=th3] { width: 30%; }
-.Lst-Tabel td[headers=th4] { width: 43%; }
-.Lst-Tabel td[headers=th5] { text-align: right;width: 25%;}
+.job-results th, .job-results td { display: inline-block;border: none; }
+.job-results td { padding: 0;}
+.job-results tr { display: block; line-height: 1.125em;padding-bottom: 1em; margin-bottom: 1em;border-bottom: 1px solid #ccc; }
+.job-results td.job-title { display: block;margin-bottom: 9px; }
+.job-results thead, .job-results .organisation {display: none; }
+.job-results td.location, .job-results td.salary, .job-results td.closing-date { display: block; }

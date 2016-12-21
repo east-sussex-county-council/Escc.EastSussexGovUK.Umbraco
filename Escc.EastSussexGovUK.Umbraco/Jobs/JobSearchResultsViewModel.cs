@@ -42,10 +42,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public HtmlLink JobDetailPage { get; set; }
 
         /// <summary>
-        /// Gets or sets the URL of the script to embed the component in the page.
+        /// Gets or sets the jobs search page.
+        /// </summary>
+        public HtmlLink JobsSearchPage { get; set; }
+
+        /// <summary>
+        /// Gets or sets the results URL where the data comes from.
         /// </summary>
         /// <value>
-        /// The script URL.
+        /// The results URL.
         /// </value>
         public TalentLinkUrl ResultsUrl { get; set; }
 
@@ -53,5 +58,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// Gets the jobs to display
         /// </summary>
         public IPagedList<Job> Jobs { get; set; }
+
+        /// <summary>
+        /// Gets or sets the query that led to these results
+        /// </summary>
+        public JobSearchQuery Query { get; set; }
     }
 }
