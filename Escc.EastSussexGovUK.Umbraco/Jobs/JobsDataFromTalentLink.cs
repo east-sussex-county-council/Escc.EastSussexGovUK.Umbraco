@@ -55,16 +55,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
 
             var jobs = new List<Job>();
 
-            var locations = await ReadLocations();
-            var jobTypes = await ReadJobTypes();
-            var organisations = await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV52");
-            var salaryRanges = await ReadSalaryRanges();
-            var workPatterns = await ReadWorkPatterns();
-
             var currentPage = 1;
             while (true)
             {
-                var stream = await ReadJobsFromTalentLink(currentPage, query, locations, jobTypes, organisations, salaryRanges, workPatterns);
+                var stream = await ReadJobsFromTalentLink(currentPage, query);
                 var parseResult = _jobResultsParser.Parse(stream);
 
                 if (parseResult.Jobs.Count > 0)
@@ -103,6 +97,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         }
 
         /// <summary>
+        /// Reads the organisations advertising jobs
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public async Task<IList<JobsLookupValue>> ReadOrganisations()
+        {
+            return await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV52");
+        }
+
+        /// <summary>
         /// Reads the salary ranges that jobs can be categorised as
         /// </summary>
         /// <returns></returns>
@@ -123,7 +127,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// Initiates an HTTP request and returns the HTML.
         /// </summary>
         /// <returns></returns>
-        private async Task<Stream> ReadJobsFromTalentLink(int currentPage, JobSearchQuery query, IList<JobsLookupValue> locations, IList<JobsLookupValue> jobTypes, IList<JobsLookupValue> organisations, IList<JobsLookupValue> salaryRanges, IList<JobsLookupValue> workPatterns)
+        private async Task<Stream> ReadJobsFromTalentLink(int currentPage, JobSearchQuery query)
         {
             var queryString = HttpUtility.ParseQueryString(_resultsUrl.Query);
             UpdateQueryString(queryString, "resultsperpage", "200");
@@ -133,11 +137,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             {
                 UpdateQueryString(queryString, "keywords", query.Keywords);
                 UpdateQueryString(queryString, "jobnum", query.JobReference);
-                AddLookupValueToQueryString(queryString, "LOV39", locations, query.Locations);
-                AddLookupValueToQueryString(queryString, "LOV40", jobTypes, query.JobTypes);
-                AddLookupValueToQueryString(queryString, "LOV52", organisations, query.Organisations);
-                AddLookupValueToQueryString(queryString, "LOV46", salaryRanges, query.SalaryRanges);
-                AddLookupValueToQueryString(queryString, "LOV50", workPatterns, query.WorkPatterns);
+                UpdateQueryString(queryString, "LOV39", String.Join(",",query.Locations));
+                UpdateQueryString(queryString, "LOV40", String.Join(",", query.JobTypes));
+                UpdateQueryString(queryString, "LOV52", String.Join(",", query.Organisations));
+                UpdateQueryString(queryString, "LOV46", String.Join(",", query.SalaryRanges));
+                UpdateQueryString(queryString, "LOV50", String.Join(",", query.WorkPatterns));
                 AddSortOrderToQueryString(queryString, query.SortBy);
             }
 
@@ -190,20 +194,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                     UpdateQueryString(queryString, "option", "48");
                     UpdateQueryString(queryString, "sort", "DESC");
                     break;
-            }
-        }
-
-        private static void AddLookupValueToQueryString(NameValueCollection query, string parameter, IList<JobsLookupValue> lookupValues, IList<string> searchTerms)
-        {
-            foreach (var searchTerm in searchTerms)
-            {
-                foreach (var knownValue in lookupValues)
-                {
-                    if (knownValue.Text?.ToUpperInvariant() == searchTerm?.ToUpperInvariant())
-                    {
-                        UpdateQueryString(query, parameter, knownValue.Id.ToString(CultureInfo.InvariantCulture), false);
-                    }
-                }
             }
         }
 
