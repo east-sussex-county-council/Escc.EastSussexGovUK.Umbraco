@@ -653,6 +653,7 @@
     <Content Include="js\CustomerFocusTemplates\guide.js" />
     <Content Include="js\CustomerFocusTemplates\location.js" />
     <Content Include="js\document-metadata.js" />
+    <Content Include="js\embed-jobs-rss.js" />
     <Content Include="js\HomePage\homepage.js" />
     <Content Include="js\HomePage\jquery-ui-1.10.4.custom.min.js" />
     <Content Include="App_Plugins\ModelsBuilder\package.manifest" />
@@ -3319,6 +3320,7 @@
     <Content Include="Views\JobsHome.cshtml" />
     <Content Include="Views\JobsSearch.cshtml" />
     <Content Include="Views\JobsHeader.cshtml" />
+    <Content Include="Views\JobsRssAsTable.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>

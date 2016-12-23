@@ -14,6 +14,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
     Description = "RSS feed of all jobs.")]
     public class JobsRssDocumentType : UmbracoGeneratedBase
     {
+        [UmbracoTemplate(DisplayName = "Jobs RSS as an HTML table", Alias = "JobsRssAsTable")]
+        public string RssAsTable { get; set; }
+
         [UmbracoTab("Content")]
         public JobsRssContentTab Content { get; set; }
 

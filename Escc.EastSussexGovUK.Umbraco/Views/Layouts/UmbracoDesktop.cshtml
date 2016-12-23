@@ -5,6 +5,7 @@
 @{
     Layout = "~/Views/EastSussexGovUK/desktop.cshtml";
     Html.RequiresJs(JsFileAlias.Resolve("DocumentMetadata"));
+    Html.RequiresJs("~/js/embed-jobs-rss.js");
 }
 @section ContentExperiment {
     @{ Html.RenderPartial("~/Views/Layouts/_ContentExperiment.cshtml", Model); }
