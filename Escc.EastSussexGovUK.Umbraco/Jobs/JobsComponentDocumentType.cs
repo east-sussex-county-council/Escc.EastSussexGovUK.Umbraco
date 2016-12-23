@@ -12,7 +12,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
     Description = "A standard page hosting a component of the TalentLink application.")]
     public class JobsComponentDocumentType : UmbracoGeneratedBase
     {
-        [UmbracoTemplate(DisplayName = "Jobs component CSS", Alias = "JobsComponentCss")]
+        [UmbracoTemplate(DisplayName = "Jobs CSS", Alias = "JobsCss")]
         public string JobsCss { get; set; }
 
         [UmbracoTab("Content")]

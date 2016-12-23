@@ -11,18 +11,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
     /// View model for the search page of the jobs section
     /// </summary>
     /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Models.BaseViewModel" />
-    public class JobsSearchViewModel : BaseViewModel
+    public class JobsSearchViewModel : BaseJobsViewModel
     {
-        /// <summary>
-        /// Gets or sets the logo for the jobs service
-        /// </summary>
-        public Image JobsLogo { get; set; }
-
-        /// <summary>
-        /// Gets or sets the home page for the jobs service
-        /// </summary>
-        public HtmlLink JobsHomePage { get; set; }
-
         /// <summary>
         /// Gets the locations where jobs can be based
         /// </summary>

@@ -21,13 +21,31 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public string JobsLogo { get; set; }
 
         /// <summary>
+        /// Gets or sets the background image for the header
+        /// </summary>
+        /// <value>
+        /// The background image
+        /// </value>
+        [UmbracoProperty("Header background image", "HeaderBackgroundImage", BuiltInUmbracoDataTypes.MediaPicker, sortOrder: 2, Description = "Select the background image for the page header")]
+        public string HeaderBackgroundImage { get; set; }
+
+        /// <summary>
         /// Gets or sets the jobs start page
         /// </summary>
         /// <value>
         /// A reference to the Umbraco node for the home page
         /// </value>
-        [UmbracoProperty("Jobs home page", "JobsHomePage", BuiltInUmbracoDataTypes.ContentPickerAlias, sortOrder: 2, Description = "Select the jobs home page, to be linked from the logo")]
+        [UmbracoProperty("Jobs home page", "JobsHomePage", BuiltInUmbracoDataTypes.ContentPickerAlias, sortOrder: 3, Description = "Select the jobs home page, to be linked from the logo")]
         public string JobsHomePage { get; set; }
+
+        /// <summary>
+        /// Gets or sets the login page
+        /// </summary>
+        /// <value>
+        /// A reference to the Umbraco node for the login page
+        /// </value>
+        [UmbracoProperty("Login page", "LoginPage", BuiltInUmbracoDataTypes.ContentPickerAlias, sortOrder: 4, Description = "Select the jobs login page, based on the 'Jobs component' document type")]
+        public string LoginPage { get; set; }
 
         /// <summary>
         /// Gets or sets the search results page
@@ -35,10 +53,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// <value>
         /// A reference to the Umbraco node for the results page
         /// </value>
-        [UmbracoProperty("Search results page", "SearchResultsPage", BuiltInUmbracoDataTypes.ContentPickerAlias, sortOrder: 3, Description = "Select the search results page, based on the 'Job search results' document type")]
+        [UmbracoProperty("Search results page", "SearchResultsPage", BuiltInUmbracoDataTypes.ContentPickerAlias, sortOrder: 5, Description = "Select the search results page, based on the 'Job search results' document type")]
         public string SearchResultsPage { get; set; }
 
-        [UmbracoProperty("Search script URL", "SearchScriptUrl", UrlDataType.PropertyEditorAlias, UrlDataType.DataTypeName, sortOrder: 4, mandatory: true,
+        [UmbracoProperty("Search script URL", "SearchScriptUrl", UrlDataType.PropertyEditorAlias, UrlDataType.DataTypeName, sortOrder: 6, mandatory: true,
         Description = "A standard TalentLink component is embedded into a page by referencing a script. Paste the URL of the search component here.")]
         public Uri SearchScriptUrl { get; set; }
     }

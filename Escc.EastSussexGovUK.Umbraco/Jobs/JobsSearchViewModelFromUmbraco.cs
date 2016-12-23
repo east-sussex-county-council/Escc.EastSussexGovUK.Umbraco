@@ -7,16 +7,16 @@ using Umbraco.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
-    public class JobSearchResultsViewModelFromUmbraco : BaseJobsViewModelFromUmbracoBuilder, IViewModelBuilder<JobSearchResultsViewModel>
+    public class JobsSearchViewModelFromUmbraco : BaseJobsViewModelFromUmbracoBuilder, IViewModelBuilder<JobsSearchViewModel>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="JobSearchResultsViewModel" /> class.
+        /// Initializes a new instance of the <see cref="JobsSearchViewModel" /> class.
         /// </summary>
         /// <param name="umbracoContent">Content from Umbraco using the 'Jobs' document type.</param>
         /// <exception cref="System.ArgumentNullException">umbracoContent
         /// or
         /// mediaUrlTransformer</exception>
-        public JobSearchResultsViewModelFromUmbraco(IPublishedContent umbracoContent) :
+        public JobsSearchViewModelFromUmbraco(IPublishedContent umbracoContent) :
             base(umbracoContent, null)
         {
         }
@@ -25,31 +25,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// Gets the view model.
         /// </summary>
         /// <returns></returns>
-        public JobSearchResultsViewModel BuildModel()
+        public JobsSearchViewModel BuildModel()
         {
-            var model = new JobSearchResultsViewModel()
+            var model = new JobsSearchViewModel()
             {
                 JobsLogo = BuildImage("JobsLogo_Content"),
                 HeaderBackgroundImage = BuildImage("HeaderBackgroundImage_Content"),
                 JobsHomePage = BuildLinkToPage("JobsHomePage_Content"),
-                JobDetailPage = BuildLinkToPage("JobDetailPage_Content"),
                 LoginPage = BuildLinkToPage("LoginPage_Content"),
-                JobAlertsPage = BuildLinkToPage("JobAlertsPage_Content"),
-                JobsSearchPage = BuildLinkToPage("JobsSearchPage_Content"),
-                ResultsUrl = BuildUri("ResultsScriptUrl_Content")
             };
 
             return model;
-        }
-
-        private TalentLinkUrl BuildUri(string alias)
-        {
-            var url = UmbracoContent.GetPropertyValue<string>(alias);
-            if (!String.IsNullOrEmpty(url))
-            {
-                return new TalentLinkUrl(url);
-            }
-            return null;
         }
     }
 }

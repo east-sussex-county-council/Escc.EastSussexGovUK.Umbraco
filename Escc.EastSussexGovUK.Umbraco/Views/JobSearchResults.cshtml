@@ -18,7 +18,7 @@
     Html.RequiresCss("~/css/jobs/jobs-small.css");
     Html.RequiresCss("~/css/jobs/jobs-medium.css", MediaQueryAlias.Resolve("Medium"));
     Html.RequiresCss("~/css/jobs/jobs-large.css", MediaQueryAlias.Resolve("Large"));
-    Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=JobSearchResultsCss&media-query=small", 101);
+    Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=JobsCss&media-query=small", 101);
 
     var headerClass = Model.HeaderBackgroundImage != null ? "with-image" : String.Empty;
 

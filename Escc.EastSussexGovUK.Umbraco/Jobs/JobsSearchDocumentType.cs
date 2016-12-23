@@ -13,6 +13,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
     Description = "The search page for the jobs section of the website.")]
     public class JobsSearchDocumentType : CustomerFocusBaseDocumentType
     {
+        [UmbracoTemplate(DisplayName = "Jobs CSS", Alias = "JobsCss")]
+        public string JobsCss { get; set; }
+
         [UmbracoTab("Content")]
         public JobsSearchContentTab Content { get; set; }
     }

@@ -7,7 +7,7 @@
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
     Html.RequiresCss("~/css/jobs/jobs-small.css");
-    Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=JobsComponentCss&media-query=small", 101);
+    Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=JobsCss&media-query=small", 101);
 
     new ContentSecurityPolicyHeaders(Response.Headers).AppendPolicy(new ContentSecurityPolicyFromConfig().Policies["TalentLink"]).UpdateHeaders();
 

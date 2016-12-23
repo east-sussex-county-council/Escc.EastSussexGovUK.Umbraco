@@ -14,6 +14,7 @@ ul.pagingPages { margin: 0;}
 .jobs-search input[type=search] { font-size: 16px;padding: 9px;border-radius: 5px;border: 2px solid #ccc;width: 89%;}
 .jobs-search input[type=submit] { font-size: 16px;padding: 9px;border-radius: 5px;border: 2px solid #ccc;width: 10%;}
 
+/* One line space between the header and content */
 .jobs-content { padding-top: 18px; }
 
 /*** DRAFT: MAKE THIS A SHARED COMPONENT WITH THE HOME PAGE ***/
