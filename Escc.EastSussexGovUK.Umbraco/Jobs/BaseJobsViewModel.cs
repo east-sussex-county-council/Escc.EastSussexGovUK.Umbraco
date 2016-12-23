@@ -32,5 +32,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// Gets or sets the login page
         /// </summary>
         public HtmlLink LoginPage { get; set; }
+
+        /// <summary>
+        /// Gets or sets the search results page
+        /// </summary>
+        public HtmlLink SearchResultsPage { get; set; }
     }
 }

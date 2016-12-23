@@ -3312,13 +3312,13 @@
     <Content Include="Views\TextSize\Change.cshtml" />
     <Content Include="Views\JobSearchResults.cshtml" />
     <Content Include="Views\JobsComponent.cshtml" />
-    <Content Include="Views\JobsHomeCss.cshtml" />
     <Content Include="Views\JobsButtons.cshtml" />
     <Content Include="Views\JobsCss.cshtml" />
     <Content Include="Views\Layouts\_SocialMedia.cshtml" />
     <Content Include="Views\JobsRss.cshtml" />
     <Content Include="Views\JobsHome.cshtml" />
     <Content Include="Views\JobsSearch.cshtml" />
+    <Content Include="Views\JobsHeader.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>

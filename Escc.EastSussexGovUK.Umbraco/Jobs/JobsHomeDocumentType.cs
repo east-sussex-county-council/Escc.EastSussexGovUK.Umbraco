@@ -43,7 +43,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
     Description = "The start page for the jobs section of the website.")]
     public class JobsHomeDocumentType : CustomerFocusBaseDocumentType
     {
-        [UmbracoTemplate(DisplayName = "Jobs CSS", Alias = "JobsHomeCss")]
+        [UmbracoTemplate(DisplayName = "Jobs CSS", Alias = "JobsCss")]
         public string JobsCss { get; set; }
 
         [UmbracoTab("Content")]

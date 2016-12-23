@@ -6,13 +6,19 @@
 ul.pagingPages { margin: 0;}
 .pagingPages li { display: inline;list-style: none;margin-right:.2em;}
 
+/* .jobs-header is the positioning context for the search box on the jobs home page.
+   .jobs-header .context is the positioning context for the logo and login links
+*/
+.jobs-header { position: relative;}
 .jobs-header .context { position: relative; top: 36px;}
 .jobs-header .login { position: absolute;right: 0;top: 0;margin: 0;}
 .jobs-header.with-image .login { padding: 9px;background: #fff;border-radius: 5px;}
 
+/* TODO: Widths here are not responsive */
 .jobs-search {  position: absolute; bottom: 20px; width: 100%; }
-.jobs-search input[type=search] { font-size: 16px;padding: 9px;border-radius: 5px;border: 2px solid #ccc;width: 89%;}
-.jobs-search input[type=submit] { font-size: 16px;padding: 9px;border-radius: 5px;border: 2px solid #ccc;width: 10%;}
+.jobs-search .form { background: none; }
+.jobs-search .form input[type=search] { width: 88%;padding-left: 1%;padding-right: 1%;margin-right: 1%;}
+.jobs-search .form input[type=submit] {color: #222;background: #ccc; width: 10%;padding-left: 2%;padding-right: 2%;}
 
 /* One line space between the header and content */
 .jobs-content { padding-top: 18px; }

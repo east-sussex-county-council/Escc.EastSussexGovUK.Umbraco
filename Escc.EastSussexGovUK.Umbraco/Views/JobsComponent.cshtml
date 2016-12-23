@@ -1,4 +1,5 @@
 ﻿@using ClientDependency.Core.Mvc
+@using Escc.ClientDependencyFramework
 @using Escc.EastSussexGovUK.Skins
 @using Escc.EastSussexGovUK.Views
 @using Escc.Web
@@ -7,32 +8,16 @@
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
     Html.RequiresCss("~/css/jobs/jobs-small.css");
+    Html.RequiresCss("~/css/jobs/jobs-medium.css", MediaQueryAlias.Resolve("Medium"));
+    Html.RequiresCss("~/css/jobs/jobs-large.css", MediaQueryAlias.Resolve("Large"));
     Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=JobsCss&media-query=small", 101);
 
-    new ContentSecurityPolicyHeaders(Response.Headers).AppendPolicy(new ContentSecurityPolicyFromConfig().Policies["TalentLink"]).UpdateHeaders();
-
-    var headerClass = Model.HeaderBackgroundImage != null ? "with-image" : String.Empty;
+    new ContentSecurityPolicyHeaders(Response.Headers).AppendPolicy("script-src https://emea3.recruitmentplatform.com https://s7.addthis.com 'unsafe-inline'; style-src 'unsafe-inline'").UpdateHeaders();
 }
 @section Breadcrumb {}
-<div class="jobs-header @headerClass">
-    <div class="text-content">
-        @if (Model.JobsLogo != null)
-        {
-            <h1>
-            @if (Model.JobsHomePage != null)
-            {
-                <a href="@Model.JobsHomePage.Url"><img src="@Model.JobsLogo.ImageUrl" alt="@Model.Metadata.Title" width="@Model.JobsLogo.Width" /></a>
-            }
-            else
-            {
-                <img src="@Model.JobsLogo.ImageUrl" alt="@Model.Metadata.Title" width="@Model.JobsLogo.Width" />
-            }
-            </h1>
-        }
-    </div>
-</div>
+@Html.Partial("~/Views/JobsHeader.cshtml", Model)
 
-<div class="full-page">
+<div class="full-page jobs-content">
     <div class="content text-content">
         <h1>@Model.Metadata.Title</h1>
         <script src="@Model.ScriptUrl.ScriptUrl"></script>

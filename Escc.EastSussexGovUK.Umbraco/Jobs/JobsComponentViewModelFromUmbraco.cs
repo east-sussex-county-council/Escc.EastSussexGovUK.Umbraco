@@ -31,6 +31,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             {
                 JobsLogo = BuildImage("JobsLogo_Content"),
                 JobsHomePage = BuildLinkToPage("JobsHomePage_Content"),
+                LoginPage = BuildLinkToPage("LoginPage_Content"),
                 HeaderBackgroundImage = BuildImage("HeaderBackgroundImage_Content"),
                 ScriptUrl = new TalentLinkUrl(UmbracoContent.GetPropertyValue<string>("ScriptUrl_Content"))
             };

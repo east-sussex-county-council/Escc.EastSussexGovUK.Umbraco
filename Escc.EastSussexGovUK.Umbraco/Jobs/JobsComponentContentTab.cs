@@ -39,7 +39,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         [UmbracoProperty("Header background image", "HeaderBackgroundImage", BuiltInUmbracoDataTypes.MediaPicker, sortOrder: 3, Description = "Select the background image for the page header")]
         public string HeaderBackgroundImage { get; set; }
 
-        [UmbracoProperty("Script URL", "scriptUrl", UrlDataType.PropertyEditorAlias, UrlDataType.DataTypeName, sortOrder: 4, mandatory: true, 
+        /// <summary>
+        /// Gets or sets the login page
+        /// </summary>
+        /// <value>
+        /// A reference to the Umbraco node for the login page
+        /// </value>
+        [UmbracoProperty("Login page", "LoginPage", BuiltInUmbracoDataTypes.ContentPickerAlias, sortOrder: 4, Description = "Select the jobs login page, based on the 'Jobs component' document type")]
+        public string LoginPage { get; set; }
+
+        [UmbracoProperty("Script URL", "scriptUrl", UrlDataType.PropertyEditorAlias, UrlDataType.DataTypeName, sortOrder: 5, mandatory: true, 
             Description="A standard TalentLink component is embedded into a page by referencing a script. Paste the URL here.")]
         public Uri ScriptUrl { get; set; }
     }

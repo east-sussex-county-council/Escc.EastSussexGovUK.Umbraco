@@ -7,35 +7,16 @@
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
+    Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));
+    Html.RequiresCss(CssFileAlias.Resolve("FormsMedium"), MediaQueryAlias.Resolve("Medium"));
+    Html.RequiresCss(CssFileAlias.Resolve("FormsLarge"), MediaQueryAlias.Resolve("Large"));
     Html.RequiresCss("~/css/jobs/jobs-small.css");
     Html.RequiresCss("~/css/jobs/jobs-medium.css", MediaQueryAlias.Resolve("Medium"));
     Html.RequiresCss("~/css/jobs/jobs-large.css", MediaQueryAlias.Resolve("Large"));
-    Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=JobsHomeCss&media-query=small", 101);
-
-    var headerClass = Model.HeaderBackgroundImage != null ? "with-image" : String.Empty;
+    Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=JobsCss&media-query=small", 101);
 }
 @section Breadcrumb {}
-<div class="jobs-header @headerClass">
-    <div class="text-content">
-        @if (Model.JobsLogo != null)
-        {
-            <h1><img src="@Model.JobsLogo.ImageUrl" alt="@Model.Metadata.Title" width="@Model.JobsLogo.Width" /></h1>
-        }
-        @if (Model.LoginPage != null)
-        {
-            <p class="login"><a href="@Model.LoginPage.Url">@Model.LoginPage.Text</a></p>
-        }
-        @if (Model.SearchResultsPage != null)
-        {
-            <form action="@Model.SearchResultsPage.Url" method="GET" class="jobs-search">
-                <div>
-                    <input type="search" name="keywords" />
-                    <input type="submit" value="Search" />
-                </div>
-            </form>
-        }
-    </div>
-</div>
+@Html.Partial("~/Views/JobsHeader.cshtml", Model)
 <div class="jobs-content full-page">
     <div class="content text-content">
         @Html.Partial("~/Views/JobsButtons.cshtml")
