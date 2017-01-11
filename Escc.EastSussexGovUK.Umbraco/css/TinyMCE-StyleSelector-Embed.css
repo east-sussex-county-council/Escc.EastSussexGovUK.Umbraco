@@ -3,6 +3,9 @@
 /**umb_name:Embed link (eg video, map)*/
 .embed { outline: 2px dotted #ccc;padding: 2px;}
 
+/**umb_name: Embed jobs RSS feed */
+.embed-jobs-rss { outline: 2px dotted #ccc;padding: 2px; }
+
 /**umb_name: RSS feed */
 .rss { padding: 5px 5px 5px 30px;background: #FA5D18 url(https://www.eastsussex.gov.uk/img/body/rss-27px.gif) no-repeat;color: #fff; }
 .rss a:link, .rss a:visited { color: #fff; }
