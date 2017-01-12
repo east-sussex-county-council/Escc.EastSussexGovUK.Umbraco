@@ -48,8 +48,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 new UmbracoWebChatSettingsService(model.Content, new UrlListReader()),
                 null);
 
-            var jobsProvider = new JobsDataFromTalentLink(null, null, viewModel.JobAdvertUrl.LinkUrl, new ConfigurationProxyProvider(), null, null, new JobAdvertHtmlParser());
-            viewModel.Job = Task.Run(async () => await jobsProvider.ReadJob(Request.QueryString["job"])).Result;
+            var jobUrlSegment = Regex.Match(Request.Url.AbsolutePath, "/([0-9]+)/");
+            if (jobUrlSegment.Success)
+            {
+                var jobsProvider = new JobsDataFromTalentLink(null, null, viewModel.JobAdvertUrl.LinkUrl, new ConfigurationProxyProvider(), null, null, new JobAdvertHtmlParser());
+                viewModel.Job = Task.Run(async () => await jobsProvider.ReadJob(jobUrlSegment.Groups[1].Value)).Result;
+            }
+            else
+            {
+                return new HttpNotFoundResult();
+            }
 
             new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" });
 

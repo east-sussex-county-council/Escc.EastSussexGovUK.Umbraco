@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Web;
 using HtmlAgilityPack;
 
@@ -86,11 +87,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                     var absoluteUrl = new Uri(new Uri("http://example.org"), jobUrl);
                     var query = HttpUtility.ParseQueryString(absoluteUrl.Query);
                     job.Id = query["nPostingTargetId"];
+                    job.JobTitle = HttpUtility.HtmlDecode(link.InnerText);
                     if (_baseUrlForJobDetails != null)
                     {
-                        job.Url = new Uri(_baseUrlForJobDetails + "?job=" + job.Id);
+                        job.Url = new Uri(_baseUrlForJobDetails.ToString().TrimEnd(new [] {'/'}) + "/" + job.Id + "/" + Regex.Replace(job.JobTitle.ToLower(CultureInfo.CurrentCulture).Replace(" - ", "-").Replace(" ", "-"), "[^a-z0-9-]", String.Empty));
                     }
-                    job.JobTitle = HttpUtility.HtmlDecode(link.InnerText);
                     job.Organisation = HttpUtility.HtmlDecode(link.ParentNode.ParentNode.SelectSingleNode("./td[@headers='th2']")?.InnerText?.Trim());
                     job.Location = HttpUtility.HtmlDecode(link.ParentNode.ParentNode.SelectSingleNode("./td[@headers='th3']")?.InnerText?.Trim());
                     job.Salary = HttpUtility.HtmlDecode(link.ParentNode.ParentNode.SelectSingleNode("./td[@headers='th4']")?.InnerText?.Trim());
