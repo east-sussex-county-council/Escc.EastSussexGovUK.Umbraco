@@ -24,7 +24,6 @@ ul.pagingPages { margin: 0;}
 .jobs-search input[type=submit]:hover, .jobs-search input[type=submit]:focus, .jobs-search input[type=submit]:active { background: #EE4902; }
 .jobs-search .buttons a {display: inline-block;vertical-align: middle;text-decoration: none;color: #fff;font-size: 1em;}
 
-
 /* One line space between the header and content */
 .jobs-content { padding-top: 1.125em; }
 
@@ -56,3 +55,6 @@ ul.jobs-buttons { margin: 0; padding: 0;background: #fff; }
 .job-results td.job-title { display: block;margin-bottom: 9px; }
 .job-results thead, .job-results .organisation {display: none; }
 .job-results td.location, .job-results td.salary, .job-results td.closing-date { display: block; }
+
+/* Login - space around links */
+#chpLogForgot { margin: 1.125em 0 0; }

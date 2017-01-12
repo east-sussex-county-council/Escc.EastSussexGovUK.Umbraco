@@ -1,4 +1,5 @@
-﻿using Escc.EastSussexGovUK.Umbraco.Models;
+﻿using System.Web;
+using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.Umbraco.PropertyTypes;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
@@ -13,5 +14,21 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// Gets or sets the URL of the script to embed the component in the page.
         /// </summary>
         public TalentLinkUrl ScriptUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether this component is a form.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if this instance is a form; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsForm { get; set; }
+
+        /// <summary>
+        /// Gets or sets the HTML content below the component.
+        /// </summary>
+        /// <value>
+        /// The content below component.
+        /// </value>
+        public IHtmlString ContentBelowComponent { get; set; }
     }
 }

@@ -1,3 +1,4 @@
+using System.Web;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.EastSussexGovUK.Umbraco.Services;
 using Umbraco.Core.Models;
@@ -7,17 +8,20 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
     public class JobsComponentViewModelFromUmbraco : BaseJobsViewModelFromUmbracoBuilder, IViewModelBuilder<JobsComponentViewModel>
     {
+        private readonly IMediaUrlTransformer _mediaUrlTransformer;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="JobsHomeViewModelFromUmbraco" /> class.
         /// </summary>
         /// <param name="umbracoContent">Content from Umbraco using the 'Jobs' document type.</param>
+        /// <param name="mediaUrlTransformer">The media URL transformer.</param>
         /// <exception cref="System.ArgumentNullException">umbracoContent
         /// or
         /// mediaUrlTransformer</exception>
-        public JobsComponentViewModelFromUmbraco(IPublishedContent umbracoContent) :
+        public JobsComponentViewModelFromUmbraco(IPublishedContent umbracoContent, IMediaUrlTransformer mediaUrlTransformer) :
             base(umbracoContent)
         {
+            _mediaUrlTransformer = mediaUrlTransformer;
         }
 
         /// <summary>
@@ -33,7 +37,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 JobsHomePage = BuildLinkToPage("JobsHomePage_Content"),
                 LoginPage = BuildLinkToPage("LoginPage_Content"),
                 HeaderBackgroundImage = BuildImage("HeaderBackgroundImage_Content"),
-                ScriptUrl = new TalentLinkUrl(UmbracoContent.GetPropertyValue<string>("ScriptUrl_Content"))
+                ScriptUrl = new TalentLinkUrl(UmbracoContent.GetPropertyValue<string>("ScriptUrl_Content")),
+                IsForm = UmbracoContent.GetPropertyValue<bool>("IsForm_Content"),
+                ContentBelowComponent = new HtmlString(_mediaUrlTransformer.ParseAndTransformMediaUrlsInHtml(UmbracoContent.GetPropertyValue<string>("ContentBelow_Content")))
             };
 
             return model;

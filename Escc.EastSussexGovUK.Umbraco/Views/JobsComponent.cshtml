@@ -7,6 +7,12 @@
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
+    if (Model.IsForm)
+    {
+        Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));
+        Html.RequiresCss(CssFileAlias.Resolve("FormsMedium"), MediaQueryAlias.Resolve("Medium"));
+        Html.RequiresCss(CssFileAlias.Resolve("FormsLarge"), MediaQueryAlias.Resolve("Large"));
+    }
     Html.RequiresCss("~/css/jobs/jobs-small.css");
     Html.RequiresCss("~/css/jobs/jobs-medium.css", MediaQueryAlias.Resolve("Medium"));
     Html.RequiresCss("~/css/jobs/jobs-large.css", MediaQueryAlias.Resolve("Large"));
@@ -20,8 +26,11 @@
 <div class="full-page jobs-content">
     <div class="content text-content">
         <h1>@Model.Metadata.Title</h1>
-        <script src="@Model.ScriptUrl.ScriptUrl"></script>
-        <noscript><a href="@Model.ScriptUrl.LinkUrl">@Model.Metadata.Title</a></noscript>
+        <div class="@(Model.IsForm ? "form short-form" : String.Empty)">
+            <script src="@Model.ScriptUrl.ScriptUrl"></script>
+            <noscript><a href="@Model.ScriptUrl.LinkUrl">@Model.Metadata.Title</a></noscript>
+        </div>
+        @Model.ContentBelowComponent
     </div>
 </div>
 

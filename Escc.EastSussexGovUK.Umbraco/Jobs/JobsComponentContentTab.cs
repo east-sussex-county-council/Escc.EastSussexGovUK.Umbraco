@@ -1,5 +1,8 @@
 ﻿using System;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Features;
+using Escc.Umbraco.PropertyEditors;
 using Escc.Umbraco.PropertyEditors.DataTypes;
+using Escc.Umbraco.PropertyEditors.RichTextPropertyEditor;
 using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
 
@@ -51,5 +54,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         [UmbracoProperty("Script URL", "scriptUrl", UrlDataType.PropertyEditorAlias, UrlDataType.DataTypeName, sortOrder: 5, mandatory: true, 
             Description="A standard TalentLink component is embedded into a page by referencing a script. Paste the URL here.")]
         public Uri ScriptUrl { get; set; }
+
+        [UmbracoProperty("This is a form", "IsForm", BuiltInUmbracoDataTypes.Boolean, sortOrder: 6, 
+           Description = "If this component is a form that's part of the jobs user interface, tick here to apply form styles.")]
+        public Uri IsForm { get; set; }
+
+        [UmbracoProperty("Content below the component", "ContentBelow", PropertyEditorAliases.RichTextPropertyEditor, RichTextEsccWithFormattingDataType.DataTypeName, sortOrder: 7,
+           Description = "Optional content which will appear below the TalentLink component.")]
+        public Uri ContentBelowComponent { get; set; }
     }
 }

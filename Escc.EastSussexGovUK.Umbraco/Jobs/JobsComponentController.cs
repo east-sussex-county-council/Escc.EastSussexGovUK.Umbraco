@@ -19,12 +19,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         {
             if (model == null) throw new ArgumentNullException(nameof(model));
 
-            var viewModel = new JobsComponentViewModelFromUmbraco(model.Content).BuildModel();
+            var viewModel = new JobsComponentViewModelFromUmbraco(model.Content, new RemoveMediaDomainUrlTransformer()).BuildModel();
 
             var modelBuilder = new BaseViewModelBuilder();
             modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode);
             viewModel.Metadata.Description = String.Empty;
-
 
             return CurrentTemplate(viewModel);
         }
