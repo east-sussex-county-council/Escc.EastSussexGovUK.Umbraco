@@ -117,6 +117,197 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="JobAdvert1Html" xml:space="preserve">
+    <value>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" " http://www.w3.org/TR/html4/strict.dtd"&gt;&lt;html lang="en-GB" xmlns="http://www.w3.org/1999/xhtml" xmlns:addthis="http://www.addthis.com/help/api-spec" &gt;&lt;head&gt;&lt;meta name="GENERATOR" content="MrTed"&gt;&lt;meta name="TEMPLATEBASE" content="Accessible HTML"&gt;&lt;meta name="LASTUPDATED" content="18/08/05 10:05:33"&gt;&lt;meta name="author" content="MrTed"&gt;&lt;meta name="keywords" content="Jobs, Career Section, Candidate Portal"&gt;&lt;meta name="description" content="Mrted Talentlink syndication components"&gt;&lt;meta http-equiv="Content-Style-Type" content="text/css"&gt;&lt;meta http-equiv="Content-Script-Type" content="text/javascript"&gt;&lt;meta name="language" http-equiv="Content-Language" content="en-GB"&gt;&lt;title&gt;Jobs&lt;/title&gt;
+&lt;meta HTTP-EQUIV="Content-Type" content="text/html; charset=UTF-8"&gt;
+&lt;LINK REL="STYLESHEET" TYPE="text/css" HREF="/syndicated/syd_style/PFOFK026203F3VBQB7968LOH0-36.css"&gt;
+&lt;/head&gt;&lt;body class="bodyRapido"&gt;
+&lt;script type="text/javascript" language="javascript" &gt;
+var notificationScript = "https://emea3.recruitmentplatform.com/tlk/js/util/jquery_notification_v.1.js";
+var jQueryDefinedOutsideTlk = null;
+loadTlkLibraries();
+function jQueryLoaded() {
+}
+function notificationLoaded() {
+showNotification({type: "warning", message: "Page displays content of unposted posting and is available for 15 minutes. No action should be performed."});
+}
+function getSharedPostingTargetId(){
+return 37054;
+}
+function loadTlkLibraries() {
+if (typeof(jQuery) == 'undefined') {
+loadTlkJQuery();
+} else {
+jQueryDefinedOutsideTlk = window.$;
+jQueryLoaded();
+}
+}
+function loadTlkJQuery() {
+addScript('https://emea3.recruitmentplatform.com/js/jquery/jquery.js', jQueryLoaded);
+}
+function addScript(src, callbackFunction) {
+var head = document.getElementsByTagName('head')[0];
+var script = document.createElement('script');
+script.type= 'text/javascript';
+script.src= src;
+if (callbackFunction != null) {
+script.onreadystatechange= function () {
+if (this.readyState == 'complete' || this.readyState == 'loaded') callbackFunction();
+};
+script.onload = callbackFunction;
+}
+head.appendChild(script);
+}
+&lt;/script&gt;
+&lt;div id="JDescContent" style="position:relative;"&gt;
+&lt;div class="JD-socialNetworks-overlayer" style="position:absolute;top:0px;right:0px;"&gt;
+&lt;/div&gt;
+&lt;div style="display:none"&gt;&lt;h1&gt;&lt;/h1&gt;&lt;h2&gt;&lt;/h2&gt;&lt;/div&gt;
+&lt;h3 class="JD-Title" id="JDText-Title"&gt;
+Ceremonies Hosts (CET01739)
+&lt;/h3&gt;
+&lt;div class="JD-socialNetworks-top"&gt;
+&lt;/div&gt;
+&lt;div id="JD-TopParams"&gt;
+&lt;div id="JD-Param2"&gt;
+&lt;h4 class="JD-HDLabel" id="JDLabel-Param2"&gt;Job Reference:&lt;/h4&gt;
+&lt;span class="JD-HDText" id="JDText-Param2"&gt;CET01739&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id="JD-Param3"&gt;
+&lt;h4 class="JD-HDLabel" id="JDLabel-Param3"&gt;Location:&lt;/h4&gt;
+&lt;span class="JD-HDText" id="JDText-Param3"&gt;Lewes&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id="JD-Param4"&gt;
+&lt;h4 class="JD-HDLabel" id="JDLabel-Param4"&gt;Organisation:&lt;/h4&gt;
+&lt;span class="JD-HDText" id="JDText-Param4"&gt;East Sussex County Council&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id="JD-Param5"&gt;
+&lt;h4 class="JD-HDLabel" id="JDLabel-Param5"&gt;Department:&lt;/h4&gt;
+&lt;span class="JD-HDText" id="JDText-Param5"&gt;Communities, Economy and Transport&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id="JD-Param6"&gt;
+&lt;h4 class="JD-HDLabel" id="JDLabel-Param6"&gt;Contract Type:&lt;/h4&gt;
+&lt;span class="JD-HDText" id="JDText-Param6"&gt;Casual&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id="JD-Param7"&gt;
+&lt;h4 class="JD-HDLabel" id="JDLabel-Param7"&gt;Job Type:&lt;/h4&gt;
+&lt;span class="JD-HDText" id="JDText-Param7"&gt;Customer Services&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id="JD-salary"&gt;
+&lt;h4 class="JD-HDLabel" id="JDLabel-salary"&gt;Salary:&lt;/h4&gt;
+&lt;span class="JD-HDText" id="JDText-salary"&gt;
+14981
+&amp;nbsp;-&amp;nbsp;15507&amp;nbsp;
+GBP&amp;nbsp;&amp;nbsp;Year
+&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id="JD-Param9"&gt;
+&lt;h4 class="JD-HDLabel" id="JDLabel-Param9"&gt;Closing Date:&lt;/h4&gt;
+&lt;span class="JD-HDText" id="JDText-Param9"&gt;29/01/2017&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="JD-AllFields"&gt;
+&lt;div id="JD-Field1"&gt;
+&lt;h5 class="JD-FieldLabel" id="JDLabel-Field1"&gt;Job Details&lt;/h5&gt;
+&lt;span class="JD-FieldText" id="JDText-Field1"&gt;&lt;div&gt;
+&lt;p&gt;&lt;span style="font-size: 8.5pt; font-family: 'Verdana','sans-serif'; color: black;"&gt;Hours of work: Casual hours&lt;br /&gt;Working pattern: Part-time&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;span style="font-size: 8.5pt; font-family: 'Verdana','sans-serif'; color: black;"&gt;Closing date: Sunday&amp;nbsp;29 January 2017&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;span style="font-size: 8.5pt; font-family: 'Verdana','sans-serif'; color: black;"&gt;For an informal discussion, please contact Pamela Day on 01273 337035 / 07876 036872.&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id="JD-Field2"&gt;
+&lt;h5 class="JD-FieldLabel" id="JDLabel-Field2"&gt;About the Role&lt;/h5&gt;
+&lt;span class="JD-FieldText" id="JDText-Field2"&gt;&lt;div&gt;
+&lt;p&gt;&lt;span style="font-size: 8.5pt; font-family: 'Verdana','sans-serif'; color: black;"&gt;The East Sussex Registration Service is seeking self-motivated individuals to join its&amp;nbsp;ceremony team at our&amp;nbsp;newly refurbished Southover Grange&amp;nbsp;Register Office in Lewes.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;span style="font-size: 8.5pt; font-family: 'Verdana','sans-serif'; color: black;"&gt;If you have good communication skills, a can do attitude, the ability to work under pressure, and excellent interpersonal skills you could be the person we are looking for. Full training will be provided.&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;span style="font-size: 8.5pt; font-family: 'Verdana','sans-serif'; color: black;"&gt;You will be responsible for assisting with the meeting and greeting of couples and their guests. You&amp;nbsp;will be&amp;nbsp;required to ensure that all guests are ushered into&amp;nbsp;the correct room at the right time. To prepare the rooms both pre and post bookings and ensure all guests requirements are met with regard to refreshments etc. Compliance with the&amp;nbsp;licensing laws and the ability to assert yourself when necessary are required along with assisting to help maintain the security of the building.&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;span style="font-size: 8.5pt; font-family: 'Verdana','sans-serif'; color: black;"&gt;You will also need to demonstrate a sensitive approach to working with people and be&amp;nbsp;smartly dressed as appropriate for the role.&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;span style="font-size: 8.5pt; font-family: 'Verdana','sans-serif'; color: black;"&gt;Whilst many of our ceremonies take place at weekends, and on public holidays, some couples choose to have their ceremony on a weekday. We cannot guarantee hours of work on particular days or on a regular basis but you would need to be available for work at weekends/public holidays especially during the summer months during which time we would expect you to work most weekends as required by the needs of the service. Occasional evening work may also be required.&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id="JD-Field4"&gt;
+&lt;h5 class="JD-FieldLabel" id="JDLabel-Field4"&gt;Additional Information&lt;/h5&gt;
+&lt;span class="JD-FieldText" id="JDText-Field4"&gt;&lt;div&gt;
+&lt;p&gt;&lt;strong&gt;&lt;/strong&gt;Your starting salary will be pro rata if the above position is part-time or term-time only.&lt;/p&gt;
+&lt;p&gt;Work Permits: we may be able to obtain a Work Permit for this post but this is subject to meeting the requirements of the UK Border Agency&amp;rsquo;s Points-based Immigration System.&lt;/p&gt;
+&lt;p&gt;From 6 April 2011 the Home Office has placed a permanent restriction on the number of migrant workers that all Tier 2 (General) Sponsors can recruit. Due to the restrictions we cannot guarantee that individuals that meet the requirements of the Points-based Immigration System will be issued with clearance to obtain work permits.&lt;/p&gt;
+&lt;/div&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id="JD-Field5"&gt;
+&lt;h5 class="JD-FieldLabel" id="JDLabel-Field5"&gt;Equal Opportunities&lt;/h5&gt;
+&lt;span class="JD-FieldText" id="JDText-Field5"&gt;&lt;div&gt;
+&lt;p&gt;East Sussex County Council is an equal opportunities employer. We welcome applications from all suitable candidates, regardless of race, gender, sexual orientation, disability or age. All applications are treated on merit.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;img src="https://eastsussexgovuk.blob.core.windows.net/media/4191/twoticksfooter.jpg" alt="Positive about disabled people" /&gt;&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id="JD-Field6"&gt;
+&lt;h5 class="JD-FieldLabel" id="JDLabel-Field6"&gt;How to apply&lt;/h5&gt;
+&lt;span class="JD-FieldText" id="JDText-Field6"&gt;&lt;div&gt;
+&lt;p&gt;Information for redeployees&lt;/p&gt;
+&lt;p&gt;If you wish to discuss the above position in more detail or be considered for redeployment into this post, please contact your HR Advisor.&lt;/p&gt;
+&lt;/div&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id="JD-Documents"&gt;
+&lt;h5 class="JD-DocumentsLabel" id="JDLabel-Documents"&gt;Available documents&lt;/h5&gt;
+&lt;ul class="JD-DocumentsList"&gt;
+&lt;li class="JD-DocumentData"&gt;
+&lt;a href="https://emea3.recruitmentplatform.com/tlk/pages/fo/download_job_file.jsp?ID=PFOFK026203F3VBQB7968LOH0&amp;amp;nDocumentID=933691&amp;amp;ptId=37054" class="JD-BButtonFace JD-DocumentName"&gt;Job Description and Person Specification&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="JD-Actions"&gt;
+&lt;div id="JD-ActBack"&gt;
+&lt;span class="linkbracket"&gt;[&lt;/span&gt;&lt;a class="JD-BButtonFace" href="jsoutputinitrapido.cfm?component=lay9999_lst400a&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;lg=UK&amp;amp;mask=esccext&amp;amp;dntgen=1&amp;amp;option=&amp;amp;sort=All&amp;amp;Resultsperpage=10" title="Back to list" tabindex="1"&gt;Back to list&lt;/a&gt;&lt;span class="linkbracket"&gt;]&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id="JD-ActSendJob"&gt;
+&lt;span class="linkbracket"&gt;[&lt;/span&gt;&lt;a class="JD-BButtonFace" href="https://emea3.recruitmentplatform.com/syndicated/syd_emailjob.cfm?usePopups=yes&amp;amp;URL=https%3A%2F%2Femea3%2Erecruitmentplatform%2Ecom%2Fsyndicated%2Flay%2Fjsoutputinitrapido%2Ecfm%3Fcomponent%3Dlay9999%5Fjdesc100a%26ID%3DPFOFK026203F3VBQB7968LOH0%26LG%3DUK%26mask%3Desccext%26browserchk%3Dno%26nPostingTargetID%3D37054" title="Send job to a friend" tabindex="2" onclick="window.open(this.href);return false;"&gt;Send job to a friend&lt;/a&gt;&lt;span class="linkbracket"&gt;]&lt;/span&gt;
+&lt;span class="NewPopUp"&gt;(Please note: this link will open the page in a new browser window.)&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id="JD-ActApply"&gt;
+&lt;div id="JD-ActApplyDirect"&gt;
+&lt;span class="linkbracket"&gt;[&lt;/span&gt;&lt;a class="JD-BButtonFace" href="https://emea3.recruitmentplatform.com/syndicated/private/syd_apply.cfm?id=PFOFK026203F3VBQB7968LOH0&amp;amp;nPostingTargetID=37054&amp;amp;mask=esccext&amp;amp;jdescurl=https%3A%2F%2Femea3%2Erecruitmentplatform%2Ecom%2Fsyndicated%2Flay%2Fjsoutputinitrapido%2Ecfm%3Fcomponent%3Dlay9999%5Fjdesc100a%26ID%3DPFOFK026203F3VBQB7968LOH0%26LG%3DUK%26mask%3Desccext%26browserchk%3Dno%26nPostingTargetID%3D37054" title="Apply for job" tabindex="3" onclick="window.open(this.href);return false;"&gt;Apply for job&lt;/a&gt;&lt;span class="linkbracket"&gt;]&lt;/span&gt;
+&lt;span class="NewPopUp"&gt;(Please note: this link will open the page in a new browser window.)&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class="JD-socialNetworks-bottom"&gt;
+&lt;!-- AddThis Button BEGIN --&gt;
+&lt;script type="text/javascript"&gt;var addthis_config = {ui_click: true, data_track_clickback: true};&lt;/script&gt;
+&lt;div class="addthis_toolbox addthis_default_style"  addthis:url="http://emea3.mrted.ly/1aqg0" addthis:title="Hiring Ceremonies Hosts (CET01739) " &gt;
+&lt;a class="addthis_button_twitter" title="Send to Twitter"&gt;&lt;/a&gt;
+&lt;a class="addthis_button_linkedin" title="Send to Linkedin"&gt;&lt;/a&gt;
+&lt;a class="addthis_button_facebook" title="Send to Facebook"&gt;&lt;/a&gt;
+&lt;span class="addthis_separator"&gt;|&lt;/span&gt;
+&lt;a href="//addthis.com/bookmark.php?v=300&amp;amp;pubid=mrted&amp;amp;url=http://emea3.mrted.ly/1aqg0&amp;amp;title=Hiring%20Ceremonies%20Hosts%20%28CET01739%29%20"class="addthis_button_compact"&gt;more&lt;/a&gt;
+&lt;/div&gt;
+&lt;script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=mrted"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+function shareEventHandler(evt){ 
+if(evt &amp;&amp; evt.type == 'addthis.menu.share'){ 
+var service = evt.data.service;
+var nPostingTargetId;
+try{
+nPostingTargetId = getSharedPostingTargetId();
+}catch(e){
+}
+if(service){
+jQuery.ajax({
+type: "GET",
+url: "/common/ajax/log_socialrecruiting_share.cfm",
+data: "service="+addthis.util.getServiceName(service)+"&amp;nPostingTargetId="+nPostingTargetId
+});
+}
+}
+}
+addthis.addEventListener('addthis.menu.share', shareEventHandler);
+&lt;/script&gt;
+&lt;!-- AddThis Button END --&gt;
+&lt;/div&gt;
+&lt;/div&gt; 
+&lt;/div&gt; 
+&lt;/div&gt; 
+&lt;/body&gt;
+&lt;/html&gt;</value>
+  </data>
   <data name="JobResultsOuterHtml" xml:space="preserve">
     <value>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" " http://www.w3.org/TR/html4/strict.dtd"&gt;&lt;html lang="en-GB" xmlns="http://www.w3.org/1999/xhtml" xmlns:addthis="http://www.addthis.com/help/api-spec" &gt;&lt;head&gt;&lt;meta name="GENERATOR" content="MrTed"&gt;&lt;meta name="TEMPLATEBASE" content="Accessible HTML"&gt;&lt;meta name="LASTUPDATED" content="18/08/05 10:05:33"&gt;&lt;meta name="author" content="MrTed"&gt;&lt;meta name="keywords" content="Jobs, Career Section, Candidate Portal"&gt;&lt;meta name="description" content="Mrted Talentlink syndication components"&gt;&lt;meta http-equiv="Content-Style-Type" content="text/css"&gt;&lt;meta http-equiv="Content-Script-Type" content="text/javascript"&gt;&lt;meta name="language" http-equiv="Content-Language" content="en-GB"&gt;&lt;title&gt;Jobs&lt;/title&gt;
 &lt;meta HTTP-EQUIV="Content-Type" content="text/html; charset=UTF-8"&gt;

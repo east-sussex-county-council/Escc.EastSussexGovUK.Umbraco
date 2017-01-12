@@ -7,16 +7,16 @@ using Umbraco.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
-    public class JobSearchResultsViewModelFromUmbraco : BaseJobsViewModelFromUmbracoBuilder, IViewModelBuilder<JobSearchResultsViewModel>
+    public class JobAdvertViewModelFromUmbraco : BaseJobsViewModelFromUmbracoBuilder, IViewModelBuilder<JobAdvertViewModel>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="JobSearchResultsViewModel" /> class.
+        /// Initializes a new instance of the <see cref="JobAdvertViewModel" /> class.
         /// </summary>
-        /// <param name="umbracoContent">Content from Umbraco using the 'Jobs' document type.</param>
+        /// <param name="umbracoContent">Content from Umbraco using the 'Job advert' document type.</param>
         /// <exception cref="System.ArgumentNullException">umbracoContent
         /// or
         /// mediaUrlTransformer</exception>
-        public JobSearchResultsViewModelFromUmbraco(IPublishedContent umbracoContent) :
+        public JobAdvertViewModelFromUmbraco(IPublishedContent umbracoContent) :
             base(umbracoContent, null)
         {
         }
@@ -25,18 +25,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// Gets the view model.
         /// </summary>
         /// <returns></returns>
-        public JobSearchResultsViewModel BuildModel()
+        public JobAdvertViewModel BuildModel()
         {
-            var model = new JobSearchResultsViewModel()
+            var model = new JobAdvertViewModel()
             {
                 JobsLogo = BuildImage("JobsLogo_Content"),
                 HeaderBackgroundImage = BuildImage("HeaderBackgroundImage_Content"),
                 JobsHomePage = BuildLinkToPage("JobsHomePage_Content"),
-                JobDetailPage = BuildLinkToPage("JobDetailPage_Content"),
                 LoginPage = BuildLinkToPage("LoginPage_Content"),
-                JobAlertsPage = BuildLinkToPage("JobAlertsPage_Content"),
-                JobsSearchPage = BuildLinkToPage("JobsSearchPage_Content"),
-                ResultsUrl = BuildUri("ResultsScriptUrl_Content")
+                JobAdvertUrl = BuildUri("AdvertScriptUrl_Content")
             };
 
             return model;

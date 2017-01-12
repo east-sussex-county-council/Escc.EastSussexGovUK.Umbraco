@@ -1,4 +1,5 @@
 using System;
+using System.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
@@ -53,14 +54,59 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// <value>
         /// The closing date.
         /// </value>
-        public DateTime ClosingDate { get; set; }
+        public DateTime? ClosingDate { get; set; }
         
         /// <summary>
-        /// Gets or sets the identifier.
+        /// Gets or sets the internal identifier for the jobs service.
         /// </summary>
         /// <value>
         /// The identifier.
         /// </value>
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the published job reference.
+        /// </summary>
+        /// <value>
+        /// The reference.
+        /// </value>
+        public string Reference { get; set; }
+
+        /// <summary>
+        /// Gets or sets the full advert text.
+        /// </summary>
+        /// <value>
+        /// The advert text.
+        /// </value>
+        public IHtmlString AdvertHtml { get; set; }
+       
+        /// <summary>
+        /// Gets or sets the type or category of the job.
+        /// </summary>
+        /// <value>
+        /// The type of the job.
+        /// </value>
+        public string JobType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type of the contract, eg fixed term or permanent.
+        /// </summary>
+        /// <value>
+        /// The type of the contract.
+        /// </value>
+        public string ContractType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the part of the organisation that's advertising the job.
+        /// </summary>
+        /// <value>
+        /// The department.
+        /// </value>
+        public string Department { get; set; }
+
+        /// <summary>
+        /// Gets or sets the URL to apply for the job.
+        /// </summary>
+        public Uri ApplyUrl { get; set; }
     }
 }

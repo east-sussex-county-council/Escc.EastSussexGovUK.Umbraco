@@ -327,6 +327,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="HtmlAgilityPackFormatterTests.cs" />
+    <Compile Include="HtmlStringFormatterTests.cs" />
+    <Compile Include="JobAdvertHtmlParserTests.cs" />
     <Compile Include="JobSearchFilterTests.cs" />
     <Compile Include="RemoveMediaDomainUrlTransformerTests.cs" />
     <Compile Include="GoogleAdWordsTagParserTests.cs" />

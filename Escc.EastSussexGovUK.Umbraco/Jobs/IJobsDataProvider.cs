@@ -10,6 +10,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
     public interface IJobsDataProvider
     {
         /// <summary>
+        /// Gets the job matching the supplied id
+        /// </summary>
+        /// <returns></returns>
+        Task<Job> ReadJob(string jobId);
+
+        /// <summary>
         /// Gets the jobs matching the supplied query
         /// </summary>
         /// <returns></returns>

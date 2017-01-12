@@ -29,7 +29,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             viewModel.Metadata.Description = String.Empty;
 
             var searchFieldsUrl = new Uri(model.Content.GetPropertyValue<string>("SearchScriptUrl_Content"));
-            var dataSource = new JobsDataFromTalentLink(searchFieldsUrl, null, new ConfigurationProxyProvider(), new JobLookupValuesHtmlParser(), null);
+            var dataSource = new JobsDataFromTalentLink(searchFieldsUrl, null, null, new ConfigurationProxyProvider(), new JobLookupValuesHtmlParser(), null, null);
 
             var locations = Task.Run(async () => await dataSource.ReadLocations());
             foreach (var location in locations.Result)

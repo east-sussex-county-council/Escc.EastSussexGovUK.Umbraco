@@ -56,7 +56,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
 
             var lookupValuesParser = new JobLookupValuesHtmlParser();
             var jobResultsParser = new JobResultsHtmlParser(viewModel.JobDetailPage?.Url);
-            var jobsProvider = new JobsDataFromTalentLink(searchUrl, resultsUrl, new ConfigurationProxyProvider(), lookupValuesParser, jobResultsParser);
+            var jobsProvider = new JobsDataFromTalentLink(searchUrl, resultsUrl, null, new ConfigurationProxyProvider(), lookupValuesParser, jobResultsParser, null);
 
             var jobs = Task.Run(async() => await ReadJobs(jobsProvider, viewModel.Query)).Result;
             var page = String.IsNullOrWhiteSpace(Request.QueryString["page"]) ? 1 : Int32.Parse(Request.QueryString["page"]);

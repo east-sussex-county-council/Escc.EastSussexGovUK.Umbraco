@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Umbraco.PropertyTypes;
 using Umbraco.Core.Models;
@@ -73,6 +74,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 Height = imageData.GetPropertyValue<int>("umbracoHeight")
             };
             return image;
+        }
+
+        protected TalentLinkUrl BuildUri(string alias)
+        {
+            var url = UmbracoContent.GetPropertyValue<string>(alias);
+            if (!String.IsNullOrEmpty(url))
+            {
+                return new TalentLinkUrl(url);
+            }
+            return null;
         }
     }
 }

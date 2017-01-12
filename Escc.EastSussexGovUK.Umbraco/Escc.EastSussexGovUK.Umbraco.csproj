@@ -3320,6 +3320,7 @@
     <Content Include="Views\JobsSearch.cshtml" />
     <Content Include="Views\JobsHeader.cshtml" />
     <Content Include="Views\JobsRssAsTable.cshtml" />
+    <Content Include="Views\JobAdvert.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -3377,14 +3378,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\EastSussexGovUK_Mvc.cs" />
+    <Compile Include="Jobs\ReplaceElementNameFormatter.cs" />
+    <Compile Include="Jobs\CloseEmptyElementsFormatter.cs" />
+    <Compile Include="Jobs\IHtmlStringFormatter.cs" />
+    <Compile Include="Jobs\IHtmlAgilityPackHtmlFormatter.cs" />
+    <Compile Include="Jobs\IJobAdvertParser.cs" />
     <Compile Include="Jobs\IJobResultsParser.cs" />
     <Compile Include="Jobs\IJobsDataProvider.cs" />
     <Compile Include="Jobs\IJobLookupValuesParser.cs" />
     <Compile Include="Jobs\Job.cs" />
+    <Compile Include="Jobs\JobAdvertHtmlParser.cs" />
     <Compile Include="Jobs\JobResultsHtmlParser.cs" />
+    <Compile Include="Jobs\JobAdvertContentTab.cs" />
+    <Compile Include="Jobs\JobAdvertDocumentType.cs" />
+    <Compile Include="Jobs\JobAdvertViewModel.cs" />
     <Compile Include="Jobs\JobSearchQuery.cs" />
     <Compile Include="Jobs\JobSearchQueryFactory.cs" />
     <Compile Include="Jobs\BaseJobsViewModel.cs" />
+    <Compile Include="Jobs\JobAdvertViewModelFromUmbraco.cs" />
+    <Compile Include="Jobs\JobAdvertController.cs" />
     <Compile Include="Jobs\JobsSearchViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\JobsLookupValue.cs" />
     <Compile Include="Jobs\JobsParseResult.cs" />
@@ -3427,6 +3439,7 @@
     <Compile Include="Jobs\JobsHomeController.cs" />
     <Compile Include="Jobs\JobsComponentViewModel.cs" />
     <Compile Include="Jobs\JobSearchResultsViewModel.cs" />
+    <Compile Include="Jobs\RemoveUnwantedAttributesFormatter.cs" />
     <Compile Include="Models\TalentLinkUrl.cs" />
     <Compile Include="Jobs\BaseJobsViewModelFromUmbracoBuilder.cs" />
     <Compile Include="Jobs\JobSearchResultsViewModelFromUmbraco.cs" />

@@ -88,7 +88,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                     job.Id = query["nPostingTargetId"];
                     if (_baseUrlForJobDetails != null)
                     {
-                        job.Url = new Uri(_baseUrlForJobDetails + "?nPostingTargetID=" + job.Id);
+                        job.Url = new Uri(_baseUrlForJobDetails + "?job=" + job.Id);
                     }
                     job.JobTitle = HttpUtility.HtmlDecode(link.InnerText);
                     job.Organisation = HttpUtility.HtmlDecode(link.ParentNode.ParentNode.SelectSingleNode("./td[@headers='th2']")?.InnerText?.Trim());

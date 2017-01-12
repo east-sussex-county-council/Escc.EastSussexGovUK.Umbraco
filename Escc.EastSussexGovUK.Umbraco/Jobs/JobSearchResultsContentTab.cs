@@ -62,8 +62,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// <value>
         /// A reference to the Umbraco node for the detail page
         /// </value>
-        [UmbracoProperty("Job detail page", "JobDetailPage", BuiltInUmbracoDataTypes.ContentPickerAlias, sortOrder: 6,
-            Description = "Select the job detail page used to display a single job advert, based on the 'Jobs component' document type")]
+        [UmbracoProperty("Job advert page", "JobDetailPage", BuiltInUmbracoDataTypes.ContentPickerAlias, sortOrder: 6,
+            Description = "Select the job detail page used to display a single job advert, based on the 'Job advert' document type")]
         public string JobDetailPage { get; set; }
 
         /// <summary>

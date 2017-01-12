@@ -13,18 +13,18 @@ using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardLandingPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task;
 using Umbraco.Inception.Attributes;
+using Umbraco.Inception.BL;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
     /// <summary>
-    /// Definition for the 'Jobs' Umbraco document type
+    /// Definition for the Umbraco 'Jobs component' document type
     /// </summary>
-    /// <seealso cref="Escc.EastSussexGovUK.Umbraco.DocumentTypes.CustomerFocusBase.CustomerFocusBaseDocumentType" />
-    [UmbracoContentType("Jobs", "JobsHome", new Type[]
-    {
-        typeof(LandingDocumentType), 
+    /// <seealso cref="UmbracoGeneratedBase" />
+    [UmbracoContentType("Job advert", "JobAdvert", new Type[] {
+        typeof(LandingDocumentType),
         typeof(LocationDocumentType),
-        typeof(TaskDocumentType), 
+        typeof(TaskDocumentType),
         typeof(LandingPageWithPicturesDocumentType),
         typeof(GuideDocumentType),
         typeof(StandardLandingPageDocumentType),
@@ -35,19 +35,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         typeof(CouncilOfficeDocumentType),
         typeof(CampaignLandingDocumentType),
         typeof(PersonDocumentType),
-        typeof(JobSearchResultsDocumentType),
-        typeof(JobsComponentDocumentType),
-        typeof(JobsRssDocumentType),
-        typeof(JobsSearchDocumentType),
-        typeof(JobAdvertDocumentType)
-    }, true, allowAtRoot: false, icon: BuiltInUmbracoContentTypeIcons.IconReception, 
-    Description = "The start page for the jobs section of the website.")]
-    public class JobsHomeDocumentType : CustomerFocusBaseDocumentType
+        typeof(JobsComponentDocumentType)}, true, allowAtRoot: false, icon: BuiltInUmbracoContentTypeIcons.IconLocationNearMe, 
+    Description = "A standard page hosting a component of the TalentLink application.")]
+    public class JobAdvertDocumentType : CustomerFocusBaseDocumentType
     {
         [UmbracoTemplate(DisplayName = "Jobs CSS", Alias = "JobsCss")]
         public string JobsCss { get; set; }
 
         [UmbracoTab("Content")]
-        public JobsHomeContentTab Content { get; set; }
+        public JobAdvertContentTab Content { get; set; }
     }
 }

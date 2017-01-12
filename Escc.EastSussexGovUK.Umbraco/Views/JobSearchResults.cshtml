@@ -94,7 +94,7 @@
                         <td class="organisation">@job.Organisation</td>
                         <td class="location">@job.Location</td>
                         <td class="salary">@job.Salary</td>
-                        <td class="closing-date"><span>Closes </span>@job.ClosingDate.ToBritishDate()</td>
+                        <td class="closing-date"><span>Closes </span>@job.ClosingDate.Value.ToBritishDate()</td>
                     </tr>
                 }
                 </tbody>
