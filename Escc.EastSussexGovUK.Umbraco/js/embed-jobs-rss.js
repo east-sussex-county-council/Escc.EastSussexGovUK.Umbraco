@@ -34,12 +34,13 @@
         }
 
         // Look for embedded links to RSS feeds, load the linked URL using a template for embedding and replace it with the resulting HTML
-        var feedLinks = $(".rss.embed-jobs-rss a");
         var templateParams = [{ key: 'altTemplate', value: 'JobsRssAsTable' }];
-        feedLinks[0].href = addParameterToQueryString(feedLinks[0].href, templateParams);
-
-        $.get(feedLinks[0].href, function (html) {
-            feedLinks.parent().replaceWith(html);
+        $(".rss.embed-jobs-rss a").each(function() {
+            this.href = addParameterToQueryString(this.href, templateParams);
+            var that = $(this);
+            $.get(this.href, function (html) {
+                that.parent().replaceWith(html);
+            });
         });
     });
 }
