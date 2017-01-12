@@ -62,6 +62,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                     // Tidy up whitespace in the salary, then translate it to a more usable format
                     job.Salary = Regex.Replace(job.Salary, @"\s+", " ").Replace(" - ", "-");
                     job.Salary = Regex.Replace(job.Salary, "^([0-9]+)-([0-9]+) GBP Year", "£$1–£$2 per annum");
+                    job.Salary = Regex.Replace(job.Salary, "^([0-9]+) GBP Year", "£$1 per annum");
 
                     DateTime closingDate;
                     DateTime.TryParse(ParseValueFromElementById(htmlDocument, "span", "JDText-Param9"), new CultureInfo("en-GB"), DateTimeStyles.AssumeLocal, out closingDate);
