@@ -11,23 +11,28 @@ ul.pagingPages { margin: 0;}
 */
 .jobs-header { position: relative;}
 .jobs-header .context { position: relative; top: 36px;}
-.jobs-header .login { position: absolute;right: 0;top: 0;margin: 0;}
-.jobs-header.with-image .login { padding: 9px;background: #fff;border-radius: 5px;}
+.jobs-header .login { position: absolute;right: 0;top: 0;margin: 0; font-weight: bold;}
+.jobs-header.with-image .login { padding: .25em 9px .3125em;background: #fff;border-radius: 5px; }
+.jobs-header .login a { text-decoration: none;color: #003c69;}
 
-/* TODO: Widths here are not responsive */
-.jobs-search {  position: absolute; bottom: 20px; width: 100%; }
-.jobs-search .form { background: none; }
-.jobs-search .form input[type=search] { width: 88%;padding-left: 1%;padding-right: 1%;margin-right: 1%;}
-.jobs-search .form input[type=submit] {color: #222;background: #ccc; width: 10%;padding-left: 2%;padding-right: 2%;}
+/* Width is 100% less two gutters, because absolute positioning loses the effect of .content */
+.jobs-search {  position: absolute; bottom: 1.125em; width: 92.405063%; }
+.jobs-search .form { background: none;margin: 0;padding: 0;}
+.jobs-search .form label {display: block;font-size: 1.875em;line-height: 1.2em;margin-bottom: .3em;font-weight: bold;color: #fff; }
+.jobs-search input[type=search] { width: 100%;}
+.jobs-search input[type=submit] { background: #ED5816; }
+.jobs-search input[type=submit]:hover, .jobs-search input[type=submit]:focus, .jobs-search input[type=submit]:active { background: #EE4902; }
+.jobs-search .buttons a {display: inline-block;vertical-align: middle;text-decoration: none;color: #fff;font-size: 1em;}
+
 
 /* One line space between the header and content */
-.jobs-content { padding-top: 18px; }
+.jobs-content { padding-top: 1.125em; }
 
 /*** DRAFT: MAKE THIS A SHARED COMPONENT WITH THE HOME PAGE ***/
 /* News feature story. A single link surrounds the whole feature so that hovering over it highlights the link text. */
-.jobs-buttons ul { margin: 0; padding: 0;background: #fff; }
+ul.jobs-buttons { margin: 0; padding: 0;background: #fff; }
 .jobs-buttons li { list-style: none;}
-.jobs-buttons .feature a:link, .jobs-buttons .feature a:visited { text-decoration: none; color: #fff; }
+.jobs-buttons .feature, .jobs-buttons .feature a:link, .jobs-buttons .feature a:visited { text-decoration: none; color: #fff; }
 .jobs-buttons .feature a:hover, .jobs-buttons .feature a:focus, .jobs-buttons .feature a:active { text-decoration: underline; }
 
 /* The image is display: block to remove a space after, and can't be wider than the screen. The containing
@@ -37,15 +42,10 @@ ul.pagingPages { margin: 0;}
 .jobs-buttons .feature { position: relative; list-style: none; margin: 0 0 .692308em;}
 .jobs-buttons .feature img {width: 100%; max-width: 100%; display: block; }
 @media screen {
-    .jobs-buttons .feature { max-width: 236px; }
     .jobs-buttons .caption { position: absolute; bottom: 0; width: 100%; background-color: #003c69; background-color: rgba(0, 78, 126, .8); font-size: 1em; line-height: 1.125em; font-weight: bold; }
     .jobs-buttons .caption p { padding: 0 3%; }
-    .jobs-buttons .caption span { padding: 0 20px 0 0; background: url(/img/body/item-type.png) no-repeat right -1091px; }
+    .jobs-buttons .caption span { padding: 0 20px 0 0; background: url(https://www.eastsussex.gov.uk/img/body/item-type.png) no-repeat right -1091px; }
 }
-
-/* A second feature gets a different colour caption */
-.jobs-buttons .feature:nth-child(even) .caption { background-color: #056b0b; background-color: rgba(5,107,11,.8); }
-
 
 /*** END DRAFT FEATURE LAYOUT ***/
 

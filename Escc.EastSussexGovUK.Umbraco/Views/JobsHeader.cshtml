@@ -19,20 +19,27 @@
             @if (Model.LoginPage != null)
             {
                 <p class="login">
-                    <a href="@Model.LoginPage.Url">@Model.LoginPage.Text &gt;</a>
+                    <a href="@Model.LoginPage.Url">Log in &gt;</a>
                 </p>
             }
         </div>
+        @if (Model.SearchResultsPage != null)
+        {
+            <div class="jobs-search">
+                <form action="@Model.SearchResultsPage.Url" method="GET" class="form simple-form">
+                    <label for="keywords">Search for jobs</label>
+                    <div class="fields">
+                        <input type="search" name="keywords" id="keywords" placeholder="keyword, eg social worker" />
+                        <div class="buttons">
+                            <input type="submit" value="Search &gt;" />
+                            @if (Model.SearchPage != null)
+                            {
+                                <a href="@Model.SearchPage.Url" class="button">Advanced search &gt;</a>
+                            }
+                        </div>
+                    </div>
+                </form>
+            </div>
+        }
     </div>
-    @if (Model.SearchResultsPage != null)
-    {
-        <div class="jobs-search">
-            <form action="@Model.SearchResultsPage.Url" method="GET" class="form simple-form">
-                <div>
-                    <input type="search" name="keywords"/>
-                    <input type="submit" value="Search"/>
-                </div>
-            </form>
-        </div>
-    }
 </div>

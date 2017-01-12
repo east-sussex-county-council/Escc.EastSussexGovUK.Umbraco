@@ -2,6 +2,7 @@
 @using Escc.ClientDependencyFramework
 @using Escc.EastSussexGovUK.Skins
 @using Escc.EastSussexGovUK.Views
+@using Escc.Umbraco.PropertyTypes
 @using Escc.Web
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Jobs.JobsHomeViewModel>
 @{
@@ -14,13 +15,84 @@
     Html.RequiresCss("~/css/jobs/jobs-medium.css", MediaQueryAlias.Resolve("Medium"));
     Html.RequiresCss("~/css/jobs/jobs-large.css", MediaQueryAlias.Resolve("Large"));
     Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=JobsCss&media-query=small", 101);
+    if (!Model.IsPublicView)
+    {
+        new ContentSecurityPolicyHeaders(Response.Headers).AppendPolicy("img-src https://dummyimage.com").UpdateHeaders();
+    }
+    var showFacebook = (Model.SocialMedia.FacebookPageUrl != null);
+    var showTwitter = (!String.IsNullOrEmpty(Model.SocialMedia.TwitterAccount) || Model.SocialMedia.TwitterWidgetScript != null);
+
+    var showSocialMedia = (showFacebook || showTwitter);
 }
 @section Breadcrumb {}
 @Html.Partial("~/Views/JobsHeader.cshtml", Model)
-<div class="jobs-content full-page">
-    <div class="content text-content">
-        @Html.Partial("~/Views/JobsButtons.cshtml")
-    </div>
+<div class="jobs-content">
+    @if (Model.ButtonNavigation.Count > 0)
+    {
+        <div class="@(showSocialMedia ? "article" : "full-page")">
+            <div class="text-content content">
+                <ul class="jobs-buttons">
+                    @{
+                        var imagesOrLinks = (Model.ButtonNavigation.Count > Model.ButtonImages.Count) ? Model.ButtonNavigation.Count : Model.ButtonImages.Count;
+                        for (var i = 0; i < imagesOrLinks; i++)
+                        {
+                            var link = Model.ButtonNavigation.Count >= (i + 1) ? Model.ButtonNavigation[i] : null;
+                            var image = Model.ButtonImages.Count >= (i + 1) ? Model.ButtonImages[i] : null;
+                            if (image == null && !Model.IsPublicView)
+                            {
+                                // Help the editors by highlighting that they need an image to go with their link
+                                image = new Image() { ImageUrl = new Uri("https://dummyimage.com/310x252/292929/e3e3e3"), Width = 310 };
+                            }
+                            if (image == null) { break; }
+
+                            var oddOrEven = (i%2 == 0) ? "odd" : "even"; // because nth-child is IE11+
+                            var group = "group" + ((i%3) + 1);
+                            if (link == null)
+                            {
+                                <li class="feature @oddOrEven @group"><img src="@image.ImageUrl" alt="@image.AlternativeText" width="@image.Width" /></li>
+                            }
+                            else if (String.IsNullOrEmpty(link.Text))
+                            {
+                                <li class="feature @oddOrEven @group"><a href="@link.Url"><img src="@image.ImageUrl" alt="@image.AlternativeText" width="@image.Width" /></a></li>
+                            }
+                            else if (link.Url == null)
+                            {
+                                <li class="feature @oddOrEven @group">
+                                    <img src="@image.ImageUrl" alt="@image.AlternativeText" width="@image.Width" />
+                                    <div class="caption">
+                                        <p><span>@link.Text</span></p>
+                                    </div>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="feature @oddOrEven @group">
+                                    <a href="@link.Url">
+                                        <img src="@image.ImageUrl" alt="@image.AlternativeText" width="@image.Width" />
+                                        <div class="caption">
+                                            <p><span>@link.Text</span></p>
+                                        </div>
+                                    </a>
+                                </li>
+                            }
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+        
+        if (showSocialMedia)
+        {
+            <div class="supporting supporting-jobs">
+                @if (showFacebook)
+                {
+                    @Html.Partial("~/Views/EastSussexGovUK/Features/_Facebook.cshtml")
+                }
+                @if (showTwitter)
+                {
+                    @Html.Partial("~/Views/EastSussexGovUK/Features/_Twitter.cshtml")
+                }
+            </div>
+        }
+    }
 </div>
-
-

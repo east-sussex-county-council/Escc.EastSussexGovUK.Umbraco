@@ -3313,7 +3313,6 @@
     <Content Include="Views\TextSize\Change.cshtml" />
     <Content Include="Views\JobSearchResults.cshtml" />
     <Content Include="Views\JobsComponent.cshtml" />
-    <Content Include="Views\JobsButtons.cshtml" />
     <Content Include="Views\JobsCss.cshtml" />
     <Content Include="Views\Layouts\_SocialMedia.cshtml" />
     <Content Include="Views\JobsRss.cshtml" />

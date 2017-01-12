@@ -1,4 +1,17 @@
-﻿/* Job search results */
+﻿/* Jobs header, including a search box on the home page. The fallback for no flexbox support is to stick with the stacked layout used on mobile. 
+   Width is 100% less two gutters, because absolute positioning loses the effect of .content */
+.jobs-header.with-image .login { padding: .210526em 9px .26316em;}
+.jobs-search { width: 95.511222%; }
+.jobs-search .form label {font-size: 1.894737em;line-height: 1em;margin-bottom: .25em; }
+.flexbox .jobs-search .fields { display: flex; align-items: center; }
+.flexbox .jobs-search input[type=search] {width: auto; flex-grow: 4;}
+.flexbox .jobs-search .buttons { flex-grow: 1; flex-basis: 7.5em;white-space: nowrap; }
+.flexbox .jobs-search input[type=submit] { margin: 0;}
+
+/* One line space between the header and content */
+.jobs-content { padding-top: .947368em; }
+
+/* Job search results */
 .job-results thead { display: table-header-group;}
 .jobs-content .job-results th, .jobs-content .job-results td { display: table-cell;border: .052631em solid #ccc;width: auto;text-align: left; }
 .job-results td { padding: .421053em;}
@@ -8,6 +21,6 @@
 /* Still hide organisation column */
 .jobs-content .job-results .organisation {display: none; }
 
-.jobs-buttons { display: flex;flex-wrap: wrap;justify-content: center; }
-.jobs-buttons li { flex-basis: 45%;}
-.jobs-buttons li.feature { height: 200px; float: left;margin-right: 10px;margin-bottom: 10px; }
+/* Buttons on the jobs home page - Context is (10 cols - 2 gutters = 766), subtract a gutter for the margin and divide by two */
+.jobs-buttons li.feature { float: left;margin-bottom: .947368em;width: 48.825065%; }
+.jobs-buttons li.odd { margin-right: 2.349869%;}

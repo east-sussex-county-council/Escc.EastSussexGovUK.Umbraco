@@ -44,7 +44,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             var expiryDate = content.GetPropertyValue<DateTime>("unpublishAt");
             if (expiryDate != DateTime.MinValue) model.Metadata.DateReview = expiryDate.ToIso8601Date();
 
-            model.IsPublicView = !inUmbracoPreviewMode;
+            model.IsPublicView = !inUmbracoPreviewMode && model.Metadata.PageUrl.Host.ToUpperInvariant() != "LOCALHOST";
             if (contentExperimentSettingsService != null) { model.ContentExperimentPageSettings = contentExperimentSettingsService.LookupSettingsForPage(content.Id); }
         }
 

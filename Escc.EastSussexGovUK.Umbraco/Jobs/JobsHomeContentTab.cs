@@ -37,12 +37,21 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public string LoginPage { get; set; }
 
         /// <summary>
+        /// Gets or sets the search page
+        /// </summary>
+        /// <value>
+        /// A reference to the Umbraco node for the search page
+        /// </value>
+        [UmbracoProperty("Search page", "SearchPage", BuiltInUmbracoDataTypes.ContentPickerAlias, sortOrder: 4, Description = "Select the search page, based on the 'Job search' document type")]
+        public string SearchPage { get; set; }
+
+        /// <summary>
         /// Gets or sets the search results page
         /// </summary>
         /// <value>
         /// A reference to the Umbraco node for the results page
         /// </value>
-        [UmbracoProperty("Search results page", "SearchResultsPage", BuiltInUmbracoDataTypes.ContentPickerAlias, sortOrder: 4, Description = "Select the search results page, based on the 'Job search results' document type")]
+        [UmbracoProperty("Search results page", "SearchResultsPage", BuiltInUmbracoDataTypes.ContentPickerAlias, sortOrder: 5, Description = "Select the search results page, based on the 'Job search results' document type")]
         public string SearchResultsPage { get; set; }
 
         /// <summary>
@@ -51,14 +60,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// <value>
         /// The button navigation.
         /// </value>
-        [UmbracoProperty("Button navigation", "ButtonNavigation", BuiltInUmbracoDataTypes.RelatedLinks, sortOrder: 5,
+        [UmbracoProperty("Button navigation", "ButtonNavigation", BuiltInUmbracoDataTypes.RelatedLinks, sortOrder: 6,
             Description = "Buttons and adverts, which can be customised using the images below. Set the caption to a space or hyphen to link the image without text.")]
         public string ButtonNavigation { get; set; }
 
         /// <summary>
         /// Gets or sets the images to be linked using <see cref="ButtonNavigation"/>
         /// </summary>
-        [UmbracoProperty("Button images", "ButtonImages", BuiltInUmbracoDataTypes.MultipleMediaPicker, sortOrder: 6,
+        [UmbracoProperty("Button images", "ButtonImages", BuiltInUmbracoDataTypes.MultipleMediaPicker, sortOrder: 7,
             Description = "Select the images to link to pages selected for button navigation, above.")]
         public string ButtonImages { get; set; }
     }

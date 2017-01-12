@@ -34,6 +34,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 JobsLogo = BuildImage("JobsLogo_Content"),
                 HeaderBackgroundImage = BuildImage("HeaderBackgroundImage_Content"),
                 LoginPage = BuildUri("LoginPage_Content"),
+                SearchPage = BuildUri("SearchPage_Content"),
                 SearchResultsPage = BuildUri("SearchResultsPage_Content"),
                 ButtonNavigation = RelatedLinksService.BuildRelatedLinksViewModelFromUmbracoContent(UmbracoContent, "ButtonNavigation_Content"),
                 ButtonImages = BuildImages("ButtonImages_Content")
