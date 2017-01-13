@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Web;
+using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.Umbraco.PropertyTypes;
 
-namespace Escc.EastSussexGovUK.Umbraco.Models
+namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
 {
     /// <summary>
     /// Model for the campaign content Umbraco document type

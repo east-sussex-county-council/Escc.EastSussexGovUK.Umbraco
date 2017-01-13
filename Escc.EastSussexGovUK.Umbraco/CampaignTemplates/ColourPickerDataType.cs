@@ -1,12 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.Globalization;
-using System.Security.Cryptography;
-using System.Text;
 using Umbraco.Core.Models;
 using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates
+namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
 {
     /// <summary>
     /// Umbraco data type for selecting a colour from an unrestricted palette

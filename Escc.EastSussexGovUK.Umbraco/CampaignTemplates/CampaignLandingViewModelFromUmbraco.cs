@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using Escc.EastSussexGovUK.Umbraco.Models;
+using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Umbraco.PropertyTypes;
-using umbraco;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 
-namespace Escc.EastSussexGovUK.Umbraco.Services
+namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
 {
     /// <summary>
     /// Creates a <see cref="CampaignLandingViewModel"/> from an instance of its document type in Umbraco

@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Web;
 using System.Web.Mvc;
 using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Umbraco.Caching;
 using Escc.Umbraco.ContentExperiments;
+using Escc.Umbraco.PropertyTypes;
 using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
 
-namespace Escc.EastSussexGovUK.Umbraco.Controllers
+namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
 {
     /// <summary>
-    /// A content page for marketing campaigns
+    /// A content page for marketing campaigns that has graphical tiles for each link
     /// </summary>
-    public class CampaignContentController : RenderMvcController
+    public class CampaignTilesController : RenderMvcController
     {
         /// <summary>
         /// The default action to render the front-end view
@@ -26,7 +26,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
             if (model == null) throw new ArgumentNullException(nameof(model));
 
             var urlTransformer = new RemoveMediaDomainUrlTransformer();
-            var viewModel = new CampaignContentViewModelFromUmbraco(model.Content, urlTransformer).BuildModel();
+            var viewModel = new CampaignTilesViewModelFromUmbraco(model.Content, new RelatedLinksService(), urlTransformer).BuildModel();
 
             // Add common properties to the model
             var modelBuilder = new BaseViewModelBuilder();
@@ -36,7 +36,5 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
 
             return CurrentTemplate(viewModel);
         }
-
-       
     }
 }

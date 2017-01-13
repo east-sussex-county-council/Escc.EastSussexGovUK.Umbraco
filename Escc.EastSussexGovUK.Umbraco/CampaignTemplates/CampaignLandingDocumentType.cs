@@ -4,12 +4,13 @@ using Escc.Umbraco.PropertyEditors.RichTextPropertyEditor;
 using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates
+namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
 {
     [UmbracoContentType("Campaign landing page", "CampaignLanding", new Type[]
     {
         typeof(CampaignLandingDocumentType),
-        typeof(CampaignContentDocumentType)
+        typeof(CampaignContentDocumentType),
+        typeof(CampaignTilesDocumentType)
     }, true, BuiltInUmbracoContentTypeIcons.IconRocket, 
     Description="A landing page for a marketing campaign")]
     public class CampaignLandingDocumentType : UmbracoGeneratedBase

@@ -13,11 +13,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// <summary>
         /// Gets or sets the URLs the buttons should link to
         /// </summary>
-        public IList<HtmlLink> ButtonNavigation { get; set; }
+        public IList<HtmlLink> TileNavigation { get; set; }
 
         /// <summary>
-        /// Gets or sets the images to link using <see cref="ButtonNavigation"/>
+        /// Gets or sets the images to link using <see cref="TileNavigation"/>
         /// </summary>
-        public IList<Image> ButtonImages { get; set; } 
+        public IList<Image> TileImages { get; set; } 
     }
 }

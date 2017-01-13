@@ -1,8 +1,7 @@
-﻿using System.ComponentModel;
-using Umbraco.Inception.Attributes;
+﻿using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates
+namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
 {
     /// <summary>
     /// Design tab for the campaign landing document type

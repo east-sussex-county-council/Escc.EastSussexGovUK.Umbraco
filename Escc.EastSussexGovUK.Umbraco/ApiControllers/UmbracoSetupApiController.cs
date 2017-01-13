@@ -4,8 +4,8 @@ using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Escc.EastSussexGovUK.Umbraco.CampaignTemplates;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes;
-using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CouncilPlan;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CustomerFocusBase;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Features;
@@ -189,6 +189,7 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
             {
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CampaignLandingDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CampaignContentDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CampaignTilesDocumentType));
 
                 return Request.CreateResponse(HttpStatusCode.Created);
             }

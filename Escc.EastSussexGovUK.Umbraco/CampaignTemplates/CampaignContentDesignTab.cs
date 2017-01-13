@@ -1,9 +1,7 @@
-﻿using System.ComponentModel;
-using Escc.Umbraco.PropertyEditors.DataTypes;
-using Umbraco.Inception.Attributes;
+﻿using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates
+namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
 {
     /// <summary>
     /// Design tab for the campaign content document type

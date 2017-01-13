@@ -6,19 +6,19 @@ using Umbraco.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
-    public class JobsComponentViewModelFromUmbraco : BaseJobsViewModelFromUmbracoBuilder, IViewModelBuilder<JobsComponentViewModel>
+    public class ComponentViewModelFromUmbraco : BaseViewModelFromUmbracoBuilder, IViewModelBuilder<JobsComponentViewModel>
     {
         private readonly IMediaUrlTransformer _mediaUrlTransformer;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="JobsHomeViewModelFromUmbraco" /> class.
+        /// Initializes a new instance of the <see cref="HomeViewModelFromUmbraco" /> class.
         /// </summary>
         /// <param name="umbracoContent">Content from Umbraco using the 'Jobs' document type.</param>
         /// <param name="mediaUrlTransformer">The media URL transformer.</param>
         /// <exception cref="System.ArgumentNullException">umbracoContent
         /// or
         /// mediaUrlTransformer</exception>
-        public JobsComponentViewModelFromUmbraco(IPublishedContent umbracoContent, IMediaUrlTransformer mediaUrlTransformer) :
+        public ComponentViewModelFromUmbraco(IPublishedContent umbracoContent, IMediaUrlTransformer mediaUrlTransformer) :
             base(umbracoContent)
         {
             _mediaUrlTransformer = mediaUrlTransformer;

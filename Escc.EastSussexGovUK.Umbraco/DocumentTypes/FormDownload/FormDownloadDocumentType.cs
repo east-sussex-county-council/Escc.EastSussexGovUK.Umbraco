@@ -1,5 +1,5 @@
 ﻿using System;
-using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates;
+using Escc.EastSussexGovUK.Umbraco.CampaignTemplates;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CouncilPlan;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Guide;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Landing;

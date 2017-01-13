@@ -6,18 +6,18 @@ using Umbraco.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
-    public class JobsHomeViewModelFromUmbraco : BaseJobsViewModelFromUmbracoBuilder, IViewModelBuilder<JobsHomeViewModel>
+    public class HomeViewModelFromUmbraco : BaseViewModelFromUmbracoBuilder, IViewModelBuilder<JobsHomeViewModel>
     {
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="JobsHomeViewModelFromUmbraco" /> class.
+        /// Initializes a new instance of the <see cref="HomeViewModelFromUmbraco" /> class.
         /// </summary>
         /// <param name="umbracoContent">Content from Umbraco using the 'Jobs' document type.</param>
         /// <param name="relatedLinksService">The related links service.</param>
         /// <exception cref="System.ArgumentNullException">umbracoContent
         /// or
         /// mediaUrlTransformer</exception>
-        public JobsHomeViewModelFromUmbraco(IPublishedContent umbracoContent, IRelatedLinksService relatedLinksService) :
+        public HomeViewModelFromUmbraco(IPublishedContent umbracoContent, IRelatedLinksService relatedLinksService) :
             base(umbracoContent, relatedLinksService)
         {
         }
@@ -36,8 +36,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 LoginPage = BuildUri("LoginPage_Content"),
                 SearchPage = BuildUri("SearchPage_Content"),
                 SearchResultsPage = BuildUri("SearchResultsPage_Content"),
-                ButtonNavigation = RelatedLinksService.BuildRelatedLinksViewModelFromUmbracoContent(UmbracoContent, "ButtonNavigation_Content"),
-                ButtonImages = BuildImages("ButtonImages_Content")
+                TileNavigation = RelatedLinksService.BuildRelatedLinksViewModelFromUmbracoContent(UmbracoContent, "TileNavigation_Content"),
+                TileImages = BuildImages("TileImages_Content")
         };
 
             return model;

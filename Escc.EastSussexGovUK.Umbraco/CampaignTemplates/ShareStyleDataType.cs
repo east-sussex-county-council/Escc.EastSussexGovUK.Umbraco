@@ -3,7 +3,7 @@ using Umbraco.Core.Models;
 using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates
+namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
 {
     /// <summary>
     /// An Umbraco data type used to set the prefered styling for the social media and sharing links

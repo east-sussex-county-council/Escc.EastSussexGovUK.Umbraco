@@ -7,7 +7,7 @@ using Umbraco.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
-    public class JobSearchResultsViewModelFromUmbraco : BaseJobsViewModelFromUmbracoBuilder, IViewModelBuilder<JobSearchResultsViewModel>
+    public class SearchResultsViewModelFromUmbraco : BaseViewModelFromUmbracoBuilder, IViewModelBuilder<JobSearchResultsViewModel>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="JobSearchResultsViewModel" /> class.
@@ -16,7 +16,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// <exception cref="System.ArgumentNullException">umbracoContent
         /// or
         /// mediaUrlTransformer</exception>
-        public JobSearchResultsViewModelFromUmbraco(IPublishedContent umbracoContent) :
+        public SearchResultsViewModelFromUmbraco(IPublishedContent umbracoContent) :
             base(umbracoContent, null)
         {
         }
@@ -36,7 +36,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 LoginPage = BuildLinkToPage("LoginPage_Content"),
                 JobAlertsPage = BuildLinkToPage("JobAlertsPage_Content"),
                 JobsSearchPage = BuildLinkToPage("JobsSearchPage_Content"),
-                ResultsUrl = BuildUri("ResultsScriptUrl_Content")
+                ResultsUrl = BuildJobsUri("ResultsScriptUrl_Content")
             };
 
             return model;

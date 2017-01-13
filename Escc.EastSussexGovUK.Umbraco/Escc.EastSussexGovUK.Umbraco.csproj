@@ -648,6 +648,8 @@
     <Content Include="images\flood-severe.png" />
     <Content Include="images\flood-warning.png" />
     <Content Include="images\HomePage\jobs.png" />
+    <Content Include="images\quote-close.gif" />
+    <Content Include="images\quote-open.gif" />
     <Content Include="js\CampaignTemplates\campaign-landing.js" />
     <Content Include="js\CouncilPlan\council-plan.js" />
     <Content Include="js\CustomerFocusTemplates\guide.js" />
@@ -685,6 +687,8 @@
     <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\package.manifest" />
     <Content Include="EastSussexGovUK\Rss\rss-to-html.ashx" />
     <Content Include="Config\uMediaSync.config" />
+    <None Include="images\Quote-close.psd" />
+    <None Include="images\Quote-open.psd" />
     <None Include="images\Web.example.config" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -3321,6 +3325,8 @@
     <Content Include="Views\JobsHeader.cshtml" />
     <Content Include="Views\JobsRssAsTable.cshtml" />
     <Content Include="Views\JobAdvert.cshtml" />
+    <Content Include="Views\CampaignTilesCss.cshtml" />
+    <Content Include="Views\CampaignTiles.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -3378,6 +3384,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\EastSussexGovUK_Mvc.cs" />
+    <Compile Include="CampaignTemplates\CampaignTile.cs" />
+    <Compile Include="CampaignTemplates\CampaignTilesViewModel.cs" />
+    <Compile Include="CampaignTemplates\CampaignTilesViewModelFromUmbraco.cs" />
+    <Compile Include="CampaignTemplates\CampaignTilesController.cs" />
+    <Compile Include="CampaignTemplates\CampaignTilesContentTab.cs" />
+    <Compile Include="CampaignTemplates\CampaignTilesDesignTab.cs" />
+    <Compile Include="CampaignTemplates\CampaignTilesDocumentType.cs" />
     <Compile Include="Jobs\JobAdvertContentFinder.cs" />
     <Compile Include="Jobs\JobAdvertEventHandler.cs" />
     <Compile Include="Jobs\ReplaceElementNameFormatter.cs" />
@@ -3397,9 +3410,9 @@
     <Compile Include="Jobs\JobSearchQuery.cs" />
     <Compile Include="Jobs\JobSearchQueryFactory.cs" />
     <Compile Include="Jobs\BaseJobsViewModel.cs" />
-    <Compile Include="Jobs\JobAdvertViewModelFromUmbraco.cs" />
+    <Compile Include="Jobs\AdvertViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\JobAdvertController.cs" />
-    <Compile Include="Jobs\JobsSearchViewModelFromUmbraco.cs" />
+    <Compile Include="Jobs\SearchViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\JobsLookupValue.cs" />
     <Compile Include="Jobs\JobsParseResult.cs" />
     <Compile Include="Jobs\JobsRssController.cs" />
@@ -3420,8 +3433,8 @@
     <Compile Include="ApiControllers\WebChatController.cs" />
     <Compile Include="ContentFinders\GuidePrintViewContentFinder.cs" />
     <Compile Include="ContentFinders\GuidePrintViewEventHandler.cs" />
-    <Compile Include="Controllers\CampaignContentController.cs" />
-    <Compile Include="Controllers\CampaignLandingController.cs" />
+    <Compile Include="CampaignTemplates\CampaignContentController.cs" />
+    <Compile Include="CampaignTemplates\CampaignLandingController.cs" />
     <Compile Include="Controllers\ChildcareController.cs" />
     <Compile Include="Controllers\CouncilOfficeController.cs" />
     <Compile Include="Controllers\CouncilPlanBudgetPageController.cs" />
@@ -3442,14 +3455,14 @@
     <Compile Include="Jobs\JobsComponentViewModel.cs" />
     <Compile Include="Jobs\JobSearchResultsViewModel.cs" />
     <Compile Include="Jobs\RemoveUnwantedAttributesFormatter.cs" />
-    <Compile Include="Models\TalentLinkUrl.cs" />
-    <Compile Include="Jobs\BaseJobsViewModelFromUmbracoBuilder.cs" />
-    <Compile Include="Jobs\JobSearchResultsViewModelFromUmbraco.cs" />
-    <Compile Include="Jobs\JobsComponentViewModelFromUmbraco.cs" />
-    <Compile Include="Jobs\JobsHomeViewModelFromUmbraco.cs" />
-    <Compile Include="DocumentTypes\CampaignTemplates\ShareStyleDataType.cs" />
-    <Compile Include="DocumentTypes\CampaignTemplates\AlignmentDataType.cs" />
-    <Compile Include="DocumentTypes\CampaignTemplates\ColourPickerDataType.cs" />
+    <Compile Include="Jobs\TalentLinkUrl.cs" />
+    <Compile Include="Jobs\BaseViewModelFromUmbracoBuilder.cs" />
+    <Compile Include="Jobs\SearchResultsViewModelFromUmbraco.cs" />
+    <Compile Include="Jobs\ComponentViewModelFromUmbraco.cs" />
+    <Compile Include="Jobs\HomeViewModelFromUmbraco.cs" />
+    <Compile Include="CampaignTemplates\ShareStyleDataType.cs" />
+    <Compile Include="CampaignTemplates\AlignmentDataType.cs" />
+    <Compile Include="CampaignTemplates\ColourPickerDataType.cs" />
     <Compile Include="Jobs\JobSearchResultsContentTab.cs" />
     <Compile Include="Jobs\JobsComponentContentTab.cs" />
     <Compile Include="Jobs\JobsComponentDocumentType.cs" />
@@ -3461,8 +3474,8 @@
     <Compile Include="Services\RemoveMediaDomainUrlTransformer.cs" />
     <Compile Include="Services\CampaignTrackingUrlTransformer.cs" />
     <Compile Include="Services\GoogleAdWordsTagParser.cs" />
-    <Compile Include="Services\CampaignContentViewModelFromUmbraco.cs" />
-    <Compile Include="Services\CampaignLandingViewModelFromUmbraco.cs" />
+    <Compile Include="CampaignTemplates\CampaignContentViewModelFromUmbraco.cs" />
+    <Compile Include="CampaignTemplates\CampaignLandingViewModelFromUmbraco.cs" />
     <Compile Include="Services\GoogleFontFamilyFormatter.cs" />
     <Compile Include="Services\GuideStepViewModelFromUmbraco.cs" />
     <Compile Include="Services\HomePageItemViewModelFromUmbraco.cs" />
@@ -3486,12 +3499,12 @@
     <Compile Include="Controllers\StandardTopicPageController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="DocumentTypes\Features\CacheDataType.cs" />
-    <Compile Include="DocumentTypes\CampaignTemplates\CampaignContentContentTab.cs" />
-    <Compile Include="DocumentTypes\CampaignTemplates\CampaignContentDesignTab.cs" />
-    <Compile Include="DocumentTypes\CampaignTemplates\CampaignContentDocumentType.cs" />
-    <Compile Include="DocumentTypes\CampaignTemplates\CampaignLandingContentTab.cs" />
-    <Compile Include="DocumentTypes\CampaignTemplates\CampaignLandingDesignTab.cs" />
-    <Compile Include="DocumentTypes\CampaignTemplates\CampaignLandingDocumentType.cs" />
+    <Compile Include="CampaignTemplates\CampaignContentContentTab.cs" />
+    <Compile Include="CampaignTemplates\CampaignContentDesignTab.cs" />
+    <Compile Include="CampaignTemplates\CampaignContentDocumentType.cs" />
+    <Compile Include="CampaignTemplates\CampaignLandingContentTab.cs" />
+    <Compile Include="CampaignTemplates\CampaignLandingDesignTab.cs" />
+    <Compile Include="CampaignTemplates\CampaignLandingDocumentType.cs" />
     <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanBudgetPageContentTab.cs" />
     <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanBudgetPageDocumentType.cs" />
     <Compile Include="DocumentTypes\CouncilPlan\CouncilPlanHomePageContentTab.cs" />
@@ -3604,8 +3617,8 @@
     </Compile>
     <Compile Include="MicrosoftCmsMigration\UserControls\SectionNavigationSettings.cs" />
     <Compile Include="Models\BaseViewModel.cs" />
-    <Compile Include="Models\CampaignContentViewModel.cs" />
-    <Compile Include="Models\CampaignLandingViewModel.cs" />
+    <Compile Include="CampaignTemplates\CampaignContentViewModel.cs" />
+    <Compile Include="CampaignTemplates\CampaignLandingViewModel.cs" />
     <Compile Include="Models\GuideNavigationLink.cs" />
     <Compile Include="Models\GuideStepViewModel.cs" />
     <Compile Include="Models\GuideViewModel.cs" />

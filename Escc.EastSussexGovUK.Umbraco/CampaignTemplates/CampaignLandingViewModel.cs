@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Web;
+using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.Umbraco.PropertyTypes;
 
-namespace Escc.EastSussexGovUK.Umbraco.Models
+namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
 {
     /// <summary>
     /// A model for the social work campaign landing page view

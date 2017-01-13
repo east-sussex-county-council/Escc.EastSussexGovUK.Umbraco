@@ -4,7 +4,7 @@
 @using Escc.EastSussexGovUK.Umbraco.Services
 @using Escc.EastSussexGovUK.Views
 @using Escc.Web
-@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.CampaignLandingViewModel>
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.CampaignTemplates.CampaignLandingViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);

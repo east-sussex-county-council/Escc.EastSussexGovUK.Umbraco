@@ -7,16 +7,16 @@ using Umbraco.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
-    public class JobAdvertViewModelFromUmbraco : BaseJobsViewModelFromUmbracoBuilder, IViewModelBuilder<JobAdvertViewModel>
+    public class SearchViewModelFromUmbraco : BaseViewModelFromUmbracoBuilder, IViewModelBuilder<JobsSearchViewModel>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="JobAdvertViewModel" /> class.
+        /// Initializes a new instance of the <see cref="JobsSearchViewModel" /> class.
         /// </summary>
-        /// <param name="umbracoContent">Content from Umbraco using the 'Job advert' document type.</param>
+        /// <param name="umbracoContent">Content from Umbraco using the 'Jobs' document type.</param>
         /// <exception cref="System.ArgumentNullException">umbracoContent
         /// or
         /// mediaUrlTransformer</exception>
-        public JobAdvertViewModelFromUmbraco(IPublishedContent umbracoContent) :
+        public SearchViewModelFromUmbraco(IPublishedContent umbracoContent) :
             base(umbracoContent, null)
         {
         }
@@ -25,15 +25,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// Gets the view model.
         /// </summary>
         /// <returns></returns>
-        public JobAdvertViewModel BuildModel()
+        public JobsSearchViewModel BuildModel()
         {
-            var model = new JobAdvertViewModel()
+            var model = new JobsSearchViewModel()
             {
                 JobsLogo = BuildImage("JobsLogo_Content"),
                 HeaderBackgroundImage = BuildImage("HeaderBackgroundImage_Content"),
                 JobsHomePage = BuildLinkToPage("JobsHomePage_Content"),
                 LoginPage = BuildLinkToPage("LoginPage_Content"),
-                JobAdvertUrl = BuildUri("AdvertScriptUrl_Content")
             };
 
             return model;

@@ -27,17 +27,17 @@
 @section Breadcrumb {}
 @Html.Partial("~/Views/JobsHeader.cshtml", Model)
 <div class="jobs-content">
-    @if (Model.ButtonNavigation.Count > 0)
+    @if (Model.TileNavigation.Count > 0)
     {
         <div class="@(showSocialMedia ? "article" : "full-page")">
             <div class="text-content content">
                 <ul class="jobs-buttons">
                     @{
-                        var imagesOrLinks = (Model.ButtonNavigation.Count > Model.ButtonImages.Count) ? Model.ButtonNavigation.Count : Model.ButtonImages.Count;
+                        var imagesOrLinks = (Model.TileNavigation.Count > Model.TileImages.Count) ? Model.TileNavigation.Count : Model.TileImages.Count;
                         for (var i = 0; i < imagesOrLinks; i++)
                         {
-                            var link = Model.ButtonNavigation.Count >= (i + 1) ? Model.ButtonNavigation[i] : null;
-                            var image = Model.ButtonImages.Count >= (i + 1) ? Model.ButtonImages[i] : null;
+                            var link = Model.TileNavigation.Count >= (i + 1) ? Model.TileNavigation[i] : null;
+                            var image = Model.TileImages.Count >= (i + 1) ? Model.TileImages[i] : null;
                             if (image == null && !Model.IsPublicView)
                             {
                                 // Help the editors by highlighting that they need an image to go with their link

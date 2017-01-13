@@ -15,9 +15,9 @@ using Escc.Umbraco.PropertyEditors.RichTextPropertyEditor;
 using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates
+namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
 {
-    [UmbracoContentType("Campaign content page", "CampaignContent", new Type[]
+    [UmbracoContentType("Campaign tiles", "CampaignTiles", new Type[]
     {
         typeof(LandingDocumentType), 
         typeof(LocationDocumentType),
@@ -40,19 +40,20 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates
         typeof(RegistrationOfficeDocumentType),
         typeof(DayCentreDocumentType),
         typeof(CampaignLandingDocumentType),
-        typeof(CampaignContentDocumentType)
-    }, true, BuiltInUmbracoContentTypeIcons.IconParachuteDrop, 
-    Description="A content page for a marketing campaign")]
-    public class CampaignContentDocumentType : UmbracoGeneratedBase
+        typeof(CampaignContentDocumentType),
+        typeof(CampaignTilesDocumentType)
+    }, true, BuiltInUmbracoContentTypeIcons.IconPlanet, 
+    Description="A landing page for a marketing campaign that has graphical tiles for each link")]
+    public class CampaignTilesDocumentType : UmbracoGeneratedBase
     {
-        [UmbracoTemplate(DisplayName = "Campaign content page CSS", Alias = "CampaignContentCss")]
-        public string CampaignContentCss { get; set; }
+        [UmbracoTemplate(DisplayName = "Campaign tiles CSS", Alias = "CampaignTilesCss")]
+        public string CampaignTilesCss { get; set; }
 
         [UmbracoTab("Content", 0)]
-        public EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates.CampaignContentContentTab ContentTab { get; set; }
+        public CampaignTilesContentTab ContentTab { get; set; }
 
         [UmbracoTab("Design", 1)]
-        public EastSussexGovUK.Umbraco.DocumentTypes.CampaignTemplates.CampaignContentDesignTab DesignTab { get; set; }
+        public CampaignTilesDesignTab DesignTab { get; set; }
 
         [UmbracoProperty("Page URL", "umbracoUrlName", BuiltInUmbracoDataTypes.Textbox, sortOrder: 0)]
         public Uri UmbracoUrlName { get; set; }
