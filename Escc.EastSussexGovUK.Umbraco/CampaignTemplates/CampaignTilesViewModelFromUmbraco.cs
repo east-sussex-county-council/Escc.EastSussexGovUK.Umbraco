@@ -55,7 +55,7 @@ namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
                 var image = (i < tileImages.Count) ? tileImages[i] : null;
                 var title = (i < tileNavigation.Count) ? tileNavigation[i].Text : null;
                 var url = (i < tileNavigation.Count) ? tileNavigation[i].Url : null;
-                var description = (i < 12) ? _umbracoContent.GetPropertyValue<string>($"Tile{i}Description") : null;
+                var description = (i < 12) ? _umbracoContent.GetPropertyValue<string>($"Tile{i+1}Description_Content") : null;
 
                 model.Tiles.Add(new CampaignTile()
                 {

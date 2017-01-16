@@ -43,14 +43,23 @@
 
             @Html.Partial("~/Views/Layouts/_GuideNavigation.cshtml", Model.CampaignPages)
 
-            <ul>
-                @foreach (var tile in Model.Tiles)
-            {
-                    <li class="tile">
+            <ul class="tiles">
+                @for (var i = 0 ; i < Model.Tiles.Count; i++)
+                {
+                    var tile = Model.Tiles[i];
+                    var oddOrEven = (i % 2 == 0) ? "odd" : "even"; // because nth-child is IE11+
+                    var group = "group" + ((i % 3) + 1);
+                    <li class="@oddOrEven @group">
                         <a href="@tile.Url">
                             <img src="@tile.Image.ImageUrl" alt="@tile.Image.AlternativeText" width="@tile.Image.Width"/>
-                            <h2>@tile.Title</h2>
-                            <p>@tile.Description</p>
+                            @if (!String.IsNullOrEmpty(tile.Title))
+                            {
+                                <h2>@tile.Title</h2>
+                            }
+                            @if (!String.IsNullOrEmpty(tile.Description))
+                            {
+                                <p>@tile.Description</p>
+                            }
                         </a>
                     </li>
                 }

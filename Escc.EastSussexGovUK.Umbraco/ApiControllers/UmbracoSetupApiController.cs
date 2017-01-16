@@ -159,12 +159,6 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(RegistrationOfficeDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(DayCentreDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(PersonDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(JobsHomeDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(JobSearchResultsDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(JobsComponentDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(JobsRssDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(JobsSearchDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(JobAdvertDocumentType));
 
                 return Request.CreateResponse(HttpStatusCode.Created);
             }
@@ -190,6 +184,35 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CampaignLandingDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CampaignContentDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CampaignTilesDocumentType));
+
+                return Request.CreateResponse(HttpStatusCode.Created);
+            }
+            catch (Exception e)
+            {
+                e.ToExceptionless().Submit();
+                return Request.CreateResponse(HttpStatusCode.InternalServerError);
+            }
+        }
+
+
+        /// <summary>
+        /// Creates the Umbraco document types for the jobs templates.
+        /// </summary>
+        /// <remarks>Having separate methods reduces the risk of timeouts when running this code on Azure</remarks>
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
+        [AcceptVerbs("POST")]
+        public HttpResponseMessage CreateJobsDocumentTypes([FromUri] string token)
+        {
+            if (!CheckAuthorisationToken(token)) return Request.CreateResponse(HttpStatusCode.Forbidden);
+
+            try
+            {
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(JobsHomeDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(JobSearchResultsDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(JobsComponentDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(JobsRssDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(JobsSearchDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(JobAdvertDocumentType));
 
                 return Request.CreateResponse(HttpStatusCode.Created);
             }

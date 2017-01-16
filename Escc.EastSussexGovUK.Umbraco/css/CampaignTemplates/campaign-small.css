@@ -88,3 +88,12 @@ blockquote.pull-quote .close { bottom: -27px; right: 4.109589%;}
 blockquote.final-quote { font-size: 1.4375em; line-height: 1.173913em; font-weight: bold; letter-spacing: -.05em;text-indent: -.4em;margin: 1.125em 0; color: #E53A45; padding: 0 140px 0 .4em; }
 img.final-quote {display: block;position: absolute;right: 0;bottom: 0;max-width: 130px; }
 .final-quote .attribution { color: #131313; font-size: .695652em; font-weight: normal; letter-spacing: 0; padding-left: .5em; white-space: nowrap; }
+
+/* Campaign tiles template */
+.campaign-tiles ul.tiles { margin-left: 0; }
+.campaign-tiles ul.tiles li { list-style: none; text-align: center;}
+.campaign-tiles ul.tiles li a {display: block;padding: .5625em 9px 1.125em; color: #141414;text-decoration: none; }
+.campaign-tiles ul.tiles li a:hover, .campaign-tiles ul.tiles li a:focus, .campaign-tiles ul.tiles li a:active { outline: 2px solid #C7DBE4;}
+.campaign-tiles ul.tiles li img {margin: 0; border-radius: 50%;}
+.campaign-tiles ul.tiles li h2 {font-size: 1.25em; line-height: 1.35em;margin: .45em 0 0; font-weight: bold; text-align: center;}
+.campaign-tiles ul.tiles li p {margin: 0; text-align: center;}
