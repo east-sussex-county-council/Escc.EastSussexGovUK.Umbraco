@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -15,6 +16,7 @@ using Umbraco.Core.Models;
 using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
+using Task = System.Threading.Tasks.Task;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
@@ -55,8 +57,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
 
             var query = new JobSearchQueryFactory().CreateFromQueryString(Request.QueryString);
 
-            var jobTypes = model.Content.GetPropertyValue<string>("JobTypes_Content");
-            var jobTypesToFilter = Regex.Replace(Regex.Replace(jobTypes, "\r", String.Empty), "\n", Environment.NewLine).SplitAndTrim(Environment.NewLine);
+            var jobTypesFromUmbraco = model.Content.GetPropertyValue<string>("JobTypes_Content");
+            var jobTypesToFilter = Regex.Replace(Regex.Replace(jobTypesFromUmbraco, "\r", String.Empty), "\n", Environment.NewLine).SplitAndTrim(Environment.NewLine);
             foreach (var jobType in jobTypesToFilter)
             {
                 query.JobTypes.Add(jobType);
@@ -73,6 +75,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 var lookupValuesParser = new JobLookupValuesHtmlParser();
                 var jobResultsParser = new JobResultsHtmlParser(detailPage != null ? new Uri(detailPage.UrlWithDomain()) : Request.Url);
                 var jobsProvider = new JobsDataFromTalentLink(searchUrl, resultsUrl, null, new ConfigurationProxyProvider(), lookupValuesParser, jobResultsParser, null);
+                var jobTypes = Task.Run(async () => await jobsProvider.ReadJobTypes()).Result;
+                ReplaceLookupValuesWithIds(query.JobTypes, jobTypes);
 
                 jobs = await jobsProvider.ReadJobs(query);
 
@@ -83,6 +87,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 jobs = (List<Job>) HttpContext.Cache[cacheKey];
             }
             return jobs;
+        }
+
+        private static void ReplaceLookupValuesWithIds(IList<string> values, IList<JobsLookupValue> lookupValues)
+        {
+            for (var i = 0; i < values.Count; i++)
+            {
+                var match = lookupValues.FirstOrDefault(lookup => lookup.Text.ToUpperInvariant() == values[i].ToUpperInvariant());
+                values[i] = match?.Id;
+            }
         }
     }
 }

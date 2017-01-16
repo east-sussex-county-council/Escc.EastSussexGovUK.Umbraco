@@ -28,7 +28,7 @@
         var url = "<link>" + HttpUtility.HtmlEncode(job.Url) + "</link>";
         <item>
             <title>@job.JobTitle</title>
-            <description>@job.Salary in @job.Location. Closing date @job.ClosingDate.ToBritishDate(). @job.Organisation vacancy.</description>
+            <description>@job.Salary in @job.Location. Closing date @job.ClosingDate.Value.ToBritishDate(). @job.Organisation vacancy.</description>
             @Html.Raw(url)
             <guid ispermalink="false">https://www.eastsussex.gov.uk/id/job-advert/@job.Id</guid>
             <source url="@Request.Url" />
