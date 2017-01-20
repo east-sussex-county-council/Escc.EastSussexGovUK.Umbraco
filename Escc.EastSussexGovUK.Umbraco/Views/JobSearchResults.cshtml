@@ -25,12 +25,16 @@
     Enum.TryParse(query["sort"], true, out sort);
 
     var queryWithoutSort = HttpUtility.ParseQueryString(Request.Url.Query);
-    queryWithoutSort["sort"] = String.Empty;
+    queryWithoutSort.Remove("sort");
     var urlWithoutSort = Request.Url.AbsolutePath + "?" + queryWithoutSort;
+    if (queryWithoutSort.Count > 0) { urlWithoutSort += "&";}
+    urlWithoutSort += "sort=";
 
     var queryWithoutPage = HttpUtility.ParseQueryString(Request.Url.Query);
-    queryWithoutPage["page"] = String.Empty;
+    queryWithoutPage.Remove("page");
     var urlWithoutPage = Request.Url.AbsolutePath + "?" + queryWithoutPage;
+    if (queryWithoutPage.Count > 0) { urlWithoutPage += "&"; }
+    urlWithoutPage += "page=";
 
     var pagingHtml = Model.Jobs.TotalItemCount > 10 ? Html.PagedListPager(Model.Jobs, page => urlWithoutPage + page, new PagedListRenderOptions() { DisplayLinkToFirstPage = PagedListDisplayMode.Never, DisplayLinkToLastPage = PagedListDisplayMode.Never, LinkToPreviousPageFormat = "&lt; Prev", LinkToNextPageFormat = "Next &gt;", DisplayItemSliceAndTotal = true, ItemSliceAndTotalFormat = "{0}–{1} of {2} results", MaximumPageNumbersToDisplay = 5, ContainerDivClasses = new[] { "infoBar" }, UlElementClasses = new[] { "pagingPages" } }).ToHtmlString() : String.Empty;
     pagingHtml = Regex.Replace(pagingHtml, "(<ul class=\"pagingPages\">.*)<li class=\"disabled PagedList-pageCountAndLocation\"><a>(.*?)</a></li>", "<div class=\"pagingResultsInContext\">$2</div>$1");
@@ -73,9 +77,9 @@
                 <thead>
                 <tr>
                     <th class="job-title"><a href="@urlWithoutSort@(sort == JobSearchQuery.JobsSortOrder.JobTitleAscending ? "jobtitledescending" : "jobtitleascending")">Job title</a></th>
-                    <th class="organisation">Organisation</th>
+                    <th class="organisation"><a href="@urlWithoutSort@(sort == JobSearchQuery.JobsSortOrder.OrganisationAscending ? "organisationdescending" : "organisationascending")">Organisation</a></th>
                     <th class="location"><a href="@urlWithoutSort@(sort == JobSearchQuery.JobsSortOrder.LocationAscending ? "locationdescending" : "locationascending")">Location</a></th>
-                    <th class="salary">Salary range</th>
+                    <th class="salary"><a href="@urlWithoutSort@(sort == JobSearchQuery.JobsSortOrder.SalaryRangeAscending ? "salaryrangedescending" : "salaryrangeascending")">Salary range</a></th>
                     <th class="closing-date"><a href="@urlWithoutSort@(sort == JobSearchQuery.JobsSortOrder.ClosingDateAscending ? "closingdatedescending" : "closingdateascending")">Closing date</a></th>
                 </tr>
                 </thead>
@@ -93,8 +97,8 @@
                         }
                         <td class="organisation">@job.Organisation</td>
                         <td class="location">@job.Location</td>
-                        <td class="salary">@job.Salary</td>
-                        <td class="closing-date"><span>Closes </span>@job.ClosingDate.Value.ToBritishDate()</td>
+                        <td class="salary">@job.SalaryRange</td>
+                        <td class="closing-date"><span>Closes </span>@(job.ClosingDate.HasValue ? job.ClosingDate.Value.ToBritishDate() : String.Empty)</td>
                     </tr>
                 }
                 </tbody>

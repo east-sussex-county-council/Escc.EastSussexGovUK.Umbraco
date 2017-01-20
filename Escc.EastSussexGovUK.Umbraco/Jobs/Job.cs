@@ -47,7 +47,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// The salary.
         /// </value>
         public string Salary { get; set; }
-        
+
+        /// <summary>
+        /// Gets or sets the inaccurate salary range used for searching.
+        /// </summary>
+        /// <value>
+        /// The salary.
+        /// </value>
+        public string SalaryRange { get; set; }
+
         /// <summary>
         /// Gets or sets the closing date for applications.
         /// </summary>
@@ -108,5 +116,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// Gets or sets the URL to apply for the job.
         /// </summary>
         public Uri ApplyUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets the work pattern, eg full time or part time.
+        /// </summary>
+        /// <value>
+        /// The work pattern.
+        /// </value>
+        public string WorkPattern { get; set; }
     }
 }

@@ -105,6 +105,9 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
                 ResponsibleAuthorityDataType.CreateDataType();
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(WasteTypesDataType));
 
+                // Jobs document types
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(PublicOrRedeploymentDataType));
+
                 return Request.CreateResponse(HttpStatusCode.Created);
             }
             catch (Exception e)

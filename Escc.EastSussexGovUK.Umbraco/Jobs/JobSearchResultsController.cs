@@ -11,7 +11,9 @@ using Escc.Net;
 using Escc.Umbraco.Caching;
 using Escc.Umbraco.ContentExperiments;
 using Escc.Umbraco.PropertyTypes;
+using Examine;
 using Exceptionless.Extensions;
+using Umbraco.Core;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 using Umbraco.Web.Models;
@@ -24,7 +26,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
     /// <summary>
     /// Controller for pages based on the 'Job search results' Umbraco document type
     /// </summary>
-    /// <seealso cref="Umbraco.Web.Mvc.RenderMvcController" />
+    /// <seealso cref="CoRenderMvcController/>
     public class JobSearchResultsController : RenderMvcController
     {
         /// <summary>
@@ -48,33 +50,34 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 new UmbracoWebChatSettingsService(model.Content, new UrlListReader()),
                 null);
 
+            if (String.IsNullOrEmpty(Request.QueryString["altTemplate"]))
+            {
+                viewModel.Query = new JobSearchQueryFactory().CreateFromQueryString(Request.QueryString);
 
-            viewModel.Query = new JobSearchQueryFactory().CreateFromQueryString(Request.QueryString);
+                var searchUrl = new TalentLinkUrl(model.Content.GetPropertyValue<string>("SearchScriptUrl_Content")).LinkUrl;
 
-            var searchUrl = new TalentLinkUrl(model.Content.GetPropertyValue<string>("SearchScriptUrl_Content")).LinkUrl;
-            var resultsUrl = new TalentLinkUrl(model.Content.GetPropertyValue<string>("ResultsScriptUrl_Content")).LinkUrl;
+                var lookupValuesParser = new JobLookupValuesHtmlParser();
+                var jobsProvider = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.ExamineSearcher], viewModel.JobDetailPage?.Url);
 
-            var lookupValuesParser = new JobLookupValuesHtmlParser();
-            var jobResultsParser = new JobResultsHtmlParser(viewModel.JobDetailPage?.Url);
-            var jobsProvider = new JobsDataFromTalentLink(searchUrl, resultsUrl, null, new ConfigurationProxyProvider(), lookupValuesParser, jobResultsParser, null);
+                // Update query to use text rather than ids for search terms before passing it to the view
+                var lookupsProvider = new JobsDataFromTalentLink(searchUrl, null, null, new ConfigurationProxyProvider(), lookupValuesParser, null, null);
+                var locations = Task.Run(async () => await lookupsProvider.ReadLocations()).Result;
+                var jobTypes = Task.Run(async () => await lookupsProvider.ReadJobTypes()).Result;
+                var organisations = Task.Run(async () => await lookupsProvider.ReadOrganisations()).Result;
+                var salaryRanges = Task.Run(async () => await lookupsProvider.ReadSalaryRanges()).Result;
+                var workPatterns = Task.Run(async () => await lookupsProvider.ReadWorkPatterns()).Result;
+                ReplaceLookupIdsWithValues(viewModel.Query.Locations, locations);
+                ReplaceLookupIdsWithValues(viewModel.Query.JobTypes, jobTypes);
+                ReplaceLookupIdsWithValues(viewModel.Query.Organisations, organisations);
+                ReplaceLookupIdsWithValues(viewModel.Query.SalaryRanges, salaryRanges);
+                ReplaceLookupIdsWithValues(viewModel.Query.WorkPatterns, workPatterns);
 
-            var jobs = Task.Run(async() => await ReadJobs(jobsProvider, viewModel.Query)).Result;
-            var page = String.IsNullOrWhiteSpace(Request.QueryString["page"]) ? 1 : Int32.Parse(Request.QueryString["page"]);
-            viewModel.Jobs = jobs.ToPagedList(page, 10);
+                var jobs = Task.Run(async () => await jobsProvider.ReadJobs(viewModel.Query)).Result;
+                var page = String.IsNullOrWhiteSpace(Request.QueryString["page"]) ? 1 : Int32.Parse(Request.QueryString["page"]);
+                viewModel.Jobs = jobs.ToPagedList(page, 10);
+            }
 
-            // Update query to use text rather than ids for search terms before passing it to the view
-            var locations = Task.Run(async () => await jobsProvider.ReadLocations()).Result;
-            var jobTypes = Task.Run(async () => await jobsProvider.ReadJobTypes()).Result;
-            var organisations = Task.Run(async () => await jobsProvider.ReadOrganisations()).Result;
-            var salaryRanges = Task.Run(async () => await jobsProvider.ReadSalaryRanges()).Result;
-            var workPatterns = Task.Run(async () => await jobsProvider.ReadWorkPatterns()).Result;
-            ReplaceLookupIdsWithValues(viewModel.Query.Locations, locations);
-            ReplaceLookupIdsWithValues(viewModel.Query.JobTypes, jobTypes);
-            ReplaceLookupIdsWithValues(viewModel.Query.Organisations, organisations);
-            ReplaceLookupIdsWithValues(viewModel.Query.SalaryRanges, salaryRanges);
-            ReplaceLookupIdsWithValues(viewModel.Query.WorkPatterns, workPatterns);
-
-            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" });
+            // new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" });
 
             return CurrentTemplate(viewModel);
         }
@@ -86,25 +89,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 var match = lookupValues.FirstOrDefault(lookup => lookup.Id == ids[i]);
                 ids[i] = match?.Text;
             }
-        }
-
-        private async Task<List<Job>> ReadJobs(IJobsDataProvider jobsProvider, JobSearchQuery query)
-        {
-            List<Job> jobs;
-
-            var cacheKey = "Jobs" + query.ToHash();
-
-            if (HttpContext.Cache[cacheKey] == null || Request.QueryString["ForceCacheRefresh"] == "1")
-            {
-                jobs = await jobsProvider.ReadJobs(query);
-
-                HttpContext.Cache.Insert(cacheKey, jobs, null, DateTime.Now.AddHours(1), Cache.NoSlidingExpiration);
-            }
-            else
-            {
-                jobs = (List<Job>)HttpContext.Cache[cacheKey];
-            }
-            return jobs;
         }
     }
 }

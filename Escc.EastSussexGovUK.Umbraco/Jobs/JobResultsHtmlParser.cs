@@ -13,22 +13,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
     /// </summary>
     public class JobResultsHtmlParser : IJobResultsParser
     {
-        private readonly Uri _baseUrlForJobDetails;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="JobResultsHtmlParser"/> class.
-        /// </summary>
-        /// <param name="baseUrlForJobDetails">The base URL for job details.</param>
-        /// <exception cref="System.ArgumentNullException">
-        /// htmlStream
-        /// or
-        /// baseUrlForJobDetails
-        /// </exception>
-        public JobResultsHtmlParser(Uri baseUrlForJobDetails)
-        {
-            _baseUrlForJobDetails = baseUrlForJobDetails;
-        }
-
         /// <summary>
         /// Parses jobs from the HTML stream.
         /// </summary>
@@ -88,13 +72,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                     var query = HttpUtility.ParseQueryString(absoluteUrl.Query);
                     job.Id = query["nPostingTargetId"];
                     job.JobTitle = HttpUtility.HtmlDecode(link.InnerText);
-                    if (_baseUrlForJobDetails != null)
-                    {
-                        job.Url = new Uri(_baseUrlForJobDetails.ToString().TrimEnd(new [] {'/'}) + "/" + job.Id + "/" + Regex.Replace(job.JobTitle.ToLower(CultureInfo.CurrentCulture).Replace(" - ", "-").Replace(" ", "-"), "[^a-z0-9-]", String.Empty));
-                    }
                     job.Organisation = HttpUtility.HtmlDecode(link.ParentNode.ParentNode.SelectSingleNode("./td[@headers='th2']")?.InnerText?.Trim());
                     job.Location = HttpUtility.HtmlDecode(link.ParentNode.ParentNode.SelectSingleNode("./td[@headers='th3']")?.InnerText?.Trim());
-                    job.Salary = HttpUtility.HtmlDecode(link.ParentNode.ParentNode.SelectSingleNode("./td[@headers='th4']")?.InnerText?.Trim());
+                    job.SalaryRange = HttpUtility.HtmlDecode(link.ParentNode.ParentNode.SelectSingleNode("./td[@headers='th4']")?.InnerText?.Trim());
+                    job.Salary = job.SalaryRange; // because it's our best info at this point
                     job.ClosingDate = DateTime.Parse(link.ParentNode.ParentNode.SelectSingleNode("./td[@headers='th5']")?.InnerText?.Trim(), new CultureInfo("en-GB"));
                     jobs.Jobs.Add(job);
                 }

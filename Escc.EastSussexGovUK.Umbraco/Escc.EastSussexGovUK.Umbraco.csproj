@@ -667,7 +667,9 @@
     <Content Include="Config\log4net.config" />
     <Content Include="Config\feedProxy.config" />
     <Content Include="Config\ExamineSettings.config" />
-    <Content Include="Config\ExamineIndex.config" />
+    <Content Include="Config\ExamineIndex.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Config\EmbeddedMedia.config" />
     <Content Include="Config\Dashboard.config" />
     <Content Include="Config\BaseRestExtensions.config" />
@@ -687,6 +689,8 @@
     <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\package.manifest" />
     <Content Include="EastSussexGovUK\Rss\rss-to-html.ashx" />
     <Content Include="Config\uMediaSync.config" />
+    <None Include="ExamineIndex.config.xdt" />
+    <None Include="ExamineSettings.config.xdt" />
     <None Include="images\Quote-close.psd" />
     <None Include="images\Quote-open.psd" />
     <None Include="images\Web.example.config" />
@@ -3391,8 +3395,16 @@
     <Compile Include="CampaignTemplates\CampaignTilesContentTab.cs" />
     <Compile Include="CampaignTemplates\CampaignTilesDesignTab.cs" />
     <Compile Include="CampaignTemplates\CampaignTilesDocumentType.cs" />
+    <Compile Include="Examine\IStopWordsRemover.cs" />
+    <Compile Include="Examine\StopWordsRemover.cs" />
     <Compile Include="Jobs\JobAdvertContentFinder.cs" />
     <Compile Include="Jobs\JobAdvertEventHandler.cs" />
+    <Compile Include="Jobs\JobsDataFromExamine.cs" />
+    <Compile Include="Jobs\BaseJobsIndexer.cs" />
+    <Compile Include="Jobs\JobsIndexerApiController.cs" />
+    <Compile Include="Jobs\TalentLinkRedeploymentJobsIndexer.cs" />
+    <Compile Include="Jobs\TalentLinkPublicJobsIndexer.cs" />
+    <Compile Include="Jobs\PublicOrRedeploymentDataType.cs" />
     <Compile Include="Jobs\ReplaceElementNameFormatter.cs" />
     <Compile Include="Jobs\CloseEmptyElementsFormatter.cs" />
     <Compile Include="Jobs\IHtmlStringFormatter.cs" />
@@ -3835,7 +3847,9 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\JobsIndexerApi\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

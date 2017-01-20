@@ -76,12 +76,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             Description = "Select the jobs search page, based on the 'Jobs search' document type")]
         public string JobsSearchPage { get; set; }
 
-        [UmbracoProperty("Search script URL", "SearchScriptUrl", UrlDataType.PropertyEditorAlias, UrlDataType.DataTypeName, sortOrder: 8, mandatory: true,
+        [UmbracoProperty("Which jobs should this page show?", "PublicOrRedeployment", PublicOrRedeploymentDataType.PropertyEditor, PublicOrRedeploymentDataType.DataTypeName, sortOrder: 7, mandatory: true)]
+        public string PublicOrRedeploymentJobs { get; set; }
+
+
+        [UmbracoProperty("Search script URL", "SearchScriptUrl", UrlDataType.PropertyEditorAlias, UrlDataType.DataTypeName, sortOrder: 9, mandatory: true,
         Description = "A standard TalentLink component is embedded into a page by referencing a script. Paste the URL of the search component here.")]
         public Uri SearchScriptUrl { get; set; }
-
-        [UmbracoProperty("Search results script URL", "ResultsScriptUrl", UrlDataType.PropertyEditorAlias, UrlDataType.DataTypeName, sortOrder: 9, mandatory: true,
-            Description = "A standard TalentLink component is embedded into a page by referencing a script. Paste the URL of the search results component here.")]
-        public Uri ResultsScriptUrl { get; set; }
     }
 }

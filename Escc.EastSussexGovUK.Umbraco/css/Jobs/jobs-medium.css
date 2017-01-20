@@ -19,7 +19,7 @@
 .job-results td.closing-date span { display: none;}
 
 /* Still hide organisation column */
-.jobs-content .job-results .organisation {display: none; }
+.job-results .organisation {display: none; }
 
 /* Buttons on the jobs home page - Context is (10 cols - 2 gutters = 766), subtract a gutter for the margin and divide by two */
 .jobs-buttons li.feature { float: left;margin-bottom: .947368em;width: 48.825065%; }

@@ -331,6 +331,7 @@
     <Compile Include="HtmlStringFormatterTests.cs" />
     <Compile Include="JobAdvertHtmlParserTests.cs" />
     <Compile Include="JobSearchFilterTests.cs" />
+    <Compile Include="StopWordsRemoverTests.cs" />
     <Compile Include="RemoveMediaDomainUrlTransformerTests.cs" />
     <Compile Include="GoogleAdWordsTagParserTests.cs" />
     <Compile Include="GoogleFontFamilyFormatterTests.cs" />

@@ -93,6 +93,24 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
 
                     job.AdvertHtml = new HtmlString(parsedHtml);
 
+                    parsedHtml = parsedHtml.ToUpperInvariant();
+                    if (parsedHtml.Contains("WORKING PATTERN: FULL-TIME"))
+                    {
+                        job.WorkPattern = "Full time";
+                    }
+                    else if (parsedHtml.Contains("WORKING PATTERN: FULL TIME"))
+                    {
+                        job.WorkPattern = "Full time";
+                    }
+                    else if (parsedHtml.Contains("WORKING PATTERN: PART-TIME"))
+                    {
+                        job.WorkPattern = "Part time";
+                    }
+                    else if (parsedHtml.Contains("WORKING PATTERN: PART TIME"))
+                    {
+                        job.WorkPattern = "Part time";
+                    }
+
                     var applyLink = htmlDocument.DocumentNode.SelectSingleNode($"//div[@id='JD-ActApplyDirect']/a");
                     if (applyLink != null)
                     {
