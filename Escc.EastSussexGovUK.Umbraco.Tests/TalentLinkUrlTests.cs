@@ -1,5 +1,6 @@
 ﻿using System;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
+using Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using NUnit.Framework;
 

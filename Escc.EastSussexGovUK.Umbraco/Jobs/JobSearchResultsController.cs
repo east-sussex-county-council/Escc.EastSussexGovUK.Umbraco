@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.Caching;
 using System.Web.Mvc;
+using Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Net;
@@ -26,7 +27,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
     /// <summary>
     /// Controller for pages based on the 'Job search results' Umbraco document type
     /// </summary>
-    /// <seealso cref="CoRenderMvcController/>
     public class JobSearchResultsController : RenderMvcController
     {
         /// <summary>
@@ -64,12 +64,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 var locations = Task.Run(async () => await lookupsProvider.ReadLocations()).Result;
                 var jobTypes = Task.Run(async () => await lookupsProvider.ReadJobTypes()).Result;
                 var organisations = Task.Run(async () => await lookupsProvider.ReadOrganisations()).Result;
-                var salaryRanges = Task.Run(async () => await lookupsProvider.ReadSalaryRanges()).Result;
                 var workPatterns = Task.Run(async () => await lookupsProvider.ReadWorkPatterns()).Result;
                 ReplaceLookupIdsWithValues(viewModel.Query.Locations, locations);
                 ReplaceLookupIdsWithValues(viewModel.Query.JobTypes, jobTypes);
                 ReplaceLookupIdsWithValues(viewModel.Query.Organisations, organisations);
-                ReplaceLookupIdsWithValues(viewModel.Query.SalaryRanges, salaryRanges);
                 ReplaceLookupIdsWithValues(viewModel.Query.WorkPatterns, workPatterns);
 
                 var jobs = Task.Run(async () => await jobsProvider.ReadJobs(viewModel.Query)).Result;

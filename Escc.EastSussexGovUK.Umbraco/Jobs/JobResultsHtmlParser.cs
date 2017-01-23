@@ -13,6 +13,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
     /// </summary>
     public class JobResultsHtmlParser : IJobResultsParser
     {
+        private readonly ISalaryParser _salaryParser;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="JobResultsHtmlParser"/> class.
+        /// </summary>
+        /// <param name="salaryParser">The salary parser.</param>
+        public JobResultsHtmlParser(ISalaryParser salaryParser)
+        {
+            _salaryParser = salaryParser;
+        }
+
         /// <summary>
         /// Parses jobs from the HTML stream.
         /// </summary>
@@ -74,8 +85,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                     job.JobTitle = HttpUtility.HtmlDecode(link.InnerText);
                     job.Organisation = HttpUtility.HtmlDecode(link.ParentNode.ParentNode.SelectSingleNode("./td[@headers='th2']")?.InnerText?.Trim());
                     job.Location = HttpUtility.HtmlDecode(link.ParentNode.ParentNode.SelectSingleNode("./td[@headers='th3']")?.InnerText?.Trim());
-                    job.SalaryRange = HttpUtility.HtmlDecode(link.ParentNode.ParentNode.SelectSingleNode("./td[@headers='th4']")?.InnerText?.Trim());
-                    job.Salary = job.SalaryRange; // because it's our best info at this point
+                    job.Salary = _salaryParser.ParseSalaryFromDescription(HttpUtility.HtmlDecode(link.ParentNode.ParentNode.SelectSingleNode("./td[@headers='th4']")?.InnerText?.Trim()));
+                    job.Salary.SearchRange = job.Salary.SalaryRange;
                     job.ClosingDate = DateTime.Parse(link.ParentNode.ParentNode.SelectSingleNode("./td[@headers='th5']")?.InnerText?.Trim(), new CultureInfo("en-GB"));
                     jobs.Jobs.Add(job);
                 }

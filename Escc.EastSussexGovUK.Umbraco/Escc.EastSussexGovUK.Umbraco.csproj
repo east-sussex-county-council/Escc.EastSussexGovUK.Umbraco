@@ -3397,13 +3397,16 @@
     <Compile Include="CampaignTemplates\CampaignTilesDocumentType.cs" />
     <Compile Include="Examine\IStopWordsRemover.cs" />
     <Compile Include="Examine\StopWordsRemover.cs" />
+    <Compile Include="Jobs\ISalaryParser.cs" />
     <Compile Include="Jobs\JobAdvertContentFinder.cs" />
     <Compile Include="Jobs\JobAdvertEventHandler.cs" />
     <Compile Include="Jobs\JobsDataFromExamine.cs" />
     <Compile Include="Jobs\BaseJobsIndexer.cs" />
     <Compile Include="Jobs\JobsIndexerApiController.cs" />
-    <Compile Include="Jobs\TalentLinkRedeploymentJobsIndexer.cs" />
-    <Compile Include="Jobs\TalentLinkPublicJobsIndexer.cs" />
+    <Compile Include="Jobs\Salary.cs" />
+    <Compile Include="Jobs\TalentLink\TalentLinkSalaryParser.cs" />
+    <Compile Include="Jobs\TalentLink\TalentLinkRedeploymentJobsIndexer.cs" />
+    <Compile Include="Jobs\TalentLink\TalentLinkPublicJobsIndexer.cs" />
     <Compile Include="Jobs\PublicOrRedeploymentDataType.cs" />
     <Compile Include="Jobs\ReplaceElementNameFormatter.cs" />
     <Compile Include="Jobs\CloseEmptyElementsFormatter.cs" />
@@ -3414,7 +3417,7 @@
     <Compile Include="Jobs\IJobsDataProvider.cs" />
     <Compile Include="Jobs\IJobLookupValuesParser.cs" />
     <Compile Include="Jobs\Job.cs" />
-    <Compile Include="Jobs\JobAdvertHtmlParser.cs" />
+    <Compile Include="Jobs\TalentLink\TalentLinkJobAdvertHtmlParser.cs" />
     <Compile Include="Jobs\JobResultsHtmlParser.cs" />
     <Compile Include="Jobs\JobAdvertContentTab.cs" />
     <Compile Include="Jobs\JobAdvertDocumentType.cs" />
@@ -3430,7 +3433,7 @@
     <Compile Include="Jobs\JobsRssController.cs" />
     <Compile Include="Jobs\JobsRssContentTab.cs" />
     <Compile Include="Jobs\JobsRssDocumentType.cs" />
-    <Compile Include="Jobs\JobsDataFromTalentLink.cs" />
+    <Compile Include="Jobs\TalentLink\JobsDataFromTalentLink.cs" />
     <Compile Include="ApiControllers\LocationController.cs" />
     <Compile Include="ApiControllers\MediaController.cs" />
     <Compile Include="Jobs\JobLookupValuesHtmlParser.cs" />
@@ -3467,7 +3470,7 @@
     <Compile Include="Jobs\JobsComponentViewModel.cs" />
     <Compile Include="Jobs\JobSearchResultsViewModel.cs" />
     <Compile Include="Jobs\RemoveUnwantedAttributesFormatter.cs" />
-    <Compile Include="Jobs\TalentLinkUrl.cs" />
+    <Compile Include="Jobs\TalentLink\TalentLinkUrl.cs" />
     <Compile Include="Jobs\BaseViewModelFromUmbracoBuilder.cs" />
     <Compile Include="Jobs\SearchResultsViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\ComponentViewModelFromUmbraco.cs" />

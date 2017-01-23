@@ -2,7 +2,7 @@
 using System.Collections.Specialized;
 using System.Web;
 
-namespace Escc.EastSussexGovUK.Umbraco.Jobs
+namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
 {
     public class TalentLinkUrl
     {

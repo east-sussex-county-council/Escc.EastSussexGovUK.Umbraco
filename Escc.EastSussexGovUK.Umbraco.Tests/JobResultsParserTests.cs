@@ -2,6 +2,7 @@
 using System.IO;
 using System.Text;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
+using Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink;
 using NUnit.Framework;
 
 namespace Escc.EastSussexGovUK.Umbraco.Tests
@@ -14,7 +15,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             using (var htmlStream = new MemoryStream(Encoding.UTF8.GetBytes(String.Format(Properties.Resources.JobResultsOuterHtml, Properties.Resources.MultipleJobResults))))
             {
-                var parser = new JobResultsHtmlParser(new Uri("https://www.example.org"));
+                var parser = new JobResultsHtmlParser(new TalentLinkSalaryParser());
 
                 var jobs = parser.Parse(htmlStream);
 
@@ -27,7 +28,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             using (var htmlStream = new MemoryStream(Encoding.UTF8.GetBytes(String.Format(Properties.Resources.JobResultsOuterHtml, Properties.Resources.MultipleJobResults))))
             {
-                var parser = new JobResultsHtmlParser(new Uri("https://www.example.org"));
+                var parser = new JobResultsHtmlParser(new TalentLinkSalaryParser());
 
                 var jobs = parser.Parse(htmlStream);
 
@@ -40,7 +41,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             using (var htmlStream = new MemoryStream(Encoding.UTF8.GetBytes(String.Format(Properties.Resources.JobResultsOuterHtml, Properties.Resources.LastPageOfJobs))))
             {
-                var parser = new JobResultsHtmlParser(new Uri("https://www.example.org"));
+                var parser = new JobResultsHtmlParser(new TalentLinkSalaryParser());
 
                 var jobs = parser.Parse(htmlStream);
 
@@ -53,7 +54,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             using (var htmlStream = new MemoryStream(Encoding.UTF8.GetBytes(String.Format(Properties.Resources.JobResultsOuterHtml, Properties.Resources.NoJobsResult))))
             {
-                var parser = new JobResultsHtmlParser(new Uri("https://www.example.org"));
+                var parser = new JobResultsHtmlParser(new TalentLinkSalaryParser());
 
                 var jobs = parser.Parse(htmlStream);
 
@@ -66,7 +67,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             using (var htmlStream = new MemoryStream(Encoding.UTF8.GetBytes(String.Format(Properties.Resources.JobResultsOuterHtml, Properties.Resources.MultipleJobResults))))
             {
-                var parser = new JobResultsHtmlParser(new Uri("https://www.example.org"));
+                var parser = new JobResultsHtmlParser(new TalentLinkSalaryParser());
 
                 var jobs = parser.Parse(htmlStream);
 
@@ -79,7 +80,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             using (var htmlStream = new MemoryStream(Encoding.UTF8.GetBytes(String.Format(Properties.Resources.JobResultsOuterHtml, Properties.Resources.MultipleJobResults))))
             {
-                var parser = new JobResultsHtmlParser(new Uri("https://www.example.org"));
+                var parser = new JobResultsHtmlParser(new TalentLinkSalaryParser());
 
                 var jobs = parser.Parse(htmlStream);
 
@@ -92,7 +93,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             using (var htmlStream = new MemoryStream(Encoding.UTF8.GetBytes(String.Format(Properties.Resources.JobResultsOuterHtml, Properties.Resources.MultipleJobResults))))
             {
-                var parser = new JobResultsHtmlParser(new Uri("https://www.example.org"));
+                var parser = new JobResultsHtmlParser(new TalentLinkSalaryParser());
 
                 var jobs = parser.Parse(htmlStream);
 
@@ -106,7 +107,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             using (var htmlStream = new MemoryStream(Encoding.UTF8.GetBytes(String.Format(Properties.Resources.JobResultsOuterHtml, Properties.Resources.MultipleJobResults))))
             {
-                var parser = new JobResultsHtmlParser(new Uri("https://www.example.org"));
+                var parser = new JobResultsHtmlParser(new TalentLinkSalaryParser());
 
                 var jobs = parser.Parse(htmlStream);
 
@@ -119,7 +120,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             using (var htmlStream = new MemoryStream(Encoding.UTF8.GetBytes(String.Format(Properties.Resources.JobResultsOuterHtml, Properties.Resources.MultipleJobResults))))
             {
-                var parser = new JobResultsHtmlParser(new Uri("https://www.example.org"));
+                var parser = new JobResultsHtmlParser(new TalentLinkSalaryParser());
 
                 var jobs = parser.Parse(htmlStream);
 
@@ -132,7 +133,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             using (var htmlStream = new MemoryStream(Encoding.UTF8.GetBytes(String.Format(Properties.Resources.JobResultsOuterHtml, Properties.Resources.MultipleJobResults))))
             {
-                var parser = new JobResultsHtmlParser(new Uri("https://www.example.org"));
+                var parser = new JobResultsHtmlParser(new TalentLinkSalaryParser());
 
                 var jobs = parser.Parse(htmlStream);
 

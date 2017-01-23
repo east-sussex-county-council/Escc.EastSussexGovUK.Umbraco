@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Configuration;
 using System.Globalization;
 using System.IO;
 using System.Net.Http;
@@ -10,7 +9,7 @@ using System.Threading.Tasks;
 using System.Web;
 using Escc.Net;
 
-namespace Escc.EastSussexGovUK.Umbraco.Jobs
+namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
 {
     /// <summary>
     /// Loads jobs data as HTML by making an HTTP request to a TalentLink server

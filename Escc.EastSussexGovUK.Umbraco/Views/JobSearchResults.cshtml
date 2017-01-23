@@ -97,7 +97,7 @@
                         }
                         <td class="organisation">@job.Organisation</td>
                         <td class="location">@job.Location</td>
-                        <td class="salary">@job.SalaryRange</td>
+                        <td class="salary">@job.Salary.SalaryRange</td>
                         <td class="closing-date"><span>Closes </span>@(job.ClosingDate.HasValue ? job.ClosingDate.Value.ToBritishDate() : String.Empty)</td>
                     </tr>
                 }

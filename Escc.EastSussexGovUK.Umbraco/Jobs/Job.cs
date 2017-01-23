@@ -39,22 +39,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// The location.
         /// </value>
         public string Location { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the salary range.
         /// </summary>
         /// <value>
         /// The salary.
         /// </value>
-        public string Salary { get; set; }
-
-        /// <summary>
-        /// Gets or sets the inaccurate salary range used for searching.
-        /// </summary>
-        /// <value>
-        /// The salary.
-        /// </value>
-        public string SalaryRange { get; set; }
+        public Salary Salary { get; set; } = new Salary();
 
         /// <summary>
         /// Gets or sets the closing date for applications.

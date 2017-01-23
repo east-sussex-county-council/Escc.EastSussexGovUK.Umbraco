@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink;
 using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Net;
 using Escc.Umbraco.ContentExperiments;
@@ -41,12 +42,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             foreach (var jobType in jobTypes.Result)
             {
                 viewModel.JobTypes.Add(jobType);
-            }
-
-            var salaryRanges = Task.Run(async () => await dataSource.ReadSalaryRanges());
-            foreach (var salaryRange in salaryRanges.Result)
-            {
-                viewModel.SalaryRanges.Add(salaryRange);
             }
 
             var workPatterns = Task.Run(async () => await dataSource.ReadWorkPatterns());

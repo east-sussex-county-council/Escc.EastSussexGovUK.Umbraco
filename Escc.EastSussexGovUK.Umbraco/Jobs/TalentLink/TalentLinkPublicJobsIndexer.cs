@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Web;
 using Escc.EastSussexGovUK.Umbraco.Examine;
 using Escc.Net;
 
-namespace Escc.EastSussexGovUK.Umbraco.Jobs
+namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
 {
     /// <summary>
     /// Creates an Examine indexes of jobs posted to a TalentLink site, based on the TalentLink URLs in the 'TalentLinkPublicJobs...' configuration settings
@@ -21,7 +18,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// <summary>
         /// Initializes a new instance of the <see cref="TalentLinkPublicJobsIndexer"/> class.
         /// </summary>
-        public TalentLinkPublicJobsIndexer() : base(new JobsDataFromTalentLink(SearchUrl, ResultsUrl, AdvertUrl, new ConfigurationProxyProvider(), new JobLookupValuesHtmlParser(), new JobResultsHtmlParser(), new JobAdvertHtmlParser()), new StopWordsRemover())
+        public TalentLinkPublicJobsIndexer() : base(new JobsDataFromTalentLink(SearchUrl, ResultsUrl, AdvertUrl, new ConfigurationProxyProvider(), new JobLookupValuesHtmlParser(), new JobResultsHtmlParser(new TalentLinkSalaryParser()), new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser())), new StopWordsRemover())
         {
         }
     }

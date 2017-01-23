@@ -1,20 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Web;
 using Exceptionless;
 using HtmlAgilityPack;
 
-namespace Escc.EastSussexGovUK.Umbraco.Jobs
+namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
 {
     /// <summary>
     /// Parses a job from the HTML returned by TalentLink
     /// </summary>
     /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Jobs.IJobAdvertParser" />
-    public class JobAdvertHtmlParser : IJobAdvertParser
+    public class TalentLinkJobAdvertHtmlParser : IJobAdvertParser
     {
+        private readonly ISalaryParser _salaryParser;
+
+        public TalentLinkJobAdvertHtmlParser(ISalaryParser salaryParser)
+        {
+            if (salaryParser == null) throw new ArgumentNullException(nameof(salaryParser));
+            _salaryParser = salaryParser;
+        }
+
         /// <summary>
         /// Parses a job.
         /// </summary>
@@ -57,12 +63,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                     job.Department = ParseValueFromElementById(htmlDocument, "span", "JDText-Param5");
                     job.ContractType = ParseValueFromElementById(htmlDocument, "span", "JDText-Param6");
                     job.JobType = ParseValueFromElementById(htmlDocument, "span", "JDText-Param7");
-
-                    job.Salary = ParseValueFromElementById(htmlDocument, "span", "JDText-salary");
-                    // Tidy up whitespace in the salary, then translate it to a more usable format
-                    job.Salary = Regex.Replace(job.Salary, @"\s+", " ").Replace(" - ", "-");
-                    job.Salary = Regex.Replace(job.Salary, "^([0-9]+)-([0-9]+) GBP Year", "£$1–£$2 per annum");
-                    job.Salary = Regex.Replace(job.Salary, "^([0-9]+) GBP Year", "£$1 per annum");
+                    job.Salary = _salaryParser.ParseSalaryFromHtml(htmlDocument);
 
                     DateTime closingDate;
                     DateTime.TryParse(ParseValueFromElementById(htmlDocument, "span", "JDText-Param9"), new CultureInfo("en-GB"), DateTimeStyles.AssumeLocal, out closingDate);

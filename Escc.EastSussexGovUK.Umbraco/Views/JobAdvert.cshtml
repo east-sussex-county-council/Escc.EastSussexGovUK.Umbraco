@@ -52,10 +52,10 @@
     <dt>Job type</dt>
     <dd>@Model.Job.JobType</dd>
 }
-@if (!String.IsNullOrEmpty(Model.Job.Salary))
+@if (!String.IsNullOrEmpty(Model.Job.Salary.SalaryRange))
 {
     <dt>Salary</dt>
-    <dd>@Model.Job.Salary</dd>
+    <dd>@Model.Job.Salary.SalaryRange</dd>
 }
 @if (Model.Job.ClosingDate.HasValue)
 {

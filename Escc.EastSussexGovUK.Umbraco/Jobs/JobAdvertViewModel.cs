@@ -1,4 +1,5 @@
 ﻿using System.Web;
+using Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.Umbraco.PropertyTypes;
 

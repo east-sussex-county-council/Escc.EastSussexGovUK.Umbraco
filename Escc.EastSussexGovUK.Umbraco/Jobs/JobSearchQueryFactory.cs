@@ -29,22 +29,22 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
 
             if (!String.IsNullOrEmpty(queryString["location"]))
             {
-                AddLookupIdsToList(queryString["location"], query.Locations);
+                AddQueryStringValuesToList(queryString["location"], query.Locations, true);
             }
 
             if (!String.IsNullOrEmpty(queryString["type"]))
             {
-                AddLookupIdsToList(queryString["type"], query.JobTypes);
+                AddQueryStringValuesToList(queryString["type"], query.JobTypes, true);
             }
 
             if (!String.IsNullOrEmpty(queryString["org"]))
             {
-                AddLookupIdsToList(queryString["org"], query.Organisations);
+                AddQueryStringValuesToList(queryString["org"], query.Organisations, true);
             }
 
             if (!String.IsNullOrEmpty(queryString["salary"]))
             {
-                AddLookupIdsToList(queryString["salary"], query.SalaryRanges);
+                AddQueryStringValuesToList(queryString["salary"], query.SalaryRanges, false);
             }
 
             if (!String.IsNullOrEmpty(queryString["ref"]))
@@ -54,7 +54,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
 
             if (!String.IsNullOrEmpty(queryString["hours"]))
             {
-                AddLookupIdsToList(queryString["hours"], query.WorkPatterns);
+                AddQueryStringValuesToList(queryString["hours"], query.WorkPatterns, true);
             }
 
             if (!String.IsNullOrEmpty(queryString["sort"]))
@@ -67,9 +67,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             return query;
         }
 
-        private static void AddLookupIdsToList(string unvalidatedValue, IList<string> valuesToQuery)
+        private static void AddQueryStringValuesToList(string unvalidatedValue, IList<string> valuesToQuery, bool mustBeNumeric)
         {
-            if (Regex.IsMatch(unvalidatedValue, "^[0-9,]+$"))
+            if (!mustBeNumeric || Regex.IsMatch(unvalidatedValue, "^[0-9,]+$"))
             {
                 var values = unvalidatedValue.SplitAndTrim(",");
                 foreach (var value in values)

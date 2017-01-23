@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -79,10 +80,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 {
                     var jobAdvert = Task.Run(async () => await _jobsProvider.ReadJob(job.Id)).Result;
                     jobAdvert.Id = job.Id;
-                    jobAdvert.SalaryRange = job.SalaryRange;
                     if (String.IsNullOrEmpty(jobAdvert.JobTitle)) jobAdvert.JobTitle = job.JobTitle;
                     if (String.IsNullOrEmpty(jobAdvert.Location)) jobAdvert.Location = job.Location;
-                    if (String.IsNullOrEmpty(jobAdvert.Salary)) jobAdvert.Salary = job.Salary;
+
+                    jobAdvert.Salary.SearchRange = job.Salary.SearchRange;
+                    if (String.IsNullOrEmpty(jobAdvert.Salary.SalaryRange)) jobAdvert.Salary.SalaryRange = job.Salary.SearchRange;
+                    if (!jobAdvert.Salary.MinimumSalary.HasValue) jobAdvert.Salary.MinimumSalary = job.Salary.MinimumSalary;
+                    if (!jobAdvert.Salary.MaximumSalary.HasValue) jobAdvert.Salary.MaximumSalary = job.Salary.MaximumSalary;
+
                     if (!jobAdvert.ClosingDate.HasValue) jobAdvert.ClosingDate = job.ClosingDate;
 
                     var simpleDataSet = CreateIndexItemFromJob(i, jobAdvert, indexType);
@@ -109,8 +114,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             simpleDataSet.RowData.Add("title", _stopWordsRemover.RemoveStopWords(job.JobTitle, StopWords));
             simpleDataSet.RowData.Add("organisation", _stopWordsRemover.RemoveStopWords(job.Organisation, StopWords));
             simpleDataSet.RowData.Add("location", _stopWordsRemover.RemoveStopWords(job.Location, StopWords));
-            simpleDataSet.RowData.Add("salary", _stopWordsRemover.RemoveStopWords(job.Salary, StopWords));
-            simpleDataSet.RowData.Add("salaryRange", _stopWordsRemover.RemoveStopWords(job.SalaryRange, StopWords));
+            simpleDataSet.RowData.Add("salary", _stopWordsRemover.RemoveStopWords(job.Salary.SalaryRange, StopWords));
+            simpleDataSet.RowData.Add("salaryRange", _stopWordsRemover.RemoveStopWords(job.Salary.SearchRange, StopWords));
+            simpleDataSet.RowData.Add("salaryMin", job.Salary.MinimumSalary?.ToString("D7") ?? String.Empty);
+            simpleDataSet.RowData.Add("salaryMax", job.Salary.MaximumSalary?.ToString("D7") ?? String.Empty);
             simpleDataSet.RowData.Add("closingDate", job.ClosingDate.Value.ToIso8601DateTime());
             simpleDataSet.RowData.Add("jobType", _stopWordsRemover.RemoveStopWords(job.JobType, StopWords));
             simpleDataSet.RowData.Add("contractType", _stopWordsRemover.RemoveStopWords(job.ContractType, StopWords));

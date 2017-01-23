@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Umbraco.PropertyTypes;

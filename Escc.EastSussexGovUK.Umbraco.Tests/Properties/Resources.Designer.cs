@@ -111,6 +111,34 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;p&gt;Location: Hastings&lt;br&gt;Start date: 01 May 2017&lt;br&gt;Salary: Ark Leadership Scale L1 – L5 (£38, 984 - £43, 022)&lt;br&gt;Closing date: 9am on Monday 20 February 2017&lt;br&gt;Interview date: Thursday 23 February 2017&lt;br&gt;&lt;br&gt;Ark Blacklands and Ark Little Ridge Primary Academies are committed to safeguarding children; successful candidates will be subject to an enhanced Disclosure &amp;amp; Barring Service check.&lt;/p&gt;.
+        /// </summary>
+        internal static string SalaryInBodyText1 {
+            get {
+                return ResourceManager.GetString("SalaryInBodyText1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;span class=&quot;JD-FieldText&quot; id=&quot;JDText-Field2&quot;&gt;&lt;p&gt;QUALITY OFFICER &lt;br&gt;&lt;br&gt;£16,692 - £17,808 per annum&amp;nbsp;(Full-time/full year).&lt;/p&gt;
+        ///&lt;p&gt;We are looking for a well-qualified, enthusiastic team player with excellent communication, administration and IT skills.&amp;nbsp; Key elements of this role will be managing the administration of the College’s quality management systems, preparing reports, setting up online surveys and other quality measures; and providing an analysis of the results.&amp;nbsp; You will need to ha [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string SalaryInBodyText2 {
+            get {
+                return ResourceManager.GetString("SalaryInBodyText2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;p&gt;Salary: To be negotiated&lt;br&gt;Contract type: Permanent&lt;br&gt;Working pattern: Part time&lt;/p&gt;.
+        /// </summary>
+        internal static string SalaryInBodyText3 {
+            get {
+                return ResourceManager.GetString("SalaryInBodyText3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot; http://www.w3.org/TR/html4/strict.dtd&quot;&gt;&lt;html lang=&quot;en-GB&quot; xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xmlns:addthis=&quot;http://www.addthis.com/help/api-spec&quot; &gt;&lt;head&gt;&lt;meta name=&quot;GENERATOR&quot; content=&quot;MrTed&quot;&gt;&lt;meta name=&quot;TEMPLATEBASE&quot; content=&quot;Accessible HTML&quot;&gt;&lt;meta name=&quot;LASTUPDATED&quot; content=&quot;18/08/05 10:05:33&quot;&gt;&lt;meta name=&quot;author&quot; content=&quot;MrTed&quot;&gt;&lt;meta name=&quot;keywords&quot; content=&quot;Jobs, Career Section, Candidate Portal&quot;&gt;&lt;meta name=&quot;description&quot; content=&quot;Mrted Talentlink syn [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SearchFieldsOuterHtml {

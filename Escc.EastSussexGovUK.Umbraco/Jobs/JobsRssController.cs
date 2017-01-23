@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Caching;
 using Escc.Dates;
+using Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.Net;
 using Escc.Umbraco.Caching;
@@ -73,7 +74,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 var resultsUrl = new TalentLinkUrl(model.Content.GetPropertyValue<string>("ResultsScriptUrl_Content")).LinkUrl;
 
                 var lookupValuesParser = new JobLookupValuesHtmlParser();
-                var jobResultsParser = new JobResultsHtmlParser();
+                var jobResultsParser = new JobResultsHtmlParser(new TalentLinkSalaryParser());
                 var jobsProvider = new JobsDataFromTalentLink(searchUrl, resultsUrl, null, new ConfigurationProxyProvider(), lookupValuesParser, jobResultsParser, null);
                 var jobTypes = Task.Run(async () => await jobsProvider.ReadJobTypes()).Result;
                 ReplaceLookupValuesWithIds(query.JobTypes, jobTypes);

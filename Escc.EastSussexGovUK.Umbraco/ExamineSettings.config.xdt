@@ -4,13 +4,13 @@
     <providers>
       <add name="PublicJobsIndexer" xdt:Transform="RemoveAll" xdt:Locator="Match(name)" />
       <add name="PublicJobsIndexer" type="Examine.LuceneEngine.Providers.SimpleDataIndexer, Examine"
-           dataService="Escc.EastSussexGovUK.Umbraco.Jobs.TalentLinkPublicJobsIndexer, Escc.EastSussexGovUK.Umbraco" 
+           dataService="Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink.TalentLinkPublicJobsIndexer, Escc.EastSussexGovUK.Umbraco" 
            indexTypes="Job" 
            xdt:Transform="Insert" />
 
       <add name="RedeploymentJobsIndexer" xdt:Transform="RemoveAll" xdt:Locator="Match(name)" />
       <add name="RedeploymentJobsIndexer" type="Examine.LuceneEngine.Providers.SimpleDataIndexer, Examine"
-           dataService="Escc.EastSussexGovUK.Umbraco.Jobs.TalentLinkRedeploymentJobsIndexer, Escc.EastSussexGovUK.Umbraco" 
+           dataService="Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink.TalentLinkRedeploymentJobsIndexer, Escc.EastSussexGovUK.Umbraco" 
            indexTypes="Job" 
            xdt:Transform="Insert" />
     </providers>

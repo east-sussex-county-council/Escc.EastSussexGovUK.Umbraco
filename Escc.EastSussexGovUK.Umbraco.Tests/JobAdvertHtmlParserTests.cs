@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
+using Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink;
 using NUnit.Framework;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
@@ -16,7 +17,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [Test]
         public void JobTitleParsedFromHtml()
         {
-            var parser = new JobAdvertHtmlParser();
+            var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser());
 
             var job = parser.ParseJob(Properties.Resources.JobAdvert1Html);
 
@@ -26,7 +27,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [Test]
         public void JobReferenceParsedFromHtml()
         {
-            var parser = new JobAdvertHtmlParser();
+            var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser());
 
             var job = parser.ParseJob(Properties.Resources.JobAdvert1Html);
 
@@ -37,7 +38,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [Test]
         public void LocationParsedFromHtml()
         {
-            var parser = new JobAdvertHtmlParser();
+            var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser());
 
             var job = parser.ParseJob(Properties.Resources.JobAdvert1Html);
 
@@ -48,7 +49,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [Test]
         public void OrganisationParsedFromHtml()
         {
-            var parser = new JobAdvertHtmlParser();
+            var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser());
 
             var job = parser.ParseJob(Properties.Resources.JobAdvert1Html);
 
@@ -59,7 +60,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [Test]
         public void DepartmentParsedFromHtml()
         {
-            var parser = new JobAdvertHtmlParser();
+            var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser());
 
             var job = parser.ParseJob(Properties.Resources.JobAdvert1Html);
 
@@ -70,7 +71,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [Test]
         public void ContractTypeParsedFromHtml()
         {
-            var parser = new JobAdvertHtmlParser();
+            var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser());
 
             var job = parser.ParseJob(Properties.Resources.JobAdvert1Html);
 
@@ -81,28 +82,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [Test]
         public void JobTypeParsedFromHtml()
         {
-            var parser = new JobAdvertHtmlParser();
+            var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser());
 
             var job = parser.ParseJob(Properties.Resources.JobAdvert1Html);
 
             Assert.AreEqual("Customer Services", job.JobType);
         }
 
-
-        [Test]
-        public void SalaryParsedFromHtml()
-        {
-            var parser = new JobAdvertHtmlParser();
-
-            var job = parser.ParseJob(Properties.Resources.JobAdvert1Html);
-
-            Assert.AreEqual("£14981–£15507 per annum", job.Salary);
-        }
-
         [Test]
         public void ClosingDateParsedFromHtml()
         {
-            var parser = new JobAdvertHtmlParser();
+            var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser());
 
             var job = parser.ParseJob(Properties.Resources.JobAdvert1Html);
 
@@ -112,7 +102,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [Test]
         public void AdvertTextParsedFromHtml()
         {
-            var parser = new JobAdvertHtmlParser();
+            var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser());
 
             var job = parser.ParseJob(Properties.Resources.JobAdvert1Html);
 
@@ -128,7 +118,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [Test]
         public void ApplyUrlParsedFromHtml()
         {
-            var parser = new JobAdvertHtmlParser();
+            var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser());
 
             var job = parser.ParseJob(Properties.Resources.JobAdvert1Html);
 
