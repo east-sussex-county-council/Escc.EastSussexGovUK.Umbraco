@@ -32,12 +32,19 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 JobsLogo = BuildImage("JobsLogo_Content"),
                 HeaderBackgroundImage = BuildImage("HeaderBackgroundImage_Content"),
                 JobsHomePage = BuildLinkToPage("JobsHomePage_Content"),
-                JobDetailPage = BuildLinkToPage("JobDetailPage_Content"),
+                JobAdvertPage = BuildLinkToPage("JobDetailPage_Content"),
                 LoginPage = BuildLinkToPage("LoginPage_Content"),
                 JobAlertsPage = BuildLinkToPage("JobAlertsPage_Content"),
                 JobsSearchPage = BuildLinkToPage("JobsSearchPage_Content"),
                 ExamineSearcher = BuildJobsSearcherName("PublicOrRedeployment_Content")
             };
+
+            var rss = BuildLinkToPage("JobsRssFeed_Content");
+            if (rss != null)
+            {
+                model.Metadata.RssFeedTitle = rss.Text;
+                model.Metadata.RssFeedUrl = rss.Url.ToString();
+            }
 
             return model;
         }

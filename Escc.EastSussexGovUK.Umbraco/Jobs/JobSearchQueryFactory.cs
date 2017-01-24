@@ -69,6 +69,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
 
         private static void AddQueryStringValuesToList(string unvalidatedValue, IList<string> valuesToQuery)
         {
+            unvalidatedValue = HttpUtility.UrlDecode(unvalidatedValue);
             var values = Regex.Replace(unvalidatedValue, "[^A-Za-z0-9-,'’ £]", String.Empty).SplitAndTrim(",");
             foreach (var value in values)
             {

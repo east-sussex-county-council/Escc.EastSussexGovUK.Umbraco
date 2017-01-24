@@ -8,11 +8,15 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Caching;
 using Escc.Dates;
+using Escc.EastSussexGovUK.Umbraco.Jobs.Examine;
 using Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink;
 using Escc.EastSussexGovUK.Umbraco.Models;
+using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Net;
 using Escc.Umbraco.Caching;
+using Escc.Umbraco.ContentExperiments;
 using Escc.Umbraco.PropertyTypes;
+using Examine;
 using Exceptionless.Extensions;
 using Umbraco.Core.Models;
 using Umbraco.Web;
@@ -37,11 +41,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         {
             if (model == null) throw new ArgumentNullException(nameof(model));
 
-            var viewModel = new RssViewModel<Job>();
-            viewModel.Metadata.Title = model.Content.Name;
-            viewModel.Metadata.Description = model.Content.GetPropertyValue<string>("pageDescription_Content");
+            var viewModel = new JobsRssViewModelFromUmbraco(model.Content).BuildModel();
 
-            var jobs = await ReadJobs(model);
+            // Add common properties to the model
+            var modelBuilder = new BaseViewModelBuilder();
+            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode);
+
+            viewModel.Query = new JobSearchQueryFactory().CreateFromQueryString(Request.QueryString);
+            var jobsProvider = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.ExamineSearcher], viewModel.JobAdvertPage.Url);
+            var jobs = await jobsProvider.ReadJobs(viewModel.Query);
 
             foreach (var job in jobs)
             {
@@ -51,61 +59,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache);
 
             return CurrentTemplate(viewModel);
-        }
-
-        private async Task<List<Job>> ReadJobs(RenderModel model)
-        {
-            List<Job> jobs = null;
-
-            var query = new JobSearchQueryFactory().CreateFromQueryString(Request.QueryString);
-
-            var jobTypesFromUmbraco = model.Content.GetPropertyValue<string>("JobTypes_Content");
-            var jobTypesToFilter = Regex.Replace(Regex.Replace(jobTypesFromUmbraco, "\r", String.Empty), "\n", Environment.NewLine).SplitAndTrim(Environment.NewLine);
-            foreach (var jobType in jobTypesToFilter)
-            {
-                query.JobTypes.Add(jobType);
-            }
-
-            var cacheKey = "Jobs" + query.ToHash();
-
-            if (HttpContext.Cache[cacheKey] == null || Request.QueryString["ForceCacheRefresh"] == "1")
-            {
-                var searchUrl = new TalentLinkUrl(model.Content.GetPropertyValue<string>("SearchScriptUrl_Content")).LinkUrl;
-                var resultsUrl = new TalentLinkUrl(model.Content.GetPropertyValue<string>("ResultsScriptUrl_Content")).LinkUrl;
-
-                var lookupValuesParser = new TalentLinkLookupValuesHtmlParser();
-                var jobResultsParser = new TalentLinkJobResultsHtmlParser(new TalentLinkSalaryParser());
-                var proxy = new ConfigurationProxyProvider();
-                var jobsProvider = new JobsDataFromTalentLink(resultsUrl, null, jobResultsParser, null, proxy);
-                var lookupValuesProvider = new JobsLookupValuesFromTalentLink(searchUrl, lookupValuesParser, proxy);
-                var jobTypes = Task.Run(async () => await lookupValuesProvider.ReadJobTypes()).Result;
-                ReplaceLookupValuesWithIds(query.JobTypes, jobTypes);
-
-                jobs = await jobsProvider.ReadJobs(query);
-
-                var detailPage = model.Content.GetPropertyValue<IPublishedContent>("JobDetailPage_Content");
-                var baseUrl = detailPage != null ? new Uri(detailPage.UrlWithDomain()) : Request.Url;
-                foreach (var job in jobs)
-                {
-                    job.Url = new Uri(baseUrl.ToString().TrimEnd(new[] { '/' }) + "/" + job.Id + "/" + Regex.Replace(job.JobTitle.ToLower(CultureInfo.CurrentCulture).Replace(" - ", "-").Replace(" ", "-"), "[^a-z0-9-]", String.Empty));
-                }
-
-                HttpContext.Cache.Insert(cacheKey, jobs, null, DateTime.Now.AddHours(1), Cache.NoSlidingExpiration);
-            }
-            else
-            {
-                jobs = (List<Job>) HttpContext.Cache[cacheKey];
-            }
-            return jobs;
-        }
-
-        private static void ReplaceLookupValuesWithIds(IList<string> values, IList<JobsLookupValue> lookupValues)
-        {
-            for (var i = 0; i < values.Count; i++)
-            {
-                var match = lookupValues.FirstOrDefault(lookup => lookup.Text.ToUpperInvariant() == values[i].ToUpperInvariant());
-                values[i] = match?.Id;
-            }
         }
     }
 }

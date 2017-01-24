@@ -139,9 +139,14 @@
                 </fieldset>
                 <div>
                     <label for="semail">Your email address</label>
-                    <input type="email" name="semail" id="semail" />
-                    <input type="submit" value="Get job alert &gt;" />
+                    <input type="email" name="semail" id="semail"/>
+                    <input type="submit" value="Get job alert &gt;"/>
                 </div>
+
+                @if (!String.IsNullOrEmpty(Model.Metadata.RssFeedUrl))
+                {
+                    <p class="note"><a href="@Model.Metadata.RssFeedUrl" type="application/rss+xml" rel="alternate" class="rss">Subscribe by RSS to jobs like these</a></p>
+                }
             </form>
         }
 

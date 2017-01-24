@@ -3406,7 +3406,9 @@
     <Compile Include="Jobs\Examine\JobsDataFromExamine.cs" />
     <Compile Include="Jobs\Examine\BaseJobsIndexer.cs" />
     <Compile Include="Jobs\Examine\JobsIndexerApiController.cs" />
+    <Compile Include="Jobs\JobsRssViewModel.cs" />
     <Compile Include="Jobs\Salary.cs" />
+    <Compile Include="Jobs\JobsRssViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\TalentLink\JobsLookupValuesFromTalentLink.cs" />
     <Compile Include="Jobs\TalentLink\PublicJobsLookupValuesIndexer.cs" />
     <Compile Include="Jobs\TalentLink\RedeploymentJobsLookupValuesIndexer.cs" />

@@ -14,7 +14,7 @@
             <tr>
                 <td><a href="@job.Url">@job.JobTitle</a></td>
                 <td>@job.Location</td>
-                <td>@job.Salary</td>
+                <td>@job.Salary.SalaryRange</td>
                 <td>@job.ClosingDate.Value.ToBritishDate()</td>
             </tr>
         }

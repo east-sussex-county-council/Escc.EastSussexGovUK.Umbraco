@@ -76,6 +76,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             Description = "Select the jobs search page, based on the 'Jobs search' document type")]
         public string JobsSearchPage { get; set; }
 
+        /// <summary>
+        /// Gets or sets the jobs RSS feed
+        /// </summary>
+        /// <value>
+        /// A reference to the Umbraco node for the jobs RSS feed
+        /// </value>
+        [UmbracoProperty("Jobs RSS feed", "JobsRssFeed", BuiltInUmbracoDataTypes.ContentPickerAlias, sortOrder: 8, Description = "Select the jobs RSS feed, based on the 'Jobs RSS feed' document type")]
+        public string JobsRssFeed { get; set; }
+
         [UmbracoProperty("Which jobs should this page show?", "PublicOrRedeployment", PublicOrRedeploymentDataType.PropertyEditor, PublicOrRedeploymentDataType.DataTypeName, sortOrder: 7, mandatory: true)]
         public string PublicOrRedeploymentJobs { get; set; }
     }

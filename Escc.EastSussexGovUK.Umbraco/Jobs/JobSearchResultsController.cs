@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Caching;
 using System.Web.Mvc;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Examine;
@@ -55,11 +56,21 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             {
                 viewModel.Query = new JobSearchQueryFactory().CreateFromQueryString(Request.QueryString);
 
-                var jobsProvider = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.ExamineSearcher], viewModel.JobDetailPage?.Url);
+                var jobsProvider = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.ExamineSearcher], viewModel.JobAdvertPage?.Url);
 
                 var jobs = Task.Run(async () => await jobsProvider.ReadJobs(viewModel.Query)).Result;
                 var page = String.IsNullOrWhiteSpace(Request.QueryString["page"]) ? 1 : Int32.Parse(Request.QueryString["page"]);
                 viewModel.Jobs = jobs.ToPagedList(page, 10);
+
+                if (viewModel.Metadata.RssFeedUrl != null)
+                {
+                    var queryString = HttpUtility.ParseQueryString(Request.Url.Query);
+                    queryString.Remove("page");
+                    if (queryString.HasKeys())
+                    {
+                        viewModel.Metadata.RssFeedUrl = viewModel.Metadata.RssFeedUrl + "?" + queryString;
+                    }
+                }
             }
 
             // new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" });
