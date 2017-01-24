@@ -12,18 +12,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
     [TestFixture]
     public class StopWordsRemoverTests
     {
-        private static readonly string[] StopWords = new[] {"a", "an", "and", "are", "as", "at", "be", "but", "by",
-            "for", "if", "in", "into", "is", "it",
-            "no", "not", "of", "on", "or", "such",
-            "that", "the", "their", "then", "there", "these",
-            "they", "this", "to", "was", "will", "with"};
-
         [Test]
         public void StopWordsAreRemovedFromIndexedValues()
         {
-            var stopWordsRemover = new StopWordsRemover();
+            var stopWordsRemover = new LuceneStopWordsRemover();
 
-            var result = stopWordsRemover.RemoveStopWords("Administration and Clerical", StopWords);
+            var result = stopWordsRemover.RemoveStopWords("Administration and Clerical");
 
             Assert.AreEqual("Administration Clerical", result);
         }
@@ -31,9 +25,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [Test]
         public void ReturnsEmptyStringFromNullInput()
         {
-            var stopWordsRemover = new StopWordsRemover();
+            var stopWordsRemover = new LuceneStopWordsRemover();
 
-            var result = stopWordsRemover.RemoveStopWords(null, StopWords);
+            var result = stopWordsRemover.RemoveStopWords(null);
 
             Assert.AreEqual(String.Empty, result);
         }
@@ -41,9 +35,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [Test]
         public void ReturnsEmptyStringFromEmptyStringInput()
         {
-            var stopWordsRemover = new StopWordsRemover();
+            var stopWordsRemover = new LuceneStopWordsRemover();
 
-            var result = stopWordsRemover.RemoveStopWords(String.Empty, StopWords);
+            var result = stopWordsRemover.RemoveStopWords(String.Empty);
 
             Assert.AreEqual(String.Empty, result);
         }

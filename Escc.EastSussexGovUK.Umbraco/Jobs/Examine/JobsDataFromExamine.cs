@@ -101,7 +101,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                     break;
                 case JobSearchQuery.JobsSortOrder.LocationAscending:
                 case JobSearchQuery.JobsSortOrder.LocationDescending:
-                    sortField = "location";
+                    sortField = "locationDisplay";
                     break;
                 case JobSearchQuery.JobsSortOrder.SalaryRangeAscending:
                 case JobSearchQuery.JobsSortOrder.SalaryRangeDescending:
@@ -167,7 +167,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                     Reference = result.Fields.ContainsKey("reference") ? result["reference"] : String.Empty,
                     JobTitle = result.Fields.ContainsKey("title") ? result["title"] : String.Empty,
                     Organisation = result.Fields.ContainsKey("organisation") ? result["organisation"] : String.Empty,
-                    Location = result.Fields.ContainsKey("location") ? result["location"] : String.Empty,
+                    Location = result.Fields.ContainsKey("locationDisplay") ? result["locationDisplay"] : String.Empty,
                     JobType = result.Fields.ContainsKey("jobType") ? result["jobType"] : String.Empty,
                     ContractType = result.Fields.ContainsKey("contractType") ? result["contractType"] : String.Empty,
                     Department = result.Fields.ContainsKey("department") ? result["department"] : String.Empty

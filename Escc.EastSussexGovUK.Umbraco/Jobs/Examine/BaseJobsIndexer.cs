@@ -24,13 +24,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
         private readonly IJobsDataProvider _jobsProvider;
         private readonly IStopWordsRemover _stopWordsRemover;
         
-        // Lucene default stopwords according to http://stackoverflow.com/questions/17527741/what-is-the-default-list-of-stopwords-used-in-lucenes-stopfilter#17531638
-        private static readonly string[] StopWords = {"a", "an", "and", "are", "as", "at", "be", "but", "by",
-                                    "for", "if", "in", "into", "is", "it",
-                                    "no", "not", "of", "on", "or", "such",
-                                    "that", "the", "their", "then", "there", "these",
-                                    "they", "this", "to", "was", "will", "with"};
-
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseJobsIndexer" /> class.
         /// </summary>
@@ -105,19 +98,20 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             simpleDataSet.NodeDefinition.Type = indexType;
             simpleDataSet.RowData.Add("id", job.Id);
             simpleDataSet.RowData.Add("reference", job.Reference);
-            simpleDataSet.RowData.Add("title", _stopWordsRemover.RemoveStopWords(job.JobTitle, StopWords));
-            simpleDataSet.RowData.Add("organisation", _stopWordsRemover.RemoveStopWords(job.Organisation, StopWords));
-            simpleDataSet.RowData.Add("location", _stopWordsRemover.RemoveStopWords(job.Location, StopWords));
-            simpleDataSet.RowData.Add("salary", _stopWordsRemover.RemoveStopWords(job.Salary.SalaryRange, StopWords));
-            simpleDataSet.RowData.Add("salaryRange", _stopWordsRemover.RemoveStopWords(job.Salary.SearchRange, StopWords));
+            simpleDataSet.RowData.Add("title", _stopWordsRemover.RemoveStopWords(job.JobTitle));
+            simpleDataSet.RowData.Add("organisation", _stopWordsRemover.RemoveStopWords(job.Organisation));
+            simpleDataSet.RowData.Add("location", _stopWordsRemover.RemoveStopWords(job.Location));
+            simpleDataSet.RowData.Add("locationDisplay", job.Location); // because Somewhere-on-Sea needs to lose the "on" for searching but keep it for display
+            simpleDataSet.RowData.Add("salary", _stopWordsRemover.RemoveStopWords(job.Salary.SalaryRange));
+            simpleDataSet.RowData.Add("salaryRange", _stopWordsRemover.RemoveStopWords(job.Salary.SearchRange));
             simpleDataSet.RowData.Add("salaryMin", job.Salary.MinimumSalary?.ToString("D7") ?? String.Empty);
             simpleDataSet.RowData.Add("salaryMax", job.Salary.MaximumSalary?.ToString("D7") ?? String.Empty);
-            simpleDataSet.RowData.Add("salarySort", (job.Salary.MinimumSalary?.ToString("D7") ?? String.Empty) + " " + (job.Salary.MaximumSalary?.ToString("D7") ?? String.Empty) + " " + _stopWordsRemover.RemoveStopWords(job.Salary.SalaryRange, StopWords));
+            simpleDataSet.RowData.Add("salarySort", (job.Salary.MinimumSalary?.ToString("D7") ?? String.Empty) + " " + (job.Salary.MaximumSalary?.ToString("D7") ?? String.Empty) + " " + _stopWordsRemover.RemoveStopWords(job.Salary.SalaryRange));
             simpleDataSet.RowData.Add("closingDate", job.ClosingDate.Value.ToIso8601DateTime());
-            simpleDataSet.RowData.Add("jobType", _stopWordsRemover.RemoveStopWords(job.JobType, StopWords));
-            simpleDataSet.RowData.Add("contractType", _stopWordsRemover.RemoveStopWords(job.ContractType, StopWords));
-            simpleDataSet.RowData.Add("department", _stopWordsRemover.RemoveStopWords(job.Department, StopWords));
-            simpleDataSet.RowData.Add("workPattern", _stopWordsRemover.RemoveStopWords(job.WorkPattern, StopWords));
+            simpleDataSet.RowData.Add("jobType", _stopWordsRemover.RemoveStopWords(job.JobType));
+            simpleDataSet.RowData.Add("contractType", _stopWordsRemover.RemoveStopWords(job.ContractType));
+            simpleDataSet.RowData.Add("department", _stopWordsRemover.RemoveStopWords(job.Department));
+            simpleDataSet.RowData.Add("workPattern", _stopWordsRemover.RemoveStopWords(job.WorkPattern));
             if (job.AdvertHtml != null)
             {
                 simpleDataSet.RowData.Add("fullText", new HtmlTagSantiser().StripTags(job.AdvertHtml.ToHtmlString()));

@@ -7,7 +7,8 @@
       <add Name="reference" />
       <add Name="title" EnableSorting="true" Type="STRING" />
       <add Name="organisation" EnableSorting="true" Type="STRING" />
-      <add Name="location" EnableSorting="true" Type="STRING" />
+      <add Name="location" />
+      <add Name="locationDisplay" EnableSorting="true" Type="STRING" />
       <add Name="salary" />
       <add Name="salaryRange" />
       <add Name="salaryMax" />
@@ -29,7 +30,8 @@
       <add Name="reference" />
       <add Name="title" EnableSorting="true" Type="STRING" />
       <add Name="organisation" EnableSorting="true" Type="STRING" />
-      <add Name="location" EnableSorting="true" Type="STRING" />
+      <add Name="location" />
+      <add Name="locationDisplay" EnableSorting="true" Type="STRING" />
       <add Name="salary" />
       <add Name="salaryRange" />
       <add Name="salaryMax" />

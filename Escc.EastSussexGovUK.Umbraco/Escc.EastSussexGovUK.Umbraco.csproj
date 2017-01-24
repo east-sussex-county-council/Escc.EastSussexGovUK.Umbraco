@@ -3396,7 +3396,7 @@
     <Compile Include="CampaignTemplates\CampaignTilesDesignTab.cs" />
     <Compile Include="CampaignTemplates\CampaignTilesDocumentType.cs" />
     <Compile Include="Examine\IStopWordsRemover.cs" />
-    <Compile Include="Examine\StopWordsRemover.cs" />
+    <Compile Include="Examine\LuceneStopWordsRemover.cs" />
     <Compile Include="Jobs\Examine\BaseLookupValuesIndexer.cs" />
     <Compile Include="Jobs\IJobsLookupValuesProvider.cs" />
     <Compile Include="Jobs\ISalaryParser.cs" />

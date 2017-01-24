@@ -11,8 +11,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Examine
         /// Removes the stop words from the string and consolidates any white space
         /// </summary>
         /// <param name="value">The value.</param>
-        /// <param name="stopWords">The stop words.</param>
         /// <returns></returns>
-        string RemoveStopWords(string value, IEnumerable<string> stopWords);
+        string RemoveStopWords(string value);
     }
 }
