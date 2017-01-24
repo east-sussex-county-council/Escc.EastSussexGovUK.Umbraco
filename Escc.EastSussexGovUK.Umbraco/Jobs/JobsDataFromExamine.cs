@@ -110,7 +110,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                     break;
                 case JobSearchQuery.JobsSortOrder.SalaryRangeAscending:
                 case JobSearchQuery.JobsSortOrder.SalaryRangeDescending:
-                    sortField = "salaryMin";
+                    sortField = "salarySort";
                     break;
                 case JobSearchQuery.JobsSortOrder.ClosingDateAscending:
                 case JobSearchQuery.JobsSortOrder.ClosingDateDescending:

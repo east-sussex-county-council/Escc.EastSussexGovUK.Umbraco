@@ -118,6 +118,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             simpleDataSet.RowData.Add("salaryRange", _stopWordsRemover.RemoveStopWords(job.Salary.SearchRange, StopWords));
             simpleDataSet.RowData.Add("salaryMin", job.Salary.MinimumSalary?.ToString("D7") ?? String.Empty);
             simpleDataSet.RowData.Add("salaryMax", job.Salary.MaximumSalary?.ToString("D7") ?? String.Empty);
+            simpleDataSet.RowData.Add("salarySort", (job.Salary.MinimumSalary?.ToString("D7") ?? String.Empty) + " " + (job.Salary.MaximumSalary?.ToString("D7") ?? String.Empty) + " " + _stopWordsRemover.RemoveStopWords(job.Salary.SalaryRange, StopWords));
             simpleDataSet.RowData.Add("closingDate", job.ClosingDate.Value.ToIso8601DateTime());
             simpleDataSet.RowData.Add("jobType", _stopWordsRemover.RemoveStopWords(job.JobType, StopWords));
             simpleDataSet.RowData.Add("contractType", _stopWordsRemover.RemoveStopWords(job.ContractType, StopWords));

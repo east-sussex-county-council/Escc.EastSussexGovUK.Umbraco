@@ -9,9 +9,10 @@
       <add Name="organisation" EnableSorting="true" Type="STRING" />
       <add Name="location" EnableSorting="true" Type="STRING" />
       <add Name="salary" />
-      <add Name="salaryRange" EnableSorting="true" Type="STRING" />
-      <add Name="salaryMax" EnableSorting="true" Type="STRING" />
-      <add Name="salaryMin" EnableSorting="true" Type="STRING" />
+      <add Name="salaryRange" />
+      <add Name="salaryMax" />
+      <add Name="salaryMin" />
+      <add Name="salarySort" EnableSorting="true" Type="STRING" />
       <add Name="closingDate" EnableSorting="true" Type="STRING" />
       <add Name="jobType" />
       <add Name="contractType" />
@@ -30,9 +31,10 @@
       <add Name="organisation" EnableSorting="true" Type="STRING" />
       <add Name="location" EnableSorting="true" Type="STRING" />
       <add Name="salary" />
-      <add Name="salaryRange" EnableSorting="true" Type="STRING" />
-      <add Name="salaryMax" EnableSorting="true" Type="STRING" />
-      <add Name="salaryMin" EnableSorting="true" Type="STRING" />
+      <add Name="salaryRange" />
+      <add Name="salaryMax" />
+      <add Name="salaryMin" />
+      <add Name="salarySort" EnableSorting="true" Type="STRING" />
       <add Name="closingDate" EnableSorting="true" Type="STRING" />
       <add Name="jobType" />
       <add Name="contractType" />
