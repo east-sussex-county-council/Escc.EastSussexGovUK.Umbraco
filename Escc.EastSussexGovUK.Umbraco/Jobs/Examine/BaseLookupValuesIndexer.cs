@@ -60,26 +60,45 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
 
             {
                 var jobsDataProvider = GetJobsDataProvider();
-                var lookupValues = Task.Run(async () => await _lookupValuesProvider.ReadSalaryRanges()).Result;
 
                 var i = 1;
-                foreach (var lookupValue in lookupValues)
+
+                var locations = Task.Run(async () => await _lookupValuesProvider.ReadLocations()).Result;
+                foreach (var lookupValue in locations)
                 {
-                    var simpleDataSet = new SimpleDataSet { NodeDefinition = new IndexedNode(), RowData = new Dictionary<string, string>() };
+                    var query = new JobSearchQuery();
+                    query.Locations.Add(lookupValue.Text);
+                    var simpleDataSet = Task.Run(async () => await CreateDataSetFromLookup(i, indexType, "Location", query, lookupValue, jobsDataProvider)).Result;
+                    dataSets.Add(simpleDataSet);
+                    i++;
+                }
 
-                    simpleDataSet.NodeDefinition.NodeId = i;
-                    simpleDataSet.NodeDefinition.Type = indexType;
-                    simpleDataSet.RowData.Add("group", "SalaryRange");
-                    simpleDataSet.RowData.Add("text", lookupValue.Text);
+                var jobTypes = Task.Run(async () => await _lookupValuesProvider.ReadJobTypes()).Result;
+                foreach (var lookupValue in jobTypes)
+                {
+                    var query = new JobSearchQuery();
+                    query.JobTypes.Add(lookupValue.Text);
+                    var simpleDataSet = Task.Run(async () => await CreateDataSetFromLookup(i, indexType, "JobType", query, lookupValue, jobsDataProvider)).Result;
+                    dataSets.Add(simpleDataSet);
+                    i++;
+                }
 
-                    if (jobsDataProvider != null)
-                    {
-                        var query = new JobSearchQuery();
-                        query.SalaryRanges.Add(lookupValue.Text);
-                        var jobs = Task.Run(async () => await jobsDataProvider.ReadJobs(query)).Result;
-                        simpleDataSet.RowData.Add("count", jobs.Count.ToString(CultureInfo.CurrentCulture));
-                    }
+                var salaryRanges = Task.Run(async () => await _lookupValuesProvider.ReadSalaryRanges()).Result;
+                foreach (var lookupValue in salaryRanges)
+                {
+                    var query = new JobSearchQuery();
+                    query.SalaryRanges.Add(lookupValue.Text);
+                    var simpleDataSet = Task.Run(async () => await CreateDataSetFromLookup(i, indexType, "SalaryRange", query, lookupValue, jobsDataProvider)).Result;
+                    dataSets.Add(simpleDataSet);
+                    i++;
+                }
 
+                var workPatterns = Task.Run(async () => await _lookupValuesProvider.ReadWorkPatterns()).Result;
+                foreach (var lookupValue in workPatterns)
+                {
+                    var query = new JobSearchQuery();
+                    query.WorkPatterns.Add(lookupValue.Text);
+                    var simpleDataSet = Task.Run(async () => await CreateDataSetFromLookup(i, indexType, "WorkPattern", query, lookupValue, jobsDataProvider)).Result;
                     dataSets.Add(simpleDataSet);
                     i++;
                 }
@@ -90,6 +109,23 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             }
 
             return dataSets;
+        }
+
+        private static async Task<SimpleDataSet> CreateDataSetFromLookup(int fakeNodeId, string indexType, string group, JobSearchQuery query, JobsLookupValue lookupValue, IJobsDataProvider jobsDataProvider)
+        {
+            var simpleDataSet = new SimpleDataSet {NodeDefinition = new IndexedNode(), RowData = new Dictionary<string, string>()};
+
+            simpleDataSet.NodeDefinition.NodeId = fakeNodeId;
+            simpleDataSet.NodeDefinition.Type = indexType;
+            simpleDataSet.RowData.Add("group", group);
+            simpleDataSet.RowData.Add("text", lookupValue.Text);
+
+            if (jobsDataProvider != null)
+            {
+                var jobs = await jobsDataProvider.ReadJobs(query);
+                simpleDataSet.RowData.Add("count", jobs.Count.ToString(CultureInfo.CurrentCulture));
+            }
+            return simpleDataSet;
         }
     }
 }

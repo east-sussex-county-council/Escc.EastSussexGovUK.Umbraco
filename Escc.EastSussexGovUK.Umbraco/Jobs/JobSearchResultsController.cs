@@ -55,21 +55,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             {
                 viewModel.Query = new JobSearchQueryFactory().CreateFromQueryString(Request.QueryString);
 
-                var searchUrl = new TalentLinkUrl(model.Content.GetPropertyValue<string>("SearchScriptUrl_Content")).LinkUrl;
-
-                var lookupValuesParser = new TalentLinkLookupValuesHtmlParser();
                 var jobsProvider = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.ExamineSearcher], viewModel.JobDetailPage?.Url);
-
-                // Update query to use text rather than ids for search terms before passing it to the view
-                var lookupsProvider = new JobsLookupValuesFromTalentLink(searchUrl, lookupValuesParser, new ConfigurationProxyProvider());
-                var locations = Task.Run(async () => await lookupsProvider.ReadLocations()).Result;
-                var jobTypes = Task.Run(async () => await lookupsProvider.ReadJobTypes()).Result;
-                var organisations = Task.Run(async () => await lookupsProvider.ReadOrganisations()).Result;
-                var workPatterns = Task.Run(async () => await lookupsProvider.ReadWorkPatterns()).Result;
-                ReplaceLookupIdsWithValues(viewModel.Query.Locations, locations);
-                ReplaceLookupIdsWithValues(viewModel.Query.JobTypes, jobTypes);
-                ReplaceLookupIdsWithValues(viewModel.Query.Organisations, organisations);
-                ReplaceLookupIdsWithValues(viewModel.Query.WorkPatterns, workPatterns);
 
                 var jobs = Task.Run(async () => await jobsProvider.ReadJobs(viewModel.Query)).Result;
                 var page = String.IsNullOrWhiteSpace(Request.QueryString["page"]) ? 1 : Int32.Parse(Request.QueryString["page"]);
@@ -79,15 +65,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             // new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" });
 
             return CurrentTemplate(viewModel);
-        }
-
-        private static void ReplaceLookupIdsWithValues(IList<string> ids, IList<JobsLookupValue> lookupValues)
-        {
-            for (var i = 0; i < ids.Count; i++)
-            {
-                var match = lookupValues.FirstOrDefault(lookup => lookup.Id == ids[i]);
-                ids[i] = match?.Text;
-            }
         }
     }
 }

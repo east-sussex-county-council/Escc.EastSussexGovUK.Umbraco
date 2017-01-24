@@ -93,5 +93,25 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             }
             return null;
         }
+
+        protected string BuildJobsSearcherName(string fieldAlias)
+        {
+            var index = umbraco.library.GetPreValueAsString(UmbracoContent.GetPropertyValue<int>(fieldAlias));
+            if (index == "Redeployment jobs")
+            {
+                return "RedeploymentJobsSearcher";
+            }
+            else return "PublicJobsSearcher";
+        }
+
+        protected string BuildLookupValuesSearcherName(string fieldAlias)
+        {
+            var index = umbraco.library.GetPreValueAsString(UmbracoContent.GetPropertyValue<int>(fieldAlias));
+            if (index == "Redeployment jobs")
+            {
+                return "RedeploymentJobsLookupValuesSearcher";
+            }
+            else return "PublicJobsLookupValuesSearcher";
+        }
     }
 }

@@ -35,5 +35,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// The work patterns.
         /// </value>
         public IList<JobsLookupValue> WorkPatterns { get; } = new List<JobsLookupValue>();
+
+        /// <summary>
+        /// Gets or sets the name of the Examine searcher for the job lookup values index
+        /// </summary>
+        public string ExamineSearcher { get; set; }
     }
 }

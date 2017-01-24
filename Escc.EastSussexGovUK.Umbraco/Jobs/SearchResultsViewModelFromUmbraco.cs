@@ -36,20 +36,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 LoginPage = BuildLinkToPage("LoginPage_Content"),
                 JobAlertsPage = BuildLinkToPage("JobAlertsPage_Content"),
                 JobsSearchPage = BuildLinkToPage("JobsSearchPage_Content"),
-                ExamineSearcher = BuildSearcherName("PublicOrRedeployment_Content")
+                ExamineSearcher = BuildJobsSearcherName("PublicOrRedeployment_Content")
             };
 
             return model;
-        }
-
-        private string BuildSearcherName(string fieldAlias)
-        {
-            var index = umbraco.library.GetPreValueAsString(UmbracoContent.GetPropertyValue<int>(fieldAlias));
-            if (index == "Redeployment jobs")
-            {
-                return "RedeploymentJobsSearcher";
-            }
-            else return "PublicJobsSearcher";
         }
     }
 }

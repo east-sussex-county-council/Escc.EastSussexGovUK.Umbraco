@@ -31,9 +31,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode);
             viewModel.Metadata.Description = String.Empty;
 
-            var searchFieldsUrl = new Uri(model.Content.GetPropertyValue<string>("SearchScriptUrl_Content"));
-            var dataSource = new JobsLookupValuesFromTalentLink(searchFieldsUrl, new TalentLinkLookupValuesHtmlParser(), new ConfigurationProxyProvider());
-            var examineDataSource = new JobsLookupValuesFromExamine(ExamineManager.Instance.SearchProviderCollection["PublicJobsLookupValuesSearcher"]);
+            var dataSource = new JobsLookupValuesFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.ExamineSearcher]);
 
             var locations = Task.Run(async () => await dataSource.ReadLocations());
             foreach (var location in locations.Result)
@@ -47,7 +45,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 viewModel.JobTypes.Add(jobType);
             }
 
-            var salaryRanges = Task.Run(async () => await examineDataSource.ReadSalaryRanges());
+            var salaryRanges = Task.Run(async () => await dataSource.ReadSalaryRanges());
             foreach (var salaryRange in salaryRanges.Result)
             {
                 viewModel.SalaryRanges.Add(salaryRange);

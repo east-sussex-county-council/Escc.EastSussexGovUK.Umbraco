@@ -18,23 +18,33 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
 
         public Task<IList<JobsLookupValue>> ReadLocations()
         {
-            return Task.FromResult(new List<JobsLookupValue>() as IList<JobsLookupValue>);
+            return Task.FromResult(ReadLookupValues("Location"));
         }
 
         public Task<IList<JobsLookupValue>> ReadJobTypes()
         {
-            return Task.FromResult(new List<JobsLookupValue>() as IList<JobsLookupValue>);
+            return Task.FromResult(ReadLookupValues("JobType"));
         }
 
         public Task<IList<JobsLookupValue>> ReadOrganisations()
         {
-            return Task.FromResult(new List<JobsLookupValue>() as IList<JobsLookupValue>);
+            return Task.FromResult(ReadLookupValues("Organisation"));
         }
 
         public Task<IList<JobsLookupValue>> ReadSalaryRanges()
         {
+            return Task.FromResult(ReadLookupValues("SalaryRange"));
+        }
+
+        public Task<IList<JobsLookupValue>> ReadWorkPatterns()
+        {
+            return Task.FromResult(ReadLookupValues("WorkPattern"));
+        }
+
+        private IList<JobsLookupValue> ReadLookupValues(string group)
+        {
             var lookups = new List<JobsLookupValue>() as IList<JobsLookupValue>;
-            var examineQuery = _searcher.CreateSearchCriteria().Field("group", "SalaryRange").Compile();
+            var examineQuery = _searcher.CreateSearchCriteria().Field("group", group).Compile();
             examineQuery.OrderBy("text");
             var results = _searcher.Search(examineQuery);
             foreach (var result in results)
@@ -46,12 +56,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 };
                 lookups.Add(lookup);
             }
-            return Task.FromResult(lookups);
+            return lookups;
         }
 
-        public Task<IList<JobsLookupValue>> ReadWorkPatterns()
-        {
-            return Task.FromResult(new List<JobsLookupValue>() as IList<JobsLookupValue>);
-        }
     }
 }

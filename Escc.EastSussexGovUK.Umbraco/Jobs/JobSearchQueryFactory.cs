@@ -29,22 +29,22 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
 
             if (!String.IsNullOrEmpty(queryString["location"]))
             {
-                AddQueryStringValuesToList(queryString["location"], query.Locations, true);
+                AddQueryStringValuesToList(queryString["location"], query.Locations);
             }
 
             if (!String.IsNullOrEmpty(queryString["type"]))
             {
-                AddQueryStringValuesToList(queryString["type"], query.JobTypes, true);
+                AddQueryStringValuesToList(queryString["type"], query.JobTypes);
             }
 
             if (!String.IsNullOrEmpty(queryString["org"]))
             {
-                AddQueryStringValuesToList(queryString["org"], query.Organisations, true);
+                AddQueryStringValuesToList(queryString["org"], query.Organisations);
             }
 
             if (!String.IsNullOrEmpty(queryString["salary"]))
             {
-                AddQueryStringValuesToList(queryString["salary"], query.SalaryRanges, false);
+                AddQueryStringValuesToList(queryString["salary"], query.SalaryRanges);
             }
 
             if (!String.IsNullOrEmpty(queryString["ref"]))
@@ -54,7 +54,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
 
             if (!String.IsNullOrEmpty(queryString["hours"]))
             {
-                AddQueryStringValuesToList(queryString["hours"], query.WorkPatterns, true);
+                AddQueryStringValuesToList(queryString["hours"], query.WorkPatterns);
             }
 
             if (!String.IsNullOrEmpty(queryString["sort"]))
@@ -67,15 +67,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             return query;
         }
 
-        private static void AddQueryStringValuesToList(string unvalidatedValue, IList<string> valuesToQuery, bool mustBeNumeric)
+        private static void AddQueryStringValuesToList(string unvalidatedValue, IList<string> valuesToQuery)
         {
-            if (!mustBeNumeric || Regex.IsMatch(unvalidatedValue, "^[0-9,]+$"))
+            var values = Regex.Replace(unvalidatedValue, "[^A-Za-z0-9-,'’ £]", String.Empty).SplitAndTrim(",");
+            foreach (var value in values)
             {
-                var values = unvalidatedValue.SplitAndTrim(",");
-                foreach (var value in values)
-                {
-                    valuesToQuery.Add(value);
-                }
+                valuesToQuery.Add(value);
             }
         }
     }

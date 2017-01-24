@@ -36,7 +36,7 @@
                     <select multiple="multiple" name="locations" id="locations">
                         @foreach (var location in Model.Locations)
                         {
-                            <option value="@location.Id">@location.Text (@location.Count)</option>
+                            <option value="@location.Text">@location.Text (@location.Count)</option>
                         }
                     </select>
                 </div>
@@ -46,7 +46,7 @@
                     <select multiple="multiple" name="jobTypes" id="jobTypes">
                         @foreach (var jobType in Model.JobTypes)
                         {
-                            <option value="@jobType.Id">@jobType.Text (@jobType.Count)</option>
+                            <option value="@jobType.Text">@jobType.Text (@jobType.Count)</option>
                         }
                     </select>
                 </div>
@@ -55,7 +55,7 @@
                     <legend>Salary</legend>
                     @foreach (var salaryRange in Model.SalaryRanges)
                     {
-                        <label><input type="checkbox" value="@salaryRange.Text" name="salaryRanges" /> @salaryRange.Text (@salaryRange.Count)</label>
+                        <label><input type="checkbox" value="@salaryRange.Text.Replace(",", String.Empty)" name="salaryRanges" /> @salaryRange.Text (@salaryRange.Count)</label>
                     }
                 </fieldset>
 
@@ -63,7 +63,7 @@
                     <legend>Work pattern</legend>
                     @foreach (var workPattern in Model.WorkPatterns)
                     {
-                        <label><input type="checkbox" value="@workPattern.Id" name="workPatterns" /> @workPattern.Text (@workPattern.Count)</label>
+                        <label><input type="checkbox" value="@workPattern.Text" name="workPatterns" /> @workPattern.Text (@workPattern.Count)</label>
                     }
                 </fieldset>
 
