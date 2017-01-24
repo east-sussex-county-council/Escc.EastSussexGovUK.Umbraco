@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.Caching;
 using System.Web.Mvc;
+using Escc.EastSussexGovUK.Umbraco.Jobs.Examine;
 using Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.EastSussexGovUK.Umbraco.Services;
@@ -56,11 +57,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
 
                 var searchUrl = new TalentLinkUrl(model.Content.GetPropertyValue<string>("SearchScriptUrl_Content")).LinkUrl;
 
-                var lookupValuesParser = new JobLookupValuesHtmlParser();
+                var lookupValuesParser = new TalentLinkLookupValuesHtmlParser();
                 var jobsProvider = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.ExamineSearcher], viewModel.JobDetailPage?.Url);
 
                 // Update query to use text rather than ids for search terms before passing it to the view
-                var lookupsProvider = new JobsDataFromTalentLink(searchUrl, null, null, new ConfigurationProxyProvider(), lookupValuesParser, null, null);
+                var lookupsProvider = new JobsLookupValuesFromTalentLink(searchUrl, lookupValuesParser, new ConfigurationProxyProvider());
                 var locations = Task.Run(async () => await lookupsProvider.ReadLocations()).Result;
                 var jobTypes = Task.Run(async () => await lookupsProvider.ReadJobTypes()).Result;
                 var organisations = Task.Run(async () => await lookupsProvider.ReadOrganisations()).Result;

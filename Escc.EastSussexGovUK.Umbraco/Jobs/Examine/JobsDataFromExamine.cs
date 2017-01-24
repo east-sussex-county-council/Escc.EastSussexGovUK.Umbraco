@@ -4,14 +4,10 @@ using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using ClientDependency.Core;
-using Escc.Net;
 using Examine;
-using Examine.LuceneEngine.Providers;
-using Examine.Providers;
 using Examine.SearchCriteria;
 
-namespace Escc.EastSussexGovUK.Umbraco.Jobs
+namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
 {
     public class JobsDataFromExamine : IJobsDataProvider
     {
@@ -21,7 +17,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public JobsDataFromExamine(ISearcher searcher, Uri jobAdvertUrl)
         {
             if (searcher == null) throw new ArgumentNullException(nameof(searcher));
-            if (jobAdvertUrl == null) throw new ArgumentNullException(nameof(jobAdvertUrl));
             _searcher = searcher;
             _jobAdvertUrl = jobAdvertUrl;
         }
@@ -180,39 +175,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
 
                 job.Salary.SalaryRange = result.Fields.ContainsKey("salary") ? result["salary"] : String.Empty;
                 job.Salary.SearchRange = result.Fields.ContainsKey("salaryRange") ? result["salaryRange"] : String.Empty;
-                job.Url = new Uri(_jobAdvertUrl.ToString().TrimEnd(new[] { '/' }) + "/" + job.Id + "/" + Regex.Replace(job.JobTitle.ToLower(CultureInfo.CurrentCulture).Replace(" - ", "-").Replace(" ", "-"), "[^a-z0-9-]", String.Empty));
-
+                if (_jobAdvertUrl != null)
+                {
+                    job.Url = new Uri(_jobAdvertUrl.ToString().TrimEnd(new[] {'/'}) + "/" + job.Id + "/" + Regex.Replace(job.JobTitle.ToLower(CultureInfo.CurrentCulture).Replace(" - ", "-").Replace(" ", "-"), "[^a-z0-9-]", String.Empty));
+                }
                 if (result.Fields.ContainsKey("closingDate")) job.ClosingDate = DateTime.Parse(result["closingDate"]);
 
                 jobs.Add(job);
             }
 
             return Task.FromResult(jobs);
-        }
-
-        public Task<IList<JobsLookupValue>> ReadLocations()
-        {
-            return Task.FromResult(new List<JobsLookupValue>() as IList<JobsLookupValue>);
-        }
-
-        public Task<IList<JobsLookupValue>> ReadJobTypes()
-        {
-            return Task.FromResult(new List<JobsLookupValue>() as IList<JobsLookupValue>);
-        }
-
-        public Task<IList<JobsLookupValue>> ReadOrganisations()
-        {
-            return Task.FromResult(new List<JobsLookupValue>() as IList<JobsLookupValue>);
-        }
-
-        public Task<IList<JobsLookupValue>> ReadSalaryRanges()
-        {
-            return Task.FromResult(new List<JobsLookupValue>() as IList<JobsLookupValue>);
-        }
-
-        public Task<IList<JobsLookupValue>> ReadWorkPatterns()
-        {
-            return Task.FromResult(new List<JobsLookupValue>() as IList<JobsLookupValue>);
         }
     }
 }

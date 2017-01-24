@@ -16,32 +16,26 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
     /// </summary>
     public class JobsDataFromTalentLink : IJobsDataProvider
     {
-        private readonly Uri _searchUrl;
         private readonly Uri _resultsUrl;
         private readonly Uri _advertUrl;
         private readonly IProxyProvider _proxy;
-        private readonly IJobLookupValuesParser _lookupValuesParser;
         private readonly IJobResultsParser _jobResultsParser;
         private readonly IJobAdvertParser _jobAdvertParser;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="JobsDataFromTalentLink" /> class.
         /// </summary>
-        /// <param name="searchUrl">The search URL.</param>
         /// <param name="resultsUrl">The source URL.</param>
         /// <param name="advertUrl">The advert URL.</param>
-        /// <param name="proxy">The proxy (optional).</param>
-        /// <param name="lookupValuesParser">The parser for lookup values in the TalentLink HTML.</param>
         /// <param name="jobResultsParser">The job results parser.</param>
         /// <param name="jobAdvertParser">The job advert parser.</param>
+        /// <param name="proxy">The proxy (optional).</param>
         /// <exception cref="System.ArgumentNullException">sourceUrl</exception>
-        public JobsDataFromTalentLink(Uri searchUrl, Uri resultsUrl, Uri advertUrl, IProxyProvider proxy, IJobLookupValuesParser lookupValuesParser, IJobResultsParser jobResultsParser, IJobAdvertParser jobAdvertParser)
+        public JobsDataFromTalentLink(Uri resultsUrl, Uri advertUrl, IJobResultsParser jobResultsParser, IJobAdvertParser jobAdvertParser, IProxyProvider proxy)
         {
-            _searchUrl = searchUrl;
             _resultsUrl = resultsUrl;
             _advertUrl = advertUrl;
             _proxy = proxy;
-            _lookupValuesParser = lookupValuesParser;
             _jobResultsParser = jobResultsParser;
             _jobAdvertParser = jobAdvertParser;
         }
@@ -76,7 +70,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
         /// <returns></returns>
         public async Task<List<Job>> ReadJobs(JobSearchQuery query)
         {
-            if (_lookupValuesParser == null) throw new InvalidOperationException("You must specify lookupValuesParser when creating this instance to read jobs");
             if (_jobResultsParser == null) throw new InvalidOperationException("You must specify jobResultsParser when creating this instance to read jobs");
 
             var jobs = new List<Job>();
@@ -102,56 +95,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
                 }
             }
             return jobs;
-        }
-
-        /// <summary>
-        /// Reads the locations where jobs can be based
-        /// </summary>
-        /// <returns></returns>
-        public async Task<IList<JobsLookupValue>> ReadLocations()
-        {
-            if (_searchUrl == null) throw new InvalidOperationException("You must specify searchUrl when creating this instance to read locations");
-            return await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV39");
-        }
-
-        /// <summary>
-        /// Reads the job types or categories
-        /// </summary>
-        /// <returns></returns>
-        public async Task<IList<JobsLookupValue>> ReadJobTypes()
-        {
-            if (_searchUrl == null) throw new InvalidOperationException("You must specify searchUrl when creating this instance to read job types");
-            return await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV40");
-        }
-
-        /// <summary>
-        /// Reads the organisations advertising jobs
-        /// </summary>
-        /// <returns></returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public async Task<IList<JobsLookupValue>> ReadOrganisations()
-        {
-            if (_searchUrl == null) throw new InvalidOperationException("You must specify searchUrl when creating this instance to read organisations");
-            return await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV52");
-        }
-
-        /// <summary>
-        /// Reads the salary ranges that jobs can be categorised as
-        /// </summary>
-        /// <returns></returns>
-        public async Task<IList<JobsLookupValue>> ReadSalaryRanges()
-        {
-            if (_searchUrl == null) throw new InvalidOperationException("You must specify searchUrl when creating this instance to read salary ranges");
-            return await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV46");
-        }
-        /// <summary>
-        /// Reads the work patterns, eg full time or part time
-        /// </summary>
-        /// <returns></returns>
-        public async Task<IList<JobsLookupValue>> ReadWorkPatterns()
-        {
-            if (_searchUrl == null) throw new InvalidOperationException("You must specify searchUrl when creating this instance to read work patterns");
-            return await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV50");
         }
 
         /// <summary>
@@ -234,16 +177,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
             {
                 if (replaceExistingValue) query.Remove(parameter);
                 query.Add(parameter, HttpUtility.UrlEncode(value));
-            }
-        }
-
-        private async Task<IList<JobsLookupValue>> ReadLookupValuesFromTalentLink(IJobLookupValuesParser parser, string fieldName)
-        {
-            var htmlStream = await ReadHtml(_searchUrl, _proxy);
-
-            using (var reader = new StreamReader(htmlStream))
-            {
-                return parser.ParseLookupValues(reader.ReadToEnd(), fieldName);
             }
         }
 

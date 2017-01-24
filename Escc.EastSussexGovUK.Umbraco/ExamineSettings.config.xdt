@@ -4,14 +4,26 @@
     <providers>
       <add name="PublicJobsIndexer" xdt:Transform="RemoveAll" xdt:Locator="Match(name)" />
       <add name="PublicJobsIndexer" type="Examine.LuceneEngine.Providers.SimpleDataIndexer, Examine"
-           dataService="Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink.TalentLinkPublicJobsIndexer, Escc.EastSussexGovUK.Umbraco" 
+           dataService="Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink.PublicJobsIndexer, Escc.EastSussexGovUK.Umbraco" 
            indexTypes="Job" 
            xdt:Transform="Insert" />
 
       <add name="RedeploymentJobsIndexer" xdt:Transform="RemoveAll" xdt:Locator="Match(name)" />
       <add name="RedeploymentJobsIndexer" type="Examine.LuceneEngine.Providers.SimpleDataIndexer, Examine"
-           dataService="Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink.TalentLinkRedeploymentJobsIndexer, Escc.EastSussexGovUK.Umbraco" 
+           dataService="Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink.RedeploymentJobsIndexer, Escc.EastSussexGovUK.Umbraco" 
            indexTypes="Job" 
+           xdt:Transform="Insert" />
+
+      <add name="PublicJobsLookupValuesIndexer" xdt:Transform="RemoveAll" xdt:Locator="Match(name)" />
+      <add name="PublicJobsLookupValuesIndexer" type="Examine.LuceneEngine.Providers.SimpleDataIndexer, Examine"
+           dataService="Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink.PublicJobsLookupValuesIndexer, Escc.EastSussexGovUK.Umbraco"
+           indexTypes="JobsLookup"
+           xdt:Transform="Insert" />
+
+      <add name="RedeploymentJobsLookupValuesIndexer" xdt:Transform="RemoveAll" xdt:Locator="Match(name)" />
+      <add name="RedeploymentJobsLookupValuesIndexer" type="Examine.LuceneEngine.Providers.SimpleDataIndexer, Examine"
+           dataService="Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink.RedeploymentJobsLookupValuesIndexer, Escc.EastSussexGovUK.Umbraco"
+           indexTypes="JobsLookup"
            xdt:Transform="Insert" />
     </providers>
   </ExamineIndexProviders>
@@ -30,6 +42,18 @@
            analyzer="Lucene.Net.Analysis.Standard.StandardAnalyzer, Lucene.Net"
            enableLeadingWildcards="true"
            indexSets="RedeploymentJobsIndexSet"
+           xdt:Transform="Insert" />
+
+      <add name="PublicJobsLookupValuesSearcher" xdt:Transform="RemoveAll" xdt:Locator="Match(name)" />
+      <add name="PublicJobsLookupValuesSearcher" type="Examine.LuceneEngine.Providers.LuceneSearcher, Examine"
+           analyzer="Lucene.Net.Analysis.Standard.StandardAnalyzer, Lucene.Net"
+           indexSets="PublicJobsLookupValuesIndexSet"
+           xdt:Transform="Insert" />
+
+      <add name="RedeploymentJobsLookupValuesSearcher" xdt:Transform="RemoveAll" xdt:Locator="Match(name)" />
+      <add name="RedeploymentJobsLookupValuesSearcher" type="Examine.LuceneEngine.Providers.LuceneSearcher, Examine"
+           analyzer="Lucene.Net.Analysis.Standard.StandardAnalyzer, Lucene.Net"
+           indexSets="RedeploymentJobsLookupValuesIndexSet"
            xdt:Transform="Insert" />
     </providers>
   </ExamineSearchProviders>

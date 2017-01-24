@@ -1,25 +1,23 @@
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Text.RegularExpressions;
 using System.Web;
 using HtmlAgilityPack;
 
-namespace Escc.EastSussexGovUK.Umbraco.Jobs
+namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
 {
     /// <summary>
     /// Parse an HTML list of job results into a list of jobs
     /// </summary>
-    public class JobResultsHtmlParser : IJobResultsParser
+    public class TalentLinkJobResultsHtmlParser : IJobResultsParser
     {
         private readonly ISalaryParser _salaryParser;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="JobResultsHtmlParser"/> class.
+        /// Initializes a new instance of the <see cref="TalentLinkJobResultsHtmlParser"/> class.
         /// </summary>
         /// <param name="salaryParser">The salary parser.</param>
-        public JobResultsHtmlParser(ISalaryParser salaryParser)
+        public TalentLinkJobResultsHtmlParser(ISalaryParser salaryParser)
         {
             _salaryParser = salaryParser;
         }

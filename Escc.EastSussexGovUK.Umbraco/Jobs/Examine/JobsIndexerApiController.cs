@@ -1,20 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web;
-using System.Web.UI.WebControls;
+using System.Web.Http;
 using Examine;
 using Examine.LuceneEngine.Providers;
 using Exceptionless;
-using Exceptionless.Models;
 using Umbraco.Core.Logging;
 using Umbraco.Web.WebApi;
-using Umbraco.Web.WebServices;
-using System.Web.Http;
 
-namespace Escc.EastSussexGovUK.Umbraco.Jobs
+namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
 {
     [Authorize]
     public class JobsIndexerApiController : UmbracoApiController

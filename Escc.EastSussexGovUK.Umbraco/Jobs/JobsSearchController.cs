@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Escc.EastSussexGovUK.Umbraco.Jobs.Examine;
 using Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink;
 using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Net;
 using Escc.Umbraco.ContentExperiments;
+using Examine;
 using Umbraco.Core;
 using Umbraco.Web;
 using Umbraco.Web.Models;
@@ -30,7 +32,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             viewModel.Metadata.Description = String.Empty;
 
             var searchFieldsUrl = new Uri(model.Content.GetPropertyValue<string>("SearchScriptUrl_Content"));
-            var dataSource = new JobsDataFromTalentLink(searchFieldsUrl, null, null, new ConfigurationProxyProvider(), new JobLookupValuesHtmlParser(), null, null);
+            var dataSource = new JobsLookupValuesFromTalentLink(searchFieldsUrl, new TalentLinkLookupValuesHtmlParser(), new ConfigurationProxyProvider());
+            var examineDataSource = new JobsLookupValuesFromExamine(ExamineManager.Instance.SearchProviderCollection["PublicJobsLookupValuesSearcher"]);
 
             var locations = Task.Run(async () => await dataSource.ReadLocations());
             foreach (var location in locations.Result)
@@ -42,6 +45,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             foreach (var jobType in jobTypes.Result)
             {
                 viewModel.JobTypes.Add(jobType);
+            }
+
+            var salaryRanges = Task.Run(async () => await examineDataSource.ReadSalaryRanges());
+            foreach (var salaryRange in salaryRanges.Result)
+            {
+                viewModel.SalaryRanges.Add(salaryRange);
             }
 
             var workPatterns = Task.Run(async () => await dataSource.ReadWorkPatterns());

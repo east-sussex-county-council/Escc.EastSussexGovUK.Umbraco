@@ -3397,16 +3397,22 @@
     <Compile Include="CampaignTemplates\CampaignTilesDocumentType.cs" />
     <Compile Include="Examine\IStopWordsRemover.cs" />
     <Compile Include="Examine\StopWordsRemover.cs" />
+    <Compile Include="Jobs\Examine\BaseLookupValuesIndexer.cs" />
+    <Compile Include="Jobs\IJobsLookupValuesProvider.cs" />
     <Compile Include="Jobs\ISalaryParser.cs" />
     <Compile Include="Jobs\JobAdvertContentFinder.cs" />
     <Compile Include="Jobs\JobAdvertEventHandler.cs" />
-    <Compile Include="Jobs\JobsDataFromExamine.cs" />
-    <Compile Include="Jobs\BaseJobsIndexer.cs" />
-    <Compile Include="Jobs\JobsIndexerApiController.cs" />
+    <Compile Include="Jobs\Examine\JobsLookupValuesFromExamine.cs" />
+    <Compile Include="Jobs\Examine\JobsDataFromExamine.cs" />
+    <Compile Include="Jobs\Examine\BaseJobsIndexer.cs" />
+    <Compile Include="Jobs\Examine\JobsIndexerApiController.cs" />
     <Compile Include="Jobs\Salary.cs" />
+    <Compile Include="Jobs\TalentLink\JobsLookupValuesFromTalentLink.cs" />
+    <Compile Include="Jobs\TalentLink\PublicJobsLookupValuesIndexer.cs" />
+    <Compile Include="Jobs\TalentLink\RedeploymentJobsLookupValuesIndexer.cs" />
     <Compile Include="Jobs\TalentLink\TalentLinkSalaryParser.cs" />
-    <Compile Include="Jobs\TalentLink\TalentLinkRedeploymentJobsIndexer.cs" />
-    <Compile Include="Jobs\TalentLink\TalentLinkPublicJobsIndexer.cs" />
+    <Compile Include="Jobs\TalentLink\RedeploymentJobsIndexer.cs" />
+    <Compile Include="Jobs\TalentLink\PublicJobsIndexer.cs" />
     <Compile Include="Jobs\PublicOrRedeploymentDataType.cs" />
     <Compile Include="Jobs\ReplaceElementNameFormatter.cs" />
     <Compile Include="Jobs\CloseEmptyElementsFormatter.cs" />
@@ -3418,7 +3424,7 @@
     <Compile Include="Jobs\IJobLookupValuesParser.cs" />
     <Compile Include="Jobs\Job.cs" />
     <Compile Include="Jobs\TalentLink\TalentLinkJobAdvertHtmlParser.cs" />
-    <Compile Include="Jobs\JobResultsHtmlParser.cs" />
+    <Compile Include="Jobs\TalentLink\TalentLinkJobResultsHtmlParser.cs" />
     <Compile Include="Jobs\JobAdvertContentTab.cs" />
     <Compile Include="Jobs\JobAdvertDocumentType.cs" />
     <Compile Include="Jobs\JobAdvertViewModel.cs" />
@@ -3436,7 +3442,7 @@
     <Compile Include="Jobs\TalentLink\JobsDataFromTalentLink.cs" />
     <Compile Include="ApiControllers\LocationController.cs" />
     <Compile Include="ApiControllers\MediaController.cs" />
-    <Compile Include="Jobs\JobLookupValuesHtmlParser.cs" />
+    <Compile Include="Jobs\TalentLink\TalentLinkLookupValuesHtmlParser.cs" />
     <Compile Include="Jobs\JobsSearchContentTab.cs" />
     <Compile Include="Jobs\JobsSearchController.cs" />
     <Compile Include="Jobs\JobsSearchDocumentType.cs" />
@@ -3850,9 +3856,7 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\JobsIndexerApi\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

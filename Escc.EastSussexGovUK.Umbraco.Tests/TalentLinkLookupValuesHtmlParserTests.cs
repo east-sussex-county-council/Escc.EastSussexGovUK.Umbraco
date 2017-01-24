@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
+using Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink;
 using HtmlAgilityPack;
 using NUnit.Framework;
 
 namespace Escc.EastSussexGovUK.Umbraco.Tests
 {
-    class JobLookupValuesHtmlParserTests
+    class TalentLinkLookupValuesHtmlParserTests
     {
         [Test]
         public void JobLocationsAreSelected()
@@ -22,7 +23,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
                 new JobsLookupValue() { Id = "9813", Text = "Exceat, Nr Seaford"}
             };
 
-            var parser = new JobLookupValuesHtmlParser();
+            var parser = new TalentLinkLookupValuesHtmlParser();
             var parsedValues = parser.ParseLookupValues(Properties.Resources.SearchFieldsOuterHtml, "LOV39");
 
             Assert.AreEqual(expectedValues[0].Id, parsedValues[0].Id);
@@ -46,7 +47,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
                 new JobsLookupValue() { Id = "10682", Text = "Teaching - Leadership"}
             };
 
-            var parser = new JobLookupValuesHtmlParser();
+            var parser = new TalentLinkLookupValuesHtmlParser();
             var parsedValues = parser.ParseLookupValues(Properties.Resources.SearchFieldsOuterHtml, "LOV40");
 
             Assert.AreEqual(expectedValues[0].Id, parsedValues[0].Id);
@@ -68,7 +69,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
                 new JobsLookupValue() { Id = "10218", Text = "East Sussex County Council" }
             };
 
-            var parser = new JobLookupValuesHtmlParser();
+            var parser = new TalentLinkLookupValuesHtmlParser();
             var parsedValues = parser.ParseLookupValues(Properties.Resources.SearchFieldsOuterHtml, "LOV52");
 
             Assert.AreEqual(expectedValues[0].Id, parsedValues[0].Id);
@@ -91,7 +92,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
                 new JobsLookupValue() { Id = "10309", Text = "Teachers' Leadership Pay Scale" }
             };
 
-            var parser = new JobLookupValuesHtmlParser();
+            var parser = new TalentLinkLookupValuesHtmlParser();
             var parsedValues = parser.ParseLookupValues(Properties.Resources.SearchFieldsOuterHtml, "LOV46");
 
             Assert.AreEqual(expectedValues[0].Id, parsedValues[0].Id);
@@ -118,7 +119,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
                 new JobsLookupValue() { Id = "10099", Text = "Part time" }
             };
 
-            var parser = new JobLookupValuesHtmlParser();
+            var parser = new TalentLinkLookupValuesHtmlParser();
             var parsedValues = parser.ParseLookupValues(Properties.Resources.SearchFieldsOuterHtml, "LOV50");
 
             Assert.AreEqual(expectedValues[0].Id, parsedValues[0].Id);

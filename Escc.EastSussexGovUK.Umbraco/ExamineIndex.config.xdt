@@ -43,4 +43,22 @@
       <add Name="fullText" />
     </IndexUserFields>
   </IndexSet>
+
+  <IndexSet SetName="PublicJobsLookupValuesIndexSet" xdt:Transform="RemoveAll" xdt:Locator="Match(SetName)" />
+  <IndexSet SetName="PublicJobsLookupValuesIndexSet" IndexPath="~/App_Data/TEMP/ExamineIndexes/{machinename}/PublicJobsLookupValues/" xdt:Transform="Insert">
+    <IndexUserFields>
+      <add Name="group" />
+      <add Name="text" EnableSorting="true" Type="STRING" />
+      <add Name="count" />
+    </IndexUserFields>
+  </IndexSet>
+
+  <IndexSet SetName="RedeploymentJobsLookupValuesIndexSet" xdt:Transform="RemoveAll" xdt:Locator="Match(SetName)" />
+  <IndexSet SetName="RedeploymentJobsLookupValuesIndexSet" IndexPath="~/App_Data/TEMP/ExamineIndexes/{machinename}/RedeploymentJobsLookupValues/" xdt:Transform="Insert">
+    <IndexUserFields>
+      <add Name="group" />
+      <add Name="text" EnableSorting="true" Type="STRING" />
+      <add Name="count" />
+    </IndexUserFields>
+  </IndexSet>
 </ExamineLuceneIndexSets>

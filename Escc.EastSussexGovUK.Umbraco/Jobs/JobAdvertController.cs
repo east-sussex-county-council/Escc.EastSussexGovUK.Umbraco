@@ -52,7 +52,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             var jobUrlSegment = Regex.Match(Request.Url.AbsolutePath, "/([0-9]+)/");
             if (jobUrlSegment.Success)
             {
-                var jobsProvider = new JobsDataFromTalentLink(null, null, viewModel.JobAdvertUrl.LinkUrl, new ConfigurationProxyProvider(), null, null, new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser()));
+                var jobsProvider = new JobsDataFromTalentLink(null, viewModel.JobAdvertUrl.LinkUrl, null, new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser()), new ConfigurationProxyProvider());
                 viewModel.Job = Task.Run(async () => await jobsProvider.ReadJob(jobUrlSegment.Groups[1].Value)).Result;
             }
             else

@@ -1,18 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Hosting;
 using Escc.Dates;
 using Escc.EastSussexGovUK.Umbraco.Examine;
 using Escc.Html;
-using Escc.Net;
 using Examine;
 using Examine.LuceneEngine;
 using Umbraco.Core;
@@ -20,7 +14,7 @@ using Umbraco.Core.Logging;
 using Umbraco.Web;
 using Umbraco.Web.Security;
 
-namespace Escc.EastSussexGovUK.Umbraco.Jobs
+namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
 {
     /// <summary>
     /// Examine indexer for indexing jobs 

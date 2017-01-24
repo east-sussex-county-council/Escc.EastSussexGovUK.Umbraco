@@ -73,10 +73,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 var searchUrl = new TalentLinkUrl(model.Content.GetPropertyValue<string>("SearchScriptUrl_Content")).LinkUrl;
                 var resultsUrl = new TalentLinkUrl(model.Content.GetPropertyValue<string>("ResultsScriptUrl_Content")).LinkUrl;
 
-                var lookupValuesParser = new JobLookupValuesHtmlParser();
-                var jobResultsParser = new JobResultsHtmlParser(new TalentLinkSalaryParser());
-                var jobsProvider = new JobsDataFromTalentLink(searchUrl, resultsUrl, null, new ConfigurationProxyProvider(), lookupValuesParser, jobResultsParser, null);
-                var jobTypes = Task.Run(async () => await jobsProvider.ReadJobTypes()).Result;
+                var lookupValuesParser = new TalentLinkLookupValuesHtmlParser();
+                var jobResultsParser = new TalentLinkJobResultsHtmlParser(new TalentLinkSalaryParser());
+                var proxy = new ConfigurationProxyProvider();
+                var jobsProvider = new JobsDataFromTalentLink(resultsUrl, null, jobResultsParser, null, proxy);
+                var lookupValuesProvider = new JobsLookupValuesFromTalentLink(searchUrl, lookupValuesParser, proxy);
+                var jobTypes = Task.Run(async () => await lookupValuesProvider.ReadJobTypes()).Result;
                 ReplaceLookupValuesWithIds(query.JobTypes, jobTypes);
 
                 jobs = await jobsProvider.ReadJobs(query);

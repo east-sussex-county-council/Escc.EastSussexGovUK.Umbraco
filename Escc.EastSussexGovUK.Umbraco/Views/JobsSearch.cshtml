@@ -53,15 +53,10 @@
 
                 <fieldset class="checkboxes">
                     <legend>Salary</legend>
-                    <label><input type="checkbox" value="&#163;0-&#163;9999" name="salaryRanges" /> &#163;0&ndash;&#163;9,999</label>
-                    <label><input type="checkbox" value="&#163;10000-&#163;14999" name="salaryRanges" /> &#163;10,000&ndash;&#163;14,999</label>
-                    <label><input type="checkbox" value="&#163;15000-&#163;19999" name="salaryRanges" /> &#163;15,000&ndash;&#163;19,999</label>
-                    <label><input type="checkbox" value="&#163;20000-&#163;24999" name="salaryRanges" /> &#163;20,000&ndash;&#163;24,999</label>
-                    <label><input type="checkbox" value="&#163;25000-&#163;34999" name="salaryRanges" /> &#163;25,000&ndash;&#163;34,999</label>
-                    <label><input type="checkbox" value="&#163;35000-&#163;49999" name="salaryRanges" /> &#163;35,000&ndash;&#163;49,999</label>
-                    <label><input type="checkbox" value="&#163;50000-" name="salaryRanges" /> &#163;50,000 and over</label>
-                    <label><input type="checkbox" value="Teachers&#39; Pay Scale" name="salaryRanges" /> Teachers&#39; Pay Scale</label>
-                    <label><input type="checkbox" value="Teachers&#39; Leadership Pay Scale" name="salaryRanges" /> Teachers&#39; Leadership Pay Scale</label>
+                    @foreach (var salaryRange in Model.SalaryRanges)
+                    {
+                        <label><input type="checkbox" value="@salaryRange.Text" name="salaryRanges" /> @salaryRange.Text (@salaryRange.Count)</label>
+                    }
                 </fieldset>
 
                 <fieldset class="checkboxes">

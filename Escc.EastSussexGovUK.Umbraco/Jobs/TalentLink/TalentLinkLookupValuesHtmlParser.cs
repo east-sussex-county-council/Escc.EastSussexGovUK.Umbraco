@@ -1,14 +1,11 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
-using System.Xml.XPath;
-using HtmlAgilityPack;
 
-namespace Escc.EastSussexGovUK.Umbraco.Jobs
+namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
 {
-    public class JobLookupValuesHtmlParser : IJobLookupValuesParser
+    public class TalentLinkLookupValuesHtmlParser : IJobLookupValuesParser
     {
         /// <summary>
         /// Parses the job types.
