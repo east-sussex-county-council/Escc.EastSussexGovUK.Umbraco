@@ -11,7 +11,7 @@ using NUnit.Framework;
 namespace Escc.EastSussexGovUK.Umbraco.Tests
 {
     [TestFixture]
-    public class SalaryParserTests
+    public class TalentLinkSalaryParserTests
     {
         [Test]
         public void TwoNumbersGbpYearIsParsed()

@@ -3399,6 +3399,7 @@
     <Compile Include="Examine\LuceneStopWordsRemover.cs" />
     <Compile Include="Jobs\Examine\BaseLookupValuesIndexer.cs" />
     <Compile Include="Jobs\IJobsLookupValuesProvider.cs" />
+    <Compile Include="Jobs\IWorkPatternParser.cs" />
     <Compile Include="Jobs\ISalaryParser.cs" />
     <Compile Include="Jobs\JobAdvertContentFinder.cs" />
     <Compile Include="Jobs\JobAdvertEventHandler.cs" />
@@ -3412,6 +3413,7 @@
     <Compile Include="Jobs\TalentLink\JobsLookupValuesFromTalentLink.cs" />
     <Compile Include="Jobs\TalentLink\PublicJobsLookupValuesIndexer.cs" />
     <Compile Include="Jobs\TalentLink\RedeploymentJobsLookupValuesIndexer.cs" />
+    <Compile Include="Jobs\TalentLink\TalentLinkWorkPatternParser.cs" />
     <Compile Include="Jobs\TalentLink\TalentLinkSalaryParser.cs" />
     <Compile Include="Jobs\TalentLink\RedeploymentJobsIndexer.cs" />
     <Compile Include="Jobs\TalentLink\PublicJobsIndexer.cs" />
@@ -3494,6 +3496,7 @@
     <Compile Include="Jobs\JobsHomeDocumentType.cs" />
     <Compile Include="Jobs\JobsHomeViewModel.cs" />
     <Compile Include="DocumentTypes\HomePage\HomePageItemsAnalyticsTab.cs" />
+    <Compile Include="Jobs\WorkPattern.cs" />
     <Compile Include="Services\RemoveMediaDomainUrlTransformer.cs" />
     <Compile Include="Services\CampaignTrackingUrlTransformer.cs" />
     <Compile Include="Services\GoogleAdWordsTagParser.cs" />

@@ -111,7 +111,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             simpleDataSet.RowData.Add("jobType", _stopWordsRemover.RemoveStopWords(job.JobType));
             simpleDataSet.RowData.Add("contractType", _stopWordsRemover.RemoveStopWords(job.ContractType));
             simpleDataSet.RowData.Add("department", _stopWordsRemover.RemoveStopWords(job.Department));
-            simpleDataSet.RowData.Add("workPattern", _stopWordsRemover.RemoveStopWords(job.WorkPattern));
+            simpleDataSet.RowData.Add("fullTime", job.WorkPattern.IsFullTime.ToString());
+            simpleDataSet.RowData.Add("partTime", job.WorkPattern.IsPartTime.ToString());
             if (job.AdvertHtml != null)
             {
                 simpleDataSet.RowData.Add("fullText", new HtmlTagSantiser().StripTags(job.AdvertHtml.ToHtmlString()));

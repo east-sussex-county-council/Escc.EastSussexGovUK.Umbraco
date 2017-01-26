@@ -28,7 +28,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
                 return ParseSalaryFromDescription(salaryText);
             }
 
-            var matchInBodyText = Regex.Match(jobAdvertHtml.DocumentNode.OuterHtml, "Salary: (.*?)([0-9]+)(.*?)(<br>|<br />)");
+            var matchInBodyText = Regex.Match(jobAdvertHtml.DocumentNode.OuterHtml, $"Salary: (.*?)([0-9]+)(.*?)(<br>|<br />|</p>|{Environment.NewLine})");
             if (matchInBodyText.Success)
             {
                 return ParseSalaryFromDescription(HttpUtility.HtmlDecode(matchInBodyText.Groups[1].Value + matchInBodyText.Groups[2].Value + matchInBodyText.Groups[3].Value).Trim());

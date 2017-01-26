@@ -34,12 +34,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             var keywords = query.Keywords ?? String.Empty;
             keywords = Regex.Replace(keywords, @"([^\s])\b", "$1*");
 
-            examineQuery.Field("reference", query.JobReference ?? String.Empty)
-                        .And().GroupedOr(new[] { "reference", "title", "organisation", "location", "salary", "jobType", "contractType", "department", "fullText" }, keywords)
+            examineQuery.GroupedOr(new[] { "reference", "title", "organisation", "location", "salary", "jobType", "contractType", "department", "fullText" }, keywords)
                         .And().GroupedOr(new[] { "location" }, query.Locations.ToArray())
                         .And().GroupedOr(new[] { "jobType" }, query.JobTypes.ToArray())
-                        .And().GroupedOr(new[] { "organisation" }, query.Organisations.ToArray())
-                        .And().GroupedOr(new[] { "workPattern" }, query.WorkPatterns.ToArray());
+                        .And().GroupedOr(new[] { "organisation" }, query.Organisations.ToArray());
 
             // If any of the GroupedOr values are empty, Examine generates a Lucene query that requires no field set to no value: +()
             // so we need to remove that and use the rest of the generated Lucene query
@@ -48,40 +46,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             var modifiedQuery = generatedQuery.Replace("+()", String.Empty);
 
             // For the salary ranges we need a structure that Examine's fluent API can't build, so build the raw Lucene query instead
-            var rangeQueries = new List<string>();
-            foreach (var salaryRange in query.SalaryRanges)
-            {
-                var numericRange = Regex.Match(salaryRange, "^£([0-9]+)-£?([0-9]*)$");
-                if (numericRange.Success)
-                {
-                    try
-                    {
-                        var from = Int32.Parse(numericRange.Groups[1].Value, CultureInfo.InvariantCulture);
-                        var to = String.IsNullOrEmpty(numericRange.Groups[2].Value) ? 9999999 : Int32.Parse(numericRange.Groups[2].Value, CultureInfo.InvariantCulture);
-                        rangeQueries.Add($"(+salaryMin:[{from.ToString("D7")} TO 9999999] +salaryMax:[0000000 TO {to.ToString("D7")}])");
-                    }
-                    catch (FormatException)
-                    {
-                        // just ignore bad input
-                        continue;
-                    }
-                    catch (OverflowException)
-                    {
-                        // just ignore bad input
-                        continue;
-                    }
-                }
-                else
-                {
-                    var sanitisedRange = Regex.Replace(salaryRange, "[^A-Za-z0-9' -]", String.Empty); // sanitise input
-                    rangeQueries.Add($"(+salaryRange:\"{sanitisedRange}\")");
-                }
-            }
+            modifiedQuery += BuildSalaryRangeLuceneQuery(query.SalaryRanges);
 
-            if (rangeQueries.Count > 0)
-            {
-                modifiedQuery += " +(" + String.Join(" ", rangeQueries.ToArray()) + ")";
-            }
+            // For the working patterns we also need to build the raw Lucene query
+            modifiedQuery += BuildWorkPatternLuceneQuery(query.WorkPatterns);
 
             var luceneQuery = _searcher.CreateSearchCriteria(BooleanOperation.And);
 
@@ -185,6 +153,69 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             }
 
             return Task.FromResult(jobs);
+        }
+
+        private string BuildWorkPatternLuceneQuery(IList<string> workPatterns)
+        {
+            var fullTime = workPatterns.Contains("Full time");
+            var partTime = workPatterns.Contains("Part time");
+
+            var workPatternQueries = new List<string>();
+            if (fullTime)
+            {
+                workPatternQueries.Add("fullTime:True");
+            }
+            if (partTime)
+            {
+                workPatternQueries.Add("partTime:True");
+            }
+
+            var query = String.Empty;
+            if (workPatternQueries.Count > 0)
+            {
+                query = " +(" + String.Join(" ", workPatternQueries.ToArray()) + ")";
+            }
+            return query;
+        }
+
+        private static string BuildSalaryRangeLuceneQuery(IList<string> salaryRanges)
+        {
+            var rangeQueries = new List<string>();
+            foreach (var salaryRange in salaryRanges)
+            {
+                var numericRange = Regex.Match(salaryRange, "^£([0-9]+)-£?([0-9]*)$");
+                if (numericRange.Success)
+                {
+                    try
+                    {
+                        var from = Int32.Parse(numericRange.Groups[1].Value, CultureInfo.InvariantCulture);
+                        var to = String.IsNullOrEmpty(numericRange.Groups[2].Value) ? 9999999 : Int32.Parse(numericRange.Groups[2].Value, CultureInfo.InvariantCulture);
+                        rangeQueries.Add($"(+salaryMin:[{@from.ToString("D7")} TO 9999999] +salaryMax:[0000000 TO {to.ToString("D7")}])");
+                    }
+                    catch (FormatException)
+                    {
+                        // just ignore bad input
+                        continue;
+                    }
+                    catch (OverflowException)
+                    {
+                        // just ignore bad input
+                        continue;
+                    }
+                }
+                else
+                {
+                    var sanitisedRange = Regex.Replace(salaryRange, "[^A-Za-z0-9' -]", String.Empty); // sanitise input
+                    rangeQueries.Add($"(+salaryRange:\"{sanitisedRange}\")");
+                }
+            }
+
+            var query = String.Empty;
+            if (rangeQueries.Count > 0)
+            {
+                query = " +(" + String.Join(" ", rangeQueries.ToArray()) + ")";
+            }
+            return query;
         }
     }
 }

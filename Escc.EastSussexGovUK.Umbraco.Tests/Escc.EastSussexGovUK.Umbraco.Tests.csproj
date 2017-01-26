@@ -331,7 +331,7 @@
     <Compile Include="HtmlStringFormatterTests.cs" />
     <Compile Include="JobAdvertHtmlParserTests.cs" />
     <Compile Include="JobSearchFilterTests.cs" />
-    <Compile Include="SalaryParserTests.cs" />
+    <Compile Include="TalentLinkSalaryParserTests.cs" />
     <Compile Include="StopWordsRemoverTests.cs" />
     <Compile Include="RemoveMediaDomainUrlTransformerTests.cs" />
     <Compile Include="GoogleAdWordsTagParserTests.cs" />
@@ -346,6 +346,7 @@
     <Compile Include="RelatedLinksModelBuilderTests.cs" />
     <Compile Include="RemoveUmbracoNumericSuffixFilterTests.cs" />
     <Compile Include="TalentLinkLookupValuesHtmlParserTests.cs" />
+    <Compile Include="TalentLinkWorkPatternParserTests.cs" />
     <Compile Include="TinyMceEmbedClassFormatterTests.cs" />
     <Compile Include="TalentLinkUrlTests.cs" />
     <Compile Include="JobResultsParserTests.cs" />

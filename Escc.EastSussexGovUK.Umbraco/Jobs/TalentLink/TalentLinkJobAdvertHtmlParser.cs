@@ -14,11 +14,20 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
     public class TalentLinkJobAdvertHtmlParser : IJobAdvertParser
     {
         private readonly ISalaryParser _salaryParser;
+        private readonly IWorkPatternParser _workPatternParser;
 
-        public TalentLinkJobAdvertHtmlParser(ISalaryParser salaryParser)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TalentLinkJobAdvertHtmlParser"/> class.
+        /// </summary>
+        /// <param name="salaryParser">The salary parser.</param>
+        /// <param name="workPatternParser">The work pattern parser.</param>
+        /// <exception cref="System.ArgumentNullException">salaryParser</exception>
+        public TalentLinkJobAdvertHtmlParser(ISalaryParser salaryParser, IWorkPatternParser workPatternParser)
         {
             if (salaryParser == null) throw new ArgumentNullException(nameof(salaryParser));
+            if (workPatternParser == null) throw new ArgumentNullException(nameof(workPatternParser));
             _salaryParser = salaryParser;
+            _workPatternParser = workPatternParser;
         }
 
         /// <summary>
@@ -93,24 +102,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
                     }
 
                     job.AdvertHtml = new HtmlString(parsedHtml);
-
-                    parsedHtml = parsedHtml.ToUpperInvariant();
-                    if (parsedHtml.Contains("WORKING PATTERN: FULL-TIME"))
-                    {
-                        job.WorkPattern = "Full time";
-                    }
-                    else if (parsedHtml.Contains("WORKING PATTERN: FULL TIME"))
-                    {
-                        job.WorkPattern = "Full time";
-                    }
-                    else if (parsedHtml.Contains("WORKING PATTERN: PART-TIME"))
-                    {
-                        job.WorkPattern = "Part time";
-                    }
-                    else if (parsedHtml.Contains("WORKING PATTERN: PART TIME"))
-                    {
-                        job.WorkPattern = "Part time";
-                    }
+                    job.WorkPattern = _workPatternParser.ParseWorkPatternFromHtml(parsedHtml);
 
                     var applyLink = htmlDocument.DocumentNode.SelectSingleNode($"//div[@id='JD-ActApplyDirect']/a");
                     if (applyLink != null)

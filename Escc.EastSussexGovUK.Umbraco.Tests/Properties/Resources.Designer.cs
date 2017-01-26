@@ -146,5 +146,137 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests.Properties {
                 return ResourceManager.GetString("SearchFieldsOuterHtml", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;span class=&quot;JD-FieldText&quot; id=&quot;JDText-Field1&quot;&gt;&lt;p&gt;Salary: £31,383 to £41,373 per annum&lt;br&gt;Contract type: Permanent&lt;br&gt;Working pattern: Full time&lt;/p&gt;
+        ///&lt;p&gt;Closing date: Monday 20 February 2017&lt;/p&gt;
+        ///&lt;p&gt;How to apply: Please visit &lt;a href=&quot;https://www.jobs.nhs.uk/xi/vacancy/df348e0c47e47974b4d05e3fdff2f5da/?vac_ref=914491197&quot; rel=&quot;external&quot;&gt;https://www.jobs.nhs.uk/xi/vacancy/df348e0c47e47974b4d05e3fdff2f5da/?vac_ref=914491197&lt;/a&gt;&lt;/p&gt;&lt;/span&gt;.
+        /// </summary>
+        internal static string WorkPatternInBodyText1 {
+            get {
+                return ResourceManager.GetString("WorkPatternInBodyText1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;div id=&quot;JD-Field1&quot;&gt;
+        ///&lt;h5 class=&quot;JD-FieldLabel&quot; id=&quot;JDLabel-Field1&quot;&gt;Job Details&lt;/h5&gt;
+        ///&lt;span class=&quot;JD-FieldText&quot; id=&quot;JDText-Field1&quot;&gt;&lt;div&gt;
+        ///&lt;p&gt;Hours of work: Up to 37 hours per week&lt;br&gt;&lt;br&gt;Closing date: Sunday 05 February 2017&amp;nbsp;&lt;/p&gt;
+        ///&lt;p&gt;For an&amp;nbsp;informal discussion, please contact Tim Proudlock - Service Support Officer on 01323 747433.&lt;/p&gt;
+        ///&lt;/div&gt;&lt;/span&gt;
+        ///&lt;/div&gt;.
+        /// </summary>
+        internal static string WorkPatternInBodyText10 {
+            get {
+                return ResourceManager.GetString("WorkPatternInBodyText10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;span class=&quot;JD-FieldText&quot; id=&quot;JDText-Field1&quot;&gt;&lt;p&gt;Salary: £34,981 - £40,180 per annum, pro rata - dependent on qualification, skill &amp;amp; experience&lt;br&gt;Contract type: Permanent&lt;br&gt;Working pattern: 25 - 37 hours per week&lt;/p&gt;
+        ///&lt;p&gt;Closing date: Wednesday 13 February 2017&lt;/p&gt;
+        ///&lt;p&gt;How to apply: To download an application pack please visit: &lt;a href=&quot;http://sussexcommunity.org.uk/about-us/jobs/&quot; rel=&quot;external&quot;&gt;http://sussexcommunity.org.uk/about-us/jobs/&lt;/a&gt;&lt;/p&gt;&lt;/span&gt;.
+        /// </summary>
+        internal static string WorkPatternInBodyText2 {
+            get {
+                return ResourceManager.GetString("WorkPatternInBodyText2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;span class=&quot;JD-FieldText&quot; id=&quot;JDText-Field1&quot;&gt;&lt;p&gt;Hours of work: Teacher&apos;s full time hours&lt;br&gt;Working pattern: Full-time&lt;br&gt;Fixed term to cover Maternity&lt;/p&gt;
+        ///&lt;p&gt;Closing date: Monday 06 February 2017 at 5.00pm&lt;br&gt;Interview date: Tuesday 07 February 2017&lt;/p&gt;
+        ///&lt;p&gt;For more information and to apply for the above post, please contact:&lt;/p&gt;
+        ///&lt;p&gt;Maynards Green CP School&lt;br&gt;Maynards Green&lt;br&gt;Heathfield&lt;br&gt;East Sussex&lt;br&gt;TN21 0DD&lt;/p&gt;
+        ///&lt;p&gt;Phone: 01435 812622&lt;br&gt;Fax:&amp;nbsp; 01435 813944&lt;br&gt;Email: &lt;a href=&quot;mailto:office@m [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string WorkPatternInBodyText3 {
+            get {
+                return ResourceManager.GetString("WorkPatternInBodyText3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;span class=&quot;JD-FieldText&quot; id=&quot;JDText-Field1&quot;&gt;&lt;div&gt;
+        ///&lt;p&gt;Hours of work: 37 hours per week&lt;br&gt;&lt;br&gt;Closing date: Sunday 05 February 2017&amp;nbsp;&lt;/p&gt;
+        ///&lt;p&gt;For an&amp;nbsp;informal discussion, please contact Tim Proudlock - Service Support Officer on 01323 747433.&lt;/p&gt;
+        ///&lt;/div&gt;&lt;/span&gt;.
+        /// </summary>
+        internal static string WorkPatternInBodyText4 {
+            get {
+                return ResourceManager.GetString("WorkPatternInBodyText4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;span class=&quot;JD-FieldText&quot; id=&quot;JDText-Field1&quot;&gt;&lt;div&gt;
+        ///&lt;p&gt;Hours of work: Usually Saturdays 9:00am to 1:00pm, and some evenings when required.&lt;br&gt;Working pattern: Casual, part-time.&lt;/p&gt;
+        ///&lt;p&gt;&lt;br&gt;Closing date: Sunday 05 February 2017.&lt;br&gt;Interview date: Tuesday 21 February 2017.&lt;/p&gt;
+        ///&lt;p&gt;For an&amp;nbsp;informal discussion, please contact&amp;nbsp;Leon Maxwell&amp;nbsp;- YOT Practice Manager on 01323 464004 or 07710 710 834.&lt;/p&gt;
+        ///&lt;/div&gt;&lt;/span&gt;.
+        /// </summary>
+        internal static string WorkPatternInBodyText5 {
+            get {
+                return ResourceManager.GetString("WorkPatternInBodyText5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;span class=&quot;JD-FieldText&quot; id=&quot;JDText-Field1&quot;&gt;&lt;p&gt;&lt;img src=&quot;https://eastsussexgovuk.blob.core.windows.net/media/4180/rye-academy-april-2015.jpg&quot; alt=&quot;Rye Academy Trust logo&quot; width=&quot;30%&quot; height=&quot;30%&quot;&gt;&lt;/p&gt;
+        ///&lt;p&gt;Hours of work: Full or part time&lt;/p&gt;
+        ///&lt;p&gt;(If the position is part-time, the above salary will be pro rata)&lt;/p&gt;
+        ///&lt;p&gt;Fixed term until 31 August 2017&lt;/p&gt;
+        ///&lt;p&gt;Closing date: Tuesday 31 January 2017&lt;/p&gt;
+        ///&lt;p&gt;Please contact Jane Loveless by emailing &lt;a href=&quot;mailto:jloveless@ryecollege.co.uk&quot;&gt;jloveless@ryecolleg [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string WorkPatternInBodyText6 {
+            get {
+                return ResourceManager.GetString("WorkPatternInBodyText6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;div id=&quot;JD-Field1&quot;&gt;
+        ///&lt;h5 class=&quot;JD-FieldLabel&quot; id=&quot;JDLabel-Field1&quot;&gt;Job Details&lt;/h5&gt;
+        ///&lt;span class=&quot;JD-FieldText&quot; id=&quot;JDText-Field1&quot;&gt;&lt;div&gt;
+        ///&lt;p&gt;Hours of work: 13 hours per week (0.4 FTE)&lt;br&gt;Working pattern: Part time&lt;/p&gt;
+        ///&lt;p&gt;Fixed term until 31 August 2017&lt;/p&gt;
+        ///&lt;p&gt;Closing date: Friday 03 February 2017&lt;br&gt;Interview date: Thursday 09 February 2017&lt;/p&gt;
+        ///&lt;p&gt;If you would like to view the school prior to making an application please call the office on 01424 838323 to make an appointment.&lt;/p&gt;
+        ///&lt;p&gt;Please go to &lt;a hre [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string WorkPatternInBodyText7 {
+            get {
+                return ResourceManager.GetString("WorkPatternInBodyText7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;div id=&quot;JD-Field1&quot;&gt;
+        ///&lt;h5 class=&quot;JD-FieldLabel&quot; id=&quot;JDLabel-Field1&quot;&gt;Job Details&lt;/h5&gt;
+        ///&lt;span class=&quot;JD-FieldText&quot; id=&quot;JDText-Field1&quot;&gt;&lt;p&gt;&lt;span style=&quot;font-size: small; font-family: arial,helvetica,sans-serif;&quot;&gt;Hours of work: Casual&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size: small; font-family: arial,helvetica,sans-serif;&quot;&gt;Working pattern: Casual&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-size: small; font-family: arial,helvetica,sans-serif;&quot;&gt;Closing date: Monday 06 February 2017&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-size: small; font- [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string WorkPatternInBodyText8 {
+            get {
+                return ResourceManager.GetString("WorkPatternInBodyText8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;div id=&quot;JD-AllFields&quot;&gt;
+        ///&lt;div id=&quot;JD-Field1&quot;&gt;
+        ///&lt;h5 class=&quot;JD-FieldLabel&quot; id=&quot;JDLabel-Field1&quot;&gt;Job Details&lt;/h5&gt;
+        ///&lt;span class=&quot;JD-FieldText&quot; id=&quot;JDText-Field1&quot;&gt;&lt;p&gt;&lt;img src=&quot;https://eastsussexgovuk.blob.core.windows.net/media/7511/step.png&quot; alt=&quot;STEP logo &quot;&gt;&lt;/p&gt;
+        ///&lt;p&gt;Hours of work: teacher full time hours&lt;/p&gt;
+        ///&lt;p&gt;Closing date: March 31 2017 at 12 noon - Applications will be considered upon receipt.&lt;/p&gt;
+        ///&lt;p&gt;For more information and to apply for the above post, please contact:&lt;/p&gt;
+        ///&lt;p&gt;Hawkes Farm Academy&lt;br&gt;Hawkes [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string WorkPatternInBodyText9 {
+            get {
+                return ResourceManager.GetString("WorkPatternInBodyText9", resourceCulture);
+            }
+        }
     }
 }

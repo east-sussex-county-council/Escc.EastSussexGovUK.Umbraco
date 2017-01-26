@@ -17,7 +17,8 @@
       <add Name="closingDate" EnableSorting="true" Type="STRING" />
       <add Name="jobType" />
       <add Name="contractType" />
-      <add Name="workPattern" />
+      <add Name="fullTime" />
+      <add Name="partTime" />
       <add Name="department" />
       <add Name="fullText" />
     </IndexUserFields>
@@ -40,7 +41,8 @@
       <add Name="closingDate" EnableSorting="true" Type="STRING" />
       <add Name="jobType" />
       <add Name="contractType" />
-      <add Name="workPattern" />
+      <add Name="fullTime" />
+      <add Name="partTime" />
       <add Name="department" />
       <add Name="fullText" />
     </IndexUserFields>

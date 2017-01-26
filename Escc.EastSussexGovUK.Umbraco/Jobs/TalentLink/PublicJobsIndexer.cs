@@ -18,7 +18,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
         /// <summary>
         /// Initializes a new instance of the <see cref="PublicJobsIndexer"/> class.
         /// </summary>
-        public PublicJobsIndexer() : base(new JobsDataFromTalentLink(ResultsUrl, AdvertUrl, new TalentLinkJobResultsHtmlParser(new TalentLinkSalaryParser()), new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser()), new ConfigurationProxyProvider()), new LuceneStopWordsRemover())
+        public PublicJobsIndexer() : base(new JobsDataFromTalentLink(ResultsUrl, AdvertUrl, 
+            new TalentLinkJobResultsHtmlParser(new TalentLinkSalaryParser()), 
+            new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser(), new TalentLinkWorkPatternParser()), 
+            new ConfigurationProxyProvider()), 
+            new LuceneStopWordsRemover())
         {
         }
     }

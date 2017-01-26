@@ -115,6 +115,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// <value>
         /// The work pattern.
         /// </value>
-        public string WorkPattern { get; set; }
+        public WorkPattern WorkPattern { get; set; } = new WorkPattern();
     }
 }
