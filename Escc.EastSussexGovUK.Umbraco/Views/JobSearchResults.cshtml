@@ -36,8 +36,12 @@
     if (queryWithoutPage.Count > 0) { urlWithoutPage += "&"; }
     urlWithoutPage += "page=";
 
-    var pagingHtml = Model.Jobs.TotalItemCount > 10 ? Html.PagedListPager(Model.Jobs, page => urlWithoutPage + page, new PagedListRenderOptions() { DisplayLinkToFirstPage = PagedListDisplayMode.Never, DisplayLinkToLastPage = PagedListDisplayMode.Never, LinkToPreviousPageFormat = "&lt; Prev", LinkToNextPageFormat = "Next &gt;", DisplayItemSliceAndTotal = true, ItemSliceAndTotalFormat = "{0}–{1} of {2} results", MaximumPageNumbersToDisplay = 5, ContainerDivClasses = new[] { "infoBar" }, UlElementClasses = new[] { "pagingPages" } }).ToHtmlString() : String.Empty;
+    var pagingHtml = Html.PagedListPager(Model.Jobs, page => urlWithoutPage + page, new PagedListRenderOptions() { DisplayLinkToFirstPage = PagedListDisplayMode.Never, DisplayLinkToLastPage = PagedListDisplayMode.Never, LinkToPreviousPageFormat = "&lt; Prev", LinkToNextPageFormat = "Next &gt;", DisplayItemSliceAndTotal = true, ItemSliceAndTotalFormat = "{0}–{1} of {2} results", MaximumPageNumbersToDisplay = 5, ContainerDivClasses = new[] { "infoBar" }, UlElementClasses = new[] { "pagingPages" } }).ToHtmlString();
     pagingHtml = Regex.Replace(pagingHtml, "(<ul class=\"pagingPages\">.*)<li class=\"disabled PagedList-pageCountAndLocation\"><a>(.*?)</a></li>", "<div class=\"pagingResultsInContext\">$2</div>$1");
+    if (Model.Jobs.TotalItemCount <= 10)
+    {
+        pagingHtml = Regex.Replace(pagingHtml, "<ul class=\"pagingPages\">.*?</ul>", String.Empty);
+    }
 }
 @section Breadcrumb {}
 @Html.Partial("~/Views/JobsHeader.cshtml", Model)
