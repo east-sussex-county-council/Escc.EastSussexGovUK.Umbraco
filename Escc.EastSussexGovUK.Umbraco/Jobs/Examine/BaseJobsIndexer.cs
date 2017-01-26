@@ -121,7 +121,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             if (job.AdvertHtml != null)
             {
                 simpleDataSet.RowData.Add("fullText", _tagSanitiser.StripTags(job.AdvertHtml.ToHtmlString()));
+                simpleDataSet.RowData.Add("fullHtml", job.AdvertHtml.ToHtmlString());
             }
+            simpleDataSet.RowData.Add("applyUrl", job.ApplyUrl?.ToString());
 
             return simpleDataSet;
         }

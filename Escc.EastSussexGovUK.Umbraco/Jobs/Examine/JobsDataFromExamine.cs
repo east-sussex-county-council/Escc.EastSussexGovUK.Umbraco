@@ -4,16 +4,27 @@ using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web;
 using Examine;
 using Examine.SearchCriteria;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
 {
+    /// <summary>
+    /// Reads jobs from the Examine index
+    /// </summary>
+    /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Jobs.IJobsDataProvider" />
     public class JobsDataFromExamine : IJobsDataProvider
     {
         private readonly ISearcher _searcher;
         private readonly Uri _jobAdvertUrl;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="JobsDataFromExamine"/> class.
+        /// </summary>
+        /// <param name="searcher">The searcher.</param>
+        /// <param name="jobAdvertUrl">The job advert URL.</param>
+        /// <exception cref="System.ArgumentNullException">searcher</exception>
         public JobsDataFromExamine(ISearcher searcher, Uri jobAdvertUrl)
         {
             if (searcher == null) throw new ArgumentNullException(nameof(searcher));
@@ -21,11 +32,30 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             _jobAdvertUrl = jobAdvertUrl;
         }
 
+        /// <summary>
+        /// Reads a job by its id.
+        /// </summary>
+        /// <param name="jobId">The job identifier.</param>
+        /// <returns></returns>
         public Task<Job> ReadJob(string jobId)
         {
-            return Task.FromResult(new Job());
+            var results = _searcher.Search(_searcher.CreateSearchCriteria().Field("id", jobId).Compile());
+            var jobs = BuildJobsFromExamineResults(results);
+            if (jobs.Count > 0)
+            {
+                return Task.FromResult(jobs[0]);
+            }
+            else
+            {
+                return Task.FromResult(new Job());
+            }
         }
 
+        /// <summary>
+        /// Gets the jobs matching the supplied query
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
         public Task<List<Job>> ReadJobs(JobSearchQuery query)
         {
             var examineQuery = _searcher.CreateSearchCriteria(BooleanOperation.And);
@@ -132,6 +162,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
 
             var results = _searcher.Search(luceneQuery);
 
+            return Task.FromResult(BuildJobsFromExamineResults(results));
+        }
+
+        private List<Job> BuildJobsFromExamineResults(ISearchResults results)
+        {
             var jobs = new List<Job>();
             foreach (var result in results)
             {
@@ -149,7 +184,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                     {
                         IsFullTime = result.Fields.ContainsKey("fullTime") && result["fullTime"].ToUpperInvariant() == "TRUE",
                         IsPartTime = result.Fields.ContainsKey("partTime") && result["partTime"].ToUpperInvariant() == "TRUE"
-                    } 
+                    },
+                    AdvertHtml = new HtmlString(result.Fields.ContainsKey("fullHtml") ? result["fullHtml"] : String.Empty),
+                    ApplyUrl = (result.Fields.ContainsKey("applyUrl") && !String.IsNullOrEmpty(result["applyUrl"])) ? new Uri(result["applyUrl"]) : null
                 };
 
                 job.Salary.SalaryRange = result.Fields.ContainsKey("salary") ? result["salary"] : String.Empty;
@@ -163,7 +200,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 jobs.Add(job);
             }
 
-            return Task.FromResult(jobs);
+            return jobs;
         }
 
         private string BuildWorkPatternLuceneQuery(IList<string> workPatterns)

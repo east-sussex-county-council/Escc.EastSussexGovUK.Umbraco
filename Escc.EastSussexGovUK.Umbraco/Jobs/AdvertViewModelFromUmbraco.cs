@@ -33,7 +33,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 HeaderBackgroundImage = BuildImage("HeaderBackgroundImage_Content"),
                 JobsHomePage = BuildLinkToPage("JobsHomePage_Content"),
                 LoginPage = BuildLinkToPage("LoginPage_Content"),
-                JobAdvertUrl = BuildJobsUri("AdvertScriptUrl_Content")
+                ExamineSearcher = BuildJobsSearcherName("PublicOrRedeployment_Content")
             };
 
             return model;

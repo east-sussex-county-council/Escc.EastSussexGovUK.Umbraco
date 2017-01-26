@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.Caching;
 using System.Web.Mvc;
+using Escc.EastSussexGovUK.Umbraco.Jobs.Examine;
 using Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.EastSussexGovUK.Umbraco.Services;
@@ -12,6 +13,7 @@ using Escc.Net;
 using Escc.Umbraco.Caching;
 using Escc.Umbraco.ContentExperiments;
 using Escc.Umbraco.PropertyTypes;
+using Examine;
 using Exceptionless.Extensions;
 using Umbraco.Core.Models;
 using Umbraco.Web;
@@ -52,7 +54,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             var jobUrlSegment = Regex.Match(Request.Url.AbsolutePath, "/([0-9]+)/");
             if (jobUrlSegment.Success)
             {
-                var jobsProvider = new JobsDataFromTalentLink(null, viewModel.JobAdvertUrl.LinkUrl, null, new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser(), new TalentLinkWorkPatternParser()), new ConfigurationProxyProvider());
+                var jobsProvider = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.ExamineSearcher], null);
                 viewModel.Job = Task.Run(async () => await jobsProvider.ReadJob(jobUrlSegment.Groups[1].Value)).Result;
             }
             else

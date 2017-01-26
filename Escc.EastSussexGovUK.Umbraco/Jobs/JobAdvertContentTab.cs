@@ -51,8 +51,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         [UmbracoProperty("Login page", "LoginPage", BuiltInUmbracoDataTypes.ContentPickerAlias, sortOrder: 4, Description = "Select the jobs login page, based on the 'Jobs component' document type")]
         public string LoginPage { get; set; }
 
-        [UmbracoProperty("Advert script URL", "AdvertScriptUrl", UrlDataType.PropertyEditorAlias, UrlDataType.DataTypeName, sortOrder: 5, mandatory: true, 
-            Description= "A standard TalentLink component is embedded into a page by referencing a script. Paste the URL of the job advert component here.")]
-        public Uri AdvertScriptUrl { get; set; }
+        [UmbracoProperty("Which jobs should this page show?", "PublicOrRedeployment", PublicOrRedeploymentDataType.PropertyEditor, PublicOrRedeploymentDataType.DataTypeName, sortOrder: 7, mandatory: true)]
+        public string PublicOrRedeploymentJobs { get; set; }
+
     }
 }

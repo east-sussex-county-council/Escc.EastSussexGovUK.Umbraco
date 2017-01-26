@@ -20,11 +20,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public Job Job { get; set; }
 
         /// <summary>
-        /// Gets or sets the job advert URL where the data comes from.
+        /// Gets or sets the name of the Examine searcher for the jobs index
         /// </summary>
-        /// <value>
-        /// The job advert URL.
-        /// </value>
-        public TalentLinkUrl JobAdvertUrl { get; set; }
+        public string ExamineSearcher { get; set; }
     }
 }

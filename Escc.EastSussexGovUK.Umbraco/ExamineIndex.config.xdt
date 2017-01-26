@@ -22,6 +22,8 @@
       <add Name="workPattern" EnableSorting="true" Type="STRING" />
       <add Name="department" />
       <add Name="fullText" />
+      <add Name="fullHtml" />
+      <add Name="applyUrl" />
     </IndexUserFields>
   </IndexSet>
 
@@ -47,6 +49,8 @@
       <add Name="workPattern" EnableSorting="true" Type="STRING" />
       <add Name="department" />
       <add Name="fullText" />
+      <add Name="fullHtml" />
+      <add Name="applyUrl" />
     </IndexUserFields>
   </IndexSet>
 
