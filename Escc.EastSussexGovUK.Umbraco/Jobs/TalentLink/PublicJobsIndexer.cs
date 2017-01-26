@@ -2,6 +2,7 @@
 using System.Configuration;
 using Escc.EastSussexGovUK.Umbraco.Examine;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Examine;
+using Escc.Html;
 using Escc.Net;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
@@ -22,7 +23,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
             new TalentLinkJobResultsHtmlParser(new TalentLinkSalaryParser()), 
             new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser(), new TalentLinkWorkPatternParser()), 
             new ConfigurationProxyProvider()), 
-            new LuceneStopWordsRemover())
+            new LuceneStopWordsRemover(), 
+            new HtmlTagSantiser())
         {
         }
     }

@@ -23,19 +23,23 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
     {
         private readonly IJobsDataProvider _jobsProvider;
         private readonly IStopWordsRemover _stopWordsRemover;
-        
+        private readonly IHtmlTagSanitiser _tagSanitiser;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseJobsIndexer" /> class.
         /// </summary>
         /// <param name="jobsProvider">The jobs provider.</param>
         /// <param name="stopWordsRemover">The stop words remover.</param>
+        /// <param name="tagSanitiser">The tag sanitiser.</param>
         /// <exception cref="System.ArgumentNullException">stopWordsRemover</exception>
-        protected BaseJobsIndexer(IJobsDataProvider jobsProvider, IStopWordsRemover stopWordsRemover)
+        protected BaseJobsIndexer(IJobsDataProvider jobsProvider, IStopWordsRemover stopWordsRemover, IHtmlTagSanitiser tagSanitiser)
         {
             if (jobsProvider == null) throw new ArgumentNullException(nameof(jobsProvider));
             if (stopWordsRemover == null) throw new ArgumentNullException(nameof(stopWordsRemover));
+            if (tagSanitiser == null) throw new ArgumentNullException(nameof(tagSanitiser));
             _jobsProvider = jobsProvider;
             _stopWordsRemover = stopWordsRemover;
+            _tagSanitiser = tagSanitiser;
         }
 
         public IEnumerable<SimpleDataSet> GetAllData(string indexType)
@@ -102,7 +106,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             simpleDataSet.RowData.Add("organisation", _stopWordsRemover.RemoveStopWords(job.Organisation));
             simpleDataSet.RowData.Add("location", _stopWordsRemover.RemoveStopWords(job.Location));
             simpleDataSet.RowData.Add("locationDisplay", job.Location); // because Somewhere-on-Sea needs to lose the "on" for searching but keep it for display
-            simpleDataSet.RowData.Add("salary", _stopWordsRemover.RemoveStopWords(job.Salary.SalaryRange));
+            simpleDataSet.RowData.Add("salary", _tagSanitiser.StripTags(_stopWordsRemover.RemoveStopWords(job.Salary.SalaryRange)));
             simpleDataSet.RowData.Add("salaryRange", _stopWordsRemover.RemoveStopWords(job.Salary.SearchRange));
             simpleDataSet.RowData.Add("salaryMin", job.Salary.MinimumSalary?.ToString("D7") ?? String.Empty);
             simpleDataSet.RowData.Add("salaryMax", job.Salary.MaximumSalary?.ToString("D7") ?? String.Empty);
@@ -116,7 +120,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             simpleDataSet.RowData.Add("workPattern", job.WorkPattern.ToString());
             if (job.AdvertHtml != null)
             {
-                simpleDataSet.RowData.Add("fullText", new HtmlTagSantiser().StripTags(job.AdvertHtml.ToHtmlString()));
+                simpleDataSet.RowData.Add("fullText", _tagSanitiser.StripTags(job.AdvertHtml.ToHtmlString()));
             }
 
             return simpleDataSet;
