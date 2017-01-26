@@ -89,7 +89,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             SalaryRangeAscending,
             SalaryRangeDescending,
             ClosingDateAscending,
-            ClosingDateDescending
+            ClosingDateDescending,
+            WorkPatternAscending,
+            WorkPatternDescending
         }
 
         /// <summary>

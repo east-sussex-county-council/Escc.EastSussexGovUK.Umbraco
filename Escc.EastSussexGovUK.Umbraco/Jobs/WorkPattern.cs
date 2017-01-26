@@ -19,5 +19,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// Gets or sets whether this job is part time.
         /// </summary>
         public bool IsPartTime { get; set; }
+
+        /// <summary>
+        /// Gets a phrase describing the work pattern.
+        /// </summary>
+        public override string ToString()
+        {
+            if (IsFullTime && IsPartTime) return "Full or part time";
+            if (IsFullTime) return "Full time";
+            if (IsPartTime) return "Part time";
+            return String.Empty;
+        }
     }
 }

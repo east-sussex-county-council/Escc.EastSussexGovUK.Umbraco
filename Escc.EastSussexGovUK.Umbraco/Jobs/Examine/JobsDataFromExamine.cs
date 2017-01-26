@@ -75,6 +75,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 case JobSearchQuery.JobsSortOrder.SalaryRangeDescending:
                     sortField = "salarySort";
                     break;
+                case JobSearchQuery.JobsSortOrder.WorkPatternAscending:
+                case JobSearchQuery.JobsSortOrder.WorkPatternDescending:
+                    sortField = "workPattern";
+                    break;
                 case JobSearchQuery.JobsSortOrder.ClosingDateAscending:
                 case JobSearchQuery.JobsSortOrder.ClosingDateDescending:
                     sortField = "closingDate";
@@ -88,6 +92,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 case JobSearchQuery.JobsSortOrder.OrganisationAscending:
                 case JobSearchQuery.JobsSortOrder.LocationAscending:
                 case JobSearchQuery.JobsSortOrder.SalaryRangeAscending:
+                case JobSearchQuery.JobsSortOrder.WorkPatternAscending:
                 case JobSearchQuery.JobsSortOrder.ClosingDateAscending:
                     if (String.IsNullOrWhiteSpace(modifiedQuery))
                     {
@@ -102,6 +107,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 case JobSearchQuery.JobsSortOrder.OrganisationDescending:
                 case JobSearchQuery.JobsSortOrder.LocationDescending:
                 case JobSearchQuery.JobsSortOrder.SalaryRangeDescending:
+                case JobSearchQuery.JobsSortOrder.WorkPatternDescending:
                 case JobSearchQuery.JobsSortOrder.ClosingDateDescending:
                     if (String.IsNullOrWhiteSpace(modifiedQuery))
                     {
@@ -138,7 +144,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                     Location = result.Fields.ContainsKey("locationDisplay") ? result["locationDisplay"] : String.Empty,
                     JobType = result.Fields.ContainsKey("jobType") ? result["jobType"] : String.Empty,
                     ContractType = result.Fields.ContainsKey("contractType") ? result["contractType"] : String.Empty,
-                    Department = result.Fields.ContainsKey("department") ? result["department"] : String.Empty
+                    Department = result.Fields.ContainsKey("department") ? result["department"] : String.Empty,
+                    WorkPattern = new WorkPattern()
+                    {
+                        IsFullTime = result.Fields.ContainsKey("fullTime") && result["fullTime"].ToUpperInvariant() == "TRUE",
+                        IsPartTime = result.Fields.ContainsKey("partTime") && result["partTime"].ToUpperInvariant() == "TRUE"
+                    } 
                 };
 
                 job.Salary.SalaryRange = result.Fields.ContainsKey("salary") ? result["salary"] : String.Empty;

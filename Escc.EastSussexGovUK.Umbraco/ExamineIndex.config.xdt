@@ -19,6 +19,7 @@
       <add Name="contractType" />
       <add Name="fullTime" />
       <add Name="partTime" />
+      <add Name="workPattern" EnableSorting="true" Type="STRING" />
       <add Name="department" />
       <add Name="fullText" />
     </IndexUserFields>
@@ -43,6 +44,7 @@
       <add Name="contractType" />
       <add Name="fullTime" />
       <add Name="partTime" />
+      <add Name="workPattern" EnableSorting="true" Type="STRING" />
       <add Name="department" />
       <add Name="fullText" />
     </IndexUserFields>

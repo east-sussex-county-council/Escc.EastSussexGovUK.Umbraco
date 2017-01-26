@@ -2,7 +2,7 @@
 .jobs-search { bottom: 1.894737em;width: 96.4%; }
 
 /* Job search results */
-.job-results .organisation {display: table-cell; }
+.jobs-content .job-results .organisation, .jobs-content .job-results .work-pattern {display: table-cell; }
 
 /* Buttons on the jobs home page - Context is (10 cols - 2 gutters = 766), subtract a gutter for the margin and divide by two */
 .article .jobs-buttons li.feature { width: 48.58934%; }

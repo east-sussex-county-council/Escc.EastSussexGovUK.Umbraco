@@ -18,8 +18,8 @@
 .job-results tr { display: table-row; line-height: inherit; padding-bottom: 0; border-bottom: none; }
 .job-results td.closing-date span { display: none;}
 
-/* Still hide organisation column */
-.job-results .organisation {display: none; }
+/* Still hide some columns, but now we need to override the table styles above */
+.jobs-content .job-results .organisation, .jobs-content .job-results .work-pattern {display: none; }
 
 /* Buttons on the jobs home page - Context is (10 cols - 2 gutters = 766), subtract a gutter for the margin and divide by two */
 .jobs-buttons li.feature { float: left;margin-bottom: .947368em;width: 48.825065%; }
