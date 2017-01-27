@@ -1,4 +1,5 @@
-﻿@using Escc.Dates
+﻿@using System.Globalization
+@using Escc.Dates
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.RssViewModel<Escc.EastSussexGovUK.Umbraco.Jobs.Job>>
 @{
     Layout = null;
@@ -28,10 +29,15 @@
         var url = "<link>" + HttpUtility.HtmlEncode(job.Url) + "</link>";
         <item>
             <title>@job.JobTitle</title>
-            <description>@job.Salary.SalaryRange in @job.Location. Closing date @job.ClosingDate.Value.ToBritishDate(). @job.Organisation vacancy.</description>
+            <description>@job.WorkPattern @job.ContractType.ToLower(CultureInfo.CurrentCulture) @job.Salary.SalaryRange in @job.Location. Closing date @job.ClosingDate.Value.ToBritishDate(). @job.Organisation / @job.JobType vacancy.</description>
             @Html.Raw(url)
             <guid ispermalink="false">https://www.eastsussex.gov.uk/id/job-advert/@job.Id</guid>
-            <source url="@Request.Url" />
+            <source url="@Request.Url"/>
+            <category>@job.Location</category>
+            <category>@job.ContractType</category>
+            <category>@job.JobType</category>
+            <category>@job.Organisation</category>
+            <category>@job.WorkPattern</category>
         </item>
     }
     </channel>

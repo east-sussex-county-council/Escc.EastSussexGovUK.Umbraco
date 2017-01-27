@@ -16,6 +16,7 @@
       <add Name="salarySort" EnableSorting="true" Type="STRING" />
       <add Name="closingDate" EnableSorting="true" Type="STRING" />
       <add Name="jobType" />
+      <add Name="jobTypeDisplay" />
       <add Name="contractType" />
       <add Name="fullTime" />
       <add Name="partTime" />
@@ -43,6 +44,7 @@
       <add Name="salarySort" EnableSorting="true" Type="STRING" />
       <add Name="closingDate" EnableSorting="true" Type="STRING" />
       <add Name="jobType" />
+      <add Name="jobTypeDisplay" />
       <add Name="contractType" />
       <add Name="fullTime" />
       <add Name="partTime" />
