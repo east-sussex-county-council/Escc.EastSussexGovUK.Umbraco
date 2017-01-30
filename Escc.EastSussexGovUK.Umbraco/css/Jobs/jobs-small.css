@@ -26,15 +26,15 @@
 /* Arrange .feature-tile instances (from sitewide styles) into a list */
 ul.job-tiles { margin: 0; padding: 0; }
 
-/*** END DRAFT FEATURE LAYOUT ***/
-
 /* Job search results */
+.jobs-content .pagingPages { margin: 0; }
 .job-results th, .job-results td { display: inline-block;border: none; }
 .job-results td { padding: 0;}
 .job-results tr { display: block; line-height: 1.125em;padding-bottom: 1em; margin-bottom: 1em;border-bottom: 1px solid #ccc; }
 .job-results td.job-title { display: block;margin-bottom: 9px; }
-.job-results thead, .job-results .organisation {display: none; }
+.job-results thead {display: none; }
 .job-results td.location, .job-results td.salary, .job-results td.closing-date { display: block; }
+.job-results td.work-pattern, .job-results td.closing-date { white-space: nowrap; }
 
 /* Login - space around links */
 #chpLogForgot { margin: 1.125em 0 0; }

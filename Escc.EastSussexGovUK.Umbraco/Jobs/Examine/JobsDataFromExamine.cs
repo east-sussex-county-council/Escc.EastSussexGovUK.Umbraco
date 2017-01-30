@@ -93,10 +93,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 case JobSearchQuery.JobsSortOrder.JobTitleDescending:
                     sortField = "title";
                     break;
-                case JobSearchQuery.JobsSortOrder.OrganisationAscending:
-                case JobSearchQuery.JobsSortOrder.OrganisationDescending:
-                    sortField = "organisation";
-                    break;
                 case JobSearchQuery.JobsSortOrder.LocationAscending:
                 case JobSearchQuery.JobsSortOrder.LocationDescending:
                     sortField = "locationDisplay";
@@ -119,7 +115,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             switch (query.SortBy)
             {
                 case JobSearchQuery.JobsSortOrder.JobTitleAscending:
-                case JobSearchQuery.JobsSortOrder.OrganisationAscending:
                 case JobSearchQuery.JobsSortOrder.LocationAscending:
                 case JobSearchQuery.JobsSortOrder.SalaryRangeAscending:
                 case JobSearchQuery.JobsSortOrder.WorkPatternAscending:
@@ -134,7 +129,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                     }
                     break;
                 case JobSearchQuery.JobsSortOrder.JobTitleDescending:
-                case JobSearchQuery.JobsSortOrder.OrganisationDescending:
                 case JobSearchQuery.JobsSortOrder.LocationDescending:
                 case JobSearchQuery.JobsSortOrder.SalaryRangeDescending:
                 case JobSearchQuery.JobsSortOrder.WorkPatternDescending:

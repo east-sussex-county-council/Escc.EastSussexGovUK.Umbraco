@@ -81,7 +81,6 @@
                 <thead>
                 <tr>
                     <th class="job-title"><a href="@urlWithoutSort@(sort == JobSearchQuery.JobsSortOrder.JobTitleAscending ? "jobtitledescending" : "jobtitleascending")">Job title</a></th>
-                    <th class="organisation"><a href="@urlWithoutSort@(sort == JobSearchQuery.JobsSortOrder.OrganisationAscending ? "organisationdescending" : "organisationascending")">Organisation</a></th>
                     <th class="location"><a href="@urlWithoutSort@(sort == JobSearchQuery.JobsSortOrder.LocationAscending ? "locationdescending" : "locationascending")">Location</a></th>
                     <th class="salary"><a href="@urlWithoutSort@(sort == JobSearchQuery.JobsSortOrder.SalaryRangeAscending ? "salaryrangedescending" : "salaryrangeascending")">Salary range</a></th>
                     <th class="work-pattern"><a href="@urlWithoutSort@(sort == JobSearchQuery.JobsSortOrder.WorkPatternAscending ? "workpatterndescending" : "workpatternascending")">Work pattern</a></th>
@@ -100,11 +99,10 @@
                         {
                             <td class="job-title">@job.JobTitle</td>
                         }
-                        <td class="organisation">@job.Organisation</td>
                         <td class="location">@job.Location</td>
                         <td class="salary">@job.Salary.SalaryRange</td>
                         <td class="work-pattern">@job.WorkPattern</td>
-                        <td class="closing-date"><span>Closes </span>@(job.ClosingDate.HasValue ? job.ClosingDate.Value.ToBritishDate() : String.Empty)</td>
+                        <td class="closing-date"><span>Closes </span>@(job.ClosingDate.HasValue ? job.ClosingDate.Value.ToShortBritishDate() : String.Empty)</td>
                     </tr>
                 }
                 </tbody>

@@ -19,7 +19,7 @@
 .job-results td.closing-date span { display: none;}
 
 /* Still hide some columns, but now we need to override the table styles above */
-.jobs-content .job-results .organisation, .jobs-content .job-results .work-pattern {display: none; }
+.jobs-content .job-results .work-pattern {display: none; }
 
 /* Tiles on the jobs home page - Context is (10 cols - 2 gutters = 766), subtract a gutter for the margin and divide by two */
 .job-tiles li.feature-tile { float: left;margin-bottom: .947368em;width: 48.825065%; }
