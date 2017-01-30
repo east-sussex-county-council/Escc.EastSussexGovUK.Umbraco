@@ -13,6 +13,7 @@
     Html.RequiresCss("~/css/jobs/jobs-medium.css", MediaQueryAlias.Resolve("Medium"));
     Html.RequiresCss("~/css/jobs/jobs-large.css", MediaQueryAlias.Resolve("Large"));
     Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=JobsCss&media-query=small", 101);
+    Html.RequiresJs("~/js/job-advert.js");
 }
 @section Breadcrumb {}
 @Html.Partial("~/Views/JobsHeader.cshtml", Model)
@@ -25,7 +26,7 @@
 @if (!String.IsNullOrEmpty(Model.Job.Reference))
 {
     <dt>Job reference</dt>
-    <dd>@Model.Job.Reference</dd>
+    <dd id="job-reference">@Model.Job.Reference</dd>
 }
  @if (!String.IsNullOrEmpty(Model.Job.Location))
  {

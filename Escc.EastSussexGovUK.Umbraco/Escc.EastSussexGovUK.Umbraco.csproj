@@ -675,6 +675,7 @@
     <Content Include="Config\BaseRestExtensions.config" />
     <Content Include="Config\applications.config" />
     <Content Include="Config\404handlers.config" />
+    <Content Include="js\job-advert.js" />
     <Content Include="MarriageSkin\css\min\marriage-skin-medium.css" />
     <Content Include="MarriageSkin\css\min\marriage-skin-small.css" />
     <Content Include="MarriageSkin\img\web.config" />
