@@ -59,8 +59,20 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 var jobsProvider = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.ExamineSearcher], viewModel.JobAdvertPage?.Url);
 
                 var jobs = Task.Run(async () => await jobsProvider.ReadJobs(viewModel.Query)).Result;
-                var page = String.IsNullOrWhiteSpace(Request.QueryString["page"]) ? 1 : Int32.Parse(Request.QueryString["page"]);
-                viewModel.Jobs = jobs.ToPagedList(page, 10);
+                if (String.IsNullOrWhiteSpace(Request.QueryString["page"]))
+                {
+                    viewModel.Jobs = jobs.ToPagedList(1, 10);
+                }
+                else if (Request.QueryString["page"].ToUpperInvariant() == "ALL")
+                {
+                    viewModel.Jobs = jobs.ToPagedList(1, 10000);
+                }
+                else
+                {
+                    int page = 1;
+                    Int32.TryParse(Request.QueryString["page"], out page);
+                    viewModel.Jobs = jobs.ToPagedList(page, 10);
+                }
 
                 if (viewModel.Metadata.RssFeedUrl != null)
                 {
@@ -73,7 +85,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 }
             }
 
-            // new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" });
+            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" });
 
             return CurrentTemplate(viewModel);
         }

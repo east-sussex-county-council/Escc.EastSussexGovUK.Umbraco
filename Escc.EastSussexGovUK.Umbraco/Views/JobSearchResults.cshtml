@@ -38,10 +38,7 @@
 
     var pagingHtml = Html.PagedListPager(Model.Jobs, page => urlWithoutPage + page, new PagedListRenderOptions() { DisplayLinkToFirstPage = PagedListDisplayMode.Never, DisplayLinkToLastPage = PagedListDisplayMode.Never, LinkToPreviousPageFormat = "&lt; Prev", LinkToNextPageFormat = "Next &gt;", DisplayItemSliceAndTotal = true, ItemSliceAndTotalFormat = "{0}–{1} of {2} results", MaximumPageNumbersToDisplay = 5, ContainerDivClasses = new[] { "infoBar" }, UlElementClasses = new[] { "pagingPages" } }).ToHtmlString();
     pagingHtml = Regex.Replace(pagingHtml, "(<ul class=\"pagingPages\">.*)<li class=\"disabled PagedList-pageCountAndLocation\"><a>(.*?)</a></li>", "<div class=\"pagingResultsInContext\">$2</div>$1");
-    if (Model.Jobs.TotalItemCount <= 10)
-    {
-        pagingHtml = Regex.Replace(pagingHtml, "<ul class=\"pagingPages\">.*?</ul>", String.Empty);
-    }
+    pagingHtml = pagingHtml.Replace("<ul class=\"pagingPages\"><li class=\"active\"><span>1</span></li></ul>", String.Empty);
 }
 @section Breadcrumb {}
 @Html.Partial("~/Views/JobsHeader.cshtml", Model)
@@ -74,9 +71,9 @@
             <p>Job reference: @Model.Query.JobReference</p>
         }
 
-        @Html.Raw(pagingHtml)
         @if (Model.Jobs.Count > 0)
         {
+            @Html.Raw(pagingHtml)
             <table class="job-results">
                 <thead>
                 <tr>
@@ -107,12 +104,16 @@
                 }
                 </tbody>
             </table>
+            @Html.Raw(pagingHtml)
+            if (String.IsNullOrEmpty(Request.QueryString["page"]) || Request.QueryString["page"].ToUpperInvariant() != "ALL")
+            {
+                <p><a href="@(urlWithoutPage)all">View all results</a></p>
+            }
         }
         else
         {
             <p>Sorry, there are no jobs at the moment matching your search.</p>
         }
-        @Html.Raw(pagingHtml)
 
 
         @if (Model.JobAlertsPage != null)
