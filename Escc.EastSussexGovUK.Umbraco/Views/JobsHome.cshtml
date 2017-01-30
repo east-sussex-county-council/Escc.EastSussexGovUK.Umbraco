@@ -9,7 +9,9 @@
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
     Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));
+    Html.RequiresCss(CssFileAlias.Resolve("TilesSmall"));
     Html.RequiresCss(CssFileAlias.Resolve("FormsMedium"), MediaQueryAlias.Resolve("Medium"));
+    Html.RequiresCss(CssFileAlias.Resolve("TilesMedium"), MediaQueryAlias.Resolve("Medium"));
     Html.RequiresCss(CssFileAlias.Resolve("FormsLarge"), MediaQueryAlias.Resolve("Large"));
     Html.RequiresCss("~/css/jobs/jobs-small.css");
     Html.RequiresCss("~/css/jobs/jobs-medium.css", MediaQueryAlias.Resolve("Medium"));
@@ -31,7 +33,7 @@
     {
         <div class="@(showSocialMedia ? "article" : "full-page")">
             <div class="text-content content">
-                <ul class="jobs-buttons">
+                <ul class="job-tiles">
                     @{
                         var imagesOrLinks = (Model.TileNavigation.Count > Model.TileImages.Count) ? Model.TileNavigation.Count : Model.TileImages.Count;
                         for (var i = 0; i < imagesOrLinks; i++)
@@ -49,15 +51,15 @@
                             var group = "group" + ((i%3) + 1);
                             if (link == null)
                             {
-                                <li class="feature @oddOrEven @group"><img src="@image.ImageUrl" alt="@image.AlternativeText" width="@image.Width" /></li>
+                                <li class="feature-tile @oddOrEven @group"><img src="@image.ImageUrl" alt="@image.AlternativeText" width="@image.Width" /></li>
                             }
                             else if (String.IsNullOrEmpty(link.Text))
                             {
-                                <li class="feature @oddOrEven @group"><a href="@link.Url"><img src="@image.ImageUrl" alt="@image.AlternativeText" width="@image.Width" /></a></li>
+                                <li class="feature-tile @oddOrEven @group"><a href="@link.Url"><img src="@image.ImageUrl" alt="@image.AlternativeText" width="@image.Width" /></a></li>
                             }
                             else if (link.Url == null)
                             {
-                                <li class="feature @oddOrEven @group">
+                                <li class="feature-tile @oddOrEven @group">
                                     <img src="@image.ImageUrl" alt="@image.AlternativeText" width="@image.Width" />
                                     <div class="caption">
                                         <p><span>@link.Text</span></p>
@@ -66,7 +68,7 @@
                             }
                             else
                             {
-                                <li class="feature @oddOrEven @group">
+                                <li class="feature-tile @oddOrEven @group">
                                     <a href="@link.Url">
                                         <img src="@image.ImageUrl" alt="@image.AlternativeText" width="@image.Width" />
                                         <div class="caption">

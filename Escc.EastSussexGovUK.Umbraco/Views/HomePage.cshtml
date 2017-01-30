@@ -13,10 +13,12 @@
 
     Html.RequiresCss(CssFileAlias.Resolve("HomeSmall"));
     Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));
+    Html.RequiresCss(CssFileAlias.Resolve("TilesSmall"));
     Html.RequiresJs(JsFileAlias.Resolve("Home"), 100);
     if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)
     {
         Html.RequiresCss(CssFileAlias.Resolve("FormsMedium"), MediaQueryAlias.Resolve("Medium"));
+        Html.RequiresCss(CssFileAlias.Resolve("TilesMedium"), MediaQueryAlias.Resolve("Medium"));
         Html.RequiresCss(CssFileAlias.Resolve("HomeMedium"), MediaQueryAlias.Resolve("Medium"));
         Html.RequiresCss(CssFileAlias.Resolve("FormsLarge"), MediaQueryAlias.Resolve("Large"));
         Html.RequiresCss(CssFileAlias.Resolve("HomeLarge"), MediaQueryAlias.Resolve("Large"));
@@ -106,7 +108,7 @@
                 @{
                     for (var i = 0; i < Model.NewsItems.Count; i++)
                     {
-                        <li class="feature feature@(i+1)">
+                        <li class="feature-tile feature@(i+1)">
                             @Html.Partial("~/Views/_HomePageNewsItem.cshtml", @Model.NewsItems[i])
                         </li>
                     }

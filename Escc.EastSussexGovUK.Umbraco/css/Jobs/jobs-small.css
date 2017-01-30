@@ -2,10 +2,6 @@
 .body .container { padding-top: 0;}
 .header { border-bottom: none;}
 
-/* Fix paging layout - needs to go into sitewide styles */
-ul.pagingPages { margin: 0;}
-.pagingPages li { display: inline;list-style: none;margin-right:.2em;}
-
 /* .jobs-header is the positioning context for the search box on the jobs home page.
    .jobs-header .context is the positioning context for the logo and login links
 */
@@ -27,24 +23,8 @@ ul.pagingPages { margin: 0;}
 /* One line space between the header and content */
 .jobs-content { padding-top: 1.125em; }
 
-/*** DRAFT: MAKE THIS A SHARED COMPONENT WITH THE HOME PAGE ***/
-/* News feature story. A single link surrounds the whole feature so that hovering over it highlights the link text. */
-ul.jobs-buttons { margin: 0; padding: 0;background: #fff; }
-.jobs-buttons li { list-style: none;}
-.jobs-buttons .feature, .jobs-buttons .feature a:link, .jobs-buttons .feature a:visited { text-decoration: none; color: #fff; }
-.jobs-buttons .feature a:hover, .jobs-buttons .feature a:focus, .jobs-buttons .feature a:active { text-decoration: underline; }
-
-/* The image is display: block to remove a space after, and can't be wider than the screen. The containing
-   list-item also has a server-generated max-width to ensure the caption can't extend beyond the image. 
-   Caption is 16px on 18px font, absolutely positioned within the feature item.
-*/
-.jobs-buttons .feature { position: relative; list-style: none; margin: 0 0 .692308em;}
-.jobs-buttons .feature img {width: 100%; max-width: 100%; display: block; }
-@media screen {
-    .jobs-buttons .caption { position: absolute; bottom: 0; width: 100%; background-color: #003c69; background-color: rgba(0, 78, 126, .8); font-size: 1em; line-height: 1.125em; font-weight: bold; }
-    .jobs-buttons .caption p { padding: 0 3%; }
-    .jobs-buttons .caption span { padding: 0 20px 0 0; background: url(https://www.eastsussex.gov.uk/img/body/item-type.png) no-repeat right -1091px; }
-}
+/* Arrange .feature-tile instances (from sitewide styles) into a list */
+ul.job-tiles { margin: 0; padding: 0; }
 
 /*** END DRAFT FEATURE LAYOUT ***/
 

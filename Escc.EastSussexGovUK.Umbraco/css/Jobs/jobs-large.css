@@ -4,14 +4,14 @@
 /* Job search results */
 .jobs-content .job-results .organisation, .jobs-content .job-results .work-pattern {display: table-cell; }
 
-/* Buttons on the jobs home page - Context is (10 cols - 2 gutters = 766), subtract a gutter for the margin and divide by two */
-.article .jobs-buttons li.feature { width: 48.58934%; }
-.article .jobs-buttons li.odd {margin-left: 0; margin-right: 2.821317%;}
+/* Tiles on the jobs home page - Context is (10 cols - 2 gutters = 766), subtract a gutter for the margin and divide by two */
+.article .job-tiles li.feature-tile { width: 48.58934%; }
+.article .job-tiles li.odd {margin-left: 0; margin-right: 2.821317%;}
 
-/* Buttons on the jobs home page - Context is (12 cols - 2 gutters = 930), subtract 2 gutters and divide by three */
-.full-page .jobs-buttons li.feature {margin-left: 0;width: 32.043011%; }
-.full-page .jobs-buttons li.group1, .full-page .jobs-buttons li.group2 {  margin-right: 1.935484%; }
-.full-page .jobs-buttons li.group3 { margin-right: 0;}
+/* Tiles on the jobs home page - Context is (12 cols - 2 gutters = 930), subtract 2 gutters and divide by three */
+.full-page .job-tiles li.feature-tile {margin-left: 0;width: 32.043011%; }
+.full-page .job-tiles li.group1, .full-page .job-tiles li.group2 {  margin-right: 1.935484%; }
+.full-page .job-tiles li.group3 { margin-right: 0;}
 
 /* Social media on the jobs home page - add a right margin to align with elements in the header */
 .supporting-jobs .large { margin-right: 5.806452%; }

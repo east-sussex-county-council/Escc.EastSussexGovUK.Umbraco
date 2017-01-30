@@ -1,8 +1,6 @@
 ﻿/* Now inside 10 cols, so adjust spacing */
 .top-tasks .gutters, .report-apply-pay .gutters, .library-search.gutters, .features.gutters { padding: 0 2.244389%; }
 
-.top-tasks h2 {  }
-
 /* Inside top task boxes, two 3 col wide lists of links, but widths adjusted to allow margins on lists which give 14px padding with 18px gutter between. 
    9px above and below lists is one line space. */
 .top-tasks, .report-apply-pay, .library-search { overflow: hidden; }
@@ -15,7 +13,7 @@
 .news { clear: none; }
 .features h2 { margin-top: .3em; }
 .news ol { overflow: hidden; margin: 0 0 .947368em; }
-.news .feature { margin-left: 0; }
+.news .feature-tile { margin-left: 0; }
 .news .feature1 { width: 49.8%; float: left; margin-right: 4px; }
 .news .feature2 { width: 49.8%; float: left; }
 

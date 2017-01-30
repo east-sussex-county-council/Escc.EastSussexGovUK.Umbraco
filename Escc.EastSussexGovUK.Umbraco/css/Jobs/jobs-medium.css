@@ -21,9 +21,9 @@
 /* Still hide some columns, but now we need to override the table styles above */
 .jobs-content .job-results .organisation, .jobs-content .job-results .work-pattern {display: none; }
 
-/* Buttons on the jobs home page - Context is (10 cols - 2 gutters = 766), subtract a gutter for the margin and divide by two */
-.jobs-buttons li.feature { float: left;margin-bottom: .947368em;width: 48.825065%; }
-.jobs-buttons li.odd { margin-right: 2.349869%;}
+/* Tiles on the jobs home page - Context is (10 cols - 2 gutters = 766), subtract a gutter for the margin and divide by two */
+.job-tiles li.feature-tile { float: left;margin-bottom: .947368em;width: 48.825065%; }
+.job-tiles li.odd { margin-right: 2.349869%;}
 
 /* Login - space around links */
 #chpLogForgot { margin: .947368em 0 0; }

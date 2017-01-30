@@ -39,25 +39,10 @@
 .news .feed { left: auto; right: 0; }
 .features h2 { margin-top: .346154em; }
 
-/* News feature story. A single link surrounds the whole feature so that hovering over it highlights the link text. */
-.news .feature a:link, .news .feature a:visited { text-decoration: none; color: #fff; }
-.news .feature a:hover, .news .feature a:focus, .news .feature a:active { text-decoration: underline; }
-
-/* The image is display: block to remove a space after, and can't be wider than the screen. The containing
-   list-item also has a server-generated max-width to ensure the caption can't extend beyond the image. 
-   Caption is 16px on 18px font, absolutely positioned within the feature item.
-*/
-.news .feature { position: relative; list-style: none; margin: 0 0 .692308em;}
-.ie6 .news .feature { display: inline-block; }
-.news .feature img { max-width: 100%; display: block; }
-.ie6 .news .feature img { width: 100%; }
+/* News: customises sitewide tiles CSS.
+   The containing list-item also has a server-generated max-width to ensure the caption can't extend beyond the image. */
 @media screen {
-    .news .feature { max-width: 236px; }
-    .news .caption { position: absolute; bottom: 0; width: 100%; background-color: #003c69; background-color: rgba(0, 78, 126, .8); font-size: 1em; line-height: 1.125em; font-weight: bold; }
-    .ie67 .news .caption { background-color: #003c69; }
-    .news .caption p { padding: 0 3%; }
-    .news .caption span { padding: 0 20px 0 0; background: url(/img/body/item-type.png) no-repeat right -1091px; }
-    .ie67 .news .caption span { background: none; }
+    .news .feature-tile { max-width: 236px; }
 }
 
 /* li.first removes the border from the top .headline, to stop it showing when there's a feature */
