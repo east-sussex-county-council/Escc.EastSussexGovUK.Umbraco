@@ -183,7 +183,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.EditorTools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.EditorTools.1.2.1\lib\Escc.Umbraco.EditorTools.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.EditorTools.1.2.2\lib\Escc.Umbraco.EditorTools.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.HeatmapAnalytics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -550,22 +550,6 @@
     <Content Include="apple-touch-icon-precomposed-72x72.png" />
     <Content Include="apple-touch-icon-precomposed.png" />
     <Content Include="apple-touch-icon.png" />
-    <Content Include="App_Plugins\EditorTools\backoffice\EditorToolsTree\create.html" />
-    <Content Include="App_Plugins\EditorTools\backoffice\EditorToolsTree\currentUsersView.html" />
-    <Content Include="App_Plugins\EditorTools\backoffice\EditorToolsTree\disabledUsersView.html" />
-    <Content Include="App_Plugins\EditorTools\backoffice\EditorToolsTree\documentTypeUsageView.html" />
-    <Content Include="App_Plugins\EditorTools\backoffice\EditorToolsTree\edit.html" />
-    <Content Include="App_Plugins\EditorTools\backoffice\EditorToolsTree\exportToCSVView.html" />
-    <Content Include="App_Plugins\EditorTools\backoffice\EditorToolsTree\mediaSearchView.html" />
-    <Content Include="App_Plugins\EditorTools\backoffice\EditorToolsTree\pageExpiryReportView.html" />
-    <Content Include="App_Plugins\EditorTools\CurrentUsers.html" />
-    <Content Include="App_Plugins\EditorTools\DisabledUsers.html" />
-    <Content Include="App_Plugins\EditorTools\DocumentTypeUsage.html" />
-    <Content Include="App_Plugins\EditorTools\ExportToCSV.html" />
-    <Content Include="App_Plugins\EditorTools\lang\en-US.xml" />
-    <Content Include="App_Plugins\EditorTools\lang\en.xml" />
-    <Content Include="App_Plugins\EditorTools\MediaSearch.html" />
-    <Content Include="App_Plugins\EditorTools\PageExpiryReport.html" />
     <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.controller.js" />
     <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.html" />
     <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.resource.js" />
@@ -765,7 +749,7 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
-    <Content Include="Content\PagedList.css" />
+    <None Include="Content\PagedList.css" />
     <Content Include="css\CampaignTemplates\align-buttons-large.css" />
     <Content Include="css\CampaignTemplates\align-buttons-medium.css" />
     <Content Include="css\CampaignTemplates\align-buttons-reset-flex.css" />
@@ -951,8 +935,8 @@
     <Content Include="scripts\DataTables\responsive.jqueryui.min.js" />
     <Content Include="scripts\DataTables\responsive.semanticui.js" />
     <Content Include="scripts\DataTables\responsive.semanticui.min.js" />
-    <Content Include="scripts\jquery-1.7.js" />
-    <Content Include="scripts\jquery-1.7.min.js" />
+    <None Include="scripts\jquery-1.7.js" />
+    <None Include="scripts\jquery-1.7.min.js" />
     <Content Include="Umbraco\Actions\delete.aspx" />
     <Content Include="Umbraco\Actions\editContent.aspx" />
     <Content Include="Umbraco\Actions\preview.aspx" />
@@ -4144,7 +4128,7 @@
     <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
-    <Error Condition="!Exists('..\packages\Escc.Umbraco.EditorTools.1.2.1\build\Escc.Umbraco.EditorTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.EditorTools.1.2.1\build\Escc.Umbraco.EditorTools.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.EditorTools.1.2.2\build\Escc.Umbraco.EditorTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.EditorTools.1.2.2\build\Escc.Umbraco.EditorTools.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.Schools.TermDates.Website.1.2.1\build\Escc.Schools.TermDates.Website.targets" Condition="Exists('..\packages\Escc.Schools.TermDates.Website.1.2.1\build\Escc.Schools.TermDates.Website.targets')" />
   <Import Project="..\packages\UmbracoCms.7.4.3\build\UmbracoCms.targets" Condition="Exists('..\packages\UmbracoCms.7.4.3\build\UmbracoCms.targets')" />
@@ -4159,7 +4143,7 @@
     <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
     <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
   </Target>
-  <Import Project="..\packages\Escc.Umbraco.EditorTools.1.2.1\build\Escc.Umbraco.EditorTools.targets" Condition="Exists('..\packages\Escc.Umbraco.EditorTools.1.2.1\build\Escc.Umbraco.EditorTools.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.EditorTools.1.2.2\build\Escc.Umbraco.EditorTools.targets" Condition="Exists('..\packages\Escc.Umbraco.EditorTools.1.2.2\build\Escc.Umbraco.EditorTools.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
