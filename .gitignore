@@ -44,8 +44,6 @@ Microsoft.CodeDom.Providers.DotNetCompilerPlatform.*
 [Uu]mbraco_Client/
 [Aa]pp_Data/
 [Aa]pp_Browsers/
-Escc.EastSussexGovUK.Umbraco/App_Plugins/Escc.Umbraco.PropertyEditors.*/*
-Escc.EastSussexGovUK.Umbraco/App_Plugins/Escc.Umbraco.DataTypes.MediaUsage
 Escc.EastSussexGovUK.Umbraco/App_Plugins/ModelsBuilder
 Escc.EastSussexGovUK.Umbraco.Tests/App_Plugins/
 [Ii]nstall/
@@ -58,7 +56,7 @@ dummy.txt
 *.config.js
 */Views/Partials/Grid/*
 
-# Files imported by ESCC NuGet packages
+# Files imported by NuGet packages
 **/TinyMCE-*.css
 !**/TinyMCE-StyleSelector-Embed.css
 */Views/TermDates/*
@@ -68,3 +66,8 @@ dummy.txt
 */js/libs/*
 */MarriageSkin/*
 */EastSussexGovUK/*
+Escc.EastSussexGovUK.Umbraco/App_Plugins/Escc.Umbraco.PropertyEditors.*/*
+Escc.EastSussexGovUK.Umbraco/App_Plugins/Escc.Umbraco.DataTypes.MediaUsage
+Escc.EastSussexGovUK.Umbraco/App_Plugins/EditorTools/*
+DataTables
+scripts
