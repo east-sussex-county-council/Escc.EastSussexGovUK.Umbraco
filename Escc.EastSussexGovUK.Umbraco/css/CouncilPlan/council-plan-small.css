@@ -113,3 +113,7 @@ object img.image-map { max-width: none; }
 
 /* Heading spacing not required in tables (headings not required, but they get used anyway) */
 .plan-content table h2, .plan-content table h3, .monitoring table h2, .monitoring table h3 { margin: 0; }
+
+/* Image Captions for Topic Pages */
+.additional_content .caption{ font-size: 0.75em; text-align: center; } 
+.images .caption{ font-size: 0.75em; text-align: center; } 

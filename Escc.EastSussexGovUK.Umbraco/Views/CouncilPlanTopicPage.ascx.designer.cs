@@ -58,6 +58,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Views {
         protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl phContent01;
         
         /// <summary>
+        /// additional_content control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl additional_content;
+        
+        /// <summary>
         /// phImage09 control.
         /// </summary>
         /// <remarks>
@@ -65,6 +74,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Views {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.XhtmlImagePlaceholderControl phImage09;
+        
+        /// <summary>
+        /// phCaption09 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl phCaption09;
         
         /// <summary>
         /// phContent04 control.
@@ -85,6 +103,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Views {
         protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.XhtmlImagePlaceholderControl phImage10;
         
         /// <summary>
+        /// phCaption10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl phCaption10;
+        
+        /// <summary>
         /// phContent05 control.
         /// </summary>
         /// <remarks>
@@ -101,6 +128,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Views {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.XhtmlImagePlaceholderControl phImage11;
+        
+        /// <summary>
+        /// phCaption11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl phCaption11;
         
         /// <summary>
         /// phContent06 control.
@@ -121,6 +157,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Views {
         protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.XhtmlImagePlaceholderControl phImage12;
         
         /// <summary>
+        /// phCaption12 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl phCaption12;
+        
+        /// <summary>
         /// phContent07 control.
         /// </summary>
         /// <remarks>
@@ -137,6 +182,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Views {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.XhtmlImagePlaceholderControl phImage13;
+        
+        /// <summary>
+        /// phCaption13 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl phCaption13;
         
         /// <summary>
         /// phContent08 control.
@@ -157,6 +211,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Views {
         protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.XhtmlImagePlaceholderControl phImage14;
         
         /// <summary>
+        /// phCaption14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl phCaption14;
+        
+        /// <summary>
         /// phContent09 control.
         /// </summary>
         /// <remarks>
@@ -173,6 +236,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Views {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.XhtmlImagePlaceholderControl phImage15;
+        
+        /// <summary>
+        /// phCaption15 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl phCaption15;
         
         /// <summary>
         /// phContent10 control.
@@ -310,6 +382,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Views {
         protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.XhtmlImagePlaceholderControl image1;
         
         /// <summary>
+        /// RichHtmlPlaceholderControl1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl RichHtmlPlaceholderControl1;
+        
+        /// <summary>
         /// image2 control.
         /// </summary>
         /// <remarks>
@@ -317,6 +398,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Views {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.XhtmlImagePlaceholderControl image2;
+        
+        /// <summary>
+        /// RichHtmlPlaceholderControl2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl RichHtmlPlaceholderControl2;
         
         /// <summary>
         /// image3 control.
@@ -328,6 +418,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Views {
         protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.XhtmlImagePlaceholderControl image3;
         
         /// <summary>
+        /// RichHtmlPlaceholderControl3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl RichHtmlPlaceholderControl3;
+        
+        /// <summary>
         /// image4 control.
         /// </summary>
         /// <remarks>
@@ -335,5 +434,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Views {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.XhtmlImagePlaceholderControl image4;
+        
+        /// <summary>
+        /// RichHtmlPlaceholderControl4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl RichHtmlPlaceholderControl4;
     }
 }
