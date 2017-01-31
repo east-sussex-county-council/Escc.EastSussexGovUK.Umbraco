@@ -5,8 +5,10 @@
     <IndexUserFields>
       <add Name="id" />
       <add Name="reference" />
-      <add Name="title" EnableSorting="true" Type="STRING" />
+      <add Name="title" />
+      <add Name="titleDisplay" EnableSorting="true" Type="STRING" />
       <add Name="organisation" />
+      <add Name="organisationDisplay" />
       <add Name="location" />
       <add Name="locationDisplay" EnableSorting="true" Type="STRING" />
       <add Name="salary" />
@@ -22,6 +24,7 @@
       <add Name="partTime" />
       <add Name="workPattern" EnableSorting="true" Type="STRING" />
       <add Name="department" />
+      <add Name="departmentDisplay" />
       <add Name="fullText" />
       <add Name="fullHtml" />
       <add Name="applyUrl" />
@@ -33,8 +36,10 @@
     <IndexUserFields>
       <add Name="id" />
       <add Name="reference" />
-      <add Name="title" EnableSorting="true" Type="STRING" />
+      <add Name="title" />
+      <add Name="titleDisplay" EnableSorting="true" Type="STRING" />
       <add Name="organisation" />
+      <add Name="organisationDisplay" />
       <add Name="location" />
       <add Name="locationDisplay" EnableSorting="true" Type="STRING" />
       <add Name="salary" />
@@ -50,6 +55,7 @@
       <add Name="partTime" />
       <add Name="workPattern" EnableSorting="true" Type="STRING" />
       <add Name="department" />
+      <add Name="departmentDisplay" />
       <add Name="fullText" />
       <add Name="fullHtml" />
       <add Name="applyUrl" />

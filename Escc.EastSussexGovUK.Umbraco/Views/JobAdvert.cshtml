@@ -18,10 +18,12 @@
 @section Breadcrumb {}
 @Html.Partial("~/Views/JobsHeader.cshtml", Model)
 
-<div class="jobs-content">
+<div class="jobs-content job-advert">
+    <div class="content text-content">
+        <h1>@Model.Metadata.Title</h1>
+    </div>
     <div class="article">
         <div class="content text-content">
-            <h1>@Model.Metadata.Title</h1>
             <dl>
 @if (!String.IsNullOrEmpty(Model.Job.Reference))
 {

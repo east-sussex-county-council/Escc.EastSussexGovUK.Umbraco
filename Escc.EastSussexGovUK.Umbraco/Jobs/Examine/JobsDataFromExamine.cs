@@ -91,7 +91,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             {
                 case JobSearchQuery.JobsSortOrder.JobTitleAscending:
                 case JobSearchQuery.JobsSortOrder.JobTitleDescending:
-                    sortField = "title";
+                    sortField = "titleDisplay";
                     break;
                 case JobSearchQuery.JobsSortOrder.LocationAscending:
                 case JobSearchQuery.JobsSortOrder.LocationDescending:
@@ -168,12 +168,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 {
                     Id = result.Fields.ContainsKey("id") ? result["id"] : String.Empty,
                     Reference = result.Fields.ContainsKey("reference") ? result["reference"] : String.Empty,
-                    JobTitle = result.Fields.ContainsKey("title") ? result["title"] : String.Empty,
-                    Organisation = result.Fields.ContainsKey("organisation") ? result["organisation"] : String.Empty,
+                    JobTitle = result.Fields.ContainsKey("titleDisplay") ? result["titleDisplay"] : String.Empty,
+                    Organisation = result.Fields.ContainsKey("organisationDisplay") ? result["organisationDisplay"] : String.Empty,
                     Location = result.Fields.ContainsKey("locationDisplay") ? result["locationDisplay"] : String.Empty,
                     JobType = result.Fields.ContainsKey("jobTypeDisplay") ? result["jobTypeDisplay"] : String.Empty,
                     ContractType = result.Fields.ContainsKey("contractType") ? result["contractType"] : String.Empty,
-                    Department = result.Fields.ContainsKey("department") ? result["department"] : String.Empty,
+                    Department = result.Fields.ContainsKey("departmentDisplay") ? result["departmentDisplay"] : String.Empty,
                     WorkPattern = new WorkPattern()
                     {
                         IsFullTime = result.Fields.ContainsKey("fullTime") && result["fullTime"].ToUpperInvariant() == "TRUE",
@@ -187,7 +187,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 job.Salary.SearchRange = result.Fields.ContainsKey("salaryRange") ? result["salaryRange"] : String.Empty;
                 if (_jobAdvertUrl != null)
                 {
-                    job.Url = new Uri(_jobAdvertUrl.ToString().TrimEnd(new[] {'/'}) + "/" + job.Id + "/" + Regex.Replace(job.JobTitle.ToLower(CultureInfo.CurrentCulture).Replace(" - ", "-").Replace(" ", "-"), "[^a-z0-9-]", String.Empty));
+                    job.Url = new Uri(_jobAdvertUrl.ToString().TrimEnd(new[] {'/'}) + "/" + job.Id + "/" + Regex.Replace(job.JobTitle.ToLower(CultureInfo.CurrentCulture).Replace(" - ", "-").Replace("&","and").Replace(" ", "-"), "[^a-z0-9-]", String.Empty));
                 }
                 if (result.Fields.ContainsKey("closingDate")) job.ClosingDate = DateTime.Parse(result["closingDate"]);
 

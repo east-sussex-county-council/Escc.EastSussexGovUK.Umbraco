@@ -103,7 +103,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             simpleDataSet.RowData.Add("id", job.Id);
             simpleDataSet.RowData.Add("reference", job.Reference);
             simpleDataSet.RowData.Add("title", _stopWordsRemover.RemoveStopWords(job.JobTitle));
+            simpleDataSet.RowData.Add("titleDisplay", job.JobTitle);
             simpleDataSet.RowData.Add("organisation", _stopWordsRemover.RemoveStopWords(job.Organisation));
+            simpleDataSet.RowData.Add("organisationDisplay", job.Organisation);
             simpleDataSet.RowData.Add("location", _stopWordsRemover.RemoveStopWords(job.Location));
             simpleDataSet.RowData.Add("locationDisplay", job.Location); // because Somewhere-on-Sea needs to lose the "on" for searching but keep it for display
             simpleDataSet.RowData.Add("salary", _tagSanitiser.StripTags(_stopWordsRemover.RemoveStopWords(job.Salary.SalaryRange)));
@@ -116,6 +118,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             simpleDataSet.RowData.Add("jobTypeDisplay", job.JobType);
             simpleDataSet.RowData.Add("contractType", _stopWordsRemover.RemoveStopWords(job.ContractType));
             simpleDataSet.RowData.Add("department", _stopWordsRemover.RemoveStopWords(job.Department));
+            simpleDataSet.RowData.Add("departmentDisplay", job.Department);
             simpleDataSet.RowData.Add("fullTime", job.WorkPattern.IsFullTime.ToString());
             simpleDataSet.RowData.Add("partTime", job.WorkPattern.IsPartTime.ToString());
             simpleDataSet.RowData.Add("workPattern", job.WorkPattern.ToString());
