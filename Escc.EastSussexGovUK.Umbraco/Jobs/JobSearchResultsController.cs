@@ -74,7 +74,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                     viewModel.Jobs = jobs.ToPagedList(page, 10);
                 }
 
-                if (viewModel.Metadata.RssFeedUrl != null)
+                if (!String.IsNullOrEmpty(viewModel.Metadata.RssFeedUrl))
                 {
                     var queryString = HttpUtility.ParseQueryString(Request.Url.Query);
                     queryString.Remove("page");
