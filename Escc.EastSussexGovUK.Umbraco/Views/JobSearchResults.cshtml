@@ -46,6 +46,7 @@
 <div class="jobs-content full-page">
     <div class="content text-content">
         <h1>Job search results</h1>
+        @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
         @if (!String.IsNullOrWhiteSpace(Model.Query.Keywords))
         {
             <p>Keywords: @Model.Query.Keywords</p>

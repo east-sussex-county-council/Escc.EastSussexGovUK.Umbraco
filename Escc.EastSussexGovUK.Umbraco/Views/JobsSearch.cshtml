@@ -21,6 +21,7 @@
 <div class="jobs-content full-page">
     <div class="content text-content">
         <h1>@Model.Metadata.Title</h1>
+        @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
 
         @using (Html.BeginUmbracoForm<JobsSearchSurfaceController>("Search", null, new Dictionary<string, object> { { "class", "form short-form" } }))
         {

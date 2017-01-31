@@ -26,6 +26,7 @@
 <div class="full-page jobs-content">
     <div class="content text-content">
         <h1>@Model.Metadata.Title</h1>
+        @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
         <div class="@(Model.IsForm ? "form short-form" : String.Empty)">
             <script src="@Model.ScriptUrl.ScriptUrl"></script>
             <noscript><a href="@Model.ScriptUrl.LinkUrl">@Model.Metadata.Title</a></noscript>

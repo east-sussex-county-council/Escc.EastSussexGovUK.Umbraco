@@ -28,11 +28,12 @@
 }
 @section Breadcrumb {}
 @Html.Partial("~/Views/JobsHeader.cshtml", Model)
-<div class="jobs-content">
+<div class="jobs-content jobs-home">
     @if (Model.TileNavigation.Count > 0)
     {
         <div class="@(showSocialMedia ? "article" : "full-page")">
             <div class="text-content content">
+                @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
                 <ul class="job-tiles">
                     @{
                         var imagesOrLinks = (Model.TileNavigation.Count > Model.TileImages.Count) ? Model.TileNavigation.Count : Model.TileImages.Count;

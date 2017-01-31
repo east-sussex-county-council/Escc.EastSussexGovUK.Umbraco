@@ -7,6 +7,7 @@ using Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink;
 using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Net;
 using Escc.Umbraco.ContentExperiments;
+using Escc.Umbraco.PropertyTypes;
 using Examine;
 using Umbraco.Core;
 using Umbraco.Web;
@@ -29,6 +30,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
 
             var modelBuilder = new BaseViewModelBuilder();
             modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode);
+            modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel,
+                new UmbracoLatestService(model.Content),
+                new UmbracoSocialMediaService(model.Content),
+                null,
+                new UmbracoWebChatSettingsService(model.Content, new UrlListReader()),
+                null);
             viewModel.Metadata.Description = String.Empty;
 
             var dataSource = new JobsLookupValuesFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.ExamineSearcher]);

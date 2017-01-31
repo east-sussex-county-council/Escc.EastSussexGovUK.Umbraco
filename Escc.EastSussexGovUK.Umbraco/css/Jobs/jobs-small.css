@@ -23,6 +23,9 @@
 /* One line space between the header and content */
 .jobs-content { padding-top: 1.125em; }
 
+/* On the jobs home template the .latest doesn't follow h1 as it usually would */
+.jobs-home .latest { margin-top: 0;}
+
 /* Arrange .feature-tile instances (from sitewide styles) into a list */
 ul.job-tiles { margin: 0; padding: 0; }
 
