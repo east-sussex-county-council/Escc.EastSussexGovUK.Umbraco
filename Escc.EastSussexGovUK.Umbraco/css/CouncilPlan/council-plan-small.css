@@ -112,8 +112,17 @@ object img.image-map { max-width: none; }
 .plan-content table, .monitoring table { width: 100%; }
 
 /* Heading spacing not required in tables (headings not required, but they get used anyway) */
-.plan-content table h2, .plan-content table h3, .monitoring table h2, .monitoring table h3 { margin: 0; }
+.plan-content table h2, .plan-content table h3 { margin: 0; }
 
 /* Image Captions for Topic Pages */
 .additional_content .caption{ font-size: 0.75em; text-align: center; } 
 .images .caption{ font-size: 0.75em; text-align: center; } 
+
+/* Fixed headers for tables on Monitoring Pages */
+.monitoring table { width: 100%; border-collapse: collapse; }
+.monitoring table h3, .monitoring table h2 { margin: 0; }
+.monitoring table tr { display: flex; }
+.monitoring table td { padding: 3px; flex: 1 auto; border: 1px solid #aaa; width: 1px; word-wrap: break; }
+.monitoring thead tr:after { content: ''; overflow-y: scroll; visibility: hidden; height: 0; }
+.monitoring table thead th { flex: 1 auto; display: block; width: 1px; word-wrap: break; }
+.monitoring table tbody { display: block; overflow-y: auto; height: 500px; }
