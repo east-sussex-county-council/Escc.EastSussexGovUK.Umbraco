@@ -13,10 +13,10 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Features.Latest
         [UmbracoProperty("Latest", "latest", PropertyEditorAliases.RichTextPropertyEditor, dataTypeInstanceName: LatestDataType.DataTypeName, sortOrder: 0)]
         public string Latest { get; set; }
 
-        [UmbracoProperty("Latest: publish date", "latestPublishDate", BuiltInUmbracoDataTypes.Date, sortOrder: 1)]
+        [UmbracoProperty("Latest: publish date", "latestPublishDate", BuiltInUmbracoDataTypes.DateTime, sortOrder: 1)]
         public string LatestPublishDate { get; set; }
 
-        [UmbracoProperty("Latest: unpublish date", "latestUnpublishDate", BuiltInUmbracoDataTypes.Date, sortOrder: 2)]
+        [UmbracoProperty("Latest: unpublish date", "latestUnpublishDate", BuiltInUmbracoDataTypes.DateTime, sortOrder: 2)]
         public string LatestUnpublishDate { get; set; }
 
         [UmbracoProperty("Latest: inherit?", "latestInherit", CheckboxDataType.PropertyEditorAlias, CheckboxDataType.DataTypeName, sortOrder: 3)]
