@@ -35,6 +35,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         typeof(CouncilOfficeDocumentType),
         typeof(CampaignLandingDocumentType),
         typeof(PersonDocumentType),
+        typeof(JobsHomeDocumentType),
         typeof(JobSearchResultsDocumentType),
         typeof(JobsComponentDocumentType),
         typeof(JobsRssDocumentType),
