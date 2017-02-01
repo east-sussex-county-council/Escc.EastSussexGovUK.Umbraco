@@ -6,7 +6,7 @@
 @using Escc.EastSussexGovUK.Skins
 @using Escc.EastSussexGovUK.Views
 @using Escc.Umbraco.PropertyTypes
-@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.HomePageViewModel>
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.HomePage.HomePageViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
@@ -151,7 +151,14 @@
 </div>
 
 <div class="final-group">
-    @Html.Partial("_HomePageJobSearch")
+    @if (Model.JobSearchResultsPage != null)
+    {
+        @Html.Partial("HomePageJobSearch")
+    }
+    else
+    {
+        @Html.Partial("_HomePageJobSearch")
+    }
 
     <div class="recycle text-content">
         <div class="gutters context">
@@ -168,10 +175,11 @@
         }
         <div class="@involvedClass">
             <section>
-                <header><h2>@Model.InvolvedTitle</h2></header>
+                <header>
+                    <h2>@Model.InvolvedTitle</h2></header>
                 @if (Model.InvolvedRssUrl != null)
                 {
-                    <a class="feed screen" rel="alternate" type="application/rss+xml" id="rss4" href="@Model.InvolvedRssUrl"><img src="@baseUrl/img/body/rss-27px.gif" alt="RSS feed" width="27" height="27" /></a>
+                    <a class="feed screen" rel="alternate" type="application/rss+xml" id="rss4" href="@Model.InvolvedRssUrl"><img src="@baseUrl/img/body/rss-27px.gif" alt="RSS feed" width="27" height="27"/></a>
                 }
                 @if (Model.InvolvedItems.Any())
                 {
@@ -198,7 +206,7 @@
                             }
                         </div>
                     </footer>
-                                }
+                }
             </section>
         </div>
     </div>

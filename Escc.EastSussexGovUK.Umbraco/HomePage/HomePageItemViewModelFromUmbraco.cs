@@ -1,12 +1,11 @@
 using System;
 using System.Globalization;
-using Escc.EastSussexGovUK.Umbraco.DocumentTypes.HomePage;
-using Escc.EastSussexGovUK.Umbraco.Models;
+using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Umbraco.PropertyTypes;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 
-namespace Escc.EastSussexGovUK.Umbraco.Services
+namespace Escc.EastSussexGovUK.Umbraco.HomePage
 {
     /// <summary>
     /// Creates a <see cref="HomePageItemViewModel"/> from an Umbraco content node

@@ -3566,6 +3566,7 @@
     <Content Include="Views\JobAdvert.cshtml" />
     <Content Include="Views\CampaignTilesCss.cshtml" />
     <Content Include="Views\CampaignTiles.cshtml" />
+    <Content Include="Views\HomePageJobSearch.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -3632,6 +3633,7 @@
     <Compile Include="CampaignTemplates\CampaignTilesDocumentType.cs" />
     <Compile Include="Examine\IStopWordsRemover.cs" />
     <Compile Include="Examine\LuceneStopWordsRemover.cs" />
+    <Compile Include="HomePage\HomePageViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\Examine\BaseLookupValuesIndexer.cs" />
     <Compile Include="Jobs\IJobsLookupValuesProvider.cs" />
     <Compile Include="Jobs\IWorkPatternParser.cs" />
@@ -3706,9 +3708,9 @@
     <Compile Include="Controllers\FormDownloadPageController.cs" />
     <Compile Include="Controllers\GuideController.cs" />
     <Compile Include="Controllers\GuideStepController.cs" />
-    <Compile Include="Controllers\HomePageController.cs" />
-    <Compile Include="Controllers\HomePageItemController.cs" />
-    <Compile Include="Controllers\HomePageItemsController.cs" />
+    <Compile Include="HomePage\HomePageController.cs" />
+    <Compile Include="HomePage\HomePageItemController.cs" />
+    <Compile Include="HomePage\HomePageItemsController.cs" />
     <Compile Include="Jobs\JobsComponentController.cs" />
     <Compile Include="Jobs\JobSearchResultsController.cs" />
     <Compile Include="Jobs\JobsHomeController.cs" />
@@ -3716,7 +3718,7 @@
     <Compile Include="Jobs\JobSearchResultsViewModel.cs" />
     <Compile Include="Jobs\RemoveUnwantedAttributesFormatter.cs" />
     <Compile Include="Jobs\TalentLink\TalentLinkUrl.cs" />
-    <Compile Include="Jobs\BaseViewModelFromUmbracoBuilder.cs" />
+    <Compile Include="Services\BaseViewModelFromUmbracoBuilder.cs" />
     <Compile Include="Jobs\SearchResultsViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\ComponentViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\HomeViewModelFromUmbraco.cs" />
@@ -3730,7 +3732,7 @@
     <Compile Include="Jobs\JobSearchResultsDocumentType.cs" />
     <Compile Include="Jobs\JobsHomeDocumentType.cs" />
     <Compile Include="Jobs\JobsHomeViewModel.cs" />
-    <Compile Include="DocumentTypes\HomePage\HomePageItemsAnalyticsTab.cs" />
+    <Compile Include="HomePage\HomePageItemsAnalyticsTab.cs" />
     <Compile Include="Jobs\WorkPattern.cs" />
     <Compile Include="Services\RemoveMediaDomainUrlTransformer.cs" />
     <Compile Include="Services\CampaignTrackingUrlTransformer.cs" />
@@ -3739,7 +3741,7 @@
     <Compile Include="CampaignTemplates\CampaignLandingViewModelFromUmbraco.cs" />
     <Compile Include="Services\GoogleFontFamilyFormatter.cs" />
     <Compile Include="Services\GuideStepViewModelFromUmbraco.cs" />
-    <Compile Include="Services\HomePageItemViewModelFromUmbraco.cs" />
+    <Compile Include="HomePage\HomePageItemViewModelFromUmbraco.cs" />
     <Compile Include="Services\IFontFamilyFormatter.cs" />
     <Compile Include="Services\IMediaUrlTransformer.cs" />
     <Compile Include="Services\IUrlTransformer.cs" />
@@ -3796,11 +3798,11 @@
     <Compile Include="DocumentTypes\Guide\GuideDocumentType.cs" />
     <Compile Include="DocumentTypes\Guide\GuideStepContentTab.cs" />
     <Compile Include="DocumentTypes\Guide\GuideStepDocumentType.cs" />
-    <Compile Include="DocumentTypes\HomePage\HomePageContentTab.cs" />
-    <Compile Include="DocumentTypes\HomePage\HomePageDocumentType.cs" />
-    <Compile Include="DocumentTypes\HomePage\HomePageItemContentTab.cs" />
-    <Compile Include="DocumentTypes\HomePage\HomePageItemDocumentType.cs" />
-    <Compile Include="DocumentTypes\HomePage\HomePageItemsDocumentType.cs" />
+    <Compile Include="HomePage\HomePageContentTab.cs" />
+    <Compile Include="HomePage\HomePageDocumentType.cs" />
+    <Compile Include="HomePage\HomePageItemContentTab.cs" />
+    <Compile Include="HomePage\HomePageItemDocumentType.cs" />
+    <Compile Include="HomePage\HomePageItemsDocumentType.cs" />
     <Compile Include="DocumentTypes\LandingPageWithPictures\LandingPageWithPicturesContentTab.cs" />
     <Compile Include="DocumentTypes\LandingPageWithPictures\LandingPageWithPicturesDocumentType.cs" />
     <Compile Include="DocumentTypes\Landing\LandingContentTab.cs" />
@@ -3883,8 +3885,8 @@
     <Compile Include="Models\GuideNavigationLink.cs" />
     <Compile Include="Models\GuideStepViewModel.cs" />
     <Compile Include="Models\GuideViewModel.cs" />
-    <Compile Include="Models\HomePageItemViewModel.cs" />
-    <Compile Include="Models\HomePageViewModel.cs" />
+    <Compile Include="HomePage\HomePageItemViewModel.cs" />
+    <Compile Include="HomePage\HomePageViewModel.cs" />
     <Compile Include="Models\LandingNavigationLayout.cs" />
     <Compile Include="Models\LandingNavigationViewModel.cs" />
     <Compile Include="Models\LandingSectionViewModel.cs" />

@@ -19,7 +19,7 @@ using Escc.Umbraco.PropertyEditors.RichTextPropertyEditor;
 using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.HomePage
+namespace Escc.EastSussexGovUK.Umbraco.HomePage
 {
     /// <summary>
     /// Specification for the 'Home page' document type in Umbraco

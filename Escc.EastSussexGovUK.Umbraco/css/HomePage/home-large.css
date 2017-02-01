@@ -43,11 +43,11 @@
 .recycle, .involved, .job-search { float: left; width: 32.091097%; margin: 0 1.863354% .947368em 0; box-shadow: 0 0 12px 0 #b9b9b9; }
 
 /* Reset spacing around h2 for 4 col context */
-.recycle h2, .recycle h2 { padding: 0 5.806452%; margin: 0 -5.806452%; }
+.job-search .gutters h2, .recycle h2, .recycle h2 { padding: 0 5.806452%; margin: 0 -5.806452%; }
 
 /* Set padding either side of text for 4 col context
    Don't reset padding-bottom though, because that's allowing space for .buttons */ 
-.recycle .gutters, .involved .gutters { padding-left: 5.806452%; padding-right: 5.806452%; }
+.job-search .gutters, .recycle .gutters, .involved .gutters { padding-left: 5.806452%; padding-right: 5.806452%; }
 
 /* min-height to try to equalise heights */
 .job-search, .recycle, .involved .context { min-height: 22.736843em; }

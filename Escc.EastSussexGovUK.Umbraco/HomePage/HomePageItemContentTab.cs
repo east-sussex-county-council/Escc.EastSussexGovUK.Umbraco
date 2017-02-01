@@ -4,7 +4,7 @@ using Escc.Umbraco.PropertyEditors.RichTextPropertyEditor;
 using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.HomePage
+namespace Escc.EastSussexGovUK.Umbraco.HomePage
 {
     public class HomePageItemContentTab : TabBase
     {

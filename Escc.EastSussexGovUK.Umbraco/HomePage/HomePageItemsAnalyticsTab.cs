@@ -1,7 +1,7 @@
 ﻿using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.HomePage
+namespace Escc.EastSussexGovUK.Umbraco.HomePage
 {
     /// <summary>
     /// Analytics tab for the home page items document type, used on its view as an RSS feed

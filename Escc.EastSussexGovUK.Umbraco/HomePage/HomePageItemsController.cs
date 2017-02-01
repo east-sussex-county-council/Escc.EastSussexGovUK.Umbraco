@@ -1,20 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Globalization;
 using System.Linq;
 using System.Web.Mvc;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Umbraco.Caching;
-using Escc.Umbraco.PropertyTypes;
-using Escc.Web.Metadata;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
 
-namespace Escc.EastSussexGovUK.Umbraco.Controllers
+namespace Escc.EastSussexGovUK.Umbraco.HomePage
 {
     /// <summary>
     /// The controller for the Home Page document type

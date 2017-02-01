@@ -1,7 +1,8 @@
 ﻿using System;
+using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.Umbraco.PropertyTypes;
 
-namespace Escc.EastSussexGovUK.Umbraco.Models
+namespace Escc.EastSussexGovUK.Umbraco.HomePage
 {
     /// <summary>
     /// A small piece of content which is used to build up the home page

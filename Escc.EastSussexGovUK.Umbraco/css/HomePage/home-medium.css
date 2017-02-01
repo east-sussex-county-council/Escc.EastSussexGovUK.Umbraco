@@ -24,8 +24,8 @@
 .recycle { margin-right: 2.244389%;  border: none; }
 
 /* Padding therefore becomes a gutter width inside 5 cols */
-.recycle .gutters, .involved .gutters { padding: 0 4.591837%; overflow: hidden; }
-.recycle h2, .involved h2 { line-height: 1.8em; padding: 0 4.591837%; margin: 0 -4.591837%;  border-bottom: 1px solid #dae1e5; }
+.job-search .gutters, .recycle .gutters, .involved .gutters { padding: 0 4.591837%; overflow: hidden; }
+.job-search .gutters h2, .recycle h2, .involved h2 { line-height: 1.8em; padding: 0 4.591837%; margin: 0 -4.591837%;  border-bottom: 1px solid #dae1e5; }
 
 /* min-height to try to equalise heights when presented side-by-side */
 .recycle .context { min-height: 16.615385em; }

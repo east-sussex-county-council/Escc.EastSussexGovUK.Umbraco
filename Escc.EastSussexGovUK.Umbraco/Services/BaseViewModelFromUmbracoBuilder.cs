@@ -1,13 +1,10 @@
 using System;
 using System.Collections.Generic;
-using Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink;
-using Escc.EastSussexGovUK.Umbraco.Models;
-using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Umbraco.PropertyTypes;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 
-namespace Escc.EastSussexGovUK.Umbraco.Jobs
+namespace Escc.EastSussexGovUK.Umbraco.Services
 {
     /// <summary>
     /// Base class for building view models from Umbraco content
@@ -82,16 +79,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 image.ImageUrl = MediaUrlTransformer.TransformMediaUrl(image.ImageUrl);
             }
             return image;
-        }
-
-        protected TalentLinkUrl BuildJobsUri(string alias)
-        {
-            var url = UmbracoContent.GetPropertyValue<string>(alias);
-            if (!String.IsNullOrEmpty(url))
-            {
-                return new TalentLinkUrl(url);
-            }
-            return null;
         }
 
         protected string BuildJobsSearcherName(string fieldAlias)

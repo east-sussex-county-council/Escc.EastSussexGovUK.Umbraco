@@ -1,7 +1,7 @@
 ﻿using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.HomePage
+namespace Escc.EastSussexGovUK.Umbraco.HomePage
 {
     public class HomePageContentTab: TabBase
     {
@@ -42,17 +42,33 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.HomePage
         [UmbracoProperty("Libraries: Content", "LibrariesContent", BuiltInUmbracoDataTypes.RelatedLinks, SortOrder = 11)]
         public string LibrariesContent { get; set; }
 
+        /* Jobs */
+        [UmbracoProperty("Jobs logo", "JobsLogo", BuiltInUmbracoDataTypes.MediaPicker, sortOrder: 12, Description = "Select the logo for the jobs service")]
+        public string JobsLogo { get; set; }
+
+        /// <summary>
+        /// Gets or sets the jobs start page
+        /// </summary>
+        /// <value>
+        /// A reference to the Umbraco node for the home page
+        /// </value>
+        [UmbracoProperty("Jobs home page", "JobsHomePage", BuiltInUmbracoDataTypes.ContentPickerAlias, sortOrder: 13, Description = "Select the jobs home page, to be linked from the logo")]
+        public string JobsHomePage { get; set; }
+
+        [UmbracoProperty("Job search results page", "JobSearchResultsPage", BuiltInUmbracoDataTypes.ContentPickerAlias, sortOrder: 14, Description = "Select the job search results page, based on the 'Job search results' document type")]
+        public string JobSearchResultsPage { get; set; }
+
         /* Recycling */
-        [UmbracoProperty("Recycling sites: Title", "RecyclingTitle", BuiltInUmbracoDataTypes.Textbox, SortOrder = 12)]
+        [UmbracoProperty("Recycling sites: Title", "RecyclingTitle", BuiltInUmbracoDataTypes.Textbox, SortOrder = 15)]
         public string RecyclingTitle { get; set; }
 
         /* Involved 
                    Note: Make sure the related links field is not last, as a bug in Umbraco 7.2.1 means it cannot be edited in that position
                  */
-        [UmbracoProperty("Get involved: Footer links", "InvolvedLinks", BuiltInUmbracoDataTypes.RelatedLinks, SortOrder = 13)]
+        [UmbracoProperty("Get involved: Footer links", "InvolvedLinks", BuiltInUmbracoDataTypes.RelatedLinks, SortOrder = 16)]
         public string InvolvedLinks { get; set; } 
         
-        [UmbracoProperty("Get involved: Title", "InvolvedTitle", BuiltInUmbracoDataTypes.Textbox, SortOrder = 14)]
+        [UmbracoProperty("Get involved: Title", "InvolvedTitle", BuiltInUmbracoDataTypes.Textbox, SortOrder = 17)]
         public string InvolvedTitle { get; set; }
 
     }

@@ -4,7 +4,7 @@ using Escc.Umbraco.PropertyEditors.RichTextPropertyEditor;
 using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.HomePage
+namespace Escc.EastSussexGovUK.Umbraco.HomePage
 {
     [UmbracoContentType("Home page items", "HomePageItems", new Type[] { typeof(HomePageItemDocumentType)}, true, enableListView: true, icon: BuiltInUmbracoContentTypeIcons.IconLayersAlt, Description="A group of short pieces of content used to build up the home page.")]
     public class HomePageItemsDocumentType : UmbracoGeneratedBase

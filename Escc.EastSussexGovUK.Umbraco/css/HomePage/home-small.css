@@ -10,7 +10,7 @@
 
 /* .gutters is inside 6 cols */
 @media screen {
-    .top-tasks .gutters, .report-apply-pay .gutters, .features.gutters, .library-search.gutters, .recycle .gutters, .involved .gutters { padding: 0 3.797468%; }
+    .top-tasks .gutters, .report-apply-pay .gutters, .features.gutters, .library-search.gutters, .job-search .gutters, .recycle .gutters, .involved .gutters { padding: 0 3.797468%; }
 }
 
 /* Remove additional vertical space around heading */
@@ -77,7 +77,7 @@ body .library-search .form { background: none;padding: 0;margin-bottom: 0;}
  **************/
 
 /* Heading style shared across row 3. Padding/margin are one gutter space within 6 columns. */
-.recycle h2, .involved h2 { padding: 0 3.797468%; margin: 0 -3.797468%; }
+.job-search .gutters h2, .recycle h2, .involved h2 { padding: 0 3.797468%; margin: 0 -3.797468%; }
 
 /* Position RSS feeds at right of headers. Width required for IE8. */
 .feed { position: absolute; top: 0; right: 0; z-index: 999; width: 27px; }
