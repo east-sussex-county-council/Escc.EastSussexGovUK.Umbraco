@@ -201,6 +201,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
 
                 job.Salary.SalaryRange = result.Fields.ContainsKey("salary") ? result["salary"] : String.Empty;
                 job.Salary.SearchRange = result.Fields.ContainsKey("salaryRange") ? result["salaryRange"] : String.Empty;
+                if (result.Fields.ContainsKey("salaryMax") && !String.IsNullOrEmpty(result["salaryMax"]))
+                {
+                    int maximumSalary;
+                    Int32.TryParse(result["salaryMax"], out maximumSalary);
+                    job.Salary.MaximumSalary = maximumSalary;
+                }
+
                 if (_jobAdvertUrl != null)
                 {
                     job.Url = new Uri(_jobAdvertUrl.ToString().TrimEnd(new[] {'/'}) + "/" + job.Id + "/" + Regex.Replace(job.JobTitle.ToLower(CultureInfo.CurrentCulture).Replace(" - ", "-").Replace("&","and").Replace(" ", "-"), "[^a-z0-9-]", String.Empty));
@@ -274,6 +281,21 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 query = " +(" + String.Join(" ", rangeQueries.ToArray()) + ")";
             }
             return query;
+        }
+
+        /// <summary>
+        /// Reads jobs with missing data.
+        /// </summary>
+        /// <returns></returns>
+        public Task<IEnumerable<Job>> ReadProblemJobs()
+        {
+            const string noSalary = " (*:* -salaryMax:[0 TO 99999]) ";
+            const string fallbackSalary = " (salaryMax:0009999 salaryMax:0014999 salaryMax:0019999 salaryMax:0024999 salaryMax:0034999 salaryMax:0049999) ";
+            const string noWorkPattern = " (+fullTime:false +partTime:false) ";
+
+            var results = _searcher.Search(_searcher.CreateSearchCriteria().RawQuery(noSalary + fallbackSalary + noWorkPattern));
+            var jobs = BuildJobsFromExamineResults(results);
+            return Task.FromResult((IEnumerable<Job>)jobs);
         }
     }
 }

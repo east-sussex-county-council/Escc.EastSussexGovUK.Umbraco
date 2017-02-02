@@ -13,6 +13,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         typeof(JobSearchResultsDocumentType),
         typeof(JobsComponentDocumentType),
         typeof(JobsRssDocumentType),
+        typeof(ProblemJobsRssDocumentType),
         typeof(JobsSearchDocumentType),
         typeof(JobAdvertDocumentType)}, true, allowAtRoot: false, icon: BuiltInUmbracoContentTypeIcons.IconBrick, 
     Description = "A standard page hosting a component of the TalentLink application.")]

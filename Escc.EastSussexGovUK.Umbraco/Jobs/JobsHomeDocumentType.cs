@@ -39,6 +39,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         typeof(JobSearchResultsDocumentType),
         typeof(JobsComponentDocumentType),
         typeof(JobsRssDocumentType),
+        typeof(ProblemJobsRssDocumentType),
         typeof(JobsSearchDocumentType),
         typeof(JobAdvertDocumentType)
     }, true, allowAtRoot: false, icon: BuiltInUmbracoContentTypeIcons.IconReception, 

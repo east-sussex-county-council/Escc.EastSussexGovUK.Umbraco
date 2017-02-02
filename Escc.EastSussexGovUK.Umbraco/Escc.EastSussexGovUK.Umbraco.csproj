@@ -3567,6 +3567,7 @@
     <Content Include="Views\CampaignTilesCss.cshtml" />
     <Content Include="Views\CampaignTiles.cshtml" />
     <Content Include="Views\HomePageJobSearch.cshtml" />
+    <Content Include="Views\ProblemJobsRss.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -3652,6 +3653,8 @@
     <Compile Include="Jobs\Examine\JobsDataFromExamine.cs" />
     <Compile Include="Jobs\Examine\BaseJobsIndexer.cs" />
     <Compile Include="Jobs\Examine\JobsIndexerApiController.cs" />
+    <Compile Include="Jobs\ProblemJobsRssController.cs" />
+    <Compile Include="Jobs\ProblemJobsRssDocumentType.cs" />
     <Compile Include="Jobs\JobsRssViewModel.cs" />
     <Compile Include="Jobs\Salary.cs" />
     <Compile Include="Jobs\JobsRssViewModelFromUmbraco.cs" />

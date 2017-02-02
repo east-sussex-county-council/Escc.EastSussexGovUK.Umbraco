@@ -9,7 +9,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
     /// Definition for the Umbraco 'Jobs component' document type
     /// </summary>
     /// <seealso cref="Umbraco.Inception.BL.UmbracoGeneratedBase" />
-    [UmbracoContentType("Jobs search", "JobsSearch", new Type[] {typeof(JobsRssDocumentType), typeof(JobSearchResultsDocumentType), typeof(JobsComponentDocumentType),
+    [UmbracoContentType("Jobs search", "JobsSearch", new Type[] {typeof(JobsRssDocumentType), typeof(ProblemJobsRssDocumentType), typeof(JobSearchResultsDocumentType), typeof(JobsComponentDocumentType),
         typeof(JobAdvertDocumentType)}, true, allowAtRoot: false, icon: BuiltInUmbracoContentTypeIcons.IconSearch, 
     Description = "The search page for the jobs section of the website.")]
     public class JobsSearchDocumentType : CustomerFocusBaseDocumentType
