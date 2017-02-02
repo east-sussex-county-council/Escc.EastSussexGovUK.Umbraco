@@ -18,7 +18,7 @@
     Html.RequiresCss("~/css/jobs/jobs-large.css", MediaQueryAlias.Resolve("Large"));
     Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=JobsCss&media-query=small", 101);
 
-    new ContentSecurityPolicyHeaders(Response.Headers).AppendPolicy("script-src https://emea3.recruitmentplatform.com https://s7.addthis.com 'unsafe-inline'; style-src 'unsafe-inline'").UpdateHeaders();
+    new ContentSecurityPolicyHeaders(Response.Headers).AppendPolicy("script-src https://emea3.recruitmentplatform.com https://s7.addthis.com 'unsafe-inline'; style-src https://emea3.recruitmentplatform.com 'unsafe-inline'; frame-src https://emea3.recruitmentplatform.com").UpdateHeaders();
 }
 @section Breadcrumb {}
 @Html.Partial("~/Views/JobsHeader.cshtml", Model)

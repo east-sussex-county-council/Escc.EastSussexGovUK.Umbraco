@@ -27,3 +27,6 @@
 
 /* Login - space around links */
 #chpLogForgot { margin: .947368em 0 0; }
+
+/* Candidate home page */
+.chpEditPIF a, .chpViewPIF a, .chpPass a { background-position: 100% -496px; }
