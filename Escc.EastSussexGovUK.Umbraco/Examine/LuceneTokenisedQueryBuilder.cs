@@ -15,33 +15,42 @@ namespace Escc.EastSussexGovUK.Umbraco.Examine
         /// Any of the search terms in the query must match the given field
         /// </summary>
         /// <param name="searchTerms">The search terms.</param>
-        /// <param name="fieldName">Name of the field.</param>
+        /// <param name="field">The field to search.</param>
         /// <param name="isRequired">if set to <c>true</c> at least one search term was matched.</param>
         /// <returns></returns>
-        public string AnyOfTheseTermsInThisField(IList<string> searchTerms, string fieldName, bool isRequired)
+        public string AnyOfTheseTermsInThisField(IList<string> searchTerms, SearchField field, bool isRequired)
         {
-            var query = String.Empty;
-            if (searchTerms.Count > 0)
-            {
-                query = $"({fieldName}:{String.Join($" {fieldName}:", searchTerms.ToArray())})";
-                query = PrependRequiredIndicator(isRequired, query);
-            }
-            return query;
+            return QueryTermsInThisField(searchTerms, field, isRequired, false);
         }
 
         /// <summary>
         /// All of the search terms must match in the given field.
         /// </summary>
         /// <param name="searchTerms">The search terms.</param>
-        /// <param name="fieldName">Name of the field.</param>
+        /// <param name="field">The field to search.</param>
         /// <param name="isRequired">if set to <c>true</c> all search terms were matched.</param>
-        public string AllOfTheseTermsInThisField(IList<string> searchTerms, string fieldName, bool isRequired)
+        public string AllOfTheseTermsInThisField(IList<string> searchTerms, SearchField field, bool isRequired)
+        {
+            return QueryTermsInThisField(searchTerms, field, isRequired, true);
+        }
+
+        private static string QueryTermsInThisField(IList<string> searchTerms, SearchField field, bool wholeClauseIsRequired, bool eachTermIsRequired)
         {
             var query = String.Empty;
             if (searchTerms.Count > 0)
             {
-                query = $"(+{fieldName}:{String.Join($" +{fieldName}:", searchTerms.ToArray())})";
-                query = PrependRequiredIndicator(isRequired, query);
+                foreach (var searchTerm in searchTerms)
+                {
+                    query += " ";
+                    if (eachTermIsRequired) query += "+";
+                    query += field.FieldName + ":" + searchTerm;
+                    if (field.Boost != 1)
+                    {
+                        query += "^" + field.Boost;
+                    }
+                }
+                query = $"({query.Trim()})";
+                query = PrependRequiredIndicator(wholeClauseIsRequired, query);
             }
             return query;
         }
@@ -60,18 +69,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Examine
         /// Any of the search terms in the query must match in at least one of the given fields
         /// </summary>
         /// <param name="searchTerms">The search terms.</param>
-        /// <param name="fieldNames">The field names.</param>
+        /// <param name="fields">The fields.</param>
         /// <param name="isRequired">if set to <c>true</c> at least one search term was matched.</param>
         /// <returns></returns>
-        public string AnyOfTheseTermsInAnyOfTheseFields(IList<string> searchTerms, IList<string> fieldNames, bool isRequired)
+        public string AnyOfTheseTermsInAnyOfTheseFields(IList<string> searchTerms, IList<SearchField> fields, bool isRequired)
         {
             var query = String.Empty;
-            if (searchTerms.Count == 0 || fieldNames.Count == 0) return query;
+            if (searchTerms.Count == 0 || fields.Count == 0) return query;
 
             var clauses = new List<string>();
-            foreach (var fieldName in fieldNames)
+            foreach (var field in fields)
             {
-                clauses.Add(AnyOfTheseTermsInThisField(searchTerms, fieldName, false).Trim());
+                clauses.Add(AnyOfTheseTermsInThisField(searchTerms, field, false).Trim());
             }
             query = "(" + String.Join(" ", clauses.ToArray()) + ")";
             query = PrependRequiredIndicator(isRequired, query);
@@ -82,18 +91,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Examine
         /// All of the search terms must match in any one of the given fields. Matching one term in one field and another in a second field will not be counted.
         /// </summary>
         /// <param name="searchTerms">The search terms.</param>
-        /// <param name="fieldNames">The field names.</param>
+        /// <param name="fields">The fields.</param>
         /// <param name="isRequired">if set to <c>true</c> all search terms were matched.</param>
         /// <returns></returns>
-        public string AllOfTheseTermsInAnyOfTheseFields(IList<string> searchTerms, IList<string> fieldNames, bool isRequired)
+        public string AllOfTheseTermsInAnyOfTheseFields(IList<string> searchTerms, IList<SearchField> fields, bool isRequired)
         {
             var query = String.Empty;
-            if (searchTerms.Count == 0 || fieldNames.Count == 0) return query;
+            if (searchTerms.Count == 0 || fields.Count == 0) return query;
 
             var clauses = new List<string>();
-            foreach (var fieldName in fieldNames)
+            foreach (var field in fields)
             {
-                clauses.Add(AllOfTheseTermsInThisField(searchTerms, fieldName, false).Trim());
+                clauses.Add(AllOfTheseTermsInThisField(searchTerms, field, false).Trim());
             }
             query = "(" + String.Join(" ", clauses.ToArray()) + ")";
             query = PrependRequiredIndicator(isRequired, query);

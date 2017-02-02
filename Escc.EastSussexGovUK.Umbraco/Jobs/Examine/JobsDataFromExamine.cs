@@ -78,7 +78,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             // in any one of the specified fields.
             if (_keywordsQueryBuilder != null)
             {
-                modifiedQuery += _keywordsQueryBuilder.AllOfTheseTermsInAnyOfTheseFields(query.Keywords ?? String.Empty, new[] {"reference", "title", "organisation", "location", "salary", "jobType", "contractType", "department", "fullText"}, true);
+                modifiedQuery += _keywordsQueryBuilder.AllOfTheseTermsInAnyOfTheseFields(query.Keywords ?? String.Empty, new[] 
+                                {
+                                    new SearchField() { FieldName = "reference" },
+                                    new SearchField() { FieldName = "title", Boost = 2 },
+                                    new SearchField() { FieldName = "organisation" },
+                                    new SearchField() { FieldName = "location" },
+                                    new SearchField() { FieldName = "jobType" },
+                                    new SearchField() { FieldName = "contractType" },
+                                    new SearchField() { FieldName = "department" },
+                                    new SearchField() { FieldName = "fullText", Boost = 0.5 }
+                                }, true);
             }
 
             // For the salary ranges we need a structure that Examine's fluent API can't build, so build the raw Lucene query instead

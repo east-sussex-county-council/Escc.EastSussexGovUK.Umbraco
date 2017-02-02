@@ -12,7 +12,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             var builder = new LuceneTokenisedQueryBuilder();
 
-            var query = builder.AnyOfTheseTermsInThisField(new string[0], "test", true);
+            var query = builder.AnyOfTheseTermsInThisField(new string[0], new SearchField() {FieldName = "test" }, true);
 
             Assert.AreEqual(String.Empty, query);
         }
@@ -22,7 +22,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             var builder = new LuceneTokenisedQueryBuilder();
 
-            var query = builder.AnyOfTheseTermsInThisField(new string[] {"search"}, "test", true);
+            var query = builder.AnyOfTheseTermsInThisField(new string[] {"search"}, new SearchField() { FieldName = "test" }, true);
 
             Assert.AreEqual(" +(test:search)", query);
         }
@@ -33,7 +33,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             var builder = new LuceneTokenisedQueryBuilder();
 
-            var query = builder.AnyOfTheseTermsInThisField(new string[] { "search", "\"in quotes\"" }, "test", true);
+            var query = builder.AnyOfTheseTermsInThisField(new string[] { "search", "\"in quotes\"" }, new SearchField() { FieldName = "test" }, true);
 
             Assert.AreEqual(" +(test:search test:\"in quotes\")", query);
         }
@@ -43,7 +43,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             var builder = new LuceneTokenisedQueryBuilder();
 
-            var query = builder.AnyOfTheseTermsInAnyOfTheseFields(new string[] { "search", "\"in quotes\"" }, new string[] {"test", "test2" }, true);
+            var query = builder.AnyOfTheseTermsInAnyOfTheseFields(new string[] { "search", "\"in quotes\"" }, new SearchField[] { new SearchField() { FieldName = "test" }, new SearchField() { FieldName = "test2" } }, true);
 
             Assert.AreEqual(" +((test:search test:\"in quotes\") (test2:search test2:\"in quotes\"))", query);
         }
@@ -53,9 +53,19 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             var builder = new LuceneTokenisedQueryBuilder();
 
-            var query = builder.AllOfTheseTermsInAnyOfTheseFields(new string[] { "search", "\"in quotes\"" }, new string[] { "test", "test2" }, true);
+            var query = builder.AllOfTheseTermsInAnyOfTheseFields(new string[] { "search", "\"in quotes\"" }, new SearchField[] { new SearchField() { FieldName = "test"}, new SearchField() { FieldName = "test2" } }, true);
 
             Assert.AreEqual(" +((+test:search +test:\"in quotes\") (+test2:search +test2:\"in quotes\"))", query);
+        }
+
+        [Test]
+        public void TwoKeywordsTwoFieldsOneBoostedAllMatch()
+        {
+            var builder = new LuceneTokenisedQueryBuilder();
+
+            var query = builder.AllOfTheseTermsInAnyOfTheseFields(new string[] { "search", "\"in quotes\"" }, new SearchField[] { new SearchField() { FieldName = "test", Boost = 2.5 }, new SearchField() { FieldName = "test2" } }, true);
+
+            Assert.AreEqual(" +((+test:search^2.5 +test:\"in quotes\"^2.5) (+test2:search +test2:\"in quotes\"))", query);
         }
     }
 }

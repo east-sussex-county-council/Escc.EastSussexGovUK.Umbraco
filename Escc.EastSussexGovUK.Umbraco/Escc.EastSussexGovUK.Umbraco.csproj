@@ -3639,6 +3639,7 @@
     <Compile Include="Examine\QueryBuilder.cs" />
     <Compile Include="Examine\LuceneTokenisedQueryBuilder.cs" />
     <Compile Include="Examine\LuceneStopWordsRemover.cs" />
+    <Compile Include="Examine\SearchField.cs" />
     <Compile Include="Examine\WildcardSuffixFilter.cs" />
     <Compile Include="HomePage\HomePageViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\Examine\BaseLookupValuesIndexer.cs" />
