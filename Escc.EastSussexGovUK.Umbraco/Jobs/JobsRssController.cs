@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Caching;
 using Escc.Dates;
+using Escc.EastSussexGovUK.Umbraco.Examine;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Examine;
 using Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink;
 using Escc.EastSussexGovUK.Umbraco.Models;
@@ -48,7 +49,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode);
 
             viewModel.Query = new JobSearchQueryFactory().CreateFromQueryString(Request.QueryString);
-            var jobsProvider = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.ExamineSearcher], viewModel.JobAdvertPage.Url);
+            var jobsProvider = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.ExamineSearcher], new QueryBuilder(new LuceneTokenisedQueryBuilder(), new KeywordsTokeniser(), new WildcardSuffixFilter(), new LuceneStopWordsRemover()), viewModel.JobAdvertPage.Url);
             var jobs = await jobsProvider.ReadJobs(viewModel.Query);
 
             foreach (var job in jobs)

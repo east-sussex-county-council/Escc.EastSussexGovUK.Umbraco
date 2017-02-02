@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
+using Escc.EastSussexGovUK.Umbraco.Examine;
 using Examine;
 using Examine.SearchCriteria;
 
@@ -17,18 +18,21 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
     public class JobsDataFromExamine : IJobsDataProvider
     {
         private readonly ISearcher _searcher;
+        private readonly IQueryBuilder _keywordsQueryBuilder;
         private readonly Uri _jobAdvertUrl;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="JobsDataFromExamine"/> class.
+        /// Initializes a new instance of the <see cref="JobsDataFromExamine" /> class.
         /// </summary>
         /// <param name="searcher">The searcher.</param>
+        /// <param name="keywordsQueryBuilder">The query analyser.</param>
         /// <param name="jobAdvertUrl">The job advert URL.</param>
         /// <exception cref="System.ArgumentNullException">searcher</exception>
-        public JobsDataFromExamine(ISearcher searcher, Uri jobAdvertUrl)
+        public JobsDataFromExamine(ISearcher searcher, IQueryBuilder keywordsQueryBuilder, Uri jobAdvertUrl)
         {
             if (searcher == null) throw new ArgumentNullException(nameof(searcher));
             _searcher = searcher;
+            _keywordsQueryBuilder = keywordsQueryBuilder;
             _jobAdvertUrl = jobAdvertUrl;
         }
 
@@ -60,12 +64,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
         {
             var examineQuery = _searcher.CreateSearchCriteria(BooleanOperation.And);
 
-            // Add a wildcard after each keyword so that, for example, "teacher" also matches "teachers"
-            var keywords = query.Keywords ?? String.Empty;
-            keywords = Regex.Replace(keywords, @"([^\s])\b", "$1*");
-
-            examineQuery.GroupedOr(new[] { "reference", "title", "organisation", "location", "salary", "jobType", "contractType", "department", "fullText" }, keywords)
-                        .And().GroupedOr(new[] { "location" }, query.Locations.ToArray())
+            examineQuery.GroupedOr(new[] { "location" }, query.Locations.ToArray())
                         .And().GroupedOr(new[] { "jobType" }, query.JobTypes.ToArray())
                         .And().GroupedOr(new[] { "organisation" }, query.Organisations.ToArray());
 
@@ -74,6 +73,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             var generatedQuery = examineQuery.ToString();
             generatedQuery = generatedQuery.Substring(34, generatedQuery.Length - 36);
             var modifiedQuery = generatedQuery.Replace("+()", String.Empty);
+
+            // Search for keywords by building up a clause that looks for all of the keywords to be present 
+            // in any one of the specified fields.
+            if (_keywordsQueryBuilder != null)
+            {
+                modifiedQuery += _keywordsQueryBuilder.AllOfTheseTermsInAnyOfTheseFields(query.Keywords ?? String.Empty, new[] {"reference", "title", "organisation", "location", "salary", "jobType", "contractType", "department", "fullText"}, true);
+            }
 
             // For the salary ranges we need a structure that Examine's fluent API can't build, so build the raw Lucene query instead
             modifiedQuery += BuildSalaryRangeLuceneQuery(query.SalaryRanges);

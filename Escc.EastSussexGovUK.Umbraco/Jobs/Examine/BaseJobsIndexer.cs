@@ -22,7 +22,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
     public abstract class BaseJobsIndexer : ISimpleDataService
     {
         private readonly IJobsDataProvider _jobsProvider;
-        private readonly IStopWordsRemover _stopWordsRemover;
+        private readonly ISearchFilter _stopWordsRemover;
         private readonly IHtmlTagSanitiser _tagSanitiser;
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
         /// <param name="stopWordsRemover">The stop words remover.</param>
         /// <param name="tagSanitiser">The tag sanitiser.</param>
         /// <exception cref="System.ArgumentNullException">stopWordsRemover</exception>
-        protected BaseJobsIndexer(IJobsDataProvider jobsProvider, IStopWordsRemover stopWordsRemover, IHtmlTagSanitiser tagSanitiser)
+        protected BaseJobsIndexer(IJobsDataProvider jobsProvider, ISearchFilter stopWordsRemover, IHtmlTagSanitiser tagSanitiser)
         {
             if (jobsProvider == null) throw new ArgumentNullException(nameof(jobsProvider));
             if (stopWordsRemover == null) throw new ArgumentNullException(nameof(stopWordsRemover));
@@ -102,22 +102,22 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             simpleDataSet.NodeDefinition.Type = indexType;
             simpleDataSet.RowData.Add("id", job.Id);
             simpleDataSet.RowData.Add("reference", job.Reference);
-            simpleDataSet.RowData.Add("title", _stopWordsRemover.RemoveStopWords(job.JobTitle));
+            simpleDataSet.RowData.Add("title", _stopWordsRemover.Filter(job.JobTitle));
             simpleDataSet.RowData.Add("titleDisplay", job.JobTitle);
-            simpleDataSet.RowData.Add("organisation", _stopWordsRemover.RemoveStopWords(job.Organisation));
+            simpleDataSet.RowData.Add("organisation", _stopWordsRemover.Filter(job.Organisation));
             simpleDataSet.RowData.Add("organisationDisplay", job.Organisation);
-            simpleDataSet.RowData.Add("location", _stopWordsRemover.RemoveStopWords(job.Location));
+            simpleDataSet.RowData.Add("location", _stopWordsRemover.Filter(job.Location));
             simpleDataSet.RowData.Add("locationDisplay", job.Location); // because Somewhere-on-Sea needs to lose the "on" for searching but keep it for display
-            simpleDataSet.RowData.Add("salary", _tagSanitiser.StripTags(_stopWordsRemover.RemoveStopWords(job.Salary.SalaryRange)));
-            simpleDataSet.RowData.Add("salaryRange", _stopWordsRemover.RemoveStopWords(job.Salary.SearchRange));
+            simpleDataSet.RowData.Add("salary", _tagSanitiser.StripTags(_stopWordsRemover.Filter(job.Salary.SalaryRange)));
+            simpleDataSet.RowData.Add("salaryRange", _stopWordsRemover.Filter(job.Salary.SearchRange));
             simpleDataSet.RowData.Add("salaryMin", job.Salary.MinimumSalary?.ToString("D7") ?? String.Empty);
             simpleDataSet.RowData.Add("salaryMax", job.Salary.MaximumSalary?.ToString("D7") ?? String.Empty);
-            simpleDataSet.RowData.Add("salarySort", (job.Salary.MinimumSalary?.ToString("D7") ?? String.Empty) + " " + (job.Salary.MaximumSalary?.ToString("D7") ?? String.Empty) + " " + _stopWordsRemover.RemoveStopWords(job.Salary.SalaryRange));
+            simpleDataSet.RowData.Add("salarySort", (job.Salary.MinimumSalary?.ToString("D7") ?? String.Empty) + " " + (job.Salary.MaximumSalary?.ToString("D7") ?? String.Empty) + " " + _stopWordsRemover.Filter(job.Salary.SalaryRange));
             simpleDataSet.RowData.Add("closingDate", job.ClosingDate.Value.ToIso8601DateTime());
-            simpleDataSet.RowData.Add("jobType", _stopWordsRemover.RemoveStopWords(job.JobType));
+            simpleDataSet.RowData.Add("jobType", _stopWordsRemover.Filter(job.JobType));
             simpleDataSet.RowData.Add("jobTypeDisplay", job.JobType);
-            simpleDataSet.RowData.Add("contractType", _stopWordsRemover.RemoveStopWords(job.ContractType));
-            simpleDataSet.RowData.Add("department", _stopWordsRemover.RemoveStopWords(job.Department));
+            simpleDataSet.RowData.Add("contractType", _stopWordsRemover.Filter(job.ContractType));
+            simpleDataSet.RowData.Add("department", _stopWordsRemover.Filter(job.Department));
             simpleDataSet.RowData.Add("departmentDisplay", job.Department);
             simpleDataSet.RowData.Add("fullTime", job.WorkPattern.IsFullTime.ToString());
             simpleDataSet.RowData.Add("partTime", job.WorkPattern.IsPartTime.ToString());

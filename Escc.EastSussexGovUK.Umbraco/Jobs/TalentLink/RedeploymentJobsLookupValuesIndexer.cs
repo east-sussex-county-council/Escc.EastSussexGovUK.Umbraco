@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using Escc.EastSussexGovUK.Umbraco.Examine;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Examine;
 using Escc.Net;
 using Examine;
@@ -30,7 +31,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
         /// </remarks>
         protected override IJobsDataProvider GetJobsDataProvider()
         {
-            return new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection["RedeploymentJobsSearcher"], null);
+            return new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection["RedeploymentJobsSearcher"], null, null);
         }
     }
 }

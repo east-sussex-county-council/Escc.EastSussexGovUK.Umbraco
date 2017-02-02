@@ -3631,8 +3631,15 @@
     <Compile Include="CampaignTemplates\CampaignTilesContentTab.cs" />
     <Compile Include="CampaignTemplates\CampaignTilesDesignTab.cs" />
     <Compile Include="CampaignTemplates\CampaignTilesDocumentType.cs" />
-    <Compile Include="Examine\IStopWordsRemover.cs" />
+    <Compile Include="Examine\IQueryBuilder.cs" />
+    <Compile Include="Examine\ITokenisedQueryBuilder.cs" />
+    <Compile Include="Examine\ISearchFilter.cs" />
+    <Compile Include="Examine\ISearchTermTokeniser.cs" />
+    <Compile Include="Examine\KeywordsTokeniser.cs" />
+    <Compile Include="Examine\QueryBuilder.cs" />
+    <Compile Include="Examine\LuceneTokenisedQueryBuilder.cs" />
     <Compile Include="Examine\LuceneStopWordsRemover.cs" />
+    <Compile Include="Examine\WildcardSuffixFilter.cs" />
     <Compile Include="HomePage\HomePageViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\Examine\BaseLookupValuesIndexer.cs" />
     <Compile Include="Jobs\IJobsLookupValuesProvider.cs" />

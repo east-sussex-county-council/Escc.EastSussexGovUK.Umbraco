@@ -17,7 +17,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             var stopWordsRemover = new LuceneStopWordsRemover();
 
-            var result = stopWordsRemover.RemoveStopWords("Administration and Clerical");
+            var result = stopWordsRemover.Filter("Administration and Clerical");
 
             Assert.AreEqual("Administration Clerical", result);
         }
@@ -27,7 +27,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             var stopWordsRemover = new LuceneStopWordsRemover();
 
-            var result = stopWordsRemover.RemoveStopWords(null);
+            var result = stopWordsRemover.Filter(null);
 
             Assert.AreEqual(String.Empty, result);
         }
@@ -37,7 +37,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             var stopWordsRemover = new LuceneStopWordsRemover();
 
-            var result = stopWordsRemover.RemoveStopWords(String.Empty);
+            var result = stopWordsRemover.Filter(String.Empty);
 
             Assert.AreEqual(String.Empty, result);
         }

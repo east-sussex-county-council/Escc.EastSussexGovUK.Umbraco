@@ -331,6 +331,7 @@
     <Compile Include="HtmlStringFormatterTests.cs" />
     <Compile Include="JobAdvertHtmlParserTests.cs" />
     <Compile Include="JobSearchFilterTests.cs" />
+    <Compile Include="KeywordsTokeniserTests.cs" />
     <Compile Include="TalentLinkSalaryParserTests.cs" />
     <Compile Include="StopWordsRemoverTests.cs" />
     <Compile Include="RemoveMediaDomainUrlTransformerTests.cs" />
@@ -351,6 +352,7 @@
     <Compile Include="TalentLinkUrlTests.cs" />
     <Compile Include="JobResultsParserTests.cs" />
     <Compile Include="CampaignTrackingUrlTransformerTests.cs" />
+    <Compile Include="LuceneQueryBuilderTests.cs" />
     <Compile Include="UseFormForEmailLinksFormatterTests.cs" />
   </ItemGroup>
   <ItemGroup>

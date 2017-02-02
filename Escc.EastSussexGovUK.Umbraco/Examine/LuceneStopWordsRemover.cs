@@ -7,7 +7,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Examine
     /// <summary>
     /// Removes words from a string, because in Examine an exact string search containing stop words will not work
     /// </summary>
-    public class LuceneStopWordsRemover : IStopWordsRemover
+    public class LuceneStopWordsRemover : ISearchFilter
     {
         // Lucene default stopwords according to http://stackoverflow.com/questions/17527741/what-is-the-default-list-of-stopwords-used-in-lucenes-stopfilter#17531638
         private static readonly string[] StopWords = {"a", "an", "and", "are", "as", "at", "be", "but", "by",
@@ -21,7 +21,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Examine
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns></returns>
-        public string RemoveStopWords(string value)
+        public string Filter(string value)
         {
             if (String.IsNullOrEmpty(value)) return String.Empty;
 
