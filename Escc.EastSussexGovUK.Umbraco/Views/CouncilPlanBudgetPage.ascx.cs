@@ -29,11 +29,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Views
             var fallbackImgStr = FormatImageTag(fallbackImageUrl.ToString(), "alt text", imageMapXhtml.Length > 0);
 
             var html = new StringBuilder();
-            html.Append("<object type=\"image/svg+xml\" data=\"");
-            html.Append(svgImageUrl);
-            html.Append("\">");
-            html.Append(fallbackImgStr);
-            html.Append("</object>");
+
+            html.Append("<div>");
+            html.Append("<img src=\"" + svgImageUrl + "\" alt=\"" + fallbackImageUrl +"\">");
+            html.Append("</div>");
+
 
             objectTag.Text = html.ToString();
         }
