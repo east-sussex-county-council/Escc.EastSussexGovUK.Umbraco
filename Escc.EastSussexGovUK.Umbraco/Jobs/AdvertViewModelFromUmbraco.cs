@@ -30,7 +30,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             var model = new JobAdvertViewModel()
             {
                 JobsLogo = BuildImage("JobsLogo_Content"),
-                HeaderBackgroundImage = BuildImage("HeaderBackgroundImage_Content"),
+                HeaderBackgroundImageSmall = BuildImage("HeaderBackgroundImage_Content"),
+                HeaderBackgroundImageMedium = BuildImage("HeaderBackgroundImageMedium_Content"),
+                HeaderBackgroundImageLarge = BuildImage("HeaderBackgroundImageLarge_Content"),
                 JobsHomePage = BuildLinkToPage("JobsHomePage_Content"),
                 LoginPage = BuildLinkToPage("LoginPage_Content"),
                 ExamineSearcher = BuildJobsSearcherName("PublicOrRedeployment_Content")

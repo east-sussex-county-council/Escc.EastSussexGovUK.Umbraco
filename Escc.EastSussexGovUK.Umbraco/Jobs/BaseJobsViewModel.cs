@@ -19,10 +19,20 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public Image JobsLogo { get; set; }
 
         /// <summary>
-        /// Gets or sets the background image for the header
+        /// Gets or sets the background image for the header on small screens
         /// </summary>
-        public Image HeaderBackgroundImage { get; set; }
+        public Image HeaderBackgroundImageSmall { get; set; }
 
+        /// <summary>
+        /// Gets or sets the background image for the header on medium screens
+        /// </summary>
+        public Image HeaderBackgroundImageMedium { get; set; }
+
+        /// <summary>
+        /// Gets or sets the background image for the header on large screens
+        /// </summary>
+        public Image HeaderBackgroundImageLarge { get; set; }
+        
         /// <summary>
         /// Gets or sets the home page for the jobs service
         /// </summary>
