@@ -1,4 +1,4 @@
-﻿/* 18px horizontal padding on h1 on 6 column grid, and 18px vertical padding on 30px base font. */
+/* 18px horizontal padding on h1 on 6 column grid, and 18px vertical padding on 30px base font. */
 .text-content h1 { border-radius: 5px; }
 @media screen 
 {
