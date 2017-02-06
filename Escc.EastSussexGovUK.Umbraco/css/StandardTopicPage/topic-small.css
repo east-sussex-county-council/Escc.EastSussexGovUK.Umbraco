@@ -24,9 +24,3 @@
 .text-content blockquote p { margin: .5625em 4.109589%; }
 .text-content blockquote p:first-child { margin: 1.6875em 4.109589% .5625em; text-indent: 35px; }
 .text-content blockquote ul { margin-left: 11%; }
-
-/* Flood warnings in floodalert.ascx are 20px/27px, calculated on 16px base font. 'View warnings' link returns to standard 16px font. */
-.flood { overflow: hidden; width: 100%; font-size: 1.25em; line-height: 1.35em; font-weight: bold; padding-top: .9em; }
-.flood a { font-size: .8em; line-height: 1.125em; display: block; font-weight: normal; }
-.flood img { float: left; margin: -6px 1em 0 0; }
-.text-content .flood-signup { margin: 1.125em 0 0; }

@@ -1,8 +1,10 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using System.Web.UI;
 using Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration;
 using Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders;
 using Escc.EastSussexGovUK.Umbraco.Views.Topic;
+using Exceptionless;
 
 namespace Escc.EastSussexGovUK.Umbraco.Views
 {
@@ -51,26 +53,34 @@ namespace Escc.EastSussexGovUK.Umbraco.Views
             // Load the usercontrol appropriate to the chosen layout, and pass in all the names of the placeholders it should use
             string selectedLayout = SectionLayoutManager.GetSelectedSectionLayout(placeholders, sectionPlaceholder, defaultLayout);
 
-            Control selectedControl = this.LoadControl(SectionLayoutManager.UserControlPath("Escc.EastSussexGovUK.Umbraco/TopicSectionLayouts", selectedLayout));
-            TopicSection sectionControl = selectedControl as TopicSection;
-
-            if (sectionControl != null)
+            try
             {
-                sectionControl.PlaceholderToBindSection = sectionPlaceholder;
-                sectionControl.PlaceholderToBindSubtitle = subtitlePlaceholder;
-                sectionControl.PlaceholderToBindContent = contentPlaceholder;
-                sectionControl.PlaceholderToBindImage01 = imagePlaceholder1;
-                sectionControl.PlaceholderToBindImage02 = imagePlaceholder2;
-                sectionControl.PlaceholderToBindImage03 = imagePlaceholder3;
-                sectionControl.PlaceholderToBindCaption01 = captionPlaceholder1;
-                sectionControl.PlaceholderToBindCaption02 = captionPlaceholder2;
-                sectionControl.PlaceholderToBindCaption03 = captionPlaceholder3;
-                sectionControl.PlaceholderToBindAltAsCaption01 = altAsCaptionPlaceholder1;
-                sectionControl.PlaceholderToBindAltAsCaption02 = altAsCaptionPlaceholder2;
-                sectionControl.PlaceholderToBindAltAsCaption03 = altAsCaptionPlaceholder3;
+                Control selectedControl = this.LoadControl(SectionLayoutManager.UserControlPath("Escc.EastSussexGovUK.Umbraco/TopicSectionLayouts", selectedLayout));
+                TopicSection sectionControl = selectedControl as TopicSection;
+
+                if (sectionControl != null)
+                {
+                    sectionControl.PlaceholderToBindSection = sectionPlaceholder;
+                    sectionControl.PlaceholderToBindSubtitle = subtitlePlaceholder;
+                    sectionControl.PlaceholderToBindContent = contentPlaceholder;
+                    sectionControl.PlaceholderToBindImage01 = imagePlaceholder1;
+                    sectionControl.PlaceholderToBindImage02 = imagePlaceholder2;
+                    sectionControl.PlaceholderToBindImage03 = imagePlaceholder3;
+                    sectionControl.PlaceholderToBindCaption01 = captionPlaceholder1;
+                    sectionControl.PlaceholderToBindCaption02 = captionPlaceholder2;
+                    sectionControl.PlaceholderToBindCaption03 = captionPlaceholder3;
+                    sectionControl.PlaceholderToBindAltAsCaption01 = altAsCaptionPlaceholder1;
+                    sectionControl.PlaceholderToBindAltAsCaption02 = altAsCaptionPlaceholder2;
+                    sectionControl.PlaceholderToBindAltAsCaption03 = altAsCaptionPlaceholder3;
+                }
+                // Add the section to the page
+                this.sections.Controls.Add(selectedControl);
             }
-            // Add the section to the page
-            this.sections.Controls.Add(selectedControl);
+            catch (ArgumentException exception)
+            {
+                // Expected if an obsolete section has been removed from config, but is still referenced by the page
+                exception.ToExceptionless().Submit();
+            }
         }
 
     }

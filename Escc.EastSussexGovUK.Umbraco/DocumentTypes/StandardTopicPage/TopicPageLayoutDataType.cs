@@ -22,7 +22,6 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage
                {"ImageRowBorderless", new PreValue(-1,"Row of images without borders",6)},
                {"SchoolClosures", new PreValue(-1,"School closures list",10)},
                {"TermDates", new PreValue(-1,"School term dates",11)},
-               {"FloodAlerts", new PreValue(-1,"Flood alerts (mobile)",16)},
                {"RecyclingSiteSearch", new PreValue(-1,"Find a recycling site",17)}
             };
         }

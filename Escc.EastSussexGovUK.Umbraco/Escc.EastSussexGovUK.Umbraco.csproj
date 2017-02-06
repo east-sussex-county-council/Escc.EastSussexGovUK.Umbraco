@@ -3395,12 +3395,9 @@
     <Content Include="Views\TermDates\QuickAnswer.ascx" />
     <Content Include="Views\TermDates\QuickAnswerMvcProxy.ascx" />
     <Content Include="Views\TermDates\TermDatesTable.ascx" />
-    <Content Include="Views\Topic\FloodAlerts.ascx" />
-    <Content Include="Views\Topic\FloodAlerts.xslt" />
     <Content Include="Views\Topic\RecyclingSiteFinder.ascx" />
     <Content Include="Views\Topic\TopicSection_Alternative.ascx" />
     <Content Include="Views\Topic\TopicSection_FeaturedImage.ascx" />
-    <Content Include="Views\Topic\TopicSection_FloodAlerts.ascx" />
     <Content Include="Views\Topic\TopicSection_ImageRowBorderless.ascx" />
     <Content Include="Views\Topic\TopicSection_Normal.ascx" />
     <Content Include="Views\Topic\TopicSection_RecyclingSiteFinder.ascx" />
@@ -4032,13 +4029,6 @@
     <Compile Include="Views\TermDates\QuickAnswerMvcProxy.ascx.designer.cs">
       <DependentUpon>QuickAnswerMvcProxy.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Topic\FloodAlerts.ascx.cs">
-      <DependentUpon>FloodAlerts.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Topic\FloodAlerts.ascx.designer.cs">
-      <DependentUpon>FloodAlerts.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Views\Topic\SectionLayoutConfigurationCollection.cs" />
     <Compile Include="Views\Topic\SectionLayoutConfigurationElement.cs" />
     <Compile Include="Views\Topic\SectionLayoutConfigurationSection.cs" />
@@ -4059,13 +4049,6 @@
     </Compile>
     <Compile Include="Views\Topic\TopicSection_FeaturedImage.ascx.designer.cs">
       <DependentUpon>TopicSection_FeaturedImage.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Topic\TopicSection_FloodAlerts.ascx.cs">
-      <DependentUpon>TopicSection_FloodAlerts.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Topic\TopicSection_FloodAlerts.ascx.designer.cs">
-      <DependentUpon>TopicSection_FloodAlerts.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\Topic\TopicSection_ImageRowBorderless.ascx.cs">
       <DependentUpon>TopicSection_ImageRowBorderless.ascx</DependentUpon>

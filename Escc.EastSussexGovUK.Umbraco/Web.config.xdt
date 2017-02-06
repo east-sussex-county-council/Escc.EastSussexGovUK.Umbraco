@@ -147,7 +147,6 @@
         <add name="ImageRowBorderless" displayName="Row of images without borders" displayControl="~/Views/Topic/TopicSection_ImageRowBorderless.ascx" />
         <add name="SchoolClosures" displayName="School closures list" displayControl="~/Views/Topic/TopicSection_SchoolClosures.ascx" />
         <add name="TermDates" displayName="School term dates" displayControl="~/Views/Topic/TopicSection_TermDates.ascx" />
-        <add name="FloodAlerts" displayName="Flood alerts (mobile)" displayControl="~/Views/Topic/TopicSection_FloodAlerts.ascx" />
         <add name="RecyclingSiteSearch" displayName="Find a recycling site" displayControl="~/Views/Topic/TopicSection_RecyclingSiteFinder.ascx" />
       </SectionLayouts>
     </TopicSectionLayouts>
@@ -187,10 +186,6 @@
     <add key="Umbraco.ModelsBuilder.ModelsMode" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     <add key="Umbraco.ModelsBuilder.ModelsMode" value="Nothing" xdt:Transform="Insert" />
     <!-- END: Configure Umbraco -->
-
-    <!-- For flood alerts included on a standard topic page -->
-    <add key="FloodAlertsRssUrl" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-    <add key="FloodAlertsRssUrl" value="http://www.environment-agency.gov.uk/homeandleisure/floods/134567.aspx" xdt:Transform="Insert"/>
 
     <!-- Escc.Umbraco.SiteMap -->
     <add key="sitemapMediaFilesExclusions" xdt:Transform="Remove" xdt:Locator="Match(key)" />

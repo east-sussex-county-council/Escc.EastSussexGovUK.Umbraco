@@ -75,13 +75,6 @@
 
 @Html.Partial("~/MicrosoftCmsMigration/UserControls/RelatedLinksMvc.ascx", Model)
 
-@if (Request.Url.ToString().Contains("/flooding/")) { 
-    <div class="large supporting text-content flood-warnings">
-        <article>
-            @Html.Partial("~/Views/Topic/FloodAlerts.ascx", Model)
-        </article>
-    </div>
-}
 @Html.Partial("~/Views/Layouts/_SocialMedia.cshtml")
 @Html.Partial("~/Views/EastSussexGovUK/Features/_SupportingContentDesktop.cshtml")
 <div class="text-content content">
