@@ -40,7 +40,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 SearchResultsPage = BuildUri("SearchResultsPage_Content"),
                 TileNavigation = RelatedLinksService.BuildRelatedLinksViewModelFromUmbracoContent(UmbracoContent, "TileNavigation_Content"),
                 TileImages = BuildImages("TileImages_Content")
-        };
+            };
+
+            // Allow a hyphen to indicate that there's no text for the link, just an image
+            foreach (var link in model.TileNavigation)
+            {
+                if (link.Text == "-") link.Text = String.Empty;
+            }
 
             return model;
         }
