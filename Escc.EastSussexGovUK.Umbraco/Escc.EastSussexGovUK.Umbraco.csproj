@@ -798,12 +798,12 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="googledb369ad0fa294f54.html" />
-    <Content Include="images\flood-alert.png" />
-    <Content Include="images\flood-severe.png" />
-    <Content Include="images\flood-warning.png" />
     <Content Include="images\HomePage\jobs.png" />
     <Content Include="images\quote-close.gif" />
     <Content Include="images\quote-open.gif" />
+    <None Include="Jobs\Images\East Sussex Jobs logo colour.png" />
+    <None Include="Jobs\Images\East Sussex Jobs logo white.png" />
+    <None Include="Jobs\Images\header.png" />
     <Content Include="js\CampaignTemplates\campaign-landing.js" />
     <Content Include="js\CouncilPlan\council-plan.js" />
     <Content Include="js\CustomerFocusTemplates\guide.js" />
@@ -852,6 +852,7 @@
     <None Include="images\Quote-close.psd" />
     <None Include="images\Quote-open.psd" />
     <None Include="images\Web.example.config" />
+    <None Include="Jobs\Images\talentlink-header.psd" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
