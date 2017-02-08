@@ -20,6 +20,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Examine
         public IList<string> Tokenise(string searchTerm)
         {
             var terms = new List<string>();
+            searchTerm = searchTerm.Trim();
             if (!String.IsNullOrEmpty(searchTerm))
             {
                 var termsToSplit = new List<string>();
@@ -37,7 +38,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Examine
                         if (!String.IsNullOrEmpty(before))
                         {
                             termsToSplit.Add(before);
-                            searchTerm = searchTerm.Remove(0, pos);
+                            searchTerm = searchTerm.Remove(0, pos).Trim();
                         }
 
                         // Find the end quote
@@ -51,7 +52,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Examine
                         else
                         {
                             termsToSplit.Add(searchTerm.Substring(0, end+1));
-                            searchTerm = searchTerm.Remove(0, end + 1);
+                            searchTerm = searchTerm.Remove(0, end + 1).Trim();
                         }
                         pos = searchTerm.IndexOf("\"", StringComparison.CurrentCulture);
                     }

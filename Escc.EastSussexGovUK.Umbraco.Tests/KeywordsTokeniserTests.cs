@@ -55,5 +55,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             Assert.AreEqual("search", result[3]);
             Assert.AreEqual("tokeniser", result[4]);
         }
+
+        [Test]
+        public void TwoQuotedTermsWithTrailingSpace()
+        {
+            var term = "\"spring term\" \"summer term\" ";
+            var tokeniser = new KeywordsTokeniser();
+
+            var result = tokeniser.Tokenise(term);
+
+            Assert.AreEqual(2, result.Count);
+            Assert.AreEqual("\"spring term\"", result[0]);
+            Assert.AreEqual("\"summer term\"", result[1]);
+        }
     }
 }
