@@ -8,6 +8,8 @@ using System.Web;
 using Escc.EastSussexGovUK.Umbraco.Examine;
 using Examine;
 using Examine.SearchCriteria;
+using Exceptionless;
+using Lucene.Net.QueryParsers;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
 {
@@ -127,52 +129,59 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                     break;
             }
 
-
-            switch (query.SortBy)
+            try
             {
-                case JobSearchQuery.JobsSortOrder.JobTitleAscending:
-                case JobSearchQuery.JobsSortOrder.LocationAscending:
-                case JobSearchQuery.JobsSortOrder.SalaryRangeAscending:
-                case JobSearchQuery.JobsSortOrder.WorkPatternAscending:
-                case JobSearchQuery.JobsSortOrder.ClosingDateAscending:
-                    if (String.IsNullOrWhiteSpace(modifiedQuery))
-                    {
-                        luceneQuery.RawQuery(everything).OrderBy(sortField);
-                    }
-                    else
-                    {
-                        luceneQuery.RawQuery(modifiedQuery).OrderBy(sortField);
-                    }
-                    break;
-                case JobSearchQuery.JobsSortOrder.JobTitleDescending:
-                case JobSearchQuery.JobsSortOrder.LocationDescending:
-                case JobSearchQuery.JobsSortOrder.SalaryRangeDescending:
-                case JobSearchQuery.JobsSortOrder.WorkPatternDescending:
-                case JobSearchQuery.JobsSortOrder.ClosingDateDescending:
-                    if (String.IsNullOrWhiteSpace(modifiedQuery))
-                    {
-                        luceneQuery.RawQuery(everything).OrderByDescending(sortField);
-                    }
-                    else
-                    {
-                        luceneQuery.RawQuery(modifiedQuery).OrderByDescending(sortField);
-                    }
-                    break;
-                default:
-                    if (String.IsNullOrWhiteSpace(modifiedQuery))
-                    {
-                        luceneQuery.RawQuery(everything);
-                    }
-                    else
-                    {
-                        luceneQuery.RawQuery(modifiedQuery);
-                    }
-                    break;
+                switch (query.SortBy)
+                {
+                    case JobSearchQuery.JobsSortOrder.JobTitleAscending:
+                    case JobSearchQuery.JobsSortOrder.LocationAscending:
+                    case JobSearchQuery.JobsSortOrder.SalaryRangeAscending:
+                    case JobSearchQuery.JobsSortOrder.WorkPatternAscending:
+                    case JobSearchQuery.JobsSortOrder.ClosingDateAscending:
+                        if (String.IsNullOrWhiteSpace(modifiedQuery))
+                        {
+                            luceneQuery.RawQuery(everything).OrderBy(sortField);
+                        }
+                        else
+                        {
+                            luceneQuery.RawQuery(modifiedQuery).OrderBy(sortField);
+                        }
+                        break;
+                    case JobSearchQuery.JobsSortOrder.JobTitleDescending:
+                    case JobSearchQuery.JobsSortOrder.LocationDescending:
+                    case JobSearchQuery.JobsSortOrder.SalaryRangeDescending:
+                    case JobSearchQuery.JobsSortOrder.WorkPatternDescending:
+                    case JobSearchQuery.JobsSortOrder.ClosingDateDescending:
+                        if (String.IsNullOrWhiteSpace(modifiedQuery))
+                        {
+                            luceneQuery.RawQuery(everything).OrderByDescending(sortField);
+                        }
+                        else
+                        {
+                            luceneQuery.RawQuery(modifiedQuery).OrderByDescending(sortField);
+                        }
+                        break;
+                    default:
+                        if (String.IsNullOrWhiteSpace(modifiedQuery))
+                        {
+                            luceneQuery.RawQuery(everything);
+                        }
+                        else
+                        {
+                            luceneQuery.RawQuery(modifiedQuery);
+                        }
+                        break;
+                }
+
+                var results = _searcher.Search(luceneQuery);
+
+                return Task.FromResult(BuildJobsFromExamineResults(results));
             }
-
-            var results = _searcher.Search(luceneQuery);
-
-            return Task.FromResult(BuildJobsFromExamineResults(results));
+            catch (ParseException exception)
+            {
+                exception.ToExceptionless().Submit();
+                return Task.FromResult(new List<Job>());
+            }
         }
 
         private List<Job> BuildJobsFromExamineResults(ISearchResults results)
@@ -293,9 +302,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             const string fallbackSalary = " (salaryMax:0009999 salaryMax:0014999 salaryMax:0019999 salaryMax:0024999 salaryMax:0034999 salaryMax:0049999) ";
             const string noWorkPattern = " (+fullTime:false +partTime:false) ";
 
-            var results = _searcher.Search(_searcher.CreateSearchCriteria().RawQuery(noSalary + fallbackSalary + noWorkPattern));
-            var jobs = BuildJobsFromExamineResults(results);
-            return Task.FromResult((IEnumerable<Job>)jobs);
+            try
+            {
+                var results = _searcher.Search(_searcher.CreateSearchCriteria().RawQuery(noSalary + fallbackSalary + noWorkPattern));
+                var jobs = BuildJobsFromExamineResults(results);
+                return Task.FromResult((IEnumerable<Job>)jobs);
+            }
+            catch (ParseException exception)
+            {
+                exception.ToExceptionless().Submit();
+                return Task.FromResult(new List<Job>() as IEnumerable<Job>);
+            }
         }
     }
 }
