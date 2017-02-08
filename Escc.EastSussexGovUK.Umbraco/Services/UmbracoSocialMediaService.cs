@@ -76,7 +76,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             var twitterScript = content.GetPropertyValue<string>("twitterScript_Social_media_and_promotion");
             if (!String.IsNullOrEmpty(twitterScript)) model.TwitterWidgetScript = new HtmlString(twitterScript);
 
-            // If there's no account, but there is a script, parse the account name from the script
+            // If there's no account, but there is a script, parse the account name from the script.
             if (String.IsNullOrEmpty(model.TwitterAccount) && !String.IsNullOrEmpty(twitterScript))
             {
                 var match = Regex.Match(twitterScript, "href=\"https://twitter.com/(?<Account>.*?)\".*?>");

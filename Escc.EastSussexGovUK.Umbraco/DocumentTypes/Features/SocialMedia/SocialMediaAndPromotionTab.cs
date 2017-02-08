@@ -17,7 +17,8 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Features.SocialMedia
         [UmbracoProperty("Twitter: account", "twitterAccount", BuiltInUmbracoDataTypes.Textbox, description: "Don't include the @ sign", sortOrder: 1)]
         public string TwitterAccount { get; set; }
 
-        [UmbracoProperty("Twitter: paste widget script", "twitterScript", TwitterScriptDataType.PropertyEditorAlias, TwitterScriptDataType.DataTypeName, description: "Copy from https://twitter.com/settings/widgets", sortOrder: 2)]
+        [UmbracoProperty("Twitter: paste widget script", "twitterScript", TwitterScriptDataType.PropertyEditorAlias, TwitterScriptDataType.DataTypeName, description: "For backwards compatibility only. Use 'Twitter: account' instead.", sortOrder: 2)]
+        [Obsolete]
         public string TwitterScript { get; set; }
 
         [UmbracoProperty("Twitter: inherit widget?", "twitterInherit", CheckboxDataType.PropertyEditorAlias, CheckboxDataType.DataTypeName, sortOrder: 3)]
