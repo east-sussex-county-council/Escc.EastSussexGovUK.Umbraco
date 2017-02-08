@@ -32,7 +32,7 @@
             <description>@job.WorkPattern @job.ContractType.ToLower(CultureInfo.CurrentCulture) @job.Salary.SalaryRange in @job.Location. Closing date @job.ClosingDate.Value.ToBritishDate(). @job.Organisation / @job.JobType vacancy.</description>
             @Html.Raw(url)
             <guid ispermalink="false">https://www.eastsussex.gov.uk/id/job-advert/@job.Id</guid>
-            <source url="@Request.Url"/>
+            <source url="@Request.Url.ToString().Replace("\"", "%22")"/>
             <category>@job.Location</category>
             <category>@job.ContractType</category>
             <category>@job.JobType</category>
