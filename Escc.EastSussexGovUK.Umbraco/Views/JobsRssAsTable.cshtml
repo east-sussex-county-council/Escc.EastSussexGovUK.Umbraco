@@ -1,8 +1,11 @@
 ﻿@using Escc.Dates
+@using Escc.Web
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.RssViewModel<Escc.EastSussexGovUK.Umbraco.Jobs.Job>>
 @{
     Layout = null;
     Response.ContentType = "text/html";
+    var corsPolicy = new CorsPolicyFromConfig().CorsPolicy;
+    new CorsHeaders(Request.Headers, Response.Headers, corsPolicy).UpdateHeaders();
 }
 <table>
     <thead>
