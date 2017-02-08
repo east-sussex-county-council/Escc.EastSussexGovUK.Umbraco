@@ -35,6 +35,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         // Escc.EastSussexGovUK.Rss project
         [TestCase(@"EastSussexGovUK\Rss\rss-to-html.ashx")]
 
+        // Escc.Umbraco.EditorTools project
+        [TestCase(@"App_Plugins\EditorTools\CurrentUsers.html")]
+
         public void NuGetPackagesCorrectlyIncludedInProject(string filePathWhichShouldBeIncluded)
         {
             var commonParent = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent;
