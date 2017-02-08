@@ -119,7 +119,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.EastSussexGovUK.1.1.0\lib\Escc.EastSussexGovUK.dll</HintPath>
+      <HintPath>..\packages\Escc.EastSussexGovUK.1.1.1\lib\Escc.EastSussexGovUK.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
