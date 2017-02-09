@@ -57,6 +57,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             {
                 var jobsProvider = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.ExamineSearcher], null, null);
                 viewModel.Job = Task.Run(async () => await jobsProvider.ReadJob(jobUrlSegment.Groups[1].Value)).Result;
+                if (String.IsNullOrEmpty(viewModel.Job.Id))
+                {
+                    return new HttpNotFoundResult();
+                }
             }
             else
             {
