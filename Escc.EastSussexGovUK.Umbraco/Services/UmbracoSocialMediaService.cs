@@ -79,10 +79,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             // If there's no account, but there is a script, parse the account name from the script.
             if (String.IsNullOrEmpty(model.TwitterAccount) && !String.IsNullOrEmpty(twitterScript))
             {
-                var match = Regex.Match(twitterScript, "href=\"https://twitter.com/(?<Account>.*?)\".*?>");
+                var match = Regex.Match(twitterScript, "href=\"https://twitter.com/(?<TwitterPath>.*?)\".*?>");
                 if (match.Success)
                 {
-                    model.TwitterAccount = match.Groups["Account"].Value;
+                    var twitterPath = match.Groups["TwitterPath"].Value.ToUpperInvariant();
+                    if (!twitterPath.StartsWith("SEARCH?Q=") && !twitterPath.StartsWith("HASHTAG/"))
+                    {
+                        // We found it, so it was a profile script. Use the account setting instead of the script.
+                        model.TwitterAccount = match.Groups["TwitterPath"].Value;
+                        model.TwitterWidgetScript = null;
+                    }
                 }
             }
 
