@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Escc.Dates;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Examine;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.EastSussexGovUK.Umbraco.Services;
@@ -39,7 +40,9 @@ namespace Escc.EastSussexGovUK.Umbraco.HomePage
             viewModel.JobLocations = Task.Run(async() => await jobsData.ReadLocations()).Result;
             viewModel.JobTypes = Task.Run(async () => await jobsData.ReadJobTypes()).Result;
 
-            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" });
+            // Jobs close at midnight, so don't cache beyond then
+            var untilMidnightTonight = DateTime.Today.ToUkDateTime().AddDays(1) - DateTime.Now.ToUkDateTime();
+            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" }, (int)untilMidnightTonight.TotalSeconds);
 
             return CurrentTemplate(viewModel);
         }

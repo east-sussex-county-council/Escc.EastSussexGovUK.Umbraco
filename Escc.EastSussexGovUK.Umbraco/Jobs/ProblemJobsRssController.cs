@@ -54,7 +54,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 viewModel.Items.Add(job);
             }
 
-            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache);
+            // Jobs close at midnight, so don't cache beyond then
+            var untilMidnightTonight = DateTime.Today.ToUkDateTime().AddDays(1) - DateTime.Now.ToUkDateTime();
+            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, null, (int)untilMidnightTonight.TotalSeconds);
 
             return CurrentTemplate(viewModel);
         }
