@@ -71,8 +71,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 }
                 else
                 {
-                    int page = 1;
+                    int page;
                     Int32.TryParse(Request.QueryString["page"], out page);
+                    if (page < 1) page = 1;
                     viewModel.Jobs = jobs.ToPagedList(page, 10);
                 }
 
