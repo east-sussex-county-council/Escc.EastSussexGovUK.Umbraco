@@ -814,7 +814,6 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="googledb369ad0fa294f54.html" />
-    <Content Include="images\HomePage\jobs.png" />
     <Content Include="images\quote-close.gif" />
     <Content Include="images\quote-open.gif" />
     <None Include="Jobs\Images\East Sussex Jobs logo colour.png" />
@@ -3592,7 +3591,6 @@
     <Content Include="Views\Layouts\_GuideNavigation.cshtml" />
     <Content Include="Views\Layouts\_LandingNavigation.cshtml" />
     <Content Include="Views\Layouts\UmbracoPlain.cshtml" />
-    <Content Include="Views\_HomePageJobSearch.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\CampaignContent.cshtml" />
     <Content Include="Views\CampaignContentCss.cshtml" />
