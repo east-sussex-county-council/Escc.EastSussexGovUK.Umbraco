@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
@@ -9,6 +11,7 @@ using Escc.EastSussexGovUK.Umbraco.Examine;
 using Examine;
 using Examine.SearchCriteria;
 using Exceptionless;
+using log4net;
 using Lucene.Net.QueryParsers;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
@@ -22,7 +25,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
         private readonly ISearcher _searcher;
         private readonly IQueryBuilder _keywordsQueryBuilder;
         private readonly Uri _jobAdvertUrl;
-
+        private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         /// <summary>
         /// Initializes a new instance of the <see cref="JobsDataFromExamine" /> class.
         /// </summary>
@@ -179,7 +182,28 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             }
             catch (ParseException exception)
             {
+                exception.Data.Add("Reference", query.JobReference);
+                exception.Data.Add("Job types", String.Join(",", query.JobTypes.ToArray()));
+                exception.Data.Add("Keywords", query.Keywords);
+                exception.Data.Add("Locations", String.Join(",", query.Locations.ToArray()));
+                exception.Data.Add("Organisations", String.Join(",", query.Organisations.ToArray()));
+                exception.Data.Add("Salary ranges", String.Join(",", query.SalaryRanges.ToArray()));
+                exception.Data.Add("Work patterns", String.Join(",", query.WorkPatterns.ToArray()));
+                exception.Data.Add("Sort", query.SortBy);
+                exception.Data.Add("Generated query", modifiedQuery);
                 exception.ToExceptionless().Submit();
+
+                var errorForLog = new StringBuilder($"Lucene.net could not parse {modifiedQuery} generated from parameters:").Append(Environment.NewLine)
+                    .Append("Reference:").Append(query.JobReference).Append(Environment.NewLine)
+                    .Append("Job types:").Append(String.Join(",", query.JobTypes.ToArray())).Append(Environment.NewLine)
+                    .Append("Keywords:").Append(query.Keywords).Append(Environment.NewLine)
+                    .Append("Locations:").Append(String.Join(",", query.Locations.ToArray())).Append(Environment.NewLine)
+                    .Append("Organisations:").Append(String.Join(",", query.Organisations.ToArray())).Append(Environment.NewLine)
+                    .Append("Salary ranges:").Append(String.Join(",", query.SalaryRanges.ToArray())).Append(Environment.NewLine)
+                    .Append("Work patterns:").Append(String.Join(",", query.WorkPatterns.ToArray())).Append(Environment.NewLine)
+                    .Append("Sort:").Append(query.SortBy).Append(Environment.NewLine);
+                _log.Error(errorForLog.ToString());
+
                 return Task.FromResult(new List<Job>());
             }
         }
