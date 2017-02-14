@@ -41,16 +41,25 @@ namespace Escc.EastSussexGovUK.Umbraco.Examine
             {
                 foreach (var searchTerm in searchTerms)
                 {
+                    // Lucene treats hyphens like spaces, and removing the hyphens avoids allowing a term that starts with a hyphen, which Lucene cannot parse
+                    var sanitisedSearchTerm = searchTerm.Replace("-", " ");
+                    sanitisedSearchTerm = sanitisedSearchTerm.Trim();
+                    if (String.IsNullOrEmpty(sanitisedSearchTerm)) continue;
+
                     query += " ";
                     if (eachTermIsRequired) query += "+";
-                    query += field.FieldName + ":" + searchTerm;
+                    query += field.FieldName + ":" + sanitisedSearchTerm;
                     if (field.Boost != 1)
                     {
                         query += "^" + field.Boost;
                     }
                 }
-                query = $"({query.Trim()})";
-                query = PrependRequiredIndicator(wholeClauseIsRequired, query);
+                query = query.Trim();
+                if (!String.IsNullOrEmpty(query))
+                {
+                    query = $"({query})";
+                    query = PrependRequiredIndicator(wholeClauseIsRequired, query);
+                }
             }
             return query;
         }
@@ -96,16 +105,19 @@ namespace Escc.EastSussexGovUK.Umbraco.Examine
         /// <returns></returns>
         public string AllOfTheseTermsInAnyOfTheseFields(IList<string> searchTerms, IList<SearchField> fields, bool isRequired)
         {
-            var query = String.Empty;
-            if (searchTerms.Count == 0 || fields.Count == 0) return query;
+            if (searchTerms.Count == 0 || fields.Count == 0) return String.Empty;
 
             var clauses = new List<string>();
             foreach (var field in fields)
             {
                 clauses.Add(AllOfTheseTermsInThisField(searchTerms, field, false).Trim());
             }
-            query = "(" + String.Join(" ", clauses.ToArray()) + ")";
-            query = PrependRequiredIndicator(isRequired, query);
+            var query = String.Join(" ", clauses.ToArray()).Trim();
+            if (!String.IsNullOrEmpty(query))
+            {
+                query = "(" + query + ")";
+                query = PrependRequiredIndicator(isRequired, query);
+            }
             return query;
         }
     }

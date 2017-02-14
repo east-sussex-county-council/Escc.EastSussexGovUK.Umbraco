@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace Escc.EastSussexGovUK.Umbraco.Tests
 {
     [TestFixture]
-    public class LuceneQueryBuilderTests
+    public class LuceneTokenisedQueryBuilderTests
     {
         [Test]
         public void NoKeywordsNoQuery()
@@ -66,6 +66,36 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             var query = builder.AllOfTheseTermsInAnyOfTheseFields(new string[] { "search", "\"in quotes\"" }, new SearchField[] { new SearchField() { FieldName = "test", Boost = 2.5 }, new SearchField() { FieldName = "test2" } }, true);
 
             Assert.AreEqual(" +((+test:search^2.5 +test:\"in quotes\"^2.5) (+test2:search +test2:\"in quotes\"))", query);
+        }
+
+        [Test]
+        public void KeywordStartingWithIsInvalid()
+        {
+            var builder = new LuceneTokenisedQueryBuilder();
+
+            var query = builder.AllOfTheseTermsInAnyOfTheseFields(new string[] { "-search" }, new SearchField[] { new SearchField() { FieldName = "test" } }, true);
+
+            Assert.AreEqual(" +((+test:search))", query);
+        }
+
+        [Test]
+        public void HyphenInKeywordIsRemoved()
+        {
+            var builder = new LuceneTokenisedQueryBuilder();
+
+            var query = builder.AllOfTheseTermsInAnyOfTheseFields(new string[] { "part-time" }, new SearchField[] { new SearchField() { FieldName = "test" } }, true);
+
+            Assert.AreEqual(" +((+test:part time))", query);
+        }
+
+        [Test]
+        public void HyphenOnlyAsKeywordIsRemoved()
+        {
+            var builder = new LuceneTokenisedQueryBuilder();
+
+            var query = builder.AllOfTheseTermsInAnyOfTheseFields(new string[] { "-" }, new SearchField[] { new SearchField() { FieldName = "test" } }, true);
+
+            Assert.AreEqual(String.Empty, query);
         }
     }
 }
