@@ -56,3 +56,11 @@ background: #00a1de; /* Old browsers */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00a1de', endColorstr='#47cbed',GradientType=0 ); /* IE6-9 */
 background: linear-gradient(top, #00a1de 0%,#47cbed 99%); /* W3C */
 }
+
+/* Modify job alert (seen when you click a link from the confirmation email) */
+.SA-Title, #searchagentbutton, #div-srcparam4, #div-srcparam7 { display: none; }
+.SA-KWF { width: 15em;}
+label.SA-F4 { display: inline;}
+legend.SAg-Title { font-weight: bold; }
+label.SA-smalltext { display: inline; padding: 0 1em 0 .3em;vertical-align: sub;}
+#sEmail { width: 20em;}
