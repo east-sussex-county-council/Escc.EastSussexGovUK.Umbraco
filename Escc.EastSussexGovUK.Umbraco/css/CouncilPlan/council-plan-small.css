@@ -93,10 +93,10 @@ ol.plan-nav span { display: block; font-weight: bold; }
 /* .related-links box follows floated elements on both home and topic templates */
 .related-links { clear: left; }
 
-/* SVG budget diagrams. Don't let PNG image resize if it has an image map, as the coordinates would be wrong. */
-object { margin: 1.125em 0 0; width:100%; min-width: 400px; background: #fff; }
-object img { margin: 1.125em 0 0; background: #fff; }
-object img.image-map { max-width: none; }
+ /* SVG budget diagrams. */
+.intrinsic-container {  position: relative;  height: 0;  overflow: hidden; padding-bottom: 100%}
+.intrinsic-container iframe {  position: absolute;  top:0;  left: 0;  width: 100%;  height: 100%;}
+
 
 /* Priorities template */
 @media screen {

@@ -4,6 +4,7 @@ using System.Text;
 using System.Web.Mvc;
 using Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration;
 using Umbraco.Core.Models;
+using Escc.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.Views
 {
@@ -15,7 +16,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Views
 
             Uri svgImageUrl = null;
 
-            IPublishedContent phDefSvg = (IPublishedContent) CmsUtilities.Placeholders["phDefSvg"].Value;
+            IPublishedContent phDefSvg = (IPublishedContent)CmsUtilities.Placeholders["phDefSvg"].Value;
             if (phDefSvg != null)
             {
                 svgImageUrl = new Uri(phDefSvg.Url, UriKind.Relative);
@@ -30,10 +31,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Views
 
             var html = new StringBuilder();
 
-            html.Append("<div>");
-            html.Append("<img src=\"" + svgImageUrl + "\" alt=\"" + fallbackImageUrl +"\">");
+            html.Append("<div class=\"intrinsic-container\">");
+            html.Append("<iframe src=\"" + svgImageUrl + "\" allowfullscreen>" + fallbackImageUrl + "</iframe>");
             html.Append("</div>");
-
 
             objectTag.Text = html.ToString();
         }
