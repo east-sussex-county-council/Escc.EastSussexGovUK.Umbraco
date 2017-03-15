@@ -47,6 +47,8 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location
             "Metal items",
             "Mobile phones",
             "Newspapers/Magazines/Junk mail/White Telephone Directories",
+            "Paint – water-based emulsion",
+            "Paint – solvent-based",
             "Plasterboard",
             "Plastic bottles",
             "Plastic carrier bags",
