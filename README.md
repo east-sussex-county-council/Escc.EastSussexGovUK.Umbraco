@@ -3,7 +3,7 @@
 This project is the root of our [Umbraco](http://umbraco.com/) installation for [www.eastsussex.gov.uk](https://www.eastsussex.gov.uk) and includes:
 
 * [Jobs](Jobs.md)
-* [Location data API](Location.md)
+* [Locations, including libraries and recycling sites](Location.md)
 * [Adding term dates to a topic page](Topic.md)
 
 ## Development setup steps
