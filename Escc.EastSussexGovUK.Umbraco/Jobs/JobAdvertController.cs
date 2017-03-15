@@ -52,6 +52,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 new UmbracoWebChatSettingsService(model.Content, new UrlListReader()),
                 null);
 
+            // Redirect non-preferred URL - these are sent out in job alerts, and linked from the TalentLink back office
+            if (!String.IsNullOrEmpty(Request.QueryString["nPostingTargetID"]))
+            {
+                var jobsProvider = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.ExamineSearcher], null, new Uri(model.Content.UrlAbsolute()));
+                viewModel.Job = Task.Run(async () => await jobsProvider.ReadJob(Request.QueryString["nPostingTargetID"])).Result;
+                if (!String.IsNullOrEmpty(viewModel.Job.Id))
+                {
+                    return new RedirectResult(viewModel.Job.Url.ToString(), true);
+                }
+            }
+
+            // Show page for preferred URL
             var jobUrlSegment = Regex.Match(Request.Url.AbsolutePath, "/([0-9]+)/");
             if (jobUrlSegment.Success)
             {
