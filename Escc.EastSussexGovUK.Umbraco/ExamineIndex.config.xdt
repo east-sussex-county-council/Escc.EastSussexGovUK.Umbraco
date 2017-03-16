@@ -16,7 +16,8 @@
       <add Name="salaryMax" />
       <add Name="salaryMin" />
       <add Name="salarySort" EnableSorting="true" Type="STRING" />
-      <add Name="closingDate" EnableSorting="true" Type="STRING" />
+      <add Name="closingDate" EnableSorting="true" Type="DATE" />
+      <add Name="closingDateDisplay" />
       <add Name="jobType" />
       <add Name="jobTypeDisplay" />
       <add Name="contractType" />
@@ -47,7 +48,8 @@
       <add Name="salaryMax" />
       <add Name="salaryMin" />
       <add Name="salarySort" EnableSorting="true" Type="STRING" />
-      <add Name="closingDate" EnableSorting="true" Type="STRING" />
+      <add Name="closingDate" EnableSorting="true" Type="DATE" />
+      <add Name="closingDateDisplay" />
       <add Name="jobType" />
       <add Name="jobTypeDisplay" />
       <add Name="contractType" />

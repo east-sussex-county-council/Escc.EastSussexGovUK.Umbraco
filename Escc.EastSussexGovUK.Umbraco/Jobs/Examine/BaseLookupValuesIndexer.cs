@@ -68,6 +68,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 {
                     var query = new JobSearchQuery();
                     query.Locations.Add(lookupValue.Text);
+                    query.ClosingDateFrom = DateTime.Today;
                     var simpleDataSet = Task.Run(async () => await CreateDataSetFromLookup(i, indexType, "Location", query, lookupValue, jobsDataProvider)).Result;
                     dataSets.Add(simpleDataSet);
                     i++;
@@ -78,6 +79,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 {
                     var query = new JobSearchQuery();
                     query.JobTypes.Add(lookupValue.Text);
+                    query.ClosingDateFrom = DateTime.Today;
                     var simpleDataSet = Task.Run(async () => await CreateDataSetFromLookup(i, indexType, "JobType", query, lookupValue, jobsDataProvider)).Result;
                     dataSets.Add(simpleDataSet);
                     i++;
@@ -88,6 +90,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 {
                     var query = new JobSearchQuery();
                     query.SalaryRanges.Add(lookupValue.Text);
+                    query.ClosingDateFrom = DateTime.Today;
                     var simpleDataSet = Task.Run(async () => await CreateDataSetFromLookup(i, indexType, "SalaryRange", query, lookupValue, jobsDataProvider)).Result;
                     dataSets.Add(simpleDataSet);
                     i++;
@@ -98,6 +101,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 {
                     var query = new JobSearchQuery();
                     query.WorkPatterns.Add(lookupValue.Text);
+                    query.ClosingDateFrom = DateTime.Today;
                     var simpleDataSet = Task.Run(async () => await CreateDataSetFromLookup(i, indexType, "WorkPattern", query, lookupValue, jobsDataProvider)).Result;
                     dataSets.Add(simpleDataSet);
                     i++;

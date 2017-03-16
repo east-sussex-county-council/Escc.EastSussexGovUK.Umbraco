@@ -102,10 +102,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             // For the working patterns we also need to build the raw Lucene query
             modifiedQuery += BuildWorkPatternLuceneQuery(query.WorkPatterns);
 
-            var luceneQuery = _searcher.CreateSearchCriteria(BooleanOperation.And);
+            // Append a requirement that the job must not have closed
+            if (query.ClosingDateFrom.HasValue)
+            {
+                modifiedQuery += " +closingDate:[" + query.ClosingDateFrom.Value.ToString("yyyyMMdd000000000") + " TO 30000000000000000]";
+            }
 
-            // If no search criteria, use a query that returns everything
-            const string everything = "__NodeId:[0 TO 999999]";
+            var luceneQuery = _searcher.CreateSearchCriteria(BooleanOperation.And);
 
             var sortField = String.Empty;
             switch (query.SortBy)
@@ -132,6 +135,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                     break;
             }
 
+            if (String.IsNullOrWhiteSpace(modifiedQuery))
+            {
+                modifiedQuery = "__NodeId:[0 TO 999999]";
+            }
+
             try
             {
                 switch (query.SortBy)
@@ -141,38 +149,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                     case JobSearchQuery.JobsSortOrder.SalaryRangeAscending:
                     case JobSearchQuery.JobsSortOrder.WorkPatternAscending:
                     case JobSearchQuery.JobsSortOrder.ClosingDateAscending:
-                        if (String.IsNullOrWhiteSpace(modifiedQuery))
-                        {
-                            luceneQuery.RawQuery(everything).OrderBy(sortField);
-                        }
-                        else
-                        {
-                            luceneQuery.RawQuery(modifiedQuery).OrderBy(sortField);
-                        }
+                        luceneQuery.RawQuery(modifiedQuery).OrderBy(sortField);
                         break;
                     case JobSearchQuery.JobsSortOrder.JobTitleDescending:
                     case JobSearchQuery.JobsSortOrder.LocationDescending:
                     case JobSearchQuery.JobsSortOrder.SalaryRangeDescending:
                     case JobSearchQuery.JobsSortOrder.WorkPatternDescending:
                     case JobSearchQuery.JobsSortOrder.ClosingDateDescending:
-                        if (String.IsNullOrWhiteSpace(modifiedQuery))
-                        {
-                            luceneQuery.RawQuery(everything).OrderByDescending(sortField);
-                        }
-                        else
-                        {
-                            luceneQuery.RawQuery(modifiedQuery).OrderByDescending(sortField);
-                        }
+                        luceneQuery.RawQuery(modifiedQuery).OrderByDescending(sortField);
                         break;
                     default:
-                        if (String.IsNullOrWhiteSpace(modifiedQuery))
-                        {
-                            luceneQuery.RawQuery(everything);
-                        }
-                        else
-                        {
-                            luceneQuery.RawQuery(modifiedQuery);
-                        }
+                        luceneQuery.RawQuery(modifiedQuery);
                         break;
                 }
 
@@ -245,7 +232,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 {
                     job.Url = new Uri(_jobAdvertUrl.ToString().TrimEnd(new[] {'/'}) + "/" + job.Id + "/" + Regex.Replace(job.JobTitle.ToLower(CultureInfo.CurrentCulture).Replace(" - ", "-").Replace("&","and").Replace(" ", "-"), "[^a-z0-9-]", String.Empty));
                 }
-                if (result.Fields.ContainsKey("closingDate")) job.ClosingDate = DateTime.Parse(result["closingDate"]);
+                if (result.Fields.ContainsKey("closingDateDisplay")) job.ClosingDate = DateTime.Parse(result["closingDateDisplay"]);
 
                 jobs.Add(job);
             }

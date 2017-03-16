@@ -67,6 +67,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public string JobReference { get; set; }
 
         /// <summary>
+        /// Gets or sets a date that jobs must close on or after
+        /// </summary>
+        public DateTime? ClosingDateFrom { get; set; }
+
+        /// <summary>
         /// Gets or sets the field to sort results by
         /// </summary>
         /// <value>
