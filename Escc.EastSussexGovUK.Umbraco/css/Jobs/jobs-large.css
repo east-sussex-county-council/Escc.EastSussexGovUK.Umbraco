@@ -15,3 +15,7 @@
 
 /* Social media on the jobs home page - add a right margin to align with elements in the header */
 .supporting-jobs .large { margin-right: 5.806452%; }
+
+/* Jobs search field embedded into the 'Job closed' page */
+.job-search-simple label { display: inline-block; }
+.job-search-simple input[type=search] { width: 68%;}

@@ -35,6 +35,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 HeaderBackgroundImageLarge = BuildImage("HeaderBackgroundImageLarge_Content"),
                 JobsHomePage = BuildLinkToPage("JobsHomePage_Content"),
                 LoginPage = BuildLinkToPage("LoginPage_Content"),
+                SearchResultsPageForClosedJobs = BuildLinkToPage("SearchResultsPage_Content"),
                 ExamineSearcher = BuildJobsSearcherName("PublicOrRedeployment_Content")
             };
 

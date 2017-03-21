@@ -3582,6 +3582,8 @@
     <Content Include="Views\CampaignTiles.cshtml" />
     <Content Include="Views\HomePageJobSearch.cshtml" />
     <Content Include="Views\ProblemJobsRss.cshtml" />
+    <Content Include="Views\JobAdvertPartial.cshtml" />
+    <Content Include="Views\JobsTableBody.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>

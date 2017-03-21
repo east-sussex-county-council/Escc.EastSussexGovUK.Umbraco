@@ -79,10 +79,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             generatedQuery = generatedQuery.Substring(34, generatedQuery.Length - 36);
             var modifiedQuery = generatedQuery.Replace("+()", String.Empty);
 
-            // Search for keywords by building up a clause that looks for all of the keywords to be present 
-            // in any one of the specified fields.
             if (_keywordsQueryBuilder != null)
             {
+                // Search for title keywords by building up a clause that looks for any of the keywords to be present 
+                // in the job title
+                modifiedQuery += _keywordsQueryBuilder.AnyOfTheseTermsInThisField(query.KeywordsInTitle ?? String.Empty, new SearchField() { FieldName = "title" }, true);
+
+                // Search for keywords by building up a clause that looks for all of the keywords to be present 
+                // in any one of the specified fields.
                 modifiedQuery += _keywordsQueryBuilder.AllOfTheseTermsInAnyOfTheseFields(query.Keywords ?? String.Empty, new[] 
                                 {
                                     new SearchField() { FieldName = "reference" },

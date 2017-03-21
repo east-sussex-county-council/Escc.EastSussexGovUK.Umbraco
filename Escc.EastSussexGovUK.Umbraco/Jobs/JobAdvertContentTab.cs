@@ -71,7 +71,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         [UmbracoProperty("Login page", "LoginPage", BuiltInUmbracoDataTypes.ContentPickerAlias, sortOrder: 6, Description = "Select the jobs login page, based on the 'Jobs component' document type")]
         public string LoginPage { get; set; }
 
-        [UmbracoProperty("Which jobs should this page show?", "PublicOrRedeployment", PublicOrRedeploymentDataType.PropertyEditor, PublicOrRedeploymentDataType.DataTypeName, sortOrder: 7, mandatory: true)]
+        /// <summary>
+        /// Gets or sets the search results page
+        /// </summary>
+        /// <value>
+        /// A reference to the Umbraco node for the results page
+        /// </value>
+        [UmbracoProperty("Search results page", "SearchResultsPage", BuiltInUmbracoDataTypes.ContentPickerAlias, sortOrder: 7, Description = "Select the search results page, based on the 'Job search results' document type")]
+        public string SearchResultsPage { get; set; }
+
+        [UmbracoProperty("Which jobs should this page show?", "PublicOrRedeployment", PublicOrRedeploymentDataType.PropertyEditor, PublicOrRedeploymentDataType.DataTypeName, sortOrder: 8, mandatory: true)]
         public string PublicOrRedeploymentJobs { get; set; }
 
     }

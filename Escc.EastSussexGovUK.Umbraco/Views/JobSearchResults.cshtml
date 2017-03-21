@@ -87,25 +87,7 @@
                     <th class="closing-date"><a href="@urlWithoutSort@(sort == JobSearchQuery.JobsSortOrder.ClosingDateAscending ? "closingdatedescending" : "closingdateascending")">Closing date</a></th>
                 </tr>
                 </thead>
-                <tbody>
-                @foreach (var job in Model.Jobs)
-                {
-                    <tr>
-                        @if (job.Url != null)
-                        {
-                            <td class="job-title"><a href="@job.Url">@job.JobTitle</a></td>
-                        }
-                        else
-                        {
-                            <td class="job-title">@job.JobTitle</td>
-                        }
-                        <td class="location">@job.Location</td>
-                        <td class="salary">@job.Salary.SalaryRange</td>
-                        <td class="work-pattern">@job.WorkPattern</td>
-                        <td class="closing-date"><span>Closes </span>@(job.ClosingDate.HasValue ? job.ClosingDate.Value.ToShortBritishDate() : String.Empty)</td>
-                    </tr>
-                }
-                </tbody>
+                @Html.Partial("~/Views/JobsTableBody.cshtml", Model.Jobs)
             </table>
             @Html.Raw(pagingHtml)
             if (String.IsNullOrEmpty(Request.QueryString["page"]) || Request.QueryString["page"].ToUpperInvariant() != "ALL")

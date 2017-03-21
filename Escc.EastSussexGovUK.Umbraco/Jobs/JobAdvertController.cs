@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Caching;
 using System.Web.Mvc;
 using Escc.EastSussexGovUK.Umbraco.Examine;
@@ -22,6 +23,7 @@ using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
 using X.PagedList;
 using Task = System.Threading.Tasks.Task;
+using Escc.EastSussexGovUK.Umbraco.Errors;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
@@ -67,21 +69,44 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             var jobUrlSegment = Regex.Match(Request.Url.AbsolutePath, "/([0-9]+)/");
             if (jobUrlSegment.Success)
             {
-                var jobsProvider = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.ExamineSearcher], null, null);
+                var jobsProvider = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.ExamineSearcher], new QueryBuilder(new LuceneTokenisedQueryBuilder(), new KeywordsTokeniser(), new WildcardSuffixFilter(), new LuceneStopWordsRemover()), new Uri(model.Content.UrlAbsolute()));
                 viewModel.Job = Task.Run(async () => await jobsProvider.ReadJob(jobUrlSegment.Groups[1].Value)).Result;
                 if (String.IsNullOrEmpty(viewModel.Job.Id) || viewModel.Job.ClosingDate < DateTime.Today)
                 {
-                    return new HttpNotFoundResult();
+                    // The job URL looks valid but the job isn't in the index, so it's probably closed.
+                    // Find some similar jobs to suggest the user may want to apply for instead.
+                    FindSimilarJobs(jobsProvider, viewModel);
                 }
             }
             else
             {
-                return new HttpNotFoundResult();
+                // The page was accessed by its default Umbraco URL with no parameters. Returning HttpNotFoundResult() ends up with a generic browser 404, 
+                // so to get our custom one we need to look it up and transfer control to it.
+                var notFoundUrl = new HttpStatusFromConfiguration().GetCustomUrlForStatusCode(404);
+                if (notFoundUrl != null && Server != null)
+                {
+                    Server.TransferRequest(notFoundUrl + "?404;" + HttpUtility.UrlEncode(Request.Url.ToString()));
+                }
             }
 
             new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" });
 
             return CurrentTemplate(viewModel);
+        }
+
+        private void FindSimilarJobs(IJobsDataProvider jobsProvider, JobAdvertViewModel model)
+        {
+            // Get the job title from the URL and use it as keywords to search for jobs that might be similar
+            var urlPath = Request.Url.AbsolutePath.TrimEnd('/');
+            var lastSlash = urlPath.LastIndexOf('/');
+            if (lastSlash > -1) urlPath = urlPath.Substring(lastSlash + 1);
+
+            var jobs = Task.Run(async () => await jobsProvider.ReadJobs(new JobSearchQuery() { KeywordsInTitle = urlPath.Replace("-", " ") })).Result;
+            foreach (var job in jobs)
+            {
+                if (model.SimilarJobs.Count >= 10) break;
+                model.SimilarJobs.Add(job);
+            }
         }
     }
 }

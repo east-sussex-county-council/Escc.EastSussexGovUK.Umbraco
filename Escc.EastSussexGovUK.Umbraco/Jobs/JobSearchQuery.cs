@@ -14,9 +14,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
     public class JobSearchQuery
     {
         /// <summary>
-        /// Gets or sets the keywords to search by, using an OR operator between words
+        /// Gets or sets the keywords to search significant fields by, using an AND operator between words
         /// </summary>
         public string Keywords { get; set; }
+
+        /// <summary>
+        /// Gets or sets the keywords to search the job title by, using an OR operator between words
+        /// </summary>
+        public string KeywordsInTitle { get; set; }
 
         /// <summary>
         /// Gets or sets the location where the job is based

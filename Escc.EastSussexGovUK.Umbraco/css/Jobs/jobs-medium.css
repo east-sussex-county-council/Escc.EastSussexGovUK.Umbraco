@@ -30,3 +30,8 @@
 
 /* Candidate home page */
 .chpEditPIF a, .chpViewPIF a, .chpPass a { background-position: 100% -496px; }
+
+
+/* Jobs search field embedded into the 'Job closed' page */
+.job-search-simple label { display: block;}
+.job-search-simple input[type=search] { width: 80%; }

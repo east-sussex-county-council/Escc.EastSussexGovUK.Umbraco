@@ -1,14 +1,15 @@
 ﻿@using ClientDependency.Core.Mvc
 @using Escc.ClientDependencyFramework
-@using Escc.Dates
 @using Escc.EastSussexGovUK.Skins
 @using Escc.EastSussexGovUK.Views
-@using Escc.Web
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Jobs.JobAdvertViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
     Model.Metadata.Title = Model.Job.JobTitle;
+    Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));
+    Html.RequiresCss(CssFileAlias.Resolve("FormsMedium"), MediaQueryAlias.Resolve("Medium"));
+    Html.RequiresCss(CssFileAlias.Resolve("FormsLarge"), MediaQueryAlias.Resolve("Large"));
     Html.RequiresCss("~/css/jobs/jobs-small.css");
     Html.RequiresCss("~/css/jobs/jobs-medium.css", MediaQueryAlias.Resolve("Medium"));
     Html.RequiresCss("~/css/jobs/jobs-large.css", MediaQueryAlias.Resolve("Large"));
@@ -16,68 +17,70 @@
     Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=JobsCss&media-query=medium", 101, MediaQueryAlias.Resolve("Medium"));
     Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=JobsCss&media-query=large", 101, MediaQueryAlias.Resolve("Large"));
     Html.RequiresJs("~/js/job-advert.js");
+
+    var jobGone = false;
+    if (String.IsNullOrEmpty(Model.Job.Id) || Model.Job.ClosingDate < DateTime.Today)
+    {
+        jobGone = true;
+        Model.Metadata.Title = "Oh no, too late!";
+        Model.Metadata.Description = "This job has closed. Search for jobs at www.eastsussex.gov.uk/jobs.";
+        Response.StatusCode = 410;
+    }
 }
 @section Breadcrumb {}
 @Html.Partial("~/Views/JobsHeader.cshtml", Model)
 
 <div class="jobs-content job-advert">
-    <div class="content text-content">
-        <h1>@Model.Metadata.Title</h1>
-    </div>
-    <div class="article">
-        <div class="content text-content">
-            @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
-            <dl>
-@if (!String.IsNullOrEmpty(Model.Job.Reference))
-{
-    <dt>Job reference</dt>
-    <dd id="job-reference">@Model.Job.Reference</dd>
-}
- @if (!String.IsNullOrEmpty(Model.Job.Location))
- {
-     <dt>Location</dt>
-     <dd>@Model.Job.Location</dd>
- }
-@if (!String.IsNullOrEmpty(Model.Job.Organisation))
-{
-    <dt>Organisation</dt>
-    <dd>@Model.Job.Organisation</dd>
-}
-@if (!String.IsNullOrEmpty(Model.Job.Department))
-{
-    <dt>Department</dt>
-    <dd>@Model.Job.Department</dd>
-}
-@if (!String.IsNullOrEmpty(Model.Job.ContractType))
-{
-    <dt>Contract type</dt>
-    <dd>@Model.Job.ContractType</dd>
-}
-@if (!String.IsNullOrEmpty(Model.Job.JobType))
-{
-    <dt>Job type</dt>
-    <dd>@Model.Job.JobType</dd>
-}
-@if (!String.IsNullOrEmpty(Model.Job.Salary.SalaryRange))
-{
-    <dt>Salary</dt>
-    <dd>@Model.Job.Salary.SalaryRange</dd>
-}
-@if (Model.Job.ClosingDate.HasValue)
-{
-    <dt>Closing date</dt>
-    <dd>@Model.Job.ClosingDate.Value.ToBritishDateWithDay()</dd>
-}
-            </dl>
-            @Model.Job.AdvertHtml
-@if (Model.Job.ApplyUrl != null)
-{
-    <p class="main-action"><a href="@Model.Job.ApplyUrl">Apply</a></p>
-}
+    @if (jobGone)
+    {
+        <div class="full-page">
+            <div class="content text-content">
+                <h1>@Model.Metadata.Title</h1>
+                <p>That job has closed, but your perfect job could be still out there.</p>
+
+                @if (Model.SearchResultsPageForClosedJobs != null)
+                {
+                    <form action="@Model.SearchResultsPageForClosedJobs.Url" method="GET" class="form simple-form job-search-simple">
+                        <label for="keywords">Search for jobs</label>
+                        <input type="search" name="keywords" id="keywords" placeholder="keyword, eg social worker" />
+                        <input type="submit" value="Search &gt;" />
+                    </form>
+                }
+                @if (Model.SimilarJobs.Count > 0)
+                {
+                    if (Model.SearchResultsPageForClosedJobs != null)
+                    {
+                        <p>&#8230;or try one of these:</p>
+                    }
+                    else
+                    {
+                        <p>How about one of these?</p>
+                    }
+                    <table class="job-results">
+                        <thead>
+                            <tr>
+                                <th class="job-title">Job title</th>
+                                <th class="location">Location</th>
+                                <th class="salary">Salary range</th>
+                                <th class="work-pattern">Work pattern</th>
+                                <th class="closing-date">Closing date</th>
+                            </tr>
+                        </thead>
+                        @Html.Partial("~/Views/JobsTableBody.cshtml", Model.SimilarJobs)
+                    </table>
+                }
+                @if (Model.SearchResultsPageForClosedJobs != null)
+                {
+                    <p><a href="@Model.SearchResultsPageForClosedJobs.Url">View all jobs</a></p>
+                }
+            </div>
         </div>
-    </div>
-    @Html.Partial("~/Views/Layouts/_SocialMedia.cshtml")
-    @Html.Partial("~/Views/EastSussexGovUK/Features/_SupportingContentDesktop.cshtml")
+    }
+    else
+    {
+        @* Separate job fields into a partial view purely to help Razor parse this if statement *@
+        @Html.Partial("~/Views/JobAdvertPartial.cshtml")
+    }
     <div class="text-content content">
         @Html.Partial("~/Views/EastSussexGovUK/Features/_Share.cshtml")
     </div>
