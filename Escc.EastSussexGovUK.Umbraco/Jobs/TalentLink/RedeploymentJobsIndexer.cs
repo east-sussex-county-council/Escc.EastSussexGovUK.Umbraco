@@ -23,7 +23,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
         public RedeploymentJobsIndexer() : base(new JobsDataFromTalentLink(ResultsUrl, AdvertUrl, 
             new TalentLinkJobResultsHtmlParser(new TalentLinkSalaryParser()), 
             new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser(), new TalentLinkWorkPatternParser()), 
-            new ConfigurationProxyProvider()), 
+            new ConfigurationProxyProvider(), true),
             new LuceneStopWordsRemover(),
             new HtmlTagSantiser())
         {

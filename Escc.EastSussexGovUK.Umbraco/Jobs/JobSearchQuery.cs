@@ -121,8 +121,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             allContent.Append("sort").Append(SortBy);
 
             HashAlgorithm algorithm = SHA1.Create();
-            var bytes = Encoding.UTF8.GetBytes(allContent.ToString());
-            return Encoding.UTF8.GetString(algorithm.ComputeHash(bytes));
+            var bytes = Encoding.ASCII.GetBytes(allContent.ToString());
+            var hash = algorithm.ComputeHash(bytes);
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < hash.Length; i++)
+            {
+                sb.Append(hash[i].ToString("X2"));
+            }
+            return sb.ToString();
         }
     }
 }

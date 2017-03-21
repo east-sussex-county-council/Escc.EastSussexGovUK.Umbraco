@@ -11,6 +11,7 @@ using Umbraco.Core;
 using Umbraco.Core.Logging;
 using Umbraco.Web;
 using Umbraco.Web.Security;
+using Exceptionless;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
 {
@@ -109,8 +110,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             }
             catch (Exception ex)
             {
+                ex.ToExceptionless().Submit();
                 LogHelper.Error<BaseJobsIndexer>("error indexing:", ex);
             }
+
+            LogHelper.Info<BaseLookupValuesIndexer>($"{dataSets.Count} items built for indexing by {this.GetType().ToString()}");
 
             return dataSets;
         }

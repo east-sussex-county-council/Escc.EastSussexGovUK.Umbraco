@@ -7,7 +7,9 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Hosting;
 using Escc.Net;
+using Escc.Dates;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
 {
@@ -21,6 +23,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
         private readonly IProxyProvider _proxy;
         private readonly IJobResultsParser _jobResultsParser;
         private readonly IJobAdvertParser _jobAdvertParser;
+        private readonly bool _saveHtml;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="JobsDataFromTalentLink" /> class.
@@ -30,14 +33,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
         /// <param name="jobResultsParser">The job results parser.</param>
         /// <param name="jobAdvertParser">The job advert parser.</param>
         /// <param name="proxy">The proxy (optional).</param>
+        /// <param name="saveHtml">Save a copy of the TalentLink HTML to App_Data</param>
         /// <exception cref="System.ArgumentNullException">sourceUrl</exception>
-        public JobsDataFromTalentLink(Uri resultsUrl, Uri advertUrl, IJobResultsParser jobResultsParser, IJobAdvertParser jobAdvertParser, IProxyProvider proxy)
+        public JobsDataFromTalentLink(Uri resultsUrl, Uri advertUrl, IJobResultsParser jobResultsParser, IJobAdvertParser jobAdvertParser, IProxyProvider proxy, bool saveHtml)
         {
             _resultsUrl = resultsUrl;
             _advertUrl = advertUrl;
             _proxy = proxy;
             _jobResultsParser = jobResultsParser;
             _jobAdvertParser = jobAdvertParser;
+            _saveHtml = saveHtml;
         }
 
 
@@ -77,24 +82,62 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
             var currentPage = 1;
             while (true)
             {
-                var stream = await ReadJobsFromTalentLink(currentPage, query);
-                var parseResult = _jobResultsParser.Parse(stream);
+                Stream stream = null;
+                try
+                {
+                    stream = await ReadJobsFromTalentLink(currentPage, query);
 
-                if (parseResult.Jobs.Count > 0)
-                {
-                    jobs.AddRange(parseResult.Jobs);
-                }
+                    if (_saveHtml)
+                    {
+                        stream = SaveHtml(query, currentPage, stream);
+                    }
 
-                if (parseResult.IsLastPage)
-                {
-                    break;
+                    var parseResult = _jobResultsParser.Parse(stream);
+
+                    if (parseResult.Jobs.Count > 0)
+                    {
+                        jobs.AddRange(parseResult.Jobs);
+                    }
+
+                    if (parseResult.IsLastPage)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        currentPage++;
+                    }
                 }
-                else
+                finally
                 {
-                    currentPage++;
+                    stream?.Dispose();
                 }
             }
             return jobs;
+        }
+
+        /// <summary>
+        /// Saves the HTML to a folder under App_Data so that the success of the import can be monitored
+        /// </summary>
+        /// <param name="query">The query.</param>
+        /// <param name="currentPage">The current page.</param>
+        /// <param name="stream">The stream.</param>
+        /// <returns></returns>
+        private Stream SaveHtml(JobSearchQuery query, int currentPage, Stream stream)
+        {
+            var folder = HostingEnvironment.MapPath("~/App_Data/TalentLinkHtml");
+            if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
+
+            string html = null;
+            using (var reader = new StreamReader(stream))
+            {
+                var queryString = HttpUtility.ParseQueryString(_resultsUrl.Query);
+                var htmlFilename = $"{folder}/{queryString["mask"]}-{DateTime.UtcNow.ToIso8601DateTime().Replace(":", "-")}-{query.ToHash()}-Page{currentPage}.html";
+                html = reader.ReadToEnd();
+                File.WriteAllText(htmlFilename, html);
+            }
+            stream = new MemoryStream(Encoding.UTF8.GetBytes(html));
+            return stream;
         }
 
         /// <summary>
