@@ -24,6 +24,7 @@ using Umbraco.Web.Mvc;
 using X.PagedList;
 using Task = System.Threading.Tasks.Task;
 using Escc.EastSussexGovUK.Umbraco.Errors;
+using Escc.Dates;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
@@ -89,7 +90,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 }
             }
 
-            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" });
+            // The page should expire when the job closes
+            var expirySeconds = 86400; // one day
+            if (viewModel.Job != null && viewModel.Job.ClosingDate != null)
+            {
+                var secondsToClosingDate = (int)(viewModel.Job.ClosingDate.Value.AddDays(1).Date.ToUkDateTime() - DateTime.Now.ToUkDateTime()).TotalSeconds;
+                if (secondsToClosingDate >= 0) expirySeconds = secondsToClosingDate;
+            }
+            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" }, expirySeconds);
 
             return CurrentTemplate(viewModel);
         }
