@@ -6,7 +6,7 @@
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
-    Model.Metadata.Title = Model.Job.JobTitle;
+    Model.Metadata.Title = Model.Job?.JobTitle;
     Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));
     Html.RequiresCss(CssFileAlias.Resolve("FormsMedium"), MediaQueryAlias.Resolve("Medium"));
     Html.RequiresCss(CssFileAlias.Resolve("FormsLarge"), MediaQueryAlias.Resolve("Large"));
@@ -19,7 +19,7 @@
     Html.RequiresJs("~/js/job-advert.js");
 
     var jobGone = false;
-    if (String.IsNullOrEmpty(Model.Job.Id) || Model.Job.ClosingDate < DateTime.Today)
+    if (String.IsNullOrEmpty(Model.Job?.Id) || Model.Job?.ClosingDate < DateTime.Today)
     {
         jobGone = true;
         Model.Metadata.Title = "Oh no, too late!";
