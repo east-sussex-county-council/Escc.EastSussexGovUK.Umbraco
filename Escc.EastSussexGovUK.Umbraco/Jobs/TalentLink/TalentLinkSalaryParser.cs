@@ -40,6 +40,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
                 return ParseSalaryFromDescription(HttpUtility.HtmlDecode(matchInBodyText.Groups[0].Value).Trim());
             }
 
+            // There are no numbers to parse, so just take the first line of text
+            matchInBodyText = Regex.Match(jobAdvertHtml.DocumentNode.OuterHtml, $"Salary: (.+?)(<br>|<br />|</p>|{Environment.NewLine})");
+            if (matchInBodyText.Success)
+            {
+                return new Salary()
+                {
+                    SalaryRange = matchInBodyText.Groups[1].Value
+                };
+            }
+
             return new Salary();
         }
 
@@ -50,6 +60,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
         /// <returns></returns>
         public Salary ParseSalaryFromDescription(string salaryDescription)
         {
+            // Keep the first line, remove any additional lines
+            var isMultiLine = Regex.Match(salaryDescription, $"(<br>|<br />|</p>|{Environment.NewLine})");
+            if (isMultiLine.Success)
+            {
+                salaryDescription = salaryDescription.Substring(0, isMultiLine.Index);
+            }
+
             var parsedSalary = new Salary
             {
                 SalaryRange = salaryDescription

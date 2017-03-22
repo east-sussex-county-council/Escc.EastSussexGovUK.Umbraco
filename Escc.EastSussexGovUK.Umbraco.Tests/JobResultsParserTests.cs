@@ -111,7 +111,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
 
                 var jobs = parser.Parse(htmlStream);
 
-                Assert.AreEqual("£20,000 to £24,999", jobs.Jobs[2].Salary);
+                Assert.AreEqual("£20000–£24999 per annum", jobs.Jobs[2].Salary.SalaryRange);
             }
         }
 

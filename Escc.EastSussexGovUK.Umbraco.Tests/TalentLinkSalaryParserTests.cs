@@ -97,7 +97,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         }
 
         [Test]
-        public void SalaryPrefixInBodyTextWithNoNumbersIsNotParsed()
+        public void SalaryPrefixInBodyTextWithNoNumbersButNumbersWithinTheSameParentElementIsParsedAsTextOnly()
         {
             var parseThis = new HtmlDocument();
             parseThis.LoadHtml(Properties.Resources.SalaryInBodyText3);
@@ -105,7 +105,21 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             var parser = new TalentLinkSalaryParser();
             var result = parser.ParseSalaryFromHtml(parseThis);
 
-            Assert.AreEqual(null, result.SalaryRange);
+            Assert.AreEqual("To be negotiated", result.SalaryRange);
+            Assert.AreEqual(null, result.MinimumSalary);
+            Assert.AreEqual(null, result.MaximumSalary);
+        }
+
+        [Test]
+        public void SalaryPrefixInBodyTextWithNoNumbersIsParsedAsTextOnly()
+        {
+            var parseThis = new HtmlDocument();
+            parseThis.LoadHtml(Properties.Resources.SalaryInBodyText4);
+
+            var parser = new TalentLinkSalaryParser();
+            var result = parser.ParseSalaryFromHtml(parseThis);
+
+            Assert.AreEqual("Dependant on experience, knowledge and qualifications", result.SalaryRange);
             Assert.AreEqual(null, result.MinimumSalary);
             Assert.AreEqual(null, result.MaximumSalary);
         }
