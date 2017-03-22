@@ -24,7 +24,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
     {
         private readonly ISearcher _searcher;
         private readonly IQueryBuilder _keywordsQueryBuilder;
-        private readonly Uri _jobAdvertUrl;
+        private readonly IJobUrlGenerator _urlGenerator;
         private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         /// <summary>
         /// Initializes a new instance of the <see cref="JobsDataFromExamine" /> class.
@@ -33,12 +33,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
         /// <param name="keywordsQueryBuilder">The query analyser.</param>
         /// <param name="jobAdvertUrl">The job advert URL.</param>
         /// <exception cref="System.ArgumentNullException">searcher</exception>
-        public JobsDataFromExamine(ISearcher searcher, IQueryBuilder keywordsQueryBuilder, Uri jobAdvertUrl)
+        public JobsDataFromExamine(ISearcher searcher, IQueryBuilder keywordsQueryBuilder, IJobUrlGenerator urlGenerator)
         {
             if (searcher == null) throw new ArgumentNullException(nameof(searcher));
             _searcher = searcher;
             _keywordsQueryBuilder = keywordsQueryBuilder;
-            _jobAdvertUrl = jobAdvertUrl;
+            _urlGenerator = urlGenerator;
         }
 
         /// <summary>
@@ -232,9 +232,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                     job.Salary.MaximumSalary = maximumSalary;
                 }
 
-                if (_jobAdvertUrl != null)
+                if (_urlGenerator != null)
                 {
-                    job.Url = new Uri(_jobAdvertUrl.ToString().TrimEnd(new[] {'/'}) + "/" + job.Id + "/" + Regex.Replace(job.JobTitle.ToLower(CultureInfo.CurrentCulture).Replace(" - ", "-").Replace("&","and").Replace(" ", "-"), "[^a-z0-9-]", String.Empty));
+                    job.Url = _urlGenerator.GenerateUrl(job);
                 }
                 if (result.Fields.ContainsKey("closingDateDisplay")) job.ClosingDate = DateTime.Parse(result["closingDateDisplay"]);
 

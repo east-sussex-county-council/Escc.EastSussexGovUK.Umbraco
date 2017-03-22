@@ -3660,6 +3660,7 @@
     <Compile Include="HomePage\HomePageViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\Examine\BaseLookupValuesIndexer.cs" />
     <Compile Include="Jobs\IJobsLookupValuesProvider.cs" />
+    <Compile Include="Jobs\IJobUrlGenerator.cs" />
     <Compile Include="Jobs\IWorkPatternParser.cs" />
     <Compile Include="Jobs\ISalaryParser.cs" />
     <Compile Include="Jobs\JobAdvertContentFinder.cs" />
@@ -3668,6 +3669,7 @@
     <Compile Include="Jobs\Examine\JobsDataFromExamine.cs" />
     <Compile Include="Jobs\Examine\BaseJobsIndexer.cs" />
     <Compile Include="Jobs\Examine\JobsIndexerApiController.cs" />
+    <Compile Include="Jobs\RelativeJobUrlGenerator.cs" />
     <Compile Include="Jobs\ProblemJobsRssController.cs" />
     <Compile Include="Jobs\ProblemJobsRssDocumentType.cs" />
     <Compile Include="Jobs\JobsRssViewModel.cs" />
