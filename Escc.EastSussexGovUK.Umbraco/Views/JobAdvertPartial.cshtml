@@ -58,3 +58,34 @@
 </div>
 @Html.Partial("~/Views/Layouts/_SocialMedia.cshtml")
 @Html.Partial("~/Views/EastSussexGovUK/Features/_SupportingContentDesktop.cshtml")
+<script type="application/ld+json">
+    {
+    "@@context": "http://schema.org",
+    "@@type": "JobPosting",
+@if (Model.Job.Salary.MinimumSalary.HasValue) {
+    @:"baseSalary": {
+    @:    "@@type": "MonetaryAmount",
+    @:    "currency": "GBP",
+    @:    "minValue": "@Model.Job.Salary.MinimumSalary",
+    @:    "maxValue": "@Model.Job.Salary.MaximumSalary"
+    @:            },
+}
+    "title": "@Model.Job.JobTitle",
+    "employmentType": "@Model.Job.ContractType",
+    "industry": "Local government",
+    "jobLocation": {
+        "@@type": "Place",
+        "address": {
+            "@@type": "PostalAddress",
+            "addressLocality": "@Model.Job.Location"
+            }  
+        },
+    "salaryCurrency": "GBP",
+    "hiringOrganization": {
+        "@@type": "Organization",
+        "name": "@Model.Job.Organisation"
+        }
+    },
+    "validThrough": "@Model.Job.ClosingDate.Value.ToIso8601DateTime()",
+    "url": "@Model.Job.Url"
+</script>

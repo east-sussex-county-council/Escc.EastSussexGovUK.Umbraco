@@ -227,6 +227,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
 
                 job.Salary.SalaryRange = result.Fields.ContainsKey("salary") ? result["salary"] : String.Empty;
                 job.Salary.SearchRange = result.Fields.ContainsKey("salaryRange") ? result["salaryRange"] : String.Empty;
+                if (result.Fields.ContainsKey("salaryMin") && !String.IsNullOrEmpty(result["salaryMin"]))
+                {
+                    int minimumSalary;
+                    Int32.TryParse(result["salaryMin"], out minimumSalary);
+                    job.Salary.MinimumSalary = minimumSalary;
+                }
                 if (result.Fields.ContainsKey("salaryMax") && !String.IsNullOrEmpty(result["salaryMax"]))
                 {
                     int maximumSalary;
