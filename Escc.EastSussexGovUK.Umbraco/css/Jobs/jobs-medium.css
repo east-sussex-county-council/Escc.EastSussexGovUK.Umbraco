@@ -8,6 +8,13 @@
 .flexbox .jobs-search .buttons { flex-grow: 1; flex-basis: 7.5em;white-space: nowrap; }
 .flexbox .jobs-search input[type=submit] { margin: 0;}
 
+/* IE11 supports flexbox but it's buggy and the advanced search button gets clipped, so undo flexbox for that browser */
+@media all and (-ms-high-contrast:none) {
+    .jobs-search .form label { font-size: 1.5em; } /* IE10 and 11 */
+    *::-ms-backdrop, .flexbox .jobs-search input[type=search] { width: 97.5%; margin-bottom: 4px; } /* IE11 */
+    *::-ms-backdrop, .flexbox .jobs-search .fields { display: block; } /* IE11 */
+}
+
 /* One line space between the header and content */
 .jobs-content { padding-top: .947368em; }
 
