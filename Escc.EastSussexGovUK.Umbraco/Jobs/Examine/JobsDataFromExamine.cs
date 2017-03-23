@@ -175,6 +175,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             {
                 exception.Data.Add("Reference", query.JobReference);
                 exception.Data.Add("Job types", String.Join(",", query.JobTypes.ToArray()));
+                exception.Data.Add("Keywords in title", query.KeywordsInTitle);
                 exception.Data.Add("Keywords", query.Keywords);
                 exception.Data.Add("Locations", String.Join(",", query.Locations.ToArray()));
                 exception.Data.Add("Organisations", String.Join(",", query.Organisations.ToArray()));
@@ -187,6 +188,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 var errorForLog = new StringBuilder($"Lucene.net could not parse {modifiedQuery} generated from parameters:").Append(Environment.NewLine)
                     .Append("Reference:").Append(query.JobReference).Append(Environment.NewLine)
                     .Append("Job types:").Append(String.Join(",", query.JobTypes.ToArray())).Append(Environment.NewLine)
+                    .Append("Keywords in title:").Append(query.KeywordsInTitle).Append(Environment.NewLine)
                     .Append("Keywords:").Append(query.Keywords).Append(Environment.NewLine)
                     .Append("Locations:").Append(String.Join(",", query.Locations.ToArray())).Append(Environment.NewLine)
                     .Append("Organisations:").Append(String.Join(",", query.Organisations.ToArray())).Append(Environment.NewLine)

@@ -73,6 +73,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
 
         private static void UpdateIndex(string indexerName)
         {
+            LogHelper.Info<JobsIndexerApiController>($"Beginning rebuild of Examine index '{indexerName}' from a call to JobsIndexerApiController");
+
             DateTime startTime = DateTime.Now;
             var indexer = ExamineManager.Instance.IndexProviderCollection[indexerName] as LuceneIndexer;
             indexer?.RebuildIndex();

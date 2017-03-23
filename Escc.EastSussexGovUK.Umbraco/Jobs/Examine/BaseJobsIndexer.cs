@@ -90,7 +90,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             catch (Exception ex)
             {
                 ex.ToExceptionless().Submit();
-                LogHelper.Error<BaseJobsIndexer>("error indexing:", ex);
+                LogHelper.Error<BaseJobsIndexer>("Error indexing:", ex);
             }
 
             LogHelper.Info<BaseJobsIndexer>($"{dataSets.Count} items built for indexing by {this.GetType().ToString()}");
@@ -100,6 +100,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
 
         private SimpleDataSet CreateIndexItemFromJob(int fakeNodeId, Job job, string indexType)
         {
+            LogHelper.Info<BaseJobsIndexer>($"Building Examine index item for job '{job.Id}'");
+
             var simpleDataSet = new SimpleDataSet { NodeDefinition = new IndexedNode(), RowData = new Dictionary<string, string>() };
 
             simpleDataSet.NodeDefinition.NodeId = fakeNodeId;
