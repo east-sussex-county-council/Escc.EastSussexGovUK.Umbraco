@@ -29,6 +29,9 @@
 /* Arrange .feature-tile instances (from sitewide styles) into a list */
 ul.job-tiles { margin: 0; padding: 0; }
 
+/* The campaign image on the jobs home page should fill the space available */
+.jobs-campaign img { width: 100%; }
+
 /* Job search results */
 .jobs-content .pagingPages { margin: 0; }
 .job-results th, .job-results td { display: inline-block;border: none; }

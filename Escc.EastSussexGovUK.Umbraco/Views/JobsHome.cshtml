@@ -83,6 +83,10 @@
                         }
                     }
                 </ul>
+                @if (Model.CampaignImage != null && Model.CampaignPage != null)
+                {
+                    <a href="@Model.CampaignPage.Url" class="jobs-campaign"><img src="@Model.CampaignImage.ImageUrl" alt="@Model.CampaignImage.AlternativeText" width="@Model.CampaignImage.Width" /></a>
+                }
             </div>
         </div>
         

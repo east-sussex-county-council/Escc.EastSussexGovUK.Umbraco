@@ -91,5 +91,22 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         [UmbracoProperty("Tile images", "TileImages", BuiltInUmbracoDataTypes.MultipleMediaPicker, sortOrder: 9,
             Description = "Select the images to link to pages selected for tile navigation, above.")]
         public string TileImages { get; set; }
+
+        /// <summary>
+        /// Gets or sets the campaign image
+        /// </summary>
+        [UmbracoProperty("Campaign image", "CampaignImage", BuiltInUmbracoDataTypes.MediaPicker, sortOrder: 10,
+            Description = "Select a campaign image to appear below the tile images.")]
+        public string CampaignImage { get; set; }
+
+        /// <summary>
+        /// Gets or sets the page to link the campaign image to
+        /// </summary>
+        /// <value>
+        /// A reference to the Umbraco node for the campaign page
+        /// </value>
+        [UmbracoProperty("Campaign page", "CampaignPage", BuiltInUmbracoDataTypes.ContentPickerAlias, sortOrder: 11, 
+            Description = "Select a page for the campaign image to link to")]
+        public string CampaignPage { get; set; }
     }
 }

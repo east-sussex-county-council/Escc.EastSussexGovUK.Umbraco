@@ -39,7 +39,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 SearchPage = BuildUri("SearchPage_Content"),
                 SearchResultsPage = BuildUri("SearchResultsPage_Content"),
                 TileNavigation = RelatedLinksService.BuildRelatedLinksViewModelFromUmbracoContent(UmbracoContent, "TileNavigation_Content"),
-                TileImages = BuildImages("TileImages_Content")
+                TileImages = BuildImages("TileImages_Content"),
+                CampaignImage = BuildImage("CampaignImage_Content"),
+                CampaignPage = BuildUri("CampaignPage_Content")
             };
 
             // Allow a hyphen to indicate that there's no text for the link, just an image
