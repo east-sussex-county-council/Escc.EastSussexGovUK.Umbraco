@@ -10,6 +10,7 @@
 .jobs-header .login { position: absolute;right: 0;top: 0;margin: 0; font-weight: bold;}
 .jobs-header.with-image .login { padding: .25em 9px .3125em;background: #fff;border-radius: 5px; }
 .jobs-header .login a { text-decoration: none;color: #003c69;}
+.jobs-header .caption { display: none; }
 
 /* Width is 100% less two gutters, because absolute positioning loses the effect of .content */
 .jobs-search {  position: absolute; bottom: 1.125em; width: 92.405063%; }

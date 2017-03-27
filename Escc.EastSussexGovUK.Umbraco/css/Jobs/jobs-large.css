@@ -1,6 +1,9 @@
 ﻿/* Add two lines of space between the search in the header and the bottom of the header */
 .jobs-search { bottom: 1.894737em;width: 96.4%; }
 
+/* Optional caption for header image. Position from right is by eye, to align with advanced search button. Font size is 15px in 19px context. */
+.jobs-header .caption { display: inline-block; position: absolute; bottom: 0; right: 2.3%; font-size: .789474em; font-style: italic; font-weight: bold; color: #fff; }
+
 /* Job search results */
 .jobs-content .job-results .work-pattern {display: table-cell; }
 

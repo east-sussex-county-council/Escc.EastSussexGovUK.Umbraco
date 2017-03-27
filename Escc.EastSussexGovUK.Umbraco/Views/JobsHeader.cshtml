@@ -41,5 +41,9 @@
                 </form>
             </div>
         }
+        @if (!String.IsNullOrEmpty(Model.HeaderBackgroundImageCaption))
+        {
+            <p class="caption"><span class="aural">Caption for header image:</span> @Model.HeaderBackgroundImageCaption</p>
+        }
     </div>
 </div>
