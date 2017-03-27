@@ -2,6 +2,7 @@
 @using Escc.ClientDependencyFramework
 @using Escc.EastSussexGovUK.Skins
 @using Escc.EastSussexGovUK.Views
+@using Escc.EastSussexGovUK.Mvc.Views.EastSussexGovUK
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Jobs.JobAdvertViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
@@ -85,3 +86,19 @@
         @Html.Partial("~/Views/EastSussexGovUK/Features/_Share.cshtml")
     </div>
 </div>
+@section Footer {
+    @if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)
+    {
+        if (Model.Job.ApplyUrl != null)
+        {
+            <p class="mobile-nav main-action small"><a href="@Model.Job.ApplyUrl">Apply</a></p>
+            <div class="footer-with-mobile-nav">
+                @{ Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "FooterDesktop", BreadcrumbProvider = Model.BreadcrumbProvider }); }
+            </div>
+        }
+        else
+        {
+            Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "FooterDesktop", BreadcrumbProvider = Model.BreadcrumbProvider });
+        }
+    }
+}

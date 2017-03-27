@@ -42,3 +42,6 @@
 /* Jobs search field embedded into the 'Job closed' page */
 .job-search-simple label { display: block;}
 .job-search-simple input[type=search] { width: 80%; }
+
+/* On a job advert, the .mobile-nav is now hidden so reset the footer to normal */
+.footer-with-mobile-nav .footer { padding-bottom: 0; }

@@ -68,3 +68,7 @@ label.SA-F4 { display: inline;}
 legend.SAg-Title { font-weight: bold; }
 label.SA-smalltext { display: inline; padding: 0 1em 0 .3em;vertical-align: sub;}
 #sEmail { width: 20em;}
+
+/* On a job advert, place the apply link on mobiles so that it can conveniently be tapped with the thumb */
+.mobile-nav { position: fixed; bottom: 0; background: #fff; background: rgba(255,255,255,.8); width: 100%; text-align: center; }
+.footer-with-mobile-nav .footer { padding-bottom: 5em; }
