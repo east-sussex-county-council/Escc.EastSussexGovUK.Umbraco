@@ -31,15 +31,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Views {
         protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.RichHtmlPlaceholderControl phContent;
         
         /// <summary>
-        /// phFallbackHtml control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.Placeholders.RawXhtmlPlaceholderControl phFallbackHtml;
-        
-        /// <summary>
         /// objectTag control.
         /// </summary>
         /// <remarks>

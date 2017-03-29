@@ -22,17 +22,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Views
                 svgImageUrl = new Uri(phDefSvg.Url, UriKind.Relative);
             }
 
-            var phDefFallbackImage = (IPublishedContent)CmsUtilities.Placeholders["phDefFallbackImage"].Value;
-            var fallbackImageUrl = new Uri(phDefFallbackImage.Url, UriKind.Relative);
-
-            var imageMapXhtml = CmsUtilities.Placeholders["phDefFallbackHtml"].XmlAsString;
-
-            var fallbackImgStr = FormatImageTag(fallbackImageUrl.ToString(), "alt text", imageMapXhtml.Length > 0);
-
             var html = new StringBuilder();
 
             html.Append("<div class=\"intrinsic-container\">");
-            html.Append("<iframe src=\"" + svgImageUrl + "\" allowfullscreen>" + fallbackImageUrl + "</iframe>");
+            html.Append("<iframe src=\"" + svgImageUrl + "\" allowfullscreen></iframe>");
             html.Append("</div>");
 
             objectTag.Text = html.ToString();
