@@ -19,16 +19,10 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.CouncilPlan
         [UmbracoProperty("SVG file", "phDefSvg", BuiltInUmbracoDataTypes.MediaPicker, mandatory: true, SortOrder = 4, Description = "Choose the SVG file")]
         public string PhDefSvg { get; set; }
 
-        [UmbracoProperty("Fallback image", "phDefFallbackImage", BuiltInUmbracoDataTypes.MediaPicker, mandatory: true, SortOrder = 5, Description = "")]
-        public string PhDefFallbackImage { get; set; }
-
-        [UmbracoProperty("Fallback image map", "phDefFallbackHtml", BuiltInUmbracoDataTypes.TextboxMultiple, mandatory: true, SortOrder = 6, Description = "")]
-        public string PhDefFallbackHtml { get; set; }
-
-        [UmbracoProperty("Related pages", "phDefRelatedPages", PropertyEditorAliases.RichTextPropertyEditor, RichTextLinksListDataType.DataTypeName, sortOrder: 7)]
+        [UmbracoProperty("Related pages", "phDefRelatedPages", PropertyEditorAliases.RichTextPropertyEditor, RichTextLinksListDataType.DataTypeName, sortOrder: 5)]
         public string PhDefRelatedPages { get; set; }
 
-        [UmbracoProperty("Related websites", "phDefRelatedSites", PropertyEditorAliases.RichTextPropertyEditor, RichTextLinksListDataType.DataTypeName, sortOrder: 8)]
+        [UmbracoProperty("Related websites", "phDefRelatedSites", PropertyEditorAliases.RichTextPropertyEditor, RichTextLinksListDataType.DataTypeName, sortOrder: 6)]
         public string PhDefRelatedSites { get; set; }
     }
 }
