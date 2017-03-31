@@ -1,119 +1,317 @@
 /* 18px horizontal padding on h1 on 6 column grid, and 18px vertical padding on 30px base font. */
-.text-content h1 { border-radius: 5px; }
-@media screen 
-{
-    .text-content h1 { padding: .6em 3.797468%; }
+.text-content h1 {
+    border-radius: 5px;
+}
+
+@media screen {
+    .text-content h1 {
+        padding: .6em 3.797468%;
+    }
 }
 
 /* Change the colour of various elements to reflect the identity colour for the current Council Plan priority */
-.council-plan h1, a.council-plan, em.council-plan, li.council-plan { background: #196ba6; color: #fff; }
-.economic-growth h1, .economic-growth thead th, a.economic-growth, em.economic-growth, .economic-growth .button-nav a, li.economic-growth { background: #15807F; color: #fff; }
-.vulnerable-people h1, .vulnerable-people thead th, a.vulnerable-people, em.vulnerable-people, .vulnerable-people .button-nav a, li.vulnerable-people { background: #056b0b; color: #fff; }
-.building-resilience h1, .building-resilience thead th, a.building-resilience, em.building-resilience, .building-resilience .button-nav a, li.building-resilience { background: #622F92; color: #fff; }
-.best-use-of-resources h1, .best-use-of-resources thead th, a.best-use-of-resources, em.best-use-of-resources, .best-use-of-resources .button-nav a, li.best-use-of-resources { background: #B21313; color: #fff; }
+.council-plan h1, a.council-plan, em.council-plan, li.council-plan {
+    background: #196ba6;
+    color: #fff;
+}
+
+.economic-growth h1, .economic-growth thead th, a.economic-growth, em.economic-growth, .economic-growth .button-nav a, li.economic-growth {
+    background: #15807F;
+    color: #fff;
+}
+
+.vulnerable-people h1, .vulnerable-people thead th, a.vulnerable-people, em.vulnerable-people, .vulnerable-people .button-nav a, li.vulnerable-people {
+    background: #056b0b;
+    color: #fff;
+}
+
+.building-resilience h1, .building-resilience thead th, a.building-resilience, em.building-resilience, .building-resilience .button-nav a, li.building-resilience {
+    background: #622F92;
+    color: #fff;
+}
+
+.best-use-of-resources h1, .best-use-of-resources thead th, a.best-use-of-resources, em.best-use-of-resources, .best-use-of-resources .button-nav a, li.best-use-of-resources {
+    background: #B21313;
+    color: #fff;
+}
 
 /* Hover colour is two shades darker on http://0to255.com */
-a.council-plan:hover, a.council-plan:focus, a.council-plan:active, em.council-plan { background: #155888; }
-a.economic-growth:hover, a.economic-growth:focus, a.economic-growth:active, em.economic-growth { background: #106362; }
-a.vulnerable-people:hover, a.vulnerable-people:focus, a.vulnerable-people:active, em.vulnerable-people { background: #034b08; }
-a.building-resilience:hover, a.building-resilience:focus, a.building-resilience:active, em.building-resilience { background: #512778; } 
-a.best-use-of-resources:hover, a.best-use-of-resources:focus, a.best-use-of-resources:active, em.best-use-of-resources { background: #931010; }
+a.council-plan:hover, a.council-plan:focus, a.council-plan:active, em.council-plan {
+    background: #155888;
+}
+
+a.economic-growth:hover, a.economic-growth:focus, a.economic-growth:active, em.economic-growth {
+    background: #106362;
+}
+
+a.vulnerable-people:hover, a.vulnerable-people:focus, a.vulnerable-people:active, em.vulnerable-people {
+    background: #034b08;
+}
+
+a.building-resilience:hover, a.building-resilience:focus, a.building-resilience:active, em.building-resilience {
+    background: #512778;
+}
+
+a.best-use-of-resources:hover, a.best-use-of-resources:focus, a.best-use-of-resources:active, em.best-use-of-resources {
+    background: #931010;
+}
 
 /* Selected border is 50% tint from www.splintered.co.uk, because 0to255.com is now blocked */
-em.council-plan { border-left: 5px solid #8cb5d2; }
-em.economic-growth { border-left: 5px solid #8abfbf; }
-em.vulnerable-people { border-left: 5px solid #82b585; }
-em.building-resilience { border-left: 5px solid #b097c8; }
-em.best-use-of-resources { border-left: 5px solid #d88989; }
+em.council-plan {
+    border-left: 5px solid #8cb5d2;
+}
+
+em.economic-growth {
+    border-left: 5px solid #8abfbf;
+}
+
+em.vulnerable-people {
+    border-left: 5px solid #82b585;
+}
+
+em.building-resilience {
+    border-left: 5px solid #b097c8;
+}
+
+em.best-use-of-resources {
+    border-left: 5px solid #d88989;
+}
 
 /* Change table borders to match priority colour. Starting point is the .text style so we have spacing consistent with the rest of the website. 
    Two separate selectors because IE8 will ignore the entire rule if it contains :nth-child. */
-.council-plan .aims-box { border: 1px solid #196ba6; }
+.council-plan .aims-box {
+    border: 1px solid #196ba6;
+}
 
 .economic-growth table, .economic-growth tbody, .economic-growth tr, .economic-growth th, .economic-growth td,
-.economic-growth .aims-box, .economic-growth .images img { border: 1px solid #8abfbf; }
+.economic-growth .aims-box, .economic-growth .images img {
+    border: 1px solid #8abfbf;
+}
 
-.economic-growth table:nth-child(2n+1), .economic-growth table:nth-child(2n), 
-.economic-growth thead tr:nth-child(2n+1), .economic-growth thead tr:nth-child(2n),
-.economic-growth tr:nth-child(2n+1), .economic-growth tr:nth-child(2n) { border: 1px solid #15807F; }
+    .economic-growth table:nth-child(2n+1), .economic-growth table:nth-child(2n),
+    .economic-growth thead tr:nth-child(2n+1), .economic-growth thead tr:nth-child(2n),
+    .economic-growth tr:nth-child(2n+1), .economic-growth tr:nth-child(2n) {
+        border: 1px solid #15807F;
+    }
 
-.vulnerable-people table, .vulnerable-people tbody, .vulnerable-people tr, .vulnerable-people th, .vulnerable-people td, 
-.vulnerable-people .aims-box, .vulnerable-people .images img { border: 1px solid #82b585; }
+.vulnerable-people table, .vulnerable-people tbody, .vulnerable-people tr, .vulnerable-people th, .vulnerable-people td,
+.vulnerable-people .aims-box, .vulnerable-people .images img {
+    border: 1px solid #82b585;
+}
 
-.vulnerable-people table:nth-child(2n+1), .vulnerable-people table:nth-child(2n), 
-.vulnerable-people thead tr:nth-child(2n+1), .vulnerable-people thead tr:nth-child(2n),
-.vulnerable-people tr:nth-child(2n+1), .vulnerable-people tr:nth-child(2n) { border: 1px solid #056b0b; }
+    .vulnerable-people table:nth-child(2n+1), .vulnerable-people table:nth-child(2n),
+    .vulnerable-people thead tr:nth-child(2n+1), .vulnerable-people thead tr:nth-child(2n),
+    .vulnerable-people tr:nth-child(2n+1), .vulnerable-people tr:nth-child(2n) {
+        border: 1px solid #056b0b;
+    }
 
-.building-resilience table, .building-resilience tbody, .building-resilience tr, .building-resilience th, .building-resilience td, 
-.building-resilience .aims-box, .building-resilience .images img { border: 1px solid #b097c8; }
+.building-resilience table, .building-resilience tbody, .building-resilience tr, .building-resilience th, .building-resilience td,
+.building-resilience .aims-box, .building-resilience .images img {
+    border: 1px solid #b097c8;
+}
 
-.building-resilience table:nth-child(2n+1), .building-resilience table:nth-child(2n), 
-.building-resilience thead tr:nth-child(2n+1), .building-resilience thead tr:nth-child(2n),
-.building-resilience tr:nth-child(2n+1), .building-resilience tr:nth-child(2n) { border: 1px solid #622F92; }
+    .building-resilience table:nth-child(2n+1), .building-resilience table:nth-child(2n),
+    .building-resilience thead tr:nth-child(2n+1), .building-resilience thead tr:nth-child(2n),
+    .building-resilience tr:nth-child(2n+1), .building-resilience tr:nth-child(2n) {
+        border: 1px solid #622F92;
+    }
 
 .best-use-of-resources table, .best-use-of-resources tbody, .best-use-of-resources tr, .best-use-of-resources th, .best-use-of-resources td,
-.best-use-of-resources .aims-box, .best-use-of-resources .images img { border: 1px solid #d88989; }
+.best-use-of-resources .aims-box, .best-use-of-resources .images img {
+    border: 1px solid #d88989;
+}
 
-.best-use-of-resources table:nth-child(2n+1), .best-use-of-resources table:nth-child(2n), 
-.best-use-of-resources thead tr:nth-child(2n+1), .best-use-of-resources thead tr:nth-child(2n),
-.best-use-of-resources tr:nth-child(2n+1), .best-use-of-resources tr:nth-child(2n) { border: 1px solid #B21313; }
+    .best-use-of-resources table:nth-child(2n+1), .best-use-of-resources table:nth-child(2n),
+    .best-use-of-resources thead tr:nth-child(2n+1), .best-use-of-resources thead tr:nth-child(2n),
+    .best-use-of-resources tr:nth-child(2n+1), .best-use-of-resources tr:nth-child(2n) {
+        border: 1px solid #B21313;
+    }
 
 /* Modify some borders to be thicker and curved */
-.plan-content .aims-box { border-width: 2px; border-radius: 5px; }
+.plan-content .aims-box {
+    border-width: 2px;
+    border-radius: 5px;
+}
 
 /* Change text size and colour */
-.highlighted { font-size: 1.25em; line-height: 1.35em; margin: .9em 0 .45em; } /* 20px/27px, 18px+9px margin */
-.council-plan .highlighted, .council-plan h2 { color: #196ba6; }
-.economic-growth .highlighted, .economic-growth h2 { color: #15807F; }
-.vulnerable-people .highlighted, .vulnerable-people h2 { color: #056b0b; }
-.building-resilience .highlighted, .building-resilience h2 { color: #622F92; }
-.best-use-of-resources .highlighted, .best-use-of-resources h2 { color: #B21313; }
+.highlighted {
+    font-size: 1.25em;
+    line-height: 1.35em;
+    margin: .9em 0 .45em;
+}
+/* 20px/27px, 18px+9px margin */
+.council-plan .highlighted, .council-plan h2 {
+    color: #196ba6;
+}
+
+.economic-growth .highlighted, .economic-growth h2 {
+    color: #15807F;
+}
+
+.vulnerable-people .highlighted, .vulnerable-people h2 {
+    color: #056b0b;
+}
+
+.building-resilience .highlighted, .building-resilience h2 {
+    color: #622F92;
+}
+
+.best-use-of-resources .highlighted, .best-use-of-resources h2 {
+    color: #B21313;
+}
 
 /* Navigation menu within the Council Plan */
-ol.plan-nav { margin: 0; }
-ol.plan-nav a, ol.plan-nav em { display: block; padding: .5625em 9px; margin: .5625em 0; text-decoration: none; border-radius: 5px; }
-ol.plan-nav span { display: block; font-weight: bold; }
+ol.plan-nav {
+    margin: 0;
+}
 
-/* Padding for .aims-box is 18px within context of (6 grid columns less two outer gutters) */ 
-.aims-box { clear: both; padding-left: 4.109589%; padding-right: 4.109589%; }
+    ol.plan-nav a, ol.plan-nav em {
+        display: block;
+        padding: .5625em 9px;
+        margin: .5625em 0;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    ol.plan-nav span {
+        display: block;
+        font-weight: bold;
+    }
+
+/* Padding for .aims-box is 18px within context of (6 grid columns less two outer gutters) */
+.aims-box {
+    clear: both;
+    padding-left: 4.109589%;
+    padding-right: 4.109589%;
+}
 
 /* Photos of leader/chief exec on topic template */
-.person { float: left; margin: .5625em .5625em .5625em 0; }
-.person img { display: block; margin: .5625em 0; }
-.person p { margin: 0; }
-.person .position { font-weight: bold; }
+.person {
+    float: left;
+    margin: .5625em .5625em .5625em 0;
+}
+
+    .person img {
+        display: block;
+        margin: .5625em 0;
+    }
+
+    .person p {
+        margin: 0;
+    }
+
+    .person .position {
+        font-weight: bold;
+    }
 
 /* Logos on topic template */
-.logos img { float: left; margin: .5625em .5625em .5625em 0; }
+.logos img {
+    float: left;
+    margin: .5625em .5625em .5625em 0;
+}
 
 /* Images at bottom of topic template */
-.images { margin: 1.125em 0 0; float: left; width: 100%; }
-.plan-content .images img { float: left; margin: 0 .5625em .5625em 0; border-width: 2px; border-radius: 5px; }
+.images {
+    margin: 1.125em 0 0;
+    float: left;
+    width: 100%;
+}
+
+.plan-content .images img {
+    float: left;
+    margin: 0 .5625em .5625em 0;
+    border-width: 2px;
+    border-radius: 5px;
+}
 
 /* .related-links box follows floated elements on both home and topic templates */
-.related-links { clear: left; }
+.related-links {
+    clear: left;
+}
 
- /* SVG budget diagrams. */
-.intrinsic-container {  position: relative;  height: 0;  overflow: hidden; padding-bottom: 100%}
-.intrinsic-container iframe {  position: absolute;  top:0;  left: 0;  width: 100%;  height: 100%;}
+/* SVG budget diagrams. */
+.intrinsic-container {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 100%;
+}
+
+    .intrinsic-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
 
 
 /* Priorities template */
 @media screen {
-    .priorities .group h2 { padding: .692308em 3.797468%; border-radius: 5px; }
+    .priorities .group h2 {
+        padding: .692308em 3.797468%;
+        border-radius: 5px;
+    }
 }
-.priorities .building-resilience h2 { background: #622F92; color: #fff; }
-.priorities .economic-growth h2 { background: #15807F; color: #fff; }
-.priorities .best-use-of-resources h2 { background: #B21313; color: #fff; }
-.priorities .vulnerable-people h2 { background: #056b0b; color: #fff; }
-.priorities object { margin: 1.125em auto; min-width: 0; max-width: 250px; width: auto; display: block; }
+
+.priorities .building-resilience h2 {
+    background: #622F92;
+    color: #fff;
+}
+
+.priorities .economic-growth h2 {
+    background: #15807F;
+    color: #fff;
+}
+
+.priorities .best-use-of-resources h2 {
+    background: #B21313;
+    color: #fff;
+}
+
+.priorities .vulnerable-people h2 {
+    background: #056b0b;
+    color: #fff;
+}
+
+.priorities object {
+    margin: 1.125em auto;
+    min-width: 0;
+    max-width: 250px;
+    width: auto;
+    display: block;
+}
 
 /* Monitoring template - ensure table makes best use of space */
-.plan-content table, .monitoring table { width: 100%; }
+.plan-content table, .monitoring table {
+    width: 100%;
+}
 
-/* Heading spacing not required in tables (headings not required, but they get used anyway) */
-.plan-content table h2, .plan-content table h3 { margin: 0; }
+    /* Heading spacing not required in tables (headings not required, but they get used anyway) */
+    .plan-content table h2, .plan-content table h3 {
+        margin: 0;
+    }
 
 /* Image Captions for Topic Pages */
-.additional_content .caption{ font-size: 0.75em; text-align: center; } 
-.images .caption{ font-size: 0.75em; text-align: center; } 
+.additional_content figure {
+    display: table;
+}
+
+.additional_content figcaption {
+    text-align: center;
+    font-size: 0.7em;
+    display: table-caption;
+    caption-side: bottom;
+}
+
+.images figure {
+    float: left;
+    display: table;
+}
+
+.images figcaption {
+    text-align: center;
+    font-size: 0.7em;
+    display: table-caption;
+    caption-side: bottom;
+}
