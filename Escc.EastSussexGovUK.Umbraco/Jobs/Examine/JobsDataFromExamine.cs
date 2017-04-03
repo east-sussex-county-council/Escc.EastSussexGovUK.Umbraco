@@ -215,6 +215,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                     Location = result.Fields.ContainsKey("locationDisplay") ? result["locationDisplay"] : String.Empty,
                     JobType = result.Fields.ContainsKey("jobTypeDisplay") ? result["jobTypeDisplay"] : String.Empty,
                     ContractType = result.Fields.ContainsKey("contractType") ? result["contractType"] : String.Empty,
+                    IsPartTime = result.Fields.ContainsKey("partTime") ? Boolean.Parse(result["partTime"]) : false,
+                    IsFullTime = result.Fields.ContainsKey("fullTime") ? Boolean.Parse(result["fullTime"]) : false,
                     Department = result.Fields.ContainsKey("departmentDisplay") ? result["departmentDisplay"] : String.Empty,
                     WorkPattern = new WorkPattern()
                     {

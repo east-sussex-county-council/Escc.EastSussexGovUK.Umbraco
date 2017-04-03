@@ -17,6 +17,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         [UmbracoTemplate(DisplayName = "Jobs RSS as an HTML table", Alias = "JobsRssAsTable")]
         public string RssAsTable { get; set; }
 
+        [UmbracoTemplate(DisplayName = "Jobs RSS as Tweets", Alias = "JobsRssAsTweets")]
+        public string RssAsTweets { get; set; }
+
         [UmbracoTab("Content")]
         public JobsRssContentTab Content { get; set; }
 
