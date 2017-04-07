@@ -119,12 +119,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.EastSussexGovUK.1.1.2\lib\Escc.EastSussexGovUK.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\Escc.EastSussexGovUK.1.2.0\lib\Escc.EastSussexGovUK.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.EastSussexGovUK.Mvc.2.0.8\lib\Escc.EastSussexGovUK.Mvc.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\Escc.EastSussexGovUK.Mvc.2.1.1\lib\Escc.EastSussexGovUK.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.Rss, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.EastSussexGovUK.Rss.2.0.0\lib\Escc.EastSussexGovUK.Rss.dll</HintPath>
