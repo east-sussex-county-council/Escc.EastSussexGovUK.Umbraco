@@ -5,50 +5,47 @@
     <h1>@Model.Metadata.Title</h1>
 </div>
 @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
-<div class="article">
-    <div class="content text-content">
-        <dl>
+<div class="supporting content-small content-medium text-content">
+    <table>
+        <tbody>
             @if (!String.IsNullOrEmpty(Model.Job.Reference))
             {
-                <dt>Job reference</dt>
-                <dd id="job-reference">@Model.Job.Reference</dd>
+                <tr><th id="job-reference">Job reference</th><td>@Model.Job.Reference</td></tr>
             }
             @if (!String.IsNullOrEmpty(Model.Job.Location))
             {
-                <dt>Location</dt>
-                <dd>@Model.Job.Location</dd>
+                <tr><th>Location</th><td>@Model.Job.Location</td></tr>
             }
             @if (!String.IsNullOrEmpty(Model.Job.Organisation))
             {
-                <dt>Organisation</dt>
-                <dd>@Model.Job.Organisation</dd>
+                <tr><th>Organisation</th><td>@Model.Job.Organisation</td></tr>
             }
             @if (!String.IsNullOrEmpty(Model.Job.Department))
             {
-                <dt>Department</dt>
-                <dd>@Model.Job.Department</dd>
+                <tr><th>Department</th><td>@Model.Job.Department</td></tr>
             }
             @if (!String.IsNullOrEmpty(Model.Job.ContractType))
             {
-                <dt>Contract type</dt>
-                <dd>@Model.Job.ContractType</dd>
+                <tr><th>Contract type</th><td>@Model.Job.ContractType</td></tr>
             }
             @if (!String.IsNullOrEmpty(Model.Job.JobType))
             {
-                <dt>Job type</dt>
-                <dd>@Model.Job.JobType</dd>
+                <tr><th>Job type</th><td>@Model.Job.JobType</td></tr>
             }
             @if (!String.IsNullOrEmpty(Model.Job.Salary.SalaryRange))
             {
-                <dt>Salary</dt>
-                <dd>@Model.Job.Salary.SalaryRange</dd>
+                <tr><th>Salary</th><td>@Model.Job.Salary.SalaryRange</td></tr>
             }
             @if (Model.Job.ClosingDate.HasValue)
             {
-                <dt>Closing date</dt>
-                <dd>@Model.Job.ClosingDate.Value.ToBritishDateWithDay()</dd>
+                <tr><th>Closing date</th><td>@Model.Job.ClosingDate.Value.ToBritishDateWithDay()</td></tr>
             }
-        </dl>
+        </tbody>
+    </table>
+</div>
+
+<div class="article">
+    <div class="content text-content">
         @Model.Job.AdvertHtml
         @if (Model.Job.ApplyUrl != null)
         {
