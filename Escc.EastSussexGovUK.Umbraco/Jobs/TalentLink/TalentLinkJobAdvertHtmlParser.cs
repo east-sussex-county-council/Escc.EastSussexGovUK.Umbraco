@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Linq;
 using System.Web;
+using Escc.Dates;
 using Exceptionless;
 using HtmlAgilityPack;
 using Escc.Umbraco.PropertyEditors.RichTextPropertyEditor;
@@ -98,7 +99,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
                                      ParseValueFromElementById(htmlDocument, "div", "JD-Field6") + Environment.NewLine +
                                      ParseValueFromElementById(htmlDocument, "div", "JD-Documents");
 
-                    var htmlFormatters = new IHtmlStringFormatter[] { new CloseEmptyElementsFormatter(), new HouseStyleDateFormatter() };
+                    var htmlFormatters = new IHtmlStringFormatter[] { new CloseEmptyElementsFormatter(), new HouseStyleDateFormatter(), new RemoveDuplicateTextFormatter("Closing date: " + job.ClosingDate.Value.ToBritishDateWithDay()) };
                     foreach (var formatter in htmlFormatters)
                     {
                         parsedHtml = formatter.FormatHtml(parsedHtml);

@@ -61,6 +61,19 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;span class=&quot;JD-FieldText&quot; id=&quot;JDText-Field1&quot;&gt;&lt;div&gt;
+        ///&lt;p&gt;&lt;span&gt;&lt;span&gt;Hours of work: Variable/Flexible&lt;/span&gt;&lt;span&gt;&lt;br /&gt;&lt;/span&gt;&lt;span&gt;Working pattern: Variable/Flexible&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+        ///&lt;p&gt;&lt;span&gt;&lt;span&gt;Closing date: Sunday 23 April 2017&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+        ///&lt;p&gt;&lt;span&gt;&lt;span&gt;For an informal discussion, please contact Nicola Spencer - Service Support Officer on 01323 464470.&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+        ///&lt;/div&gt;&lt;/span&gt;.
+        /// </summary>
+        internal static string ClosingDateInBody1 {
+            get {
+                return ResourceManager.GetString("ClosingDateInBody1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot; http://www.w3.org/TR/html4/strict.dtd&quot;&gt;&lt;html lang=&quot;en-GB&quot; xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xmlns:addthis=&quot;http://www.addthis.com/help/api-spec&quot; &gt;&lt;head&gt;&lt;meta name=&quot;GENERATOR&quot; content=&quot;MrTed&quot;&gt;&lt;meta name=&quot;TEMPLATEBASE&quot; content=&quot;Accessible HTML&quot;&gt;&lt;meta name=&quot;LASTUPDATED&quot; content=&quot;18/08/05 10:05:33&quot;&gt;&lt;meta name=&quot;author&quot; content=&quot;MrTed&quot;&gt;&lt;meta name=&quot;keywords&quot; content=&quot;Jobs, Career Section, Candidate Portal&quot;&gt;&lt;meta name=&quot;description&quot; content=&quot;Mrted Talentlink syn [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string JobAdvert1Html {
