@@ -34,11 +34,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public Uri GenerateUrl(Job job)
         {
             var normalisedBaseUrl = _baseUrl.ToString().TrimEnd(new[] { '/' });
-            var jobTitle = job.JobTitle.ToLower(CultureInfo.CurrentCulture).Replace("&", "and").Replace(" ", "-");
-            jobTitle = Regex.Replace(jobTitle, "[^a-z0-9-]", String.Empty);
-            jobTitle = Regex.Replace(jobTitle, "-+", "-");
-            return new Uri(normalisedBaseUrl + "/" + job.Id + "/" + jobTitle);
+            var jobTitle = NormaliseSegment(job.JobTitle);
+            var location = NormaliseSegment(job.Location);
+            return new Uri($"{normalisedBaseUrl}/{job.Id}/{job.Reference}/{jobTitle}/{location}");
+        }
 
+        public string NormaliseSegment(string text)
+        {
+            text = text.ToLower(CultureInfo.CurrentCulture).Replace("&", "and").Replace(" ", "-");
+            text = Regex.Replace(text, "[^a-z0-9-]", String.Empty);
+            text = Regex.Replace(text, "-+", "-");
+            return text;
         }
     }
 }
