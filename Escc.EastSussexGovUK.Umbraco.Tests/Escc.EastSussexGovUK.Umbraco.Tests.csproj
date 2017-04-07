@@ -327,6 +327,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="HouseStyleDateFormatterTests.cs" />
     <Compile Include="HtmlAgilityPackFormatterTests.cs" />
     <Compile Include="HtmlStringFormatterTests.cs" />
     <Compile Include="JobAdvertHtmlParserTests.cs" />

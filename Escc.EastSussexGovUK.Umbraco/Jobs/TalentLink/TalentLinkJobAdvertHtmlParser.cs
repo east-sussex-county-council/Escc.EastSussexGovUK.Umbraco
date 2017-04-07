@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Exceptionless;
 using HtmlAgilityPack;
+using Escc.Umbraco.PropertyEditors.RichTextPropertyEditor;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
 {
@@ -15,6 +16,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
     {
         private readonly ISalaryParser _salaryParser;
         private readonly IWorkPatternParser _workPatternParser;
+        private readonly IRichTextHtmlFormatter[] _htmlFormatters;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TalentLinkJobAdvertHtmlParser"/> class.
@@ -22,12 +24,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
         /// <param name="salaryParser">The salary parser.</param>
         /// <param name="workPatternParser">The work pattern parser.</param>
         /// <exception cref="System.ArgumentNullException">salaryParser</exception>
-        public TalentLinkJobAdvertHtmlParser(ISalaryParser salaryParser, IWorkPatternParser workPatternParser)
+        public TalentLinkJobAdvertHtmlParser(ISalaryParser salaryParser, IWorkPatternParser workPatternParser, params IRichTextHtmlFormatter[] htmlFormatters)
         {
             if (salaryParser == null) throw new ArgumentNullException(nameof(salaryParser));
             if (workPatternParser == null) throw new ArgumentNullException(nameof(workPatternParser));
             _salaryParser = salaryParser;
             _workPatternParser = workPatternParser;
+            _htmlFormatters = htmlFormatters;
         }
 
         /// <summary>
@@ -95,7 +98,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
                                      ParseValueFromElementById(htmlDocument, "div", "JD-Field6") + Environment.NewLine +
                                      ParseValueFromElementById(htmlDocument, "div", "JD-Documents");
 
-                    var htmlFormatters = new IHtmlStringFormatter[] { new CloseEmptyElementsFormatter() };
+                    var htmlFormatters = new IHtmlStringFormatter[] { new CloseEmptyElementsFormatter(), new HouseStyleDateFormatter() };
                     foreach (var formatter in htmlFormatters)
                     {
                         parsedHtml = formatter.FormatHtml(parsedHtml);

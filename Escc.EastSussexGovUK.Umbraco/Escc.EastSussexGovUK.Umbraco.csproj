@@ -3745,6 +3745,7 @@
     <Compile Include="Jobs\JobSearchResultsViewModel.cs" />
     <Compile Include="Jobs\RemoveUnwantedAttributesFormatter.cs" />
     <Compile Include="Jobs\TalentLink\TalentLinkUrl.cs" />
+    <Compile Include="Jobs\HouseStyleDateFormatter.cs" />
     <Compile Include="Services\BaseViewModelFromUmbracoBuilder.cs" />
     <Compile Include="Jobs\SearchResultsViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\ComponentViewModelFromUmbraco.cs" />
