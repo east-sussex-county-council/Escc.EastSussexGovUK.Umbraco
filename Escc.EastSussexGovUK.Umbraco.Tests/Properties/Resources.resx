@@ -315,6 +315,16 @@ addthis.addEventListener('addthis.menu.share', shareEventHandler);
 &lt;/body&gt;
 &lt;/html&gt;</value>
   </data>
+  <data name="JobDetailInHtml1" xml:space="preserve">
+    <value>&lt;div id="JD-Field1"&gt;
+&lt;h5 class="JD-FieldLabel" id="JDLabel-Field1"&gt;Job Details&lt;/h5&gt;
+&lt;span class="JD-FieldText" id="JDText-Field1"&gt;&lt;div&gt;
+&lt;p&gt;&lt;span style="font-size: 8.5pt; font-family: 'Verdana','sans-serif'; color: black;"&gt;Hours of work: Casual hours&lt;br&gt;Working pattern: Part-time&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;span style="font-size: 8.5pt; font-family: 'Verdana','sans-serif'; color: black;"&gt;Closing date: Sunday&amp;nbsp;29 January 2017&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;span style="font-size: 8.5pt; font-family: 'Verdana','sans-serif'; color: black;"&gt;For an informal discussion, please contact Pamela Day on 01273 337035 / 07876 036872.&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/span&gt;
+&lt;/div&gt;</value>
+  </data>
   <data name="JobResultsOuterHtml" xml:space="preserve">
     <value>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" " http://www.w3.org/TR/html4/strict.dtd"&gt;&lt;html lang="en-GB" xmlns="http://www.w3.org/1999/xhtml" xmlns:addthis="http://www.addthis.com/help/api-spec" &gt;&lt;head&gt;&lt;meta name="GENERATOR" content="MrTed"&gt;&lt;meta name="TEMPLATEBASE" content="Accessible HTML"&gt;&lt;meta name="LASTUPDATED" content="18/08/05 10:05:33"&gt;&lt;meta name="author" content="MrTed"&gt;&lt;meta name="keywords" content="Jobs, Career Section, Candidate Portal"&gt;&lt;meta name="description" content="Mrted Talentlink syndication components"&gt;&lt;meta http-equiv="Content-Style-Type" content="text/css"&gt;&lt;meta http-equiv="Content-Script-Type" content="text/javascript"&gt;&lt;meta name="language" http-equiv="Content-Language" content="en-GB"&gt;&lt;title&gt;Jobs&lt;/title&gt;
 &lt;meta HTTP-EQUIV="Content-Type" content="text/html; charset=UTF-8"&gt;

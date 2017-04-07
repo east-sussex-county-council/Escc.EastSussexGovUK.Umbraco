@@ -3678,6 +3678,7 @@
     <Compile Include="Jobs\TalentLink\PublicJobsLookupValuesIndexer.cs" />
     <Compile Include="Jobs\TalentLink\RedeploymentJobsLookupValuesIndexer.cs" />
     <Compile Include="Jobs\TalentLink\RemoveDuplicateTextFormatter.cs" />
+    <Compile Include="Jobs\RemoveElementByNameAndContentFormatter.cs" />
     <Compile Include="Jobs\TalentLink\TalentLinkWorkPatternParser.cs" />
     <Compile Include="Jobs\TalentLink\TalentLinkSalaryParser.cs" />
     <Compile Include="Jobs\TalentLink\RedeploymentJobsIndexer.cs" />

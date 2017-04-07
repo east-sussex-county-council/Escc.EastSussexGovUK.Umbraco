@@ -86,6 +86,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
                     {
                         new RemoveUnwantedAttributesFormatter(new string[] { "style" }),
                         new ReplaceElementNameFormatter("h5", "h2"), 
+                        new RemoveElementByNameAndContentFormatter("h2", "Job Details"),
                     };
                     foreach (var formatter in agilityPackFormatters)
                     {

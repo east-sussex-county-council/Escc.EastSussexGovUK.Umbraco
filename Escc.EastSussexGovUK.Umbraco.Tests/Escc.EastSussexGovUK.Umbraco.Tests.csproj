@@ -334,6 +334,7 @@
     <Compile Include="JobSearchFilterTests.cs" />
     <Compile Include="KeywordsTokeniserTests.cs" />
     <Compile Include="RelativeJobUrlGeneratorTests.cs" />
+    <Compile Include="RemoveElementByNameAndContentFormatterTests.cs" />
     <Compile Include="TalentLinkSalaryParserTests.cs" />
     <Compile Include="StopWordsRemoverTests.cs" />
     <Compile Include="RemoveMediaDomainUrlTransformerTests.cs" />
