@@ -1,11 +1,2 @@
 ﻿/* No need for margin any more as swiping/scrolling can be done over the main content column. */
 #map { margin-right: 0; }
-
-/* Tabbed content 
-   Each tab is 2.5 grid columns wide, with vertical space of 18px above and below text.
-   Generated content places a down arrow on the selected tab.
-*/
-.tablist [role=tablist] { margin: .947368em 0 0; }
-.tablist [role=tab] { display: inline-block;padding: .947368em 2.821317% .684211em;border-bottom: .263158em solid #003C69; width: 25.078370%;background: #ccc; }
-.tablist li[aria-selected=true] { background: #003C69;color: #fff;position: relative; }
-.tablist li[aria-selected=true]:after { content: '\25bc';position: absolute;bottom: -20px;right: 2px;color: #003c69; }

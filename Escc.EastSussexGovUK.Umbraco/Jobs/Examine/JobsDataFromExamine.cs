@@ -224,6 +224,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                         IsPartTime = result.Fields.ContainsKey("partTime") && result["partTime"].ToUpperInvariant() == "TRUE"
                     },
                     AdvertHtml = new HtmlString(result.Fields.ContainsKey("fullHtml") ? result["fullHtml"] : String.Empty),
+                    AdditionalInformationHtml = new HtmlString(result.Fields.ContainsKey("additionalInfo") ? result["additionalInfo"] : String.Empty),
+                    EqualOpportunitiesHtml = new HtmlString(result.Fields.ContainsKey("equalOpportunities") ? result["equalOpportunities"] : String.Empty),
                     ApplyUrl = (result.Fields.ContainsKey("applyUrl") && !String.IsNullOrEmpty(result["applyUrl"])) ? new Uri(result["applyUrl"]) : null
                 };
 

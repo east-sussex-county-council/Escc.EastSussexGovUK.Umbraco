@@ -134,6 +134,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 simpleDataSet.RowData.Add("fullText", _tagSanitiser.StripTags(job.AdvertHtml.ToHtmlString()));
                 simpleDataSet.RowData.Add("fullHtml", job.AdvertHtml.ToHtmlString());
             }
+            if (job.AdditionalInformationHtml != null)
+            {
+                simpleDataSet.RowData.Add("additionalInfo", job.AdditionalInformationHtml.ToHtmlString());
+            }
+            if (job.EqualOpportunitiesHtml != null)
+            {
+                simpleDataSet.RowData.Add("equalOpportunities", job.EqualOpportunitiesHtml.ToHtmlString());
+            }
             simpleDataSet.RowData.Add("applyUrl", job.ApplyUrl?.ToString());
 
             return simpleDataSet;

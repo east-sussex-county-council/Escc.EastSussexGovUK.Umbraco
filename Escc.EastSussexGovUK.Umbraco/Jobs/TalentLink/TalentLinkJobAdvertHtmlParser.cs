@@ -85,7 +85,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
                     var agilityPackFormatters = new IHtmlAgilityPackHtmlFormatter[]
                     {
                         new RemoveUnwantedAttributesFormatter(new string[] { "style" }),
-                        new ReplaceElementNameFormatter("h5", "h2"), 
+                        new ReplaceElementNameFormatter("h5", "h2"),
                         new RemoveElementByNameAndContentFormatter("h2", "Job Details"),
                     };
                     foreach (var formatter in agilityPackFormatters)
@@ -93,18 +93,27 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
                         formatter.FormatHtml(htmlDocument);
                     }
 
+                    var additionalInfo = ParseValueFromElementById(htmlDocument, "span", "JDText-Field4");
+                    if (!String.IsNullOrEmpty(additionalInfo))
+                    {
+                        additionalInfo = ApplyStringFormatters(additionalInfo);
+                        job.AdditionalInformationHtml = new HtmlString(additionalInfo);
+                    }
+
+                    var equalOpportunities = ParseValueFromElementById(htmlDocument, "span", "JDText-Field5");
+                    if (!String.IsNullOrEmpty(equalOpportunities))
+                    {
+                        equalOpportunities = ApplyStringFormatters(equalOpportunities);
+                        job.EqualOpportunitiesHtml = new HtmlString(equalOpportunities);
+                    }
+
                     var parsedHtml = ParseValueFromElementById(htmlDocument, "div", "JD-Field1") + Environment.NewLine +
                                      ParseValueFromElementById(htmlDocument, "div", "JD-Field2") + Environment.NewLine +
-                                     ParseValueFromElementById(htmlDocument, "div", "JD-Field4") + Environment.NewLine +
-                                     ParseValueFromElementById(htmlDocument, "div", "JD-Field5") + Environment.NewLine +
                                      ParseValueFromElementById(htmlDocument, "div", "JD-Field6") + Environment.NewLine +
                                      ParseValueFromElementById(htmlDocument, "div", "JD-Documents");
 
-                    var htmlFormatters = new IHtmlStringFormatter[] { new CloseEmptyElementsFormatter(), new HouseStyleDateFormatter(), new RemoveDuplicateTextFormatter("Closing date: " + job.ClosingDate.Value.ToBritishDateWithDay()) };
-                    foreach (var formatter in htmlFormatters)
-                    {
-                        parsedHtml = formatter.FormatHtml(parsedHtml);
-                    }
+                    parsedHtml = ApplyStringFormatters(parsedHtml);
+                    parsedHtml = new RemoveDuplicateTextFormatter("Closing date: " + job.ClosingDate.Value.ToBritishDateWithDay()).FormatHtml(parsedHtml);
 
                     job.AdvertHtml = new HtmlString(parsedHtml);
                     job.WorkPattern = _workPatternParser.ParseWorkPatternFromHtml(parsedHtml);
@@ -119,6 +128,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
                 }
                 return null;
             }
+        }
+
+        private static string ApplyStringFormatters(string parsedHtml)
+        {
+            var htmlFormatters = new IHtmlStringFormatter[] { new CloseEmptyElementsFormatter(), new HouseStyleDateFormatter() };
+            foreach (var formatter in htmlFormatters)
+            {
+                parsedHtml = formatter.FormatHtml(parsedHtml);
+            }
+
+            return parsedHtml;
         }
 
         private static string ParseValueFromElementById(HtmlDocument htmlDocument, string elementName, string elementId)

@@ -28,6 +28,8 @@
       <add Name="departmentDisplay" />
       <add Name="fullText" />
       <add Name="fullHtml" />
+      <add Name="additionalInfo" />
+      <add Name="equalOpportunities" />
       <add Name="applyUrl" />
     </IndexUserFields>
   </IndexSet>
@@ -60,6 +62,8 @@
       <add Name="departmentDisplay" />
       <add Name="fullText" />
       <add Name="fullHtml" />
+      <add Name="additionalInfo" />
+      <add Name="equalOpportunities" />
       <add Name="applyUrl" />
     </IndexUserFields>
   </IndexSet>

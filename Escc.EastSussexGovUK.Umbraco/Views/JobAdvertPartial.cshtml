@@ -51,6 +51,51 @@
         {
             <p class="main-action"><a href="@Model.Job.ApplyUrl">Apply</a></p>
         }
+        @{
+                        var hasAdditional = Model.Job.AdditionalInformationHtml != null && !String.IsNullOrEmpty(Model.Job.AdditionalInformationHtml.ToHtmlString());
+                        var additionalHtml = hasAdditional ? Model.Job.AdditionalInformationHtml.ToHtmlString().Replace("<p>", "<p><small>").Replace("</p>", "</small></p>") : String.Empty;
+                        var hasEqualOpps = Model.Job.EqualOpportunitiesHtml != null && !String.IsNullOrEmpty(Model.Job.EqualOpportunitiesHtml.ToHtmlString());
+                        var equalOpps = hasEqualOpps ? Model.Job.EqualOpportunitiesHtml.ToHtmlString().Replace("<p>", "<p><small>").Replace("</p>", "</small></p>") : String.Empty;
+                        if (hasAdditional && hasEqualOpps)
+                        {
+                <div class="large">
+                    <div class="tablist" role="application">
+                        <ul role="tablist">
+                            <li id="tab1" aria-controls="tab1content" role="tab">Additional information</li>
+                            <li id="tab2" aria-controls="tab2content" role="tab">Equal opportunities</li>
+                        </ul>
+
+                        <div id="tab1content" aria-labelledby="tab1" role="tabpanel">
+                            <h2 class="aural">Additional information</h2>
+                            @Html.Raw(additionalHtml)
+                        </div>
+
+                        <div id="tab2content" aria-labelledby="tab2" role="tabpanel" aria-hidden="true">
+                            <h2 class="aural">Equal opportunities</h2>
+                            @Html.Raw(equalOpps)
+                        </div>
+                    </div>
+                </div>
+                <div class="small medium accordion" role="application">
+                    <h2 id="accordion1" aria-controls="accordion1content" role="tab">Additional information</h2>
+                    <div id="accordion1content" aria-labelledby="accordion1" role="tabpanel">
+                        @Html.Raw(additionalHtml)
+                    </div>
+                    <h2 id="accordion2" aria-controls="accordion2content" role="tab">Equal opportunities</h2>
+                    <div id="accordion2content" aria-labelledby="accordion2" role="tabpanel">@Html.Raw(equalOpps)</div>
+                </div>
+            }
+            else if (hasAdditional)
+            {
+                <h2>Additional information</h2>
+                @Html.Raw(Model.Job.AdditionalInformationHtml.ToHtmlString().Replace("<p>", "<p><small>").Replace("</p>", "</small></p>"))
+            }
+            else if (hasEqualOpps)
+            {
+                <h2>Equal opportunities</h2>
+                @Html.Raw(Model.Job.EqualOpportunitiesHtml.ToHtmlString().Replace("<p>", "<p><small>").Replace("</p>", "</small></p>"))
+            }
+        }
     </div>
 </div>
 @Html.Partial("~/Views/Layouts/_SocialMedia.cshtml")

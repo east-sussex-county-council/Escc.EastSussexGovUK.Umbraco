@@ -73,6 +73,22 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public string Reference { get; set; }
 
         /// <summary>
+        /// Gets or sets the additional information section from the advert HTML.
+        /// </summary>
+        /// <value>
+        /// The additional information HTML.
+        /// </value>
+        public IHtmlString AdditionalInformationHtml { get; set; }
+
+        /// <summary>
+        /// Gets or sets the equal opportunities section from the advert HTML.
+        /// </summary>
+        /// <value>
+        /// The equal opportunities HTML.
+        /// </value>
+        public IHtmlString EqualOpportunitiesHtml { get; set; }
+
+        /// <summary>
         /// Gets or sets the full advert text.
         /// </summary>
         /// <value>

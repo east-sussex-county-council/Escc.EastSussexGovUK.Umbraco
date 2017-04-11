@@ -799,6 +799,8 @@
     <Content Include="css\StandardLandingPage\landing-small.css" />
     <Content Include="css\StandardTopicPage\topic-medium.css" />
     <Content Include="css\StandardTopicPage\topic-small.css" />
+    <Content Include="css\tabs-large.css" />
+    <Content Include="css\tabs-small.css" />
     <Content Include="css\TinyMCE-Content.css" />
     <Content Include="css\TinyMCE-StyleSelector-Embed.css" />
     <Content Include="css\TinyMCE-StyleSelector-Headings.css" />
@@ -820,6 +822,7 @@
     <Content Include="js\CampaignTemplates\campaign-landing.js" />
     <Content Include="js\CouncilPlan\council-plan.js" />
     <Content Include="js\CustomerFocusTemplates\guide.js" />
+    <Content Include="js\tabs.js" />
     <Content Include="js\CustomerFocusTemplates\location.js" />
     <Content Include="js\document-metadata.js" />
     <Content Include="js\embed-jobs-rss.js" />
@@ -860,7 +863,9 @@
     <Content Include="Content\DataTables\css\semanticui.scss" />
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
-    <None Include="ExamineIndex.config.xdt" />
+    <None Include="ExamineIndex.config.xdt">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="ExamineSettings.config.xdt" />
     <None Include="images\Quote-close.psd" />
     <None Include="images\Quote-open.psd" />

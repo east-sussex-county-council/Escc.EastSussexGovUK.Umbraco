@@ -18,13 +18,16 @@
     policy.UpdateHeaders();
 
     Html.RequiresJs(JsFileAlias.Resolve("GoogleMaps"), 90);
+    Html.RequiresJs(JsFileAlias.Resolve("LocationTemplate"));
+    Html.RequiresJs(JsFileAlias.Resolve("Tabs"));
 
     Html.RequiresCss(CssFileAlias.Resolve("LocationTemplateSmall"));
+    Html.RequiresCss(CssFileAlias.Resolve("TabsSmall"));
     if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)
     {
         Html.RequiresCss(CssFileAlias.Resolve("LocationTemplateLarge"), MediaQueryAlias.Resolve("Large"));
+        Html.RequiresCss(CssFileAlias.Resolve("TabsLarge"), MediaQueryAlias.Resolve("Large"));
     }
-    Html.RequiresJs(JsFileAlias.Resolve("LocationTemplate"));
 
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
     {
