@@ -111,8 +111,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.ClientDependencyFramework.WebForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.ClientDependencyFramework.WebForms.2.0.0\lib\Escc.ClientDependencyFramework.WebForms.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\Escc.ClientDependencyFramework.WebForms.2.1.0\lib\Escc.ClientDependencyFramework.WebForms.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Dates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Dates.2.0.1\lib\Escc.Dates.dll</HintPath>
