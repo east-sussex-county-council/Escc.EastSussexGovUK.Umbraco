@@ -21,6 +21,7 @@
     Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=JobsCss&media-query=small", 101);
     Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=JobsCss&media-query=medium", 101, MediaQueryAlias.Resolve("Medium"));
     Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=JobsCss&media-query=large", 101, MediaQueryAlias.Resolve("Large"));
+    Html.RequiresJs("~/js/job-results.js");
 
     var query = HttpUtility.ParseQueryString(Request.Url.Query);
     JobSearchQuery.JobsSortOrder sort = JobSearchQuery.JobsSortOrder.None;
@@ -117,19 +118,19 @@
                 <input type="hidden" name="Create" value="1" />
                 <fieldset class="radioButtonList">
                     <legend>How often?</legend>
-                    <label><input type="radio" name="vDeliveryFrequency" value="1" /> Once a day</label>
-                    <label><input type="radio" name="vDeliveryFrequency" value="7" /> Once a week</label>
+                    <label><input type="radio" name="vDeliveryFrequency" value="1" required="required" checked="checked" /> Once a day</label>
+                    <label><input type="radio" name="vDeliveryFrequency" value="7" required="required" /> Once a week</label>
                 </fieldset>
                 <fieldset class="radioButtonList">
                     <legend>For how long?</legend>
-                    <label><input type="radio" name="dExpirationDate" value="15" /> Two weeks</label>
-                    <label><input type="radio" name="dExpirationDate" value="30" /> A month</label>
-                    <label><input type="radio" name="dExpirationDate" value="90" /> Three months</label>
-                    <label><input type="radio" name="dExpirationDate" value="180" /> Six months</label>
+                    <label><input type="radio" name="dExpirationDate" value="15" required="required" /> Two weeks</label>
+                    <label><input type="radio" name="dExpirationDate" value="30" required="required" checked="checked" /> A month</label>
+                    <label><input type="radio" name="dExpirationDate" value="90" required="required" /> Three months</label>
+                    <label><input type="radio" name="dExpirationDate" value="180" required="required" /> Six months</label>
                 </fieldset>
                 <div>
                     <label for="semail">Your email address</label>
-                    <input type="email" name="semail" id="semail"/>
+                    <input type="email" name="semail" id="semail" required="required"/>
                     <input type="submit" value="Get job alert &gt;"/>
                 </div>
 
