@@ -92,7 +92,7 @@
 @section Footer {
     @if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)
     {
-        if (Model.Job.ApplyUrl != null)
+        if (Model.Job?.ApplyUrl != null)
         {
             <p class="mobile-nav main-action small"><a href="@Model.Job.ApplyUrl">Apply</a></p>
             <div class="footer-with-mobile-nav">
