@@ -65,7 +65,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
 
             using (var reader = new StreamReader(htmlStream))
             {
-                return _jobAdvertParser.ParseJob(reader.ReadToEnd());
+                return _jobAdvertParser.ParseJob(reader.ReadToEnd(), jobId);
             }
         }
 

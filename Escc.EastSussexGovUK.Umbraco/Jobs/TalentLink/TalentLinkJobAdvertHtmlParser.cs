@@ -39,7 +39,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
         /// </summary>
         /// <param name="sourceData">The source data for the job.</param>
         /// <returns></returns>
-        public Job ParseJob(string sourceData)
+        public Job ParseJob(string sourceData, string jobId)
         {
             HtmlAgilityPack.HtmlDocument htmlDocument = new HtmlAgilityPack.HtmlDocument();
             htmlDocument.OptionFixNestedTags = true;
@@ -51,6 +51,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
                 foreach (var error in htmlDocument.ParseErrors)
                 {
                     var exception = new HttpParseException("Unable to parse job HTML from TalentLink");
+                    exception.Data.Add("Job ID", jobId);
                     exception.Data.Add("Type of error", error.Code);
                     exception.Data.Add("Reason", error.Reason);
                     exception.Data.Add("Line", error.Line);
