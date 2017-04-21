@@ -303,6 +303,14 @@
           </conditions>
           <action type="Redirect" url="https://www.eastsussex.gov.uk/{R:1}" appendQueryString="true" redirectType="Permanent" />
         </rule>
+        <rule name="Make www.accesseastsussex.org obsolete" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+        <rule name="Make www.accesseastsussex.org obsolete" stopProcessing="true" xdt:Transform="Insert">
+            <match url="(.*)" />
+            <conditions>
+                <add input="{HTTP_HOST}" pattern="^www.accesseastsussex.org$" />
+            </conditions>
+            <action type="Redirect" url="https://www.eastsussex.gov.uk/{R:1}" appendQueryString="true" redirectType="Permanent" />
+        </rule>
       </rules>
     </rewrite>
 
