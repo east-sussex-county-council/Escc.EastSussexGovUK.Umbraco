@@ -1,4 +1,6 @@
-﻿using Umbraco.Inception.Attributes;
+﻿using Escc.Umbraco.PropertyEditors.DataTypes;
+using System;
+using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
@@ -118,5 +120,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         [UmbracoProperty("Campaign page", "CampaignPage", BuiltInUmbracoDataTypes.ContentPickerAlias, sortOrder: 12,
             Description = "Select a page for the campaign image to link to")]
         public string CampaignPage { get; set; }
+
+        /// <summary>
+        /// Gets or sets the URL to link the campaign image to, if no campaign page is selected.
+        /// </summary>
+        /// <value>
+        /// The campaign URL.
+        /// </value>
+        [UmbracoProperty("Campaign URL", "CampaignUrl", UrlDataType.PropertyEditorAlias, UrlDataType.DataTypeName, sortOrder: 13,
+            Description = "Enter a URL for the campaign image to link to, if no page is selected above")]
+        public Uri CampaignUrl { get; set; }
     }
 }

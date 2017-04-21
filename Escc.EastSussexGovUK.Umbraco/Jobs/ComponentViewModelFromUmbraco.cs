@@ -12,7 +12,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         private readonly IMediaUrlTransformer _mediaUrlTransformer;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HomeViewModelFromUmbraco" /> class.
+        /// Initializes a new instance of the <see cref="JobsHomeViewModelFromUmbraco" /> class.
         /// </summary>
         /// <param name="umbracoContent">Content from Umbraco using the 'Jobs' document type.</param>
         /// <param name="mediaUrlTransformer">The media URL transformer.</param>

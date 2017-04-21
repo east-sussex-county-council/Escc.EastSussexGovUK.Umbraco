@@ -1,3 +1,4 @@
+
 using System;
 using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Umbraco.PropertyTypes;
@@ -6,18 +7,18 @@ using Umbraco.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
-    public class HomeViewModelFromUmbraco : BaseViewModelFromUmbracoBuilder, IViewModelBuilder<JobsHomeViewModel>
+    public class JobsHomeViewModelFromUmbraco : BaseViewModelFromUmbracoBuilder, IViewModelBuilder<JobsHomeViewModel>
     {
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HomeViewModelFromUmbraco" /> class.
+        /// Initializes a new instance of the <see cref="JobsHomeViewModelFromUmbraco" /> class.
         /// </summary>
         /// <param name="umbracoContent">Content from Umbraco using the 'Jobs' document type.</param>
         /// <param name="relatedLinksService">The related links service.</param>
         /// <exception cref="System.ArgumentNullException">umbracoContent
         /// or
         /// mediaUrlTransformer</exception>
-        public HomeViewModelFromUmbraco(IPublishedContent umbracoContent, IRelatedLinksService relatedLinksService) :
+        public JobsHomeViewModelFromUmbraco(IPublishedContent umbracoContent, IRelatedLinksService relatedLinksService) :
             base(umbracoContent, relatedLinksService)
         {
         }
@@ -44,6 +45,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 CampaignImage = BuildImage("CampaignImage_Content"),
                 CampaignPage = BuildUri("CampaignPage_Content")
             };
+
+            if (model.CampaignPage == null)
+            {
+                var campaignUrl = UmbracoContent.GetPropertyValue<string>("CampaignUrl_Content");
+                if (!String.IsNullOrEmpty(campaignUrl))
+                {
+                    model.CampaignPage = new HtmlLink() { Url = new Uri(campaignUrl, UriKind.RelativeOrAbsolute) };
+                }
+            }
 
             // Allow a hyphen to indicate that there's no text for the link, just an image
             foreach (var link in model.TileNavigation)

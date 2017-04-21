@@ -30,7 +30,9 @@
 /* Arrange .feature-tile instances (from sitewide styles) into a list */
 ul.job-tiles { margin: 0; padding: 0; }
 
-/* The campaign image on the jobs home page should fill the space available */
+/* The campaign image on the jobs home page should fill the space available, 
+    and reset padding to ensure no link image if it happens to be Facebook, Twitter etc */
+.jobs-campaign[href] { padding: 0; }
 .jobs-campaign img { width: 100%; }
 
 /* Job search results */

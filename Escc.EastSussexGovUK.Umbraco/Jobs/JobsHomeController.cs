@@ -27,7 +27,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             if (model == null) throw new ArgumentNullException(nameof(model));
 
             var mediaUrlTransformer = new RemoveMediaDomainUrlTransformer();
-            var viewModel = new HomeViewModelFromUmbraco(model.Content,
+            var viewModel = new JobsHomeViewModelFromUmbraco(model.Content,
                 new UmbracoOnAzureRelatedLinksService(mediaUrlTransformer)).BuildModel();
 
             // Add common properties to the model
