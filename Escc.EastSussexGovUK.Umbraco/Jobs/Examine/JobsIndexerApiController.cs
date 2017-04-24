@@ -8,6 +8,7 @@ using Exceptionless;
 using Umbraco.Core.Logging;
 using Umbraco.Web.WebApi;
 using System.Threading.Tasks;
+using Escc.EastSussexGovUK.Umbraco.Examine;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
 {
@@ -23,6 +24,26 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 UpdateIndex("RedeploymentJobsIndexer");
                 UpdateIndex("PublicJobsLookupValuesIndexer");
                 UpdateIndex("RedeploymentJobsLookupValuesIndexer");
+
+                return Request.CreateResponse(HttpStatusCode.NoContent);
+            }
+            catch (Exception ex)
+            {
+                ex.ToExceptionless().Submit();
+                LogHelper.Error<JobsIndexerApiController>("Failed to reindex jobs. There may be another thread currently writing to the index.", ex);
+                return Request.CreateResponse(HttpStatusCode.InternalServerError);
+            }
+        }
+
+        [HttpGet]
+        public HttpResponseMessage UpdateJobsIfNoJobs()
+        {
+            try
+            {
+                // If the jobs index has failed to rebuild for any reason, resulting in no jobs being available, kick off a reindex.
+                // Running this API call on a schedule should allow the site to recover from this situation automatically.
+                UpdateIndexIfNoJobs("PublicJobs");
+                UpdateIndexIfNoJobs("RedeploymentJobs");
 
                 return Request.CreateResponse(HttpStatusCode.NoContent);
             }
@@ -53,6 +74,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 LogHelper.Error<JobsIndexerApiController>("Failed to reindex jobs. There may be another thread currently writing to the index.", ex);
                 return Request.CreateResponse(HttpStatusCode.InternalServerError);
             }
+        }
+
+        private static void UpdateIndexIfNoJobs(string indexPrefix)
+        {
+            var dataSource = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[indexPrefix + "Searcher"], new QueryBuilder(new LuceneTokenisedQueryBuilder(), new KeywordsTokeniser(), new LuceneStopWordsRemover(), new WildcardSuffixFilter()), null);
+            var jobs = Task.Run(async () => await dataSource.ReadJobs(new JobSearchQuery()));
+            if (jobs.Result.Count == 0) UpdateIndex(indexPrefix + "Indexer");
         }
 
         private static void UpdateIndexIfNoLookups(string indexPrefix)
