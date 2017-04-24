@@ -19,7 +19,7 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Features.SocialMedia
         public string TwitterAccount { get; set; }
 
         [UmbracoProperty("Twitter: search widget script", "twitterScript", TwitterScriptDataType.PropertyEditorAlias, TwitterScriptDataType.DataTypeName, 
-            description: "Copy and paste from https://twitter.com/settings/widgets. This is ignored if 'Twitter: account' is set or 'Twitter: inherit settings?' is selected.", sortOrder: 2)]
+            description: "Copy and paste from https://twitter.com/settings/widgets. This is ignored if 'Twitter: account' is set or 'Twitter: inherit settings?' is selected. WARNING: Using this option may display inappropriate content on your page.", sortOrder: 2)]
         public string TwitterScript { get; set; }
 
         [UmbracoProperty("Twitter: inherit settings?", "twitterInherit", CheckboxDataType.PropertyEditorAlias, CheckboxDataType.DataTypeName, sortOrder: 3,
