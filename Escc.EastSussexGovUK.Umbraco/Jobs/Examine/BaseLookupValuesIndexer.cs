@@ -97,6 +97,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                     i++;
                 }
 
+                var organisations = Task.Run(async () => await _lookupValuesProvider.ReadOrganisations()).Result;
+                foreach (var lookupValue in organisations)
+                {
+                    var query = new JobSearchQuery();
+                    query.Organisations.Add(lookupValue.Text);
+                    query.ClosingDateFrom = DateTime.Today;
+                    var simpleDataSet = Task.Run(async () => await CreateDataSetFromLookup(i, indexType, "Organisation", query, lookupValue, jobsDataProvider)).Result;
+                    dataSets.Add(simpleDataSet);
+                    i++;
+                }
+
                 var workPatterns = Task.Run(async () => await _lookupValuesProvider.ReadWorkPatterns()).Result;
                 foreach (var lookupValue in workPatterns)
                 {

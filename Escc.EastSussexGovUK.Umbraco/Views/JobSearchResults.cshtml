@@ -71,7 +71,6 @@
         return new HtmlString(html.ToString());
     }
 }
-}
 @section Breadcrumb {}
 @Html.Partial("~/Views/JobsHeader.cshtml", Model)
 
@@ -90,6 +89,10 @@
         @if (Model.Query.JobTypes.Count > 0)
         {
             <p>Categories: @Model.Query.JobTypes.Humanize()</p>
+        }
+        @if (Model.Query.Organisations.Count > 0)
+        {
+            <p>Organisations: @Model.Query.Organisations.Humanize()</p>
         }
         @if (Model.Query.SalaryRanges.Count > 0)
         {
