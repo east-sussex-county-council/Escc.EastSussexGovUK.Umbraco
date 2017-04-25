@@ -54,7 +54,7 @@
             {
                 foreach (var lookupValue in allValues)
                 {
-                    if (selectedValue.ToUpperInvariant() == lookupValue.Text.ToUpperInvariant())
+                    if (Normalise(selectedValue) == Normalise(lookupValue.Text))
                     {
                         html.AppendFormat("<input type=\"hidden\" name=\"{0}\" value=\"{1}\" />", fieldName, lookupValue.Id);
                         break;
@@ -69,6 +69,11 @@
         }
 
         return new HtmlString(html.ToString());
+    }
+
+    private string Normalise(string text)
+    {
+        return text.ToUpperInvariant().Replace(",", String.Empty);
     }
 }
 @section Breadcrumb {}
