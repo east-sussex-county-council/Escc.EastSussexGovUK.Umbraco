@@ -94,7 +94,7 @@
     {
         if (Model.Job?.ApplyUrl != null)
         {
-            <p class="mobile-nav main-action small"><a href="@Model.Job.ApplyUrl">Apply</a></p>
+            <p class="mobile-nav main-action small"><a href="@Model.Job.ApplyUrl" class="apply apply-mobile">Apply</a></p>
             <div class="footer-with-mobile-nav">
                 @{ Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "FooterDesktop", BreadcrumbProvider = Model.BreadcrumbProvider }); }
             </div>

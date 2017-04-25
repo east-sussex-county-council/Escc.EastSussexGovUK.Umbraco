@@ -49,7 +49,11 @@
         @Model.Job.AdvertHtml
         @if (Model.Job.ApplyUrl != null)
         {
-            <p class="main-action"><a href="@Model.Job.ApplyUrl">Apply</a></p>
+            <p class="main-action"><a href="@Model.Job.ApplyUrl" class="apply">Apply</a> 
+            @if (Model.LoginPage != null) {
+                @:<span class="login-continue">or <a href="@Model.LoginPage.Url">continue an application you've started</a></span>
+            }
+            </p>
         }
         @{
                         var hasAdditional = Model.Job.AdditionalInformationHtml != null && !String.IsNullOrEmpty(Model.Job.AdditionalInformationHtml.ToHtmlString());

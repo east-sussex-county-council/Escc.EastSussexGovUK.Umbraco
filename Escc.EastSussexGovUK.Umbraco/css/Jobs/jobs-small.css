@@ -47,11 +47,19 @@ ul.job-tiles { margin: 0; padding: 0; }
 
 /* Job adverts 
    - space out images so that multiple images with no bleed don't butt up against one another
+   - 'continue an application' links to login to discourage duplicate applications, but has to undo styles of .main-action
 */
 .job-advert img { margin: 0 1.125em 1.125em 0; }
 
+.login-continue { font-size: .75em; display: block; margin-top: -1em; }
+.login-continue > a:link, .login-continue > a:focus, .login-continue > a:hover, .login-continue > a:active { color: #003c69; background: none; border: none; padding: 0; text-decoration: underline; }
+.login-continue > a:visited { color:#609; }
+.login-continue > a:after { content: '';}
+
 /* Login - space around links */
-#chpLogForgot { margin: 1.125em 0 0; }
+#chpLogForgot {
+    margin: 1.125em 0 0;
+}
 
 /* Candidate home page */
 .linkbracket { display: none; }
