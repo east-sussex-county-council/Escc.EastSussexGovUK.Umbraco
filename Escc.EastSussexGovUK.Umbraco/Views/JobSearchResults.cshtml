@@ -1,4 +1,5 @@
-﻿@using System.Text.RegularExpressions
+﻿@using System.Text
+@using System.Text.RegularExpressions
 @using ClientDependency.Core.Mvc
 @using Escc.ClientDependencyFramework
 @using Escc.Dates
@@ -42,6 +43,34 @@
     var pagingHtml = Html.PagedListPager(Model.Jobs, page => urlWithoutPage + page, new PagedListRenderOptions() { DisplayLinkToFirstPage = PagedListDisplayMode.Never, DisplayLinkToLastPage = PagedListDisplayMode.Never, LinkToPreviousPageFormat = "&lt; Prev", LinkToNextPageFormat = "Next &gt;", DisplayItemSliceAndTotal = true, ItemSliceAndTotalFormat = "{0}–{1} of {2} results", MaximumPageNumbersToDisplay = 5, ContainerDivClasses = new[] { "infoBar" }, UlElementClasses = new[] { "pagingPages" } }).ToHtmlString();
     pagingHtml = Regex.Replace(pagingHtml, "(<ul class=\"pagingPages\">.*)<li class=\"disabled PagedList-pageCountAndLocation\"><a>(.*?)</a></li>", "<div class=\"pagingResultsInContext\">$2</div>$1");
     pagingHtml = pagingHtml.Replace("<ul class=\"pagingPages\"><li class=\"active\"><span>1</span></li></ul>", String.Empty);
+}
+@functions{ 
+    public IHtmlString LookupValuesHiddenField(string fieldName, IList<string> selectedValues, IList<JobsLookupValue> allValues)
+    {
+        var html = new StringBuilder();
+        if (selectedValues.Count > 0)
+        {
+            foreach (var selectedValue in selectedValues)
+            {
+                foreach (var lookupValue in allValues)
+                {
+                    if (selectedValue.ToUpperInvariant() == lookupValue.Text.ToUpperInvariant())
+                    {
+                        html.AppendFormat("<input type=\"hidden\" name=\"{0}\" value=\"{1}\" />", fieldName, lookupValue.Id);
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (html.Length == 0)
+        {
+            html.Append("<input type=\"hidden\" name=\"").Append(fieldName).Append("\" value=\"\" />");
+        }
+
+        return new HtmlString(html.ToString());
+    }
+}
 }
 @section Breadcrumb {}
 @Html.Partial("~/Views/JobsHeader.cshtml", Model)
@@ -103,15 +132,15 @@
 
 
         @if (Model.JobAlertsPage != null)
-        {
+        {  
             <h2>Alert me about jobs like these</h2>
             <form method="GET" action="@(Model.JobAlertsPage.Url)" class="job-alerts form short-form">
                 <input type="hidden" name="keywords" value="@query["keywords"]" />
-                <input type="hidden" name="LOV39" value="@query["location"]" />
-                <input type="hidden" name="LOV40" value="@query["type"]" />
-                <input type="hidden" name="LOV52" value="@query["org"]" />
-                <input type="hidden" name="LOV50" value="@query["hours"]" />
-                <input type="hidden" name="LOV46" value="@query["salary"]" />
+                @LookupValuesHiddenField("LOV39", Model.Query.Locations, Model.LocationLookupValues)
+                @LookupValuesHiddenField("LOV40", Model.Query.JobTypes, Model.JobTypeLookupValues)
+                @LookupValuesHiddenField("LOV52", Model.Query.Organisations, Model.OrganisationLookupValues)
+                @LookupValuesHiddenField("LOV50", Model.Query.WorkPatterns, Model.WorkPatternLookupValues)
+                @LookupValuesHiddenField("LOV46", Model.Query.SalaryRanges, Model.SalaryRangeLookupValues)
                 <input type="hidden" name="jobnum" value="@query["ref"]" />
                 <input type="hidden" name="sagsubmit" value="Save" />
                 <input type="hidden" name="backpage" value="1" />

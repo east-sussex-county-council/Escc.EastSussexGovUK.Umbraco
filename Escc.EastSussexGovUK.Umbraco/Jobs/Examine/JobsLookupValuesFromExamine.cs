@@ -51,6 +51,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             {
                 var lookup = new JobsLookupValue()
                 {
+                    Id = result.Fields.ContainsKey("id") ? result["id"] : String.Empty,
                     Text = result.Fields.ContainsKey("text") ? result["text"] : String.Empty,
                     Count = result.Fields.ContainsKey("count") ? Int32.Parse(result["count"], CultureInfo.InvariantCulture) : 0
                 };

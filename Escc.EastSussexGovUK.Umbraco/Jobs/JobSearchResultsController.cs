@@ -87,6 +87,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                         viewModel.Metadata.RssFeedUrl = viewModel.Metadata.RssFeedUrl + "?" + queryString;
                     }
                 }
+
+                var lookupsProvider = new JobsLookupValuesFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.ExamineLookupValuesSearcher]);
+                viewModel.JobTypeLookupValues = Task.Run(async () => await lookupsProvider.ReadJobTypes()).Result;
+                viewModel.OrganisationLookupValues = Task.Run(async () => await lookupsProvider.ReadOrganisations()).Result;
+                viewModel.SalaryRangeLookupValues = Task.Run(async () => await lookupsProvider.ReadSalaryRanges()).Result;
+                viewModel.WorkPatternLookupValues = Task.Run(async () => await lookupsProvider.ReadWorkPatterns()).Result;
+                viewModel.LocationLookupValues = Task.Run(async () => await lookupsProvider.ReadLocations()).Result;
             }
 
             // Jobs close at midnight, so don't cache beyond then

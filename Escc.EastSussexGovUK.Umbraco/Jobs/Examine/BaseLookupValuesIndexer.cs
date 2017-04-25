@@ -125,6 +125,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
 
             simpleDataSet.NodeDefinition.NodeId = fakeNodeId;
             simpleDataSet.NodeDefinition.Type = indexType;
+            simpleDataSet.RowData.Add("id", lookupValue.Id);
             simpleDataSet.RowData.Add("group", group);
             simpleDataSet.RowData.Add("text", lookupValue.Text);
 
