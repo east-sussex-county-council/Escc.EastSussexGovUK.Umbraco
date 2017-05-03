@@ -204,7 +204,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.UserAccessWebService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.UserAccessWebService.3.0.4\lib\Escc.Umbraco.UserAccessWebService.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.UserAccessWebService.3.0.5\lib\Escc.Umbraco.UserAccessWebService.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
