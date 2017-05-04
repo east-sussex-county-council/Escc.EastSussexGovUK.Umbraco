@@ -199,7 +199,7 @@
 
     <!-- Escc.Umbraco.UserAccessWebService -->
     <add key="HomeContentTypeAlias" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-    <add key="HomeContentTypeAlias" value="Home" xdt:Transform="Insert" />
+    <add key="HomeContentTypeAlias" value="HomePage" xdt:Transform="Insert" />
   </appSettings>
 
   <system.web xdt:Transform="Insert" />
