@@ -109,7 +109,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             Assert.IsTrue(job.AdvertHtml.ToHtmlString().Contains("Casual hours"));
             Assert.IsTrue(job.AdvertHtml.ToHtmlString().Contains("East Sussex Registration Service"));
             Assert.IsTrue(job.AdvertHtml.ToHtmlString().Contains("ceremonies take place at weekends"));
-            Assert.IsTrue(job.AdvertHtml.ToHtmlString().Contains("Work Permits"));
             Assert.IsTrue(job.AdvertHtml.ToHtmlString().Contains("redeployees"));
             Assert.IsTrue(job.AdvertHtml.ToHtmlString().Contains("Job Description and Person Specification"));
         }

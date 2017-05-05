@@ -49,6 +49,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             Assert.AreEqual(29033, result.MaximumSalary);
         }
 
+        [Test]
+        public void SalaryWithPenceIsParsed()
+        {
+            var parseThis = "6752.5  - 6752.5  GBP  Year";
+
+            var parser = new TalentLinkSalaryParser();
+            var result = parser.ParseSalaryFromDescription(parseThis);
+
+            Assert.AreEqual(6752, result.MinimumSalary);
+            Assert.AreEqual(6752, result.MaximumSalary);
+        }
+
         [TestCase("£20,000 to £24,999", 20000, 24999)]
         [TestCase("£25,000 - £34,999", 25000, 34999)]
         public void TwoNumbersWithCurrencyIsParsed(string parseThis, int minimum, int maximum)
