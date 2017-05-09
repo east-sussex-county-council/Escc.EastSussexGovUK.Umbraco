@@ -12,7 +12,7 @@ using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task;
 using Umbraco.Inception.Attributes;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location
+namespace Escc.EastSussexGovUK.Umbraco.Location
 {
     /// <summary>
     /// An Umbraco document type for a registration office, which gets most of its properties from the base <see cref="Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location"/> data type

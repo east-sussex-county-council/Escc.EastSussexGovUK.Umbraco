@@ -12,12 +12,12 @@ using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task;
 using Umbraco.Inception.Attributes;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location
+namespace Escc.EastSussexGovUK.Umbraco.Location
 {
     /// <summary>
-    /// An Umbraco document type for a mobile library stop, which gets most of its properties from the base <see cref="Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location"/> data type
+    /// An Umbraco document type for a childcare setting, which gets most of its properties from the base <see cref="Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location"/> data type
     /// </summary>
-    [UmbracoContentType("Mobile library stop", "MobileLibraryStop", new Type[]
+    [UmbracoContentType("Childcare setting", "Childcare", new Type[]
         {
         typeof(LandingDocumentType), 
         typeof(LocationDocumentType),
@@ -41,9 +41,9 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location
         typeof(CampaignLandingDocumentType),
         typeof(PersonDocumentType)
         }, 
-        true, MasterTemplate = "Location", Icon = BuiltInUmbracoContentTypeIcons.IconTruck,
-        Description = "A time and place where a mobile library stops allowing residents to use council services, including borrowing books.")]
-    public class MobileLibraryStopDocumentType : LocationDocumentType
+        true, MasterTemplate = "Location", Icon = BuiltInUmbracoContentTypeIcons.IconBabyStroller,
+        Description = "A childcare setting such as a children's centre or nursery.")]
+    public class ChildcareDocumentType : LocationDocumentType
     {
     }
 }

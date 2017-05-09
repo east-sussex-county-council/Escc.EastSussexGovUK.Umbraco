@@ -1,6 +1,5 @@
 ﻿using System;
 using Escc.EastSussexGovUK.Umbraco.CampaignTemplates;
-using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CustomerFocusBase;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.FormDownload;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Guide;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Landing;
@@ -13,10 +12,13 @@ using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task;
 using Umbraco.Inception.Attributes;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location
+namespace Escc.EastSussexGovUK.Umbraco.Location
 {
-    [UmbracoContentType("Location", "location", new Type[]
-    {
+    /// <summary>
+    /// An Umbraco document type for a council office, which gets most of its properties from the base <see cref="Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location"/> data type
+    /// </summary>
+    [UmbracoContentType("Council office", "CouncilOffice", new Type[]
+        {
         typeof(LandingDocumentType), 
         typeof(LocationDocumentType),
         typeof(TaskDocumentType), 
@@ -38,14 +40,10 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location
         typeof(DayCentreDocumentType),
         typeof(CampaignLandingDocumentType),
         typeof(PersonDocumentType)
-    }, true, icon: BuiltInUmbracoContentTypeIcons.IconPushpin, allowAtRoot: false, 
-    Description = "A fixed location where the council delivers one or more services. Before using this, check for a more specific type such as 'Library' or 'Recycling site'.")]
-    public class LocationDocumentType : CustomerFocusBaseDocumentType
+        }, 
+        true, MasterTemplate = "Location", Icon = BuiltInUmbracoContentTypeIcons.IconLibrary,
+        Description = "An office where council staff are based.")]
+    public class CouncilOfficeDocumentType : LocationDocumentType
     {
-        [UmbracoTemplate(DisplayName="Location as vCard", Alias = "LocationVCard")]
-        public string LocationVCard { get; set; }
-
-        [UmbracoTab("Content")]
-        public LocationContentTab Content { get; set; }
     }
 }

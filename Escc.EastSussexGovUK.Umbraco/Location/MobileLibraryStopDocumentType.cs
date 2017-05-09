@@ -12,14 +12,14 @@ using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task;
 using Umbraco.Inception.Attributes;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location
+namespace Escc.EastSussexGovUK.Umbraco.Location
 {
     /// <summary>
-    /// An Umbraco document type for a sport venue, which gets most of its properties from the base <see cref="Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location"/> data type
+    /// An Umbraco document type for a mobile library stop, which gets most of its properties from the base <see cref="Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location"/> data type
     /// </summary>
-    [UmbracoContentType("Sport venue", "SportLocation", new Type[]
+    [UmbracoContentType("Mobile library stop", "MobileLibraryStop", new Type[]
         {
-         typeof(LandingDocumentType), 
+        typeof(LandingDocumentType), 
         typeof(LocationDocumentType),
         typeof(TaskDocumentType), 
         typeof(LandingPageWithPicturesDocumentType),
@@ -40,10 +40,10 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location
         typeof(DayCentreDocumentType),
         typeof(CampaignLandingDocumentType),
         typeof(PersonDocumentType)
-       }, 
-        true, MasterTemplate = "Location", Icon = BuiltInUmbracoContentTypeIcons.IconTShirt,
-        Description = "A sport venue, such as a playing field or watersports centre.")]
-    public class SportLocationDocumentType : LocationDocumentType
+        }, 
+        true, MasterTemplate = "Location", Icon = BuiltInUmbracoContentTypeIcons.IconTruck,
+        Description = "A time and place where a mobile library stops allowing residents to use council services, including borrowing books.")]
+    public class MobileLibraryStopDocumentType : LocationDocumentType
     {
     }
 }

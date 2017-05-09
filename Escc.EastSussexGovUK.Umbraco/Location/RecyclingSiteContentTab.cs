@@ -1,6 +1,6 @@
 ﻿using Umbraco.Inception.Attributes;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location
+namespace Escc.EastSussexGovUK.Umbraco.Location
 {
     /// <summary>
     /// Content tab when editing a recycling site document type in Umbraco

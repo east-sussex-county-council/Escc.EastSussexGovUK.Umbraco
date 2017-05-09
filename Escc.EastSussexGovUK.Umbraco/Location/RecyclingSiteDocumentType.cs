@@ -12,12 +12,12 @@ using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task;
 using Umbraco.Inception.Attributes;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location
+namespace Escc.EastSussexGovUK.Umbraco.Location
 {
     /// <summary>
-    /// An Umbraco document type for a park or open space, which gets most of its properties from the base <see cref="Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location"/> data type
+    /// An Umbraco document type for a recycling site, which gets most of its properties from the base <see cref="Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location"/> data type
     /// </summary>
-    [UmbracoContentType("Park or open space", "Park", new Type[]
+    [UmbracoContentType("Recycling site", "RecyclingSite", new Type[]
         {
         typeof(LandingDocumentType), 
         typeof(LocationDocumentType),
@@ -40,10 +40,12 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location
         typeof(DayCentreDocumentType),
         typeof(CampaignLandingDocumentType),
         typeof(PersonDocumentType)
-        }, 
-        true, MasterTemplate = "Location", Icon = BuiltInUmbracoContentTypeIcons.IconBird,
-        Description = "A park, or open space such as a nature reserve or an Area of Outstanding Natural Beauty.")]
-    public class ParkDocumentType : LocationDocumentType
+        },
+        true, MasterTemplate = "Location", Icon = BuiltInUmbracoContentTypeIcons.IconJunk,  
+        Description = "A place where residents can take things to be recycled.")]
+    public class RecyclingSiteDocumentType : LocationDocumentType
     {
+        [UmbracoTab("Content")]
+        public RecyclingSiteContentTab RecyclingContent { get; set; }
     }
 }

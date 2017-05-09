@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Escc.AddressAndPersonalDetails;
-using Escc.EastSussexGovUK.Umbraco.Models;
+using Escc.EastSussexGovUK.Umbraco.Location;
 using Exceptionless;
 using Umbraco.Web;
 using Umbraco.Web.WebApi;

@@ -261,6 +261,8 @@
       <add verb="GET" path="*.cssx" name="CombineStaticFilesHandlerCss" type="Escc.ClientDependencyFramework.WebForms.CombineStaticFilesHandler, Escc.ClientDependencyFramework.WebForms" xdt:Transform="Insert" />
       <add name="CombineStaticFilesHandlerJs" xdt:Transform="Remove" xdt:Locator="Match(name)" />
       <add verb="GET" path="*.jsx" name="CombineStaticFilesHandlerJs" type="Escc.ClientDependencyFramework.WebForms.CombineStaticFilesHandler, Escc.ClientDependencyFramework.WebForms" xdt:Transform="Insert" />
+      <add name="LocationsAsKml" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+      <add name="LocationsAsKml" verb="GET" path="/data/*.kml" type="Escc.EastSussexGovUK.Umbraco.Location.LocationsAsKmlHandler, Escc.EastSussexGovUK.Umbraco" xdt:Transform="Insert" />
     </handlers>
     
     <modules>

@@ -8,7 +8,7 @@ using Escc.Umbraco.PropertyTypes;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 
-namespace Escc.EastSussexGovUK.Umbraco.Controllers
+namespace Escc.EastSussexGovUK.Umbraco.Location
 {
     /// <summary>
     /// Controller for the 'Recycling Site' document type, which adds extra properties to the <see cref="LocationViewModel"/> returned by <see cref="LocationController"/>

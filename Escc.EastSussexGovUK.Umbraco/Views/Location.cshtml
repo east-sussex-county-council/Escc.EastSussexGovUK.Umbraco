@@ -1,4 +1,5 @@
-﻿@using ClientDependency.Core.Mvc
+﻿@using System.Globalization
+@using ClientDependency.Core.Mvc
 @using Escc.AddressAndPersonalDetails
 @using Escc.ClientDependencyFramework
 @using Escc.EastSussexGovUK
@@ -7,7 +8,8 @@
 @using Escc.EastSussexGovUK.Views
 @using Escc.Web
 @using Umbraco.Core
-@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.LocationViewModel>
+@using Humanizer
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Location.LocationViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
@@ -34,6 +36,10 @@
         new EmbeddedYouTubeVideos() { Html = new [] { Model.Content.ToString(), Model.Tab1Content.ToString(), Model.Tab2Content.ToString(), Model.Tab3Content.ToString() }},
         new WebChat() { WebChatSettings = Model.WebChat }
     });
+    var kmlUrl = new Uri(Request.Url, "/data/" + Model.PageType.ToLower(CultureInfo.InvariantCulture).Pluralize().Replace("childcares", "childcare") + ".kml");
+}
+@section Metadata {
+    <link rel="alternate" type="application/vnd.google-earth.kml+xml" href="@kmlUrl" title="KML data for all locations of this type" />
 }
 <div class="article location">
     <article>

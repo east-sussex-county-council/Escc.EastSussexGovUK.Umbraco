@@ -3,7 +3,7 @@ using Escc.Umbraco.PropertyEditors.DataTypes;
 using Umbraco.Core.Models;
 using Umbraco.Inception.Attributes;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location
+namespace Escc.EastSussexGovUK.Umbraco.Location
 {
     /// <summary>
     /// Umbraco data type for selecting which council is responsible for a service location

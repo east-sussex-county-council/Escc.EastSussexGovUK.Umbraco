@@ -12,14 +12,14 @@ using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task;
 using Umbraco.Inception.Attributes;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location
+namespace Escc.EastSussexGovUK.Umbraco.Location
 {
     /// <summary>
-    /// An Umbraco document type for a social care day centre, which gets most of its properties from the base <see cref="Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location"/> data type
+    /// An Umbraco document type for a branch library, which gets most of its properties from the base <see cref="Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location"/> data type
     /// </summary>
-    [UmbracoContentType("Day centre", "DayCentre", new Type[]
+    [UmbracoContentType("Library", "Library", new Type[]
         {
-        typeof(LandingDocumentType), 
+         typeof(LandingDocumentType), 
         typeof(LocationDocumentType),
         typeof(TaskDocumentType), 
         typeof(LandingPageWithPicturesDocumentType),
@@ -41,9 +41,9 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location
         typeof(CampaignLandingDocumentType),
         typeof(PersonDocumentType)
         }, 
-        true, MasterTemplate = "Location", Icon = BuiltInUmbracoContentTypeIcons.IconCoffee,
-        Description = "A day centre providing social care for the elderly or vulnerable.")]
-    public class DayCentreDocumentType : LocationDocumentType
+        true, MasterTemplate = "Location", Icon = BuiltInUmbracoContentTypeIcons.IconBooks,
+        Description = "A branch library where residents can use council services, including borrowing books.")]
+    public class LibraryDocumentType : LocationDocumentType
     {
     }
 }

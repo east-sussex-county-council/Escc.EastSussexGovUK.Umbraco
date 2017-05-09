@@ -4,13 +4,13 @@ using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CustomerFocusBase;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.FormDownload;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Guide;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.LandingPageWithPictures;
-using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Map;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Person;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardDownloadPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardLandingPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task;
+using Escc.EastSussexGovUK.Umbraco.Location;
 using Umbraco.Inception.Attributes;
 
 namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Landing

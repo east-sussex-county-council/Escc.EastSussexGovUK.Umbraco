@@ -2,7 +2,7 @@
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location;
+using Escc.EastSussexGovUK.Umbraco.Location;
 using Exceptionless;
 using Umbraco.Web.WebApi;
 

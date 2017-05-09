@@ -1,5 +1,6 @@
 ﻿using System;
 using Escc.EastSussexGovUK.Umbraco.CampaignTemplates;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CustomerFocusBase;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.FormDownload;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Guide;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Landing;
@@ -12,13 +13,10 @@ using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task;
 using Umbraco.Inception.Attributes;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location
+namespace Escc.EastSussexGovUK.Umbraco.Location
 {
-    /// <summary>
-    /// An Umbraco document type for a recycling site, which gets most of its properties from the base <see cref="Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location"/> data type
-    /// </summary>
-    [UmbracoContentType("Recycling site", "RecyclingSite", new Type[]
-        {
+    [UmbracoContentType("Location", "location", new Type[]
+    {
         typeof(LandingDocumentType), 
         typeof(LocationDocumentType),
         typeof(TaskDocumentType), 
@@ -40,12 +38,14 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location
         typeof(DayCentreDocumentType),
         typeof(CampaignLandingDocumentType),
         typeof(PersonDocumentType)
-        },
-        true, MasterTemplate = "Location", Icon = BuiltInUmbracoContentTypeIcons.IconJunk,  
-        Description = "A place where residents can take things to be recycled.")]
-    public class RecyclingSiteDocumentType : LocationDocumentType
+    }, true, icon: BuiltInUmbracoContentTypeIcons.IconPushpin, allowAtRoot: false, 
+    Description = "A fixed location where the council delivers one or more services. Before using this, check for a more specific type such as 'Library' or 'Recycling site'.")]
+    public class LocationDocumentType : CustomerFocusBaseDocumentType
     {
+        [UmbracoTemplate(DisplayName="Location as vCard", Alias = "LocationVCard")]
+        public string LocationVCard { get; set; }
+
         [UmbracoTab("Content")]
-        public RecyclingSiteContentTab RecyclingContent { get; set; }
+        public LocationContentTab Content { get; set; }
     }
 }

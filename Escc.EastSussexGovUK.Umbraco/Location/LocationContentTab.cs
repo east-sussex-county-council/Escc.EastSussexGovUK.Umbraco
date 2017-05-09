@@ -5,7 +5,7 @@ using Escc.Umbraco.PropertyEditors.DataTypes;
 using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location
+namespace Escc.EastSussexGovUK.Umbraco.Location
 {
     public class LocationContentTab : TabBase
     {

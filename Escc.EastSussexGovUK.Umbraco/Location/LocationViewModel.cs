@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Web;
 using Escc.AddressAndPersonalDetails;
+using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.Umbraco.PropertyTypes;
 
-namespace Escc.EastSussexGovUK.Umbraco.Models
+namespace Escc.EastSussexGovUK.Umbraco.Location
 {
     /// <summary>
     /// A model of a service location to be displayed using the Location view

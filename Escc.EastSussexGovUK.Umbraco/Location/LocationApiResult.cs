@@ -1,7 +1,6 @@
 ﻿using System;
-using Escc.EastSussexGovUK.Umbraco.Controllers;
 
-namespace Escc.EastSussexGovUK.Umbraco.Models
+namespace Escc.EastSussexGovUK.Umbraco.Location
 {
     /// <summary>
     /// Data from a Location template to be returned by <see cref="LocationController"/>

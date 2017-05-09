@@ -6,7 +6,7 @@ using Umbraco.Core.Models;
 using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location
+namespace Escc.EastSussexGovUK.Umbraco.Location
 {
     /// <summary>
     /// Umbraco data type for selecting which waste types are accepted at a recycling site

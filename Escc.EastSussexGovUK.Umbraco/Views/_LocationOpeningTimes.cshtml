@@ -1,5 +1,5 @@
 ﻿@using Escc.Dates
-@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.LocationViewModel>
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Location.LocationViewModel>
 @{
     var everOpens = Model.OpenUntil.HasValue || Model.NextOpen.HasValue;
     var everOpensTwice = Model.OpeningHours.Any(opening => !String.IsNullOrEmpty(opening.OpensAgainAt));

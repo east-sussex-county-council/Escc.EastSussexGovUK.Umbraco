@@ -12,14 +12,14 @@ using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task;
 using Umbraco.Inception.Attributes;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location
+namespace Escc.EastSussexGovUK.Umbraco.Location
 {
     /// <summary>
-    /// An Umbraco document type for a childcare setting, which gets most of its properties from the base <see cref="Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location"/> data type
+    /// An Umbraco document type for a sport venue, which gets most of its properties from the base <see cref="Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location"/> data type
     /// </summary>
-    [UmbracoContentType("Childcare setting", "Childcare", new Type[]
+    [UmbracoContentType("Sport venue", "SportLocation", new Type[]
         {
-        typeof(LandingDocumentType), 
+         typeof(LandingDocumentType), 
         typeof(LocationDocumentType),
         typeof(TaskDocumentType), 
         typeof(LandingPageWithPicturesDocumentType),
@@ -40,10 +40,10 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location
         typeof(DayCentreDocumentType),
         typeof(CampaignLandingDocumentType),
         typeof(PersonDocumentType)
-        }, 
-        true, MasterTemplate = "Location", Icon = BuiltInUmbracoContentTypeIcons.IconBabyStroller,
-        Description = "A childcare setting such as a children's centre or nursery.")]
-    public class ChildcareDocumentType : LocationDocumentType
+       }, 
+        true, MasterTemplate = "Location", Icon = BuiltInUmbracoContentTypeIcons.IconTShirt,
+        Description = "A sport venue, such as a playing field or watersports centre.")]
+    public class SportLocationDocumentType : LocationDocumentType
     {
     }
 }

@@ -2,7 +2,7 @@
 using Escc.Umbraco.PropertyEditors.DataTypes;
 using Umbraco.Core.Models;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Location
+namespace Escc.EastSussexGovUK.Umbraco.Location
 {
     public static class OpeningHoursDataType
     {
