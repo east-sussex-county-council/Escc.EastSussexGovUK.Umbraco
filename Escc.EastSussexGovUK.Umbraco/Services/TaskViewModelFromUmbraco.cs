@@ -8,6 +8,7 @@ using Escc.Elibrary;
 using Escc.Umbraco.PropertyTypes;
 using Umbraco.Core.Models;
 using Umbraco.Web;
+using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
 
 namespace Escc.EastSussexGovUK.Umbraco.Services
 {
@@ -54,7 +55,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             var model = new TaskViewModel
             {
                 LeadingText = new HtmlString(_mediaUrlTransformer.ParseAndTransformMediaUrlsInHtml(_umbracoContent.GetPropertyValue<string>("leadingText_Content"))),
-                StartPageUrl = _elibraryLinkConverter.RewriteElibraryUrl(_mediaUrlTransformer.TransformMediaUrl(new Uri(_umbracoContent.GetPropertyValue<string>("startPageUrl_Content"), UriKind.RelativeOrAbsolute))),
+                StartPageUrl = _elibraryLinkConverter.RewriteElibraryUrl(_mediaUrlTransformer.TransformUrl(new Uri(_umbracoContent.GetPropertyValue<string>("startPageUrl_Content"), UriKind.RelativeOrAbsolute))),
                 StartButtonText = _umbracoContent.GetPropertyValue<string>("startButtonText_Content"),
                 Subheading1 = _umbracoContent.GetPropertyValue<string>("subheading1_Content"),
                 Content1 = new HtmlString(_mediaUrlTransformer.ParseAndTransformMediaUrlsInHtml(_umbracoContent.GetPropertyValue<string>("content1_Content"))),
@@ -78,7 +79,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
                 var image = new Image()
                 {
                     AlternativeText = imageData.Name,
-                    ImageUrl = _mediaUrlTransformer.TransformMediaUrl(new Uri(imageData.Url, UriKind.Relative)),
+                    ImageUrl = _mediaUrlTransformer.TransformUrl(new Uri(imageData.Url, UriKind.Relative)),
                     Width = imageData.GetPropertyValue<int>("umbracoWidth"),
                     Height = imageData.GetPropertyValue<int>("umbracoHeight")
                 };

@@ -8,6 +8,7 @@ using Escc.Umbraco.PropertyTypes;
 using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
+using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
@@ -28,7 +29,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
 
             var mediaUrlTransformer = new RemoveMediaDomainUrlTransformer();
             var viewModel = new JobsHomeViewModelFromUmbraco(model.Content,
-                new UmbracoOnAzureRelatedLinksService(mediaUrlTransformer)).BuildModel();
+                new RelatedLinksService(mediaUrlTransformer, new ElibraryUrlTransformer())).BuildModel();
 
             // Add common properties to the model
             var modelBuilder = new BaseViewModelBuilder();

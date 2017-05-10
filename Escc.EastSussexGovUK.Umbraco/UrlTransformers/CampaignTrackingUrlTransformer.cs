@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Escc.Umbraco.PropertyTypes;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
 
-namespace Escc.EastSussexGovUK.Umbraco.Services
+namespace Escc.EastSussexGovUK.Umbraco.UrlTransformers
 {
     /// <summary>
     /// Adds or updates Google Analytics campaign tracking for a URL

@@ -14,6 +14,7 @@ using Examine;
 using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
+using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
 
 namespace Escc.EastSussexGovUK.Umbraco.HomePage
 {
@@ -32,7 +33,7 @@ namespace Escc.EastSussexGovUK.Umbraco.HomePage
         {
             if (model == null) throw new ArgumentNullException(nameof(model));
 
-            var viewModel = new HomePageViewModelFromUmbraco(model.Content, new UmbracoOnAzureRelatedLinksService(new RemoveMediaDomainUrlTransformer())).BuildModel();
+            var viewModel = new HomePageViewModelFromUmbraco(model.Content, new RelatedLinksService(new RemoveMediaDomainUrlTransformer(), new ElibraryUrlTransformer())).BuildModel();
             var modelBuilder = new BaseViewModelBuilder();
             modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode);
 

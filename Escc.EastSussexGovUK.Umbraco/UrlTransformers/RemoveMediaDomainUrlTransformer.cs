@@ -1,22 +1,23 @@
-﻿using System;
+﻿using Escc.Umbraco.PropertyTypes;
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace Escc.EastSussexGovUK.Umbraco.Services
+namespace Escc.EastSussexGovUK.Umbraco.UrlTransformers
 {
     /// <summary>
     /// Removes the domain from Umbraco media URLs, leaving a domain-relative link like /media/1234/image.jpg
     /// </summary>
     /// <seealso cref="IMediaUrlTransformer" />
     /// <remarks>This is required to handle absolute URLs pasted in by web authors which should be relative</remarks>
-    public class RemoveMediaDomainUrlTransformer : IMediaUrlTransformer
+    public class RemoveMediaDomainUrlTransformer : IMediaUrlTransformer, IUrlTransformer
     {
         /// <summary>
         /// Transforms the media URL.
         /// </summary>
         /// <param name="mediaUrl">The media URL.</param>
         /// <returns></returns>
-        public Uri TransformMediaUrl(Uri mediaUrl)
+        public Uri TransformUrl(Uri mediaUrl)
         {
             if (mediaUrl == null) throw new ArgumentNullException(nameof(mediaUrl));
 

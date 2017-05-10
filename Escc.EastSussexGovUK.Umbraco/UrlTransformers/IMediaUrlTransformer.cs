@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Escc.EastSussexGovUK.Umbraco.Services
+namespace Escc.EastSussexGovUK.Umbraco.UrlTransformers
 {
     /// <summary>
     /// Update Umbraco media URLs
@@ -19,6 +19,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
         /// </summary>
         /// <param name="mediaUrl">The media URL.</param>
         /// <returns></returns>
-        Uri TransformMediaUrl(Uri mediaUrl);
+        Uri TransformUrl(Uri mediaUrl);
     }
 }

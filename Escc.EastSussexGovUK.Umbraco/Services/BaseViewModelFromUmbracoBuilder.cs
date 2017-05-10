@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Escc.Umbraco.PropertyTypes;
 using Umbraco.Core.Models;
 using Umbraco.Web;
+using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
 
 namespace Escc.EastSussexGovUK.Umbraco.Services
 {
@@ -76,7 +77,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             };
             if (MediaUrlTransformer != null)
             {
-                image.ImageUrl = MediaUrlTransformer.TransformMediaUrl(image.ImageUrl);
+                image.ImageUrl = MediaUrlTransformer.TransformUrl(image.ImageUrl);
             }
             return image;
         }

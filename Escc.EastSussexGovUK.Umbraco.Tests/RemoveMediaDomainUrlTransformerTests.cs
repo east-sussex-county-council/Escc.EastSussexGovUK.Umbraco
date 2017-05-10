@@ -3,6 +3,7 @@ using Escc.EastSussexGovUK.Umbraco.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
+using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
 
 namespace Escc.EastSussexGovUK.Umbraco.Tests
 {
@@ -15,7 +16,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             var url = new Uri("/media/1234/some-media-item-in-umbraco.pdf", UriKind.Relative);
 
             var linkTransformer = new RemoveMediaDomainUrlTransformer();
-            url = linkTransformer.TransformMediaUrl(url);
+            url = linkTransformer.TransformUrl(url);
 
             Assert.AreEqual("/media/1234/some-media-item-in-umbraco.pdf", url.ToString());
         }
@@ -26,7 +27,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             var url = new Uri("/mediafiles/1234/some-other-media-item.pdf", UriKind.Relative);
 
             var linkTransformer = new RemoveMediaDomainUrlTransformer();
-            url = linkTransformer.TransformMediaUrl(url);
+            url = linkTransformer.TransformUrl(url);
 
             Assert.AreEqual("/mediafiles/1234/some-other-media-item.pdf", url.ToString());
         }
@@ -37,7 +38,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             var url = new Uri("https://different-site.blob.core.windows.net/media/1234/some-media-item-in-umbraco.pdf");
 
             var linkTransformer = new RemoveMediaDomainUrlTransformer();
-            url = linkTransformer.TransformMediaUrl(url);
+            url = linkTransformer.TransformUrl(url);
 
             Assert.AreEqual("/media/1234/some-media-item-in-umbraco.pdf", url.ToString());
         }
@@ -48,7 +49,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             var url = new Uri("https://www.accesseastsussex.org/jobs/index.aspx");
 
             var linkTransformer = new RemoveMediaDomainUrlTransformer();
-            url = linkTransformer.TransformMediaUrl(url);
+            url = linkTransformer.TransformUrl(url);
 
             Assert.AreEqual("https://www.accesseastsussex.org/jobs/index.aspx", url.ToString());
         }

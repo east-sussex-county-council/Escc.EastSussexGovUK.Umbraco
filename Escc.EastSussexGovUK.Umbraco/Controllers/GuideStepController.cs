@@ -13,6 +13,7 @@ using Umbraco.Core.Models;
 using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
+using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
 
 namespace Escc.EastSussexGovUK.Umbraco.Controllers
 {
@@ -29,7 +30,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
 
             var mediaUrlTransformer = new RemoveMediaDomainUrlTransformer();
             var viewModel = new GuideStepViewModelFromUmbraco(model.Content,
-                    new UmbracoOnAzureRelatedLinksService(mediaUrlTransformer),
+                    new RelatedLinksService(mediaUrlTransformer, new ElibraryUrlTransformer()),
                     mediaUrlTransformer
                     ).BuildModel();
 

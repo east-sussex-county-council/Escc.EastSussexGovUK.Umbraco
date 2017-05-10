@@ -12,6 +12,7 @@ using Umbraco.Core.Models;
 using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
+using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
 
 namespace Escc.EastSussexGovUK.Umbraco.Controllers
 {
@@ -32,7 +33,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
                     new UmbracoSocialMediaService(model.Content),
                     new UmbracoEastSussex1SpaceService(model.Content),
                     new UmbracoWebChatSettingsService(model.Content, new UrlListReader()),
-                    new UmbracoOnAzureRelatedLinksService(mediaUrlTransformer),
+                    new RelatedLinksService(mediaUrlTransformer, new ElibraryUrlTransformer()),
                     new ContentExperimentSettingsService(),
                     new UmbracoEscisService(model.Content), 
                     mediaUrlTransformer);

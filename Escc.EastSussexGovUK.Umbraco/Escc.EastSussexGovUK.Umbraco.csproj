@@ -168,8 +168,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.2.0.4\lib\Escc.Umbraco.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\Escc.Umbraco.2.1.0\lib\Escc.Umbraco.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.Banners, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.Banners.2.0.3\lib\Escc.Umbraco.Banners.dll</HintPath>
@@ -3769,8 +3768,9 @@
     <Compile Include="Jobs\JobsHomeViewModel.cs" />
     <Compile Include="HomePage\HomePageItemsAnalyticsTab.cs" />
     <Compile Include="Jobs\WorkPattern.cs" />
-    <Compile Include="Services\RemoveMediaDomainUrlTransformer.cs" />
-    <Compile Include="Services\CampaignTrackingUrlTransformer.cs" />
+    <Compile Include="UrlTransformers\ElibraryUrlTransformer.cs" />
+    <Compile Include="UrlTransformers\RemoveMediaDomainUrlTransformer.cs" />
+    <Compile Include="UrlTransformers\CampaignTrackingUrlTransformer.cs" />
     <Compile Include="Services\GoogleAdWordsTagParser.cs" />
     <Compile Include="CampaignTemplates\CampaignContentViewModelFromUmbraco.cs" />
     <Compile Include="CampaignTemplates\CampaignLandingViewModelFromUmbraco.cs" />
@@ -3778,8 +3778,7 @@
     <Compile Include="Services\GuideStepViewModelFromUmbraco.cs" />
     <Compile Include="HomePage\HomePageItemViewModelFromUmbraco.cs" />
     <Compile Include="Services\IFontFamilyFormatter.cs" />
-    <Compile Include="Services\IMediaUrlTransformer.cs" />
-    <Compile Include="Services\IUrlTransformer.cs" />
+    <Compile Include="UrlTransformers\IMediaUrlTransformer.cs" />
     <Compile Include="Services\IViewModelBuilder.cs" />
     <Compile Include="Controllers\LandingController.cs" />
     <Compile Include="Controllers\LandingPageWithPicturesController.cs" />
@@ -3945,7 +3944,6 @@
     <Compile Include="Services\UmbracoEastSussex1SpaceService.cs" />
     <Compile Include="Services\UmbracoEscisService.cs" />
     <Compile Include="Services\UmbracoLatestService.cs" />
-    <Compile Include="Services\UmbracoOnAzureRelatedLinksService.cs" />
     <Compile Include="Services\UmbracoSocialMediaService.cs" />
     <Compile Include="Services\UmbracoWebChatSettingsService.cs" />
     <Compile Include="TextSize\RegisterTextSizeRoute.cs" />

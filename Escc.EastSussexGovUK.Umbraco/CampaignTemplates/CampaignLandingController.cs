@@ -7,6 +7,8 @@ using Escc.Umbraco.ContentExperiments;
 using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
+using Escc.Umbraco.PropertyTypes;
+using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
 
 namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
 {
@@ -25,7 +27,7 @@ namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
             if (model == null) throw new ArgumentNullException("model");
 
             var mediaUrlTransformer = new RemoveMediaDomainUrlTransformer();
-            var viewModel = new CampaignLandingViewModelFromUmbraco(model.Content, new UmbracoOnAzureRelatedLinksService(mediaUrlTransformer), mediaUrlTransformer).BuildModel();
+            var viewModel = new CampaignLandingViewModelFromUmbraco(model.Content, new RelatedLinksService(mediaUrlTransformer, new ElibraryUrlTransformer()), mediaUrlTransformer).BuildModel();
 
             // Add common properties to the model
             var modelBuilder = new BaseViewModelBuilder();

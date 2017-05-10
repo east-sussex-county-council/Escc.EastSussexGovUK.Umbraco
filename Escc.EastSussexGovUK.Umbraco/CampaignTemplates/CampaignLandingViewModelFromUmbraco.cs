@@ -6,6 +6,7 @@ using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Umbraco.PropertyTypes;
 using Umbraco.Core.Models;
 using Umbraco.Web;
+using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
 
 namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
 {
@@ -81,7 +82,7 @@ namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
             {
                 model.BackgroundImageSmall = new Image()
                 {
-                    ImageUrl = _mediaUrlTransformer.TransformMediaUrl(new Uri(imageData.Url, UriKind.Relative))
+                    ImageUrl = _mediaUrlTransformer.TransformUrl(new Uri(imageData.Url, UriKind.Relative))
                 };
             }
             imageData = _umbracoContent.GetPropertyValue<IPublishedContent>("BackgroundMedium_Design");
@@ -89,7 +90,7 @@ namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
             {
                 model.BackgroundImageMedium = new Image()
                 {
-                    ImageUrl = _mediaUrlTransformer.TransformMediaUrl(new Uri(imageData.Url, UriKind.Relative))
+                    ImageUrl = _mediaUrlTransformer.TransformUrl(new Uri(imageData.Url, UriKind.Relative))
                 };
             }
             imageData = _umbracoContent.GetPropertyValue<IPublishedContent>("BackgroundLarge_Design");
@@ -97,7 +98,7 @@ namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
             {
                 model.BackgroundImageLarge = new Image()
                 {
-                    ImageUrl = _mediaUrlTransformer.TransformMediaUrl(new Uri(imageData.Url, UriKind.Relative))
+                    ImageUrl = _mediaUrlTransformer.TransformUrl(new Uri(imageData.Url, UriKind.Relative))
                 };
             }
             model.BackgroundColour = _umbracoContent.GetPropertyValue<string>("BackgroundColour_Design");
