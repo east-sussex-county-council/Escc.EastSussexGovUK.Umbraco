@@ -67,17 +67,21 @@ ul.job-tiles { margin: 0; padding: 0; }
 .chpEditPIF a, .chpViewPIF a, .chpPass a { background: url(https://www.eastsussex.gov.uk/img/body/item-type.png?v=2) no-repeat 100% -498px; padding-right: 16px; } /* copy of .new-window */
 
 /* copy of .button */
-.chpBack input { font-size: .9em; line-height: 1em; padding: 7px; font-weight: bold; color: #fff; border: 0; background: #1e5b83; cursor:pointer; border-radius: 4px;  background: -moz-linear-gradient(top, #1e5b83 0%, #0b4164 100%); /* FF3.6+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5b83', endColorstr='#0b4164',GradientType=0 ); /* IE6-9 */
+.chpBack input { font-size: .9em; line-height: 1em; padding: 7px; font-weight: bold; color: #fff; border: 0; background: #1e5b83; cursor:pointer; border-radius: 4px;  
   background: linear-gradient(top, #1e5b83 0%,#0b4164 100%);} /* W3C */
 .chpBack input:hover { border-radius: 4px; border: none; /* 14px font */  
 background: #00a1de; /* Old browsers */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00a1de', endColorstr='#47cbed',GradientType=0 ); /* IE6-9 */
 background: linear-gradient(top, #00a1de 0%,#47cbed 99%); /* W3C */
 }
 
+/* View documents, linked from candidate home page. Lumesse have used a table layout so it makes sense to hide the gridlines. */
+table.chpViewDoc-T1 td { border: none; padding-top: 0; padding-bottom: 0; }
+table.chpViewDoc-T1 input { margin: 1.125em 0; }
+
 /* Modify job alert (seen when you click a link from the confirmation email) */
-.SA-Title, #searchagentbutton, #div-srcparam4, #div-srcparam7 { display: none; }
+.SA-Title, #searchagentbutton, #div-srcparam4, #div-srcparam7 {
+    display: none;
+}
 .SA-KWF { width: 15em;}
 label.SA-F4 { display: inline;}
 legend.SAg-Title { font-weight: bold; }
