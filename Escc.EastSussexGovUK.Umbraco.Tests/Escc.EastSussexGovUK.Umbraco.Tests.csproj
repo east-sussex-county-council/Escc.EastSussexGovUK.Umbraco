@@ -327,6 +327,7 @@
     <Compile Include="JobAdvertHtmlParserTests.cs" />
     <Compile Include="JobSearchFilterTests.cs" />
     <Compile Include="KeywordsTokeniserTests.cs" />
+    <Compile Include="LocationHashTagTests.cs" />
     <Compile Include="RelativeJobUrlGeneratorTests.cs" />
     <Compile Include="RemoveElementByNameAndContentFormatterTests.cs" />
     <Compile Include="TalentLinkSalaryParserTests.cs" />

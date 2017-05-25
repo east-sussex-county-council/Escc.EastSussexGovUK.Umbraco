@@ -27,7 +27,7 @@
 
         var closingDate = $". Apply by {job.ClosingDate.Value.ToShortBritishDateNoYear()}.";
 
-        return new StringBuilder().Append(jobTitle).Append(contract).Append(salary).Append(closingDate).Append(" #jobs #EastSussex #Job").ToString();
+       return new StringBuilder().Append(jobTitle).Append(contract).Append(salary).Append(closingDate).Append(" #jobs #EastSussex #Job ").Append(new LocationHashTag(job.Location)).ToString();
     }
 }
 @foreach (var job in Model.Items)
