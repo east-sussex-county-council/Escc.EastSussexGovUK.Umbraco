@@ -61,9 +61,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             var dataSets = new List<SimpleDataSet>();
 
             try
-
             {
-
+                // Unforunately by this point the index has already been wiped, which means in the _jobsProvider has a problem
+                // we can't just continue with the existing data.  If we try to check the data source in the constructor, 
+                // the only way to prevent execution proceeding to wiping the index is to throw an exception, and in a cold-boot
+                // scenario where indexes need to be rebuilt that crashes all Umbraco pages.
                 var jobs = Task.Run(async () => await _jobsProvider.ReadJobs(new JobSearchQuery())).Result;
 
                 //Looping all the raw models and adding them to the dataset
