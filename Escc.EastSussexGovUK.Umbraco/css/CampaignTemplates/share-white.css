@@ -1,7 +1,2 @@
-﻿/* Change .share-page colours to white */
-.campaign-landing .share-page { margin: 0 0 1.384615em;}
-.campaign-landing .share-page a:link, .campaign-landing .share-page a:visited { color: #fff; }
-
-.campaign-landing .share-page [href*="facebook.com"] { background-position: 0 -1846px; }
-.campaign-landing .share-page [href*="twitter.com"] { background-position: 0 -795px; }
-.campaign-landing .share-page .email { background-position: 0 -895px; }
+﻿/* Change .share colours to white */
+.campaign-landing .share { color: #fff;}

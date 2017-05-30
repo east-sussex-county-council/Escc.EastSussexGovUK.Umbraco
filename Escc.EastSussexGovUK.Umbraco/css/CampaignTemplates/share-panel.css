@@ -1,2 +1,4 @@
-﻿.share-container { background: rgba(0,0,0,.8); padding: 9px; border-radius: 5px; }
-.share-container p.share-page { margin: 0; }
+﻿/* Add a slightly-transparent panel behind .share so that it can work on any background */
+.share-container { background: rgba(0,0,0,.8); padding: 9px; border-radius: 5px; display: inline-block; }
+.share-container .share { margin: 0; }
+.share-container h2 { margin-top: 0; }
