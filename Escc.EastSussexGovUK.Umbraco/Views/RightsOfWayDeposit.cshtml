@@ -1,0 +1,54 @@
+﻿@using ClientDependency.Core.Mvc
+@using Escc.ClientDependencyFramework
+@using Escc.EastSussexGovUK
+@using Escc.EastSussexGovUK.Features
+@using Escc.EastSussexGovUK.Skins
+@using Escc.EastSussexGovUK.Views
+@using Escc.Dates
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits.RightsOfWayDepositViewModel>
+@{
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
+    Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
+    Model.Metadata.IsInSearch = false;
+
+    Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
+    {
+        new WebChat() { WebChatSettings = Model.WebChat }
+    });
+}
+
+<div class="article">
+    <article>
+        <div class="content text-content">
+
+            <h1>@Model.Metadata.Title</h1>
+
+            @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
+
+            <table>
+                <tbody>
+                    <tr><th scope="row">Reference</th><td>@Model.Reference</td></tr>
+                    <tr><th scope="row">Owner</th><td>@Model.Owner</td></tr>
+                    <tr><th scope="row">Address</th><td>@Model.Address.ToString()</td></tr>
+                    <tr><th scope="row">Parish</th><td>@Model.Parish</td></tr>
+                    <tr><th scope="row">Description</th><td>@Model.Metadata.Description</td></tr>
+                    <tr><th scope="row">Ordnance Survey grid reference</th><td>@Model.OrdnanceSurveyGridReference</td></tr>
+                    <tr><th scope="row">Date deposited</th><td>@Model.DateDeposited.ToBritishDateWithDay()</td></tr>
+                    <tr><th scope="row">Expires</th><td>@Model.DateExpires.ToBritishDateWithDay()</td></tr>
+                </tbody>
+            </table>
+
+            @if (Model.DepositUrl != null)
+            {
+            <p class="main-action"><a href="@Model.DepositUrl">Download the map, statement and declaration</a></p>
+            }
+
+        </div>
+    </article>
+</div>
+
+@Html.Partial("~/Views/Layouts/_SocialMedia.cshtml")
+@Html.Partial("~/Views/EastSussexGovUK/Features/_SupportingContentDesktop.cshtml")
+<div class="text-content content">
+    @Html.Partial("~/Views/EastSussexGovUK/Features/_Share.cshtml")
+</div>

@@ -1,0 +1,41 @@
+﻿@using ClientDependency.Core.Mvc
+@using Escc.ClientDependencyFramework
+@using Escc.EastSussexGovUK
+@using Escc.EastSussexGovUK.Features
+@using Escc.EastSussexGovUK.Skins
+@using Escc.EastSussexGovUK.Views
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits.RightsOfWayDepositsViewModel>
+@{
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
+    Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
+
+    Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
+    {
+        new WebChat() { WebChatSettings = Model.WebChat }
+    });
+}
+
+<div class="article">
+    <article>
+        <div class="content text-content">
+
+            <h1>@Model.Metadata.Title</h1>
+
+            @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
+
+            <table>
+                @foreach (var child in UmbracoContext.Current.ContentCache.GetById(Int32.Parse(Model.Metadata.SystemId)).Children())
+                {
+                    <tr><td><a href="@child.Url">@child.Name</a></td></tr>
+                }
+            </table>
+
+        </div>
+    </article>
+</div>
+
+@Html.Partial("~/Views/Layouts/_SocialMedia.cshtml")
+@Html.Partial("~/Views/EastSussexGovUK/Features/_SupportingContentDesktop.cshtml")
+<div class="text-content content">
+    @Html.Partial("~/Views/EastSussexGovUK/Features/_Share.cshtml")
+</div>

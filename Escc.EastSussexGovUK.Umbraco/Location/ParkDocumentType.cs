@@ -11,6 +11,7 @@ using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardLandingPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task;
 using Umbraco.Inception.Attributes;
+using Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits;
 
 namespace Escc.EastSussexGovUK.Umbraco.Location
 {
@@ -39,7 +40,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Location
         typeof(RegistrationOfficeDocumentType),
         typeof(DayCentreDocumentType),
         typeof(CampaignLandingDocumentType),
-        typeof(PersonDocumentType)
+        typeof(PersonDocumentType),
+        typeof(RightsOfWayDepositsDocumentType)
         }, 
         true, MasterTemplate = "Location", Icon = BuiltInUmbracoContentTypeIcons.IconBird,
         Description = "A park, or open space such as a nature reserve or an Area of Outstanding Natural Beauty.")]

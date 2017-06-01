@@ -32,6 +32,7 @@ using Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor;
 using Exceptionless;
 using Umbraco.Inception.CodeFirst;
 using Umbraco.Web.WebApi;
+using Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits;
 
 namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
 {
@@ -107,6 +108,9 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
 
                 // Jobs document types
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(PublicOrRedeploymentDataType));
+
+                // Rights of way document types
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(ParishDataType));
 
                 return Request.CreateResponse(HttpStatusCode.Created);
             }
@@ -217,6 +221,30 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(ProblemJobsRssDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(JobsSearchDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(JobAdvertDocumentType));
+
+                return Request.CreateResponse(HttpStatusCode.Created);
+            }
+            catch (Exception e)
+            {
+                e.ToExceptionless().Submit();
+                return Request.CreateResponse(HttpStatusCode.InternalServerError);
+            }
+        }
+
+        /// <summary>
+        /// Creates the Umbraco document types for rights of way.
+        /// </summary>
+        /// <remarks>Having separate methods reduces the risk of timeouts when running this code on Azure</remarks>
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
+        [AcceptVerbs("POST")]
+        public HttpResponseMessage CreateRightsOfWayDocumentTypes([FromUri] string token)
+        {
+            if (!CheckAuthorisationToken(token)) return Request.CreateResponse(HttpStatusCode.Forbidden);
+
+            try
+            {
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(RightsOfWayDepositDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(RightsOfWayDepositsDocumentType));
 
                 return Request.CreateResponse(HttpStatusCode.Created);
             }

@@ -3586,6 +3586,8 @@
     <Content Include="Views\JobsTableBody.cshtml" />
     <Content Include="Views\JobsRssAsTweets.cshtml" />
     <Content Include="Views\Alerts.cshtml" />
+    <Content Include="Views\RightsOfWayDeposit.cshtml" />
+    <Content Include="Views\RightsOfWayDeposits.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -3649,6 +3651,7 @@
     <Compile Include="CampaignTemplates\CampaignTilesContentTab.cs" />
     <Compile Include="CampaignTemplates\CampaignTilesDesignTab.cs" />
     <Compile Include="CampaignTemplates\CampaignTilesDocumentType.cs" />
+    <Compile Include="DocumentTypes\PreValueListDataType.cs" />
     <Compile Include="Examine\IQueryBuilder.cs" />
     <Compile Include="Examine\ITokenisedQueryBuilder.cs" />
     <Compile Include="Examine\ISearchFilter.cs" />
@@ -3753,6 +3756,17 @@
     <Compile Include="Jobs\TalentLink\TalentLinkUrl.cs" />
     <Compile Include="Jobs\HouseStyleDateFormatter.cs" />
     <Compile Include="Location\LocationsAsKmlHandler.cs" />
+    <Compile Include="RightsOfWayDeposits\ParishDataType.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsController.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsContentTab.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositContentTab.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositController.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsDocumentType.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositDocumentType.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsViewModel.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositViewModel.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsViewModelFromUmbraco.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositViewModelFromUmbraco.cs" />
     <Compile Include="Services\BaseViewModelFromUmbracoBuilder.cs" />
     <Compile Include="Jobs\SearchResultsViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\ComponentViewModelFromUmbraco.cs" />

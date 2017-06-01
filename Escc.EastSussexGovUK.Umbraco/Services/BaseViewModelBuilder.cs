@@ -32,11 +32,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
 
             model.BreadcrumbProvider = new UmbracoBreadcrumbProvider();
 
-            model.Metadata.Title = content.Name;
-            model.Metadata.Title = new RemoveUmbracoNumericSuffixFilter().Apply(model.Metadata.Title);
-
+            if (String.IsNullOrEmpty(model.Metadata.Title))
+            {
+                model.Metadata.Title = content.Name;
+                model.Metadata.Title = new RemoveUmbracoNumericSuffixFilter().Apply(model.Metadata.Title);
+            }
             model.Metadata.PageUrl = new Uri(content.UrlAbsolute());
-            model.Metadata.Description = content.GetPropertyValue<string>("pageDescription");
+            if (String.IsNullOrEmpty(model.Metadata.Description))
+            {
+                model.Metadata.Description = content.GetPropertyValue<string>("pageDescription");
+            }
             model.PageType = content.DocumentTypeAlias;
             model.Metadata.SystemId = content.Id.ToString(CultureInfo.InvariantCulture);
             model.Metadata.DateCreated = content.CreateDate.ToIso8601Date();
