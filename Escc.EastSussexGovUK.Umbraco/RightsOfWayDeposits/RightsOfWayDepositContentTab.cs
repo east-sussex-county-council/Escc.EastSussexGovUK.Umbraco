@@ -1,4 +1,5 @@
-﻿using Escc.Umbraco.PropertyEditors;
+﻿using Escc.EastSussexGovUK.Umbraco.DocumentTypes;
+using Escc.Umbraco.PropertyEditors;
 using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
 
@@ -37,7 +38,10 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
         [UmbracoProperty("Description", "pageDescription", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 10, mandatory: true)]
         public string Description { get; set; }
 
-        [UmbracoProperty("Date deposited", "DateDeposited", BuiltInUmbracoDataTypes.Date, sortOrder: 11)]
+        [UmbracoProperty("Date deposited", "DateDeposited", BuiltInUmbracoDataTypes.Date, sortOrder: 11, mandatory:true)]
         public string DateDeposited { get; set; }
+
+        [UmbracoProperty("Date expires", "DateExpires", ReadOnlyDateDataType.PropertyEditor, sortOrder: 12, description:"This is worked out for you based on the date deposited")]
+        public string DateExpires { get; set; }
     }
 }

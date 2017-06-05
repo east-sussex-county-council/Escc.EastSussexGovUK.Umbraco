@@ -5,6 +5,10 @@ using System;
 
 namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 {
+    /// <summary>
+    /// Details of a single rights of way Section 31 deposit to be displayed on a detail page for that deposit
+    /// </summary>
+    /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Models.BaseViewModel" />
     public class RightsOfWayDepositViewModel : BaseViewModel
     {
         public string Reference { get; set; }
@@ -21,28 +25,8 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 
         public Uri DepositUrl { get; set; }
 
-        private DateTime _dateDeposited;
+        public DateTime DateDeposited { get; set; }
 
-        public DateTime DateDeposited
-        {
-            get
-            {
-                return _dateDeposited;
-            }
-            set
-            {
-                _dateDeposited = value;
-                if (_dateDeposited >= new DateTime(2013,10,1))
-                {
-                    DateExpires = _dateDeposited.AddYears(20);
-                }
-                else
-                {
-                    DateExpires = _dateDeposited.AddYears(10);
-                }
-            }
-        }
-
-        public DateTime DateExpires { get; internal set; }
+        public DateTime DateExpires { get; set; }
     }
 }

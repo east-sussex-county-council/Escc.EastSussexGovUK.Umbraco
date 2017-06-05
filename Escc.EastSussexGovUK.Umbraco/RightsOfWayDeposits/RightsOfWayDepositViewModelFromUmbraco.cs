@@ -8,12 +8,25 @@ using Escc.Dates;
 
 namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 {
+    /// <summary>
+    /// Gets details of an individual rights of way Section 31 deposit from an instance of the "RightsOfWayDeposit" Umbraco document type
+    /// </summary>
+    /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Services.BaseViewModelFromUmbracoBuilder" />
+    /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Services.IViewModelBuilder{Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits.RightsOfWayDepositViewModel}" />
     public class RightsOfWayDepositViewModelFromUmbraco : BaseViewModelFromUmbracoBuilder, IViewModelBuilder<RightsOfWayDepositViewModel>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RightsOfWayDepositViewModelFromUmbraco"/> class.
+        /// </summary>
+        /// <param name="umbracoContent">Content of the umbraco.</param>
         public RightsOfWayDepositViewModelFromUmbraco(IPublishedContent umbracoContent) : base(umbracoContent, null, null)
         {
         }
 
+        /// <summary>
+        /// Gets the view model based on Umbraco properties.
+        /// </summary>
+        /// <returns></returns>
         public RightsOfWayDepositViewModel BuildModel()
         {
             var model = new RightsOfWayDepositViewModel();

@@ -147,6 +147,9 @@
       <HintPath>..\packages\Escc.Html.2.0.0\lib\Escc.Html.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Escc.NavigationControls.WebForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.NavigationControls.WebForms.1.0.0\lib\Escc.NavigationControls.WebForms.dll</HintPath>
+    </Reference>
     <Reference Include="Escc.Net, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Net.1.0.1\lib\Escc.Net.dll</HintPath>
       <Private>True</Private>
@@ -496,8 +499,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Umbraco.Inception, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.Inception.3.1.2\lib\Umbraco.Inception.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\Escc.Umbraco.Inception.3.1.3\lib\Umbraco.Inception.dll</HintPath>
     </Reference>
     <Reference Include="umbraco.MacroEngines, Version=1.0.5948.18149, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.4.3\lib\umbraco.MacroEngines.dll</HintPath>
@@ -3591,6 +3593,7 @@
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\_PagingBarControl.ascx" />
     <Content Include="windows-tile.png" />
     <Content Include="Views\Layouts\_CmsPreview.cshtml" />
     <Content Include="Views\Layouts\_ContentExperiment.cshtml" />
@@ -3652,6 +3655,7 @@
     <Compile Include="CampaignTemplates\CampaignTilesDesignTab.cs" />
     <Compile Include="CampaignTemplates\CampaignTilesDocumentType.cs" />
     <Compile Include="DocumentTypes\PreValueListDataType.cs" />
+    <Compile Include="DocumentTypes\ReadOnlyDateDataType.cs" />
     <Compile Include="Examine\IQueryBuilder.cs" />
     <Compile Include="Examine\ITokenisedQueryBuilder.cs" />
     <Compile Include="Examine\ISearchFilter.cs" />
@@ -3756,6 +3760,8 @@
     <Compile Include="Jobs\TalentLink\TalentLinkUrl.cs" />
     <Compile Include="Jobs\HouseStyleDateFormatter.cs" />
     <Compile Include="Location\LocationsAsKmlHandler.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositExpiryCalculator.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsSortOrder.cs" />
     <Compile Include="RightsOfWayDeposits\ParishDataType.cs" />
     <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsController.cs" />
     <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsContentTab.cs" />
@@ -3767,6 +3773,7 @@
     <Compile Include="RightsOfWayDeposits\RightsOfWayDepositViewModel.cs" />
     <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsViewModelFromUmbraco.cs" />
     <Compile Include="RightsOfWayDeposits\RightsOfWayDepositViewModelFromUmbraco.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayEventHandler.cs" />
     <Compile Include="Services\BaseViewModelFromUmbracoBuilder.cs" />
     <Compile Include="Jobs\SearchResultsViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\ComponentViewModelFromUmbraco.cs" />
@@ -4117,6 +4124,13 @@
     </Compile>
     <Compile Include="Views\Topic\TopicSection_TermDates.ascx.designer.cs">
       <DependentUpon>TopicSection_TermDates.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\_PagingBarControl.ascx.cs">
+      <DependentUpon>_PagingBarControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\_PagingBarControl.ascx.designer.cs">
+      <DependentUpon>_PagingBarControl.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

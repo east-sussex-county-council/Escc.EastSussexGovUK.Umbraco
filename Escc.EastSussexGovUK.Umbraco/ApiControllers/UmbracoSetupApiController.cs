@@ -110,6 +110,7 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(PublicOrRedeploymentDataType));
 
                 // Rights of way document types
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(ReadOnlyDateDataType));
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(ParishDataType));
 
                 return Request.CreateResponse(HttpStatusCode.Created);

@@ -12,6 +12,7 @@ using Examine;
 using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
+using Escc.NavigationControls.WebForms;
 
 namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 {
@@ -30,7 +31,21 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
         {
             if (model == null) throw new ArgumentNullException(nameof(model));
 
-            var viewModel = new RightsOfWayDepositsViewModelFromUmbraco(model.Content).BuildModel();
+            var paging = new PagingController()
+            {
+                ResultsTextSingular = "deposit",
+                ResultsTextPlural = "deposits",
+                PageSize = 5
+            };
+
+            var query = HttpUtility.ParseQueryString(Request.Url.Query);
+            RightsOfWayDepositsSortOrder sort = RightsOfWayDepositsSortOrder.DateDepositedDescending;
+            Enum.TryParse(query["sort"], true, out sort);
+
+            var viewModel = new RightsOfWayDepositsViewModelFromUmbraco(model.Content, Request.Url, paging.CurrentPage, paging.PageSize, sort).BuildModel();
+            viewModel.Paging = paging;
+            viewModel.Paging.TotalResults = viewModel.TotalDeposits;
+            viewModel.SortOrder = sort;
 
             // Add common properties to the model
             var modelBuilder = new BaseViewModelBuilder();

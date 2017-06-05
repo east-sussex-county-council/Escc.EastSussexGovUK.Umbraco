@@ -87,4 +87,24 @@
       <add Name="count" />
     </IndexUserFields>
   </IndexSet>
+
+  <IndexSet SetName="RightsOfWayDepositsIndexSet" xdt:Transform="RemoveAll" xdt:Locator="Match(SetName)" />
+  <IndexSet SetName="RightsOfWayDepositsIndexSet" IndexPath="~/App_Data/TEMP/ExamineIndexes/{machinename}/RightsOfWayDeposits/" xdt:Transform="Insert">
+    <IndexAttributeFields>
+      <add Name="nodeName" EnableSorting="true" Type="STRING"/>
+      <add Name="nodeTypeAlias" />
+      <add Name="urlName" />
+      <add Name="parentID" />
+    </IndexAttributeFields>
+    <IndexUserFields>
+      <add Name="HonorificTitle_Content" />
+      <add Name="GivenName_Content" />
+      <add Name="FamilyName_Content" EnableSorting="true" Type="STRING" />
+      <add Name="HonorificSuffix_Content" />
+      <add Name="location_Content" />
+      <add Name="Parish_Content" EnableSorting="true" Type="STRING" />
+      <add Name="DateDeposited_Content" EnableSorting="true" Type="DATE" />
+      <add Name="DateExpires_Content" EnableSorting="true" Type="DATE" />
+    </IndexUserFields>
+  </IndexSet>
 </ExamineLuceneIndexSets>
