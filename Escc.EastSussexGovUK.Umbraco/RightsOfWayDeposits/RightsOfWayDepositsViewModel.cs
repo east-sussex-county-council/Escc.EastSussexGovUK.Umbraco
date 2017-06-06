@@ -1,6 +1,7 @@
 ﻿using Escc.EastSussexGovUK.Umbraco.Models;
 using System.Collections.Generic;
 using Escc.NavigationControls.WebForms;
+using System.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 {
@@ -38,5 +39,13 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
         /// The sort order.
         /// </value>
         public RightsOfWayDepositsSortOrder SortOrder { get; set; }
+
+        /// <summary>
+        /// Gets or sets the leading text.
+        /// </summary>
+        /// <value>
+        /// The leading text.
+        /// </value>
+        public IHtmlString LeadingText { get; set; }
     }
 }

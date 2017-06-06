@@ -19,15 +19,20 @@
     Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));
     Html.RequiresCss(CssFileAlias.Resolve("FormsMedium"), MediaQueryAlias.Resolve("Medium"));
     Html.RequiresCss(CssFileAlias.Resolve("FormsLarge"), MediaQueryAlias.Resolve("Large"));
+    Html.RequiresCss("~/css/rightsofwaydeposits/deposits-small.css");
+    Html.RequiresCss("~/css/rightsofwaydeposits/deposits-medium.css", MediaQueryAlias.Resolve("Medium"));
 }
 
-<div class="full-page">
+<div class="article">
     <article>
         <div class="content text-content">
 
             <h1>@Model.Metadata.Title</h1>
 
             @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
+            
+            @Model.LeadingText
+            
             <form action="@Request.Url" method="GET" class="form simple-form">
                 <div>
                     <input type="hidden" name="sort" value="@Request.QueryString["sort"]" />
@@ -58,7 +63,13 @@
                 </thead>
                 @foreach (var deposit in Model.Deposits)
                 {
-                    <tr><td><a href="@deposit.DepositUrl">@deposit.Reference</a></td><td>@deposit.Owner</td><td>@deposit.Parish</td><td>@deposit.DateDeposited.ToShortBritishDate()</td><td>@deposit.DateExpires.ToShortBritishDate()</td></tr>
+                    <tr>
+                        <td><a href="@deposit.DepositUrl">@deposit.Reference</a></td>
+                        <td>@deposit.Owner</td>
+                        <td>@deposit.Parish<span> Parish</span></td>
+                        <td><span>Deposited </span>@deposit.DateDeposited.ToShortBritishDate()</td>
+                        <td><span>Expires </span>@deposit.DateExpires.ToShortBritishDate()</td>
+                    </tr>
                 }
             </table>
 

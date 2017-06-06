@@ -47,6 +47,7 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
             viewModel.Paging = paging;
             viewModel.Paging.TotalResults = viewModel.TotalDeposits;
             viewModel.SortOrder = sort;
+            viewModel.LeadingText = new HtmlString(model.Content.GetPropertyValue<string>("leadingText_Content"));
 
             // Add common properties to the model
             var modelBuilder = new BaseViewModelBuilder();
