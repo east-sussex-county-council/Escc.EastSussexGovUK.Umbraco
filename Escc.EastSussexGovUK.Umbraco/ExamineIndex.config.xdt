@@ -101,8 +101,9 @@
       <add Name="GivenName_Content" />
       <add Name="FamilyName_Content" EnableSorting="true" Type="STRING" />
       <add Name="HonorificSuffix_Content" />
-      <add Name="location_Content" />
+      <add Name="Location_Content" />
       <add Name="Parish_Content" EnableSorting="true" Type="STRING" />
+      <add Name="pageDescription_Content" />
       <add Name="DateDeposited_Content" EnableSorting="true" Type="DATE" />
       <add Name="DateExpires_Content" EnableSorting="true" Type="DATE" />
     </IndexUserFields>

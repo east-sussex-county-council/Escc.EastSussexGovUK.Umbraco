@@ -3665,6 +3665,7 @@
     <Compile Include="Examine\LuceneTokenisedQueryBuilder.cs" />
     <Compile Include="Examine\LuceneStopWordsRemover.cs" />
     <Compile Include="Examine\SearchField.cs" />
+    <Compile Include="Examine\SearchTermSanitiser.cs" />
     <Compile Include="Examine\WildcardSuffixFilter.cs" />
     <Compile Include="HomePage\HomePageViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\Examine\BaseLookupValuesIndexer.cs" />
@@ -3771,7 +3772,7 @@
     <Compile Include="RightsOfWayDeposits\RightsOfWayDepositDocumentType.cs" />
     <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsViewModel.cs" />
     <Compile Include="RightsOfWayDeposits\RightsOfWayDepositViewModel.cs" />
-    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsViewModelFromUmbraco.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsViewModelFromExamine.cs" />
     <Compile Include="RightsOfWayDeposits\RightsOfWayDepositViewModelFromUmbraco.cs" />
     <Compile Include="RightsOfWayDeposits\RightsOfWayEventHandler.cs" />
     <Compile Include="Services\BaseViewModelFromUmbracoBuilder.cs" />

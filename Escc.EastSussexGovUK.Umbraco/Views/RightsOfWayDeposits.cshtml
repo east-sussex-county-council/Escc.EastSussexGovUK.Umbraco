@@ -1,12 +1,12 @@
-﻿@using ClientDependency.Core.Mvc
-@using Escc.ClientDependencyFramework
-@using Escc.EastSussexGovUK
+﻿@using Escc.EastSussexGovUK
 @using Escc.EastSussexGovUK.Features
 @using Escc.EastSussexGovUK.Skins
 @using Escc.EastSussexGovUK.Views
-@using Escc.Dates
 @using Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
-@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits.RightsOfWayDepositsViewModel>
+@using Escc.Dates
+@using ClientDependency.Core.Mvc
+@using Escc.ClientDependencyFramework
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<RightsOfWayDepositsViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
@@ -16,11 +16,9 @@
         new WebChat() { WebChatSettings = Model.WebChat }
     });
 
-    var queryWithoutSort = HttpUtility.ParseQueryString(Request.Url.Query);
-    queryWithoutSort.Remove("sort");
-    var urlWithoutSort = Request.Url.AbsolutePath + "?" + queryWithoutSort;
-    if (queryWithoutSort.Count > 0) { urlWithoutSort += "&"; }
-    urlWithoutSort += "sort=";
+    Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));
+    Html.RequiresCss(CssFileAlias.Resolve("FormsMedium"), MediaQueryAlias.Resolve("Medium"));
+    Html.RequiresCss(CssFileAlias.Resolve("FormsLarge"), MediaQueryAlias.Resolve("Large"));
 }
 
 <div class="full-page">
@@ -30,23 +28,40 @@
             <h1>@Model.Metadata.Title</h1>
 
             @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
+            <form action="@Request.Url" method="GET" class="form simple-form">
+                <div>
+                    <input type="hidden" name="sort" value="@Request.QueryString["sort"]" />
+                    <label for="search-deposits">Search: </label>
+                    <input type="search" name="q" value="@Request.QueryString["q"]" id="search-deposits" />
+                    <input type="submit" value="Search" />
+                </div>
+            </form>
+            @{
+                var queryWithoutSort = HttpUtility.ParseQueryString(Request.Url.Query);
+                queryWithoutSort.Remove("sort");
+                var urlWithoutSort = Request.Url.AbsolutePath + "?" + queryWithoutSort;
+                if (queryWithoutSort.Count > 0) { urlWithoutSort += "&"; }
+                urlWithoutSort += "sort=";
 
-            @{ Html.RenderPartial("~/Views/_PagingBarControl.ascx", Model.Paging); }
+                Html.RenderPartial("~/Views/_PagingBarControl.ascx", Model.Paging);
+            }
 
             <table>
-                <thead><tr>
-                    <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.ReferenceAscending ? "referencedescending" : "referenceascending")">Reference</a></th>
-                    <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.OwnerAscending ? "ownerdescending" : "ownerascending")">Owner</a></th>
-                    <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.ParishAscending ? "parishdescending" : "parishascending")">Parish</a></th>
-                    <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.DateDepositedAscending ? "datedepositeddescending" : "datedepositedascending")">Date deposited</a></th>
-                    <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.DateExpiresAscending ? "dateexpiresdescending" : "dateexpiresascending")">Expires</a></th>
-                </tr></thead>
+                <thead>
+                    <tr>
+                        <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.ReferenceAscending ? "referencedescending" : "referenceascending")">Reference</a></th>
+                        <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.OwnerAscending ? "ownerdescending" : "ownerascending")">Owner</a></th>
+                        <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.ParishAscending ? "parishdescending" : "parishascending")">Parish</a></th>
+                        <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.DateDepositedAscending ? "datedepositeddescending" : "datedepositedascending")">Date deposited</a></th>
+                        <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.DateExpiresAscending ? "dateexpiresdescending" : "dateexpiresascending")">Expires</a></th>
+                    </tr>
+                </thead>
                 @foreach (var deposit in Model.Deposits)
                 {
                     <tr><td><a href="@deposit.DepositUrl">@deposit.Reference</a></td><td>@deposit.Owner</td><td>@deposit.Parish</td><td>@deposit.DateDeposited.ToShortBritishDate()</td><td>@deposit.DateExpires.ToShortBritishDate()</td></tr>
                 }
             </table>
-            
+
             @{ Html.RenderPartial("~/Views/_PagingBarControl.ascx", Model.Paging); }
         </div>
     </article>

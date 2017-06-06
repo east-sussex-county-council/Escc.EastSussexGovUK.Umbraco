@@ -5,37 +5,59 @@ using Umbraco.Core.Models;
 using Examine;
 using Escc.AddressAndPersonalDetails;
 using UmbracoExamine;
+using Escc.EastSussexGovUK.Umbraco.Examine;
+using System.Collections.Generic;
+using Examine.LuceneEngine.SearchCriteria;
+using Examine.SearchCriteria;
 
 namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 {
     /// <summary>
-    /// Gets data required for the listings page of rights of way Section 31 deposits from Umbraco properties and Examine data
+    /// Gets data required for the listings page of rights of way Section 31 deposits from Examine data
     /// </summary>
-    /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Services.BaseViewModelFromUmbracoBuilder" />
     /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Services.IViewModelBuilder{Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits.RightsOfWayDepositsViewModel}" />
-    public class RightsOfWayDepositsViewModelFromUmbraco : BaseViewModelFromUmbracoBuilder, IViewModelBuilder<RightsOfWayDepositsViewModel>
+    public class RightsOfWayDepositsViewModelFromExamine : IViewModelBuilder<RightsOfWayDepositsViewModel>
     {
         private Uri _baseUrl;
+        private int _umbracoParentNodeId;
+        private string _searchTerm;
         private int _currentPage;
         private int _pageSize;
         private RightsOfWayDepositsSortOrder _sortOrder;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RightsOfWayDepositsViewModelFromUmbraco"/> class.
+        /// Initializes a new instance of the <see cref="RightsOfWayDepositsViewModelFromExamine" /> class.
         /// </summary>
-        /// <param name="umbracoContent">Content of the umbraco.</param>
+        /// <param name="umbracoParentNodeId">The umbraco parent node identifier.</param>
         /// <param name="baseUrl">The base URL for linking to details of each deposit - expected to be the URL of the deposits listings page.</param>
+        /// <param name="searchTerm">The search term.</param>
+        /// <param name="searchFilters">The search filters.</param>
         /// <param name="currentPage">The current page in paged search results.</param>
         /// <param name="pageSize">Size of the page in paged search results.</param>
         /// <param name="sortOrder">The sort order applied to search results.</param>
         /// <exception cref="System.ArgumentNullException">baseUrl</exception>
-        public RightsOfWayDepositsViewModelFromUmbraco(IPublishedContent umbracoContent, Uri baseUrl, int currentPage, int pageSize, RightsOfWayDepositsSortOrder sortOrder) : base(umbracoContent, null, null)
+        public RightsOfWayDepositsViewModelFromExamine(int umbracoParentNodeId, Uri baseUrl, string searchTerm, IEnumerable<ISearchFilter> searchFilters, int currentPage, int pageSize, RightsOfWayDepositsSortOrder sortOrder)
         {
             if (baseUrl == null) throw new ArgumentNullException(nameof(baseUrl));
+            _umbracoParentNodeId = umbracoParentNodeId;
             _baseUrl = baseUrl;
+            AddFilteredSearchTerm(searchTerm, searchFilters);
             _currentPage = currentPage;
             _pageSize = pageSize;
             _sortOrder = sortOrder;
+        }
+
+        private void AddFilteredSearchTerm(string searchTerm, IEnumerable<ISearchFilter> searchFilters)
+        {
+            _searchTerm = searchTerm;
+
+            if (searchFilters != null)
+            {
+                foreach (var filter in searchFilters)
+                {
+                    _searchTerm = filter.Filter(_searchTerm);
+                }
+            }
         }
 
         public RightsOfWayDepositsViewModel BuildModel()
@@ -45,7 +67,11 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
             var searcher = ExamineManager.Instance.SearchProviderCollection["RightsOfWayDepositsSearcher"];
             var criteria = searcher.CreateSearchCriteria(IndexTypes.Content);
             criteria.NodeTypeAlias("RightsOfWayDeposit");
-            criteria.ParentId(UmbracoContent.Id);
+            criteria.ParentId(_umbracoParentNodeId);
+            if (!String.IsNullOrEmpty(_searchTerm))
+            {
+                criteria.Field("RightsOfWayDepositSearch", _searchTerm);
+            }
 
             switch (_sortOrder)
             {

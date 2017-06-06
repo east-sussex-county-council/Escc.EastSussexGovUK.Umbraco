@@ -13,6 +13,7 @@ using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
 using Escc.NavigationControls.WebForms;
+using Escc.EastSussexGovUK.Umbraco.Examine;
 
 namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 {
@@ -42,7 +43,7 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
             RightsOfWayDepositsSortOrder sort = RightsOfWayDepositsSortOrder.DateDepositedDescending;
             Enum.TryParse(query["sort"], true, out sort);
 
-            var viewModel = new RightsOfWayDepositsViewModelFromUmbraco(model.Content, Request.Url, paging.CurrentPage, paging.PageSize, sort).BuildModel();
+            var viewModel = new RightsOfWayDepositsViewModelFromExamine(model.Content.Id, Request.Url, Request.QueryString["q"], new ISearchFilter[] { new SearchTermSanitiser() }, paging.CurrentPage, paging.PageSize, sort).BuildModel();
             viewModel.Paging = paging;
             viewModel.Paging.TotalResults = viewModel.TotalDeposits;
             viewModel.SortOrder = sort;

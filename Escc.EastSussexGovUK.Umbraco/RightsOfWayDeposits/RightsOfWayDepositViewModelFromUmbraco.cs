@@ -38,7 +38,7 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
             model.Owner.FamilyName = UmbracoContent.GetPropertyValue<string>("FamilyName_Content");
             model.Owner.Suffixes.Add(UmbracoContent.GetPropertyValue<string>("HonorificSuffix_Content"));
 
-            var addressInfo = UmbracoContent.GetPropertyValue<AddressInfo>("location_Content");
+            var addressInfo = UmbracoContent.GetPropertyValue<AddressInfo>("Location_Content");
             model.Address = addressInfo.BS7666Address;
             if (addressInfo.GeoCoordinate != null)
             {
