@@ -245,6 +245,8 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
             try
             {
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(RightsOfWayDepositDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(RightsOfWayDepositsCsvDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(RightsOfWayDepositsRssDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(RightsOfWayDepositsDocumentType));
 
                 return Request.CreateResponse(HttpStatusCode.Created);

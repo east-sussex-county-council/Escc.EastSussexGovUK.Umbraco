@@ -64,7 +64,7 @@
                 @foreach (var deposit in Model.Deposits)
                 {
                     <tr>
-                        <td><a href="@deposit.DepositUrl">@deposit.Reference</a></td>
+                        <td><a href="@deposit.PageUrl">@deposit.Reference</a></td>
                         <td>@deposit.Owner</td>
                         <td>@deposit.Parish<span> Parish</span></td>
                         <td><span>Deposited </span>@deposit.DateDeposited.ToShortBritishDate()</td>
@@ -74,6 +74,14 @@
             </table>
 
             @{ Html.RenderPartial("~/Views/_PagingBarControl.ascx", Model.Paging); }
+            @if (Model.RssUrl != null)
+            {
+            <p><a href="@Model.RssUrl?q=@Request.QueryString["q"]" type="application/rss+xml" rel="alternate" class="rss">Subscribe to new deposits by RSS</a></p>
+            }
+            @if (Model.CsvUrl != null)
+            {
+                <p><a href="@Model.CsvUrl" type="text/csv" rel="alternate" class="xls">Download deposits as CSV</a></p>
+            }
         </div>
     </article>
 </div>

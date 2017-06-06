@@ -25,6 +25,7 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
             if (model == null) throw new ArgumentNullException(nameof(model));
 
             var viewModel = new RightsOfWayDepositViewModelFromUmbraco(model.Content).BuildModel();
+            viewModel.Metadata.Title = "Rights of way deposit " + viewModel.Reference;
 
             // Add common properties to the model
             var modelBuilder = new BaseViewModelBuilder();

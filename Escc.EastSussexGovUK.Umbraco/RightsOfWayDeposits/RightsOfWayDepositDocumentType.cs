@@ -10,7 +10,7 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
     /// Definition for the Umbraco 'Rights of way deposit' document type
     /// </summary>
     /// <seealso cref="UmbracoGeneratedBase" />
-    [UmbracoContentType("Rights of way Section 31 deposit", "RightsOfWayDeposit", new Type[0], true, allowAtRoot: false, icon: BuiltInUmbracoContentTypeIcons.IconMapLoaction, 
+    [UmbracoContentType("Rights of way Section 31 deposit", "RightsOfWayDeposit", new Type[0], true, allowAtRoot: false, icon: "icon-map-location", 
     Description = "Section 31 (6) of the Highways Act 1980 enables landowners to protect their land from gaining public rights of way through use by the public by depositing a map with the council.")]
     public class RightsOfWayDepositDocumentType : UmbracoGeneratedBase
     {

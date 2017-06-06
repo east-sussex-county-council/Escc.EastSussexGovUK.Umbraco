@@ -23,6 +23,8 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 
         public string Parish { get; set; }
 
+        public Uri PageUrl { get; set; }
+
         public Uri DepositUrl { get; set; }
 
         public DateTime DateDeposited { get; set; }

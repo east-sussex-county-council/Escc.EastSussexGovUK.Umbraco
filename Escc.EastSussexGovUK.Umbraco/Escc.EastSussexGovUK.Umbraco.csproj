@@ -3593,6 +3593,8 @@
     <Content Include="Views\Alerts.cshtml" />
     <Content Include="Views\RightsOfWayDeposit.cshtml" />
     <Content Include="Views\RightsOfWayDeposits.cshtml" />
+    <Content Include="Views\RightsOfWayDepositsRss.cshtml" />
+    <Content Include="Views\RightsOfWayDepositsCsv.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -3765,6 +3767,10 @@
     <Compile Include="Jobs\HouseStyleDateFormatter.cs" />
     <Compile Include="Location\LocationsAsKmlHandler.cs" />
     <Compile Include="RightsOfWayDeposits\RightsOfWayDepositExpiryCalculator.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsCsvController.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsRssController.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsCsvDocumentType.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsRssDocumentType.cs" />
     <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsSortOrder.cs" />
     <Compile Include="RightsOfWayDeposits\ParishDataType.cs" />
     <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsController.cs" />

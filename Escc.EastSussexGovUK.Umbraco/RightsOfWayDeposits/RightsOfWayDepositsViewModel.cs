@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Escc.NavigationControls.WebForms;
 using System.Web;
+using System;
 
 namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 {
@@ -47,5 +48,21 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
         /// The leading text.
         /// </value>
         public IHtmlString LeadingText { get; set; }
+
+        /// <summary>
+        /// Gets or sets the RSS URL.
+        /// </summary>
+        /// <value>
+        /// The RSS URL.
+        /// </value>
+        public Uri RssUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets the CSV URL.
+        /// </summary>
+        /// <value>
+        /// The CSV URL.
+        /// </value>
+        public Uri CsvUrl { get; set; }
     }
 }

@@ -97,6 +97,7 @@
       <add Name="parentID" />
     </IndexAttributeFields>
     <IndexUserFields>
+      <add Name="DepositDocument_Content" />
       <add Name="HonorificTitle_Content" />
       <add Name="GivenName_Content" />
       <add Name="FamilyName_Content" EnableSorting="true" Type="STRING" />
@@ -104,6 +105,7 @@
       <add Name="Location_Content" />
       <add Name="Parish_Content" EnableSorting="true" Type="STRING" />
       <add Name="pageDescription_Content" />
+      <add Name="GridReference_Content" />
       <add Name="DateDeposited_Content" EnableSorting="true" Type="DATE" />
       <add Name="DateExpires_Content" EnableSorting="true" Type="DATE" />
     </IndexUserFields>

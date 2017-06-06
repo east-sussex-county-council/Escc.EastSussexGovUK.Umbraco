@@ -7,22 +7,15 @@ using Umbraco.Inception.BL;
 namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 {
     /// <summary>
-    /// Definition for the Umbraco 'Rights of way deposits' document type
+    /// Definition for the Umbraco 'Rights of way deposits CSV download' document type
     /// </summary>
     /// <seealso cref="UmbracoGeneratedBase" />
-    [UmbracoContentType("Rights of way Section 31 deposits", "RightsOfWayDeposits", new Type[] { typeof(RightsOfWayDepositDocumentType), typeof(RightsOfWayDepositsRssDocumentType), typeof(RightsOfWayDepositsCsvDocumentType) }, true, allowAtRoot: false, icon: BuiltInUmbracoContentTypeIcons.IconStopHand, 
-        EnableListView = true,
+    [UmbracoContentType("Rights of way Section 31 deposits CSV download", "RightsOfWayDepositsCsv", null, true, allowAtRoot: false, icon: BuiltInUmbracoContentTypeIcons.IconGrid, 
         Description = "Section 31 (6) of the Highways Act 1980 enables landowners to protect their land from gaining public rights of way through use by the public by depositing a map with the council.")]
-    public class RightsOfWayDepositsDocumentType : UmbracoGeneratedBase
+    public class RightsOfWayDepositsCsvDocumentType : UmbracoGeneratedBase
     {
-        [UmbracoTab("Content")]
-        public RightsOfWayDepositsContentTab Content { get; set; }
-
         [UmbracoProperty("Page URL", "umbracoUrlName", BuiltInUmbracoDataTypes.Textbox, sortOrder: 0)]
         public Uri UmbracoUrlName { get; set; }
-
-        [UmbracoProperty("Description", "pageDescription", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 1, mandatory: true)]
-        public string Description { get; set; }
 
         [UmbracoProperty("Author notes", "authorNotes", PropertyEditorAliases.RichTextPropertyEditor, RichTextAuthorNotesDataType.DataTypeName, sortOrder: 2)]
         public string AuthorNotes { get; set; }

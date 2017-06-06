@@ -14,6 +14,7 @@ using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
 using Escc.NavigationControls.WebForms;
 using Escc.EastSussexGovUK.Umbraco.Examine;
+using Umbraco.Core.Models;
 
 namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 {
@@ -59,7 +60,20 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
                 new UmbracoWebChatSettingsService(model.Content, new UrlListReader()),
                 null);
 
-//            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache);
+            // Look for an RSS feed and CSV download
+            var rss = model.Content.Children.Where<IPublishedContent>(child => child.DocumentTypeAlias == "RightsOfWayDepositsRss").FirstOrDefault();
+            if (rss != null)
+            {
+                viewModel.RssUrl = new Uri(rss.Url, UriKind.Relative);
+            }
+
+            var csv = model.Content.Children.Where<IPublishedContent>(child => child.DocumentTypeAlias == "RightsOfWayDepositsCsv").FirstOrDefault();
+            if (csv != null)
+            {
+                viewModel.CsvUrl = new Uri(csv.Url, UriKind.Relative);
+            }
+            
+            //            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache);
 
             return CurrentTemplate(viewModel);
         }
