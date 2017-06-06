@@ -51,7 +51,7 @@
                 Html.RenderPartial("~/Views/_PagingBarControl.ascx", Model.Paging);
             }
 
-            <table>
+            <table class="deposits">
                 <thead>
                     <tr>
                         <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.ReferenceAscending ? "referencedescending" : "referenceascending")">Reference</a></th>

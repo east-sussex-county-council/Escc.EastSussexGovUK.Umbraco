@@ -36,7 +36,7 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
             {
                 ResultsTextSingular = "deposit",
                 ResultsTextPlural = "deposits",
-                PageSize = 5
+                PageSize = 30
             };
 
             var query = HttpUtility.ParseQueryString(Request.Url.Query);

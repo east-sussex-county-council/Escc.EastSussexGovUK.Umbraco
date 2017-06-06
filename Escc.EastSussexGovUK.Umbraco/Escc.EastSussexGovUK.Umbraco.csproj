@@ -824,6 +824,7 @@
     <Content Include="js\CouncilPlan\council-plan.js" />
     <Content Include="js\CustomerFocusTemplates\guide.js" />
     <Content Include="js\job-results.js" />
+    <Content Include="js\rights-of-way-deposit.js" />
     <Content Include="js\tabs.js" />
     <Content Include="js\CustomerFocusTemplates\location.js" />
     <Content Include="js\document-metadata.js" />

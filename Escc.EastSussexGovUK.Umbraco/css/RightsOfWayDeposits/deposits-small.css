@@ -1,5 +1,7 @@
-﻿table, tbody {display:block;}
-table { border-top: 1px solid #ccc; padding-top: 1em;}
-thead { display: none; }
-.text-content tr { display: block; padding-bottom: 1em; margin-bottom: 1em; border-bottom: 1px solid #ccc; }
-.text-content td { display: block; border: none; padding: 0; }
+﻿table.deposits, .deposits tbody {display:block;}
+table.deposits { border-top: 1px solid #ccc; padding-top: 1em;}
+.deposits thead { display: none; }
+.deposits tr { display: block; padding-bottom: 1em; margin-bottom: 1em; border-bottom: 1px solid #ccc; }
+.deposits td { display: block; border: none; padding: 0; }
+
+#map { height: 400px; }

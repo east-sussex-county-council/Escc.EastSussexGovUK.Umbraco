@@ -5,6 +5,7 @@
 @using Escc.EastSussexGovUK.Skins
 @using Escc.EastSussexGovUK.Views
 @using Escc.Dates
+@using Escc.Web
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits.RightsOfWayDepositViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
@@ -15,6 +16,11 @@
     {
         new WebChat() { WebChatSettings = Model.WebChat }
     });
+
+    Html.RequiresCss("~/css/rightsofwaydeposits/deposits-small.css");
+    Html.RequiresJs(JsFileAlias.Resolve("GoogleMaps"), 90);
+    Html.RequiresJs("~/js/rights-of-way-deposit.js");
+    new ContentSecurityPolicyHeaders(Response.Headers).AppendPolicy(new ContentSecurityPolicyFromConfig().Policies["GoogleMaps"]).UpdateHeaders();
 }
 
 <div class="article">
@@ -41,6 +47,14 @@
             @if (Model.DepositUrl != null)
             {
             <p class="main-action"><a href="@Model.DepositUrl">Download the map, statement and declaration</a></p>
+            }
+
+            @if (Model.Coordinates != null)
+            {
+                <h2>Map of the area affected</h2>
+                <p>For a detailed map of the site boundary, download the <a href="@Model.DepositUrl">map, statement and declaration</a>.</p>
+                <div id="map" data-lat="@Model.Coordinates.Latitude" data-lon="@Model.Coordinates.Longitude"></div>
+                <p><a href="https://www.google.com/maps/dir//@HttpUtility.UrlEncode(Model.Coordinates.Latitude.ToString()),@HttpUtility.UrlEncode(Model.Coordinates.Longitude.ToString())">Get directions in Google Maps</a></p>
             }
 
         </div>
