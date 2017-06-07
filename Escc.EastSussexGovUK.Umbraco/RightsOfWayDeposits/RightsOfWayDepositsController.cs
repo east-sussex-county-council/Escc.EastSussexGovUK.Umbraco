@@ -73,7 +73,7 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
                 viewModel.CsvUrl = new Uri(csv.Url, UriKind.Relative);
             }
             
-            //            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache);
+             new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" });
 
             return CurrentTemplate(viewModel);
         }

@@ -76,7 +76,9 @@
             @{ Html.RenderPartial("~/Views/_PagingBarControl.ascx", Model.Paging); }
             @if (Model.RssUrl != null)
             {
-            <p><a href="@Model.RssUrl?q=@Request.QueryString["q"]" type="application/rss+xml" rel="alternate" class="rss">Subscribe to new deposits by RSS</a></p>
+                var url = String.IsNullOrEmpty(Request.QueryString["q"]) ? Model.RssUrl.ToString() : Model.RssUrl + "?q=" + Request.QueryString["q"];
+                var matching = String.IsNullOrEmpty(Request.QueryString["q"]) ? " ": $" matching '{Request.QueryString["q"]}' ";
+            <p><a href="@url" type="application/rss+xml" rel="alternate" class="rss">Subscribe to new deposits@(matching)by RSS</a></p>
             }
             @if (Model.CsvUrl != null)
             {

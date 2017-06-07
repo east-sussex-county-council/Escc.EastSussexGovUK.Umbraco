@@ -3,6 +3,8 @@ using Umbraco.Inception.Attributes;
 using Escc.Umbraco.PropertyEditors;
 using Escc.Umbraco.PropertyEditors.RichTextPropertyEditor;
 using Umbraco.Inception.BL;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Features.Latest;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Features.SocialMedia;
 
 namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 {
@@ -17,6 +19,12 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
     {
         [UmbracoTab("Content")]
         public RightsOfWayDepositsContentTab Content { get; set; }
+
+        [UmbracoTab("Latest", SortOrder = 1)]
+        public LatestTab LatestTab { get; set; }
+
+        [UmbracoTab("Social media and promotion", SortOrder = 2)]
+        public SocialMediaAndPromotionTab SocialMedia { get; set; }
 
         [UmbracoProperty("Page URL", "umbracoUrlName", BuiltInUmbracoDataTypes.Textbox, sortOrder: 0)]
         public Uri UmbracoUrlName { get; set; }

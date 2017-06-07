@@ -6,6 +6,7 @@ using Escc.Umbraco.PropertyTypes;
 using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
+using Escc.Umbraco.Caching;
 
 namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 {
@@ -38,7 +39,7 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
                 null);
 
 
-//            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache);
+            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache);
 
             return CurrentTemplate(viewModel);
         }
