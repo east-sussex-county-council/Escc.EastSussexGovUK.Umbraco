@@ -146,18 +146,62 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(StandardDownloadPageDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(MapDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(FormDownloadDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CustomerFocusBaseDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LandingDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(TaskDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(GuideStepDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(GuideDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(PersonDocumentType));
+
+                return Request.CreateResponse(HttpStatusCode.Created);
+            }
+            catch (Exception e)
+            {
+                e.ToExceptionless().Submit();
+                return Request.CreateResponse(HttpStatusCode.InternalServerError);
+            }
+        }
+
+        /// <summary>
+        /// Creates the Umbraco document types defined for the Council Plan.
+        /// </summary>
+        /// <returns></returns>
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
+        [AcceptVerbs("POST")]
+        public HttpResponseMessage CreateCouncilPlanDocumentTypes([FromUri] string token)
+        {
+            if (!CheckAuthorisationToken(token)) return Request.CreateResponse(HttpStatusCode.Forbidden);
+
+            try
+            {
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CouncilPlanHomePageDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CouncilPlanBudgetPageDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CouncilPlanMonitoringPageDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CouncilPlanPrioritiesPageDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CouncilPlanTopicPageDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CustomerFocusBaseDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LandingDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(TaskDocumentType));
+
+                return Request.CreateResponse(HttpStatusCode.Created);
+            }
+            catch (Exception e)
+            {
+                e.ToExceptionless().Submit();
+                return Request.CreateResponse(HttpStatusCode.InternalServerError);
+            }
+        }
+
+        /// <summary>
+        /// Creates the Umbraco document types which use the location template.
+        /// </summary>
+        /// <returns></returns>
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
+        [AcceptVerbs("POST")]
+        public HttpResponseMessage CreateLocationDocumentTypes([FromUri] string token)
+        {
+            if (!CheckAuthorisationToken(token)) return Request.CreateResponse(HttpStatusCode.Forbidden);
+
+            try
+            {
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LocationDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(GuideStepDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(GuideDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(RecyclingSiteDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LibraryDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(MobileLibraryStopDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(ChildcareDocumentType));
@@ -166,7 +210,6 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(ParkDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(RegistrationOfficeDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(DayCentreDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(PersonDocumentType));
 
                 return Request.CreateResponse(HttpStatusCode.Created);
             }
