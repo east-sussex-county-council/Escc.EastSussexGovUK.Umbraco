@@ -79,7 +79,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
                     var jobUrl = HttpUtility.HtmlDecode(link.Attributes["href"].Value);
                     var absoluteUrl = new Uri(new Uri("http://example.org"), jobUrl);
                     var query = HttpUtility.ParseQueryString(absoluteUrl.Query);
-                    job.Id = query["nPostingTargetId"];
+                    job.Id = Int32.Parse(query["nPostingTargetId"], CultureInfo.InvariantCulture);
                     job.JobTitle = HttpUtility.HtmlDecode(link.InnerText);
                     job.Organisation = HttpUtility.HtmlDecode(link.ParentNode.ParentNode.SelectSingleNode("./td[@headers='th2']")?.InnerText?.Trim());
                     job.Location = HttpUtility.HtmlDecode(link.ParentNode.ParentNode.SelectSingleNode("./td[@headers='th3']")?.InnerText?.Trim());

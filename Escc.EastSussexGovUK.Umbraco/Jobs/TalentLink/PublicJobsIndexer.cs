@@ -4,6 +4,8 @@ using Escc.EastSussexGovUK.Umbraco.Examine;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Examine;
 using Escc.Html;
 using Escc.Net;
+using Examine.Providers;
+using Examine;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
 {
@@ -27,5 +29,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
             new HtmlTagSantiser())
         {
         }
+
+        /// <summary>
+        /// Gets the index provider.
+        /// </summary>
+        public override BaseIndexProvider IndexProvider => ExamineManager.Instance.IndexProviderCollection["PublicJobsIndexer"];
     }
 }

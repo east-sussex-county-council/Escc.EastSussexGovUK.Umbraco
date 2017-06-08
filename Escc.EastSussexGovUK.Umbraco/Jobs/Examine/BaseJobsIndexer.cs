@@ -14,6 +14,8 @@ using Umbraco.Core.Logging;
 using Umbraco.Web;
 using Umbraco.Web.Security;
 using Exceptionless;
+using System.Globalization;
+using Examine.Providers;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
 {
@@ -36,28 +38,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
         protected BaseJobsIndexer(IJobsDataProvider jobsProvider, ISearchFilter stopWordsRemover, IHtmlTagSanitiser tagSanitiser)
         {
             if (jobsProvider == null) throw new ArgumentNullException(nameof(jobsProvider));
-            if (stopWordsRemover == null) throw new ArgumentNullException(nameof(stopWordsRemover));
-            if (tagSanitiser == null) throw new ArgumentNullException(nameof(tagSanitiser));
             _jobsProvider = jobsProvider;
             _stopWordsRemover = stopWordsRemover;
             _tagSanitiser = tagSanitiser;
         }
 
+        /// <summary>
+        /// Gets the index provider.
+        /// </summary>
+        public abstract BaseIndexProvider IndexProvider { get; }
+
         public IEnumerable<SimpleDataSet> GetAllData(string indexType)
         {
-            //Ensure that an Umbraco context is available
-            if (UmbracoContext.Current == null)
-            {
-                var dummyContext =
-                    new HttpContextWrapper(
-                        new HttpContext(new SimpleWorkerRequest("/", string.Empty, new StringWriter())));
-                UmbracoContext.EnsureContext(
-                    dummyContext,
-                    ApplicationContext.Current,
-                    new WebSecurity(dummyContext, ApplicationContext.Current),
-                    false);
-            }
-
             var dataSets = new List<SimpleDataSet>();
 
             try
@@ -69,10 +61,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 var jobs = Task.Run(async () => await _jobsProvider.ReadJobs(new JobSearchQuery())).Result;
 
                 //Looping all the raw models and adding them to the dataset
-                var i = 1;
                 foreach (var job in jobs)
                 {
-                    var jobAdvert = Task.Run(async () => await _jobsProvider.ReadJob(job.Id)).Result;
+                    var jobAdvert = Task.Run(async () => await _jobsProvider.ReadJob(job.Id.ToString(CultureInfo.InvariantCulture))).Result;
                     jobAdvert.Id = job.Id;
                     if (String.IsNullOrEmpty(jobAdvert.JobTitle)) jobAdvert.JobTitle = job.JobTitle;
                     if (String.IsNullOrEmpty(jobAdvert.Location)) jobAdvert.Location = job.Location;
@@ -84,9 +75,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
 
                     if (!jobAdvert.ClosingDate.HasValue) jobAdvert.ClosingDate = job.ClosingDate;
 
-                    var simpleDataSet = CreateIndexItemFromJob(i, jobAdvert, indexType);
+                    var simpleDataSet = CreateIndexItemFromJob(jobAdvert, indexType);
                     dataSets.Add(simpleDataSet);
-                    i++;
                 }
             }
             catch (Exception ex)
@@ -100,40 +90,66 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             return dataSets;
         }
 
-        private SimpleDataSet CreateIndexItemFromJob(int fakeNodeId, Job job, string indexType)
+        /// <summary>
+        /// Updates the index one job at a time, rather than wiping the index first.
+        /// </summary>
+        /// <param name="indexer">The indexer.</param>
+        /// <param name="currentIndexedJobIds">The job ids in the current version of the index (for comparison with the new data).</param>
+        public void UpdateIndex(IEnumerable<int> currentIndexedJobIds)
+        {
+            var jobsToDelete = new List<int>(currentIndexedJobIds);
+
+            // Delete and recreate any job still in the index, or add it if it's new
+            var jobsData = GetAllData("Job");
+            foreach (var job in jobsData)
+            {
+                IndexProvider.DeleteFromIndex(job.NodeDefinition.NodeId.ToString());
+                IndexProvider.ReIndexNode(job.RowData.ToExamineXml(job.NodeDefinition.NodeId, "Job"), "Job");
+                jobsToDelete.Remove(job.NodeDefinition.NodeId);
+            }
+
+            // Any jobs not found in the new data can be deleted
+            foreach (var jobId in jobsToDelete)
+            {
+                LogHelper.Info<BaseJobsIndexer>($"Deleting job '{jobId}' from Examine index");
+                IndexProvider.DeleteFromIndex(jobId.ToString());
+            }
+        }
+
+        private SimpleDataSet CreateIndexItemFromJob(Job job, string indexType)
         {
             LogHelper.Info<BaseJobsIndexer>($"Building Examine index item for job '{job.Id}'");
 
             var simpleDataSet = new SimpleDataSet { NodeDefinition = new IndexedNode(), RowData = new Dictionary<string, string>() };
 
-            simpleDataSet.NodeDefinition.NodeId = fakeNodeId;
+            simpleDataSet.NodeDefinition.NodeId = job.Id;
             simpleDataSet.NodeDefinition.Type = indexType;
-            simpleDataSet.RowData.Add("id", job.Id);
+            simpleDataSet.RowData.Add("id", job.Id.ToString(CultureInfo.InvariantCulture));
             simpleDataSet.RowData.Add("reference", job.Reference);
-            simpleDataSet.RowData.Add("title", _stopWordsRemover.Filter(job.JobTitle));
+            simpleDataSet.RowData.Add("title", _stopWordsRemover != null ? _stopWordsRemover.Filter(job.JobTitle) : job.JobTitle);
             simpleDataSet.RowData.Add("titleDisplay", job.JobTitle);
-            simpleDataSet.RowData.Add("organisation", _stopWordsRemover.Filter(job.Organisation));
+            simpleDataSet.RowData.Add("organisation", _stopWordsRemover != null ? _stopWordsRemover.Filter(job.Organisation) : job.Organisation);
             simpleDataSet.RowData.Add("organisationDisplay", job.Organisation);
-            simpleDataSet.RowData.Add("location", _stopWordsRemover.Filter(job.Location));
+            simpleDataSet.RowData.Add("location", _stopWordsRemover != null ? _stopWordsRemover.Filter(job.Location) : job.Location);
             simpleDataSet.RowData.Add("locationDisplay", job.Location); // because Somewhere-on-Sea needs to lose the "on" for searching but keep it for display
-            simpleDataSet.RowData.Add("salary", _tagSanitiser.StripTags(_stopWordsRemover.Filter(job.Salary.SalaryRange)));
-            simpleDataSet.RowData.Add("salaryRange", _stopWordsRemover.Filter(job.Salary.SearchRange));
+            simpleDataSet.RowData.Add("salary", _tagSanitiser != null ? _tagSanitiser.StripTags(_stopWordsRemover != null ? _stopWordsRemover.Filter(job.Salary.SalaryRange) : job.Salary.SalaryRange) : _stopWordsRemover != null ? _stopWordsRemover.Filter(job.Salary.SalaryRange) : job.Salary.SalaryRange);
+            simpleDataSet.RowData.Add("salaryRange", _stopWordsRemover != null ? _stopWordsRemover.Filter(job.Salary.SearchRange) : job.Salary.SearchRange);
             simpleDataSet.RowData.Add("salaryMin", job.Salary.MinimumSalary?.ToString("D7") ?? String.Empty);
             simpleDataSet.RowData.Add("salaryMax", job.Salary.MaximumSalary?.ToString("D7") ?? String.Empty);
-            simpleDataSet.RowData.Add("salarySort", (job.Salary.MinimumSalary?.ToString("D7") ?? String.Empty) + " " + (job.Salary.MaximumSalary?.ToString("D7") ?? String.Empty) + " " + _stopWordsRemover.Filter(job.Salary.SalaryRange));
+            simpleDataSet.RowData.Add("salarySort", (job.Salary.MinimumSalary?.ToString("D7") ?? String.Empty) + " " + (job.Salary.MaximumSalary?.ToString("D7") ?? String.Empty) + " " + (_stopWordsRemover != null ? _stopWordsRemover.Filter(job.Salary.SalaryRange) : job.Salary.SalaryRange));
             simpleDataSet.RowData.Add("closingDate", job.ClosingDate.Value.ToIso8601DateTime());
             simpleDataSet.RowData.Add("closingDateDisplay", job.ClosingDate.Value.ToIso8601DateTime());
-            simpleDataSet.RowData.Add("jobType", _stopWordsRemover.Filter(job.JobType));
+            simpleDataSet.RowData.Add("jobType", _stopWordsRemover != null ? _stopWordsRemover.Filter(job.JobType) : job.JobType);
             simpleDataSet.RowData.Add("jobTypeDisplay", job.JobType);
-            simpleDataSet.RowData.Add("contractType", _stopWordsRemover.Filter(job.ContractType));
-            simpleDataSet.RowData.Add("department", _stopWordsRemover.Filter(job.Department));
+            simpleDataSet.RowData.Add("contractType", _stopWordsRemover != null ? _stopWordsRemover.Filter(job.ContractType) : job.ContractType);
+            simpleDataSet.RowData.Add("department", _stopWordsRemover != null ? _stopWordsRemover.Filter(job.Department) : job.Department);
             simpleDataSet.RowData.Add("departmentDisplay", job.Department);
             simpleDataSet.RowData.Add("fullTime", job.WorkPattern.IsFullTime.ToString());
             simpleDataSet.RowData.Add("partTime", job.WorkPattern.IsPartTime.ToString());
             simpleDataSet.RowData.Add("workPattern", job.WorkPattern.ToString());
             if (job.AdvertHtml != null)
             {
-                simpleDataSet.RowData.Add("fullText", _tagSanitiser.StripTags(job.AdvertHtml.ToHtmlString()));
+                simpleDataSet.RowData.Add("fullText", _tagSanitiser != null ? _tagSanitiser.StripTags(job.AdvertHtml.ToHtmlString()) : job.AdvertHtml.ToHtmlString());
                 simpleDataSet.RowData.Add("fullHtml", job.AdvertHtml.ToHtmlString());
             }
             if (job.AdditionalInformationHtml != null)

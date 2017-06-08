@@ -62,7 +62,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// <value>
         /// The identifier.
         /// </value>
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// Gets or sets the published job reference.
