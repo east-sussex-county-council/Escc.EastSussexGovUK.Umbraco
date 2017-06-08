@@ -69,7 +69,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
         /// <returns>A <see cref="LatestSettings"/>, or <c>null</c> if the properties are not present</returns>
         private static LatestSettings BuildLatestModel(IPublishedContent content)
         {
-            var latestHtml = content.GetPropertyValue<string>("latest_Latest");
+            var latestHtml = content.GetProperty("latest_Latest").Value.ToString();
             if (latestHtml == null) return null;
 
             var model = new LatestSettings()
