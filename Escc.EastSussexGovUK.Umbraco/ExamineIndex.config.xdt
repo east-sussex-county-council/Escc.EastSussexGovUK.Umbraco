@@ -109,5 +109,8 @@
       <add Name="DateDeposited_Content" EnableSorting="true" Type="DATE" />
       <add Name="DateExpires_Content" EnableSorting="true" Type="DATE" />
     </IndexUserFields>
+    <IncludeNodeTypes>
+      <add Name="RightsOfWayDeposit"/>
+    </IncludeNodeTypes>
   </IndexSet>
 </ExamineLuceneIndexSets>
