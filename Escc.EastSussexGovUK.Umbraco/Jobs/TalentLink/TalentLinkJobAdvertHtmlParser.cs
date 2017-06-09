@@ -115,6 +115,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
                                      ParseValueFromElementById(htmlDocument, "div", "JD-Documents");
 
                     parsedHtml = ApplyStringFormatters(parsedHtml);
+                    parsedHtml = new RemoveDuplicateTextFormatter("Closing date: " + job.ClosingDate.Value.ToBritishDate()).FormatHtml(parsedHtml);
                     parsedHtml = new RemoveDuplicateTextFormatter("Closing date: " + job.ClosingDate.Value.ToBritishDateWithDay()).FormatHtml(parsedHtml);
 
                     job.AdvertHtml = new HtmlString(parsedHtml);
