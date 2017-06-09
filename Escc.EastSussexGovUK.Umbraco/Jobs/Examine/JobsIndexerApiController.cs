@@ -9,21 +9,27 @@ using Umbraco.Core.Logging;
 using Umbraco.Web.WebApi;
 using System.Threading.Tasks;
 using Escc.EastSussexGovUK.Umbraco.Examine;
+using System.Collections.Generic;
+using Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
 {
     [Authorize]
     public class JobsIndexerApiController : UmbracoApiController
     {
+        /// <summary>
+        /// Updates the job search by deleting and rebuilding the index from scratch. Search results are unavailable while this is in progress.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public HttpResponseMessage UpdateJobSearch()
         {
             try
             {
-                UpdateIndex("PublicJobsIndexer");
-                UpdateIndex("RedeploymentJobsIndexer");
-                UpdateIndex("PublicJobsLookupValuesIndexer");
-                UpdateIndex("RedeploymentJobsLookupValuesIndexer");
+                ReplaceIndex("PublicJobsIndexer");
+                ReplaceIndex("RedeploymentJobsIndexer");
+                ReplaceIndex("PublicJobsLookupValuesIndexer");
+                ReplaceIndex("RedeploymentJobsLookupValuesIndexer");
 
                 return Request.CreateResponse(HttpStatusCode.NoContent);
             }
@@ -35,15 +41,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             }
         }
 
+        /// <summary>
+        /// Updates the job search by deleting and reindexing each job individually. Search results remain available while this is in progress.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
-        public HttpResponseMessage UpdateJobsIfNoJobs()
+        public HttpResponseMessage UpdateJobSearchIncremental()
         {
             try
             {
-                // If the jobs index has failed to rebuild for any reason, resulting in no jobs being available, kick off a reindex.
-                // Running this API call on a schedule should allow the site to recover from this situation automatically.
-                UpdateIndexIfNoJobs("PublicJobs");
-                UpdateIndexIfNoJobs("RedeploymentJobs");
+                UpdateIndex("PublicJobsSearcher", new PublicJobsIndexer());
+                UpdateIndex("RedeploymentJobsSearcher", new RedeploymentJobsIndexer());
 
                 return Request.CreateResponse(HttpStatusCode.NoContent);
             }
@@ -53,6 +61,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 LogHelper.Error<JobsIndexerApiController>("Failed to reindex jobs. There may be another thread currently writing to the index.", ex);
                 return Request.CreateResponse(HttpStatusCode.InternalServerError);
             }
+        }
+
+        private static void UpdateIndex(string searcherName, BaseJobsIndexer indexer)
+        {
+            var jobsSearcher = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[searcherName], null, null);
+            var jobs = jobsSearcher.ReadJobs(new JobSearchQuery()).Result;
+            var jobIds = new Dictionary<int,DateTime?>();
+            foreach (var job in jobs) jobIds.Add(job.Id, job.DatePublished);
+
+            indexer.UpdateIndex(jobIds);
         }
 
         [HttpGet]
@@ -76,13 +94,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             }
         }
 
-        private static void UpdateIndexIfNoJobs(string indexPrefix)
-        {
-            var dataSource = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[indexPrefix + "Searcher"], new QueryBuilder(new LuceneTokenisedQueryBuilder(), new KeywordsTokeniser(), new LuceneStopWordsRemover(), new WildcardSuffixFilter()), null);
-            var jobs = Task.Run(async () => await dataSource.ReadJobs(new JobSearchQuery()));
-            if (jobs.Result.Count == 0) UpdateIndex(indexPrefix + "Indexer");
-        }
-
         private static void UpdateIndexIfNoLookups(string indexPrefix)
         {
             var dataSource = new JobsLookupValuesFromExamine(ExamineManager.Instance.SearchProviderCollection[indexPrefix + "Searcher"]);
@@ -96,10 +107,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                     break;
                 }
             }
-            if (!jobFound) UpdateIndex(indexPrefix + "Indexer");
+            if (!jobFound) ReplaceIndex(indexPrefix + "Indexer");
         }
 
-        private static void UpdateIndex(string indexerName)
+        private static void ReplaceIndex(string indexerName)
         {
             LogHelper.Info<JobsIndexerApiController>($"Beginning rebuild of Examine index '{indexerName}' from a call to JobsIndexerApiController");
 

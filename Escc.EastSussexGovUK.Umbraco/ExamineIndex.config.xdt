@@ -31,6 +31,7 @@
       <add Name="additionalInfo" />
       <add Name="equalOpportunities" />
       <add Name="applyUrl" />
+      <add Name="datePublished" Type="DATE" />
     </IndexUserFields>
   </IndexSet>
 
@@ -65,6 +66,7 @@
       <add Name="additionalInfo" />
       <add Name="equalOpportunities" />
       <add Name="applyUrl" />
+      <add Name="datePublished" Type="DATE" />
     </IndexUserFields>
   </IndexSet>
 

@@ -3,11 +3,13 @@
 @using Escc.EastSussexGovUK.Skins
 @using Escc.EastSussexGovUK.Views
 @using Escc.EastSussexGovUK.Mvc.Views.EastSussexGovUK
+@using Escc.Dates
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Jobs.JobAdvertViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
     Model.Metadata.Title = Model.Job?.JobTitle;
+    Model.Metadata.DateIssued = Model.Job?.DatePublished?.ToIso8601Date();
     Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));
     Html.RequiresCss(CssFileAlias.Resolve("FormsMedium"), MediaQueryAlias.Resolve("Medium"));
     Html.RequiresCss(CssFileAlias.Resolve("FormsLarge"), MediaQueryAlias.Resolve("Large"));
@@ -23,7 +25,7 @@
     Html.RequiresJs(JsFileAlias.Resolve("Tabs"));
 
     var jobGone = false;
-    if (String.IsNullOrEmpty(Model.Job?.Id) || Model.Job?.ClosingDate < DateTime.Today)
+    if (Model.Job?.Id == 0 || Model.Job?.ClosingDate < DateTime.Today)
     {
         jobGone = true;
         Model.Metadata.Title = "Oh no, too late!";

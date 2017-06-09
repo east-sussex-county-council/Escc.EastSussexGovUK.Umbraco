@@ -62,7 +62,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// <value>
         /// The identifier.
         /// </value>
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// Gets or sets the published job reference.
@@ -148,5 +148,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// The work pattern.
         /// </value>
         public WorkPattern WorkPattern { get; set; } = new WorkPattern();
+
+        /// <summary>
+        /// Gets or sets the date when the job was published.
+        /// </summary>
+        /// <value>
+        /// The date published.
+        /// </value>
+        public DateTime? DatePublished { get; set; }
     }
 }

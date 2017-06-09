@@ -1,0 +1,28 @@
+﻿@using System.Globalization
+@using Escc.Dates
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.RssViewModel<Escc.EastSussexGovUK.Umbraco.Jobs.Job>>
+@{
+    Layout = null;
+    Response.ContentType = "text/xml";
+    Response.Headers.Remove("Content-Security-Policy");
+}<?xml version="1.0" encoding="utf-8" ?>
+<source>
+<publisher>East Sussex County Council</publisher>
+<publisherurl>https://www.eastsussex.gov.uk/jobs</publisherurl>
+<lastBuildDate>@DateTime.Now.ToRfc822DateTime()</lastBuildDate>
+@foreach (var job in Model.Items)
+{
+    <job>
+        <title><![CDATA[@Html.Raw(job.JobTitle)]]></title>
+        <date><![CDATA[@Html.Raw(job.DatePublished?.ToRfc822DateTime())]]></date>
+        <referencenumber><![CDATA[@Html.Raw(job.Reference)]]></referencenumber>
+        <url><![CDATA[@Html.Raw($"{job.Url}?utm_source=indeed&utm_medium=job-advert&utm_content={job.Reference}")]]></url>
+        <company><![CDATA[@Html.Raw(job.Organisation)]]></company>
+        <city><![CDATA[@Html.Raw(job.Location)]]></city>
+        <country><![CDATA[GB]]></country>
+        <description><![CDATA[@Html.Raw(job.AdvertHtml)]]></description>
+        <salary><![CDATA[@Html.Raw(job.Salary.SalaryRange)]]></salary>
+        <jobtype><![CDATA[@Html.Raw(job.WorkPattern)]]></jobtype>
+    </job>
+}
+</source>

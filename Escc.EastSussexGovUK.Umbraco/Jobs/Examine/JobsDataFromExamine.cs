@@ -208,7 +208,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             {
                 var job = new Job()
                 {
-                    Id = result.Fields.ContainsKey("id") ? result["id"] : String.Empty,
+                    Id = result.Fields.ContainsKey("id") ? Int32.Parse(result["id"], CultureInfo.InvariantCulture) : 0,
                     Reference = result.Fields.ContainsKey("reference") ? result["reference"] : String.Empty,
                     JobTitle = result.Fields.ContainsKey("titleDisplay") ? result["titleDisplay"] : String.Empty,
                     Organisation = result.Fields.ContainsKey("organisationDisplay") ? result["organisationDisplay"] : String.Empty,
@@ -249,6 +249,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                     job.Url = _urlGenerator.GenerateUrl(job);
                 }
                 if (result.Fields.ContainsKey("closingDateDisplay")) job.ClosingDate = DateTime.Parse(result["closingDateDisplay"]);
+                if (result.Fields.ContainsKey("datePublished")) job.DatePublished = new LuceneDateTimeParser().Parse(result["datePublished"]);
 
                 jobs.Add(job);
             }

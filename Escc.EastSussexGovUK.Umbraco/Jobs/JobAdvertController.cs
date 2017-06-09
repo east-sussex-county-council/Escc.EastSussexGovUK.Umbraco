@@ -43,7 +43,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         {
             if (model == null) throw new ArgumentNullException(nameof(model));
 
-            var viewModel = new AdvertViewModelFromUmbraco(model.Content).BuildModel();
+            var viewModel = new JobAdvertViewModelFromUmbraco(model.Content).BuildModel();
 
             // Add common properties to the model
             var modelBuilder = new BaseViewModelBuilder();
@@ -60,7 +60,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             {
                 var jobsProvider = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.ExamineSearcher], null, new RelativeJobUrlGenerator(new Uri(model.Content.UrlAbsolute())));
                 viewModel.Job = Task.Run(async () => await jobsProvider.ReadJob(Request.QueryString["nPostingTargetID"])).Result;
-                if (!String.IsNullOrEmpty(viewModel.Job.Id))
+                if (viewModel.Job.Id > 0)
                 {
                     return new RedirectResult(viewModel.Job.Url.ToString(), true);
                 }
@@ -72,7 +72,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             {
                 var jobsProvider = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.ExamineSearcher], new QueryBuilder(new LuceneTokenisedQueryBuilder(), new KeywordsTokeniser(), new LuceneStopWordsRemover(), new WildcardSuffixFilter()), new RelativeJobUrlGenerator(new Uri(model.Content.UrlAbsolute())));
                 viewModel.Job = Task.Run(async () => await jobsProvider.ReadJob(jobUrlSegment.Groups[1].Value)).Result;
-                if (String.IsNullOrEmpty(viewModel.Job.Id) || viewModel.Job.ClosingDate < DateTime.Today)
+                if (viewModel.Job.Id == 0 || viewModel.Job.ClosingDate < DateTime.Today)
                 {
                     // The job URL looks valid but the job isn't in the index, so it's probably closed.
                     // Find some similar jobs to suggest the user may want to apply for instead.
