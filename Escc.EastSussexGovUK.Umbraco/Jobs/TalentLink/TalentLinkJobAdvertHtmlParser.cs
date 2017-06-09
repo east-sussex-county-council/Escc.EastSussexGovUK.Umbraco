@@ -94,7 +94,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
                         formatter.FormatHtml(htmlDocument);
                     }
 
-                    var additionalInfo = ParseValueFromElementById(htmlDocument, "span", "JDText-Field4");
+                    // JDText-Field4 is additional info (ie small print) and JDText-Field6 is information for redeployees (ie more small print)
+                    var additionalInfo = ParseValueFromElementById(htmlDocument, "span", "JDText-Field4") + Environment.NewLine +
+                                         ParseValueFromElementById(htmlDocument, "span", "JDText-Field6");
                     if (!String.IsNullOrEmpty(additionalInfo))
                     {
                         additionalInfo = ApplyStringFormatters(additionalInfo);
@@ -110,7 +112,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
 
                     var parsedHtml = ParseValueFromElementById(htmlDocument, "div", "JD-Field1") + Environment.NewLine +
                                      ParseValueFromElementById(htmlDocument, "div", "JD-Field2") + Environment.NewLine +
-                                     ParseValueFromElementById(htmlDocument, "div", "JD-Field6") + Environment.NewLine +
                                      ParseValueFromElementById(htmlDocument, "div", "JD-Documents");
 
                     parsedHtml = ApplyStringFormatters(parsedHtml);
@@ -133,7 +134,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
 
         private static string ApplyStringFormatters(string parsedHtml)
         {
-            var htmlFormatters = new IHtmlStringFormatter[] { new CloseEmptyElementsFormatter(), new HouseStyleDateFormatter() };
+            var htmlFormatters = new IHtmlStringFormatter[] { new CloseEmptyElementsFormatter(), new HouseStyleDateFormatter(), new RedeploymentHeaderFormatter() };
             foreach (var formatter in htmlFormatters)
             {
                 parsedHtml = formatter.FormatHtml(parsedHtml);

@@ -3685,6 +3685,7 @@
     <Compile Include="Jobs\JobsRssViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\TalentLink\JobsLookupValuesFromTalentLink.cs" />
     <Compile Include="Jobs\TalentLink\PublicJobsLookupValuesIndexer.cs" />
+    <Compile Include="Jobs\TalentLink\RedeploymentHeaderFormatter.cs" />
     <Compile Include="Jobs\TalentLink\RedeploymentJobsLookupValuesIndexer.cs" />
     <Compile Include="Jobs\TalentLink\RemoveDuplicateTextFormatter.cs" />
     <Compile Include="Jobs\RemoveElementByNameAndContentFormatter.cs" />
