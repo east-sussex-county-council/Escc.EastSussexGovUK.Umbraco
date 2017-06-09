@@ -148,5 +148,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// The work pattern.
         /// </value>
         public WorkPattern WorkPattern { get; set; } = new WorkPattern();
+
+        /// <summary>
+        /// Gets or sets the date when the job was published.
+        /// </summary>
+        /// <value>
+        /// The date published.
+        /// </value>
+        public DateTime? DatePublished { get; set; }
     }
 }

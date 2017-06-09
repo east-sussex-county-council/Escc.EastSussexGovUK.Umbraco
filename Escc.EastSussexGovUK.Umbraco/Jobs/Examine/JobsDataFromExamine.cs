@@ -249,6 +249,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                     job.Url = _urlGenerator.GenerateUrl(job);
                 }
                 if (result.Fields.ContainsKey("closingDateDisplay")) job.ClosingDate = DateTime.Parse(result["closingDateDisplay"]);
+                if (result.Fields.ContainsKey("datePublished")) job.DatePublished = new LuceneDateTimeParser().Parse(result["datePublished"]);
 
                 jobs.Add(job);
             }

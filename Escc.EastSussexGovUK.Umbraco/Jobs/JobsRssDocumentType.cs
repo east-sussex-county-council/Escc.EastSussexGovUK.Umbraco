@@ -7,18 +7,21 @@ using Umbraco.Inception.BL;
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
     /// <summary>
-    /// Definition for the Umbraco 'Jobs RSS feed' document type
+    /// Definition for the Umbraco 'Jobs feed' document type
     /// </summary>
     /// <seealso cref="Escc.EastSussexGovUK.Umbraco.DocumentTypes.CustomerFocusBase.CustomerFocusBaseDocumentType" />
-    [UmbracoContentType("Jobs RSS feed", "JobsRss", new Type[]{}, true, allowAtRoot: false, icon: BuiltInUmbracoContentTypeIcons.IconRss, 
-    Description = "RSS feed of all jobs.")]
+    [UmbracoContentType("Jobs feed", "JobsRss", new Type[]{}, true, allowAtRoot: false, icon: BuiltInUmbracoContentTypeIcons.IconRss, 
+    Description = "Data feed of all jobs.")]
     public class JobsRssDocumentType : UmbracoGeneratedBase
     {
-        [UmbracoTemplate(DisplayName = "Jobs RSS as an HTML table", Alias = "JobsRssAsTable")]
+        [UmbracoTemplate(DisplayName = "Jobs feed as an HTML table", Alias = "JobsRssAsTable")]
         public string RssAsTable { get; set; }
 
-        [UmbracoTemplate(DisplayName = "Jobs RSS as Tweets", Alias = "JobsRssAsTweets")]
-        public string RssAsTweets { get; set; }
+        [UmbracoTemplate(DisplayName = "Jobs feed as Tweets RSS", Alias = "JobsRssAsTweets")]
+        public string FeedAsRssTweets { get; set; }
+
+        [UmbracoTemplate(DisplayName = "Jobs feed as Indeed XML", Alias = "JobsRssAsIndeedXml")]
+        public string FeedAsIndeedXml { get; set; }
 
         [UmbracoTab("Content")]
         public JobsRssContentTab Content { get; set; }

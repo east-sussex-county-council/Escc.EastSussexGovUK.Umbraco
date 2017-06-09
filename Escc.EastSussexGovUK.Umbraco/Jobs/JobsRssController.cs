@@ -58,11 +58,39 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 viewModel.Items.Add(job);
             }
 
-            // Jobs close at midnight, so don't cache beyond then
+            // Jobs close at midnight, so don't cache beyond then.
+            // But we reindex every 2 hours, so expire then if it's sooner.
             var untilMidnightTonight = DateTime.Today.ToUkDateTime().AddDays(1) - DateTime.Now.ToUkDateTime();
-            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, null, (int)untilMidnightTonight.TotalSeconds);
+            var untilNextReindex = TimeUntilNextReindex();
+            var cacheDuration = untilMidnightTonight > untilNextReindex ? untilNextReindex : untilMidnightTonight;
+            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, null, (int)cacheDuration.TotalSeconds);
 
             return CurrentTemplate(viewModel);
+        }
+
+        private TimeSpan TimeUntilNextReindex()
+        {
+            // Reindex is at 15 minutes past the even hour
+            var now = DateTime.UtcNow;
+            var quarterPastThisHour = now.AddMinutes((now.Minute * -1) + 15).AddSeconds(now.Second * -1);
+
+            if (now.Hour % 2 == 0)
+            {
+                // even
+                if (now.Minute >= 15)
+                {
+                    return quarterPastThisHour.AddHours(2) - now;
+                }
+                else
+                {
+                    return quarterPastThisHour - now;
+                }
+            }
+            else
+            {
+                // odd
+                return quarterPastThisHour.AddHours(1) - now;
+            }
         }
     }
 }

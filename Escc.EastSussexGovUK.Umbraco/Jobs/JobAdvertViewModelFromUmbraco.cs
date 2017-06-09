@@ -7,7 +7,7 @@ using Umbraco.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
-    public class AdvertViewModelFromUmbraco : BaseViewModelFromUmbracoBuilder, IViewModelBuilder<JobAdvertViewModel>
+    public class JobAdvertViewModelFromUmbraco : BaseViewModelFromUmbracoBuilder, IViewModelBuilder<JobAdvertViewModel>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="JobAdvertViewModel" /> class.
@@ -16,7 +16,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// <exception cref="System.ArgumentNullException">umbracoContent
         /// or
         /// mediaUrlTransformer</exception>
-        public AdvertViewModelFromUmbraco(IPublishedContent umbracoContent) :
+        public JobAdvertViewModelFromUmbraco(IPublishedContent umbracoContent) :
             base(umbracoContent, null)
         {
         }

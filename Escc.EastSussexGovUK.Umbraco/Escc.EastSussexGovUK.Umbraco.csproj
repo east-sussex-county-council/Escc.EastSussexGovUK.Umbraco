@@ -3589,6 +3589,7 @@
     <Content Include="Views\JobsTableBody.cshtml" />
     <Content Include="Views\JobsRssAsTweets.cshtml" />
     <Content Include="Views\Alerts.cshtml" />
+    <Content Include="Views\JobsRssAsIndeedXml.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -3664,6 +3665,7 @@
     <Compile Include="Examine\WildcardSuffixFilter.cs" />
     <Compile Include="HomePage\HomePageViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\Examine\BaseLookupValuesIndexer.cs" />
+    <Compile Include="Examine\LuceneDateTimeParser.cs" />
     <Compile Include="Jobs\IJobsLookupValuesProvider.cs" />
     <Compile Include="Jobs\IJobUrlGenerator.cs" />
     <Compile Include="Jobs\IWorkPatternParser.cs" />
@@ -3708,7 +3710,7 @@
     <Compile Include="Jobs\JobSearchQuery.cs" />
     <Compile Include="Jobs\JobSearchQueryFactory.cs" />
     <Compile Include="Jobs\BaseJobsViewModel.cs" />
-    <Compile Include="Jobs\AdvertViewModelFromUmbraco.cs" />
+    <Compile Include="Jobs\JobAdvertViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\JobAdvertController.cs" />
     <Compile Include="Jobs\SearchViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\JobsLookupValue.cs" />

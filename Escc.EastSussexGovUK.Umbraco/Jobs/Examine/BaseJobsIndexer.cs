@@ -94,15 +94,21 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
         /// Updates the index one job at a time, rather than wiping the index first.
         /// </summary>
         /// <param name="indexer">The indexer.</param>
-        /// <param name="currentIndexedJobIds">The job ids in the current version of the index (for comparison with the new data).</param>
-        public void UpdateIndex(IEnumerable<int> currentIndexedJobIds)
+        /// <param name="currentIndexedJobs">The job ids and publication dates in the current version of the index (for comparison with the new data).</param>
+        public void UpdateIndex(Dictionary<int,DateTime?> currentIndexedJobs)
         {
-            var jobsToDelete = new List<int>(currentIndexedJobIds);
+            var jobsToDelete = new List<int>(currentIndexedJobs.Keys);
 
             // Delete and recreate any job still in the index, or add it if it's new
             var jobsData = GetAllData("Job");
             foreach (var job in jobsData)
             {
+                // If it's an existing job, preserve the date it was published
+                if (currentIndexedJobs.ContainsKey(job.NodeDefinition.NodeId) && currentIndexedJobs[job.NodeDefinition.NodeId] != null)
+                {
+                    job.RowData["datePublished"] = ((DateTime)currentIndexedJobs[job.NodeDefinition.NodeId]).ToIso8601DateTime();
+                }
+
                 IndexProvider.DeleteFromIndex(job.NodeDefinition.NodeId.ToString());
                 IndexProvider.ReIndexNode(job.RowData.ToExamineXml(job.NodeDefinition.NodeId, "Job"), "Job");
                 jobsToDelete.Remove(job.NodeDefinition.NodeId);
@@ -147,6 +153,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             simpleDataSet.RowData.Add("fullTime", job.WorkPattern.IsFullTime.ToString());
             simpleDataSet.RowData.Add("partTime", job.WorkPattern.IsPartTime.ToString());
             simpleDataSet.RowData.Add("workPattern", job.WorkPattern.ToString());
+            simpleDataSet.RowData.Add("datePublished", DateTime.UtcNow.ToIso8601DateTime());
             if (job.AdvertHtml != null)
             {
                 simpleDataSet.RowData.Add("fullText", _tagSanitiser != null ? _tagSanitiser.StripTags(job.AdvertHtml.ToHtmlString()) : job.AdvertHtml.ToHtmlString());
