@@ -3713,7 +3713,7 @@
     <Compile Include="Jobs\BaseJobsViewModel.cs" />
     <Compile Include="Jobs\JobAdvertViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\JobAdvertController.cs" />
-    <Compile Include="Jobs\SearchViewModelFromUmbraco.cs" />
+    <Compile Include="Jobs\JobsSearchViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\JobsLookupValue.cs" />
     <Compile Include="Jobs\JobsParseResult.cs" />
     <Compile Include="Jobs\JobsRssController.cs" />
@@ -3726,7 +3726,6 @@
     <Compile Include="Jobs\JobsSearchContentTab.cs" />
     <Compile Include="Jobs\JobsSearchController.cs" />
     <Compile Include="Jobs\JobsSearchDocumentType.cs" />
-    <Compile Include="Jobs\JobsSearchSurfaceController.cs" />
     <Compile Include="Jobs\JobsSearchViewModel.cs" />
     <Compile Include="ApiControllers\UmbracoSetupApiController.cs" />
     <Compile Include="ApiControllers\WasteTypesController.cs" />

@@ -25,18 +25,15 @@
         <h1>@Model.Metadata.Title</h1>
         @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
 
-        @using (Html.BeginUmbracoForm<JobsSearchSurfaceController>("Search", null, new Dictionary<string, object> { { "class", "form short-form" } }))
-        {
-            @Html.AntiForgeryToken();
-
+        <form method="GET" class="form short-form" action="@(Model.SearchResultsPage?.Url)">
             <div>
                 <label for="keywords">Keywords</label>
                 <input type="search" name="keywords" id="keywords" />
             </div>
 
                 <div>
-                    <label for="locations">Location</label>
-                    <select multiple="multiple" name="locations" id="locations">
+                    <label for="location">Location</label>
+                    <select multiple="multiple" name="location" id="location">
                         @foreach (var location in Model.Locations)
                         {
                             <option value="@location.Text">@location.Text (@location.Count)</option>
@@ -45,8 +42,8 @@
                 </div>
 
                 <div>
-                    <label for="jobTypes">Category</label>
-                    <select multiple="multiple" name="jobTypes" id="jobTypes">
+                    <label for="type">Category</label>
+                    <select multiple="multiple" name="type" id="type">
                         @foreach (var jobType in Model.JobTypes)
                         {
                             <option value="@jobType.Text">@jobType.Text (@jobType.Count)</option>
@@ -58,7 +55,7 @@
                     <legend>Salary</legend>
                     @foreach (var salaryRange in Model.SalaryRanges)
                     {
-                        <label><input type="checkbox" value="@salaryRange.Text.Replace(",", String.Empty)" name="salaryRanges" /> @salaryRange.Text (@salaryRange.Count)</label>
+                        <label><input type="checkbox" value="@salaryRange.Text.Replace(",", String.Empty)" name="salary" /> @salaryRange.Text (@salaryRange.Count)</label>
                     }
                 </fieldset>
 
@@ -66,12 +63,12 @@
                     <legend>Work pattern</legend>
                     @foreach (var workPattern in Model.WorkPatterns)
                     {
-                        <label><input type="checkbox" value="@workPattern.Text" name="workPatterns" /> @workPattern.Text (@workPattern.Count)</label>
+                        <label><input type="checkbox" value="@workPattern.Text" name="hours" /> @workPattern.Text (@workPattern.Count)</label>
                     }
                 </fieldset>
 
-                <input type="submit" />
-        }
+                <input type="submit" value="Search" />
+        </form>
     </div>
 </div>
 
