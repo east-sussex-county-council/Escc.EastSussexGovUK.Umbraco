@@ -103,22 +103,38 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             var jobsData = GetAllData("Job");
             foreach (var job in jobsData)
             {
-                // If it's an existing job, preserve the date it was published
-                if (currentIndexedJobs.ContainsKey(job.NodeDefinition.NodeId) && currentIndexedJobs[job.NodeDefinition.NodeId] != null)
+                try
                 {
-                    job.RowData["datePublished"] = ((DateTime)currentIndexedJobs[job.NodeDefinition.NodeId]).ToIso8601DateTime();
-                }
+                    // If it's an existing job, preserve the date it was published
+                    if (currentIndexedJobs.ContainsKey(job.NodeDefinition.NodeId) && currentIndexedJobs[job.NodeDefinition.NodeId] != null)
+                    {
+                        job.RowData["datePublished"] = ((DateTime)currentIndexedJobs[job.NodeDefinition.NodeId]).ToIso8601DateTime();
+                    }
 
-                IndexProvider.DeleteFromIndex(job.NodeDefinition.NodeId.ToString());
-                IndexProvider.ReIndexNode(job.RowData.ToExamineXml(job.NodeDefinition.NodeId, "Job"), "Job");
-                jobsToDelete.Remove(job.NodeDefinition.NodeId);
+                    IndexProvider.DeleteFromIndex(job.NodeDefinition.NodeId.ToString());
+                    IndexProvider.ReIndexNode(job.RowData.ToExamineXml(job.NodeDefinition.NodeId, "Job"), "Job");
+                    jobsToDelete.Remove(job.NodeDefinition.NodeId);
+                }
+                catch (Exception ex)
+                {
+                    ex.ToExceptionless().Submit();
+                    LogHelper.Info<BaseJobsIndexer>(ex.Message + $" reindexing job {job.NodeDefinition.NodeId}");
+                }
             }
 
             // Any jobs not found in the new data can be deleted
             foreach (var jobId in jobsToDelete)
             {
-                LogHelper.Info<BaseJobsIndexer>($"Deleting job '{jobId}' from Examine index");
-                IndexProvider.DeleteFromIndex(jobId.ToString());
+                try
+                { 
+                    LogHelper.Info<BaseJobsIndexer>($"Deleting job '{jobId}' from Examine index");
+                    IndexProvider.DeleteFromIndex(jobId.ToString());
+                }
+                catch (Exception ex)
+                {
+                    ex.ToExceptionless().Submit();
+                    LogHelper.Info<BaseJobsIndexer>(ex.Message + $" deleting job {jobId}");
+                }
             }
         }
 
