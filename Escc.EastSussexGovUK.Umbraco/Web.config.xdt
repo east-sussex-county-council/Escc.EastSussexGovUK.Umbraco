@@ -369,6 +369,11 @@
             </conditions>
             <action type="Redirect" url="https://www.eastsussex.gov.uk/{R:1}" appendQueryString="true" redirectType="Permanent" />
         </rule>
+        <rule name="Location template *.vcf download" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+        <rule name="Location template *.vcf download" stopProcessing="true" xdt:Transform="Insert">
+          <match url="(.*).vcf" />
+          <action type="Rewrite" url="/{R:1}?alttemplate=LocationVCard" />
+        </rule>
       </rules>
     </rewrite>
 
