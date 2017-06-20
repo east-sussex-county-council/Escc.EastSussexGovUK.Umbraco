@@ -365,9 +365,8 @@
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Our.Umbraco.FileSystemProviders.Azure, Version=0.5.7.143, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoFileSystemProviders.Azure.0.5.7-beta\lib\net45\Our.Umbraco.FileSystemProviders.Azure.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Our.Umbraco.FileSystemProviders.Azure, Version=0.5.8.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoFileSystemProviders.Azure.0.5.8-escc-000001\lib\net45\Our.Umbraco.FileSystemProviders.Azure.dll</HintPath>
     </Reference>
     <Reference Include="Our.Umbraco.PropertyEditorConverters, Version=2.1.5.35, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Our.Umbraco.CoreValueConverters.2.1.5\lib\net45\Our.Umbraco.PropertyEditorConverters.dll</HintPath>
@@ -499,8 +498,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Umbraco.Inception, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.Inception.3.1.2\lib\Umbraco.Inception.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\Escc.Umbraco.Inception.3.1.3\lib\Umbraco.Inception.dll</HintPath>
     </Reference>
     <Reference Include="umbraco.MacroEngines, Version=1.0.5948.18149, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.4.3\lib\umbraco.MacroEngines.dll</HintPath>
