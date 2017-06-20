@@ -45,30 +45,5 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// Gets or sets the query that led to these results
         /// </summary>
         public JobSearchQuery Query { get; set; }
-
-        /// <summary>
-        /// Gets or sets all the possible locations
-        /// </summary>
-        public IList<JobsLookupValue> LocationLookupValues { get; set; }
-
-        /// <summary>
-        /// Gets or sets all the possible job types
-        /// </summary>
-        public IList<JobsLookupValue> JobTypeLookupValues { get; set; }
-
-        /// <summary>
-        /// Gets or sets all the possible organisations
-        /// </summary>
-        public IList<JobsLookupValue> OrganisationLookupValues { get; set; }
-
-        /// <summary>
-        /// Gets or sets all the salary ranges
-        /// </summary>
-        public IList<JobsLookupValue> SalaryRangeLookupValues { get; set; }
-
-        /// <summary>
-        /// Gets or sets all the work patterns
-        /// </summary>
-        public IList<JobsLookupValue> WorkPatternLookupValues { get; set; }
     }
 }

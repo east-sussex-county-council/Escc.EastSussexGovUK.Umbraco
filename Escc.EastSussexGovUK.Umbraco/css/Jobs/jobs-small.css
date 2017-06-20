@@ -91,3 +91,16 @@ label.SA-smalltext { display: inline; padding: 0 1em 0 .3em;vertical-align: sub;
 /* On a job advert, place the apply link on mobiles so that it can conveniently be tapped with the thumb */
 .mobile-nav { position: fixed; bottom: 0; background: #fff; background: rgba(255,255,255,.8); width: 100%; text-align: center; }
 .footer-with-mobile-nav .footer { padding-bottom: 5em; }
+
+/* Replacement job alerts 
+
+   A radio button or checkbox list with only a few options can be horizontal.
+    <fieldset class="radioButtonList radio-button-list-simple">
+        <legend>Field label</legend>
+        <label><input /> Option 1</label>
+        <label><input /> Option 2</label>
+    </fielset>
+*/
+.text-content .short-form fieldset.radio-button-list-simple > label { display: inline-block; position: relative; margin-right: 1em; }
+
+.success { background: #A7CBA9; padding: 9px 18px; border-radius: 5px; margin: 18px 0; }

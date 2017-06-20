@@ -365,9 +365,8 @@
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Our.Umbraco.FileSystemProviders.Azure, Version=0.5.7.143, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoFileSystemProviders.Azure.0.5.7-beta\lib\net45\Our.Umbraco.FileSystemProviders.Azure.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Our.Umbraco.FileSystemProviders.Azure, Version=0.5.8.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoFileSystemProviders.Azure.0.5.8-escc-000001\lib\net45\Our.Umbraco.FileSystemProviders.Azure.dll</HintPath>
     </Reference>
     <Reference Include="Our.Umbraco.PropertyEditorConverters, Version=2.1.5.35, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Our.Umbraco.CoreValueConverters.2.1.5\lib\net45\Our.Umbraco.PropertyEditorConverters.dll</HintPath>
@@ -3664,6 +3663,10 @@
     <Compile Include="Examine\SearchField.cs" />
     <Compile Include="Examine\WildcardSuffixFilter.cs" />
     <Compile Include="HomePage\HomePageViewModelFromUmbraco.cs" />
+    <Compile Include="Jobs\Alerts\AzureTableStorageAlertsRepository.cs" />
+    <Compile Include="Jobs\Alerts\IAlertsRepository.cs" />
+    <Compile Include="Jobs\Alerts\JobAlert.cs" />
+    <Compile Include="Jobs\Alerts\JobAlertTableEntity.cs" />
     <Compile Include="Jobs\Examine\BaseLookupValuesIndexer.cs" />
     <Compile Include="Examine\LuceneDateTimeParser.cs" />
     <Compile Include="Jobs\IJobsLookupValuesProvider.cs" />
@@ -3676,6 +3679,8 @@
     <Compile Include="Jobs\Examine\JobsDataFromExamine.cs" />
     <Compile Include="Jobs\Examine\BaseJobsIndexer.cs" />
     <Compile Include="Jobs\Examine\JobsIndexerApiController.cs" />
+    <Compile Include="Jobs\Alerts\JobAlertsSurfaceController.cs" />
+    <Compile Include="Jobs\Alerts\JobAlertsApiController.cs" />
     <Compile Include="Jobs\LocationHashTag.cs" />
     <Compile Include="Jobs\RelativeJobUrlGenerator.cs" />
     <Compile Include="Jobs\ProblemJobsRssController.cs" />

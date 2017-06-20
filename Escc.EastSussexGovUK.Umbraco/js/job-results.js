@@ -5,17 +5,11 @@
         // Validate the email alerts form to make it harder to send bad data to the job alerts service
         $("form.job-alerts").submit(function () {
             var errors = [];
-            if (!$("input[name=vDeliveryFrequency]:checked").length) {
-                errors.push("Please select how often you want to get alerts");
-            }
-            if (!$("input[name=dExpirationDate]:checked").length) {
-                errors.push("Please select how long you want to get alerts");
-            }
-            if (!$("#semail").val()) {
+            if (!$("#email").val()) {
                 errors.push("Please enter the address you would like alerts to be sent to");
             }
-            var validEmail = new RegExp("^[0-9A-Za-z'\.\-_]{1,127}@[0-9A-Za-z'\.\-_]{1,127}$");
-            if (!validEmail.test($("#semail").val())) {
+            var validEmail = new RegExp("^[0-9A-Za-z'\.\_-]{1,127}@[0-9A-Za-z'\.\_-]{1,127}$");
+            if (!validEmail.test($("#email").val())) {
                 errors.push("Please enter a valid email address to send the alerts to");
             }
 
