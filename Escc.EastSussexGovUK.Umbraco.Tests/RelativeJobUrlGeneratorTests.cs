@@ -15,7 +15,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         public void SpacesAreConvertedToDashes()
         {
             var baseUrl = new Uri("https://www.example.org/job");
-            var job = new Job() { Id = "12345", JobTitle = "Example job title", Location = "Lewes", Reference = "ABC123"};
+            var job = new Job() { Id = 12345, JobTitle = "Example job title", Location = "Lewes", Reference = "ABC123"};
             var generator = new RelativeJobUrlGenerator(baseUrl);
 
             job.Url = generator.GenerateUrl(job);
@@ -27,7 +27,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         public void SlashesAreRemovedFromTheUrl()
         {
             var baseUrl = new Uri("https://www.example.org/job");
-            var job = new Job() { Id = "12345", JobTitle = "Example job / Typical title", Location = "Lewes", Reference = "ABC123" };
+            var job = new Job() { Id = 12345, JobTitle = "Example job / Typical title", Location = "Lewes", Reference = "ABC123" };
             var generator = new RelativeJobUrlGenerator(baseUrl);
 
             job.Url = generator.GenerateUrl(job);

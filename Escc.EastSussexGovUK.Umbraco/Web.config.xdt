@@ -275,7 +275,7 @@
 
   <system.web>
     <compilation xdt:Transform="RemoveAttributes(debug)" />
-    <compilation targetFramework="4.5.2" xdt:Transform="SetAttributes(targetFramework)" />
+    <compilation targetFramework="4.6.2" xdt:Transform="SetAttributes(targetFramework)" />
 
     <globalization xdt:Transform="Remove" />
     <globalization culture="en-GB" uiCulture="en-GB" xdt:Transform="Insert"/>
