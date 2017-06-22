@@ -162,25 +162,28 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 
                 deposit.Owner = new PersonName();
                 if (result.Fields.Keys.Contains("HonorificTitle_Content")) deposit.Owner.Titles.Add(result.Fields["HonorificTitle_Content"]);
-                deposit.Owner.GivenNames.Add(result.Fields["GivenName_Content"]);
-                deposit.Owner.FamilyName = result.Fields["FamilyName_Content"];
+                if (result.Fields.Keys.Contains("GivenName_Content")) deposit.Owner.GivenNames.Add(result.Fields["GivenName_Content"]);
+                if (result.Fields.Keys.Contains("FamilyName_Content")) deposit.Owner.FamilyName = result.Fields["FamilyName_Content"];
                 if (result.Fields.Keys.Contains("HonorificSuffix_Content")) deposit.Owner.Suffixes.Add(result.Fields["HonorificSuffix_Content"]);
-                var locationJson = result.Fields["Location_Content"];
-                if (!String.IsNullOrEmpty(locationJson))
+                if (result.Fields.Keys.Contains("Location_Content"))
                 {
-                    deposit.Address = JsonConvert.DeserializeObject<BS7666Address>(locationJson);
-                    var latLon = JsonConvert.DeserializeObject<LatLon>(locationJson);
-                    if (latLon != null && (latLon.Lat != String.Empty || latLon.Lon != String.Empty))
+                    var locationJson = result.Fields["Location_Content"];
+                    if (!String.IsNullOrEmpty(locationJson))
                     {
-                        double lat, lon;
-                        Double.TryParse(latLon.Lat, out lat);
-                        Double.TryParse(latLon.Lon, out lon);
-                        deposit.Coordinates = new Geo.LatitudeLongitude(lat, lon);
+                        deposit.Address = JsonConvert.DeserializeObject<BS7666Address>(locationJson);
+                        var latLon = JsonConvert.DeserializeObject<LatLon>(locationJson);
+                        if (latLon != null && (latLon.Lat != String.Empty || latLon.Lon != String.Empty))
+                        {
+                            double lat, lon;
+                            Double.TryParse(latLon.Lat, out lat);
+                            Double.TryParse(latLon.Lon, out lon);
+                            deposit.Coordinates = new Geo.LatitudeLongitude(lat, lon);
+                        }
                     }
                 }
-                deposit.Parish = result.Fields["Parish_Content"];
-                deposit.Metadata.Description = result.Fields["pageDescription_Content"];
-                deposit.OrdnanceSurveyGridReference = result.Fields["GridReference_Content"];
+                if (result.Fields.Keys.Contains("Parish_Content")) deposit.Parish = result.Fields["Parish_Content"];
+                if (result.Fields.Keys.Contains("pageDescription_Content")) deposit.Metadata.Description = result.Fields["pageDescription_Content"];
+                if (result.Fields.Keys.Contains("GridReference_Content")) deposit.OrdnanceSurveyGridReference = result.Fields["GridReference_Content"];
                 if (result.Fields.Keys.Contains("DateDeposited_Content"))
                 {
                     deposit.DateDeposited = new DateTime(Int32.Parse(result.Fields["DateDeposited_Content"].Substring(0, 4)), Int32.Parse(result.Fields["DateDeposited_Content"].Substring(4, 2)), Int32.Parse(result.Fields["DateDeposited_Content"].Substring(6, 2)));
