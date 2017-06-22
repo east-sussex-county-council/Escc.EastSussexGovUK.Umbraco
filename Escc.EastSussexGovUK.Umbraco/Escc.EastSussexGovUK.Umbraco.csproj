@@ -2606,7 +2606,6 @@
     <Content Include="Umbraco_Client\Installer\Images\ui-icons_ffffff_256x240.png" />
     <Content Include="Umbraco_Client\Installer\Images\zoom-in.png" />
     <Content Include="Umbraco_Client\Installer\Js\ie-png.js" />
-    <Content Include="Umbraco_Client\Installer\Js\jquery.1.4.4.js" />
     <Content Include="Umbraco_Client\Installer\Js\jquery.main.js" />
     <Content Include="Umbraco_Client\Installer\Js\jquery.ui.selectmenu.js" />
     <Content Include="Umbraco_Client\Installer\Js\PackageInstaller.js" />
