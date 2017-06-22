@@ -56,12 +56,15 @@
             </p>
         }
         @{
-                        var hasAdditional = Model.Job.AdditionalInformationHtml != null && !String.IsNullOrEmpty(Model.Job.AdditionalInformationHtml.ToHtmlString());
-                        var additionalHtml = hasAdditional ? Model.Job.AdditionalInformationHtml.ToHtmlString().Replace("<p>", "<p><small>").Replace("</p>", "</small></p>") : String.Empty;
-                        var hasEqualOpps = Model.Job.EqualOpportunitiesHtml != null && !String.IsNullOrEmpty(Model.Job.EqualOpportunitiesHtml.ToHtmlString());
-                        var equalOpps = hasEqualOpps ? Model.Job.EqualOpportunitiesHtml.ToHtmlString().Replace("<p>", "<p><small>").Replace("</p>", "</small></p>") : String.Empty;
-                        if (hasAdditional && hasEqualOpps)
-                        {
+            var hasAdditional = Model.Job.AdditionalInformationHtml != null && !String.IsNullOrEmpty(Model.Job.AdditionalInformationHtml.ToHtmlString());
+            var additionalHtml = hasAdditional ? Model.Job.AdditionalInformationHtml.ToHtmlString()
+                                                    .Replace("<p>", "<p><small>").Replace("</p>", "</small></p>")
+                                                    .Replace("<h3>", "<h3><small>").Replace("</h3>", "</small></h3>") 
+                                               : String.Empty;
+            var hasEqualOpps = Model.Job.EqualOpportunitiesHtml != null && !String.IsNullOrEmpty(Model.Job.EqualOpportunitiesHtml.ToHtmlString());
+            var equalOpps = hasEqualOpps ? Model.Job.EqualOpportunitiesHtml.ToHtmlString().Replace("<p>", "<p><small>").Replace("</p>", "</small></p>") : String.Empty;
+            if (hasAdditional && hasEqualOpps)
+            {
                 <div class="large">
                     <div class="tablist" role="application">
                         <ul role="tablist">
@@ -92,12 +95,12 @@
             else if (hasAdditional)
             {
                 <h2>Additional information</h2>
-                @Html.Raw(Model.Job.AdditionalInformationHtml.ToHtmlString().Replace("<p>", "<p><small>").Replace("</p>", "</small></p>"))
+                @Html.Raw(additionalHtml)
             }
             else if (hasEqualOpps)
             {
                 <h2>Equal opportunities</h2>
-                @Html.Raw(Model.Job.EqualOpportunitiesHtml.ToHtmlString().Replace("<p>", "<p><small>").Replace("</p>", "</small></p>"))
+                @Html.Raw(equalOpps)
             }
         }
     </div>

@@ -39,7 +39,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 HeaderBackgroundImageCaption = UmbracoContent.GetPropertyValue<string>("HeaderBackgroundImageCaption_Content"),
                 LoginPage = BuildUri("LoginPage_Content"),
                 SearchPage = BuildUri("SearchPage_Content"),
-                SearchResultsPage = BuildUri("SearchResultsPage_Content"),
+                SearchResultsPageForHeader = BuildUri("SearchResultsPage_Content"),
                 TileNavigation = RelatedLinksService.BuildRelatedLinksViewModelFromUmbracoContent(UmbracoContent, "TileNavigation_Content"),
                 TileImages = BuildImages("TileImages_Content"),
                 CampaignImage = BuildImage("CampaignImage_Content"),

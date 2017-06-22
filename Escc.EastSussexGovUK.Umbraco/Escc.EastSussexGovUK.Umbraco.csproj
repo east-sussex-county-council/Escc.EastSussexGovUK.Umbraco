@@ -368,9 +368,8 @@
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Our.Umbraco.FileSystemProviders.Azure, Version=0.5.7.143, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoFileSystemProviders.Azure.0.5.7-beta\lib\net45\Our.Umbraco.FileSystemProviders.Azure.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Our.Umbraco.FileSystemProviders.Azure, Version=0.5.8.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoFileSystemProviders.Azure.0.5.8-escc-000001\lib\net45\Our.Umbraco.FileSystemProviders.Azure.dll</HintPath>
     </Reference>
     <Reference Include="Our.Umbraco.PropertyEditorConverters, Version=2.1.5.35, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Our.Umbraco.CoreValueConverters.2.1.5\lib\net45\Our.Umbraco.PropertyEditorConverters.dll</HintPath>
@@ -3562,7 +3561,6 @@
     <Content Include="Umbraco\Webservices\TreeDataService.ashx" />
     <Content Include="Umbraco\Webservices\UltimatePickerAutoCompleteHandler.ashx" />
     <Content Include="Umbraco\Xslt\Web.config" />
-    <None Include="UrlRewriting.config.xdt" />
     <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
     <Content Include="Views\Partials\Grid\Editors\Rte.cshtml" />
     <Content Include="Views\Partials\Grid\Editors\Media.cshtml" />
@@ -3698,6 +3696,7 @@
     <Compile Include="Jobs\JobsRssViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\TalentLink\JobsLookupValuesFromTalentLink.cs" />
     <Compile Include="Jobs\TalentLink\PublicJobsLookupValuesIndexer.cs" />
+    <Compile Include="Jobs\TalentLink\RedeploymentHeaderFormatter.cs" />
     <Compile Include="Jobs\TalentLink\RedeploymentJobsLookupValuesIndexer.cs" />
     <Compile Include="Jobs\TalentLink\RemoveDuplicateTextFormatter.cs" />
     <Compile Include="Jobs\RemoveElementByNameAndContentFormatter.cs" />
@@ -3725,7 +3724,7 @@
     <Compile Include="Jobs\BaseJobsViewModel.cs" />
     <Compile Include="Jobs\JobAdvertViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\JobAdvertController.cs" />
-    <Compile Include="Jobs\SearchViewModelFromUmbraco.cs" />
+    <Compile Include="Jobs\JobsSearchViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\JobsLookupValue.cs" />
     <Compile Include="Jobs\JobsParseResult.cs" />
     <Compile Include="Jobs\JobsRssController.cs" />
@@ -3738,7 +3737,6 @@
     <Compile Include="Jobs\JobsSearchContentTab.cs" />
     <Compile Include="Jobs\JobsSearchController.cs" />
     <Compile Include="Jobs\JobsSearchDocumentType.cs" />
-    <Compile Include="Jobs\JobsSearchSurfaceController.cs" />
     <Compile Include="Jobs\JobsSearchViewModel.cs" />
     <Compile Include="ApiControllers\UmbracoSetupApiController.cs" />
     <Compile Include="ApiControllers\WasteTypesController.cs" />
