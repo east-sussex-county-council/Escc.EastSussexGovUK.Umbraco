@@ -142,6 +142,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
         {
             LogHelper.Info<BaseJobsIndexer>($"Building Examine index item for job '{job.Id}'");
 
+            var salary = job.Salary.SalaryRange;
+            if (_tagSanitiser != null) salary = _tagSanitiser.StripTags(salary);
+            var salaryWithStopWords = salary;
+            if (_stopWordsRemover != null) {
+                salary = _stopWordsRemover.Filter(salary);
+            }
+
             var simpleDataSet = new SimpleDataSet { NodeDefinition = new IndexedNode(), RowData = new Dictionary<string, string>() };
 
             simpleDataSet.NodeDefinition.NodeId = job.Id;
@@ -154,7 +161,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             simpleDataSet.RowData.Add("organisationDisplay", job.Organisation);
             simpleDataSet.RowData.Add("location", _stopWordsRemover != null ? _stopWordsRemover.Filter(job.Location) : job.Location);
             simpleDataSet.RowData.Add("locationDisplay", job.Location); // because Somewhere-on-Sea needs to lose the "on" for searching but keep it for display
-            simpleDataSet.RowData.Add("salary", _tagSanitiser != null ? _tagSanitiser.StripTags(_stopWordsRemover != null ? _stopWordsRemover.Filter(job.Salary.SalaryRange) : job.Salary.SalaryRange) : _stopWordsRemover != null ? _stopWordsRemover.Filter(job.Salary.SalaryRange) : job.Salary.SalaryRange);
+            simpleDataSet.RowData.Add("salary", salary);
+            simpleDataSet.RowData.Add("salaryDisplay", salaryWithStopWords); // so that it's not displayed with stop words removed
             simpleDataSet.RowData.Add("salaryRange", _stopWordsRemover != null ? _stopWordsRemover.Filter(job.Salary.SearchRange) : job.Salary.SearchRange);
             simpleDataSet.RowData.Add("salaryMin", job.Salary.MinimumSalary?.ToString("D7") ?? String.Empty);
             simpleDataSet.RowData.Add("salaryMax", job.Salary.MaximumSalary?.ToString("D7") ?? String.Empty);

@@ -229,7 +229,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                     ApplyUrl = (result.Fields.ContainsKey("applyUrl") && !String.IsNullOrEmpty(result["applyUrl"])) ? new Uri(result["applyUrl"]) : null
                 };
 
-                job.Salary.SalaryRange = result.Fields.ContainsKey("salary") ? result["salary"] : String.Empty;
+                job.Salary.SalaryRange = result.Fields.ContainsKey("salaryDisplay") ? result["salaryDisplay"] : String.Empty;
                 job.Salary.SearchRange = result.Fields.ContainsKey("salaryRange") ? result["salaryRange"] : String.Empty;
                 if (result.Fields.ContainsKey("salaryMin") && !String.IsNullOrEmpty(result["salaryMin"]))
                 {
