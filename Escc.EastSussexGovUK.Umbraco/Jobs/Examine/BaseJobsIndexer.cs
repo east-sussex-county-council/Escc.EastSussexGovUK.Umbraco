@@ -16,6 +16,7 @@ using Umbraco.Web.Security;
 using Exceptionless;
 using System.Globalization;
 using Examine.Providers;
+using System.Text;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
 {
@@ -180,7 +181,24 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             simpleDataSet.RowData.Add("datePublished", DateTime.UtcNow.ToIso8601DateTime());
             if (job.AdvertHtml != null)
             {
-                simpleDataSet.RowData.Add("fullText", _tagSanitiser != null ? _tagSanitiser.StripTags(job.AdvertHtml.ToHtmlString()) : job.AdvertHtml.ToHtmlString());
+                var fullText = job.AdvertHtml.ToHtmlString();
+                if (_tagSanitiser != null) fullText = _tagSanitiser.StripTags(fullText);
+
+                // Append other fields as keywords, otherwise a search term that's a good match will not be found if it has terms from two fields,
+                // eg Job Title (full time)
+                const string space = " ";
+                fullText = new StringBuilder(fullText)
+                                .Append(space).Append(job.Reference)
+                                .Append(space).Append(job.JobTitle)
+                                .Append(space).Append(job.Organisation)
+                                .Append(space).Append(job.Location)
+                                .Append(space).Append(job.JobType)
+                                .Append(space).Append(job.ContractType)
+                                .Append(space).Append(job.Department)
+                                .Append(space).Append(job.WorkPattern.ToString())
+                                .ToString();
+
+                simpleDataSet.RowData.Add("fullText", fullText);
                 simpleDataSet.RowData.Add("fullHtml", job.AdvertHtml.ToHtmlString());
             }
             if (job.AdditionalInformationHtml != null)
