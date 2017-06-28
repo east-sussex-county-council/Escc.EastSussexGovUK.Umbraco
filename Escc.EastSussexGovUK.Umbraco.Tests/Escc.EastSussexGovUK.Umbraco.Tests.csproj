@@ -380,6 +380,7 @@
     <Compile Include="LuceneTokenisedQueryBuilderTests.cs" />
     <Compile Include="RemoveDuplicateTextFormatterTests.cs" />
     <Compile Include="UseFormForEmailLinksFormatterTests.cs" />
+    <Compile Include="WildcardSuffixFilterTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

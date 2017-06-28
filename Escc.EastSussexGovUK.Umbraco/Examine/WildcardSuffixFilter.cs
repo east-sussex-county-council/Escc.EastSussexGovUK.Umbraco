@@ -19,7 +19,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Examine
         /// <returns></returns>
         public string Filter(string value)
         {
-            return Regex.Replace(value, @"([^\s])\b", "$1*");
+            value = Regex.Replace(value, @"([^\s-(])\b", "$1*");
+            value = value.Replace("*-", "-");
+            return value;
         }
     }
 }
