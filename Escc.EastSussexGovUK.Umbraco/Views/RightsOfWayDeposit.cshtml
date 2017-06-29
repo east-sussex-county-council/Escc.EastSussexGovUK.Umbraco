@@ -31,14 +31,23 @@
 
             @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
 
-            <table>
+            <table class="deposit">
                 <tbody>
                     <tr><th scope="row">Reference</th><td>@Model.Reference</td></tr>
+                    @if (Model.Owner != null)
+                    {
                     <tr><th scope="row">Owner</th><td>@Model.Owner</td></tr>
+                    }
+                    @if (Model.Address.HasAddress())
+                    {
                     <tr><th scope="row">Address</th><td>@Model.Address.ToString()</td></tr>
+                    }
                     <tr><th scope="row">Parish</th><td>@Model.Parish</td></tr>
                     <tr><th scope="row">Description</th><td>@Model.Metadata.Description</td></tr>
+                    @if (!String.IsNullOrEmpty(Model.OrdnanceSurveyGridReference))
+                    {
                     <tr><th scope="row">Ordnance Survey grid reference</th><td>@Model.OrdnanceSurveyGridReference</td></tr>
+                    }
                     <tr><th scope="row">Date deposited</th><td>@Model.DateDeposited.ToBritishDateWithDay()</td></tr>
                     <tr><th scope="row">Expires</th><td>@Model.DateExpires.ToBritishDateWithDay()</td></tr>
                 </tbody>
