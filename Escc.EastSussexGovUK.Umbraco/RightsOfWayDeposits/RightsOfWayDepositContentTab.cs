@@ -11,7 +11,7 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
     /// <seealso cref="Umbraco.Inception.BL.TabBase" />
     public class RightsOfWayDepositContentTab : TabBase
     {
-        [UmbracoProperty("Deposit document", "DepositDocument", BuiltInUmbracoDataTypes.MediaPicker, sortOrder: 1, Description = "Select the deposit document containing the map, statement and declaration")]
+        [UmbracoProperty("Deposit document", "DepositDocument", BuiltInUmbracoDataTypes.MultipleMediaPicker, sortOrder: 1, Description = "Select the deposit documents containing the map, statement and declaration")]
         public string DepositDocument { get; set; }
 
         [UmbracoProperty("Owner's title", "HonorificTitle", BuiltInUmbracoDataTypes.Textbox, sortOrder: 3, Description = "For example, Dr or Cllr")]

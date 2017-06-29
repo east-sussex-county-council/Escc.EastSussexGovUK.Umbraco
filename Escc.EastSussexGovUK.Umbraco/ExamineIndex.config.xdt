@@ -99,7 +99,6 @@
       <add Name="parentID" />
     </IndexAttributeFields>
     <IndexUserFields>
-      <add Name="DepositDocument_Content" />
       <add Name="HonorificTitle_Content" />
       <add Name="GivenName_Content" />
       <add Name="FamilyName_Content" EnableSorting="true" Type="STRING" />

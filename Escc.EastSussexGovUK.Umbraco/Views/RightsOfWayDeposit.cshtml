@@ -44,15 +44,21 @@
                 </tbody>
             </table>
 
-            @if (Model.DepositUrl != null)
+            @if (Model.DepositDocuments.Any())
             {
-            <p class="main-action"><a href="@Model.DepositUrl">Download the map, statement and declaration</a></p>
+                <h2>Deposit documents</h2>
+                <ul>
+                    @foreach (var depositDocument in Model.DepositDocuments)
+                    {
+                    <li><a href="@depositDocument.Url">@depositDocument.Text</a></li>
+                    }
+                </ul>
             }
 
             @if (Model.Coordinates != null)
             {
                 <h2>Map of the area affected</h2>
-                <p>For a detailed map of the site boundary, download the <a href="@Model.DepositUrl">map, statement and declaration</a>.</p>
+                <p>For a detailed map of the site boundary, download the deposit documents.</p>
                 <div id="map" data-lat="@Model.Coordinates.Latitude" data-lon="@Model.Coordinates.Longitude"></div>
                 <p><a href="https://www.google.com/maps/dir//@HttpUtility.UrlEncode(Model.Coordinates.Latitude.ToString()),@HttpUtility.UrlEncode(Model.Coordinates.Longitude.ToString())">Get directions in Google Maps</a></p>
             }

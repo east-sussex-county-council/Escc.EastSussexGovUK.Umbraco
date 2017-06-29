@@ -145,21 +145,6 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
                 var deposit = new RightsOfWayDepositViewModel();
                 deposit.Reference = result.Fields["nodeName"];
                 deposit.PageUrl = new Uri(_baseUrl, result.Fields["urlName"]);
-
-                if (result.Fields.Keys.Contains("DepositDocument_Content"))
-                {
-                    var mediaId = result.Fields["DepositDocument_Content"];
-                    int mediaItemId;
-                    if (Int32.TryParse(mediaId, out mediaItemId))
-                    {
-                        if (mediaItemId > 0)
-                        {
-                            var mediaItem = UmbracoContext.Current.MediaCache.GetById(mediaItemId);
-                            if (mediaItem != null) deposit.DepositUrl = new Uri(_baseUrl.Scheme + "://" + _baseUrl.Authority + mediaItem.Url);
-                        }
-                    }
-                }
-
                 deposit.Owner = new PersonName();
                 if (result.Fields.Keys.Contains("HonorificTitle_Content")) deposit.Owner.Titles.Add(result.Fields["HonorificTitle_Content"]);
                 deposit.Owner.GivenNames.Add(result.Fields["GivenName_Content"]);

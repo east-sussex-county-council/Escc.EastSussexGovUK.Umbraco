@@ -5,6 +5,8 @@ using Escc.AddressAndPersonalDetails;
 using Escc.Geo;
 using System;
 using Escc.Dates;
+using System.Collections.Generic;
+using Escc.Umbraco.PropertyTypes;
 
 namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 {
@@ -49,10 +51,17 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
             model.DateDeposited = UmbracoContent.GetPropertyValue<DateTime>("DateDeposited_Content");
             model.Metadata.DateIssued = model.DateDeposited.ToIso8601Date();
 
-            var depositDocument = UmbracoContent.GetPropertyValue<IPublishedContent>("DepositDocument_Content");
-            if (depositDocument != null && !String.IsNullOrEmpty(depositDocument.Url))
+            var depositDocuments = UmbracoContent.GetPropertyValue<IEnumerable<IPublishedContent>>("DepositDocument_Content");
+            if (depositDocuments != null)
             {
-                model.DepositUrl = new Uri(depositDocument.Url, UriKind.Relative);
+                foreach (var depositDocument in depositDocuments)
+                {
+                    model.DepositDocuments.Add(new HtmlLink()
+                    {
+                        Url = new Uri(depositDocument.Url, UriKind.Relative),
+                        Text = depositDocument.Name
+                    });
+                }
             }
 
             model.Parish = UmbracoContent.GetPropertyValue<string>("Parish_Content");

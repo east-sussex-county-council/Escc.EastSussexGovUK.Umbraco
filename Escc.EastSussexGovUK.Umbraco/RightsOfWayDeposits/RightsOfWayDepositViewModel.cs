@@ -1,7 +1,9 @@
 ﻿using Escc.AddressAndPersonalDetails;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.Geo;
+using Escc.Umbraco.PropertyTypes;
 using System;
+using System.Collections.Generic;
 
 namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 {
@@ -25,7 +27,7 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 
         public Uri PageUrl { get; set; }
 
-        public Uri DepositUrl { get; set; }
+        public IList<HtmlLink> DepositDocuments { get; private set; } = new List<HtmlLink>();
 
         public DateTime DateDeposited { get; set; }
 
