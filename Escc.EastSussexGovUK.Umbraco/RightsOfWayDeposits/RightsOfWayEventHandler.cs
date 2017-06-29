@@ -13,6 +13,7 @@ using Escc.AddressAndPersonalDetails;
 using Newtonsoft.Json;
 using Umbraco.Core.Logging;
 using Exceptionless;
+using Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor;
 
 namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 {
@@ -40,26 +41,44 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
                 {
                     if (e.Fields.ContainsKey("nodeTypeAlias") && e.Fields["nodeTypeAlias"] == "RightsOfWayDeposit")
                     {
-                        var owner = new PersonName();
-                        if (e.Fields.Keys.Contains("HonorificTitle_Content")) owner.Titles.Add(e.Fields["HonorificTitle_Content"]);
-                        owner.GivenNames.Add(e.Fields["GivenName_Content"]);
-                        owner.FamilyName = e.Fields["FamilyName_Content"];
-                        if (e.Fields.Keys.Contains("HonorificSuffix_Content")) owner.Suffixes.Add(e.Fields["HonorificSuffix_Content"]);
+                        var combinedFields = new StringBuilder()
+                            .AppendLine(e.Fields["nodeName"]);
 
-                        var locationJson = e.Fields["Location_Content"];
-                        BS7666Address address = null;
-                        if (!String.IsNullOrEmpty(locationJson))
+                            if (e.Fields.ContainsKey("Location_Content"))
                         {
-                            address = JsonConvert.DeserializeObject<BS7666Address>(locationJson);
+                            var locationJson = e.Fields["Location_Content"];
+                            if (!String.IsNullOrEmpty(locationJson))
+                            {
+                                var address = JsonConvert.DeserializeObject<BS7666Address>(locationJson);
+                                combinedFields.AppendLine(address.ToString());
+                                combinedFields.AppendLine(address.Postcode?.Replace(" ", String.Empty));
+                            }
                         }
 
-                        var combinedFields = new StringBuilder()
-                            .AppendLine(e.Fields["nodeName"])
-                            .AppendLine(owner.ToString())
-                            .AppendLine(address == null ? null : address.ToString())
-                            .AppendLine(address == null ? null : address.Postcode?.Replace(" ", String.Empty))
-                            .AppendLine(e.Fields["Parish_Content"])
-                            .AppendLine(e.Fields["pageDescription_Content"]);
+                        if (e.Fields.ContainsKey("Parish_Content"))
+                        {
+                            combinedFields.AppendLine(e.Fields["Parish_Content"]);
+                        }
+
+                        if (e.Fields.ContainsKey("pageDescription_Content"))
+                        {
+                            combinedFields.AppendLine(e.Fields["pageDescription_Content"]);
+                        }
+
+                        var ownerConverter = new PersonNamePropertyValueConverter();
+                        for (var i = 1; i <= 5; i++)
+                        {
+                            if (e.Fields.ContainsKey($"Owner{i}_Content"))
+                            {
+                                var owner = ownerConverter.ConvertDataToSource(null, e.Fields[$"Owner{i}_Content"], false);
+                                if (owner != null) combinedFields.AppendLine(owner.ToString());
+                            }
+
+                            if (e.Fields.ContainsKey($"OrganisationalOwner{i}_Content"))
+                            {
+                                combinedFields.AppendLine(e.Fields[$"OrganisationalOwner{i}_Content"]);
+                            }
+                        }
 
                         e.Fields.Add("RightsOfWayDepositSearch", combinedFields.ToString());
                     }

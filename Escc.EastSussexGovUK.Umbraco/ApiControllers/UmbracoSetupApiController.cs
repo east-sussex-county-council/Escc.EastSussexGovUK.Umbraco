@@ -33,6 +33,7 @@ using Exceptionless;
 using Umbraco.Inception.CodeFirst;
 using Umbraco.Web.WebApi;
 using Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits;
+using Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor;
 
 namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
 {
@@ -64,14 +65,14 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
             try
             {
                 // Insert data types before the document types that use them, otherwise the relevant property is not created
-                CheckboxDataType.CreateCheckboxDataType();
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(CheckboxDataType));
                 CacheDataType.CreateCacheDataType();
                 SocialMediaOrderDataType.CreateSocialMediaOrderDataType();
                 FacebookWidgetSettingsDataType.CreateFacebookWidgetSettingsDataType();
                 FacebookUrlDataType.CreateDataType();
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(ShowWidgetDataType));
-                TwitterScriptDataType.CreateDataType();
-                MultiNodeTreePickerDataType.CreateDataType();
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(TwitterScriptDataType));
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(MultiNodeTreePickerDataType));
                 UrlDataType.CreateDataType();
             
                 RichTextEsccStandardDataType.CreateDataType();
@@ -96,8 +97,8 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(ShareStyleDataType));
 
                 // Customer focus templates
-                EmailAddressDataType.CreateDataType();
-                PhoneNumberDataType.CreateDataType();
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(EmailAddressDataType));
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(PhoneNumberDataType));
                 LandingPageLayoutDataType.CreateLandingPageLayoutDataType();
                 OpeningHoursDataType.CreateDataType();
                 UkLocationDataType.CreateDataType(showEastingNorthing: false);
@@ -112,6 +113,7 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
                 // Rights of way document types
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(ReadOnlyDateDataType));
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(ParishDataType));
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(PersonNameDataType));
 
                 return Request.CreateResponse(HttpStatusCode.Created);
             }

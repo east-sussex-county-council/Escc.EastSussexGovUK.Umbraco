@@ -99,14 +99,19 @@
       <add Name="parentID" />
     </IndexAttributeFields>
     <IndexUserFields>
-      <add Name="HonorificTitle_Content" />
-      <add Name="GivenName_Content" />
-      <add Name="FamilyName_Content" EnableSorting="true" Type="STRING" />
-      <add Name="HonorificSuffix_Content" />
+      <add Name="Owner1_Content" />
+      <add Name="Owner2_Content" />
+      <add Name="Owner3_Content" />
+      <add Name="Owner4_Content" />
+      <add Name="Owner5_Content" />
+      <add Name="OrganisationalOwner1_Content" />
+      <add Name="OrganisationalOwner2_Content" />
+      <add Name="OrganisationalOwner3_Content" />
+      <add Name="OrganisationalOwner4_Content" />
+      <add Name="OrganisationalOwner5_Content" />
       <add Name="Location_Content" />
       <add Name="Parish_Content" EnableSorting="true" Type="STRING" />
       <add Name="pageDescription_Content" />
-      <add Name="GridReference_Content" />
       <add Name="DateDeposited_Content" EnableSorting="true" Type="DATE" />
       <add Name="DateExpires_Content" EnableSorting="true" Type="DATE" />
     </IndexUserFields>

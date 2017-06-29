@@ -15,7 +15,9 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
     {
         public string Reference { get; set; }
 
-        public PersonName Owner { get; set; }
+        public IList<PersonName> IndividualOwners { get; private set; } = new List<PersonName>();
+
+        public IList<string> OrganisationalOwners { get; private set; } = new List<string>();
 
         public BS7666Address Address { get; set; }
 

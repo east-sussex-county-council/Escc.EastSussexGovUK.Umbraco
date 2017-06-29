@@ -57,7 +57,6 @@
                 <thead>
                     <tr>
                         <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.ReferenceAscending ? "referencedescending" : "referenceascending")">Reference</a></th>
-                        <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.OwnerAscending ? "ownerdescending" : "ownerascending")">Owner</a></th>
                         <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.ParishAscending ? "parishdescending" : "parishascending")">Parishes</a></th>
                         <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.DateDepositedAscending ? "datedepositeddescending" : "datedepositedascending")">Date deposited</a></th>
                         <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.DateExpiresAscending ? "dateexpiresdescending" : "dateexpiresascending")">Expires</a></th>
@@ -67,7 +66,6 @@
                 {
                     <tr>
                         <td><a href="@deposit.PageUrl">@deposit.Reference</a></td>
-                        <td>@deposit.Owner</td>
                         <td><ul class="parishes">
                         @foreach (var parish in deposit.Parishes)
                         {
@@ -93,7 +91,7 @@
             }
             @if (Model.CsvUrl != null)
             {
-                <p><a href="@Model.CsvUrl" type="text/csv" rel="alternate" class="xls">Download deposits as CSV</a></p>
+                <p><a href="@Model.CsvUrl" type="text/csv" rel="alternate" class="xls">Download all deposits as CSV</a></p>
             }
         </div>
     </article>

@@ -34,9 +34,12 @@
             <table class="deposit">
                 <tbody>
                     <tr><th scope="row">Reference</th><td>@Model.Reference</td></tr>
-                    @if (Model.Owner != null)
+                    @if (Model.IndividualOwners.Any() || Model.OrganisationalOwners.Any())
                     {
-                    <tr><th scope="row">Owner</th><td>@Model.Owner</td></tr>
+                        <tr><th scope="row">Owner(s)</th><td><ul class="owners">
+                            @foreach (var owner in Model.IndividualOwners) { <li>@owner</li> }
+                            @foreach (var owner in Model.OrganisationalOwners) { <li>@owner</li> }
+                        </ul></td></tr>
                     }
                     @if (Model.Address.HasAddress())
                     {

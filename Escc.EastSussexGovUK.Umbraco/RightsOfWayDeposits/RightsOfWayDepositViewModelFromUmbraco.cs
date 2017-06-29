@@ -7,6 +7,7 @@ using System;
 using Escc.Dates;
 using System.Collections.Generic;
 using Escc.Umbraco.PropertyTypes;
+using Newtonsoft.Json;
 
 namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 {
@@ -34,15 +35,18 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
             var model = new RightsOfWayDepositViewModel();
             model.Reference = UmbracoContent.Name;
 
-            model.Owner = new PersonName();
-            model.Owner.Titles.Add(UmbracoContent.GetPropertyValue<string>("HonorificTitle_Content"));
-            model.Owner.GivenNames.Add(UmbracoContent.GetPropertyValue<string>("GivenName_Content"));
-            model.Owner.FamilyName = UmbracoContent.GetPropertyValue<string>("FamilyName_Content");
-            model.Owner.Suffixes.Add(UmbracoContent.GetPropertyValue<string>("HonorificSuffix_Content"));
+            for (var i = 1; i <= 5; i++)
+            {
+                var owner = UmbracoContent.GetPropertyValue<PersonName>($"Owner{i}_Content");
+                if (owner != null) { model.IndividualOwners.Add(owner); }
+
+                var org = UmbracoContent.GetPropertyValue<string>($"OrganisationalOwner{i}_Content");
+                if (!String.IsNullOrEmpty(org)) { model.OrganisationalOwners.Add(org); }
+            }
 
             var addressInfo = UmbracoContent.GetPropertyValue<AddressInfo>("Location_Content");
             model.Address = addressInfo.BS7666Address;
-            if (addressInfo.GeoCoordinate != null)
+            if (addressInfo.GeoCoordinate != null && (addressInfo.GeoCoordinate.Latitude != 0 || addressInfo.GeoCoordinate.Longitude != 0))
             {
                 model.Coordinates = new LatitudeLongitude(addressInfo.GeoCoordinate.Latitude, addressInfo.GeoCoordinate.Longitude);
             }
@@ -75,6 +79,7 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
             }
 
             model.Metadata.Description = UmbracoContent.GetPropertyValue<string>("pageDescription_Content");
+
             return model;
         }
     }

@@ -101,12 +101,6 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
                     case RightsOfWayDepositsSortOrder.ReferenceDescending:
                         criteria.OrderByDescending("nodeName");
                         break;
-                    case RightsOfWayDepositsSortOrder.OwnerAscending:
-                        criteria.OrderBy("FamilyName_Content");
-                        break;
-                    case RightsOfWayDepositsSortOrder.OwnerDescending:
-                        criteria.OrderByDescending("FamilyName_Content");
-                        break;
                     case RightsOfWayDepositsSortOrder.ParishAscending:
                         criteria.OrderBy("Parish_Content");
                         break;
@@ -145,39 +139,20 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
                 var deposit = new RightsOfWayDepositViewModel();
                 deposit.Reference = result.Fields["nodeName"];
                 deposit.PageUrl = new Uri(_baseUrl, result.Fields["urlName"]);
-                deposit.Owner = new PersonName();
-                if (result.Fields.Keys.Contains("HonorificTitle_Content")) deposit.Owner.Titles.Add(result.Fields["HonorificTitle_Content"]);
-                deposit.Owner.GivenNames.Add(result.Fields["GivenName_Content"]);
-                deposit.Owner.FamilyName = result.Fields["FamilyName_Content"];
-                if (result.Fields.Keys.Contains("HonorificSuffix_Content")) deposit.Owner.Suffixes.Add(result.Fields["HonorificSuffix_Content"]);
-                var locationJson = result.Fields["Location_Content"];
-                if (!String.IsNullOrEmpty(locationJson))
+
+                if (result.Fields.Keys.Contains("Parish_Content"))
                 {
-                    deposit.Address = JsonConvert.DeserializeObject<BS7666Address>(locationJson);
-                    var latLon = JsonConvert.DeserializeObject<LatLon>(locationJson);
-                    if (latLon != null && (latLon.Lat != String.Empty || latLon.Lon != String.Empty))
+                    var parishData = result.Fields["Parish_Content"];
+                    if (!String.IsNullOrEmpty(parishData))
                     {
-                        double lat, lon;
-                        Double.TryParse(latLon.Lat, out lat);
-                        Double.TryParse(latLon.Lon, out lon);
-                        deposit.Coordinates = new Geo.LatitudeLongitude(lat, lon);
+                        var parishes = parishData.Split(',');
+                        foreach (var parish in parishes)
+                        {
+                            deposit.Parishes.Add(parish);
+                        }
                     }
                 }
 
-                var parishData = result.Fields["Parish_Content"];
-                if (!String.IsNullOrEmpty(parishData))
-                {
-                    var parishes = parishData.Split(',');
-                    foreach (var parish in parishes)
-                    {
-                        deposit.Parishes.Add(parish);
-                    }
-                }
-                deposit.Metadata.Description = result.Fields["pageDescription_Content"];
-                if (result.Fields.Keys.Contains("GridReference_Content"))
-                {
-                    deposit.OrdnanceSurveyGridReference = result.Fields["GridReference_Content"];
-                }
                 if (result.Fields.Keys.Contains("DateDeposited_Content"))
                 {
                     deposit.DateDeposited = new DateTime(Int32.Parse(result.Fields["DateDeposited_Content"].Substring(0, 4)), Int32.Parse(result.Fields["DateDeposited_Content"].Substring(4, 2)), Int32.Parse(result.Fields["DateDeposited_Content"].Substring(6, 2)));
@@ -190,11 +165,6 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
             }
 
             return model;
-        }
-
-        private class LatLon {
-            public string Lat { get; set; }
-            public string Lon { get; set; }
         }
     }
 }
