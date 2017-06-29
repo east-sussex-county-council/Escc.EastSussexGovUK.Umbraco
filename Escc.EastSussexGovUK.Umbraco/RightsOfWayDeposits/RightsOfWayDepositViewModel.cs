@@ -23,7 +23,7 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 
         public string OrdnanceSurveyGridReference { get; set; }
 
-        public string Parish { get; set; }
+        public IList<string> Parishes { get; private set; } = new List<string>();
 
         public Uri PageUrl { get; set; }
 

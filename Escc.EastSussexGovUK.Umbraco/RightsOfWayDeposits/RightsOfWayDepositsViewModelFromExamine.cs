@@ -110,7 +110,7 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
                     case RightsOfWayDepositsSortOrder.ParishAscending:
                         criteria.OrderBy("Parish_Content");
                         break;
-                    case RightsOfWayDepositsSortOrder.ParishDecending:
+                    case RightsOfWayDepositsSortOrder.ParishDescending:
                         criteria.OrderByDescending("Parish_Content");
                         break;
                     case RightsOfWayDepositsSortOrder.DateDepositedAscending:
@@ -163,9 +163,21 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
                         deposit.Coordinates = new Geo.LatitudeLongitude(lat, lon);
                     }
                 }
-                deposit.Parish = result.Fields["Parish_Content"];
+
+                var parishData = result.Fields["Parish_Content"];
+                if (!String.IsNullOrEmpty(parishData))
+                {
+                    var parishes = parishData.Split(',');
+                    foreach (var parish in parishes)
+                    {
+                        deposit.Parishes.Add(parish);
+                    }
+                }
                 deposit.Metadata.Description = result.Fields["pageDescription_Content"];
-                deposit.OrdnanceSurveyGridReference = result.Fields["GridReference_Content"];
+                if (result.Fields.Keys.Contains("GridReference_Content"))
+                {
+                    deposit.OrdnanceSurveyGridReference = result.Fields["GridReference_Content"];
+                }
                 if (result.Fields.Keys.Contains("DateDeposited_Content"))
                 {
                     deposit.DateDeposited = new DateTime(Int32.Parse(result.Fields["DateDeposited_Content"].Substring(0, 4)), Int32.Parse(result.Fields["DateDeposited_Content"].Substring(4, 2)), Int32.Parse(result.Fields["DateDeposited_Content"].Substring(6, 2)));

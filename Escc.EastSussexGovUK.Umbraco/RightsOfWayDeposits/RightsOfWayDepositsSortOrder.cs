@@ -17,7 +17,7 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
         OwnerAscending,
         OwnerDescending,
         ParishAscending,
-        ParishDecending,
+        ParishDescending,
         DateExpiresAscending,
         DateExpiresDescending
     }

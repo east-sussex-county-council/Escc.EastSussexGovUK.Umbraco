@@ -32,7 +32,8 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
         [UmbracoProperty("Ordnance Survey grid reference", "GridReference", BuiltInUmbracoDataTypes.Textbox, sortOrder: 8)]
         public string OrdnanceSurveyGridReference { get; set; }
 
-        [UmbracoProperty("Parish", "Parish", ParishDataType.PropertyEditor, ParishDataType.DataTypeName, sortOrder: 9, mandatory:true)]
+        [UmbracoProperty("Parish", "Parish", ParishDataType.PropertyEditor, ParishDataType.DataTypeName, sortOrder: 9, mandatory:true, 
+            Description = "To select multiple parishes, hold down Ctrl when you select a parish")]
         public string Parish { get; set; }
 
         [UmbracoProperty("Description", "pageDescription", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 10, mandatory: true)]

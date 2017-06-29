@@ -51,12 +51,14 @@
                 Html.RenderPartial("~/Views/_PagingBarControl.ascx", Model.Paging);
             }
 
+            @if (Model.Deposits.Any())
+            {
             <table class="deposits">
                 <thead>
                     <tr>
                         <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.ReferenceAscending ? "referencedescending" : "referenceascending")">Reference</a></th>
                         <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.OwnerAscending ? "ownerdescending" : "ownerascending")">Owner</a></th>
-                        <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.ParishAscending ? "parishdescending" : "parishascending")">Parish</a></th>
+                        <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.ParishAscending ? "parishdescending" : "parishascending")">Parishes</a></th>
                         <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.DateDepositedAscending ? "datedepositeddescending" : "datedepositedascending")">Date deposited</a></th>
                         <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.DateExpiresAscending ? "dateexpiresdescending" : "dateexpiresascending")">Expires</a></th>
                     </tr>
@@ -66,13 +68,22 @@
                     <tr>
                         <td><a href="@deposit.PageUrl">@deposit.Reference</a></td>
                         <td>@deposit.Owner</td>
-                        <td>@deposit.Parish<span> Parish</span></td>
+                        <td><ul class="parishes">
+                        @foreach (var parish in deposit.Parishes)
+                        {
+                            <li>@parish<span> Parish</span></li> 
+                        }
+                        </ul></td>
                         <td><span>Deposited </span>@deposit.DateDeposited.ToShortBritishDate()</td>
                         <td><span>Expires </span>@deposit.DateExpires.ToShortBritishDate()</td>
                     </tr>
                 }
             </table>
-
+            }
+            else
+            {
+                <p><strong>No rights of way deposits matched your search</strong>.</p>
+            }
             @{ Html.RenderPartial("~/Views/_PagingBarControl.ascx", Model.Paging); }
             @if (Model.RssUrl != null)
             {

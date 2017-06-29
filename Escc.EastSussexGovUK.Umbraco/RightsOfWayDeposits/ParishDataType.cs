@@ -12,7 +12,7 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
     internal class ParishDataType : PreValueListDataType
     {
         internal const string DataTypeName = "Parish";
-        internal const string PropertyEditor = BuiltInUmbracoDataTypes.DropDown;
+        internal const string PropertyEditor = BuiltInUmbracoDataTypes.DropDownMultiple;
 
         /// <summary>
         /// Gets the parishes which can be selected using this data type

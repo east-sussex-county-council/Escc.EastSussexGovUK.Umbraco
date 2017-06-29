@@ -42,7 +42,12 @@
                     {
                     <tr><th scope="row">Address</th><td>@Model.Address.ToString()</td></tr>
                     }
-                    <tr><th scope="row">Parish</th><td>@Model.Parish</td></tr>
+                    @if (Model.Parishes.Any())
+                    {
+                        <tr><th scope="row">Parishes</th><td><ul class="parishes">
+                        @foreach (var parish in Model.Parishes) { <li>@parish</li> }
+                        </ul></td></tr>
+                    }
                     <tr><th scope="row">Description</th><td>@Model.Metadata.Description</td></tr>
                     @if (!String.IsNullOrEmpty(Model.OrdnanceSurveyGridReference))
                     {

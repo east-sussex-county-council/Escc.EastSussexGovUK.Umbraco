@@ -64,7 +64,16 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
                 }
             }
 
-            model.Parish = UmbracoContent.GetPropertyValue<string>("Parish_Content");
+            var parishData = UmbracoContent.GetPropertyValue<string>("Parish_Content");
+            if (!String.IsNullOrEmpty(parishData))
+            {
+                var parishes = parishData.Split(',');
+                foreach (var parish in parishes)
+                {
+                    model.Parishes.Add(parish);
+                }
+            }
+
             model.Metadata.Description = UmbracoContent.GetPropertyValue<string>("pageDescription_Content");
             return model;
         }
