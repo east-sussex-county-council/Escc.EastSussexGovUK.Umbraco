@@ -40,5 +40,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// Gets or sets the name of the Examine searcher for the job lookup values index
         /// </summary>
         public string ExamineSearcher { get; set; }
+
+        /// <summary>
+        /// Gets or sets the search results page
+        /// </summary>
+        public HtmlLink SearchResultsPage { get; set; }
     }
 }
