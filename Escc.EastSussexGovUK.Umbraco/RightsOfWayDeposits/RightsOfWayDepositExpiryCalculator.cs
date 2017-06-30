@@ -17,13 +17,17 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
         /// <returns>The date the deposit expires</returns>
         public DateTime CalculateExpiry(DateTime dateDeposited)
         {
-            if (dateDeposited >= new DateTime(2013, 10, 1))
+            if (dateDeposited < new DateTime(2004, 2, 13))
             {
-                return dateDeposited.AddYears(20);
+                return dateDeposited.AddYears(6);
+            }
+            else if (dateDeposited < new DateTime(2013, 10, 1))
+            {
+                return dateDeposited.AddYears(10);
             }
             else
             {
-                return dateDeposited.AddYears(10);
+                return dateDeposited.AddYears(20);
             }
         }
     }
