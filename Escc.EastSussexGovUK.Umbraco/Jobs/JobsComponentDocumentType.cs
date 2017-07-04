@@ -2,6 +2,7 @@
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CustomerFocusBase;
 using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
+using Escc.EastSussexGovUK.Umbraco.Jobs.Alerts;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
@@ -15,7 +16,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         typeof(JobsRssDocumentType),
         typeof(ProblemJobsRssDocumentType),
         typeof(JobsSearchDocumentType),
-        typeof(JobAdvertDocumentType)}, true, allowAtRoot: false, icon: BuiltInUmbracoContentTypeIcons.IconBrick, 
+        typeof(JobAdvertDocumentType),
+        typeof(JobAlertsDocumentType)
+    }, true, allowAtRoot: false, icon: BuiltInUmbracoContentTypeIcons.IconBrick, 
     Description = "A standard page hosting a component of the TalentLink application.")]
     public class JobsComponentDocumentType : CustomerFocusBaseDocumentType
     {

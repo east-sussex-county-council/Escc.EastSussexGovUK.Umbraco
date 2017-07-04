@@ -7,6 +7,7 @@ using Exceptionless;
 using System.Configuration;
 using Umbraco.Core.Logging;
 using System.Security.Cryptography;
+using System.Threading.Tasks;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
 {
@@ -23,23 +24,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             table.CreateIfNotExistsAsync().Wait();
 
             // Azure tables use an index clustered first by partition key then by row key.
-            //
-            // When we look up a keyword we will want matching search terms ordered by page views.
-            // To get that we need to have results ordered by page views, then filter the list to only search terms that match, 
-            // which means the partition key has to be based on page views and the row key based on search terms.
-            //
-            // The partition key is a string, so convert the number of page views to a string and pad with leading 0s so that
-            // the alpha sort gives the same result as a numeric sort. However this still sorts low numbers of page views ahead
-            // of high, so we need to change low numbers to high ones and vice versa to get the right sort order. Subtracting 1000000
-            // makes the numbers of page views negative (assuming they're under 1000000), and multiplying by -1 removes the minus sign,
-            // giving us the sort order we want.
-            //
-            // The row key has to be a sanitised version of the keyword because a key can't contain common search term characters such 
-            // as / and ?, so save the keyword separately as-typed so that it can be presented back to users.
             var entity = new JobAlertTableEntity()
             {
                 PartitionKey = ToAzureKeyString(alert.Email),
-                RowKey = HashIt(alert.Criteria),
+                RowKey = new JobAlertIdEncoder().GenerateId(alert),
                 Criteria = alert.Criteria,
                 Frequency = alert.Frequency
             };
@@ -66,6 +54,72 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             }
         }
 
+        public bool CancelAlert(string alertId)
+        {
+            // Get the storage account connection
+            var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["Escc.EastSussexGovUK.Umbraco.AzureStorage"].ConnectionString);
+
+            // Create the table if it doesn't exist.
+            var tableClient = storageAccount.CreateCloudTableClient();
+            var table = tableClient.GetTableReference("jobalerts");
+            table.CreateIfNotExistsAsync().Wait();
+
+            var entity = GetTableEntityByRowKey(alertId);
+            if (entity == null) return false;
+
+            // Create the TableOperation object that deletes the entity.
+            var deleteOperation = TableOperation.Delete(entity);
+
+            // Execute the delete operation.
+            try
+            {
+                var result = table.Execute(deleteOperation);
+            }
+            catch (StorageException ex)
+            {
+                if (ex.Message.Contains("(400) Bad Request"))
+                {
+                    LogHelper.Error<AzureTableStorageAlertsRepository>($"Delete job alert {alertId} returned {ex.RequestInformation.ExtendedErrorInformation.ErrorMessage}", ex);
+                    ex.ToExceptionless().Submit();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return true;
+        }
+
+        public JobAlert GetAlertById(string alertId)
+        {
+            JobAlertTableEntity entity = GetTableEntityByRowKey(alertId);
+            if (entity != null)
+            {
+                return new JobAlert()
+                {
+                    Criteria = entity.Criteria,
+                    Email = entity.PartitionKey,
+                    Frequency = entity.Frequency
+                };
+            }
+
+            return null;
+        }
+
+        private static JobAlertTableEntity GetTableEntityByRowKey(string alertId)
+        {
+            var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["Escc.EastSussexGovUK.Umbraco.AzureStorage"].ConnectionString);
+
+            var tableClient = storageAccount.CreateCloudTableClient();
+            var table = tableClient.GetTableReference("jobalerts");
+
+            TableQuery<JobAlertTableEntity> tableQuery = new TableQuery<JobAlertTableEntity>()
+                .Where(TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.Equal, alertId));
+
+            var entity = table.ExecuteQuery(tableQuery).FirstOrDefault();
+            return entity;
+        }
+
         // From http://stackoverflow.com/questions/14859405/azure-table-storage-returns-400-bad-request
         public static string ToAzureKeyString(string str)
         {
@@ -78,19 +132,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
                             && c != '?'
                             && !char.IsControl(c)))
                 sb.Append(c);
-            return sb.ToString();
-        }
-
-        public string HashIt(string criteria)
-        {
-            HashAlgorithm algorithm = SHA1.Create();
-            var bytes = Encoding.ASCII.GetBytes(criteria ?? String.Empty);
-            var hash = algorithm.ComputeHash(bytes);
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < hash.Length; i++)
-            {
-                sb.Append(hash[i].ToString("X2"));
-            }
             return sb.ToString();
         }
     }

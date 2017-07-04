@@ -16,5 +16,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         public int Frequency { get; set; } = 1;
 
         public List<Job> MatchingJobs { get; private set; } = new List<Job>();
+        public string SubscriptionId { get; set; }
     }
 }

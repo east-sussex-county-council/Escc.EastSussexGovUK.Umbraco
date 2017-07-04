@@ -84,7 +84,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
 
                 var jobs = parser.Parse(htmlStream);
 
-                Assert.AreEqual("33720", jobs.Jobs[0].Id);
+                Assert.AreEqual(33720, jobs.Jobs[0].Id);
             }
         }
 

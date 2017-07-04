@@ -32,6 +32,7 @@ using Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor;
 using Exceptionless;
 using Umbraco.Inception.CodeFirst;
 using Umbraco.Web.WebApi;
+using Escc.EastSussexGovUK.Umbraco.Jobs.Alerts;
 
 namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
 {
@@ -217,6 +218,7 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(ProblemJobsRssDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(JobsSearchDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(JobAdvertDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(JobAlertsDocumentType));
 
                 return Request.CreateResponse(HttpStatusCode.Created);
             }

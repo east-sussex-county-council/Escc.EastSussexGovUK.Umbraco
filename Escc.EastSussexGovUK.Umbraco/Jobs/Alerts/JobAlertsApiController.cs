@@ -32,7 +32,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             {
                 LookupJobsForOneSubscriber(subscriptionsForAnEmail);
 
-                var email = BuildEmail(subscriptionsForAnEmail);
+                var email = BuildEmail(subscriptionsForAnEmail, new Uri(Request.RequestUri, "/jobs/alerts/"), new JobAlertIdEncoder());
 
                 SendEmail(subscriptionsForAnEmail[0].Email, email);
             }
@@ -87,6 +87,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 {
                     alerts.Add(new JobAlert()
                     {
+                        SubscriptionId = entity.RowKey,
                         Criteria = entity.Criteria,
                         Email = entity.PartitionKey,
                         Frequency = entity.Frequency
@@ -128,7 +129,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             }
         }
 
-        private static string BuildEmail(IList<JobAlert> subscriptionsForAnEmail)
+        private static string BuildEmail(IList<JobAlert> subscriptionsForAnEmail, Uri subscriptionUrl, JobAlertIdEncoder encoder)
         {
             var emailHtml = new StringBuilder();
 
@@ -140,6 +141,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                     emailHtml.Append("<li><a href=\"").Append(job.Url).Append("\">").Append(job.JobTitle).Append("</a></li>");
                 }
                 emailHtml.Append("</ul>");
+
+                emailHtml.Append("<p><a href=\"").Append(encoder.AddIdToUrl(subscriptionUrl, subscription.SubscriptionId)).Append("\">Cancel subscription</a></p>");
             }
 
             return emailHtml.ToString();

@@ -36,7 +36,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         typeof(CampaignLandingDocumentType),
         typeof(PersonDocumentType),
         typeof(JobsComponentDocumentType)}, true, allowAtRoot: false, icon: BuiltInUmbracoContentTypeIcons.IconLocationNearMe, 
-    Description = "A standard page hosting a component of the TalentLink application.")]
+    Description = "Display the details of an job currently being advertised.")]
     public class JobAdvertDocumentType : CustomerFocusBaseDocumentType
     {
         [UmbracoTemplate(DisplayName = "Jobs CSS", Alias = "JobsCss")]

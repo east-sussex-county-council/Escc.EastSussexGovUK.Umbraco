@@ -3589,6 +3589,7 @@
     <Content Include="Views\JobsRssAsTweets.cshtml" />
     <Content Include="Views\Alerts.cshtml" />
     <Content Include="Views\JobsRssAsIndeedXml.cshtml" />
+    <Content Include="Views\JobAlerts.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -3665,7 +3666,13 @@
     <Compile Include="HomePage\HomePageViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\Alerts\AzureTableStorageAlertsRepository.cs" />
     <Compile Include="Jobs\Alerts\IAlertsRepository.cs" />
+    <Compile Include="Jobs\Alerts\JobAlertContentFinder.cs" />
+    <Compile Include="Jobs\Alerts\JobAlertIdEncoder.cs" />
+    <Compile Include="Jobs\Alerts\JobAlertsContentTab.cs" />
+    <Compile Include="Jobs\Alerts\JobAlertsController.cs" />
+    <Compile Include="Jobs\Alerts\JobAlertsDocumentType.cs" />
     <Compile Include="Jobs\Alerts\JobAlert.cs" />
+    <Compile Include="Jobs\Alerts\JobAlertsViewModel.cs" />
     <Compile Include="Jobs\Alerts\JobAlertTableEntity.cs" />
     <Compile Include="Jobs\Examine\BaseLookupValuesIndexer.cs" />
     <Compile Include="Examine\LuceneDateTimeParser.cs" />
@@ -3674,7 +3681,7 @@
     <Compile Include="Jobs\IWorkPatternParser.cs" />
     <Compile Include="Jobs\ISalaryParser.cs" />
     <Compile Include="Jobs\JobAdvertContentFinder.cs" />
-    <Compile Include="Jobs\JobAdvertEventHandler.cs" />
+    <Compile Include="Jobs\JobsEventHandler.cs" />
     <Compile Include="Jobs\Examine\JobsLookupValuesFromExamine.cs" />
     <Compile Include="Jobs\Examine\JobsDataFromExamine.cs" />
     <Compile Include="Jobs\Examine\BaseJobsIndexer.cs" />
