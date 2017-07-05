@@ -1,7 +1,9 @@
 ﻿using Escc.EastSussexGovUK.Umbraco.Errors;
+using Escc.EastSussexGovUK.Umbraco.Jobs.Examine;
 using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Umbraco.ContentExperiments;
 using Escc.Umbraco.PropertyTypes;
+using Examine;
 using System.Web;
 using System.Web.Mvc;
 using Umbraco.Web;
@@ -23,7 +25,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         /// <returns/>
         public override ActionResult Index(RenderModel model)
         {
-            var viewModel = new JobAlertsViewModel();
+            var modelBuilder = new JobsSearchViewModelFromUmbraco(model.Content, new JobAlertsViewModel());
+            var viewModel = (JobAlertsViewModel)modelBuilder.BuildModel();
+            var lookupValuesDataSource = new JobsLookupValuesFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.ExamineSearcher]);
+            modelBuilder.AddLookupValuesToModel(lookupValuesDataSource, viewModel);
 
             var alertId = new JobAlertIdEncoder().ParseIdFromUrl(Request.Url);
             if (!string.IsNullOrEmpty(alertId))
@@ -31,7 +36,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
                 var alertsRepo = new AzureTableStorageAlertsRepository();
                 viewModel.Alert = alertsRepo.GetAlertById(alertId);
 
-                if (viewModel.Alert == null && Request.QueryString["cancelled"] != "1")
+                if (!string.IsNullOrEmpty(viewModel.Alert?.Criteria))
+                {
+                    var query = HttpUtility.ParseQueryString(viewModel.Alert.Criteria);
+                    viewModel.Query = new JobSearchQueryConverter().ToQuery(query);
+                }
+
+                if (viewModel.Alert == null && Request.QueryString["cancelled"] != "1" && string.IsNullOrEmpty(Request.QueryString["altTemplate"]))
                 {
                     // Returning HttpNotFoundResult() ends up with a generic browser 404, 
                     // so to get our custom one we need to look it up and transfer control to it.
@@ -43,10 +54,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
                 }
             }
 
-
-            var modelBuilder = new BaseViewModelBuilder();
-            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode);
-            modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel,
+            var baseModelBuilder = new BaseViewModelBuilder();
+            baseModelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode);
+            baseModelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel,
                   new UmbracoLatestService(model.Content),
                   new UmbracoSocialMediaService(model.Content),
                   null,

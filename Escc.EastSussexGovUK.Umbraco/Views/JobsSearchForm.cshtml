@@ -1,0 +1,52 @@
+﻿@using Escc.EastSussexGovUK.Umbraco.Jobs
+@model JobsSearchViewModel
+@Html.AntiForgeryToken()
+
+<div>
+    <label for="keywords">Keywords</label>
+    <input type="search" name="keywords" id="keywords" value="@(Model.Query?.Keywords)" />
+</div>
+
+<div>
+<label for="locations">Location</label>
+<select multiple="multiple" name="locations" id="locations">
+    @foreach (var location in Model.Locations)
+    {
+        var selected = (Model.Query != null && Model.Query.Locations.Contains(location.Text)) ? " selected=\"selected\"" : String.Empty;
+        <option value="@location.Text"@selected>@location.Text (@location.Count)</option>
+    }
+</select>
+</div>
+
+<div>
+    <label for="jobTypes">Category</label>
+    <select multiple="multiple" name="jobTypes" id="jobTypes">
+        @foreach (var jobType in Model.JobTypes)
+        {
+            var selected = (Model.Query != null && Model.Query.JobTypes.Contains(jobType.Text)) ? " selected=\"selected\"" : String.Empty;
+            <option value="@jobType.Text"@selected>@jobType.Text (@jobType.Count)</option>
+        }
+    </select>
+</div>
+
+<fieldset class="checkboxes">
+    <legend>Salary</legend>
+    @foreach (var salaryRange in Model.SalaryRanges)
+    {
+        var salaryRangeValue = salaryRange.Text.Replace(",", String.Empty);
+        var selected = (Model.Query!= null && Model.Query.SalaryRanges.Contains(salaryRangeValue)) ? " checked=\"checked\"" : String.Empty;
+        <label><input type="checkbox" value="@salaryRangeValue" name="salaryRanges"@selected /> @salaryRange.Text (@salaryRange.Count)</label>
+    }
+</fieldset>
+
+<fieldset class="checkboxes">
+    <legend>Work pattern</legend>
+    @foreach (var workPattern in Model.WorkPatterns)
+    {
+        var selected = (Model.Query != null && Model.Query.WorkPatterns.Contains(workPattern.Text)) ? " checked=\"checked\"" : String.Empty;
+        <label><input type="checkbox" value="@workPattern.Text" name="workPatterns"@selected /> @workPattern.Text (@workPattern.Count)</label>
+    }
+</fieldset>
+
+<input type="submit" />
+

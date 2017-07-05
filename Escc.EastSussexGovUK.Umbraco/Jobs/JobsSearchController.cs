@@ -28,43 +28,20 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         {
             if (model == null) throw new ArgumentNullException(nameof(model));
 
-            var viewModel = new SearchViewModelFromUmbraco(model.Content).BuildModel();
+            var modelBuilder = new JobsSearchViewModelFromUmbraco(model.Content, new JobsSearchViewModel());
+            var viewModel = modelBuilder.BuildModel();
+            var lookupValuesDataSource = new JobsLookupValuesFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.ExamineSearcher]);
+            modelBuilder.AddLookupValuesToModel(lookupValuesDataSource, viewModel);
 
-            var modelBuilder = new BaseViewModelBuilder();
-            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode);
-            modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel,
+            var baseModelBuilder = new BaseViewModelBuilder();
+            baseModelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode);
+            baseModelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel,
                 new UmbracoLatestService(model.Content),
                 new UmbracoSocialMediaService(model.Content),
                 null,
                 new UmbracoWebChatSettingsService(model.Content, new UrlListReader()),
                 null);
             viewModel.Metadata.Description = String.Empty;
-
-            var dataSource = new JobsLookupValuesFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.ExamineSearcher]);
-
-            var locations = Task.Run(async () => await dataSource.ReadLocations());
-            foreach (var location in locations.Result)
-            {
-                viewModel.Locations.Add(location);
-            }
-
-            var jobTypes = Task.Run(async () => await dataSource.ReadJobTypes());
-            foreach (var jobType in jobTypes.Result)
-            {
-                viewModel.JobTypes.Add(jobType);
-            }
-
-            var salaryRanges = Task.Run(async () => await dataSource.ReadSalaryRanges());
-            foreach (var salaryRange in salaryRanges.Result)
-            {
-                viewModel.SalaryRanges.Add(salaryRange);
-            }
-
-            var workPatterns = Task.Run(async () => await dataSource.ReadWorkPatterns());
-            foreach (var workPattern in workPatterns.Result)
-            {
-                viewModel.WorkPatterns.Add(workPattern);
-            }
 
             // Jobs close at midnight, so don't cache beyond then
             var untilMidnightTonight = DateTime.Today.ToUkDateTime().AddDays(1) - DateTime.Now.ToUkDateTime();

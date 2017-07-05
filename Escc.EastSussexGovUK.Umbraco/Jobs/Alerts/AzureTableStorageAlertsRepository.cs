@@ -77,6 +77,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
 
         public void SaveAlert(JobAlert alert)
         {
+            if (alert == null) throw new ArgumentNullException(nameof(alert));
+            if (String.IsNullOrEmpty(alert.AlertId)) throw new ArgumentException("The alert must have an AlertId", nameof(alert));
+
             // Get the storage account connection
             var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["Escc.EastSussexGovUK.Umbraco.AzureStorage"].ConnectionString);
 
@@ -89,7 +92,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             var entity = new JobAlertTableEntity()
             {
                 PartitionKey = ToAzureKeyString(alert.Email),
-                RowKey = new JobAlertIdEncoder().GenerateId(alert),
+                RowKey = alert.AlertId,
                 Criteria = alert.Criteria,
                 Frequency = alert.Frequency
             };
@@ -205,6 +208,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             {
                 return new JobAlert()
                 {
+                    AlertId = entity.RowKey,
                     Criteria = entity.Criteria,
                     Email = entity.PartitionKey,
                     Frequency = entity.Frequency

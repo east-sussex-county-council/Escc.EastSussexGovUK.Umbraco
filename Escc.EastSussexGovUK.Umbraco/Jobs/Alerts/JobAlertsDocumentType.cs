@@ -12,6 +12,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
     Description = "Configure the job alerts feature which allows users to subscribe to alerts about new jobs matching their search.")]
     public class JobAlertsDocumentType : CustomerFocusBaseDocumentType
     {
+        [UmbracoTemplate(DisplayName = "Jobs CSS", Alias = "JobsCss")]
+        public string JobsCss { get; set; }
+
         [UmbracoTab("Content")]
         public JobAlertsContentTab Content { get; set; }
     }

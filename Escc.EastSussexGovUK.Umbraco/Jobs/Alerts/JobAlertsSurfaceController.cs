@@ -15,12 +15,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
     {
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult SubscribeToAlerts(JobAlert alert)
+        public ActionResult CreateAlert(JobAlert alert)
         {
             var query = HttpUtility.ParseQueryString(Request.Url.Query);
             if (ModelState.IsValid)
             {
                 var repo = new AzureTableStorageAlertsRepository();
+                alert.AlertId = new JobAlertIdEncoder().GenerateId(alert);
                 repo.SaveAlert(alert);
 
                 query.Add("subscribed", "1");
@@ -38,6 +39,42 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             var success = alertsRepo.CancelAlert(alertId);
 
             return new RedirectResult(Request.RawUrl + "?cancelled=" + (success ? "1" : "0"));
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult ReplaceAlert(JobSearchQuery searchQuery)
+        {
+            if (ModelState.IsValid)
+            {
+                var encoder = new JobAlertIdEncoder();
+                var alertId = encoder.ParseIdFromUrl(new Uri(Request.Url, Request.RawUrl));
+                var repo = new AzureTableStorageAlertsRepository();
+                var oldAlert = repo.GetAlertById(alertId);
+
+                var newAlert = new JobAlert()
+                {
+                    Criteria = new JobSearchQueryConverter().ToCollection(searchQuery).ToString(),
+                    Email = oldAlert.Email
+                };
+                newAlert.AlertId = encoder.GenerateId(newAlert);
+
+                if (oldAlert.AlertId != newAlert.AlertId)
+                {
+                    repo.SaveAlert(newAlert);
+                    repo.CancelAlert(oldAlert.AlertId);
+                }
+
+                var urlWithoutQueryString = new Uri(Request.Url, new Uri(Request.Url, Request.RawUrl).AbsolutePath);
+                var urlWithoutAlertId = encoder.RemoveIdFromUrl(urlWithoutQueryString);
+                var urlWithAlertId = encoder.AddIdToUrl(urlWithoutAlertId, newAlert.AlertId);
+
+                return new RedirectResult(urlWithAlertId + "?updated=1");
+            }
+            else
+            {
+                return new RedirectResult(Request.RawUrl);
+            }
         }
     }
 }

@@ -14,6 +14,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
     public class JobsSearchViewModel : BaseJobsViewModel
     {
         /// <summary>
+        /// Gets or sets the search query
+        /// </summary>
+        public JobSearchQuery Query { get; set; }
+
+        /// <summary>
         /// Gets the locations where jobs can be based
         /// </summary>
         public IList<JobsLookupValue> Locations { get; } = new List<JobsLookupValue>();

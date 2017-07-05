@@ -20,15 +20,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             var resultsPage = CurrentPage.GetPropertyValue<IPublishedContent>("SearchResultsPage_Content");
             if (resultsPage == null) return null;
 
-            var queryString = new NameValueCollection();
-            if (!String.IsNullOrEmpty(query.Keywords)) queryString.Add("keywords", query.Keywords);
-            if (!String.IsNullOrEmpty(query.JobReference)) queryString.Add("ref", query.JobReference);
-
-            foreach (var value in query.JobTypes) queryString.Add("type", value);
-            foreach (var value in query.Locations) queryString.Add("location", value);
-            foreach (var value in query.Organisations) queryString.Add("org", value);
-            foreach (var value in query.SalaryRanges) queryString.Add("salary", value);
-            foreach (var value in query.WorkPatterns) queryString.Add("hours", value);
+            var queryString = new JobSearchQueryConverter().ToCollection(query);
 
             return new RedirectToUmbracoPageResult(resultsPage, queryString);
         }

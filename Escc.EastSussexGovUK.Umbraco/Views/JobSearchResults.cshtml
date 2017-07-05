@@ -119,7 +119,7 @@
         @if (Request.QueryString["subscribed"] != "1")
         {
             <h2>Alert me about jobs like these</h2>
-            using (Html.BeginUmbracoForm<JobAlertsSurfaceController>("SubscribeToAlerts", null, new Dictionary<string, object> { { "class", "job-alerts form simple-form" } }))
+            using (Html.BeginUmbracoForm<JobAlertsSurfaceController>("CreateAlert", null, new Dictionary<string, object> { { "class", "job-alerts form simple-form" } }))
             {
                 @Html.AntiForgeryToken();
 

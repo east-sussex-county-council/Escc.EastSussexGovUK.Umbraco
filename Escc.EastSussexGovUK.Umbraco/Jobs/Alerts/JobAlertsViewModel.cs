@@ -9,7 +9,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
     /// A view model for configuring the job alerts feature
     /// </summary>
     /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Jobs.BaseJobsViewModel" />
-    public class JobAlertsViewModel : BaseJobsViewModel
+    public class JobAlertsViewModel : JobsSearchViewModel
     {
         /// <summary>
         /// Gets or sets the alert to cancel or change

@@ -3590,6 +3590,7 @@
     <Content Include="Views\Alerts.cshtml" />
     <Content Include="Views\JobsRssAsIndeedXml.cshtml" />
     <Content Include="Views\JobAlerts.cshtml" />
+    <Content Include="Views\JobsSearchForm.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -3721,11 +3722,11 @@
     <Compile Include="Jobs\JobAdvertDocumentType.cs" />
     <Compile Include="Jobs\JobAdvertViewModel.cs" />
     <Compile Include="Jobs\JobSearchQuery.cs" />
-    <Compile Include="Jobs\JobSearchQueryFactory.cs" />
+    <Compile Include="Jobs\JobSearchQueryConverter.cs" />
     <Compile Include="Jobs\BaseJobsViewModel.cs" />
     <Compile Include="Jobs\JobAdvertViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\JobAdvertController.cs" />
-    <Compile Include="Jobs\SearchViewModelFromUmbraco.cs" />
+    <Compile Include="Jobs\JobsSearchViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\JobsLookupValue.cs" />
     <Compile Include="Jobs\JobsParseResult.cs" />
     <Compile Include="Jobs\JobsRssController.cs" />

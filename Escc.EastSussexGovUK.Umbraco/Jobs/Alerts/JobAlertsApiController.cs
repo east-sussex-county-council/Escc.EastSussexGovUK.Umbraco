@@ -102,7 +102,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 }
                 emailHtml.Append("</ul>");
 
-                emailHtml.Append("<p><a href=\"").Append(encoder.AddIdToUrl(subscriptionUrl, subscription.AlertId)).Append("\">Cancel alert</a></p>");
+                emailHtml.Append("<p><a href=\"").Append(encoder.AddIdToUrl(subscriptionUrl, subscription.AlertId)).Append("\">Change or cancel alert</a></p>");
             }
 
             return emailHtml.ToString();
@@ -111,7 +111,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
         private async void LookupJobsForAlert(JobAlert alert, IList<int> jobsSentForThisAlert)
         {
             var query = String.IsNullOrEmpty(alert.Criteria) ? new NameValueCollection() : HttpUtility.ParseQueryString(alert.Criteria);
-            var parsedQuery = new JobSearchQueryFactory().CreateFromQueryString(query);
+            var parsedQuery = new JobSearchQueryConverter().ToQuery(query);
             parsedQuery.ClosingDateFrom = DateTime.Today;
             var jobs = await Search(parsedQuery);
 
