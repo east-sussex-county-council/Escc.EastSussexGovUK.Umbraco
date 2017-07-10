@@ -4,7 +4,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
 {
     public interface IAlertsRepository
     {
-        IEnumerable<JobAlert> GetAllAlerts(string emailAddress = null);
+        IEnumerable<JobAlert> GetAllAlerts(JobAlertsQuery query);
         void SaveAlert(JobAlert alert);
         JobAlert GetAlertById(string alertId);
         bool CancelAlert(string alertId);

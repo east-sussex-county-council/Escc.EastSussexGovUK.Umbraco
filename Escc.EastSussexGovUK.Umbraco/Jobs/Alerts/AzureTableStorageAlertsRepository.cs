@@ -9,12 +9,13 @@ using Umbraco.Core.Logging;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
 {
     public class AzureTableStorageAlertsRepository : IAlertsRepository
     {
-        public IEnumerable<JobAlert> GetAllAlerts(string emailAddress = null)
+        public IEnumerable<JobAlert> GetAllAlerts(JobAlertsQuery query)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["Escc.EastSussexGovUK.Umbraco.AzureStorage"].ConnectionString;
             if (String.IsNullOrEmpty(connectionString))
@@ -31,15 +32,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             var table = tableClient.GetTableReference("JobAlerts");
 
             // Initialize a default TableQuery to retrieve all the entities in the table.
-            TableQuery<JobAlertTableEntity> tableQuery;
-            if (!String.IsNullOrEmpty(emailAddress))
+            TableQuery<JobAlertTableEntity> tableQuery = new TableQuery<JobAlertTableEntity>();
+            if (!String.IsNullOrEmpty(query.EmailAddress))
             {
-                tableQuery = new TableQuery<JobAlertTableEntity>()
-                   .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, emailAddress));
+                tableQuery = tableQuery
+                   .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, query.EmailAddress));
             }
-            else
+
+            if (query.Frequency.HasValue)
             {
-                tableQuery = new TableQuery<JobAlertTableEntity>();
+                tableQuery = tableQuery
+                    .Where(TableQuery.GenerateFilterConditionForInt("Frequency", QueryComparisons.Equal, query.Frequency.Value));
             }
 
             // Initialize the continuation token to null to start from the beginning of the table.
@@ -163,7 +166,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         private void DeleteRecordOfAlertsSent(string emailAddress)
         {
             // Only remove data if there are no more alerts set up for this email, otherwise we may still send jobs they've already seen
-            var alertsForThisEmail = GetAllAlerts(emailAddress);
+            var alertsForThisEmail = GetAllAlerts(new JobAlertsQuery { EmailAddress = emailAddress });
             if (alertsForThisEmail.Any()) return;
 
             // Get the storage account connection

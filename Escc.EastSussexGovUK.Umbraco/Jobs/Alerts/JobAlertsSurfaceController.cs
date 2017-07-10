@@ -55,12 +55,19 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
                 var newAlert = new JobAlert()
                 {
                     Criteria = new JobSearchQueryConverter().ToCollection(searchQuery).ToString(),
-                    Email = oldAlert.Email
+                    Email = oldAlert.Email,
+                    Frequency = searchQuery.Frequency
                 };
                 newAlert.AlertId = encoder.GenerateId(newAlert);
 
-                if (oldAlert.AlertId != newAlert.AlertId)
+                if (oldAlert.AlertId == newAlert.AlertId)
                 {
+                    // The alert id didn't change but the frequency may have, so update the existing alert
+                    repo.SaveAlert(newAlert);
+                }
+                else
+                {
+                    // The alert id, and therefore the criteria, changed, so save the new alert and delete the old one
                     repo.SaveAlert(newAlert);
                     repo.CancelAlert(oldAlert.AlertId);
                 }

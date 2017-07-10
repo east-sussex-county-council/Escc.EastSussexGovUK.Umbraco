@@ -3673,6 +3673,7 @@
     <Compile Include="Jobs\Alerts\JobAlertsController.cs" />
     <Compile Include="Jobs\Alerts\JobAlertsDocumentType.cs" />
     <Compile Include="Jobs\Alerts\JobAlert.cs" />
+    <Compile Include="Jobs\Alerts\JobAlertsQuery.cs" />
     <Compile Include="Jobs\Alerts\JobAlertsViewModel.cs" />
     <Compile Include="Jobs\Alerts\JobAlertTableEntity.cs" />
     <Compile Include="Jobs\Examine\BaseLookupValuesIndexer.cs" />

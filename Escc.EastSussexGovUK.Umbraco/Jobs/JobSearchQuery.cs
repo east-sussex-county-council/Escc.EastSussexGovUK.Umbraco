@@ -105,6 +105,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         }
 
         /// <summary>
+        /// Gets or sets the frequency (in days) with which this query should be run.
+        /// </summary>
+        public int Frequency { get; set; }
+
+        /// <summary>
         /// Gets a unique hash of the filter settings
         /// </summary>
         /// <returns></returns>

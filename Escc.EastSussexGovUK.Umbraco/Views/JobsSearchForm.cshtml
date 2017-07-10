@@ -1,4 +1,5 @@
 ﻿@using Escc.EastSussexGovUK.Umbraco.Jobs
+@using Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
 @model JobsSearchViewModel
 @Html.AntiForgeryToken()
 
@@ -34,7 +35,7 @@
     @foreach (var salaryRange in Model.SalaryRanges)
     {
         var salaryRangeValue = salaryRange.Text.Replace(",", String.Empty);
-        var selected = (Model.Query!= null && Model.Query.SalaryRanges.Contains(salaryRangeValue)) ? " checked=\"checked\"" : String.Empty;
+        var selected = (Model.Query != null && Model.Query.SalaryRanges.Contains(salaryRangeValue)) ? " checked=\"checked\"" : String.Empty;
         <label><input type="checkbox" value="@salaryRangeValue" name="salaryRanges"@selected /> @salaryRange.Text (@salaryRange.Count)</label>
     }
 </fieldset>
@@ -47,6 +48,18 @@
         <label><input type="checkbox" value="@workPattern.Text" name="workPatterns"@selected /> @workPattern.Text (@workPattern.Count)</label>
     }
 </fieldset>
+
+@{
+    var alertModel = Model as JobAlertsViewModel;
+    if (alertModel != null)
+    {
+    <fieldset class="radioButtonList">
+        <legend>Frequency</legend>
+        <label><input type="radio" name="frequency" value="1" @(alertModel.Alert.Frequency == 1 ? " checked=\"checked\"" : String.Empty)/> Daily</label>
+        <label><input type="radio" name="frequency" value="7" @(alertModel.Alert.Frequency == 7 ? " checked=\"checked\"" : String.Empty)/> Weekly</label>
+    </fieldset>
+    }
+}
 
 <input type="submit" />
 

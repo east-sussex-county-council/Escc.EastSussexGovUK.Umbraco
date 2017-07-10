@@ -23,10 +23,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
     public class JobAlertsApiController : UmbracoApiController
     {
         [HttpGet]
-        public void SendAlerts()
+        public void SendAlerts([FromUri]int? frequency)
         {
             IAlertsRepository repo = new AzureTableStorageAlertsRepository();
-            var alerts = repo.GetAllAlerts();
+            var alerts = repo.GetAllAlerts(new JobAlertsQuery() { Frequency = frequency });
             var alertsGroupedByEmail = GroupAlertsByEmail(alerts);
 
             foreach (var alertsForAnEmail in alertsGroupedByEmail.Values)
