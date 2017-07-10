@@ -11,6 +11,9 @@
   <configSections xdt:Locator="XPath(/configuration/configSections[last()])">
     <sectionGroup name="Escc.ClientDependencyFramework" xdt:Transform="Insert" />
     <sectionGroup name="Escc.ClientDependencyFramework" xdt:Transform="Remove" xdt:Locator="XPath(/configuration/configSections/sectionGroup[@name='Escc.ClientDependencyFramework'][2])" />
+
+    <section name="UnpublishOverridesSection" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+    <section name="UnpublishOverridesSection" type="Escc.Umbraco.UnpublishOverrides.UnpublishOverridesSection, Escc.Umbraco" requirePermission="false" xdt:Transform="Insert" />
   </configSections>
   <configSections xdt:Transform="RemoveAll" xdt:Locator="Condition(count(*)=0)" />
 
@@ -157,6 +160,59 @@
       </SectionLayouts>
     </TopicSectionLayouts>
   </Escc.EastSussexGovUK.Umbraco>
+  
+  <UnpublishOverridesSection xdt:Transform="Remove" />
+  <UnpublishOverridesSection xdt:Transform="Insert">
+    <ContentTypes>
+      <add name="HomePage" level="*" />
+      <add name="HomePageItems" level="*" />
+      <add name="HomePageItem" level="*" />
+      <add name="Banner" level="*" />
+      <add name="alerts" level="*" />
+      <add name="standardLandingPage" level="2" />
+      <add name="Landing" level="2" />
+    </ContentTypes>
+    <Paths>
+      <add name="/about-this-site/" children="*" />
+      <add name="/banners/" children="" />
+      <add name="/childrenandfamilies/childcare/" children="*" />
+      <add name="/childrenandfamilies/childcare/parentsandcarers/childrencentres/" children="" />
+      <add name="/childrenandfamilies/familysupport/info-for-families/" children="" />
+      <add name="/childrenandfamilies/keypolicies/complaints-process/" children="*" />
+      <add name="/childrenandfamilies/worried-about-a-child/" children="" />
+      <add name="/childrenandfamilies/youngpeople/safety-welfare/" children="*" />
+      <add name="/contact-us/" children="" />
+      <add name="/educationandlearning/schools/" children="" />
+      <add name="/educationandlearning/schools/findingaschool/" children="*" />
+      <add name="/educationandlearning/schools/termdates/" children="" />
+      <add name="/environment/rubbishandrecycling/" children="" />
+      <add name="/environment/rubbishandrecycling/recyclingsites/" children="*" />
+      <add name="/environment/rubbishandrecycling/rubbishcollection/" children="" />
+      <add name="/google-analytics-experiments/" children="" />
+      <add name="/heatmap-analytics/" children="" />
+      <add name="/jobs/" children="" />
+      <add name="/leisureandtourism/calendar/" children="" />
+      <add name="/leisureandtourism/countryside/walks/" children="*" />
+      <add name="/libraries/library-cards/" children="*" />
+      <add name="/libraries/locations/" children="*" />
+      <add name="/libraries/maintenance/" children="" />
+      <add name="/libraries/online-library-help/" children="*" />
+      <add name="/news/" children="" />
+      <add name="/roadsandtransport/public/buses/" children="*" />
+      <add name="/roadsandtransport/roads/licences/" children="" />
+      <add name="/roadsandtransport/roads/maintenance/" children="" />
+      <add name="/roadsandtransport/roads/maintenance/potholes/" children="" />
+      <add name="/roadsandtransport/roads/maintenance/saltingandgritting/" children="*" />
+      <add name="/roadsandtransport/roads/maintenance/verges/" children="" />
+      <add name="/socialcare/getting-help-from-us/contact-adult-social-care/" children="" />
+      <add name="/socialcare/worried/report/" children="" />
+      <add name="/web-chat/" children="" />
+      <add name="/yourcouncil/about/districtandborough/" children="" />
+      <add name="/yourcouncil/about/keydocuments/constitution/" children="" />
+      <add name="/yourcouncil/about/keydocuments/councilplan/" children="" />
+      <add name="/yourcouncil/finance/guide/fraud/" children="" />
+    </Paths>
+  </UnpublishOverridesSection>
 
   <Escc.Web xdt:Transform="Insert" />
   <Escc.Web xdt:Transform="Remove" xdt:Locator="XPath(/configuration/Escc.Web[2])" />
@@ -312,6 +368,11 @@
                 <add input="{HTTP_HOST}" pattern="^www.accesseastsussex.org$" />
             </conditions>
             <action type="Redirect" url="https://www.eastsussex.gov.uk/{R:1}" appendQueryString="true" redirectType="Permanent" />
+        </rule>
+        <rule name="Location template *.vcf download" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+        <rule name="Location template *.vcf download" stopProcessing="true" xdt:Transform="Insert">
+          <match url="(.*).vcf" />
+          <action type="Rewrite" url="/{R:1}?alttemplate=LocationVCard" />
         </rule>
       </rules>
     </rewrite>

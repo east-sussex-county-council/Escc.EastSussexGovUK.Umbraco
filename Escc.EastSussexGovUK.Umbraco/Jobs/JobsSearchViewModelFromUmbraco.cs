@@ -7,7 +7,7 @@ using Umbraco.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
-    public class SearchViewModelFromUmbraco : BaseViewModelFromUmbracoBuilder, IViewModelBuilder<JobsSearchViewModel>
+    public class JobsSearchViewModelFromUmbraco : BaseViewModelFromUmbracoBuilder, IViewModelBuilder<JobsSearchViewModel>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="JobsSearchViewModel" /> class.
@@ -16,7 +16,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// <exception cref="System.ArgumentNullException">umbracoContent
         /// or
         /// mediaUrlTransformer</exception>
-        public SearchViewModelFromUmbraco(IPublishedContent umbracoContent) :
+        public JobsSearchViewModelFromUmbraco(IPublishedContent umbracoContent) :
             base(umbracoContent, null)
         {
         }
@@ -35,6 +35,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 HeaderBackgroundImageLarge = BuildImage("HeaderBackgroundImageLarge_Content"),
                 JobsHomePage = BuildLinkToPage("JobsHomePage_Content"),
                 LoginPage = BuildLinkToPage("LoginPage_Content"),
+                SearchResultsPage = BuildLinkToPage("SearchResultsPage_Content"),
                 ExamineSearcher = BuildLookupValuesSearcherName("PublicOrRedeployment_Content")
             };
 
