@@ -1,9 +1,6 @@
 ﻿using Escc.EastSussexGovUK.Umbraco.Examine;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Alerts;
-using Escc.EastSussexGovUK.Umbraco.Jobs.Examine;
 using Examine;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Table;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -16,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using Umbraco.Web;
 using Umbraco.Web.WebApi;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
@@ -25,19 +23,55 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
         [HttpGet]
         public void SendAlerts([FromUri]int? frequency)
         {
+            Uri publicJobAdvert = null, redeploymentJobAdvert = null, publicJobAlerts = null, redeploymentJobAlerts = null;
+
+            var jobAdvertPages = Umbraco.TypedContentAtXPath("//JobAdvert");
+            foreach (var jobAdvert in jobAdvertPages)
+            {
+                var index = umbraco.library.GetPreValueAsString(jobAdvert.GetPropertyValue<int>("PublicOrRedeployment_Content"));
+                if (index == "Redeployment jobs")
+                {
+                    redeploymentJobAdvert = new Uri(jobAdvert.UrlAbsolute());
+                }
+                else publicJobAdvert = new Uri(jobAdvert.UrlAbsolute());
+            }
+
+            var jobAlertsPages = Umbraco.TypedContentAtXPath("//JobAlerts");
+            foreach (var jobAlert in jobAlertsPages)
+            {
+                var index = umbraco.library.GetPreValueAsString(jobAlert.GetPropertyValue<int>("PublicOrRedeployment_Content"));
+                if (index == "Redeployment jobs")
+                {
+                    redeploymentJobAlerts = new Uri(jobAlert.UrlAbsolute());
+                }
+                else publicJobAlerts = new Uri(jobAlert.UrlAbsolute());
+            }
+
+            if (publicJobAdvert != null && publicJobAlerts != null)
+            {
+                SendAlertsForJobSet(JobsSet.PublicJobs, frequency, publicJobAdvert, publicJobAlerts);
+            }
+            if (redeploymentJobAdvert != null && redeploymentJobAlerts != null)
+            {
+                SendAlertsForJobSet(JobsSet.RedeploymentJobs, frequency, redeploymentJobAdvert, redeploymentJobAlerts);
+            }
+        }
+
+        private void SendAlertsForJobSet(JobsSet jobsSet, int? frequency, Uri jobAdvertUrl, Uri alertsPageUrl)
+        {
             IAlertsRepository repo = new AzureTableStorageAlertsRepository();
-            var alerts = repo.GetAllAlerts(new JobAlertsQuery() { Frequency = frequency });
+            var alerts = repo.GetAllAlerts(new JobAlertsQuery() { Frequency = frequency, JobsSet = jobsSet });
             var alertsGroupedByEmail = GroupAlertsByEmail(alerts);
 
             foreach (var alertsForAnEmail in alertsGroupedByEmail.Values)
             {
                 foreach (var alert in alertsForAnEmail)
                 {
-                    var jobsSentForThisEmail = repo.GetJobsSentForEmail(alert.Email);
-                    LookupJobsForAlert(alert, jobsSentForThisEmail);
+                    var jobsSentForThisEmail = repo.GetJobsSentForEmail(jobsSet, alert.Email);
+                    LookupJobsForAlert(alert, jobsSentForThisEmail, jobAdvertUrl, jobsSet);
                 }
 
-                var email = BuildEmail(alertsForAnEmail, new Uri(Request.RequestUri, "/jobs/alerts/"), new JobAlertIdEncoder());
+                var email = BuildEmail(alertsForAnEmail, alertsPageUrl, new JobAlertIdEncoder());
 
                 if (!String.IsNullOrEmpty(email))
                 {
@@ -48,17 +82,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 {
                     foreach (var job in alert.MatchingJobs)
                     {
-                        repo.MarkAlertAsSent(alert.Email, job.Id);
+                        repo.MarkAlertAsSent(jobsSet, alert.Email, job.Id);
                     }
                 }
             }
         }
 
-        private async Task<IEnumerable<Job>> Search(JobSearchQuery query)
+        private async Task<IEnumerable<Job>> Search(JobSearchQuery query, Uri jobAdvertUrl, JobsSet jobsSet)
         {
-            var source = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection["PublicJobsSearcher"], 
+            var source = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[jobsSet + "Searcher"], 
                 new QueryBuilder(new LuceneTokenisedQueryBuilder(), new KeywordsTokeniser(), new LuceneStopWordsRemover(), new WildcardSuffixFilter()), 
-                new RelativeJobUrlGenerator(new Uri(Request.RequestUri,"/jobs/job/")));
+                new RelativeJobUrlGenerator(jobAdvertUrl));
             var jobs = await source.ReadJobs(query);
             return jobs;
         }
@@ -113,12 +147,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             return emailHtml.ToString();
         }
 
-        private async void LookupJobsForAlert(JobAlert alert, IList<int> jobsSentForThisAlert)
+        private async void LookupJobsForAlert(JobAlert alert, IList<int> jobsSentForThisAlert, Uri jobAdvertUrl, JobsSet jobsSet)
         {
             var query = String.IsNullOrEmpty(alert.Criteria) ? new NameValueCollection() : HttpUtility.ParseQueryString(alert.Criteria);
             var parsedQuery = new JobSearchQueryConverter().ToQuery(query);
             parsedQuery.ClosingDateFrom = DateTime.Today;
-            var jobs = await Search(parsedQuery);
+            var jobs = await Search(parsedQuery, jobAdvertUrl, jobsSet);
 
             foreach (var job in jobs)
             {

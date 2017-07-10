@@ -24,7 +24,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             if (String.IsNullOrEmpty(alert.Email)) throw new ArgumentException("The alert must include an email address to generate a unique ID", nameof(alert));
 
             HashAlgorithm algorithm = SHA1.Create();
-            var bytes = Encoding.ASCII.GetBytes(alert.Email + alert.Criteria);
+            var bytes = Encoding.ASCII.GetBytes(alert.JobsSet + alert.Email + alert.Criteria);
             var hash = algorithm.ComputeHash(bytes);
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < hash.Length; i++)

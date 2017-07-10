@@ -27,7 +27,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         {
             var modelBuilder = new JobsSearchViewModelFromUmbraco(model.Content, new JobAlertsViewModel());
             var viewModel = (JobAlertsViewModel)modelBuilder.BuildModel();
-            var lookupValuesDataSource = new JobsLookupValuesFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.ExamineSearcher]);
+            var lookupValuesDataSource = new JobsLookupValuesFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.JobsSet + "LookupValuesSearcher"]);
             modelBuilder.AddLookupValuesToModel(lookupValuesDataSource, viewModel);
 
             var alertId = new JobAlertIdEncoder().ParseIdFromUrl(Request.Url);

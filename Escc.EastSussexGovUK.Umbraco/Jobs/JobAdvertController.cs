@@ -58,7 +58,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             // Redirect non-preferred URL - these are sent out in job alerts, and linked from the TalentLink back office
             if (!String.IsNullOrEmpty(Request.QueryString["nPostingTargetID"]))
             {
-                var jobsProvider = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.ExamineSearcher], null, new RelativeJobUrlGenerator(new Uri(model.Content.UrlAbsolute())));
+                var jobsProvider = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.JobsSet + "Searcher"], null, new RelativeJobUrlGenerator(new Uri(model.Content.UrlAbsolute())));
                 viewModel.Job = Task.Run(async () => await jobsProvider.ReadJob(Request.QueryString["nPostingTargetID"])).Result;
                 if (viewModel.Job.Id > 0)
                 {
@@ -70,7 +70,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             var jobUrlSegment = Regex.Match(Request.Url.AbsolutePath, "/([0-9]+)/");
             if (jobUrlSegment.Success)
             {
-                var jobsProvider = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.ExamineSearcher], new QueryBuilder(new LuceneTokenisedQueryBuilder(), new KeywordsTokeniser(), new LuceneStopWordsRemover(), new WildcardSuffixFilter()), new RelativeJobUrlGenerator(new Uri(model.Content.UrlAbsolute())));
+                var jobsProvider = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.JobsSet + "Searcher"], new QueryBuilder(new LuceneTokenisedQueryBuilder(), new KeywordsTokeniser(), new LuceneStopWordsRemover(), new WildcardSuffixFilter()), new RelativeJobUrlGenerator(new Uri(model.Content.UrlAbsolute())));
                 viewModel.Job = Task.Run(async () => await jobsProvider.ReadJob(jobUrlSegment.Groups[1].Value)).Result;
                 if (viewModel.Job.Id == 0 || viewModel.Job.ClosingDate < DateTime.Today)
                 {

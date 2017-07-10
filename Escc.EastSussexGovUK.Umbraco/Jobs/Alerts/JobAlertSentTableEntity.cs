@@ -6,13 +6,10 @@ using System.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
 {
-    public class JobAlertTableEntity : TableEntity
+    public class JobAlertSentTableEntity : TableEntity
     {
-        public string Criteria { get; set; }
-        public int Frequency { get; set; }
-
         /// <summary>
-        /// Gets the set of jobs this alert applies to
+        /// Gets the set of jobs which this alert was sent for
         /// </summary>
         public string JobsSet { get; set; }
     }

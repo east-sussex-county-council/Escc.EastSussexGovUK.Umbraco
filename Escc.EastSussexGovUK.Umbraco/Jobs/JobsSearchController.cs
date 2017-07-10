@@ -30,7 +30,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
 
             var modelBuilder = new JobsSearchViewModelFromUmbraco(model.Content, new JobsSearchViewModel());
             var viewModel = modelBuilder.BuildModel();
-            var lookupValuesDataSource = new JobsLookupValuesFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.ExamineSearcher]);
+            var lookupValuesDataSource = new JobsLookupValuesFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.JobsSet + "LookupValuesSearcher"]);
             modelBuilder.AddLookupValuesToModel(lookupValuesDataSource, viewModel);
 
             var baseModelBuilder = new BaseViewModelBuilder();

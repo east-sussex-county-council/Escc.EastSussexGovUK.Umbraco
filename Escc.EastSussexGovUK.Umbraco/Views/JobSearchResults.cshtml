@@ -124,6 +124,7 @@
                 @Html.AntiForgeryToken();
 
                 <input type="hidden" name="criteria" value="@query.ToString()" />
+                <input type="hidden" name="JobsSet" value="@(Model.Query?.JobsSet)" />
                 <div>
                     <label for="email">Your email address</label>
                     <input type="email" name="email" id="email" required="required"/>

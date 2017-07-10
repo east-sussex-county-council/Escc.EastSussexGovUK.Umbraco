@@ -36,7 +36,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 JobsHomePage = BuildLinkToPage("JobsHomePage_Content"),
                 LoginPage = BuildLinkToPage("LoginPage_Content"),
                 SearchResultsPageForClosedJobs = BuildLinkToPage("SearchResultsPage_Content"),
-                ExamineSearcher = BuildJobsSearcherName("PublicOrRedeployment_Content")
+                JobsSet = ParseJobsSet("PublicOrRedeployment_Content")
             };
 
             return model;

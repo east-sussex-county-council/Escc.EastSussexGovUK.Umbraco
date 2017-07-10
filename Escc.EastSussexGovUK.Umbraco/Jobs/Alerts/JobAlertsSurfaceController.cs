@@ -56,7 +56,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
                 {
                     Criteria = new JobSearchQueryConverter().ToCollection(searchQuery).ToString(),
                     Email = oldAlert.Email,
-                    Frequency = searchQuery.Frequency
+                    Frequency = searchQuery.Frequency,
+                    JobsSet = searchQuery.JobsSet                    
                 };
                 newAlert.AlertId = encoder.GenerateId(newAlert);
 

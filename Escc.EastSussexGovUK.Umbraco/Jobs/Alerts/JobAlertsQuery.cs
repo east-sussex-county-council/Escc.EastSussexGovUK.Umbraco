@@ -19,5 +19,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         /// Gets or sets the frequency (in days) that matching alerts must be set to
         /// </summary>
         public int? Frequency { get; set; }
+
+        /// <summary>
+        /// Gets the set of jobs and job alerts to search
+        /// </summary>
+        public JobsSet JobsSet { get; set; }
     }
 }

@@ -3675,6 +3675,7 @@
     <Compile Include="Jobs\Alerts\JobAlert.cs" />
     <Compile Include="Jobs\Alerts\JobAlertsQuery.cs" />
     <Compile Include="Jobs\Alerts\JobAlertsViewModel.cs" />
+    <Compile Include="Jobs\Alerts\JobAlertSentTableEntity.cs" />
     <Compile Include="Jobs\Alerts\JobAlertTableEntity.cs" />
     <Compile Include="Jobs\Examine\BaseLookupValuesIndexer.cs" />
     <Compile Include="Examine\LuceneDateTimeParser.cs" />
@@ -3690,6 +3691,7 @@
     <Compile Include="Jobs\Examine\JobsIndexerApiController.cs" />
     <Compile Include="Jobs\Alerts\JobAlertsSurfaceController.cs" />
     <Compile Include="Jobs\Alerts\JobAlertsApiController.cs" />
+    <Compile Include="Jobs\JobsSet.cs" />
     <Compile Include="Jobs\LocationHashTag.cs" />
     <Compile Include="Jobs\RelativeJobUrlGenerator.cs" />
     <Compile Include="Jobs\ProblemJobsRssController.cs" />

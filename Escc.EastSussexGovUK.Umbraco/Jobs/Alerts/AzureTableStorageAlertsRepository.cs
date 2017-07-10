@@ -32,7 +32,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             var table = tableClient.GetTableReference("JobAlerts");
 
             // Initialize a default TableQuery to retrieve all the entities in the table.
-            TableQuery<JobAlertTableEntity> tableQuery = new TableQuery<JobAlertTableEntity>();
+            TableQuery<JobAlertTableEntity> tableQuery = new TableQuery<JobAlertTableEntity>()
+                .Where(TableQuery.GenerateFilterCondition("JobsSet", QueryComparisons.Equal, query.JobsSet.ToString()));
+
             if (!String.IsNullOrEmpty(query.EmailAddress))
             {
                 tableQuery = tableQuery
@@ -68,7 +70,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
                         AlertId = entity.RowKey,
                         Criteria = entity.Criteria,
                         Email = entity.PartitionKey,
-                        Frequency = entity.Frequency
+                        Frequency = entity.Frequency,
+                        JobsSet = (JobsSet)Enum.Parse(typeof(JobsSet), entity.JobsSet)
                     });
                 }
 
@@ -97,7 +100,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
                 PartitionKey = ToAzureKeyString(alert.Email),
                 RowKey = alert.AlertId,
                 Criteria = alert.Criteria,
-                Frequency = alert.Frequency
+                Frequency = alert.Frequency,
+                JobsSet = alert.JobsSet.ToString()
             };
 
             // Create the TableOperation object that inserts the entity.
@@ -136,6 +140,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             if (alertEntity == null) return false;
 
             var emailAddress = alertEntity.PartitionKey;
+            var jobsSet = (JobsSet)Enum.Parse(typeof(JobsSet), alertEntity.JobsSet);
 
             // Create the TableOperation object that deletes the entity.
             var deleteOperation = TableOperation.Delete(alertEntity);
@@ -158,15 +163,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
                 }
             }
 
-            DeleteRecordOfAlertsSent(emailAddress);
+            DeleteRecordOfAlertsSent(jobsSet, emailAddress);
 
             return true;
         }
 
-        private void DeleteRecordOfAlertsSent(string emailAddress)
+        private void DeleteRecordOfAlertsSent(JobsSet jobsSet, string emailAddress)
         {
             // Only remove data if there are no more alerts set up for this email, otherwise we may still send jobs they've already seen
-            var alertsForThisEmail = GetAllAlerts(new JobAlertsQuery { EmailAddress = emailAddress });
+            var alertsForThisEmail = GetAllAlerts(new JobAlertsQuery { JobsSet = jobsSet, EmailAddress = emailAddress });
             if (alertsForThisEmail.Any()) return;
 
             // Get the storage account connection
@@ -178,7 +183,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             table.CreateIfNotExistsAsync().Wait();
 
             TableQuery<TableEntity> tableQuery = new TableQuery<TableEntity>()
-                .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, emailAddress));
+                .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, emailAddress))
+                .Where(TableQuery.GenerateFilterCondition("JobsSet", QueryComparisons.Equal, jobsSet.ToString()));
 
             var alertsSentEntities = table.ExecuteQuery(tableQuery);
             foreach (var entity in alertsSentEntities)
@@ -214,7 +220,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
                     AlertId = entity.RowKey,
                     Criteria = entity.Criteria,
                     Email = entity.PartitionKey,
-                    Frequency = entity.Frequency
+                    Frequency = entity.Frequency,
+                    JobsSet = (JobsSet)Enum.Parse(typeof(JobsSet), entity.JobsSet)
                 };
             }
 
@@ -250,7 +257,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             return sb.ToString();
         }
 
-        public void MarkAlertAsSent(string emailAddress, int jobId)
+        public void MarkAlertAsSent(JobsSet jobsSet, string emailAddress, int jobId)
         {
             // Get the storage account connection
             var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["Escc.EastSussexGovUK.Umbraco.AzureStorage"].ConnectionString);
@@ -261,10 +268,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             table.CreateIfNotExistsAsync().Wait();
 
             // Azure tables use an index clustered first by partition key then by row key.
-            var entity = new TableEntity()
+            var entity = new JobAlertSentTableEntity()
             {
                 PartitionKey = ToAzureKeyString(emailAddress),
-                RowKey = jobId.ToString()
+                RowKey = jobId.ToString(),
+                JobsSet = jobsSet.ToString()
             };
 
             // Create the TableOperation object that inserts the entity.
@@ -289,7 +297,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             }
         }
 
-        public IList<int> GetJobsSentForEmail(string emailAddress)
+        public IList<int> GetJobsSentForEmail(JobsSet jobsSet, string emailAddress)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["Escc.EastSussexGovUK.Umbraco.AzureStorage"].ConnectionString;
             if (String.IsNullOrEmpty(connectionString))
@@ -307,7 +315,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
 
             // Initialize a default TableQuery to retrieve all the entities in the table.
             TableQuery<TableEntity> tableQuery = new TableQuery<TableEntity>()
-                .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, emailAddress));
+                .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, emailAddress))
+                .Where(TableQuery.GenerateFilterCondition("JobsSet", QueryComparisons.Equal, jobsSet.ToString()));
 
             // Initialize the continuation token to null to start from the beginning of the table.
             TableContinuationToken continuationToken = null;
@@ -323,7 +332,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
                 // continue on the next iteration (or null if it has reached the end).
                 continuationToken = tableQueryResult.ContinuationToken;
 
-                // Print the number of rows retrieved.
                 foreach (var entity in tableQueryResult.Results)
                 {
                     jobIds.Add(Int32.Parse(entity.RowKey));

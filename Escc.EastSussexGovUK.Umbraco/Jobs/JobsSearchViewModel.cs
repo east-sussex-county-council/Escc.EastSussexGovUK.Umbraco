@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Escc.EastSussexGovUK.Umbraco.Models;
-using Escc.Umbraco.PropertyTypes;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
@@ -13,6 +11,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
     /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Models.BaseViewModel" />
     public class JobsSearchViewModel : BaseJobsViewModel
     {
+        /// <summary>
+        /// Gets or sets the set of jobs to search.
+        /// </summary>
+        public JobsSet JobsSet { get; set; }
+        
         /// <summary>
         /// Gets or sets the search query
         /// </summary>
@@ -40,10 +43,5 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// The work patterns.
         /// </value>
         public IList<JobsLookupValue> WorkPatterns { get; } = new List<JobsLookupValue>();
-
-        /// <summary>
-        /// Gets or sets the name of the Examine searcher for the job lookup values index
-        /// </summary>
-        public string ExamineSearcher { get; set; }
     }
 }
