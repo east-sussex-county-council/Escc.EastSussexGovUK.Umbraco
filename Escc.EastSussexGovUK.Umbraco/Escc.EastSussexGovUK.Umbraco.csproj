@@ -167,6 +167,12 @@
       <HintPath>..\packages\Escc.Schools.TermDates.Website.1.2.1\lib\Escc.Schools.TermDates.Website.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Escc.Services, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Services.3.0.0\lib\Escc.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Escc.Services.Azure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Services.Azure.2.1.1\lib\Escc.Services.Azure.dll</HintPath>
+    </Reference>
     <Reference Include="Escc.Umbraco, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.2.3.1\lib\Escc.Umbraco.dll</HintPath>
     </Reference>
@@ -365,6 +371,9 @@
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="OrigoDb.JsonNetFormatter, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OrigoDB.JsonNetFormatter.0.1.0\lib\net40\OrigoDb.JsonNetFormatter.dll</HintPath>
+    </Reference>
     <Reference Include="Our.Umbraco.FileSystemProviders.Azure, Version=0.5.8.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoFileSystemProviders.Azure.0.5.8-escc-000001\lib\net45\Our.Umbraco.FileSystemProviders.Azure.dll</HintPath>
     </Reference>
@@ -375,6 +384,9 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="S22.Mail, Version=1.0.4668.31819, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\S22.Mail.1.0.4668.31819\lib\net45\S22.Mail.dll</HintPath>
     </Reference>
     <Reference Include="Semver, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\semver.1.1.2\lib\net451\Semver.dll</HintPath>

@@ -8,6 +8,8 @@ using Umbraco.Core.Models;
 using Umbraco.Web.Mvc;
 using Umbraco.Web;
 using Umbraco.Web.Models;
+using System.Net.Mail;
+using Escc.Services;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
 {
@@ -24,9 +26,25 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
                 alert.AlertId = new JobAlertIdEncoder().GenerateId(alert);
                 repo.SaveAlert(alert);
 
+                SendEmail(alert.Email, "<h2>Your email alert has been created</h2><p>" + alert.Criteria + "</p>");
+
                 query.Add("subscribed", "1");
             }
             return new RedirectToUmbracoPageResult(CurrentPage, query);
+        }
+
+        private static void SendEmail(string emailAddress, string emailHtml)
+        {
+            var message = new MailMessage();
+            message.To.Add(emailAddress);
+            message.Subject = "Your email alert has been created";
+            message.Body = emailHtml;
+            message.IsBodyHtml = true;
+
+            var configuration = new ConfigurationServiceRegistry();
+            var cache = new HttpContextCacheStrategy();
+            var emailService = ServiceContainer.LoadService<IEmailSender>(configuration, cache);
+            emailService.SendAsync(message);
         }
 
         [ValidateAntiForgeryToken]

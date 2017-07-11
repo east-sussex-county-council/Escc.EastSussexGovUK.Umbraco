@@ -1,5 +1,6 @@
 ﻿using Escc.EastSussexGovUK.Umbraco.Examine;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Alerts;
+using Escc.Services;
 using Examine;
 using System;
 using System.Collections.Generic;
@@ -115,15 +116,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
 
         private static void SendEmail(string emailAddress, string emailHtml)
         {
-            using (var smtp = new SmtpClient())
-            {
-                var message = new MailMessage();
-                message.To.Add(emailAddress);
-                message.Subject = "Is this a job you'll love doing?";
-                message.Body = emailHtml;
-                message.IsBodyHtml = true;
-                smtp.Send(message);
-            }
+            var message = new MailMessage();
+            message.To.Add(emailAddress);
+            message.Subject = "Is this a job you'll love doing?";
+            message.Body = emailHtml;
+            message.IsBodyHtml = true;
+
+            var configuration = new ConfigurationServiceRegistry();
+            var cache = new HttpContextCacheStrategy();
+            var emailService = ServiceContainer.LoadService<IEmailSender>(configuration, cache);
+            emailService.SendAsync(message);
         }
 
         private static string BuildEmail(IList<JobAlert> subscriptionsForAnEmail, Uri subscriptionUrl, JobAlertIdEncoder encoder)
