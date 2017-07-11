@@ -60,34 +60,6 @@
         }
 
         @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
-        @if (!String.IsNullOrWhiteSpace(Model.Query.Keywords))
-        {
-            <p>Keywords: @Model.Query.Keywords</p>
-        }
-        @if (Model.Query.Locations.Count > 0)
-        {
-            <p>Locations: @Model.Query.Locations.Humanize()</p>
-        }
-        @if (Model.Query.JobTypes.Count > 0)
-        {
-            <p>Categories: @Model.Query.JobTypes.Humanize()</p>
-        }
-        @if (Model.Query.Organisations.Count > 0)
-        {
-            <p>Organisations: @Model.Query.Organisations.Humanize()</p>
-        }
-        @if (Model.Query.SalaryRanges.Count > 0)
-        {
-            <p>Salary ranges: @Model.Query.SalaryRanges.Humanize()</p>
-        }
-        @if (Model.Query.WorkPatterns.Count > 0)
-        {
-            <p>Work patterns: @Model.Query.WorkPatterns.Humanize()</p>
-        }
-        @if (!String.IsNullOrWhiteSpace(Model.Query.JobReference))
-        {
-            <p>Job reference: @Model.Query.JobReference</p>
-        }
 
         @if (Model.Jobs.Count > 0)
         {
@@ -105,7 +77,7 @@
                 @Html.Partial("~/Views/JobsTableBody.cshtml", Model.Jobs)
             </table>
             @Html.Raw(pagingHtml)
-            if (String.IsNullOrEmpty(Request.QueryString["page"]) || Request.QueryString["page"].ToUpperInvariant() != "ALL")
+            if ((String.IsNullOrEmpty(Request.QueryString["page"]) || Request.QueryString["page"].ToUpperInvariant() != "ALL") && Model.Jobs.PageCount > 1)
             {
                 <p><a href="@(urlWithoutPage)all">View all results</a></p>
             }

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Web;
+using Humanizer;
+using System.Globalization;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
@@ -17,7 +18,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// Gets or sets the set of jobs to query
         /// </summary>
         public JobsSet JobsSet { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the keywords to search significant fields by, using an AND operator between words
         /// </summary>
@@ -121,6 +122,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public string ToHash()
         {
             var allContent = new StringBuilder();
+            allContent.Append("jobset").Append(JobsSet);
             allContent.Append("keywords").Append(Keywords);
             allContent.Append("location");
             foreach (var value in Locations) allContent.Append(value);
@@ -144,6 +146,103 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 sb.Append(hash[i].ToString("X2"));
             }
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// Gets a plain-English description of the query
+        /// </summary>
+        public override string ToString()
+        {
+            // Format is [Work pattern] [type] jobs [in location] [paying salary range] [advertised by organisation] [and matching keywords/reference]
+            const string defaultDescription = "All jobs";
+            var description = new StringBuilder();
+
+            if (WorkPatterns.Count == 1) // because we only support two patterns, and both patterns means all jobs
+            {
+                description.Append(ListOfThings(String.Empty, WorkPatterns, To.SentenceCase, String.Empty));
+            }
+
+            if (JobTypes.Count > 0)
+            {
+                description.Append(ListOfThings(String.Empty, JobTypes, new LowerCaseExceptAcronyms(), "and"));
+            }
+
+            description.Append(description.Length == 0 ? "Jobs" : " jobs");
+
+            var anythingAfterJobs = false;
+
+            if (Locations.Count > 0)
+            {
+                description.Append(ListOfThings("in", Locations, null, "or"));
+                anythingAfterJobs = true;
+            }
+
+            if (SalaryRanges.Count > 0)
+            {
+                description.Append(ListOfThings("paying", SalaryRanges, null, "or"));
+                anythingAfterJobs = true;
+            }
+
+            if (Organisations.Count > 0)
+            {
+                description.Append(ListOfThings("advertised by", Organisations, null, "or"));
+                anythingAfterJobs = true;
+            }
+
+            var matching = new List<string>();
+            if (!String.IsNullOrEmpty(Keywords)) matching.Add($"'{Keywords}'");
+            if (!String.IsNullOrEmpty(JobReference)) matching.Add($"'{JobReference}'");
+            description.Append(ListOfThings(anythingAfterJobs ? "and matching" : "matching", matching, null, "or"));
+
+            var result = description.Length > 4 ? description.ToString().TrimStart() : defaultDescription;
+            return result.Substring(0, 1).ToUpper(CultureInfo.CurrentCulture) + result.Substring(1);
+        }
+
+        private string ListOfThings(string conjunctionBeforeList, IList<string> things, IStringTransformer caseTransform, string conjunctionBeforeLastItem)
+        {
+            if (things.Count == 0) return String.Empty;
+
+            var clause = new StringBuilder(" ");
+            if (!String.IsNullOrEmpty(conjunctionBeforeList)) clause.Append(conjunctionBeforeList).Append(" ");
+
+            for (var i = 0; i < things.Count; i++)
+            {
+                if (i > 0 && i < (things.Count - 1)) clause.Append(", ");
+                if (i > 0 && i == things.Count - 1) clause.Append(" ").Append(conjunctionBeforeLastItem).Append(" ");
+                if (caseTransform != null)
+                {
+                    clause.Append(things[i].Transform(caseTransform));
+                }
+                else
+                {
+                    clause.Append(things[i]);
+                }
+            }
+
+            return clause.ToString();
+        }
+
+        private class LowerCaseExceptAcronyms : IStringTransformer
+        {
+            public string Transform(string input)
+            {
+                const char space = ' ';
+                var words = input.Split(space);
+                var joined = new StringBuilder();
+                foreach (var word in words)
+                {
+                    joined.Append(space);
+                    if (word.ToUpper(CultureInfo.CurrentCulture) == word)
+                    {
+                        joined.Append(word);
+                    }
+                    else
+                    {
+                        joined.Append(word.ToLower(CultureInfo.CurrentCulture));
+                    }
+                }
+                return joined.ToString().TrimStart();
+            }
         }
     }
 }

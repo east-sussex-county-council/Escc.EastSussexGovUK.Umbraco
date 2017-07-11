@@ -26,7 +26,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
                 alert.AlertId = new JobAlertIdEncoder().GenerateId(alert);
                 repo.SaveAlert(alert);
 
-                SendEmail(alert.Email, "<h2>Your email alert has been created</h2><p>" + alert.Criteria + "</p>");
+                var queryDescription = new JobSearchQueryConverter().ToQuery(query).ToString();
+                SendEmail(alert.Email, "<h2>Your email alert has been created</h2><p>" + queryDescription + "</p>");
 
                 query.Add("subscribed", "1");
             }

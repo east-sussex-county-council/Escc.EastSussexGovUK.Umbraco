@@ -59,6 +59,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 viewModel.Query = new JobSearchQueryConverter().ToQuery(Request.QueryString);
                 viewModel.Query.ClosingDateFrom = DateTime.Today;
                 viewModel.Query.JobsSet = viewModel.JobsSet;
+                viewModel.Metadata.Title = viewModel.Query.ToString();
 
                 var jobsProvider = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.JobsSet + "Searcher"], new QueryBuilder(new LuceneTokenisedQueryBuilder(), new KeywordsTokeniser(), new LuceneStopWordsRemover(), new WildcardSuffixFilter()), viewModel.JobAdvertPage != null ? new RelativeJobUrlGenerator(viewModel.JobAdvertPage.Url) : null);
 

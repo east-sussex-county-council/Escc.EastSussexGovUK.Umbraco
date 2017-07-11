@@ -353,6 +353,8 @@
     <Compile Include="JobAdvertHtmlParserTests.cs" />
     <Compile Include="JobAlertIdEncoderTests.cs" />
     <Compile Include="JobSearchFilterTests.cs" />
+    <Compile Include="JobSearchQueryConverterTests.cs" />
+    <Compile Include="JobSearchQueryTests.cs" />
     <Compile Include="UmbracoLatestServiceTests.cs" />
     <Compile Include="KeywordsTokeniserTests.cs" />
     <Compile Include="LocationHashTagTests.cs" />

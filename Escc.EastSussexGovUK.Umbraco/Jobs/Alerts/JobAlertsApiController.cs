@@ -128,22 +128,24 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             emailService.SendAsync(message);
         }
 
-        private static string BuildEmail(IList<JobAlert> subscriptionsForAnEmail, Uri subscriptionUrl, JobAlertIdEncoder encoder)
+        private static string BuildEmail(IList<JobAlert> alertsForAnEmail, Uri alertUrl, JobAlertIdEncoder encoder)
         {
             var emailHtml = new StringBuilder();
 
-            foreach (var subscription in subscriptionsForAnEmail)
+            foreach (var alert in alertsForAnEmail)
             {
-                if (subscription.MatchingJobs.Count > 0)
+                if (alert.MatchingJobs.Count > 0)
                 {
-                    emailHtml.Append("<h2>").Append(subscription.Criteria).Append("</h2><ul>");
-                    foreach (var job in subscription.MatchingJobs)
+                    var query = String.IsNullOrEmpty(alert.Criteria) ? new JobSearchQuery() : new JobSearchQueryConverter().ToQuery(HttpUtility.ParseQueryString(alert.Criteria));
+
+                    emailHtml.Append("<h2>").Append(query).Append("</h2><ul>");
+                    foreach (var job in alert.MatchingJobs)
                     {
                         emailHtml.Append("<li><a href=\"").Append(job.Url).Append("\">").Append(job.JobTitle).Append("</a></li>");
                     }
                     emailHtml.Append("</ul>");
 
-                    emailHtml.Append("<p><a href=\"").Append(encoder.AddIdToUrl(subscriptionUrl, subscription.AlertId)).Append("\">Change or cancel alert</a></p>");
+                    emailHtml.Append("<p><a href=\"").Append(encoder.AddIdToUrl(alertUrl, alert.AlertId)).Append("\">Change or cancel alert</a></p>");
                 }
             }
             return emailHtml.ToString();
