@@ -16,6 +16,7 @@ using Umbraco.Web.Security;
 using Exceptionless;
 using System.Globalization;
 using Examine.Providers;
+using System.Text;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
 {
@@ -142,6 +143,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
         {
             LogHelper.Info<BaseJobsIndexer>($"Building Examine index item for job '{job.Id}'");
 
+            var salary = job.Salary.SalaryRange;
+            if (_tagSanitiser != null) salary = _tagSanitiser.StripTags(salary);
+            var salaryWithStopWords = salary;
+            if (_stopWordsRemover != null) {
+                salary = _stopWordsRemover.Filter(salary);
+            }
+
             var simpleDataSet = new SimpleDataSet { NodeDefinition = new IndexedNode(), RowData = new Dictionary<string, string>() };
 
             simpleDataSet.NodeDefinition.NodeId = job.Id;
@@ -154,7 +162,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             simpleDataSet.RowData.Add("organisationDisplay", job.Organisation);
             simpleDataSet.RowData.Add("location", _stopWordsRemover != null ? _stopWordsRemover.Filter(job.Location) : job.Location);
             simpleDataSet.RowData.Add("locationDisplay", job.Location); // because Somewhere-on-Sea needs to lose the "on" for searching but keep it for display
-            simpleDataSet.RowData.Add("salary", _tagSanitiser != null ? _tagSanitiser.StripTags(_stopWordsRemover != null ? _stopWordsRemover.Filter(job.Salary.SalaryRange) : job.Salary.SalaryRange) : _stopWordsRemover != null ? _stopWordsRemover.Filter(job.Salary.SalaryRange) : job.Salary.SalaryRange);
+            simpleDataSet.RowData.Add("salary", salary);
+            simpleDataSet.RowData.Add("salaryDisplay", salaryWithStopWords); // so that it's not displayed with stop words removed
             simpleDataSet.RowData.Add("salaryRange", _stopWordsRemover != null ? _stopWordsRemover.Filter(job.Salary.SearchRange) : job.Salary.SearchRange);
             simpleDataSet.RowData.Add("salaryMin", job.Salary.MinimumSalary?.ToString("D7") ?? String.Empty);
             simpleDataSet.RowData.Add("salaryMax", job.Salary.MaximumSalary?.ToString("D7") ?? String.Empty);
@@ -172,7 +181,24 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             simpleDataSet.RowData.Add("datePublished", DateTime.UtcNow.ToIso8601DateTime());
             if (job.AdvertHtml != null)
             {
-                simpleDataSet.RowData.Add("fullText", _tagSanitiser != null ? _tagSanitiser.StripTags(job.AdvertHtml.ToHtmlString()) : job.AdvertHtml.ToHtmlString());
+                var fullText = job.AdvertHtml.ToHtmlString();
+                if (_tagSanitiser != null) fullText = _tagSanitiser.StripTags(fullText);
+
+                // Append other fields as keywords, otherwise a search term that's a good match will not be found if it has terms from two fields,
+                // eg Job Title (full time)
+                const string space = " ";
+                fullText = new StringBuilder(fullText)
+                                .Append(space).Append(job.Reference)
+                                .Append(space).Append(job.JobTitle)
+                                .Append(space).Append(job.Organisation)
+                                .Append(space).Append(job.Location)
+                                .Append(space).Append(job.JobType)
+                                .Append(space).Append(job.ContractType)
+                                .Append(space).Append(job.Department)
+                                .Append(space).Append(job.WorkPattern.ToString())
+                                .ToString();
+
+                simpleDataSet.RowData.Add("fullText", fullText);
                 simpleDataSet.RowData.Add("fullHtml", job.AdvertHtml.ToHtmlString());
             }
             if (job.AdditionalInformationHtml != null)
