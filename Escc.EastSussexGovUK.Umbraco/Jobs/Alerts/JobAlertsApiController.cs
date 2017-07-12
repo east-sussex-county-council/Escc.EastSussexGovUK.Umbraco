@@ -1,9 +1,7 @@
 ﻿using Escc.EastSussexGovUK.Umbraco.Examine;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Alerts;
-using Escc.EastSussexGovUK.Umbraco.Jobs.Examine;
+using Escc.Services;
 using Examine;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Table;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -16,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using Umbraco.Web;
 using Umbraco.Web.WebApi;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
@@ -23,83 +22,83 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
     public class JobAlertsApiController : UmbracoApiController
     {
         [HttpGet]
-        public void SendAlerts()
+        public void SendAlerts([FromUri]int? frequency)
         {
-            var subscriptions = Subscriptions();
-            var subscriptionsGroupedByEmail = GroupSubscriptionsByEmail(subscriptions);
+            Uri publicJobAdvert = null, redeploymentJobAdvert = null, publicJobAlerts = null, redeploymentJobAlerts = null;
 
-            foreach (var subscriptionsForAnEmail in subscriptionsGroupedByEmail.Values)
+            var jobAdvertPages = Umbraco.TypedContentAtXPath("//JobAdvert");
+            foreach (var jobAdvert in jobAdvertPages)
             {
-                LookupJobsForOneSubscriber(subscriptionsForAnEmail);
+                var index = umbraco.library.GetPreValueAsString(jobAdvert.GetPropertyValue<int>("PublicOrRedeployment_Content"));
+                if (index == "Redeployment jobs")
+                {
+                    redeploymentJobAdvert = new Uri(jobAdvert.UrlAbsolute());
+                }
+                else publicJobAdvert = new Uri(jobAdvert.UrlAbsolute());
+            }
 
-                var email = BuildEmail(subscriptionsForAnEmail);
+            var jobAlertsPages = Umbraco.TypedContentAtXPath("//JobAlerts");
+            foreach (var jobAlert in jobAlertsPages)
+            {
+                var index = umbraco.library.GetPreValueAsString(jobAlert.GetPropertyValue<int>("PublicOrRedeployment_Content"));
+                if (index == "Redeployment jobs")
+                {
+                    redeploymentJobAlerts = new Uri(jobAlert.UrlAbsolute());
+                }
+                else publicJobAlerts = new Uri(jobAlert.UrlAbsolute());
+            }
 
-                SendEmail(subscriptionsForAnEmail[0].Email, email);
+            if (publicJobAdvert != null && publicJobAlerts != null)
+            {
+                SendAlertsForJobSet(JobsSet.PublicJobs, frequency, publicJobAdvert, publicJobAlerts);
+            }
+            if (redeploymentJobAdvert != null && redeploymentJobAlerts != null)
+            {
+                SendAlertsForJobSet(JobsSet.RedeploymentJobs, frequency, redeploymentJobAdvert, redeploymentJobAlerts);
             }
         }
 
-        private async Task<IEnumerable<Job>> Search(JobSearchQuery query)
+        private void SendAlertsForJobSet(JobsSet jobsSet, int? frequency, Uri jobAdvertUrl, Uri alertsPageUrl)
         {
-            var source = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection["PublicJobsSearcher"], 
+            IAlertsRepository repo = new AzureTableStorageAlertsRepository();
+            var alerts = repo.GetAllAlerts(new JobAlertsQuery() { Frequency = frequency, JobsSet = jobsSet });
+            var alertsGroupedByEmail = GroupAlertsByEmail(alerts);
+
+            foreach (var alertsForAnEmail in alertsGroupedByEmail.Values)
+            {
+                foreach (var alert in alertsForAnEmail)
+                {
+                    var jobsSentForThisEmail = repo.GetJobsSentForEmail(jobsSet, alert.Email);
+                    LookupJobsForAlert(alert, jobsSentForThisEmail, jobAdvertUrl, jobsSet);
+                }
+
+                var email = BuildEmail(alertsForAnEmail, alertsPageUrl, new JobAlertIdEncoder());
+
+                if (!String.IsNullOrEmpty(email))
+                {
+                    SendEmail(alertsForAnEmail[0].Email, email);
+                }
+
+                foreach (var alert in alertsForAnEmail)
+                {
+                    foreach (var job in alert.MatchingJobs)
+                    {
+                        repo.MarkAlertAsSent(jobsSet, alert.Email, job.Id);
+                    }
+                }
+            }
+        }
+
+        private async Task<IEnumerable<Job>> Search(JobSearchQuery query, Uri jobAdvertUrl, JobsSet jobsSet)
+        {
+            var source = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[jobsSet + "Searcher"], 
                 new QueryBuilder(new LuceneTokenisedQueryBuilder(), new KeywordsTokeniser(), new LuceneStopWordsRemover(), new WildcardSuffixFilter()), 
-                new RelativeJobUrlGenerator(new Uri(Request.RequestUri,"/jobs/job/")));
+                new RelativeJobUrlGenerator(jobAdvertUrl));
             var jobs = await source.ReadJobs(query);
             return jobs;
         }
 
-        private IEnumerable<JobAlert> Subscriptions()
-        {
-            var connectionString = ConfigurationManager.ConnectionStrings["Escc.EastSussexGovUK.Umbraco.AzureStorage"].ConnectionString;
-            if (String.IsNullOrEmpty(connectionString))
-            {
-                throw new Exception("connectionStrings:Escc.EastSussexGovUK.Umbraco.AzureStorage not found in web.config");
-            }
-
-
-            // Retrieve the storage account from the connection string.
-            var storageAccount = CloudStorageAccount.Parse(connectionString);
-
-            // Create the table query.
-            var tableClient = storageAccount.CreateCloudTableClient();
-            var table = tableClient.GetTableReference("jobalerts");
-
-            // Initialize a default TableQuery to retrieve all the entities in the table.
-            TableQuery<JobAlertTableEntity> tableQuery = new TableQuery<JobAlertTableEntity>();
-                //.Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "email.address@example.org"));
-
-            // Initialize the continuation token to null to start from the beginning of the table.
-            TableContinuationToken continuationToken = null;
-
-            var alerts = new List<JobAlert>();
-
-            do
-            {
-                // Retrieve a segment (up to 1,000 entities).
-                TableQuerySegment<JobAlertTableEntity> tableQueryResult =
-                    Task.Run(() => table.ExecuteQuerySegmentedAsync(tableQuery, continuationToken)).Result;
-
-                // Assign the new continuation token to tell the service where to
-                // continue on the next iteration (or null if it has reached the end).
-                continuationToken = tableQueryResult.ContinuationToken;
-
-                // Print the number of rows retrieved.
-                foreach (var entity in tableQueryResult.Results)
-                {
-                    alerts.Add(new JobAlert()
-                    {
-                        Criteria = entity.Criteria,
-                        Email = entity.PartitionKey,
-                        Frequency = entity.Frequency
-                    });
-                }
-
-                // Loop until a null continuation token is received, indicating the end of the table.
-            } while (continuationToken != null);
-
-            return alerts;
-        }
-
-        private Dictionary<string, IList<JobAlert>> GroupSubscriptionsByEmail(IEnumerable<JobAlert> subscriptions)
+        private Dictionary<string, IList<JobAlert>> GroupAlertsByEmail(IEnumerable<JobAlert> subscriptions)
         {
             var subscriptionsGroupedByEmail = new Dictionary<string, IList<JobAlert>>();
             foreach (var subscription in subscriptions)
@@ -117,43 +116,54 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
 
         private static void SendEmail(string emailAddress, string emailHtml)
         {
-            using (var smtp = new SmtpClient())
-            {
-                var message = new MailMessage();
-                message.To.Add(emailAddress);
-                message.Subject = "Is this a job you'll love doing?";
-                message.Body = emailHtml;
-                message.IsBodyHtml = true;
-                smtp.Send(message);
-            }
+            var message = new MailMessage();
+            message.To.Add(emailAddress);
+            message.Subject = "Is this a job you'll love doing?";
+            message.Body = emailHtml;
+            message.IsBodyHtml = true;
+
+            var configuration = new ConfigurationServiceRegistry();
+            var cache = new HttpContextCacheStrategy();
+            var emailService = ServiceContainer.LoadService<IEmailSender>(configuration, cache);
+            emailService.SendAsync(message);
         }
 
-        private static string BuildEmail(IList<JobAlert> subscriptionsForAnEmail)
+        private static string BuildEmail(IList<JobAlert> alertsForAnEmail, Uri alertUrl, JobAlertIdEncoder encoder)
         {
             var emailHtml = new StringBuilder();
 
-            foreach (var subscription in subscriptionsForAnEmail)
+            foreach (var alert in alertsForAnEmail)
             {
-                emailHtml.Append("<h2>").Append(subscription.Criteria).Append("</h2><ul>");
-                foreach (var job in subscription.MatchingJobs)
+                if (alert.MatchingJobs.Count > 0)
                 {
-                    emailHtml.Append("<li><a href=\"").Append(job.Url).Append("\">").Append(job.JobTitle).Append("</a></li>");
-                }
-                emailHtml.Append("</ul>");
-            }
+                    var query = String.IsNullOrEmpty(alert.Criteria) ? new JobSearchQuery() : new JobSearchQueryConverter().ToQuery(HttpUtility.ParseQueryString(alert.Criteria));
 
+                    emailHtml.Append("<h2>").Append(query).Append("</h2><ul>");
+                    foreach (var job in alert.MatchingJobs)
+                    {
+                        emailHtml.Append("<li><a href=\"").Append(job.Url).Append("\">").Append(job.JobTitle).Append("</a></li>");
+                    }
+                    emailHtml.Append("</ul>");
+
+                    emailHtml.Append("<p><a href=\"").Append(encoder.AddIdToUrl(alertUrl, alert.AlertId)).Append("\">Change or cancel alert</a></p>");
+                }
+            }
             return emailHtml.ToString();
         }
 
-        private async void LookupJobsForOneSubscriber(IList<JobAlert> subscriptions)
+        private async void LookupJobsForAlert(JobAlert alert, IList<int> jobsSentForThisAlert, Uri jobAdvertUrl, JobsSet jobsSet)
         {
-            foreach (var subscription in subscriptions)
+            var query = String.IsNullOrEmpty(alert.Criteria) ? new NameValueCollection() : HttpUtility.ParseQueryString(alert.Criteria);
+            var parsedQuery = new JobSearchQueryConverter().ToQuery(query);
+            parsedQuery.ClosingDateFrom = DateTime.Today;
+            var jobs = await Search(parsedQuery, jobAdvertUrl, jobsSet);
+
+            foreach (var job in jobs)
             {
-                var query = String.IsNullOrEmpty(subscription.Criteria) ? new NameValueCollection() : HttpUtility.ParseQueryString(subscription.Criteria);
-                var parsedQuery = new JobSearchQueryFactory().CreateFromQueryString(query);
-                parsedQuery.ClosingDateFrom = DateTime.Today;
-                var jobs = await Search(parsedQuery);
-                subscription.MatchingJobs.AddRange(jobs);
+                if (!jobsSentForThisAlert.Contains(job.Id))
+                {
+                    alert.MatchingJobs.Add(job);
+                }
             }
         }
     }

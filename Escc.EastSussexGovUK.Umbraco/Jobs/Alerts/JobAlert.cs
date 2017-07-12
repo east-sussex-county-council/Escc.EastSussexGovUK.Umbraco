@@ -15,6 +15,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
 
         public int Frequency { get; set; } = 1;
 
-        public List<Job> MatchingJobs { get; private set; } = new List<Job>();
+        public IList<Job> MatchingJobs { get; private set; } = new List<Job>();
+        public string AlertId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the set of jobs this alert applies to
+        /// </summary>
+        public JobsSet JobsSet { get; set; }
     }
 }

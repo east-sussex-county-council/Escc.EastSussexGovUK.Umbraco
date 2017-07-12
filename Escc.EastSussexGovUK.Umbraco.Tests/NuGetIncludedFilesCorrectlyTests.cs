@@ -36,7 +36,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [TestCase(@"EastSussexGovUK\Rss\rss-to-html.ashx")]
 
         // Escc.Umbraco.EditorTools project
-        [TestCase(@"App_Plugins\EditorTools\CurrentUsers.html")]
+        [TestCase(@"App_Plugins\EditorTools\Views\CSVExport\Index.cshtml")]
 
         public void NuGetPackagesCorrectlyIncludedInProject(string filePathWhichShouldBeIncluded)
         {

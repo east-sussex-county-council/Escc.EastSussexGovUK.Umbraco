@@ -1,10 +1,9 @@
 ﻿@using ClientDependency.Core.Mvc
 @using Escc.ClientDependencyFramework
 @using Escc.EastSussexGovUK.Skins
-@using Escc.EastSussexGovUK.Umbraco.Jobs
 @using Escc.EastSussexGovUK.Views
-@using Escc.Web
-@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Jobs.JobsSearchViewModel>
+@using Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Jobs.Alerts.JobAlertsViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
@@ -20,13 +19,36 @@
 }
 @section Breadcrumb {}
 @Html.Partial("~/Views/JobsHeader.cshtml", Model)
-<div class="jobs-content full-page">
+
+<div class="full-page jobs-content">
     <div class="content text-content">
         <h1>@Model.Metadata.Title</h1>
         @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
-        <form method="GET" class="form short-form" action="@(Model.SearchResultsPage?.Url)">
-            @Html.Partial("JobsSearchForm", Model)
-        </form>
+
+        @if (Model.Alert != null)
+        {
+            if (Request.QueryString["updated"] == "1")
+            {
+                <div class="success">
+                    <p>Your alert has been saved.</p>
+                </div>
+            }
+
+            using (Html.BeginUmbracoForm<JobAlertsSurfaceController>("ReplaceAlert", null, new Dictionary<string, object> { { "class", "form short-form" } }))
+            {
+                @Html.Partial("JobsSearchForm", Model)
+            }
+
+            using (Html.BeginUmbracoForm<JobAlertsSurfaceController>("CancelAlert", null, new Dictionary<string, object>() { { "class", "form" } }))
+            {
+                @Html.AntiForgeryToken();
+                <input type="submit" value="Cancel my alert" />
+            }
+        }
+        else if (Request.QueryString["cancelled"] == "1")
+        {
+            <p>We have cancelled your job alert.</p>
+        }
     </div>
 </div>
 

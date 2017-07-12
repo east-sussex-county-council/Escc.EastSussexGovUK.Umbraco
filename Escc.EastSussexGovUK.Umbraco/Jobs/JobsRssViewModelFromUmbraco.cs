@@ -30,7 +30,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             var model = new JobsRssViewModel()
             {
                 JobAdvertPage = BuildLinkToPage("JobDetailPage_Content"),
-                ExamineSearcher = BuildJobsSearcherName("PublicOrRedeployment_Content")
+                JobsSet = ParseJobsSet("PublicOrRedeployment_Content")
             };
 
             return model;
