@@ -12,6 +12,7 @@
       <add Name="location" />
       <add Name="locationDisplay" EnableSorting="true" Type="STRING" />
       <add Name="salary" />
+      <add Name="salaryDisplay" />
       <add Name="salaryRange" />
       <add Name="salaryMax" />
       <add Name="salaryMin" />
@@ -47,6 +48,7 @@
       <add Name="location" />
       <add Name="locationDisplay" EnableSorting="true" Type="STRING" />
       <add Name="salary" />
+      <add Name="salaryDisplay" />
       <add Name="salaryRange" />
       <add Name="salaryMax" />
       <add Name="salaryMin" />
