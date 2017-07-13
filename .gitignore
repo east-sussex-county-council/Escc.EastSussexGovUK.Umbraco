@@ -38,6 +38,7 @@ packages
 Backup
 UpgradeLog*.htm
 Microsoft.CodeDom.Providers.DotNetCompilerPlatform.*
+*.orig
 
 # Umbraco files
 [Uu]mbraco/
