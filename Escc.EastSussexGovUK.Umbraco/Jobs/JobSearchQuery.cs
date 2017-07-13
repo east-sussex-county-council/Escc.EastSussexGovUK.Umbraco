@@ -153,8 +153,20 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// </summary>
         public override string ToString()
         {
+            return ToString(true);
+        }
+
+        /// <summary>
+        /// Gets a plain-English description of the query
+        /// </summary>
+        /// <param name="startWithACapitalLetter">if set to <c>true</c> the description will always start with a capital letter.</param>
+        /// <returns>
+        /// A <see cref="System.String" /> that represents this instance.
+        /// </returns>
+        public string ToString(bool startWithACapitalLetter)
+        {
             // Format is [Work pattern] [type] jobs [in location] [paying salary range] [advertised by organisation] [and matching keywords/reference]
-            const string defaultDescription = "All jobs";
+            const string defaultDescription = "all jobs";
             var description = new StringBuilder();
 
             if (WorkPatterns.Count == 1) // because we only support two patterns, and both patterns means all jobs
@@ -167,7 +179,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 description.Append(ListOfThings(String.Empty, JobTypes, new LowerCaseExceptAcronyms(), "and"));
             }
 
-            description.Append(description.Length == 0 ? "Jobs" : " jobs");
+            description.Append(" jobs");
 
             var anythingAfterJobs = false;
 
@@ -194,8 +206,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             if (!String.IsNullOrEmpty(JobReference)) matching.Add($"'{JobReference}'");
             description.Append(ListOfThings(anythingAfterJobs ? "and matching" : "matching", matching, null, "or"));
 
-            var result = description.Length > 4 ? description.ToString().TrimStart() : defaultDescription;
-            return result.Substring(0, 1).ToUpper(CultureInfo.CurrentCulture) + result.Substring(1);
+            var result = description.Length > 5 ? description.ToString().TrimStart() : defaultDescription;
+            return startWithACapitalLetter ? result.Substring(0, 1).ToUpper(CultureInfo.CurrentCulture) + result.Substring(1) : result.ToString();
         }
 
         private string ListOfThings(string conjunctionBeforeList, IList<string> things, IStringTransformer caseTransform, string conjunctionBeforeLastItem)

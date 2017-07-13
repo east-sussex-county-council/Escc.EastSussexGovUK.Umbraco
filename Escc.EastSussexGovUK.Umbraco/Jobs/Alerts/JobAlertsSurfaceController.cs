@@ -10,6 +10,7 @@ using Umbraco.Web;
 using Umbraco.Web.Models;
 using System.Net.Mail;
 using Escc.Services;
+using System.Text.RegularExpressions;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
 {
@@ -23,22 +24,40 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             if (ModelState.IsValid)
             {
                 var repo = new AzureTableStorageAlertsRepository();
-                alert.AlertId = new JobAlertIdEncoder().GenerateId(alert);
+                var encoder = new JobAlertIdEncoder();
+                alert.AlertId = encoder.GenerateId(alert);
                 repo.SaveAlert(alert);
 
-                var queryDescription = new JobSearchQueryConverter().ToQuery(query).ToString();
-                SendEmail(alert.Email, "<h2>Your email alert has been created</h2><p>" + queryDescription + "</p>");
+                var jobAlertsSettingsPages = Umbraco.TypedContentAtXPath("//JobAlerts");
+                foreach (var jobAlertSettingsPage in jobAlertsSettingsPages)
+                {
+                    var index = umbraco.library.GetPreValueAsString(jobAlertSettingsPage.GetPropertyValue<int>("PublicOrRedeployment_Content"));
+                    if (Regex.Replace(index.ToUpperInvariant(), "[^A-Z]", String.Empty) == alert.JobsSet.ToString().ToUpperInvariant())
+                    {
+                        var subject = jobAlertSettingsPage.GetPropertyValue<string>("NewAlertEmailSubject_Content");
+                        var bodyHtml = jobAlertSettingsPage.GetPropertyValue<string>("NewAlertEmailBody_Content");
+                        if (String.IsNullOrEmpty(subject)) break;
+
+                        var alertUrl = encoder.AddIdToUrl(new Uri(jobAlertSettingsPage.UrlAbsolute()), alert.AlertId).ToString();
+                        var alertDescription = new JobSearchQueryConverter().ToQuery(query).ToString(false);
+                        bodyHtml = bodyHtml.Replace("{alert-description}", alertDescription)
+                                           .Replace("/umbraco/{change-alert-url}", alertUrl); // because Umbraco admin treats it as a link relative to the back office
+
+                        SendEmail(alert.Email, subject, bodyHtml);
+                        break;
+                    }
+                }
 
                 query.Add("subscribed", "1");
             }
             return new RedirectToUmbracoPageResult(CurrentPage, query);
         }
 
-        private static void SendEmail(string emailAddress, string emailHtml)
+        private static void SendEmail(string emailAddress, string subject, string emailHtml)
         {
             var message = new MailMessage();
             message.To.Add(emailAddress);
-            message.Subject = "Your email alert has been created";
+            message.Subject = subject;
             message.Body = emailHtml;
             message.IsBodyHtml = true;
 
