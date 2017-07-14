@@ -10,11 +10,20 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
 {
     public class AzureTableStorageAlertsRepository : IAlertsRepository
     {
+        private readonly JobSearchQueryConverter _queryConverter;
+
+        public AzureTableStorageAlertsRepository(JobSearchQueryConverter queryConverter)
+        {
+            if (queryConverter == null) throw new ArgumentNullException(nameof(queryConverter));
+            _queryConverter = queryConverter;
+        }
+
         public IEnumerable<JobAlert> GetAllAlerts(JobAlertsQuery query)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["Escc.EastSussexGovUK.Umbraco.AzureStorage"].ConnectionString;
@@ -65,10 +74,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
                 // Print the number of rows retrieved.
                 foreach (var entity in tableQueryResult.Results)
                 {
+                    var searchQuery = HttpUtility.ParseQueryString(String.IsNullOrEmpty(entity.Criteria) ? String.Empty : entity.Criteria);
                     alerts.Add(new JobAlert()
                     {
                         AlertId = entity.RowKey,
-                        Criteria = entity.Criteria,
+                        Query = _queryConverter.ToQuery(searchQuery),
                         Email = entity.PartitionKey,
                         Frequency = entity.Frequency,
                         JobsSet = (JobsSet)Enum.Parse(typeof(JobsSet), entity.JobsSet)
@@ -99,7 +109,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             {
                 PartitionKey = ToAzureKeyString(alert.Email),
                 RowKey = alert.AlertId,
-                Criteria = alert.Criteria,
+                Criteria = _queryConverter.ToCollection(alert.Query).ToString(),
                 Frequency = alert.Frequency,
                 JobsSet = alert.JobsSet.ToString()
             };
@@ -116,7 +126,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             {
                 if (ex.Message.Contains("(400) Bad Request"))
                 {
-                    LogHelper.Error<AzureTableStorageAlertsRepository>(alert.Criteria + " returned " + ex.RequestInformation.ExtendedErrorInformation.ErrorMessage, ex);
+                    var alertQuery = _queryConverter.ToCollection(alert.Query).ToString();
+                    LogHelper.Error<AzureTableStorageAlertsRepository>(alertQuery + " returned " + ex.RequestInformation.ExtendedErrorInformation.ErrorMessage, ex);
                     ex.ToExceptionless().Submit();
                 }
                 else
@@ -215,10 +226,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             JobAlertTableEntity entity = GetTableEntityByRowKey(alertId);
             if (entity != null)
             {
+                var searchQuery = HttpUtility.ParseQueryString(String.IsNullOrEmpty(entity.Criteria) ? String.Empty : entity.Criteria);
                 return new JobAlert()
                 {
                     AlertId = entity.RowKey,
-                    Criteria = entity.Criteria,
+                    Query = _queryConverter.ToQuery(searchQuery),
                     Email = entity.PartitionKey,
                     Frequency = entity.Frequency,
                     JobsSet = (JobsSet)Enum.Parse(typeof(JobsSet), entity.JobsSet)

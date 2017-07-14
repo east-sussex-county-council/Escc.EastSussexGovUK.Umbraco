@@ -85,16 +85,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public NameValueCollection ToCollection(JobSearchQuery query)
         {
             // Use HttpUtility to get a new NameValueCollection(), because this way gets a subclass with a ToString() that serialises as a querystring
-            var queryString = HttpUtility.ParseQueryString(String.Empty); 
-            if (!String.IsNullOrEmpty(query.Keywords)) queryString.Add("keywords", query.Keywords);
-            if (!String.IsNullOrEmpty(query.JobReference)) queryString.Add("ref", query.JobReference);
+            var queryString = HttpUtility.ParseQueryString(String.Empty);
+            if (query != null)
+            {
+                if (!String.IsNullOrEmpty(query.Keywords)) queryString.Add("keywords", query.Keywords);
+                if (!String.IsNullOrEmpty(query.JobReference)) queryString.Add("ref", query.JobReference);
 
-            foreach (var value in query.JobTypes) queryString.Add("type", value);
-            foreach (var value in query.Locations) queryString.Add("location", value);
-            foreach (var value in query.Organisations) queryString.Add("org", value);
-            foreach (var value in query.SalaryRanges) queryString.Add("salary", value);
-            foreach (var value in query.WorkPatterns) queryString.Add("workpatterns", value);
-
+                foreach (var value in query.JobTypes) queryString.Add("type", value);
+                foreach (var value in query.Locations) queryString.Add("location", value);
+                foreach (var value in query.Organisations) queryString.Add("org", value);
+                foreach (var value in query.SalaryRanges) queryString.Add("salary", value);
+                foreach (var value in query.WorkPatterns) queryString.Add("workpatterns", value);
+            }
             return queryString;
         }
     }

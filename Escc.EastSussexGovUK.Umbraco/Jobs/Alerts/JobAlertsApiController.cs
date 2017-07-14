@@ -42,7 +42,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             // No point sending alerts without links to the jobs
             if (alertSettings.JobAdvertBaseUrl == null) return;
 
-            IAlertsRepository repo = new AzureTableStorageAlertsRepository();
+            var converter = new JobSearchQueryConverter();
+            var encoder = new JobAlertIdEncoder(converter);
+            IAlertsRepository repo = new AzureTableStorageAlertsRepository(converter);
             var alerts = repo.GetAllAlerts(new JobAlertsQuery() { Frequency = frequency, JobsSet = jobsSet });
             var alertsGroupedByEmail = GroupAlertsByEmail(alerts);
 
@@ -54,7 +56,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                     LookupJobsForAlert(alert, jobsSentForThisEmail, alertSettings.JobAdvertBaseUrl, jobsSet);
                 }
 
-                var email = BuildEmail(alertsForAnEmail, alertSettings, new JobAlertIdEncoder());
+                var email = BuildEmail(alertsForAnEmail, alertSettings, encoder);
 
                 if (!String.IsNullOrEmpty(email))
                 {
@@ -118,9 +120,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             {
                 if (alert.MatchingJobs.Count > 0)
                 {
-                    var query = String.IsNullOrEmpty(alert.Criteria) ? new JobSearchQuery() : new JobSearchQueryConverter().ToQuery(HttpUtility.ParseQueryString(alert.Criteria));
-
-                    emailHtml.Append("<h2>").Append(query).Append("</h2><ul>");
+                    emailHtml.Append("<h2>").Append(alert.Query).Append("</h2><ul>");
                     foreach (var job in alert.MatchingJobs)
                     {
                         emailHtml.Append("<li><a href=\"").Append(job.Url).Append("\">").Append(job.JobTitle).Append("</a></li>");
@@ -147,10 +147,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
 
         private async void LookupJobsForAlert(JobAlert alert, IList<int> jobsSentForThisAlert, Uri jobAdvertUrl, JobsSet jobsSet)
         {
-            var query = String.IsNullOrEmpty(alert.Criteria) ? new NameValueCollection() : HttpUtility.ParseQueryString(alert.Criteria);
-            var parsedQuery = new JobSearchQueryConverter().ToQuery(query);
-            parsedQuery.ClosingDateFrom = DateTime.Today;
-            var jobs = await Search(parsedQuery, jobAdvertUrl, jobsSet);
+            alert.Query.ClosingDateFrom = DateTime.Today;
+            var jobs = await Search(alert.Query, jobAdvertUrl, jobsSet);
 
             foreach (var job in jobs)
             {

@@ -30,17 +30,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             var lookupValuesDataSource = new JobsLookupValuesFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.JobsSet + "LookupValuesSearcher"]);
             modelBuilder.AddLookupValuesToModel(lookupValuesDataSource, viewModel);
 
-            var alertId = new JobAlertIdEncoder().ParseIdFromUrl(Request.Url);
+            var converter = new JobSearchQueryConverter();
+            var alertId = new JobAlertIdEncoder(converter).ParseIdFromUrl(Request.Url);
             if (!string.IsNullOrEmpty(alertId))
             {
-                var alertsRepo = new AzureTableStorageAlertsRepository();
+                var alertsRepo = new AzureTableStorageAlertsRepository(converter);
                 viewModel.Alert = alertsRepo.GetAlertById(alertId);
-
-                if (!string.IsNullOrEmpty(viewModel.Alert?.Criteria))
-                {
-                    var query = HttpUtility.ParseQueryString(viewModel.Alert.Criteria);
-                    viewModel.Query = new JobSearchQueryConverter().ToQuery(query);
-                }
+                viewModel.Query = viewModel.Alert?.Query;
 
                 if (viewModel.Alert == null && Request.QueryString["cancelled"] != "1" && string.IsNullOrEmpty(Request.QueryString["altTemplate"]))
                 {

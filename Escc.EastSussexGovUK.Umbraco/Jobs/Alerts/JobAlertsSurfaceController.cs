@@ -23,8 +23,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             var query = HttpUtility.ParseQueryString(Request.Url.Query);
             if (ModelState.IsValid)
             {
-                var repo = new AzureTableStorageAlertsRepository();
-                var encoder = new JobAlertIdEncoder();
+                var converter = new JobSearchQueryConverter();
+                var encoder = new JobAlertIdEncoder(converter);
+                var repo = new AzureTableStorageAlertsRepository(converter);
+                alert.Query = converter.ToQuery(query);
                 alert.AlertId = encoder.GenerateId(alert);
                 repo.SaveAlert(alert);
 
@@ -32,7 +34,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
                 if (jobAlertsSettings.ContainsKey(alert.JobsSet) && !String.IsNullOrEmpty(jobAlertsSettings[alert.JobsSet].NewAlertEmailSubject))
                 {
                     var alertUrl = encoder.AddIdToUrl(jobAlertsSettings[alert.JobsSet].ChangeAlertBaseUrl, alert.AlertId).ToString();
-                    var alertDescription = new JobSearchQueryConverter().ToQuery(query).ToString(false);
+                    var alertDescription = alert.Query.ToString(false);
                     jobAlertsSettings[alert.JobsSet].NewAlertEmailBodyHtml = jobAlertsSettings[alert.JobsSet].NewAlertEmailBodyHtml
                                         .Replace("{alert-description}", alertDescription)
                                         .Replace("/umbraco/{change-alert-url}", alertUrl); // because Umbraco admin treats it as a link relative to the back office
@@ -63,9 +65,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         [HttpPost]
         public ActionResult CancelAlert()
         {
-            var encoder = new JobAlertIdEncoder();
+            var converter = new JobSearchQueryConverter();
+            var encoder = new JobAlertIdEncoder(converter);
             var alertId = encoder.ParseIdFromUrl(new Uri(Request.Url, Request.RawUrl));
-            var alertsRepo = new AzureTableStorageAlertsRepository();
+            var alertsRepo = new AzureTableStorageAlertsRepository(converter);
             var success = alertsRepo.CancelAlert(alertId);
 
             return new RedirectResult(Request.RawUrl + "?cancelled=" + (success ? "1" : "0"));
@@ -77,14 +80,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         {
             if (ModelState.IsValid)
             {
-                var encoder = new JobAlertIdEncoder();
+                var converter = new JobSearchQueryConverter();
+                var encoder = new JobAlertIdEncoder(converter);
                 var alertId = encoder.ParseIdFromUrl(new Uri(Request.Url, Request.RawUrl));
-                var repo = new AzureTableStorageAlertsRepository();
+                var repo = new AzureTableStorageAlertsRepository(converter);
                 var oldAlert = repo.GetAlertById(alertId);
 
                 var newAlert = new JobAlert()
                 {
-                    Criteria = new JobSearchQueryConverter().ToCollection(searchQuery).ToString(),
+                    Query = searchQuery,
                     Email = oldAlert.Email,
                     Frequency = searchQuery.Frequency,
                     JobsSet = searchQuery.JobsSet                    

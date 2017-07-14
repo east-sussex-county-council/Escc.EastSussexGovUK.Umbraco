@@ -25,7 +25,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             {
                 if (contentRequest == null) throw new ArgumentNullException(nameof(contentRequest));
 
-                var encoder = new JobAlertIdEncoder();
+                var converter = new JobSearchQueryConverter();
+                var encoder = new JobAlertIdEncoder(converter);
                 var alertId = encoder.ParseIdFromUrl(contentRequest.Uri);
                 if (String.IsNullOrEmpty(alertId))
                 {

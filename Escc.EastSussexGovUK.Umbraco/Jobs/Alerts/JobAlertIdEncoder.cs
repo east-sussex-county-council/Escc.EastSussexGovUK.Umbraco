@@ -13,6 +13,19 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
     /// </summary>
     public class JobAlertIdEncoder
     {
+        private readonly JobSearchQueryConverter _queryConverter;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="JobAlertIdEncoder"/> class.
+        /// </summary>
+        /// <param name="queryConverter">The query converter.</param>
+        /// <exception cref="ArgumentNullException">queryConverter</exception>
+        public JobAlertIdEncoder(JobSearchQueryConverter queryConverter)
+        {
+            if (queryConverter == null) throw new ArgumentNullException(nameof(queryConverter));
+            _queryConverter = queryConverter;
+        }
+
         /// <summary>
         /// Generates a new unique identifier based on the content of a job alert.
         /// </summary>
@@ -24,7 +37,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             if (String.IsNullOrEmpty(alert.Email)) throw new ArgumentException("The alert must include an email address to generate a unique ID", nameof(alert));
 
             HashAlgorithm algorithm = SHA1.Create();
-            var bytes = Encoding.ASCII.GetBytes(alert.JobsSet + alert.Email + alert.Criteria);
+            var bytes = Encoding.ASCII.GetBytes(alert.JobsSet + alert.Email + _queryConverter.ToCollection(alert.Query).ToString());
             var hash = algorithm.ComputeHash(bytes);
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < hash.Length; i++)

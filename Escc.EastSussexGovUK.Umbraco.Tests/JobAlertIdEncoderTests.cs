@@ -1,4 +1,5 @@
-﻿using Escc.EastSussexGovUK.Umbraco.Jobs.Alerts;
+﻿using Escc.EastSussexGovUK.Umbraco.Jobs;
+using Escc.EastSussexGovUK.Umbraco.Jobs.Alerts;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -15,8 +16,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         public void IdIsAddedToTheUrl()
         {
             var url = new Uri("https://www.example.org");
-            var encoder = new JobAlertIdEncoder();
-            var id = encoder.GenerateId(new JobAlert() { Email = "example@example.org", Criteria = "test" });
+            var converter = new JobSearchQueryConverter();
+            var encoder = new JobAlertIdEncoder(converter);
+            var id = encoder.GenerateId(new JobAlert() { Email = "example@example.org", Query = new JobSearchQuery() { Keywords = "test" } });
 
             var after = encoder.AddIdToUrl(url, id);
 
@@ -27,8 +29,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         public void IdIsParsedFromTheUrl()
         {
             var url = new Uri("https://www.example.org");
-            var encoder = new JobAlertIdEncoder();
-            var id = encoder.GenerateId(new JobAlert() { Email = "example@example.org", Criteria = "test" });
+            var converter = new JobSearchQueryConverter();
+            var encoder = new JobAlertIdEncoder(converter);
+            var id = encoder.GenerateId(new JobAlert() { Email = "example@example.org", Query = new JobSearchQuery() { Keywords = "test" } });
             var urlWithId = encoder.AddIdToUrl(url, id);
 
             var parsedId = encoder.ParseIdFromUrl(urlWithId);
@@ -40,8 +43,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         public void IdIsParsedFromTheUrlWithQueryString()
         {
             var url = new Uri("https://www.example.org?test=test");
-            var encoder = new JobAlertIdEncoder();
-            var id = encoder.GenerateId(new JobAlert() { Email = "example@example.org", Criteria = "test" });
+            var converter = new JobSearchQueryConverter();
+            var encoder = new JobAlertIdEncoder(converter);
+            var id = encoder.GenerateId(new JobAlert() { Email = "example@example.org", Query = new JobSearchQuery() { Keywords = "test" } });
             var urlWithId = encoder.AddIdToUrl(url, id);
 
             var parsedId = encoder.ParseIdFromUrl(urlWithId);
@@ -53,8 +57,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         public void IdIsRemovedFromTheUrl()
         {
             var url = new Uri("https://www.example.org");
-            var encoder = new JobAlertIdEncoder();
-            var id = encoder.GenerateId(new JobAlert() { Email = "example@example.org", Criteria = "test" });
+            var converter = new JobSearchQueryConverter();
+            var encoder = new JobAlertIdEncoder(converter);
+            var id = encoder.GenerateId(new JobAlert() { Email = "example@example.org", Query = new JobSearchQuery() { Keywords = "test" } });
             var urlWithId = encoder.AddIdToUrl(url, id);
 
             var urlWithoutId = encoder.RemoveIdFromUrl(urlWithId);
@@ -65,8 +70,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [Test]
         public void GeneratedIdIsConsistent()
         {
-            var encoder = new JobAlertIdEncoder();
-            var alert = new JobAlert() { Email = "example@example.org", Criteria = "test" };
+            var converter = new JobSearchQueryConverter();
+            var encoder = new JobAlertIdEncoder(converter);
+            var alert = new JobAlert() { Email = "example@example.org", Query = new JobSearchQuery() { Keywords = "test" } };
 
             var id1 = encoder.GenerateId(alert);
             var id2 = encoder.GenerateId(alert);
@@ -77,9 +83,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [Test]
         public void GeneratedIdVariesByEmail()
         {
-            var encoder = new JobAlertIdEncoder();
-            var alert1 = new JobAlert() { Email = "example@example.org", Criteria = "test" };
-            var alert2 = new JobAlert() { Email = "example2@example.org", Criteria = "test" };
+            var converter = new JobSearchQueryConverter();
+            var encoder = new JobAlertIdEncoder(converter);
+            var alert1 = new JobAlert() { Email = "example@example.org", Query = new JobSearchQuery() { Keywords = "test" } };
+            var alert2 = new JobAlert() { Email = "example2@example.org", Query = new JobSearchQuery() { Keywords = "test" } };
 
             var id1 = encoder.GenerateId(alert1);
             var id2 = encoder.GenerateId(alert2);
@@ -90,9 +97,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [Test]
         public void GeneratedIdVariesByCriteria()
         {
-            var encoder = new JobAlertIdEncoder();
-            var alert1 = new JobAlert() { Email = "example@example.org", Criteria = "test1" };
-            var alert2 = new JobAlert() { Email = "example@example.org", Criteria = "test2" };
+            var converter = new JobSearchQueryConverter();
+            var encoder = new JobAlertIdEncoder(converter);
+            var alert1 = new JobAlert() { Email = "example@example.org", Query = new JobSearchQuery() { Keywords = "test1" } };
+            var alert2 = new JobAlert() { Email = "example@example.org", Query = new JobSearchQuery() { Keywords = "test2" } };
 
             var id1 = encoder.GenerateId(alert1);
             var id2 = encoder.GenerateId(alert2);
