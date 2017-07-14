@@ -25,43 +25,23 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
         [HttpGet]
         public void SendAlerts([FromUri]int? frequency)
         {
-            Uri publicJobAdvert = null, redeploymentJobAdvert = null;
-            IPublishedContent publicJobAlertSettings = null, redeploymentJobAlertSettings = null;
+            var jobAlertsSettings = new JobAlertsSettingsFromUmbraco(Umbraco).GetJobAlertsSettings();
 
-            var jobAdvertPages = Umbraco.TypedContentAtXPath("//JobAdvert");
-            foreach (var jobAdvert in jobAdvertPages)
+            if (jobAlertsSettings.ContainsKey(JobsSet.PublicJobs))
             {
-                var index = umbraco.library.GetPreValueAsString(jobAdvert.GetPropertyValue<int>("PublicOrRedeployment_Content"));
-                if (index == "Redeployment jobs")
-                {
-                    redeploymentJobAdvert = new Uri(jobAdvert.UrlAbsolute());
-                }
-                else publicJobAdvert = new Uri(jobAdvert.UrlAbsolute());
+                SendAlertsForJobSet(JobsSet.PublicJobs, frequency, jobAlertsSettings[JobsSet.PublicJobs]);
             }
-
-            var jobAlertsSettingsPages = Umbraco.TypedContentAtXPath("//JobAlerts");
-            foreach (var jobAlertSettings in jobAlertsSettingsPages)
+            if (jobAlertsSettings.ContainsKey(JobsSet.RedeploymentJobs))
             {
-                var index = umbraco.library.GetPreValueAsString(jobAlertSettings.GetPropertyValue<int>("PublicOrRedeployment_Content"));
-                if (index == "Redeployment jobs")
-                {
-                    redeploymentJobAlertSettings = jobAlertSettings;
-                }
-                else publicJobAlertSettings = jobAlertSettings;
-            }
-
-            if (publicJobAdvert != null && publicJobAlertSettings != null)
-            {
-                SendAlertsForJobSet(JobsSet.PublicJobs, frequency, publicJobAdvert, publicJobAlertSettings);
-            }
-            if (redeploymentJobAdvert != null && redeploymentJobAlertSettings != null)
-            {
-                SendAlertsForJobSet(JobsSet.RedeploymentJobs, frequency, redeploymentJobAdvert, redeploymentJobAlertSettings);
+                SendAlertsForJobSet(JobsSet.RedeploymentJobs, frequency, jobAlertsSettings[JobsSet.RedeploymentJobs]);
             }
         }
 
-        private void SendAlertsForJobSet(JobsSet jobsSet, int? frequency, Uri jobAdvertUrl, IPublishedContent alertSettingsPage)
+        private void SendAlertsForJobSet(JobsSet jobsSet, int? frequency, JobAlertSettings alertSettings)
         {
+            // No point sending alerts without links to the jobs
+            if (alertSettings.JobAdvertBaseUrl == null) return;
+
             IAlertsRepository repo = new AzureTableStorageAlertsRepository();
             var alerts = repo.GetAllAlerts(new JobAlertsQuery() { Frequency = frequency, JobsSet = jobsSet });
             var alertsGroupedByEmail = GroupAlertsByEmail(alerts);
@@ -71,14 +51,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 foreach (var alert in alertsForAnEmail)
                 {
                     var jobsSentForThisEmail = repo.GetJobsSentForEmail(jobsSet, alert.Email);
-                    LookupJobsForAlert(alert, jobsSentForThisEmail, jobAdvertUrl, jobsSet);
+                    LookupJobsForAlert(alert, jobsSentForThisEmail, alertSettings.JobAdvertBaseUrl, jobsSet);
                 }
 
-                var email = BuildEmail(alertsForAnEmail, alertSettingsPage, new JobAlertIdEncoder());
+                var email = BuildEmail(alertsForAnEmail, alertSettings, new JobAlertIdEncoder());
 
                 if (!String.IsNullOrEmpty(email))
                 {
-                    SendEmail(alertsForAnEmail[0].Email, alertSettingsPage.GetPropertyValue<string>("AlertEmailSubject_Content"), email);
+                    SendEmail(alertsForAnEmail[0].Email, alertSettings.AlertEmailSubject, email);
                 }
 
                 foreach (var alert in alertsForAnEmail)
@@ -130,7 +110,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             emailService.SendAsync(message);
         }
 
-        private static string BuildEmail(IList<JobAlert> alertsForAnEmail, IPublishedContent alertSettingsPage, JobAlertIdEncoder encoder)
+        private static string BuildEmail(IList<JobAlert> alertsForAnEmail, JobAlertSettings alertSettings, JobAlertIdEncoder encoder)
         {
             var emailHtml = new StringBuilder();
 
@@ -147,11 +127,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                     }
                     emailHtml.Append("</ul>");
 
-                    emailHtml.Append("<p><a href=\"").Append(encoder.AddIdToUrl(new Uri(alertSettingsPage.UrlAbsolute()), alert.AlertId)).Append("\">Change or cancel alert</a></p>");
+                    emailHtml.Append("<p><a href=\"").Append(encoder.AddIdToUrl(alertSettings.ChangeAlertBaseUrl, alert.AlertId)).Append("\">Change or cancel alert</a></p>");
                 }
             }
 
-            var bodyHtml = alertSettingsPage.GetPropertyValue<string>("AlertEmailBody_Content");
+            var bodyHtml = alertSettings.AlertEmailBodyHtml;
             if (String.IsNullOrEmpty(bodyHtml))
             {
                 return emailHtml.ToString();

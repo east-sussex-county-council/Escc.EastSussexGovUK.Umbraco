@@ -28,24 +28,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
                 alert.AlertId = encoder.GenerateId(alert);
                 repo.SaveAlert(alert);
 
-                var jobAlertsSettingsPages = Umbraco.TypedContentAtXPath("//JobAlerts");
-                foreach (var jobAlertSettingsPage in jobAlertsSettingsPages)
+                var jobAlertsSettings = new JobAlertsSettingsFromUmbraco(Umbraco).GetJobAlertsSettings();
+                if (jobAlertsSettings.ContainsKey(alert.JobsSet) && !String.IsNullOrEmpty(jobAlertsSettings[alert.JobsSet].NewAlertEmailSubject))
                 {
-                    var index = umbraco.library.GetPreValueAsString(jobAlertSettingsPage.GetPropertyValue<int>("PublicOrRedeployment_Content"));
-                    if (Regex.Replace(index.ToUpperInvariant(), "[^A-Z]", String.Empty) == alert.JobsSet.ToString().ToUpperInvariant())
-                    {
-                        var subject = jobAlertSettingsPage.GetPropertyValue<string>("NewAlertEmailSubject_Content");
-                        var bodyHtml = jobAlertSettingsPage.GetPropertyValue<string>("NewAlertEmailBody_Content");
-                        if (String.IsNullOrEmpty(subject)) break;
+                    var alertUrl = encoder.AddIdToUrl(jobAlertsSettings[alert.JobsSet].ChangeAlertBaseUrl, alert.AlertId).ToString();
+                    var alertDescription = new JobSearchQueryConverter().ToQuery(query).ToString(false);
+                    jobAlertsSettings[alert.JobsSet].NewAlertEmailBodyHtml = jobAlertsSettings[alert.JobsSet].NewAlertEmailBodyHtml
+                                        .Replace("{alert-description}", alertDescription)
+                                        .Replace("/umbraco/{change-alert-url}", alertUrl); // because Umbraco admin treats it as a link relative to the back office
 
-                        var alertUrl = encoder.AddIdToUrl(new Uri(jobAlertSettingsPage.UrlAbsolute()), alert.AlertId).ToString();
-                        var alertDescription = new JobSearchQueryConverter().ToQuery(query).ToString(false);
-                        bodyHtml = bodyHtml.Replace("{alert-description}", alertDescription)
-                                           .Replace("/umbraco/{change-alert-url}", alertUrl); // because Umbraco admin treats it as a link relative to the back office
-
-                        SendEmail(alert.Email, subject, bodyHtml);
-                        break;
-                    }
+                    SendEmail(alert.Email, jobAlertsSettings[alert.JobsSet].NewAlertEmailSubject, jobAlertsSettings[alert.JobsSet].NewAlertEmailBodyHtml);
                 }
 
                 query.Add("subscribed", "1");

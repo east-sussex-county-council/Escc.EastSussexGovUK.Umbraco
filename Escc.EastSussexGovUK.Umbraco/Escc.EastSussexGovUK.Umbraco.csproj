@@ -3760,13 +3760,16 @@
     <Compile Include="HomePage\HomePageViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\Alerts\AzureTableStorageAlertsRepository.cs" />
     <Compile Include="Jobs\Alerts\IAlertsRepository.cs" />
+    <Compile Include="Jobs\Alerts\IJobAlertSettingsProvider.cs" />
     <Compile Include="Jobs\Alerts\JobAlertContentFinder.cs" />
     <Compile Include="Jobs\Alerts\JobAlertIdEncoder.cs" />
     <Compile Include="Jobs\Alerts\JobAlertsContentTab.cs" />
     <Compile Include="Jobs\Alerts\JobAlertsController.cs" />
     <Compile Include="Jobs\Alerts\JobAlertsDocumentType.cs" />
     <Compile Include="Jobs\Alerts\JobAlert.cs" />
+    <Compile Include="Jobs\Alerts\JobAlertSettings.cs" />
     <Compile Include="Jobs\Alerts\JobAlertsQuery.cs" />
+    <Compile Include="Jobs\Alerts\JobAlertsSettingsFromUmbraco.cs" />
     <Compile Include="Jobs\Alerts\JobAlertsViewModel.cs" />
     <Compile Include="Jobs\Alerts\JobAlertSentTableEntity.cs" />
     <Compile Include="Jobs\Alerts\JobAlertTableEntity.cs" />
