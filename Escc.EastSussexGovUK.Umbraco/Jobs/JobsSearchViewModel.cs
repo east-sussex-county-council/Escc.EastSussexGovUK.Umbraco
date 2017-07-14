@@ -49,5 +49,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// Gets or sets the search results page
         /// </summary>
         public HtmlLink SearchResultsPage { get; set; }
+
+        /// <summary>
+        /// Gets the text of the submit button.
+        /// </summary>
+        public virtual string SubmitButtonText {  get { return "Search"; } }
     }
 }

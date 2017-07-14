@@ -18,5 +18,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         /// The alert.
         /// </value>
         public JobAlert Alert { get; set; }
+
+        /// <summary>
+        /// Gets the text of the submit button.
+        /// </summary>
+        public override string SubmitButtonText { get { return "Save alert"; } }
     }
 }

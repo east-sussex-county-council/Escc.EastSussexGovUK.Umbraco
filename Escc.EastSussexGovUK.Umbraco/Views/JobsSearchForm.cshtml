@@ -1,7 +1,6 @@
 ﻿@using Escc.EastSussexGovUK.Umbraco.Jobs
 @using Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
 @model JobsSearchViewModel
-@Html.AntiForgeryToken()
 
 <div>
     <label for="keywords">Keywords</label>
@@ -9,8 +8,8 @@
 </div>
 
 <div>
-<label for="locations">Location</label>
-<select multiple="multiple" name="locations" id="locations">
+<label for="location">Location</label>
+<select multiple="multiple" name="location" id="location">
     @foreach (var location in Model.Locations)
     {
         var selected = (Model.Query != null && Model.Query.Locations.Contains(location.Text)) ? " selected=\"selected\"" : String.Empty;
@@ -20,8 +19,8 @@
 </div>
 
 <div>
-    <label for="jobTypes">Category</label>
-    <select multiple="multiple" name="jobTypes" id="jobTypes">
+    <label for="type">Category</label>
+    <select multiple="multiple" name="type" id="type">
         @foreach (var jobType in Model.JobTypes)
         {
             var selected = (Model.Query != null && Model.Query.JobTypes.Contains(jobType.Text)) ? " selected=\"selected\"" : String.Empty;
@@ -36,7 +35,7 @@
     {
         var salaryRangeValue = salaryRange.Text.Replace(",", String.Empty);
         var selected = (Model.Query != null && Model.Query.SalaryRanges.Contains(salaryRangeValue)) ? " checked=\"checked\"" : String.Empty;
-        <label><input type="checkbox" value="@salaryRangeValue" name="salaryRanges"@selected /> @salaryRange.Text (@salaryRange.Count)</label>
+        <label><input type="checkbox" value="@salaryRangeValue" name="salary"@selected /> @salaryRange.Text (@salaryRange.Count)</label>
     }
 </fieldset>
 
@@ -45,7 +44,7 @@
     @foreach (var workPattern in Model.WorkPatterns)
     {
         var selected = (Model.Query != null && Model.Query.WorkPatterns.Contains(workPattern.Text)) ? " checked=\"checked\"" : String.Empty;
-        <label><input type="checkbox" value="@workPattern.Text" name="workPatterns"@selected /> @workPattern.Text (@workPattern.Count)</label>
+        <label><input type="checkbox" value="@workPattern.Text" name="workpatterns"@selected /> @workPattern.Text (@workPattern.Count)</label>
     }
 </fieldset>
 
@@ -58,9 +57,9 @@
         <label><input type="radio" name="frequency" value="1" @(alertModel.Alert.Frequency == 1 ? " checked=\"checked\"" : String.Empty)/> Daily</label>
         <label><input type="radio" name="frequency" value="7" @(alertModel.Alert.Frequency == 7 ? " checked=\"checked\"" : String.Empty)/> Weekly</label>
     </fieldset>
+    <input type="hidden" name="JobsSet" value="@(Model.Query?.JobsSet)" />
     }
 }
 
-<input type="hidden" name="JobsSet" value="@(Model.Query?.JobsSet)" />
-<input type="submit" />
+<input type="submit" value="@Model.SubmitButtonText" />
 

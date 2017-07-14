@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
+using Umbraco.Core.Models;
 using Umbraco.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
@@ -41,7 +42,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
                 // Get the jobs set selected in the Umbraco page
                 var selectedJobsSet = umbraco.library.GetPreValueAsString(jobAlertSettingsPage.GetPropertyValue<int>("PublicOrRedeployment_Content"));
                 selectedJobsSet = Regex.Replace(selectedJobsSet.ToUpperInvariant(), "[^A-Z]", String.Empty);
-                var jobsSet = (JobsSet)Enum.Parse(typeof(JobsSet), selectedJobsSet);
+                var jobsSet = (JobsSet)Enum.Parse(typeof(JobsSet), selectedJobsSet, true);
                 if (settings.ContainsKey(jobsSet)) continue;
 
                 // Create a jobs set and populate the settings from the page
@@ -52,17 +53,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
                 settings[jobsSet].AlertEmailSubject = jobAlertSettingsPage.GetPropertyValue<string>("AlertEmailSubject_Content");
                 settings[jobsSet].AlertEmailBodyHtml = jobAlertSettingsPage.GetPropertyValue<string>("AlertEmailBody_Content");
                 settings[jobsSet].ChangeAlertBaseUrl = new Uri(jobAlertSettingsPage.UrlAbsolute());
-            }
 
-            var jobAdvertPages = _umbraco.TypedContentAtXPath("//JobAdvert");
-            foreach (var jobAdvert in jobAdvertPages)
-            {
-                var selectedJobsSet = umbraco.library.GetPreValueAsString(jobAdvert.GetPropertyValue<int>("PublicOrRedeployment_Content"));
-                selectedJobsSet = Regex.Replace(selectedJobsSet.ToUpperInvariant(), "[^A-Z]", String.Empty);
-                var jobsSet = (JobsSet)Enum.Parse(typeof(JobsSet), selectedJobsSet);
-                if (!settings.ContainsKey(jobsSet)) continue;
-
-                settings[jobsSet].JobAdvertBaseUrl = new Uri(jobAdvert.UrlAbsolute());
+                var jobAdvertPage = jobAlertSettingsPage.GetPropertyValue<IPublishedContent>("JobAdvertPage_Content");
+                if (jobAdvertPage!= null)
+                {
+                    settings[jobsSet].JobAdvertBaseUrl = new Uri(jobAdvertPage.UrlAbsolute());
+                }
             }
 
             return settings;

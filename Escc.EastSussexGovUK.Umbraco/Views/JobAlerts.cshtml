@@ -36,6 +36,7 @@
 
             using (Html.BeginUmbracoForm<JobAlertsSurfaceController>("ReplaceAlert", null, new Dictionary<string, object> { { "class", "form short-form" } }))
             {
+                @Html.AntiForgeryToken()
                 @Html.Partial("JobsSearchForm", Model)
             }
 
