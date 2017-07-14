@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Examine xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
   <ExamineIndexProviders>
-    <providers>
+    <providers>    
       <add name="PublicJobsIndexer" xdt:Transform="RemoveAll" xdt:Locator="Match(name)" />
       <add name="PublicJobsIndexer" type="Examine.LuceneEngine.Providers.SimpleDataIndexer, Examine"
            dataService="Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink.PublicJobsIndexer, Escc.EastSussexGovUK.Umbraco" 
@@ -25,6 +25,10 @@
            dataService="Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink.RedeploymentJobsLookupValuesIndexer, Escc.EastSussexGovUK.Umbraco"
            indexTypes="JobsLookup"
            xdt:Transform="Insert" />
+
+      <!-- Add a directoryFactory to all indexers. This value will change when Examine is upgraded to 0.1.83. 
+           https://our.umbraco.org/Documentation/Getting-Started/Setup/Server-Setup/Load-Balancing/flexible -->
+      <add directoryFactory="Examine.LuceneEngine.Directories.SyncTempEnvDirectoryFactory,Examine" xdt:Transform="SetAttributes(directoryFactory)" />
     </providers>
   </ExamineIndexProviders>
 
