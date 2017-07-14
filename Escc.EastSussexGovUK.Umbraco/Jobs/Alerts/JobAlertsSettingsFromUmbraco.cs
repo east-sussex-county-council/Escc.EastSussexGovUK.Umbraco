@@ -22,7 +22,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         /// <exception cref="ArgumentNullException">umbraco</exception>
         public JobAlertsSettingsFromUmbraco(UmbracoHelper umbraco)
         {
-            _umbraco = umbraco ?? throw new ArgumentNullException(nameof(umbraco));
+            if (umbraco == null) throw new ArgumentNullException(nameof(umbraco));
+            _umbraco = umbraco;
         }
 
         /// <summary>
