@@ -131,6 +131,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 }
             }
 
+            if (emailHtml.Length == 0) return String.Empty;
+
             var bodyHtml = alertSettings.AlertEmailBodyHtml;
             if (String.IsNullOrEmpty(bodyHtml))
             {
