@@ -14,97 +14,122 @@ using System.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
 {
+    /// <summary>
+    /// Stores and retrieves job alerts data in Azure table storage
+    /// </summary>
+    /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Jobs.Alerts.IAlertsRepository" />
     public class AzureTableStorageAlertsRepository : IAlertsRepository
     {
         private readonly JobSearchQueryConverter _queryConverter;
+        private readonly CloudTableClient _tableClient;
+        private const string _alertsTable = "JobAlerts";
+        private const string _alertsSentTable = "JobAlertsSent";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AzureTableStorageAlertsRepository"/> class.
+        /// </summary>
+        /// <param name="queryConverter">The query converter.</param>
+        /// <exception cref="ArgumentNullException">queryConverter</exception>
+        /// <exception cref="Exception"><connectionStrings><add name=\"Escc.EastSussexGovUK.Umbraco.AzureStorage\" /></connectionStrings> not found in web.config</exception>
         public AzureTableStorageAlertsRepository(JobSearchQueryConverter queryConverter)
         {
             if (queryConverter == null) throw new ArgumentNullException(nameof(queryConverter));
             _queryConverter = queryConverter;
-        }
 
-        public IEnumerable<JobAlert> GetAllAlerts(JobAlertsQuery query)
-        {
             var connectionString = ConfigurationManager.ConnectionStrings["Escc.EastSussexGovUK.Umbraco.AzureStorage"].ConnectionString;
             if (String.IsNullOrEmpty(connectionString))
             {
-                throw new Exception("connectionStrings:Escc.EastSussexGovUK.Umbraco.AzureStorage not found in web.config");
+                throw new Exception("<connectionStrings><add name=\"Escc.EastSussexGovUK.Umbraco.AzureStorage\" /></connectionStrings> not found in web.config");
             }
 
-
-            // Retrieve the storage account from the connection string.
             var storageAccount = CloudStorageAccount.Parse(connectionString);
+            _tableClient = storageAccount.CreateCloudTableClient();
+        }
 
-            // Create the table query.
-            var tableClient = storageAccount.CreateCloudTableClient();
-            var table = tableClient.GetTableReference("JobAlerts");
+        /// <summary>
+        /// Gets all alerts matching the supplied search query
+        /// </summary>
+        /// <param name="query">The query.</param>
+        /// <returns></returns>
+        public IEnumerable<JobAlert> GetAlerts(JobAlertsQuery query)
+        {
+            var table = _tableClient.GetTableReference(_alertsTable);
+            table.CreateIfNotExistsAsync().Wait();
 
-            // Initialize a default TableQuery to retrieve all the entities in the table.
-            TableQuery<JobAlertTableEntity> tableQuery = new TableQuery<JobAlertTableEntity>()
-                .Where(TableQuery.GenerateFilterCondition("JobsSet", QueryComparisons.Equal, query.JobsSet.ToString()));
+            var tableQuery = new TableQuery<JobAlertTableEntity>().Where(TableQuery.GenerateFilterCondition("JobsSet", QueryComparisons.Equal, query.JobsSet.ToString()));
 
             if (!String.IsNullOrEmpty(query.EmailAddress))
             {
-                tableQuery = tableQuery
-                   .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, query.EmailAddress));
+                tableQuery = tableQuery.Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, query.EmailAddress));
             }
 
             if (query.Frequency.HasValue)
             {
-                tableQuery = tableQuery
-                    .Where(TableQuery.GenerateFilterConditionForInt("Frequency", QueryComparisons.Equal, query.Frequency.Value));
+                tableQuery = tableQuery.Where(TableQuery.GenerateFilterConditionForInt("Frequency", QueryComparisons.Equal, query.Frequency.Value));
             }
 
-            // Initialize the continuation token to null to start from the beginning of the table.
-            TableContinuationToken continuationToken = null;
+            var results = ReadAllResults(table, tableQuery, entity => BuildAlertFromEntity(entity));
 
-            var alerts = new List<JobAlert>();
-
-            do
-            {
-                // Retrieve a segment (up to 1,000 entities).
-                TableQuerySegment<JobAlertTableEntity> tableQueryResult =
-                    Task.Run(() => table.ExecuteQuerySegmentedAsync(tableQuery, continuationToken)).Result;
-
-                // Assign the new continuation token to tell the service where to
-                // continue on the next iteration (or null if it has reached the end).
-                continuationToken = tableQueryResult.ContinuationToken;
-
-                // Print the number of rows retrieved.
-                foreach (var entity in tableQueryResult.Results)
-                {
-                    var searchQuery = HttpUtility.ParseQueryString(String.IsNullOrEmpty(entity.Criteria) ? String.Empty : entity.Criteria);
-                    alerts.Add(new JobAlert()
-                    {
-                        AlertId = entity.RowKey,
-                        Query = _queryConverter.ToQuery(searchQuery),
-                        Email = entity.PartitionKey,
-                        Frequency = entity.Frequency,
-                        JobsSet = (JobsSet)Enum.Parse(typeof(JobsSet), entity.JobsSet)
-                    });
-                }
-
-                // Loop until a null continuation token is received, indicating the end of the table.
-            } while (continuationToken != null);
-
-            return alerts;
+            return results;
         }
 
+
+        /// <summary>
+        /// Gets a single alert by its identifier.
+        /// </summary>
+        /// <param name="alertId">The alert identifier.</param>
+        /// <returns></returns>
+        public JobAlert GetAlertById(string alertId)
+        {
+            JobAlertTableEntity entity = ReadAlertEntity(alertId);
+            return BuildAlertFromEntity(entity);
+        }
+
+        private JobAlert BuildAlertFromEntity(JobAlertTableEntity entity)
+        {
+            JobAlert alert = null;
+            if (entity != null)
+            {
+                var searchQuery = HttpUtility.ParseQueryString(String.IsNullOrEmpty(entity.Criteria) ? String.Empty : entity.Criteria);
+                alert = new JobAlert()
+                {
+                    AlertId = entity.RowKey,
+                    Query = _queryConverter.ToQuery(searchQuery),
+                    Email = entity.PartitionKey,
+                    Frequency = entity.Frequency,
+                    JobsSet = (JobsSet)Enum.Parse(typeof(JobsSet), entity.JobsSet)
+                };
+            }
+
+            return alert;
+        }
+
+        private JobAlertTableEntity ReadAlertEntity(string alertId)
+        {
+            var table = _tableClient.GetTableReference(_alertsTable);
+
+            TableQuery<JobAlertTableEntity> tableQuery = new TableQuery<JobAlertTableEntity>()
+                .Where(TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.Equal, alertId));
+
+            return table.ExecuteQuery(tableQuery).FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Saves a new or updated alert.
+        /// </summary>
+        /// <param name="alert">The alert.</param>
+        /// <exception cref="ArgumentNullException">alert</exception>
+        /// <exception cref="ArgumentException">The alert must have an AlertId - alert</exception>
         public void SaveAlert(JobAlert alert)
         {
             if (alert == null) throw new ArgumentNullException(nameof(alert));
             if (String.IsNullOrEmpty(alert.AlertId)) throw new ArgumentException("The alert must have an AlertId", nameof(alert));
 
-            // Get the storage account connection
-            var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["Escc.EastSussexGovUK.Umbraco.AzureStorage"].ConnectionString);
-
-            // Create the table if it doesn't exist.
-            var tableClient = storageAccount.CreateCloudTableClient();
-            var table = tableClient.GetTableReference("JobAlerts");
+            var table = _tableClient.GetTableReference(_alertsTable);
             table.CreateIfNotExistsAsync().Wait();
 
-            // Azure tables use an index clustered first by partition key then by row key.
+            // Azure tables use an index clustered first by partition key then by row key,
+            // so use email as the partition key to make it easy to get all alerts for a user.
             var entity = new JobAlertTableEntity()
             {
                 PartitionKey = ToAzureKeyString(alert.Email),
@@ -114,13 +139,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
                 JobsSet = alert.JobsSet.ToString()
             };
 
-            // Create the TableOperation object that inserts the entity.
-            var insertOperation = TableOperation.InsertOrReplace(entity);
-
-            // Execute the insert operation.
             try
             {
-                table.Execute(insertOperation);
+                table.Execute(TableOperation.InsertOrReplace(entity));
             }
             catch (StorageException ex)
             {
@@ -137,29 +158,28 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             }
         }
 
+        /// <summary>
+        /// Cancels an alert. If it's the last alert for an email address, also removes all data for that email address within that <see cref="JobsSet"/>.
+        /// </summary>
+        /// <param name="alertId">The alert identifier.</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException">alertId</exception>
         public bool CancelAlert(string alertId)
         {
-            // Get the storage account connection
-            var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["Escc.EastSussexGovUK.Umbraco.AzureStorage"].ConnectionString);
+            if (String.IsNullOrEmpty(alertId)) throw new ArgumentNullException(nameof(alertId));
 
-            // Create the table if it doesn't exist.
-            CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
-            var alertsTable = tableClient.GetTableReference("JobAlerts");
+            var alertsTable = _tableClient.GetTableReference(_alertsTable);
             alertsTable.CreateIfNotExistsAsync().Wait();
 
-            var alertEntity = GetTableEntityByRowKey(alertId);
+            var alertEntity = ReadAlertEntity(alertId);
             if (alertEntity == null) return false;
 
             var emailAddress = alertEntity.PartitionKey;
             var jobsSet = (JobsSet)Enum.Parse(typeof(JobsSet), alertEntity.JobsSet);
 
-            // Create the TableOperation object that deletes the entity.
-            var deleteOperation = TableOperation.Delete(alertEntity);
-
-            // Execute the delete operation.
             try
             {
-                alertsTable.Execute(deleteOperation);
+                alertsTable.Execute(TableOperation.Delete(alertEntity));
             }
             catch (StorageException ex)
             {
@@ -182,28 +202,23 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         private void DeleteRecordOfAlertsSent(JobsSet jobsSet, string emailAddress)
         {
             // Only remove data if there are no more alerts set up for this email, otherwise we may still send jobs they've already seen
-            var alertsForThisEmail = GetAllAlerts(new JobAlertsQuery { JobsSet = jobsSet, EmailAddress = emailAddress });
+            var alertsForThisEmail = GetAlerts(new JobAlertsQuery { JobsSet = jobsSet, EmailAddress = emailAddress });
             if (alertsForThisEmail.Any()) return;
 
-            // Get the storage account connection
-            var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["Escc.EastSussexGovUK.Umbraco.AzureStorage"].ConnectionString);
-
             // Delete the record of alerts sent
-            var tableClient = storageAccount.CreateCloudTableClient();
-            var table = tableClient.GetTableReference("JobAlertsSent");
+            var table = _tableClient.GetTableReference(_alertsSentTable);
             table.CreateIfNotExistsAsync().Wait();
 
-            TableQuery<TableEntity> tableQuery = new TableQuery<TableEntity>()
+            var tableQuery = new TableQuery<TableEntity>()
                 .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, emailAddress))
                 .Where(TableQuery.GenerateFilterCondition("JobsSet", QueryComparisons.Equal, jobsSet.ToString()));
 
             var alertsSentEntities = table.ExecuteQuery(tableQuery);
             foreach (var entity in alertsSentEntities)
             {
-                var operation = TableOperation.Delete(entity);
                 try
                 {
-                    table.Execute(operation);
+                    table.Execute(TableOperation.Delete(entity));
                 }
                 catch (StorageException ex)
                 {
@@ -221,40 +236,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             }
         }
 
-        public JobAlert GetAlertById(string alertId)
-        {
-            JobAlertTableEntity entity = GetTableEntityByRowKey(alertId);
-            if (entity != null)
-            {
-                var searchQuery = HttpUtility.ParseQueryString(String.IsNullOrEmpty(entity.Criteria) ? String.Empty : entity.Criteria);
-                return new JobAlert()
-                {
-                    AlertId = entity.RowKey,
-                    Query = _queryConverter.ToQuery(searchQuery),
-                    Email = entity.PartitionKey,
-                    Frequency = entity.Frequency,
-                    JobsSet = (JobsSet)Enum.Parse(typeof(JobsSet), entity.JobsSet)
-                };
-            }
-
-            return null;
-        }
-
-        private static JobAlertTableEntity GetTableEntityByRowKey(string alertId)
-        {
-            var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["Escc.EastSussexGovUK.Umbraco.AzureStorage"].ConnectionString);
-
-            var tableClient = storageAccount.CreateCloudTableClient();
-            var table = tableClient.GetTableReference("JobAlerts");
-
-            TableQuery<JobAlertTableEntity> tableQuery = new TableQuery<JobAlertTableEntity>()
-                .Where(TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.Equal, alertId));
-
-            var entity = table.ExecuteQuery(tableQuery).FirstOrDefault();
-            return entity;
-        }
-
-        // From http://stackoverflow.com/questions/14859405/azure-table-storage-returns-400-bad-request
+        /// <summary>
+        /// Removes characters from a string that would not be valid for use as a partition key or row key
+        /// </summary>
+        /// <param name="str">The string.</param>
+        /// <remarks>From http://stackoverflow.com/questions/14859405/azure-table-storage-returns-400-bad-request</remarks>
+        /// <returns></returns>
         public static string ToAzureKeyString(string str)
         {
             var sb = new StringBuilder();
@@ -269,17 +256,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             return sb.ToString();
         }
 
-        public void MarkAlertAsSent(JobsSet jobsSet, string emailAddress, int jobId)
+        /// <summary>
+        /// Records that an alert has been sent to a given email address.
+        /// </summary>
+        /// <param name="jobsSet">The jobs set.</param>
+        /// <param name="jobId">The job identifier.</param>
+        /// <param name="emailAddress">The email address.</param>
+        public void MarkAlertAsSent(JobsSet jobsSet, int jobId, string emailAddress)
         {
-            // Get the storage account connection
-            var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["Escc.EastSussexGovUK.Umbraco.AzureStorage"].ConnectionString);
-
-            // Create the table if it doesn't exist.
-            var tableClient = storageAccount.CreateCloudTableClient();
-            var table = tableClient.GetTableReference("JobAlertsSent");
+            var table = _tableClient.GetTableReference(_alertsSentTable);
             table.CreateIfNotExistsAsync().Wait();
 
-            // Azure tables use an index clustered first by partition key then by row key.
             var entity = new JobAlertSentTableEntity()
             {
                 PartitionKey = ToAzureKeyString(emailAddress),
@@ -287,13 +274,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
                 JobsSet = jobsSet.ToString()
             };
 
-            // Create the TableOperation object that inserts the entity.
-            var insertOperation = TableOperation.InsertOrReplace(entity);
-
-            // Execute the insert operation.
             try
             {
-                var result = table.Execute(insertOperation);
+                var result = table.Execute(TableOperation.InsertOrReplace(entity));
             }
             catch (StorageException ex)
             {
@@ -309,36 +292,36 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             }
         }
 
+        /// <summary>
+        /// Gets the ids of the jobs already sent to a given email address.
+        /// </summary>
+        /// <param name="jobsSet">The jobs set.</param>
+        /// <param name="emailAddress">The email address.</param>
+        /// <returns></returns>
         public IList<int> GetJobsSentForEmail(JobsSet jobsSet, string emailAddress)
         {
-            var connectionString = ConfigurationManager.ConnectionStrings["Escc.EastSussexGovUK.Umbraco.AzureStorage"].ConnectionString;
-            if (String.IsNullOrEmpty(connectionString))
-            {
-                throw new Exception("connectionStrings:Escc.EastSussexGovUK.Umbraco.AzureStorage not found in web.config");
-            }
-
-
-            // Retrieve the storage account from the connection string.
-            var storageAccount = CloudStorageAccount.Parse(connectionString);
-
             // Create the table query.
-            var tableClient = storageAccount.CreateCloudTableClient();
-            var table = tableClient.GetTableReference("JobAlertsSent");
+            var table = _tableClient.GetTableReference(_alertsSentTable);
 
             // Initialize a default TableQuery to retrieve all the entities in the table.
-            TableQuery<TableEntity> tableQuery = new TableQuery<TableEntity>()
+            var tableQuery = new TableQuery<TableEntity>()
                 .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, emailAddress))
                 .Where(TableQuery.GenerateFilterCondition("JobsSet", QueryComparisons.Equal, jobsSet.ToString()));
 
+            return ReadAllResults<int>(table, tableQuery, entity => Int32.Parse(entity.RowKey));
+        }
+
+        private static IList<ItemType> ReadAllResults<ItemType>(CloudTable table, TableQuery<TableEntity> tableQuery, Func<TableEntity, ItemType> buildItem)
+        {
             // Initialize the continuation token to null to start from the beginning of the table.
             TableContinuationToken continuationToken = null;
 
-            var jobIds = new List<int>();
+            var results = new List<ItemType>();
 
             do
             {
                 // Retrieve a segment (up to 1,000 entities).
-                TableQuerySegment<TableEntity> tableQueryResult = Task.Run(() => table.ExecuteQuerySegmentedAsync(tableQuery, continuationToken)).Result;
+                var tableQueryResult = Task.Run(() => table.ExecuteQuerySegmentedAsync(tableQuery, continuationToken)).Result;
 
                 // Assign the new continuation token to tell the service where to
                 // continue on the next iteration (or null if it has reached the end).
@@ -346,13 +329,40 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
 
                 foreach (var entity in tableQueryResult.Results)
                 {
-                    jobIds.Add(Int32.Parse(entity.RowKey));
+                    results.Add(buildItem(entity));
                 }
 
                 // Loop until a null continuation token is received, indicating the end of the table.
             } while (continuationToken != null);
 
-            return jobIds;
+            return results;
+        }
+
+        private static IList<ItemType> ReadAllResults<ItemType>(CloudTable table, TableQuery<JobAlertTableEntity> tableQuery, Func<JobAlertTableEntity, ItemType> buildItem)
+        {
+            // Initialize the continuation token to null to start from the beginning of the table.
+            TableContinuationToken continuationToken = null;
+
+            var results = new List<ItemType>();
+
+            do
+            {
+                // Retrieve a segment (up to 1,000 entities).
+                var tableQueryResult = Task.Run(() => table.ExecuteQuerySegmentedAsync(tableQuery, continuationToken)).Result;
+
+                // Assign the new continuation token to tell the service where to
+                // continue on the next iteration (or null if it has reached the end).
+                continuationToken = tableQueryResult.ContinuationToken;
+
+                foreach (var entity in tableQueryResult.Results)
+                {
+                    results.Add(buildItem(entity));
+                }
+
+                // Loop until a null continuation token is received, indicating the end of the table.
+            } while (continuationToken != null);
+
+            return results;
         }
     }
 }

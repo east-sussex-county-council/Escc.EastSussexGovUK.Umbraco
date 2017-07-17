@@ -45,7 +45,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             var converter = new JobSearchQueryConverter();
             var encoder = new JobAlertIdEncoder(converter);
             IAlertsRepository repo = new AzureTableStorageAlertsRepository(converter);
-            var alerts = repo.GetAllAlerts(new JobAlertsQuery() { Frequency = frequency, JobsSet = jobsSet });
+            var alerts = repo.GetAlerts(new JobAlertsQuery() { Frequency = frequency, JobsSet = jobsSet });
             var alertsGroupedByEmail = GroupAlertsByEmail(alerts);
 
             foreach (var alertsForAnEmail in alertsGroupedByEmail.Values)
@@ -67,7 +67,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 {
                     foreach (var job in alert.MatchingJobs)
                     {
-                        repo.MarkAlertAsSent(jobsSet, alert.Email, job.Id);
+                        repo.MarkAlertAsSent(jobsSet, job.Id, alert.Email);
                     }
                 }
             }
