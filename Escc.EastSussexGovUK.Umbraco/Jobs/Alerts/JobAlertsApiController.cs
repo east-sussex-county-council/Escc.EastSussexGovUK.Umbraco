@@ -20,9 +20,18 @@ using Umbraco.Web.WebApi;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
 {
+    /// <summary>
+    /// An API to trigger the sending of job alerts
+    /// </summary>
+    /// <seealso cref="Umbraco.Web.WebApi.UmbracoApiController" />
+    [Authorize]
     public class JobAlertsApiController : UmbracoApiController
     {
-        [HttpGet]
+        /// <summary>
+        /// Sends job alerts which are configured for a particular frequency (in days), or any frequency if blank
+        /// </summary>
+        /// <param name="frequency">The frequency.</param>
+        [HttpPost]
         public void SendAlerts([FromUri]int? frequency)
         {
             var jobAlertsSettings = new JobAlertsSettingsFromUmbraco(Umbraco).GetJobAlertsSettings();
@@ -42,113 +51,57 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             // No point sending alerts without links to the jobs
             if (alertSettings.JobAdvertBaseUrl == null) return;
 
+            // We need somewhere to get the jobs from... 
+            IJobsDataProvider jobsRepo = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[jobsSet + "Searcher"],
+                new QueryBuilder(new LuceneTokenisedQueryBuilder(), new KeywordsTokeniser(), new LuceneStopWordsRemover(), new WildcardSuffixFilter()),
+                new RelativeJobUrlGenerator(alertSettings.JobAdvertBaseUrl));
+
+            // We need somewhere to get the alerts from...
             var converter = new JobSearchQueryConverter();
             var encoder = new JobAlertIdEncoder(converter);
-            IAlertsRepository repo = new AzureTableStorageAlertsRepository(converter);
-            var alerts = repo.GetAlerts(new JobAlertsQuery() { Frequency = frequency, JobsSet = jobsSet });
-            var alertsGroupedByEmail = GroupAlertsByEmail(alerts);
+            IJobAlertsRepository alertsRepo = new AzureTableStorageAlertsRepository(converter);
 
-            foreach (var alertsForAnEmail in alertsGroupedByEmail.Values)
-            {
-                foreach (var alert in alertsForAnEmail)
-                {
-                    var jobsSentForThisEmail = repo.GetJobsSentForEmail(jobsSet, alert.Email);
-                    LookupJobsForAlert(alert, jobsSentForThisEmail, alertSettings.JobAdvertBaseUrl, jobsSet);
-                }
-
-                var email = BuildEmail(alertsForAnEmail, alertSettings, encoder);
-
-                if (!String.IsNullOrEmpty(email))
-                {
-                    SendEmail(alertsForAnEmail[0].Email, alertSettings.AlertEmailSubject, email);
-                }
-
-                foreach (var alert in alertsForAnEmail)
-                {
-                    foreach (var job in alert.MatchingJobs)
-                    {
-                        repo.MarkAlertAsSent(jobsSet, job.Id, alert.Email);
-                    }
-                }
-            }
-        }
-
-        private async Task<IEnumerable<Job>> Search(JobSearchQuery query, Uri jobAdvertUrl, JobsSet jobsSet)
-        {
-            var source = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[jobsSet + "Searcher"], 
-                new QueryBuilder(new LuceneTokenisedQueryBuilder(), new KeywordsTokeniser(), new LuceneStopWordsRemover(), new WildcardSuffixFilter()), 
-                new RelativeJobUrlGenerator(jobAdvertUrl));
-            var jobs = await source.ReadJobs(query);
-            return jobs;
-        }
-
-        private Dictionary<string, IList<JobAlert>> GroupAlertsByEmail(IEnumerable<JobAlert> subscriptions)
-        {
-            var subscriptionsGroupedByEmail = new Dictionary<string, IList<JobAlert>>();
-            foreach (var subscription in subscriptions)
-            {
-                var email = subscription.Email.ToLowerInvariant();
-                if (!subscriptionsGroupedByEmail.ContainsKey(email))
-                {
-                    subscriptionsGroupedByEmail.Add(email, new List<JobAlert>());
-                }
-                subscriptionsGroupedByEmail[email].Add(subscription);
-            }
-            return subscriptionsGroupedByEmail;
-        }
-
-
-        private static void SendEmail(string emailAddress, string subject, string emailHtml)
-        {
-            var message = new MailMessage();
-            message.To.Add(emailAddress);
-            message.Subject = subject;
-            message.Body = emailHtml;
-            message.IsBodyHtml = true;
-
+            // We need a way to send the alerts...
             var configuration = new ConfigurationServiceRegistry();
             var cache = new HttpContextCacheStrategy();
             var emailService = ServiceContainer.LoadService<IEmailSender>(configuration, cache);
-            emailService.SendAsync(message);
-        }
+            var sender = new JobAlertsByEmailSender(alertsRepo, alertSettings, new HtmlJobAlertFormatter(alertSettings, encoder), emailService);
 
-        private static string BuildEmail(IList<JobAlert> alertsForAnEmail, JobAlertSettings alertSettings, JobAlertIdEncoder encoder)
-        {
-            var emailHtml = new StringBuilder();
+            // Get them, sort them and send them
+            var alerts = alertsRepo.GetAlerts(new JobAlertsQuery() { Frequency = frequency, JobsSet = jobsSet });
+            var alertsGroupedByEmail = GroupAlertsByEmail(alerts);
 
-            foreach (var alert in alertsForAnEmail)
+            foreach (var alertsForAnEmail in alertsGroupedByEmail)
             {
-                if (alert.MatchingJobs.Count > 0)
+                foreach (var alert in alertsForAnEmail)
                 {
-                    emailHtml.Append("<h2>").Append(alert.Query).Append("</h2><ul>");
-                    foreach (var job in alert.MatchingJobs)
-                    {
-                        emailHtml.Append("<li><a href=\"").Append(job.Url).Append("\">").Append(job.JobTitle).Append("</a></li>");
-                    }
-                    emailHtml.Append("</ul>");
-
-                    emailHtml.Append("<p><a href=\"").Append(encoder.AddIdToUrl(alertSettings.ChangeAlertBaseUrl, alert.AlertId)).Append("\">Change or cancel alert</a></p>");
+                    var jobsSentForThisEmail = alertsRepo.GetJobsSentForEmail(alert.JobsSet, alert.Email);
+                    LookupJobsForAlert(jobsRepo, alert, jobsSentForThisEmail);
                 }
             }
 
-            if (emailHtml.Length == 0) return String.Empty;
-
-            var bodyHtml = alertSettings.AlertEmailBodyHtml;
-            if (String.IsNullOrEmpty(bodyHtml))
-            {
-                return emailHtml.ToString();
-            }
-            else
-            {
-                bodyHtml = bodyHtml.Replace("{jobs}", emailHtml.ToString());
-                return bodyHtml;
-            }
+            sender.SendGroupedAlerts(alertsGroupedByEmail);
         }
 
-        private async void LookupJobsForAlert(JobAlert alert, IList<int> jobsSentForThisAlert, Uri jobAdvertUrl, JobsSet jobsSet)
+        private IEnumerable<IList<JobAlert>> GroupAlertsByEmail(IEnumerable<JobAlert> alerts)
+        {
+            var groupedByEmail = new Dictionary<string, IList<JobAlert>>();
+            foreach (var alert in alerts)
+            {
+                var email = alert.Email.ToLowerInvariant();
+                if (!groupedByEmail.ContainsKey(email))
+                {
+                    groupedByEmail.Add(email, new List<JobAlert>());
+                }
+                groupedByEmail[email].Add(alert);
+            }
+            return groupedByEmail.Values;
+        }
+
+        private async void LookupJobsForAlert(IJobsDataProvider jobsData, JobAlert alert, IList<int> jobsSentForThisAlert)
         {
             alert.Query.ClosingDateFrom = DateTime.Today;
-            var jobs = await Search(alert.Query, jobAdvertUrl, jobsSet);
+            var jobs = await jobsData.ReadJobs(alert.Query);
 
             foreach (var job in jobs)
             {

@@ -16,7 +16,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         public void IdIsAddedToTheUrl()
         {
             var url = new Uri("https://www.example.org");
-            var converter = new JobSearchQueryConverter();
+            var converter = new FakeSearchQueryConverter();
             var encoder = new JobAlertIdEncoder(converter);
             var id = encoder.GenerateId(new JobAlert() { Email = "example@example.org", Query = new JobSearchQuery() { Keywords = "test" } });
 
@@ -29,7 +29,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         public void IdIsParsedFromTheUrl()
         {
             var url = new Uri("https://www.example.org");
-            var converter = new JobSearchQueryConverter();
+            var converter = new FakeSearchQueryConverter();
             var encoder = new JobAlertIdEncoder(converter);
             var id = encoder.GenerateId(new JobAlert() { Email = "example@example.org", Query = new JobSearchQuery() { Keywords = "test" } });
             var urlWithId = encoder.AddIdToUrl(url, id);
@@ -43,7 +43,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         public void IdIsParsedFromTheUrlWithQueryString()
         {
             var url = new Uri("https://www.example.org?test=test");
-            var converter = new JobSearchQueryConverter();
+            var converter = new FakeSearchQueryConverter();
             var encoder = new JobAlertIdEncoder(converter);
             var id = encoder.GenerateId(new JobAlert() { Email = "example@example.org", Query = new JobSearchQuery() { Keywords = "test" } });
             var urlWithId = encoder.AddIdToUrl(url, id);
@@ -57,7 +57,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         public void IdIsRemovedFromTheUrl()
         {
             var url = new Uri("https://www.example.org");
-            var converter = new JobSearchQueryConverter();
+            var converter = new FakeSearchQueryConverter();
             var encoder = new JobAlertIdEncoder(converter);
             var id = encoder.GenerateId(new JobAlert() { Email = "example@example.org", Query = new JobSearchQuery() { Keywords = "test" } });
             var urlWithId = encoder.AddIdToUrl(url, id);
@@ -70,7 +70,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [Test]
         public void GeneratedIdIsConsistent()
         {
-            var converter = new JobSearchQueryConverter();
+            var converter = new FakeSearchQueryConverter();
             var encoder = new JobAlertIdEncoder(converter);
             var alert = new JobAlert() { Email = "example@example.org", Query = new JobSearchQuery() { Keywords = "test" } };
 
@@ -83,7 +83,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [Test]
         public void GeneratedIdVariesByEmail()
         {
-            var converter = new JobSearchQueryConverter();
+            var converter = new FakeSearchQueryConverter();
             var encoder = new JobAlertIdEncoder(converter);
             var alert1 = new JobAlert() { Email = "example@example.org", Query = new JobSearchQuery() { Keywords = "test" } };
             var alert2 = new JobAlert() { Email = "example2@example.org", Query = new JobSearchQuery() { Keywords = "test" } };
@@ -97,7 +97,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [Test]
         public void GeneratedIdVariesByCriteria()
         {
-            var converter = new JobSearchQueryConverter();
+            var converter = new FakeSearchQueryConverter();
             var encoder = new JobAlertIdEncoder(converter);
             var alert1 = new JobAlert() { Email = "example@example.org", Query = new JobSearchQuery() { Keywords = "test1" } };
             var alert2 = new JobAlert() { Email = "example@example.org", Query = new JobSearchQuery() { Keywords = "test2" } };

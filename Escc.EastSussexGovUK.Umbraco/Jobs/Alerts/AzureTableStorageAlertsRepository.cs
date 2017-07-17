@@ -17,10 +17,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
     /// <summary>
     /// Stores and retrieves job alerts data in Azure table storage
     /// </summary>
-    /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Jobs.Alerts.IAlertsRepository" />
-    public class AzureTableStorageAlertsRepository : IAlertsRepository
+    /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Jobs.Alerts.IJobAlertsRepository" />
+    public class AzureTableStorageAlertsRepository : IJobAlertsRepository
     {
-        private readonly JobSearchQueryConverter _queryConverter;
+        private readonly IJobSearchQueryConverter _queryConverter;
         private readonly CloudTableClient _tableClient;
         private const string _alertsTable = "JobAlerts";
         private const string _alertsSentTable = "JobAlertsSent";
@@ -31,7 +31,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         /// <param name="queryConverter">The query converter.</param>
         /// <exception cref="ArgumentNullException">queryConverter</exception>
         /// <exception cref="Exception"><connectionStrings><add name=\"Escc.EastSussexGovUK.Umbraco.AzureStorage\" /></connectionStrings> not found in web.config</exception>
-        public AzureTableStorageAlertsRepository(JobSearchQueryConverter queryConverter)
+        public AzureTableStorageAlertsRepository(IJobSearchQueryConverter queryConverter)
         {
             if (queryConverter == null) throw new ArgumentNullException(nameof(queryConverter));
             _queryConverter = queryConverter;

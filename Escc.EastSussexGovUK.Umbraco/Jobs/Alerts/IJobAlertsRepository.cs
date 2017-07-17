@@ -5,7 +5,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
     /// <summary>
     /// Stores and retrieves job alerts data 
     /// </summary>
-    public interface IAlertsRepository
+    public interface IJobAlertsRepository
     {
         /// <summary>
         /// Gets all alerts matching the supplied search query

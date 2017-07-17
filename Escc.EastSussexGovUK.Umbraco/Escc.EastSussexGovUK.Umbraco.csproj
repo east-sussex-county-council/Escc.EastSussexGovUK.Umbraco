@@ -3723,10 +3723,14 @@
     <Compile Include="Examine\WildcardSuffixFilter.cs" />
     <Compile Include="HomePage\HomePageViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\Alerts\AzureTableStorageAlertsRepository.cs" />
-    <Compile Include="Jobs\Alerts\IAlertsRepository.cs" />
+    <Compile Include="Jobs\Alerts\HtmlJobAlertFormatter.cs" />
+    <Compile Include="Jobs\Alerts\IJobAlertsRepository.cs" />
+    <Compile Include="Jobs\Alerts\IJobAlertFormatter.cs" />
+    <Compile Include="Jobs\Alerts\IJobAlertSender.cs" />
     <Compile Include="Jobs\Alerts\IJobAlertSettingsProvider.cs" />
     <Compile Include="Jobs\Alerts\JobAlertContentFinder.cs" />
     <Compile Include="Jobs\Alerts\JobAlertIdEncoder.cs" />
+    <Compile Include="Jobs\Alerts\JobAlertsByEmailSender.cs" />
     <Compile Include="Jobs\Alerts\JobAlertsContentTab.cs" />
     <Compile Include="Jobs\Alerts\JobAlertsController.cs" />
     <Compile Include="Jobs\Alerts\JobAlertsDocumentType.cs" />
@@ -3739,6 +3743,7 @@
     <Compile Include="Jobs\Alerts\JobAlertTableEntity.cs" />
     <Compile Include="Jobs\Examine\BaseLookupValuesIndexer.cs" />
     <Compile Include="Examine\LuceneDateTimeParser.cs" />
+    <Compile Include="Jobs\IJobSearchQueryConverter.cs" />
     <Compile Include="Jobs\IJobsLookupValuesProvider.cs" />
     <Compile Include="Jobs\IJobUrlGenerator.cs" />
     <Compile Include="Jobs\IWorkPatternParser.cs" />

@@ -13,14 +13,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
     /// </summary>
     public class JobAlertIdEncoder
     {
-        private readonly JobSearchQueryConverter _queryConverter;
+        private readonly IJobSearchQueryConverter _queryConverter;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="JobAlertIdEncoder"/> class.
         /// </summary>
         /// <param name="queryConverter">The query converter.</param>
         /// <exception cref="ArgumentNullException">queryConverter</exception>
-        public JobAlertIdEncoder(JobSearchQueryConverter queryConverter)
+        public JobAlertIdEncoder(IJobSearchQueryConverter queryConverter)
         {
             if (queryConverter == null) throw new ArgumentNullException(nameof(queryConverter));
             _queryConverter = queryConverter;

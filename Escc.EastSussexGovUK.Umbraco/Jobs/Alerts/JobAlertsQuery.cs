@@ -6,7 +6,7 @@ using System.Web;
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
 {
     /// <summary>
-    /// A query filter for searching for job alerts in an <see cref="IAlertsRepository"/>
+    /// A query filter for searching for job alerts in an <see cref="IJobAlertsRepository"/>
     /// </summary>
     public class JobAlertsQuery
     {

@@ -11,7 +11,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
     /// <summary>
     /// Converts a <see cref="JobSearchQuery"/> to and from a <see cref="NameValueCollection"/> format
     /// </summary>
-    public class JobSearchQueryConverter
+    public class JobSearchQueryConverter : IJobSearchQueryConverter
     {
         /// <summary>
         /// Creates a <see cref="JobSearchQuery"/> from a <see cref="NameValueCollection"/>.
