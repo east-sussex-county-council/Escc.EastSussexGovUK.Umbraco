@@ -70,7 +70,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
                     emailHtml.Append("<h2>").Append(alert.Query).Append("</h2><ul>");
                     foreach (var job in alert.MatchingJobs)
                     {
-                        emailHtml.Append("<li><a href=\"").Append(job.Url).Append("\">").Append(job.JobTitle).Append("</a></li>");
+                        emailHtml.Append("<li><a href=\"").Append($"{job.Url}?utm_source=job-alert&utm_medium=job-advert-{HttpUtility.UrlEncode(job.Organisation)}&utm_content={job.Reference}&utm_campaign=General-Recruitment").Append("\">").Append(job.JobTitle).Append("</a></li>");
                     }
                     emailHtml.Append("</ul>");
 
