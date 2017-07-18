@@ -954,6 +954,8 @@
     <None Include="Jobs\Images\East Sussex Jobs logo colour.png" />
     <None Include="Jobs\Images\East Sussex Jobs logo white.png" />
     <None Include="Jobs\Images\header.png" />
+    <EmbeddedResource Include="Jobs\Alerts\JobAlert.html" />
+    <EmbeddedResource Include="Jobs\Alerts\JobAlertConfirmation.html" />
     <Content Include="js\CampaignTemplates\campaign-landing.js" />
     <Content Include="js\CouncilPlan\council-plan.js" />
     <Content Include="js\CustomerFocusTemplates\guide.js" />

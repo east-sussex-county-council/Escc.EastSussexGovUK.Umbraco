@@ -12,6 +12,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
     public interface IJobAlertFormatter
     {
         /// <summary>
+        /// Formats the confirmation that a new alert has been set up.
+        /// </summary>
+        /// <param name="alert">The alert.</param>
+        /// <returns></returns>
+        string FormatNewAlertConfirmation(JobAlert alert);
+
+        /// <summary>
         /// Formats a group of alerts for one recipient.
         /// </summary>
         /// <param name="alerts">The alerts.</param>

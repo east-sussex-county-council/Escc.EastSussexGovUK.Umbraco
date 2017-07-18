@@ -25,40 +25,23 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             {
                 var converter = new JobSearchQueryConverter();
                 var encoder = new JobAlertIdEncoder(converter);
-                var repo = new AzureTableStorageAlertsRepository(converter);
+                var alertsRepo = new AzureTableStorageAlertsRepository(converter);
                 alert.Query = converter.ToQuery(query);
                 alert.AlertId = encoder.GenerateId(alert);
-                repo.SaveAlert(alert);
+                alertsRepo.SaveAlert(alert);
 
                 var jobAlertsSettings = new JobAlertsSettingsFromUmbraco(Umbraco).GetJobAlertsSettings();
                 if (jobAlertsSettings.ContainsKey(alert.JobsSet) && !String.IsNullOrEmpty(jobAlertsSettings[alert.JobsSet].NewAlertEmailSubject))
                 {
-                    var alertUrl = encoder.AddIdToUrl(jobAlertsSettings[alert.JobsSet].ChangeAlertBaseUrl, alert.AlertId).ToString();
-                    var alertDescription = alert.Query.ToString(false);
-                    jobAlertsSettings[alert.JobsSet].NewAlertEmailBodyHtml = jobAlertsSettings[alert.JobsSet].NewAlertEmailBodyHtml
-                                        .Replace("{alert-description}", alertDescription)
-                                        .Replace("/umbraco/{change-alert-url}", alertUrl); // because Umbraco admin treats it as a link relative to the back office
+                    var emailService = ServiceContainer.LoadService<IEmailSender>(new ConfigurationServiceRegistry(), new HttpContextCacheStrategy());
+                    var sender = new JobAlertsByEmailSender(jobAlertsSettings[alert.JobsSet], new HtmlJobAlertFormatter(jobAlertsSettings[alert.JobsSet], encoder), emailService);
 
-                    SendEmail(alert.Email, jobAlertsSettings[alert.JobsSet].NewAlertEmailSubject, jobAlertsSettings[alert.JobsSet].NewAlertEmailBodyHtml);
+                    sender.SendNewAlertConfirmation(alert);
                 }
 
                 query.Add("subscribed", "1");
             }
             return new RedirectToUmbracoPageResult(CurrentPage, query);
-        }
-
-        private static void SendEmail(string emailAddress, string subject, string emailHtml)
-        {
-            var message = new MailMessage();
-            message.To.Add(emailAddress);
-            message.Subject = subject;
-            message.Body = emailHtml;
-            message.IsBodyHtml = true;
-
-            var configuration = new ConfigurationServiceRegistry();
-            var cache = new HttpContextCacheStrategy();
-            var emailService = ServiceContainer.LoadService<IEmailSender>(configuration, cache);
-            emailService.SendAsync(message);
         }
 
         [ValidateAntiForgeryToken]

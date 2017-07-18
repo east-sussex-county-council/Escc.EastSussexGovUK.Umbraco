@@ -12,9 +12,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
     interface IJobAlertSender
     {
         /// <summary>
+        /// Sends a confirmation that a new alert has been set up.
+        /// </summary>
+        /// <param name="alert">The alert.</param>
+        void SendNewAlertConfirmation(JobAlert alert);
+
+        /// <summary>
         /// Sends alerts which have been grouped by the user to whom they must be sent
         /// </summary>
         /// <param name="groupedAlerts">The grouped alerts.</param>
-        void SendGroupedAlerts(IEnumerable<IList<JobAlert>> groupedAlerts);
+        /// <param name="repo">The alerts repository where sent alerts can be recorded.</param>
+        void SendGroupedAlerts(IEnumerable<IList<JobAlert>> groupedAlerts, IJobAlertsRepository repo);
     }
 }

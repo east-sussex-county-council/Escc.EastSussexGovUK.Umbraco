@@ -16,7 +16,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         public void AllJobsMarkedAsSent()
         {
             var spy = new JobAlertsSpyRepository();
-            var sender = new JobAlertsByEmailSender(spy, new JobAlertSettings(), new FakeJobAlertFormatter(), new FakeEmailSender());
+            var sender = new JobAlertsByEmailSender(new JobAlertSettings(), new FakeJobAlertFormatter(), new FakeEmailSender());
             var alerts = new List<List<JobAlert>>();
             alerts.Add(new List<JobAlert>()
             {
@@ -35,7 +35,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             alerts[1][1].MatchingJobs.Add(new Job() { Id = 7 });
             alerts[1][1].MatchingJobs.Add(new Job() { Id = 8 });
 
-            sender.SendGroupedAlerts(alerts);
+            sender.SendGroupedAlerts(alerts, spy);
 
             Assert.AreEqual(8, spy.UniqueJobCount);
         }

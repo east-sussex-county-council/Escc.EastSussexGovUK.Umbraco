@@ -13,5 +13,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             return String.Empty;
         }
+
+        public string FormatNewAlertConfirmation(JobAlert alert)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

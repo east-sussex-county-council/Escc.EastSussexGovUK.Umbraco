@@ -13,7 +13,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
     /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Jobs.Alerts.IJobAlertSender" />
     public class JobAlertsByEmailSender : IJobAlertSender
     {
-        private readonly IJobAlertsRepository _repo;
         private readonly JobAlertSettings _alertSettings;
         private readonly IJobAlertFormatter _formatter;
         private readonly IEmailSender _emailSender;
@@ -21,24 +20,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         /// <summary>
         /// Initializes a new instance of the <see cref="JobAlertsByEmailSender"/> class.
         /// </summary>
-        /// <param name="repo">The repo.</param>
         /// <param name="alertSettings">The alert settings.</param>
         /// <param name="formatter">The formatter.</param>
         /// <param name="emailSender">The email sender.</param>
         /// <exception cref="ArgumentNullException">
-        /// repo
-        /// or
         /// alertSettings
         /// or
         /// formatter
         /// or
         /// emailSender
         /// </exception>
-        public JobAlertsByEmailSender(IJobAlertsRepository repo, JobAlertSettings alertSettings, IJobAlertFormatter formatter, IEmailSender emailSender)
+        public JobAlertsByEmailSender(JobAlertSettings alertSettings, IJobAlertFormatter formatter, IEmailSender emailSender)
         {
-            if (repo == null) throw new ArgumentNullException(nameof(repo));
-            _repo = repo;
-
             if (alertSettings == null) throw new ArgumentNullException(nameof(alertSettings));
             _alertSettings = alertSettings;
 
@@ -53,8 +46,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         /// Sends alerts which have been grouped by the user to whom they must be sent
         /// </summary>
         /// <param name="groupedAlerts">The grouped alerts.</param>
-        public void SendGroupedAlerts(IEnumerable<IList<JobAlert>> groupedAlerts)
+        /// <param name="repo">The alerts repository where sent alerts can be recorded.</param>
+        public void SendGroupedAlerts(IEnumerable<IList<JobAlert>> groupedAlerts, IJobAlertsRepository repo)
         {
+            if (groupedAlerts == null) throw new ArgumentNullException(nameof(groupedAlerts));
+            if (repo == null) throw new ArgumentNullException(nameof(repo));
+
             foreach (var alertsForAnEmail in groupedAlerts)
             {
                 var email = _formatter.FormatAlert(alertsForAnEmail);
@@ -68,10 +65,20 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
                 {
                     foreach (var job in alert.MatchingJobs)
                     {
-                        _repo.MarkAlertAsSent(alert.JobsSet, job.Id, alert.Email);
+                        repo.MarkAlertAsSent(alert.JobsSet, job.Id, alert.Email);
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Sends a confirmation that a new alert has been set up.
+        /// </summary>
+        /// <param name="alert">The alert.</param>
+        public void SendNewAlertConfirmation(JobAlert alert)
+        {
+            var bodyHtml = _formatter.FormatNewAlertConfirmation(alert);
+            SendEmail(alert.Email, _alertSettings.NewAlertEmailSubject, bodyHtml);
         }
 
         private void SendEmail(string emailAddress, string subject, string emailHtml)

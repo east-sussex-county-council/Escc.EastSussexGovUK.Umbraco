@@ -65,7 +65,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             var configuration = new ConfigurationServiceRegistry();
             var cache = new HttpContextCacheStrategy();
             var emailService = ServiceContainer.LoadService<IEmailSender>(configuration, cache);
-            var sender = new JobAlertsByEmailSender(alertsRepo, alertSettings, new HtmlJobAlertFormatter(alertSettings, encoder), emailService);
+            var sender = new JobAlertsByEmailSender(alertSettings, new HtmlJobAlertFormatter(alertSettings, encoder), emailService);
 
             // Get them, sort them and send them
             var alerts = alertsRepo.GetAlerts(new JobAlertsQuery() { Frequency = frequency, JobsSet = jobsSet });
@@ -80,7 +80,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 }
             }
 
-            sender.SendGroupedAlerts(alertsGroupedByEmail);
+            sender.SendGroupedAlerts(alertsGroupedByEmail, alertsRepo);
         }
 
         private IEnumerable<IList<JobAlert>> GroupAlertsByEmail(IEnumerable<JobAlert> alerts)
