@@ -30,23 +30,52 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
         /// <summary>
         /// Sends job alerts which are configured for a particular frequency (in days), or any frequency if blank
         /// </summary>
+        [HttpPost]
+        public void SendAlerts()
+        {
+            SendAlerts(null, false);
+        }
+
+        /// <summary>
+        /// Sends job alerts which are configured for a particular frequency (in days), or any frequency if blank
+        /// </summary>
         /// <param name="frequency">The frequency.</param>
         [HttpPost]
         public void SendAlerts([FromUri]int? frequency)
+        {
+            SendAlerts(frequency, false);
+        }
+
+        /// <summary>
+        /// Sends job alerts which are configured for a particular frequency (in days), or any frequency if blank
+        /// </summary>
+        /// <param name="forceResend">if set to <c>true</c> force resend of alerts already sent (for testing).</param>
+        [HttpPost]
+        public void SendAlerts([FromUri]bool forceResend)
+        {
+            SendAlerts(null, forceResend);
+        }
+
+        /// <summary>
+        /// Sends job alerts which are configured for a particular frequency (in days), or any frequency if blank
+        /// </summary>
+        /// <param name="frequency">The frequency.</param>
+        [HttpPost]
+        public void SendAlerts([FromUri]int? frequency, [FromUri]bool forceResend)
         {
             var jobAlertsSettings = new JobAlertsSettingsFromUmbraco(Umbraco).GetJobAlertsSettings();
 
             if (jobAlertsSettings.ContainsKey(JobsSet.PublicJobs))
             {
-                SendAlertsForJobSet(JobsSet.PublicJobs, frequency, jobAlertsSettings[JobsSet.PublicJobs]);
+                SendAlertsForJobSet(JobsSet.PublicJobs, frequency, jobAlertsSettings[JobsSet.PublicJobs], forceResend);
             }
             if (jobAlertsSettings.ContainsKey(JobsSet.RedeploymentJobs))
             {
-                SendAlertsForJobSet(JobsSet.RedeploymentJobs, frequency, jobAlertsSettings[JobsSet.RedeploymentJobs]);
+                SendAlertsForJobSet(JobsSet.RedeploymentJobs, frequency, jobAlertsSettings[JobsSet.RedeploymentJobs], forceResend);
             }
         }
 
-        private void SendAlertsForJobSet(JobsSet jobsSet, int? frequency, JobAlertSettings alertSettings)
+        private void SendAlertsForJobSet(JobsSet jobsSet, int? frequency, JobAlertSettings alertSettings, bool forceResend)
         {
             // No point sending alerts without links to the jobs
             if (alertSettings.JobAdvertBaseUrl == null) return;
@@ -75,7 +104,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             {
                 foreach (var alert in alertsForAnEmail)
                 {
-                    var jobsSentForThisEmail = alertsRepo.GetJobsSentForEmail(alert.JobsSet, alert.Email);
+                    var jobsSentForThisEmail = forceResend ? new List<int>() : alertsRepo.GetJobsSentForEmail(alert.JobsSet, alert.Email);
                     LookupJobsForAlert(jobsRepo, alert, jobsSentForThisEmail);
                 }
             }

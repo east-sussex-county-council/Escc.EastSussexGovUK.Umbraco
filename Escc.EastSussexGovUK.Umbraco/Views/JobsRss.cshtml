@@ -1,5 +1,6 @@
 ﻿@using System.Globalization
 @using Escc.Dates
+@using Humanizer
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.RssViewModel<Escc.EastSussexGovUK.Umbraco.Jobs.Job>>
 @{
     Layout = null;
@@ -27,9 +28,11 @@
     @foreach (var job in Model.Items)
     {
         var url = "<link>" + HttpUtility.HtmlEncode($"{job.Url}?utm_source=jobs-rss&utm_medium=job-advert-{HttpUtility.UrlEncode(job.Organisation)}&utm_content={job.Reference}&utm_campaign=General-Recruitment") + "</link>";
+        var description = $"{job.WorkPattern} {job.ContractType.ToLower(CultureInfo.CurrentCulture)} {job.Salary.SalaryRange} in {job.Location}. Closing date {job.ClosingDate.Value.ToBritishDate()}. {job.Organisation} / {job.JobType} vacancy.".TrimStart();
+        description = description.Substring(0, 1).ToUpper(CultureInfo.CurrentCulture) + description.Substring(1);
         <item>
             <title>@job.JobTitle</title>
-            <description>@job.WorkPattern @job.ContractType.ToLower(CultureInfo.CurrentCulture) @job.Salary.SalaryRange in @job.Location. Closing date @job.ClosingDate.Value.ToBritishDate(). @job.Organisation / @job.JobType vacancy.</description>
+            <description>@description</description>
             @Html.Raw(url)
             <guid ispermalink="false">https://www.eastsussex.gov.uk/id/job-advert/@job.Id</guid>
             <source url="@Request.Url.ToString().Replace("\"", "%22")"/>

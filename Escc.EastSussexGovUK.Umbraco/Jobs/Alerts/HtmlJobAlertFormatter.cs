@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Escc.Dates;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -67,14 +69,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             {
                 if (alert.MatchingJobs.Count > 0)
                 {
-                    emailHtml.Append("<h2>").Append(alert.Query).Append("</h2><ul>");
+                    emailHtml.Append("<h2 style=\"margin-bottom:0\">").Append(alert.Query).Append("</h2>");
+                    emailHtml.Append("<p style=\"margin:.2em 0 1em 0\"><small><a href=\"").Append(_encoder.AddIdToUrl(_alertSettings.ChangeAlertBaseUrl, alert.AlertId)).Append("\">Change or cancel this alert</a></small></p>");
+                    emailHtml.Append("<ul style=\"margin-left:0;padding-top:1em\">");
                     foreach (var job in alert.MatchingJobs)
                     {
-                        emailHtml.Append("<li><a href=\"").Append($"{job.Url}?utm_source=job-alert&utm_medium=job-advert-{HttpUtility.UrlEncode(job.Organisation)}&utm_content={job.Reference}&utm_campaign=General-Recruitment").Append("\">").Append(job.JobTitle).Append("</a></li>");
+                        var description = $"{job.WorkPattern} {job.ContractType.ToLower(CultureInfo.CurrentCulture)} {job.Salary.SalaryRange} in {job.Location}. Closing date {job.ClosingDate.Value.ToBritishDate()}. {job.Organisation} / {job.JobType} vacancy.".TrimStart();
+                        description = description.Substring(0, 1).ToUpper(CultureInfo.CurrentCulture) + description.Substring(1);
+
+                        emailHtml.Append("<li style=\"list-style:none;padding:0\"><p style=\"margin:1em 0 .5em 0\"><a href=\"").Append($"{job.Url}?utm_source=job-alert&utm_medium=job-advert-{HttpUtility.UrlEncode(job.Organisation)}&utm_content={job.Reference}&utm_campaign=General-Recruitment").Append("\">").Append(job.JobTitle).Append("</a></p>")
+                            .Append("<p style=\"margin:.5em 0 1em 0;\">").Append(description).Append("</p></li>");
                     }
                     emailHtml.Append("</ul>");
-
-                    emailHtml.Append("<p><a href=\"").Append(_encoder.AddIdToUrl(_alertSettings.ChangeAlertBaseUrl, alert.AlertId)).Append("\">Change or cancel alert</a></p>");
                 }
             }
 
