@@ -949,7 +949,7 @@
     <Content Include="js\CampaignTemplates\campaign-landing.js" />
     <Content Include="js\CouncilPlan\council-plan.js" />
     <Content Include="js\CustomerFocusTemplates\guide.js" />
-    <Content Include="js\GovDelivery\Business and Funding.js" />
+    <Content Include="js\GovDelivery\Business-and-Funding.js" />
     <Content Include="js\GovDelivery\ESCC.js" />
     <Content Include="js\GovDelivery\Libraries.js" />
     <Content Include="js\job-results.js" />
