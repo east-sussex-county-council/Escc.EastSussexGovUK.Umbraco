@@ -91,3 +91,8 @@ label.SA-smalltext { display: inline; padding: 0 1em 0 .3em;vertical-align: sub;
 /* On a job advert, place the apply link on mobiles so that it can conveniently be tapped with the thumb */
 .mobile-nav { position: fixed; bottom: 0; background: #fff; background: rgba(255,255,255,.8); width: 100%; text-align: center; }
 .footer-with-mobile-nav .footer { padding-bottom: 5em; }
+
+/* On a job advert, the summary box.
+   .1px prevents margin-collapsing, allowing the margin-top of dt to define space at the top of .job-summary rather than extending outside it
+*/
+.job-summary { padding: .1px 18px 1.125em; background: #ccc; }
