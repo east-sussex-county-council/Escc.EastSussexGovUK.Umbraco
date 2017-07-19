@@ -3704,6 +3704,10 @@
     <Compile Include="CampaignTemplates\CampaignTilesContentTab.cs" />
     <Compile Include="CampaignTemplates\CampaignTilesDesignTab.cs" />
     <Compile Include="CampaignTemplates\CampaignTilesDocumentType.cs" />
+    <Compile Include="Errors\HttpStatusFromConfiguration.cs" />
+    <Compile Include="Errors\NotFoundContentFinder.cs" />
+    <Compile Include="Errors\RegisterErrorsEventHandler.cs" />
+    <Compile Include="Errors\UmbracoCustomErrorsModule.cs" />
     <Compile Include="Examine\IQueryBuilder.cs" />
     <Compile Include="Examine\ITokenisedQueryBuilder.cs" />
     <Compile Include="Examine\ISearchFilter.cs" />
@@ -3931,10 +3935,6 @@
     <Compile Include="DocumentTypes\StandardTopicPage\TopicPageLayoutDataType.cs" />
     <Compile Include="DocumentTypes\Task\TaskContentTab.cs" />
     <Compile Include="DocumentTypes\Task\TaskDocumentType.cs" />
-    <Compile Include="EastSussexGovUK\Errors\HttpStatusFromConfiguration.cs" />
-    <Compile Include="EastSussexGovUK\Errors\NotFoundContentFinder.cs" />
-    <Compile Include="EastSussexGovUK\Errors\RegisterErrorsEventHandler.cs" />
-    <Compile Include="EastSussexGovUK\Errors\UmbracoCustomErrorsModule.cs" />
     <Compile Include="MicrosoftCmsMigration\CmsUtilities.cs" />
     <Compile Include="MicrosoftCmsMigration\CustomProperty.cs" />
     <Compile Include="MicrosoftCmsMigration\MicrosoftCmsPageController.cs" />
