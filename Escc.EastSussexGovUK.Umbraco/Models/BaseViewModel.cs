@@ -19,5 +19,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
         /// Gets or sets the JavaScript for a Google Analytics content experiment
         /// </summary>
         public ContentExperimentPageSettings ContentExperimentPageSettings { get; set; }
+
+        /// <summary>
+        /// Gets or sets the settings for a page rating service
+        /// </summary>
+        public RatingSettings RatingSettings { get; set; }
     }
 }

@@ -43,5 +43,21 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Features.SocialMedia
 
         [UmbracoProperty("ESCIS: show widget?", "escis", ShowWidgetDataType.PropertyEditor, ShowWidgetDataType.DataTypeName, sortOrder: 8)]
         public string Escis { get; set; }
+
+        [UmbracoProperty("Rate this page: Poor", "RatingUrlPoor", RatingUrlDataType.PropertyEditorAlias, RatingUrlDataType.DataTypeName, sortOrder: 9,
+            description: "Copy and paste the link to click to rate this page as poor.")]
+        public Uri RatingUrlPoor { get; set; }
+
+        [UmbracoProperty("Rate this page: Adequate", "RatingUrlAdequate", RatingUrlDataType.PropertyEditorAlias, RatingUrlDataType.DataTypeName, sortOrder: 10,
+            description: "Copy and paste the link to click to rate this page as adequate.")]
+        public Uri RatingUrlAdequate { get; set; }
+
+        [UmbracoProperty("Rate this page: Good", "RatingUrlGood", RatingUrlDataType.PropertyEditorAlias, RatingUrlDataType.DataTypeName, sortOrder: 11,
+            description: "Copy and paste the link to click to rate this page as good.")]
+        public Uri RatingUrlGood { get; set; }
+
+        [UmbracoProperty("Rate this page: Excellent", "RatingUrlExcellent", RatingUrlDataType.PropertyEditorAlias, RatingUrlDataType.DataTypeName, sortOrder: 12,
+            description: "Copy and paste the link to click to rate this page as excellent.")]
+        public Uri RatingUrlExcellent { get; set; }
     }
 }

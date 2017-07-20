@@ -27,18 +27,19 @@ namespace Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration
                 new UmbracoEastSussex1SpaceService(model.Content), 
                 new UmbracoWebChatSettingsService(model.Content, new UrlListReader()), 
                 new ContentExperimentSettingsService(),
-                new UmbracoEscisService(model.Content));
+                new UmbracoEscisService(model.Content),
+                new RatingSettingsFromUmbraco(model.Content));
 
             return CurrentTemplate(landingModel);
         }
 
-        private static MicrosoftCmsViewModel MapUmbracoContentToViewModel(IPublishedContent content, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService)
+        private static MicrosoftCmsViewModel MapUmbracoContentToViewModel(IPublishedContent content, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService, IRatingSettingsProvider ratingSettings)
         {
             var model = new MicrosoftCmsViewModel();
 
             var modelBuilder = new BaseViewModelBuilder();
             modelBuilder.PopulateBaseViewModel(model, content, contentExperimentSettingsService, UmbracoContext.Current.InPreviewMode);
-            modelBuilder.PopulateBaseViewModelWithInheritedContent(model, latestService, socialMediaService, eastSussex1SpaceService, webChatSettingsService, escisService);
+            modelBuilder.PopulateBaseViewModelWithInheritedContent(model, latestService, socialMediaService, eastSussex1SpaceService, webChatSettingsService, escisService, ratingSettings);
 
             return model;
         }

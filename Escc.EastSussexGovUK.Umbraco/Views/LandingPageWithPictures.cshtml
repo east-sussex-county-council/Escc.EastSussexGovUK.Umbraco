@@ -12,9 +12,11 @@
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] { new MarriageSkin(Model.EsccWebsiteView, Model.Metadata.PageUrl) }, new CustomerFocusSkin(Model.EsccWebsiteView));
 
-    if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)
+    if (Model.EsccWebsiteView != EsccWebsiteView.Plain)
     {
         Html.RequiresCss(CssFileAlias.Resolve("LandingMedium"), MediaQueryAlias.Resolve("Medium"));
+        Html.RequiresCss("~/css/rating-small.css");
+        Html.RequiresCss("~/css/rating-medium.css", MediaQueryAlias.Resolve("Medium"));
     }
 
     var placeholders = CmsUtilities.Placeholders;
@@ -41,4 +43,5 @@
 @Html.Partial("~/Views/EastSussexGovUK/Features/_SupportingContentDesktop.cshtml")
 <div class="text-content content">
     @Html.Partial("~/Views/EastSussexGovUK/Features/_Share.cshtml")
+    @Html.Partial("~/Views/Layouts/_Rating.cshtml")
 </div>

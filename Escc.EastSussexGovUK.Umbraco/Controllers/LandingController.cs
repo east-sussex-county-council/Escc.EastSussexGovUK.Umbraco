@@ -37,14 +37,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
                 new UmbracoWebChatSettingsService(model.Content, new UrlListReader()), 
                 new RelatedLinksService(new RemoveMediaDomainUrlTransformer(), new ElibraryUrlTransformer()), 
                 new ContentExperimentSettingsService(), 
-                new UmbracoEscisService(model.Content));
+                new UmbracoEscisService(model.Content),
+                new RatingSettingsFromUmbraco(model.Content));
 
             new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" });
 
             return CurrentTemplate(viewModel);
         }
 
-        private static LandingViewModel MapUmbracoContentToViewModel(IPublishedContent content, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IRelatedLinksService relatedLinksService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService)
+        private static LandingViewModel MapUmbracoContentToViewModel(IPublishedContent content, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IRelatedLinksService relatedLinksService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService, IRatingSettingsProvider ratingSettings)
         {
             var model = new LandingViewModel();
             model.Navigation.Sections = BuildLandingLinksViewModelFromUmbracoContent(content, relatedLinksService);
@@ -61,7 +62,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
             // Add common properties to the model
             var modelBuilder = new BaseViewModelBuilder();
             modelBuilder.PopulateBaseViewModel(model, content, contentExperimentSettingsService, UmbracoContext.Current.InPreviewMode);
-            modelBuilder.PopulateBaseViewModelWithInheritedContent(model, latestService, socialMediaService, eastSussex1SpaceService, webChatSettingsService, escisService);
+            modelBuilder.PopulateBaseViewModelWithInheritedContent(model, latestService, socialMediaService, eastSussex1SpaceService, webChatSettingsService, escisService, ratingSettings);
 
             return model;
         }

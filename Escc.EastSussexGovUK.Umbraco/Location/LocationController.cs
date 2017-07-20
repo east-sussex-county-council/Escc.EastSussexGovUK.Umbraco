@@ -41,7 +41,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Location
                     new UmbracoWebChatSettingsService(model.Content, new UrlListReader()),
                     new RelatedLinksService(mediaUrlTransformer, new ElibraryUrlTransformer()),
                     new ContentExperimentSettingsService(),
-                    new UmbracoEscisService(model.Content), 
+                    new UmbracoEscisService(model.Content),
+                    new RatingSettingsFromUmbraco(model.Content), 
                     mediaUrlTransformer);
 
             SetupHttpCaching(model, viewModel);
@@ -88,23 +89,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Location
         /// <param name="relatedLinksService">The related links service.</param>
         /// <param name="contentExperimentSettingsService">The content experiment settings service.</param>
         /// <param name="escisService">The escis service.</param>
+        /// <param name="ratingSettings">The rating settings.</param>
         /// <param name="mediaUrlTransformer">The media URL transformer.</param>
         /// <returns></returns>
-        /// <exception cref="System.ArgumentNullException">
-        /// content
-        /// or
-        /// latestService
-        /// or
-        /// socialMediaService
-        /// or
-        /// eastSussex1SpaceService
-        /// or
-        /// webChatSettingsService
-        /// or
-        /// relatedLinksService
-        /// or
-        /// contentExperimentSettingsService
-        /// </exception>
         /// <exception cref="ArgumentNullException">content
         /// or
         /// latestService
@@ -116,10 +103,23 @@ namespace Escc.EastSussexGovUK.Umbraco.Location
         /// webChatSettingsService
         /// or
         /// relatedLinksService</exception>
+        /// <exception cref="System.ArgumentNullException">content
+        /// or
+        /// latestService
+        /// or
+        /// socialMediaService
+        /// or
+        /// eastSussex1SpaceService
+        /// or
+        /// webChatSettingsService
+        /// or
+        /// relatedLinksService
+        /// or
+        /// contentExperimentSettingsService</exception>
         /// <remarks>
         /// Method is virtual so that document types which inherit from the 'Location' type can also inherit and extend the controller
         /// </remarks>
-        protected virtual LocationViewModel MapUmbracoContentToViewModel(IPublishedContent content, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IRelatedLinksService relatedLinksService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService, IMediaUrlTransformer mediaUrlTransformer)
+        protected virtual LocationViewModel MapUmbracoContentToViewModel(IPublishedContent content, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IRelatedLinksService relatedLinksService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService, IRatingSettingsProvider ratingSettings, IMediaUrlTransformer mediaUrlTransformer)
         {
             if (content == null) throw new ArgumentNullException("content");
             if (latestService == null) throw new ArgumentNullException("latestService");
@@ -128,6 +128,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Location
             if (webChatSettingsService == null) throw new ArgumentNullException("webChatSettingsService");
             if (relatedLinksService == null) throw new ArgumentNullException("relatedLinksService");
             if (contentExperimentSettingsService == null) throw new ArgumentNullException("contentExperimentSettingsService");
+            if (ratingSettings == null) throw new ArgumentNullException(nameof(ratingSettings));
 
             var model = new LocationViewModel
             {
@@ -182,7 +183,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Location
             // Add common properties to the model
             var modelBuilder = new BaseViewModelBuilder();
             modelBuilder.PopulateBaseViewModel(model, content, contentExperimentSettingsService, UmbracoContext.Current.InPreviewMode);
-            modelBuilder.PopulateBaseViewModelWithInheritedContent(model, latestService, socialMediaService, eastSussex1SpaceService, webChatSettingsService, escisService);
+            modelBuilder.PopulateBaseViewModelWithInheritedContent(model, latestService, socialMediaService, eastSussex1SpaceService, webChatSettingsService, escisService, ratingSettings);
 
             return model;
         }

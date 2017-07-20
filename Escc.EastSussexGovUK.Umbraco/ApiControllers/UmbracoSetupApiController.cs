@@ -68,6 +68,7 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
                 SocialMediaOrderDataType.CreateSocialMediaOrderDataType();
                 FacebookWidgetSettingsDataType.CreateFacebookWidgetSettingsDataType();
                 FacebookUrlDataType.CreateDataType();
+                RatingUrlDataType.CreateDataType();
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(ShowWidgetDataType));
                 TwitterScriptDataType.CreateDataType();
                 MultiNodeTreePickerDataType.CreateDataType();

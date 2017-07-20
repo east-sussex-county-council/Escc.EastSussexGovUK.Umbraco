@@ -921,6 +921,8 @@
     <Content Include="css\Jobs\jobs-large.css" />
     <Content Include="css\Jobs\jobs-medium.css" />
     <Content Include="css\Jobs\jobs-small.css" />
+    <Content Include="css\rating-medium.css" />
+    <Content Include="css\rating-small.css" />
     <Content Include="css\StandardDownloadPage\download-small.css" />
     <Content Include="css\StandardLandingPage\landing-medium.css" />
     <Content Include="css\StandardLandingPage\landing-small.css" />
@@ -946,6 +948,10 @@
     <None Include="Jobs\Images\East Sussex Jobs logo colour.png" />
     <None Include="Jobs\Images\East Sussex Jobs logo white.png" />
     <None Include="Jobs\Images\header.png" />
+    <Content Include="images\rating-adequate.jpg" />
+    <Content Include="images\rating-excellent.jpg" />
+    <Content Include="images\rating-good.jpg" />
+    <Content Include="images\rating-poor.jpg" />
     <Content Include="js\CampaignTemplates\campaign-landing.js" />
     <Content Include="js\CouncilPlan\council-plan.js" />
     <Content Include="js\CustomerFocusTemplates\guide.js" />
@@ -3641,6 +3647,7 @@
     <Content Include="Umbraco\Webservices\TreeDataService.ashx" />
     <Content Include="Umbraco\Webservices\UltimatePickerAutoCompleteHandler.ashx" />
     <Content Include="Umbraco\Xslt\Web.config" />
+    <Content Include="Views\Layouts\_Rating.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -3704,6 +3711,7 @@
     <Compile Include="CampaignTemplates\CampaignTilesContentTab.cs" />
     <Compile Include="CampaignTemplates\CampaignTilesDesignTab.cs" />
     <Compile Include="CampaignTemplates\CampaignTilesDocumentType.cs" />
+    <Compile Include="DocumentTypes\Features\SocialMedia\RatingUrlDataType.cs" />
     <Compile Include="Errors\HttpStatusFromConfiguration.cs" />
     <Compile Include="Errors\NotFoundContentFinder.cs" />
     <Compile Include="Errors\RegisterErrorsEventHandler.cs" />
@@ -3813,6 +3821,7 @@
     <Compile Include="Jobs\TalentLink\TalentLinkUrl.cs" />
     <Compile Include="Jobs\HouseStyleDateFormatter.cs" />
     <Compile Include="Location\LocationsAsKmlHandler.cs" />
+    <Compile Include="Models\RatingSettings.cs" />
     <Compile Include="Services\BaseViewModelFromUmbracoBuilder.cs" />
     <Compile Include="Jobs\SearchResultsViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\ComponentViewModelFromUmbraco.cs" />
@@ -3829,6 +3838,8 @@
     <Compile Include="Jobs\JobsHomeViewModel.cs" />
     <Compile Include="HomePage\HomePageItemsAnalyticsTab.cs" />
     <Compile Include="Jobs\WorkPattern.cs" />
+    <Compile Include="Services\IRatingSettingsProvider.cs" />
+    <Compile Include="Services\RatingSettingsFromUmbraco.cs" />
     <Compile Include="UrlTransformers\ElibraryUrlTransformer.cs" />
     <Compile Include="UrlTransformers\RemoveMediaDomainUrlTransformer.cs" />
     <Compile Include="UrlTransformers\CampaignTrackingUrlTransformer.cs" />

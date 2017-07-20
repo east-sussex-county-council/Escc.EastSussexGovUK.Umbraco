@@ -16,9 +16,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Location
     /// </summary>
     public class RecyclingSiteController : LocationController
     {
-        protected override LocationViewModel MapUmbracoContentToViewModel(IPublishedContent content, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IRelatedLinksService relatedLinksService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService, IMediaUrlTransformer mediaUrlTransformer)
+        protected override LocationViewModel MapUmbracoContentToViewModel(IPublishedContent content, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IRelatedLinksService relatedLinksService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService, IRatingSettingsProvider ratingSettings, IMediaUrlTransformer mediaUrlTransformer)
         {
-            var model = base.MapUmbracoContentToViewModel(content, latestService, socialMediaService, eastSussex1SpaceService, webChatSettingsService, relatedLinksService, contentExperimentSettingsService, escisService, mediaUrlTransformer);
+            var model = base.MapUmbracoContentToViewModel(content, latestService, socialMediaService, eastSussex1SpaceService, webChatSettingsService, relatedLinksService, contentExperimentSettingsService, escisService, ratingSettings, mediaUrlTransformer);
 
             // Get the types of waste which have been selected for this recycling site
             var recycledTypes = ReadWasteTypesFromProperty(content, "wasteTypes_Content");

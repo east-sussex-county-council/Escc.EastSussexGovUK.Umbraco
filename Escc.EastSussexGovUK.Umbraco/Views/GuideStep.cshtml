@@ -10,10 +10,12 @@
     Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] { new CoronerSkin(Model.EsccWebsiteView, Request.Url)}, new CustomerFocusSkin(Model.EsccWebsiteView));
 
     Html.RequiresCss(CssFileAlias.Resolve("NavigationSmall"));
-    if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)
+    if (Model.EsccWebsiteView != EsccWebsiteView.Plain)
     {
         Html.RequiresCss(CssFileAlias.Resolve("NavigationMedium"), MediaQueryAlias.Resolve("Medium"));
         Html.RequiresCss(CssFileAlias.Resolve("NavigationLarge"), MediaQueryAlias.Resolve("Large"));
+        Html.RequiresCss("~/css/rating-small.css");
+        Html.RequiresCss("~/css/rating-medium.css", MediaQueryAlias.Resolve("Medium"));
     }
     Html.RequiresCss(CssFileAlias.Resolve("MobileControls"));
     Html.RequiresJs(JsFileAlias.Resolve("Navigation"));
@@ -91,4 +93,5 @@
 @Html.Partial("~/Views/EastSussexGovUK/Features/_SupportingContentDesktop.cshtml")
 <div class="text-content content">
     @Html.Partial("~/Views/EastSussexGovUK/Features/_Share.cshtml")
+    @Html.Partial("~/Views/Layouts/_Rating.cshtml")
 </div>

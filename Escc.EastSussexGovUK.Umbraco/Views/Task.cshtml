@@ -9,7 +9,12 @@
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
 
-    Html.RequiresCss(CssFileAlias.Resolve("TaskTemplateSmall"));
+    if (Model.EsccWebsiteView != EsccWebsiteView.Plain)
+    {
+        Html.RequiresCss(CssFileAlias.Resolve("TaskTemplateSmall"));
+        Html.RequiresCss("~/css/rating-small.css");
+        Html.RequiresCss("~/css/rating-medium.css", MediaQueryAlias.Resolve("Medium"));
+    }
 
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
     {
@@ -74,4 +79,5 @@
 @Html.Partial("~/Views/EastSussexGovUK/Features/_SupportingContentDesktop.cshtml")
 <div class="text-content content">
     @Html.Partial("~/Views/EastSussexGovUK/Features/_Share.cshtml")
+    @Html.Partial("~/Views/Layouts/_Rating.cshtml")
 </div>
