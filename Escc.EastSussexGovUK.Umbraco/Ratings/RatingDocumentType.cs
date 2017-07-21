@@ -12,7 +12,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Ratings
     /// <summary>
     /// Specification for the 'Rating' document type in Umbraco
     /// </summary>  
-    [UmbracoContentType("Rating", "Rating", new Type[0], false, allowAtRoot: false, enableListView: false, icon: BuiltInUmbracoContentTypeIcons.IconRate, 
+    [UmbracoContentType("Rating", "Rating", new Type[0], false, allowAtRoot: false, enableListView: false, icon: BuiltInUmbracoContentTypeIcons.IconSmileyInverted, 
         Description = "A rating tracker which can be applied to one or more pages.")]
     public class RatingDocumentType : UmbracoGeneratedBase
     {

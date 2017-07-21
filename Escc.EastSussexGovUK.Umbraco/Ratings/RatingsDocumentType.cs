@@ -13,7 +13,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Ratings
     /// Specification for the 'Ratings' document type in Umbraco
     /// </summary>  
     [UmbracoContentType("Ratings", "Ratings", new Type[] { typeof(RatingDocumentType) }, false, allowAtRoot: true, enableListView: true, 
-        icon: BuiltInUmbracoContentTypeIcons.IconSmileyInverted, 
+        icon: BuiltInUmbracoContentTypeIcons.IconRate, 
         Description = "Manage page ratings.")]
     public class RatingsDocumentType : UmbracoGeneratedBase
     {
