@@ -29,8 +29,6 @@
         Html.RequiresCss(CssFileAlias.Resolve("LocationTemplateLarge"), MediaQueryAlias.Resolve("Large"));
         Html.RequiresCss(CssFileAlias.Resolve("TabsSmall"));
         Html.RequiresCss(CssFileAlias.Resolve("TabsLarge"), MediaQueryAlias.Resolve("Large"));
-        Html.RequiresCss("~/css/rating-small.css");
-        Html.RequiresCss("~/css/rating-medium.css", MediaQueryAlias.Resolve("Medium"));
     }
 
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()

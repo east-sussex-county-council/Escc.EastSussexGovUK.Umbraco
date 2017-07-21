@@ -11,12 +11,6 @@
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] { new MarriageSkin(Model.EsccWebsiteView, Model.Metadata.PageUrl) }, new CustomerFocusSkin(Model.EsccWebsiteView));
 
-    if (Model.EsccWebsiteView != EsccWebsiteView.Plain)
-    {
-        Html.RequiresCss("~/css/rating-small.css");
-        Html.RequiresCss("~/css/rating-medium.css", MediaQueryAlias.Resolve("Medium"));
-    }
-
     var placeholders = CmsUtilities.Placeholders;
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
     {

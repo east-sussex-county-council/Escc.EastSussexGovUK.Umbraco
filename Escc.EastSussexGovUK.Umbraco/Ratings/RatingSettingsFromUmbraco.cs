@@ -5,8 +5,9 @@ using System.Web;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Umbraco.Core.Models;
 using Umbraco.Web;
+using Umbraco.Core;
 
-namespace Escc.EastSussexGovUK.Umbraco.Services
+namespace Escc.EastSussexGovUK.Umbraco.Ratings
 {
     /// <summary>
     /// Reads settings for a page rating service from the Umbraco page
@@ -36,16 +37,22 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             var rating = new RatingSettings();
             try
             {
-                var poor = _umbracoContent.GetPropertyValue<string>("RatingUrlPoor_Social_media_and_promotion");
+                var relationToRating = ApplicationContext.Current.Services.RelationService.GetByChildId(_umbracoContent.Id).FirstOrDefault(r => r.RelationType.Alias == RatingRelationType.RelationTypeAlias);
+                if (relationToRating == null) return null;
+
+                var settingsPage = UmbracoContext.Current.ContentCache.GetById(relationToRating.ParentId);
+                if (settingsPage == null) return null;
+
+                var poor = settingsPage.GetPropertyValue<string>("RatingUrlPoor_Content");
                 rating.PoorUrl = String.IsNullOrWhiteSpace(poor) ? null : new Uri(poor);
 
-                var adequate = _umbracoContent.GetPropertyValue<string>("RatingUrlAdequate_Social_media_and_promotion");
+                var adequate = settingsPage.GetPropertyValue<string>("RatingUrlAdequate_Content");
                 rating.AdequateUrl = String.IsNullOrWhiteSpace(adequate) ? null : new Uri(adequate);
 
-                var good = _umbracoContent.GetPropertyValue<string>("RatingUrlGood_Social_media_and_promotion");
+                var good = settingsPage.GetPropertyValue<string>("RatingUrlGood_Content");
                 rating.GoodUrl = String.IsNullOrWhiteSpace(good) ? null : new Uri(good);
 
-                var excellent = _umbracoContent.GetPropertyValue<string>("RatingUrlExcellent_Social_media_and_promotion");
+                var excellent = settingsPage.GetPropertyValue<string>("RatingUrlExcellent_Content");
                 rating.ExcellentUrl = String.IsNullOrWhiteSpace(excellent) ? null : new Uri(excellent);
             }
             catch (UriFormatException)

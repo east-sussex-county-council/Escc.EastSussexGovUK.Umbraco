@@ -7,6 +7,7 @@ using Escc.EastSussexGovUK.Umbraco.Views.Layouts;
 using Escc.Umbraco.ContentExperiments;
 using Umbraco.Core.Models;
 using Umbraco.Web;
+using Escc.EastSussexGovUK.Umbraco.Ratings;
 
 namespace Escc.EastSussexGovUK.Umbraco.Services
 {

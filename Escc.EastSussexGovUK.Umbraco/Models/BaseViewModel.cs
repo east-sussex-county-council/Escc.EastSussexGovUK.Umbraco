@@ -2,6 +2,7 @@
 using Escc.EastSussexGovUK.Skins;
 using Escc.EastSussexGovUK.Views;
 using Escc.Umbraco.ContentExperiments;
+using Escc.EastSussexGovUK.Umbraco.Ratings;
 
 namespace Escc.EastSussexGovUK.Umbraco.Models
 {

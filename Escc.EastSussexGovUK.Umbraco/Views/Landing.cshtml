@@ -15,8 +15,6 @@
         Html.RequiresCss(CssFileAlias.Resolve("NavigationSmall"));
         Html.RequiresCss(CssFileAlias.Resolve("NavigationMedium"), MediaQueryAlias.Resolve("Medium"));
         Html.RequiresCss(CssFileAlias.Resolve("NavigationLarge"), MediaQueryAlias.Resolve("Large"));
-        Html.RequiresCss("~/css/rating-small.css");
-        Html.RequiresCss("~/css/rating-medium.css", MediaQueryAlias.Resolve("Medium"));
     }
 
     var webChat = new WebChat() {WebChatSettings = Model.WebChat};

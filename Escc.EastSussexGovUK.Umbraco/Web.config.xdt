@@ -171,6 +171,8 @@
       <add name="alerts" level="*" />
       <add name="standardLandingPage" level="2" />
       <add name="Landing" level="2" />
+      <add name="Ratings" level="*" />
+      <add name="Rating" level="*" />
     </ContentTypes>
     <Paths>
       <add name="/about-this-site/" children="*" />

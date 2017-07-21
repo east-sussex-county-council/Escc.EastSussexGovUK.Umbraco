@@ -9,12 +9,6 @@
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
 
-    if (Model.EsccWebsiteView != EsccWebsiteView.Plain)
-    {
-        Html.RequiresCss("~/css/rating-small.css");
-        Html.RequiresCss("~/css/rating-medium.css", MediaQueryAlias.Resolve("Medium"));
-    }
-
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
     {
         new EmbeddedYouTubeVideos() { Html = new [] { Model.LeadingText.ToString(), Model.Content1.ToString(), Model.Content2.ToString(), Model.Contact.ToString() }},

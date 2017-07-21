@@ -1,7 +1,7 @@
 ﻿using Escc.Umbraco.PropertyEditors;
 using Escc.Umbraco.PropertyEditors.DataTypes;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Features.SocialMedia
+namespace Escc.EastSussexGovUK.Umbraco.Ratings
 {
     /// <summary>
     /// URL data type which only accepts URLs from the Customer Thermometer rating product

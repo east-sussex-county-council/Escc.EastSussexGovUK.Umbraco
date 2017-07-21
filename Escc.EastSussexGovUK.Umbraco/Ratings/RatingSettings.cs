@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Escc.EastSussexGovUK.Umbraco.Models
+namespace Escc.EastSussexGovUK.Umbraco.Ratings
 {
     /// <summary>
     /// Settings for a page rating service

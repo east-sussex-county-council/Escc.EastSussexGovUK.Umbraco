@@ -1,10 +1,12 @@
-﻿@model Escc.EastSussexGovUK.Umbraco.Models.BaseViewModel
+﻿@using ClientDependency.Core.Mvc
+@using Escc.ClientDependencyFramework
+@model Escc.EastSussexGovUK.Umbraco.Models.BaseViewModel
 @{
 var ratingsSupported = 0;
-if (Model.RatingSettings.PoorUrl != null) { ratingsSupported++; }
-if (Model.RatingSettings.AdequateUrl != null) { ratingsSupported++; }
-if (Model.RatingSettings.GoodUrl != null) { ratingsSupported++; }
-if (Model.RatingSettings.ExcellentUrl != null) { ratingsSupported++; }
+if (Model.RatingSettings?.PoorUrl != null) { ratingsSupported++; }
+if (Model.RatingSettings?.AdequateUrl != null) { ratingsSupported++; }
+if (Model.RatingSettings?.GoodUrl != null) { ratingsSupported++; }
+if (Model.RatingSettings?.ExcellentUrl != null) { ratingsSupported++; }
 }
 @functions {
     Uri BuildRatingUrl(Uri url)
@@ -30,24 +32,26 @@ if (Model.RatingSettings.ExcellentUrl != null) { ratingsSupported++; }
 }
 @if (Model.EsccWebsiteView != Escc.EastSussexGovUK.Views.EsccWebsiteView.Plain && ratingsSupported > 1)
 {
+    Html.RequiresCss("~/css/rating-small.css");
+    Html.RequiresCss("~/css/rating-medium.css", MediaQueryAlias.Resolve("Medium"));
 <aside class="rating">
     <h2>Was this page helpful?</h2>
     <p>Click or tap the rating which best represents your experience.</p>
     @if (Model.RatingSettings.PoorUrl != null)
     {
-        <a href="@BuildRatingUrl(Model.RatingSettings.PoorUrl)"><img src="/images/rating-poor.jpg" alt="Poor" /></a>
+        <a href="@BuildRatingUrl(Model.RatingSettings.PoorUrl)" rel="nofollow"><img src="/images/rating-poor.jpg" alt="Poor" /></a>
     }
     @if (Model.RatingSettings.AdequateUrl != null)
     {
-        <a href="@BuildRatingUrl(Model.RatingSettings.AdequateUrl)"><img src="/images/rating-adequate.jpg" alt="Adequate" /></a>
+        <a href="@BuildRatingUrl(Model.RatingSettings.AdequateUrl)" rel="nofollow"><img src="/images/rating-adequate.jpg" alt="Adequate" /></a>
     }
     @if (Model.RatingSettings.GoodUrl != null)
     {
-        <a href="@BuildRatingUrl(Model.RatingSettings.GoodUrl)"><img src="/images/rating-good.jpg" alt="Good" /></a>
+        <a href="@BuildRatingUrl(Model.RatingSettings.GoodUrl)" rel="nofollow"><img src="/images/rating-good.jpg" alt="Good" /></a>
     }
     @if (Model.RatingSettings.ExcellentUrl != null)
     {
-        <a href="@BuildRatingUrl(Model.RatingSettings.ExcellentUrl)"><img src="/images/rating-excellent.jpg" alt="Excellent" /></a>
+        <a href="@BuildRatingUrl(Model.RatingSettings.ExcellentUrl)" rel="nofollow"><img src="/images/rating-excellent.jpg" alt="Excellent" /></a>
     }
 </aside>
 }

@@ -10,6 +10,7 @@ using Umbraco.Core.Models;
 using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
+using Escc.EastSussexGovUK.Umbraco.Ratings;
 
 namespace Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration
 {

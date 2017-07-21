@@ -3711,7 +3711,12 @@
     <Compile Include="CampaignTemplates\CampaignTilesContentTab.cs" />
     <Compile Include="CampaignTemplates\CampaignTilesDesignTab.cs" />
     <Compile Include="CampaignTemplates\CampaignTilesDocumentType.cs" />
-    <Compile Include="DocumentTypes\Features\SocialMedia\RatingUrlDataType.cs" />
+    <Compile Include="Ratings\RatingRelationType.cs" />
+    <Compile Include="Ratings\RatingContentTab.cs" />
+    <Compile Include="Ratings\RatingDocumentType.cs" />
+    <Compile Include="Ratings\RatingRelationEventHandler.cs" />
+    <Compile Include="Ratings\RatingsDocumentType.cs" />
+    <Compile Include="Ratings\RatingUrlDataType.cs" />
     <Compile Include="Errors\HttpStatusFromConfiguration.cs" />
     <Compile Include="Errors\NotFoundContentFinder.cs" />
     <Compile Include="Errors\RegisterErrorsEventHandler.cs" />
@@ -3821,7 +3826,7 @@
     <Compile Include="Jobs\TalentLink\TalentLinkUrl.cs" />
     <Compile Include="Jobs\HouseStyleDateFormatter.cs" />
     <Compile Include="Location\LocationsAsKmlHandler.cs" />
-    <Compile Include="Models\RatingSettings.cs" />
+    <Compile Include="Ratings\RatingSettings.cs" />
     <Compile Include="Services\BaseViewModelFromUmbracoBuilder.cs" />
     <Compile Include="Jobs\SearchResultsViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\ComponentViewModelFromUmbraco.cs" />
@@ -3838,8 +3843,8 @@
     <Compile Include="Jobs\JobsHomeViewModel.cs" />
     <Compile Include="HomePage\HomePageItemsAnalyticsTab.cs" />
     <Compile Include="Jobs\WorkPattern.cs" />
-    <Compile Include="Services\IRatingSettingsProvider.cs" />
-    <Compile Include="Services\RatingSettingsFromUmbraco.cs" />
+    <Compile Include="Ratings\IRatingSettingsProvider.cs" />
+    <Compile Include="Ratings\RatingSettingsFromUmbraco.cs" />
     <Compile Include="UrlTransformers\ElibraryUrlTransformer.cs" />
     <Compile Include="UrlTransformers\RemoveMediaDomainUrlTransformer.cs" />
     <Compile Include="UrlTransformers\CampaignTrackingUrlTransformer.cs" />
