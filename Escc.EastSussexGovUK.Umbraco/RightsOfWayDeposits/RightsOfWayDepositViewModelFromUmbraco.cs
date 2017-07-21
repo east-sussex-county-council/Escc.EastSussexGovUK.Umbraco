@@ -8,6 +8,7 @@ using Escc.Dates;
 using System.Collections.Generic;
 using Escc.Umbraco.PropertyTypes;
 using Newtonsoft.Json;
+using System.Globalization;
 
 namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 {
@@ -42,14 +43,15 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 
                 var org = UmbracoContent.GetPropertyValue<string>($"OrganisationalOwner{i}_Content");
                 if (!String.IsNullOrEmpty(org)) { model.OrganisationalOwners.Add(org); }
+
+                var addressInfo = UmbracoContent.GetPropertyValue<AddressInfo>($"Location{((i > 1) ? i.ToString(CultureInfo.InvariantCulture) : String.Empty)}_Content");
+                if (addressInfo != null && addressInfo.BS7666Address.HasAddress() && addressInfo.BS7666Address.ToString() != addressInfo.BS7666Address.AdministrativeArea)
+                {
+                    if (addressInfo.GeoCoordinate.Latitude == 0 && addressInfo.GeoCoordinate.Longitude == 0) addressInfo.GeoCoordinate = null;
+                    model.Addresses.Add(addressInfo);
+                }
             }
 
-            var addressInfo = UmbracoContent.GetPropertyValue<AddressInfo>("Location_Content");
-            model.Address = addressInfo.BS7666Address;
-            if (addressInfo.GeoCoordinate != null && (addressInfo.GeoCoordinate.Latitude != 0 || addressInfo.GeoCoordinate.Longitude != 0))
-            {
-                model.Coordinates = new LatitudeLongitude(addressInfo.GeoCoordinate.Latitude, addressInfo.GeoCoordinate.Longitude);
-            }
             model.OrdnanceSurveyGridReference = UmbracoContent.GetPropertyValue<string>("GridReference_Content");
 
             model.DateDeposited = UmbracoContent.GetPropertyValue<DateTime>("DateDeposited_Content");
@@ -78,7 +80,7 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
                 }
             }
 
-            model.Metadata.Description = UmbracoContent.GetPropertyValue<string>("pageDescription_Content");
+            model.Description = UmbracoContent.GetPropertyValue<string>("pageDescription_Content");
 
             return model;
         }

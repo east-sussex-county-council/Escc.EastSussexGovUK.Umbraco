@@ -7,6 +7,8 @@ using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
 using Escc.Umbraco.Caching;
+using Humanizer;
+using System.Linq;
 
 namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 {
@@ -26,7 +28,15 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
             if (model == null) throw new ArgumentNullException(nameof(model));
 
             var viewModel = new RightsOfWayDepositViewModelFromUmbraco(model.Content).BuildModel();
+
+            var where = "in " + viewModel.Parishes.Humanize() + " parish(es)";
+            if (viewModel.Addresses.Any())
+            {
+                where = "at " + viewModel.Addresses[0].BS7666Address.ToString();
+                if (viewModel.Addresses.Count > 1) where += " and other addresses";
+            }
             viewModel.Metadata.Title = "Rights of way deposit " + viewModel.Reference;
+            viewModel.Metadata.Description = "A declaration of rights of way over land " + where + " deposited with East Sussex County Council under Section 31 (6) of the Highways Act 1980";
 
             // Add common properties to the model
             var modelBuilder = new BaseViewModelBuilder();

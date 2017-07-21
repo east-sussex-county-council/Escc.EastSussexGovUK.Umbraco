@@ -14,6 +14,7 @@ using Newtonsoft.Json;
 using Umbraco.Core.Logging;
 using Exceptionless;
 using Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor;
+using System.Globalization;
 
 namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 {
@@ -44,17 +45,6 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
                         var combinedFields = new StringBuilder()
                             .AppendLine(e.Fields["nodeName"]);
 
-                            if (e.Fields.ContainsKey("Location_Content"))
-                        {
-                            var locationJson = e.Fields["Location_Content"];
-                            if (!String.IsNullOrEmpty(locationJson))
-                            {
-                                var address = JsonConvert.DeserializeObject<BS7666Address>(locationJson);
-                                combinedFields.AppendLine(address.ToString());
-                                combinedFields.AppendLine(address.Postcode?.Replace(" ", String.Empty));
-                            }
-                        }
-
                         if (e.Fields.ContainsKey("Parish_Content"))
                         {
                             combinedFields.AppendLine(e.Fields["Parish_Content"]);
@@ -77,6 +67,18 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
                             if (e.Fields.ContainsKey($"OrganisationalOwner{i}_Content"))
                             {
                                 combinedFields.AppendLine(e.Fields[$"OrganisationalOwner{i}_Content"]);
+                            }
+
+                            var locationPropertyAlias = $"Location{((i > 1) ? i.ToString(CultureInfo.InvariantCulture) : String.Empty)}_Content";
+                            if (e.Fields.ContainsKey(locationPropertyAlias))
+                            {
+                                var locationJson = e.Fields[locationPropertyAlias];
+                                if (!String.IsNullOrEmpty(locationJson))
+                                {
+                                    var address = JsonConvert.DeserializeObject<BS7666Address>(locationJson);
+                                    combinedFields.AppendLine(address.ToString());
+                                    combinedFields.AppendLine(address.Postcode?.Replace(" ", String.Empty));
+                                }
                             }
                         }
 

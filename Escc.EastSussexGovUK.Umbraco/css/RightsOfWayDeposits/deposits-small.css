@@ -6,6 +6,6 @@ table.deposits { border-top: 1px solid #ccc; padding-top: 1em;}
 
 .deposit { width: 100%; }
 .deposit th { width: 8em; }
-.deposits .parishes, .deposit .parishes, .deposit .owners { margin: 0; list-style: none; }
+.deposits .parishes, .deposit .parishes, .deposit .owners, .deposit .addresses { margin: 0; list-style: none; }
 
 #map { height: 400px; }

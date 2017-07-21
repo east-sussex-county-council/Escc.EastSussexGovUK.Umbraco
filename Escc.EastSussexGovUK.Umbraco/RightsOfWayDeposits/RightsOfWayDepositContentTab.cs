@@ -45,23 +45,36 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
         [UmbracoProperty("Organisational owner 5", "OrganisationalOwner5", BuiltInUmbracoDataTypes.Textbox, sortOrder: 11, Description = "A business or trust, for example, that partly or wholly owns the land")]
         public string OrganisationalOwner5 { get; set; }
 
-        [UmbracoProperty("Location", "Location", PropertyEditorAliases.UkLocationPropertyEditor, sortOrder: 12, Description = "If you include latitude and longitude a map of the location will be displayed.")]
-        public string Location { get; set; }
+        [UmbracoProperty("Location 1", "Location", PropertyEditorAliases.UkLocationPropertyEditor, sortOrder: 12, Description = "If you include latitude and longitude a map of the location will be displayed.")]
+        public string Location1 { get; set; }
 
-        [UmbracoProperty("Ordnance Survey grid reference", "GridReference", BuiltInUmbracoDataTypes.Textbox, sortOrder: 13)]
+        [UmbracoProperty("Location 2", "Location2", PropertyEditorAliases.UkLocationPropertyEditor, sortOrder: 13, Description = "If you include latitude and longitude a map of the location will be displayed.")]
+        public string Location2 { get; set; }
+
+        [UmbracoProperty("Location 3", "Location3", PropertyEditorAliases.UkLocationPropertyEditor, sortOrder: 14, Description = "If you include latitude and longitude a map of the location will be displayed.")]
+        public string Location3 { get; set; }
+
+        [UmbracoProperty("Location 4", "Location4", PropertyEditorAliases.UkLocationPropertyEditor, sortOrder: 15, Description = "If you include latitude and longitude a map of the location will be displayed.")]
+        public string Location4 { get; set; }
+
+        [UmbracoProperty("Location 5", "Location5", PropertyEditorAliases.UkLocationPropertyEditor, sortOrder: 16, Description = "If you include latitude and longitude a map of the location will be displayed.")]
+        public string Location5 { get; set; }
+
+        [UmbracoProperty("Ordnance Survey grid references", "GridReference", BuiltInUmbracoDataTypes.Textbox, sortOrder: 17, 
+            Description = "If there are multiple locations, type a list of grid references separated by commas")]
         public string OrdnanceSurveyGridReference { get; set; }
 
-        [UmbracoProperty("Parish", "Parish", ParishDataType.PropertyEditor, ParishDataType.DataTypeName, sortOrder: 14, mandatory:true, 
+        [UmbracoProperty("Parish", "Parish", ParishDataType.PropertyEditor, ParishDataType.DataTypeName, sortOrder: 18, mandatory:true, 
             Description = "To select multiple parishes, hold down Ctrl when you select a parish")]
         public string Parish { get; set; }
 
-        [UmbracoProperty("Description", "pageDescription", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 15, mandatory: true)]
+        [UmbracoProperty("Description", "pageDescription", BuiltInUmbracoDataTypes.TextboxMultiple, sortOrder: 19)]
         public string Description { get; set; }
 
-        [UmbracoProperty("Date deposited", "DateDeposited", BuiltInUmbracoDataTypes.Date, sortOrder: 16, mandatory:true)]
+        [UmbracoProperty("Date deposited", "DateDeposited", BuiltInUmbracoDataTypes.Date, sortOrder: 20, mandatory:true)]
         public string DateDeposited { get; set; }
 
-        [UmbracoProperty("Date expires", "DateExpires", ReadOnlyDateDataType.PropertyEditor, sortOrder: 17, description:"This is worked out for you based on the date deposited")]
+        [UmbracoProperty("Date expires", "DateExpires", ReadOnlyDateDataType.PropertyEditor, sortOrder: 21, description:"This is worked out for you based on the date deposited")]
         public string DateExpires { get; set; }
     }
 }

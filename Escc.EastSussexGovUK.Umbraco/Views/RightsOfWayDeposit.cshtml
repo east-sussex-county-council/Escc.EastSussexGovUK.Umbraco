@@ -6,6 +6,7 @@
 @using Escc.EastSussexGovUK.Views
 @using Escc.Dates
 @using Escc.Web
+@using System.Text;
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits.RightsOfWayDepositViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
@@ -20,7 +21,11 @@
     Html.RequiresCss("~/css/rightsofwaydeposits/deposits-small.css");
     Html.RequiresJs(JsFileAlias.Resolve("GoogleMaps"), 90);
     Html.RequiresJs("~/js/rights-of-way-deposit.js");
-    new ContentSecurityPolicyHeaders(Response.Headers).AppendPolicy(new ContentSecurityPolicyFromConfig().Policies["GoogleMaps"]).UpdateHeaders();
+    var nonce = Guid.NewGuid().ToString().Replace("-", String.Empty);
+    new ContentSecurityPolicyHeaders(Response.Headers)
+        .AppendPolicy(new ContentSecurityPolicyFromConfig().Policies["GoogleMaps"])
+        .AppendPolicy($"script-src 'nonce-{nonce}'")
+        .UpdateHeaders();
 }
 
 <div class="article">
@@ -41,9 +46,12 @@
                             @foreach (var owner in Model.OrganisationalOwners) { <li>@owner</li> }
                         </ul></td></tr>
                     }
-                    @if (Model.Address.HasAddress())
+                    @if (Model.Addresses.Any())
                     {
-                    <tr><th scope="row">Address</th><td>@Model.Address.ToString()</td></tr>
+                    <tr><th scope="row">Address(es)</th>
+                    <td><ul class="addresses">
+                        @foreach (var address in Model.Addresses) {  <li>@address.BS7666Address</li> }
+                        </ul></td></tr>
                     }
                     @if (Model.Parishes.Any())
                     {
@@ -51,7 +59,10 @@
                         @foreach (var parish in Model.Parishes) { <li>@parish</li> }
                         </ul></td></tr>
                     }
-                    <tr><th scope="row">Description</th><td>@Model.Metadata.Description</td></tr>
+                    @if (!String.IsNullOrEmpty(Model.Description))
+                    {
+                    <tr><th scope="row">Description</th><td>@Model.Description</td></tr>
+                    }
                     @if (!String.IsNullOrEmpty(Model.OrdnanceSurveyGridReference))
                     {
                     <tr><th scope="row">Ordnance Survey grid reference</th><td>@Model.OrdnanceSurveyGridReference</td></tr>
@@ -72,14 +83,7 @@
                 </ul>
             }
 
-            @if (Model.Coordinates != null)
-            {
-                <h2>Map of the area affected</h2>
-                <p>For a detailed map of the site boundary, download the deposit documents.</p>
-                <div id="map" data-lat="@Model.Coordinates.Latitude" data-lon="@Model.Coordinates.Longitude"></div>
-                <p><a href="https://www.google.com/maps/dir//@HttpUtility.UrlEncode(Model.Coordinates.Latitude.ToString()),@HttpUtility.UrlEncode(Model.Coordinates.Longitude.ToString())">Get directions in Google Maps</a></p>
-            }
-
+            <div id="map"></div>
         </div>
     </article>
 </div>
@@ -89,3 +93,18 @@
 <div class="text-content content">
     @Html.Partial("~/Views/EastSussexGovUK/Features/_Share.cshtml")
 </div>
+
+@section JavaScript {
+<script nonce="@nonce">
+    var locations = [];
+    @foreach (var address in Model.Addresses) {
+    @:  locations.push({
+    @:"address": "@address.BS7666Address.ToString()",
+    @:"geo": {
+    @:"latitude": "@(address.GeoCoordinate?.Latitude)",
+    @:"longitude": "@(address.GeoCoordinate?.Longitude)"
+    @:}
+    @:});
+    }
+</script>
+}
