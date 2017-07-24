@@ -35,7 +35,7 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
                 where = "at " + viewModel.Addresses[0].BS7666Address.ToString();
                 if (viewModel.Addresses.Count > 1) where += " and other addresses";
             }
-            viewModel.Metadata.Title = "Rights of way deposit " + viewModel.Reference;
+            viewModel.Metadata.Title = "Rights of way deposit: " + viewModel.Reference;
             viewModel.Metadata.Description = "A declaration of rights of way over land " + where + " deposited with East Sussex County Council under Section 31 (6) of the Highways Act 1980";
 
             // Add common properties to the model

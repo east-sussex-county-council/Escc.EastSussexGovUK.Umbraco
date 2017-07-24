@@ -8,4 +8,4 @@ table.deposits { border-top: 1px solid #ccc; padding-top: 1em;}
 .deposit th { width: 8em; }
 .deposits .parishes, .deposit .parishes, .deposit .owners, .deposit .addresses { margin: 0; list-style: none; }
 
-#map { height: 400px; }
+.deposits-map { height: 400px; }

@@ -56,6 +56,7 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 
             model.DateDeposited = UmbracoContent.GetPropertyValue<DateTime>("DateDeposited_Content");
             model.Metadata.DateIssued = model.DateDeposited.ToIso8601Date();
+            model.DateExpires = UmbracoContent.GetPropertyValue<DateTime>("DateExpires_Content");
 
             var depositDocuments = UmbracoContent.GetPropertyValue<IEnumerable<IPublishedContent>>("DepositDocument_Content");
             if (depositDocuments != null)

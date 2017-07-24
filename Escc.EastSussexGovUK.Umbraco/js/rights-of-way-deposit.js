@@ -16,6 +16,7 @@
 
             var sectionHeading = $("<h2>Map of the area affected</h2>" +
                 "<p>For a detailed map of the site boundary, download the deposit documents.</p>").insertBefore(element);
+            element.addClass("deposits-map");
 
             // Set up a map centred on the mid-point of all the locations
             var minLatitude, maxLatitude, minLongitude, maxLongitude;
@@ -33,13 +34,16 @@
             var longDiff = maxLongitude - minLongitude;
             var centre = new google.maps.LatLng(minLatitude + latDiff, minLongitude + longDiff);
 
-            var mapOptions = {
-                center: centre,
-                zoom: 15
-            };
-            var map = new google.maps.Map(element[0], mapOptions);
+            var map = new google.maps.Map(element[0], { center: centre });
 
-            // In case there are multiple locations some distance apart, recalculate the bounds to include all locations
+            // In case there are multiple locations some distance apart, recalculate the bounds to include all locations.
+            // But first, check that this won't zoom us in too far (which would happen for a single point), and tweak the 
+            // data to impose a maximum zoom level.
+            if (latDiff < .01) {
+                minLatitude -= .005;
+                maxLatitude += .005;
+            }
+
             var sw = new google.maps.LatLng(minLatitude, minLongitude);
             var ne = new google.maps.LatLng(maxLatitude, maxLongitude);
             var bounds = new google.maps.LatLngBounds(sw, ne);
