@@ -56,18 +56,19 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             var table = _tableClient.GetTableReference(_alertsTable);
             table.CreateIfNotExistsAsync().Wait();
 
-            var tableQuery = new TableQuery<JobAlertTableEntity>().Where(TableQuery.GenerateFilterCondition("JobsSet", QueryComparisons.Equal, query.JobsSet.ToString()));
+            var filter = TableQuery.GenerateFilterCondition("JobsSet", QueryComparisons.Equal, query.JobsSet.ToString());
 
             if (!String.IsNullOrEmpty(query.EmailAddress))
             {
-                tableQuery = tableQuery.Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, query.EmailAddress));
+                filter = TableQuery.CombineFilters(filter, TableOperators.And, TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, query.EmailAddress));
             }
 
             if (query.Frequency.HasValue)
             {
-                tableQuery = tableQuery.Where(TableQuery.GenerateFilterConditionForInt("Frequency", QueryComparisons.Equal, query.Frequency.Value));
+                filter = TableQuery.CombineFilters(filter, TableOperators.And, TableQuery.GenerateFilterConditionForInt("Frequency", QueryComparisons.Equal, query.Frequency.Value));
             }
 
+            var tableQuery = new TableQuery<JobAlertTableEntity>().Where(filter);
             var results = ReadAllResults(table, tableQuery, entity => BuildAlertFromEntity(entity));
 
             return results;
@@ -209,9 +210,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             var table = _tableClient.GetTableReference(_alertsSentTable);
             table.CreateIfNotExistsAsync().Wait();
 
-            var tableQuery = new TableQuery<TableEntity>()
-                .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, emailAddress))
-                .Where(TableQuery.GenerateFilterCondition("JobsSet", QueryComparisons.Equal, jobsSet.ToString()));
+            var tableQuery = new TableQuery<TableEntity>().Where(TableQuery.CombineFilters(
+                TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, emailAddress),
+                TableOperators.And,
+                TableQuery.GenerateFilterCondition("JobsSet", QueryComparisons.Equal, jobsSet.ToString())));
 
             var alertsSentEntities = table.ExecuteQuery(tableQuery);
             foreach (var entity in alertsSentEntities)
@@ -304,9 +306,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             var table = _tableClient.GetTableReference(_alertsSentTable);
 
             // Initialize a default TableQuery to retrieve all the entities in the table.
-            var tableQuery = new TableQuery<TableEntity>()
-                .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, emailAddress))
-                .Where(TableQuery.GenerateFilterCondition("JobsSet", QueryComparisons.Equal, jobsSet.ToString()));
+            var tableQuery = new TableQuery<TableEntity>().Where(TableQuery.CombineFilters(
+                    TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, emailAddress),
+                    TableOperators.And, 
+                    TableQuery.GenerateFilterCondition("JobsSet", QueryComparisons.Equal, jobsSet.ToString()))
+                    );
 
             return ReadAllResults<int>(table, tableQuery, entity => Int32.Parse(entity.RowKey));
         }
