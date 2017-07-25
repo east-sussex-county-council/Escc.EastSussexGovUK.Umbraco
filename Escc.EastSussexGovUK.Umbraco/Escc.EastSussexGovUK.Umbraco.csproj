@@ -948,10 +948,10 @@
     <None Include="Jobs\Images\East Sussex Jobs logo colour.png" />
     <None Include="Jobs\Images\East Sussex Jobs logo white.png" />
     <None Include="Jobs\Images\header.png" />
-    <Content Include="images\rating-adequate.jpg" />
-    <Content Include="images\rating-excellent.jpg" />
-    <Content Include="images\rating-good.jpg" />
-    <Content Include="images\rating-poor.jpg" />
+    <Content Include="images\rating1.png" />
+    <Content Include="images\rating2.png" />
+    <Content Include="images\rating3.png" />
+    <Content Include="images\rating4.png" />
     <Content Include="js\CampaignTemplates\campaign-landing.js" />
     <Content Include="js\CouncilPlan\council-plan.js" />
     <Content Include="js\CustomerFocusTemplates\guide.js" />

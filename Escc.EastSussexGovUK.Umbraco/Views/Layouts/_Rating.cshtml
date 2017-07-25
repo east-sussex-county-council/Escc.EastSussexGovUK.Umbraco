@@ -39,19 +39,19 @@ if (Model.RatingSettings?.ExcellentUrl != null) { ratingsSupported++; }
     <p>Click or tap the rating which best represents your experience.</p>
     @if (Model.RatingSettings.PoorUrl != null)
     {
-        <a href="@BuildRatingUrl(Model.RatingSettings.PoorUrl)" rel="nofollow"><img src="/images/rating-poor.jpg" alt="Poor" /></a>
+        <a href="@BuildRatingUrl(Model.RatingSettings.PoorUrl)" rel="nofollow"><img src="~/images/rating1.png" alt="Poor" /> <span>Poor</span></a>
     }
     @if (Model.RatingSettings.AdequateUrl != null)
     {
-        <a href="@BuildRatingUrl(Model.RatingSettings.AdequateUrl)" rel="nofollow"><img src="/images/rating-adequate.jpg" alt="Adequate" /></a>
+        <a href="@BuildRatingUrl(Model.RatingSettings.AdequateUrl)" rel="nofollow"><img src="/images/rating2.png" alt="OK" /> <span>OK</span></a>
     }
     @if (Model.RatingSettings.GoodUrl != null)
     {
-        <a href="@BuildRatingUrl(Model.RatingSettings.GoodUrl)" rel="nofollow"><img src="/images/rating-good.jpg" alt="Good" /></a>
+        <a href="@BuildRatingUrl(Model.RatingSettings.GoodUrl)" rel="nofollow"><img src="/images/rating3.png" alt="Good" /> <span>Good</span></a>
     }
     @if (Model.RatingSettings.ExcellentUrl != null)
     {
-        <a href="@BuildRatingUrl(Model.RatingSettings.ExcellentUrl)" rel="nofollow"><img src="/images/rating-excellent.jpg" alt="Excellent" /></a>
+        <a href="@BuildRatingUrl(Model.RatingSettings.ExcellentUrl)" rel="nofollow"><img src="/images/rating4.png" alt="Excellent" /> <span>Excellent</span></a>
     }
 </aside>
 }
