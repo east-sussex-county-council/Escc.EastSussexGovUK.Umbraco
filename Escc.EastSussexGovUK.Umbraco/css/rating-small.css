@@ -1,0 +1,6 @@
+﻿/* Add one line space above and below the page rating */
+.rating { margin: 1.125em 0; }
+.rating a { display: inline-block; text-decoration: none; color: #000; text-align: center; font-weight: bold; width: 50px; margin-right: 18px;}
+.rating a:nth-of-type(3) { margin-right: 11.5px;}
+.rating a:nth-of-type(4) { width: 75px; margin-right: 0;}
+.rating span { display: block; text-align: center;}

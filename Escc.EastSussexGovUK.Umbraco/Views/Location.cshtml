@@ -23,11 +23,11 @@
     Html.RequiresJs(JsFileAlias.Resolve("LocationTemplate"));
     Html.RequiresJs(JsFileAlias.Resolve("Tabs"));
 
-    Html.RequiresCss(CssFileAlias.Resolve("LocationTemplateSmall"));
-    Html.RequiresCss(CssFileAlias.Resolve("TabsSmall"));
-    if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)
+    if (Model.EsccWebsiteView != EsccWebsiteView.Plain)
     {
+        Html.RequiresCss(CssFileAlias.Resolve("LocationTemplateSmall"));
         Html.RequiresCss(CssFileAlias.Resolve("LocationTemplateLarge"), MediaQueryAlias.Resolve("Large"));
+        Html.RequiresCss(CssFileAlias.Resolve("TabsSmall"));
         Html.RequiresCss(CssFileAlias.Resolve("TabsLarge"), MediaQueryAlias.Resolve("Large"));
     }
 
@@ -243,6 +243,7 @@
 @Html.Partial("~/Views/EastSussexGovUK/Features/_SupportingContentDesktop.cshtml")
 <div class="text-content content">
     @Html.Partial("~/Views/EastSussexGovUK/Features/_Share.cshtml")
+    @Html.Partial("~/Views/Layouts/_Rating.cshtml")
 </div>
 @section JavaScript{
     @Html.Partial("~/Views/_LocationJsonLD.cshtml")

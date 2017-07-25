@@ -32,6 +32,7 @@ using Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor;
 using Exceptionless;
 using Umbraco.Inception.CodeFirst;
 using Umbraco.Web.WebApi;
+using Escc.EastSussexGovUK.Umbraco.Ratings;
 
 namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
 {
@@ -68,6 +69,7 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
                 SocialMediaOrderDataType.CreateSocialMediaOrderDataType();
                 FacebookWidgetSettingsDataType.CreateFacebookWidgetSettingsDataType();
                 FacebookUrlDataType.CreateDataType();
+                RatingUrlDataType.CreateDataType();
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(ShowWidgetDataType));
                 TwitterScriptDataType.CreateDataType();
                 MultiNodeTreePickerDataType.CreateDataType();
@@ -134,6 +136,8 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(HomePageItemsDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(HomePageDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(WebChatDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(RatingDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(RatingsDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LegacyBaseDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LandingPageWithPicturesDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(StandardLandingPageDocumentType));

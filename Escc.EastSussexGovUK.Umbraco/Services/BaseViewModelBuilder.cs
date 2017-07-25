@@ -7,6 +7,7 @@ using Escc.EastSussexGovUK.Umbraco.Views.Layouts;
 using Escc.Umbraco.ContentExperiments;
 using Umbraco.Core.Models;
 using Umbraco.Web;
+using Escc.EastSussexGovUK.Umbraco.Ratings;
 
 namespace Escc.EastSussexGovUK.Umbraco.Services
 {
@@ -58,7 +59,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
         /// <param name="webChatSettingsService">The web chat settings service.</param>
         /// <param name="escisService">The ESCIS service.</param>
         /// <exception cref="System.ArgumentNullException">model</exception>
-        public void PopulateBaseViewModelWithInheritedContent(BaseViewModel model, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IEscisService escisService)
+        public void PopulateBaseViewModelWithInheritedContent(BaseViewModel model, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IEscisService escisService, IRatingSettingsProvider ratingSettings=null)
         {
             if (model == null) throw new ArgumentNullException("model");
             
@@ -67,6 +68,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             if (escisService != null) model.ShowEscisWidget = escisService.ShowSearch();
             if (socialMediaService != null) model.SocialMedia = socialMediaService.ReadSocialMediaSettings();
             if (webChatSettingsService!= null) model.WebChat = webChatSettingsService.ReadWebChatSettings();
+            if (ratingSettings != null) model.RatingSettings = ratingSettings.ReadRatingSettings();
         }
     }
 }

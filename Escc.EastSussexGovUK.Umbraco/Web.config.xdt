@@ -170,6 +170,7 @@
       <add name="Banner" level="*" />
       <add name="alerts" level="*" />
       <add name="standardLandingPage" level="2" />
+      <add name="Landing" level="2" />
       <add name="JobsHome" level="*" />
       <add name="JobSearchResults" level="*" />
       <add name="JobsComponent" level="*" />
@@ -177,6 +178,8 @@
       <add name="ProblemJobsRss" level="*" />
       <add name="JobsSearch" level="*" />
       <add name="JobAdvert" level="*" />
+      <add name="Ratings" level="*" />
+      <add name="Rating" level="*" />
     </ContentTypes>
     <Paths>
       <add name="/about-this-site/" children="*" />
