@@ -12,10 +12,10 @@
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] { new MarriageSkin(Model.EsccWebsiteView, Model.Metadata.PageUrl) }, new CustomerFocusSkin(Model.EsccWebsiteView));
 
-    Html.RequiresCss(CssFileAlias.Resolve("LandingSmall"));
-    Html.RequiresCss(CssFileAlias.Resolve("NavigationSmall"));
-    if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)
+    if (Model.EsccWebsiteView != EsccWebsiteView.Plain)
     {
+        Html.RequiresCss(CssFileAlias.Resolve("LandingSmall"));
+        Html.RequiresCss(CssFileAlias.Resolve("NavigationSmall"));
         Html.RequiresCss(CssFileAlias.Resolve("LandingMedium"), MediaQueryAlias.Resolve("Medium"));
         Html.RequiresCss(CssFileAlias.Resolve("NavigationMedium"), MediaQueryAlias.Resolve("Medium"));
         Html.RequiresCss(CssFileAlias.Resolve("NavigationLarge"), MediaQueryAlias.Resolve("Large"));
@@ -28,7 +28,7 @@
         new EmbeddedGoogleMaps() { Html = new [] { placeholders["phDefIntro"].Value.ToString() } },
         new WebChat() { WebChatSettings = Model.WebChat }
     });
-}
+    }
 
 <div class="article">
     <section>
@@ -46,4 +46,5 @@
 @Html.Partial("~/Views/EastSussexGovUK/Features/_SupportingContentDesktop.cshtml")
 <div class="text-content content">
     @Html.Partial("~/Views/EastSussexGovUK/Features/_Share.cshtml")
+    @Html.Partial("~/Views/Layouts/_Rating.cshtml")
 </div>

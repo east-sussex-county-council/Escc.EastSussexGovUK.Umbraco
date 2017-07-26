@@ -14,6 +14,7 @@ using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
 using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
+using Escc.EastSussexGovUK.Umbraco.Ratings;
 
 namespace Escc.EastSussexGovUK.Umbraco.Controllers
 {
@@ -42,7 +43,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
                 new UmbracoSocialMediaService(model.Content),
                 new UmbracoEastSussex1SpaceService(model.Content),
                 new UmbracoWebChatSettingsService(model.Content, new UrlListReader()), 
-                new UmbracoEscisService(model.Content));
+                new UmbracoEscisService(model.Content),
+                new RatingSettingsFromUmbraco(model.Content));
 
             new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" });
 

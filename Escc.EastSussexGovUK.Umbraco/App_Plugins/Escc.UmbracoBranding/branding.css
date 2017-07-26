@@ -1,0 +1,14 @@
+﻿/* Display a background image on the login screen, to differentiate this from other Umbraco instances */
+.login-overlay { background: url('../Escc.UmbracoBranding/poppies.jpg') repeat-x 100% 100% !important; }
+
+/* Add a background to the form and its components so that it's visible with a background image behind it */
+.login-overlay .form { background: rgba(0,0,0,.5); padding: 10px 20px 10px 0; border-radius: 10px; }
+.login-overlay .form .text-error { padding: 10px; background: #000; border-radius: 0 10px 10px 0; } 
+
+/* Ensure the 'forgotten password' link has sufficient contrast, if used */
+.login-overlay .muted { color: #d9d9d9; }
+.login-overlay a.muted:hover, .login-overlay a.muted:focus, .login-overlay a.muted:active { color: #fff; }
+        
+/* Change the login message to refer to the site, to differentiate this from other Umbraco instances */        
+.login-overlay .form localize[key='login_instruction'] { font-size: .01px;}
+.login-overlay .form localize[key='login_instruction']:after { content: 'Log in to edit www.eastsussex.gov.uk'; font-size: 14px; }

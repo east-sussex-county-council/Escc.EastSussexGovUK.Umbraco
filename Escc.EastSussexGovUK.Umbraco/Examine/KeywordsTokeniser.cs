@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.Examine
@@ -20,7 +21,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Examine
         public IList<string> Tokenise(string searchTerm)
         {
             var terms = new List<string>();
+
+            // sanitise the search term
             searchTerm = searchTerm.Trim();
+            searchTerm = Regex.Replace(searchTerm, @"[^\w\s" + "\"-]", String.Empty);
+
             if (!String.IsNullOrEmpty(searchTerm))
             {
                 var termsToSplit = new List<string>();

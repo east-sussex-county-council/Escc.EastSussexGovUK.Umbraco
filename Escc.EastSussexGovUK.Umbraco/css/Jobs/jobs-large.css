@@ -26,3 +26,6 @@
 /* Allow a wider column for the table on the job advert page. It's 7 cols and 5 cols, but with 2% given off the grid to .article because .supporting is wide enough at 38% */
 .job-advert .article { width: 59.55694%; }
 .job-advert .supporting { width: 38.57971%; }
+
+/* On a job advert, float the summary box so that the width adapts to the content */
+.job-summary { float: right; }

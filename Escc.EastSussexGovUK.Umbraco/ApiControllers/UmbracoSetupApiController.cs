@@ -34,7 +34,7 @@ using Umbraco.Inception.CodeFirst;
 using Umbraco.Web.WebApi;
 using Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits;
 using Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor;
-
+using Escc.EastSussexGovUK.Umbraco.Ratings;
 namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
 {
     /// <summary>
@@ -70,6 +70,7 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
                 SocialMediaOrderDataType.CreateSocialMediaOrderDataType();
                 FacebookWidgetSettingsDataType.CreateFacebookWidgetSettingsDataType();
                 FacebookUrlDataType.CreateDataType();
+                RatingUrlDataType.CreateDataType();
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(ShowWidgetDataType));
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(TwitterScriptDataType));
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(MultiNodeTreePickerDataType));
@@ -141,6 +142,8 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(HomePageItemsDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(HomePageDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(WebChatDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(RatingDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(RatingsDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LegacyBaseDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LandingPageWithPicturesDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(StandardLandingPageDocumentType));
@@ -204,6 +207,7 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
             try
             {
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LocationDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(RecyclingSiteDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LibraryDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(MobileLibraryStopDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(ChildcareDocumentType));
@@ -212,6 +216,7 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(ParkDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(RegistrationOfficeDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(DayCentreDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(PersonDocumentType));
 
                 return Request.CreateResponse(HttpStatusCode.Created);
             }

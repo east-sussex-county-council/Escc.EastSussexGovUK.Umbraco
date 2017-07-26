@@ -1,0 +1,3 @@
+﻿{
+	css: [ "~/App_Plugins/Escc.UmbracoBranding/branding.css" ]
+}

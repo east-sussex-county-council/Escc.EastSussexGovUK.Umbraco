@@ -52,6 +52,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             {
                 UpdateIndex("PublicJobsSearcher", new PublicJobsIndexer());
                 UpdateIndex("RedeploymentJobsSearcher", new RedeploymentJobsIndexer());
+                ReplaceIndex("PublicJobsLookupValuesIndexer");
+                ReplaceIndex("RedeploymentJobsLookupValuesIndexer");
 
                 return Request.CreateResponse(HttpStatusCode.NoContent);
             }

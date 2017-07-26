@@ -2,6 +2,7 @@
 using Escc.EastSussexGovUK.Skins;
 using Escc.EastSussexGovUK.Views;
 using Escc.Umbraco.ContentExperiments;
+using Escc.EastSussexGovUK.Umbraco.Ratings;
 
 namespace Escc.EastSussexGovUK.Umbraco.Models
 {
@@ -19,5 +20,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
         /// Gets or sets the JavaScript for a Google Analytics content experiment
         /// </summary>
         public ContentExperimentPageSettings ContentExperimentPageSettings { get; set; }
+
+        /// <summary>
+        /// Gets or sets the settings for a page rating service
+        /// </summary>
+        public RatingSettings RatingSettings { get; set; }
     }
 }

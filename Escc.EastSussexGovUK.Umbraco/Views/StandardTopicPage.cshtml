@@ -18,11 +18,10 @@
     policy.AppendPolicy("style-src 'unsafe-inline'");
     policy.UpdateHeaders();
 
-    // Include required CSS
-    Html.RequiresCss(CssFileAlias.Resolve("TopicSmall"));
-    Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));
-    if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)
+    if (Model.EsccWebsiteView != EsccWebsiteView.Plain)
     {
+        Html.RequiresCss(CssFileAlias.Resolve("TopicSmall"));
+        Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));
         Html.RequiresCss(CssFileAlias.Resolve("TopicMedium"), MediaQueryAlias.Resolve("Medium"));
         Html.RequiresCss(CssFileAlias.Resolve("FormsMedium"), MediaQueryAlias.Resolve("Medium"));
         Html.RequiresCss(CssFileAlias.Resolve("FormsLarge"), MediaQueryAlias.Resolve("Large"));
@@ -53,7 +52,7 @@
         placeholders["phDefContent19"].Value.ToString(),
         placeholders["phDefContent20"].Value.ToString()
     };
-    
+
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
     {
         new EmbeddedYouTubeVideos() { Html = html },
@@ -79,4 +78,5 @@
 @Html.Partial("~/Views/EastSussexGovUK/Features/_SupportingContentDesktop.cshtml")
 <div class="text-content content">
     @Html.Partial("~/Views/EastSussexGovUK/Features/_Share.cshtml")
+    @Html.Partial("~/Views/Layouts/_Rating.cshtml")
 </div>

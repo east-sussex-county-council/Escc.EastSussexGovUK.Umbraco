@@ -68,5 +68,20 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             Assert.AreEqual("\"spring term\"", result[0]);
             Assert.AreEqual("\"summer term\"", result[1]);
         }
+
+        [Test]
+        public void InvalidCharacterRemoved()
+        {
+            // [ ] has a meaning in Examine syntax, so ] on its own causes a syntax error if it's not removedr
+            var term = "Example search term]";
+            var tokeniser = new KeywordsTokeniser();
+
+            var result = tokeniser.Tokenise(term);
+
+            Assert.AreEqual(3, result.Count);
+            Assert.AreEqual("Example", result[0]);
+            Assert.AreEqual("search", result[1]);
+            Assert.AreEqual("term", result[2]);
+        }
     }
 }

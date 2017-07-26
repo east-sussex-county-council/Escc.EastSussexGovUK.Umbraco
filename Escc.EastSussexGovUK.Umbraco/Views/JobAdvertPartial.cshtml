@@ -6,42 +6,42 @@
 </div>
 @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
 <div class="supporting content-small content-medium text-content">
-    <table>
-        <tbody>
-            @if (!String.IsNullOrEmpty(Model.Job.Reference))
-            {
-                <tr><th id="job-reference">Job reference</th><td>@Model.Job.Reference</td></tr>
-            }
-            @if (!String.IsNullOrEmpty(Model.Job.Location))
-            {
-                <tr><th>Location</th><td>@Model.Job.Location</td></tr>
-            }
-            @if (!String.IsNullOrEmpty(Model.Job.Organisation))
-            {
-                <tr><th>Organisation</th><td>@Model.Job.Organisation</td></tr>
-            }
-            @if (!String.IsNullOrEmpty(Model.Job.Department))
-            {
-                <tr><th>Department</th><td>@Model.Job.Department</td></tr>
-            }
-            @if (!String.IsNullOrEmpty(Model.Job.ContractType))
-            {
-                <tr><th>Contract type</th><td>@Model.Job.ContractType</td></tr>
-            }
-            @if (!String.IsNullOrEmpty(Model.Job.JobType))
-            {
-                <tr><th>Job type</th><td>@Model.Job.JobType</td></tr>
-            }
-            @if (!String.IsNullOrEmpty(Model.Job.Salary.SalaryRange))
-            {
-                <tr><th>Salary</th><td>@Model.Job.Salary.SalaryRange</td></tr>
-            }
-            @if (Model.Job.ClosingDate.HasValue)
-            {
-                <tr><th>Closing date</th><td>@Model.Job.ClosingDate.Value.ToBritishDateWithDay()</td></tr>
-            }
-        </tbody>
-    </table>
+    <dl class="job-summary">
+        @if (!String.IsNullOrEmpty(Model.Job.Reference))
+        {
+            <dt id="job-reference">Job reference</dt><dd>@Model.Job.Reference</dd>
+        }
+        @if (!String.IsNullOrEmpty(Model.Job.Location))
+        {
+            <dt>Location</dt><dd>@Model.Job.Location</dd>
+        }
+        @if (!String.IsNullOrEmpty(Model.Job.Salary.SalaryRange))
+        {
+            <dt>Salary</dt>
+            <dd>@Model.Job.Salary.SalaryRange</dd>
+        }
+        @if (Model.Job.ClosingDate.HasValue)
+        {
+            <dt>Closing date</dt>
+            <dd>@Model.Job.ClosingDate.Value.ToBritishDateWithDay()</dd>
+        }
+        @if (!String.IsNullOrEmpty(Model.Job.Organisation))
+        {
+            <dt>Organisation</dt><dd>@Model.Job.Organisation</dd>
+        }
+        @if (!String.IsNullOrEmpty(Model.Job.Department))
+        {
+            <dt>Department</dt><dd>@Model.Job.Department</dd>
+        }
+        @if (!String.IsNullOrEmpty(Model.Job.ContractType))
+        {
+            <dt>Contract type</dt><dd>@Model.Job.ContractType</dd>
+        }
+        @if (!String.IsNullOrEmpty(Model.Job.JobType))
+        {
+            <dt>Job type</dt><dd>@Model.Job.JobType</dd>
+        }
+    </dl>
 </div>
 
 <div class="article">
