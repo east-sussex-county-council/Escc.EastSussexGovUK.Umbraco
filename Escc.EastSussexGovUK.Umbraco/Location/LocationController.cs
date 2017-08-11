@@ -40,7 +40,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Location
                     new UmbracoSocialMediaService(model.Content),
                     new UmbracoEastSussex1SpaceService(model.Content),
                     new UmbracoWebChatSettingsService(model.Content, new UrlListReader()),
-                    new RelatedLinksService(mediaUrlTransformer, new ElibraryUrlTransformer()),
+                    new RelatedLinksService(mediaUrlTransformer, new ElibraryUrlTransformer(), new RemoveAzureDomainUrlTransformer()),
                     new ContentExperimentSettingsService(),
                     new UmbracoEscisService(model.Content),
                     new RatingSettingsFromUmbraco(model.Content), 

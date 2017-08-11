@@ -29,7 +29,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
 
             var mediaUrlTransformer = new RemoveMediaDomainUrlTransformer();
             var viewModel = new TaskViewModelFromUmbraco(model.Content,
-                    new RelatedLinksService(mediaUrlTransformer, new ElibraryUrlTransformer()),
+                    new RelatedLinksService(mediaUrlTransformer, new ElibraryUrlTransformer(), new RemoveAzureDomainUrlTransformer()),
                     new ElibraryProxyLinkConverter(new SpydusUrlBuilder()),
                     mediaUrlTransformer
                     ).BuildModel();

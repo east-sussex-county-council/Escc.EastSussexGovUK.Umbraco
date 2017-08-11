@@ -113,9 +113,8 @@
     <Reference Include="GDev.Umbraco.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\GDev.Umbraco.Testing.Web.2.0.0\lib\net452\GDev.Umbraco.Web.dll</HintPath>
     </Reference>
-    <Reference Include="HtmlAgilityPack, Version=1.4.9.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
-      <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
@@ -352,6 +351,8 @@
     <Compile Include="HtmlStringFormatterTests.cs" />
     <Compile Include="JobAdvertHtmlParserTests.cs" />
     <Compile Include="JobSearchFilterTests.cs" />
+    <Compile Include="RemoveAzureDomainHtmlFormatterTests.cs" />
+    <Compile Include="RemoveAzureDomainUrlTransformerTests.cs" />
     <Compile Include="UmbracoLatestServiceTests.cs" />
     <Compile Include="KeywordsTokeniserTests.cs" />
     <Compile Include="LocationHashTagTests.cs" />

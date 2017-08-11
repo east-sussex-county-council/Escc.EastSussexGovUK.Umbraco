@@ -27,7 +27,7 @@ namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
             if (model == null) throw new ArgumentNullException(nameof(model));
 
             var urlTransformer = new RemoveMediaDomainUrlTransformer();
-            var viewModel = new CampaignTilesViewModelFromUmbraco(model.Content, new RelatedLinksService(urlTransformer, new ElibraryUrlTransformer()), urlTransformer).BuildModel();
+            var viewModel = new CampaignTilesViewModelFromUmbraco(model.Content, new RelatedLinksService(urlTransformer, new ElibraryUrlTransformer(), new RemoveAzureDomainUrlTransformer()), urlTransformer).BuildModel();
 
             // Add common properties to the model
             var modelBuilder = new BaseViewModelBuilder();
