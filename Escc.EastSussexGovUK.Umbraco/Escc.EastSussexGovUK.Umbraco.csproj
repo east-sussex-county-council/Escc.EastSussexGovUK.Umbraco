@@ -171,7 +171,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.EditorTools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.EditorTools.2.3.0\lib\Escc.Umbraco.EditorTools.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.EditorTools.2.4.0\lib\Escc.Umbraco.EditorTools.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.HeatmapAnalytics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -699,9 +699,12 @@
     <Content Include="App_Plugins\EditorTools\Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="App_Plugins\EditorTools\Content\DataTables\swf\flashExport.swf" />
     <Content Include="App_Plugins\EditorTools\Content\Site.css" />
+    <Content Include="App_Plugins\EditorTools\Content\_bootstrap-datetimepicker.css" />
     <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="App_Plugins\EditorTools\lang\en-US.xml" />
     <Content Include="App_Plugins\EditorTools\lang\en.xml" />
+    <Content Include="App_Plugins\EditorTools\Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="App_Plugins\EditorTools\Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="App_Plugins\EditorTools\Scripts\bootstrap.js" />
     <Content Include="App_Plugins\EditorTools\Scripts\bootstrap.min.js" />
     <Content Include="App_Plugins\EditorTools\Scripts\DataTables\autoFill.bootstrap.js" />
@@ -783,6 +786,10 @@
     <Content Include="App_Plugins\EditorTools\Scripts\jquery-3.1.1.js" />
     <Content Include="App_Plugins\EditorTools\Scripts\jquery-3.1.1.min.js" />
     <Content Include="App_Plugins\EditorTools\Scripts\modernizr-2.6.2.js" />
+    <Content Include="App_Plugins\EditorTools\Scripts\moment-with-locales.js" />
+    <Content Include="App_Plugins\EditorTools\Scripts\moment-with-locales.min.js" />
+    <Content Include="App_Plugins\EditorTools\Scripts\moment.js" />
+    <Content Include="App_Plugins\EditorTools\Scripts\moment.min.js" />
     <Content Include="App_Plugins\EditorTools\Scripts\respond.js" />
     <Content Include="App_Plugins\EditorTools\Scripts\respond.min.js" />
     <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.controller.js" />
@@ -857,19 +864,7 @@
     <Content Include="Config\BaseRestExtensions.config" />
     <Content Include="Config\404handlers.config" />
     <Content Include="App_Plugins\Escc.UmbracoBranding\package.manifest" />
-    <Content Include="App_Plugins\EditorTools\Views\web.config" />
     <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\package.manifest" />
-    <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.css.map" />
-    <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.min.css.map" />
-    <Content Include="App_Plugins\EditorTools\Content\bootstrap.css.map" />
-    <Content Include="App_Plugins\EditorTools\Content\bootstrap.min.css.map" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\common.scss" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\mixins.scss" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\semanticui.scss" />
     <Content Include="Config\uMediaSync.config" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\package.manifest" />
@@ -878,6 +873,41 @@
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PhonePropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\EditorTools\Views\web.config" />
+    <Content Include="App_Plugins\EditorTools\Views\Users\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Stats\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Shared\_Layout.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Partials\_RegeneratingCache.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Partials\_Processing.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Partials\_NoCachedData.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Partials\_MultiMoveConfirmSelectedChildren.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Partials\_MultiMoveChildren.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Partials\_ExpiryBulkUpdateChildren.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Partials\_DataTable.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\PageExpiry\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\MultiMove\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\MultiMove\ConfirmSelected.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Media\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\InBoundLinkChecker\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\ExpiryBulkUpdate\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\ExpiryBulkUpdate\BrowseSelected.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\ExamineSearch\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\EditorToolsHome\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\EditorToolsHome\Help.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\EditorToolsHome\About.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\CSVExport\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Content\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\semanticui.scss" />
+    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\mixins.scss" />
+    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\common.scss" />
+    <Content Include="App_Plugins\EditorTools\Content\bootstrap.min.css.map" />
+    <Content Include="App_Plugins\EditorTools\Content\bootstrap.css.map" />
+    <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.min.css.map" />
+    <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.css.map" />
     <None Include="Content\PagedList.css" />
     <Content Include="css\CampaignTemplates\align-buttons-large.css" />
     <Content Include="css\CampaignTemplates\align-buttons-medium.css" />
@@ -4178,9 +4208,7 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Plugins\EditorTools\Views\Partials\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -4211,8 +4239,8 @@
     <Error Condition="!Exists('..\packages\UmbracoCms.7.5.14\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.5.14\build\UmbracoCms.props'))" />
     <Error Condition="!Exists('..\packages\UmbracoCms.7.5.14\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.5.14\build\UmbracoCms.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.1.3.10\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.1.3.10\build\Escc.Umbraco.MediaSync.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Umbraco.EditorTools.2.3.0\build\Escc.Umbraco.EditorTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.EditorTools.2.3.0\build\Escc.Umbraco.EditorTools.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.EditorTools.2.4.0\build\Escc.Umbraco.EditorTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.EditorTools.2.4.0\build\Escc.Umbraco.EditorTools.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.Schools.TermDates.Website.1.2.1\build\Escc.Schools.TermDates.Website.targets" Condition="Exists('..\packages\Escc.Schools.TermDates.Website.1.2.1\build\Escc.Schools.TermDates.Website.targets')" />
   <Import Project="..\packages\Escc.Registration.MarriageSkin.1.0.3\build\Escc.Registration.MarriageSkin.targets" Condition="Exists('..\packages\Escc.Registration.MarriageSkin.1.0.3\build\Escc.Registration.MarriageSkin.targets')" />
@@ -4227,8 +4255,8 @@
   <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
   <Import Project="..\packages\UmbracoCms.7.5.14\build\UmbracoCms.targets" Condition="Exists('..\packages\UmbracoCms.7.5.14\build\UmbracoCms.targets')" />
   <Import Project="..\packages\Escc.Umbraco.MediaSync.1.3.10\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.1.3.10\build\Escc.Umbraco.MediaSync.targets')" />
-  <Import Project="..\packages\Escc.Umbraco.EditorTools.2.3.0\build\Escc.Umbraco.EditorTools.targets" Condition="Exists('..\packages\Escc.Umbraco.EditorTools.2.3.0\build\Escc.Umbraco.EditorTools.targets')" />
   <Import Project="..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.EditorTools.2.4.0\build\Escc.Umbraco.EditorTools.targets" Condition="Exists('..\packages\Escc.Umbraco.EditorTools.2.4.0\build\Escc.Umbraco.EditorTools.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
