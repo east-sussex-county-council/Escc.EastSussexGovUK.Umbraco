@@ -161,7 +161,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.2.3.1\lib\Escc.Umbraco.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.2.3.2\lib\Escc.Umbraco.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.Banners, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.Banners.2.0.3\lib\Escc.Umbraco.Banners.dll</HintPath>
@@ -178,7 +179,7 @@
       <HintPath>..\packages\Escc.Umbraco.HeatmapAnalytics.2.0.1\lib\Escc.Umbraco.HeatmapAnalytics.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.MediaSync, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.MediaSync.1.3.10\lib\Escc.Umbraco.MediaSync.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.MediaSync.1.3.11\lib\Escc.Umbraco.MediaSync.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.PropertyEditors, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -537,9 +538,6 @@
     <Content Include="apple-touch-icon-precomposed-72x72.png" />
     <Content Include="apple-touch-icon-precomposed.png" />
     <Content Include="apple-touch-icon.png" />
-    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.controller.js" />
-    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.html" />
-    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.resource.js" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\editor.html" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\validate.js" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor\editor.html" />
@@ -609,8 +607,6 @@
     <Content Include="Config\BaseRestExtensions.config" />
     <Content Include="Config\404handlers.config" />
     <Content Include="App_Plugins\Escc.UmbracoBranding\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\package.manifest" />
-    <Content Include="Config\uMediaSync.config" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.TwitterScriptPropertyEditor\package.manifest" />
@@ -3972,9 +3968,9 @@
     <Error Condition="!Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.7\build\Escc.RubbishAndRecycling.SiteFinder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.7\build\Escc.RubbishAndRecycling.SiteFinder.targets'))" />
     <Error Condition="!Exists('..\packages\UmbracoCms.7.5.14\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.5.14\build\UmbracoCms.props'))" />
     <Error Condition="!Exists('..\packages\UmbracoCms.7.5.14\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.5.14\build\UmbracoCms.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.1.3.10\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.1.3.10\build\Escc.Umbraco.MediaSync.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.EditorTools.2.4.1\build\Escc.Umbraco.EditorTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.EditorTools.2.4.1\build\Escc.Umbraco.EditorTools.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.1.3.11\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.1.3.11\build\Escc.Umbraco.MediaSync.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.Schools.TermDates.Website.1.2.1\build\Escc.Schools.TermDates.Website.targets" Condition="Exists('..\packages\Escc.Schools.TermDates.Website.1.2.1\build\Escc.Schools.TermDates.Website.targets')" />
   <Import Project="..\packages\Escc.Registration.MarriageSkin.1.0.3\build\Escc.Registration.MarriageSkin.targets" Condition="Exists('..\packages\Escc.Registration.MarriageSkin.1.0.3\build\Escc.Registration.MarriageSkin.targets')" />
@@ -3988,9 +3984,9 @@
   <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.7\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.7\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
   <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
   <Import Project="..\packages\UmbracoCms.7.5.14\build\UmbracoCms.targets" Condition="Exists('..\packages\UmbracoCms.7.5.14\build\UmbracoCms.targets')" />
-  <Import Project="..\packages\Escc.Umbraco.MediaSync.1.3.10\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.1.3.10\build\Escc.Umbraco.MediaSync.targets')" />
   <Import Project="..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets')" />
   <Import Project="..\packages\Escc.Umbraco.EditorTools.2.4.1\build\Escc.Umbraco.EditorTools.targets" Condition="Exists('..\packages\Escc.Umbraco.EditorTools.2.4.1\build\Escc.Umbraco.EditorTools.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.MediaSync.1.3.11\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.1.3.11\build\Escc.Umbraco.MediaSync.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
