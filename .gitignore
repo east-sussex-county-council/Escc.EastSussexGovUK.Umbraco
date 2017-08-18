@@ -61,8 +61,6 @@ dummy.txt
 # Files imported by NuGet packages
 **/TinyMCE-*.css
 !**/TinyMCE-StyleSelector-Embed.css
-*/Views/TermDates/*
-!*/Views/TermDates/QuickAnswerMvcProxy.*
 */Views/Alerts*
 *RecyclingSiteFinder.ascx
 */js/libs/*
