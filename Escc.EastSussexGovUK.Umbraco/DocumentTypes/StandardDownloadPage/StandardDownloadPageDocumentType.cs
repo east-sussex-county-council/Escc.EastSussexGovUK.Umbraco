@@ -13,6 +13,7 @@ using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task;
 using Escc.EastSussexGovUK.Umbraco.Location;
 using Umbraco.Inception.Attributes;
+using Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits;
 
 namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardDownloadPage
 {
@@ -38,7 +39,8 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardDownloadPage
         typeof(RegistrationOfficeDocumentType),
         typeof(SportLocationDocumentType),
         typeof(CampaignLandingDocumentType),
-        typeof(CouncilPlanHomePageDocumentType)
+        typeof(CouncilPlanHomePageDocumentType),
+        typeof(RightsOfWayDepositsDocumentType)
     }, true, BuiltInUmbracoContentTypeIcons.IconPageDown, "", false, false,
     Description = "A set of downloadable documents, optionally in two formats. It's usually better to link to documents within other pages instead.")]
     public class StandardDownloadPageDocumentType : LegacyBaseDocumentType

@@ -12,6 +12,7 @@ using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardLandingPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task;
 using Umbraco.Inception.Attributes;
+using Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits;
 
 namespace Escc.EastSussexGovUK.Umbraco.Location
 {
@@ -37,7 +38,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Location
         typeof(RegistrationOfficeDocumentType),
         typeof(DayCentreDocumentType),
         typeof(CampaignLandingDocumentType),
-        typeof(PersonDocumentType)
+        typeof(PersonDocumentType),
+        typeof(RightsOfWayDepositsDocumentType)
     }, true, icon: BuiltInUmbracoContentTypeIcons.IconPushpin, allowAtRoot: false, 
     Description = "A fixed location where the council delivers one or more services. Before using this, check for a more specific type such as 'Library' or 'Recycling site'.")]
     public class LocationDocumentType : CustomerFocusBaseDocumentType

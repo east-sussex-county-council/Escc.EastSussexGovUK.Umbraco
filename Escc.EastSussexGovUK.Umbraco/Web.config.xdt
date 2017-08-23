@@ -223,6 +223,63 @@
     </Paths>
   </UnpublishOverridesSection>
 
+  <UnpublishOverridesSection xdt:Transform="Remove" />
+  <UnpublishOverridesSection xdt:Transform="Insert">
+    <ContentTypes>
+      <add name="HomePage" level="*" />
+      <add name="HomePageItems" level="*" />
+      <add name="HomePageItem" level="*" />
+      <add name="Banner" level="*" />
+      <add name="alerts" level="*" />
+      <add name="standardLandingPage" level="2" />
+      <add name="Landing" level="2" />
+      <add name="RightsOfWayDeposits" level="*" />
+      <add name="RightsOfWayDepositsRss" level="*" />
+      <add name="RightsOfWayDepositsCsv" level="*" />
+      <add name="RightsOfWayDeposit" level="*" />
+    </ContentTypes>
+    <Paths>
+      <add name="/about-this-site/" children="*" />
+      <add name="/banners/" children="" />
+      <add name="/childrenandfamilies/childcare/" children="*" />
+      <add name="/childrenandfamilies/childcare/parentsandcarers/childrencentres/" children="" />
+      <add name="/childrenandfamilies/familysupport/info-for-families/" children="" />
+      <add name="/childrenandfamilies/keypolicies/complaints-process/" children="*" />
+      <add name="/childrenandfamilies/worried-about-a-child/" children="" />
+      <add name="/childrenandfamilies/youngpeople/safety-welfare/" children="*" />
+      <add name="/contact-us/" children="" />
+      <add name="/educationandlearning/schools/" children="" />
+      <add name="/educationandlearning/schools/findingaschool/" children="*" />
+      <add name="/educationandlearning/schools/termdates/" children="" />
+      <add name="/environment/rubbishandrecycling/" children="" />
+      <add name="/environment/rubbishandrecycling/recyclingsites/" children="*" />
+      <add name="/environment/rubbishandrecycling/rubbishcollection/" children="" />
+      <add name="/google-analytics-experiments/" children="" />
+      <add name="/heatmap-analytics/" children="" />
+      <add name="/jobs/" children="" />
+      <add name="/leisureandtourism/calendar/" children="" />
+      <add name="/leisureandtourism/countryside/walks/" children="*" />
+      <add name="/libraries/library-cards/" children="*" />
+      <add name="/libraries/locations/" children="*" />
+      <add name="/libraries/maintenance/" children="" />
+      <add name="/libraries/online-library-help/" children="*" />
+      <add name="/news/" children="" />
+      <add name="/roadsandtransport/public/buses/" children="*" />
+      <add name="/roadsandtransport/roads/licences/" children="" />
+      <add name="/roadsandtransport/roads/maintenance/" children="" />
+      <add name="/roadsandtransport/roads/maintenance/potholes/" children="" />
+      <add name="/roadsandtransport/roads/maintenance/saltingandgritting/" children="*" />
+      <add name="/roadsandtransport/roads/maintenance/verges/" children="" />
+      <add name="/socialcare/getting-help-from-us/contact-adult-social-care/" children="" />
+      <add name="/socialcare/worried/report/" children="" />
+      <add name="/web-chat/" children="" />
+      <add name="/yourcouncil/about/districtandborough/" children="" />
+      <add name="/yourcouncil/about/keydocuments/constitution/" children="" />
+      <add name="/yourcouncil/about/keydocuments/councilplan/" children="" />
+      <add name="/yourcouncil/finance/guide/fraud/" children="" />
+    </Paths>
+  </UnpublishOverridesSection>
+  
   <Escc.Web xdt:Transform="Insert" />
   <Escc.Web xdt:Transform="Remove" xdt:Locator="XPath(/configuration/Escc.Web[2])" />
 
@@ -266,6 +323,22 @@
     <add key="HomeContentTypeAlias" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     <add key="HomeContentTypeAlias" value="HomePage" xdt:Transform="Insert" />
   </appSettings>
+
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly xdt:Transform="Remove" xdt:Locator="Condition(_defaultNamespace:assemblyIdentity/@name='Exceptionless')" />
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="Exceptionless" publicKeyToken="fc181f0a46f65747" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-1.5.2121.0" newVersion="1.5.2121.0" />
+      </dependentAssembly>
+
+      <dependentAssembly xdt:Transform="Remove" xdt:Locator="Condition(_defaultNamespace:assemblyIdentity/@name='HtmlAgilityPack')" />
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="HtmlAgilityPack" publicKeyToken="bd319b19eaf3b43a" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-1.4.9.0" newVersion="1.4.9.0" />
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
 
   <system.web xdt:Transform="Insert" />
   <system.web xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.web[2])" />

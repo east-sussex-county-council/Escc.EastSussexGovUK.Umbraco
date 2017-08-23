@@ -32,8 +32,9 @@ using Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor;
 using Exceptionless;
 using Umbraco.Inception.CodeFirst;
 using Umbraco.Web.WebApi;
+using Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits;
+using Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor;
 using Escc.EastSussexGovUK.Umbraco.Ratings;
-
 namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
 {
     /// <summary>
@@ -64,15 +65,15 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
             try
             {
                 // Insert data types before the document types that use them, otherwise the relevant property is not created
-                CheckboxDataType.CreateCheckboxDataType();
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(CheckboxDataType));
                 CacheDataType.CreateCacheDataType();
                 SocialMediaOrderDataType.CreateSocialMediaOrderDataType();
                 FacebookWidgetSettingsDataType.CreateFacebookWidgetSettingsDataType();
                 FacebookUrlDataType.CreateDataType();
                 RatingUrlDataType.CreateDataType();
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(ShowWidgetDataType));
-                TwitterScriptDataType.CreateDataType();
-                MultiNodeTreePickerDataType.CreateDataType();
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(TwitterScriptDataType));
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(MultiNodeTreePickerDataType));
                 UrlDataType.CreateDataType();
             
                 RichTextEsccStandardDataType.CreateDataType();
@@ -97,8 +98,8 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(ShareStyleDataType));
 
                 // Customer focus templates
-                EmailAddressDataType.CreateDataType();
-                PhoneNumberDataType.CreateDataType();
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(EmailAddressDataType));
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(PhoneNumberDataType));
                 LandingPageLayoutDataType.CreateLandingPageLayoutDataType();
                 OpeningHoursDataType.CreateDataType();
                 UkLocationDataType.CreateDataType(showEastingNorthing: false);
@@ -109,6 +110,11 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
 
                 // Jobs document types
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(PublicOrRedeploymentDataType));
+
+                // Rights of way document types
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(ReadOnlyDateDataType));
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(ParishDataType));
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(PersonNameDataType));
 
                 return Request.CreateResponse(HttpStatusCode.Created);
             }
@@ -145,17 +151,62 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(StandardDownloadPageDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(MapDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(FormDownloadDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CustomerFocusBaseDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LandingDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(TaskDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(GuideStepDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(GuideDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(PersonDocumentType));
+
+                return Request.CreateResponse(HttpStatusCode.Created);
+            }
+            catch (Exception e)
+            {
+                e.ToExceptionless().Submit();
+                return Request.CreateResponse(HttpStatusCode.InternalServerError);
+            }
+        }
+
+        /// <summary>
+        /// Creates the Umbraco document types defined for the Council Plan.
+        /// </summary>
+        /// <returns></returns>
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
+        [AcceptVerbs("POST")]
+        public HttpResponseMessage CreateCouncilPlanDocumentTypes([FromUri] string token)
+        {
+            if (!CheckAuthorisationToken(token)) return Request.CreateResponse(HttpStatusCode.Forbidden);
+
+            try
+            {
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CouncilPlanHomePageDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CouncilPlanBudgetPageDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CouncilPlanMonitoringPageDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CouncilPlanPrioritiesPageDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CouncilPlanTopicPageDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CustomerFocusBaseDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LandingDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(TaskDocumentType));
+
+                return Request.CreateResponse(HttpStatusCode.Created);
+            }
+            catch (Exception e)
+            {
+                e.ToExceptionless().Submit();
+                return Request.CreateResponse(HttpStatusCode.InternalServerError);
+            }
+        }
+
+        /// <summary>
+        /// Creates the Umbraco document types which use the location template.
+        /// </summary>
+        /// <returns></returns>
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
+        [AcceptVerbs("POST")]
+        public HttpResponseMessage CreateLocationDocumentTypes([FromUri] string token)
+        {
+            if (!CheckAuthorisationToken(token)) return Request.CreateResponse(HttpStatusCode.Forbidden);
+
+            try
+            {
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LocationDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(GuideStepDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(GuideDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(RecyclingSiteDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LibraryDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(MobileLibraryStopDocumentType));
@@ -221,6 +272,32 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(ProblemJobsRssDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(JobsSearchDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(JobAdvertDocumentType));
+
+                return Request.CreateResponse(HttpStatusCode.Created);
+            }
+            catch (Exception e)
+            {
+                e.ToExceptionless().Submit();
+                return Request.CreateResponse(HttpStatusCode.InternalServerError);
+            }
+        }
+
+        /// <summary>
+        /// Creates the Umbraco document types for rights of way.
+        /// </summary>
+        /// <remarks>Having separate methods reduces the risk of timeouts when running this code on Azure</remarks>
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
+        [AcceptVerbs("POST")]
+        public HttpResponseMessage CreateRightsOfWayDocumentTypes([FromUri] string token)
+        {
+            if (!CheckAuthorisationToken(token)) return Request.CreateResponse(HttpStatusCode.Forbidden);
+
+            try
+            {
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(RightsOfWayDepositDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(RightsOfWayDepositsCsvDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(RightsOfWayDepositsRssDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(RightsOfWayDepositsDocumentType));
 
                 return Request.CreateResponse(HttpStatusCode.Created);
             }

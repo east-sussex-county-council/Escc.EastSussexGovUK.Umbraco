@@ -142,6 +142,9 @@
       <HintPath>..\packages\Escc.Html.2.0.0\lib\Escc.Html.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Escc.NavigationControls.WebForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.NavigationControls.WebForms.1.0.0\lib\Escc.NavigationControls.WebForms.dll</HintPath>
+    </Reference>
     <Reference Include="Escc.Net, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Net.1.0.1\lib\Escc.Net.dll</HintPath>
       <Private>True</Private>
@@ -789,6 +792,9 @@
     <Content Include="App_Plugins\EditorTools\Scripts\moment.min.js" />
     <Content Include="App_Plugins\EditorTools\Scripts\respond.js" />
     <Content Include="App_Plugins\EditorTools\Scripts\respond.min.js" />
+    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.controller.js" />
+    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.html" />
+    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.resource.js" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\editor.html" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\validate.js" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor\editor.html" />
@@ -900,6 +906,8 @@
     <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Config\uMediaSync.config" />
+    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\package.manifest" />
     <None Include="Content\PagedList.css" />
     <Content Include="css\CampaignTemplates\align-buttons-large.css" />
     <Content Include="css\CampaignTemplates\align-buttons-medium.css" />
@@ -931,6 +939,8 @@
     <Content Include="css\Jobs\jobs-large.css" />
     <Content Include="css\Jobs\jobs-medium.css" />
     <Content Include="css\Jobs\jobs-small.css" />
+    <Content Include="css\RightsOfWayDeposits\deposits-medium.css" />
+    <Content Include="css\RightsOfWayDeposits\deposits-small.css" />
     <Content Include="css\rating-medium.css" />
     <Content Include="css\rating-small.css" />
     <Content Include="css\StandardDownloadPage\download-small.css" />
@@ -969,6 +979,7 @@
     <Content Include="js\GovDelivery\ESCC.js" />
     <Content Include="js\GovDelivery\Libraries.js" />
     <Content Include="js\job-results.js" />
+    <Content Include="js\rights-of-way-deposit.js" />
     <Content Include="js\tabs.js" />
     <Content Include="js\CustomerFocusTemplates\location.js" />
     <Content Include="js\document-metadata.js" />
@@ -3656,9 +3667,14 @@
     <Content Include="Umbraco\Webservices\UltimatePickerAutoCompleteHandler.ashx" />
     <Content Include="Umbraco\Xslt\Web.config" />
     <Content Include="Views\Layouts\_Rating.cshtml" />
+    <Content Include="Views\RightsOfWayDeposit.cshtml" />
+    <Content Include="Views\RightsOfWayDeposits.cshtml" />
+    <Content Include="Views\RightsOfWayDepositsRss.cshtml" />
+    <Content Include="Views\RightsOfWayDepositsCsv.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\_PagingBarControl.ascx" />
     <Content Include="windows-tile.png" />
     <Content Include="Views\Layouts\_CmsPreview.cshtml" />
     <Content Include="Views\Layouts\_ContentExperiment.cshtml" />
@@ -3719,6 +3735,8 @@
     <Compile Include="CampaignTemplates\CampaignTilesContentTab.cs" />
     <Compile Include="CampaignTemplates\CampaignTilesDesignTab.cs" />
     <Compile Include="CampaignTemplates\CampaignTilesDocumentType.cs" />
+    <Compile Include="DocumentTypes\PreValueListDataType.cs" />
+    <Compile Include="DocumentTypes\ReadOnlyDateDataType.cs" />
     <Compile Include="Ratings\RatingRelationType.cs" />
     <Compile Include="Ratings\RatingContentTab.cs" />
     <Compile Include="Ratings\RatingDocumentType.cs" />
@@ -3738,6 +3756,7 @@
     <Compile Include="Examine\LuceneTokenisedQueryBuilder.cs" />
     <Compile Include="Examine\LuceneStopWordsRemover.cs" />
     <Compile Include="Examine\SearchField.cs" />
+    <Compile Include="Examine\SearchTermSanitiser.cs" />
     <Compile Include="Examine\WildcardSuffixFilter.cs" />
     <Compile Include="HomePage\HomePageViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\Examine\BaseLookupValuesIndexer.cs" />
@@ -3836,6 +3855,24 @@
     <Compile Include="Location\LocationsAsKmlHandler.cs" />
     <Compile Include="Ratings\RatingSettings.cs" />
     <Compile Include="RichTextHtmlFormatters\RemoveAzureDomainHtmlFormatter.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositExpiryCalculator.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsCsvController.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsRssController.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsCsvDocumentType.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsRssDocumentType.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsSortOrder.cs" />
+    <Compile Include="RightsOfWayDeposits\ParishDataType.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsController.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsContentTab.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositContentTab.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositController.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsDocumentType.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositDocumentType.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsViewModel.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositViewModel.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsViewModelFromExamine.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositViewModelFromUmbraco.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayEventHandler.cs" />
     <Compile Include="Services\BaseViewModelFromUmbracoBuilder.cs" />
     <Compile Include="Jobs\SearchResultsViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\ComponentViewModelFromUmbraco.cs" />
@@ -4202,6 +4239,13 @@
     </Compile>
     <Compile Include="Views\Topic\TopicSection_TermDates.ascx.designer.cs">
       <DependentUpon>TopicSection_TermDates.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\_PagingBarControl.ascx.cs">
+      <DependentUpon>_PagingBarControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\_PagingBarControl.ascx.designer.cs">
+      <DependentUpon>_PagingBarControl.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

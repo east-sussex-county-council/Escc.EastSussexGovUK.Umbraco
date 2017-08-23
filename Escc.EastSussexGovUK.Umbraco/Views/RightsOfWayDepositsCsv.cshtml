@@ -1,0 +1,15 @@
+﻿@using System.Globalization
+@using Escc.Dates
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits.RightsOfWayDepositsViewModel>
+@{
+    Layout = null;
+    Response.ContentType = "text/csv";
+    Response.Headers.Remove("Content-Security-Policy");
+    Response.AddHeader("Content-disposition", "attachment;filename=east-sussex-rights-of-way-deposits-" + DateTime.Now.ToUkDateTime().ToIso8601Date() + ".csv");
+}"Reference","Owner Title","Owner Given Name","Owner Family Name","Owner Suffix","Address line 1 (SAON)","Address line 2 (PAON)","Street name","Locality","Town","Administrative Area","Postcode","Latitude","Longitude","Parish","Description","Ordnance Survey grid reference","Date deposited","Expires","Deposit URL","Web page URL"
+@{ 
+    foreach (var deposit in Model.Deposits)
+    {
+@:"@Html.Raw(deposit.Reference)","@Html.Raw(deposit.Owner.Titles)","@Html.Raw(deposit.Owner.GivenNames)","@Html.Raw(deposit.Owner.FamilyName)","@Html.Raw(deposit.Owner.Suffixes)","@Html.Raw(deposit.Address?.Saon)","@Html.Raw(deposit.Address?.Paon)","@Html.Raw(deposit.Address?.StreetName)","@Html.Raw(deposit.Address?.Locality)","@Html.Raw(deposit.Address?.Town)","@Html.Raw(deposit.Address?.AdministrativeArea)","@Html.Raw(deposit.Address?.Postcode)","@(deposit.Coordinates?.Latitude)","@(deposit.Coordinates?.Longitude)","@Html.Raw(deposit.Parish)","@Html.Raw(deposit.Metadata.Description.Replace("\"", String.Empty))","@Html.Raw(deposit.OrdnanceSurveyGridReference)","@deposit.DateDeposited.ToIso8601Date()","@deposit.DateExpires.ToIso8601Date()","@Html.Raw(deposit.DepositUrl)","@Html.Raw(deposit.PageUrl)"
+}
+}

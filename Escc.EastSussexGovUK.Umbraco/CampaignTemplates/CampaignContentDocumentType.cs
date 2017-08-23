@@ -14,6 +14,7 @@ using Escc.Umbraco.PropertyEditors;
 using Escc.Umbraco.PropertyEditors.RichTextPropertyEditor;
 using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
+using Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits;
 
 namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
 {
@@ -40,7 +41,8 @@ namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
         typeof(RegistrationOfficeDocumentType),
         typeof(DayCentreDocumentType),
         typeof(CampaignLandingDocumentType),
-        typeof(CampaignContentDocumentType)
+        typeof(CampaignContentDocumentType),
+        typeof(RightsOfWayDepositsDocumentType)
     }, true, BuiltInUmbracoContentTypeIcons.IconParachuteDrop, 
     Description="A content page for a marketing campaign")]
     public class CampaignContentDocumentType : UmbracoGeneratedBase

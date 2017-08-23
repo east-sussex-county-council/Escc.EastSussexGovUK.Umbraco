@@ -382,6 +382,7 @@
     <Compile Include="LuceneTokenisedQueryBuilderTests.cs" />
     <Compile Include="RemoveDuplicateTextFormatterTests.cs" />
     <Compile Include="UrlProviderTests.cs" />
+    <Compile Include="RightsOfWayDepositExpiryCalculatorTests.cs" />
     <Compile Include="UseFormForEmailLinksFormatterTests.cs" />
     <Compile Include="WildcardSuffixFilterTests.cs" />
   </ItemGroup>
