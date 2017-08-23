@@ -88,7 +88,7 @@
       <HintPath>..\packages\Escc.Net.1.0.1\lib\Escc.Net.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.2.3.3\lib\Escc.Umbraco.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.2.3.1\lib\Escc.Umbraco.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.PropertyEditors, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
