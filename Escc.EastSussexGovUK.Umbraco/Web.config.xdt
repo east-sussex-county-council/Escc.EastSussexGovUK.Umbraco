@@ -193,6 +193,7 @@
       <add name="/contact-us/" children="" />
       <add name="/educationandlearning/schools/" children="" />
       <add name="/educationandlearning/schools/findingaschool/" children="*" />
+      <add name="/educationandlearning/schools/schoolclosurealerts/" children="" />
       <add name="/educationandlearning/schools/termdates/" children="" />
       <add name="/environment/rubbishandrecycling/" children="" />
       <add name="/environment/rubbishandrecycling/recyclingsites/" children="*" />
