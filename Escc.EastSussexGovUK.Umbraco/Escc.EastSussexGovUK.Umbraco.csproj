@@ -3728,6 +3728,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\EastSussexGovUK_Mvc.cs" />
+    <Compile Include="AzureConfiguration\FrontEndReadOnlyServerRegistrar.cs" />
+    <Compile Include="AzureConfiguration\MasterServerRegistrar.cs" />
+    <Compile Include="AzureConfiguration\RegisterServerRoleEventHandler.cs" />
     <Compile Include="CampaignTemplates\CampaignTile.cs" />
     <Compile Include="CampaignTemplates\CampaignTilesViewModel.cs" />
     <Compile Include="CampaignTemplates\CampaignTilesViewModelFromUmbraco.cs" />
