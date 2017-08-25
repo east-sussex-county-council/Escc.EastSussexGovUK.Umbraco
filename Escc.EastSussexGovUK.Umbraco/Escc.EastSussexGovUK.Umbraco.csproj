@@ -122,6 +122,9 @@
       <HintPath>..\packages\Escc.EastSussexGovUK.Rss.2.0.0\lib\Escc.EastSussexGovUK.Rss.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Escc.EastSussexGovUK.TemplateSource, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.EastSussexGovUK.TemplateSource.1.0.0\lib\Escc.EastSussexGovUK.TemplateSource.dll</HintPath>
+    </Reference>
     <Reference Include="Escc.Elibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Elibrary.1.1.0\lib\Escc.Elibrary.dll</HintPath>
       <Private>True</Private>
@@ -908,6 +911,10 @@
     <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Config\uMediaSync.config" />
     <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\package.manifest" />
+    <Content Include="favicon.ico" />
+    <Content Include="googledb369ad0fa294f54.html" />
+    <Content Include="robots.txt" />
+    <Content Include="windows-tile.png" />
     <None Include="Content\PagedList.css" />
     <Content Include="css\CampaignTemplates\align-buttons-large.css" />
     <Content Include="css\CampaignTemplates\align-buttons-medium.css" />
@@ -960,9 +967,7 @@
     <Content Include="EastSussexGovUK\Rss\rss-xslt.css" />
     <Content Include="EastSussexGovUK\Rss\rss.css" />
     <Content Include="EastSussexGovUK\Rss\rss-to-html.ashx" />
-    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="googledb369ad0fa294f54.html" />
     <Content Include="images\quote-close.gif" />
     <Content Include="images\quote-open.gif" />
     <None Include="Jobs\Images\East Sussex Jobs logo colour.png" />
@@ -1016,7 +1021,6 @@
     <Content Include="MarriageSkin\img\marriage-landing-blue.jpg" />
     <Content Include="MarriageSkin\img\marriage-landing-red.jpg" />
     <Content Include="MarriageSkin\js\min\marriage-skin.js" />
-    <Content Include="robots.txt" />
     <None Include="scripts\jquery-1.7-vsdoc.js" />
     <None Include="scripts\jquery-1.7.js" />
     <None Include="scripts\jquery-1.7.min.js" />
@@ -3675,7 +3679,6 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="Views\_PagingBarControl.ascx" />
-    <Content Include="windows-tile.png" />
     <Content Include="Views\Layouts\_CmsPreview.cshtml" />
     <Content Include="Views\Layouts\_ContentExperiment.cshtml" />
     <Content Include="Views\Layouts\_GuideNavigation.cshtml" />
@@ -4296,6 +4299,7 @@
     <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.EditorTools.2.4.1\build\Escc.Umbraco.EditorTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.EditorTools.2.4.1\build\Escc.Umbraco.EditorTools.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.1.3.10\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.1.3.10\build\Escc.Umbraco.MediaSync.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.0.0\build\Escc.EastSussexGovUK.TemplateSource.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.TemplateSource.1.0.0\build\Escc.EastSussexGovUK.TemplateSource.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.Registration.MarriageSkin.1.0.3\build\Escc.Registration.MarriageSkin.targets" Condition="Exists('..\packages\Escc.Registration.MarriageSkin.1.0.3\build\Escc.Registration.MarriageSkin.targets')" />
   <Import Project="..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets')" />
@@ -4311,6 +4315,7 @@
   <Import Project="..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets')" />
   <Import Project="..\packages\Escc.Umbraco.EditorTools.2.4.1\build\Escc.Umbraco.EditorTools.targets" Condition="Exists('..\packages\Escc.Umbraco.EditorTools.2.4.1\build\Escc.Umbraco.EditorTools.targets')" />
   <Import Project="..\packages\Escc.Umbraco.MediaSync.1.3.10\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.1.3.10\build\Escc.Umbraco.MediaSync.targets')" />
+  <Import Project="..\packages\Escc.EastSussexGovUK.TemplateSource.1.0.0\build\Escc.EastSussexGovUK.TemplateSource.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.0.0\build\Escc.EastSussexGovUK.TemplateSource.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

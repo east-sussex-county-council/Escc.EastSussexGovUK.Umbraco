@@ -42,6 +42,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [TestCase(@"App_Plugins\EditorTools\Scripts\bootstrap.js")]
         [TestCase(@"App_Plugins\EditorTools\Views\Content\Index.cshtml")]
 
+        // Escc.EastSussexGovUK.TemplateSource project
+        [TestCase(@"favicon.ico")]
+        [TestCase(@"apple-touch-icon.png")]
+        [TestCase(@"robots.txt")]
+
         public void NuGetPackagesCorrectlyIncludedInProject(string filePathWhichShouldBeIncluded)
         {
             var commonParent = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent;

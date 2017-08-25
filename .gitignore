@@ -71,3 +71,8 @@ Escc.EastSussexGovUK.Umbraco/App_Plugins/Escc.Umbraco.DataTypes.MediaUsage
 Escc.EastSussexGovUK.Umbraco/App_Plugins/EditorTools/*
 DataTables
 scripts
+apple-touch-*.png
+favicon.ico
+windows-tile.png
+robots.txt
+google*.html
