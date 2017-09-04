@@ -355,6 +355,7 @@
     <Compile Include="JobSearchQueryFactoryTests.cs" />
     <Compile Include="RemoveAzureDomainHtmlFormatterTests.cs" />
     <Compile Include="RemoveAzureDomainUrlTransformerTests.cs" />
+    <Compile Include="SalaryRangeLuceneQueryBuilderTests.cs" />
     <Compile Include="UmbracoLatestServiceTests.cs" />
     <Compile Include="KeywordsTokeniserTests.cs" />
     <Compile Include="LocationHashTagTests.cs" />

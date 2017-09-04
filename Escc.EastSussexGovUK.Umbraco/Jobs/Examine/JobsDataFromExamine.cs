@@ -4,7 +4,6 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 using Escc.EastSussexGovUK.Umbraco.Examine;
@@ -24,8 +23,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
     {
         private readonly ISearcher _searcher;
         private readonly IQueryBuilder _keywordsQueryBuilder;
+        private readonly ISalaryRangeQueryBuilder _salaryQueryBuilder;
         private readonly IJobUrlGenerator _urlGenerator;
         private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         /// <summary>
         /// Initializes a new instance of the <see cref="JobsDataFromExamine" /> class.
         /// </summary>
@@ -33,11 +34,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
         /// <param name="keywordsQueryBuilder">The query analyser.</param>
         /// <param name="jobAdvertUrl">The job advert URL.</param>
         /// <exception cref="System.ArgumentNullException">searcher</exception>
-        public JobsDataFromExamine(ISearcher searcher, IQueryBuilder keywordsQueryBuilder, IJobUrlGenerator urlGenerator)
+        public JobsDataFromExamine(ISearcher searcher, IQueryBuilder keywordsQueryBuilder, ISalaryRangeQueryBuilder salaryQueryBuilder, IJobUrlGenerator urlGenerator)
         {
             if (searcher == null) throw new ArgumentNullException(nameof(searcher));
             _searcher = searcher;
             _keywordsQueryBuilder = keywordsQueryBuilder;
+            _salaryQueryBuilder = salaryQueryBuilder;
             _urlGenerator = urlGenerator;
         }
 
@@ -101,7 +103,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             }
 
             // For the salary ranges we need a structure that Examine's fluent API can't build, so build the raw Lucene query instead
-            modifiedQuery += BuildSalaryRangeLuceneQuery(query.SalaryRanges);
+            if (_salaryQueryBuilder != null)
+            {
+                modifiedQuery += _salaryQueryBuilder.SalaryIsWithinAnyOfTheseRanges(query.SalaryRanges);
+            }
 
             // For the working patterns we also need to build the raw Lucene query
             modifiedQuery += BuildWorkPatternLuceneQuery(query.WorkPatterns);
@@ -276,69 +281,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             if (workPatternQueries.Count > 0)
             {
                 query = " +(" + String.Join(" ", workPatternQueries.ToArray()) + ")";
-            }
-            return query;
-        }
-
-        private static string BuildSalaryRangeLuceneQuery(IList<string> salaryRanges)
-        {
-            var rangeQueries = new List<string>();
-            foreach (var salaryRange in salaryRanges)
-            {
-                // Try to match salary ranges
-                var numericRange = Regex.Match(salaryRange.Replace(",", String.Empty), "^£([0-9]+) to £?([0-9]*)$");
-                if (numericRange.Success)
-                {
-                    try
-                    {
-                        var from = Int32.Parse(numericRange.Groups[1].Value, CultureInfo.InvariantCulture);
-                        var to = String.IsNullOrEmpty(numericRange.Groups[2].Value) ? 9999999 : Int32.Parse(numericRange.Groups[2].Value, CultureInfo.InvariantCulture);
-                        rangeQueries.Add($"(+salaryMin:[{@from.ToString("D7")} TO 9999999] +salaryMax:[0000000 TO {to.ToString("D7")}])");
-                        continue;
-                    }
-                    catch (FormatException)
-                    {
-                        // just ignore bad input
-                        continue;
-                    }
-                    catch (OverflowException)
-                    {
-                        // just ignore bad input
-                        continue;
-                    }
-                }
-
-                // If no match, try a range with no upper limit
-                numericRange = Regex.Match(salaryRange.Replace(",", String.Empty), "^£([0-9]+) and over$");
-                if (numericRange.Success)
-                {
-                    try
-                    {
-                        var from = Int32.Parse(numericRange.Groups[1].Value, CultureInfo.InvariantCulture);
-                        rangeQueries.Add($"+salaryMin:[{@from.ToString("D7")} TO 9999999]");
-                        continue;
-                    }
-                    catch (FormatException)
-                    {
-                        // just ignore bad input
-                        continue;
-                    }
-                    catch (OverflowException)
-                    {
-                        // just ignore bad input
-                        continue;
-                    }
-                }
-
-                // If no match, treat it as a text string
-                var sanitisedRange = Regex.Replace(salaryRange, "[^A-Za-z0-9' -]", String.Empty); // sanitise input
-                rangeQueries.Add($"(+salaryRange:\"{sanitisedRange}\")");
-            }
-
-            var query = String.Empty;
-            if (rangeQueries.Count > 0)
-            {
-                query = " +(" + String.Join(" ", rangeQueries.ToArray()) + ")";
             }
             return query;
         }

@@ -67,7 +67,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
 
         private static void UpdateIndex(string searcherName, BaseJobsIndexer indexer)
         {
-            var jobsSearcher = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[searcherName], null, null);
+            var jobsSearcher = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[searcherName], null, null, null);
             var jobs = jobsSearcher.ReadJobs(new JobSearchQuery()).Result;
             var jobIds = new Dictionary<int,DateTime?>();
             foreach (var job in jobs)
