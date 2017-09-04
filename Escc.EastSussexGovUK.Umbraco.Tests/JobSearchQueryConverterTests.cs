@@ -139,7 +139,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
 
             var query = converter.ToQuery(collection);
 
-            Assert.AreEqual("£10000 to £20000", query.SalaryRanges[0]);
+            Assert.AreEqual("£10,000 to £20,000", query.SalaryRanges[0]);
         }
 
         [Test]
@@ -152,6 +152,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             var collection = converter.ToCollection(query);
 
             Assert.AreEqual("£10000 to £20000", collection["salary"]);
+        }
+
+        [Test]
+        public void MaximumSalaryRangeIsPopulatedFromQuery()
+        {
+            var query = new JobSearchQuery();
+            query.SalaryRanges.Add("£50000 and over");
+            var converter = new JobSearchQueryConverter();
+
+            var collection = converter.ToCollection(query);
+
+            Assert.AreEqual("£50000 and over", collection["salary"]);
         }
 
         [Test]

@@ -45,6 +45,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             if (!String.IsNullOrEmpty(collection["salary"]))
             {
                 AddQueryStringValuesToList(collection["salary"], query.SalaryRanges);
+                for (var i = 0; i < query.SalaryRanges.Count; i++)
+                {
+                    query.SalaryRanges[i] = Regex.Replace(query.SalaryRanges[i], "^(£)([0-9]+)", FormatSalary_MatchEvaluator);
+                    query.SalaryRanges[i] = Regex.Replace(query.SalaryRanges[i], "(to £)([0-9]+)", FormatSalary_MatchEvaluator);
+                }
             }
 
             if (!String.IsNullOrEmpty(collection["ref"]))
@@ -65,6 +70,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             }
 
             return query;
+        }
+
+        private string FormatSalary_MatchEvaluator(Match match)
+        {
+            var salary = Int32.Parse(match.Groups[2].Value);
+            return match.Groups[1].Value + salary.ToString("n0");
         }
 
         private static void AddQueryStringValuesToList(string unvalidatedValue, IList<string> valuesToQuery)
