@@ -163,7 +163,7 @@
       <HintPath>..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.7\lib\Escc.RubbishAndRecycling.SiteFinder.Website.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.2.3.1\lib\Escc.Umbraco.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.2.3.4\lib\Escc.Umbraco.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.Banners, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -174,14 +174,14 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.EditorTools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.EditorTools.2.4.1\lib\Escc.Umbraco.EditorTools.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.EditorTools.2.4.2\lib\Escc.Umbraco.EditorTools.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.HeatmapAnalytics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.HeatmapAnalytics.2.0.1\lib\Escc.Umbraco.HeatmapAnalytics.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.MediaSync, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.MediaSync.1.3.10\lib\Escc.Umbraco.MediaSync.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.MediaSync.1.3.11\lib\Escc.Umbraco.MediaSync.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.PropertyEditors, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -540,264 +540,6 @@
     <Content Include="apple-touch-icon-precomposed-72x72.png" />
     <Content Include="apple-touch-icon-precomposed.png" />
     <Content Include="apple-touch-icon.png" />
-    <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.css" />
-    <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\bootstrap.css" />
-    <Content Include="App_Plugins\EditorTools\Content\bootstrap.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\autoFill.bootstrap.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\autoFill.bootstrap.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\autoFill.bootstrap4.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\autoFill.bootstrap4.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\autoFill.dataTables.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\autoFill.dataTables.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\autoFill.foundation.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\autoFill.foundation.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\autoFill.jqueryui.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\autoFill.jqueryui.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\autoFill.semanticui.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\autoFill.semanticui.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\buttons.bootstrap.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\buttons.bootstrap.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\buttons.bootstrap4.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\buttons.bootstrap4.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\buttons.dataTables.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\buttons.dataTables.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\buttons.foundation.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\buttons.foundation.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\buttons.jqueryui.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\buttons.jqueryui.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\buttons.semanticui.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\buttons.semanticui.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\colReorder.bootstrap.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\colReorder.bootstrap.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\colReorder.bootstrap4.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\colReorder.bootstrap4.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\colReorder.dataTables.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\colReorder.dataTables.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\colReorder.foundation.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\colReorder.foundation.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\colReorder.jqueryui.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\colReorder.jqueryui.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\colReorder.semanticui.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\colReorder.semanticui.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\dataTables.bootstrap.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\dataTables.bootstrap.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\dataTables.bootstrap4.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\dataTables.bootstrap4.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\dataTables.foundation.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\dataTables.foundation.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\dataTables.jqueryui.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\dataTables.jqueryui.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\dataTables.material.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\dataTables.material.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\dataTables.semanticui.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\dataTables.semanticui.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\dataTables.uikit.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\dataTables.uikit.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\fixedColumns.bootstrap.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\fixedColumns.bootstrap.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\fixedColumns.bootstrap4.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\fixedColumns.bootstrap4.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\fixedColumns.dataTables.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\fixedColumns.dataTables.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\fixedColumns.foundation.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\fixedColumns.foundation.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\fixedColumns.jqueryui.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\fixedColumns.jqueryui.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\fixedColumns.semanticui.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\fixedColumns.semanticui.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\fixedHeader.bootstrap.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\fixedHeader.bootstrap.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\fixedHeader.bootstrap4.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\fixedHeader.bootstrap4.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\fixedHeader.dataTables.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\fixedHeader.dataTables.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\fixedHeader.foundation.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\fixedHeader.foundation.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\fixedHeader.jqueryui.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\fixedHeader.jqueryui.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\fixedHeader.semanticui.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\fixedHeader.semanticui.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\jquery.dataTables.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\jquery.dataTables.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\jquery.dataTables_themeroller.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\keyTable.bootstrap.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\keyTable.bootstrap.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\keyTable.bootstrap4.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\keyTable.bootstrap4.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\keyTable.dataTables.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\keyTable.dataTables.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\keyTable.foundation.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\keyTable.foundation.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\keyTable.jqueryui.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\keyTable.jqueryui.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\keyTable.semanticui.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\keyTable.semanticui.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\responsive.bootstrap.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\responsive.bootstrap.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\responsive.bootstrap4.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\responsive.bootstrap4.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\responsive.dataTables.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\responsive.dataTables.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\responsive.foundation.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\responsive.foundation.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\responsive.jqueryui.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\responsive.jqueryui.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\responsive.semanticui.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\responsive.semanticui.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\rowGroup.bootstrap.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\rowGroup.bootstrap.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\rowGroup.bootstrap4.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\rowGroup.bootstrap4.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\rowGroup.dataTables.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\rowGroup.dataTables.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\rowGroup.foundation.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\rowGroup.foundation.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\rowGroup.jqueryui.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\rowGroup.jqueryui.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\rowGroup.semanticui.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\rowGroup.semanticui.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\rowReorder.bootstrap.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\rowReorder.bootstrap.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\rowReorder.bootstrap4.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\rowReorder.bootstrap4.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\rowReorder.dataTables.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\rowReorder.dataTables.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\rowReorder.foundation.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\rowReorder.foundation.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\rowReorder.jqueryui.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\rowReorder.jqueryui.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\rowReorder.semanticui.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\rowReorder.semanticui.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\scroller.bootstrap.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\scroller.bootstrap.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\scroller.bootstrap4.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\scroller.bootstrap4.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\scroller.dataTables.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\scroller.dataTables.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\scroller.foundation.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\scroller.foundation.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\scroller.jqueryui.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\scroller.jqueryui.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\scroller.semanticui.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\scroller.semanticui.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\select.bootstrap.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\select.bootstrap.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\select.bootstrap4.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\select.bootstrap4.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\select.dataTables.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\select.dataTables.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\select.foundation.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\select.foundation.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\select.jqueryui.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\select.jqueryui.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\select.semanticui.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\select.semanticui.min.css" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\images\details_close.png" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\images\details_open.png" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\images\sort_asc.png" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\images\sort_asc_disabled.png" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\images\sort_both.png" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\images\sort_desc.png" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\images\sort_desc_disabled.png" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\swf\flashExport.swf" />
-    <Content Include="App_Plugins\EditorTools\Content\Site.css" />
-    <Content Include="App_Plugins\EditorTools\Content\_bootstrap-datetimepicker.css" />
-    <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="App_Plugins\EditorTools\lang\en-US.xml" />
-    <Content Include="App_Plugins\EditorTools\lang\en.xml" />
-    <Content Include="App_Plugins\EditorTools\Scripts\bootstrap-datetimepicker.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\bootstrap-datetimepicker.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\bootstrap.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\bootstrap.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\autoFill.bootstrap.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\autoFill.bootstrap.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\autoFill.bootstrap4.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\autoFill.bootstrap4.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\autoFill.foundation.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\autoFill.foundation.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\autoFill.jqueryui.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\autoFill.jqueryui.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\autoFill.semanticui.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\autoFill.semanticui.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.bootstrap.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.bootstrap.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.bootstrap4.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.bootstrap4.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.colVis.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.colVis.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.flash.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.flash.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.foundation.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.foundation.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.html5.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.html5.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.jqueryui.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.jqueryui.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.print.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.print.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.semanticui.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.semanticui.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.autoFill.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.autoFill.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.bootstrap.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.bootstrap.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.bootstrap4.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.bootstrap4.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.buttons.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.buttons.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.colReorder.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.colReorder.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.fixedColumns.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.fixedColumns.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.fixedHeader.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.fixedHeader.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.foundation.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.foundation.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.jqueryui.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.jqueryui.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.keyTable.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.keyTable.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.material.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.material.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.responsive.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.responsive.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.rowGroup.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.rowGroup.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.rowReorder.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.rowReorder.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.scroller.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.scroller.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.select.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.select.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.semanticui.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.semanticui.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.uikit.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.uikit.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\jquery.dataTables.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\jquery.dataTables.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\responsive.bootstrap.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\responsive.bootstrap.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\responsive.bootstrap4.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\responsive.bootstrap4.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\responsive.foundation.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\responsive.foundation.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\responsive.jqueryui.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\responsive.jqueryui.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\responsive.semanticui.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\responsive.semanticui.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\jquery-3.1.1.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\jquery-3.1.1.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\modernizr-2.6.2.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\moment-with-locales.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\moment-with-locales.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\moment.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\moment.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\respond.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\respond.min.js" />
-    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.controller.js" />
-    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.html" />
-    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.resource.js" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\editor.html" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\validate.js" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor\editor.html" />
@@ -874,6 +616,10 @@
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PhonePropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\package.manifest" />
+    <Content Include="favicon.ico" />
+    <Content Include="googledb369ad0fa294f54.html" />
+    <Content Include="robots.txt" />
+    <Content Include="windows-tile.png" />
     <Content Include="App_Plugins\EditorTools\Views\Content\Index.cshtml" />
     <Content Include="App_Plugins\EditorTools\Views\CSVExport\Index.cshtml" />
     <Content Include="App_Plugins\EditorTools\Views\EditorToolsHome\About.cshtml" />
@@ -898,23 +644,6 @@
     <Content Include="App_Plugins\EditorTools\Views\Stats\Index.cshtml" />
     <Content Include="App_Plugins\EditorTools\Views\Users\Index.cshtml" />
     <Content Include="App_Plugins\EditorTools\Views\web.config" />
-    <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.css.map" />
-    <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.min.css.map" />
-    <Content Include="App_Plugins\EditorTools\Content\bootstrap.css.map" />
-    <Content Include="App_Plugins\EditorTools\Content\bootstrap.min.css.map" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\common.scss" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\mixins.scss" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\semanticui.scss" />
-    <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Config\uMediaSync.config" />
-    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\package.manifest" />
-    <Content Include="favicon.ico" />
-    <Content Include="googledb369ad0fa294f54.html" />
-    <Content Include="robots.txt" />
-    <Content Include="windows-tile.png" />
     <None Include="Content\PagedList.css" />
     <Content Include="css\CampaignTemplates\align-buttons-large.css" />
     <Content Include="css\CampaignTemplates\align-buttons-medium.css" />
@@ -4269,7 +3998,6 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -4299,9 +4027,9 @@
     <Error Condition="!Exists('..\packages\UmbracoCms.7.5.14\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.5.14\build\UmbracoCms.props'))" />
     <Error Condition="!Exists('..\packages\UmbracoCms.7.5.14\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.5.14\build\UmbracoCms.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Umbraco.EditorTools.2.4.1\build\Escc.Umbraco.EditorTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.EditorTools.2.4.1\build\Escc.Umbraco.EditorTools.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.1.3.10\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.1.3.10\build\Escc.Umbraco.MediaSync.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.0.0\build\Escc.EastSussexGovUK.TemplateSource.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.TemplateSource.1.0.0\build\Escc.EastSussexGovUK.TemplateSource.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.1.3.11\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.1.3.11\build\Escc.Umbraco.MediaSync.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.EditorTools.2.4.2\build\Escc.Umbraco.EditorTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.EditorTools.2.4.2\build\Escc.Umbraco.EditorTools.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.Registration.MarriageSkin.1.0.3\build\Escc.Registration.MarriageSkin.targets" Condition="Exists('..\packages\Escc.Registration.MarriageSkin.1.0.3\build\Escc.Registration.MarriageSkin.targets')" />
   <Import Project="..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets')" />
@@ -4315,9 +4043,9 @@
   <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
   <Import Project="..\packages\UmbracoCms.7.5.14\build\UmbracoCms.targets" Condition="Exists('..\packages\UmbracoCms.7.5.14\build\UmbracoCms.targets')" />
   <Import Project="..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets')" />
-  <Import Project="..\packages\Escc.Umbraco.EditorTools.2.4.1\build\Escc.Umbraco.EditorTools.targets" Condition="Exists('..\packages\Escc.Umbraco.EditorTools.2.4.1\build\Escc.Umbraco.EditorTools.targets')" />
-  <Import Project="..\packages\Escc.Umbraco.MediaSync.1.3.10\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.1.3.10\build\Escc.Umbraco.MediaSync.targets')" />
   <Import Project="..\packages\Escc.EastSussexGovUK.TemplateSource.1.0.0\build\Escc.EastSussexGovUK.TemplateSource.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.0.0\build\Escc.EastSussexGovUK.TemplateSource.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.MediaSync.1.3.11\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.1.3.11\build\Escc.Umbraco.MediaSync.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.EditorTools.2.4.2\build\Escc.Umbraco.EditorTools.targets" Condition="Exists('..\packages\Escc.Umbraco.EditorTools.2.4.2\build\Escc.Umbraco.EditorTools.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
