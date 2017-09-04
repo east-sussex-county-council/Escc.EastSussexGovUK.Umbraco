@@ -352,6 +352,7 @@
     <Compile Include="HtmlStringFormatterTests.cs" />
     <Compile Include="JobAdvertHtmlParserTests.cs" />
     <Compile Include="JobSearchFilterTests.cs" />
+    <Compile Include="JobSearchQueryFactoryTests.cs" />
     <Compile Include="RemoveAzureDomainHtmlFormatterTests.cs" />
     <Compile Include="RemoveAzureDomainUrlTransformerTests.cs" />
     <Compile Include="UmbracoLatestServiceTests.cs" />

@@ -285,7 +285,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             var rangeQueries = new List<string>();
             foreach (var salaryRange in salaryRanges)
             {
-                var numericRange = Regex.Match(salaryRange, "^£([0-9]+)-£?([0-9]*)$");
+                var numericRange = Regex.Match(salaryRange.Replace(",", String.Empty), "^£([0-9]+) to £?([0-9]*)$");
                 if (numericRange.Success)
                 {
                     try
