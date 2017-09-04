@@ -285,6 +285,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             var rangeQueries = new List<string>();
             foreach (var salaryRange in salaryRanges)
             {
+                // Try to match salary ranges
                 var numericRange = Regex.Match(salaryRange.Replace(",", String.Empty), "^£([0-9]+) to £?([0-9]*)$");
                 if (numericRange.Success)
                 {
@@ -293,6 +294,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                         var from = Int32.Parse(numericRange.Groups[1].Value, CultureInfo.InvariantCulture);
                         var to = String.IsNullOrEmpty(numericRange.Groups[2].Value) ? 9999999 : Int32.Parse(numericRange.Groups[2].Value, CultureInfo.InvariantCulture);
                         rangeQueries.Add($"(+salaryMin:[{@from.ToString("D7")} TO 9999999] +salaryMax:[0000000 TO {to.ToString("D7")}])");
+                        continue;
                     }
                     catch (FormatException)
                     {
@@ -305,11 +307,32 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                         continue;
                     }
                 }
-                else
+
+                // If no match, try a range with no upper limit
+                numericRange = Regex.Match(salaryRange.Replace(",", String.Empty), "^£([0-9]+) and over$");
+                if (numericRange.Success)
                 {
-                    var sanitisedRange = Regex.Replace(salaryRange, "[^A-Za-z0-9' -]", String.Empty); // sanitise input
-                    rangeQueries.Add($"(+salaryRange:\"{sanitisedRange}\")");
+                    try
+                    {
+                        var from = Int32.Parse(numericRange.Groups[1].Value, CultureInfo.InvariantCulture);
+                        rangeQueries.Add($"+salaryMin:[{@from.ToString("D7")} TO 9999999]");
+                        continue;
+                    }
+                    catch (FormatException)
+                    {
+                        // just ignore bad input
+                        continue;
+                    }
+                    catch (OverflowException)
+                    {
+                        // just ignore bad input
+                        continue;
+                    }
                 }
+
+                // If no match, treat it as a text string
+                var sanitisedRange = Regex.Replace(salaryRange, "[^A-Za-z0-9' -]", String.Empty); // sanitise input
+                rangeQueries.Add($"(+salaryRange:\"{sanitisedRange}\")");
             }
 
             var query = String.Empty;
