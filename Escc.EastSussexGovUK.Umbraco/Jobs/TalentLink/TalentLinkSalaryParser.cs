@@ -76,6 +76,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
             var parseThis = Regex.Replace(salaryDescription, @"\s+", " ").Replace(" - ", "-").Replace(",", String.Empty);
             parseThis = Regex.Replace(parseThis, "(£[0-9.]+) ([0-9.]+)", "$1$2");
 
+            // If it's an hourly rate, stop now - don't try to work out an annual salary
+            if (parseThis.Contains(" per hour"))
+            {
+                return parsedSalary;
+            }
+
             // Now try to match the various formats seen in TalentLink data
             var match = Regex.Match(parseThis, "^([0-9.]+)-([0-9.]+) GBP Year");
             if (match.Success)

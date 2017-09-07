@@ -19,7 +19,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -174,6 +174,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests.Properties {
         internal static string SalaryInBodyText4 {
             get {
                 return ResourceManager.GetString("SalaryInBodyText4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;h5 class=&quot;JD-FieldLabel&quot; id=&quot;JDLabel-Field1&quot;&gt;Job Details&lt;/h5&gt;
+        ///&lt;span class=&quot;JD-FieldText&quot; id=&quot;JDText-Field1&quot;&gt;&lt;p&gt;Salary: £11.79 - £12.51 per hour&lt;br /&gt;Contract type: Part Time&lt;br /&gt;Working pattern: 20-30 hours per week&lt;/p&gt;
+        ///&lt;p&gt;Closing date: Thursday 31 August 2017&lt;/p&gt;
+        ///&lt;p&gt;&lt;span&gt;Applicants can send their CV to &lt;a href=&quot;mailto:director@twigletsforestschoolnursery.com&quot;&gt;director@twigletsforestschoolnursery.com&lt;/a&gt;&amp;nbsp;Once CV is received, an application form will be emailed.&lt;br /&gt;&lt;br /&gt;If you have any question [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string SalaryInBodyText5 {
+            get {
+                return ResourceManager.GetString("SalaryInBodyText5", resourceCulture);
             }
         }
         
