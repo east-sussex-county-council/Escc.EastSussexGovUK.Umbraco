@@ -1,47 +1,50 @@
-﻿@using Escc.Dates
+﻿@using System.Text
+@using Escc.Dates
 @using Escc.Web
 @model Escc.EastSussexGovUK.Umbraco.Jobs.JobAdvertViewModel
+@{
+    var jobSummaryHtml = new StringBuilder("<dl class=\"job-summary\">");
+
+    if (!String.IsNullOrEmpty(Model.Job.Reference))
+    {
+        jobSummaryHtml.Append("<dt id=\"job-reference\">Job reference</dt><dd>").Append(Model.Job.Reference).Append("</dd>");
+    }
+    if (!String.IsNullOrEmpty(Model.Job.Location))
+    {
+        jobSummaryHtml.Append("<dt>Location</dt><dd>").Append(Model.Job.Location).Append("</dd>");
+    }
+    if (!String.IsNullOrEmpty(Model.Job.Salary.SalaryRange))
+    {
+        jobSummaryHtml.Append("<dt>Salary</dt><dd>").Append(Model.Job.Salary.SalaryRange).Append("</dd>");
+    }
+    if (Model.Job.ClosingDate.HasValue)
+    {
+        jobSummaryHtml.Append("<dt>Closing date</dt><dd>").Append(Model.Job.ClosingDate.Value.ToBritishDateWithDay()).Append("</dd>");
+    }
+    if (!String.IsNullOrEmpty(Model.Job.Organisation))
+    {
+        jobSummaryHtml.Append("<dt>Organisation</dt><dd>").Append(Model.Job.Organisation).Append("</dd>");
+    }
+    if (!String.IsNullOrEmpty(Model.Job.Department))
+    {
+        jobSummaryHtml.Append("<dt>Department</dt><dd>").Append(Model.Job.Department).Append("</dd>");
+    }
+    if (!String.IsNullOrEmpty(Model.Job.ContractType))
+    {
+        jobSummaryHtml.Append("<dt>Contract type</dt><dd>").Append(Model.Job.ContractType).Append("</dd>");
+    }
+    if (!String.IsNullOrEmpty(Model.Job.JobType))
+    {
+        jobSummaryHtml.Append("<dt>Job type</dt><dd>").Append(Model.Job.JobType).Append("</dd>");
+    }
+    jobSummaryHtml.Append("</dl>");
+}
 <div class="content text-content">
     <h1>@Model.Metadata.Title</h1>
 </div>
 @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
 <div class="supporting content-small content-medium text-content">
-    <dl class="job-summary">
-        @if (!String.IsNullOrEmpty(Model.Job.Reference))
-        {
-            <dt id="job-reference">Job reference</dt><dd>@Model.Job.Reference</dd>
-        }
-        @if (!String.IsNullOrEmpty(Model.Job.Location))
-        {
-            <dt>Location</dt><dd>@Model.Job.Location</dd>
-        }
-        @if (!String.IsNullOrEmpty(Model.Job.Salary.SalaryRange))
-        {
-            <dt>Salary</dt>
-            <dd>@Model.Job.Salary.SalaryRange</dd>
-        }
-        @if (Model.Job.ClosingDate.HasValue)
-        {
-            <dt>Closing date</dt>
-            <dd>@Model.Job.ClosingDate.Value.ToBritishDateWithDay()</dd>
-        }
-        @if (!String.IsNullOrEmpty(Model.Job.Organisation))
-        {
-            <dt>Organisation</dt><dd>@Model.Job.Organisation</dd>
-        }
-        @if (!String.IsNullOrEmpty(Model.Job.Department))
-        {
-            <dt>Department</dt><dd>@Model.Job.Department</dd>
-        }
-        @if (!String.IsNullOrEmpty(Model.Job.ContractType))
-        {
-            <dt>Contract type</dt><dd>@Model.Job.ContractType</dd>
-        }
-        @if (!String.IsNullOrEmpty(Model.Job.JobType))
-        {
-            <dt>Job type</dt><dd>@Model.Job.JobType</dd>
-        }
-    </dl>
+    @Html.Raw(jobSummaryHtml)
 </div>
 
 <div class="article">
@@ -49,7 +52,7 @@
         @Model.Job.AdvertHtml
         @if (Model.Job.ApplyUrl != null)
         {
-            <p class="main-action"><a href="@Model.Job.ApplyUrl" class="apply">Apply</a> 
+            <p class="main-action"><a href="@Model.Job.ApplyUrl" class="apply">Apply</a>
             @if (Model.LoginPage != null) {
                 @:<span class="login-continue">or <a href="@Model.LoginPage.Url">continue an application you've started</a></span>
             }
@@ -59,7 +62,7 @@
             var hasAdditional = Model.Job.AdditionalInformationHtml != null && !String.IsNullOrEmpty(Model.Job.AdditionalInformationHtml.ToHtmlString());
             var additionalHtml = hasAdditional ? Model.Job.AdditionalInformationHtml.ToHtmlString()
                                                     .Replace("<p>", "<p><small>").Replace("</p>", "</small></p>")
-                                                    .Replace("<h3>", "<h3><small>").Replace("</h3>", "</small></h3>") 
+                                                    .Replace("<h3>", "<h3><small>").Replace("</h3>", "</small></h3>")
                                                : String.Empty;
             var hasEqualOpps = Model.Job.EqualOpportunitiesHtml != null && !String.IsNullOrEmpty(Model.Job.EqualOpportunitiesHtml.ToHtmlString());
             var equalOpps = hasEqualOpps ? Model.Job.EqualOpportunitiesHtml.ToHtmlString().Replace("<p>", "<p><small>").Replace("</p>", "</small></p>") : String.Empty;
@@ -108,7 +111,14 @@
 @Html.Partial("~/Views/Layouts/_SocialMedia.cshtml")
 @Html.Partial("~/Views/EastSussexGovUK/Features/_SupportingContentDesktop.cshtml")
 <script type="application/ld+json">
-    {
+@{ 
+        var employmentTypes = new List<string>();
+        if (Model.Job.IsFullTime) { employmentTypes.Add("FULL_TIME"); }
+        if (Model.Job.IsPartTime) { employmentTypes.Add("PART_TIME"); }
+        
+    var employmentType = employmentTypes.Count > 0 ? "\"employmentType\": [\"" + String.Join("\", \"", employmentTypes.ToArray()) + "\"]," : String.Empty;
+}
+{
     "@@context": "http://schema.org",
     "@@type": "JobPosting",
 @if (Model.Job.Salary.MinimumSalary.HasValue) {
@@ -120,21 +130,30 @@
     @:            },
 }
     "title": "@Model.Job.JobTitle",
-    "employmentType": "@Model.Job.ContractType",
+    "description": "@Html.Raw(jobSummaryHtml.Replace("\"", "'")) @Html.Raw(Model.Job.AdvertHtml.ToHtmlString().Replace("\"", "'"))",
     "industry": "Local government",
+    @Html.Raw(employmentType)
     "jobLocation": {
         "@@type": "Place",
         "address": {
             "@@type": "PostalAddress",
-            "addressLocality": "@Model.Job.Location"
+            "addressLocality": "@Model.Job.Location",
+            "addressRegion": "@(Model.Job.JobTitle.Contains("Surrey County Council") ? "Surrey" : "East Sussex")",
+            "addressCountry": "UK"
             }  
         },
     "salaryCurrency": "GBP",
     "hiringOrganization": {
         "@@type": "Organization",
         "name": "@Model.Job.Organisation"
-        }
-    },
+        },
+    "datePosted": "@Model.Job.DatePublished.ToIso8601DateTime()",
     "validThrough": "@Model.Job.ClosingDate.Value.ToIso8601DateTime()",
-    "url": "@Model.Job.Url"
+    "url": "@Model.Job.Url",
+    "identifier": {
+        "@@type": "PropertyValue",
+        "name": "Reference",
+        "value": "@Model.Job.Reference"
+    }
+}
 </script>
