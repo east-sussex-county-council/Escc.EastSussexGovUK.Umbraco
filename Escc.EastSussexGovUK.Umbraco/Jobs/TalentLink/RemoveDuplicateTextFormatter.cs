@@ -9,7 +9,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
     /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Jobs.IHtmlStringFormatter" />
     public class RemoveDuplicateTextFormatter : IHtmlStringFormatter
     {
-        private readonly string _textToMatch;
+        private string _textToMatch;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RemoveDuplicateTextFormatter"/> class.
@@ -29,7 +29,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
         {
             if (String.IsNullOrEmpty(html) || String.IsNullOrEmpty(_textToMatch)) return html;
 
+            // Accept any kind of white space when matching a space in the search string
+            _textToMatch = _textToMatch.Replace(" ", @"\s+");
+
             html = Regex.Replace(html, @"<p>(<span>)*" + _textToMatch + "(</span>)*</p>", String.Empty);
+            html = Regex.Replace(html, @"<p>\s*" + _textToMatch + @"\s*<br />", "<p>");
+            html = Regex.Replace(html, @"<br />\s*" + _textToMatch + @"\s*<br />", "<br />");
+            html = Regex.Replace(html, @"<br />\s*" + _textToMatch + @"\s*</p>", "</p>");
 
             return html;
         }

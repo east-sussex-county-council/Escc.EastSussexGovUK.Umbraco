@@ -88,7 +88,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
             {
                 parsedSalary.MinimumSalary = ParseSalaryValue(match.Groups[1].Value);
                 parsedSalary.MaximumSalary = ParseSalaryValue(match.Groups[2].Value);
-                parsedSalary.SalaryRange = $"£{parsedSalary.MinimumSalary?.ToString("n0")} to £{parsedSalary.MaximumSalary?.ToString("n0")} per annum";
+                if (parsedSalary.MinimumSalary == parsedSalary.MaximumSalary)
+                {
+                    parsedSalary.SalaryRange = $"£{parsedSalary.MinimumSalary?.ToString("n0")} per annum";
+                }
+                else
+                {
+                    parsedSalary.SalaryRange = $"£{parsedSalary.MinimumSalary?.ToString("n0")} to £{parsedSalary.MaximumSalary?.ToString("n0")} per annum";
+                }
                 return parsedSalary;
             }
 
