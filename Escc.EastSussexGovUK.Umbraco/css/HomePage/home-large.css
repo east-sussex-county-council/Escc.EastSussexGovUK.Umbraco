@@ -24,9 +24,7 @@
 /*********************************************** 
  * SCREENREADERS ONLY: j.mp/visuallyhidden *
  ***********************************************/
-.news .features h2 { position: absolute;
-  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-  clip: rect(1px, 1px, 1px, 1px); }
+.news .features h2 { position: absolute; clip: rect(1px, 1px, 1px, 1px); }
 
 /* Change standard quick answer colour */
 .schools {padding: 0;margin: 0; overflow: hidden;background: #fff;box-shadow: 0 0px 12px 0 #b9b9b9; min-height: 8.526316em; }
@@ -34,9 +32,6 @@
 
 .library-search {margin-top: .947368em; box-shadow: 0 0px 12px 0 #b9b9b9;min-height: 11.368421em; }
 .library-search h2 { margin-top: .6em;}
-
-/* .final-group element exists only to control float layout for IE6 */
-.final-group { clear: both; }
 
 /* Remove spacing above bottom row boxes now that they're side-by-side.
    Each box is 4 cols on 12 col grid with gutter right and below */
@@ -56,3 +51,8 @@
 /* Reset clearing from medium size, and remove right margin from final box */
 .job-search { clear: left;border: none; }
 .involved { clear: none; margin-right: 0; }
+
+/* Update rating to be boxed to match all the other elements. The border here should be invisible, but has the effect of containing the margins
+   of aside.rating, and those margins act as padding between the rating and its containing .rating-box. */
+.rating-box { border-top: .1px solid white; border-bottom: .1px solid white; box-shadow: 0 0 12px 0 #b9b9b9; }
+.rating-box h2 {margin-top: 0;}

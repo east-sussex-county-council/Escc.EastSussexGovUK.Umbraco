@@ -150,62 +150,63 @@
     </section>
 </div>
 
-<div class="final-group">
-    @if (Model.JobSearchResultsPage != null)
-    {
-        @Html.Partial("HomePageJobSearch")
+@if (Model.JobSearchResultsPage != null)
+{
+    @Html.Partial("HomePageJobSearch")
+}
+
+<div class="recycle text-content">
+    <div class="gutters context">
+        <section>
+            <h2>@Model.RecyclingTitle</h2>
+            @Html.Partial("~/Views/Topic/TopicSection_RecyclingSiteFinder.ascx")
+        </section>
+    </div>
+</div>
+
+<div class="involved text-content">
+    @{
+        var involvedClass = Model.InvolvedLinks.Any() ? "gutters context has-buttons" : "gutters context";
     }
+    <div class="@involvedClass">
+        <section>
+            <header>
+                <h2>@Model.InvolvedTitle</h2></header>
+            @if (Model.InvolvedRssUrl != null)
+            {
+                <a class="feed screen" rel="alternate" type="application/rss+xml" id="rss4" href="@Model.InvolvedRssUrl"><img src="@baseUrl/img/body/rss-27px.gif" alt="RSS feed" width="27" height="27"/></a>
+            }
+            @if (Model.InvolvedItems.Any())
+            {
+                <ul>
+                    @foreach (var item in Model.InvolvedItems)
+                    {
+                        <li>
+                            <a href="@item.Link.Url">@item.Link.Text</a>
+                            @Html.Raw(item.Description)
+                        </li>
+                    }
+                </ul>
+            }
 
-    <div class="recycle text-content">
-        <div class="gutters context">
-            <section>
-                <h2>@Model.RecyclingTitle</h2>
-                @Html.Partial("~/Views/Topic/TopicSection_RecyclingSiteFinder.ascx")
-            </section>
-        </div>
-    </div>
-
-    <div class="involved text-content">
-        @{
-            var involvedClass = Model.InvolvedLinks.Any() ? "gutters context has-buttons" : "gutters context";
-        }
-        <div class="@involvedClass">
-            <section>
-                <header>
-                    <h2>@Model.InvolvedTitle</h2></header>
-                @if (Model.InvolvedRssUrl != null)
-                {
-                    <a class="feed screen" rel="alternate" type="application/rss+xml" id="rss4" href="@Model.InvolvedRssUrl"><img src="@baseUrl/img/body/rss-27px.gif" alt="RSS feed" width="27" height="27"/></a>
-                }
-                @if (Model.InvolvedItems.Any())
-                {
-                    <ul>
-                        @foreach (var item in Model.InvolvedItems)
-                        {
-                            <li>
-                                <a href="@item.Link.Url">@item.Link.Text</a>
-                                @Html.Raw(item.Description)
-                            </li>
-                        }
-                    </ul>
-                }
-
-                @if (Model.InvolvedLinks.Any())
-                {
-                    <footer id="involvedFooter">
-                        <div class="buttons">
-                            @{
-                                foreach (var link in Model.InvolvedLinks)
-                                {
-                                    <a href="@link.Url">@link.Text</a>
-                                }
+            @if (Model.InvolvedLinks.Any())
+            {
+                <footer id="involvedFooter">
+                    <div class="buttons">
+                        @{
+                            foreach (var link in Model.InvolvedLinks)
+                            {
+                                <a href="@link.Url">@link.Text</a>
                             }
-                        </div>
-                    </footer>
-                }
-            </section>
-        </div>
+                        }
+                    </div>
+                </footer>
+            }
+        </section>
     </div>
+</div>
+<div class="text-content content rating-box">
+    @Html.Partial("~/Views/Layouts/_Rating.cshtml")
 </div>
 @section Javascript{
     <script type="application/ld+json">
