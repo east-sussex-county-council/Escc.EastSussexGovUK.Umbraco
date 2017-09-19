@@ -6,6 +6,7 @@ using Escc.Dates;
 using Exceptionless;
 using HtmlAgilityPack;
 using Escc.Umbraco.PropertyEditors.RichTextPropertyEditor;
+using Escc.Html;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
 {
@@ -88,6 +89,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
                         new RemoveUnwantedAttributesFormatter(new string[] { "style" }),
                         new ReplaceElementNameFormatter("h5", "h2"),
                         new RemoveElementByNameAndContentFormatter("h2", "Job Details"),
+                        new TruncateLongLinksFormatter(new HtmlLinkFormatter())
                     };
                     foreach (var formatter in agilityPackFormatters)
                     {

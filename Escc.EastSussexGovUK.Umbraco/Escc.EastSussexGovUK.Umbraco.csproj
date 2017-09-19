@@ -3747,6 +3747,7 @@
     <Compile Include="DocumentTypes\ReadOnlyDateDataType.cs" />
     <Compile Include="Jobs\Examine\ISalaryRangeQueryBuilder.cs" />
     <Compile Include="Jobs\Examine\SalaryRangeLuceneQueryBuilder.cs" />
+    <Compile Include="Jobs\TruncateLongLinksFormatter.cs" />
     <Compile Include="Ratings\RatingRelationType.cs" />
     <Compile Include="Ratings\RatingContentTab.cs" />
     <Compile Include="Ratings\RatingDocumentType.cs" />

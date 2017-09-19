@@ -112,13 +112,15 @@
 @Html.Partial("~/Views/EastSussexGovUK/Features/_SupportingContentDesktop.cshtml")
 <script type="application/ld+json">
 @{ 
-        var employmentTypes = new List<string>();
-        if (Model.Job.IsFullTime) { employmentTypes.Add("FULL_TIME"); }
-        if (Model.Job.IsPartTime) { employmentTypes.Add("PART_TIME"); }
-        
+    var employmentTypes = new List<string>();
+    if (Model.Job.IsFullTime) { employmentTypes.Add("FULL_TIME"); }
+    if (Model.Job.IsPartTime) { employmentTypes.Add("PART_TIME"); }
+
     var employmentType = employmentTypes.Count > 0 ? "\"employmentType\": [\"" + String.Join("\", \"", employmentTypes.ToArray()) + "\"]," : String.Empty;
-}
-{
+    var region = "East Sussex";
+    if (Model.Job.JobTitle.Contains("Surrey County Council")) { region = "Surrey"; }
+    if (Model.Job.Location == "Midhurst") { region = "West Susssex"; }
+}{
     "@@context": "http://schema.org",
     "@@type": "JobPosting",
 @if (Model.Job.Salary.MinimumSalary.HasValue) {
@@ -138,7 +140,7 @@
         "address": {
             "@@type": "PostalAddress",
             "addressLocality": "@Model.Job.Location",
-            "addressRegion": "@(Model.Job.JobTitle.Contains("Surrey County Council") ? "Surrey" : "East Sussex")",
+            "addressRegion": "@region",
             "addressCountry": "UK"
             }  
         },

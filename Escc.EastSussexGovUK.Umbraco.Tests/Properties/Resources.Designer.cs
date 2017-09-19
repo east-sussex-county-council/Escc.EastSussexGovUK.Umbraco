@@ -115,6 +115,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;span class=&quot;JD-FieldText&quot; id=&quot;JDText-Field1&quot;&gt;&lt;p&gt;Salary: £48,396 - £55,644 per annum&lt;br /&gt;Contract type: Permanent &lt;br /&gt;Working pattern: Full time&lt;/p&gt;
+        ///&lt;p&gt;Closing date: Sunday 24 September 2017&lt;br /&gt;Interview date: week commencing Monday 2 October 2017&lt;/p&gt;
+        ///&lt;p&gt;How to apply: please follow the below link:&lt;br /&gt;&lt;a href=&quot;https://www.surreycc.gov.uk/jobs/erecruitment/details.html?nPostingID=19590&amp;nPostingTargetID=44866&amp;option=52&amp;sort=DESC&amp;respnr=1&amp;ID=Q0EFK026203F3VBQB7968LOCX&amp;Resultsperpage=20&amp;lg=UK&amp;mask=surrex [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string LongUrlAndEmailInBodyText {
+            get {
+                return ResourceManager.GetString("LongUrlAndEmailInBodyText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;tr class=&quot;Lst-BG1&quot;&gt;
         ///&lt;td headers=&quot;th1&quot; class=&quot;Lst-Desc1T&quot;&gt;
         ///&lt;a href=&quot;jsoutputinitrapido.cfm?component=lay9999_jdesc100a&amp;amp;nPostingID=16476&amp;amp;nPostingTargetID=33720&amp;amp;option=52&amp;amp;sort=DESC&amp;amp;respnr=8&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&quot; class=&quot;lstA-desc1&quot; title=&quot;Click here to see the job description: Civil Enforcement Officer (NSL Ltd) (ID33720)&quot; tabindex=&quot;6&quot;&gt;Civil Enforcement Officer (NSL Ltd)&lt;/a&gt;
