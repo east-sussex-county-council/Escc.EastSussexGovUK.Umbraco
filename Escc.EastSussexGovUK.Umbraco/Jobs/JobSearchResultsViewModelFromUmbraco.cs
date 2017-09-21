@@ -7,7 +7,12 @@ using Umbraco.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
-    public class SearchResultsViewModelFromUmbraco : BaseViewModelFromUmbracoBuilder, IViewModelBuilder<JobSearchResultsViewModel>
+    /// <summary>
+    /// Builds an instance of <see cref="JobSearchResultsViewModel"/> from an Umbraco page based on <see cref="JobSearchResultsDocumentType"/>
+    /// </summary>
+    /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Services.BaseViewModelFromUmbracoBuilder" />
+    /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Services.IViewModelBuilder{Escc.EastSussexGovUK.Umbraco.Jobs.JobSearchResultsViewModel}" />
+    public class JobSearchResultsViewModelFromUmbraco : BaseViewModelFromUmbracoBuilder, IViewModelBuilder<JobSearchResultsViewModel>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="JobSearchResultsViewModel" /> class.
@@ -16,7 +21,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// <exception cref="System.ArgumentNullException">umbracoContent
         /// or
         /// mediaUrlTransformer</exception>
-        public SearchResultsViewModelFromUmbraco(IPublishedContent umbracoContent) :
+        public JobSearchResultsViewModelFromUmbraco(IPublishedContent umbracoContent) :
             base(umbracoContent, null)
         {
         }
@@ -37,6 +42,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 JobAdvertPage = BuildLinkToPage("JobDetailPage_Content"),
                 LoginPage = BuildLinkToPage("LoginPage_Content"),
                 JobsSearchPage = BuildLinkToPage("JobsSearchPage_Content"),
+                JobsPrivacyPage = BuildLinkToPage("JobsPrivacyPage_Content"),
                 JobsSet = ParseJobsSet("PublicOrRedeployment_Content")
             };
 

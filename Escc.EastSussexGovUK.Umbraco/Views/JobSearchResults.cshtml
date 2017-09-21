@@ -103,7 +103,13 @@
                     <label for="email">Your email address</label>
                     <input type="email" name="email" id="email" required="required" aria-describedby="email-privacy" class="describedby-tip" data-tip-positions="top bottom"/>
                     <input type="submit" value="Get job alert &gt;"/>
-                    <p id="email-privacy">We'll send alerts to this address. We won't use it for anything else or share it. Each alert includes the option to unsubscribe.</p>
+                    <p id="email-privacy">
+                        We'll only use your email to send you job alerts.
+                        @if (Model.JobsPrivacyPage != null)
+                        {
+                            @:<a href="@Model.JobsPrivacyPage.Url">Learn more<span class="aural"> about how we use your data on our jobs pages</span></a>.
+                        }
+                    </p>
                 </div>
 
                 if (!String.IsNullOrEmpty(Model.Metadata.RssFeedUrl))

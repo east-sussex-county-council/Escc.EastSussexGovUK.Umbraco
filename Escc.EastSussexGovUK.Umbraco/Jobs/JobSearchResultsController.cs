@@ -42,7 +42,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         {
             if (model == null) throw new ArgumentNullException(nameof(model));
 
-            var viewModel = new SearchResultsViewModelFromUmbraco(model.Content).BuildModel();
+            var viewModel = new JobSearchResultsViewModelFromUmbraco(model.Content).BuildModel();
 
             // Add common properties to the model
             var modelBuilder = new BaseViewModelBuilder();

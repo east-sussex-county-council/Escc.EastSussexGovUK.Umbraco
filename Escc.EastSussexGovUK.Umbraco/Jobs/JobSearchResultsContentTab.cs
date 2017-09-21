@@ -89,12 +89,22 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public string JobsSearchPage { get; set; }
 
         /// <summary>
+        /// Gets or sets the page with the privacy notice about how jobs data is used
+        /// </summary>
+        /// <value>
+        /// A reference to the Umbraco node for the privacy page
+        /// </value>
+        [UmbracoProperty("Jobs privacy notice", "JobsPrivacyPage", BuiltInUmbracoDataTypes.ContentPickerAlias, sortOrder: 10,
+            Description = "Select a page which has a privacy notice for how jobs data is used")]
+        public string JobsPrivacyPage { get; set; }
+
+        /// <summary>
         /// Gets or sets the jobs RSS feed
         /// </summary>
         /// <value>
         /// A reference to the Umbraco node for the jobs RSS feed
         /// </value>
-        [UmbracoProperty("Jobs RSS feed", "JobsRssFeed", BuiltInUmbracoDataTypes.ContentPickerAlias, sortOrder: 10, Description = "Select the jobs RSS feed, based on the 'Jobs RSS feed' document type")]
+        [UmbracoProperty("Jobs RSS feed", "JobsRssFeed", BuiltInUmbracoDataTypes.ContentPickerAlias, sortOrder: 11, Description = "Select the jobs RSS feed, based on the 'Jobs RSS feed' document type")]
         public string JobsRssFeed { get; set; }
 
         [UmbracoProperty("Which jobs should this page show?", "PublicOrRedeployment", PublicOrRedeploymentDataType.PropertyEditor, PublicOrRedeploymentDataType.DataTypeName, sortOrder: 11, mandatory: true)]
