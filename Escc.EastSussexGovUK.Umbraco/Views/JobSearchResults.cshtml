@@ -24,6 +24,8 @@
     Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=JobsCss&media-query=medium", 101, MediaQueryAlias.Resolve("Medium"));
     Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=JobsCss&media-query=large", 101, MediaQueryAlias.Resolve("Large"));
     Html.RequiresJs("~/js/job-results.js");
+    Html.RequiresJs(JsFileAlias.Resolve("Tips"));
+    Html.RequiresJs(JsFileAlias.Resolve("DescribedByTips"));
 
     var query = HttpUtility.ParseQueryString(Request.Url.Query);
     JobSearchQuery.JobsSortOrder sort = JobSearchQuery.JobsSortOrder.None;
@@ -32,6 +34,7 @@
     var queryWithoutSort = HttpUtility.ParseQueryString(Request.Url.Query);
     queryWithoutSort.Remove("sort");
     var urlWithoutSort = Request.Url.AbsolutePath + "?" + queryWithoutSort;
+    Model.Metadata.PageUrl = new Uri(Request.Url, urlWithoutSort);
     if (queryWithoutSort.Count > 0) { urlWithoutSort += "&";}
     urlWithoutSort += "sort=";
 
@@ -98,8 +101,9 @@
                 <input type="hidden" name="JobsSet" value="@(Model.Query?.JobsSet)" />
                 <div>
                     <label for="email">Your email address</label>
-                    <input type="email" name="email" id="email" required="required"/>
+                    <input type="email" name="email" id="email" required="required" aria-describedby="email-privacy" class="describedby-tip" data-tip-positions="top bottom"/>
                     <input type="submit" value="Get job alert &gt;"/>
+                    <p id="email-privacy">We'll send alerts to this address. We won't use it for anything else or share it. Each alert includes the option to unsubscribe.</p>
                 </div>
 
                 if (!String.IsNullOrEmpty(Model.Metadata.RssFeedUrl))
