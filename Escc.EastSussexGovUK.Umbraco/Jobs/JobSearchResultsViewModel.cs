@@ -37,6 +37,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public HtmlLink JobsSearchPage { get; set; }
 
         /// <summary>
+        /// Gets or sets the privacy notice page for how jobs data is used.
+        /// </summary>
+        public HtmlLink JobsPrivacyPage { get; set; }
+
+        /// <summary>
         /// Gets the jobs to display
         /// </summary>
         public IPagedList<Job> Jobs { get; set; }

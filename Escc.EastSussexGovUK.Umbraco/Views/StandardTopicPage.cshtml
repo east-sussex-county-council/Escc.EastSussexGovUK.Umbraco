@@ -29,12 +29,12 @@
 
         var sectionTypes = new List<string>()
         {
-            placeholders["phDefSection01"].Value.ToString(),
-            placeholders["phDefSection02"].Value.ToString(),
-            placeholders["phDefSection03"].Value.ToString(),
-            placeholders["phDefSection04"].Value.ToString(),
-            placeholders["phDefSection05"].Value.ToString(),
-            placeholders["phDefSection06"].Value.ToString()
+            placeholders["phDefSection01"].Value?.ToString(),
+            placeholders["phDefSection02"].Value?.ToString(),
+            placeholders["phDefSection03"].Value?.ToString(),
+            placeholders["phDefSection04"].Value?.ToString(),
+            placeholders["phDefSection05"].Value?.ToString(),
+            placeholders["phDefSection06"].Value?.ToString()
         };
         if (sectionTypes.Contains("School term dates") || sectionTypes.Contains("Find a recycling site"))
         {

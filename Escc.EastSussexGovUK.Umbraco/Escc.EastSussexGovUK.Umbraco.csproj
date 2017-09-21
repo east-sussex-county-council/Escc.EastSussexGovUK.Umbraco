@@ -3886,7 +3886,7 @@
     <Compile Include="RightsOfWayDeposits\RightsOfWayDepositViewModelFromUmbraco.cs" />
     <Compile Include="RightsOfWayDeposits\RightsOfWayEventHandler.cs" />
     <Compile Include="Services\BaseViewModelFromUmbracoBuilder.cs" />
-    <Compile Include="Jobs\SearchResultsViewModelFromUmbraco.cs" />
+    <Compile Include="Jobs\JobSearchResultsViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\ComponentViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\JobsHomeViewModelFromUmbraco.cs" />
     <Compile Include="CampaignTemplates\ShareStyleDataType.cs" />
