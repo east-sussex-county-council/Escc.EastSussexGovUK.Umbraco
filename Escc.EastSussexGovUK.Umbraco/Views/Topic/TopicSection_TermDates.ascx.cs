@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Escc.EastSussexGovUK.Umbraco.Views.TermDates;
+using System;
 using System.Web;
-using Escc.Schools.TermDates.Website;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 

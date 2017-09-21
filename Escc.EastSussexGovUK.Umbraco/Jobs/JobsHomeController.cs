@@ -29,7 +29,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
 
             var mediaUrlTransformer = new RemoveMediaDomainUrlTransformer();
             var viewModel = new JobsHomeViewModelFromUmbraco(model.Content,
-                new RelatedLinksService(mediaUrlTransformer, new ElibraryUrlTransformer())).BuildModel();
+                new RelatedLinksService(mediaUrlTransformer, new ElibraryUrlTransformer(), new RemoveAzureDomainUrlTransformer())).BuildModel();
 
             // Add common properties to the model
             var modelBuilder = new BaseViewModelBuilder();

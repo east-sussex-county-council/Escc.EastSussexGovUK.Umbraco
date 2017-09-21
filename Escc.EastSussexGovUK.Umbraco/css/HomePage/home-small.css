@@ -4,9 +4,9 @@
  
  Top tasks area includes top tasks box and report, apply, pay. Both about top tasks so share some styles. 
 
- Both top tasks boxes have one line space below. width: 100% is for IE6 
+ Both top tasks boxes have one line space below.  
 */
-.top-tasks, .report-apply-pay { margin: 0 0 1.384615em 0; background: #fff; padding: 0; width: 100%; }
+.top-tasks, .report-apply-pay { margin: 0 0 1.384615em 0; background: #fff; padding: 0; }
 
 /* .gutters is inside 6 cols */
 @media screen {
@@ -21,8 +21,8 @@
 .report-apply-pay h2 { position: absolute; left: -999px; top: -999px; }
 .no-js .tabs { display: none; }
 
-/* 9px above and below lists is one line space. position: relative is to stop disappearing bullets in IE6 */
-.report-apply-pay ul, .top-tasks ul.first, .report-apply-pay ul.first, .library-search ul.first { margin: .692308em 0 0; position: relative; }
+/* 9px above and below lists is one line space. */
+.report-apply-pay ul, .top-tasks ul.first, .report-apply-pay ul.first, .library-search ul.first { margin: .692308em 0 0; }
 .top-tasks ul.second, .report-apply-pay ul.second, .library-search ul.second { margin: 0 2.953586% .692308em 0; position: relative; }
 .top-tasks li, .report-apply-pay li, .library-search li { list-style: none; background: url(/img/body/item-type.png?v=2) no-repeat 0 -992px; padding-left: 16px; }
 
@@ -33,7 +33,6 @@
 
 /* News box is 5 cols on 10 col grid with line space below */
 .news { clear: both; margin: 0 0 1.384615em 0;border-top: 1px solid #dae1e5;}
-.ie67 .news { display: inline-block; }
 
 /* Feed icon and 9px above header */
 .news .feed { left: auto; right: 0; }
@@ -50,7 +49,6 @@
 
 /* A second feature gets a different colour caption */
 .news .feature2 .caption { background-color: #056b0b; background-color: rgba(5,107,11,.8); }
-.ie67 .news .feature2 .caption { background-color: #056b0b; }
 
 /* List style shared between news, get involved */
 .news ol, .involved ul { margin: 0; background: #fff; }
@@ -88,11 +86,9 @@ body .library-search .form { background: none;padding: 0;margin-bottom: 0;}
 
 /* Recycle box has gutter below */
 .recycle { margin: 0 0 1.384615em; border-bottom: 1px solid #dae1e5; background: #fff; }
-.ie67 .recycle .context { display: inline-block; }
 
 /* Get involved box */
 .involved { background: #fff;  }
-.ie67 .involved .context { display: inline-block; }
 .involved ul a { display: block; }
 .involved ul p { margin: 0; }
 .involved li { padding: 9px 0 9px; margin: 0; overflow: hidden; list-style: none; }
@@ -112,6 +108,11 @@ body .library-search .form { background: none;padding: 0;margin-bottom: 0;}
      .buttons { margin: 0; } 
      .buttons a {display: block;padding: 0; margin: 0 18px 0 0; }
 }
+
+/***********
+ * RATINGS *
+ ***********/
+.rating-box { clear: both; border-top: 1px solid #dae1e5; }
 
 /**
  * JQuery UI CSS for tabs widget, but with some colours and sizes changed and irrelevant CSS removed, 

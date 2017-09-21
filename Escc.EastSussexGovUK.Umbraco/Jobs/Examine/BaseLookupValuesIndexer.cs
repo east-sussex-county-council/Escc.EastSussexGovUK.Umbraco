@@ -89,8 +89,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 var salaryRanges = Task.Run(async () => await _lookupValuesProvider.ReadSalaryRanges()).Result;
                 foreach (var lookupValue in salaryRanges)
                 {
+                    lookupValue.Text = lookupValue.Text.Replace(" - ", " to "); // East Sussex County Council house style
+
                     var query = new JobSearchQuery();
-                    query.SalaryRanges.Add(lookupValue.Text);
+                    query.SalaryRanges.Add(lookupValue.Text.Replace(",",String.Empty));
                     query.ClosingDateFrom = DateTime.Today;
                     var simpleDataSet = Task.Run(async () => await CreateDataSetFromLookup(i, indexType, "SalaryRange", query, lookupValue, jobsDataProvider)).Result;
                     dataSets.Add(simpleDataSet);

@@ -36,7 +36,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [TestCase(@"EastSussexGovUK\Rss\rss-to-html.ashx")]
 
         // Escc.Umbraco.EditorTools project
-        [TestCase(@"App_Plugins\EditorTools\Views\CSVExport\Index.cshtml")]
+        [TestCase(@"App_Plugins\EditorTools\Content\Site.css")]
+        [TestCase(@"App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.eot")]
+        [TestCase(@"App_Plugins\EditorTools\lang\en.xml")]
+        [TestCase(@"App_Plugins\EditorTools\Scripts\bootstrap.js")]
+        [TestCase(@"App_Plugins\EditorTools\Views\Content\Index.cshtml")]
+	[TestCase(@"App_Plugins\EditorTools\Views\CSVExport\Index.cshtml")]
+
+        // Escc.EastSussexGovUK.TemplateSource project
+        [TestCase(@"favicon.ico")]
+        [TestCase(@"apple-touch-icon.png")]
+        [TestCase(@"robots.txt")]
 
         public void NuGetPackagesCorrectlyIncludedInProject(string filePathWhichShouldBeIncluded)
         {

@@ -659,6 +659,12 @@ Countywide
 &lt;/body&gt;
 &lt;/html&gt;</value>
   </data>
+  <data name="LongUrlAndEmailInBodyText" xml:space="preserve">
+    <value>&lt;span class="JD-FieldText" id="JDText-Field1"&gt;&lt;p&gt;Salary: £48,396 - £55,644 per annum&lt;br /&gt;Contract type: Permanent &lt;br /&gt;Working pattern: Full time&lt;/p&gt;
+&lt;p&gt;Closing date: Sunday 24 September 2017&lt;br /&gt;Interview date: week commencing Monday 2 October 2017&lt;/p&gt;
+&lt;p&gt;How to apply: please follow the below link:&lt;br /&gt;&lt;a href="https://www.surreycc.gov.uk/jobs/erecruitment/details.html?nPostingID=19590&amp;nPostingTargetID=44866&amp;option=52&amp;sort=DESC&amp;respnr=1&amp;ID=Q0EFK026203F3VBQB7968LOCX&amp;Resultsperpage=20&amp;lg=UK&amp;mask=surrext"&gt;https://www.surreycc.gov.uk/jobs/erecruitment/details.html?nPostingID=19590&amp;nPostingTargetID=44866&amp;option=52&amp;sort=DESC&amp;respnr=1&amp;ID=Q0EFK026203F3VBQB7968LOCX&amp;Resultsperpage=20&amp;lg=UK&amp;mask=surrext&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;For an informal discussion contact Janet Polley on 0208 541 9088 or by e-mail at &lt;a href="mailto:janet.polley@surreycc.gov.uk"&gt;janet.polley@surreycc.gov.uk&lt;/a&gt;&lt;/p&gt;&lt;/span&gt;</value>
+  </data>
   <data name="MultipleJobResults" xml:space="preserve">
     <value>&lt;tr class="Lst-BG1"&gt;
 &lt;td headers="th1" class="Lst-Desc1T"&gt;
@@ -946,6 +952,13 @@ Countywide
   <data name="SalaryInBodyText4" xml:space="preserve">
     <value>&lt;h5 class="JD-FieldLabel" id="JDLabel-Field1"&gt;Job Details&lt;/h5&gt;
 &lt;span class="JD-FieldText" id="JDText-Field1"&gt;&lt;p&gt;Salary: Dependant on experience, knowledge and qualifications&lt;br /&gt;Contract type: Part Time&lt;br /&gt;Working pattern: 20-30 hours per week&lt;/p&gt;
+&lt;p&gt;Closing date: Thursday 31 August 2017&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;Applicants can send their CV to &lt;a href="mailto:director@twigletsforestschoolnursery.com"&gt;director@twigletsforestschoolnursery.com&lt;/a&gt;&amp;nbsp;Once CV is received, an application form will be emailed.&lt;br /&gt;&lt;br /&gt;If you have any questions please &lt;/span&gt;&lt;span&gt;contact Shirley Zhang, Director if they have any questions via email or telephone 01273 515 971.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;/span&gt;</value>
+  </data>
+  <data name="SalaryInBodyText5" xml:space="preserve">
+    <value>&lt;h5 class="JD-FieldLabel" id="JDLabel-Field1"&gt;Job Details&lt;/h5&gt;
+&lt;span class="JD-FieldText" id="JDText-Field1"&gt;&lt;p&gt;Salary: £11.79 - £12.51 per hour&lt;br /&gt;Contract type: Part Time&lt;br /&gt;Working pattern: 20-30 hours per week&lt;/p&gt;
 &lt;p&gt;Closing date: Thursday 31 August 2017&lt;/p&gt;
 &lt;p&gt;&lt;span&gt;Applicants can send their CV to &lt;a href="mailto:director@twigletsforestschoolnursery.com"&gt;director@twigletsforestschoolnursery.com&lt;/a&gt;&amp;nbsp;Once CV is received, an application form will be emailed.&lt;br /&gt;&lt;br /&gt;If you have any questions please &lt;/span&gt;&lt;span&gt;contact Shirley Zhang, Director if they have any questions via email or telephone 01273 515 971.&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;/span&gt;</value>

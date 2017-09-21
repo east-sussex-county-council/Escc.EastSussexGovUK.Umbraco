@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="..\packages\UmbracoCms.7.5.14\build\UmbracoCms.props" Condition="Exists('..\packages\UmbracoCms.7.5.14\build\UmbracoCms.props')" />
-  <Import Project="..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -109,8 +109,7 @@
       <HintPath>..\packages\Escc.ClientDependencyFramework.WebForms.2.1.1\lib\Escc.ClientDependencyFramework.WebForms.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Dates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Dates.2.0.1\lib\Escc.Dates.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\Escc.Dates.2.1.0\lib\Escc.Dates.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.EastSussexGovUK.1.3.0\lib\Escc.EastSussexGovUK.dll</HintPath>
@@ -121,6 +120,12 @@
     <Reference Include="Escc.EastSussexGovUK.Rss, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.EastSussexGovUK.Rss.2.0.0\lib\Escc.EastSussexGovUK.Rss.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Escc.EastSussexGovUK.TemplateSource, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.EastSussexGovUK.TemplateSource.1.0.0\lib\Escc.EastSussexGovUK.TemplateSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Escc.EastSussexGovUK.WebForms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.EastSussexGovUK.WebForms.1.2.1\lib\Escc.EastSussexGovUK.WebForms.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Elibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Elibrary.1.1.0\lib\Escc.Elibrary.dll</HintPath>
@@ -142,6 +147,9 @@
       <HintPath>..\packages\Escc.Html.2.0.0\lib\Escc.Html.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Escc.NavigationControls.WebForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.NavigationControls.WebForms.1.0.0\lib\Escc.NavigationControls.WebForms.dll</HintPath>
+    </Reference>
     <Reference Include="Escc.Net, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Net.1.0.1\lib\Escc.Net.dll</HintPath>
       <Private>True</Private>
@@ -154,11 +162,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.RubbishAndRecycling.SiteFinder.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.7\lib\Escc.RubbishAndRecycling.SiteFinder.Website.dll</HintPath>
-    </Reference>
-    <Reference Include="Escc.Schools.TermDates.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Schools.TermDates.Website.1.2.1\lib\Escc.Schools.TermDates.Website.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.1\lib\Escc.RubbishAndRecycling.SiteFinder.Website.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Services, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Services.3.0.0\lib\Escc.Services.dll</HintPath>
@@ -167,7 +171,8 @@
       <HintPath>..\packages\Escc.Services.Azure.2.1.1\lib\Escc.Services.Azure.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.2.3.1\lib\Escc.Umbraco.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.2.3.4\lib\Escc.Umbraco.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.Banners, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.Banners.2.0.3\lib\Escc.Umbraco.Banners.dll</HintPath>
@@ -177,18 +182,18 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.EditorTools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.EditorTools.2.0.0\lib\Escc.Umbraco.EditorTools.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.EditorTools.2.4.2\lib\Escc.Umbraco.EditorTools.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.HeatmapAnalytics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.HeatmapAnalytics.2.0.1\lib\Escc.Umbraco.HeatmapAnalytics.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.MediaSync, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.MediaSync.1.3.9\lib\Escc.Umbraco.MediaSync.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.MediaSync.1.3.11\lib\Escc.Umbraco.MediaSync.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.PropertyEditors, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.PropertyEditors.5.1.1\lib\Escc.Umbraco.PropertyEditors.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.PropertyEditors.5.1.2\lib\Escc.Umbraco.PropertyEditors.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.RecycleBinManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.RecycleBinManager.1.1.0\lib\Escc.Umbraco.RecycleBinManager.dll</HintPath>
@@ -234,8 +239,8 @@
     <Reference Include="GDev.Umbraco.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\GDev.Umbraco.Testing.Web.2.0.0\lib\net452\GDev.Umbraco.Web.dll</HintPath>
     </Reference>
-    <Reference Include="HtmlAgilityPack, Version=1.4.9.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
-      <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Humanizer, Version=2.1.0.0, Culture=neutral, PublicKeyToken=979442b78dfc278e, processorArchitecture=MSIL">
@@ -280,9 +285,8 @@
       <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Data.Edm, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -711,9 +715,12 @@
     <Content Include="App_Plugins\EditorTools\Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="App_Plugins\EditorTools\Content\DataTables\swf\flashExport.swf" />
     <Content Include="App_Plugins\EditorTools\Content\Site.css" />
+    <Content Include="App_Plugins\EditorTools\Content\_bootstrap-datetimepicker.css" />
     <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="App_Plugins\EditorTools\lang\en-US.xml" />
     <Content Include="App_Plugins\EditorTools\lang\en.xml" />
+    <Content Include="App_Plugins\EditorTools\Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="App_Plugins\EditorTools\Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="App_Plugins\EditorTools\Scripts\bootstrap.js" />
     <Content Include="App_Plugins\EditorTools\Scripts\bootstrap.min.js" />
     <Content Include="App_Plugins\EditorTools\Scripts\DataTables\autoFill.bootstrap.js" />
@@ -795,6 +802,10 @@
     <Content Include="App_Plugins\EditorTools\Scripts\jquery-3.1.1.js" />
     <Content Include="App_Plugins\EditorTools\Scripts\jquery-3.1.1.min.js" />
     <Content Include="App_Plugins\EditorTools\Scripts\modernizr-2.6.2.js" />
+    <Content Include="App_Plugins\EditorTools\Scripts\moment-with-locales.js" />
+    <Content Include="App_Plugins\EditorTools\Scripts\moment-with-locales.min.js" />
+    <Content Include="App_Plugins\EditorTools\Scripts\moment.js" />
+    <Content Include="App_Plugins\EditorTools\Scripts\moment.min.js" />
     <Content Include="App_Plugins\EditorTools\Scripts\respond.js" />
     <Content Include="App_Plugins\EditorTools\Scripts\respond.min.js" />
     <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.controller.js" />
@@ -820,6 +831,8 @@
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\UKLocationPropertyEditor.js" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\editor.html" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\validate.js" />
+    <Content Include="App_Plugins\Escc.UmbracoBranding\branding.css" />
+    <Content Include="App_Plugins\Escc.UmbracoBranding\poppies.jpg" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.controller.js" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.htm" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.resource.js" />
@@ -854,20 +867,6 @@
     <Content Include="Config\Lang\zh-CN.user.xml" />
     <Content Include="Config\splashes\booting.aspx" />
     <Content Include="Config\splashes\noNodes.aspx" />
-    <Content Include="App_Plugins\EditorTools\Views\Content\Index.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\CSVExport\Index.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\EditorToolsHome\About.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\EditorToolsHome\Help.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\EditorToolsHome\Index.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\ExamineSearch\Index.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\Media\Index.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\PageExpiry\Index.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\Partials\_DataTable.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\Partials\_NoCachedData.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\Partials\_RegeneratingCache.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\Shared\_Layout.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\Users\Index.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\web.config" />
     <Content Include="Config\imageprocessor\security.config" />
     <Content Include="Config\imageprocessor\processing.config" />
     <Content Include="Config\imageprocessor\cache.config" />
@@ -880,17 +879,7 @@
     <Content Include="Config\Dashboard.config" />
     <Content Include="Config\BaseRestExtensions.config" />
     <Content Include="Config\404handlers.config" />
-    <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.css.map" />
-    <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.min.css.map" />
-    <Content Include="App_Plugins\EditorTools\Content\bootstrap.css.map" />
-    <Content Include="App_Plugins\EditorTools\Content\bootstrap.min.css.map" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\common.scss" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\mixins.scss" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\semanticui.scss" />
+    <Content Include="App_Plugins\Escc.UmbracoBranding\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.TwitterScriptPropertyEditor\package.manifest" />
@@ -898,6 +887,49 @@
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PhonePropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\package.manifest" />
+    <Content Include="favicon.ico" />
+    <Content Include="googledb369ad0fa294f54.html" />
+    <Content Include="robots.txt" />
+    <Content Include="Views\Topic\RecyclingSiteFinder.ascx" />
+    <Content Include="Views\Topic\TopicSection_RecyclingSiteFinder.ascx" />
+    <Content Include="windows-tile.png" />
+    <Content Include="App_Plugins\EditorTools\Views\Content\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\CSVExport\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\EditorToolsHome\About.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\EditorToolsHome\Help.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\EditorToolsHome\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\ExamineSearch\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\ExpiryBulkUpdate\BrowseSelected.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\ExpiryBulkUpdate\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\InBoundLinkChecker\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Media\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\MultiMove\ConfirmSelected.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\MultiMove\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\PageExpiry\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Partials\_DataTable.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Partials\_ExpiryBulkUpdateChildren.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Partials\_MultiMoveChildren.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Partials\_MultiMoveConfirmSelectedChildren.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Partials\_NoCachedData.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Partials\_Processing.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Partials\_RegeneratingCache.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Shared\_Layout.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Stats\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Users\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\web.config" />
+    <Content Include="Config\uMediaSync.config" />
+    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\package.manifest" />
+    <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.css.map" />
+    <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.min.css.map" />
+    <Content Include="App_Plugins\EditorTools\Content\bootstrap.css.map" />
+    <Content Include="App_Plugins\EditorTools\Content\bootstrap.min.css.map" />
+    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\common.scss" />
+    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\mixins.scss" />
+    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\semanticui.scss" />
+    <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Content\PagedList.css" />
     <Content Include="css\CampaignTemplates\align-buttons-large.css" />
     <Content Include="css\CampaignTemplates\align-buttons-medium.css" />
@@ -929,6 +961,10 @@
     <Content Include="css\Jobs\jobs-large.css" />
     <Content Include="css\Jobs\jobs-medium.css" />
     <Content Include="css\Jobs\jobs-small.css" />
+    <Content Include="css\RightsOfWayDeposits\deposits-medium.css" />
+    <Content Include="css\RightsOfWayDeposits\deposits-small.css" />
+    <Content Include="css\rating-medium.css" />
+    <Content Include="css\rating-small.css" />
     <Content Include="css\StandardDownloadPage\download-small.css" />
     <Content Include="css\StandardLandingPage\landing-medium.css" />
     <Content Include="css\StandardLandingPage\landing-small.css" />
@@ -946,9 +982,7 @@
     <Content Include="EastSussexGovUK\Rss\rss-xslt.css" />
     <Content Include="EastSussexGovUK\Rss\rss.css" />
     <Content Include="EastSussexGovUK\Rss\rss-to-html.ashx" />
-    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="googledb369ad0fa294f54.html" />
     <Content Include="images\quote-close.gif" />
     <Content Include="images\quote-open.gif" />
     <None Include="Jobs\Images\East Sussex Jobs logo colour.png" />
@@ -956,10 +990,18 @@
     <None Include="Jobs\Images\header.png" />
     <EmbeddedResource Include="Jobs\Alerts\JobAlert.html" />
     <EmbeddedResource Include="Jobs\Alerts\JobAlertConfirmation.html" />
+    <Content Include="images\rating1.png" />
+    <Content Include="images\rating2.png" />
+    <Content Include="images\rating3.png" />
+    <Content Include="images\rating4.png" />
     <Content Include="js\CampaignTemplates\campaign-landing.js" />
     <Content Include="js\CouncilPlan\council-plan.js" />
     <Content Include="js\CustomerFocusTemplates\guide.js" />
+    <Content Include="js\GovDelivery\Business-and-Funding.js" />
+    <Content Include="js\GovDelivery\ESCC.js" />
+    <Content Include="js\GovDelivery\Libraries.js" />
     <Content Include="js\job-results.js" />
+    <Content Include="js\rights-of-way-deposit.js" />
     <Content Include="js\tabs.js" />
     <Content Include="js\CustomerFocusTemplates\location.js" />
     <Content Include="js\document-metadata.js" />
@@ -980,9 +1022,7 @@
     <Content Include="MarriageSkin\img\web.config" />
     <Content Include="images\web.config" />
     <Content Include="App_Plugins\SpectrumColorPicker\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\package.manifest" />
     <Content Include="EastSussexGovUK\Rss\rss-to-html.ashx" />
-    <Content Include="Config\uMediaSync.config" />
     <None Include="ExamineIndex.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -998,7 +1038,6 @@
     <Content Include="MarriageSkin\img\marriage-landing-blue.jpg" />
     <Content Include="MarriageSkin\img\marriage-landing-red.jpg" />
     <Content Include="MarriageSkin\js\min\marriage-skin.js" />
-    <Content Include="robots.txt" />
     <None Include="scripts\jquery-1.7-vsdoc.js" />
     <None Include="scripts\jquery-1.7.js" />
     <None Include="scripts\jquery-1.7.min.js" />
@@ -3473,12 +3512,10 @@
     <Content Include="Views\TermDates\QuickAnswer.ascx" />
     <Content Include="Views\TermDates\QuickAnswerMvcProxy.ascx" />
     <Content Include="Views\TermDates\TermDatesTable.ascx" />
-    <Content Include="Views\Topic\RecyclingSiteFinder.ascx" />
     <Content Include="Views\Topic\TopicSection_Alternative.ascx" />
     <Content Include="Views\Topic\TopicSection_FeaturedImage.ascx" />
     <Content Include="Views\Topic\TopicSection_ImageRowBorderless.ascx" />
     <Content Include="Views\Topic\TopicSection_Normal.ascx" />
-    <Content Include="Views\Topic\TopicSection_RecyclingSiteFinder.ascx" />
     <Content Include="Views\Topic\TopicSection_SchoolClosures.ascx" />
     <Content Include="Views\Topic\TopicSection_TermDates.ascx" />
     <Content Include="Views\Web.config" />
@@ -3650,10 +3687,15 @@
     <Content Include="Umbraco\Xslt\Web.config" />
     <Content Include="Views\JobAlerts.cshtml" />
     <Content Include="Views\JobsSearchForm.cshtml" />
+    <Content Include="Views\Layouts\_Rating.cshtml" />
+    <Content Include="Views\RightsOfWayDeposit.cshtml" />
+    <Content Include="Views\RightsOfWayDeposits.cshtml" />
+    <Content Include="Views\RightsOfWayDepositsRss.cshtml" />
+    <Content Include="Views\RightsOfWayDepositsCsv.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="windows-tile.png" />
+    <Content Include="Views\_PagingBarControl.ascx" />
     <Content Include="Views\Layouts\_CmsPreview.cshtml" />
     <Content Include="Views\Layouts\_ContentExperiment.cshtml" />
     <Content Include="Views\Layouts\_GuideNavigation.cshtml" />
@@ -3706,6 +3748,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\EastSussexGovUK_Mvc.cs" />
+    <Compile Include="App_Start\EastSussexGovUK_WebForms.cs" />
+    <Compile Include="AzureConfiguration\FrontEndReadOnlyServerRegistrar.cs" />
+    <Compile Include="AzureConfiguration\MasterServerRegistrar.cs" />
+    <Compile Include="AzureConfiguration\RegisterServerRoleEventHandler.cs" />
     <Compile Include="CampaignTemplates\CampaignTile.cs" />
     <Compile Include="CampaignTemplates\CampaignTilesViewModel.cs" />
     <Compile Include="CampaignTemplates\CampaignTilesViewModelFromUmbraco.cs" />
@@ -3713,6 +3759,22 @@
     <Compile Include="CampaignTemplates\CampaignTilesContentTab.cs" />
     <Compile Include="CampaignTemplates\CampaignTilesDesignTab.cs" />
     <Compile Include="CampaignTemplates\CampaignTilesDocumentType.cs" />
+    <Compile Include="DocumentTypes\PreValueListDataType.cs" />
+    <Compile Include="DocumentTypes\ReadOnlyDateDataType.cs" />
+    <Compile Include="Jobs\Examine\ISalaryRangeQueryBuilder.cs" />
+    <Compile Include="Jobs\Examine\SalaryRangeLuceneQueryBuilder.cs" />
+    <Compile Include="Jobs\RemoveElementsWithNoContentFormatter.cs" />
+    <Compile Include="Jobs\TruncateLongLinksFormatter.cs" />
+    <Compile Include="Ratings\RatingRelationType.cs" />
+    <Compile Include="Ratings\RatingContentTab.cs" />
+    <Compile Include="Ratings\RatingDocumentType.cs" />
+    <Compile Include="Ratings\RatingRelationEventHandler.cs" />
+    <Compile Include="Ratings\RatingsDocumentType.cs" />
+    <Compile Include="Ratings\RatingUrlDataType.cs" />
+    <Compile Include="Errors\HttpStatusFromConfiguration.cs" />
+    <Compile Include="Errors\NotFoundContentFinder.cs" />
+    <Compile Include="Errors\RegisterErrorsEventHandler.cs" />
+    <Compile Include="Errors\UmbracoCustomErrorsModule.cs" />
     <Compile Include="Examine\IQueryBuilder.cs" />
     <Compile Include="Examine\ITokenisedQueryBuilder.cs" />
     <Compile Include="Examine\ISearchFilter.cs" />
@@ -3722,6 +3784,7 @@
     <Compile Include="Examine\LuceneTokenisedQueryBuilder.cs" />
     <Compile Include="Examine\LuceneStopWordsRemover.cs" />
     <Compile Include="Examine\SearchField.cs" />
+    <Compile Include="Examine\SearchTermSanitiser.cs" />
     <Compile Include="Examine\WildcardSuffixFilter.cs" />
     <Compile Include="HomePage\HomePageViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\Alerts\AzureTableStorageAlertsRepository.cs" />
@@ -3841,6 +3904,26 @@
     <Compile Include="Jobs\TalentLink\TalentLinkUrl.cs" />
     <Compile Include="Jobs\HouseStyleDateFormatter.cs" />
     <Compile Include="Location\LocationsAsKmlHandler.cs" />
+    <Compile Include="Ratings\RatingSettings.cs" />
+    <Compile Include="RichTextHtmlFormatters\RemoveAzureDomainHtmlFormatter.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositExpiryCalculator.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsCsvController.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsRssController.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsCsvDocumentType.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsRssDocumentType.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsSortOrder.cs" />
+    <Compile Include="RightsOfWayDeposits\ParishDataType.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsController.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsContentTab.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositContentTab.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositController.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsDocumentType.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositDocumentType.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsViewModel.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositViewModel.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsViewModelFromExamine.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositViewModelFromUmbraco.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayEventHandler.cs" />
     <Compile Include="Services\BaseViewModelFromUmbracoBuilder.cs" />
     <Compile Include="Jobs\SearchResultsViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\ComponentViewModelFromUmbraco.cs" />
@@ -3857,7 +3940,10 @@
     <Compile Include="Jobs\JobsHomeViewModel.cs" />
     <Compile Include="HomePage\HomePageItemsAnalyticsTab.cs" />
     <Compile Include="Jobs\WorkPattern.cs" />
+    <Compile Include="Ratings\IRatingSettingsProvider.cs" />
+    <Compile Include="Ratings\RatingSettingsFromUmbraco.cs" />
     <Compile Include="UrlTransformers\ElibraryUrlTransformer.cs" />
+    <Compile Include="UrlTransformers\RemoveAzureDomainUrlTransformer.cs" />
     <Compile Include="UrlTransformers\RemoveMediaDomainUrlTransformer.cs" />
     <Compile Include="UrlTransformers\CampaignTrackingUrlTransformer.cs" />
     <Compile Include="Services\GoogleAdWordsTagParser.cs" />
@@ -3963,10 +4049,6 @@
     <Compile Include="DocumentTypes\StandardTopicPage\TopicPageLayoutDataType.cs" />
     <Compile Include="DocumentTypes\Task\TaskContentTab.cs" />
     <Compile Include="DocumentTypes\Task\TaskDocumentType.cs" />
-    <Compile Include="Errors\HttpStatusFromConfiguration.cs" />
-    <Compile Include="Errors\NotFoundContentFinder.cs" />
-    <Compile Include="Errors\RegisterErrorsEventHandler.cs" />
-    <Compile Include="Errors\UmbracoCustomErrorsModule.cs" />
     <Compile Include="MicrosoftCmsMigration\CmsUtilities.cs" />
     <Compile Include="MicrosoftCmsMigration\CustomProperty.cs" />
     <Compile Include="MicrosoftCmsMigration\MicrosoftCmsPageController.cs" />
@@ -4136,6 +4218,15 @@
     <Compile Include="Views\StandardTopicPage.ascx.designer.cs">
       <DependentUpon>StandardTopicPage.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Views\TermDates\ITermDatesDataProvider.cs" />
+    <Compile Include="Views\TermDates\LocalXmlFileProvider.cs" />
+    <Compile Include="Views\TermDates\QuickAnswer.ascx.cs">
+      <DependentUpon>QuickAnswer.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\TermDates\QuickAnswer.ascx.designer.cs">
+      <DependentUpon>QuickAnswer.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Views\TermDates\QuickAnswerMvcProxy.ascx.cs">
       <DependentUpon>QuickAnswerMvcProxy.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4143,6 +4234,14 @@
     <Compile Include="Views\TermDates\QuickAnswerMvcProxy.ascx.designer.cs">
       <DependentUpon>QuickAnswerMvcProxy.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Views\TermDates\TermDatesTable.ascx.cs">
+      <DependentUpon>TermDatesTable.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\TermDates\TermDatesTable.ascx.designer.cs">
+      <DependentUpon>TermDatesTable.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TermDates\UrlProvider.cs" />
     <Compile Include="Views\Topic\SectionLayoutConfigurationCollection.cs" />
     <Compile Include="Views\Topic\SectionLayoutConfigurationElement.cs" />
     <Compile Include="Views\Topic\SectionLayoutConfigurationSection.cs" />
@@ -4192,6 +4291,13 @@
     <Compile Include="Views\Topic\TopicSection_TermDates.ascx.designer.cs">
       <DependentUpon>TopicSection_TermDates.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Views\_PagingBarControl.ascx.cs">
+      <DependentUpon>_PagingBarControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\_PagingBarControl.ascx.designer.cs">
+      <DependentUpon>_PagingBarControl.ascx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MicrosoftCmsMigration\Placeholders\PlaceholderResources.resx">
@@ -4206,7 +4312,6 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -4227,22 +4332,20 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Escc.Schools.TermDates.Website.1.2.1\build\Escc.Schools.TermDates.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Schools.TermDates.Website.1.2.1\build\Escc.Schools.TermDates.Website.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Registration.MarriageSkin.1.0.3\build\Escc.Registration.MarriageSkin.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Registration.MarriageSkin.1.0.3\build\Escc.Registration.MarriageSkin.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.1.3.9\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.1.3.9\build\Escc.Umbraco.MediaSync.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Escc.Alerts.Website.2.0.1\build\Escc.Alerts.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Alerts.Website.2.0.1\build\Escc.Alerts.Website.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.7\build\Escc.RubbishAndRecycling.SiteFinder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.7\build\Escc.RubbishAndRecycling.SiteFinder.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Umbraco.EditorTools.2.0.0\build\Escc.Umbraco.EditorTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.EditorTools.2.0.0\build\Escc.Umbraco.EditorTools.targets'))" />
     <Error Condition="!Exists('..\packages\UmbracoCms.7.5.14\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.5.14\build\UmbracoCms.props'))" />
     <Error Condition="!Exists('..\packages\UmbracoCms.7.5.14\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.5.14\build\UmbracoCms.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.5.1.1\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.5.1.1\build\Escc.Umbraco.PropertyEditors.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.0.0\build\Escc.EastSussexGovUK.TemplateSource.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.TemplateSource.1.0.0\build\Escc.EastSussexGovUK.TemplateSource.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.1.3.11\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.1.3.11\build\Escc.Umbraco.MediaSync.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.EditorTools.2.4.2\build\Escc.Umbraco.EditorTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.EditorTools.2.4.2\build\Escc.Umbraco.EditorTools.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.1\build\Escc.RubbishAndRecycling.SiteFinder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.1\build\Escc.RubbishAndRecycling.SiteFinder.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
-  <Import Project="..\packages\Escc.Schools.TermDates.Website.1.2.1\build\Escc.Schools.TermDates.Website.targets" Condition="Exists('..\packages\Escc.Schools.TermDates.Website.1.2.1\build\Escc.Schools.TermDates.Website.targets')" />
   <Import Project="..\packages\Escc.Registration.MarriageSkin.1.0.3\build\Escc.Registration.MarriageSkin.targets" Condition="Exists('..\packages\Escc.Registration.MarriageSkin.1.0.3\build\Escc.Registration.MarriageSkin.targets')" />
-  <Import Project="..\packages\Escc.Umbraco.MediaSync.1.3.9\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.1.3.9\build\Escc.Umbraco.MediaSync.targets')" />
   <Import Project="..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
@@ -4250,11 +4353,13 @@
     <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
   </Target>
   <Import Project="..\packages\Escc.Alerts.Website.2.0.1\build\Escc.Alerts.Website.targets" Condition="Exists('..\packages\Escc.Alerts.Website.2.0.1\build\Escc.Alerts.Website.targets')" />
-  <Import Project="..\packages\Escc.Umbraco.EditorTools.2.0.0\build\Escc.Umbraco.EditorTools.targets" Condition="Exists('..\packages\Escc.Umbraco.EditorTools.2.0.0\build\Escc.Umbraco.EditorTools.targets')" />
-  <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.7\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.0.7\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
   <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
   <Import Project="..\packages\UmbracoCms.7.5.14\build\UmbracoCms.targets" Condition="Exists('..\packages\UmbracoCms.7.5.14\build\UmbracoCms.targets')" />
-  <Import Project="..\packages\Escc.Umbraco.PropertyEditors.5.1.1\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.5.1.1\build\Escc.Umbraco.PropertyEditors.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets')" />
+  <Import Project="..\packages\Escc.EastSussexGovUK.TemplateSource.1.0.0\build\Escc.EastSussexGovUK.TemplateSource.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.0.0\build\Escc.EastSussexGovUK.TemplateSource.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.MediaSync.1.3.11\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.1.3.11\build\Escc.Umbraco.MediaSync.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.EditorTools.2.4.2\build\Escc.Umbraco.EditorTools.targets" Condition="Exists('..\packages\Escc.Umbraco.EditorTools.2.4.2\build\Escc.Umbraco.EditorTools.targets')" />
+  <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.1\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.1\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

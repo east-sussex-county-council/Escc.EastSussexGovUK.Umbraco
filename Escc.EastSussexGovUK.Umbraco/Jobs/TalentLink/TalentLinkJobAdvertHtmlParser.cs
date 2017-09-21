@@ -6,6 +6,7 @@ using Escc.Dates;
 using Exceptionless;
 using HtmlAgilityPack;
 using Escc.Umbraco.PropertyEditors.RichTextPropertyEditor;
+using Escc.Html;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
 {
@@ -88,6 +89,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
                         new RemoveUnwantedAttributesFormatter(new string[] { "style" }),
                         new ReplaceElementNameFormatter("h5", "h2"),
                         new RemoveElementByNameAndContentFormatter("h2", "Job Details"),
+                        new RemoveElementsWithNoContentFormatter(),
+                        new TruncateLongLinksFormatter(new HtmlLinkFormatter())
                     };
                     foreach (var formatter in agilityPackFormatters)
                     {
@@ -117,6 +120,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
                     parsedHtml = ApplyStringFormatters(parsedHtml);
                     parsedHtml = new RemoveDuplicateTextFormatter("Closing date: " + job.ClosingDate.Value.ToBritishDate()).FormatHtml(parsedHtml);
                     parsedHtml = new RemoveDuplicateTextFormatter("Closing date: " + job.ClosingDate.Value.ToBritishDateWithDay()).FormatHtml(parsedHtml);
+                    parsedHtml = new RemoveDuplicateTextFormatter("Salary: " + job.Salary.SalaryRange).FormatHtml(parsedHtml);
+                    parsedHtml = new RemoveDuplicateTextFormatter("Salary: " + job.Salary.SalaryRange.Replace(" to ", " - ")).FormatHtml(parsedHtml);
+                    parsedHtml = new RemoveDuplicateTextFormatter("Contract type: " + job.ContractType).FormatHtml(parsedHtml);
 
                     job.AdvertHtml = new HtmlString(parsedHtml);
                     job.WorkPattern = _workPatternParser.ParseWorkPatternFromHtml(parsedHtml);

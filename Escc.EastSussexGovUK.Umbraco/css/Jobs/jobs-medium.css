@@ -51,3 +51,6 @@
 
 /* On a job advert, the .mobile-nav is now hidden so reset the footer to normal */
 .footer-with-mobile-nav .footer { padding-bottom: 0; }
+
+/* On a job advert, adjust the summary box to new font size */
+.job-summary { padding-bottom: .947368em; }

@@ -1,0 +1,7 @@
+﻿table.deposits {display:table; width: 100%;}
+.deposits tbody { display: table-row-group; }
+table.deposits { border: none; padding: 0;}
+.deposits thead { display: table-header-group; }
+.deposits tr { display: table-row; border: none; }
+.deposits td { display: table-cell; border: .052631em solid #ccc; padding: .421053em; }
+.deposits td span { display: none; }

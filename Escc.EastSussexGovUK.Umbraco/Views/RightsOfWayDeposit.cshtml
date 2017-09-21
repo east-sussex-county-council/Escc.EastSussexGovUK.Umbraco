@@ -1,0 +1,110 @@
+﻿@using ClientDependency.Core.Mvc
+@using Escc.ClientDependencyFramework
+@using Escc.EastSussexGovUK
+@using Escc.EastSussexGovUK.Features
+@using Escc.EastSussexGovUK.Skins
+@using Escc.EastSussexGovUK.Views
+@using Escc.Dates
+@using Escc.Web
+@using System.Text;
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits.RightsOfWayDepositViewModel>
+@{
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
+    Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
+    Model.Metadata.IsInSearch = false;
+
+    Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
+    {
+        new WebChat() { WebChatSettings = Model.WebChat }
+    });
+
+    Html.RequiresCss("~/css/rightsofwaydeposits/deposits-small.css");
+    Html.RequiresJs(JsFileAlias.Resolve("GoogleMaps"), 90);
+    Html.RequiresJs("~/js/rights-of-way-deposit.js");
+    var nonce = Guid.NewGuid().ToString().Replace("-", String.Empty);
+    new ContentSecurityPolicyHeaders(Response.Headers)
+        .AppendPolicy(new ContentSecurityPolicyFromConfig().Policies["GoogleMaps"])
+        .AppendPolicy($"script-src 'nonce-{nonce}'")
+        .UpdateHeaders();
+}
+
+<div class="article">
+    <article>
+        <div class="content text-content">
+
+            <h1>@Model.Metadata.Title</h1>
+
+            @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
+
+            <table class="deposit">
+                <tbody>
+                    <tr><th scope="row">Reference</th><td>@Model.Reference</td></tr>
+                    @if (Model.IndividualOwners.Any() || Model.OrganisationalOwners.Any())
+                    {
+                        <tr><th scope="row">Owner(s)</th><td><ul class="owners">
+                            @foreach (var owner in Model.IndividualOwners) { <li>@owner</li> }
+                            @foreach (var owner in Model.OrganisationalOwners) { <li>@owner</li> }
+                        </ul></td></tr>
+                    }
+                    @if (Model.Addresses.Any())
+                    {
+                    <tr><th scope="row">Address(es)</th>
+                    <td><ul class="addresses">
+                        @foreach (var address in Model.Addresses) {  <li>@address.BS7666Address</li> }
+                        </ul></td></tr>
+                    }
+                    @if (Model.Parishes.Any())
+                    {
+                        <tr><th scope="row">Parishes</th><td><ul class="parishes">
+                        @foreach (var parish in Model.Parishes) { <li>@parish</li> }
+                        </ul></td></tr>
+                    }
+                    @if (!String.IsNullOrEmpty(Model.Description))
+                    {
+                    <tr><th scope="row">Description</th><td>@Model.Description</td></tr>
+                    }
+                    @if (!String.IsNullOrEmpty(Model.OrdnanceSurveyGridReference))
+                    {
+                    <tr><th scope="row">Ordnance Survey grid reference(s)</th><td>@Model.OrdnanceSurveyGridReference</td></tr>
+                    }
+                    <tr><th scope="row">Date deposited</th><td>@Model.DateDeposited.ToBritishDateWithDay()</td></tr>
+                    <tr><th scope="row">Expires</th><td>@Model.DateExpires.ToBritishDateWithDay()</td></tr>
+                </tbody>
+            </table>
+
+            @if (Model.DepositDocuments.Any())
+            {
+                <h2>Deposit documents</h2>
+                <ul>
+                    @foreach (var depositDocument in Model.DepositDocuments)
+                    {
+                    <li class="download"><a href="@depositDocument.Url">@depositDocument.Text</a></li>
+                    }
+                </ul>
+            }
+
+            <div id="map"></div>
+        </div>
+    </article>
+</div>
+
+@Html.Partial("~/Views/Layouts/_SocialMedia.cshtml")
+@Html.Partial("~/Views/EastSussexGovUK/Features/_SupportingContentDesktop.cshtml")
+<div class="text-content content">
+    @Html.Partial("~/Views/EastSussexGovUK/Features/_Share.cshtml")
+</div>
+
+@section JavaScript {
+<script nonce="@nonce">
+    var locations = [];
+    @foreach (var address in Model.Addresses) {
+    @:  locations.push({
+    @:"address": "@address.BS7666Address.ToString()",
+    @:"geo": {
+    @:"latitude": "@(address.GeoCoordinate?.Latitude)",
+    @:"longitude": "@(address.GeoCoordinate?.Longitude)"
+    @:}
+    @:});
+    }
+</script>
+}

@@ -54,7 +54,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
         }
 
         /// <summary>
-        /// Parses a salary from a description of the salary.
+        /// Parses a salary from a description of the salary, and format it according to East Sussex County Council house style.
         /// </summary>
         /// <param name="salaryDescription">The salary description.</param>
         /// <returns></returns>
@@ -76,13 +76,26 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
             var parseThis = Regex.Replace(salaryDescription, @"\s+", " ").Replace(" - ", "-").Replace(",", String.Empty);
             parseThis = Regex.Replace(parseThis, "(£[0-9.]+) ([0-9.]+)", "$1$2");
 
+            // If it's an hourly rate, stop now - don't try to work out an annual salary
+            if (parseThis.Contains(" per hour"))
+            {
+                return parsedSalary;
+            }
+
             // Now try to match the various formats seen in TalentLink data
             var match = Regex.Match(parseThis, "^([0-9.]+)-([0-9.]+) GBP Year");
             if (match.Success)
             {
                 parsedSalary.MinimumSalary = ParseSalaryValue(match.Groups[1].Value);
                 parsedSalary.MaximumSalary = ParseSalaryValue(match.Groups[2].Value);
-                parsedSalary.SalaryRange = $"£{parsedSalary.MinimumSalary}–£{parsedSalary.MaximumSalary} per annum";
+                if (parsedSalary.MinimumSalary == parsedSalary.MaximumSalary)
+                {
+                    parsedSalary.SalaryRange = $"£{parsedSalary.MinimumSalary?.ToString("n0")} per annum";
+                }
+                else
+                {
+                    parsedSalary.SalaryRange = $"£{parsedSalary.MinimumSalary?.ToString("n0")} to £{parsedSalary.MaximumSalary?.ToString("n0")} per annum";
+                }
                 return parsedSalary;
             }
 
@@ -91,7 +104,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
             {
                 parsedSalary.MinimumSalary = ParseSalaryValue(match.Groups[1].Value);
                 parsedSalary.MaximumSalary = parsedSalary.MinimumSalary;
-                parsedSalary.SalaryRange = $"£{parsedSalary.MinimumSalary} per annum";
+                parsedSalary.SalaryRange = $"£{parsedSalary.MinimumSalary?.ToString("n0")} per annum";
                 return parsedSalary;
             }
 
@@ -100,7 +113,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
             {
                 parsedSalary.MinimumSalary = ParseSalaryValue(match.Groups[1].Value);
                 parsedSalary.MaximumSalary = ParseSalaryValue(match.Groups[3].Value);
-                parsedSalary.SalaryRange = $"£{parsedSalary.MinimumSalary}–£{parsedSalary.MaximumSalary} per annum";
+                parsedSalary.SalaryRange = $"£{parsedSalary.MinimumSalary?.ToString("n0")} to £{parsedSalary.MaximumSalary?.ToString("n0")} per annum";
                 return parsedSalary;
             }
 
@@ -109,7 +122,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
             {
                 parsedSalary.MinimumSalary = ParseSalaryValue(match.Groups[1].Value);
                 parsedSalary.MaximumSalary = null;
-                parsedSalary.SalaryRange = $"£{parsedSalary.MinimumSalary}+ per annum";
+                parsedSalary.SalaryRange = $"£{parsedSalary.MinimumSalary?.ToString("n0")}+ per annum";
                 return parsedSalary;
             }
 

@@ -82,7 +82,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
 
             // We need somewhere to get the jobs from... 
             IJobsDataProvider jobsRepo = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[jobsSet + "Searcher"],
-                new QueryBuilder(new LuceneTokenisedQueryBuilder(), new KeywordsTokeniser(), new LuceneStopWordsRemover(), new WildcardSuffixFilter()),
+                new QueryBuilder(new LuceneTokenisedQueryBuilder(), new KeywordsTokeniser(), new LuceneStopWordsRemover(), new WildcardSuffixFilter()), 
+                new SalaryRangeLuceneQueryBuilder(),
                 new RelativeJobUrlGenerator(alertSettings.JobAdvertBaseUrl));
 
             // We need somewhere to get the alerts from...

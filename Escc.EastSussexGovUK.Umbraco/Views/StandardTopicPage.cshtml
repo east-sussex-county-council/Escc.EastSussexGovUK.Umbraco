@@ -18,17 +18,31 @@
     policy.AppendPolicy("style-src 'unsafe-inline'");
     policy.UpdateHeaders();
 
-    // Include required CSS
-    Html.RequiresCss(CssFileAlias.Resolve("TopicSmall"));
-    Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));
-    if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)
+    var placeholders = CmsUtilities.Placeholders;
+    if (Model.EsccWebsiteView != EsccWebsiteView.Plain)
     {
+        Html.RequiresCss(CssFileAlias.Resolve("TopicSmall"));
+        Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));
         Html.RequiresCss(CssFileAlias.Resolve("TopicMedium"), MediaQueryAlias.Resolve("Medium"));
         Html.RequiresCss(CssFileAlias.Resolve("FormsMedium"), MediaQueryAlias.Resolve("Medium"));
         Html.RequiresCss(CssFileAlias.Resolve("FormsLarge"), MediaQueryAlias.Resolve("Large"));
+
+        var sectionTypes = new List<string>()
+        {
+            placeholders["phDefSection01"].Value.ToString(),
+            placeholders["phDefSection02"].Value.ToString(),
+            placeholders["phDefSection03"].Value.ToString(),
+            placeholders["phDefSection04"].Value.ToString(),
+            placeholders["phDefSection05"].Value.ToString(),
+            placeholders["phDefSection06"].Value.ToString()
+        };
+        if (sectionTypes.Contains("School term dates") || sectionTypes.Contains("Find a recycling site"))
+        {
+            Html.RequiresJs(JsFileAlias.Resolve("Tips"));
+            Html.RequiresJs(JsFileAlias.Resolve("DescribedByTips"));
+        }
     }
 
-    var placeholders = CmsUtilities.Placeholders;
     var html = new string[]
     {
         placeholders["phDefIntro"].Value.ToString(),
@@ -53,7 +67,7 @@
         placeholders["phDefContent19"].Value.ToString(),
         placeholders["phDefContent20"].Value.ToString()
     };
-    
+
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
     {
         new EmbeddedYouTubeVideos() { Html = html },
@@ -79,4 +93,5 @@
 @Html.Partial("~/Views/EastSussexGovUK/Features/_SupportingContentDesktop.cshtml")
 <div class="text-content content">
     @Html.Partial("~/Views/EastSussexGovUK/Features/_Share.cshtml")
+    @Html.Partial("~/Views/Layouts/_Rating.cshtml")
 </div>

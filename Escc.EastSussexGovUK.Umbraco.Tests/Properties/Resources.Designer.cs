@@ -19,7 +19,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -115,6 +115,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;span class=&quot;JD-FieldText&quot; id=&quot;JDText-Field1&quot;&gt;&lt;p&gt;Salary: £48,396 - £55,644 per annum&lt;br /&gt;Contract type: Permanent &lt;br /&gt;Working pattern: Full time&lt;/p&gt;
+        ///&lt;p&gt;Closing date: Sunday 24 September 2017&lt;br /&gt;Interview date: week commencing Monday 2 October 2017&lt;/p&gt;
+        ///&lt;p&gt;How to apply: please follow the below link:&lt;br /&gt;&lt;a href=&quot;https://www.surreycc.gov.uk/jobs/erecruitment/details.html?nPostingID=19590&amp;nPostingTargetID=44866&amp;option=52&amp;sort=DESC&amp;respnr=1&amp;ID=Q0EFK026203F3VBQB7968LOCX&amp;Resultsperpage=20&amp;lg=UK&amp;mask=surrex [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string LongUrlAndEmailInBodyText {
+            get {
+                return ResourceManager.GetString("LongUrlAndEmailInBodyText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;tr class=&quot;Lst-BG1&quot;&gt;
         ///&lt;td headers=&quot;th1&quot; class=&quot;Lst-Desc1T&quot;&gt;
         ///&lt;a href=&quot;jsoutputinitrapido.cfm?component=lay9999_jdesc100a&amp;amp;nPostingID=16476&amp;amp;nPostingTargetID=33720&amp;amp;option=52&amp;amp;sort=DESC&amp;amp;respnr=8&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&quot; class=&quot;lstA-desc1&quot; title=&quot;Click here to see the job description: Civil Enforcement Officer (NSL Ltd) (ID33720)&quot; tabindex=&quot;6&quot;&gt;Civil Enforcement Officer (NSL Ltd)&lt;/a&gt;
@@ -174,6 +185,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests.Properties {
         internal static string SalaryInBodyText4 {
             get {
                 return ResourceManager.GetString("SalaryInBodyText4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;h5 class=&quot;JD-FieldLabel&quot; id=&quot;JDLabel-Field1&quot;&gt;Job Details&lt;/h5&gt;
+        ///&lt;span class=&quot;JD-FieldText&quot; id=&quot;JDText-Field1&quot;&gt;&lt;p&gt;Salary: £11.79 - £12.51 per hour&lt;br /&gt;Contract type: Part Time&lt;br /&gt;Working pattern: 20-30 hours per week&lt;/p&gt;
+        ///&lt;p&gt;Closing date: Thursday 31 August 2017&lt;/p&gt;
+        ///&lt;p&gt;&lt;span&gt;Applicants can send their CV to &lt;a href=&quot;mailto:director@twigletsforestschoolnursery.com&quot;&gt;director@twigletsforestschoolnursery.com&lt;/a&gt;&amp;nbsp;Once CV is received, an application form will be emailed.&lt;br /&gt;&lt;br /&gt;If you have any question [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string SalaryInBodyText5 {
+            get {
+                return ResourceManager.GetString("SalaryInBodyText5", resourceCulture);
             }
         }
         

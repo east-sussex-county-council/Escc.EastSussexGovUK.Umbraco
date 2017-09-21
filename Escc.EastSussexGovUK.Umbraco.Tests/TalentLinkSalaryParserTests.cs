@@ -148,5 +148,19 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             Assert.AreEqual(16692, result.MinimumSalary);
             Assert.AreEqual(17808, result.MaximumSalary);
         }
+
+        [Test]
+        public void SalaryInBodyTextFollowedByPerHourIsParsedAsText()
+        {
+            var parseThis = new HtmlDocument();
+            parseThis.LoadHtml(Properties.Resources.SalaryInBodyText5);
+
+            var parser = new TalentLinkSalaryParser();
+            var result = parser.ParseSalaryFromHtml(parseThis);
+
+            Assert.AreEqual("£11.79 - £12.51 per hour", result.SalaryRange);
+            Assert.IsNull(result.MinimumSalary);
+            Assert.IsNull(result.MaximumSalary);
+        }
     }
 }

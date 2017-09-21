@@ -7,6 +7,7 @@ using Escc.EastSussexGovUK.Umbraco.Views.Layouts;
 using Escc.Umbraco.ContentExperiments;
 using Umbraco.Core.Models;
 using Umbraco.Web;
+using Escc.EastSussexGovUK.Umbraco.Ratings;
 
 namespace Escc.EastSussexGovUK.Umbraco.Services
 {
@@ -32,11 +33,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
 
             model.BreadcrumbProvider = new UmbracoBreadcrumbProvider();
 
-            model.Metadata.Title = content.Name;
-            model.Metadata.Title = new RemoveUmbracoNumericSuffixFilter().Apply(model.Metadata.Title);
-
+            if (String.IsNullOrEmpty(model.Metadata.Title))
+            {
+                model.Metadata.Title = content.Name;
+                model.Metadata.Title = new RemoveUmbracoNumericSuffixFilter().Apply(model.Metadata.Title);
+            }
             model.Metadata.PageUrl = new Uri(content.UrlAbsolute());
-            model.Metadata.Description = content.GetPropertyValue<string>("pageDescription");
+            if (String.IsNullOrEmpty(model.Metadata.Description))
+            {
+                model.Metadata.Description = content.GetPropertyValue<string>("pageDescription");
+            }
             model.PageType = content.DocumentTypeAlias;
             model.Metadata.SystemId = content.Id.ToString(CultureInfo.InvariantCulture);
             model.Metadata.DateCreated = content.CreateDate.ToIso8601Date();
@@ -58,7 +64,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
         /// <param name="webChatSettingsService">The web chat settings service.</param>
         /// <param name="escisService">The ESCIS service.</param>
         /// <exception cref="System.ArgumentNullException">model</exception>
-        public void PopulateBaseViewModelWithInheritedContent(BaseViewModel model, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IEscisService escisService)
+        public void PopulateBaseViewModelWithInheritedContent(BaseViewModel model, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IEscisService escisService, IRatingSettingsProvider ratingSettings=null)
         {
             if (model == null) throw new ArgumentNullException("model");
             
@@ -67,6 +73,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             if (escisService != null) model.ShowEscisWidget = escisService.ShowSearch();
             if (socialMediaService != null) model.SocialMedia = socialMediaService.ReadSocialMediaSettings();
             if (webChatSettingsService!= null) model.WebChat = webChatSettingsService.ReadWebChatSettings();
+            if (ratingSettings != null) model.RatingSettings = ratingSettings.ReadRatingSettings();
         }
     }
 }

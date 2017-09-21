@@ -3,7 +3,6 @@ using System.Web;
 using System.Web.Mvc;
 using Escc.EastSussexGovUK.Umbraco.HomePage;
 using Escc.EastSussexGovUK.Umbraco.Models;
-using Escc.Schools.TermDates.Website;
 using Umbraco.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.Views.TermDates

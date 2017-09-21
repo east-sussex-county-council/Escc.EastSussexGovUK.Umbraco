@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
-using System.Security.Cryptography;
-using System.Text;
+﻿using Escc.EastSussexGovUK.Umbraco.DocumentTypes;
+using System.Collections.Generic;
 using Umbraco.Core.Models;
 using Umbraco.Inception.Attributes;
-using Umbraco.Inception.BL;
 
 namespace Escc.EastSussexGovUK.Umbraco.Location
 {
@@ -12,7 +9,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Location
     /// Umbraco data type for selecting which waste types are accepted at a recycling site
     /// </summary>
     [UmbracoDataType(DataTypeName, PropertyEditor, typeof(WasteTypesDataType), DataTypeDatabaseType.Nvarchar)]
-    internal class WasteTypesDataType : IPreValueProvider
+    internal class WasteTypesDataType : PreValueListDataType
     {
         internal const string DataTypeName = "Waste types";
         internal const string PropertyEditor = BuiltInUmbracoDataTypes.CheckBoxList;
@@ -67,48 +64,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Location
         /// <summary>
         /// Initializes a new instance of the <see cref="WasteTypesDataType"/> class.
         /// </summary>
-        public WasteTypesDataType()
+        public WasteTypesDataType() : base(WasteTypes)
         {
-            PreValues = CreatePreValues();
         }
-
-        private static IDictionary<string, PreValue> CreatePreValues()
-        {
-            IDictionary<string, PreValue> preValues = new Dictionary<string, PreValue>();
-            
-            // Use a SHA1 key for each prevalue because:
-            // * we want prevalues to be accessible programatically
-            // * it can be generated from the prevalue, in a way that remains consistent if more prevalues are added later
-            // * SHA1 is short enough to fit the Umbraco database schema
-            // * it doesn't need to be secure, just unique
-            using (HashAlgorithm algorithm = SHA1.Create())
-            {
-                foreach (var wasteType in WasteTypes)
-                {
-                    preValues.Add(HashString(algorithm, wasteType), new PreValue(-1, wasteType));
-                }
-            }
-
-            return preValues;
-        }
-
-        private static string HashString(HashAlgorithm algorithm, string wasteType)
-        {
-            var key = new StringBuilder();
-            var data = algorithm.ComputeHash(Encoding.UTF8.GetBytes(wasteType));
-            foreach (byte hashByte in data)
-            {
-                key.Append(hashByte.ToString("x2", CultureInfo.InvariantCulture));
-            }
-            return key.ToString();
-        }
-
-        /// <summary>
-        /// Gets the waste types which can be selected
-        /// </summary>
-        /// <value>
-        /// The pre values.
-        /// </value>
-        public IDictionary<string, PreValue> PreValues { get; private set; }
     }
 }

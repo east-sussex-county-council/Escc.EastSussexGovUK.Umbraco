@@ -9,15 +9,16 @@
 }<?xml version="1.0" encoding="utf-8" ?>
 <?xml-stylesheet type="text/xsl" href="@Request.Url.Scheme://@Request.Url.Authority/eastsussexgovuk/rss/rss-to-html.ashx" ?>
 <?xml-stylesheet type="text/css" href="@Request.Url.Scheme://@Request.Url.Authority/eastsussexgovuk/rss/rss.css" ?>
-<rss version="2.0">
-    <channel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
         <title>@Model.Metadata.Title.Replace("Home: ", String.Empty).Trim()</title>
         <description>@Model.Metadata.Description</description>
         <link>@Request.Url.Scheme://@Request.Url.Authority/</link>
+        <atom:link href="@Request.Url" rel="self" type="application/rss+xml" />
         <language>en-GB</language>
         <copyright>@DateTime.Now.Year East Sussex County Council</copyright>
-        <pubdate>@DateTime.Now.ToUkDateTime().ToRfc822DateTime()</pubdate>
-        <lastbuilddate>@DateTime.Now.ToUkDateTime().ToRfc822DateTime()</lastbuilddate>
+        <pubDate>@DateTime.UtcNow.ToRfc822DateTime()</pubDate>
+        <lastBuildDate>@DateTime.UtcNow.ToRfc822DateTime()</lastBuildDate>
         <image>
             <title>East Sussex County Council logo</title>
             <url>@Request.Url.Scheme://@Request.Url.Authority/eastsussexgovuk/rss/escc-logo-for-feed.gif</url>
@@ -47,7 +48,7 @@
             }
             <description>@description</description>
             @Html.Raw(url)
-            <guid ispermalink="false">https://www.eastsussex.gov.uk/id/job-advert/@job.Id</guid>
+            <guid isPermaLink="false">https://www.eastsussex.gov.uk/id/job-advert/@job.Id</guid>
             <source url="@Request.Url"/>
         </item>
     }

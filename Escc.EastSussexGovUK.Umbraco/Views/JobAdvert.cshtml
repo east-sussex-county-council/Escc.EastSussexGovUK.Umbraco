@@ -11,6 +11,8 @@
     Model.Metadata.Title = Model.Job?.JobTitle;
     Model.Metadata.DateIssued = Model.Job?.DatePublished == null ? String.Empty : Model.Job.DatePublished.Value.ToIso8601Date();
     Model.Metadata.PageUrl = Model.Job?.Url;
+    Model.Metadata.DateAutoRemove = Model.Job?.ClosingDate.ToIso8601Date();
+    Model.Metadata.DateReview = String.Empty;
     Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));
     Html.RequiresCss(CssFileAlias.Resolve("FormsMedium"), MediaQueryAlias.Resolve("Medium"));
     Html.RequiresCss(CssFileAlias.Resolve("FormsLarge"), MediaQueryAlias.Resolve("Large"));
@@ -32,6 +34,16 @@
         Model.Metadata.Title = "Oh no, too late!";
         Model.Metadata.Description = "This job has closed. Search for jobs at www.eastsussex.gov.uk/jobs.";
         Response.StatusCode = 410;
+    }
+}
+@section Metadata{
+    @if (jobGone)
+    {
+        <meta name="robots" content="noindex" />
+    }
+    else
+    {
+        <meta name="robots" content="unavailable_after: @(Model.Job?.ClosingDate.ToRfc850DateTime())" />
     }
 }
 @section Breadcrumb {}

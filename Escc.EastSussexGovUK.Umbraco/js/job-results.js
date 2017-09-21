@@ -8,7 +8,7 @@
             if (!$("#email").val()) {
                 errors.push("Please enter the address you would like alerts to be sent to");
             }
-            var validEmail = new RegExp("^[0-9A-Za-z'\.\_-]{1,127}@[0-9A-Za-z'\.\_-]{1,127}$");
+            var validEmail = new RegExp("^[0-9A-Za-z'\._-]{1,127}@[0-9A-Za-z'\._-]{1,127}$");
             if (!validEmail.test($("#email").val())) {
                 errors.push("Please enter a valid email address to send the alerts to");
             }

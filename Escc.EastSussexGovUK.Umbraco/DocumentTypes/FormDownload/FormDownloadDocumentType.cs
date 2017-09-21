@@ -13,6 +13,7 @@ using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task;
 using Escc.EastSussexGovUK.Umbraco.Location;
 using Umbraco.Inception.Attributes;
+using Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits;
 
 namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.FormDownload
 {
@@ -39,7 +40,8 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.FormDownload
         typeof(RegistrationOfficeDocumentType),
         typeof(SportLocationDocumentType),
         typeof(CampaignLandingDocumentType),
-        typeof(CouncilPlanHomePageDocumentType)
+        typeof(CouncilPlanHomePageDocumentType),
+        typeof(RightsOfWayDepositsDocumentType)
     }, true, BuiltInUmbracoContentTypeIcons.IconAutofill, "", false, false, 
     Description = "Introduction page for a form. For new pages, use the 'Task' template instead.")]
     public class FormDownloadDocumentType : LegacyBaseDocumentType

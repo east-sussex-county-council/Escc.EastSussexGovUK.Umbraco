@@ -31,7 +31,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
         /// </remarks>
         protected override IJobsDataProvider GetJobsDataProvider()
         {
-            return new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection["PublicJobsSearcher"], null, null);
+            return new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection["PublicJobsSearcher"], null, new SalaryRangeLuceneQueryBuilder(), null);
         }
     }
 }
