@@ -4,11 +4,12 @@
 @using Escc.EastSussexGovUK.Features
 @using Escc.EastSussexGovUK.Skins
 @using Escc.EastSussexGovUK.Views
+@using Escc.Registration.RegistrationSkin
 @using Escc.EastSussexGovUK.Umbraco.Models
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<LandingViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
-    Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
+    Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] { new RegistrationSkin(Model.EsccWebsiteView, Model.Metadata.PageUrl) }, new CustomerFocusSkin(Model.EsccWebsiteView));
 
     if (Model.EsccWebsiteView != EsccWebsiteView.Plain)
     {

@@ -80,10 +80,12 @@
       <add key="TopicSmall" value="/css/StandardTopicPage/topic-small.css" xdt:Transform="Insert" />
       <add key="TopicMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="TopicMedium" value="/css/StandardTopicPage/topic-medium.css" xdt:Transform="Insert" />
-      <add key="MarriageSkinSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="MarriageSkinSmall" value="/MarriageSkin/css/min/marriage-skin-small.css" xdt:Transform="Insert" />
-      <add key="MarriageSkinMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="MarriageSkinMedium" value="/MarriageSkin/css/min/marriage-skin-medium.css" xdt:Transform="Insert" />
+      <add key="RegistrationSkinSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="RegistrationSkinSmall" value="/RegistrationSkin/css/min/registration-skin-small.css" xdt:Transform="Insert" />
+      <add key="RegistrationSkinMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="RegistrationSkinMedium" value="/RegistrationSkin/css/min/registration-skin-medium.css" xdt:Transform="Insert" />
+      <add key="RegistrationSkinLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="RegistrationSkinLarge" value="/RegistrationSkin/css/min/registration-skin-large.css" xdt:Transform="Insert" />
     </CssFiles>
     <ScriptFiles>
       <add key="CampaignLanding" xdt:Transform="Remove" xdt:Locator="Match(key)" />
@@ -102,8 +104,8 @@
       <add key="LocationTemplate" value="/js/CustomerFocusTemplates/location.js" xdt:Transform="Insert" />
       <add key="Tabs" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Tabs" value="/js/tabs.js" xdt:Transform="Insert" />
-      <add key="MarriageSkin" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="MarriageSkin" value="/MarriageSkin/js/min/marriage-skin.js" xdt:Transform="Insert" />
+      <add key="RegistrationSkin" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="RegistrationSkin" value="/RegistrationSkin/js/min/registration-skin.js" xdt:Transform="Insert" />
     </ScriptFiles>
   </Escc.ClientDependencyFramework>
 

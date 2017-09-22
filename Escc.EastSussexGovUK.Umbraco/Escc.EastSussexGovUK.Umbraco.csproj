@@ -157,9 +157,8 @@
     <Reference Include="Escc.Redirects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Redirects.1.1.0\lib\Escc.Redirects.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.Registration.MarriageSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Registration.MarriageSkin.1.0.3\lib\Escc.Registration.MarriageSkin.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Escc.Registration.RegistrationSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Registration.RegistrationSkin.1.0.0\lib\Escc.Registration.RegistrationSkin.dll</HintPath>
     </Reference>
     <Reference Include="Escc.RubbishAndRecycling.SiteFinder.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.1\lib\Escc.RubbishAndRecycling.SiteFinder.Website.dll</HintPath>
@@ -201,7 +200,7 @@
       <HintPath>..\packages\Escc.Umbraco.UserAccessWebService.3.0.6\lib\Escc.Umbraco.UserAccessWebService.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Web.1.0.1\lib\Escc.Web.dll</HintPath>
+      <HintPath>..\packages\Escc.Web.1.1.0-beta\lib\Escc.Web.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Web.Metadata, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Web.Metadata.1.1.3\lib\Escc.Web.Metadata.dll</HintPath>
@@ -877,6 +876,11 @@
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\package.manifest" />
     <Content Include="favicon.ico" />
     <Content Include="googledb369ad0fa294f54.html" />
+    <Content Include="RegistrationSkin\css\min\registration-skin-large.css" />
+    <Content Include="RegistrationSkin\css\min\registration-skin-medium.css" />
+    <Content Include="RegistrationSkin\css\min\registration-skin-small.css" />
+    <Content Include="RegistrationSkin\img\registration-skin.png" />
+    <Content Include="RegistrationSkin\js\min\registration-skin.js" />
     <Content Include="robots.txt" />
     <Content Include="Views\Topic\RecyclingSiteFinder.ascx" />
     <Content Include="Views\Topic\TopicSection_RecyclingSiteFinder.ascx" />
@@ -1003,9 +1007,6 @@
     </Content>
     <Content Include="Config\applications.config" />
     <Content Include="js\job-advert.js" />
-    <Content Include="MarriageSkin\css\min\marriage-skin-medium.css" />
-    <Content Include="MarriageSkin\css\min\marriage-skin-small.css" />
-    <Content Include="MarriageSkin\img\web.config" />
     <Content Include="images\web.config" />
     <Content Include="App_Plugins\SpectrumColorPicker\package.manifest" />
     <Content Include="EastSussexGovUK\Rss\rss-to-html.ashx" />
@@ -1020,10 +1021,7 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="MarriageSkin\img\marriage-banner.jpg" />
-    <Content Include="MarriageSkin\img\marriage-landing-blue.jpg" />
-    <Content Include="MarriageSkin\img\marriage-landing-red.jpg" />
-    <Content Include="MarriageSkin\js\min\marriage-skin.js" />
+    <Content Include="RegistrationSkin\img\web.config" />
     <None Include="scripts\jquery-1.7-vsdoc.js" />
     <None Include="scripts\jquery-1.7.js" />
     <None Include="scripts\jquery-1.7.min.js" />
@@ -4293,7 +4291,6 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Escc.Registration.MarriageSkin.1.0.3\build\Escc.Registration.MarriageSkin.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Registration.MarriageSkin.1.0.3\build\Escc.Registration.MarriageSkin.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Alerts.Website.2.0.1\build\Escc.Alerts.Website.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Alerts.Website.2.0.1\build\Escc.Alerts.Website.targets'))" />
     <Error Condition="!Exists('..\packages\UmbracoCms.7.5.14\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.5.14\build\UmbracoCms.props'))" />
@@ -4305,8 +4302,8 @@
     <Error Condition="!Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.1\build\Escc.RubbishAndRecycling.SiteFinder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.1\build\Escc.RubbishAndRecycling.SiteFinder.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Escc.Registration.RegistrationSkin.1.0.0\build\Escc.Registration.RegistrationSkin.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Registration.RegistrationSkin.1.0.0\build\Escc.Registration.RegistrationSkin.targets'))" />
   </Target>
-  <Import Project="..\packages\Escc.Registration.MarriageSkin.1.0.3\build\Escc.Registration.MarriageSkin.targets" Condition="Exists('..\packages\Escc.Registration.MarriageSkin.1.0.3\build\Escc.Registration.MarriageSkin.targets')" />
   <Import Project="..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
@@ -4321,6 +4318,7 @@
   <Import Project="..\packages\Escc.Umbraco.MediaSync.1.3.11\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.1.3.11\build\Escc.Umbraco.MediaSync.targets')" />
   <Import Project="..\packages\Escc.Umbraco.EditorTools.2.4.2\build\Escc.Umbraco.EditorTools.targets" Condition="Exists('..\packages\Escc.Umbraco.EditorTools.2.4.2\build\Escc.Umbraco.EditorTools.targets')" />
   <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.1\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.1\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
+  <Import Project="..\packages\Escc.Registration.RegistrationSkin.1.0.0\build\Escc.Registration.RegistrationSkin.targets" Condition="Exists('..\packages\Escc.Registration.RegistrationSkin.1.0.0\build\Escc.Registration.RegistrationSkin.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

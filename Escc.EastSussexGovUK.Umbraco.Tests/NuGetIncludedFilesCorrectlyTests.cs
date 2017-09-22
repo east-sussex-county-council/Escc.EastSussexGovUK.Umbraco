@@ -24,10 +24,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [TestCase(@"css\TinyMCE-StyleSelector-Headings.css")]
         [TestCase(@"App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\controller.js")]
 
-        // Escc.Registration.MarriageSkin project
-        [TestCase(@"MarriageSkin\js\min\marriage-skin.js")]
-        [TestCase(@"MarriageSkin\css\min\marriage-skin-small.css")]
-        [TestCase(@"MarriageSkin\img\marriage-banner.jpg")]
+        // Escc.Registration.RegistrationSkin project
+        [TestCase(@"RegistrationSkin\js\min\registration-skin.js")]
+        [TestCase(@"RegistrationSkin\css\min\registration-skin-small.css")]
+        [TestCase(@"RegistrationSkin\img\registration-skin.png")]
 
         // Escc.RubbishAndRecycling.SiteFinder package
         [TestCase(@"Views\Topic\RecyclingSiteFinder.ascx")]
