@@ -28,7 +28,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
                 return ParseSalaryFromDescription(salaryText);
             }
 
-            var matchInBodyText = Regex.Match(jobAdvertHtml.DocumentNode.OuterHtml, $"Salary: (.*?)([0-9]+)(.*?)(<br>|<br />|</p>|{Environment.NewLine})");
+            var matchInBodyText = Regex.Match(jobAdvertHtml.DocumentNode.OuterHtml, $@"Salary:\s+(.*?)([0-9]+)(.*?)(<br>|<br />|</p>|{Environment.NewLine})");
             if (matchInBodyText.Success)
             {
                 return ParseSalaryFromDescription(HttpUtility.HtmlDecode(matchInBodyText.Groups[1].Value + matchInBodyText.Groups[2].Value + matchInBodyText.Groups[3].Value).Trim());
@@ -41,12 +41,24 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
             }
 
             // There are no numbers to parse, so just take the first line of text
-            matchInBodyText = Regex.Match(jobAdvertHtml.DocumentNode.OuterHtml, $"Salary: (.+?)(<br>|<br />|</p>|{Environment.NewLine})");
+            matchInBodyText = Regex.Match(jobAdvertHtml.DocumentNode.OuterHtml, $@"Salary:\s+(.+?)(<br>|<br />|</p>|{Environment.NewLine})");
             if (matchInBodyText.Success)
             {
                 return new Salary()
                 {
                     SalaryRange = matchInBodyText.Groups[1].Value
+                };
+            }
+
+            // If still no salary found, is it clearly a volunteer role?
+            var jobTitle = ParseValueFromElementById(jobAdvertHtml, "h3", "JDText-Title");
+            if (jobTitle.ToUpperInvariant().Contains("VOLUNTEER"))
+            {
+                return new Salary()
+                {
+                    MinimumSalary = 0,
+                    MaximumSalary = 0,
+                    SalaryRange = "Voluntary"
                 };
             }
 

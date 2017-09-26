@@ -64,20 +64,29 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 //Looping all the raw models and adding them to the dataset
                 foreach (var job in jobs)
                 {
-                    var jobAdvert = Task.Run(async () => await _jobsProvider.ReadJob(job.Id.ToString(CultureInfo.InvariantCulture))).Result;
-                    jobAdvert.Id = job.Id;
-                    if (String.IsNullOrEmpty(jobAdvert.JobTitle)) jobAdvert.JobTitle = job.JobTitle;
-                    if (String.IsNullOrEmpty(jobAdvert.Location)) jobAdvert.Location = job.Location;
+                    try
+                    {
+                        var jobAdvert = Task.Run(async () => await _jobsProvider.ReadJob(job.Id.ToString(CultureInfo.InvariantCulture))).Result;
+                        jobAdvert.Id = job.Id;
+                        if (String.IsNullOrEmpty(jobAdvert.JobTitle)) jobAdvert.JobTitle = job.JobTitle;
+                        if (String.IsNullOrEmpty(jobAdvert.Location)) jobAdvert.Location = job.Location;
 
-                    jobAdvert.Salary.SearchRange = job.Salary.SearchRange;
-                    if (String.IsNullOrEmpty(jobAdvert.Salary.SalaryRange)) jobAdvert.Salary.SalaryRange = job.Salary.SearchRange;
-                    if (!jobAdvert.Salary.MinimumSalary.HasValue) jobAdvert.Salary.MinimumSalary = job.Salary.MinimumSalary;
-                    if (!jobAdvert.Salary.MaximumSalary.HasValue) jobAdvert.Salary.MaximumSalary = job.Salary.MaximumSalary;
+                        jobAdvert.Salary.SearchRange = job.Salary.SearchRange;
+                        if (String.IsNullOrEmpty(jobAdvert.Salary.SalaryRange)) jobAdvert.Salary.SalaryRange = job.Salary.SearchRange;
+                        if (!jobAdvert.Salary.MinimumSalary.HasValue) jobAdvert.Salary.MinimumSalary = job.Salary.MinimumSalary;
+                        if (!jobAdvert.Salary.MaximumSalary.HasValue) jobAdvert.Salary.MaximumSalary = job.Salary.MaximumSalary;
 
-                    if (!jobAdvert.ClosingDate.HasValue) jobAdvert.ClosingDate = job.ClosingDate;
+                        if (!jobAdvert.ClosingDate.HasValue) jobAdvert.ClosingDate = job.ClosingDate;
 
-                    var simpleDataSet = CreateIndexItemFromJob(jobAdvert, indexType);
-                    dataSets.Add(simpleDataSet);
+                        var simpleDataSet = CreateIndexItemFromJob(jobAdvert, indexType);
+                        dataSets.Add(simpleDataSet);
+                    }
+                    catch (Exception ex)
+                    {
+                        // Catch the error here to ensure the indexer can carry on with indexing the next job
+                        ex.ToExceptionless().Submit();
+                        LogHelper.Error<BaseJobsIndexer>("Error indexing:", ex);
+                    }
                 }
             }
             catch (Exception ex)
