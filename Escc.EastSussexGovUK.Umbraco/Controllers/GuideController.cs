@@ -26,6 +26,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
             if (model == null) throw new ArgumentNullException(nameof(model));
 
             var viewModel = MapUmbracoContentToViewModel(model.Content);
+            var modelBuilder = new BaseViewModelBuilder();
+            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode);
 
             if (!viewModel.Steps.Any())
             {

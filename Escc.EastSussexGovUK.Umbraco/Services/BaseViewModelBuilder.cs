@@ -41,7 +41,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             model.Metadata.PageUrl = new Uri(content.UrlAbsolute());
             if (String.IsNullOrEmpty(model.Metadata.Description))
             {
-                model.Metadata.Description = content.GetPropertyValue<string>("pageDescription");
+                model.Metadata.Description = content.GetPropertyValue<string>("pageDescription") ?? String.Empty;
             }
             model.PageType = content.DocumentTypeAlias;
             model.Metadata.SystemId = content.Id.ToString(CultureInfo.InvariantCulture);
