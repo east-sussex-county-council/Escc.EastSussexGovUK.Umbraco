@@ -122,7 +122,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.TemplateSource, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.EastSussexGovUK.TemplateSource.1.0.0\lib\Escc.EastSussexGovUK.TemplateSource.dll</HintPath>
+      <HintPath>..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.0\lib\Escc.EastSussexGovUK.TemplateSource.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.WebForms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.EastSussexGovUK.WebForms.1.2.1\lib\Escc.EastSussexGovUK.WebForms.dll</HintPath>
@@ -884,7 +884,6 @@
     <Content Include="robots.txt" />
     <Content Include="Views\Topic\RecyclingSiteFinder.ascx" />
     <Content Include="Views\Topic\TopicSection_RecyclingSiteFinder.ascx" />
-    <Content Include="windows-tile.png" />
     <Content Include="App_Plugins\EditorTools\Views\Content\Index.cshtml" />
     <Content Include="App_Plugins\EditorTools\Views\CSVExport\Index.cshtml" />
     <Content Include="App_Plugins\EditorTools\Views\EditorToolsHome\About.cshtml" />
@@ -922,6 +921,7 @@
     <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="windows-tile.png" />
     <None Include="Content\PagedList.css" />
     <Content Include="css\CampaignTemplates\align-buttons-large.css" />
     <Content Include="css\CampaignTemplates\align-buttons-medium.css" />
@@ -4296,13 +4296,13 @@
     <Error Condition="!Exists('..\packages\UmbracoCms.7.5.14\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.5.14\build\UmbracoCms.props'))" />
     <Error Condition="!Exists('..\packages\UmbracoCms.7.5.14\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.5.14\build\UmbracoCms.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.0.0\build\Escc.EastSussexGovUK.TemplateSource.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.TemplateSource.1.0.0\build\Escc.EastSussexGovUK.TemplateSource.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.1.3.11\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.1.3.11\build\Escc.Umbraco.MediaSync.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.EditorTools.2.4.2\build\Escc.Umbraco.EditorTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.EditorTools.2.4.2\build\Escc.Umbraco.EditorTools.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.1\build\Escc.RubbishAndRecycling.SiteFinder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.1\build\Escc.RubbishAndRecycling.SiteFinder.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\Escc.Registration.RegistrationSkin.1.0.0\build\Escc.Registration.RegistrationSkin.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Registration.RegistrationSkin.1.0.0\build\Escc.Registration.RegistrationSkin.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.0\build\Escc.EastSussexGovUK.TemplateSource.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.0\build\Escc.EastSussexGovUK.TemplateSource.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
@@ -4314,11 +4314,11 @@
   <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
   <Import Project="..\packages\UmbracoCms.7.5.14\build\UmbracoCms.targets" Condition="Exists('..\packages\UmbracoCms.7.5.14\build\UmbracoCms.targets')" />
   <Import Project="..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets')" />
-  <Import Project="..\packages\Escc.EastSussexGovUK.TemplateSource.1.0.0\build\Escc.EastSussexGovUK.TemplateSource.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.0.0\build\Escc.EastSussexGovUK.TemplateSource.targets')" />
   <Import Project="..\packages\Escc.Umbraco.MediaSync.1.3.11\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.1.3.11\build\Escc.Umbraco.MediaSync.targets')" />
   <Import Project="..\packages\Escc.Umbraco.EditorTools.2.4.2\build\Escc.Umbraco.EditorTools.targets" Condition="Exists('..\packages\Escc.Umbraco.EditorTools.2.4.2\build\Escc.Umbraco.EditorTools.targets')" />
   <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.1\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.1\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
   <Import Project="..\packages\Escc.Registration.RegistrationSkin.1.0.0\build\Escc.Registration.RegistrationSkin.targets" Condition="Exists('..\packages\Escc.Registration.RegistrationSkin.1.0.0\build\Escc.Registration.RegistrationSkin.targets')" />
+  <Import Project="..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.0\build\Escc.EastSussexGovUK.TemplateSource.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.0\build\Escc.EastSussexGovUK.TemplateSource.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
