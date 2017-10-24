@@ -5,6 +5,16 @@ using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Landing;
+using Escc.EastSussexGovUK.Umbraco.Location;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.LandingPageWithPictures;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Guide;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardLandingPage;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardDownloadPage;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Map;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.FormDownload;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Person;
+using Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits;
 
 namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
 {
@@ -13,8 +23,27 @@ namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
         typeof(CampaignLandingDocumentType),
         typeof(CampaignContentDocumentType),
         typeof(CampaignTilesDocumentType),
+        typeof(LandingDocumentType),
+        typeof(LocationDocumentType),
         typeof(TaskDocumentType),
-        typeof(StandardTopicPageDocumentType)
+        typeof(LandingPageWithPicturesDocumentType),
+        typeof(GuideDocumentType),
+        typeof(StandardLandingPageDocumentType),
+        typeof(StandardTopicPageDocumentType),
+        typeof(StandardDownloadPageDocumentType),
+        typeof(MapDocumentType),
+        typeof(FormDownloadDocumentType),
+        typeof(RecyclingSiteDocumentType),
+        typeof(LibraryDocumentType),
+        typeof(MobileLibraryStopDocumentType),
+        typeof(ChildcareDocumentType),
+        typeof(CouncilOfficeDocumentType),
+        typeof(SportLocationDocumentType),
+        typeof(ParkDocumentType),
+        typeof(RegistrationOfficeDocumentType),
+        typeof(DayCentreDocumentType),
+        typeof(PersonDocumentType),
+        typeof(RightsOfWayDepositsDocumentType)
     }, true, BuiltInUmbracoContentTypeIcons.IconRocket, 
     Description="A landing page for a marketing campaign")]
     public class CampaignLandingDocumentType : UmbracoGeneratedBase
