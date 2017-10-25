@@ -5,7 +5,6 @@ using System.Web;
 using Umbraco.Core;
 using Umbraco.Core.Models;
 using Umbraco.Core.Services;
-using Escc.Dates;
 using Examine;
 using UmbracoExamine;
 using System.Text;
@@ -31,7 +30,10 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
         public void OnApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
         {
             ContentService.Saving += ContentService_Saving;
-            ExamineManager.Instance.IndexProviderCollection["RightsOfWayDepositsIndexer"].GatheringNodeData += RightsOfWayEventHandler_GatheringNodeData;
+            if (ExamineManager.Instance.IndexProviderCollection["RightsOfWayDepositsIndexer"] != null)
+            {
+                ExamineManager.Instance.IndexProviderCollection["RightsOfWayDepositsIndexer"].GatheringNodeData += RightsOfWayEventHandler_GatheringNodeData;
+            }
         }
 
         private void RightsOfWayEventHandler_GatheringNodeData(object sender, IndexingNodeDataEventArgs e)
@@ -112,8 +114,11 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
                     }
                     else
                     {
+                        // IMPORTANT: Converting to yyyy-MM-dd must not be done using an extension method, because that breaks the sort
+                        // function in Umbraco. It must be a compilation issue since it happens even when there are no document types called 
+                        // "RightsOfWayDeposit" meaning this code should never run, and in any case it is the same code as the failing version.
                         var depositExpires = new RightsOfWayDepositExpiryCalculator().CalculateExpiry(dateDeposited);
-                        entity.SetValue("DateExpires_Content", depositExpires.ToIso8601Date());
+                        entity.SetValue("DateExpires_Content", depositExpires.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture));
                     }
                 }
             }
