@@ -9,6 +9,7 @@ using Umbraco.Core.Models;
 using Umbraco.Web;
 using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
 using Escc.EastSussexGovUK.Umbraco.Ratings;
+using Escc.EastSussexGovUK.Umbraco.Skins;
 
 namespace Escc.EastSussexGovUK.Umbraco.Location
 {
@@ -17,9 +18,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Location
     /// </summary>
     public class RecyclingSiteController : LocationController
     {
-        protected override LocationViewModel MapUmbracoContentToViewModel(IPublishedContent content, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IRelatedLinksService relatedLinksService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService, IRatingSettingsProvider ratingSettings, IMediaUrlTransformer mediaUrlTransformer)
+        protected override LocationViewModel MapUmbracoContentToViewModel(IPublishedContent content, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IRelatedLinksService relatedLinksService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService, IRatingSettingsProvider ratingSettings, IMediaUrlTransformer mediaUrlTransformer, ISkinToApplyService skinService)
         {
-            var model = base.MapUmbracoContentToViewModel(content, latestService, socialMediaService, eastSussex1SpaceService, webChatSettingsService, relatedLinksService, contentExperimentSettingsService, escisService, ratingSettings, mediaUrlTransformer);
+            var model = base.MapUmbracoContentToViewModel(content, latestService, socialMediaService, eastSussex1SpaceService, webChatSettingsService, relatedLinksService, contentExperimentSettingsService, escisService, ratingSettings, mediaUrlTransformer, skinService);
 
             // Get the types of waste which have been selected for this recycling site
             var recycledTypes = ReadWasteTypesFromProperty(content, "wasteTypes_Content");

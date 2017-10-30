@@ -881,6 +881,11 @@
     <Content Include="RegistrationSkin\img\registration-skin.png" />
     <Content Include="RegistrationSkin\js\min\registration-skin.js" />
     <Content Include="robots.txt" />
+    <Content Include="Skins\FosterWithTrust\foster-with-trust.png" />
+    <Content Include="Skins\FosterWithTrust\foster-with-trust.js" />
+    <Content Include="Skins\FosterWithTrust\foster-with-trust-large.css" />
+    <Content Include="Skins\FosterWithTrust\foster-with-trust-medium.css" />
+    <Content Include="Skins\FosterWithTrust\foster-with-trust-small.css" />
     <Content Include="Views\Topic\RecyclingSiteFinder.ascx" />
     <Content Include="Views\Topic\TopicSection_RecyclingSiteFinder.ascx" />
     <Content Include="App_Plugins\EditorTools\Views\Content\Index.cshtml" />
@@ -3900,6 +3905,15 @@
     <Compile Include="Jobs\WorkPattern.cs" />
     <Compile Include="Ratings\IRatingSettingsProvider.cs" />
     <Compile Include="Ratings\RatingSettingsFromUmbraco.cs" />
+    <Compile Include="Skins\ApplySkinTab.cs" />
+    <Compile Include="Skins\FosterWithTrust\FosterWithTrustSkin.cs" />
+    <Compile Include="Skins\ISkinNameService.cs" />
+    <Compile Include="Skins\SkinFromUmbraco.cs" />
+    <Compile Include="Skins\SkinRelationEventHandler.cs" />
+    <Compile Include="Skins\SkinRelationType.cs" />
+    <Compile Include="Skins\SkinsDocumentType.cs" />
+    <Compile Include="Skins\SkinDataType.cs" />
+    <Compile Include="Skins\SkinDocumentType.cs" />
     <Compile Include="UrlTransformers\ElibraryUrlTransformer.cs" />
     <Compile Include="UrlTransformers\RemoveAzureDomainUrlTransformer.cs" />
     <Compile Include="UrlTransformers\RemoveMediaDomainUrlTransformer.cs" />
@@ -4270,6 +4284,7 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

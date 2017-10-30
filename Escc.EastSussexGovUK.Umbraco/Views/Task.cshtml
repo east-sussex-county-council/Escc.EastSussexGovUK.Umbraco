@@ -5,10 +5,14 @@
 @using Escc.EastSussexGovUK.Views
 @using Escc.EastSussexGovUK.Skins
 @using Escc.Registration.RegistrationSkin
+@using Escc.EastSussexGovUK.Umbraco.Skins.FosterWithTrust
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.TaskViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
-    Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] { new RegistrationSkin(Model.EsccWebsiteView, Model.Metadata.PageUrl) }, new CustomerFocusSkin(Model.EsccWebsiteView));
+    Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] {
+        new RegistrationSkin(Model.EsccWebsiteView, Model.Metadata.PageUrl),
+        new FosterWithTrustSkin(Model.EsccWebsiteView, Model.SkinToApply == "Foster with trust")
+    }, new CustomerFocusSkin(Model.EsccWebsiteView));
 
     if (Model.EsccWebsiteView != EsccWebsiteView.Plain)
     {

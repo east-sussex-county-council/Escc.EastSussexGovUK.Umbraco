@@ -7,13 +7,17 @@
 @using Escc.EastSussexGovUK.Skins
 @using Escc.EastSussexGovUK.Views
 @using Escc.Registration.RegistrationSkin
+@using Escc.EastSussexGovUK.Umbraco.Skins.FosterWithTrust
 @using Escc.Web
 @using Umbraco.Core
 @using Humanizer
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Location.LocationViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
-    Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] { new RegistrationSkin(Model.EsccWebsiteView, Model.Metadata.PageUrl) }, new CustomerFocusSkin(Model.EsccWebsiteView));
+    Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] {
+        new RegistrationSkin(Model.EsccWebsiteView, Model.Metadata.PageUrl),
+        new FosterWithTrustSkin(Model.EsccWebsiteView, Model.SkinToApply == "Foster with trust")
+    }, new CustomerFocusSkin(Model.EsccWebsiteView));
 
     // This view always uses Google maps, so relax the content security policy to allow that
     var policy = new ContentSecurityPolicyHeaders(Response.Headers);

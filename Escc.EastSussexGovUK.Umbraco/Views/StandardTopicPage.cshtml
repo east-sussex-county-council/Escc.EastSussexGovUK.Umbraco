@@ -6,12 +6,16 @@
 @using Escc.EastSussexGovUK.Views
 @using Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.UserControls
 @using Escc.Registration.RegistrationSkin
+@using Escc.EastSussexGovUK.Umbraco.Skins.FosterWithTrust
 @using Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration
 @using Escc.Web
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<MicrosoftCmsViewModel>
 @{ 
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
-    Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] { new RegistrationSkin(Model.EsccWebsiteView, Model.Metadata.PageUrl) }, new CustomerFocusSkin(Model.EsccWebsiteView));
+    Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] {
+        new RegistrationSkin(Model.EsccWebsiteView, Model.Metadata.PageUrl),
+        new FosterWithTrustSkin(Model.EsccWebsiteView, Model.SkinToApply == "Foster with trust")
+    }, new CustomerFocusSkin(Model.EsccWebsiteView));
 
     // This view uses inline styles, so relax the content security policy to allow that
     var policy = new ContentSecurityPolicyHeaders(Response.Headers);

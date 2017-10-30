@@ -11,6 +11,7 @@ using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
 using Escc.EastSussexGovUK.Umbraco.Ratings;
+using Escc.EastSussexGovUK.Umbraco.Skins;
 
 namespace Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration
 {
@@ -29,17 +30,18 @@ namespace Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration
                 new UmbracoWebChatSettingsService(model.Content, new UrlListReader()), 
                 new ContentExperimentSettingsService(),
                 new UmbracoEscisService(model.Content),
-                new RatingSettingsFromUmbraco(model.Content));
+                new RatingSettingsFromUmbraco(model.Content),
+                new SkinFromUmbraco());
 
             return CurrentTemplate(landingModel);
         }
 
-        private static MicrosoftCmsViewModel MapUmbracoContentToViewModel(IPublishedContent content, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService, IRatingSettingsProvider ratingSettings)
+        private static MicrosoftCmsViewModel MapUmbracoContentToViewModel(IPublishedContent content, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService, IRatingSettingsProvider ratingSettings, ISkinToApplyService skinService)
         {
             var model = new MicrosoftCmsViewModel();
 
             var modelBuilder = new BaseViewModelBuilder();
-            modelBuilder.PopulateBaseViewModel(model, content, contentExperimentSettingsService, UmbracoContext.Current.InPreviewMode);
+            modelBuilder.PopulateBaseViewModel(model, content, contentExperimentSettingsService, UmbracoContext.Current.InPreviewMode, skinService);
             modelBuilder.PopulateBaseViewModelWithInheritedContent(model, latestService, socialMediaService, eastSussex1SpaceService, webChatSettingsService, escisService, ratingSettings);
 
             return model;

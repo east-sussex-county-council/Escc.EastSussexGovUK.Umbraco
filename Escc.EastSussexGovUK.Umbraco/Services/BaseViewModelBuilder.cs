@@ -8,6 +8,7 @@ using Escc.Umbraco.ContentExperiments;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 using Escc.EastSussexGovUK.Umbraco.Ratings;
+using Escc.EastSussexGovUK.Umbraco.Skins;
 
 namespace Escc.EastSussexGovUK.Umbraco.Services
 {
@@ -26,7 +27,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
         /// <exception cref="System.ArgumentNullException">model
         /// or
         /// content</exception>
-        public void PopulateBaseViewModel(BaseViewModel model, IPublishedContent content, IContentExperimentSettingsService contentExperimentSettingsService, bool inUmbracoPreviewMode)
+        public void PopulateBaseViewModel(BaseViewModel model, IPublishedContent content, IContentExperimentSettingsService contentExperimentSettingsService, bool inUmbracoPreviewMode, ISkinToApplyService skinService=null)
         {
             if (model == null) throw new ArgumentNullException("model");
             if (content == null) throw new ArgumentNullException("content");
@@ -52,6 +53,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
 
             model.IsPublicView = !inUmbracoPreviewMode && model.Metadata.PageUrl.Host.ToUpperInvariant() != "LOCALHOST";
             if (contentExperimentSettingsService != null) { model.ContentExperimentPageSettings = contentExperimentSettingsService.LookupSettingsForPage(content.Id); }
+
+            if (skinService != null)
+            {
+                model.SkinToApply = skinService.LookupSkinForPage(content.Id);
+            }
         }
 
         /// <summary>

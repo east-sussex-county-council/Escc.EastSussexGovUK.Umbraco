@@ -13,6 +13,7 @@ using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
 using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
+using Escc.EastSussexGovUK.Umbraco.Skins;
 
 namespace Escc.EastSussexGovUK.Umbraco.Controllers
 {
@@ -27,7 +28,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
 
             var viewModel = MapUmbracoContentToViewModel(model.Content);
             var modelBuilder = new BaseViewModelBuilder();
-            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode);
+            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode, new SkinFromUmbraco());
 
             if (!viewModel.Steps.Any())
             {
@@ -49,7 +50,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Controllers
 
             // Add common properties to the model
             var modelBuilder = new BaseViewModelBuilder();
-            modelBuilder.PopulateBaseViewModel(viewModel, content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode);
+            modelBuilder.PopulateBaseViewModel(viewModel, content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode, new SkinFromUmbraco());
             modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel,
                 new UmbracoLatestService(content),
                 new UmbracoSocialMediaService(content),

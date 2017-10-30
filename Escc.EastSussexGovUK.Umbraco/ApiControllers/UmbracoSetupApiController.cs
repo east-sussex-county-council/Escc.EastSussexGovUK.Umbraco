@@ -35,6 +35,8 @@ using Umbraco.Web.WebApi;
 using Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits;
 using Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor;
 using Escc.EastSussexGovUK.Umbraco.Ratings;
+using Escc.EastSussexGovUK.Umbraco.Skins;
+
 namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
 {
     /// <summary>
@@ -75,7 +77,8 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(TwitterScriptDataType));
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(MultiNodeTreePickerDataType));
                 UrlDataType.CreateDataType();
-            
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(SkinDataType));
+
                 RichTextEsccStandardDataType.CreateDataType();
                 RichTextEsccWithFormattingDataType.CreateDataType();
                 RichTextAuthorNotesDataType.CreateDataType();
@@ -144,6 +147,8 @@ namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(WebChatDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(RatingDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(RatingsDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(SkinDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(SkinsDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LegacyBaseDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LandingPageWithPicturesDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(StandardLandingPageDocumentType));

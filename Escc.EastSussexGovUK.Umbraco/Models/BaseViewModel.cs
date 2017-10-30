@@ -25,5 +25,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Models
         /// Gets or sets the settings for a page rating service
         /// </summary>
         public RatingSettings RatingSettings { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of a skin to apply.
+        /// </summary>
+        public string SkinToApply { get; set; }
     }
 }

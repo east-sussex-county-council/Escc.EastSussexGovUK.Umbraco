@@ -5,11 +5,15 @@
 @using Escc.EastSussexGovUK.Skins
 @using Escc.EastSussexGovUK.Views
 @using Escc.Registration.RegistrationSkin
+@using Escc.EastSussexGovUK.Umbraco.Skins.FosterWithTrust
 @using Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<MicrosoftCmsViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
-    Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] { new RegistrationSkin(Model.EsccWebsiteView, Model.Metadata.PageUrl) }, new CustomerFocusSkin(Model.EsccWebsiteView));
+    Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] {
+        new RegistrationSkin(Model.EsccWebsiteView, Model.Metadata.PageUrl),
+        new FosterWithTrustSkin(Model.EsccWebsiteView, Model.SkinToApply == "Foster with trust")
+    }, new CustomerFocusSkin(Model.EsccWebsiteView));
 
     var placeholders = CmsUtilities.Placeholders;
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
