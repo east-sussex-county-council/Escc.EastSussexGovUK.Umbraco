@@ -1,4 +1,6 @@
-﻿namespace Escc.EastSussexGovUK.Umbraco.Skins
+﻿using Umbraco.Core.Models;
+
+namespace Escc.EastSussexGovUK.Umbraco.Skins
 {
     /// <summary>
     /// Looks up the name of the skin for a page
@@ -8,6 +10,6 @@
         /// <summary>
         /// Looks up the name of the skin for a page.
         /// </summary>
-        string LookupSkinForPage(int pageId);
+        string LookupSkinForPage(IPublishedContent content);
     }
 }

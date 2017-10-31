@@ -56,7 +56,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
 
             if (skinService != null)
             {
-                model.SkinToApply = skinService.LookupSkinForPage(content.Id);
+                model.SkinToApply = skinService.LookupSkinForPage(content);
             }
         }
 

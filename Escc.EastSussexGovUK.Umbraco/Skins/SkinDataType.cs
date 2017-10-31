@@ -18,6 +18,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Skins
         /// Gets the skins which can be selected using this data type
         /// </summary>
         internal static IEnumerable<string> Skins = new string[] {
+            "Default skin",
             "Foster with trust"
         };
 

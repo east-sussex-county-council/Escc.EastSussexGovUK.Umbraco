@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Umbraco.Core;
+using Umbraco.Core.Models;
 using Umbraco.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.Skins
@@ -17,10 +18,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Skins
         /// </summary>
         /// <param name="pageId">The node identifier.</param>
         /// <returns></returns>
-        public string LookupSkinForPage(int pageId)
+        public string LookupSkinForPage(IPublishedContent content)
         {
-            var relationToSkin = ApplicationContext.Current.Services.RelationService.GetByChildId(pageId).FirstOrDefault(r => r.RelationType.Alias == SkinRelationType.RelationTypeAlias);
-            if (relationToSkin == null) return null;
+            var relationToSkin = ApplicationContext.Current.Services.RelationService.GetByChildId(content.Id).FirstOrDefault(r => r.RelationType.Alias == SkinRelationType.RelationTypeAlias);
+            if (relationToSkin == null)
+            {
+                if (content.Parent != null)
+                {
+                    return LookupSkinForPage(content.Parent);
+                }
+                return null;
+            }
 
             var skinPage = UmbracoContext.Current.ContentCache.GetById(relationToSkin.ParentId);
             if (skinPage == null) return null;
