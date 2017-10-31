@@ -94,8 +94,6 @@
       <add key="FosterWithTrustSkinLarge" value="/Skins/FosterWithTrust/foster-with-trust-large.css" xdt:Transform="Insert" />
     </CssFiles>
     <ScriptFiles>
-      <add key="CampaignLanding" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="CampaignLanding" value="/js/campaigntemplates/campaign-landing.js" xdt:Transform="Insert" />
       <add key="CouncilPlan" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="CouncilPlan" value="/js/CouncilPlan/council-plan.js" xdt:Transform="Insert" />
       <add key="DocumentMetadata" xdt:Transform="Remove" xdt:Locator="Match(key)" />

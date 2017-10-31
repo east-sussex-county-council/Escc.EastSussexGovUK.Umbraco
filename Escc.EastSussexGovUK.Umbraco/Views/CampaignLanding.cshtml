@@ -1,5 +1,7 @@
 ﻿@using ClientDependency.Core.Mvc
 @using Escc.ClientDependencyFramework
+@using Escc.EastSussexGovUK
+@using Escc.EastSussexGovUK.Features
 @using Escc.EastSussexGovUK.Skins
 @using Escc.EastSussexGovUK.Umbraco.Services
 @using Escc.EastSussexGovUK.Views
@@ -20,7 +22,10 @@
 
     }
     Html.RequiresCss(CssFileAlias.Resolve("CampaignPrint"), new Dictionary<string, string>() { { "media", "print" } });
-    Html.RequiresJs(JsFileAlias.Resolve("CampaignLanding"), 1000);
+    Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
+    {
+        new EmbeddedYouTubeVideos() { Html = new [] { Model.Content.ToString() }}
+    });
 
     if (Model.LandingNavigation.Sections.Count > 0)
     {
@@ -33,18 +38,17 @@
     }
 
     var nonce = Guid.NewGuid().ToString().Replace("-", String.Empty);
-    var policy = new ContentSecurityPolicyHeaders(Response.Headers);
-    policy.AppendPolicy(new ContentSecurityPolicyFromConfig().Policies["YouTube"]);
     if (!String.IsNullOrEmpty(Model.GoogleAdWordsTag))
     {
+        var policy = new ContentSecurityPolicyHeaders(Response.Headers);
         policy.AppendPolicy($"script-src 'nonce-{nonce}' https://www.googleadservices.com; img-src https://www.googleadservices.com");
+        policy.UpdateHeaders();
     }
-    policy.UpdateHeaders();
 }
 @section BodyClass {
     campaign-landing
 }
-<div class="full-page" data-video-height="@Model.VideoHeight">
+<div class="full-page" data-video-height="@Model.VideoHeight" data-video-max-width="966">
     <div class="lead">
         <h1>@Model.Metadata.Title</h1>
         @if (!String.IsNullOrEmpty(Model.Introduction.ToHtmlString()))

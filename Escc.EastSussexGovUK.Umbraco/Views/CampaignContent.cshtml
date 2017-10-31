@@ -44,7 +44,7 @@
     }
 }
 @section BodyClass {@bodyClass}
-<div class="article" data-video-width="@Model.VideoWidth" data-video-height="@Model.VideoHeight">
+<div class="article" data-video-width="@Model.VideoWidth" data-video-height="@Model.VideoHeight" data-video-resize="@((!(Model.VideoWidth.HasValue || Model.VideoHeight.HasValue)).ToString().ToLowerInvariant())">
     <article>
         <div class="content text-content">
             <h1>@Model.Metadata.Title</h1>
