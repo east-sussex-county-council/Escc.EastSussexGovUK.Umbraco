@@ -161,7 +161,7 @@
       <HintPath>..\packages\Escc.Registration.RegistrationSkin.1.0.0\lib\Escc.Registration.RegistrationSkin.dll</HintPath>
     </Reference>
     <Reference Include="Escc.RubbishAndRecycling.SiteFinder.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.1\lib\Escc.RubbishAndRecycling.SiteFinder.Website.dll</HintPath>
+      <HintPath>..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.2\lib\Escc.RubbishAndRecycling.SiteFinder.Website.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.2.3.4\lib\Escc.Umbraco.dll</HintPath>
@@ -886,8 +886,6 @@
     <Content Include="Skins\FosterWithTrust\foster-with-trust-large.css" />
     <Content Include="Skins\FosterWithTrust\foster-with-trust-medium.css" />
     <Content Include="Skins\FosterWithTrust\foster-with-trust-small.css" />
-    <Content Include="Views\Topic\RecyclingSiteFinder.ascx" />
-    <Content Include="Views\Topic\TopicSection_RecyclingSiteFinder.ascx" />
     <Content Include="App_Plugins\EditorTools\Views\Content\Index.cshtml" />
     <Content Include="App_Plugins\EditorTools\Views\CSVExport\Index.cshtml" />
     <Content Include="App_Plugins\EditorTools\Views\EditorToolsHome\About.cshtml" />
@@ -925,6 +923,8 @@
     <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Config\uMediaSync.config" />
     <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\package.manifest" />
+    <Content Include="Views\Topic\RecyclingSiteFinder.ascx" />
+    <Content Include="Views\Topic\TopicSection_RecyclingSiteFinder.ascx" />
     <Content Include="windows-tile.png" />
     <None Include="Content\PagedList.css" />
     <Content Include="css\CampaignTemplates\align-buttons-large.css" />
@@ -4310,12 +4310,12 @@
     <Error Condition="!Exists('..\packages\UmbracoCms.7.5.14\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.5.14\build\UmbracoCms.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.EditorTools.2.4.2\build\Escc.Umbraco.EditorTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.EditorTools.2.4.2\build\Escc.Umbraco.EditorTools.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.1\build\Escc.RubbishAndRecycling.SiteFinder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.1\build\Escc.RubbishAndRecycling.SiteFinder.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\Escc.Registration.RegistrationSkin.1.0.0\build\Escc.Registration.RegistrationSkin.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Registration.RegistrationSkin.1.0.0\build\Escc.Registration.RegistrationSkin.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.1.3.12\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.1.3.12\build\Escc.Umbraco.MediaSync.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.1\build\Escc.EastSussexGovUK.TemplateSource.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.1\build\Escc.EastSussexGovUK.TemplateSource.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.2\build\Escc.RubbishAndRecycling.SiteFinder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.2\build\Escc.RubbishAndRecycling.SiteFinder.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
@@ -4328,10 +4328,10 @@
   <Import Project="..\packages\UmbracoCms.7.5.14\build\UmbracoCms.targets" Condition="Exists('..\packages\UmbracoCms.7.5.14\build\UmbracoCms.targets')" />
   <Import Project="..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets')" />
   <Import Project="..\packages\Escc.Umbraco.EditorTools.2.4.2\build\Escc.Umbraco.EditorTools.targets" Condition="Exists('..\packages\Escc.Umbraco.EditorTools.2.4.2\build\Escc.Umbraco.EditorTools.targets')" />
-  <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.1\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.1\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
   <Import Project="..\packages\Escc.Registration.RegistrationSkin.1.0.0\build\Escc.Registration.RegistrationSkin.targets" Condition="Exists('..\packages\Escc.Registration.RegistrationSkin.1.0.0\build\Escc.Registration.RegistrationSkin.targets')" />
   <Import Project="..\packages\Escc.Umbraco.MediaSync.1.3.12\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.1.3.12\build\Escc.Umbraco.MediaSync.targets')" />
   <Import Project="..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.1\build\Escc.EastSussexGovUK.TemplateSource.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.1\build\Escc.EastSussexGovUK.TemplateSource.targets')" />
+  <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.2\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.2\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
