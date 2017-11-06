@@ -1,3 +1,4 @@
 ﻿/* At this size .supporting, also applied to the image, has moved the image to the right column 
-   so we need to remove white space above and increase from 1 to 2 lines of vertical space below. */
-.foster-with-trust-logo { margin: 0 0 1.894737em;}
+   so we need to change vertical white space to 2 lines, with the cap height of the logo aligned 
+   with the cap height of h1. The base font size is 13px. */
+.foster-with-trust-logo { margin: 0.615385em 0 1.615385em;}
