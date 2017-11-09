@@ -1,2 +1,8 @@
-﻿/* Add one line of vertical space above and below. Space to the side is applied by .content-medium. */
-.foster-with-trust-logo { margin-top: .947368em; margin-bottom: .947368em; }
+﻿/* Reveal the whole background strap. */
+body .body { background-position: center top; }
+
+/* A bigger logo is swapped in at this size, and the strap is taller, so adjust the spacing above and below the logo. */
+.foster-with-trust-logo { margin-top: 52px; margin-bottom: 43px; }
+
+/* Align the phone number to the new logo, and make it bigger and bolder now that there's more space. */
+.foster-with-trust-call { top: 84px; right: 2.244389%; font-weight: bold; font-size: 2.307692em; }

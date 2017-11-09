@@ -881,6 +881,8 @@
     <Content Include="RegistrationSkin\img\registration-skin.png" />
     <Content Include="RegistrationSkin\js\min\registration-skin.js" />
     <Content Include="robots.txt" />
+    <Content Include="Skins\FosterWithTrust\background.png" />
+    <Content Include="Skins\FosterWithTrust\foster-with-trust-small.png" />
     <Content Include="Skins\FosterWithTrust\foster-with-trust.png" />
     <Content Include="Skins\FosterWithTrust\foster-with-trust.js" />
     <Content Include="Skins\FosterWithTrust\foster-with-trust-large.css" />

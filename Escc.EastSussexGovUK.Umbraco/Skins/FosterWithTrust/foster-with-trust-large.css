@@ -1,4 +1,9 @@
-﻿/* At this size .supporting, also applied to the image, has moved the image to the right column 
-   so we need to change vertical white space to 2 lines, with the cap height of the logo aligned 
-   with the cap height of h1. The base font size is 13px. */
-.foster-with-trust-logo { margin: 0.615385em 0 1.615385em;}
+﻿/* We have a different breadcrumb at this size, so position it absolutely and with enough space to ensure that 
+    wrapping onto two lines doesn't upset the design. Change the colour to contrast with the strap.
+*/
+.breadcrumb { position: absolute; top: 8px; left: 0; }
+.breadcrumb li { line-height: 1em; }
+body .body .breadcrumb, .body .breadcrumb a:link, .body .breadcrumb a:visited, .body .breadcrumb li:after { color: #fff; }
+
+/* Change 'Call us' from .aural to ordinary text now that there's room for it. */
+.foster-with-trust-call span { position: static; clip: initial; }

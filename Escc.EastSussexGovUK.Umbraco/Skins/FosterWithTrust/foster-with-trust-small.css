@@ -1,2 +1,17 @@
-﻿/* Add one line of vertical space above and below. Space to the side is applied by .content-small. */
-.foster-with-trust-logo { margin-top: 1.125em; margin-bottom: 1.125em; }
+﻿/* Add background strap. Hide a bit that will be used at larger screen sizes. */
+body .body { background: #fff url(/Skins/FosterWithTrust/background.png) repeat-x center -30px;}
+
+/* Position the breadcrumb absolutely so that if it wraps it doesn't affect the position of the logo or the height of the header strap.
+   Colour it white to contrast with the header strap.
+*/
+.body > .container { position: relative; padding-top: 0; }
+.breadcrumb-mobile { position: absolute; top: 10px; left: 0; }
+.breadcrumb-mobile, .breadcrumb-mobile a:link, .breadcrumb-mobile a:visited { background: none; box-shadow: none; color: #fff; }
+
+/* Vertical space plus the height of the logo equals the height of the strap plus 1 line (18px) space. Space to the side is applied by .content. */
+.foster-with-trust-logo { margin-top: 48px; margin-bottom: 30px; }
+
+/* The height of the strap is controlled by the logo, so move the phone number to align with the logo baseline.
+   The value of 'right' is equal to the margin-right of .content
+*/
+.foster-with-trust-call { position: absolute; top: 71px; right: 3.797468%; font: normal 1.769231em 'Source Sans Pro', Arial, 'Helvetica Neue', Helvetica, sans-serif; color: #fff; white-space: nowrap; }
