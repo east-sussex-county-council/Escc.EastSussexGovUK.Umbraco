@@ -883,7 +883,7 @@
     <Content Include="robots.txt" />
     <Content Include="Skins\FosterWithTrust\background.png" />
     <Content Include="Skins\FosterWithTrust\foster-with-trust-small.png" />
-    <Content Include="Skins\FosterWithTrust\foster-with-trust.png" />
+    <Content Include="Skins\FosterWithTrust\foster-with-trust-medium.png" />
     <Content Include="Skins\FosterWithTrust\foster-with-trust.js" />
     <Content Include="Skins\FosterWithTrust\foster-with-trust-large.css" />
     <Content Include="Skins\FosterWithTrust\foster-with-trust-medium.css" />
