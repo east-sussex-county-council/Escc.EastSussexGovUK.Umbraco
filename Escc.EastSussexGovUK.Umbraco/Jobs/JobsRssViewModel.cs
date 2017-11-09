@@ -17,9 +17,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public HtmlLink JobAdvertPage { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the Examine searcher for the jobs index
+        /// Gets or sets the jobs to include in the feed
         /// </summary>
-        public string ExamineSearcher { get; set; }
+        public JobsSet JobsSet { get; set; }
 
         /// <summary>
         /// Gets or sets the query that led to these results

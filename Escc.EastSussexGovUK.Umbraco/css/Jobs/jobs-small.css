@@ -96,3 +96,16 @@ label.SA-smalltext { display: inline; padding: 0 1em 0 .3em;vertical-align: sub;
    .1px prevents margin-collapsing, allowing the margin-top of dt to define space at the top of .job-summary rather than extending outside it
 */
 .job-summary { padding: .1px 18px 1.125em; background: #ddd; }
+
+/* Replacement job alerts 
+
+   A radio button or checkbox list with only a few options can be horizontal.
+    <fieldset class="radioButtonList radio-button-list-simple">
+        <legend>Field label</legend>
+        <label><input /> Option 1</label>
+        <label><input /> Option 2</label>
+    </fielset>
+*/
+.text-content .short-form fieldset.radio-button-list-simple > label { display: inline-block; position: relative; margin-right: 1em; }
+
+.success { background: #A7CBA9; padding: 9px 18px; border-radius: 5px; margin: 18px 0; }

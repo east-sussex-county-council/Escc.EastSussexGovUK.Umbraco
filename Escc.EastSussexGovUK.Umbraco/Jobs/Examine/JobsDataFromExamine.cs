@@ -208,58 +208,66 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
 
         private List<Job> BuildJobsFromExamineResults(ISearchResults results)
         {
-            var jobs = new List<Job>();
-            foreach (var result in results)
-            {
-                var job = new Job()
+   
+                var jobs = new List<Job>();
+                foreach (var result in results)
                 {
-                    Id = result.Fields.ContainsKey("id") ? Int32.Parse(result["id"], CultureInfo.InvariantCulture) : 0,
-                    Reference = result.Fields.ContainsKey("reference") ? result["reference"] : String.Empty,
-                    JobTitle = result.Fields.ContainsKey("titleDisplay") ? result["titleDisplay"] : String.Empty,
-                    Organisation = result.Fields.ContainsKey("organisationDisplay") ? result["organisationDisplay"] : String.Empty,
-                    Location = result.Fields.ContainsKey("locationDisplay") ? result["locationDisplay"] : String.Empty,
-                    JobType = result.Fields.ContainsKey("jobTypeDisplay") ? result["jobTypeDisplay"] : String.Empty,
-                    ContractType = result.Fields.ContainsKey("contractType") ? result["contractType"] : String.Empty,
-                    IsPartTime = result.Fields.ContainsKey("partTime") ? Boolean.Parse(result["partTime"]) : false,
-                    IsFullTime = result.Fields.ContainsKey("fullTime") ? Boolean.Parse(result["fullTime"]) : false,
-                    Department = result.Fields.ContainsKey("departmentDisplay") ? result["departmentDisplay"] : String.Empty,
-                    WorkPattern = new WorkPattern()
+                    try
+            {         var job = new Job()
                     {
-                        IsFullTime = result.Fields.ContainsKey("fullTime") && result["fullTime"].ToUpperInvariant() == "TRUE",
-                        IsPartTime = result.Fields.ContainsKey("partTime") && result["partTime"].ToUpperInvariant() == "TRUE"
-                    },
-                    AdvertHtml = new HtmlString(result.Fields.ContainsKey("fullHtml") ? result["fullHtml"] : String.Empty),
-                    AdditionalInformationHtml = new HtmlString(result.Fields.ContainsKey("additionalInfo") ? result["additionalInfo"] : String.Empty),
-                    EqualOpportunitiesHtml = new HtmlString(result.Fields.ContainsKey("equalOpportunities") ? result["equalOpportunities"] : String.Empty),
-                    ApplyUrl = (result.Fields.ContainsKey("applyUrl") && !String.IsNullOrEmpty(result["applyUrl"])) ? new Uri(result["applyUrl"]) : null
-                };
-
+                        Id = result.Fields.ContainsKey("id") ? Int32.Parse(result["id"], CultureInfo.InvariantCulture) : 0,
+                        Reference = result.Fields.ContainsKey("reference") ? result["reference"] : String.Empty,
+                        JobTitle = result.Fields.ContainsKey("titleDisplay") ? result["titleDisplay"] : String.Empty,
+                        Organisation = result.Fields.ContainsKey("organisationDisplay") ? result["organisationDisplay"] : String.Empty,
+                        Location = result.Fields.ContainsKey("locationDisplay") ? result["locationDisplay"] : String.Empty,
+                        JobType = result.Fields.ContainsKey("jobTypeDisplay") ? result["jobTypeDisplay"] : String.Empty,
+                        ContractType = result.Fields.ContainsKey("contractType") ? result["contractType"] : String.Empty,
+                        IsPartTime = result.Fields.ContainsKey("partTime") ? Boolean.Parse(result["partTime"]) : false,
+                        IsFullTime = result.Fields.ContainsKey("fullTime") ? Boolean.Parse(result["fullTime"]) : false,
+                        Department = result.Fields.ContainsKey("departmentDisplay") ? result["departmentDisplay"] : String.Empty,
+                        WorkPattern = new WorkPattern()
+                        {
+                            IsFullTime = result.Fields.ContainsKey("fullTime") && result["fullTime"].ToUpperInvariant() == "TRUE",
+                            IsPartTime = result.Fields.ContainsKey("partTime") && result["partTime"].ToUpperInvariant() == "TRUE"
+                        },
+                        AdvertHtml = new HtmlString(result.Fields.ContainsKey("fullHtml") ? result["fullHtml"] : String.Empty),
+                        AdditionalInformationHtml = new HtmlString(result.Fields.ContainsKey("additionalInfo") ? result["additionalInfo"] : String.Empty),
+                        EqualOpportunitiesHtml = new HtmlString(result.Fields.ContainsKey("equalOpportunities") ? result["equalOpportunities"] : String.Empty),
+                        ApplyUrl = (result.Fields.ContainsKey("applyUrl") && !String.IsNullOrEmpty(result["applyUrl"])) ? new Uri(result["applyUrl"]) : null
+                    };
+        
                 job.Salary.SalaryRange = result.Fields.ContainsKey("salaryDisplay") ? result["salaryDisplay"] : String.Empty;
-                job.Salary.SearchRange = result.Fields.ContainsKey("salaryRange") ? result["salaryRange"] : String.Empty;
-                if (result.Fields.ContainsKey("salaryMin") && !String.IsNullOrEmpty(result["salaryMin"]))
-                {
-                    int minimumSalary;
-                    Int32.TryParse(result["salaryMin"], out minimumSalary);
-                    job.Salary.MinimumSalary = minimumSalary;
-                }
-                if (result.Fields.ContainsKey("salaryMax") && !String.IsNullOrEmpty(result["salaryMax"]))
-                {
-                    int maximumSalary;
-                    Int32.TryParse(result["salaryMax"], out maximumSalary);
-                    job.Salary.MaximumSalary = maximumSalary;
-                }
+                    job.Salary.SearchRange = result.Fields.ContainsKey("salaryRange") ? result["salaryRange"] : String.Empty;
+                    if (result.Fields.ContainsKey("salaryMin") && !String.IsNullOrEmpty(result["salaryMin"]))
+                    {
+                        int minimumSalary;
+                        Int32.TryParse(result["salaryMin"], out minimumSalary);
+                        job.Salary.MinimumSalary = minimumSalary;
+                    }
+                    if (result.Fields.ContainsKey("salaryMax") && !String.IsNullOrEmpty(result["salaryMax"]))
+                    {
+                        int maximumSalary;
+                        Int32.TryParse(result["salaryMax"], out maximumSalary);
+                        job.Salary.MaximumSalary = maximumSalary;
+                    }
 
-                if (_urlGenerator != null)
-                {
-                    job.Url = _urlGenerator.GenerateUrl(job);
-                }
-                if (result.Fields.ContainsKey("closingDateDisplay")) job.ClosingDate = DateTime.Parse(result["closingDateDisplay"]);
-                if (result.Fields.ContainsKey("datePublished")) job.DatePublished = new LuceneDateTimeParser().Parse(result["datePublished"]);
+                    if (_urlGenerator != null)
+                    {
+                        job.Url = _urlGenerator.GenerateUrl(job);
+                    }
+                    if (result.Fields.ContainsKey("closingDateDisplay")) job.ClosingDate = DateTime.Parse(result["closingDateDisplay"]);
+                    if (result.Fields.ContainsKey("datePublished")) job.DatePublished = new LuceneDateTimeParser().Parse(result["datePublished"]);
 
-                jobs.Add(job);
+                    jobs.Add(job);
             }
+            catch (Exception ex)
+            {
+                var bob = true;
+                return null;
+            }    }
 
-            return jobs;
+                return jobs;
+    
         }
 
         private string BuildWorkPatternLuceneQuery(IList<string> workPatterns)

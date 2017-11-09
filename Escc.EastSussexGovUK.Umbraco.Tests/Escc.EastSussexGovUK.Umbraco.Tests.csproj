@@ -87,6 +87,9 @@
     <Reference Include="Escc.Net, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Net.1.0.1\lib\Escc.Net.dll</HintPath>
     </Reference>
+    <Reference Include="Escc.Services, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Services.3.0.1\lib\Escc.Services.dll</HintPath>
+    </Reference>
     <Reference Include="Escc.Umbraco, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.2.3.1\lib\Escc.Umbraco.dll</HintPath>
       <Private>True</Private>
@@ -347,12 +350,19 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="FakeEmailSender.cs" />
+    <Compile Include="FakeJobAlertFormatter.cs" />
+    <Compile Include="FakeSearchQueryConverter.cs" />
     <Compile Include="HouseStyleDateFormatterTests.cs" />
     <Compile Include="HtmlAgilityPackFormatterTests.cs" />
     <Compile Include="HtmlStringFormatterTests.cs" />
     <Compile Include="JobAdvertHtmlParserTests.cs" />
+    <Compile Include="JobAlertIdEncoderTests.cs" />
+    <Compile Include="JobAlertsByEmailSenderTests.cs" />
+    <Compile Include="JobAlertsSpyRepository.cs" />
     <Compile Include="JobSearchFilterTests.cs" />
-    <Compile Include="JobSearchQueryFactoryTests.cs" />
+    <Compile Include="JobSearchQueryConverterTests.cs" />
+    <Compile Include="JobSearchQueryTests.cs" />
     <Compile Include="MockLinkFormatter.cs" />
     <Compile Include="RemoveAzureDomainHtmlFormatterTests.cs" />
     <Compile Include="RemoveAzureDomainUrlTransformerTests.cs" />

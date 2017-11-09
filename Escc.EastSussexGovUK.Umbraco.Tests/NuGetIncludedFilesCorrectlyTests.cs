@@ -41,6 +41,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         [TestCase(@"App_Plugins\EditorTools\lang\en.xml")]
         [TestCase(@"App_Plugins\EditorTools\Scripts\bootstrap.js")]
         [TestCase(@"App_Plugins\EditorTools\Views\Content\Index.cshtml")]
+	[TestCase(@"App_Plugins\EditorTools\Views\CSVExport\Index.cshtml")]
 
         // Escc.EastSussexGovUK.TemplateSource project
         [TestCase(@"favicon.ico")]

@@ -7,10 +7,10 @@ using Umbraco.Web.Routing;
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
     /// <summary>
-    /// Wire up <see cref="JobAdvertContentFinder"/> so that job adverts can have search-engine-friendly URLs
+    /// Wire up <see cref="JobAdvertContentFinder"/> and <see cref="JobAlertContentFinder"/> so that job pages can have search-engine-friendly URLs
     /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1711:IdentifiersShouldNotHaveIncorrectSuffix")]
-    public class JobAdvertEventHandler : ApplicationEventHandler
+    public class JobsEventHandler : ApplicationEventHandler
     {
         /// <summary>
         /// OVerridable method to execute when All resolvers have been initialized but resolution is not frozen so they can be modified in this method
@@ -22,8 +22,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         {
             try
             {
-                 // Insert my finder before the default Umbraco content finder
+                 // Insert my finders before the default Umbraco content finder
                 ContentFinderResolver.Current.InsertTypeBefore<ContentFinderByNiceUrl, JobAdvertContentFinder>();
+                ContentFinderResolver.Current.InsertTypeBefore<ContentFinderByNiceUrl, JobAlertContentFinder>();
             }
             catch (Exception e)
             {

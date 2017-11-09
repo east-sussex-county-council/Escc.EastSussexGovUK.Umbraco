@@ -56,10 +56,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
 
             if (String.IsNullOrEmpty(Request.QueryString["altTemplate"]))
             {
-                viewModel.Query = new JobSearchQueryFactory().CreateFromQueryString(Request.QueryString);
+                viewModel.Query = new JobSearchQueryConverter().ToQuery(Request.QueryString);
                 viewModel.Query.ClosingDateFrom = DateTime.Today;
+                viewModel.Query.JobsSet = viewModel.JobsSet;
+                viewModel.Metadata.Title = viewModel.Query.ToString();
 
-                var jobsProvider = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.ExamineSearcher], new QueryBuilder(new LuceneTokenisedQueryBuilder(), new KeywordsTokeniser(), new LuceneStopWordsRemover(), new WildcardSuffixFilter()), new SalaryRangeLuceneQueryBuilder(), viewModel.JobAdvertPage != null ? new RelativeJobUrlGenerator(viewModel.JobAdvertPage.Url) : null);
+                var jobsProvider = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.JobsSet + "Searcher"], new QueryBuilder(new LuceneTokenisedQueryBuilder(), new KeywordsTokeniser(), new LuceneStopWordsRemover(), new WildcardSuffixFilter()), new SalaryRangeLuceneQueryBuilder(), viewModel.JobAdvertPage != null ? new RelativeJobUrlGenerator(viewModel.JobAdvertPage.Url) : null);
 
                 var jobs = Task.Run(async () => await jobsProvider.ReadJobs(viewModel.Query)).Result;
                 if (String.IsNullOrWhiteSpace(Request.QueryString["page"]))
@@ -87,13 +89,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                         viewModel.Metadata.RssFeedUrl = viewModel.Metadata.RssFeedUrl + "?" + queryString;
                     }
                 }
-
-                var lookupsProvider = new JobsLookupValuesFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.ExamineLookupValuesSearcher]);
-                viewModel.JobTypeLookupValues = Task.Run(async () => await lookupsProvider.ReadJobTypes()).Result;
-                viewModel.OrganisationLookupValues = Task.Run(async () => await lookupsProvider.ReadOrganisations()).Result;
-                viewModel.SalaryRangeLookupValues = Task.Run(async () => await lookupsProvider.ReadSalaryRanges()).Result;
-                viewModel.WorkPatternLookupValues = Task.Run(async () => await lookupsProvider.ReadWorkPatterns()).Result;
-                viewModel.LocationLookupValues = Task.Run(async () => await lookupsProvider.ReadLocations()).Result;
             }
 
             // Jobs close at midnight, so don't cache beyond then

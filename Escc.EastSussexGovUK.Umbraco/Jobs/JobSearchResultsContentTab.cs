@@ -69,15 +69,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public string LoginPage { get; set; }
 
         /// <summary>
-        /// Gets or sets the job alerts page
-        /// </summary>
-        /// <value>
-        /// A reference to the Umbraco node for the job alerts page
-        /// </value>
-        [UmbracoProperty("Job alerts page", "JobAlertsPage", BuiltInUmbracoDataTypes.ContentPickerAlias, sortOrder: 7, Description = "Select the job alerts page, based on the 'Jobs component' document type")]
-        public string JobAlertsPage { get; set; }
-
-        /// <summary>
         /// Gets or sets the job detail page
         /// </summary>
         /// <value>

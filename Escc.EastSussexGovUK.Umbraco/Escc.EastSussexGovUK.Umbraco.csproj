@@ -163,6 +163,12 @@
     <Reference Include="Escc.RubbishAndRecycling.SiteFinder.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.2\lib\Escc.RubbishAndRecycling.SiteFinder.Website.dll</HintPath>
     </Reference>
+    <Reference Include="Escc.Services, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Services.3.0.0\lib\Escc.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Escc.Services.Azure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Services.Azure.2.1.1\lib\Escc.Services.Azure.dll</HintPath>
+    </Reference>
     <Reference Include="Escc.Umbraco, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.2.3.4\lib\Escc.Umbraco.dll</HintPath>
       <Private>True</Private>
@@ -355,8 +361,11 @@
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Our.Umbraco.FileSystemProviders.Azure, Version=0.5.8.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoFileSystemProviders.Azure.0.5.8-escc-000001\lib\net45\Our.Umbraco.FileSystemProviders.Azure.dll</HintPath>
+    <Reference Include="OrigoDb.JsonNetFormatter, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OrigoDB.JsonNetFormatter.0.1.0\lib\net40\OrigoDb.JsonNetFormatter.dll</HintPath>
+    </Reference>
+    <Reference Include="Our.Umbraco.FileSystemProviders.Azure, Version=0.5.8.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoFileSystemProviders.Azure.0.5.8-escc-000002\lib\net45\Our.Umbraco.FileSystemProviders.Azure.dll</HintPath>
     </Reference>
     <Reference Include="Our.Umbraco.PropertyEditorConverters, Version=2.1.5.35, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Our.Umbraco.CoreValueConverters.2.1.5\lib\net45\Our.Umbraco.PropertyEditorConverters.dll</HintPath>
@@ -365,6 +374,9 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="S22.Mail, Version=1.0.4668.31819, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\S22.Mail.1.0.4668.31819\lib\net45\S22.Mail.dll</HintPath>
     </Reference>
     <Reference Include="Semver, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\semver.1.1.2\lib\net451\Semver.dll</HintPath>
@@ -986,6 +998,8 @@
     <None Include="Jobs\Images\East Sussex Jobs logo colour.png" />
     <None Include="Jobs\Images\East Sussex Jobs logo white.png" />
     <None Include="Jobs\Images\header.png" />
+    <EmbeddedResource Include="Jobs\Alerts\JobAlert.html" />
+    <EmbeddedResource Include="Jobs\Alerts\JobAlertConfirmation.html" />
     <Content Include="images\rating1.png" />
     <Content Include="images\rating2.png" />
     <Content Include="images\rating3.png" />
@@ -3674,6 +3688,8 @@
     <Content Include="Umbraco\Webservices\TreeDataService.ashx" />
     <Content Include="Umbraco\Webservices\UltimatePickerAutoCompleteHandler.ashx" />
     <Content Include="Umbraco\Xslt\Web.config" />
+    <Content Include="Views\JobAlerts.cshtml" />
+    <Content Include="Views\JobsSearchForm.cshtml" />
     <Content Include="Views\Layouts\_Rating.cshtml" />
     <Content Include="Views\RightsOfWayDeposit.cshtml" />
     <Content Include="Views\RightsOfWayDeposits.cshtml" />
@@ -3774,18 +3790,41 @@
     <Compile Include="Examine\SearchTermSanitiser.cs" />
     <Compile Include="Examine\WildcardSuffixFilter.cs" />
     <Compile Include="HomePage\HomePageViewModelFromUmbraco.cs" />
+    <Compile Include="Jobs\Alerts\AzureTableStorageAlertsRepository.cs" />
+    <Compile Include="Jobs\Alerts\HtmlJobAlertFormatter.cs" />
+    <Compile Include="Jobs\Alerts\IJobAlertsRepository.cs" />
+    <Compile Include="Jobs\Alerts\IJobAlertFormatter.cs" />
+    <Compile Include="Jobs\Alerts\IJobAlertSender.cs" />
+    <Compile Include="Jobs\Alerts\IJobAlertSettingsProvider.cs" />
+    <Compile Include="Jobs\Alerts\JobAlertContentFinder.cs" />
+    <Compile Include="Jobs\Alerts\JobAlertIdEncoder.cs" />
+    <Compile Include="Jobs\Alerts\JobAlertsByEmailSender.cs" />
+    <Compile Include="Jobs\Alerts\JobAlertsContentTab.cs" />
+    <Compile Include="Jobs\Alerts\JobAlertsController.cs" />
+    <Compile Include="Jobs\Alerts\JobAlertsDocumentType.cs" />
+    <Compile Include="Jobs\Alerts\JobAlert.cs" />
+    <Compile Include="Jobs\Alerts\JobAlertSettings.cs" />
+    <Compile Include="Jobs\Alerts\JobAlertsQuery.cs" />
+    <Compile Include="Jobs\Alerts\JobAlertsSettingsFromUmbraco.cs" />
+    <Compile Include="Jobs\Alerts\JobAlertsViewModel.cs" />
+    <Compile Include="Jobs\Alerts\JobAlertSentTableEntity.cs" />
+    <Compile Include="Jobs\Alerts\JobAlertTableEntity.cs" />
     <Compile Include="Jobs\Examine\BaseLookupValuesIndexer.cs" />
     <Compile Include="Examine\LuceneDateTimeParser.cs" />
+    <Compile Include="Jobs\IJobSearchQueryConverter.cs" />
     <Compile Include="Jobs\IJobsLookupValuesProvider.cs" />
     <Compile Include="Jobs\IJobUrlGenerator.cs" />
     <Compile Include="Jobs\IWorkPatternParser.cs" />
     <Compile Include="Jobs\ISalaryParser.cs" />
     <Compile Include="Jobs\JobAdvertContentFinder.cs" />
-    <Compile Include="Jobs\JobAdvertEventHandler.cs" />
+    <Compile Include="Jobs\JobsEventHandler.cs" />
     <Compile Include="Jobs\Examine\JobsLookupValuesFromExamine.cs" />
     <Compile Include="Jobs\Examine\JobsDataFromExamine.cs" />
     <Compile Include="Jobs\Examine\BaseJobsIndexer.cs" />
     <Compile Include="Jobs\Examine\JobsIndexerApiController.cs" />
+    <Compile Include="Jobs\Alerts\JobAlertsSurfaceController.cs" />
+    <Compile Include="Jobs\Alerts\JobAlertsApiController.cs" />
+    <Compile Include="Jobs\JobsSet.cs" />
     <Compile Include="Jobs\LocationHashTag.cs" />
     <Compile Include="Jobs\RelativeJobUrlGenerator.cs" />
     <Compile Include="Jobs\ProblemJobsRssController.cs" />
@@ -3819,7 +3858,7 @@
     <Compile Include="Jobs\JobAdvertDocumentType.cs" />
     <Compile Include="Jobs\JobAdvertViewModel.cs" />
     <Compile Include="Jobs\JobSearchQuery.cs" />
-    <Compile Include="Jobs\JobSearchQueryFactory.cs" />
+    <Compile Include="Jobs\JobSearchQueryConverter.cs" />
     <Compile Include="Jobs\BaseJobsViewModel.cs" />
     <Compile Include="Jobs\JobAdvertViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\JobAdvertController.cs" />

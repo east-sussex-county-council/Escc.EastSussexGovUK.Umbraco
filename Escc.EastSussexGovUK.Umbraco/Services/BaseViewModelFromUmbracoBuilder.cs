@@ -4,6 +4,7 @@ using Escc.Umbraco.PropertyTypes;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
+using Escc.EastSussexGovUK.Umbraco.Jobs;
 
 namespace Escc.EastSussexGovUK.Umbraco.Services
 {
@@ -82,24 +83,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             return image;
         }
 
-        protected string BuildJobsSearcherName(string fieldAlias)
+        protected JobsSet ParseJobsSet(string fieldAlias)
         {
             var index = umbraco.library.GetPreValueAsString(UmbracoContent.GetPropertyValue<int>(fieldAlias));
             if (index == "Redeployment jobs")
             {
-                return "RedeploymentJobsSearcher";
+                return JobsSet.RedeploymentJobs;
             }
-            else return "PublicJobsSearcher";
-        }
-
-        protected string BuildLookupValuesSearcherName(string fieldAlias)
-        {
-            var index = umbraco.library.GetPreValueAsString(UmbracoContent.GetPropertyValue<int>(fieldAlias));
-            if (index == "Redeployment jobs")
-            {
-                return "RedeploymentJobsLookupValuesSearcher";
-            }
-            else return "PublicJobsLookupValuesSearcher";
+            else return JobsSet.PublicJobs;
         }
     }
 }

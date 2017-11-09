@@ -5,6 +5,7 @@
 @using Escc.Dates
 @using Escc.EastSussexGovUK.Skins
 @using Escc.EastSussexGovUK.Umbraco.Jobs
+@using Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
 @using Escc.EastSussexGovUK.Views
 @using Escc.Web
 @using Humanizer
@@ -47,73 +48,21 @@
     pagingHtml = Regex.Replace(pagingHtml, "(<ul class=\"pagingPages\">.*)<li class=\"disabled PagedList-pageCountAndLocation\"><a>(.*?)</a></li>", "<div class=\"pagingResultsInContext\">$2</div>$1");
     pagingHtml = pagingHtml.Replace("<ul class=\"pagingPages\"><li class=\"active\"><span>1</span></li></ul>", String.Empty);
 }
-@functions{ 
-    public IHtmlString LookupValuesHiddenField(string fieldName, IList<string> selectedValues, IList<JobsLookupValue> allValues)
-    {
-        var html = new StringBuilder();
-        if (selectedValues.Count > 0)
-        {
-            foreach (var selectedValue in selectedValues)
-            {
-                foreach (var lookupValue in allValues)
-                {
-                    if (Normalise(selectedValue) == Normalise(lookupValue.Text))
-                    {
-                        html.AppendFormat("<input type=\"hidden\" name=\"{0}\" value=\"{1}\" />", fieldName, lookupValue.Id);
-                        break;
-                    }
-                }
-            }
-        }
-
-        if (html.Length == 0)
-        {
-            html.Append("<input type=\"hidden\" name=\"").Append(fieldName).Append("\" value=\"\" />");
-        }
-
-        return new HtmlString(html.ToString());
-    }
-
-    private string Normalise(string text)
-    {
-        return text.ToUpperInvariant().Replace(",", String.Empty);
-    }
-}
 @section Breadcrumb {}
 @Html.Partial("~/Views/JobsHeader.cshtml", Model)
 
 <div class="jobs-content full-page">
     <div class="content text-content">
         <h1>@Model.Metadata.Title</h1>
+
+        @if (Request.QueryString["subscribed"] == "1")
+        {
+            <div class="success">
+                <p>Your alert has been saved. Please check your inbox for a confirmation email.</p>
+            </div>
+        }
+
         @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
-        @if (!String.IsNullOrWhiteSpace(Model.Query.Keywords))
-        {
-            <p>Keywords: @Model.Query.Keywords</p>
-        }
-        @if (Model.Query.Locations.Count > 0)
-        {
-            <p>Locations: @Model.Query.Locations.Humanize()</p>
-        }
-        @if (Model.Query.JobTypes.Count > 0)
-        {
-            <p>Categories: @Model.Query.JobTypes.Humanize()</p>
-        }
-        @if (Model.Query.Organisations.Count > 0)
-        {
-            <p>Organisations: @Model.Query.Organisations.Humanize()</p>
-        }
-        @if (Model.Query.SalaryRanges.Count > 0)
-        {
-            <p>Salary ranges: @Model.Query.SalaryRanges.Humanize()</p>
-        }
-        @if (Model.Query.WorkPatterns.Count > 0)
-        {
-            <p>Work patterns: @Model.Query.WorkPatterns.Humanize()</p>
-        }
-        @if (!String.IsNullOrWhiteSpace(Model.Query.JobReference))
-        {
-            <p>Job reference: @Model.Query.JobReference</p>
-        }
 
         @if (Model.Jobs.Count > 0)
         {
@@ -131,7 +80,7 @@
                 @Html.Partial("~/Views/JobsTableBody.cshtml", Model.Jobs)
             </table>
             @Html.Raw(pagingHtml)
-            if (String.IsNullOrEmpty(Request.QueryString["page"]) || Request.QueryString["page"].ToUpperInvariant() != "ALL")
+            if ((String.IsNullOrEmpty(Request.QueryString["page"]) || Request.QueryString["page"].ToUpperInvariant() != "ALL") && Model.Jobs.PageCount > 1)
             {
                 <p><a href="@(urlWithoutPage)all">View all results</a></p>
             }
@@ -142,35 +91,17 @@
         }
 
 
-        @if (Model.JobAlertsPage != null)
-        {  
+        @if (Request.QueryString["subscribed"] != "1")
+        {
             <h2>Alert me about jobs like these</h2>
-            <form method="GET" action="@(Model.JobAlertsPage.Url)" class="job-alerts form short-form">
-                <input type="hidden" name="keywords" value="@query["keywords"]" />
-                @LookupValuesHiddenField("LOV39", Model.Query.Locations, Model.LocationLookupValues)
-                @LookupValuesHiddenField("LOV40", Model.Query.JobTypes, Model.JobTypeLookupValues)
-                @LookupValuesHiddenField("LOV52", Model.Query.Organisations, Model.OrganisationLookupValues)
-                @LookupValuesHiddenField("LOV50", Model.Query.WorkPatterns, Model.WorkPatternLookupValues)
-                @LookupValuesHiddenField("LOV46", Model.Query.SalaryRanges, Model.SalaryRangeLookupValues)
-                <input type="hidden" name="jobnum" value="@query["ref"]" />
-                <input type="hidden" name="sagsubmit" value="Save" />
-                <input type="hidden" name="backpage" value="1" />
-                <input type="hidden" name="Create" value="1" />
-                <fieldset class="radioButtonList">
-                    <legend>How often?</legend>
-                    <label><input type="radio" name="vDeliveryFrequency" value="1" required="required" checked="checked" /> Once a day</label>
-                    <label><input type="radio" name="vDeliveryFrequency" value="7" required="required" /> Once a week</label>
-                </fieldset>
-                <fieldset class="radioButtonList">
-                    <legend>For how long?</legend>
-                    <label><input type="radio" name="dExpirationDate" value="15" required="required" /> Two weeks</label>
-                    <label><input type="radio" name="dExpirationDate" value="30" required="required" checked="checked" /> A month</label>
-                    <label><input type="radio" name="dExpirationDate" value="90" required="required" /> Three months</label>
-                    <label><input type="radio" name="dExpirationDate" value="180" required="required" /> Six months</label>
-                </fieldset>
+            using (Html.BeginUmbracoForm<JobAlertsSurfaceController>("CreateAlert", null, new Dictionary<string, object> { { "class", "job-alerts form simple-form" } }))
+            {
+                @Html.AntiForgeryToken();
+
+                <input type="hidden" name="JobsSet" value="@(Model.Query?.JobsSet)" />
                 <div>
-                    <label for="semail">Your email address</label>
-                    <input type="email" name="semail" id="semail" required="required" aria-describedby="email-privacy" class="describedby-tip" data-tip-positions="top bottom"/>
+                    <label for="email">Your email address</label>
+                    <input type="email" name="email" id="email" required="required" aria-describedby="email-privacy" class="describedby-tip" data-tip-positions="top bottom"/>
                     <input type="submit" value="Get job alert &gt;"/>
                     <p id="email-privacy">
                         We'll only use your email to send you job alerts.
@@ -181,11 +112,11 @@
                     </p>
                 </div>
 
-                @if (!String.IsNullOrEmpty(Model.Metadata.RssFeedUrl))
+                if (!String.IsNullOrEmpty(Model.Metadata.RssFeedUrl))
                 {
                     <p class="note"><a href="@Model.Metadata.RssFeedUrl" type="application/rss+xml" rel="alternate" class="rss">Subscribe by RSS to jobs like these</a></p>
                 }
-            </form>
+            }
         }
 
         @if (Model.JobsSearchPage != null)

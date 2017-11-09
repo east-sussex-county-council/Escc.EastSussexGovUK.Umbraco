@@ -22,14 +22,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public HtmlLink JobAdvertPage { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the Examine searcher for the jobs index
+        /// Gets or sets the set of jobs to show results for
         /// </summary>
-        public string ExamineSearcher { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the Examine searcher for the lookup values index
-        /// </summary>
-        public string ExamineLookupValuesSearcher { get; set; }
+        public JobsSet JobsSet { get; set; }
 
         /// <summary>
         /// Gets or sets the jobs search page.
@@ -50,30 +45,5 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// Gets or sets the query that led to these results
         /// </summary>
         public JobSearchQuery Query { get; set; }
-
-        /// <summary>
-        /// Gets or sets all the possible locations
-        /// </summary>
-        public IList<JobsLookupValue> LocationLookupValues { get; set; }
-
-        /// <summary>
-        /// Gets or sets all the possible job types
-        /// </summary>
-        public IList<JobsLookupValue> JobTypeLookupValues { get; set; }
-
-        /// <summary>
-        /// Gets or sets all the possible organisations
-        /// </summary>
-        public IList<JobsLookupValue> OrganisationLookupValues { get; set; }
-
-        /// <summary>
-        /// Gets or sets all the salary ranges
-        /// </summary>
-        public IList<JobsLookupValue> SalaryRangeLookupValues { get; set; }
-
-        /// <summary>
-        /// Gets or sets all the work patterns
-        /// </summary>
-        public IList<JobsLookupValue> WorkPatternLookupValues { get; set; }
     }
 }

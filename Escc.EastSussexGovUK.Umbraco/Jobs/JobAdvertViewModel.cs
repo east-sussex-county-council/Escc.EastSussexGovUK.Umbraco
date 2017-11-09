@@ -22,9 +22,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public Job Job { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the Examine searcher for the jobs index
+        /// Gets or sets the set of jobs the advert belongs to
         /// </summary>
-        public string ExamineSearcher { get; set; }
+        public JobsSet JobsSet { get; set; }
 
         /// <summary>
         /// Gets or sets jobs which may be similar to this one.
