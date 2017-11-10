@@ -19,6 +19,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// Gets the jobs matching the supplied query
         /// </summary>
         /// <returns></returns>
-        Task<List<Job>> ReadJobs(JobSearchQuery query);
+        Task<JobSearchResult> ReadJobs(JobSearchQuery query);
     }
 }

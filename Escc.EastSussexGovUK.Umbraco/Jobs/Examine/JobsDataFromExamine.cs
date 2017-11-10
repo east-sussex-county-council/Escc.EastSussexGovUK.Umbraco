@@ -67,7 +67,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        public Task<List<Job>> ReadJobs(JobSearchQuery query)
+        public Task<JobSearchResult> ReadJobs(JobSearchQuery query)
         {
             var examineQuery = _searcher.CreateSearchCriteria(BooleanOperation.And);
 
@@ -174,7 +174,23 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
 
                 var results = _searcher.Search(luceneQuery);
 
-                return Task.FromResult(BuildJobsFromExamineResults(results));
+                var searchResult = new JobSearchResult()
+                {
+                    TotalJobs = results.Count()
+                };
+
+                IEnumerable<SearchResult> selectedResults;
+                if (query.PageSize.HasValue)
+                {
+                    selectedResults = results.Skip((query.CurrentPage - 1) * query.PageSize.Value).Take(query.PageSize.Value);
+                }
+                else
+                {
+                    selectedResults = results;
+                }
+
+                searchResult.Jobs = BuildJobsFromExamineResults(selectedResults);
+                return Task.FromResult(searchResult);
             }
             catch (ParseException exception)
             {
@@ -202,18 +218,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                     .Append("Sort:").Append(query.SortBy).Append(Environment.NewLine);
                 _log.Error(errorForLog.ToString());
 
-                return Task.FromResult(new List<Job>());
+                return Task.FromResult(new JobSearchResult());
             }
         }
 
-        private List<Job> BuildJobsFromExamineResults(ISearchResults results)
+        private List<Job> BuildJobsFromExamineResults(IEnumerable<SearchResult> results)
         {
-   
-                var jobs = new List<Job>();
-                foreach (var result in results)
+            var jobs = new List<Job>();
+            foreach (var result in results)
+            {
+                try
                 {
-                    try
-            {         var job = new Job()
+                    var job = new Job()
                     {
                         Id = result.Fields.ContainsKey("id") ? Int32.Parse(result["id"], CultureInfo.InvariantCulture) : 0,
                         Reference = result.Fields.ContainsKey("reference") ? result["reference"] : String.Empty,
@@ -235,8 +251,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                         EqualOpportunitiesHtml = new HtmlString(result.Fields.ContainsKey("equalOpportunities") ? result["equalOpportunities"] : String.Empty),
                         ApplyUrl = (result.Fields.ContainsKey("applyUrl") && !String.IsNullOrEmpty(result["applyUrl"])) ? new Uri(result["applyUrl"]) : null
                     };
-        
-                job.Salary.SalaryRange = result.Fields.ContainsKey("salaryDisplay") ? result["salaryDisplay"] : String.Empty;
+
+                    job.Salary.SalaryRange = result.Fields.ContainsKey("salaryDisplay") ? result["salaryDisplay"] : String.Empty;
                     job.Salary.SearchRange = result.Fields.ContainsKey("salaryRange") ? result["salaryRange"] : String.Empty;
                     if (result.Fields.ContainsKey("salaryMin") && !String.IsNullOrEmpty(result["salaryMin"]))
                     {
@@ -259,15 +275,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                     if (result.Fields.ContainsKey("datePublished")) job.DatePublished = new LuceneDateTimeParser().Parse(result["datePublished"]);
 
                     jobs.Add(job);
+                }
+                catch (Exception ex)
+                {
+                    ex.ToExceptionless().Submit();
+                    return null;
+                }
             }
-            catch (Exception ex)
-            {
-                var bob = true;
-                return null;
-            }    }
 
-                return jobs;
-    
+            return jobs;
+
         }
 
         private string BuildWorkPatternLuceneQuery(IList<string> workPatterns)

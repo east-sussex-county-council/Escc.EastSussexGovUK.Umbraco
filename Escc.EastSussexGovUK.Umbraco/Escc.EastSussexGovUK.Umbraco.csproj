@@ -533,14 +533,6 @@
       <HintPath>..\packages\WebActivatorEx.2.1.0\lib\net40\WebActivatorEx.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="X.PagedList, Version=5.1.0.33787, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\X.PagedList.5.1.0.5000\lib\portable-net45+wp8+win8\X.PagedList.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="X.PagedList.Mvc, Version=5.1.0.33787, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\X.PagedList.Mvc.5.1.0.5000\lib\net45\X.PagedList.Mvc.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="apple-touch-icon-114x114.png" />
@@ -940,7 +932,6 @@
     <Content Include="Views\Topic\RecyclingSiteFinder.ascx" />
     <Content Include="Views\Topic\TopicSection_RecyclingSiteFinder.ascx" />
     <Content Include="windows-tile.png" />
-    <None Include="Content\PagedList.css" />
     <Content Include="css\CampaignTemplates\align-buttons-large.css" />
     <Content Include="css\CampaignTemplates\align-buttons-medium.css" />
     <Content Include="css\CampaignTemplates\align-buttons-reset-flex.css" />
@@ -3766,6 +3757,7 @@
     <Compile Include="DocumentTypes\ReadOnlyDateDataType.cs" />
     <Compile Include="Jobs\Examine\ISalaryRangeQueryBuilder.cs" />
     <Compile Include="Jobs\Examine\SalaryRangeLuceneQueryBuilder.cs" />
+    <Compile Include="Jobs\JobSearchResult.cs" />
     <Compile Include="Jobs\RemoveElementsWithNoContentFormatter.cs" />
     <Compile Include="Jobs\TruncateLongLinksFormatter.cs" />
     <Compile Include="Ratings\RatingRelationType.cs" />
@@ -4324,7 +4316,9 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Content\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -23,7 +23,6 @@ using Umbraco.Core.Models;
 using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
-using X.PagedList;
 using Task = System.Threading.Tasks.Task;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
@@ -59,25 +58,21 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 viewModel.Query = new JobSearchQueryConverter().ToQuery(Request.QueryString);
                 viewModel.Query.ClosingDateFrom = DateTime.Today;
                 viewModel.Query.JobsSet = viewModel.JobsSet;
+                if (Request.QueryString["page"].ToUpperInvariant() != "ALL")
+                {
+                    viewModel.Query.PageSize = viewModel.Paging.PageSize;
+                    viewModel.Query.CurrentPage = viewModel.Paging.CurrentPage;
+                }
                 viewModel.Metadata.Title = viewModel.Query.ToString();
 
                 var jobsProvider = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.JobsSet + "Searcher"], new QueryBuilder(new LuceneTokenisedQueryBuilder(), new KeywordsTokeniser(), new LuceneStopWordsRemover(), new WildcardSuffixFilter()), new SalaryRangeLuceneQueryBuilder(), viewModel.JobAdvertPage != null ? new RelativeJobUrlGenerator(viewModel.JobAdvertPage.Url) : null);
 
                 var jobs = Task.Run(async () => await jobsProvider.ReadJobs(viewModel.Query)).Result;
-                if (String.IsNullOrWhiteSpace(Request.QueryString["page"]))
+                viewModel.Jobs = jobs.Jobs;
+                viewModel.Paging.TotalResults = jobs.TotalJobs;
+                if (Request.QueryString["page"].ToUpperInvariant() == "ALL")
                 {
-                    viewModel.Jobs = jobs.ToPagedList(1, 10);
-                }
-                else if (Request.QueryString["page"].ToUpperInvariant() == "ALL")
-                {
-                    viewModel.Jobs = jobs.ToPagedList(1, 10000);
-                }
-                else
-                {
-                    int page;
-                    Int32.TryParse(Request.QueryString["page"], out page);
-                    if (page < 1) page = 1;
-                    viewModel.Jobs = jobs.ToPagedList(page, 10);
+                    viewModel.Paging.PageSize = viewModel.Paging.TotalResults;
                 }
 
                 if (!String.IsNullOrEmpty(viewModel.Metadata.RssFeedUrl))

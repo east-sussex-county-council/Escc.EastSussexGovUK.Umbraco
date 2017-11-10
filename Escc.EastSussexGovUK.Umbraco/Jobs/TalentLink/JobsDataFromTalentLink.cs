@@ -73,11 +73,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
         /// Reads the jobs from pages of data provided by the <see cref="IJobsDataProvider"/>
         /// </summary>
         /// <returns></returns>
-        public async Task<List<Job>> ReadJobs(JobSearchQuery query)
+        public async Task<JobSearchResult> ReadJobs(JobSearchQuery query)
         {
             if (_jobResultsParser == null) throw new InvalidOperationException("You must specify jobResultsParser when creating this instance to read jobs");
 
-            var jobs = new List<Job>();
+            var jobs = new JobSearchResult() { Jobs = new List<Job>() };
 
             var currentPage = 1;
             while (true)
@@ -96,7 +96,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
 
                     if (parseResult.Jobs.Count > 0)
                     {
-                        jobs.AddRange(parseResult.Jobs);
+                        jobs.Jobs.AddRange(parseResult.Jobs);
                     }
 
                     if (parseResult.IsLastPage)

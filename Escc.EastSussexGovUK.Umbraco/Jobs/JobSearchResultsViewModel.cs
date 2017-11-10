@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.Umbraco.PropertyTypes;
-using X.PagedList;
+using Escc.NavigationControls.WebForms;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
@@ -39,11 +39,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// <summary>
         /// Gets the jobs to display
         /// </summary>
-        public IPagedList<Job> Jobs { get; set; }
+        public IList<Job> Jobs { get; set; }
 
         /// <summary>
         /// Gets or sets the query that led to these results
         /// </summary>
         public JobSearchQuery Query { get; set; }
+
+        /// <summary>
+        /// Gets the configuration for paging the results
+        /// </summary>
+        public PagingController Paging { get; private set; } = new PagingController();
     }
 }

@@ -58,7 +58,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                     new RelativeJobUrlGenerator(viewModel.JobAdvertPage.Url));
             var jobs = await jobsProvider.ReadJobs(viewModel.Query);
 
-            foreach (var job in jobs)
+            foreach (var job in jobs.Jobs)
             {
                 viewModel.Items.Add(job);
             }

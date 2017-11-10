@@ -145,7 +145,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             if (jobsDataProvider != null)
             {
                 var jobs = await jobsDataProvider.ReadJobs(query);
-                simpleDataSet.RowData.Add("count", jobs.Count.ToString(CultureInfo.CurrentCulture));
+                simpleDataSet.RowData.Add("count", jobs.TotalJobs.ToString(CultureInfo.CurrentCulture));
             }
             return simpleDataSet;
         }

@@ -113,7 +113,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             if (lastSlash > -1) urlPath = urlPath.Substring(lastSlash + 1);
 
             var jobs = Task.Run(async () => await jobsProvider.ReadJobs(new JobSearchQuery() { KeywordsInTitle = urlPath.Replace("-", " ") })).Result;
-            foreach (var job in jobs)
+            foreach (var job in jobs.Jobs)
             {
                 if (model.SimilarJobs.Count >= 10) break;
                 model.SimilarJobs.Add(job);

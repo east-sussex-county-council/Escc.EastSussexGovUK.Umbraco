@@ -1,15 +1,9 @@
-﻿@using System.Text
-@using System.Text.RegularExpressions
-@using ClientDependency.Core.Mvc
+﻿@using ClientDependency.Core.Mvc
 @using Escc.ClientDependencyFramework
-@using Escc.Dates
 @using Escc.EastSussexGovUK.Skins
 @using Escc.EastSussexGovUK.Umbraco.Jobs
 @using Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
 @using Escc.EastSussexGovUK.Views
-@using Escc.Web
-@using Humanizer
-@using X.PagedList.Mvc
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Jobs.JobSearchResultsViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
@@ -43,10 +37,6 @@
     var urlWithoutPage = Request.Url.AbsolutePath + "?" + queryWithoutPage;
     if (queryWithoutPage.Count > 0) { urlWithoutPage += "&"; }
     urlWithoutPage += "page=";
-
-    var pagingHtml = Html.PagedListPager(Model.Jobs, page => urlWithoutPage + page, new PagedListRenderOptions() { DisplayLinkToFirstPage = PagedListDisplayMode.Never, DisplayLinkToLastPage = PagedListDisplayMode.Never, LinkToPreviousPageFormat = "&lt; Prev", LinkToNextPageFormat = "Next &gt;", DisplayItemSliceAndTotal = true, ItemSliceAndTotalFormat = "{0}–{1} of {2} results", MaximumPageNumbersToDisplay = 5, ContainerDivClasses = new[] { "infoBar" }, UlElementClasses = new[] { "pagingPages" } }).ToHtmlString();
-    pagingHtml = Regex.Replace(pagingHtml, "(<ul class=\"pagingPages\">.*)<li class=\"disabled PagedList-pageCountAndLocation\"><a>(.*?)</a></li>", "<div class=\"pagingResultsInContext\">$2</div>$1");
-    pagingHtml = pagingHtml.Replace("<ul class=\"pagingPages\"><li class=\"active\"><span>1</span></li></ul>", String.Empty);
 }
 @section Breadcrumb {}
 @Html.Partial("~/Views/JobsHeader.cshtml", Model)
@@ -66,7 +56,7 @@
 
         @if (Model.Jobs.Count > 0)
         {
-            @Html.Raw(pagingHtml)
+            Html.RenderPartial("~/Views/_PagingBarControl.ascx", Model.Paging);
             <table class="job-results">
                 <thead>
                 <tr>
@@ -79,8 +69,8 @@
                 </thead>
                 @Html.Partial("~/Views/JobsTableBody.cshtml", Model.Jobs)
             </table>
-            @Html.Raw(pagingHtml)
-            if ((String.IsNullOrEmpty(Request.QueryString["page"]) || Request.QueryString["page"].ToUpperInvariant() != "ALL") && Model.Jobs.PageCount > 1)
+            Html.RenderPartial("~/Views/_PagingBarControl.ascx", Model.Paging);
+            if ((String.IsNullOrEmpty(Request.QueryString["page"]) || Request.QueryString["page"].ToUpperInvariant() != "ALL") && Model.Paging.TotalPages > 1)
             {
                 <p><a href="@(urlWithoutPage)all">View all results</a></p>
             }

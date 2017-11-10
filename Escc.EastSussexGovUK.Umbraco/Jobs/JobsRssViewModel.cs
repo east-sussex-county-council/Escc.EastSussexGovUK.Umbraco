@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.Umbraco.PropertyTypes;
-using X.PagedList;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {

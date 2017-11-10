@@ -116,6 +116,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public int Frequency { get; set; }
 
         /// <summary>
+        /// Gets or sets the current page if results are to be paged
+        /// </summary>
+        public int CurrentPage { get; set; } = 1;
+
+        /// <summary>
+        /// Gets or sets the size of the page, or <c>null</c> to request all results are returned
+        /// </summary>
+        public int? PageSize { get; set; }
+
+        /// <summary>
         /// Gets a unique hash of the filter settings
         /// </summary>
         /// <returns></returns>

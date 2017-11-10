@@ -133,7 +133,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             alert.Query.ClosingDateFrom = DateTime.Today;
             var jobs = await jobsData.ReadJobs(alert.Query);
 
-            foreach (var job in jobs)
+            foreach (var job in jobs.Jobs)
             {
                 if (!jobsSentForThisAlert.Contains(job.Id))
                 {

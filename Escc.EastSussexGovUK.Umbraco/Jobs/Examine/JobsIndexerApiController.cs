@@ -70,7 +70,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             var jobsSearcher = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[searcherName], null, null, null);
             var jobs = jobsSearcher.ReadJobs(new JobSearchQuery()).Result;
             var jobIds = new Dictionary<int,DateTime?>();
-            foreach (var job in jobs)
+            foreach (var job in jobs.Jobs)
             {
                 if (!jobIds.ContainsKey(job.Id)) jobIds.Add(job.Id, job.DatePublished);
             }

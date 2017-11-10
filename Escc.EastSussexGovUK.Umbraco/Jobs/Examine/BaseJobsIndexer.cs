@@ -62,7 +62,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                 var jobs = Task.Run(async () => await _jobsProvider.ReadJobs(new JobSearchQuery())).Result;
 
                 //Looping all the raw models and adding them to the dataset
-                foreach (var job in jobs)
+                foreach (var job in jobs.Jobs)
                 {
                     try
                     {
