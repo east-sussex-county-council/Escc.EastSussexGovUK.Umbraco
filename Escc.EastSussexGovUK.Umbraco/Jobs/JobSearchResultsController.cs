@@ -58,7 +58,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 viewModel.Query = new JobSearchQueryConverter().ToQuery(Request.QueryString);
                 viewModel.Query.ClosingDateFrom = DateTime.Today;
                 viewModel.Query.JobsSet = viewModel.JobsSet;
-                if (Request.QueryString["page"].ToUpperInvariant() != "ALL")
+                if (Request.QueryString["page"]?.ToUpperInvariant() != "ALL")
                 {
                     viewModel.Query.PageSize = viewModel.Paging.PageSize;
                     viewModel.Query.CurrentPage = viewModel.Paging.CurrentPage;
@@ -70,7 +70,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 var jobs = Task.Run(async () => await jobsProvider.ReadJobs(viewModel.Query)).Result;
                 viewModel.Jobs = jobs.Jobs;
                 viewModel.Paging.TotalResults = jobs.TotalJobs;
-                if (Request.QueryString["page"].ToUpperInvariant() == "ALL")
+                if (Request.QueryString["page"]?.ToUpperInvariant() == "ALL")
                 {
                     viewModel.Paging.PageSize = viewModel.Paging.TotalResults;
                 }

@@ -15,7 +15,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         [UmbracoTemplate(DisplayName = "Jobs CSS", Alias = "JobsCss")]
         public string JobsCss { get; set; }
 
-        [UmbracoTab("Content")]
+        [UmbracoTab("Content", 0)]
         public JobAlertsContentTab Content { get; set; }
+
+        [UmbracoTab("Alert settings", 0)]
+        public JobAlertSettingsTab AlertSettings { get; set; }
     }
 }
