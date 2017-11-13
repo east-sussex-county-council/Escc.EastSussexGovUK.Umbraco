@@ -100,6 +100,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
                     Frequency = entity.Frequency,
                     JobsSet = (JobsSet)Enum.Parse(typeof(JobsSet), entity.JobsSet)
                 };
+                alert.Query.JobsSet = alert.JobsSet;
             }
 
             return alert;
