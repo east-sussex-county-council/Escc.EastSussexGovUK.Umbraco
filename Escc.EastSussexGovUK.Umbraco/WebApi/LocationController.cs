@@ -10,7 +10,7 @@ using Exceptionless;
 using Umbraco.Web;
 using Umbraco.Web.WebApi;
 
-namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
+namespace Escc.EastSussexGovUK.Umbraco.WebApi
 {
     /// <summary>
     /// Gets JSON data about locations saved using the Location template or one of its derivatives

@@ -363,6 +363,7 @@
     <Compile Include="JobSearchFilterTests.cs" />
     <Compile Include="JobSearchQueryConverterTests.cs" />
     <Compile Include="JobSearchQueryTests.cs" />
+    <Compile Include="IHtmlStringConverterTests.cs" />
     <Compile Include="MockLinkFormatter.cs" />
     <Compile Include="RemoveAzureDomainHtmlFormatterTests.cs" />
     <Compile Include="RemoveAzureDomainUrlTransformerTests.cs" />

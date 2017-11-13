@@ -16,6 +16,8 @@ using Umbraco.Web.Mvc;
 using Task = System.Threading.Tasks.Task;
 using Escc.EastSussexGovUK.Umbraco.Errors;
 using Escc.Dates;
+using Escc.EastSussexGovUK.Umbraco.Jobs.Api;
+using System.Configuration;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
@@ -46,10 +48,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 new UmbracoWebChatSettingsService(model.Content, new UrlListReader()),
                 null);
 
-            // Redirect non-preferred URL - these are sent out in job alerts, and linked from the TalentLink back office
+            // Redirect non-preferred URL - these are sent out in job alerts until May 2018, and linked from the TalentLink back office
             if (!String.IsNullOrEmpty(Request.QueryString["nPostingTargetID"]))
             {
-                var jobsProvider = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.JobsSet + "Searcher"], null, null, new RelativeJobUrlGenerator(new Uri(model.Content.UrlAbsolute())));
+                var jobsProvider = new JobsDataFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, new Uri(model.Content.UrlAbsolute()));
                 viewModel.Job = Task.Run(async () => await jobsProvider.ReadJob(Request.QueryString["nPostingTargetID"])).Result;
                 if (viewModel.Job.Id > 0)
                 {
@@ -62,10 +64,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 var jobUrlSegment = Regex.Match(Request.Url.AbsolutePath, "/([0-9]+)/");
                 if (jobUrlSegment.Success)
                 {
-                var jobsProvider = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.JobsSet + "Searcher"], 
-                    new QueryBuilder(new LuceneTokenisedQueryBuilder(), new KeywordsTokeniser(), new LuceneStopWordsRemover(), new WildcardSuffixFilter()), 
-                    null,
-                    new RelativeJobUrlGenerator(new Uri(model.Content.UrlAbsolute())));
+                    var jobsProvider = new JobsDataFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, new Uri(model.Content.UrlAbsolute()));
                     viewModel.Job = Task.Run(async () => await jobsProvider.ReadJob(jobUrlSegment.Groups[1].Value)).Result;
                     if (viewModel.Job.Id == 0 || viewModel.Job.ClosingDate < DateTime.Today)
                     {

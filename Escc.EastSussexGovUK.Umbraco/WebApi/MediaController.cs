@@ -10,7 +10,7 @@ using Escc.Umbraco.Media;
 using Exceptionless;
 using Umbraco.Web.WebApi;
 
-namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
+namespace Escc.EastSussexGovUK.Umbraco.WebApi
 {
     /// <summary>
     /// API for returning information about Umbraco media items

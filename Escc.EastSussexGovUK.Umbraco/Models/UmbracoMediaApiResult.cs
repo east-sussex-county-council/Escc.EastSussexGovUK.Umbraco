@@ -1,5 +1,4 @@
 ﻿using System;
-using Escc.EastSussexGovUK.Umbraco.ApiControllers;
 using Newtonsoft.Json;
 
 namespace Escc.EastSussexGovUK.Umbraco.Models
