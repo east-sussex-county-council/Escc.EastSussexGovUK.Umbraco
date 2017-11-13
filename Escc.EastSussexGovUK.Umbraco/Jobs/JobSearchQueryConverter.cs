@@ -27,13 +27,25 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 query.Keywords = collection["keywords"];
             }
 
-            if (!String.IsNullOrEmpty(collection["location"]))
+            if (!String.IsNullOrEmpty(collection["locations"]))
             {
+                AddQueryStringValuesToList(collection["locations"], query.Locations);
+            }
+            else if (!String.IsNullOrEmpty(collection["location"]))
+            {
+                // The key was changed to let MVC build a model automatically from form data, 
+                // but we need to support the old key as it may be saved in job alert subscriptions
                 AddQueryStringValuesToList(collection["location"], query.Locations);
             }
 
-            if (!String.IsNullOrEmpty(collection["type"]))
+            if (!String.IsNullOrEmpty(collection["jobtypes"]))
             {
+                AddQueryStringValuesToList(collection["jobtypes"], query.JobTypes);
+            }
+            else if (!String.IsNullOrEmpty(collection["type"]))
+            {
+                // The key was changed to let MVC build a model automatically from form data, 
+                // but we need to support the old key as it may be saved in job alert subscriptions
                 AddQueryStringValuesToList(collection["type"], query.JobTypes);
             }
 
@@ -42,14 +54,20 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 AddQueryStringValuesToList(collection["org"], query.Organisations);
             }
 
-            if (!String.IsNullOrEmpty(collection["salary"]))
+            if (!String.IsNullOrEmpty(collection["salaryranges"]))
             {
+                AddQueryStringValuesToList(collection["salaryranges"], query.SalaryRanges);
+            }
+            else if (!String.IsNullOrEmpty(collection["salary"]))
+            {
+                // The key was changed to let MVC build a model automatically from form data, 
+                // but we need to support the old key as it may be saved in job alert subscriptions
                 AddQueryStringValuesToList(collection["salary"], query.SalaryRanges);
-                for (var i = 0; i < query.SalaryRanges.Count; i++)
-                {
-                    query.SalaryRanges[i] = Regex.Replace(query.SalaryRanges[i], "^(£)([0-9]+)", FormatSalary_MatchEvaluator);
-                    query.SalaryRanges[i] = Regex.Replace(query.SalaryRanges[i], "(to £)([0-9]+)", FormatSalary_MatchEvaluator);
-                }
+            }
+            for (var i = 0; i < query.SalaryRanges.Count; i++)
+            {
+                query.SalaryRanges[i] = Regex.Replace(query.SalaryRanges[i], "^(£)([0-9]+)", FormatSalary_MatchEvaluator);
+                query.SalaryRanges[i] = Regex.Replace(query.SalaryRanges[i], "(to £)([0-9]+)", FormatSalary_MatchEvaluator);
             }
 
             if (!String.IsNullOrEmpty(collection["ref"]))
@@ -102,10 +120,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 if (!String.IsNullOrEmpty(query.Keywords)) queryString.Add("keywords", query.Keywords);
                 if (!String.IsNullOrEmpty(query.JobReference)) queryString.Add("ref", query.JobReference);
 
-                foreach (var value in query.JobTypes) queryString.Add("type", value);
-                foreach (var value in query.Locations) queryString.Add("location", value);
+                foreach (var value in query.JobTypes) queryString.Add("jobtypes", value);
+                foreach (var value in query.Locations) queryString.Add("locations", value);
                 foreach (var value in query.Organisations) queryString.Add("org", value);
-                foreach (var value in query.SalaryRanges) queryString.Add("salary", value);
+                foreach (var value in query.SalaryRanges) queryString.Add("salaryranges", value);
                 foreach (var value in query.WorkPatterns) queryString.Add("workpatterns", value);
             }
             return queryString;

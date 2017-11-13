@@ -9,7 +9,7 @@
 
 <div>
 <label for="location">Location</label>
-<select multiple="multiple" name="location" id="location">
+<select multiple="multiple" name="locations" id="location">
     @foreach (var location in Model.Locations)
     {
         var selected = (Model.Query != null && Model.Query.Locations.Contains(location.Text)) ? " selected=\"selected\"" : String.Empty;
@@ -20,7 +20,7 @@
 
 <div>
     <label for="type">Category</label>
-    <select multiple="multiple" name="type" id="type">
+    <select multiple="multiple" name="jobtypes" id="type">
         @foreach (var jobType in Model.JobTypes)
         {
             var selected = (Model.Query != null && Model.Query.JobTypes.Contains(jobType.Text)) ? " selected=\"selected\"" : String.Empty;
@@ -33,9 +33,10 @@
     <legend>Salary</legend>
     @foreach (var salaryRange in Model.SalaryRanges)
     {
+        // Remove the comma from the value to be submitted, as if multiple values are selected they will be separated by commas
         var salaryRangeValue = salaryRange.Text.Replace(",", String.Empty);
-        var selected = (Model.Query != null && Model.Query.SalaryRanges.Contains(salaryRangeValue)) ? " checked=\"checked\"" : String.Empty;
-        <label><input type="checkbox" value="@salaryRangeValue" name="salary"@selected /> @salaryRange.Text (@salaryRange.Count)</label>
+        var selected = (Model.Query != null && Model.Query.SalaryRanges.Contains(salaryRange.Text)) ? " checked=\"checked\"" : String.Empty;
+        <label><input type="checkbox" value="@salaryRangeValue" name="salaryranges"@selected /> @salaryRange.Text (@salaryRange.Count)</label>
     }
 </fieldset>
 
