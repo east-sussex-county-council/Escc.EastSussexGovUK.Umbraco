@@ -50,11 +50,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         {
             var converter = new JobSearchQueryConverter();
             var encoder = new JobAlertIdEncoder(converter);
-            var alertId = encoder.ParseIdFromUrl(new Uri(Request.Url, Request.RawUrl));
+            var absoluteUrl = new Uri(Request.Url, Request.RawUrl);
+            var alertId = encoder.ParseIdFromUrl(absoluteUrl);
             var alertsRepo = new AzureTableStorageAlertsRepository(converter);
             var success = alertsRepo.CancelAlert(alertId);
 
-            return new RedirectResult(Request.RawUrl + "?cancelled=" + (success ? "1" : "0"));
+            return new RedirectResult(absoluteUrl.AbsolutePath + "?cancelled=" + (success ? "1" : "0"));
         }
 
         [ValidateAntiForgeryToken]
