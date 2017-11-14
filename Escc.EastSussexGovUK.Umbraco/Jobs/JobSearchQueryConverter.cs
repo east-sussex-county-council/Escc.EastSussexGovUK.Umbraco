@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using Exceptionless.Extensions;
 using System.Globalization;
+using Escc.Dates;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
@@ -81,6 +82,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 AddQueryStringValuesToList(collection["workpatterns"], query.WorkPatterns);
             }
 
+            if (!String.IsNullOrEmpty(collection["closingdatefrom"]))
+            {
+                if (DateTime.TryParse(collection["closingdatefrom"], out DateTime closingDateFrom))
+                {
+                    query.ClosingDateFrom = closingDateFrom;
+                }
+            }
+
             if (!String.IsNullOrEmpty(collection["sort"]))
             {
                 JobSearchQuery.JobsSortOrder sort = JobSearchQuery.JobsSortOrder.None;
@@ -90,14 +99,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
 
             if (!String.IsNullOrEmpty(collection["page"]))
             {
-                Int32.TryParse(collection["page"], out int page);
-                if (page > 0) query.CurrentPage = page;
+                if (Int32.TryParse(collection["page"], out int page))
+                {
+                    if (page > 0) query.CurrentPage = page;
+                }
             }
 
             if (!String.IsNullOrEmpty(collection["pagesize"]))
             {
-                Int32.TryParse(collection["pagesize"], out int pageSize);
-                if (pageSize > 0) query.PageSize = pageSize;
+                if (Int32.TryParse(collection["pagesize"], out int pageSize))
+                {
+                    if (pageSize > 0) query.PageSize = pageSize;
+                }
             }
 
             return query;
@@ -134,6 +147,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 if (!String.IsNullOrEmpty(query.JobReference)) queryString.Add("ref", query.JobReference);
                 if (query.CurrentPage > 0) queryString.Add("page", query.CurrentPage.ToString(CultureInfo.InvariantCulture));
                 if (query.PageSize.HasValue) queryString.Add("pagesize", query.PageSize.Value.ToString(CultureInfo.InvariantCulture));
+                if (query.ClosingDateFrom.HasValue) queryString.Add("closingdatefrom", query.ClosingDateFrom.Value.ToIso8601Date());
 
                 foreach (var value in query.JobTypes) queryString.Add("jobtypes", value);
                 foreach (var value in query.Locations) queryString.Add("locations", value);
