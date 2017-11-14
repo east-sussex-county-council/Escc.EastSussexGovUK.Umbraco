@@ -61,5 +61,80 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Api
                 return null;
             }
         }
+
+        // GET /umbraco/api/publicjobs/locations/
+        [HttpGet]
+        public async Task<IList<JobsLookupValue>> Locations()
+        {
+            try
+            {
+                return await base.ReadLocations(JobsSet.PublicJobs);
+            }
+            catch (Exception e)
+            {
+                e.ToExceptionless().Submit();
+                return new JobsLookupValue[0];
+            }
+        }
+
+        // GET /umbraco/api/publicjobs/jobtypes/
+        [HttpGet]
+        public async Task<IList<JobsLookupValue>> JobTypes()
+        {
+            try
+            {
+                return await base.ReadJobTypes(JobsSet.PublicJobs);
+            }
+            catch (Exception e)
+            {
+                e.ToExceptionless().Submit();
+                return new JobsLookupValue[0];
+            }
+        }
+
+        // GET /umbraco/api/publicjobs/organisations/
+        [HttpGet]
+        public async Task<IList<JobsLookupValue>> Organisations()
+        {
+            try
+            {
+                return await base.ReadOrganisations(JobsSet.PublicJobs);
+            }
+            catch (Exception e)
+            {
+                e.ToExceptionless().Submit();
+                return new JobsLookupValue[0];
+            }
+        }
+
+        // GET /umbraco/api/publicjobs/salaryranges/
+        [HttpGet]
+        public async Task<IList<JobsLookupValue>> SalaryRanges()
+        {
+            try
+            {
+                return await base.ReadSalaryRanges(JobsSet.PublicJobs);
+            }
+            catch (Exception e)
+            {
+                e.ToExceptionless().Submit();
+                return new JobsLookupValue[0];
+            }
+        }
+
+        // GET /umbraco/api/publicjobs/workpatterns/
+        [HttpGet]
+        public async Task<IList<JobsLookupValue>> WorkPatterns()
+        {
+            try
+            {
+                return await base.ReadWorkPatterns(JobsSet.PublicJobs);
+            }
+            catch (Exception e)
+            {
+                e.ToExceptionless().Submit();
+                return new JobsLookupValue[0];
+            }
+        }
     }
 }

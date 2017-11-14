@@ -1,9 +1,12 @@
 ﻿using Escc.EastSussexGovUK.Umbraco.Errors;
+using Escc.EastSussexGovUK.Umbraco.Jobs.Api;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Examine;
 using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Umbraco.ContentExperiments;
 using Escc.Umbraco.PropertyTypes;
 using Examine;
+using System;
+using System.Configuration;
 using System.Web;
 using System.Web.Mvc;
 using Umbraco.Web;
@@ -27,7 +30,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         {
             var modelBuilder = new JobsSearchViewModelFromUmbraco(model.Content, new JobAlertsViewModel());
             var viewModel = (JobAlertsViewModel)modelBuilder.BuildModel();
-            var lookupValuesDataSource = new JobsLookupValuesFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.JobsSet + "LookupValuesSearcher"]);
+            var lookupValuesDataSource = new JobsLookupValuesFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet);
             modelBuilder.AddLookupValuesToModel(lookupValuesDataSource, viewModel);
 
             var converter = new JobSearchQueryConverter();

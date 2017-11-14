@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Escc.Dates;
-using Escc.EastSussexGovUK.Umbraco.Jobs.Examine;
-using Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink;
 using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Net;
 using Escc.Umbraco.Caching;
 using Escc.Umbraco.ContentExperiments;
 using Escc.Umbraco.PropertyTypes;
-using Examine;
 using Umbraco.Core;
 using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
+using Escc.EastSussexGovUK.Umbraco.Jobs.Api;
+using System.Configuration;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
@@ -30,7 +29,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
 
             var modelBuilder = new JobsSearchViewModelFromUmbraco(model.Content, new JobsSearchViewModel());
             var viewModel = modelBuilder.BuildModel();
-            var lookupValuesDataSource = new JobsLookupValuesFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.JobsSet + "LookupValuesSearcher"]);
+            var lookupValuesDataSource = new JobsLookupValuesFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet);
             modelBuilder.AddLookupValuesToModel(lookupValuesDataSource, viewModel);
 
             var baseModelBuilder = new BaseViewModelBuilder();

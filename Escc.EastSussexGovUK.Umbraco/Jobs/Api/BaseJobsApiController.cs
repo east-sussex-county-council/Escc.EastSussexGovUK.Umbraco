@@ -73,5 +73,60 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Api
                     new RelativeJobUrlGenerator(baseUrl));
             return await jobsProvider.ReadJob(jobId);
         }
+
+        /// <summary>
+        /// Reads the locations.
+        /// </summary>
+        /// <param name="jobsSet">The jobs set.</param>
+        /// <returns></returns>
+        protected async Task<IList<JobsLookupValue>> ReadLocations(JobsSet jobsSet)
+        {
+            var dataSource = new JobsLookupValuesFromExamine(ExamineManager.Instance.SearchProviderCollection[jobsSet + "LookupValuesSearcher"]);
+            return await dataSource.ReadLocations();
+        }
+
+        /// <summary>
+        /// Reads the job types.
+        /// </summary>
+        /// <param name="jobsSet">The jobs set.</param>
+        /// <returns></returns>
+        protected async Task<IList<JobsLookupValue>> ReadJobTypes(JobsSet jobsSet)
+        {
+            var dataSource = new JobsLookupValuesFromExamine(ExamineManager.Instance.SearchProviderCollection[jobsSet + "LookupValuesSearcher"]);
+            return await dataSource.ReadJobTypes();
+        }
+
+        /// <summary>
+        /// Reads the organisations.
+        /// </summary>
+        /// <param name="jobsSet">The jobs set.</param>
+        /// <returns></returns>
+        protected async Task<IList<JobsLookupValue>> ReadOrganisations(JobsSet jobsSet)
+        {
+            var dataSource = new JobsLookupValuesFromExamine(ExamineManager.Instance.SearchProviderCollection[jobsSet + "LookupValuesSearcher"]);
+            return await dataSource.ReadOrganisations();
+        }
+
+        /// <summary>
+        /// Reads the salary ranges.
+        /// </summary>
+        /// <param name="jobsSet">The jobs set.</param>
+        /// <returns></returns>
+        protected async Task<IList<JobsLookupValue>> ReadSalaryRanges(JobsSet jobsSet)
+        {
+            var dataSource = new JobsLookupValuesFromExamine(ExamineManager.Instance.SearchProviderCollection[jobsSet + "LookupValuesSearcher"]);
+            return await dataSource.ReadSalaryRanges();
+        }
+
+        /// <summary>
+        /// Reads the work patterns.
+        /// </summary>
+        /// <param name="jobsSet">The jobs set.</param>
+        /// <returns></returns>
+        protected async Task<IList<JobsLookupValue>> ReadWorkPatterns(JobsSet jobsSet)
+        {
+            var dataSource = new JobsLookupValuesFromExamine(ExamineManager.Instance.SearchProviderCollection[jobsSet + "LookupValuesSearcher"]);
+            return await dataSource.ReadWorkPatterns();
+        }
     }
 }
