@@ -25,11 +25,6 @@
            dataService="Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink.RedeploymentJobsLookupValuesIndexer, Escc.EastSussexGovUK.Umbraco"
            indexTypes="JobsLookup"
            xdt:Transform="Insert" />
-
-            <add name="RightsOfWayDepositsIndexer" xdt:Transform="RemoveAll" xdt:Locator="Match(name)" />
-      <add name="RightsOfWayDepositsIndexer" type="UmbracoExamine.UmbracoContentIndexer, UmbracoExamine"
-           indexSet="RightsOfWayDepositsIndexSet"
-           xdt:Transform="Insert" />
            
       <!-- Add a directoryFactory to all indexers. This value will change when Examine is upgraded to 0.1.83. 
            https://our.umbraco.org/Documentation/Getting-Started/Setup/Server-Setup/Load-Balancing/flexible -->
@@ -63,11 +58,6 @@
       <add name="RedeploymentJobsLookupValuesSearcher" type="Examine.LuceneEngine.Providers.LuceneSearcher, Examine"
            analyzer="Lucene.Net.Analysis.Standard.StandardAnalyzer, Lucene.Net"
            indexSets="RedeploymentJobsLookupValuesIndexSet"
-           xdt:Transform="Insert" />
-      
-      <add name="RightsOfWayDepositsSearcher" xdt:Transform="RemoveAll" xdt:Locator="Match(name)" />
-      <add name="RightsOfWayDepositsSearcher" type="UmbracoExamine.UmbracoExamineSearcher, UmbracoExamine"
-           indexSets="RightsOfWayDepositsIndexSet"
            xdt:Transform="Insert" />
     </providers>
   </ExamineSearchProviders>

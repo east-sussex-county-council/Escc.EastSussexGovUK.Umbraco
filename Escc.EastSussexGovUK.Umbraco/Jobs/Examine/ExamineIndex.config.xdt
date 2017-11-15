@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<ExamineLuceneIndexSets xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+
+  <!-- We are using Examine 0.1.82 where the recommendation is to add a {machinename} token when auto-scaling. This will change with the next Examine update.
+       https://our.umbraco.org/Documentation/Getting-Started/Setup/Server-Setup/Load-Balancing/flexible -->
+  <IndexSet SetName="PublicJobsIndexSet" xdt:Transform="RemoveAll" xdt:Locator="Match(SetName)" />
+  <IndexSet SetName="PublicJobsIndexSet" IndexPath="~/App_Data/TEMP/ExamineIndexes/{machinename}/PublicJobs/" xdt:Transform="Insert">
+    <IndexUserFields>
+      <add Name="id" />
+      <add Name="reference" />
+      <add Name="title" />
+      <add Name="titleDisplay" EnableSorting="true" Type="STRING" />
+      <add Name="organisation" />
+      <add Name="organisationDisplay" />
+      <add Name="location" />
+      <add Name="locationDisplay" EnableSorting="true" Type="STRING" />
+      <add Name="salary" />
+      <add Name="salaryDisplay" />
+      <add Name="salaryRange" />
+      <add Name="salaryMax" />
+      <add Name="salaryMin" />
+      <add Name="salarySort" EnableSorting="true" Type="STRING" />
+      <add Name="closingDate" EnableSorting="true" Type="DATE" />
+      <add Name="closingDateDisplay" />
+      <add Name="jobType" />
+      <add Name="jobTypeDisplay" />
+      <add Name="contractType" />
+      <add Name="fullTime" />
+      <add Name="partTime" />
+      <add Name="workPattern" EnableSorting="true" Type="STRING" />
+      <add Name="department" />
+      <add Name="departmentDisplay" />
+      <add Name="fullText" />
+      <add Name="fullHtml" />
+      <add Name="additionalInfo" />
+      <add Name="equalOpportunities" />
+      <add Name="applyUrl" />
+      <add Name="datePublished" Type="DATE" />
+    </IndexUserFields>
+  </IndexSet>
+
+  <IndexSet SetName="RedeploymentJobsIndexSet" xdt:Transform="RemoveAll" xdt:Locator="Match(SetName)" />
+  <IndexSet SetName="RedeploymentJobsIndexSet" IndexPath="~/App_Data/TEMP/ExamineIndexes/{machinename}/RedeploymentJobs/" xdt:Transform="Insert">
+    <IndexUserFields>
+      <add Name="id" />
+      <add Name="reference" />
+      <add Name="title" />
+      <add Name="titleDisplay" EnableSorting="true" Type="STRING" />
+      <add Name="organisation" />
+      <add Name="organisationDisplay" />
+      <add Name="location" />
+      <add Name="locationDisplay" EnableSorting="true" Type="STRING" />
+      <add Name="salary" />
+      <add Name="salaryDisplay" />
+      <add Name="salaryRange" />
+      <add Name="salaryMax" />
+      <add Name="salaryMin" />
+      <add Name="salarySort" EnableSorting="true" Type="STRING" />
+      <add Name="closingDate" EnableSorting="true" Type="DATE" />
+      <add Name="closingDateDisplay" />
+      <add Name="jobType" />
+      <add Name="jobTypeDisplay" />
+      <add Name="contractType" />
+      <add Name="fullTime" />
+      <add Name="partTime" />
+      <add Name="workPattern" EnableSorting="true" Type="STRING" />
+      <add Name="department" />
+      <add Name="departmentDisplay" />
+      <add Name="fullText" />
+      <add Name="fullHtml" />
+      <add Name="additionalInfo" />
+      <add Name="equalOpportunities" />
+      <add Name="applyUrl" />
+      <add Name="datePublished" Type="DATE" />
+    </IndexUserFields>
+  </IndexSet>
+
+  <IndexSet SetName="PublicJobsLookupValuesIndexSet" xdt:Transform="RemoveAll" xdt:Locator="Match(SetName)" />
+  <IndexSet SetName="PublicJobsLookupValuesIndexSet" IndexPath="~/App_Data/TEMP/ExamineIndexes/{machinename}/PublicJobsLookupValues/" xdt:Transform="Insert">
+    <IndexUserFields>
+      <add Name="id" />
+      <add Name="group" />
+      <add Name="text" EnableSorting="true" Type="STRING" />
+      <add Name="count" />
+    </IndexUserFields>
+  </IndexSet>
+
+  <IndexSet SetName="RedeploymentJobsLookupValuesIndexSet" xdt:Transform="RemoveAll" xdt:Locator="Match(SetName)" />
+  <IndexSet SetName="RedeploymentJobsLookupValuesIndexSet" IndexPath="~/App_Data/TEMP/ExamineIndexes/{machinename}/RedeploymentJobsLookupValues/" xdt:Transform="Insert">
+    <IndexUserFields>
+      <add Name="id" />
+      <add Name="group" />
+      <add Name="text" EnableSorting="true" Type="STRING" />
+      <add Name="count" />
+    </IndexUserFields>
+  </IndexSet>
+</ExamineLuceneIndexSets>

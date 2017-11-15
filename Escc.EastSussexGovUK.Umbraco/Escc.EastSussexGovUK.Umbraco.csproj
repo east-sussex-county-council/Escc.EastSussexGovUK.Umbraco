@@ -986,6 +986,10 @@
     <Content Include="Global.asax" />
     <Content Include="images\quote-close.gif" />
     <Content Include="images\quote-open.gif" />
+    <None Include="Jobs\Examine\ExamineIndex.config.xdt">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Jobs\Examine\ExamineSettings.config.xdt" />
     <None Include="Jobs\Images\East Sussex Jobs logo colour.png" />
     <None Include="Jobs\Images\East Sussex Jobs logo white.png" />
     <None Include="Jobs\Images\header.png" />
@@ -1023,7 +1027,10 @@
     <None Include="ExamineIndex.config.xdt">
       <SubType>Designer</SubType>
     </None>
-    <None Include="ExamineSettings.config.xdt" />
+    <None Include="RightsOfWayDeposits\ExamineIndex.config.xdt">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="RightsOfWayDeposits\ExamineSettings.config.xdt" />
     <None Include="images\Quote-close.psd" />
     <None Include="images\Quote-open.psd" />
     <None Include="images\Web.example.config" />
