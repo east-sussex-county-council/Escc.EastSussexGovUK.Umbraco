@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using Humanizer;
 using System.Globalization;
+using Escc.Dates;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
@@ -134,6 +135,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             var allContent = new StringBuilder();
             allContent.Append("jobset").Append(JobsSet);
             allContent.Append("keywords").Append(Keywords);
+            allContent.Append("keywordsintitle").Append(KeywordsInTitle);
             allContent.Append("location");
             foreach (var value in Locations) allContent.Append(value);
             allContent.Append("organisation");
@@ -145,7 +147,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             foreach (var value in JobTypes) allContent.Append(value);
             allContent.Append("workpatterns");
             foreach (var value in WorkPatterns) allContent.Append(value);
+            allContent.Append("closingdatefrom").Append(ClosingDateFrom.HasValue ? ClosingDateFrom.ToIso8601DateTime() : String.Empty);
             allContent.Append("sort").Append(SortBy);
+            allContent.Append("frequency").Append(Frequency);
+            allContent.Append("currentpage").Append(CurrentPage);
+            allContent.Append("pagesize").Append(PageSize);
 
             HashAlgorithm algorithm = SHA1.Create();
             var bytes = Encoding.ASCII.GetBytes(allContent.ToString());

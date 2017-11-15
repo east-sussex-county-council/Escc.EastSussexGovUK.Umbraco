@@ -30,7 +30,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         {
             var modelBuilder = new JobsSearchViewModelFromUmbraco(model.Content, new JobAlertsViewModel());
             var viewModel = (JobAlertsViewModel)modelBuilder.BuildModel();
-            var lookupValuesDataSource = new JobsLookupValuesFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet);
+            var lookupValuesDataSource = new JobsLookupValuesFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, new MemoryJobCacheStrategy(HttpContext.Cache, Request.QueryString["ForceCacheRefresh"] == "1"));
             modelBuilder.AddLookupValuesToModel(lookupValuesDataSource, viewModel);
 
             var converter = new JobSearchQueryConverter();

@@ -35,7 +35,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             var modelBuilder = new BaseViewModelBuilder();
             modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode);
 
-            var jobsProvider = new JobsDataFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, viewModel.JobAdvertPage.Url);
+            var jobsProvider = new JobsDataFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, viewModel.JobAdvertPage.Url, null);
             var jobs = await jobsProvider.ReadProblemJobs();
 
             foreach (var job in jobs)

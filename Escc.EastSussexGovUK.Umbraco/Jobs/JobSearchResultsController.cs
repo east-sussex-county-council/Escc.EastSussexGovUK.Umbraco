@@ -67,7 +67,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 }
                 viewModel.Metadata.Title = viewModel.Query.ToString();
 
-                var jobsProvider = new JobsDataFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, viewModel.JobAdvertPage?.Url);
+                var jobsProvider = new JobsDataFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, viewModel.JobAdvertPage?.Url, new MemoryJobCacheStrategy(HttpContext.Cache, Request.QueryString["ForceCacheRefresh"] == "1"));
 
                 var jobs = Task.Run(async () => await jobsProvider.ReadJobs(viewModel.Query)).Result;
                 viewModel.Jobs = jobs.Jobs;

@@ -34,6 +34,12 @@ To allow load-balancing to be used, the jobs API built into this application sho
 	    <add key="JobsApiBaseUrl" value="https://hostname"/>
 	</appSettings> 
 
+We don't want the overhead of reading from a remote API all the time though, so jobs data is cached in memory for 1 hour. This happens on a query-by-query basis, so the expiration time is 1 hour from when the same query was last run. There are three exceptions to this:
+
+* if it is less than 1 hour until midnight, then the cache will expire at midnight, as we don't want to list jobs after applications close
+*  the `Problem jobs` RSS feed (see below) is not cached, as the query is not expected to be run frequently
+*  adding `ForceCacheRefresh=1` to the querystring of a page will force new data to be fetched from the API and inserted into the cache
+
 ## Searching the data
 
 A `PublicJobsSearcher` and `PublicJobsLookupValuesSearcher` are configured in `~\config\ExamineSettings.config` linking to the index sets set up above. Equivalent searchers are also created for redeployment jobs.

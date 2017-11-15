@@ -51,7 +51,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             // Redirect non-preferred URL - these are sent out in job alerts until May 2018, and linked from the TalentLink back office
             if (!String.IsNullOrEmpty(Request.QueryString["nPostingTargetID"]))
             {
-                var jobsProvider = new JobsDataFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, new Uri(model.Content.UrlAbsolute()));
+                var jobsProvider = new JobsDataFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, new Uri(model.Content.UrlAbsolute()), new MemoryJobCacheStrategy(HttpContext.Cache, Request.QueryString["ForceCacheRefresh"] == "1"));
                 viewModel.Job = Task.Run(async () => await jobsProvider.ReadJob(Request.QueryString["nPostingTargetID"])).Result;
                 if (viewModel.Job.Id > 0)
                 {
@@ -64,7 +64,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 var jobUrlSegment = Regex.Match(Request.Url.AbsolutePath, "/([0-9]+)/");
                 if (jobUrlSegment.Success)
                 {
-                    var jobsProvider = new JobsDataFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, new Uri(model.Content.UrlAbsolute()));
+                    var jobsProvider = new JobsDataFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, new Uri(model.Content.UrlAbsolute()), new MemoryJobCacheStrategy(HttpContext.Cache, Request.QueryString["ForceCacheRefresh"] == "1"));
                     viewModel.Job = Task.Run(async () => await jobsProvider.ReadJob(jobUrlSegment.Groups[1].Value)).Result;
                     if (viewModel.Job.Id == 0 || viewModel.Job.ClosingDate < DateTime.Today)
                     {

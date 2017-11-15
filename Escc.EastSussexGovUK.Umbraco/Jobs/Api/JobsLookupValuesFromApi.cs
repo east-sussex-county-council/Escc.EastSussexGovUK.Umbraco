@@ -17,17 +17,20 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Api
     {
         private readonly Uri _apiBaseUrl;
         private readonly JobsSet _jobsSet;
+        private readonly IJobCacheStrategy _jobsCache;
 
         /// <summary>
         /// Jobses the lookup values from API.
         /// </summary>
         /// <param name="apiBaseUrl">The API base URL.</param>
         /// <param name="jobsSet">The jobs set.</param>
+        /// <param name="jobsCache">A method of caching the API results.</param>
         /// <exception cref="ArgumentNullException">apiBaseUrl</exception>
-        public JobsLookupValuesFromApi(Uri apiBaseUrl, JobsSet jobsSet)
+        public JobsLookupValuesFromApi(Uri apiBaseUrl, JobsSet jobsSet, IJobCacheStrategy jobsCache)
         {
             this._apiBaseUrl = apiBaseUrl ?? throw new ArgumentNullException(nameof(apiBaseUrl));
             this._jobsSet = jobsSet;
+            this._jobsCache = jobsCache;
         }
 
         /// <summary>
@@ -77,13 +80,24 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Api
 
         private async Task<IList<JobsLookupValue>> ReadLookupValuesFromApi(string apiMethod)
         {
+            if (_jobsCache != null)
+            {
+                var cached = _jobsCache.ReadLookupValues(apiMethod);
+                if (cached != null) return cached;
+            }
+
             var request = WebRequest.Create(new Uri($"{_apiBaseUrl.ToString().TrimEnd('/')}/umbraco/api/{_jobsSet}/{apiMethod}/"));
             using (var response = await request.GetResponseAsync())
             {
                 using (var responseReader = new StreamReader(response.GetResponseStream()))
                 {
                     var responseJson = responseReader.ReadToEnd();
-                    return JsonConvert.DeserializeObject<IList<JobsLookupValue>>(responseJson);
+                    var values = JsonConvert.DeserializeObject<IList<JobsLookupValue>>(responseJson);
+                    if (_jobsCache !=null)
+                    {
+                        _jobsCache.CacheLookupValues(apiMethod,values);
+                    }
+                    return values;
                 }
             }
         }
