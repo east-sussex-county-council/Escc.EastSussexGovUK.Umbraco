@@ -63,3 +63,13 @@ Most of the templates could work with any implementation of `IJobsDataProvider`,
 ## Reporting problems with missing data
 
 Job searches work best when jobs contain complete and consistent data, but this doesn't always happen. To help recruitment staff spot issues created by missing data, the `Problem jobs` document type creates an RSS feed of jobs that may have missing data. Recruitment staff can subscribe to this feed using a site like [Blogtrottr](https://blogtrottr.com/) to get notified of problems as new jobs are posted.
+
+## Job alerts
+
+Subscriptions to job alerts are saved in a `IJobAlertsRepository`, with the current implementation using Azure table storage. Each alert consists of a search query (serialised as a query string), an email address, and the frequency with which to send the alert.
+
+Alerts are sent by a call to the job alerts API, implemented in `JobAlertsApiController`. The call can be made by a scheduled task such as an Azure web job. It is expected that this call will be made to the same server that serves the main jobs API, therefore job alert queries are read directly from Examine rather than via the API.
+
+We also store which jobs were sent to which email address, without specifying which alert it matched, so that we do not send the same job to the same person twice even if it matches a different alert to the one we originally sent it for.
+
+The formatting of the alert emails is controlled by a combination of the alert templates `JobAlertConfirmation.html` and `JobAlert.html`, and text entered into an instance of the `Job alerts` document type in Umbraco. The latter allows editors to update the content of the alerts without requiring a developer.
