@@ -83,6 +83,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {&quot;Url&quot;:&quot;https://www.example.org/56070/CSD01592/instrumental-and-vocal-teacher/countywide&quot;,&quot;JobTitle&quot;:&quot;Instrumental and Vocal Teacher&quot;,&quot;Organisation&quot;:&quot;East Sussex County Council&quot;,&quot;Location&quot;:&quot;Countywide&quot;,&quot;Salary&quot;:{&quot;MinimumSalary&quot;:16461,&quot;MaximumSalary&quot;:33160,&quot;SalaryRange&quot;:&quot;£16,461 to £33,160 per annum&quot;,&quot;SearchRange&quot;:&quot;Teachers&apos; Pay Scale&quot;},&quot;ClosingDate&quot;:&quot;2018-04-01T00:00:00+01:00&quot;,&quot;Id&quot;:56070,&quot;Reference&quot;:&quot;CSD01592&quot;,&quot;AdditionalInformationHtml&quot;:&quot;&lt;div&gt;\n&lt;p&gt;This post is subject to an Enhanced DBS check or Enhanced c [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string JobAdvertJson {
+            get {
+                return ResourceManager.GetString("JobAdvertJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;div id=&quot;JD-Field1&quot;&gt;
         ///&lt;h5 class=&quot;JD-FieldLabel&quot; id=&quot;JDLabel-Field1&quot;&gt;Job Details&lt;/h5&gt;
         ///&lt;span class=&quot;JD-FieldText&quot; id=&quot;JDText-Field1&quot;&gt;&lt;div&gt;

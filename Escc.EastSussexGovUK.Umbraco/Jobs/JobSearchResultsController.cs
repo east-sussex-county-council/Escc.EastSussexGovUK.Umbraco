@@ -24,6 +24,8 @@ using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
 using Task = System.Threading.Tasks.Task;
+using Escc.EastSussexGovUK.Umbraco.Jobs.Api;
+using System.Configuration;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
@@ -65,7 +67,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 }
                 viewModel.Metadata.Title = viewModel.Query.ToString();
 
-                var jobsProvider = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.JobsSet + "Searcher"], new QueryBuilder(new LuceneTokenisedQueryBuilder(), new KeywordsTokeniser(), new LuceneStopWordsRemover(), new WildcardSuffixFilter()), new SalaryRangeLuceneQueryBuilder(), viewModel.JobAdvertPage != null ? new RelativeJobUrlGenerator(viewModel.JobAdvertPage.Url) : null);
+                var jobsProvider = new JobsDataFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, viewModel.JobAdvertPage?.Url, new MemoryJobCacheStrategy(HttpContext.Cache, Request.QueryString["ForceCacheRefresh"] == "1"));
 
                 var jobs = Task.Run(async () => await jobsProvider.ReadJobs(viewModel.Query)).Result;
                 viewModel.Jobs = jobs.Jobs;

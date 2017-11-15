@@ -22,16 +22,16 @@
             }
             <label for="keywords">Search for jobs</label>
             <input type="search" name="keywords" size="15" id="keywords" />
-            <label for="location">Location</label>
-            <select name="location" id="location">
+            <label for="locations">Location</label>
+            <select name="locations" id="locations">
                 <option value="" selected="selected">All</option>
                 @foreach (var location in Model.JobLocations)
                 {
                     <option value="@location.Text">@location.Text (@location.Count)</option>
                 }
             </select>
-            <label for="type">Category</label>
-            <select name="type" id="type">
+            <label for="jobtypes">Category</label>
+            <select name="jobtypes" id="jobtypes">
                 <option value="" selected="selected">All</option>
                 @foreach (var jobType in Model.JobTypes)
                 {

@@ -8,7 +8,7 @@ using Escc.Umbraco.PropertyTypes;
 using Exceptionless;
 using Umbraco.Web.WebApi;
 
-namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
+namespace Escc.EastSussexGovUK.Umbraco.WebApi
 {
     /// <summary>
     /// API for returning URLs where web chat should be activated

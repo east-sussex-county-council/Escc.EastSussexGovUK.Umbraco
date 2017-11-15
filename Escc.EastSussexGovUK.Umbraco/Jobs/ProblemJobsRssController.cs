@@ -1,27 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Globalization;
-using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using System.Web.Caching;
 using Escc.Dates;
-using Escc.EastSussexGovUK.Umbraco.Examine;
-using Escc.EastSussexGovUK.Umbraco.Jobs.Examine;
 using Escc.EastSussexGovUK.Umbraco.Services;
-using Escc.Net;
 using Escc.Umbraco.Caching;
 using Escc.Umbraco.ContentExperiments;
-using Escc.Umbraco.PropertyTypes;
-using Examine;
-using Exceptionless.Extensions;
-using Umbraco.Core.Models;
 using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
 using Task = System.Threading.Tasks.Task;
+using Escc.EastSussexGovUK.Umbraco.Jobs.Api;
+using System.Configuration;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
@@ -46,7 +35,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             var modelBuilder = new BaseViewModelBuilder();
             modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode);
 
-            var jobsProvider = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[viewModel.JobsSet + "Searcher"], new QueryBuilder(new LuceneTokenisedQueryBuilder(), new KeywordsTokeniser(), new LuceneStopWordsRemover(), new WildcardSuffixFilter()), null, new RelativeJobUrlGenerator(viewModel.JobAdvertPage.Url));
+            var jobsProvider = new JobsDataFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, viewModel.JobAdvertPage.Url, null);
             var jobs = await jobsProvider.ReadProblemJobs();
 
             foreach (var job in jobs)

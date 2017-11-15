@@ -132,7 +132,7 @@
     @:            },
 }
     "title": "@Model.Job.JobTitle",
-    "description": "@Html.Raw(jobSummaryHtml.Replace("\"", "'")) @Html.Raw(Model.Job.AdvertHtml.ToHtmlString().Replace("\"", "'"))",
+    "description": "@Html.Raw(jobSummaryHtml.Replace("\"", "'")) @Html.Raw(Model.Job.AdvertHtml?.ToHtmlString().Replace("\"", "'"))",
     "industry": "Local government",
     @Html.Raw(employmentType)
     "jobLocation": {

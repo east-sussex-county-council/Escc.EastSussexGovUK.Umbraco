@@ -6,7 +6,7 @@ using Escc.EastSussexGovUK.Umbraco.Location;
 using Exceptionless;
 using Umbraco.Web.WebApi;
 
-namespace Escc.EastSussexGovUK.Umbraco.ApiControllers
+namespace Escc.EastSussexGovUK.Umbraco.WebApi
 {
     /// <summary>
     /// Gets JSON data about waste types supported by the Recycling site document type

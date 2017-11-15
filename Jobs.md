@@ -24,6 +24,22 @@ To update the jobs data you need a trigger a reindex for each of the index sets.
 
 If the data source is unavailable during a reindex the jobs data we already have will be lost, so we will have no data to display. Unfortunately this behaviour is built into the way Umbraco calls the `ISimpleDataService` interface. 
 
+### Read from an API to support load-balancing
+
+When Umbraco updates its internal Examine indexes it does so across all load-balanced servers. This doesn't happen with the `ISimpleDataService` interface used by jobs, so only the local index is updated. This is a problem in a load-balanced scenario unless you are able to trigger an update on every load-balanced server in the farm.
+
+To allow load-balancing to be used, the jobs API built into this application should be hosted on a non-load-balanced server, and the jobs data on that server should be kept up-to-date as described above. Load-balanced front-end servers should specify the API server URL in `web.config`:
+
+	<appSettings>
+	    <add key="JobsApiBaseUrl" value="https://hostname"/>
+	</appSettings> 
+
+We don't want the overhead of reading from a remote API all the time though, so jobs data is cached in memory for 1 hour. This happens on a query-by-query basis, so the expiration time is 1 hour from when the same query was last run. There are three exceptions to this:
+
+* if it is less than 1 hour until midnight, then the cache will expire at midnight, as we don't want to list jobs after applications close
+*  the `Problem jobs` RSS feed (see below) is not cached, as the query is not expected to be run frequently
+*  adding `ForceCacheRefresh=1` to the querystring of a page will force new data to be fetched from the API and inserted into the cache
+
 ## Searching the data
 
 A `PublicJobsSearcher` and `PublicJobsLookupValuesSearcher` are configured in `~\config\ExamineSettings.config` linking to the index sets set up above. Equivalent searchers are also created for redeployment jobs.
