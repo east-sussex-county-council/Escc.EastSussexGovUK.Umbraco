@@ -152,7 +152,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 foreach (var value in query.JobTypes) queryString.Add("jobtypes", value);
                 foreach (var value in query.Locations) queryString.Add("locations", value);
                 foreach (var value in query.Organisations) queryString.Add("org", value);
-                foreach (var value in query.SalaryRanges) queryString.Add("salaryranges", value);
+                foreach (var value in query.SalaryRanges) queryString.Add("salaryranges", value.Replace(",",String.Empty));
                 foreach (var value in query.WorkPatterns) queryString.Add("workpatterns", value);
             }
             return queryString;
