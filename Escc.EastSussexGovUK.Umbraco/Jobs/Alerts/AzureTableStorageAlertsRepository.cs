@@ -130,13 +130,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             var table = _tableClient.GetTableReference(_alertsTable);
             table.CreateIfNotExistsAsync().Wait();
 
+            var query = _queryConverter.ToCollection(alert.Query);
+            query.Remove("page");
+            query.Remove("pagesize");
+            var serialised = query.ToString();
+
             // Azure tables use an index clustered first by partition key then by row key,
             // so use email as the partition key to make it easy to get all alerts for a user.
             var entity = new JobAlertTableEntity()
             {
                 PartitionKey = ToAzureKeyString(alert.Email),
                 RowKey = alert.AlertId,
-                Criteria = _queryConverter.ToCollection(alert.Query).ToString(),
+                Criteria = serialised,
                 Frequency = alert.Frequency,
                 JobsSet = alert.JobsSet.ToString()
             };
