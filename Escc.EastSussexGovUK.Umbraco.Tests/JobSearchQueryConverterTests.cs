@@ -62,7 +62,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         public void JobTypeIsPopulatedFromCollection()
         {
             var collection = new NameValueCollection();
-            collection["type"] = "Example job type";
+            collection["jobtypes"] = "Example job type";
             var converter = new JobSearchQueryConverter();
 
             var query = converter.ToQuery(collection);
@@ -79,14 +79,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
 
             var collection = converter.ToCollection(query);
 
-            Assert.AreEqual("Example job type", collection["type"]);
+            Assert.AreEqual("Example job type", collection["jobtypes"]);
         }
 
         [Test]
         public void LocationIsPopulatedFromCollection()
         {
             var collection = new NameValueCollection();
-            collection["location"] = "Example location";
+            collection["locations"] = "Example location";
             var converter = new JobSearchQueryConverter();
 
             var query = converter.ToQuery(collection);
@@ -103,7 +103,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
 
             var collection = converter.ToCollection(query);
 
-            Assert.AreEqual("Example location", collection["location"]);
+            Assert.AreEqual("Example location", collection["locations"]);
         }
 
         [Test]
@@ -134,7 +134,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         public void SalaryRangeIsPopulatedFromCollection()
         {
             var collection = new NameValueCollection();
-            collection["salary"] = "£10000 to £20000";
+            collection["salaryranges"] = "£10000 to £20000";
             var converter = new JobSearchQueryConverter();
 
             var query = converter.ToQuery(collection);
@@ -151,7 +151,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
 
             var collection = converter.ToCollection(query);
 
-            Assert.AreEqual("£10000 to £20000", collection["salary"]);
+            Assert.AreEqual("£10000 to £20000", collection["salaryranges"]);
         }
 
         [Test]
@@ -163,7 +163,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
 
             var collection = converter.ToCollection(query);
 
-            Assert.AreEqual("£50000 and over", collection["salary"]);
+            Assert.AreEqual("£50000 and over", collection["salaryranges"]);
         }
 
         [Test]

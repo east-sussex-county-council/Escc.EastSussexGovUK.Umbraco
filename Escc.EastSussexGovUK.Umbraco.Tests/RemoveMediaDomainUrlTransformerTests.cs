@@ -1,16 +1,14 @@
 ﻿using System;
 using Escc.EastSussexGovUK.Umbraco.Services;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
 
 namespace Escc.EastSussexGovUK.Umbraco.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class RemoveMediaDomainUrlTransformerTests
     {
-        [TestMethod]
+        [Test]
         public void RelativeMediaUrlIsUnchanged()
         {
             var url = new Uri("/media/1234/some-media-item-in-umbraco.pdf", UriKind.Relative);
@@ -21,7 +19,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             Assert.AreEqual("/media/1234/some-media-item-in-umbraco.pdf", url.ToString());
         }
 
-        [TestMethod]
+        [Test]
         public void UnrelatedRelativeUrlIsNotUpdated()
         {
             var url = new Uri("/mediafiles/1234/some-other-media-item.pdf", UriKind.Relative);
@@ -32,7 +30,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             Assert.AreEqual("/mediafiles/1234/some-other-media-item.pdf", url.ToString());
         }
 
-        [TestMethod]
+        [Test]
         public void AbsoluteMediaUrlIsUpdated()
         {
             var url = new Uri("https://different-site.blob.core.windows.net/media/1234/some-media-item-in-umbraco.pdf");
@@ -43,7 +41,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             Assert.AreEqual("/media/1234/some-media-item-in-umbraco.pdf", url.ToString());
         }
 
-        [TestMethod]
+        [Test]
         public void UnrelatedAbsoluteUrlIsNotUpdated()
         {
             var url = new Uri("https://www.accesseastsussex.org/jobs/index.aspx");

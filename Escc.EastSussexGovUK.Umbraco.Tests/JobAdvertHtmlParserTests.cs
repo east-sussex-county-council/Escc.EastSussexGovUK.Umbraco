@@ -7,7 +7,6 @@ using System.Web;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
 using Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink;
 using NUnit.Framework;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace Escc.EastSussexGovUK.Umbraco.Tests
 {

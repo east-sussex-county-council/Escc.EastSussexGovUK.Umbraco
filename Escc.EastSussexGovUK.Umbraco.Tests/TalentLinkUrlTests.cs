@@ -38,11 +38,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         }
 
         [Test]
-        [ExpectedException(typeof(UriFormatException))]
         public void RelativeUrlThrowsUriFormatException()
         {
-            var relativeUrl = new Uri(_scriptUrl).PathAndQuery;
-            var parsedUrl = new TalentLinkUrl(relativeUrl);
+            Assert.That(() =>
+            {
+                var relativeUrl = new Uri(_scriptUrl).PathAndQuery;
+                var parsedUrl = new TalentLinkUrl(relativeUrl);
+            }
+            , Throws.TypeOf<UriFormatException>()); 
         }
     }
 }

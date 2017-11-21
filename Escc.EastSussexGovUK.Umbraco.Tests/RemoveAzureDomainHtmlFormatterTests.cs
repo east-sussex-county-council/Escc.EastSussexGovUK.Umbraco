@@ -1,17 +1,14 @@
 ﻿using System;
 using Escc.EastSussexGovUK.Umbraco.Services;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
-using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
 using Escc.EastSussexGovUK.Umbraco.RichTextHtmlFormatters;
 
 namespace Escc.EastSussexGovUK.Umbraco.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class RemoveAzureDomainHtmlFormatterTests
     {
-        [TestMethod]
+        [Test]
         public void RelativeUrlIsUnchangedInALink()
         {
             var html = "<p><a href=\"/abc/123/page.html\">link</a><p>";
@@ -22,7 +19,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             Assert.AreEqual("<p><a href=\"/abc/123/page.html\">link</a><p>", html);
         }
 
-        [TestMethod]
+        [Test]
         public void AbsoluteAzureUrlIsUpdatedInALink()
         {
             var html = "<p><a href=\"https://example.azurewebsites.net/abc/123/page.html\">link</a>";
@@ -33,7 +30,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             Assert.AreEqual("<p><a href=\"/abc/123/page.html\">link</a>", html);
         }
 
-        [TestMethod]
+        [Test]
         public void UnrelatedAbsoluteUrlIsNotUpdatedInALink()
         {
             var html = "<p><a href=\"https://www.accesseastsussex.org/jobs/index.aspx\">link</a>";
@@ -44,7 +41,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             Assert.AreEqual("<p><a href=\"https://www.accesseastsussex.org/jobs/index.aspx\">link</a>", html);
         }
 
-        [TestMethod]
+        [Test]
         public void RelativeUrlIsUnchangedInAnImage()
         {
             var html = "<p><img src=\"/abc/123/page.html\" />";
@@ -55,7 +52,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             Assert.AreEqual("<p><img src=\"/abc/123/page.html\" />", html);
         }
 
-        [TestMethod]
+        [Test]
         public void AbsoluteAzureUrlIsUpdatedInAnImage()
         {
             var html = "<p><img src=\"https://example.azurewebsites.net/abc/123/page.html\" />";
@@ -66,7 +63,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             Assert.AreEqual("<p><img src=\"/abc/123/page.html\" />", html);
         }
 
-        [TestMethod]
+        [Test]
         public void UnrelatedAbsoluteUrlIsNotUpdatedInAnImage()
         {
             var html = "<p><img src=\"https://www.accesseastsussex.org/jobs/index.aspx\" />";

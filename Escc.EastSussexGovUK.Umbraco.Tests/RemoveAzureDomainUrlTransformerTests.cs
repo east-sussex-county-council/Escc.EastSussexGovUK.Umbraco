@@ -1,16 +1,13 @@
 ﻿using System;
-using Escc.EastSussexGovUK.Umbraco.Services;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
 
 namespace Escc.EastSussexGovUK.Umbraco.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class RemoveAzureDomainUrlTransformerTests
     {
-        [TestMethod]
+        [Test]
         public void RelativeUrlIsUnchanged()
         {
             var url = new Uri("/abc/123/page.html", UriKind.Relative);
@@ -21,7 +18,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             Assert.AreEqual("/abc/123/page.html", url.ToString());
         }
 
-        [TestMethod]
+        [Test]
         public void AbsoluteAzureUrlIsUpdated()
         {
             var url = new Uri("https://example.azurewebsites.net/abc/123/page.html");
@@ -32,7 +29,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             Assert.AreEqual("/abc/123/page.html", url.ToString());
         }
 
-        [TestMethod]
+        [Test]
         public void UnrelatedAbsoluteUrlIsNotUpdated()
         {
             var url = new Uri("https://www.accesseastsussex.org/jobs/index.aspx");

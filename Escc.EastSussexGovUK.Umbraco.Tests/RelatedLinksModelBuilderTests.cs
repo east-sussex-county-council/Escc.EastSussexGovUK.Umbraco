@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Escc.Umbraco.PropertyTypes;
 using Escc.EastSussexGovUK.Umbraco.Services;
 using NUnit.Framework;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace Escc.EastSussexGovUK.Umbraco.Tests
 {
