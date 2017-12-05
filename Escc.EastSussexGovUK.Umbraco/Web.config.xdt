@@ -309,7 +309,12 @@
         <assemblyIdentity name="Exceptionless" publicKeyToken="fc181f0a46f65747" culture="neutral" />
         <bindingRedirect oldVersion="0.0.0.0-1.5.2121.0" newVersion="1.5.2121.0" />
       </dependentAssembly>
-    </assemblyBinding>
+      <dependentAssembly xdt:Transform="Remove" xdt:Locator="Condition(_defaultNamespace:assemblyIdentity/@name='MySql.Data')" />
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="MySql.Data" publicKeyToken="c5687fc88969c44d" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-6.9.10.0" newVersion="6.9.10.0" />
+      </dependentAssembly>
+   </assemblyBinding>
   </runtime>
 
   <system.web xdt:Transform="Insert" />
