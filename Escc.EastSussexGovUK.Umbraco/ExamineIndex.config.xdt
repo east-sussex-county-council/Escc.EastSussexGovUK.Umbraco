@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<ExamineLuceneIndexSets xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
-
-  <!-- We are using Examine 0.1.82 where the recommendation is to add a {machinename} token when auto-scaling. This will change with the next Examine update.
-       https://our.umbraco.org/Documentation/Getting-Started/Setup/Server-Setup/Load-Balancing/flexible -->
-  <IndexSet SetName="InternalIndexSet" IndexPath="~/App_Data/TEMP/ExamineIndexes/{machinename}/Internal/" xdt:Transform="SetAttributes(IndexPath)" xdt:Locator="Match(SetName)" />
-  <IndexSet SetName="InternalMemberIndexSet" IndexPath="~/App_Data/TEMP/ExamineIndexes/{machinename}/InternalMember/" xdt:Transform="SetAttributes(IndexPath)" xdt:Locator="Match(SetName)" />
-  <IndexSet SetName="ExternalIndexSet" IndexPath="~/App_Data/TEMP/ExamineIndexes/{machinename}/External/" xdt:Transform="SetAttributes(IndexPath)" xdt:Locator="Match(SetName)" />
-</ExamineLuceneIndexSets>

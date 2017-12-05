@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using Escc.Umbraco.PropertyTypes;
 using Newtonsoft.Json;
 using System.Globalization;
+using System.Collections;
 
 namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 {
@@ -70,15 +71,11 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
                     });
                 }
             }
-
-            var parishData = UmbracoContent.GetPropertyValue<string>("Parish_Content");
-            if (!String.IsNullOrEmpty(parishData))
+            
+            var parishes = UmbracoContent.GetPropertyValue<IEnumerable<string>>("Parish_Content");
+            foreach (var parish in parishes)
             {
-                var parishes = parishData.Split(',');
-                foreach (var parish in parishes)
-                {
-                    model.Parishes.Add(parish);
-                }
+                model.Parishes.Add(parish);
             }
 
             model.Description = UmbracoContent.GetPropertyValue<string>("pageDescription_Content");

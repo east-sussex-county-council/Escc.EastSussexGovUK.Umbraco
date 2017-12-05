@@ -1,0 +1,9 @@
+﻿/* Display a background image on the login screen, to differentiate this from other Umbraco instances */
+.login-overlay { background: url('../Escc.UmbracoBranding/poppies.jpg') repeat-x 100% 100% !important; }
+
+/* Put a background and border on the partially-transparent Umbraco logo to ensure it shows up against the background image */
+.login-overlay__logo { background: #fff; box-shadow: rgba(256,256,256,.5) 0px 0px 4px 3px; border-radius: 50% 50%;}
+
+/* Change the login message to refer to the site, to differentiate this from other Umbraco instances         */
+.umb-login-container h1 {line-height: 30px; }
+.umb-login-container div[ng-show='view == \'login\'']:before { content: 'Log in to edit www.eastsussex.gov.uk'; font-size: 16px; }

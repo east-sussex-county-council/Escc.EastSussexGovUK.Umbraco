@@ -28,7 +28,7 @@
            
       <!-- Add a directoryFactory to all indexers. This value will change when Examine is upgraded to 0.1.83. 
            https://our.umbraco.org/Documentation/Getting-Started/Setup/Server-Setup/Load-Balancing/flexible -->
-      <add directoryFactory="Examine.LuceneEngine.Directories.SyncTempEnvDirectoryFactory,Examine" xdt:Transform="SetAttributes(directoryFactory)" />
+      <add directoryFactory="Examine.LuceneEngine.Directories.TempEnvDirectoryFactory,Examine" xdt:Transform="SetAttributes(directoryFactory)" />
     </providers>
   </ExamineIndexProviders>
 
