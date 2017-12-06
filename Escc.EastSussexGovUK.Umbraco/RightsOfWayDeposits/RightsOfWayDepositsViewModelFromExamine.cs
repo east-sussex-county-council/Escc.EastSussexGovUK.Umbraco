@@ -11,6 +11,10 @@ using Examine.LuceneEngine.SearchCriteria;
 using Examine.SearchCriteria;
 using Newtonsoft.Json;
 using Umbraco.Web;
+using Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor;
+using System.Globalization;
+using Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor;
+using Escc.Umbraco.PropertyTypes;
 
 namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 {
@@ -21,6 +25,7 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
     public class RightsOfWayDepositsViewModelFromExamine : IViewModelBuilder<RightsOfWayDepositsViewModel>
     {
         private Uri _baseUrl;
+        private readonly UmbracoHelper _umbracoHelper;
         private int _umbracoParentNodeId;
         private string _searchTerm;
         private int _currentPage;
@@ -36,12 +41,15 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
         /// <param name="baseUrl">The base URL for linking to details of each deposit - expected to be the URL of the deposits listings page.</param>
         /// <param name="searchTerm">The search term.</param>
         /// <param name="searchFilters">The search filters.</param>
+        /// <param name="umbracoHelper">The Umbraco helper.</param>
+        /// <exception cref="ArgumentNullException">baseUrl</exception>
         /// <exception cref="System.ArgumentNullException">baseUrl</exception>
-        public RightsOfWayDepositsViewModelFromExamine(int umbracoParentNodeId, Uri baseUrl, string searchTerm, IEnumerable<ISearchFilter> searchFilters)
+        public RightsOfWayDepositsViewModelFromExamine(int umbracoParentNodeId, Uri baseUrl, string searchTerm, IEnumerable<ISearchFilter> searchFilters, UmbracoHelper umbracoHelper)
         {
             if (baseUrl == null) throw new ArgumentNullException(nameof(baseUrl));
             _umbracoParentNodeId = umbracoParentNodeId;
             _baseUrl = baseUrl;
+            _umbracoHelper = umbracoHelper;
             AddFilteredSearchTerm(searchTerm, searchFilters);
         }
 
@@ -56,7 +64,7 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
         /// <param name="pageSize">Size of the page in paged search results.</param>
         /// <param name="sortOrder">The sort order applied to search results.</param>
         /// <exception cref="System.ArgumentNullException">baseUrl</exception>
-        public RightsOfWayDepositsViewModelFromExamine(int umbracoParentNodeId, Uri baseUrl, string searchTerm, IEnumerable<ISearchFilter> searchFilters, int currentPage, int pageSize, RightsOfWayDepositsSortOrder sortOrder) : this(umbracoParentNodeId, baseUrl, searchTerm, searchFilters)
+        public RightsOfWayDepositsViewModelFromExamine(int umbracoParentNodeId, Uri baseUrl, string searchTerm, IEnumerable<ISearchFilter> searchFilters, int currentPage, int pageSize, RightsOfWayDepositsSortOrder sortOrder) : this(umbracoParentNodeId, baseUrl, searchTerm, searchFilters, null)
         {
             _currentPage = currentPage;
             _pageSize = pageSize;
@@ -140,6 +148,47 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
                 deposit.Reference = result.Fields["nodeName"];
                 deposit.PageUrl = new Uri(_baseUrl, result.Fields["urlName"]);
 
+                if (result.Fields.Keys.Contains("DepositDocument_Content") &&_umbracoHelper != null)
+                {
+                    var nodeIds = result.Fields["DepositDocument_Content"].Split(',');
+                    var multiMediaPicker = Enumerable.Empty<IPublishedContent>();
+                    if (nodeIds.Length > 0)
+                    {
+                        multiMediaPicker = _umbracoHelper.TypedMedia(nodeIds).Where(x => x != null);
+                    }
+
+                    foreach (var media in multiMediaPicker) { 
+                        deposit.DepositDocuments.Add(new HtmlLink() { Text = media.Name, Url = new Uri(_baseUrl, media.Url) });
+                    }
+                }
+
+                var nameConverter = new PersonNamePropertyValueConverter();
+                var addressConverter = new UkLocationPropertyValueConverter();
+                for (var i = 1; i <= 5; i++)
+                {
+                    if (result.Fields.Keys.Contains($"Owner{i}_Content"))
+                    {
+                        var owner = nameConverter.ConvertDataToSource(null, result.Fields[$"Owner{i}_Content"], false) as PersonName;
+                        if (owner != null) { deposit.IndividualOwners.Add(owner); }
+                    }
+
+                    if (result.Fields.Keys.Contains($"OrganisationalOwner{i}_Content"))
+                    {
+                        var org = result.Fields[$"OrganisationalOwner{i}_Content"];
+                        if (!String.IsNullOrEmpty(org)) { deposit.OrganisationalOwners.Add(org); }
+                    }
+
+                    if (result.Fields.Keys.Contains($"Location{((i > 1) ? i.ToString(CultureInfo.InvariantCulture) : String.Empty)}_Content"))
+                    {
+                        var addressInfo = addressConverter.ConvertDataToSource(null, result.Fields[$"Location{((i > 1) ? i.ToString(CultureInfo.InvariantCulture) : String.Empty)}_Content"], false) as AddressInfo;
+                        if (addressInfo != null && addressInfo.BS7666Address.HasAddress() && addressInfo.BS7666Address.ToString() != addressInfo.BS7666Address.AdministrativeArea)
+                        {
+                            if (addressInfo.GeoCoordinate.Latitude == 0 && addressInfo.GeoCoordinate.Longitude == 0) addressInfo.GeoCoordinate = null;
+                            deposit.Addresses.Add(addressInfo);
+                        }
+                    }
+                }
+
                 if (result.Fields.Keys.Contains("Parish_Content"))
                 {
                     var parishData = result.Fields["Parish_Content"];
@@ -151,6 +200,16 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
                             deposit.Parishes.Add(parish);
                         }
                     }
+                }
+
+                if (result.Fields.Keys.Contains("GridReference_Content"))
+                {
+                    deposit.OrdnanceSurveyGridReference = result.Fields["GridReference_Content"];
+                }
+
+                if (result.Fields.Keys.Contains("pageDescription_Content"))
+                {
+                    deposit.Description = result.Fields["pageDescription_Content"];
                 }
 
                 if (result.Fields.Keys.Contains("DateDeposited_Content"))

@@ -25,7 +25,7 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
         {
             if (model == null) throw new ArgumentNullException(nameof(model));
 
-            var viewModel = new RightsOfWayDepositsViewModelFromExamine(model.Content.Parent.Id, new Uri(model.Content.Parent.UrlAbsolute()), Request.QueryString["q"], new ISearchFilter[] { new SearchTermSanitiser() }).BuildModel();
+            var viewModel = new RightsOfWayDepositsViewModelFromExamine(model.Content.Parent.Id, new Uri(model.Content.Parent.UrlAbsolute()), Request.QueryString["q"], new ISearchFilter[] { new SearchTermSanitiser() }, Umbraco).BuildModel();
 
             var modelBuilder = new BaseViewModelBuilder();
             modelBuilder.PopulateBaseViewModel(viewModel, model.Content, null, UmbracoContext.Current.InPreviewMode);
