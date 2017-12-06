@@ -7,7 +7,7 @@
 
     if (!String.IsNullOrEmpty(Model.Job.Reference))
     {
-        jobSummaryHtml.Append("<dt id=\"job-reference\">Job reference</dt><dd>").Append(Model.Job.Reference).Append("</dd>");
+        jobSummaryHtml.Append("<dt>Job reference</dt><dd id=\"job-reference\">").Append(Model.Job.Reference).Append("</dd>");
     }
     if (!String.IsNullOrEmpty(Model.Job.Location))
     {
