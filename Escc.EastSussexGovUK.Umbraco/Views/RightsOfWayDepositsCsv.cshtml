@@ -91,6 +91,7 @@
         foreach (var doc in deposit.DepositDocuments) { depositDocuments.Add(doc.Url.ToString()); }
         data.Append("\"").Append(String.Join(", ", depositDocuments)).Append("\",");
         data.Append("\"").Append(deposit.PageUrl).Append("\"");
+        data.Append(Environment.NewLine);
 @Html.Raw(data)
 }
 }
