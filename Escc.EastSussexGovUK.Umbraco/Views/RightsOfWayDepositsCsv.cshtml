@@ -83,7 +83,7 @@
         data.Append("\"").Append(deposit.Addresses.Count > 4 ? deposit.Addresses[4].GeoCoordinate?.Latitude.ToString() : string.Empty).Append("\",");
         data.Append("\"").Append(deposit.Addresses.Count > 4 ? deposit.Addresses[4].GeoCoordinate?.Longitude.ToString() : string.Empty).Append("\",");
         data.Append("\"").Append(String.Join(", ", deposit.Parishes)).Append("\",");
-        data.Append("\"").Append(String.Join(", ", deposit.Description.Replace("\"", String.Empty))).Append("\",");
+        data.Append("\"").Append(String.Join(", ", deposit.Description?.Replace("\"", String.Empty))).Append("\",");
         data.Append("\"").Append(deposit.OrdnanceSurveyGridReference).Append("\",");
         data.Append("\"").Append(deposit.DateDeposited.ToIso8601Date()).Append("\",");
         data.Append("\"").Append(deposit.DateExpires.ToIso8601Date()).Append("\",");
