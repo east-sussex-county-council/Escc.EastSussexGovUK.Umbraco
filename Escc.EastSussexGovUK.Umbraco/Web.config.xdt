@@ -70,10 +70,6 @@
       <add key="LocationTemplateSmall" value="/css/customerfocustemplates/location-small.css" xdt:Transform="Insert" />
       <add key="LocationTemplateLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="LocationTemplateLarge" value="/css/customerfocustemplates/location-large.css" xdt:Transform="Insert" />
-      <add key="TabsSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="TabsSmall" value="/css/tabs-small.css" xdt:Transform="Insert" />
-      <add key="TabsLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="TabsLarge" value="/css/tabs-large.css" xdt:Transform="Insert" />
       <add key="TaskTemplateSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="TaskTemplateSmall" value="/css/customerfocustemplates/task-small.css" xdt:Transform="Insert" />
       <add key="TopicSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
@@ -106,8 +102,6 @@
       <add key="HomeTabs" value="/js/HomePage/jquery-ui-1.10.4.custom.min.js" xdt:Transform="Insert" />
       <add key="LocationTemplate" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="LocationTemplate" value="/js/CustomerFocusTemplates/location.js" xdt:Transform="Insert" />
-      <add key="Tabs" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="Tabs" value="/js/tabs.js" xdt:Transform="Insert" />
       <add key="RegistrationSkin" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="RegistrationSkin" value="/RegistrationSkin/js/min/registration-skin.js" xdt:Transform="Insert" />
       <add key="FosterWithTrustSkin" xdt:Transform="Remove" xdt:Locator="Match(key)" />

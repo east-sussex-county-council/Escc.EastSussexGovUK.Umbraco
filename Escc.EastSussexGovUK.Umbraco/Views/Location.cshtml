@@ -26,15 +26,11 @@
 
     Html.RequiresJs(JsFileAlias.Resolve("GoogleMaps"), 90);
     Html.RequiresJs(JsFileAlias.Resolve("LocationTemplate"));
-    Html.RequiresJs(JsFileAlias.Resolve("Tabs"));
-
-    if (Model.EsccWebsiteView != EsccWebsiteView.Plain)
-    {
-        Html.RequiresCss(CssFileAlias.Resolve("LocationTemplateSmall"));
-        Html.RequiresCss(CssFileAlias.Resolve("LocationTemplateLarge"), MediaQueryAlias.Resolve("Large"));
-        Html.RequiresCss(CssFileAlias.Resolve("TabsSmall"));
-        Html.RequiresCss(CssFileAlias.Resolve("TabsLarge"), MediaQueryAlias.Resolve("Large"));
-    }
+    Html.RequiresJs(JsFileAlias.Resolve("AccordionAndTabs"));
+    Html.RequiresCss(CssFileAlias.Resolve("LocationTemplateSmall"));
+    Html.RequiresCss(CssFileAlias.Resolve("LocationTemplateLarge"), MediaQueryAlias.Resolve("Large"));
+    Html.RequiresCss(CssFileAlias.Resolve("NavigationSmall"));
+    Html.RequiresCss(CssFileAlias.Resolve("NavigationLarge"), MediaQueryAlias.Resolve("Large"));
 
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
     {
