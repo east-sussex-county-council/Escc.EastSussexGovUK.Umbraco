@@ -58,6 +58,11 @@ dummy.txt
 *.config.js
 */Views/Partials/Grid/*
 
+# Umbraco Forms
+*/App_Plugins/UmbracoForms/*
+*/Views/MacroPartials/*
+*/Views/Partials/Forms/*
+
 # Files imported by NuGet packages
 **/TinyMCE-*.css
 !**/TinyMCE-StyleSelector-Embed.css
