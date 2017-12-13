@@ -23,13 +23,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Location
             var model = base.MapUmbracoContentToViewModel(content, latestService, socialMediaService, eastSussex1SpaceService, webChatSettingsService, relatedLinksService, contentExperimentSettingsService, escisService, ratingSettings, mediaUrlTransformer, skinService);
 
             // Get the types of waste which have been selected for this recycling site
-            var recycledTypes = ReadWasteTypesFromProperty(content, "wasteTypes_Content");
+            var recycledTypes = content.GetPropertyValue<IEnumerable<string>>("wasteTypes_Content");
             if (recycledTypes != null)
             {
                 ((List<string>) model.WasteTypesRecycled).AddRange(recycledTypes);
             }
 
-            var acceptedTypes = ReadWasteTypesFromProperty(content, "acceptedWasteTypes_Content");
+            var acceptedTypes = content.GetPropertyValue<IEnumerable<string>>("acceptedWasteTypes_Content");
             if (acceptedTypes != null)
             {
                 ((List<string>) model.WasteTypesAccepted).AddRange(acceptedTypes);
@@ -43,16 +43,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Location
             }
 
             return model;
-        }
-
-        private static IEnumerable<string> ReadWasteTypesFromProperty(IPublishedContent content, string alias)
-        {
-            var acceptedWasteTypes = content.GetPropertyValue<string>(alias);
-            if (!String.IsNullOrEmpty(acceptedWasteTypes))
-            {
-                return acceptedWasteTypes.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries);
-            }
-            return null;
         }
     }
 }
