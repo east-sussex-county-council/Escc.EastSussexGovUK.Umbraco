@@ -62,6 +62,7 @@ dummy.txt
 */App_Plugins/UmbracoForms/*
 */Views/MacroPartials/*
 */Views/Partials/Forms/*
+!*/Views/Partials/Forms/DatePicker.cshtml
 
 # Files imported by NuGet packages
 **/TinyMCE-*.css

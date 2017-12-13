@@ -1,0 +1,24 @@
+﻿/* Umbraco Forms does this with an inline style, so move it here */
+.umbraco-forms-id { display: none; }
+
+/* .radioButtonList is not normally within .formPart, but in Umbraco Forms it is */
+.formPart .radioButtonList { margin-top: 0; }
+.formPart .radioButtonList label { font-weight: normal; }
+
+/* Date picker is an ordinary text field, so spans 100% by default */
+.service-form input[type=text].datepickerfield { width: 10em; }
+
+/* Umbraco Forms lays out checkbox HTML differently to our style guide, and because the label is generic for all controls it can't be changed */
+.checkbox { position: relative; }
+.checkbox label { padding-left: 20px; }
+.checkbox .umbraco-forms-field-wrapper { position: absolute; top: 0; left: 0; }
+
+/* Umbraco Forms renders inline errors with this class */
+.field-validation-error { color: #b21313; }
+
+/* Umbraco Forms renders a validation summary with this class, and has a default empty list element that needs to be hidden */
+.validation-summary-errors {color: #b21313; }
+.validation-summary-valid { display: none; }
+
+/* Help text for questions is a paragraph */
+.umbraco-forms-tooltip.help-block { margin-top: 0; font-weight: normal; }
