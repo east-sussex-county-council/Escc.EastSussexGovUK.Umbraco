@@ -22,3 +22,17 @@
 
 /* Help text for questions is a paragraph */
 .umbraco-forms-tooltip.help-block { margin-top: 0; font-weight: normal; }
+
+/* Support fields laid out in up to 4 columns. Small screens and IE will get a single column layout, 
+    medium screens support up to 2 columns and large screens can use all 4.
+*/
+@supports (display: grid) {
+    @media only screen and (min-width: 474px) {
+        .row-fluid.columns-2, .row-fluid.columns-3, .row-fluid.columns-4 { display: grid; grid-column-gap: 18px; }
+        .columns-2, .columns-3, .columns-4 { grid-template-columns: repeat(2,1fr);}
+    }
+    @media only screen and (min-width: 802px) {
+        .columns-3 { grid-template-columns: repeat(3,1fr);}
+        .columns-4 { grid-template-columns: repeat(4,1fr);}
+    }
+}

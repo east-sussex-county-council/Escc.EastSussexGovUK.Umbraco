@@ -11,7 +11,7 @@
     //it will simply hook into standard way forms load assets
     if (Model.DisableDefaultStylesheet == false)
     {
-        Html.SetFormThemeCssFile(Model, "~/umbraco-forms.css");
+        //Html.SetFormThemeCssFile(Model, "~/css/umbraco-forms.css");
     }
     Html.SetFormFieldWrapperClass("formPart");
 
@@ -50,11 +50,11 @@
             }
            @:<fieldset class="formBox" id="@fs.Id">
 
-    <div class="row-fluid">
+    <div class="row-fluid columns-@(fs.Containers.Count)">
 
         @foreach (var c in fs.Containers)
                 {
-            <div class="umbraco-forms-container @("col-md-" + c.Width)">
+            <div class="umbraco-forms-container">
 
                 @foreach (FieldViewModel f in c.Fields)
                 {
