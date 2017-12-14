@@ -12,6 +12,7 @@ using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task;
 using Umbraco.Inception.Attributes;
 using Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits;
+using Escc.EastSussexGovUK.Umbraco.Forms;
 
 namespace Escc.EastSussexGovUK.Umbraco.Location
 {
@@ -41,7 +42,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Location
         typeof(DayCentreDocumentType),
         typeof(CampaignLandingDocumentType),
         typeof(PersonDocumentType),
-        typeof(RightsOfWayDepositsDocumentType)
+        typeof(RightsOfWayDepositsDocumentType),
+        typeof(FormDocumentType)
         },
         true, MasterTemplate = "Location", Icon = BuiltInUmbracoContentTypeIcons.IconJunk,  
         Description = "A place where residents can take things to be recycled.")]

@@ -14,6 +14,7 @@ using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task;
 using Escc.EastSussexGovUK.Umbraco.Location;
 using Umbraco.Inception.Attributes;
 using Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits;
+using Escc.EastSussexGovUK.Umbraco.Forms;
 
 namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Map
 {
@@ -41,7 +42,8 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Map
         typeof(SportLocationDocumentType),
         typeof(CampaignLandingDocumentType),
         typeof(CouncilPlanHomePageDocumentType),
-        typeof(RightsOfWayDepositsDocumentType)
+        typeof(RightsOfWayDepositsDocumentType),
+        typeof(FormDocumentType)
     }, true, BuiltInUmbracoContentTypeIcons.IconGlobeInvertedEuropeAfrica, "", false, false, 
     Description = "A clickable map which links to a set of pages. For a service based in one place (eg a library), use 'Location' or a more specific template instead or insert a Google Map into any page.")]
     public class MapDocumentType : LegacyBaseDocumentType

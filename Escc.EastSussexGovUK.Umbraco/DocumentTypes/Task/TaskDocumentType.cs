@@ -13,6 +13,7 @@ using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage;
 using Escc.EastSussexGovUK.Umbraco.Location;
 using Umbraco.Inception.Attributes;
 using Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits;
+using Escc.EastSussexGovUK.Umbraco.Forms;
 
 namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task
 {
@@ -39,7 +40,8 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task
         typeof(DayCentreDocumentType),
         typeof(CampaignLandingDocumentType),
         typeof(PersonDocumentType),
-        typeof(RightsOfWayDepositsDocumentType)
+        typeof(RightsOfWayDepositsDocumentType),
+        typeof(FormDocumentType)
     }, true, allowAtRoot: false, icon: BuiltInUmbracoContentTypeIcons.IconShipping, 
     Description = "Something a resident wants to get done, which the council can help with. For example, pay for a service or apply for a scheme.")]
     public class TaskDocumentType : CustomerFocusBaseDocumentType

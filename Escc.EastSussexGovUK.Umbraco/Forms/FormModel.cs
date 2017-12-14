@@ -12,5 +12,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Forms
     /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Models.BaseViewModel" />
     public class FormModel : BaseViewModel
     {
+        /// <summary>
+        /// Gets or sets the form unique identifier.
+        /// </summary>
+        /// <value>
+        /// The form unique identifier.
+        /// </value>
+        public Guid FormGuid { get; set; }
+
+        /// <summary>
+        /// Gets or sets the HTML text that appears before the form fields.
+        /// </summary>
+        public IHtmlString LeadingText { get; set; }
     }
 }

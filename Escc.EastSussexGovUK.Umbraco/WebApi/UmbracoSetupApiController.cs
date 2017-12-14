@@ -37,6 +37,7 @@ using Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits;
 using Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor;
 using Escc.EastSussexGovUK.Umbraco.Ratings;
 using Escc.EastSussexGovUK.Umbraco.Skins;
+using Escc.EastSussexGovUK.Umbraco.Forms;
 
 namespace Escc.EastSussexGovUK.Umbraco.WebApi
 {
@@ -92,6 +93,7 @@ namespace Escc.EastSussexGovUK.Umbraco.WebApi
                 LandingPageDescriptionsDataType.CreateDataType();
 
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(TopicPageLayoutDataType));
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(FormDataType));
 
                 // Council Plan
                 PriorityDataType.CreateDataType();
@@ -163,6 +165,7 @@ namespace Escc.EastSussexGovUK.Umbraco.WebApi
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(GuideStepDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(GuideDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(PersonDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(FormDocumentType));
 
                 return Request.CreateResponse(HttpStatusCode.Created);
             }

@@ -14,6 +14,7 @@ using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task;
 using Escc.EastSussexGovUK.Umbraco.Location;
 using Umbraco.Inception.Attributes;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Alerts;
+using Escc.EastSussexGovUK.Umbraco.Forms;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
@@ -43,7 +44,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         typeof(ProblemJobsRssDocumentType),
         typeof(JobsSearchDocumentType),
         typeof(JobAdvertDocumentType),
-        typeof(JobAlertsDocumentType)
+        typeof(JobAlertsDocumentType),
+        typeof(FormDocumentType)
     }, true, allowAtRoot: false, icon: BuiltInUmbracoContentTypeIcons.IconReception, 
     Description = "The start page for the jobs section of the website.")]
     public class JobsHomeDocumentType : CustomerFocusBaseDocumentType

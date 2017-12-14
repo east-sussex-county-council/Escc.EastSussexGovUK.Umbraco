@@ -14,6 +14,7 @@ using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task;
 using Escc.EastSussexGovUK.Umbraco.Location;
 using Umbraco.Inception.Attributes;
 using Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits;
+using Escc.EastSussexGovUK.Umbraco.Forms;
 
 namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardLandingPage
 {
@@ -40,7 +41,8 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardLandingPage
         typeof(SportLocationDocumentType),
         typeof(CampaignLandingDocumentType),
         typeof(CouncilPlanHomePageDocumentType),
-        typeof(RightsOfWayDepositsDocumentType)
+        typeof(RightsOfWayDepositsDocumentType),
+        typeof(FormDocumentType)
     }, true, BuiltInUmbracoContentTypeIcons.IconBulletedList, "", false, false, 
     Description = "Older-style landing page. For new pages, use the 'Landing' template instead.")]
     public class StandardLandingPageDocumentType : LegacyBaseDocumentType

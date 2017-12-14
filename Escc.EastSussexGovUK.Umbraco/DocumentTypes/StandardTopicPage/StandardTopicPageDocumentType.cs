@@ -14,6 +14,7 @@ using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task;
 using Escc.EastSussexGovUK.Umbraco.Location;
 using Umbraco.Inception.Attributes;
 using Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits;
+using Escc.EastSussexGovUK.Umbraco.Forms;
 
 namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage
 {
@@ -40,7 +41,8 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage
         typeof(SportLocationDocumentType),
         typeof(CampaignLandingDocumentType),
         typeof(CouncilPlanHomePageDocumentType),
-        typeof(RightsOfWayDepositsDocumentType)
+        typeof(RightsOfWayDepositsDocumentType),
+        typeof(FormDocumentType)
     }, true, BuiltInUmbracoContentTypeIcons.IconUmbContent, "", false, false, 
     Description = "A generic content page. Wherever you can, use a more specific template such as 'Task' or 'Location' instead.")]
     public class StandardTopicPageDocumentType : LegacyBaseDocumentType

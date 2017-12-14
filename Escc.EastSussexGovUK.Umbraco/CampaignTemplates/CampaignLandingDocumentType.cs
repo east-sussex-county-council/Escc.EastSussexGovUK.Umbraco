@@ -15,6 +15,7 @@ using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Map;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.FormDownload;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Person;
 using Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits;
+using Escc.EastSussexGovUK.Umbraco.Forms;
 
 namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
 {
@@ -43,7 +44,8 @@ namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
         typeof(RegistrationOfficeDocumentType),
         typeof(DayCentreDocumentType),
         typeof(PersonDocumentType),
-        typeof(RightsOfWayDepositsDocumentType)
+        typeof(RightsOfWayDepositsDocumentType),
+        typeof(FormDocumentType)
     }, true, BuiltInUmbracoContentTypeIcons.IconRocket, 
     Description="A landing page for a marketing campaign")]
     public class CampaignLandingDocumentType : UmbracoGeneratedBase

@@ -1,5 +1,7 @@
 ﻿using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.EastSussexGovUK.Umbraco.Skins;
+using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
+using Escc.Umbraco.PropertyTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +22,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Forms
         public override ActionResult Index(RenderModel model)
         {
             var viewModel = new FormModel();
+            var mediaUrlTransformer = new RemoveMediaDomainUrlTransformer();
+            viewModel.LeadingText = new HtmlString(mediaUrlTransformer.ParseAndTransformMediaUrlsInHtml(model.Content.GetPropertyValue<string>("LeadingText_Content")));
+            viewModel.FormGuid = model.Content.GetPropertyValue<Guid>("Form_Content");
 
             var modelBuilder = new BaseViewModelBuilder();
             modelBuilder.PopulateBaseViewModel(viewModel, model.Content, null, UmbracoContext.Current.InPreviewMode, new SkinFromUmbraco());
+            modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel,
+                new UmbracoLatestService(model.Content),
+                null, null,
+                new UmbracoWebChatSettingsService(model.Content, new UrlListReader()),
+                null, null);
 
             return CurrentTemplate(viewModel);
         }

@@ -47,8 +47,8 @@
                 {
                     <h2>@fs.Caption</h2>
                 }
-            @:<fieldset class="formBox" id="@fs.Id">
             }
+           @:<fieldset class="formBox" id="@fs.Id">
 
     <div class="row-fluid">
 
@@ -94,12 +94,10 @@
             </div>
     }
     </div>
-    if (string.IsNullOrEmpty(fs.Caption) == false)
-    {
+
         @:</fieldset>
 
-            }
-}
+        }
     </div>
 
     <input type="text" name="@Model.FormId.ToString().Replace("-", "")" class="umbraco-forms-id" />

@@ -14,6 +14,7 @@ using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task;
 using Escc.EastSussexGovUK.Umbraco.Location;
 using Umbraco.Inception.Attributes;
 using Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits;
+using Escc.EastSussexGovUK.Umbraco.Forms;
 
 namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.LandingPageWithPictures
 {
@@ -41,7 +42,8 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.LandingPageWithPictures
         typeof(SportLocationDocumentType),
         typeof(CampaignLandingDocumentType),
         typeof(CouncilPlanHomePageDocumentType),
-        typeof(RightsOfWayDepositsDocumentType)
+        typeof(RightsOfWayDepositsDocumentType),
+        typeof(FormDocumentType)
     }, true, BuiltInUmbracoContentTypeIcons.IconThumbnailList, "", false, false,
     Description = "A landing page with a picture on the right or above each link. You should usually use the 'Landing' template instead.")]
     public class LandingPageWithPicturesDocumentType : LegacyBaseDocumentType

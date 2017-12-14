@@ -19,6 +19,7 @@ using Escc.Umbraco.PropertyEditors.RichTextPropertyEditor;
 using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
 using Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits;
+using Escc.EastSussexGovUK.Umbraco.Forms;
 
 namespace Escc.EastSussexGovUK.Umbraco.HomePage
 {
@@ -50,7 +51,8 @@ namespace Escc.EastSussexGovUK.Umbraco.HomePage
         typeof(SportLocationDocumentType),
         typeof(CampaignLandingDocumentType),
         typeof(JobsHomeDocumentType),
-        typeof(RightsOfWayDepositsDocumentType)
+        typeof(RightsOfWayDepositsDocumentType),
+        typeof(FormDocumentType)
     }, true, BuiltInUmbracoContentTypeIcons.IconHome, "", true, Description = "The starting page for browsing the entire site.")]
     public class HomePageDocumentType : UmbracoGeneratedBase
     {

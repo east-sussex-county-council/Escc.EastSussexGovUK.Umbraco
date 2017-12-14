@@ -2,6 +2,25 @@
 @using Escc.Web
 @using ClientDependency.Core.Mvc
 @using Escc.ClientDependencyFramework
+@using Escc.EastSussexGovUK
+@using Escc.EastSussexGovUK.Features
+@using Escc.EastSussexGovUK.Views
+@using Escc.EastSussexGovUK.Skins
+@using Escc.Registration.RegistrationSkin
+@using Escc.EastSussexGovUK.Umbraco.Skins.FosterWithTrust
+@{
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
+    Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] {
+        new CoronerSkin(Model.EsccWebsiteView, Request.Url),
+        new RegistrationSkin(Model.EsccWebsiteView, Model.Metadata.PageUrl),
+        new FosterWithTrustSkin(Model.EsccWebsiteView, Model.SkinToApply == "Foster with trust")
+    }, new CustomerFocusSkin(Model.EsccWebsiteView));
+
+    Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
+    {
+        new WebChat() { WebChatSettings = Model.WebChat }
+    });
+}
 @section Metadata {
     @{
         Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));
@@ -17,10 +36,11 @@
         <script src="https://ajax.aspnetcdn.com/ajax/mvc/5.1/jquery.validate.unobtrusive.min.js" integrity="sha384-25k6pBZ2fUhwDc1+3NAKvjzihGFoC8UTFCYCINNm28DqC9bOwTAiLdiGpOuKCe66" crossorigin="anonymous"></script>
     }
 }
-@section Breadcrumb {}
 <div class="full-page">
 <div class="content text-content">
     <h1>@Model.Metadata.Title</h1>
-    @Umbraco.RenderMacro("renderUmbracoForm", new { FormGuid = Umbraco.Field("formPicker"), FormTheme = "EastSussex", ExcludeScripts = "0" })
+    @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
+    @Model.LeadingText
+    @Umbraco.RenderMacro("renderUmbracoForm", new { FormGuid = Model.FormGuid, FormTheme = "EastSussex", ExcludeScripts = "0" })
 </div>
 </div>

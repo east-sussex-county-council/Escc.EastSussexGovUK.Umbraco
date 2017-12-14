@@ -14,6 +14,7 @@ using Escc.Umbraco.PropertyEditors;
 using Escc.Umbraco.PropertyEditors.RichTextPropertyEditor;
 using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
+using Escc.EastSussexGovUK.Umbraco.Forms;
 
 namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
 {
@@ -41,7 +42,8 @@ namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
         typeof(DayCentreDocumentType),
         typeof(CampaignLandingDocumentType),
         typeof(CampaignContentDocumentType),
-        typeof(CampaignTilesDocumentType)
+        typeof(CampaignTilesDocumentType),
+        typeof(FormDocumentType)
     }, true, BuiltInUmbracoContentTypeIcons.IconPlanet, 
     Description="A landing page for a marketing campaign that has graphical tiles for each link")]
     public class CampaignTilesDocumentType : UmbracoGeneratedBase
