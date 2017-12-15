@@ -50,17 +50,11 @@ namespace Escc.EastSussexGovUK.Umbraco.WebApi
                         {
                             var allowedWasteTypes = new List<string>();
 
-                            var recycledWasteTypes = content.GetPropertyValue<string>("wasteTypes_Content");
-                            if (!String.IsNullOrEmpty(recycledWasteTypes))
-                            {
-                                allowedWasteTypes.AddRange(recycledWasteTypes.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries));
-                            }
+                            var recycledWasteTypes = content.GetPropertyValue<IEnumerable<string>>("wasteTypes_Content");
+                            allowedWasteTypes.AddRange(recycledWasteTypes);
 
-                            var nonRecycledWasteTypes = content.GetPropertyValue<string>("acceptedWasteTypes_Content");
-                            if (!String.IsNullOrEmpty(nonRecycledWasteTypes))
-                            {
-                                allowedWasteTypes.AddRange(nonRecycledWasteTypes.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
-                            }
+                            var nonRecycledWasteTypes = content.GetPropertyValue<IEnumerable<string>>("acceptedWasteTypes_Content");
+                            allowedWasteTypes.AddRange(nonRecycledWasteTypes);
 
                             return requiredWasteTypes.Any(wasteType => allowedWasteTypes.Contains(wasteType, StringComparer.OrdinalIgnoreCase));
                         });
