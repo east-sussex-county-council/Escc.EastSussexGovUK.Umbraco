@@ -2,7 +2,7 @@
 @using Umbraco.Forms.Mvc
 @{
     var className = Html.GetFormFieldClass(Model.FieldTypeName) + " text";
-    if (string.IsNullOrEmpty(Model.AdditionalSettings["PrivacyNotice"]) == false)
+    if (Model.AdditionalSettings.ContainsKey("PrivacyNotice") && string.IsNullOrEmpty(Model.AdditionalSettings["PrivacyNotice"]) == false)
     {
         className += " describedby-tip"; 
     }
@@ -13,13 +13,13 @@
        class="@className" 
        value="@Model.ValueAsHtmlString" 
        maxlength="500"
-       @{if(string.IsNullOrEmpty(Model.AdditionalSettings["PrivacyNotice"]) == false){<text>aria-describedby="@Model.Id-privacy"</text>}}
+       @{if(Model.AdditionalSettings.ContainsKey("PrivacyNotice") && string.IsNullOrEmpty(Model.AdditionalSettings["PrivacyNotice"]) == false){<text>aria-describedby="@Model.Id-privacy"</text>}}
        @{if(string.IsNullOrEmpty(Model.PlaceholderText) == false){<text>placeholder="@Model.PlaceholderText"</text>}}
        @{if(Model.Mandatory || Model.Validate){<text>data-val="true"</text>}}
        @{if (Model.Mandatory) {<text> data-val-required="@Model.RequiredErrorMessage"</text>}}
        @{if (Model.Validate) {<text> data-val-regex="@Model.InvalidErrorMessage" data-regex="@Html.Raw(Model.Regex)"</text>}}
 />
-@{if (string.IsNullOrEmpty(Model.AdditionalSettings["PrivacyNotice"]) == false)
+@{if (Model.AdditionalSettings.ContainsKey("PrivacyNotice") && string.IsNullOrEmpty(Model.AdditionalSettings["PrivacyNotice"]) == false)
 {
     <p id="@Model.Id-privacy">@Model.AdditionalSettings["PrivacyNotice"]</p>
 }}

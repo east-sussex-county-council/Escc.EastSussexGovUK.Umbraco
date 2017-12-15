@@ -3981,7 +3981,7 @@
     <Content Include="Views\Form.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.CheckBoxList.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.RadioButtonList.cshtml" />
-    <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.TextFieldPersonalData.cshtml" />
+    <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.TextField.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\EastSussex\Form.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\EastSussex\Script.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\EastSussex\Submitted.cshtml" />
@@ -4048,9 +4048,9 @@
     <Compile Include="CampaignTemplates\CampaignTilesDocumentType.cs" />
     <Compile Include="DocumentTypes\PreValueListDataType.cs" />
     <Compile Include="DocumentTypes\ReadOnlyDateDataType.cs" />
+    <Compile Include="Forms\FieldTypes\TextField.cs" />
     <Compile Include="Forms\FormController.cs" />
     <Compile Include="Forms\FormModel.cs" />
-    <Compile Include="Forms\FieldTypes\TextFieldPersonalData.cs" />
     <Compile Include="Forms\FormContentTab.cs" />
     <Compile Include="Forms\FormDocumentType.cs" />
     <Compile Include="Forms\FormDataType.cs" />
