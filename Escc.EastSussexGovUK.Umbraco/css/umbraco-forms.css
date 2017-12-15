@@ -1,5 +1,5 @@
 ﻿/* Umbraco Forms does this with an inline style, so move it here */
-.umbraco-forms-id { display: none; }
+.umbraco-forms-id, .condition-not-matched { display: none; }
 
 /* .radioButtonList is not normally within .formPart, but in Umbraco Forms it is */
 .formPart .radioButtonList { margin-top: 0; }

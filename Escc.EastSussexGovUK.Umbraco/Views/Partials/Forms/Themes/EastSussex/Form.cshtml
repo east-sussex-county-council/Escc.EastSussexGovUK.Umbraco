@@ -60,7 +60,7 @@
                 {
                     bool hidden = f.HasCondition && f.ConditionActionType == FieldConditionActionType.Show;
 
-                    <div class="@Html.GetFormFieldWrapperClass(f.FieldTypeName) @f.CssClass" @{ if (hidden) { <text> style="display: none" </text>     } }>
+                    <div class="@Html.GetFormFieldWrapperClass(f.FieldTypeName) @f.CssClass @{ if (hidden) { <text> condition-not-matched</text>     } }">
 
                         @if (!f.HideLabel)
                         {
