@@ -133,6 +133,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             var query = _queryConverter.ToCollection(alert.Query);
             query.Remove("page");
             query.Remove("pagesize");
+            query.Remove("sort");
             var serialised = query.ToString();
 
             // Azure tables use an index clustered first by partition key then by row key,

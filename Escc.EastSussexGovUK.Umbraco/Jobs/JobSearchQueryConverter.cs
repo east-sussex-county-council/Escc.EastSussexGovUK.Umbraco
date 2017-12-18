@@ -148,6 +148,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 if (query.CurrentPage > 0) queryString.Add("page", query.CurrentPage.ToString(CultureInfo.InvariantCulture));
                 if (query.PageSize.HasValue) queryString.Add("pagesize", query.PageSize.Value.ToString(CultureInfo.InvariantCulture));
                 if (query.ClosingDateFrom.HasValue) queryString.Add("closingdatefrom", query.ClosingDateFrom.Value.ToIso8601Date());
+                if (query.SortBy != JobSearchQuery.JobsSortOrder.None) queryString.Add("sort", query.SortBy.ToString().ToLowerInvariant());
 
                 foreach (var value in query.JobTypes) queryString.Add("jobtypes", value);
                 foreach (var value in query.Locations) queryString.Add("locations", value);
