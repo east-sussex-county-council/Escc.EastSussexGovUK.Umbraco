@@ -23,6 +23,9 @@
 /* Help text for questions is a paragraph */
 .umbraco-forms-tooltip.help-block { margin-top: 0; font-weight: normal; }
 
+/* Cancel standard email style if .email happens to be used as a field name */
+.umbraco-forms-field.email { background:none; padding: 0;}
+
 /* Support fields laid out in up to 4 columns. Small screens and IE will get a single column layout, 
     medium screens support up to 2 columns and large screens can use all 4.
 */
