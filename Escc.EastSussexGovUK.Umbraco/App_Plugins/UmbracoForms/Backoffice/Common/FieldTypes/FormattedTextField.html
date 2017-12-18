@@ -1,6 +1,1 @@
-﻿<textarea class="inline-editor fieldset-description"
-          select-on-focus
-          umb-forms-auto-size
-          ng-model="field.settings.FormattedText"
-          placeholder="Write formatted text...">
-	</textarea>
+﻿<span ng-bind-html-unsafe="field.settings.FormattedText">{{field.settings.FormattedText}}</span>
