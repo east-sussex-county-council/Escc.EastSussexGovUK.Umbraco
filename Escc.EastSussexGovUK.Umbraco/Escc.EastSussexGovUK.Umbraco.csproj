@@ -865,6 +865,7 @@
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\datepicker.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\dropdownlist.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\fileupload.html" />
+    <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\FormattedTextField.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\hiddenfield.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\password.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\radiobuttonlist.html" />
@@ -3985,6 +3986,7 @@
     <Content Include="Views\Partials\Forms\Themes\EastSussex\Form.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\EastSussex\Script.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\EastSussex\Submitted.cshtml" />
+    <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.FormattedText.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -4048,6 +4050,7 @@
     <Compile Include="CampaignTemplates\CampaignTilesDocumentType.cs" />
     <Compile Include="DocumentTypes\PreValueListDataType.cs" />
     <Compile Include="DocumentTypes\ReadOnlyDateDataType.cs" />
+    <Compile Include="Forms\FieldTypes\FormattedTextField.cs" />
     <Compile Include="Forms\FieldTypes\TextField.cs" />
     <Compile Include="Forms\FormController.cs" />
     <Compile Include="Forms\FormModel.cs" />

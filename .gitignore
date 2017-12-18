@@ -60,6 +60,13 @@ dummy.txt
 
 # Umbraco Forms
 */App_Plugins/UmbracoForms/*
+!*/App_Plugins/UmbracoForms/Backoffice
+*/App_Plugins/UmbracoForms/Backoffice/*
+!*/App_Plugins/UmbracoForms/Backoffice/Common
+*/App_Plugins/UmbracoForms/Backoffice/Common/*
+!*/App_Plugins/UmbracoForms/Backoffice/Common/FieldTypes
+*/App_Plugins/UmbracoForms/Backoffice/Common/FieldTypes/*
+!*/App_Plugins/UmbracoForms/Backoffice/Common/FieldTypes/FormattedTextField.html
 */Views/MacroPartials/*
 */Views/Partials/Forms/*
 !*/Views/Partials/Forms/DatePicker.cshtml
