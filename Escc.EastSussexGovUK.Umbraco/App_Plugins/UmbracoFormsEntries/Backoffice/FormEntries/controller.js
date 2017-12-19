@@ -1,5 +1,5 @@
 ﻿// Copied from umbraco-forms.js in Umbraco Forms 6.0.5 but line 84 changed to remove the check for Manage Forms permission,
-// and renamed the controller from 'EntriesController' to 'EntriesController2'.
+// line 112 changed to highlight the correct entry in the tree, and renamed the controller from 'EntriesController' to 'EntriesController2'.
 angular.module("umbraco").controller("UmbracoForms.Editors.Form.EntriesController2", function ($scope, $routeParams, recordResource, formResource, dialogService, editorState, userService, securityResource, notificationsService, navigationService) {
 
     //On load/init of 'editing' a form then
@@ -109,7 +109,7 @@ angular.module("umbraco").controller("UmbracoForms.Editors.Form.EntriesControlle
             $scope.loaded = true;
 
             //As we are editing an item we can highlight it in the tree
-            navigationService.syncTree({ tree: "form", path: [String($routeParams.id), String($routeParams.id) + "_entries"], forceReload: false });
+            navigationService.syncTree({ tree: "formEntries", path: [String($routeParams.id)], forceReload: false });
 
         });
 
