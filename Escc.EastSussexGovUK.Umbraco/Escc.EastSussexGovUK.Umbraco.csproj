@@ -845,6 +845,8 @@
     <Content Include="App_Plugins\SpectrumColorPicker\lib\spectrum\spectrum.js" />
     <Content Include="App_Plugins\SpectrumColorPicker\SpectrumColorPicker.controller.js" />
     <Content Include="App_Plugins\SpectrumColorPicker\SpectrumColorPicker.html" />
+    <Content Include="App_Plugins\UmbracoFormsEntries\Backoffice\FormEntries\edit.html" />
+    <Content Include="App_Plugins\UmbracoFormsEntries\Backoffice\FormEntries\controller.js" />
     <Content Include="App_Plugins\UmbracoForms\Assets\BaremetricsCalendar\public\css\application.css" />
     <Content Include="App_Plugins\UmbracoForms\Assets\BaremetricsCalendar\public\js\Calendar.js" />
     <Content Include="App_Plugins\UmbracoForms\Assets\defaultform.css" />
@@ -1226,6 +1228,7 @@
     <Content Include="App_Plugins\UmbracoForms\Data\Templates\contactform.json" />
     <Content Include="App_Plugins\UmbracoForms\Data\Templates\commentform.json" />
     <Content Include="bin\umbracoForms.lic" />
+    <Content Include="App_Plugins\UmbracoFormsEntries\package.manifest" />
     <None Include="Jobs\Examine\ExamineIndex.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -4036,6 +4039,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Plugins\UmbracoFormsEntries\UmbracoFormsEntriesTreeController.cs" />
     <Compile Include="App_Start\EastSussexGovUK_Mvc.cs" />
     <Compile Include="App_Start\EastSussexGovUK_WebForms.cs" />
     <Compile Include="AzureConfiguration\FrontEndReadOnlyServerRegistrar.cs" />
