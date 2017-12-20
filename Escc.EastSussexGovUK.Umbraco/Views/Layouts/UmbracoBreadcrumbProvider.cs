@@ -2,6 +2,8 @@
 using System.Linq;
 using Escc.EastSussexGovUK.Features;
 using Umbraco.Web;
+using System;
+using Exceptionless;
 
 namespace Escc.EastSussexGovUK.Umbraco.Views.Layouts
 {
@@ -37,7 +39,28 @@ namespace Escc.EastSussexGovUK.Umbraco.Views.Layouts
                 // Add data for each ancestor node in the hierarchy
                 while (node != null)
                 {
-                    breadcrumb.Add(node.Name, isTopLevelSection ? string.Empty : umbraco.NiceUrlWithDomain(node.Id));
+                    try
+                    {
+                        // If there are child pages with the same name as the parent, keep the breadcrumb trail tidy by skipping the child
+                        if (!breadcrumb.ContainsKey(node.Name))
+                        {
+                            breadcrumb.Add(node.Name, isTopLevelSection ? string.Empty : umbraco.NiceUrlWithDomain(node.Id));
+                        }
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        // Report it, but we don't want to page to crash due to an error in the breadcrumb
+                        ex.Data.Add("Adding node name", node.Name);
+                        ex.Data.Add("Adding node URL", isTopLevelSection ? string.Empty : umbraco.NiceUrlWithDomain(node.Id));
+                        var keyCount = 1;
+                        foreach (var key in breadcrumb.Keys)
+                        {
+                            ex.Data.Add($"Already added node {keyCount} name", key);
+                            ex.Data.Add($"Already added node {keyCount} URL", breadcrumb[key]);
+                            keyCount++;
+                        }
+                        ex.ToExceptionless().Submit();
+                    }
                     node = node.Parent;
                     if (isTopLevelSection) isTopLevelSection = false;
                 }
