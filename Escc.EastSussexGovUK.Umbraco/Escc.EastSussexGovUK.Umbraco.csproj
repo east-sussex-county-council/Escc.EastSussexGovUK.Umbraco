@@ -847,6 +847,7 @@
     <Content Include="App_Plugins\SpectrumColorPicker\SpectrumColorPicker.html" />
     <Content Include="App_Plugins\UmbracoFormsEntries\Backoffice\FormEntries\edit.html" />
     <Content Include="App_Plugins\UmbracoFormsEntries\Backoffice\FormEntries\controller.js" />
+    <Content Include="App_Plugins\UmbracoFormsEntries\Backoffice\FormEntries\umbraco-forms-entries.css" />
     <Content Include="App_Plugins\UmbracoForms\Assets\BaremetricsCalendar\public\css\application.css" />
     <Content Include="App_Plugins\UmbracoForms\Assets\BaremetricsCalendar\public\js\Calendar.js" />
     <Content Include="App_Plugins\UmbracoForms\Assets\defaultform.css" />

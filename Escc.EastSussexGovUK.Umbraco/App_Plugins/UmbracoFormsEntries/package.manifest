@@ -1,4 +1,7 @@
 ﻿{
+	css: [
+		'~/App_Plugins/UmbracoFormsEntries/BackOffice/FormEntries/umbraco-forms-entries.css'
+		],
 	javascript: [
 	    '~/App_Plugins/UmbracoFormsEntries/BackOffice/FormEntries/controller.js'
 		]
