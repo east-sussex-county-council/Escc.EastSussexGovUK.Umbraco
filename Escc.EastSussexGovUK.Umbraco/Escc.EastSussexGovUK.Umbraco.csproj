@@ -4062,6 +4062,7 @@
     <Compile Include="Forms\FormContentTab.cs" />
     <Compile Include="Forms\FormDocumentType.cs" />
     <Compile Include="Forms\FormDataType.cs" />
+    <Compile Include="Forms\UmbracoFormsSecurityApiController.cs" />
     <Compile Include="Jobs\Alerts\JobAlertSettingsTab.cs" />
     <Compile Include="Jobs\Api\JobsLookupValuesFromApi.cs" />
     <Compile Include="Jobs\Api\RedeploymentJobsController.cs" />
