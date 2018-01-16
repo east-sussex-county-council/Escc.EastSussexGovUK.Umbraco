@@ -173,7 +173,7 @@
       <HintPath>..\packages\Escc.Services.Azure.2.1.1\lib\Escc.Services.Azure.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.3.0.0\lib\net452\Escc.Umbraco.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.4.0.0\lib\net452\Escc.Umbraco.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.Banners, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.Banners.2.0.3\lib\Escc.Umbraco.Banners.dll</HintPath>
@@ -185,6 +185,9 @@
     <Reference Include="Escc.Umbraco.EditorTools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.EditorTools.2.4.2\lib\Escc.Umbraco.EditorTools.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Escc.Umbraco.Expiry, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Umbraco.Expiry.1.0.0\lib\net452\Escc.Umbraco.Expiry.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.HeatmapAnalytics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.HeatmapAnalytics.2.0.1\lib\Escc.Umbraco.HeatmapAnalytics.dll</HintPath>
@@ -204,7 +207,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.UserAccessWebService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.UserAccessWebService.4.0.0\lib\net452\Escc.Umbraco.UserAccessWebService.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.UserAccessWebService.5.0.0\lib\net452\Escc.Umbraco.UserAccessWebService.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Web.1.1.0\lib\Escc.Web.dll</HintPath>
