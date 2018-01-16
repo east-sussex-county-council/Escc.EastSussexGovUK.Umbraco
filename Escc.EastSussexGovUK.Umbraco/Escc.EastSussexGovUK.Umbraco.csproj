@@ -187,7 +187,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.Expiry, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.Expiry.1.0.0\lib\net452\Escc.Umbraco.Expiry.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.Expiry.1.0.1\lib\net452\Escc.Umbraco.Expiry.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.HeatmapAnalytics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.HeatmapAnalytics.2.0.1\lib\Escc.Umbraco.HeatmapAnalytics.dll</HintPath>
