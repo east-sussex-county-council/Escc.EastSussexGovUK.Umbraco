@@ -13,7 +13,7 @@
     <sectionGroup name="Escc.ClientDependencyFramework" xdt:Transform="Remove" xdt:Locator="XPath(/configuration/configSections/sectionGroup[@name='Escc.ClientDependencyFramework'][2])" />
 
     <section name="UnpublishOverridesSection" xdt:Transform="Remove" xdt:Locator="Match(name)" />
-    <section name="UnpublishOverridesSection" type="Escc.Umbraco.UnpublishOverrides.UnpublishOverridesSection, Escc.Umbraco" requirePermission="false" xdt:Transform="Insert" />
+    <section name="UnpublishOverridesSection" type="Escc.Umbraco.Expiry.Configuration.UnpublishOverridesSection, Escc.Umbraco.Expiry" requirePermission="false" xdt:Transform="Insert" />
   </configSections>
   <configSections xdt:Transform="RemoveAll" xdt:Locator="Condition(count(*)=0)" />
 
