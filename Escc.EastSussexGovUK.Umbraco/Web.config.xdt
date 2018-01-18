@@ -426,6 +426,9 @@
 
       <add name="UmbracoCustomErrorsModule" xdt:Transform="Remove" xdt:Locator="Match(name)" />
       <add name="UmbracoCustomErrorsModule" type="Escc.EastSussexGovUK.Umbraco.Errors.UmbracoCustomErrorsModule, Escc.EastSussexGovUK.Umbraco" xdt:Transform="Insert" />
+
+      <add name="MachineNameModule" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+      <add name="MachineNameModule" type="Escc.EastSussexGovUK.Umbraco.AzureConfiguration.MachineNameModule, Escc.EastSussexGovUK.Umbraco" xdt:Transform="Insert" />
     </modules>
     
     <!-- Ensure SSL is used even when strict transport security is not supported
