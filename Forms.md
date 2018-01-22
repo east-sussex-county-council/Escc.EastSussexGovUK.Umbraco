@@ -83,4 +83,10 @@ This issue is logged with Umbraco as [CON-1181](http://issues.umbraco.org/issue/
 
 `TextField` customises the built-in 'Short answer' field type to add an extra property for a just-in-time privacy notice. This extra property is used when the field is displayed using the `EastSussex` theme.
 
+* A **phone number** field can be set up using the 'Short answer' field type. Set the validation to "enter a custom validation" and use `^\+?[0-9 ]{11,15}$`
+
+* An **email address** field can be set up using the 'Short answer' field type. Set the validation to "enter a custom validation" and use `^[a-zA-Z0-9'_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$`
+
 `FormattedTextField` provides a way for form designers to add some static HTML in the form. It is implemented as a question which does not need an answer. Unfortunately this requires the HTML to be entered as HTML rather than using a rich text editor, as [implementing TinyMCE as a Umbraco Forms settings editor didn't work](https://our.umbraco.org/forum/umbraco-forms/89756-tinymce-as-an-umbraco-forms-setting-editor).
+
+**Multiple file uploads** should just use the 'File upload' field type multiple times. A native multiple file upload field type is [expected soon](https://github.com/PerplexInternetmarketing/Perplex-Umbraco-Forms/issues/2), and the next release of Umbraco Forms is due in Q1 2018. 
