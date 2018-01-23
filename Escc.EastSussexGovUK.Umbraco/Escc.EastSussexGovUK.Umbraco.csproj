@@ -4059,6 +4059,7 @@
     <Compile Include="Jobs\Examine\ISalaryRangeQueryBuilder.cs" />
     <Compile Include="Jobs\Examine\SalaryRangeLuceneQueryBuilder.cs" />
     <Compile Include="Jobs\IJobCacheStrategy.cs" />
+    <Compile Include="Services\AuditLoggingEventHandler.cs" />
     <Compile Include="WebApi\IHtmlStringConverter.cs" />
     <Compile Include="Jobs\Api\BaseJobsApiController.cs" />
     <Compile Include="Jobs\Api\JobsDataFromApi.cs" />
