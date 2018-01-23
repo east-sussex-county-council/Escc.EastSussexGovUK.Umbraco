@@ -170,7 +170,7 @@
       <HintPath>..\packages\Escc.Services.Azure.2.1.1\lib\Escc.Services.Azure.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.4.0.0\lib\net452\Escc.Umbraco.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.4.0.1\lib\net452\Escc.Umbraco.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.Banners, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.Banners.2.0.3\lib\Escc.Umbraco.Banners.dll</HintPath>
