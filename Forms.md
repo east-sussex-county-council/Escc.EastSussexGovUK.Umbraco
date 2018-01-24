@@ -48,6 +48,16 @@ When you create a new form you will need to grant access to the form to anyone w
 2. Expand the 'Users' tree, find the user who needs access, and ensure that they have access to the Forms section. If the user is not a web author, this should be the only section selected. 
 3. Next expand 'Forms Security', find the user who needs access again, and tick 'Has Access' next to the form they need to view. 
 
+## Securing uploads
+
+Umbraco forms uploads files to the same `IFileSystem` as items in the media gallery, which means they are publicly available and insecure even though their contents may be sensitive.
+
+Since we already use a [fork of UmbracoFileSystemProviders.Azure](https://github.com/east-sussex-county-council/UmbracoFileSystemProviders.Azure) as our media file system, we have customised this to recognise a forms upload and treat it differently. When uploading the file, if configured to do so, it will place a forms upload into a separate container in the same blob storage account. This container can be set to private access, preventing downloads via a request similar to `https://account.blob.core.windows.net/container/example-file-path.jpg`. When downloading a file it will simply not return anything, as it does not have access to the currently logged-in back office user account which would be needed to validate whether the user should have access to the form and any uploaded files.
+
+This means we need another, secure, way to download the files which is implemented in `UmbracoFormsUploadsApiController`. A request for an uploaded file coming via this API will check which form the file was uploaded from, and check whether the current user has access to that form in their Umbraco Forms permissions. To link to files via this API in the back office, `~\App_Plugins\UmbracoFormsEntries\Backoffice\FormEntries\controller.js` has a change which points to a custom view when displaying data for file uploads. The custom view contains the file path appended to the secure API.
+
+This issue is logged with Umbraco as [CON-1454](http://issues.umbraco.org/issue/CON-1454).
+
 ## Separating the form design and form processing roles
 
 By default in Umbraco Forms, to grant a user access to view and download their form data, you must also grant them 'Manage Forms' permission, which lets them modify and even delete their form. This opens up potential problems due to the lack of versioning, and due to privacy requirements that must be met. Form design is a role for specialists that are trained to understand such issues, and needs to be separate from processing the data that is submitted to an individual form.

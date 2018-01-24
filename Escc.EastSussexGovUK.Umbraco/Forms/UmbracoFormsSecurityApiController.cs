@@ -23,39 +23,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Forms
         {
             try
             {
-                // For every Umbraco User including disabled accounts, remove their Umbraco Forms permissions (both deny and allow).
-                // This actually grants everyone Manage Forms permission because the default is to allow everyone.
-                var page = 0;
-                var total = 0;
-                var users = Services.UserService.GetAll(page, 10, out total);
-                while (users.Any())
-                {
-                    foreach (var user in users)
-                    {
-                        using (UserSecurityStorage userSecurityStorage = new UserSecurityStorage())
-                        {
-                            var userFormSecurityList = userSecurityStorage.GetUserSecurity(user.Id.ToString());
-                            foreach (var userSecurity in userFormSecurityList) userSecurityStorage.DeleteUserSecurity(userSecurity);
-                        }
-                    }
-
-                    page++;
-                    users = Services.UserService.GetAll(page, 10, out total);
-                }
-
-                // For every form in Umbraco Forms, remove all the user permissions (both deny and allow).
-                // This actually grants everyone access to every form because the default is to allow everyone.
-                using (FormStorage formStorage = new FormStorage())
-                {
-                    using (UserFormSecurityStorage formSecurityStorage = new UserFormSecurityStorage())
-                    {
-                        IEnumerable<Form> allForms = formStorage.GetAllForms();
-                        foreach (Form form in allForms)
-                        {
-                            formSecurityStorage.DeleteAllUserFormSecurityForForm(form.Id);
-                        }
-                    }
-                }
+                var formsSecurity = new UmbracoFormsSecurity();
+                formsSecurity.ResetFormsSecurity(Services.UserService);
             }
             catch (Exception ex)
             {
@@ -73,21 +42,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Forms
         {
             try
             {
-                var page = 0;
-                var total = 0;
-                var users = Services.UserService.GetAll(page, 10, out total);
-                while (users.Any())
-                {
-                    foreach (var user in users)
-                    {
-                        RemoveManageFormsPermissions(user, true);
-                        RemoveDefaultAccessToForms(user, true);
-                    }
-
-                    page++;
-                    users = Services.UserService.GetAll(page, 10, out total);
-                }
-
+                var formsSecurity = new UmbracoFormsSecurity();
+                formsSecurity.LockdownFormsSecurity(Services.UserService);
             }
             catch (Exception ex)
             {
@@ -109,97 +65,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Forms
         {
             try
             {
-                var page = 0;
-                var total = 0;
-                var users = Services.UserService.GetAll(page, 10, out total);
-                while (users.Any())
-                {
-                    foreach (var user in users)
-                    {
-                        RemoveManageFormsPermissions(user, false);
-                        RemoveDefaultAccessToForms(user, false);
-                    }
-
-                    page++;
-                    users = Services.UserService.GetAll(page, 10, out total);
-                }
+                var formsSecurity = new UmbracoFormsSecurity();
+                formsSecurity.FixFormsSecurity(Services.UserService);
             }
             catch (Exception ex)
             {
                 ex.ToExceptionless().Submit();
             }
 
-        }
-
-        /// <summary>
-        /// Each Umbraco User should have an Umbraco Forms permissions record which holds their overall permissions for Umbraco Forms.
-        /// This preserves existing permissions and adds a 'deny all' permission if there is no record.
-        /// </summary>
-        /// <param name="user">The user.</param>
-        /// <param name="forEveryone">if set to <c>true</c> overwrite all existing permissions with 'deny all'.</param>
-        private void RemoveManageFormsPermissions(IUser user, bool forEveryone)
-        {
-            using (UserSecurityStorage userSecurityStorage = new UserSecurityStorage())
-            {
-                var userSecurity = userSecurityStorage.GetUserSecurity(user.Id.ToString()).FirstOrDefault();
-                var hasSecurityAlready = (userSecurity != null);
-                if (!hasSecurityAlready)
-                {
-                    userSecurity = UserSecurity.Create();
-                    userSecurity.User = user.Id.ToString();
-                }
-                userSecurity.ManageForms = false;
-                userSecurity.ManageDataSources = false;
-                userSecurity.ManagePreValueSources = false;
-                userSecurity.ManageWorkflows = false;
-
-                if (!hasSecurityAlready)
-                {
-                    userSecurityStorage.InsertUserSecurity(userSecurity);
-                }
-                else if (forEveryone)
-                {
-                    userSecurityStorage.UpdateUserSecurity(userSecurity);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Each Umbraco User should have an Umbraco Forms permissions record for each form.
-        /// This preserves existing permissions and adds a 'deny' permission if there is no record.
-        /// </summary>
-        /// <param name="user">The user.</param>
-        /// <param name="forEveryone">if set to <c>true</c> overwrite all existing permissions with 'deny'.</param>
-        private void RemoveDefaultAccessToForms(IUser user, bool forEveryone)
-        {
-            using (FormStorage formStorage = new FormStorage())
-            {
-                using (UserFormSecurityStorage formSecurityStorage = new UserFormSecurityStorage())
-                {
-                    IEnumerable<Form> allForms = formStorage.GetAllForms();
-                    foreach (Form form in allForms)
-                    {
-                        var formSecurityForUser = formSecurityStorage.GetUserFormSecurity(user.Id, form.Id).FirstOrDefault();
-                        var hasSecurityAlready = (formSecurityForUser != null);
-                        if (!hasSecurityAlready)
-                        {
-                            formSecurityForUser = UserFormSecurity.Create();
-                            formSecurityForUser.User = user.Id.ToString();
-                            formSecurityForUser.Form = form.Id;
-                        }
-                        formSecurityForUser.HasAccess = false;
-
-                        if (!hasSecurityAlready)
-                        {
-                            formSecurityStorage.InsertUserFormSecurity(formSecurityForUser);
-                        }
-                        else if (forEveryone)
-                        {
-                            formSecurityStorage.UpdateUserFormSecurity(formSecurityForUser);
-                        }
-                    }
-                }
-            }
         }
     }
 

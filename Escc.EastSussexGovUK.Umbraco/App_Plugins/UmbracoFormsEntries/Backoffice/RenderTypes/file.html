@@ -1,0 +1,18 @@
+<!-- A copy of the built-in file /App_Plugins/UmbracoForms/Backoffice/Common/RenderTypes/file.html 
+     from Umbraco Forms 6.0.5. The only change is to alter the file paths to go via a secure API.
+     Part of a workaround for CON-1454. -->
+<div class="umb-forms-rendertype-file"
+     ng-controller="UmbracoForms.RenderTypes.FileController">
+        <div ng-repeat="path in files">
+            <div ng-if="path && path.indexOf('.') > 0">
+                <a target="_blank" href="/umbraco/backoffice/api/umbracoformsuploadsapi/downloadfile?file={{path}}" class="thumbnail" ng-if="isImage(path)">
+                    <img ng-src="{{getPreview('/umbraco/backoffice/api/umbracoformsuploadsapi/downloadfile?file=' + path).replace('?width=400','')}}" />
+                </a>
+
+                <a target="_blank" href="/umbraco/backoffice/api/umbracoformsuploadsapi/downloadfile?file={{path}}" class="thumbnail file" ng-if="!isImage(path)">
+                    <i class="icon icon-document"></i>
+                    {{getFileName(path)}}
+                </a>
+            </div>
+        </div>
+</div>
