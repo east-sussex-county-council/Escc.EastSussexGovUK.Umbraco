@@ -76,7 +76,7 @@ This issue is logged with Umbraco as [CON-1465](http://issues.umbraco.org/issue/
 
 Every form that collects personal data must have a retention schedule, and ideally this should be automated to ensure that it is not forgotten. For retention schedules that are simply a set time after the form is submitted, this is implemented by `RetentionAfterSetDateWorkflow`. 
 
-* Add a field called 'Delete after' to a form using the 'Simple Answer', ensuring it has the alias `deleteAfter`.
+* Add a field called 'Delete after' to a form using the 'Simple Answer' answer type, ensuring it has the alias `deleteAfter`.
 * Add a workflow using the 'Retention schedule: after a set date' workflow, and set the time period to keep records for.
 * When a form is submitted and the workflow runs, a date is added to the `deleteAfter` field.
 * Run a scheduled task regularly to call `https://hostname/umbraco/api/UmbracoFormsRetentionApi/ApplySetDateRetentionSchedule` using the HTTP `DELETE` method. It will look for the `deleteAfter` field on all form records, and delete any where it finds a date that has passed. 
@@ -109,3 +109,22 @@ This issue is logged with Umbraco as [CON-1181](http://issues.umbraco.org/issue/
 `FormattedTextField` provides a way for form designers to add some static HTML in the form. It is implemented as a question which does not need an answer. Unfortunately this requires the HTML to be entered as HTML rather than using a rich text editor, as [implementing TinyMCE as a Umbraco Forms settings editor didn't work](https://our.umbraco.org/forum/umbraco-forms/89756-tinymce-as-an-umbraco-forms-setting-editor).
 
 **Multiple file uploads** should just use the 'File upload' field type multiple times. A native multiple file upload field type is [expected soon](https://github.com/PerplexInternetmarketing/Perplex-Umbraco-Forms/issues/2), and the next release of Umbraco Forms is due in Q1 2018. 
+
+## Implementing a more secure email workflow
+
+The email workflows that come with Umbraco Forms are designed to send the form data as part of the email. However, the data may be sensitive and email is not a secure medium, so it is better to send a link to the form in the back office where the data is protected by TLS and authentication.
+
+The 'Send email with template (Razor)' workflow allows you to customise the email that is sent, but the body of the email only has access to the fields submitted with the form, not to metadata about the form itself. To work around this:
+
+* Add a field called 'Form entry id' to a form using the 'Hidden' answer type, ensuring it has the alias `formEntryId`.
+* Add a workflow using the 'Save form entry id' workflow (implemented by `SaveIdAsFieldWorkflow`).
+* Add a workflow using the 'Send email with template (Razor)' workflow **after** the 'Save form entry id' workflow and pick `Send-A-Link.cshtml` as the template. 
+* When a form is submitted and the workflows run, the form id and form entry id are both added to the `formEntryId` field as separate values, and used by `Send-A-Link.cshtml` to build a link to view the entry. In case the Umbraco back office is on a separate URL from the instance sending the email, you can optionally specify the base URL in `web.config`:
+
+		<configuration>
+			<appSettings>
+				<add key="BackOfficeBaseUrl" value="https://hostname/" />
+			</appSettings>
+		</configuration>
+
+Unfortunately Umbraco Forms doesn't support a native URL to view a single form entry. To add that support, `~\App_Plugins\UmbracoFormsEntries\Backoffice\FormEntries\edit.html` adds a `data-entry-id` attribute with the entry id to the link to each form, and `controller.js` in the same folder has added code that looks for an `entry` parameter on the querystring and matches it up to the link. This will only work with low form volumes as the entry to view needs to be on the first page of results when they load. 

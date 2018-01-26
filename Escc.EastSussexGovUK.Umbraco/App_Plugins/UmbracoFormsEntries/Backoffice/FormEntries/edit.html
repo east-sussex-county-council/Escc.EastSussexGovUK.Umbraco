@@ -1,4 +1,6 @@
-<!-- Note: This is copied from Umbraco Forms 6.0.5 with just the check for 'Manage Forms' permissions disabled -->
+<!-- Note: This is copied from Umbraco Forms 6.0.5 with:
+    * the check for 'Manage Forms' permissions disabled 
+    * a data-entry-id field added 3 times for use by controller.js to view a specific record based on a URL -->
 <div ng-controller="UmbracoForms.Editors.Form.EntriesController2 as vm">
 
     <form
@@ -173,7 +175,7 @@
 
                                     <!-- if the field is of view = 'file' (Show filename, not path & link) -->
                                     <div ng-switch-when="file">
-                                        <a class="umb-table-body__link" href="" ng-click="vm.viewEntryDetails(records.schema, row, $event)" ng-if="$index === 0">{{ field |  fileName }}</a>
+                                        <a class="umb-table-body__link" href="" ng-click="vm.viewEntryDetails(records.schema, row, $event)" ng-if="$index === 0" data-entry-id="{{row.uniqueId}}">{{ field |  fileName }}</a>
                                         <span ng-if="$index > 0">{{ field |  fileName }}</span>
                                     </div>
                                     <div ng-switch-when="member">
@@ -184,11 +186,11 @@
                                     </div>
                                     <div ng-switch-when="date">
                                         <!-- TODO: Get the users locale & determine best time format for date filter -->
-                                        <a class="umb-table-body__link" href="" ng-click="vm.viewEntryDetails(records.schema, row, $event)" ng-if="$index === 0">{{ field | date : 'dd MMM yy @ HH:mm:ss' }}</a>
+                                        <a class="umb-table-body__link" href="" ng-click="vm.viewEntryDetails(records.schema, row, $event)" ng-if="$index === 0" data-entry-id="{{row.uniqueId}}">{{ field | date : 'dd MMM yy @ HH:mm:ss' }}</a>
                                         <span>{{ field | momentDateTimeZone : 'LLL' }}</span>
                                     </div>
                                     <div ng-switch-default>
-                                        <a class="umb-table-body__link" href="" ng-click="vm.viewEntryDetails(records.schema, row, $event)" ng-if="$index === 0">{{ field | truncate:20:true }}</a>
+                                        <a class="umb-table-body__link" href="" ng-click="vm.viewEntryDetails(records.schema, row, $event)" ng-if="$index === 0" data-entry-id="{{row.uniqueId}}">{{ field | truncate:20:true }}</a>
                                         <span ng-if="$index > 0">{{ field | truncate:20:true }}</span>
                                     </div>
                                 </div>

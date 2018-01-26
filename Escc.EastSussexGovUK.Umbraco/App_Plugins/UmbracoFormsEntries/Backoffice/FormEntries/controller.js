@@ -2,6 +2,7 @@
 // * line 84 changed to remove the check for Manage Forms permission,
 // * line 112 changed to highlight the correct entry in the tree
 // * line 250 changed to use a custom view for upload fields that routes requests via a secure API
+// * line 433 inside $scope.loadRecords, added query string parsing and a call to setTimeout() to support a URL that views a specific record, so that a link can be sent by email.
 // * renamed the controller from 'EntriesController' to 'EntriesController2'.
 angular.module("umbraco").controller("UmbracoForms.Editors.Form.EntriesController2", function ($scope, $routeParams, recordResource, formResource, dialogService, editorState, userService, securityResource, notificationsService, navigationService) {
 
@@ -430,6 +431,22 @@ angular.module("umbraco").controller("UmbracoForms.Editors.Form.EntriesControlle
 
             vm.pagination.totalPages = response.data.totalNumberOfPages;
 
+            /** ESCC CHANGE STARTS **/
+            /* If there is a form entry id on the query string, look up the link with a matching id and click it to view the entry.
+               There is undoubtedly a more "angular" way to do this! This ties in with the Send-A-Link.cshtml email template. */
+            setTimeout(function () {
+                var parentHasQueryString = window.parent.document.location.toString().indexOf('?');
+                if (parentHasQueryString > -1) {
+                    var parentQueryString = window.parent.document.location.toString().substr(parentHasQueryString + 1).split('&').map(function (pair) { return pair.split("="); });
+                    for (var i = 0; i < parentQueryString.length; i++) {
+                        if (parentQueryString[i][0].toLowerCase() === "entry") {
+                            $("a[data-entry-id='" + parentQueryString[i][1] + "']").click();
+                        }
+                    }
+                }
+            }, 500);
+
+            /** ESCC CHANGE ENDS **/
         });
     };
 

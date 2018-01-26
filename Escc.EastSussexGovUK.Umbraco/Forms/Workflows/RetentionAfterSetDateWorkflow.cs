@@ -41,7 +41,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Forms.Workflow
         public string Years { get; set; }
 
         /// <summary>
-        /// Called bu Umbraco Forms to executes the workflow.
+        /// Called bu Umbraco Forms to execute the workflow.
         /// </summary>
         /// <param name="record">The record.</param>
         /// <param name="e">The <see cref="RecordEventArgs"/> instance containing the event data.</param>

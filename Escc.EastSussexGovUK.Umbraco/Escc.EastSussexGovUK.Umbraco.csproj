@@ -4015,6 +4015,7 @@
     <Content Include="Views\Partials\Forms\Emails\Example-Template.cshtml" />
     <Content Include="Views\MacroPartials\RenderUmbracoFormScripts.cshtml" />
     <Content Include="Views\MacroPartials\InsertUmbracoFormWithTheme.cshtml" />
+    <Content Include="Views\Partials\Forms\Emails\Send-A-Link.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -4084,6 +4085,7 @@
     <Compile Include="Forms\FieldTypes\TextField.cs" />
     <Compile Include="Forms\FileFromBlobStorageResult.cs" />
     <Compile Include="Forms\FormController.cs" />
+    <Compile Include="Forms\Workflows\SaveIdAsFieldWorkflow.cs" />
     <Compile Include="Forms\FormModel.cs" />
     <Compile Include="Forms\FormContentTab.cs" />
     <Compile Include="Forms\FormDocumentType.cs" />
