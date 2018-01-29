@@ -124,6 +124,9 @@
       <HintPath>..\packages\Escc.EastSussexGovUK.Rss.2.0.0\lib\Escc.EastSussexGovUK.Rss.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Escc.EastSussexGovUK.TemplateSource, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.1\lib\Escc.EastSussexGovUK.TemplateSource.dll</HintPath>
+    </Reference>
     <Reference Include="Escc.EastSussexGovUK.WebForms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.EastSussexGovUK.WebForms.1.2.2\lib\net452\Escc.EastSussexGovUK.WebForms.dll</HintPath>
     </Reference>
@@ -544,6 +547,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="apple-touch-icon-114x114.png" />
+    <Content Include="apple-touch-icon-57x57.png" />
+    <Content Include="apple-touch-icon-72x72.png" />
+    <Content Include="apple-touch-icon-precomposed-114x114.png" />
+    <Content Include="apple-touch-icon-precomposed-57x57.png" />
+    <Content Include="apple-touch-icon-precomposed-72x72.png" />
+    <Content Include="apple-touch-icon-precomposed.png" />
+    <Content Include="apple-touch-icon.png" />
     <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.css" />
     <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.min.css" />
     <Content Include="App_Plugins\EditorTools\Content\bootstrap.css" />
@@ -992,45 +1003,16 @@
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\package.manifest" />
     <Content Include="css\umbraco-forms.css" />
     <Content Include="default.aspx" />
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="googledb369ad0fa294f54.html" />
     <Content Include="images\forms-email-header.png" />
-    <Content Include="media\1001\termdates.xml" />
-    <Content Include="media\1012\termdates-lf.xml" />
-    <Content Include="media\1015\kitten.jpg" />
-    <Content Include="media\1015\kitten_thumb.jpg" />
-    <Content Include="media\1016\astronaut-small.jpg" />
-    <Content Include="media\1016\astronaut-small_big-thumb.jpg" />
-    <Content Include="media\1016\astronaut-small_thumb.jpg" />
-    <Content Include="media\1017\astronaut.jpg" />
-    <Content Include="media\1017\astronaut_big-thumb.jpg" />
-    <Content Include="media\1017\astronaut_thumb.jpg" />
-    <Content Include="media\1018\churchill.jpg" />
-    <Content Include="media\1018\churchill_thumb.jpg" />
-    <Content Include="media\1018\council-plan-bubbles.jpg" />
-    <Content Include="media\1018\council-plan-bubbles_big-thumb.jpg" />
-    <Content Include="media\1018\council-plan-bubbles_thumb.jpg" />
-    <Content Include="media\1019\blofeld.jpg" />
-    <Content Include="media\1020\marvin.jpg" />
-    <Content Include="media\1020\marvin_thumb.jpg" />
-    <Content Include="media\1021\140.jpg" />
-    <Content Include="media\1021\140_thumb.jpg" />
-    <Content Include="media\1023\jobs-logo.png" />
-    <Content Include="media\1024\jobs-header.jpg" />
-    <Content Include="media\1024\jobs-header_thumb.jpg" />
-    <Content Include="media\1025\muppets-banner-big.jpg" />
-    <Content Include="media\1025\muppets-banner-big_thumb.jpg" />
-    <Content Include="media\1026\kitten-small.jpg" />
-    <Content Include="media\1026\kitten-small_thumb.jpg" />
-    <Content Include="media\1027\welfare_reform_video.jpg" />
-    <Content Include="media\1027\welfare_reform_video_thumb.jpg" />
-    <Content Include="media\1028\blofeld.jpg" />
-    <Content Include="media\1028\blofeld_thumb.jpg" />
-    <Content Include="media\1029\budget-live.svg" />
     <Content Include="RegistrationSkin\css\min\registration-skin-large.css" />
     <Content Include="RegistrationSkin\css\min\registration-skin-medium.css" />
     <Content Include="RegistrationSkin\css\min\registration-skin-small.css" />
     <Content Include="RegistrationSkin\img\registration-skin.png" />
     <Content Include="RegistrationSkin\js\min\registration-skin.js" />
+    <Content Include="robots.txt" />
     <Content Include="Skins\FosterWithTrust\background.png" />
     <Content Include="Skins\FosterWithTrust\foster-with-trust-small.png" />
     <Content Include="Skins\FosterWithTrust\foster-with-trust-medium.png" />
@@ -1252,6 +1234,7 @@
     <Content Include="App_Plugins\UmbracoForms\Data\Web.config" />
     <Content Include="App_Plugins\UmbracoForms\Data\Templates\contactform.json" />
     <Content Include="App_Plugins\UmbracoForms\Data\Templates\commentform.json" />
+    <Content Include="windows-tile.png" />
     <None Include="Jobs\Examine\ExamineIndex.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -1288,9 +1271,6 @@
     <Content Include="images\web.config" />
     <Content Include="App_Plugins\SpectrumColorPicker\package.manifest" />
     <Content Include="EastSussexGovUK\Rss\rss-to-html.ashx" />
-    <Content Include="media\1002\this-is-a-test-by-the-web-team.pdf" />
-    <Content Include="media\Web.config" />
-    <Content Include="media\Web.config.bak" />
     <None Include="RightsOfWayDeposits\ExamineIndex.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -4700,6 +4680,7 @@
     <Error Condition="!Exists('..\packages\UmbracoCms.7.6.12\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.6.12\build\UmbracoCms.props'))" />
     <Error Condition="!Exists('..\packages\UmbracoCms.7.6.12\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.6.12\build\UmbracoCms.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.2.1.1\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.2.1.1\build\Escc.Umbraco.MediaSync.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.1\build\Escc.EastSussexGovUK.TemplateSource.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.1\build\Escc.EastSussexGovUK.TemplateSource.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
@@ -4715,6 +4696,7 @@
   <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.2\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.2\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
   <Import Project="..\packages\UmbracoCms.7.6.12\build\UmbracoCms.targets" Condition="Exists('..\packages\UmbracoCms.7.6.12\build\UmbracoCms.targets')" />
   <Import Project="..\packages\Escc.Umbraco.MediaSync.2.1.1\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.2.1.1\build\Escc.Umbraco.MediaSync.targets')" />
+  <Import Project="..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.1\build\Escc.EastSussexGovUK.TemplateSource.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.1\build\Escc.EastSussexGovUK.TemplateSource.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
