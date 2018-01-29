@@ -993,6 +993,7 @@
     <Content Include="css\umbraco-forms.css" />
     <Content Include="default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="images\forms-email-header.png" />
     <Content Include="media\1001\termdates.xml" />
     <Content Include="media\1012\termdates-lf.xml" />
     <Content Include="media\1015\kitten.jpg" />
