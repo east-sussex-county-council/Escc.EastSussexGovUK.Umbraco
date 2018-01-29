@@ -70,6 +70,8 @@ dummy.txt
 */Views/MacroPartials/*
 */Views/Partials/Forms/*
 !*/Views/Partials/Forms/DatePicker.cshtml
+!*/Views/Partials/Forms/Emails
+*/Views/Partials/Forms/Emails/Example-Template.cshtml
 !*/Views/Partials/Forms/Themes
 */Views/Partials/Forms/Themes/default
 */Views/Partials/Forms/Themes/bootstrap3-horizontal

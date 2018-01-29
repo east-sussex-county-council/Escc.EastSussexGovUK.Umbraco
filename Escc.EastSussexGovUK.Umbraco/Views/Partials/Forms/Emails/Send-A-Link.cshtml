@@ -1,0 +1,102 @@
+﻿@inherits UmbracoViewPage<Umbraco.Forms.Core.Models.FormsHtmlModel>
+@using Escc.Dates
+@using System.Configuration
+@{
+    var siteDomain = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
+    if (!String.IsNullOrEmpty(ConfigurationManager.AppSettings["BackOfficeBaseUrl"]))
+    {
+        siteDomain = ConfigurationManager.AppSettings["BackOfficeBaseUrl"].TrimEnd("/");
+    }
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <style type="text/css">
+
+    /* CLIENT-SPECIFIC STYLES */
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; }
+
+    /* RESET STYLES */
+    img { border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+    table { border-collapse: collapse !important; }
+    body { height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important; }
+
+    /* iOS BLUE LINKS */
+    a[x-apple-data-detectors] {
+        color: inherit !important;
+        text-decoration: none !important;
+        font-size: inherit !important;
+        font-family: inherit !important;
+        font-weight: inherit !important;
+        line-height: inherit !important;
+    }
+
+	/* MOBILE STYLES */
+	@@media screen and (max-width:600px){
+		h1 {
+			font-size: 32px !important;
+			line-height: 32px !important;
+		}
+	}
+
+    /* ANDROID CENTER FIX */
+    div[style*="margin: 16px 0;"] { margin: 0 !important; }
+    </style>
+</head>
+<body style="background-color: #f4f4f4; margin: 0 !important; padding: 0 !important;">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom: 40px;">
+        <!-- COPY BLOCK -->
+        <tr>
+            <td bgcolor="#F3F3F5" align="center" style="padding: 0px 10px 0px 10px;">
+                <!--[if (gte mso 9)|(IE)]>
+                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+                    <tr>
+                    <td align="center" valign="top" width="600">
+                <![endif]-->
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
+
+                    <!-- IMAGE -->
+                    <tr>
+                        <td bgcolor="#ffffff" align="left" style="padding: 0;">
+                            <img alt="" src="@siteDomain/images/forms-email-header.png" width="600" style="display: block; width: 100%; max-width: 100%; min-width: 100px;" border="0" />
+                        </td>
+                    </tr>
+
+                    <!-- HERO -->
+                    <tr>
+                        <td bgcolor="#ffffff" valign="top" style="padding: 40px 20px 10px 30px; color: #000000; font-family: Helvetica, Arial, sans-serif; font-size: 28px; font-weight: 900; line-height: 38px;">
+                            <h1 style="font-size: 28px; font-weight: 900; margin: 0;">Someone filled in your form</h1>
+                        </td>
+                    </tr>
+
+                    <!-- COPY -->
+                    <tr>
+                        <td bgcolor="#ffffff" style="padding: 10px 30px 40px 30px; color: #303033; font-family: Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
+                            @{ var ukNow = DateTime.Now.ToUkDateTime(); }
+                            <p>Someone filled in your form at @ukNow.ToBritishTime() on @ukNow.ToBritishDateWithDay().</p>
+                            @{ 
+                                var formEntryId = Model.Fields.FirstOrDefault(field => field.Alias.ToUpperInvariant() == "FORMENTRYID");
+                                var formEntry = (formEntryId != null ? "edit/" + String.Join("?entry=", formEntryId.FieldValue) : String.Empty);
+                                <p><a href="@siteDomain/umbraco/#/forms/formEntries/@formEntry">View the new form entry</a></p>
+                            }
+
+                        </td>
+                    </tr>
+                </table>
+                <!--[if (gte mso 9)|(IE)]>
+                    </td>
+                    </tr>
+                    </table>
+                <![endif]-->
+            </td>
+        </tr>
+
+    </table>
+</body>
+</html>
