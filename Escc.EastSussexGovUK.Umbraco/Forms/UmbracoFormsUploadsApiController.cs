@@ -38,7 +38,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Forms
             {
                 return InternalServerError();
             }
-            
+
+            // The file path will be stored in the Umbraco database as /media/ and linked from the back office as /media/,
+            // but we need to remove the container name to get the path to the file within the contianer.
+            if (file.StartsWith("/media/")) file = file.Substring(7);
+
             return new FileFromBlobStorageResult(fileSystem.ConnectionString, fileSystem.ContainerNameForUmbracoFormsUploads, file);
         }
     }
