@@ -1,4 +1,6 @@
-﻿using Our.Umbraco.FileSystemProviders.Azure;
+﻿using Exceptionless;
+using Our.Umbraco.FileSystemProviders.Azure;
+using System;
 using System.Web.Http;
 using Umbraco.Core.IO;
 using Umbraco.Web.WebApi;
@@ -20,30 +22,38 @@ namespace Escc.EastSussexGovUK.Umbraco.Forms
         [HttpGet]
         public IHttpActionResult DownloadFile(string file)
         {
-            var fileUploads = new UmbracoFormsFileUploads(); 
-            var formId = fileUploads.GetFormIdForUploadedFile(file);
-            if (formId == null)
+            try
             {
-                return NotFound();
-            }
+                var fileUploads = new UmbracoFormsFileUploads();
+                var formId = fileUploads.GetFormIdForUploadedFile(file);
+                if (formId == null)
+                {
+                    return NotFound();
+                }
 
-            var security = new UmbracoFormsSecurity();
-            if (!security.UserHasAccessToForm(UmbracoContext.Security.CurrentUser.Id, formId.Value))
+                var security = new UmbracoFormsSecurity();
+                if (!security.UserHasAccessToForm(UmbracoContext.Security.CurrentUser.Id, formId.Value))
+                {
+                    return Unauthorized();
+                }
+
+                var fileSystem = FileSystemProviderManager.Current.GetUnderlyingFileSystemProvider("media") as AzureBlobFileSystem;
+                if (fileSystem == null)
+                {
+                    return InternalServerError();
+                }
+
+                // The file path will be stored in the Umbraco database as /media/ and linked from the back office as /media/,
+                // but we need to remove the container name to get the path to the file within the contianer.
+                if (file.StartsWith("/media/")) file = file.Substring(7);
+
+                return new FileFromBlobStorageResult(fileSystem.ConnectionString, fileSystem.ContainerNameForUmbracoFormsUploads, file);
+            }
+            catch (Exception exception)
             {
-                return Unauthorized();
+                exception.ToExceptionless().Submit();
+                throw;
             }
-
-            var fileSystem = FileSystemProviderManager.Current.GetUnderlyingFileSystemProvider("media") as AzureBlobFileSystem;
-            if (fileSystem == null)
-            {
-                return InternalServerError();
-            }
-
-            // The file path will be stored in the Umbraco database as /media/ and linked from the back office as /media/,
-            // but we need to remove the container name to get the path to the file within the contianer.
-            if (file.StartsWith("/media/")) file = file.Substring(7);
-
-            return new FileFromBlobStorageResult(fileSystem.ConnectionString, fileSystem.ContainerNameForUmbracoFormsUploads, file);
         }
     }
 }

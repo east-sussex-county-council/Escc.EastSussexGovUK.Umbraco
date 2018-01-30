@@ -84,6 +84,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Forms
             var contentType = MimeMapping.GetMimeMapping(Path.GetExtension(blobPath));
             response.Content.Headers.ContentType = new MediaTypeHeaderValue(contentType);
 
+            response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment") { FileName = Path.GetFileName(blobPath) };
+
             return Task.FromResult(response);
         }
 
