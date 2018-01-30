@@ -63,9 +63,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Forms.Workflow
                 {
                     using (RecordStorage recordStorage = new RecordStorage())
                     {
-                        // (note recordStorage.UpdateRecord() doesn't work - see http://issues.umbraco.org/issue/CON-1482)
+                        // (note recordStorage.UpdateRecord() doesn't work for the first workflow - see http://issues.umbraco.org/issue/CON-1482)
                         record.RecordData = record.GenerateRecordDataAsJson();
-                        record = recordStorage.InsertRecord(record, e.Form);
+                        if (record.Id > 0)
+                        {
+                            record = recordStorage.UpdateRecord(record, e.Form);
+                        }
+                        else
+                        {
+                            record = recordStorage.InsertRecord(record, e.Form);
+                        }
                     }
                 }
             }
