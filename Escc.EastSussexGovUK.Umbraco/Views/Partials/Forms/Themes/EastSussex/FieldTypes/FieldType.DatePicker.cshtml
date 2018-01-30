@@ -1,0 +1,35 @@
+@model Umbraco.Forms.Mvc.Models.FieldViewModel       
+@using Umbraco.Forms.Mvc
+@{
+    var className = Html.GetFormFieldClass(Model.FieldTypeName) + " text datepickerfield";
+    if (Model.AdditionalSettings.ContainsKey("PrivacyNotice") && string.IsNullOrEmpty(Model.AdditionalSettings["PrivacyNotice"]) == false)
+    {
+        className += " describedby-tip";
+    }
+}
+@{
+    string val = string.Empty;
+    if (Model.ValueAsObject != null && Model.ValueAsObject != "")
+    {
+        try
+        {
+            DateTime d;
+            d = (DateTime) Model.ValueAsObject;
+            val = d.ToShortDateString();
+        }
+        catch (Exception ex)
+        {
+            val = Model.ValueAsObject.ToString();
+        }
+    }
+}
+
+<input type="hidden" name="@Model.Name" id="@Model.Id" class="datepickerfieldshadow" value="@val" />
+<input type="text" class="@className"  name="@Model.Name" id="@(Model.Id)_1" value="@val" 
+       @{if(Model.AdditionalSettings.ContainsKey("PrivacyNotice") && string.IsNullOrEmpty(Model.AdditionalSettings["PrivacyNotice"]) == false){<text>aria-describedby="@Model.Id-privacy" data-tip-positions="top left right"</text>}}
+       @{if (Model.Mandatory) { <text> data-val="true" data-val-required="@Model.RequiredErrorMessage" </text> }} />
+@{if (Model.AdditionalSettings.ContainsKey("PrivacyNotice") && string.IsNullOrEmpty(Model.AdditionalSettings["PrivacyNotice"]) == false)
+{
+    <p id="@Model.Id-privacy">@Model.AdditionalSettings["PrivacyNotice"]</p>
+}}
+

@@ -3997,6 +3997,12 @@
     <Content Include="Views\MacroPartials\RenderUmbracoFormScripts.cshtml" />
     <Content Include="Views\MacroPartials\InsertUmbracoFormWithTheme.cshtml" />
     <Content Include="Views\Partials\Forms\Emails\Send-A-Link.cshtml" />
+    <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.Textarea.cshtml" />
+    <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.PasswordField.cshtml" />
+    <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.FileUpload.cshtml" />
+    <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.DropDownList.cshtml" />
+    <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.CheckBox.cshtml" />
+    <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.DatePicker.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -4062,7 +4068,13 @@
     <Compile Include="CampaignTemplates\CampaignTilesDocumentType.cs" />
     <Compile Include="DocumentTypes\PreValueListDataType.cs" />
     <Compile Include="DocumentTypes\ReadOnlyDateDataType.cs" />
+    <Compile Include="Forms\FieldTypes\Checkbox.cs" />
     <Compile Include="Forms\FieldTypes\FormattedTextField.cs" />
+    <Compile Include="Forms\FieldTypes\FileUpload.cs" />
+    <Compile Include="Forms\FieldTypes\DropDownList.cs" />
+    <Compile Include="Forms\FieldTypes\Password.cs" />
+    <Compile Include="Forms\FieldTypes\TextArea.cs" />
+    <Compile Include="Forms\FieldTypes\DatePicker.cs" />
     <Compile Include="Forms\FieldTypes\TextField.cs" />
     <Compile Include="Forms\FileFromBlobStorageResult.cs" />
     <Compile Include="Forms\FormController.cs" />

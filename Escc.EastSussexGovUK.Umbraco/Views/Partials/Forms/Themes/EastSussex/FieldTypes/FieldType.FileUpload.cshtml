@@ -1,0 +1,40 @@
+@using Umbraco.Web
+@using Umbraco.Forms.Mvc
+@model Umbraco.Forms.Mvc.Models.FieldViewModel
+@{
+    var className = Html.GetFormFieldClass(Model.FieldTypeName).ToHtmlString();
+    if (Model.AdditionalSettings.ContainsKey("PrivacyNotice") && string.IsNullOrEmpty(Model.AdditionalSettings["PrivacyNotice"]) == false)
+    {
+        className += " describedby-tip";
+    }
+}
+
+<input type="file" class="@className"  name="@Model.Name" id="@Model.Id" multiple
+@{if(Model.AdditionalSettings.ContainsKey("PrivacyNotice") && string.IsNullOrEmpty(Model.AdditionalSettings["PrivacyNotice"]) == false){<text>aria-describedby="@Model.Id-privacy"</text>}}
+@if(Model.Mandatory){<text> data-val="true" data-val-required="@Model.RequiredErrorMessage"</text>} />
+
+@if (Model.Values != null && Model.Values.Any())
+{
+    <p>
+        <strong>Current File/s:</strong><br/>
+        @foreach (Dictionary<string, string> dictionaryObject in Model.Values)
+        {
+            @*
+            The model.values contains a list of dictionary objects with a single item
+            With the key being the full path to the file
+            And the value being the filename
+            *@
+            if (dictionaryObject.Count > 0)
+            {
+                var fileInfo = dictionaryObject.First();
+                <a href="@fileInfo.Key" target="_blank">@fileInfo.Value</a><br/>
+                <input type="hidden" name="@(Model.Name)_file_@(fileInfo.Value)" value="@fileInfo.Key" />
+            }
+        }
+    </p>
+}
+
+@{if (Model.AdditionalSettings.ContainsKey("PrivacyNotice") && string.IsNullOrEmpty(Model.AdditionalSettings["PrivacyNotice"]) == false)
+{
+    <p id="@Model.Id-privacy">@Model.AdditionalSettings["PrivacyNotice"]</p>
+}}

@@ -1,0 +1,20 @@
+@model Umbraco.Forms.Mvc.Models.FieldViewModel
+@using Umbraco.Forms.Mvc
+@{
+    var className = Html.GetFormFieldClass(Model.FieldTypeName).ToHtmlString();
+    if (Model.AdditionalSettings.ContainsKey("PrivacyNotice") && string.IsNullOrEmpty(Model.AdditionalSettings["PrivacyNotice"]) == false)
+    {
+        className += " describedby-tip";
+    }
+}
+<input type="checkbox" name="@Model.Name" id="@Model.Id" 
+       class="@className" 
+    @{if(Model.AdditionalSettings.ContainsKey("PrivacyNotice") && string.IsNullOrEmpty(Model.AdditionalSettings["PrivacyNotice"]) == false){<text>aria-describedby="@Model.Id-privacy" data-tip-positions="top bottom"</text>}}
+    @if(Model.Mandatory){<text>  data-val="true" data-val-requiredcb="@Model.RequiredErrorMessage"</text>}
+    @if (Model.ContainsValue(true) || Model.ContainsValue("true") || Model.ContainsValue("on"))
+    {<text>checked="checked"</text>}       
+/>
+@{if (Model.AdditionalSettings.ContainsKey("PrivacyNotice") && string.IsNullOrEmpty(Model.AdditionalSettings["PrivacyNotice"]) == false)
+{
+    <p id="@Model.Id-privacy">@Model.AdditionalSettings["PrivacyNotice"]</p>
+}}
