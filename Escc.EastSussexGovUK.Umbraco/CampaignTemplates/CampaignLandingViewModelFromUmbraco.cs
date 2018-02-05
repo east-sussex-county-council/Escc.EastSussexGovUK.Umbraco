@@ -43,6 +43,7 @@ namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
         {
             var model = new CampaignLandingViewModel();
 
+            model.BreadcrumbColour = _umbracoContent.GetPropertyValue<string>("BreadcrumbColour_Design");
             model.HeadingColour = _umbracoContent.GetPropertyValue<string>("HeadingColour_Design");
             model.Introduction = new HtmlString(_mediaUrlTransformer.ParseAndTransformMediaUrlsInHtml(_umbracoContent.GetPropertyValue<string>("Introduction_Content")));
             model.IntroductionColour = _umbracoContent.GetPropertyValue<string>("IntroductionColour_Design");

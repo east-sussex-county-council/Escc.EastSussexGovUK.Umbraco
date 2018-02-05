@@ -20,6 +20,11 @@ namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
         }
 
         /// <summary>
+        /// Gets or sets the breadcrumb trail text colour.
+        /// </summary>
+        public string BreadcrumbColour { get; set; }
+
+        /// <summary>
         /// Gets or sets colour of the h1 heading.
         /// </summary>
         public string HeadingColour { get; set; }

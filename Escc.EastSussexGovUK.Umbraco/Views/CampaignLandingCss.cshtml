@@ -43,6 +43,10 @@
         {
             css.Append("body .body { background-color: ").Append(Model.BackgroundColour).Append("; }");
         }
+        if (!String.IsNullOrEmpty(Model.BreadcrumbColour))
+        {
+            css.Append(".campaign-landing .breadcrumb-mobile, .campaign-landing .breadcrumb-mobile a:link, .campaign-landing .breadcrumb-mobile a:visited, .campaign-landing ol.breadcrumb, .campaign-landing ol.breadcrumb li, .campaign-landing ol.breadcrumb a:link, .campaign-landing ol.breadcrumb a:visited { color: ").Append(Model.BreadcrumbColour).Append("; }");
+        }
         if (!String.IsNullOrEmpty(Model.HeadingColour))
         {
             css.Append("h1 { color: ").Append(Model.HeadingColour).Append("; }");

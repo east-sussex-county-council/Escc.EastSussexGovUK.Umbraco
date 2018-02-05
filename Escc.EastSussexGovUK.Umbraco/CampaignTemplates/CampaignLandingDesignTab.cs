@@ -32,31 +32,35 @@ namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
             Description = "If the page is longer than the background image, wrap the image vertically. If you turn this off, the background colour shows instead.")]
         public string BackgroundImageWrapsVertically { get; set; }
 
-        [UmbracoProperty("Heading text colour", "HeadingColour", ColourPickerDataType.PropertyEditor, ColourPickerDataType.DataTypeName, sortOrder: 7,
+        [UmbracoProperty("Breadcrumb text colour", "BreadcrumbColour", ColourPickerDataType.PropertyEditor, ColourPickerDataType.DataTypeName, sortOrder: 7,
+            Description = "Text must contrast with its background to meet legal accessibility standards. Check at http://tinyurl.com/wcag-contrast")]
+        public string BreadcrumbColour { get; set; }
+
+        [UmbracoProperty("Heading text colour", "HeadingColour", ColourPickerDataType.PropertyEditor, ColourPickerDataType.DataTypeName, sortOrder: 8,
             Description = "Text must contrast with its background to meet legal accessibility standards. Check at http://tinyurl.com/wcag-contrast")]
         public string HeadingColour { get; set; }
 
-        [UmbracoProperty("Introduction text colour", "IntroductionColour", ColourPickerDataType.PropertyEditor, ColourPickerDataType.DataTypeName, sortOrder: 8,
+        [UmbracoProperty("Introduction text colour", "IntroductionColour", ColourPickerDataType.PropertyEditor, ColourPickerDataType.DataTypeName, sortOrder: 9,
             Description = "Text must contrast with its background to meet legal accessibility standards. Check at http://tinyurl.com/wcag-contrast")]
         public string IntroductionColour { get; set; }
         
         /// <summary>
         /// Gets or sets how to align the introduction on medium screens
         /// </summary>
-        [UmbracoProperty("Align introduction (medium screens)", "AlignIntroductionMedium", AlignmentDataType.PropertyEditor, AlignmentDataType.DataTypeName, sortOrder: 9)]
+        [UmbracoProperty("Align introduction (medium screens)", "AlignIntroductionMedium", AlignmentDataType.PropertyEditor, AlignmentDataType.DataTypeName, sortOrder: 10)]
         public string AlignIntroductionMedium { get; set; }
 
         /// <summary>
         /// Gets or sets how to align the introduction on large screens
         /// </summary>
-        [UmbracoProperty("Align introduction (large screens)", "AlignIntroductionLarge", AlignmentDataType.PropertyEditor, AlignmentDataType.DataTypeName, sortOrder: 10)]
+        [UmbracoProperty("Align introduction (large screens)", "AlignIntroductionLarge", AlignmentDataType.PropertyEditor, AlignmentDataType.DataTypeName, sortOrder: 11)]
         public string AlignIntroductionLarge { get; set; }
 
 
         /// <summary>
         /// Gets or sets how to align the landing navigation on medium screens
         /// </summary>
-        [UmbracoProperty("Align landing navigation (medium screens)", "AlignLandingNavigationMedium", AlignmentDataType.PropertyEditor, AlignmentDataType.DataTypeName, sortOrder: 11)]
+        [UmbracoProperty("Align landing navigation (medium screens)", "AlignLandingNavigationMedium", AlignmentDataType.PropertyEditor, AlignmentDataType.DataTypeName, sortOrder: 12)]
         public string AlignLandingNavigationMedium { get; set; }
 
         /// <summary>
