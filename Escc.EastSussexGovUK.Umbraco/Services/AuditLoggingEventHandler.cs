@@ -115,13 +115,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
         private static void LogAction(global::Umbraco.Core.Models.IContent entity, string actionTaken)
         {
             var user = UmbracoContext.Current.Security.CurrentUser;
-            LogHelper.Info<AuditLoggingEventHandler>($"Content '{entity.Name}' with Id '{entity.Id}' has been {actionTaken} by user '{user.Name}' with Id '{user.Id}'");
+            LogHelper.Info<AuditLoggingEventHandler>($"Content '{entity.Name}' with Id '{entity.Id}' has been {actionTaken} by user '{user?.Name}' with Id '{user?.Id}'");
         }
 
         private static void LogAction(global::Umbraco.Core.Models.IMedia entity, string actionTaken)
         {
             var user = UmbracoContext.Current.Security.CurrentUser;
-            LogHelper.Info<AuditLoggingEventHandler>($"Media '{entity.Name}' with Id '{entity.Id}' has been {actionTaken} by user '{user.Name}' with Id '{user.Id}'");
+            LogHelper.Info<AuditLoggingEventHandler>($"Media '{entity.Name}' with Id '{entity.Id}' has been {actionTaken} by user '{user?.Name}' with Id '{user?.Id}'");
         }
     }
 }
