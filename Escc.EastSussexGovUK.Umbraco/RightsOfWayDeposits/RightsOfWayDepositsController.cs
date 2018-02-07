@@ -41,8 +41,12 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
             };
 
             var query = HttpUtility.ParseQueryString(Request.Url.Query);
-            RightsOfWayDepositsSortOrder sort = RightsOfWayDepositsSortOrder.DateDepositedDescending;
-            Enum.TryParse(query["sort"], true, out sort);
+            var sort = RightsOfWayDepositsSortOrder.DateDepositedDescending;
+            RightsOfWayDepositsSortOrder parsedSort;
+            if (Enum.TryParse(query["sort"], true, out parsedSort))
+            {
+                sort = parsedSort;
+            }
 
             var viewModel = new RightsOfWayDepositsViewModelFromExamine(model.Content.Id, Request.Url, Request.QueryString["q"], new ISearchFilter[] { new SearchTermSanitiser() }, paging.CurrentPage, paging.PageSize, sort).BuildModel();
             viewModel.Paging = paging;
