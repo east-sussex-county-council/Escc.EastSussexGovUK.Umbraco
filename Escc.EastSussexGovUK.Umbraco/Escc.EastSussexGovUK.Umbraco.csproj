@@ -848,6 +848,7 @@
     <Content Include="App_Plugins\SpectrumColorPicker\lib\spectrum\spectrum.js" />
     <Content Include="App_Plugins\SpectrumColorPicker\SpectrumColorPicker.controller.js" />
     <Content Include="App_Plugins\SpectrumColorPicker\SpectrumColorPicker.html" />
+    <Content Include="App_Plugins\UmbracoFormsEntries\Backoffice\allow-new-lines.js" />
     <Content Include="App_Plugins\UmbracoFormsEntries\Backoffice\FormEntries\edit.html" />
     <Content Include="App_Plugins\UmbracoFormsEntries\Backoffice\FormEntries\controller.js" />
     <Content Include="App_Plugins\UmbracoFormsEntries\Backoffice\FormEntries\umbraco-forms-entries.css" />

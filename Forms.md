@@ -108,7 +108,9 @@ This issue is logged with Umbraco as [CON-1181](http://issues.umbraco.org/issue/
 
 `FormattedTextField` provides a way for form designers to add some static HTML in the form. It is implemented as a question which does not need an answer. Unfortunately this requires the HTML to be entered as HTML rather than using a rich text editor, as [implementing TinyMCE as a Umbraco Forms settings editor didn't work](https://our.umbraco.org/forum/umbraco-forms/89756-tinymce-as-an-umbraco-forms-setting-editor).
 
-**Multiple file uploads** should just use the 'File upload' field type multiple times. A native multiple file upload field type is [expected soon](https://github.com/PerplexInternetmarketing/Perplex-Umbraco-Forms/issues/2), and the next release of Umbraco Forms is due in Q1 2018. 
+**Multiple file uploads** should just use the 'File upload' field type multiple times. A native multiple file upload field type is [expected soon](https://github.com/PerplexInternetmarketing/Perplex-Umbraco-Forms/issues/2), and the next release of Umbraco Forms is due in Q1 2018.
+
+We also **allow paragraphs in question help text**. By default pressing Enter in the help text field will close the 'Edit question' overlay, but `~\App_Plugins\UmbracoFormsEntries\BackOffice\allow-new-lines.js` fixes this by removing the attribute that triggers it. You can now press Enter to get a new line. A change to the way help text is rendered in `~\Views\Partials\Forms\Themes\EastSussex\Form.cshtml` completes the fix by replacing new lines with paragraph tags. 
 
 ## Implementing a more secure email workflow
 

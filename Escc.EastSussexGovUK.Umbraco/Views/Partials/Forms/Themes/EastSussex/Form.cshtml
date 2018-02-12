@@ -74,7 +74,9 @@
 
                         @if (!string.IsNullOrEmpty(f.ToolTip))
                         {
-                            <p class="umbraco-forms-tooltip help-block">@f.ToolTip</p>
+                            var tooltip = f.ToolTip.StripHtml();
+                            tooltip = tooltip.Replace("\n\n", "</p><p class=\"umbraco-forms-tooltip help-block\">");
+                            <p class="umbraco-forms-tooltip help-block">@Html.Raw(tooltip)</p>
                         }
 
                         <div class="umbraco-forms-field-wrapper">
