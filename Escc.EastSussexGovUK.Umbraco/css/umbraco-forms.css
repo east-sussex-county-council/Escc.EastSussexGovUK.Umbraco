@@ -11,7 +11,7 @@
 /* Umbraco Forms lays out checkbox HTML differently to our style guide, and because the label is generic for all controls it can't be changed */
 .checkbox { position: relative; }
 .checkbox label { padding-left: 20px; }
-.checkbox .umbraco-forms-field-wrapper { position: absolute; top: 0; left: 0; }
+.checkbox input { position: absolute; top: .5em; left: 0; }
 
 /* Umbraco Forms renders inline errors with this class */
 .field-validation-error { color: #b21313; }
