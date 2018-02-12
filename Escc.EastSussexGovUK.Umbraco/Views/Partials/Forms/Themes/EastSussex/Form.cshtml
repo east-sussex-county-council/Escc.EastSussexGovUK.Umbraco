@@ -34,6 +34,21 @@
         @Html.ValidationSummary(false)
     }
 
+    @foreach (FieldsetViewModel fs in Model.CurrentPage.Fieldsets)
+    {
+        foreach (var c in fs.Containers)
+        {
+            foreach (FieldViewModel f in c.Fields)
+            {
+                if (f.Mandatory && f.ShowIndicator)
+                {
+                    <p><span class="requiredField">*</span> means information is required</p>
+                    break;
+                }
+            }
+        }
+    }
+
     <div class="form service-form">
         @foreach (FieldsetViewModel fs in Model.CurrentPage.Fieldsets)
         {
