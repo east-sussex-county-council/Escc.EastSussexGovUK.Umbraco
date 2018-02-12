@@ -871,6 +871,7 @@
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\checkbox.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\checkboxlist.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\datepicker.html" />
+    <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\EthnicGroup.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\dropdownlist.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\fileupload.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\FormattedTextField.html" />
@@ -4004,6 +4005,7 @@
     <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.DropDownList.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.CheckBox.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.DatePicker.cshtml" />
+    <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.EthnicGroup.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -4070,6 +4072,7 @@
     <Compile Include="DocumentTypes\PreValueListDataType.cs" />
     <Compile Include="DocumentTypes\ReadOnlyDateDataType.cs" />
     <Compile Include="Forms\FieldTypes\Checkbox.cs" />
+    <Compile Include="Forms\FieldTypes\EthnicGroup.cs" />
     <Compile Include="Forms\FieldTypes\FormattedTextField.cs" />
     <Compile Include="Forms\FieldTypes\FileUpload.cs" />
     <Compile Include="Forms\FieldTypes\DropDownList.cs" />

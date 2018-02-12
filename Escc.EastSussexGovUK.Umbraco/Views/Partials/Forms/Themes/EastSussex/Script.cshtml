@@ -23,6 +23,60 @@
     var dateFormat = Html.ConvertDateFormat();
     var recordValues = Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(fieldsNotDisplayed));
 
+    // START: Ethnic group field
+    //
+    // The 'Ethnic group' field type has two fields in the HTML returned to the client, 
+    // and the second is only needed if specific values are selected in the first.
+    //
+    // Inject extra JSON into the conditions setup for this page of the form to cause the Umbraco Forms 
+    // conditional code to handle that for us, so that we can be sure it behaves consistently.
+    var ethnicConditions = new List<string>();
+    foreach (var fieldset in Model.CurrentPage.Fieldsets)
+    {
+        foreach (var group in fieldset.Containers)
+        {
+            foreach (var field in group.Fields)
+            {
+                if (field.FieldTypeName == "Ethnic group")
+                {
+                    ethnicConditions.Add("'" + field.Id + @"-other': {
+    'id': '00000000-0000-0000-0000-000000000000',
+    'actionType': 'Show',
+    'logicType': 'Any',
+    'rules': [
+      {
+        'id': '00000000-0000-0000-0000-000000000000',
+        'fieldsetId': '" + fieldset.Id + @"',
+        'field': '" + field.Id + @"',
+        'operator': 'Contains',
+        'value': 'other'
+      },{
+        'id': '00000000-0000-0000-0000-000000000000',
+        'fieldsetId': '" + fieldset.Id + @"',
+        'field': '" + field.Id + @"',
+        'operator': 'Contains',
+        'value': 'Other'
+      }
+    ]
+  }");
+                }
+            }
+        }
+    }
+
+    if (ethnicConditions.Count > 0) {
+        var fieldConditionsJson = fieldConditions.ToHtmlString();
+        var ethnicConditionsJson = String.Join(",", ethnicConditions.ToArray<string>());
+        if (fieldConditionsJson == "{}")
+        {
+            fieldConditions = new HtmlString("{" + ethnicConditionsJson + "}");
+        }
+        else
+        {
+            fieldConditions = new HtmlString("{" + ethnicConditionsJson + "," + fieldConditionsJson.Substring(1));
+        }
+    }
+    // END: Ethnic group field
 
     var jsCommand = string.Format(@"
 
