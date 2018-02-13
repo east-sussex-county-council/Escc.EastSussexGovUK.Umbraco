@@ -28,6 +28,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Forms.FieldTypes
             HideLabel = false;
             SupportsPrevalues = false;
             SupportsRegex = false;
+            SortOrder = 25;
         }
 
         [Setting("Privacy notice", description = "What happens to the data?")]

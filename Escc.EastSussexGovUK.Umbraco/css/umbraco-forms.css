@@ -20,8 +20,8 @@
 .validation-summary-errors {color: #b21313; }
 .validation-summary-valid { display: none; }
 
-/* By default the error message for phone numbers displays inline after the field, which means it wraps awkwardly below it */
-.phonenumber .field-validation-error { display: block; }
+/* By default the error message for phone numbers and emails displays inline after the field, which means it wraps awkwardly below it */
+.phonenumber .field-validation-error, .emailaddress .field-validation-error { display: block; }
 
 /* Help text for questions is a paragraph */
 .umbraco-forms-tooltip.help-block { margin-top: 0; font-weight: normal; }

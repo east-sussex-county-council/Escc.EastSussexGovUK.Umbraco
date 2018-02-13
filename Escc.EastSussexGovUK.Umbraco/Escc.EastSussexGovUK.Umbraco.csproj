@@ -882,6 +882,7 @@
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\text.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\textarea.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\PhoneNumber.html" />
+    <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\Email.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\textfield.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\RenderTypes\date.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\RenderTypes\file.html" />
@@ -4008,6 +4009,7 @@
     <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.DatePicker.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.EthnicGroup.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.PhoneNumber.cshtml" />
+    <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.Email.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -4075,6 +4077,7 @@
     <Compile Include="DocumentTypes\ReadOnlyDateDataType.cs" />
     <Compile Include="Forms\FieldTypes\Checkbox.cs" />
     <Compile Include="Forms\FieldTypes\EthnicGroup.cs" />
+    <Compile Include="Forms\FieldTypes\Email.cs" />
     <Compile Include="Forms\FieldTypes\PhoneNumber.cs" />
     <Compile Include="Forms\FieldTypes\FormattedTextField.cs" />
     <Compile Include="Forms\FieldTypes\FileUpload.cs" />

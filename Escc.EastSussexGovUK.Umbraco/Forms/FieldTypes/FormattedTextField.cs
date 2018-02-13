@@ -26,7 +26,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Forms.FieldTypes
             HideLabel = true;
             SupportsPrevalues = false;
             SupportsRegex = false;
-            
+            SortOrder = 100;
         }
 
         [Setting("Formatted text", view ="textarea")]

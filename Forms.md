@@ -102,7 +102,7 @@ This issue is logged with Umbraco as [CON-1181](http://issues.umbraco.org/issue/
 
 `TextField` customises the built-in 'Short answer' field type to add an extra property for a just-in-time privacy notice. This extra property is used when the field is displayed using the `EastSussex` theme.
 
-* An **email address** field can be set up using the 'Short answer' field type. Set the validation to "enter a custom validation" and use `^[a-zA-Z0-9'_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$`
+`Email` uses the `email` HTML field type to trigger a keypad with an @ symbol on touch screens, and validates an email address better than the built-in `Validate as email` option on the 'Short answer' field type.
 
 `PhoneNumber` uses the `tel` HTML field type to trigger a phone keypad on mobiles, and validates a phone number better than the built-in `Validate as a number` option on the 'Short answer' field type. 
 
