@@ -1,1 +1,7 @@
-﻿<label><input tabindex="-1" type="checkbox" style="margin-top:-3px" /> {{field.caption.replace("[terms]", "[selected page or document]")}}</label>
+﻿<style>
+    .agree-to-terms-checkbox { position: absolute; top: 13px; left: 20px; }
+    .agree-to-terms-label {padding-left: 20px; }
+    .agree-to-terms-label a { text-decoration:underline; }
+</style>
+<input tabindex="-1" type="checkbox" class="agree-to-terms-checkbox" /> 
+<div ng-bind-html-unsafe="field.settings.CheckboxLabel" class="agree-to-terms-label">{{field.settings.CheckboxLabel}}</div>
