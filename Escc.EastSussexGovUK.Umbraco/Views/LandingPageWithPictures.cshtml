@@ -7,13 +7,15 @@
 @using Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.UserControls
 @using Escc.Registration.RegistrationSkin
 @using Escc.EastSussexGovUK.Umbraco.Skins.FosterWithTrust
+@using Escc.EastSussexGovUK.Umbraco.Skins.SupportWithTrust
 @using Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<MicrosoftCmsViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] {
         new RegistrationSkin(Model.EsccWebsiteView, Model.Metadata.PageUrl),
-        new FosterWithTrustSkin(Model.EsccWebsiteView, Model.SkinToApply == "Foster with trust")
+        new FosterWithTrustSkin(Model.EsccWebsiteView, Model.SkinToApply == "Foster with trust"),
+        new SupportWithTrustSkin(Model.EsccWebsiteView, Model.SkinToApply == "Support with trust")
     }, new CustomerFocusSkin(Model.EsccWebsiteView));
 
 

@@ -1,0 +1,9 @@
+﻿/* We have a different breadcrumb at this size, so position it absolutely and with enough space to ensure that 
+    wrapping onto two lines doesn't upset the design. Change the colour to contrast with the strap.
+*/
+.breadcrumb { position: absolute; top: 8px; left: 0; }
+.breadcrumb li { line-height: 1em; }
+body .body .breadcrumb, .body .breadcrumb a:link, .body .breadcrumb a:visited, .body .breadcrumb li:after { color: #fff; }
+
+/* Change 'Call us' from .aural to ordinary text now that there's room for it. */
+.support-with-trust-call span { position: static; clip: initial; }

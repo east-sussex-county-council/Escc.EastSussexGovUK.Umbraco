@@ -1021,6 +1021,13 @@
     <Content Include="RegistrationSkin\img\registration-skin.png" />
     <Content Include="RegistrationSkin\js\min\registration-skin.js" />
     <Content Include="robots.txt" />
+    <Content Include="Skins\SupportWithTrust\background.png" />
+    <Content Include="Skins\SupportWithTrust\support-with-trust-large.css" />
+    <Content Include="Skins\SupportWithTrust\support-with-trust-medium.css" />
+    <Content Include="Skins\SupportWithTrust\support-with-trust-medium.png" />
+    <Content Include="Skins\SupportWithTrust\support-with-trust-small.css" />
+    <Content Include="Skins\SupportWithTrust\support-with-trust-small.png" />
+    <Content Include="Skins\SupportWithTrust\support-with-trust.js" />
     <Content Include="Skins\FosterWithTrust\background.png" />
     <Content Include="Skins\FosterWithTrust\foster-with-trust-small.png" />
     <Content Include="Skins\FosterWithTrust\foster-with-trust-medium.png" />
@@ -4113,6 +4120,7 @@
     <Compile Include="Jobs\Examine\SalaryRangeLuceneQueryBuilder.cs" />
     <Compile Include="Jobs\IJobCacheStrategy.cs" />
     <Compile Include="Services\AuditLoggingEventHandler.cs" />
+    <Compile Include="Skins\SupportWithTrust\SupportWithTrustSkin.cs" />
     <Compile Include="WebApi\IHtmlStringConverter.cs" />
     <Compile Include="Jobs\Api\BaseJobsApiController.cs" />
     <Compile Include="Jobs\Api\JobsDataFromApi.cs" />

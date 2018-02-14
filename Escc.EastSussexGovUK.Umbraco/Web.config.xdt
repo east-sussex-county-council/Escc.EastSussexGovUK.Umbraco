@@ -88,6 +88,12 @@
       <add key="FosterWithTrustSkinMedium" value="/Skins/FosterWithTrust/foster-with-trust-medium.css" xdt:Transform="Insert" />
       <add key="FosterWithTrustSkinLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="FosterWithTrustSkinLarge" value="/Skins/FosterWithTrust/foster-with-trust-large.css" xdt:Transform="Insert" />
+      <add key="SupportWithTrustSkinSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="SupportWithTrustSkinSmall" value="/Skins/SupportWithTrust/support-with-trust-small.css" xdt:Transform="Insert" />
+      <add key="SupportWithTrustSkinMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="SupportWithTrustSkinMedium" value="/Skins/SupportWithTrust/support-with-trust-medium.css" xdt:Transform="Insert" />
+      <add key="SupportWithTrustSkinLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="SupportWithTrustSkinLarge" value="/Skins/SupportWithTrust/support-with-trust-large.css" xdt:Transform="Insert" />
     </CssFiles>
     <ScriptFiles>
       <add key="CouncilPlan" xdt:Transform="Remove" xdt:Locator="Match(key)" />
@@ -106,6 +112,8 @@
       <add key="RegistrationSkin" value="/RegistrationSkin/js/min/registration-skin.js" xdt:Transform="Insert" />
       <add key="FosterWithTrustSkin" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="FosterWithTrustSkin" value="/Skins/FosterWithTrust/foster-with-trust.js" xdt:Transform="Insert" />
+      <add key="SupportWithTrustSkin" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="SupportWithTrustSkin" value="/Skins/SupportWithTrust/support-with-trust.js" xdt:Transform="Insert" />
     </ScriptFiles>
   </Escc.ClientDependencyFramework>
 
