@@ -4,6 +4,7 @@
 		],
 	javascript: [
 	    '~/App_Plugins/UmbracoFormsEntries/BackOffice/FormEntries/controller.js',
-	    '~/App_Plugins/UmbracoFormsEntries/BackOffice/allow-new-lines.js'
+	    '~/App_Plugins/UmbracoFormsEntries/BackOffice/allow-new-lines.js',
+		"~/App_Plugins/UmbracoFormsEntries/BackOffice/richdisplayedtext.controller.js"
 		]
 }	

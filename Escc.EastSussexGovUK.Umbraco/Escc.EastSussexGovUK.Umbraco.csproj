@@ -853,6 +853,7 @@
     <Content Include="App_Plugins\UmbracoFormsEntries\Backoffice\FormEntries\controller.js" />
     <Content Include="App_Plugins\UmbracoFormsEntries\Backoffice\FormEntries\umbraco-forms-entries.css" />
     <Content Include="App_Plugins\UmbracoFormsEntries\Backoffice\RenderTypes\file.html" />
+    <Content Include="App_Plugins\UmbracoFormsEntries\Backoffice\richdisplayedtext.controller.js" />
     <Content Include="App_Plugins\UmbracoForms\Assets\BaremetricsCalendar\public\css\application.css" />
     <Content Include="App_Plugins\UmbracoForms\Assets\BaremetricsCalendar\public\js\Calendar.js" />
     <Content Include="App_Plugins\UmbracoForms\Assets\defaultform.css" />
@@ -901,6 +902,7 @@
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\SettingTypes\pickers.contentwithxpath.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\SettingTypes\pickers.datatype.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\SettingTypes\pickers.documenttype.html" />
+    <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\SettingTypes\richdisplayedtext.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\SettingTypes\textarea.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\SettingTypes\textfield.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\SettingTypes\textstring.html" />

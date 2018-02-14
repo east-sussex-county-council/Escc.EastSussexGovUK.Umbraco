@@ -29,7 +29,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Forms.FieldTypes
             SortOrder = 100;
         }
 
-        [Setting("Formatted text", view ="textarea")]
+        [Setting("Formatted text", view = "richdisplayedtext")]
         public string FormattedText { get; set; }
     }
 }
