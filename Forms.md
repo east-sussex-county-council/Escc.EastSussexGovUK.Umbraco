@@ -106,9 +106,11 @@ This issue is logged with Umbraco as [CON-1181](http://issues.umbraco.org/issue/
 
 `PhoneNumber` uses the `tel` HTML field type to trigger a phone keypad on mobiles, and validates a phone number better than the built-in `Validate as a number` option on the 'Short answer' field type. 
 
-`FormattedTextField` provides a way for form designers to add some static HTML in the form. It is implemented as a question which does not need an answer. Unfortunately this requires the HTML to be entered as HTML rather than using a rich text editor, as [implementing TinyMCE as a Umbraco Forms settings editor didn't work](https://our.umbraco.org/forum/umbraco-forms/89756-tinymce-as-an-umbraco-forms-setting-editor).
+`FormattedTextField` provides a way for form designers to add some static HTML in the form. It is implemented as a question which does not need an answer. 
 
 `EthnicGroup` inserts a standardised dropdown list of ethnic groups, and an 'other' box which appears if any of the 'other' options are selected. This dependency behaviour is achieved by adding code to `~\Views\Partials\Forms\Themes\EastSussex\Script.cshtml` which injects JSON into the page to hook into Umbraco Forms' own conditional logic.
+
+`AgreeToTerms` lets you create a checkbox with a link to an Umbraco page or document, to create a "I've read and agree to these terms and conditions" question.
 
 **Multiple file uploads** should just use the 'File upload' field type multiple times. A native multiple file upload field type is [expected soon](https://github.com/PerplexInternetmarketing/Perplex-Umbraco-Forms/issues/2), and the next release of Umbraco Forms is due in Q1 2018.
 

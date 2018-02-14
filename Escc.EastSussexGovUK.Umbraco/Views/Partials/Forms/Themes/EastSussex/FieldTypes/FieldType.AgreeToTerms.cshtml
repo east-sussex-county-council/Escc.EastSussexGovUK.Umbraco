@@ -1,0 +1,45 @@
+@model Umbraco.Forms.Mvc.Models.FieldViewModel
+@using Umbraco.Forms.Mvc
+@using HtmlAgilityPack
+@{
+    var checkboxLabel = Model.Caption;
+    if (Model.AdditionalSettings.ContainsKey("CheckboxLabel") && string.IsNullOrEmpty(Model.AdditionalSettings["CheckboxLabel"]) == false)
+    {
+        // Get the custom checkbox label, which we expect to contain a link
+        checkboxLabel = Umbraco.Web.Templates.TemplateUtilities.ParseInternalLinks(Model.AdditionalSettings["CheckboxLabel"]);
+        var sanitiser = new Escc.Html.HtmlTagSantiser();
+        checkboxLabel = sanitiser.StripTags(checkboxLabel, new[] { "a" });
+
+        // Set the link to open with target="_blank" so the reader doesn't lose their form data if they click it.
+        // Add 'open in new window' warning unless it's a media item, as sitewide code will add it in that case.
+        var htmlDoc = new HtmlDocument();
+        htmlDoc.LoadHtml(checkboxLabel);
+
+        var links = htmlDoc.DocumentNode.SelectNodes("//a");
+        foreach (var link in links)
+        {
+            link.SetAttributeValue("target", "_blank");
+            if (!link.GetAttributeValue("data-udi", String.Empty).StartsWith("umb://media"))
+            {
+                link.InnerHtml = link.InnerHtml += "<span class=\"aural\"> (opens new window)</span>";
+                var surrounding = new HtmlNode(HtmlNodeType.Element, htmlDoc, 0);
+                surrounding.Name = "span";
+                surrounding.SetAttributeValue("class", "new-window");
+                link.ParentNode.ReplaceChild(surrounding, link);
+                surrounding.PrependChild(link);
+            }
+        }
+
+        checkboxLabel = htmlDoc.DocumentNode.OuterHtml;
+    }
+}
+<label>
+    <input type="checkbox" name="@Model.Name" id="@Model.Id"
+           class="@Html.GetFormFieldClass(Model.FieldTypeName).ToHtmlString()"
+           @if (Model.Mandatory) { <text> data-val="true" data-val-requiredcb="@Model.RequiredErrorMessage" </text> }
+           @if (Model.ContainsValue(true) || Model.ContainsValue("true") || Model.ContainsValue("on")) { <text> checked="checked" </text> } /> @Html.Raw(checkboxLabel)
+    @if (Model.Mandatory)
+    {
+        <span class="requiredField">*</span>
+    }
+</label>

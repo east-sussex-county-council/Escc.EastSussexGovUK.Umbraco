@@ -74,6 +74,7 @@ dummy.txt
 !*/App_Plugins/UmbracoForms/Backoffice/Common/SettingTypes
 */App_Plugins/UmbracoForms/Backoffice/Common/SettingTypes/*
 !*/App_Plugins/UmbracoForms/Backoffice/Common/SettingTypes/richdisplayedtext.html
+!*/App_Plugins/UmbracoForms/Backoffice/Common/SettingTypes/richdisplayedlinks.html
 */Views/MacroPartials/*
 */Views/Partials/Forms/*
 !*/Views/Partials/Forms/DatePicker.cshtml

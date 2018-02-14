@@ -869,6 +869,7 @@
     <Content Include="App_Plugins\UmbracoForms\Assets\umbracoforms-conditions.js" />
     <Content Include="App_Plugins\UmbracoForms\Assets\umbracoforms-dependencies.js" />
     <Content Include="App_Plugins\UmbracoForms\Assets\umbracoforms.js" />
+    <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\AgreeToTerms.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\checkbox.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\checkboxlist.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\datepicker.html" />
@@ -902,6 +903,7 @@
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\SettingTypes\pickers.contentwithxpath.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\SettingTypes\pickers.datatype.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\SettingTypes\pickers.documenttype.html" />
+    <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\SettingTypes\richdisplayedlinks.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\SettingTypes\richdisplayedtext.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\SettingTypes\textarea.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\SettingTypes\textfield.html" />
@@ -4012,6 +4014,7 @@
     <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.EthnicGroup.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.PhoneNumber.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.Email.cshtml" />
+    <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.AgreeToTerms.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -4080,6 +4083,7 @@
     <Compile Include="Forms\FieldTypes\Checkbox.cs" />
     <Compile Include="Forms\FieldTypes\EthnicGroup.cs" />
     <Compile Include="Forms\FieldTypes\Email.cs" />
+    <Compile Include="Forms\FieldTypes\AgreeToTerms.cs" />
     <Compile Include="Forms\FieldTypes\PhoneNumber.cs" />
     <Compile Include="Forms\FieldTypes\FormattedTextField.cs" />
     <Compile Include="Forms\FieldTypes\FileUpload.cs" />
