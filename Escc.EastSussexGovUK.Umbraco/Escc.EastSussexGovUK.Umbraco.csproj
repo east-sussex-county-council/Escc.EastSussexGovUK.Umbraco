@@ -873,6 +873,7 @@
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\checkbox.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\checkboxlist.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\datepicker.html" />
+    <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\Gender.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\EthnicGroup.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\dropdownlist.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\fileupload.html" />
@@ -4022,6 +4023,7 @@
     <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.PhoneNumber.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.Email.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.AgreeToTerms.cshtml" />
+    <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.Gender.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -4087,6 +4089,7 @@
     <Compile Include="CampaignTemplates\CampaignTilesDocumentType.cs" />
     <Compile Include="DocumentTypes\PreValueListDataType.cs" />
     <Compile Include="DocumentTypes\ReadOnlyDateDataType.cs" />
+    <Compile Include="Forms\FieldTypes\Gender.cs" />
     <Compile Include="Forms\FieldTypes\Checkbox.cs" />
     <Compile Include="Forms\FieldTypes\EthnicGroup.cs" />
     <Compile Include="Forms\FieldTypes\Email.cs" />
