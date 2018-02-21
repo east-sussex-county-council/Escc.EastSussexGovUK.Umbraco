@@ -20,8 +20,11 @@
 .validation-summary-errors {color: #b21313; }
 .validation-summary-valid { display: none; }
 
-/* By default the error message for phone numbers and emails displays inline after the field, which means it wraps awkwardly below it */
-.phonenumber .field-validation-error, .emailaddress .field-validation-error { display: block; }
+/* By default the error message for fields with maximum widths displays inline after the field, which means it wraps awkwardly below it */
+.phonenumber .field-validation-error, .emailaddress .field-validation-error, .url .field-validation-error { display: block; }
+
+/* URL fields need to be as long as possible, but not have a set width which causes it to overflow the containing box */
+.umbraco-forms-field.url input[type=text],.umbraco-forms-field.url input[type=url] { width: 100%; }
 
 /* Help text for questions is a paragraph */
 .umbraco-forms-tooltip.help-block { margin-top: 0; font-weight: normal; }
