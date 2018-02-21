@@ -92,13 +92,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Forms.FieldTypes
             // this is not a required field validator
             if (String.IsNullOrEmpty(url)) return true;
 
-            var urlRegex = "^https?://[a-zA-Z0-9-.]+.[a-zA-Z]{2,}$";
+            // Do the regex validation
+            var urlRegex = "^https?://[a-zA-Z0-9-.]+.[a-zA-Z]{2,}";
             if (AllowInternal?.ToUpperInvariant() == "TRUE")
             {
-                urlRegex = "^https?://[a-zA-Z0-9-.]$";
+                urlRegex = "^https?://[a-zA-Z0-9-.]+";
             }
 
-            // Do the regex validation
             if (!Regex.IsMatch(url, urlRegex))
             {
                 return false;
