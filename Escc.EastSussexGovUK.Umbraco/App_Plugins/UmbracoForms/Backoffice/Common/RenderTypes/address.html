@@ -1,0 +1,25 @@
+<!-- This renders a Escc.EastSussexGovUK.Umbraco.Forms.FieldTypes.Address field in the back office entries viewer -->
+<div ng-controller="UmbracoForms.RenderTypes.Address">
+    <div ng-if="Address">
+        <div ng-if="Address.Saon">{{ Address.Saon }}</div>
+        <div ng-if="Address.Paon">{{ Address.Paon }}</div>
+        <div ng-if="Address.StreetName">{{ Address.StreetName }}</div>
+        <div ng-if="Address.Locality">{{ Address.Locality }}</div>
+        <div ng-if="Address.Town">{{ Address.Town }}</div>
+        <div ng-if="Address.AdministrativeArea">{{ Address.AdministrativeArea }}</div>
+        <div ng-if="Address.Postcode">{{ Address.Postcode }}</div>
+        <br />
+        <div ng-if="Address.Uprn">
+            <small><acronym title="Unique Property Reference Number">UPRN</acronym>: {{ Address.Uprn }} </small>
+        </div>
+        <div ng-if="Address.Usrn">
+            <small><acronym title="Unique Street Reference Number">USRN</acronym> {{ Address.Usrn }}</small>
+        </div>
+        <div ng-if="Address.GeoCoordinate && Address.GeoCoordinate.Latitude">
+            <small>Latitude: {{ Address.GeoCoordinate.Latitude }}</small>
+        </div>
+        <div ng-if="Address.GeoCoordinate && Address.GeoCoordinate.Longitude">
+            <small>Longitude: {{ Address.GeoCoordinate.Longitude }}</small>
+        </div>
+    </div>
+</div>

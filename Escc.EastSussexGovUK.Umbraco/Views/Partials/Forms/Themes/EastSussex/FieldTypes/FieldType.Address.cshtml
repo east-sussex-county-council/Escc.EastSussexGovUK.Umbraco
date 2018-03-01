@@ -1,0 +1,48 @@
+@model Umbraco.Forms.Mvc.Models.FieldViewModel
+@using Escc.FindAddress.Mvc
+@using Newtonsoft.Json
+@using Escc.AddressAndPersonalDetails
+@{
+    var privacyNotice = String.Empty;
+    if (Model.AdditionalSettings.ContainsKey("PrivacyNotice") && string.IsNullOrEmpty(Model.AdditionalSettings["PrivacyNotice"]) == false)
+    {
+        privacyNotice = Model.AdditionalSettings["PrivacyNotice"];
+    }
+
+    // The control for this field type expect a non-null value, so ensure we have something.
+    // The Address field type stores its value as JSON, so deserialise it if there's something there.
+    var value = new BS7666Address();
+    if (!String.IsNullOrEmpty(Model.Value))
+    {
+        value = JsonConvert.DeserializeObject<BS7666Address>(Model.Value);
+    }
+}
+@* Delegate the rendering and operation of the Address control to a partial view from the Escc.FindAddress.Mvc NuGet package,
+   setting some additional configuration to ensure it's compatible with Umbraco Forms *@
+@Html.Partial("~/Views/Shared/_FindAddress.cshtml", value, new ViewDataDictionary()
+{
+    TemplateInfo = new FindAddressConfiguration()
+    {
+        ApiControllerUrl = new Uri("/umbraco/api/FindAddressApi/", UriKind.Relative),
+        HtmlFieldPrefix = Model.Name,
+        Required = Model.Mandatory,
+        Label = Model.Caption,
+        Description = privacyNotice
+    }
+})
+
+@if (Model.Mandatory)
+{
+    @* This field exists to solely to pass or fail mandatory validation, so only render it if that is active.
+       The partial view from the Escc.FindAddress.Mvc NuGet package has several fields making up the address,
+       but none exactly match the field name that Umbraco Forms' validation is looking for. This does, and is
+       kept in sync with the values in the other fields by /js/forms-address.js *@
+    <input type="hidden"
+           name="@Model.Name"
+           id="@Model.Id"
+           value="@Model.ValueAsHtmlString"
+           class="umbraco-forms-address-validate"
+           data-val="true"
+           data-val-required="@Model.RequiredErrorMessage"
+    />
+}

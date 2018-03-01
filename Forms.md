@@ -54,7 +54,7 @@ Umbraco forms uploads files to the same `IFileSystem` as items in the media gall
 
 Since we already use a [fork of UmbracoFileSystemProviders.Azure](https://github.com/east-sussex-county-council/UmbracoFileSystemProviders.Azure) as our media file system, we have customised this to recognise a forms upload and treat it differently. When uploading the file, if configured to do so, it will place a forms upload into a separate container in the same blob storage account. This container can be set to private access, preventing downloads via a request similar to `https://account.blob.core.windows.net/container/example-file-path.jpg`. When downloading a file it will simply not return anything, as it does not have access to the currently logged-in back office user account which would be needed to validate whether the user should have access to the form and any uploaded files.
 
-This means we need another, secure, way to download the files which is implemented in `UmbracoFormsUploadsApiController`. A request for an uploaded file coming via this API will check which form the file was uploaded from, and check whether the current user has access to that form in their Umbraco Forms permissions. To link to files via this API in the back office, `~\App_Plugins\UmbracoFormsEntries\Backoffice\FormEntries\controller.js` has a change which points to a custom view when displaying data for file uploads. The custom view contains the file path appended to the secure API.
+This means we need another, secure, way to download the files which is implemented in `UmbracoFormsUploadsApiController`. A request for an uploaded file coming via this API will check which form the file was uploaded from, and check whether the current user has access to that form in their Umbraco Forms permissions. `~\App_Plugins\UmbracoForms\Backoffice\Common\RenderTypes\file.html` is customised to use the file path appended to the secure API, which causes files to be rendered correctly in the back office entries viewer.
 
 This issue is logged with Umbraco as [CON-1454](http://issues.umbraco.org/issue/CON-1454).
 
@@ -111,6 +111,8 @@ This issue is logged with Umbraco as [CON-1181](http://issues.umbraco.org/issue/
 `EthnicGroup` inserts a standardised dropdown list of ethnic groups, and an 'other' box which appears if any of the 'other' options are selected. This dependency behaviour is achieved by adding code to `~\Views\Partials\Forms\Themes\EastSussex\Script.cshtml` which injects JSON into the page to hook into Umbraco Forms' own conditional logic.
 
 `AgreeToTerms` lets you create a checkbox with a link to an Umbraco page or document, to create a "I've read and agree to these terms and conditions" question.
+
+`Address` lets you collect a UK address using a postcode lookup. It is an Umbraco Forms wrapper around a standard MVC forms partial view from the [Escc.FindAddress.Mvc](https://github.com/east-sussex-county-council/Escc.FindAddress.Mvc) project. It stores its data as a JSON object including latitude, longitude, UPRN and USRN. A custom render view at `~\App_Plugins\UmbracoForms\BackOffice\Common\RenderTypes\address.html` ensures that the JSON is not displayed in the entries viewer. 
 
 **Multiple file uploads** should just use the 'File upload' field type multiple times. A native multiple file upload field type is [expected soon](https://github.com/PerplexInternetmarketing/Perplex-Umbraco-Forms/issues/2), and the next release of Umbraco Forms is due in Q1 2018.
 

@@ -73,6 +73,10 @@ dummy.txt
 !*/App_Plugins/UmbracoForms/Backoffice/Common/FieldTypes/AgreeToTerms.html
 !*/App_Plugins/UmbracoForms/Backoffice/Common/FieldTypes/Gender.html
 !*/App_Plugins/UmbracoForms/Backoffice/Common/FieldTypes/Url.html
+!*/App_Plugins/UmbracoForms/Backoffice/Common/RenderTypes
+*/App_Plugins/UmbracoForms/Backoffice/Common/RenderTypes/*
+!*/App_Plugins/UmbracoForms/Backoffice/Common/RenderTypes/file.html
+!*/App_Plugins/UmbracoForms/Backoffice/Common/RenderTypes/address.html
 !*/App_Plugins/UmbracoForms/Backoffice/Common/SettingTypes
 */App_Plugins/UmbracoForms/Backoffice/Common/SettingTypes/*
 !*/App_Plugins/UmbracoForms/Backoffice/Common/SettingTypes/richdisplayedtext.html
@@ -91,6 +95,7 @@ dummy.txt
 !**/TinyMCE-StyleSelector-Embed.css
 */Views/Alerts*
 *RecyclingSiteFinder.ascx
+_FindAddress.cshtml
 */js/libs/*
 */RegistrationSkin/*
 */EastSussexGovUK/*

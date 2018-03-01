@@ -1,7 +1,6 @@
 ﻿// Copied from umbraco-forms.js in Umbraco Forms 6.0.5 then:
 // * line 84 changed to remove the check for Manage Forms permission,
 // * line 112 changed to highlight the correct entry in the tree
-// * line 250 changed to use a custom view for upload fields that routes requests via a secure API
 // * line 433 inside $scope.loadRecords, added query string parsing and a call to setTimeout() to support a URL that views a specific record, so that a link can be sent by email.
 // * renamed the controller from 'EntriesController' to 'EntriesController2'.
 angular.module("umbraco").controller("UmbracoForms.Editors.Form.EntriesController2", function ($scope, $routeParams, recordResource, formResource, dialogService, editorState, userService, securityResource, notificationsService, navigationService) {
@@ -248,16 +247,6 @@ angular.module("umbraco").controller("UmbracoForms.Editors.Form.EntriesControlle
                     viewName: schemaItem.view,
                     view: '/app_plugins/umbracoforms/Backoffice/common/rendertypes/' + schemaItem.view + '.html'
                 };
-
-                /** ESCC CHANGE STARTS **/
-
-                // Load a custom view for file fields, so that it can load files via a secure API. 
-                // Part of a workaround for CON- 1454.
-                if (schemaItem.view === "file") {
-                    itemToPush.view = "/app_plugins/umbracoformsentries/backoffice/rendertypes/file.html";
-                }
-
-                /** ESCC CHANGE ENDS **/
 
                 var excludeItems = ["member", "state", "created", "updated"];
                 var found = excludeItems.indexOf(schemaItem.id);
