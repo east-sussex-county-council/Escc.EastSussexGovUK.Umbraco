@@ -2,12 +2,8 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mail;
-using System.Text.RegularExpressions;
 using System.Web;
 using Umbraco.Forms.Core;
-using Umbraco.Forms.Core.Attributes;
 
 namespace Escc.EastSussexGovUK.Umbraco.Forms.FieldTypes
 {
@@ -35,9 +31,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Forms.FieldTypes
             RenderView = "address"; // /App_Plugins/UmbracoForms/BackOffice/Common/RenderTypes/address.html
         }
 
-        [Setting("Privacy notice", description = "What happens to the data?")]
-        public string PrivacyNotice { get; set; }
-        
         /// <summary>
         /// Require a JavaScript file that combines the address into a field that can pass or fail validation
         /// </summary>

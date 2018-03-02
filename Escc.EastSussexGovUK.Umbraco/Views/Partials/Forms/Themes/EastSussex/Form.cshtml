@@ -87,7 +87,7 @@
                             </label>
                         }
 
-                        @if (!string.IsNullOrEmpty(f.ToolTip))
+                        @if (!string.IsNullOrEmpty(f.ToolTip) && f.FieldTypeName != "Address")
                         {
                             var tooltip = f.ToolTip.StripHtml();
                             tooltip = tooltip.Replace("\n\n", "</p><p class=\"umbraco-forms-tooltip help-block\">");

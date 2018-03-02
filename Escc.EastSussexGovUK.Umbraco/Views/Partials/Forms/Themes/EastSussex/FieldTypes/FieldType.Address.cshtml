@@ -3,12 +3,6 @@
 @using Newtonsoft.Json
 @using Escc.AddressAndPersonalDetails
 @{
-    var privacyNotice = String.Empty;
-    if (Model.AdditionalSettings.ContainsKey("PrivacyNotice") && string.IsNullOrEmpty(Model.AdditionalSettings["PrivacyNotice"]) == false)
-    {
-        privacyNotice = Model.AdditionalSettings["PrivacyNotice"];
-    }
-
     // The control for this field type expect a non-null value, so ensure we have something.
     // The Address field type stores its value as JSON, so deserialise it if there's something there.
     var value = new BS7666Address();
@@ -27,7 +21,7 @@
         HtmlFieldPrefix = Model.Name,
         Required = Model.Mandatory,
         Label = Model.Caption,
-        Description = privacyNotice
+        Description = Model.ToolTip
     }
 })
 
