@@ -66,6 +66,7 @@ dummy.txt
 */App_Plugins/UmbracoForms/Backoffice/Common/*
 !*/App_Plugins/UmbracoForms/Backoffice/Common/FieldTypes
 */App_Plugins/UmbracoForms/Backoffice/Common/FieldTypes/*
+!*/App_Plugins/UmbracoForms/Backoffice/Common/FieldTypes/Address.html
 !*/App_Plugins/UmbracoForms/Backoffice/Common/FieldTypes/FormattedTextField.html
 !*/App_Plugins/UmbracoForms/Backoffice/Common/FieldTypes/EthnicGroup.html
 !*/App_Plugins/UmbracoForms/Backoffice/Common/FieldTypes/PhoneNumber.html
