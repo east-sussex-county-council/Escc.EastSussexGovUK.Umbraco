@@ -79,10 +79,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
                 salaryDescription = salaryDescription.Substring(0, isMultiLine.Index);
             }
 
-            var parsedSalary = new Salary
-            {
-                SalaryRange = salaryDescription
-            };
+            Salary parsedSalary = null;
 
             // Normalise whitespace and punctuation in the salary
             var parseThis = Regex.Replace(salaryDescription, @"\s+", " ").Replace(" - ", "-").Replace(",", String.Empty);
@@ -91,51 +88,81 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
             // If it's an hourly rate, stop now - don't try to work out an annual salary
             if (parseThis.Contains(" per hour"))
             {
-                return parsedSalary;
+                parsedSalary = new Salary
+                {
+                    SalaryRange = salaryDescription
+                };
             }
 
             // Now try to match the various formats seen in TalentLink data
-            var match = Regex.Match(parseThis, "^([0-9.]+)-([0-9.]+) GBP Year");
-            if (match.Success)
+            if (parsedSalary == null)
             {
-                parsedSalary.MinimumSalary = ParseSalaryValue(match.Groups[1].Value);
-                parsedSalary.MaximumSalary = ParseSalaryValue(match.Groups[2].Value);
-                if (parsedSalary.MinimumSalary == parsedSalary.MaximumSalary)
+                var match = Regex.Match(parseThis, "^([0-9.]+)-([0-9.]+) GBP Year");
+                if (match.Success)
                 {
+                    parsedSalary = new Salary();
+                    parsedSalary.MinimumSalary = ParseSalaryValue(match.Groups[1].Value);
+                    parsedSalary.MaximumSalary = ParseSalaryValue(match.Groups[2].Value);
+                    if (parsedSalary.MinimumSalary == parsedSalary.MaximumSalary)
+                    {
+                        parsedSalary.SalaryRange = $"£{parsedSalary.MinimumSalary?.ToString("n0")} per annum";
+                    }
+                    else
+                    {
+                        parsedSalary.SalaryRange = $"£{parsedSalary.MinimumSalary?.ToString("n0")} to £{parsedSalary.MaximumSalary?.ToString("n0")} per annum";
+                    }
+                }
+            }
+
+            if (parsedSalary == null)
+            {
+                var match = Regex.Match(parseThis, "([0-9.]+) GBP Year");
+                if (match.Success)
+                {
+                    parsedSalary = new Salary();
+                    parsedSalary.MinimumSalary = ParseSalaryValue(match.Groups[1].Value);
+                    parsedSalary.MaximumSalary = parsedSalary.MinimumSalary;
                     parsedSalary.SalaryRange = $"£{parsedSalary.MinimumSalary?.ToString("n0")} per annum";
                 }
-                else
+            }
+
+            if (parsedSalary == null)
+            {
+                var match = Regex.Match(parseThis, "£([0-9.]+)( to |-)£([0-9.]+)");
+                if (match.Success)
                 {
+                    parsedSalary = new Salary();
+                    parsedSalary.MinimumSalary = ParseSalaryValue(match.Groups[1].Value);
+                    parsedSalary.MaximumSalary = ParseSalaryValue(match.Groups[3].Value);
                     parsedSalary.SalaryRange = $"£{parsedSalary.MinimumSalary?.ToString("n0")} to £{parsedSalary.MaximumSalary?.ToString("n0")} per annum";
                 }
-                return parsedSalary;
             }
 
-            match = Regex.Match(parseThis, "([0-9.]+) GBP Year");
-            if (match.Success)
+            if (parsedSalary == null)
             {
-                parsedSalary.MinimumSalary = ParseSalaryValue(match.Groups[1].Value);
-                parsedSalary.MaximumSalary = parsedSalary.MinimumSalary;
-                parsedSalary.SalaryRange = $"£{parsedSalary.MinimumSalary?.ToString("n0")} per annum";
-                return parsedSalary;
+                var match = Regex.Match(parseThis, "£([0-9.]+) and over$");
+                if (match.Success)
+                {
+                    parsedSalary = new Salary();
+                    parsedSalary.MinimumSalary = ParseSalaryValue(match.Groups[1].Value);
+                    parsedSalary.MaximumSalary = null;
+                    parsedSalary.SalaryRange = $"£{parsedSalary.MinimumSalary?.ToString("n0")}+ per annum";
+                }
             }
 
-            match = Regex.Match(parseThis, "£([0-9.]+)( to |-)£([0-9.]+)");
-            if (match.Success)
+            if (parsedSalary == null)
             {
-                parsedSalary.MinimumSalary = ParseSalaryValue(match.Groups[1].Value);
-                parsedSalary.MaximumSalary = ParseSalaryValue(match.Groups[3].Value);
-                parsedSalary.SalaryRange = $"£{parsedSalary.MinimumSalary?.ToString("n0")} to £{parsedSalary.MaximumSalary?.ToString("n0")} per annum";
-                return parsedSalary;
+                parsedSalary = new Salary()
+                {
+                    SalaryRange = salaryDescription
+                };
             }
 
-            match = Regex.Match(parseThis, "£([0-9.]+) and over$");
-            if (match.Success)
+            // In case someone puts Salary: £xxx to £xxx Note: long essay about pay scales
+            var notesPosition = parsedSalary.SalaryRange.ToUpperInvariant().IndexOf("NOTE:");
+            if (notesPosition > 0)
             {
-                parsedSalary.MinimumSalary = ParseSalaryValue(match.Groups[1].Value);
-                parsedSalary.MaximumSalary = null;
-                parsedSalary.SalaryRange = $"£{parsedSalary.MinimumSalary?.ToString("n0")}+ per annum";
-                return parsedSalary;
+                parsedSalary.SalaryRange = parsedSalary.SalaryRange.Substring(0, notesPosition).Trim();
             }
 
             return parsedSalary;

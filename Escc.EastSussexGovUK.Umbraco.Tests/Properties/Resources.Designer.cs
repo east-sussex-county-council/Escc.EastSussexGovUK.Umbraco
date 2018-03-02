@@ -210,6 +210,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;span class=&quot;JD-FieldText&quot; id=&quot;JDText-Field1&quot;&gt;&lt;p&gt;Salary: £22,912 rising to £33,487 per annum (Gildredge House Main Pay Scale points M1-M6, 2018-19) Note: salary figures include a cost of living increase of 1% which is subject to variation. Upper Pay Scale may be accessible to the suitable applicant. The Teacher Responsible for KS4 Mathematics position attracts a further Leadership Allowance point on the GH Scale of £4,204 per annum.  &lt;br /&gt;&lt;br /&gt;Working pattern: Full-Time&lt;/p&gt;
+        ///&lt;p&gt;Closing date:  Thursday 15  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string SalaryInBodyText6 {
+            get {
+                return ResourceManager.GetString("SalaryInBodyText6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot; http://www.w3.org/TR/html4/strict.dtd&quot;&gt;&lt;html lang=&quot;en-GB&quot; xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xmlns:addthis=&quot;http://www.addthis.com/help/api-spec&quot; &gt;&lt;head&gt;&lt;meta name=&quot;GENERATOR&quot; content=&quot;MrTed&quot;&gt;&lt;meta name=&quot;TEMPLATEBASE&quot; content=&quot;Accessible HTML&quot;&gt;&lt;meta name=&quot;LASTUPDATED&quot; content=&quot;18/08/05 10:05:33&quot;&gt;&lt;meta name=&quot;author&quot; content=&quot;MrTed&quot;&gt;&lt;meta name=&quot;keywords&quot; content=&quot;Jobs, Career Section, Candidate Portal&quot;&gt;&lt;meta name=&quot;description&quot; content=&quot;Mrted Talentlink syn [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SearchFieldsOuterHtml {

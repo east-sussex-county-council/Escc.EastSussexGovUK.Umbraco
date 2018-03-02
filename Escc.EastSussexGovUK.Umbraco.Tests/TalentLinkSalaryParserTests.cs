@@ -162,5 +162,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             Assert.IsNull(result.MinimumSalary);
             Assert.IsNull(result.MaximumSalary);
         }
+
+        [Test]
+        public void SalaryInBodyTextFollowedByNotesIsParsedWithoutNotes()
+        {
+            var parseThis = new HtmlDocument();
+            parseThis.LoadHtml(Properties.Resources.SalaryInBodyText6);
+
+            var parser = new TalentLinkSalaryParser();
+            var result = parser.ParseSalaryFromHtml(parseThis);
+
+            Assert.AreEqual("£22,912 rising to £33,487 per annum (Gildredge House Main Pay Scale points M1-M6, 2018-19)", result.SalaryRange);
+        }
     }
 }
