@@ -24,6 +24,9 @@ namespace Escc.EastSussexGovUK.Umbraco.WebApi
 
                 // Tell JSON.net how to serialise HTML strings, used by the Web API for jobs
                 GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new IHtmlStringConverter());
+
+                // Enable CORS support for Web APIs, where the [CorsPolicyFromConfig] attribute is applied
+                GlobalConfiguration.Configuration.EnableCors();
             }
             catch (Exception e)
             {

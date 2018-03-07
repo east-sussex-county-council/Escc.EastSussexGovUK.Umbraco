@@ -1,4 +1,5 @@
 ﻿using Escc.FindAddress.Mvc;
+using Escc.Web;
 using System.Web.Http;
 using Umbraco.Web.WebApi;
 
@@ -8,6 +9,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Forms
     /// An Umbraco-compatible facade for <see cref="Escc.FindAddress.Mvc.FindAddressController" /> as there is no route to a standard Web API in an Umbraco application
     /// </summary>
     /// <seealso cref="Umbraco.Web.WebApi.UmbracoApiController" />
+    [CorsPolicyFromConfig]
     public class FindAddressApiController : UmbracoApiController
     {
         /// <summary>
