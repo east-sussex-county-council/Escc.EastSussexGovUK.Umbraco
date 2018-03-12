@@ -207,6 +207,8 @@
       <add name="/childrenandfamilies/worried-about-a-child/" children="" />
       <add name="/childrenandfamilies/youngpeople/safety-welfare/" children="*" />
       <add name="/contact-us/" children="" />
+      <add name="/contact-us/report-a-problem/" children="*" />
+      <add name="/community/emergencyplanningandcommunitysafety/" children="" />
       <add name="/educationandlearning/schools/" children="" />
       <add name="/educationandlearning/schools/findingaschool/" children="*" />
       <add name="/educationandlearning/schools/schoolclosurealerts/" children="" />
