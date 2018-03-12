@@ -1,0 +1,20 @@
+﻿@using System.Web.Cors
+@using Escc.Web
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<IList<Escc.EastSussexGovUK.Umbraco.ServiceAlerts.AlertViewModel>> 
+@{
+    Layout = null;
+    Response.ContentType = "application/json";
+    Response.Headers.Remove("Content-Security-Policy");
+    new CorsHeaders(Request.Headers, Response.Headers, new CorsPolicyFromConfig().CorsPolicy).UpdateHeaders();
+<text>[</text>for (var i = 0; i < Model.Count; i++)
+    {
+<text>{"alert":"@Html.Raw(HttpUtility.JavaScriptStringEncode(Model[i].Alert.ToString()))","urls":[</text>for (var j = 0; j < Model[i].TargetUrls.Count; j++)
+            {
+<text>"</text>@HttpUtility.JavaScriptStringEncode(Model[i].TargetUrls[j].ToString())<text>"</text>if (j < Model[i].TargetUrls.Count - 1) {<text>,</text>}
+            }
+<text>],"append":@HttpUtility.JavaScriptStringEncode(Model[i].Append.ToString().ToLowerInvariant()),"cascade":@HttpUtility.JavaScriptStringEncode(Model[i].Cascade.ToString().ToLowerInvariant())}</text>if (i < Model.Count - 1)
+         {
+<text>,</text>}
+    }
+<text>]</text>
+}

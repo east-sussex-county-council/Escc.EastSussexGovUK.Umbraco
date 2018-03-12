@@ -94,7 +94,6 @@ dummy.txt
 # Files imported by NuGet packages
 **/TinyMCE-*.css
 !**/TinyMCE-StyleSelector-Embed.css
-*/Views/Alerts*
 *RecyclingSiteFinder.ascx
 _FindAddress.cshtml
 */js/libs/*
