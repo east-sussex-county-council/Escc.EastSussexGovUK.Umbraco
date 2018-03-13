@@ -56,7 +56,7 @@ namespace Escc.EastSussexGovUK.Umbraco.ServiceAlerts
                     ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                     client.Proxy = new ConfigurationProxyProvider().CreateProxy(); // for www.eastsussex.gov.uk
                     if (client.Proxy != null) client.Credentials = client.Proxy.Credentials; // for webcontent
-                    var alertHtml = client.DownloadString(new Uri(ConfigurationManager.AppSettings["SchoolClosureAlertsTemporaryApi"], UriKind.RelativeOrAbsolute));
+                    var alertHtml = client.DownloadString(new Uri(Request.Url, new Uri(ConfigurationManager.AppSettings["SchoolClosureAlertsTemporaryApi"], UriKind.RelativeOrAbsolute)));
                     AddSchoolClosureAlert(alerts, alertHtml);
 
                     // Cache the HTML returned, even if it's String.Empty, so that we don't make too many web requests
