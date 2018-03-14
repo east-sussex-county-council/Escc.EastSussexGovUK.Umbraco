@@ -14,6 +14,7 @@ using Umbraco.Core.Models;
 using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
+using Escc.ServiceClosures;
 
 namespace Escc.EastSussexGovUK.Umbraco.ServiceAlerts
 {
@@ -41,38 +42,42 @@ namespace Escc.EastSussexGovUK.Umbraco.ServiceAlerts
         /// <param name="alerts"></param>
         private void AddSchoolClosureAlerts(List<AlertViewModel> alerts)
         {
-            const string cacheKey = "Escc.Alerts.Website.SchoolClosures";
+            const string cacheKey = "Escc.EastSussexGovUK.Umbraco.SchoolClosures";
+            var alertHtml = String.Empty;
             if (HttpContext.Cache[cacheKey] != null && Request.QueryString["ForceCacheRefresh"] != "true")
             {
-                var alertHtml = HttpContext.Cache[cacheKey] as string;
+                alertHtml = HttpContext.Cache[cacheKey] as string;
                 AddSchoolClosureAlert(alerts, alertHtml);
                 return;
             }
 
-            using (var client = new WebClient())
+            if (ConfigurationManager.ConnectionStrings["Escc.ServiceClosures.AzureStorage"] == null || String.IsNullOrEmpty(ConfigurationManager.ConnectionStrings["Escc.ServiceClosures.AzureStorage"].ConnectionString))
             {
-                try
-                {
-                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-                    client.Proxy = new ConfigurationProxyProvider().CreateProxy(); // for www.eastsussex.gov.uk
-                    if (client.Proxy != null) client.Credentials = client.Proxy.Credentials; // for webcontent
-                    var alertHtml = client.DownloadString(new Uri(Request.Url, new Uri(ConfigurationManager.AppSettings["SchoolClosureAlertsTemporaryApi"], UriKind.RelativeOrAbsolute)));
-                    AddSchoolClosureAlert(alerts, alertHtml);
-
-                    // Cache the HTML returned, even if it's String.Empty, so that we don't make too many web requests
-                    HttpContext.Cache.Insert(cacheKey, alertHtml, null, DateTime.Now.AddMinutes(5),
-                        Cache.NoSlidingExpiration, CacheItemPriority.AboveNormal, null);
-                }
-                catch (ArgumentNullException e)
-                {
-                    e.Data.Add("Missing appSetting", "SchoolClosureAlertsTemporaryApi");
-                    e.ToExceptionless().Submit();
-                }
-                catch (WebException e)
-                {
-                    e.ToExceptionless().Submit();
-                }
+                new ConfigurationErrorsException("The Escc.ServiceClosures.AzureStorage connection string is missing from web.config").ToExceptionless().Submit();
+                return;
             }
+
+            var closureDataSource = new AzureBlobStorageDataSource(ConfigurationManager.ConnectionStrings["Escc.ServiceClosures.AzureStorage"].ConnectionString, "service-closures");
+            var closureData = closureDataSource.ReadClosureData(new ServiceType("school"));
+            if (closureData != null && (TooLateForToday() ? closureData.EmergencyClosureExistsTomorrow() : closureData.EmergencyClosureExistsToday()))
+            {
+                alertHtml = "<p><a href=\"https://www.eastsussex.gov.uk/educationandlearning/schools/find/schoolclosures/\">Emergency school closures</a> &#8211; check if your school is affected, and subscribe to alerts.</p>";
+
+                AddSchoolClosureAlert(alerts, alertHtml);
+            }
+
+            // Cache the HTML returned, even if it's String.Empty, so that we don't make too many web requests
+            HttpContext.Cache.Insert(cacheKey, alertHtml, null, DateTime.Now.AddMinutes(5),
+                Cache.NoSlidingExpiration, CacheItemPriority.AboveNormal, null);
+        }
+
+        /// <summary>
+        /// Gets whether to check for emergency closures today or tomorrow, depending on time of day
+        /// </summary>
+        /// <returns></returns>
+        private bool TooLateForToday()
+        {
+            return (DateTime.Now > DateTime.Today.Date.AddHours(16)); // change display after 4pm
         }
 
         private static void AddSchoolClosureAlert(List<AlertViewModel> alerts, string alertHtml)

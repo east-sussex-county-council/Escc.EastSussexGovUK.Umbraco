@@ -304,10 +304,6 @@
     <!-- Escc.Umbraco.UserAccessWebService -->
     <add key="HomeContentTypeAlias" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     <add key="HomeContentTypeAlias" value="HomePage" xdt:Transform="Insert" />
-
-    <!-- SchoolClosureAlertsTemporaryApi allows alerts.cshtml to get school closure info from www.eastsussex.gov.uk -->
-    <add key="SchoolClosureAlertsTemporaryApi" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-    <add key="SchoolClosureAlertsTemporaryApi" value="/educationandlearning/schools/find/closuresalert.aspx" xdt:Transform="Insert" />
   </appSettings>
 
   <runtime>
