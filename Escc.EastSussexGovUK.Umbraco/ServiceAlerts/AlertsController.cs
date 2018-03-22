@@ -61,7 +61,7 @@ namespace Escc.EastSussexGovUK.Umbraco.ServiceAlerts
             var closureData = closureDataSource.ReadClosureData(new ServiceType("school"));
             if (closureData != null && (TooLateForToday() ? closureData.EmergencyClosureExistsTomorrow() : closureData.EmergencyClosureExistsToday()))
             {
-                alertHtml = "<p><a href=\"https://www.eastsussex.gov.uk/educationandlearning/schools/find/schoolclosures/\">Emergency school closures</a> &#8211; check if your school is affected, and subscribe to alerts.</p>";
+                alertHtml = "<p><a href=\"https://apps.eastsussex.gov.uk/educationandlearning/schools/schoolclosures/\">Emergency school closures</a> &#8211; check if your school is affected, and subscribe to alerts.</p>";
 
                 AddSchoolClosureAlert(alerts, alertHtml);
             }
