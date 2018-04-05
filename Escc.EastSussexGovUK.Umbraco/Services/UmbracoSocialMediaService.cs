@@ -73,25 +73,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             // Read Twitter options from current page
             model.TwitterAccount = content.GetPropertyValue<string>("twitterAccount_Social_media_and_promotion");
 
-            var twitterScript = content.GetPropertyValue<string>("twitterScript_Social_media_and_promotion");
-            if (!String.IsNullOrEmpty(twitterScript)) model.TwitterWidgetScript = new HtmlString(twitterScript);
-
-            // If there's no account, but there is a script, parse the account name from the script.
-            if (String.IsNullOrEmpty(model.TwitterAccount) && !String.IsNullOrEmpty(twitterScript))
-            {
-                var match = Regex.Match(twitterScript, "href=\"https://twitter.com/(?<TwitterPath>.*?)\".*?>");
-                if (match.Success)
-                {
-                    var twitterPath = match.Groups["TwitterPath"].Value.ToUpperInvariant();
-                    if (!twitterPath.StartsWith("SEARCH?Q=") && !twitterPath.StartsWith("HASHTAG/"))
-                    {
-                        // We found it, so it was a profile script. Use the account setting instead of the script.
-                        model.TwitterAccount = match.Groups["TwitterPath"].Value;
-                        model.TwitterWidgetScript = null;
-                    }
-                }
-            }
-
             // Normalise account name
             model.TwitterAccount = model.TwitterAccount.TrimStart('@');
         }

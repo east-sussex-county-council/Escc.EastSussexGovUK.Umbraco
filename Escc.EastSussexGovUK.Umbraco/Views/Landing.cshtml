@@ -34,7 +34,7 @@
     var extend = !Model.ShowEastSussex1SpaceWidget;
     extend = extend && !Model.ShowEscisWidget;
     extend = extend && !webChat.IsRequired();
-    extend = extend && (Model.SocialMedia.TwitterWidgetScript == null && String.IsNullOrEmpty(Model.SocialMedia.TwitterAccount));
+    extend = extend && String.IsNullOrEmpty(Model.SocialMedia.TwitterAccount);
     extend = extend && Model.SocialMedia.FacebookPageUrl == null;
 
     var pageClass = extend ? "full-page" : "article";

@@ -111,10 +111,10 @@
       <HintPath>..\packages\Escc.Dates.2.1.0\lib\Escc.Dates.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.EastSussexGovUK.1.3.0\lib\Escc.EastSussexGovUK.dll</HintPath>
+      <HintPath>..\packages\Escc.EastSussexGovUK.2.0.0\lib\net452\Escc.EastSussexGovUK.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.EastSussexGovUK.Mvc.2.2.4\lib\net452\Escc.EastSussexGovUK.Mvc.dll</HintPath>
+      <HintPath>..\packages\Escc.EastSussexGovUK.Mvc.3.0.0\lib\net452\Escc.EastSussexGovUK.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.Rss, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.EastSussexGovUK.Rss.2.0.0\lib\Escc.EastSussexGovUK.Rss.dll</HintPath>
@@ -198,7 +198,7 @@
       <HintPath>..\packages\Escc.Umbraco.MediaSync.2.1.1\lib\net452\Escc.Umbraco.MediaSync.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.PropertyEditors, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.PropertyEditors.5.1.2\lib\Escc.Umbraco.PropertyEditors.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.PropertyEditors.6.0.0\lib\net452\Escc.Umbraco.PropertyEditors.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.RecycleBinManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.RecycleBinManager.1.1.0\lib\Escc.Umbraco.RecycleBinManager.dll</HintPath>
@@ -808,24 +808,6 @@
     <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.resource.js" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\editor.html" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\validate.js" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor\editor.html" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor\PersonNamePropertyEditor.css" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor\PersonNamePropertyEditor.js" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PhonePropertyEditor\editor.html" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PhonePropertyEditor\PhonePropertyEditor.js" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\controller.js" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\prevalues.controller.js" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\quote.png" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\rte.html" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\rte.prevalues.html" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\styles.css" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.TwitterScriptPropertyEditor\editor.html" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.TwitterScriptPropertyEditor\validate.js" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\editor.html" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\UKLocationPropertyEditor.css" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\UKLocationPropertyEditor.js" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\editor.html" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\validate.js" />
     <Content Include="App_Plugins\Escc.UmbracoBranding\branding-v2.css" />
     <Content Include="App_Plugins\Escc.UmbracoBranding\poppies.jpg" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.controller.js" />
@@ -999,13 +981,6 @@
     <Content Include="Config\log4net.config" />
     <Content Include="Config\Dashboard.config" />
     <Content Include="App_Plugins\Escc.UmbracoBranding\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.TwitterScriptPropertyEditor\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PhonePropertyEditor\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\package.manifest" />
     <Content Include="css\guide.css" />
     <Content Include="css\umbraco-forms.css" />
     <Content Include="default.aspx" />
@@ -1220,9 +1195,7 @@
     <Content Include="css\StandardLandingPage\landing-small.css" />
     <Content Include="css\StandardTopicPage\topic-medium.css" />
     <Content Include="css\StandardTopicPage\topic-small.css" />
-    <Content Include="css\TinyMCE-Content.css" />
     <Content Include="css\TinyMCE-StyleSelector-Embed.css" />
-    <Content Include="css\TinyMCE-StyleSelector-Headings.css" />
     <Content Include="EastSussexGovUK\Rss\escc-logo-for-feed.gif" />
     <Content Include="EastSussexGovUK\Rss\escc-logo.gif" />
     <Content Include="EastSussexGovUK\Rss\header.png" />
@@ -1251,6 +1224,7 @@
     <Content Include="App_Plugins\UmbracoForms\Data\Web.config" />
     <Content Include="App_Plugins\UmbracoForms\Data\Templates\contactform.json" />
     <Content Include="App_Plugins\UmbracoForms\Data\Templates\commentform.json" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\package.manifest" />
     <None Include="Jobs\Examine\ExamineIndex.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -4723,7 +4697,6 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.EditorTools.2.4.2\build\Escc.Umbraco.EditorTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.EditorTools.2.4.2\build\Escc.Umbraco.EditorTools.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
@@ -4734,6 +4707,7 @@
     <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.2.1.1\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.2.1.1\build\Escc.Umbraco.MediaSync.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.1\build\Escc.EastSussexGovUK.TemplateSource.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.1\build\Escc.EastSussexGovUK.TemplateSource.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.FindAddress.Mvc.1.0.1\build\Escc.FindAddress.Mvc.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.FindAddress.Mvc.1.0.1\build\Escc.FindAddress.Mvc.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.6.0.0\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.6.0.0\build\Escc.Umbraco.PropertyEditors.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
@@ -4742,7 +4716,6 @@
     <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
   </Target>
   <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
-  <Import Project="..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.5.1.2\build\Escc.Umbraco.PropertyEditors.targets')" />
   <Import Project="..\packages\Escc.Umbraco.EditorTools.2.4.2\build\Escc.Umbraco.EditorTools.targets" Condition="Exists('..\packages\Escc.Umbraco.EditorTools.2.4.2\build\Escc.Umbraco.EditorTools.targets')" />
   <Import Project="..\packages\Escc.Registration.RegistrationSkin.1.0.0\build\Escc.Registration.RegistrationSkin.targets" Condition="Exists('..\packages\Escc.Registration.RegistrationSkin.1.0.0\build\Escc.Registration.RegistrationSkin.targets')" />
   <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.2\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.2\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
@@ -4750,6 +4723,7 @@
   <Import Project="..\packages\Escc.Umbraco.MediaSync.2.1.1\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.2.1.1\build\Escc.Umbraco.MediaSync.targets')" />
   <Import Project="..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.1\build\Escc.EastSussexGovUK.TemplateSource.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.1\build\Escc.EastSussexGovUK.TemplateSource.targets')" />
   <Import Project="..\packages\Escc.FindAddress.Mvc.1.0.1\build\Escc.FindAddress.Mvc.targets" Condition="Exists('..\packages\Escc.FindAddress.Mvc.1.0.1\build\Escc.FindAddress.Mvc.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.PropertyEditors.6.0.0\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.6.0.0\build\Escc.Umbraco.PropertyEditors.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

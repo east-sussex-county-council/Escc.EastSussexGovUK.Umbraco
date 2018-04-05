@@ -76,7 +76,6 @@ namespace Escc.EastSussexGovUK.Umbraco.WebApi
                 FacebookUrlDataType.CreateDataType();
                 RatingUrlDataType.CreateDataType();
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(ShowWidgetDataType));
-                UmbracoCodeFirstInitializer.CreateDataType(typeof(TwitterScriptDataType));
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(MultiNodeTreePickerDataType));
                 UrlDataType.CreateDataType();
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(SkinDataType));

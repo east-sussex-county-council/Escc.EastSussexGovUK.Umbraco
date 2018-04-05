@@ -24,7 +24,7 @@
         new ContentSecurityPolicyHeaders(Response.Headers).AppendPolicy("img-src https://dummyimage.com").UpdateHeaders();
     }
     var showFacebook = (Model.SocialMedia.FacebookPageUrl != null);
-    var showTwitter = (!String.IsNullOrEmpty(Model.SocialMedia.TwitterAccount) || Model.SocialMedia.TwitterWidgetScript != null);
+    var showTwitter = !String.IsNullOrEmpty(Model.SocialMedia.TwitterAccount);
 
     var showSocialMedia = (showFacebook || showTwitter);
 }
