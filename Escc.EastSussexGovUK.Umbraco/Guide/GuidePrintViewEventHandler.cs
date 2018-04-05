@@ -3,7 +3,7 @@ using Exceptionless;
 using Umbraco.Core;
 using Umbraco.Web.Routing;
 
-namespace Escc.EastSussexGovUK.Umbraco.ContentFinders
+namespace Escc.EastSussexGovUK.Umbraco.Guide
 {
     /// <summary>
     /// Wire up <see cref="GuidePrintViewContentFinder"/> so that the Guide print view works

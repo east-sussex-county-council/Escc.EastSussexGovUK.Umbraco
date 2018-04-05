@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Escc.EastSussexGovUK.Features;
-using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Umbraco.Caching;
 using Escc.Umbraco.ContentExperiments;
@@ -17,7 +15,7 @@ using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
 using Escc.EastSussexGovUK.Umbraco.Ratings;
 using Escc.EastSussexGovUK.Umbraco.Skins;
 
-namespace Escc.EastSussexGovUK.Umbraco.Controllers
+namespace Escc.EastSussexGovUK.Umbraco.Guide
 {
     public class GuideStepController : RenderMvcController
     {

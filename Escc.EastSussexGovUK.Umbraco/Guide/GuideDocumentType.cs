@@ -4,7 +4,7 @@ using Escc.Umbraco.PropertyEditors.RichTextPropertyEditor;
 using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Guide
+namespace Escc.EastSussexGovUK.Umbraco.Guide
 {
     /// <summary>
     /// Umbraco document type for a guide, comprised of several guide steps

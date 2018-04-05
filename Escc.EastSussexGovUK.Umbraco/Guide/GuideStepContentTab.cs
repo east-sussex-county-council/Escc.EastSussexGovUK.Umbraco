@@ -3,7 +3,7 @@ using Escc.Umbraco.PropertyEditors;
 using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Guide
+namespace Escc.EastSussexGovUK.Umbraco.Guide
 {
     /// <summary>
     /// Umbraco document type definition for a single step in a guide

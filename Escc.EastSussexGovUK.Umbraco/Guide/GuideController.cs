@@ -15,7 +15,7 @@ using Umbraco.Web.Mvc;
 using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
 using Escc.EastSussexGovUK.Umbraco.Skins;
 
-namespace Escc.EastSussexGovUK.Umbraco.Controllers
+namespace Escc.EastSussexGovUK.Umbraco.Guide
 {
     /// <summary>
     /// Displays a guide as an aggregation of its steps, or returns 404 if there are no steps

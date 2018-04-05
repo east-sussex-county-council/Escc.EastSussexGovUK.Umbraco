@@ -7,7 +7,7 @@
 @using Escc.Registration.RegistrationSkin
 @using Escc.EastSussexGovUK.Umbraco.Skins.FosterWithTrust
 @using Escc.EastSussexGovUK.Umbraco.Skins.SupportWithTrust
-@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.GuideStepViewModel>
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Guide.GuideStepViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] {

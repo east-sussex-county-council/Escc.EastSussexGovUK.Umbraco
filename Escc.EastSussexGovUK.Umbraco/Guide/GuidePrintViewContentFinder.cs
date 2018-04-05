@@ -4,7 +4,7 @@ using Umbraco.Core;
 using Umbraco.Web;
 using Umbraco.Web.Routing;
 
-namespace Escc.EastSussexGovUK.Umbraco.ContentFinders
+namespace Escc.EastSussexGovUK.Umbraco.Guide
 {
     /// <summary>
     /// If a Guide is requested with the /print suffix on the URL, match the Guide

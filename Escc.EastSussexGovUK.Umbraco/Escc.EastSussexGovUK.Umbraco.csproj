@@ -4254,8 +4254,8 @@
     <Compile Include="WebApi\WasteTypesController.cs" />
     <Compile Include="WebApi\WebApiConfig.cs" />
     <Compile Include="WebApi\WebChatController.cs" />
-    <Compile Include="ContentFinders\GuidePrintViewContentFinder.cs" />
-    <Compile Include="ContentFinders\GuidePrintViewEventHandler.cs" />
+    <Compile Include="Guide\GuidePrintViewContentFinder.cs" />
+    <Compile Include="Guide\GuidePrintViewEventHandler.cs" />
     <Compile Include="CampaignTemplates\CampaignContentController.cs" />
     <Compile Include="CampaignTemplates\CampaignLandingController.cs" />
     <Compile Include="Location\ChildcareController.cs" />
@@ -4267,8 +4267,8 @@
     <Compile Include="Controllers\CouncilPlanTopicPageController.cs" />
     <Compile Include="Location\DayCentreController.cs" />
     <Compile Include="Controllers\FormDownloadPageController.cs" />
-    <Compile Include="Controllers\GuideController.cs" />
-    <Compile Include="Controllers\GuideStepController.cs" />
+    <Compile Include="Guide\GuideController.cs" />
+    <Compile Include="Guide\GuideStepController.cs" />
     <Compile Include="HomePage\HomePageController.cs" />
     <Compile Include="HomePage\HomePageItemController.cs" />
     <Compile Include="HomePage\HomePageItemsController.cs" />
@@ -4336,7 +4336,7 @@
     <Compile Include="CampaignTemplates\CampaignContentViewModelFromUmbraco.cs" />
     <Compile Include="CampaignTemplates\CampaignLandingViewModelFromUmbraco.cs" />
     <Compile Include="Services\GoogleFontFamilyFormatter.cs" />
-    <Compile Include="Services\GuideStepViewModelFromUmbraco.cs" />
+    <Compile Include="Guide\GuideStepViewModelFromUmbraco.cs" />
     <Compile Include="HomePage\HomePageItemViewModelFromUmbraco.cs" />
     <Compile Include="Services\IFontFamilyFormatter.cs" />
     <Compile Include="UrlTransformers\IMediaUrlTransformer.cs" />
@@ -4390,9 +4390,9 @@
     <Compile Include="DocumentTypes\Features\WebChat\WebChatDocumentType.cs" />
     <Compile Include="DocumentTypes\FormDownload\FormDownloadContentTab.cs" />
     <Compile Include="DocumentTypes\FormDownload\FormDownloadDocumentType.cs" />
-    <Compile Include="DocumentTypes\Guide\GuideDocumentType.cs" />
-    <Compile Include="DocumentTypes\Guide\GuideStepContentTab.cs" />
-    <Compile Include="DocumentTypes\Guide\GuideStepDocumentType.cs" />
+    <Compile Include="Guide\GuideDocumentType.cs" />
+    <Compile Include="Guide\GuideStepContentTab.cs" />
+    <Compile Include="Guide\GuideStepDocumentType.cs" />
     <Compile Include="HomePage\HomePageContentTab.cs" />
     <Compile Include="HomePage\HomePageDocumentType.cs" />
     <Compile Include="HomePage\HomePageItemContentTab.cs" />
@@ -4473,9 +4473,9 @@
     <Compile Include="Models\BaseViewModel.cs" />
     <Compile Include="CampaignTemplates\CampaignContentViewModel.cs" />
     <Compile Include="CampaignTemplates\CampaignLandingViewModel.cs" />
-    <Compile Include="Models\GuideNavigationLink.cs" />
-    <Compile Include="Models\GuideStepViewModel.cs" />
-    <Compile Include="Models\GuideViewModel.cs" />
+    <Compile Include="Guide\GuideNavigationLink.cs" />
+    <Compile Include="Guide\GuideStepViewModel.cs" />
+    <Compile Include="Guide\GuideViewModel.cs" />
     <Compile Include="HomePage\HomePageItemViewModel.cs" />
     <Compile Include="HomePage\HomePageViewModel.cs" />
     <Compile Include="Models\LandingNavigationLayout.cs" />

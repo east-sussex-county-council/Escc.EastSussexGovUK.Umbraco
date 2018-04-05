@@ -2,6 +2,7 @@
 using System.Web;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.Umbraco.PropertyTypes;
+using Escc.EastSussexGovUK.Umbraco.Guide;
 
 namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
 {

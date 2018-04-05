@@ -8,6 +8,7 @@ using Escc.Umbraco.PropertyTypes;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
+using Escc.EastSussexGovUK.Umbraco.Guide;
 
 namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
 {

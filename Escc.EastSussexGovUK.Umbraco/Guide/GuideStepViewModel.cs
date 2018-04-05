@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Web;
 using Escc.Umbraco.PropertyTypes;
+using Escc.EastSussexGovUK.Umbraco.Models;
 
-namespace Escc.EastSussexGovUK.Umbraco.Models
+namespace Escc.EastSussexGovUK.Umbraco.Guide
 {
     public class GuideStepViewModel : BaseViewModel
     {

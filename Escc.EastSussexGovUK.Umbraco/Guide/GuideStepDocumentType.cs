@@ -2,7 +2,7 @@
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CustomerFocusBase;
 using Umbraco.Inception.Attributes;
 
-namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Guide
+namespace Escc.EastSussexGovUK.Umbraco.Guide
 {
     [UmbracoContentType("Guide step", "GuideStep", new Type[0], true, allowAtRoot: false, icon: BuiltInUmbracoContentTypeIcons.IconFootprints,
         Description = "One of a series of pages in a specific order, which tell people all they need to know about a subject.")]

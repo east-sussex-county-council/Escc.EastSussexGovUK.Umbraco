@@ -8,7 +8,7 @@ using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardTopicPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Landing;
 using Escc.EastSussexGovUK.Umbraco.Location;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.LandingPageWithPictures;
-using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Guide;
+using Escc.EastSussexGovUK.Umbraco.Guide;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardLandingPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardDownloadPage;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Map;

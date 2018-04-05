@@ -1,6 +1,6 @@
 ﻿using Escc.Umbraco.PropertyTypes;
 
-namespace Escc.EastSussexGovUK.Umbraco.Models
+namespace Escc.EastSussexGovUK.Umbraco.Guide
 {
     /// <summary>
     /// A link to be presented as part of guide navigation

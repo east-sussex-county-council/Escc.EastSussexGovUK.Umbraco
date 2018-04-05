@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Escc.EastSussexGovUK.Umbraco.Models;
+using System.Collections.Generic;
 
-namespace Escc.EastSussexGovUK.Umbraco.Models
+namespace Escc.EastSussexGovUK.Umbraco.Guide
 {
     /// <summary>
     /// A complete guide to a process

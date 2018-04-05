@@ -2,7 +2,7 @@
 using Escc.EastSussexGovUK.Umbraco.CampaignTemplates;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.CouncilPlan;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.FormDownload;
-using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Guide;
+using Escc.EastSussexGovUK.Umbraco.Guide;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Landing;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.LandingPageWithPictures;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.LegacyBase;

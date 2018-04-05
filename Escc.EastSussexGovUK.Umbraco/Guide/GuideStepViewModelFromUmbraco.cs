@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Escc.EastSussexGovUK.Features;
-using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Guide;
-using Escc.EastSussexGovUK.Umbraco.Models;
-using Escc.Umbraco.ContentExperiments;
 using Escc.Umbraco.PropertyTypes;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
+using Escc.EastSussexGovUK.Umbraco.Services;
 
-namespace Escc.EastSussexGovUK.Umbraco.Services
+namespace Escc.EastSussexGovUK.Umbraco.Guide
 {
     /// <summary>
     /// Builds a <see cref="GuideStepViewModel"/> from an Umbraco node based on <see cref="GuideStepDocumentType"/>
