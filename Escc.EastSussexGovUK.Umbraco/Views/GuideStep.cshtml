@@ -24,6 +24,7 @@
         Html.RequiresCss(CssFileAlias.Resolve("NavigationLarge"), MediaQueryAlias.Resolve("Large"));
     }
     Html.RequiresCss(CssFileAlias.Resolve("MobileControls"));
+    Html.RequiresCss("~/css/guide.css");
     Html.RequiresJs(JsFileAlias.Resolve("Navigation"));
 
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
@@ -58,9 +59,37 @@
             <h1>@Model.GuideTitle</h1>
 
             @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
-            @Html.Partial("~/Views/Layouts/_GuideNavigation.cshtml", Model.Steps)
+            @if (Model.StepsHaveAnOrder)
+            {
+                @Html.Partial("~/Views/Layouts/_GuideNavigation.cshtml", Model.Steps)
 
-            <h2>@(thisStep + 1). @stepTitle</h2>
+                <h2>@(thisStep + 1). @stepTitle</h2>
+            }
+            else
+            {
+                <nav role="navigation" title="All pages in this section">
+                    <ul class="guide-nav">
+                        @{
+                            foreach (var step in Model.Steps)
+                            {
+                                <li>
+                                    @if (step.IsCurrentPage)
+                                    {
+                                        @step.Text
+                                    }
+                                    else
+                                    {
+                                        <a href="@step.Url">@step.Text</a>
+                                    }
+                                </li>
+                            }
+                        }
+                    </ul>
+                </nav>
+
+                <h2>@stepTitle</h2>
+            }
+
 
             @Model.StepContent
 
@@ -69,7 +98,7 @@
                 <img src="@image.ImageUrl" alt="@image.AlternativeText" width="@image.Width" height="@image.Height" />
             }
 
-            @if (Model.Steps.Count > 1)
+            @if (Model.StepsHaveAnOrder && Model.Steps.Count > 1)
             {
                 <footer>
                     <nav role="navigation" title="Previous and next pages">

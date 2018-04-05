@@ -57,6 +57,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Guide
 
             model.Metadata.IsPartOfUrl = _content.Parent.UrlAbsolute();
 
+            var sectionNavigation = _content.Parent.GetPropertyValue<int>("SectionNavigation_Navigation");
+            model.StepsHaveAnOrder = (sectionNavigation == 0 || umbraco.library.GetPreValueAsString(sectionNavigation).ToUpperInvariant() != "BULLETED LIST");
+
             var relatedLinksGroups = new RelatedLinksModelBuilder().OrganiseAsHeadingsAndSections(_relatedLinksService.BuildRelatedLinksViewModelFromUmbracoContent(_content, "relatedLinks_Content"));
             foreach (var linkGroup in relatedLinksGroups)
             {

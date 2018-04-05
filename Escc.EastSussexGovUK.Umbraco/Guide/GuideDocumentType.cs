@@ -16,6 +16,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Guide
        Description = "A series of pages in a specific order, which tells people all they need to know about a subject.")]
     public class GuideDocumentType : UmbracoGeneratedBase
     {
+        [UmbracoTab("Navigation", SortOrder =100)]
+        public GuideNavigationTab Navigation { get; set; }
+
         [UmbracoProperty("Page URL", "umbracoUrlName", BuiltInUmbracoDataTypes.Textbox, sortOrder: 0)]
         public Uri UmbracoUrlName { get; set; }
 

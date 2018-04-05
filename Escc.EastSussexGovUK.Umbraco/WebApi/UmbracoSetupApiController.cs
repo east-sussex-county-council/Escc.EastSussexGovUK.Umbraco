@@ -109,6 +109,7 @@ namespace Escc.EastSussexGovUK.Umbraco.WebApi
                 LandingPageLayoutDataType.CreateLandingPageLayoutDataType();
                 OpeningHoursDataType.CreateDataType();
                 UkLocationDataType.CreateDataType(showEastingNorthing: false);
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(SectionNavigationDataType));
 
                 // For recycling site document type
                 ResponsibleAuthorityDataType.CreateDataType();

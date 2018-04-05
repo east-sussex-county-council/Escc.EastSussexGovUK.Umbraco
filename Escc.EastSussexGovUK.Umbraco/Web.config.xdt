@@ -100,14 +100,10 @@
       <add key="CouncilPlan" value="/js/CouncilPlan/council-plan.js" xdt:Transform="Insert" />
       <add key="DocumentMetadata" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="DocumentMetadata" value="/js/document-metadata.js" xdt:Transform="Insert" />
-      <add key="GuideTemplate" xdt:Transform="Remove" xdt:Locator="Match(key) "/>
-      <add key="GuideTemplate" value="/js/CustomerFocusTemplates/guide.js" xdt:Transform="Insert" />
       <add key="Home" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Home" value="/js/HomePage/homepage.js" xdt:Transform="Insert" />
       <add key="HomeTabs" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="HomeTabs" value="/js/HomePage/jquery-ui-1.10.4.custom.min.js" xdt:Transform="Insert" />
-      <add key="LocationTemplate" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="LocationTemplate" value="/js/CustomerFocusTemplates/location.js" xdt:Transform="Insert" />
       <add key="RegistrationSkin" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="RegistrationSkin" value="/RegistrationSkin/js/min/registration-skin.js" xdt:Transform="Insert" />
       <add key="FosterWithTrustSkin" xdt:Transform="Remove" xdt:Locator="Match(key)" />

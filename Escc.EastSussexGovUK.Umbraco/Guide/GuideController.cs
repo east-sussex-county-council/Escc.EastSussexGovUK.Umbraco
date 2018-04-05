@@ -70,6 +70,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Guide
                     .Select(MapUmbracoContentToGuideStepViewModel))
             };
 
+            var sectionNavigation = content.GetPropertyValue<int>("SectionNavigation_Navigation");
+            model.StepsHaveAnOrder = (sectionNavigation == 0 || umbraco.library.GetPreValueAsString(sectionNavigation).ToUpperInvariant() != "BULLETED LIST");
+
             return model;
         }
     }

@@ -23,5 +23,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Guide
         {
             Steps = new List<GuideStepViewModel>();
         }
+
+
+        /// <summary>
+        /// Gets or sets whether steps should be followed from 1 to x, rather than in any order
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if steps have an order; otherwise, <c>false</c>.
+        /// </value>
+        public bool StepsHaveAnOrder { get; set; }
     }
 }

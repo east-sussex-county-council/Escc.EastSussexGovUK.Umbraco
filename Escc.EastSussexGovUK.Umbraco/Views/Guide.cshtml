@@ -39,7 +39,7 @@
         new EmbeddedGoogleMaps() { Html = html }
     });
 
-    Html.RequiresJs(JsFileAlias.Resolve("GuideTemplate"));
+    Html.RequiresJs("~/js/guide.js");
 }
 
 @section Metadata
@@ -53,12 +53,23 @@
             <h1>@Model.Metadata.Title</h1>
 
             @{
-                var stepNumber = 0;
-                foreach (var step in Model.Steps)
+                if (Model.StepsHaveAnOrder)
                 {
-                    stepNumber++;
-                    <h2>@stepNumber. @step.Metadata.Title</h2>
-                    @step.StepContent
+                    var stepNumber = 0;
+                    foreach (var step in Model.Steps)
+                    {
+                        stepNumber++;
+                        <h2>@stepNumber. @step.Metadata.Title</h2>
+                        @step.StepContent
+                    }
+                }
+                else
+                {
+                    foreach (var step in Model.Steps)
+                    {
+                        <h2>@step.Metadata.Title</h2>
+                        @step.StepContent
+                    }
                 }
             }
         </div>

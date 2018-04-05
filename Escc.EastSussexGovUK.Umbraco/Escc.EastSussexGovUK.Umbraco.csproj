@@ -1006,6 +1006,7 @@
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PhonePropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\package.manifest" />
+    <Content Include="css\guide.css" />
     <Content Include="css\umbraco-forms.css" />
     <Content Include="default.aspx" />
     <Content Include="favicon.ico" />
@@ -1264,13 +1265,13 @@
     <Content Include="images\rating3.png" />
     <Content Include="images\rating4.png" />
     <Content Include="js\CouncilPlan\council-plan.js" />
-    <Content Include="js\CustomerFocusTemplates\guide.js" />
+    <Content Include="js\guide.js" />
     <Content Include="js\GovDelivery\Business-and-Funding.js" />
     <Content Include="js\GovDelivery\ESCC.js" />
     <Content Include="js\GovDelivery\Libraries.js" />
     <Content Include="js\job-results.js" />
     <Content Include="js\rights-of-way-deposit.js" />
-    <Content Include="js\CustomerFocusTemplates\location.js" />
+    <Content Include="js\location.js" />
     <Content Include="js\document-metadata.js" />
     <Content Include="js\embed-jobs-rss.js" />
     <Content Include="js\HomePage\homepage.js" />
@@ -4120,6 +4121,8 @@
     <Compile Include="Forms\UmbracoFormsSecurityApiController.cs" />
     <Compile Include="Forms\UmbracoFormsUploadsApiController.cs" />
     <Compile Include="Forms\Workflows\RetentionAfterSetDateWorkflow.cs" />
+    <Compile Include="Guide\GuideNavigationTab.cs" />
+    <Compile Include="Guide\SectionNavigationDataType.cs" />
     <Compile Include="Jobs\Alerts\JobAlertSettingsTab.cs" />
     <Compile Include="Jobs\Api\JobsLookupValuesFromApi.cs" />
     <Compile Include="Jobs\Api\RedeploymentJobsController.cs" />
