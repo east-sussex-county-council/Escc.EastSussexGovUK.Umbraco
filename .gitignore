@@ -97,6 +97,7 @@ dummy.txt
 *RecyclingSiteFinder.ascx
 _FindAddress.cshtml
 */js/libs/*
+!*/js/libs/bootstrap/
 */RegistrationSkin/*
 */EastSussexGovUK/*
 Escc.EastSussexGovUK.Umbraco/App_Plugins/Escc.Umbraco.PropertyEditors.*/*

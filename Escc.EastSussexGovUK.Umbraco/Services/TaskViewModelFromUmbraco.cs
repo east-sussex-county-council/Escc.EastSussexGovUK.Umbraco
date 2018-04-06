@@ -29,7 +29,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
         /// <param name="umbracoContent">Content from Umbraco.</param>
         /// <param name="relatedLinksService">The related links service.</param>
         /// <param name="elibraryLinkConverter">The elibrary link converter.</param>
-        /// <param name="mediaUrlTransformer">A service to links to items in the media library</param>
+        /// <param name="mediaUrlTransformer">A service to update links to items in the media library</param>
         /// <exception cref="ArgumentNullException">
         /// </exception>
         public TaskViewModelFromUmbraco(IPublishedContent umbracoContent, IRelatedLinksService relatedLinksService, IElibraryProxyLinkConverter elibraryLinkConverter, IMediaUrlTransformer mediaUrlTransformer)
@@ -49,7 +49,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
         /// Builds the model.
         /// </summary>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public TaskViewModel BuildModel()
         {
             var model = new TaskViewModel

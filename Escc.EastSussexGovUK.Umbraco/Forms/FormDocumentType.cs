@@ -17,6 +17,7 @@ using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Features.Latest;
 using Escc.Umbraco.PropertyEditors;
 using Escc.Umbraco.PropertyEditors.RichTextPropertyEditor;
 using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Task;
+using Escc.EastSussexGovUK.Umbraco.PrivacyNotice;
 
 namespace Escc.EastSussexGovUK.Umbraco.Forms
 {
@@ -44,7 +45,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Forms
         typeof(CampaignLandingDocumentType),
         typeof(PersonDocumentType),
         typeof(RightsOfWayDepositsDocumentType),
-        typeof(FormDocumentType)
+        typeof(FormDocumentType),
+        typeof(PrivacyNoticeDocumentType)
     }, true, allowAtRoot: false, icon: BuiltInUmbracoContentTypeIcons.IconCheckbox, 
     Description = "A form built using Umbraco Forms.")]
     public class FormDocumentType : UmbracoGeneratedBase

@@ -1,0 +1,6 @@
+﻿/* When the Bootstrap 4 tabs script is used but Bootstrap CSS is not, this is enough CSS to support it. */
+@media screen {
+    a[role=tab].active { text-decoration: none; color: inherit; cursor: pointer; }
+    section[role=tabpanel] { display:none;}
+    section[role=tabpanel].show { display: block; }
+}

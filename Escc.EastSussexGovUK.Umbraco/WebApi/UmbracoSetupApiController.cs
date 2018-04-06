@@ -38,6 +38,7 @@ using Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor;
 using Escc.EastSussexGovUK.Umbraco.Ratings;
 using Escc.EastSussexGovUK.Umbraco.Skins;
 using Escc.EastSussexGovUK.Umbraco.Forms;
+using Escc.EastSussexGovUK.Umbraco.PrivacyNotice;
 
 namespace Escc.EastSussexGovUK.Umbraco.WebApi
 {
@@ -122,6 +123,10 @@ namespace Escc.EastSussexGovUK.Umbraco.WebApi
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(ParishDataType));
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(PersonNameDataType));
 
+                // Privacy notice
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(PrivacyNoticeExamplesDataType));
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(PrivacyNoticePersonalDataType));
+
                 return Request.CreateResponse(HttpStatusCode.Created);
             }
             catch (Exception e)
@@ -159,6 +164,7 @@ namespace Escc.EastSussexGovUK.Umbraco.WebApi
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(StandardDownloadPageDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(MapDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(FormDownloadDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(PrivacyNoticeDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CustomerFocusBaseDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LandingDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(TaskDocumentType));

@@ -386,6 +386,7 @@
     <Reference Include="SQLCE4Umbraco, Version=1.0.6527.19568, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.6.12\lib\net45\SQLCE4Umbraco.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.SqlServerCe, Version=4.0.0.1, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.6.12\lib\net45\System.Data.SqlServerCe.dll</HintPath>
@@ -396,6 +397,9 @@
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.0.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
+    <Reference Include="System.IO, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.1.0\lib\net462\System.IO.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Net.Http.4.3.2\lib\net46\System.Net.Http.dll</HintPath>
@@ -404,6 +408,9 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.4\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.1.0\lib\net462\System.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.caching" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security.Cryptography.Algorithms, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -808,6 +815,22 @@
     <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\mediausage.resource.js" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\editor.html" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\validate.js" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor\editor.html" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor\PersonNamePropertyEditor.css" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor\PersonNamePropertyEditor.js" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PhonePropertyEditor\editor.html" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PhonePropertyEditor\PhonePropertyEditor.js" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\controller.js" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\prevalues.controller.js" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\quote.png" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\rte.html" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\rte.prevalues.html" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\styles.css" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\editor.html" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\UKLocationPropertyEditor.css" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\UKLocationPropertyEditor.js" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\editor.html" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\validate.js" />
     <Content Include="App_Plugins\Escc.UmbracoBranding\branding-v2.css" />
     <Content Include="App_Plugins\Escc.UmbracoBranding\poppies.jpg" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.controller.js" />
@@ -823,6 +846,15 @@
     <Content Include="App_Plugins\SpectrumColorPicker\lib\spectrum\spectrum.js" />
     <Content Include="App_Plugins\SpectrumColorPicker\SpectrumColorPicker.controller.js" />
     <Content Include="App_Plugins\SpectrumColorPicker\SpectrumColorPicker.html" />
+    <Content Include="App_Plugins\tooorangey.EditorNotes\EditorNotes.controller.js" />
+    <Content Include="App_Plugins\tooorangey.EditorNotes\EditorNotes.css" />
+    <Content Include="App_Plugins\tooorangey.EditorNotes\EditorNotes.html" />
+    <Content Include="App_Plugins\tooorangey.EditorNotes\EditorNotesDialog.controller.js" />
+    <Content Include="App_Plugins\tooorangey.EditorNotes\EditorNotesDialog.html" />
+    <Content Include="App_Plugins\tooorangey.EditorNotes\NotesModePreValueEditor.controller.js" />
+    <Content Include="App_Plugins\tooorangey.EditorNotes\NotesModePreValueEditor.html" />
+    <Content Include="App_Plugins\tooorangey.EditorNotes\RichTextPreValueEditor.controller.js" />
+    <Content Include="App_Plugins\tooorangey.EditorNotes\RichTextPreValueEditor.html" />
     <Content Include="App_Plugins\UmbracoFormsEntries\Backoffice\FieldTypes\address.js" />
     <Content Include="App_Plugins\UmbracoForms\Assets\BaremetricsCalendar\public\css\application.css" />
     <Content Include="App_Plugins\UmbracoForms\Assets\BaremetricsCalendar\public\js\Calendar.js" />
@@ -981,7 +1013,9 @@
     <Content Include="Config\log4net.config" />
     <Content Include="Config\Dashboard.config" />
     <Content Include="App_Plugins\Escc.UmbracoBranding\package.manifest" />
-    <Content Include="css\guide.css" />
+    <Content Include="css\bootstrap-tabs.css" />
+    <Content Include="css\TinyMCE-Content.css" />
+    <Content Include="css\TinyMCE-StyleSelector-Headings.css" />
     <Content Include="css\umbraco-forms.css" />
     <Content Include="default.aspx" />
     <Content Include="favicon.ico" />
@@ -990,6 +1024,8 @@
     <Content Include="images\forms-email-header.png" />
     <Content Include="js\forms-address.js" />
     <Content Include="js\forms-url.js" />
+    <Content Include="js\libs\bootstrap\tab.js" />
+    <Content Include="js\libs\bootstrap\util.js" />
     <Content Include="js\libs\find-address.min.js" />
     <Content Include="RegistrationSkin\css\min\registration-skin-large.css" />
     <Content Include="RegistrationSkin\css\min\registration-skin-medium.css" />
@@ -1225,6 +1261,12 @@
     <Content Include="App_Plugins\UmbracoForms\Data\Templates\contactform.json" />
     <Content Include="App_Plugins\UmbracoForms\Data\Templates\commentform.json" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\tooorangey.EditorNotes\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PhonePropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\package.manifest" />
     <None Include="Jobs\Examine\ExamineIndex.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -4001,6 +4043,7 @@
     <Content Include="Views\MacroPartials\RenderUmbracoFormScripts.cshtml" />
     <Content Include="Views\MacroPartials\InsertUmbracoFormWithTheme.cshtml" />
     <Content Include="Views\Alerts.cshtml" />
+    <Content Include="Views\PrivacyNotice.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -4104,6 +4147,18 @@
     <Compile Include="Jobs\Examine\ISalaryRangeQueryBuilder.cs" />
     <Compile Include="Jobs\Examine\SalaryRangeLuceneQueryBuilder.cs" />
     <Compile Include="Jobs\IJobCacheStrategy.cs" />
+    <Compile Include="PrivacyNotice\PrivacyNoticePersonalDataType.cs" />
+    <Compile Include="PrivacyNotice\PrivacyNoticeExamplesDataType.cs" />
+    <Compile Include="PrivacyNotice\PrivacyNoticeViewModel.cs" />
+    <Compile Include="PrivacyNotice\PrivacyNoticeWhyTab.cs" />
+    <Compile Include="PrivacyNotice\PrivacyNoticeContactTab.cs" />
+    <Compile Include="PrivacyNotice\PrivacyNoticeSharingTab.cs" />
+    <Compile Include="PrivacyNotice\PrivacyNoticeLegalBasisTab.cs" />
+    <Compile Include="PrivacyNotice\PrivacyNoticeHowLongTab.cs" />
+    <Compile Include="PrivacyNotice\PrivacyNoticeWhatTab.cs" />
+    <Compile Include="PrivacyNotice\PrivacyNoticeDocumentType.cs" />
+    <Compile Include="PrivacyNotice\PrivacyNoticeController.cs" />
+    <Compile Include="PrivacyNotice\PrivacyNoticeViewModelFromUmbraco.cs" />
     <Compile Include="ServiceAlerts\Alert.cs" />
     <Compile Include="ServiceAlerts\AlertContentTab.cs" />
     <Compile Include="ServiceAlerts\Alerts.cs" />

@@ -1,8 +1,0 @@
-﻿/* Guide navigation is usually numbered, but if a ul is used it should be bulleted so update the defaults */
-.text-content ul.guide-nav { list-style: disc;}
-.text-content ul.guide-nav li { padding-left: 0; margin-left: 1.153846em; list-style: disc;}
-
-/* As we get to medium sizes we can divide into two columns, but use modern CSS rather than the old floats approach of .guide-nav */
-@media only screen and (min-width: 474px) {
-    .text-content ul.guide-nav { column-count: 2; }
-}
