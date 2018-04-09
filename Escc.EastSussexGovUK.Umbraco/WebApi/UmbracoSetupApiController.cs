@@ -166,6 +166,58 @@ namespace Escc.EastSussexGovUK.Umbraco.WebApi
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(RatingsDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(SkinDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(SkinsDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CustomerFocusBaseDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LandingDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(TaskDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(GuideStepDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(GuideDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(PersonDocumentType));
+
+                return Request.CreateResponse(HttpStatusCode.Created);
+            }
+            catch (Exception e)
+            {
+                e.ToExceptionless().Submit();
+                return Request.CreateResponse(HttpStatusCode.InternalServerError);
+            }
+        }
+
+        /// <summary>
+        /// Creates the Umbraco document types for forms.
+        /// </summary>
+        /// <returns></returns>
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
+        [AcceptVerbs("POST")]
+        public HttpResponseMessage CreateFormDocumentTypes([FromUri] string token)
+        {
+            if (!CheckAuthorisationToken(token)) return Request.CreateResponse(HttpStatusCode.Forbidden);
+
+            try
+            {
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(FormDocumentType));
+                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(PrivacyNoticeDocumentType));
+
+                return Request.CreateResponse(HttpStatusCode.Created);
+            }
+            catch (Exception e)
+            {
+                e.ToExceptionless().Submit();
+                return Request.CreateResponse(HttpStatusCode.InternalServerError);
+            }
+        }
+
+        /// <summary>
+        /// Creates the Umbraco document types converted from old Microsoft CMS templates.
+        /// </summary>
+        /// <returns></returns>
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
+        [AcceptVerbs("POST")]
+        public HttpResponseMessage CreateLegacyDocumentTypes([FromUri] string token)
+        {
+            if (!CheckAuthorisationToken(token)) return Request.CreateResponse(HttpStatusCode.Forbidden);
+
+            try
+            {
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LegacyBaseDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LandingPageWithPicturesDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(StandardLandingPageDocumentType));
@@ -173,14 +225,6 @@ namespace Escc.EastSussexGovUK.Umbraco.WebApi
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(StandardDownloadPageDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(MapDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(FormDownloadDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(PrivacyNoticeDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CustomerFocusBaseDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LandingDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(TaskDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(GuideStepDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(GuideDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(PersonDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(FormDocumentType));
 
                 return Request.CreateResponse(HttpStatusCode.Created);
             }
