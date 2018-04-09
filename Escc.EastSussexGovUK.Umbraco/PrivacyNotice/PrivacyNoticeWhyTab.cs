@@ -15,11 +15,14 @@ namespace Escc.EastSussexGovUK.Umbraco.PrivacyNotice
     description: "List the purposes for which the data will be used, eg to enable delivery of a statutory duty, to safeguard children, to improve outcomes for service users.", sortOrder: 1)]
         public string Why { get; set; }
 
-        [UmbracoProperty("Is personal data being processed outside the European Economic Area (EEA)?", "OutsideEEA", BuiltInUmbracoDataTypes.Boolean, sortOrder: 2)]
+        [UmbracoProperty("Editor notes: High standards", "EditorNotesHighStandards", EditorNotesHighStandardsDataType.PropertyEditor, EditorNotesHighStandardsDataType.DataTypeName, sortOrder: 2)]
+        public string EditorNotesHighStandards { get; set; }
+
+        [UmbracoProperty("Is personal data being processed outside the European Economic Area (EEA)?", "OutsideEEA", BuiltInUmbracoDataTypes.Boolean, sortOrder: 3)]
         public string OutsideEEA { get; set; }
 
         [UmbracoProperty("Is automated decision-making being used?", "AutomatedDecisionMaking", PropertyEditorAliases.RichTextPropertyEditor, RichTextEsccWithFormattingDataType.DataTypeName, 
-    description: "If automated decision making is used, state here and refer to guidance for data subject rights.", sortOrder: 3)]
+    description: "If automated decision making is used, state here and refer to guidance for data subject rights.", sortOrder: 4)]
         public string AutomatedDecisionMaking { get; set; }
     }
 }

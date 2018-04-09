@@ -124,8 +124,17 @@ namespace Escc.EastSussexGovUK.Umbraco.WebApi
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(PersonNameDataType));
 
                 // Privacy notice
-                UmbracoCodeFirstInitializer.CreateDataType(typeof(PrivacyNoticeExamplesDataType));
-                UmbracoCodeFirstInitializer.CreateDataType(typeof(PrivacyNoticePersonalDataType));
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(EditorNotesExamplesDataType));
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(EditorNotesPersonalDataType));
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(EditorNotesTakenSeriouslyDataType));
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(EditorNotesStaffTrainedDataType));
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(EditorNotesHighStandardsDataType));
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(EditorNotesRetentionDataType));
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(EditorNotesSharingDataType));
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(EditorNotesContractDataType));
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(EditorNotesRightsDataType));
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(EditorNotesContactDataType));
+                UmbracoCodeFirstInitializer.CreateDataType(typeof(EditorNotesComplainDataType));
 
                 return Request.CreateResponse(HttpStatusCode.Created);
             }

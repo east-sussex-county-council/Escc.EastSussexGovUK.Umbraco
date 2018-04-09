@@ -8,8 +8,8 @@ namespace Escc.EastSussexGovUK.Umbraco.PrivacyNotice
     /// <summary>
     /// An Umbraco editor notes data type which links to examples of privacy notices
     /// </summary>
-    [UmbracoDataType(DataTypeName, PropertyEditor, typeof(PrivacyNoticeExamplesDataType), DataTypeDatabaseType.Nvarchar)]
-    public class PrivacyNoticeExamplesDataType : IPreValueProvider
+    [UmbracoDataType(DataTypeName, PropertyEditor, typeof(EditorNotesExamplesDataType), DataTypeDatabaseType.Nvarchar)]
+    public class EditorNotesExamplesDataType : IPreValueProvider
     {
         public const string DataTypeName = "Privacy notice - Examples";
         public const string PropertyEditor = "tooorangey.EditorNotes";

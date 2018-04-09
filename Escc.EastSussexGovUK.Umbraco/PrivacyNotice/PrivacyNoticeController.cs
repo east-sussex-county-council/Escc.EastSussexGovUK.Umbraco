@@ -49,7 +49,7 @@ namespace Escc.EastSussexGovUK.Umbraco.PrivacyNotice
                 null,
                 new RatingSettingsFromUmbraco(model.Content));
 
-           // new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" });
+            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" });
 
             return CurrentTemplate(viewModel);
         }

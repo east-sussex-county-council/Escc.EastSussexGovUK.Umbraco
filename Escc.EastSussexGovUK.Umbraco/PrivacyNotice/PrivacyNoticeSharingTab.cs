@@ -14,8 +14,14 @@ namespace Escc.EastSussexGovUK.Umbraco.PrivacyNotice
 description: "Insert reasons why personal data is shared, eg obligations to comply with legislation, court orders etc.", sortOrder: 1)]
         public string NeedToKnow { get; set; }
 
+        [UmbracoProperty("Editor notes: Sharing", "EditorNotesSharing", EditorNotesSharingDataType.PropertyEditor, EditorNotesSharingDataType.DataTypeName, sortOrder: 2)]
+        public string EditorNotesSharing { get; set; }
+
         [UmbracoProperty("Why might personal data be shared with third party companies?", "ThirdParty", PropertyEditorAliases.RichTextPropertyEditor, RichTextEsccWithFormattingDataType.DataTypeName,
-description: "Insert reason why personal data is shared with companies, eg 'to enable us to provide one or more services'.", sortOrder: 2)]
+description: "Insert reason why personal data is shared with companies, eg 'to enable us to provide one or more services'.", sortOrder: 3)]
         public string ThirdParty { get; set; }
+
+        [UmbracoProperty("Editor notes: Contractual obligation", "EditorNotesContract", EditorNotesContractDataType.PropertyEditor, EditorNotesContractDataType.DataTypeName, sortOrder: 4)]
+        public string EditorNotesContract { get; set; }
     }
 }

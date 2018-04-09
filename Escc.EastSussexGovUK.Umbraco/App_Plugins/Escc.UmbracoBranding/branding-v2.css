@@ -7,3 +7,9 @@
 /* Change the login message to refer to the site, to differentiate this from other Umbraco instances         */
 .umb-login-container h1 {line-height: 30px; }
 .umb-login-container div[ng-show='view == \'login\'']:before { content: 'Log in to edit www.eastsussex.gov.uk'; font-size: 16px; }
+
+/* The editors' notes property editor should line up with other labels and controls, and should make links more obvious */
+body .tooorangey-editornote .panel-body { padding-top: 0; }
+body .tooorangey-editornote .ng-binding *:last-child { margin-bottom: 0; }
+body .tooorangey-editornote a:link, body .tooorangey-editornote a:visited { text-decoration:underline;}
+.hidelabel .tooorangey-editornote  {margin-left: 180px;}
