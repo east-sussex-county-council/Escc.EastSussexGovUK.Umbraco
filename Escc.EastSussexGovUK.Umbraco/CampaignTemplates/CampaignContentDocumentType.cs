@@ -16,6 +16,7 @@ using Umbraco.Inception.Attributes;
 using Umbraco.Inception.BL;
 using Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits;
 using Escc.EastSussexGovUK.Umbraco.Forms;
+using Escc.EastSussexGovUK.Umbraco.DocumentTypes.Features.Latest;
 
 namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
 {
@@ -57,6 +58,9 @@ namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
 
         [UmbracoTab("Design", 1)]
         public CampaignContentDesignTab DesignTab { get; set; }
+
+        [UmbracoTab("Latest", 2)]
+        public LatestTab LatestTab { get; set; }
 
         [UmbracoProperty("Page URL", "umbracoUrlName", BuiltInUmbracoDataTypes.Textbox, sortOrder: 0)]
         public Uri UmbracoUrlName { get; set; }

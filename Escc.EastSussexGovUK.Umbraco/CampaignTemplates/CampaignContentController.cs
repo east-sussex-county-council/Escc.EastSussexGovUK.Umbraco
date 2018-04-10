@@ -8,6 +8,7 @@ using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
 using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
+using Escc.Umbraco.PropertyTypes;
 
 namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
 {
@@ -31,6 +32,9 @@ namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
             // Add common properties to the model
             var modelBuilder = new BaseViewModelBuilder();
             modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode);
+            modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel, 
+                new UmbracoLatestService(model.Content), null, null, 
+                new UmbracoWebChatSettingsService(model.Content, new UrlListReader()), null, null);
 
             new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" });
 

@@ -30,7 +30,8 @@
 
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
     {
-        new EmbeddedYouTubeVideos() { Html = new [] { Model.ContentPart1.ToString(), Model.ContentPart2.ToString(), Model.ContentPart3.ToString(), Model.ContentPart4.ToString() }}
+        new EmbeddedYouTubeVideos() { Html = new [] { Model.ContentPart1.ToString(), Model.ContentPart2.ToString(), Model.ContentPart3.ToString(), Model.ContentPart4.ToString() }},
+        new WebChat() { WebChatSettings = Model.WebChat }
     });
 
     var bodyClass = "campaign-content";
@@ -49,6 +50,7 @@
         <div class="content text-content">
             <h1>@Model.Metadata.Title</h1>
 
+            @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
             @Html.Partial("~/Views/Layouts/_GuideNavigation.cshtml", Model.CampaignPages)
 
             @Model.ContentPart1
