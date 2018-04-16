@@ -16,7 +16,8 @@ namespace Escc.EastSussexGovUK.Umbraco.PrivacyNotice
 
         public IDictionary<string, PreValue> PreValues { get; } = new Dictionary<string, PreValue>()
             {
-               {"editorNotes",new PreValue(-1,"<p>To complain about the use of your information, please contact our <a href=\"https://www.eastsussex.gov.uk/contact-us/complaints/corporate-complaints/\" target=\"_blank\">Customer Services Team</a> " +
+               {"editorNotes",new PreValue(-1,"<p><strong>This section will be included in the privacy notice:</strong></p>" +
+                   "<p>To complain about the use of your information, please contact our <a href=\"https://www.eastsussex.gov.uk/contact-us/complaints/corporate-complaints/\" target=\"_blank\">Customer Services Team</a> " +
                     "or our <a href=\"https://www.eastsussex.gov.uk/yourcouncil/about/keydocuments/foi/dataprotection/data-protection-officer/\" target=\"_blank\">Data Protection Officer</a>.</p>" +
 
                 "<p><a href=\"https://www.eastsussex.gov.uk/contact-us/complaints\" target=\"_blank\">Further information on making a complaint</a>.</p>" +

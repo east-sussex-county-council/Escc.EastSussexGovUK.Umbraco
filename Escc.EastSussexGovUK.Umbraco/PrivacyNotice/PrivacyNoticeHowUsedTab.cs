@@ -9,9 +9,9 @@ namespace Escc.EastSussexGovUK.Umbraco.PrivacyNotice
     /// <summary>
     /// Umbraco properties for creating one section of a privacy notice
     /// </summary>
-    public class PrivacyNoticeWhyTab : TabBase
+    public class PrivacyNoticeHowUsedTab : TabBase
     {
-        [UmbracoProperty("How will personal data be used?", "Why", PropertyEditorAliases.RichTextPropertyEditor, RichTextEsccWithFormattingDataType.DataTypeName, mandatory: true,
+        [UmbracoProperty("How will personal data be used?", "HowUsed", PropertyEditorAliases.RichTextPropertyEditor, RichTextEsccWithFormattingDataType.DataTypeName, mandatory: true,
     description: "List the purposes for which the data will be used, eg to enable delivery of a statutory duty, to safeguard children, to improve outcomes for service users.", sortOrder: 1)]
         public string Why { get; set; }
 

@@ -64,7 +64,8 @@
 
             @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
             <ul class="guide-nav nav" role="tablist">
-                <li><a id="what-tab" href="#what" aria-controls="what" data-toggle="tab" role="tab" aria-selected="true" class="active">What information is being used?</a></li>
+                <li><a id="overview-tab" href="#overview" aria-controls="overview" data-toggle="tab" role="tab" aria-selected="true" class="active">Overview</a></li>
+                <li><a id="what-tab" href="#what" aria-controls="what" data-toggle="tab" role="tab">What information is being used?</a></li>
                 <li><a id="how-tab" href="#how" aria-controls="how" data-toggle="tab" role="tab">How will your information be used?</a></li>
                 <li><a id="legal-tab" href="#legal" aria-controls="legal" data-toggle="tab" role="tab">What is the legal basis for processing your information?</a></li>
                 <li><a id="how-long-tab" href="#how-long" aria-controls="how-long" data-toggle="tab" role="tab">How long will your information be kept for?</a></li>
@@ -72,8 +73,8 @@
                 @if (DateTime.Today >= new DateTime(2018, 5, 25)) { <li><a id="rights-tab" href="#rights" aria-controls="rights" data-toggle="tab" role="tab">Your rights</a></li> }
                 <li><a id="contact-tab" href="#contact" aria-controls="contact" data-toggle="tab" role="tab">How to find out more or complain</a></li>
             </ul>
-            <section id="what" role="tabpanel" aria-labelledby="what-tab" class="active show">
-                <h2>What information is being used?</h2>
+            <section id="overview" role="tabpanel" aria-labelledby="overview-tab" class="active show">
+                <h2>Overview</h2>
 
                 @Model.WhatIsCovered
 
@@ -82,6 +83,10 @@
                     appropriately in line with data protection legislation, will be stored securely and will not be processed unless
                     the requirements for fair and lawful processing can be met.
                 </p>
+            </section>
+
+            <section id="what" role="tabpanel" aria-labelledby="what-tab">
+                <h2>What information is being used?</h2>
 
                 @Model.WhatIsUsed
 
@@ -119,7 +124,7 @@
 
             <section id="how-long" role="tabpanel" aria-labelledby="how-long-tab">
 
-                <h2>How long your information will be kept for?</h2>
+                <h2>How long will your information will be kept for?</h2>
 
                 @Model.HowLong
             </section>

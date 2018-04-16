@@ -10,16 +10,19 @@ namespace Escc.EastSussexGovUK.Umbraco.PrivacyNotice
         Description = "A privacy notice, required by UK data protection law for any service which collects personally identifiable information.")]
     public class PrivacyNoticeDocumentType
     {
-        [UmbracoTab("What?")]
+        [UmbracoTab("Overview")]
+        public PrivacyNoticeOverviewTab Overview { get; set; }
+
+        [UmbracoTab("What is used?")]
         public PrivacyNoticeWhatTab What { get; set; }
 
-        [UmbracoTab("Why?")]
-        public PrivacyNoticeWhyTab Why { get; set; }
+        [UmbracoTab("How is it used?")]
+        public PrivacyNoticeHowUsedTab HowUsed { get; set; }
 
         [UmbracoTab("Legal basis")]
         public PrivacyNoticeLegalBasisTab LegalBasis { get; set; }
 
-        [UmbracoTab("How long?")]
+        [UmbracoTab("How long for?")]
         public PrivacyNoticeHowLongTab HowLong { get; set; }
 
         [UmbracoTab("Sharing")]

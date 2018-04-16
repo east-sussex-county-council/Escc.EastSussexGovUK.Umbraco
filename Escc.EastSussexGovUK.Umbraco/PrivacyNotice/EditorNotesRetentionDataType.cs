@@ -16,11 +16,11 @@ namespace Escc.EastSussexGovUK.Umbraco.PrivacyNotice
 
         public IDictionary<string, PreValue> PreValues { get; } = new Dictionary<string, PreValue>()
             {
-               {"editorNotes",new PreValue(-1,"<p>State how long information will be kept for. This should be documented in your completed Privacy Impact Assessment (PIA) and there is " +
-                   "<a href=\"http://intranet.escc.gov.uk/helping/dataandrecords/recordsmanagement/Pages/retentionschedules.aspx\" target=\"_blank\">retention and disposal guidance on the intranet</a>. " +
-                   "You can link to the ESCC retention schedule as well or instead.</p>",1)},
+               {"editorNotes",new PreValue(-1,"<p>This is your retention schedule, and it should be documented in your completed Privacy Impact Assessment (PIA). " +
+                   "There is <a href=\"http://intranet.escc.gov.uk/helping/dataandrecords/recordsmanagement/Pages/retentionschedules.aspx\" target=\"_blank\">retention and disposal guidance on the intranet</a>.</p>",1)},
                {"hideLabel",new PreValue(-1,"1",2)},
-               {"noteRenderMode",new PreValue(-1,"Html",3)}
+               {"noteCssClass",new PreValue(-1,"alert alert-info",3)},
+               {"noteRenderMode",new PreValue(-1,"Html",4)}
             };
     }
 }

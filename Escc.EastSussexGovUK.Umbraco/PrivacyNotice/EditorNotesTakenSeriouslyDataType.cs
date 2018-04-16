@@ -16,7 +16,8 @@ namespace Escc.EastSussexGovUK.Umbraco.PrivacyNotice
 
         public IDictionary<string, PreValue> PreValues { get; } = new Dictionary<string, PreValue>()
             {
-               {"editorNotes",new PreValue(-1,"<p>" +
+               {"editorNotes",new PreValue(-1,"<p><strong>This section will be included in the privacy notice:</strong></p>" +
+                   "<p>" +
                     "East Sussex County Council takes data protection seriously. Please be assured that your information will be used " +
                     "appropriately in line with data protection legislation, will be stored securely and will not be processed unless " +
                     "the requirements for fair and lawful processing can be met." +

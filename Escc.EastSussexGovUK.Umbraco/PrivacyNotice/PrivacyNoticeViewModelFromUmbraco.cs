@@ -47,13 +47,13 @@ namespace Escc.EastSussexGovUK.Umbraco.PrivacyNotice
         {
             var model = new PrivacyNoticeViewModel
             {
-                WhatIsCovered = GetHtmlFromUmbraco("WhatIsCovered_What"),
-                WhatIsUsed = GetHtmlFromUmbraco("WhatIsUsed_What"),
-                HowItIsUsed = GetHtmlFromUmbraco("Why_Why"),
-                OutsideEEA = _umbracoContent.GetPropertyValue<bool>("OutsideEEA_Why"),
-                AutomatedDecisionMaking = GetHtmlFromUmbraco("AutomatedDecisionMaking_Why"),
+                WhatIsCovered = GetHtmlFromUmbraco("WhatIsCovered_Overview"),
+                WhatIsUsed = GetHtmlFromUmbraco("WhatIsUsed_What_is_used"),
+                HowItIsUsed = GetHtmlFromUmbraco("HowUsed_How_is_it_used"),
+                OutsideEEA = _umbracoContent.GetPropertyValue<bool>("OutsideEEA_How_is_it_used"),
+                AutomatedDecisionMaking = GetHtmlFromUmbraco("AutomatedDecisionMaking_How_is_it_used"),
                 LegalBasis = GetHtmlFromUmbraco("LegalBasis_Legal_basis"),
-                HowLong = GetHtmlFromUmbraco("HowLong_How_long"),
+                HowLong = GetHtmlFromUmbraco("HowLong_How_long_for"),
                 SharingNeedToKnow = GetHtmlFromUmbraco("NeedToKnow_Sharing"),
                 SharingThirdParties = GetHtmlFromUmbraco("ThirdParty_Sharing"),
                 Contact = GetHtmlFromUmbraco("Contact_Contact")

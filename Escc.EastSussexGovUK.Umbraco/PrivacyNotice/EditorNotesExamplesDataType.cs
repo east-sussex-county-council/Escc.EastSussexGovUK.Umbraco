@@ -18,7 +18,8 @@ namespace Escc.EastSussexGovUK.Umbraco.PrivacyNotice
             {
                {"editorNotes",new PreValue(-1,"<p>See examples of existing <a href=\"https://www.eastsussex.gov.uk/privacy/\" target=\"_blank\">Privacy notices</a>.</p>",1)},
                {"hideLabel",new PreValue(-1,"1",2)},
-               {"noteRenderMode",new PreValue(-1,"Html",3)}
+               {"noteCssClass",new PreValue(-1,"alert alert-info",3)},
+               {"noteRenderMode",new PreValue(-1,"Html",4)}
             };
     }
 }

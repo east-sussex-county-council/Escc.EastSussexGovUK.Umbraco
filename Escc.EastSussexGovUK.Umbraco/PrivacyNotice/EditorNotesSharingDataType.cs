@@ -16,7 +16,8 @@ namespace Escc.EastSussexGovUK.Umbraco.PrivacyNotice
 
         public IDictionary<string, PreValue> PreValues { get; } = new Dictionary<string, PreValue>()
             {
-               {"editorNotes",new PreValue(-1,"<p>Any sharing of personal data is always done:</p>" +
+               {"editorNotes",new PreValue(-1,"<p><strong>This section will be included in the privacy notice:</strong></p>" +
+                   "<p>Any sharing of personal data is always done:</p>" +
                 "<ul>" +
                     "<li>on case-by-case basis</li>" +
                     "<li>using the minimum personal data necessary</li>" +
@@ -29,7 +30,7 @@ namespace Escc.EastSussexGovUK.Umbraco.PrivacyNotice
                     "We may also share this information with other bodies that inspect and manage public funds.</p>" +
                 "<p>We will not routinely disclose any information about you without your express permission. However, there are " +
                     "circumstances where we must or can share information about you owing to a legal or statutory obligation.</p>" +
-                   "<h4>Use of third party companies</h4>" +
+                   "<h4><strong>Use of third party companies</strong></h4>" +
                    "<p>East Sussex County Council may share your information with trusted external companies to process your data on our behalf.</p>",1)},
                {"hideLabel",new PreValue(-1,"1",2)},
                {"noteRenderMode",new PreValue(-1,"Html",3)}

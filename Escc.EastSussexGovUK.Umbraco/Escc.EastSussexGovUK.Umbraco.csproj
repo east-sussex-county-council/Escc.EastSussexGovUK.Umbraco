@@ -4160,7 +4160,8 @@
     <Compile Include="PrivacyNotice\EditorNotesExamplesDataType.cs" />
     <Compile Include="PrivacyNotice\PrivacyNoticeRightsTab.cs" />
     <Compile Include="PrivacyNotice\PrivacyNoticeViewModel.cs" />
-    <Compile Include="PrivacyNotice\PrivacyNoticeWhyTab.cs" />
+    <Compile Include="PrivacyNotice\PrivacyNoticeOverviewTab.cs" />
+    <Compile Include="PrivacyNotice\PrivacyNoticeHowUsedTab.cs" />
     <Compile Include="PrivacyNotice\PrivacyNoticeContactTab.cs" />
     <Compile Include="PrivacyNotice\PrivacyNoticeSharingTab.cs" />
     <Compile Include="PrivacyNotice\PrivacyNoticeLegalBasisTab.cs" />

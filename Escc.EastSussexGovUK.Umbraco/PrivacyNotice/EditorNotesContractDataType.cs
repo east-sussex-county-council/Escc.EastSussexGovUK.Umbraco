@@ -16,7 +16,8 @@ namespace Escc.EastSussexGovUK.Umbraco.PrivacyNotice
 
         public IDictionary<string, PreValue> PreValues { get; } = new Dictionary<string, PreValue>()
             {
-               {"editorNotes",new PreValue(-1,"<p>Any company commissioned by the Council will be under contractual obligation to comply with data protection legislation.</p>",1)},
+               {"editorNotes",new PreValue(-1,"<p><strong>This section will be included in the privacy notice:</strong></p>" +
+                   "<p>Any company commissioned by the Council will be under contractual obligation to comply with data protection legislation.</p>",1)},
                {"hideLabel",new PreValue(-1,"1",2)},
                {"noteRenderMode",new PreValue(-1,"Html",3)}
             };
