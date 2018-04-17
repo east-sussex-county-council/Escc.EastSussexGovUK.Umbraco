@@ -9,12 +9,14 @@ using Escc.EastSussexGovUK.Umbraco.Location;
 using Exceptionless;
 using Umbraco.Web;
 using Umbraco.Web.WebApi;
+using Escc.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.WebApi
 {
     /// <summary>
     /// Gets JSON data about locations saved using the Location template or one of its derivatives
     /// </summary>
+    [CorsPolicyFromConfig]
     public class LocationController : UmbracoApiController
     {
         /// <summary>
