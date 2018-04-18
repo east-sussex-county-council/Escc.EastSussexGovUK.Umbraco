@@ -97,7 +97,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             {
             }
 
-            var options = ReadSelectedOptionsFromUmbracoCheckboxList(content, "facebookWidgetSettings_Social_media_and_promotion");
+            var options = new List<string>(content.GetPropertyValue<IEnumerable<string>>("facebookWidgetSettings_Social_media_and_promotion"));
+            for (var i = 0; i < options.Count; i++) options[i] = options[i].ToUpperInvariant();
             model.FacebookShowFaces = options.Contains("SHOW FACES");
             model.FacebookShowFeed = options.Contains("SHOW FEED");
         }
@@ -122,23 +123,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
                 return true;
             }
             return false;
-        }
-
-        /// <summary>
-        /// Read Facebook widget options from a checkbox list
-        /// </summary>
-        /// <param name="content">The content.</param>
-        /// <param name="propertyAlias">The property alias.</param>
-        /// <returns></returns>
-        private static List<string> ReadSelectedOptionsFromUmbracoCheckboxList(IPublishedContent content, string propertyAlias)
-        {
-            var options = new List<string>();
-            var optionsRaw = content.GetPropertyValue<string>(propertyAlias);
-            if (!String.IsNullOrWhiteSpace(optionsRaw))
-            {
-                options.AddRange(optionsRaw.ToUpperInvariant().Split(','));
-            }
-            return options;
         }
     }
 }
