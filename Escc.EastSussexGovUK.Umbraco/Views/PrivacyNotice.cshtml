@@ -89,8 +89,6 @@
                 <h2>What information is being used?</h2>
 
                 @Model.WhatIsUsed
-
-                <p>Our staff are trained to handle your information correctly and protect your confidentiality and privacy.</p>
             </section>
 
             <section id="how" role="tabpanel" aria-labelledby="how-tab">
@@ -102,6 +100,8 @@
                     We aim to maintain high standards, adopt best practice for our record keeping and regularly check and report
                     on how we are doing.  Your information is never sold for direct marketing purposes.
                 </p>
+
+                <p>Our staff are trained to handle your information correctly and protect your confidentiality and privacy.</p>
 
                 @if (Model.OutsideEEA)
         {
@@ -156,13 +156,13 @@
 
                 @if (!String.IsNullOrEmpty(Model.SharingThirdParties.ToString()))
         {
-                    <h3>Use of third party companies</h3>
+                    <h3>Use of third party organisations</h3>
 
-                    <p>East Sussex County Council may share your information with trusted external companies to process your data on our behalf.</p>
+                    <p>East Sussex County Council may share your information with trusted external organisations to process your data on our behalf.</p>
 
                     @Model.SharingThirdParties
 
-                    <p>Any company commissioned by the Council will be under contractual obligation to comply with data protection legislation.</p>
+                    <p>Any organisation commissioned by the Council will be under contractual obligation to comply with data protection legislation.</p>
                 }
             </section>
 

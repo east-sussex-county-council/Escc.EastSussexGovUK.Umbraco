@@ -4154,7 +4154,6 @@
     <Compile Include="PrivacyNotice\EditorNotesRightsDataType.cs" />
     <Compile Include="PrivacyNotice\EditorNotesSharingDataType.cs" />
     <Compile Include="PrivacyNotice\EditorNotesRetentionDataType.cs" />
-    <Compile Include="PrivacyNotice\EditorNotesStaffTrainedDataType.cs" />
     <Compile Include="PrivacyNotice\EditorNotesTakenSeriouslyDataType.cs" />
     <Compile Include="PrivacyNotice\EditorNotesPersonalDataType.cs" />
     <Compile Include="PrivacyNotice\EditorNotesExamplesDataType.cs" />
