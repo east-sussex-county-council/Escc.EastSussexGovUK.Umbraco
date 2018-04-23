@@ -127,7 +127,6 @@ namespace Escc.EastSussexGovUK.Umbraco.WebApi
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(EditorNotesExamplesDataType));
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(EditorNotesPersonalDataType));
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(EditorNotesTakenSeriouslyDataType));
-                UmbracoCodeFirstInitializer.CreateDataType(typeof(EditorNotesStaffTrainedDataType));
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(EditorNotesHighStandardsDataType));
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(EditorNotesRetentionDataType));
                 UmbracoCodeFirstInitializer.CreateDataType(typeof(EditorNotesSharingDataType));
