@@ -61,7 +61,7 @@ namespace Escc.EastSussexGovUK.Umbraco.ServiceAlerts
             var closureData = closureDataSource.ReadClosureData(new ServiceType("school"));
             if (closureData != null && (TooLateForToday() ? closureData.EmergencyClosureExistsTomorrow() : closureData.EmergencyClosureExistsToday()))
             {
-                alertHtml = "<p><a href=\"https://apps.eastsussex.gov.uk/educationandlearning/schools/schoolclosures/\">Emergency school closures</a> &#8211; check if your school is affected, and subscribe to alerts.</p>";
+                alertHtml = "<p><a href=\"https://www.eastsussex.gov.uk/educationandlearning/schools/schoolclosures/\">Emergency school closures</a> &#8211; check if your school is affected, and subscribe to alerts.</p>";
 
                 AddSchoolClosureAlert(alerts, alertHtml);
             }
@@ -77,7 +77,7 @@ namespace Escc.EastSussexGovUK.Umbraco.ServiceAlerts
         /// <returns></returns>
         private bool TooLateForToday()
         {
-            return (DateTime.Now > DateTime.Today.Date.AddHours(16)); // change display after 4pm
+            return (DateTime.Now.ToUkDateTime() > DateTime.Today.Date.AddHours(16)); // change display after 4pm
         }
 
         private static void AddSchoolClosureAlert(List<AlertViewModel> alerts, string alertHtml)
