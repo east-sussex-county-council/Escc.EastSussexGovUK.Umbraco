@@ -4146,6 +4146,11 @@
     <Compile Include="Jobs\Alerts\JobAlertSettingsTab.cs" />
     <Compile Include="Jobs\Api\JobsLookupValuesFromApi.cs" />
     <Compile Include="Jobs\Api\RedeploymentJobsController.cs" />
+    <Compile Include="Jobs\JobTransformers\SetJobLocationTransformer.cs" />
+    <Compile Include="Jobs\JobTransformers\IJobMatcher.cs" />
+    <Compile Include="Jobs\JobTransformers\IJobTransformer.cs" />
+    <Compile Include="Jobs\JobTransformers\LocationMatcher.cs" />
+    <Compile Include="Jobs\JobTransformers\JointCommunityRehabilitationMatcher.cs" />
     <Compile Include="Jobs\MemoryJobCacheStrategy.cs" />
     <Compile Include="Jobs\Examine\ISalaryRangeQueryBuilder.cs" />
     <Compile Include="Jobs\Examine\SalaryRangeLuceneQueryBuilder.cs" />

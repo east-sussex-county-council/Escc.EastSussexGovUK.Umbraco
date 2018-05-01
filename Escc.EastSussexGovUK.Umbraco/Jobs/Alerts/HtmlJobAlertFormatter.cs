@@ -74,7 +74,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
                     emailHtml.Append("<ul style=\"margin-left:0;padding-top:1em\">");
                     foreach (var job in alert.MatchingJobs)
                     {
-                        var description = $"{job.WorkPattern} {job.ContractType.ToLower(CultureInfo.CurrentCulture)} {job.Salary.SalaryRange} in {job.Location}. Closing date {job.ClosingDate.Value.ToBritishDate()}. {job.Organisation} / {job.JobType} vacancy.".TrimStart();
+                        var description = $"{job.WorkPattern} {job.ContractType.ToLower(CultureInfo.CurrentCulture)} {job.Salary.SalaryRange} in {job.Locations}. Closing date {job.ClosingDate.Value.ToBritishDate()}. {job.Organisation} / {job.JobType} vacancy.".TrimStart();
                         description = description.Substring(0, 1).ToUpper(CultureInfo.CurrentCulture) + description.Substring(1);
 
                         emailHtml.Append("<li style=\"list-style:none;padding:0\"><p style=\"margin:1em 0 .5em 0\"><a href=\"").Append($"{job.Url}?utm_source=job-alert&utm_medium=job-advert-{HttpUtility.UrlEncode(job.Organisation)}&utm_content={job.Reference}&utm_campaign=General-Recruitment").Append("\">").Append(job.JobTitle).Append("</a></p>")

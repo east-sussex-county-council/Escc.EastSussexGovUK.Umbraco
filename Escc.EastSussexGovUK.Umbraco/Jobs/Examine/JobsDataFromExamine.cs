@@ -235,7 +235,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                         Reference = result.Fields.ContainsKey("reference") ? result["reference"] : String.Empty,
                         JobTitle = result.Fields.ContainsKey("titleDisplay") ? result["titleDisplay"] : String.Empty,
                         Organisation = result.Fields.ContainsKey("organisationDisplay") ? result["organisationDisplay"] : String.Empty,
-                        Location = result.Fields.ContainsKey("locationDisplay") ? result["locationDisplay"] : String.Empty,
+                        Locations = result.Fields.ContainsKey("locationDisplay") ? result["locationDisplay"].Split(',') : new string[0],
                         JobType = result.Fields.ContainsKey("jobTypeDisplay") ? result["jobTypeDisplay"] : String.Empty,
                         ContractType = result.Fields.ContainsKey("contractType") ? result["contractType"] : String.Empty,
                         IsPartTime = result.Fields.ContainsKey("partTime") ? Boolean.Parse(result["partTime"]) : false,

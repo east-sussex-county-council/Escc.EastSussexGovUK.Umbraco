@@ -1,5 +1,6 @@
 ﻿@using Escc.EastSussexGovUK.Umbraco.Jobs
 @using Escc.Dates
+@using System.Linq
 @model IEnumerable<Job>
 <tbody>
     @foreach (var job in Model)
@@ -13,7 +14,7 @@
             {
                 <td class="job-title">@job.JobTitle</td>
             }
-            <td class="location">@job.Location</td>
+            <td class="location">@(string.Join(", ", job.Locations.ToArray<string>()))</td>
             <td class="salary">@job.Salary.SalaryRange</td>
             <td class="work-pattern">@job.WorkPattern</td>
             <td class="closing-date"><span>Closes </span>@(job.ClosingDate.HasValue ? job.ClosingDate.Value.ToShortBritishDate() : String.Empty)</td>

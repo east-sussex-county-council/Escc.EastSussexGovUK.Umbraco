@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Web;
-using System.Web.Hosting;
+using System.Linq;
 using Escc.Dates;
 using Escc.EastSussexGovUK.Umbraco.Examine;
 using Escc.Html;
@@ -17,6 +17,7 @@ using Exceptionless;
 using System.Globalization;
 using Examine.Providers;
 using System.Text;
+using Escc.EastSussexGovUK.Umbraco.Jobs.JobTransformers;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
 {
@@ -28,6 +29,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
         private readonly IJobsDataProvider _jobsProvider;
         private readonly ISearchFilter _stopWordsRemover;
         private readonly IHtmlTagSanitiser _tagSanitiser;
+        private readonly Dictionary<IEnumerable<IJobMatcher>, IEnumerable<IJobTransformer>> _jobTransformers;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseJobsIndexer" /> class.
@@ -35,13 +37,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
         /// <param name="jobsProvider">The jobs provider.</param>
         /// <param name="stopWordsRemover">The stop words remover.</param>
         /// <param name="tagSanitiser">The tag sanitiser.</param>
+        /// <param name="jobTransformers">Transforms to apply to specific jobs.</param>
+        /// <exception cref="ArgumentNullException">jobsProvider</exception>
         /// <exception cref="System.ArgumentNullException">stopWordsRemover</exception>
-        protected BaseJobsIndexer(IJobsDataProvider jobsProvider, ISearchFilter stopWordsRemover, IHtmlTagSanitiser tagSanitiser)
+        protected BaseJobsIndexer(IJobsDataProvider jobsProvider, ISearchFilter stopWordsRemover, IHtmlTagSanitiser tagSanitiser, Dictionary<IEnumerable<IJobMatcher>, IEnumerable<IJobTransformer>> jobTransformers)
         {
             if (jobsProvider == null) throw new ArgumentNullException(nameof(jobsProvider));
             _jobsProvider = jobsProvider;
             _stopWordsRemover = stopWordsRemover;
             _tagSanitiser = tagSanitiser;
+            _jobTransformers = jobTransformers;
         }
 
         /// <summary>
@@ -69,7 +74,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                         var jobAdvert = Task.Run(async () => await _jobsProvider.ReadJob(job.Id.ToString(CultureInfo.InvariantCulture))).Result;
                         jobAdvert.Id = job.Id;
                         if (String.IsNullOrEmpty(jobAdvert.JobTitle)) jobAdvert.JobTitle = job.JobTitle;
-                        if (String.IsNullOrEmpty(jobAdvert.Location)) jobAdvert.Location = job.Location;
+                        if (jobAdvert.Locations == null || jobAdvert.Locations.Count == 0) jobAdvert.Locations = job.Locations;
 
                         jobAdvert.Salary.SearchRange = job.Salary.SearchRange;
                         if (String.IsNullOrEmpty(jobAdvert.Salary.SalaryRange)) jobAdvert.Salary.SalaryRange = job.Salary.SearchRange;
@@ -77,6 +82,26 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                         if (!jobAdvert.Salary.MaximumSalary.HasValue) jobAdvert.Salary.MaximumSalary = job.Salary.MaximumSalary;
 
                         if (!jobAdvert.ClosingDate.HasValue) jobAdvert.ClosingDate = job.ClosingDate;
+
+                        if (_jobTransformers != null)
+                        {
+                            foreach (var matchers in _jobTransformers.Keys)
+                            {
+                                var match = true;
+                                foreach (var matcher in matchers)
+                                {
+                                    match = match && matcher.IsMatch(jobAdvert);
+                                }
+
+                                if (match)
+                                {
+                                    foreach (var transformer in _jobTransformers[matchers])
+                                    {
+                                        transformer.TransformJob(jobAdvert);
+                                    }
+                                }
+                            }
+                        }
 
                         var simpleDataSet = CreateIndexItemFromJob(jobAdvert, indexType);
                         dataSets.Add(simpleDataSet);
@@ -169,8 +194,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             simpleDataSet.RowData.Add("titleDisplay", job.JobTitle);
             simpleDataSet.RowData.Add("organisation", _stopWordsRemover != null ? _stopWordsRemover.Filter(job.Organisation) : job.Organisation);
             simpleDataSet.RowData.Add("organisationDisplay", job.Organisation);
-            simpleDataSet.RowData.Add("location", _stopWordsRemover != null ? _stopWordsRemover.Filter(job.Location) : job.Location);
-            simpleDataSet.RowData.Add("locationDisplay", job.Location); // because Somewhere-on-Sea needs to lose the "on" for searching but keep it for display
             simpleDataSet.RowData.Add("salary", salary);
             simpleDataSet.RowData.Add("salaryDisplay", salaryWithStopWords); // so that it's not displayed with stop words removed
             simpleDataSet.RowData.Add("salaryRange", _stopWordsRemover != null ? _stopWordsRemover.Filter(job.Salary.SearchRange) : job.Salary.SearchRange);
@@ -188,6 +211,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
             simpleDataSet.RowData.Add("partTime", job.WorkPattern.IsPartTime.ToString());
             simpleDataSet.RowData.Add("workPattern", job.WorkPattern.ToString());
             simpleDataSet.RowData.Add("datePublished", DateTime.UtcNow.ToIso8601DateTime());
+
+            var locationsList = string.Join(", ", job.Locations.ToArray<string>());
+            simpleDataSet.RowData.Add("location", _stopWordsRemover != null ? _stopWordsRemover.Filter(locationsList) : locationsList);
+            simpleDataSet.RowData.Add("locationDisplay", locationsList); // because Somewhere-on-Sea needs to lose the "on" for searching but keep it for display
+
+
             if (job.AdvertHtml != null)
             {
                 var fullText = job.AdvertHtml.ToHtmlString();
@@ -200,7 +229,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                                 .Append(space).Append(job.Reference)
                                 .Append(space).Append(job.JobTitle)
                                 .Append(space).Append(job.Organisation)
-                                .Append(space).Append(job.Location)
+                                .Append(space).Append(job.Locations)
                                 .Append(space).Append(job.JobType)
                                 .Append(space).Append(job.ContractType)
                                 .Append(space).Append(job.Department)

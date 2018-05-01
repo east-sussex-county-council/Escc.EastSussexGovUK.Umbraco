@@ -1,6 +1,6 @@
 ﻿@using System.Text
+@using System.Linq
 @using Escc.Dates
-@using Escc.Web
 @model Escc.EastSussexGovUK.Umbraco.Jobs.JobAdvertViewModel
 @{
     var jobSummaryHtml = new StringBuilder("<dl class=\"job-summary\">");
@@ -9,9 +9,9 @@
     {
         jobSummaryHtml.Append("<dt>Job reference</dt><dd id=\"job-reference\">").Append(Model.Job.Reference).Append("</dd>");
     }
-    if (!String.IsNullOrEmpty(Model.Job.Location))
+    if (Model.Job.Locations !=null && Model.Job.Locations.Count > 0)
     {
-        jobSummaryHtml.Append("<dt>Location</dt><dd>").Append(Model.Job.Location).Append("</dd>");
+        jobSummaryHtml.Append("<dt>Location</dt><dd>").Append(string.Join(", ", Model.Job.Locations.ToArray<string>())).Append("</dd>");
     }
     if (!String.IsNullOrEmpty(Model.Job.Salary.SalaryRange))
     {
@@ -117,9 +117,6 @@
     if (Model.Job.IsPartTime) { employmentTypes.Add("PART_TIME"); }
 
     var employmentType = employmentTypes.Count > 0 ? "\"employmentType\": [\"" + String.Join("\", \"", employmentTypes.ToArray()) + "\"]," : String.Empty;
-    var region = "East Sussex";
-    if (Model.Job.JobTitle.Contains("Surrey County Council")) { region = "Surrey"; }
-    if (Model.Job.Location == "Midhurst") { region = "West Susssex"; }
 }{
     "@@context": "http://schema.org",
     "@@type": "JobPosting",
@@ -135,27 +132,32 @@
     "description": "@Html.Raw(jobSummaryHtml.Replace("\"", "'")) @Html.Raw(Model.Job.AdvertHtml?.ToHtmlString().Replace("\"", "'"))",
     "industry": "Local government",
     @Html.Raw(employmentType)
-    "jobLocation": {
-        "@@type": "Place",
-        "address": {
-            "@@type": "PostalAddress",
-            "addressLocality": "@Model.Job.Location",
-            "addressRegion": "@region",
-            "addressCountry": "UK"
-            }  
-        },
+    @foreach (var location in Model.Job.Locations) {
+        var region = "East Sussex";
+        if (Model.Job.JobTitle.Contains("Surrey County Council")) { region = "Surrey"; }
+        if (location == "Midhurst") { region = "West Susssex"; }
+    @:"jobLocation": {
+    @:    "@@type": "Place",
+    @:    "address": {
+    @:        "@@type": "PostalAddress",
+    @:        "addressLocality": "@location",
+    @:        "addressRegion": "@region",
+    @:        "addressCountry": "UK"
+    @:     }
+    @:},
+    }
     "salaryCurrency": "GBP",
     "hiringOrganization": {
-        "@@type": "Organization",
+            "@@type": "Organization",
         "name": "@Model.Job.Organisation"
         },
     "datePosted": "@Model.Job.DatePublished.ToIso8601DateTime()",
     "validThrough": "@Model.Job.ClosingDate.Value.ToIso8601DateTime()",
     "url": "@Model.Job.Url",
     "identifier": {
-        "@@type": "PropertyValue",
+            "@@type": "PropertyValue",
         "name": "Reference",
         "value": "@Model.Job.Reference"
     }
-}
+    }
 </script>

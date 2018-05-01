@@ -75,7 +75,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
                         {
                             job.JobTitle = job.JobTitle.Replace(" (" + job.Reference + ")", String.Empty);
                         }
-                        job.Location = ParseValueFromElementById(htmlDocument, "span", "JDText-Param3");
+                        job.Locations.Add(ParseValueFromElementById(htmlDocument, "span", "JDText-Param3"));
                         job.Organisation = ParseValueFromElementById(htmlDocument, "span", "JDText-Param4");
                         job.Department = ParseValueFromElementById(htmlDocument, "span", "JDText-Param5");
                         job.ContractType = ParseValueFromElementById(htmlDocument, "span", "JDText-Param6");

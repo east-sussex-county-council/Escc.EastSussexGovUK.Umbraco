@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
@@ -31,14 +32,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// The organisation.
         /// </value>
         public string Organisation { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the location where the job is based.
         /// </summary>
         /// <value>
         /// The location.
         /// </value>
-        public string Location { get; set; }
+        public IList<string> Locations { get; set; } = new List<string>();
 
         /// <summary>
         /// Gets or sets the salary range.

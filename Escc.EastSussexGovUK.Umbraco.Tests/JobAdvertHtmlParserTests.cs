@@ -41,7 +41,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
 
             var job = parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
 
-            Assert.AreEqual("Lewes", job.Location);
+            Assert.AreEqual("Lewes", job.Locations[0]);
         }
 
 
