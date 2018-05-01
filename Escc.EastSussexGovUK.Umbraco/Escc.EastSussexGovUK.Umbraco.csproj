@@ -1014,6 +1014,7 @@
     <Content Include="Config\Dashboard.config" />
     <Content Include="App_Plugins\Escc.UmbracoBranding\package.manifest" />
     <Content Include="css\bootstrap-tabs.css" />
+    <Content Include="css\icasework-forms.css" />
     <Content Include="css\TinyMCE-Content.css" />
     <Content Include="css\TinyMCE-StyleSelector-Headings.css" />
     <Content Include="css\umbraco-forms.css" />
@@ -1024,9 +1025,11 @@
     <Content Include="images\forms-email-header.png" />
     <Content Include="js\forms-address.js" />
     <Content Include="js\forms-url.js" />
+    <Content Include="js\icasework-forms.js" />
     <Content Include="js\libs\bootstrap\tab.js" />
     <Content Include="js\libs\bootstrap\util.js" />
     <Content Include="js\libs\find-address.min.js" />
+    <Content Include="js\iframeResizer.js" />
     <Content Include="RegistrationSkin\css\min\registration-skin-large.css" />
     <Content Include="RegistrationSkin\css\min\registration-skin-medium.css" />
     <Content Include="RegistrationSkin\css\min\registration-skin-small.css" />
@@ -4176,6 +4179,7 @@
     <Compile Include="ServiceAlerts\AlertsSetupController.cs" />
     <Compile Include="ServiceAlerts\AlertViewModel.cs" />
     <Compile Include="Services\AuditLoggingEventHandler.cs" />
+    <Compile Include="Services\EmbeddedICaseworkForm.cs" />
     <Compile Include="Skins\SupportWithTrust\SupportWithTrustSkin.cs" />
     <Compile Include="WebApi\IHtmlStringConverter.cs" />
     <Compile Include="Jobs\Api\BaseJobsApiController.cs" />

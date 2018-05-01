@@ -9,6 +9,7 @@
 @using Escc.EastSussexGovUK.Umbraco.Skins.FosterWithTrust
 @using Escc.EastSussexGovUK.Umbraco.Skins.SupportWithTrust
 @using Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration
+@using Escc.EastSussexGovUK.Umbraco.Services
 @using Escc.Web
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<MicrosoftCmsViewModel>
 @{ 
@@ -78,6 +79,7 @@
     {
         new EmbeddedYouTubeVideos() { Html = html },
         new EmbeddedGoogleMaps() { Html = html },
+        new EmbeddedICaseworkForm() { Html = html },
         new WebChat() { WebChatSettings = Model.WebChat }
     });
 }

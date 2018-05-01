@@ -8,6 +8,7 @@
 @using Escc.EastSussexGovUK.Umbraco.Skins.FosterWithTrust
 @using Escc.EastSussexGovUK.Umbraco.Skins.SupportWithTrust
 @using Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration
+@using Escc.EastSussexGovUK.Umbraco.Services
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<MicrosoftCmsViewModel>
 @{ 
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
@@ -27,6 +28,7 @@
     {
         new EmbeddedYouTubeVideos() { Html = new [] { placeholders["phDefIntro"].Value.ToString() }},
         new EmbeddedGoogleMaps() { Html = new [] { placeholders["phDefIntro"].Value.ToString() } },
+        new EmbeddedICaseworkForm() { Html = new [] { placeholders["phDefIntro"].Value.ToString() }},
         new WebChat() { WebChatSettings = Model.WebChat }
     });
 }

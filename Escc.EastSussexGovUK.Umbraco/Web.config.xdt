@@ -62,6 +62,8 @@
       <add key="HomeMedium" value="/css/HomePage/home-medium.css" xdt:Transform="Insert" />
       <add key="HomeLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="HomeLarge" value="/css/HomePage/home-large.css" xdt:Transform="Insert" />
+      <add key="iCaseWork" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="iCaseWork" value="/css/icasework-forms.css" xdt:Transform="Insert" />
       <add key="LandingSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="LandingSmall" value="/css/StandardLandingPage/landing-small.css" xdt:Transform="Insert" />
       <add key="LandingMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
@@ -104,6 +106,10 @@
       <add key="Home" value="/js/HomePage/homepage.js" xdt:Transform="Insert" />
       <add key="HomeTabs" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="HomeTabs" value="/js/HomePage/jquery-ui-1.10.4.custom.min.js" xdt:Transform="Insert" />
+      <add key="iCaseWork" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="iCaseWork" value="/js/icasework-forms.js" xdt:Transform="Insert" />
+      <add key="iFrameResizer" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="iFrameResizer" value="/js/iframeresizer.js" xdt:Transform="Insert" />
       <add key="RegistrationSkin" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="RegistrationSkin" value="/RegistrationSkin/js/min/registration-skin.js" xdt:Transform="Insert" />
       <add key="FosterWithTrustSkin" xdt:Transform="Remove" xdt:Locator="Match(key)" />
@@ -269,6 +275,8 @@
     <ContentSecurityPolicies>
       <add key="TalentLink" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="TalentLink" value="script-src https://emea3.recruitmentplatform.com 'unsafe-inline'" xdt:Transform="Insert" />
+      <add key="iCaseWork" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="iCaseWork" value="frame-src https://*.icasework.com" xdt:Transform="Insert" />
     </ContentSecurityPolicies>
   </Escc.Web>
 

@@ -4,6 +4,7 @@
 @using Escc.EastSussexGovUK.Features
 @using Escc.EastSussexGovUK.Skins
 @using Escc.EastSussexGovUK.Views
+@using Escc.EastSussexGovUK.Umbraco.Services
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Models.PersonViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
@@ -13,6 +14,7 @@
     {
         new EmbeddedYouTubeVideos() { Html = new [] { Model.LeadingText.ToString(), Model.Content1.ToString(), Model.Content2.ToString(), Model.Contact.ToString() }},
         new EmbeddedGoogleMaps() { Html = new [] { Model.LeadingText.ToString(), Model.Content1.ToString(), Model.Content2.ToString(), Model.Contact.ToString() }},
+        new EmbeddedICaseworkForm() { Html = new [] { Model.LeadingText.ToString(), Model.Content1.ToString(), Model.Content2.ToString(), Model.Contact.ToString() }},
         new WebChat() { WebChatSettings = Model.WebChat }
     });
 

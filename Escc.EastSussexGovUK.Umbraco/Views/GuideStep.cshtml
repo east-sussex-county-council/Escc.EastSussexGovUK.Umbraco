@@ -7,6 +7,7 @@
 @using Escc.Registration.RegistrationSkin
 @using Escc.EastSussexGovUK.Umbraco.Skins.FosterWithTrust
 @using Escc.EastSussexGovUK.Umbraco.Skins.SupportWithTrust
+@using Escc.EastSussexGovUK.Umbraco.Services
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Guide.GuideStepViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
@@ -30,6 +31,7 @@
     {
         new EmbeddedYouTubeVideos() { Html = new [] { Model.StepContent.ToString() }},
         new EmbeddedGoogleMaps() { Html = new [] { Model.StepContent.ToString() }},
+        new EmbeddedICaseworkForm() { Html = new [] { Model.StepContent.ToString() }},
         new WebChat() { WebChatSettings = Model.WebChat }
     });
 
