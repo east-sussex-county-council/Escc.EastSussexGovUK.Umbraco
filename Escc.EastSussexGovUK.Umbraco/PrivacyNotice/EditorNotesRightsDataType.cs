@@ -16,7 +16,7 @@ namespace Escc.EastSussexGovUK.Umbraco.PrivacyNotice
 
         public IDictionary<string, PreValue> PreValues { get; } = new Dictionary<string, PreValue>()
             {
-               {"editorNotes",new PreValue(-1,"<p><strong>This section will be included in the privacy notice from 25 May 2018, when these rights come into force.</strong></p>" +
+               {"editorNotes",new PreValue(-1,"<p><strong>This section will be included in the privacy notice:</strong></p>" +
                    "<h4>Your rights</h4>" +
                     "<p>Under data protection legislation, you have the right:</p>" +
                     "<ul>" +

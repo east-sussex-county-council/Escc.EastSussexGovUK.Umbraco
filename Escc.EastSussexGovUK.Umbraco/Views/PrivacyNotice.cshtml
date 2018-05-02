@@ -63,7 +63,7 @@
                 <li><a id="legal-tab" href="#legal" aria-controls="legal" data-toggle="tab" role="tab">What is the legal basis for processing your information?</a></li>
                 <li><a id="how-long-tab" href="#how-long" aria-controls="how-long" data-toggle="tab" role="tab">How long will your information be kept for?</a></li>
                 <li><a id="sharing-tab" href="#sharing" aria-controls="sharing" data-toggle="tab" role="tab">Sharing your information</a></li>
-                @if (DateTime.Today >= new DateTime(2018, 5, 25)) { <li><a id="rights-tab" href="#rights" aria-controls="rights" data-toggle="tab" role="tab">Your rights</a></li> }
+                <li><a id="rights-tab" href="#rights" aria-controls="rights" data-toggle="tab" role="tab">Your rights</a></li>
                 <li><a id="contact-tab" href="#contact" aria-controls="contact" data-toggle="tab" role="tab">How to find out more or complain</a></li>
             </ul>
             <section id="overview" role="tabpanel" aria-labelledby="overview-tab" class="active show">
@@ -161,25 +161,22 @@
 
 
 
-            @if (DateTime.Today >= new DateTime(2018, 5, 25))
-        {
-                <section id="rights" role="tabpanel" aria-labelledby="rights-tab">
-                    <h2>Your rights</h2>
+            <section id="rights" role="tabpanel" aria-labelledby="rights-tab">
+                <h2>Your rights</h2>
 
-                    <p>Under data protection legislation, you have the right:</p>
-                    <ul>
-                        <li>to be informed why, where and how we use your information</li>
-                        <li>to ask for access to your information</li>
-                        <li>to ask for your information to be corrected if it is inaccurate or incomplete</li>
-                        <li>to ask for your information to be deleted or removed where there is no need for us to continue processing it</li>
-                        <li>to ask us to restrict the use of your information</li>
-                        <li>to ask us to copy or transfer your information from one IT system to another in a safe and secure way, without impacting the quality of the information</li>
-                        <li>to object to how your information is used</li>
-                        <li>to challenge any decisions made without human intervention (automated decision making)</li>
-                    </ul>
-                    <p>Please visit data subject rights for further details.</p>
-                </section>
-            }
+                <p>Under data protection legislation, you have the right:</p>
+                <ul>
+                    <li>to be informed why, where and how we use your information</li>
+                    <li>to ask for access to your information</li>
+                    <li>to ask for your information to be corrected if it is inaccurate or incomplete</li>
+                    <li>to ask for your information to be deleted or removed where there is no need for us to continue processing it</li>
+                    <li>to ask us to restrict the use of your information</li>
+                    <li>to ask us to copy or transfer your information from one IT system to another in a safe and secure way, without impacting the quality of the information</li>
+                    <li>to object to how your information is used</li>
+                    <li>to challenge any decisions made without human intervention (automated decision making)</li>
+                </ul>
+                @*<p>Please visit data subject rights for further details.</p>*@
+            </section>
 
             <section id="contact" role="tabpanel" aria-labelledby="contact-tab">
                 <h2>How to find out more or complain</h2>
