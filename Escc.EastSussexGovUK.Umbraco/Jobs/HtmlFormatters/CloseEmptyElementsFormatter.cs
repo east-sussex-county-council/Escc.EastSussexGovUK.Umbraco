@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using HtmlAgilityPack;
 
-namespace Escc.EastSussexGovUK.Umbraco.Jobs
+namespace Escc.EastSussexGovUK.Umbraco.Jobs.HtmlFormatters
 {
     public class CloseEmptyElementsFormatter : IHtmlStringFormatter
     {

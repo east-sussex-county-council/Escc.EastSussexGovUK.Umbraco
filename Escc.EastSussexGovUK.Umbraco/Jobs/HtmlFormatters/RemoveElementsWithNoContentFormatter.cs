@@ -5,7 +5,7 @@ using System.Web;
 using HtmlAgilityPack;
 using System.Text.RegularExpressions;
 
-namespace Escc.EastSussexGovUK.Umbraco.Jobs
+namespace Escc.EastSussexGovUK.Umbraco.Jobs.HtmlFormatters
 {
     /// <summary>
     /// Removes elements which contain either no children, or a text node with only white space
@@ -13,6 +13,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
     /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Jobs.IHtmlAgilityPackHtmlFormatter" />
     public class RemoveElementsWithNoContentFormatter : IHtmlAgilityPackHtmlFormatter
     {
+        private readonly IEnumerable<string> _elementsToRemove;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RemoveElementsWithNoContentFormatter" /> class.
+        /// </summary>
+        /// <param name="elementsToRemove">The elements to remove.</param>
+        public RemoveElementsWithNoContentFormatter(IEnumerable<string> elementsToRemove)
+        {
+            _elementsToRemove = elementsToRemove ?? throw new ArgumentNullException(nameof(elementsToRemove));
+        }
+
         /// <summary>
         /// Formats the HTML.
         /// </summary>
@@ -21,9 +32,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         {
             if (htmlDocument == null) return;
 
-            var elementsToRemove = new[] { "strong", "p" };
-
-            foreach (var elementToRemove in elementsToRemove)
+            foreach (var elementToRemove in _elementsToRemove)
             {
                 var matchedElements = htmlDocument.DocumentNode.SelectNodes("//" + elementToRemove);
                 if (matchedElements != null)

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
+namespace Escc.EastSussexGovUK.Umbraco.Jobs.HtmlFormatters
 {
     /// <summary>
     /// Removes text from the advert HTML if we can supply duplicate text from another field

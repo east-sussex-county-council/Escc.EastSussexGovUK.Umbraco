@@ -2,7 +2,7 @@
 using HtmlAgilityPack;
 using System;
 
-namespace Escc.EastSussexGovUK.Umbraco.Jobs
+namespace Escc.EastSussexGovUK.Umbraco.Jobs.HtmlFormatters
 {
     /// <summary>
     /// Look for link text that looks like a URL, and abbreviate it to prevent non-wrapping text overflowing its container

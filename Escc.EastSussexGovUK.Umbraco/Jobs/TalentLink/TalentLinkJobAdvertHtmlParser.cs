@@ -7,6 +7,7 @@ using Exceptionless;
 using HtmlAgilityPack;
 using Escc.Umbraco.PropertyEditors.RichTextPropertyEditor;
 using Escc.Html;
+using Escc.EastSussexGovUK.Umbraco.Jobs.HtmlFormatters;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
 {
@@ -90,9 +91,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
                         {
                         new RemoveUnwantedAttributesFormatter(new string[] { "style" }),
                         new ReplaceElementNameFormatter("h5", "h2"),
+                        new RemoveUnwantedElementsFormatter(new[] { "u" }),
                         new RemoveElementByNameAndContentFormatter("h2", "Job Details"),
-                        new RemoveElementsWithNoContentFormatter(),
-                        new TruncateLongLinksFormatter(new HtmlLinkFormatter())
+                        new RemoveElementsWithNoContentFormatter(new[] { "strong", "p" }),
+                        new TruncateLongLinksFormatter(new HtmlLinkFormatter()),
+                        new EmbeddedYouTubeVideosFormatter()
                         };
                         foreach (var formatter in agilityPackFormatters)
                         {

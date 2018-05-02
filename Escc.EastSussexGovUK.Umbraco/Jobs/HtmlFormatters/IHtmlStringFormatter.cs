@@ -5,17 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 
-namespace Escc.EastSussexGovUK.Umbraco.Jobs
+namespace Escc.EastSussexGovUK.Umbraco.Jobs.HtmlFormatters
 {
     /// <summary>
-    /// Format HTML using the HTML Agility Pack library
+    /// Format an HTML string
     /// </summary>
-    interface IHtmlAgilityPackHtmlFormatter
+    interface IHtmlStringFormatter
     {
         /// <summary>
         /// Formats the HTML.
         /// </summary>
-        /// <param name="htmlDocument">The HTML document.</param>
-        void FormatHtml(HtmlDocument htmlDocument);
+        /// <param name="html">The HTML document.</param>
+        string FormatHtml(string html);
     }
 }

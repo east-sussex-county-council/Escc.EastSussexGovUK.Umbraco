@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using HtmlAgilityPack;
 
-namespace Escc.EastSussexGovUK.Umbraco.Jobs
+namespace Escc.EastSussexGovUK.Umbraco.Jobs.HtmlFormatters
 {
     /// <summary>
     /// Removes the specified attributes wherever they occur in the supplied HTML document

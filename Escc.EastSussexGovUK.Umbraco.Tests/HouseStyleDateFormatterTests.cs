@@ -1,4 +1,5 @@
 ﻿using Escc.EastSussexGovUK.Umbraco.Jobs;
+using Escc.EastSussexGovUK.Umbraco.Jobs.HtmlFormatters;
 using Escc.EastSussexGovUK.Umbraco.RichTextHtmlFormatters;
 using NUnit.Framework;
 using System;

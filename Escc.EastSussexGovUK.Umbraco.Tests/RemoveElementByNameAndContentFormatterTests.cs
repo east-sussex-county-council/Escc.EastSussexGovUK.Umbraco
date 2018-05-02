@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
 using HtmlAgilityPack;
 using NUnit.Framework;
+using Escc.EastSussexGovUK.Umbraco.Jobs.HtmlFormatters;
 
 namespace Escc.EastSussexGovUK.Umbraco.Tests
 {

@@ -1,7 +1,7 @@
 using System;
 using HtmlAgilityPack;
 
-namespace Escc.EastSussexGovUK.Umbraco.Jobs
+namespace Escc.EastSussexGovUK.Umbraco.Jobs.HtmlFormatters
 {
     /// <summary>
     /// Removes an element from HTML if both the element name and the text content match supplied values

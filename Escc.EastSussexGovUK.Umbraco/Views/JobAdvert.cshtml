@@ -1,5 +1,7 @@
 ﻿@using ClientDependency.Core.Mvc
 @using Escc.ClientDependencyFramework
+@using Escc.EastSussexGovUK
+@using Escc.EastSussexGovUK.Features
 @using Escc.EastSussexGovUK.Skins
 @using Escc.EastSussexGovUK.Views
 @using Escc.EastSussexGovUK.Mvc.Views.EastSussexGovUK
@@ -35,6 +37,11 @@
         Model.Metadata.Description = "This job has closed. Search for jobs at www.eastsussex.gov.uk/jobs.";
         Response.StatusCode = 410;
     }
+
+    Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
+    {
+        new EmbeddedYouTubeVideos() { Html = new [] { Model.Job?.AdvertHtml.ToHtmlString(), Model.Job?.AdditionalInformationHtml?.ToHtmlString(), Model.Job?.EqualOpportunitiesHtml?.ToHtmlString() }}
+    });
 }
 @section Metadata{
     @if (jobGone)

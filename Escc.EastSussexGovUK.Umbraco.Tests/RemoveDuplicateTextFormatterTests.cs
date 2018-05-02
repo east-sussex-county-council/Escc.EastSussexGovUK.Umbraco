@@ -1,6 +1,7 @@
 ﻿using System;
 using Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink;
 using NUnit.Framework;
+using Escc.EastSussexGovUK.Umbraco.Jobs.HtmlFormatters;
 
 namespace Escc.EastSussexGovUK.Umbraco.Tests
 {

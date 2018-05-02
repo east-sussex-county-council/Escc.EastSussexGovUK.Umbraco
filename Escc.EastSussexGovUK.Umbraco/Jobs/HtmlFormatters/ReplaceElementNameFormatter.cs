@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using HtmlAgilityPack;
 
-namespace Escc.EastSussexGovUK.Umbraco.Jobs
+namespace Escc.EastSussexGovUK.Umbraco.Jobs.HtmlFormatters
 {
     /// <summary>
     /// Changed one type of named element into another wherever it occurs

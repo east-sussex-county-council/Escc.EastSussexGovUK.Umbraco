@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
+namespace Escc.EastSussexGovUK.Umbraco.Jobs.HtmlFormatters
 {
     /// <summary>
     /// The 'information for redeployees' header is consistently, incorrectly formatted as a paragraph. This formatter corrects that.
