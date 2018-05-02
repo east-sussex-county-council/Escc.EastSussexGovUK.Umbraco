@@ -74,6 +74,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;p&gt;There are permanent contracts available ranging from 18 to 36 hours per week, you will be required to have access to a car and to work alternate weekends and a mix of early and late shifts. Full time staff receive 25 days holiday plus bank holidays. The hourly rate is £9.68.&lt;/p&gt;
+        ///&lt;p&gt;Hear first-hand how rewarding this role is by watching this short film of one of our support workers.&lt;/p&gt;.
+        /// </summary>
+        internal static string HourlyRateInBodyText1 {
+            get {
+                return ResourceManager.GetString("HourlyRateInBodyText1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot; http://www.w3.org/TR/html4/strict.dtd&quot;&gt;&lt;html lang=&quot;en-GB&quot; xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xmlns:addthis=&quot;http://www.addthis.com/help/api-spec&quot; &gt;&lt;head&gt;&lt;meta name=&quot;GENERATOR&quot; content=&quot;MrTed&quot;&gt;&lt;meta name=&quot;TEMPLATEBASE&quot; content=&quot;Accessible HTML&quot;&gt;&lt;meta name=&quot;LASTUPDATED&quot; content=&quot;18/08/05 10:05:33&quot;&gt;&lt;meta name=&quot;author&quot; content=&quot;MrTed&quot;&gt;&lt;meta name=&quot;keywords&quot; content=&quot;Jobs, Career Section, Candidate Portal&quot;&gt;&lt;meta name=&quot;description&quot; content=&quot;Mrted Talentlink syn [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string JobAdvert1Html {

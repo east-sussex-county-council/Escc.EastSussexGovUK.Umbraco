@@ -19,15 +19,25 @@
         else if (job.IsPartTime) { contract = ", P/T"; }
 
         var salary = String.Empty;
-        if (job.Salary.MaximumSalary.HasValue)
+        if (job.Salary.HourlyRate.HasValue)
+        {
+            if (!String.IsNullOrEmpty(contract)) { salary = ","; }
+            salary = $" £{job.Salary.HourlyRate}/hr";
+        }
+        else if (job.Salary.MaximumSalary.HasValue)
         {
             if (!String.IsNullOrEmpty(contract)) { salary = ","; }
             salary = $" up to £{((int)job.Salary.MaximumSalary.Value / 1000)}k";
         }
 
         var closingDate = $". Apply by {job.ClosingDate.Value.ToShortBritishDateNoYear()}.";
+        var tweet = new StringBuilder().Append(jobTitle).Append(contract).Append(salary).Append(closingDate).Append(" #jobs #EastSussex #Job ");
+        foreach (var location in job.Locations)
+        {
+            tweet.Append(new LocationHashTag(location)).Append(" ");
+        }
 
-       return new StringBuilder().Append(jobTitle).Append(contract).Append(salary).Append(closingDate).Append(" #jobs #EastSussex #Job ").Append(new LocationHashTag(job.Location)).ToString();
+        return tweet.ToString().Trim();
     }
 }
 @foreach (var job in Model.Items)

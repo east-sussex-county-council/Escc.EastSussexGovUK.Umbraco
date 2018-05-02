@@ -21,48 +21,74 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
         /// <returns></returns>
         public Salary ParseSalaryFromHtml(HtmlDocument jobAdvertHtml)
         {
+            Salary salary = null;
+
             // Look for a salary entered into a specific field
             var salaryText = ParseValueFromElementById(jobAdvertHtml, "span", "JDText-salary");
             if (!String.IsNullOrEmpty(salaryText))
             {
-                return ParseSalaryFromDescription(salaryText);
+                salary = ParseSalaryFromDescription(salaryText);
             }
 
-            var matchInBodyText = Regex.Match(jobAdvertHtml.DocumentNode.OuterHtml, $@"Salary:\s+(.*?)([0-9]+)(.*?)(<br>|<br />|</p>|{Environment.NewLine})");
-            if (matchInBodyText.Success)
+            if (salary == null)
             {
-                return ParseSalaryFromDescription(HttpUtility.HtmlDecode(matchInBodyText.Groups[1].Value + matchInBodyText.Groups[2].Value + matchInBodyText.Groups[3].Value).Trim());
+                var matchInBodyText = Regex.Match(jobAdvertHtml.DocumentNode.OuterHtml, $@"Salary:\s+(.*?)([0-9]+)(.*?)(<br>|<br />|</p>|{Environment.NewLine})");
+                if (matchInBodyText.Success)
+                {
+                    salary = ParseSalaryFromDescription(HttpUtility.HtmlDecode(matchInBodyText.Groups[1].Value + matchInBodyText.Groups[2].Value + matchInBodyText.Groups[3].Value).Trim());
+                }
             }
 
-            matchInBodyText = Regex.Match(jobAdvertHtml.DocumentNode.OuterHtml, "£[0-9,]+ ?- ?£[0-9,]+ per annum");
-            if (matchInBodyText.Success)
+            if (salary == null)
             {
-                return ParseSalaryFromDescription(HttpUtility.HtmlDecode(matchInBodyText.Groups[0].Value).Trim());
+                var matchInBodyText = Regex.Match(jobAdvertHtml.DocumentNode.OuterHtml, "£[0-9,]+ ?- ?£[0-9,]+ per annum");
+                if (matchInBodyText.Success)
+                {
+                    salary = ParseSalaryFromDescription(HttpUtility.HtmlDecode(matchInBodyText.Groups[0].Value).Trim());
+                }
             }
 
             // There are no numbers to parse, so just take the first line of text
-            matchInBodyText = Regex.Match(jobAdvertHtml.DocumentNode.OuterHtml, $@"Salary:\s+(.+?)(<br>|<br />|</p>|{Environment.NewLine})");
-            if (matchInBodyText.Success)
+            if (salary == null)
             {
-                return new Salary()
+                var matchInBodyText = Regex.Match(jobAdvertHtml.DocumentNode.OuterHtml, $@"Salary:\s+(.+?)(<br>|<br />|</p>|{Environment.NewLine})");
+                if (matchInBodyText.Success)
                 {
-                    SalaryRange = matchInBodyText.Groups[1].Value
-                };
+                    salary = new Salary()
+                    {
+                        SalaryRange = matchInBodyText.Groups[1].Value
+                    };
+                }
             }
 
             // If still no salary found, is it clearly a volunteer role?
-            var jobTitle = ParseValueFromElementById(jobAdvertHtml, "h3", "JDText-Title");
-            if (jobTitle.ToUpperInvariant().Contains("VOLUNTEER"))
+            if (salary == null)
             {
-                return new Salary()
+                var jobTitle = ParseValueFromElementById(jobAdvertHtml, "h3", "JDText-Title");
+                if (jobTitle.ToUpperInvariant().Contains("VOLUNTEER"))
                 {
-                    MinimumSalary = 0,
-                    MaximumSalary = 0,
-                    SalaryRange = "Voluntary"
-                };
+                    salary = new Salary()
+                    {
+                        MinimumSalary = 0,
+                        MaximumSalary = 0,
+                        SalaryRange = "Voluntary"
+                    };
+                }
             }
 
-            return new Salary();
+            if (salary == null)
+            {
+                salary = new Salary();
+            }
+
+            // Is there an hourly rate, which might be in addition to a salary?
+            var matchHourlyRateInBodyText = Regex.Match(HttpUtility.HtmlDecode(jobAdvertHtml.DocumentNode.OuterHtml), $@"hourly rate is £([0-9]+\.[0-9][0-9])");
+            if (matchHourlyRateInBodyText.Success)
+            {
+                salary.HourlyRate = Decimal.Parse(matchHourlyRateInBodyText.Groups[1].Value);
+            }
+
+            return salary;
         }
 
         /// <summary>

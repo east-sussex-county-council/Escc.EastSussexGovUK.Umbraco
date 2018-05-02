@@ -29,7 +29,8 @@
     @foreach (var job in Model.Items)
     {
         var url = "<link>" + HttpUtility.HtmlEncode($"{job.Url}?utm_source=jobs-rss&utm_medium=job-advert-{HttpUtility.UrlEncode(job.Organisation)}&utm_content={job.Reference}&utm_campaign=General-Recruitment") + "</link>";
-        var description = $"{job.WorkPattern} {job.ContractType.ToLower(CultureInfo.CurrentCulture)} {job.Salary.SalaryRange} in {job.Location}. Closing date {job.ClosingDate.Value.ToBritishDate()}. {job.Organisation} / {job.JobType} vacancy.".TrimStart();
+        var salary = job.Salary.HourlyRate.HasValue ? $"£{job.Salary.HourlyRate} per hour" : job.Salary.SalaryRange;
+        var description = $"{job.WorkPattern} {job.ContractType.ToLower(CultureInfo.CurrentCulture)} {salary} in {string.Join(",",job.Locations.ToArray<string>())}. Closing date {job.ClosingDate.Value.ToBritishDate()}. {job.Organisation} / {job.JobType} vacancy.".TrimStart();
         description = description.Substring(0, 1).ToUpper(CultureInfo.CurrentCulture) + description.Substring(1);
         <item>
             <title>@job.JobTitle</title>
@@ -37,9 +38,12 @@
             @Html.Raw(url)
             <guid isPermaLink="false">https://www.eastsussex.gov.uk/id/job-advert/@job.Id</guid>
             <source url="@Request.Url.ToString().Replace("\"", "%22")"/>
-            @if (!String.IsNullOrEmpty(job.Location))
+            @if (job.Locations.Count > 0)
             {
-                <category>@job.Location</category>
+                foreach (var location in job.Locations)
+                {
+                    <category>@location</category>
+                }
             }
             @if (!String.IsNullOrEmpty(job.ContractType))
             {

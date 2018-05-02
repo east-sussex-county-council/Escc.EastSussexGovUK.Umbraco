@@ -266,6 +266,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Examine
                         Int32.TryParse(result["salaryMax"], out maximumSalary);
                         job.Salary.MaximumSalary = maximumSalary;
                     }
+                    if (result.Fields.ContainsKey("hourlyRate") && !String.IsNullOrEmpty(result["hourlyRate"]))
+                    {
+                        decimal hourlyRate;
+                        Decimal.TryParse(result["hourlyRate"], out hourlyRate);
+                        job.Salary.HourlyRate = hourlyRate;
+                    }
 
                     if (_urlGenerator != null)
                     {
