@@ -7,48 +7,49 @@
     var customCss = new StringBuilder();
     @* Note: sizes here aren't based on the baseline grid. They move the whole page down so don't need to align with other elements. Pixel sizes match image sizes. *@
 }
-@if (Request.QueryString["media-query"] == "small") {
+@if (Request.QueryString["media-query"] == "small")
+{
     if (Model.BannerImageSmall != null)
     {
-@:.campaign-content .body { background: #fff url(@Model.BannerImageSmall.ImageUrl) repeat-x center 1.5em; }
-@:.campaign-content .article { padding-top: 75px; }
+        @:.campaign-content .body { background: #fff url(@Model.BannerImageSmall.ImageUrl) repeat-x center top; }
+        @:.campaign-content .body .container { padding-top: @(Model.BannerImageSmall.Height+10)px; }
     }
     if (!String.IsNullOrEmpty(Model.PullQuoteTextColour))
     {
-@:blockquote.pull-quote { color: @Model.PullQuoteTextColour;}
+        @:blockquote.pull-quote { color: @Model.PullQuoteTextColour;}
     }
     if (!String.IsNullOrEmpty(Model.PullQuoteBackgroundColour))
     {
-@:blockquote.pull-quote { background: @Model.PullQuoteBackgroundColour;}
+        @:blockquote.pull-quote { background: @Model.PullQuoteBackgroundColour;}
     }
     if (!String.IsNullOrEmpty(Model.PullQuoteQuotationMarksColour))
     {
-@:blockquote.pull-quote span { color: @Model.PullQuoteQuotationMarksColour; }
+        @:blockquote.pull-quote span { color: @Model.PullQuoteQuotationMarksColour; }
     }
     if (!String.IsNullOrEmpty(Model.CentralQuoteTextColour))
     {
-         @:.pull-quote-with-image { color: @Model.CentralQuoteTextColour; }
+        @:.pull-quote-with-image { color: @Model.CentralQuoteTextColour; }
     }
     if (!String.IsNullOrEmpty(Model.CentralQuoteBackgroundColour))
     {
-@:.pull-quote-with-image { background: @Model.CentralQuoteBackgroundColour; }
+        @:.pull-quote-with-image { background: @Model.CentralQuoteBackgroundColour; }
     }
     if (!String.IsNullOrEmpty(Model.FinalQuoteTextColour))
     {
-@:blockquote.final-quote { color: @Model.FinalQuoteTextColour }
+        @:blockquote.final-quote { color: @Model.FinalQuoteTextColour }
     }
     if (!String.IsNullOrEmpty(Model.QuoteFontFamily))
     {
         var formatter = new GoogleFontFamilyFormatter();
-@:blockquote.pull-quote, .pull-quote-with-image, blockquote.final-quote { font-family: @formatter.FormatAsCssFontName(Model.QuoteFontFamily), 'Source Sans Pro', Arial, 'Helvetica Neue', Helvetica, sans-serif; letter-spacing: 0; }
+        @:blockquote.pull-quote, .pull-quote-with-image, blockquote.final-quote { font-family: @formatter.FormatAsCssFontName(Model.QuoteFontFamily), 'Source Sans Pro', Arial, 'Helvetica Neue', Helvetica, sans-serif; letter-spacing: 0; }
     }
     if (Model.QuotesInBold)
     {
-@:blockquote.pull-quote, .pull-quote-with-image, blockquote.final-quote { font-weight: bold; }
+        @:blockquote.pull-quote, .pull-quote-with-image, blockquote.final-quote { font-weight: bold; }
     }
     if (Model.QuotesInItalic)
     {
-@:blockquote.pull-quote, .pull-quote-with-image, blockquote.final-quote { font-style: italic; }
+        @:blockquote.pull-quote, .pull-quote-with-image, blockquote.final-quote { font-style: italic; }
     }
 
     customCss.Append(Model.CustomCssSmallScreen);
@@ -61,10 +62,10 @@
 {
     if (Model.BannerImageLarge != null)
     {
-@:.campaign-content .body { background: #fff url(@Model.BannerImageLarge.ImageUrl) repeat-x center top; }
-@:.campaign-content .body .container { padding-top: 290px; }
-@:.campaign-content .article { padding-top: 0; }
+        @:.campaign-content .body { background: #fff url(@Model.BannerImageLarge.ImageUrl) repeat-x center top; }
+        @:.campaign-content .body .container { padding-top: @(Model.BannerImageLarge.Height)px; }
+        @:.campaign-content .article { padding-top: 0; }
     }
     customCss.Append(Model.CustomCssLargeScreen);
 }
-@customCss;
+@customCss

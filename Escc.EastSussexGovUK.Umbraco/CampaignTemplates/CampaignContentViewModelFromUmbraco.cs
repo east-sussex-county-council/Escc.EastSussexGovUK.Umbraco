@@ -105,7 +105,9 @@ namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
                 return new Image()
                 {
                     ImageUrl = _mediaUrlTransformer.TransformUrl(new Uri(imageData.Url, UriKind.Relative)),
-                    AlternativeText = imageData.Name
+                    AlternativeText = imageData.Name,
+                    Width = imageData.GetPropertyValue<int>("umbracoWidth"),
+                    Height = imageData.GetPropertyValue<int>("umbracoHeight")
                 };
             }
             return null;

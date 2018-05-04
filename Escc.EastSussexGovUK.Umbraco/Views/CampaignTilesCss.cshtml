@@ -7,24 +7,25 @@
     var customCss = new StringBuilder();
     @* Note: sizes here aren't based on the baseline grid. They move the whole page down so don't need to align with other elements. Pixel sizes match image sizes. *@
 }
-@if (Request.QueryString["media-query"] == "small") {
+@if (Request.QueryString["media-query"] == "small")
+{
     if (Model.BannerImageSmall != null)
     {
-@:.campaign-tiles .body { background: #fff url(@Model.BannerImageSmall.ImageUrl) repeat-x center 1.5em; }
-@:.campaign-tiles .full-page { padding-top: 75px; }
+        @:.campaign-tiles .body { background: #fff url(@Model.BannerImageSmall.ImageUrl) repeat-x center top; }
+        @:.campaign-tiles .body .container { padding-top: @(Model.BannerImageSmall.Height + 10)px; }
     }
     if (!String.IsNullOrEmpty(Model.TileTitleTextColour))
     {
-@:.campaign-tile h2 { color: @Model.TileTitleTextColour;}
+        @:.campaign-tile h2 { color: @Model.TileTitleTextColour;}
     }
     if (!String.IsNullOrEmpty(Model.TileDescriptionsTextColour))
     {
-@:.campaign-tile p { color: @Model.TileDescriptionsTextColour;}
+        @:.campaign-tile p { color: @Model.TileDescriptionsTextColour;}
     }
     if (!String.IsNullOrEmpty(Model.TileFontFamily))
     {
         var formatter = new GoogleFontFamilyFormatter();
-@:.campaign-tile { font-family: @formatter.FormatAsCssFontName(Model.TileFontFamily), 'Source Sans Pro', Arial, 'Helvetica Neue', Helvetica, sans-serif; letter-spacing: 0; }
+        @:.campaign-tile { font-family: @formatter.FormatAsCssFontName(Model.TileFontFamily), 'Source Sans Pro', Arial, 'Helvetica Neue', Helvetica, sans-serif; letter-spacing: 0; }
     }
 
     customCss.Append(Model.CustomCssSmallScreen);
@@ -37,9 +38,9 @@
 {
     if (Model.BannerImageLarge != null)
     {
-@:.campaign-tiles .body { background: #fff url(@Model.BannerImageLarge.ImageUrl) repeat-x center top; }
-@:.campaign-tiles .body .container { padding-top: 290px; }
-@:.campaign-tiles .full-page { padding-top: 0; }
+        @:.campaign-tiles .body { background: #fff url(@Model.BannerImageLarge.ImageUrl) repeat-x center top; }
+        @:.campaign-tiles .body .container { padding-top: @(Model.BannerImageLarge.Height)px; }
+        @:.campaign-tiles .full-page { padding-top: 0; }
     }
     customCss.Append(Model.CustomCssLargeScreen);
 }
