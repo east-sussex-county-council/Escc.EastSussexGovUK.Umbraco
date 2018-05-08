@@ -37,7 +37,6 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.Person
         typeof(FormDownloadDocumentType),
         typeof(RecyclingSiteDocumentType),
         typeof(LibraryDocumentType),
-        typeof(MobileLibraryStopDocumentType),
         typeof(ChildcareDocumentType),
         typeof(CouncilOfficeDocumentType),
         typeof(SportLocationDocumentType),

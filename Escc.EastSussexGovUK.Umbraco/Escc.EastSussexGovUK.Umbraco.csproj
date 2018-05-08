@@ -4399,7 +4399,6 @@
     <Compile Include="Location\LibraryController.cs" />
     <Compile Include="Location\LocationController.cs" />
     <Compile Include="Controllers\MapController.cs" />
-    <Compile Include="Location\MobileLibraryStopController.cs" />
     <Compile Include="Location\ParkController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Location\RecyclingSiteController.cs" />
@@ -4463,7 +4462,6 @@
     <Compile Include="Location\LibraryDocumentType.cs" />
     <Compile Include="Location\LocationContentTab.cs" />
     <Compile Include="Location\LocationDocumentType.cs" />
-    <Compile Include="Location\MobileLibraryStopDocumentType.cs" />
     <Compile Include="Location\OpeningHoursDataType.cs" />
     <Compile Include="Location\ParkDocumentType.cs" />
     <Compile Include="Location\RecyclingSiteContentTab.cs" />

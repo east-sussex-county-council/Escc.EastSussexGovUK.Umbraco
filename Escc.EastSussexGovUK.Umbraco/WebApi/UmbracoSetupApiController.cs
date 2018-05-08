@@ -276,7 +276,6 @@ namespace Escc.EastSussexGovUK.Umbraco.WebApi
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LocationDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(RecyclingSiteDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(LibraryDocumentType));
-                UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(MobileLibraryStopDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(ChildcareDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(CouncilOfficeDocumentType));
                 UmbracoCodeFirstInitializer.CreateOrUpdateEntity(typeof(SportLocationDocumentType));

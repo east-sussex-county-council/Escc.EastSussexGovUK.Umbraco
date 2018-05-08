@@ -69,7 +69,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Location
                 { "COUNCILOFFICES", "CouncilOffice" },
                 { "DAYCENTRES", "DayCentre" },
                 { "LIBRARIES", "Library" },
-                { "MOBILELIBRARYSTOPS", "MobileLibraryStop" },
                 { "PARKS", "Park" },
                 { "RECYCLINGSITES", "RecyclingSite" },
                 { "REGISTRATIONOFFICES", "RegistrationOffice" },

@@ -34,7 +34,6 @@ namespace Escc.EastSussexGovUK.Umbraco.DocumentTypes.StandardDownloadPage
         typeof(CouncilOfficeDocumentType),
         typeof(DayCentreDocumentType),
         typeof(LibraryDocumentType),
-        typeof(MobileLibraryStopDocumentType),
         typeof(ParkDocumentType),
         typeof(RecyclingSiteDocumentType),
         typeof(RegistrationOfficeDocumentType),
