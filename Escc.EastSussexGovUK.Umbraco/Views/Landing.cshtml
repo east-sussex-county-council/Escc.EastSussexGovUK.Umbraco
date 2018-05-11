@@ -6,16 +6,18 @@
 @using Escc.EastSussexGovUK.Views
 @using Escc.Registration.RegistrationSkin
 @using Escc.EastSussexGovUK.Umbraco.Skins.FosterWithTrust
+@using Escc.EastSussexGovUK.Umbraco.Skins.RegistrationAcademy
 @using Escc.EastSussexGovUK.Umbraco.Skins.SupportWithTrust
 @using Escc.EastSussexGovUK.Umbraco.Models
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<LandingViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] {
+        new RegistrationAcademySkin(Model.EsccWebsiteView, Model.SkinToApply == "Registration Academy"),
         new RegistrationSkin(Model.EsccWebsiteView, Model.Metadata.PageUrl),
         new FosterWithTrustSkin(Model.EsccWebsiteView, Model.SkinToApply == "Foster with trust"),
         new SupportWithTrustSkin(Model.EsccWebsiteView, Model.SkinToApply == "Support with trust")
-    }, new CustomerFocusSkin(Model.EsccWebsiteView));
+        }, new CustomerFocusSkin(Model.EsccWebsiteView));
 
     if (Model.EsccWebsiteView != EsccWebsiteView.Plain)
     {
@@ -24,11 +26,11 @@
         Html.RequiresCss(CssFileAlias.Resolve("NavigationLarge"), MediaQueryAlias.Resolve("Large"));
     }
 
-    var webChat = new WebChat() {WebChatSettings = Model.WebChat};
+    var webChat = new WebChat() { WebChatSettings = Model.WebChat };
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
-    {
-        webChat
-    });
+{
+webChat
+});
 
     // Decide whether to span 8 cols or 12 at large sizes
     var extend = !Model.ShowEastSussex1SpaceWidget;

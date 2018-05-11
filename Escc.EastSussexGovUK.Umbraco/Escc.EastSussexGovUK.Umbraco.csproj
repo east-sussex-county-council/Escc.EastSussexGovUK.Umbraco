@@ -1036,6 +1036,11 @@
     <Content Include="RegistrationSkin\img\registration-skin.png" />
     <Content Include="RegistrationSkin\js\min\registration-skin.js" />
     <Content Include="robots.txt" />
+    <Content Include="Skins\RegistrationAcademy\academy-logo.png" />
+    <Content Include="Skins\RegistrationAcademy\registration-academy-large.css" />
+    <Content Include="Skins\RegistrationAcademy\registration-academy-medium.css" />
+    <Content Include="Skins\RegistrationAcademy\registration-academy-small.css" />
+    <Content Include="Skins\RegistrationAcademy\registration-academy.js" />
     <Content Include="Skins\SupportWithTrust\background.png" />
     <Content Include="Skins\SupportWithTrust\support-with-trust-large.css" />
     <Content Include="Skins\SupportWithTrust\support-with-trust-medium.css" />
@@ -4187,6 +4192,7 @@
     <Compile Include="ServiceAlerts\AlertViewModel.cs" />
     <Compile Include="Services\AuditLoggingEventHandler.cs" />
     <Compile Include="Services\EmbeddedICaseworkForm.cs" />
+    <Compile Include="Skins\RegistrationAcademy\RegistrationAcademySkin.cs" />
     <Compile Include="Skins\SupportWithTrust\SupportWithTrustSkin.cs" />
     <Compile Include="WebApi\IHtmlStringConverter.cs" />
     <Compile Include="Jobs\Api\BaseJobsApiController.cs" />

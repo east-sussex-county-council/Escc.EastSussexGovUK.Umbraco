@@ -5,6 +5,7 @@
 @using Escc.EastSussexGovUK.Skins
 @using Escc.Registration.RegistrationSkin
 @using Escc.EastSussexGovUK.Umbraco.Skins.FosterWithTrust
+@using Escc.EastSussexGovUK.Umbraco.Skins.RegistrationAcademy
 @using Escc.EastSussexGovUK.Umbraco.Skins.SupportWithTrust
 @using Escc.EastSussexGovUK.Umbraco.Services
 @using Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration
@@ -13,10 +14,10 @@
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] {
-        new RegistrationSkin(Model.EsccWebsiteView, Model.Metadata.PageUrl),
-        new FosterWithTrustSkin(Model.EsccWebsiteView, Model.SkinToApply == "Foster with trust"),
-        new SupportWithTrustSkin(Model.EsccWebsiteView, Model.SkinToApply == "Support with trust")
-    }, new CustomerFocusSkin(Model.EsccWebsiteView));
+new RegistrationSkin(Model.EsccWebsiteView, Model.Metadata.PageUrl),
+new FosterWithTrustSkin(Model.EsccWebsiteView, Model.SkinToApply == "Foster with trust"),
+new SupportWithTrustSkin(Model.EsccWebsiteView, Model.SkinToApply == "Support with trust")
+}, new CustomerFocusSkin(Model.EsccWebsiteView));
 
     if (Model.EsccWebsiteView != EsccWebsiteView.Plain)
     {
@@ -25,12 +26,12 @@
 
     var placeholders = CmsUtilities.Placeholders;
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
-    {
-        new EmbeddedYouTubeVideos() { Html = new [] { placeholders["phDefIntro"].Value.ToString() }},
-        new EmbeddedGoogleMaps() { Html = new [] { placeholders["phDefIntro"].Value.ToString() } },
-        new EmbeddedICaseworkForm() { Html = new [] { placeholders["phDefIntro"].Value.ToString() }},
-        new WebChat() { WebChatSettings = Model.WebChat }
-    });
+{
+new EmbeddedYouTubeVideos() { Html = new [] { placeholders["phDefIntro"].Value.ToString() }},
+new EmbeddedGoogleMaps() { Html = new [] { placeholders["phDefIntro"].Value.ToString() } },
+new EmbeddedICaseworkForm() { Html = new [] { placeholders["phDefIntro"].Value.ToString() }},
+new WebChat() { WebChatSettings = Model.WebChat }
+});
 
     Model.Metadata.LgtlType = "Forms";
     Model.Metadata.LgilType = "Applications for service";
@@ -42,8 +43,8 @@
             <h1>@Model.Metadata.Title</h1>
             @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
             @Html.Partial("~/Views/FormDownloadPage.ascx", Model)
-            </div>
-</article>
+        </div>
+    </article>
 </div>
 
 @Html.Partial("~/MicrosoftCmsMigration/UserControls/RelatedLinksMvc.ascx", Model)

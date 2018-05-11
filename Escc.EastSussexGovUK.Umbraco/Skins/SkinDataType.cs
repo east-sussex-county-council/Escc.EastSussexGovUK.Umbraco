@@ -20,6 +20,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Skins
         internal static IEnumerable<string> Skins = new string[] {
             "Default skin",
             "Foster with trust",
+            "Registration Academy",
             "Support with trust"
         };
 

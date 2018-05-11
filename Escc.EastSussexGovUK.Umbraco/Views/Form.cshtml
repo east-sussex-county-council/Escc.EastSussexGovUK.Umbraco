@@ -8,20 +8,22 @@
 @using Escc.EastSussexGovUK.Skins
 @using Escc.Registration.RegistrationSkin
 @using Escc.EastSussexGovUK.Umbraco.Skins.FosterWithTrust
+@using Escc.EastSussexGovUK.Umbraco.Skins.RegistrationAcademy
 @using Escc.EastSussexGovUK.Umbraco.Skins.SupportWithTrust
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] {
         new CoronerSkin(Model.EsccWebsiteView, Request.Url),
+        new RegistrationAcademySkin(Model.EsccWebsiteView, Model.SkinToApply == "Registration Academy"),
         new RegistrationSkin(Model.EsccWebsiteView, Model.Metadata.PageUrl),
         new FosterWithTrustSkin(Model.EsccWebsiteView, Model.SkinToApply == "Foster with trust"),
         new SupportWithTrustSkin(Model.EsccWebsiteView, Model.SkinToApply == "Support with trust")
-    }, new CustomerFocusSkin(Model.EsccWebsiteView));
+        }, new CustomerFocusSkin(Model.EsccWebsiteView));
 
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
-    {
-        new WebChat() { WebChatSettings = Model.WebChat }
-    });
+{
+new WebChat() { WebChatSettings = Model.WebChat }
+});
 }
 @section Metadata {
     @{
@@ -39,10 +41,10 @@
     }
 }
 <div class="full-page">
-<div class="content text-content">
-    <h1>@Model.Metadata.Title</h1>
-    @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
-    @Model.LeadingText
-    @Umbraco.RenderMacro("renderUmbracoForm", new { FormGuid = Model.FormGuid, FormTheme = "EastSussex", ExcludeScripts = "0" })
-</div>
+    <div class="content text-content">
+        <h1>@Model.Metadata.Title</h1>
+        @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
+        @Model.LeadingText
+        @Umbraco.RenderMacro("renderUmbracoForm", new { FormGuid = Model.FormGuid, FormTheme = "EastSussex", ExcludeScripts = "0" })
+    </div>
 </div>

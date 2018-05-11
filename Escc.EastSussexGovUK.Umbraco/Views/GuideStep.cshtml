@@ -6,6 +6,7 @@
 @using Escc.EastSussexGovUK.Views
 @using Escc.Registration.RegistrationSkin
 @using Escc.EastSussexGovUK.Umbraco.Skins.FosterWithTrust
+@using Escc.EastSussexGovUK.Umbraco.Skins.RegistrationAcademy
 @using Escc.EastSussexGovUK.Umbraco.Skins.SupportWithTrust
 @using Escc.EastSussexGovUK.Umbraco.Services
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Guide.GuideStepViewModel>
@@ -13,10 +14,11 @@
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] {
         new CoronerSkin(Model.EsccWebsiteView, Request.Url),
+        new RegistrationAcademySkin(Model.EsccWebsiteView, Model.SkinToApply == "Registration Academy"),
         new RegistrationSkin(Model.EsccWebsiteView, Model.Metadata.PageUrl),
         new FosterWithTrustSkin(Model.EsccWebsiteView, Model.SkinToApply == "Foster with trust"),
         new SupportWithTrustSkin(Model.EsccWebsiteView, Model.SkinToApply == "Support with trust")
-    }, new CustomerFocusSkin(Model.EsccWebsiteView));
+        }, new CustomerFocusSkin(Model.EsccWebsiteView));
 
     Html.RequiresCss(CssFileAlias.Resolve("NavigationSmall"));
     if (Model.EsccWebsiteView != EsccWebsiteView.Plain)
@@ -28,15 +30,15 @@
     Html.RequiresJs(JsFileAlias.Resolve("Navigation"));
 
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
-    {
-        new EmbeddedYouTubeVideos() { Html = new [] { Model.StepContent.ToString() }},
-        new EmbeddedGoogleMaps() { Html = new [] { Model.StepContent.ToString() }},
-        new EmbeddedICaseworkForm() { Html = new [] { Model.StepContent.ToString() }},
-        new WebChat() { WebChatSettings = Model.WebChat }
-    });
+{
+new EmbeddedYouTubeVideos() { Html = new [] { Model.StepContent.ToString() }},
+new EmbeddedGoogleMaps() { Html = new [] { Model.StepContent.ToString() }},
+new EmbeddedICaseworkForm() { Html = new [] { Model.StepContent.ToString() }},
+new WebChat() { WebChatSettings = Model.WebChat }
+});
 
     var thisStep = 1;
-    for (var i =0; i < Model.Steps.Count;i++)
+    for (var i = 0; i < Model.Steps.Count; i++)
     {
         if (Model.Steps[i].IsCurrentPage)
         {

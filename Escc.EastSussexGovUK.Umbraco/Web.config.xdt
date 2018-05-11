@@ -84,6 +84,12 @@
       <add key="RegistrationSkinMedium" value="/RegistrationSkin/css/min/registration-skin-medium.css" xdt:Transform="Insert" />
       <add key="RegistrationSkinLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="RegistrationSkinLarge" value="/RegistrationSkin/css/min/registration-skin-large.css" xdt:Transform="Insert" />
+      <add key="RegistrationAcademySkinSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="RegistrationAcademySkinSmall" value="/Skins/RegistrationAcademy/registration-academy-small.css" xdt:Transform="Insert" />
+      <add key="RegistrationAcademySkinMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="RegistrationAcademySkinMedium" value="/Skins/RegistrationAcademy/registration-academy-medium.css" xdt:Transform="Insert" />
+      <add key="RegistrationAcademySkinLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="RegistrationAcademySkinLarge" value="/Skins/RegistrationAcademy/registration-academy-large.css" xdt:Transform="Insert" />
       <add key="FosterWithTrustSkinSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="FosterWithTrustSkinSmall" value="/Skins/FosterWithTrust/foster-with-trust-small.css" xdt:Transform="Insert" />
       <add key="FosterWithTrustSkinMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
@@ -112,6 +118,8 @@
       <add key="iFrameResizer" value="/js/iframeresizer.js" xdt:Transform="Insert" />
       <add key="RegistrationSkin" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="RegistrationSkin" value="/RegistrationSkin/js/min/registration-skin.js" xdt:Transform="Insert" />
+      <add key="RegistrationAcademySkin" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="RegistrationAcademySkin" value="/Skins/RegistrationAcademy/registration-academy.js" xdt:Transform="Insert" />
       <add key="FosterWithTrustSkin" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="FosterWithTrustSkin" value="/Skins/FosterWithTrust/foster-with-trust.js" xdt:Transform="Insert" />
       <add key="SupportWithTrustSkin" xdt:Transform="Remove" xdt:Locator="Match(key)" />
