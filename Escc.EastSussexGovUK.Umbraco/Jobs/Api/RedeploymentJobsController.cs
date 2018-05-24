@@ -68,7 +68,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Api
         {
             try
             {
-                return await base.ReadLocations(JobsSet.PublicJobs);
+                return await base.ReadLocations(JobsSet.RedeploymentJobs);
             }
             catch (Exception e)
             {
@@ -83,7 +83,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Api
         {
             try
             {
-                return await base.ReadJobTypes(JobsSet.PublicJobs);
+                return await base.ReadJobTypes(JobsSet.RedeploymentJobs);
             }
             catch (Exception e)
             {
@@ -98,7 +98,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Api
         {
             try
             {
-                return await base.ReadOrganisations(JobsSet.PublicJobs);
+                return await base.ReadOrganisations(JobsSet.RedeploymentJobs);
             }
             catch (Exception e)
             {
@@ -113,7 +113,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Api
         {
             try
             {
-                return await base.ReadSalaryRanges(JobsSet.PublicJobs);
+                return await base.ReadSalaryRanges(JobsSet.RedeploymentJobs);
             }
             catch (Exception e)
             {
@@ -128,7 +128,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Api
         {
             try
             {
-                return await base.ReadWorkPatterns(JobsSet.PublicJobs);
+                return await base.ReadWorkPatterns(JobsSet.RedeploymentJobs);
             }
             catch (Exception e)
             {
