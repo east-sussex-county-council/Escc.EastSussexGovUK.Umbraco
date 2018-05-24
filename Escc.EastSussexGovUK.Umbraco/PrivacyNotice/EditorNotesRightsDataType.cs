@@ -29,7 +29,7 @@ namespace Escc.EastSussexGovUK.Umbraco.PrivacyNotice
                         "<li>to object to how your information is used</li>" +
                         "<li>to challenge any decisions made without human intervention (automated decision making)</li>" +
                     "</ul>" +
-                    "<p>Please visit data subject rights for further details.</p>",1)},
+                    "<p>Please visit <a href=\"https://www.eastsussex.gov.uk/yourcouncil/about/keydocuments/foi/dataprotection/data-subject-rights/\" target=\"_blank\">data subject rights</a> for further details.</p>",1)},
                {"hideLabel",new PreValue(-1,"1",2)},
                {"noteRenderMode",new PreValue(-1,"Html",3)}
             };
