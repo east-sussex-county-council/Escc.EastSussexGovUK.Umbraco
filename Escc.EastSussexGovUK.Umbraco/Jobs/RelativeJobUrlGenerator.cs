@@ -34,6 +34,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public Uri GenerateUrl(Job job)
         {
             var normalisedBaseUrl = _baseUrl.ToString().TrimEnd(new[] { '/' });
+
+            // Seen in the wild: live jobs linked to on http://localhost, probably due to Azure referring to its own machines that way.
+            // Ensure it can never happen by replacing that with a better default.
+            if (normalisedBaseUrl.StartsWith("http://localhost"))
+            {
+                normalisedBaseUrl = "https://www.eastsussex.gov.uk" + normalisedBaseUrl.Substring(16);
+            }
+
             var jobTitle = NormaliseSegment(job.JobTitle);
             var location = NormaliseSegment(string.Join("-", job.Locations.ToArray<string>()));
             return new Uri($"{normalisedBaseUrl}/{job.Id}/{job.Reference}/{jobTitle}/{location}", UriKind.RelativeOrAbsolute);
