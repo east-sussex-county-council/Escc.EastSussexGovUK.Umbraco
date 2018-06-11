@@ -34,4 +34,6 @@ A location API makes available data from the Location template defined in this p
 
 	https://hostname/umbraco/api/location/list?type=Library&type=MobileLibraryStop
 
-This is designed for the 'Find a library' and 'Find a recycling site' features. You may call this API for other purposes (for example, you could map all the mobile library stops), but it is regarded as an internal API which may be changed without notice. 
+This is designed for the 'Find a library' and 'Find a recycling site' features. It can also be used to embed a Google map in a page by linking to a URL like the one above, selecting the text and applying Format > Embed. The resulting HTML is recognised and turned into a Google map by JavaScript in the `Escc.EastSussexGovUK` repository. 
+
+You may call this API for other purposes (for example, you could map all the recycling sites), but it is regarded as an internal API which may be changed without notice.
