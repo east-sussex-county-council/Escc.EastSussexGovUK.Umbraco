@@ -3,7 +3,7 @@
   
 @{ var i = 0; }
    
-<div class="@Html.GetFormFieldClass(Model.FieldTypeName) radioButtonList" id="@Model.Id">
+<div class="@Html.GetFormFieldClass(Model.FieldTypeName) radiobuttonlist radioButtonList" id="@Model.Id">
 @foreach (Umbraco.Forms.Mvc.Models.PrevalueViewModel pv in Model.PreValues)  
 {
     <input type="radio" name="@Model.Id" id="@string.Concat(Model.Id,"_",i)" value="@pv.Value" 
