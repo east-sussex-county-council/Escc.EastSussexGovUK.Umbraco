@@ -40,7 +40,7 @@
 
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
     {
-        new EmbeddedYouTubeVideos() { Html = new [] { Model.Job?.AdvertHtml.ToHtmlString(), Model.Job?.AdditionalInformationHtml?.ToHtmlString(), Model.Job?.EqualOpportunitiesHtml?.ToHtmlString() }}
+        new EmbeddedYouTubeVideos() { Html = new [] { Model.Job?.AdvertHtml?.ToHtmlString(), Model.Job?.AdditionalInformationHtml?.ToHtmlString(), Model.Job?.EqualOpportunitiesHtml?.ToHtmlString() }}
     });
 }
 @section Metadata{
