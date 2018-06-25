@@ -7,6 +7,8 @@ using Umbraco.Web.Mvc;
 using Escc.EastSussexGovUK.Umbraco.Examine;
 using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.Umbraco.Caching;
+using Examine;
+using Escc.Umbraco.Expiry;
 
 namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 {
@@ -30,15 +32,18 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
             var rss = new RssViewModel<RightsOfWayDepositViewModel>();
             foreach (var deposit in viewModel.Deposits) rss.Items.Add(deposit);
 
+            var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"]);
             var modelBuilder = new BaseViewModelBuilder();
-            modelBuilder.PopulateBaseViewModel(rss, model.Content, null, UmbracoContext.Current.InPreviewMode);
+            modelBuilder.PopulateBaseViewModel(rss, model.Content, null,
+                expiryDate.ExpiryDate,
+                UmbracoContext.Current.InPreviewMode);
 
             if (!String.IsNullOrEmpty(Request.QueryString["q"]))
             {
                 rss.Metadata.Title += $" matching '{Request.QueryString["q"]}'";
             }
 
-            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache);
+            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new[] { expiryDate });
 
             return CurrentTemplate(rss);
         }

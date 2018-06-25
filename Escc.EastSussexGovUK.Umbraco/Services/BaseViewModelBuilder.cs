@@ -9,6 +9,7 @@ using Umbraco.Core.Models;
 using Umbraco.Web;
 using Escc.EastSussexGovUK.Umbraco.Ratings;
 using Escc.EastSussexGovUK.Umbraco.Skins;
+using Escc.Umbraco.Caching;
 
 namespace Escc.EastSussexGovUK.Umbraco.Services
 {
@@ -23,14 +24,19 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
         /// <param name="model">The model.</param>
         /// <param name="content">The content.</param>
         /// <param name="contentExperimentSettingsService">The content experiment settings service.</param>
+        /// <param name="expiryDate">The expiry date of the page.</param>
         /// <param name="inUmbracoPreviewMode">if set to <c>true</c> [in umbraco preview mode].</param>
+        /// <param name="skinService">The skin service.</param>
+        /// <exception cref="ArgumentNullException">model
+        /// or
+        /// content</exception>
         /// <exception cref="System.ArgumentNullException">model
         /// or
         /// content</exception>
-        public void PopulateBaseViewModel(BaseViewModel model, IPublishedContent content, IContentExperimentSettingsService contentExperimentSettingsService, bool inUmbracoPreviewMode, ISkinToApplyService skinService=null)
+        public void PopulateBaseViewModel(BaseViewModel model, IPublishedContent content, IContentExperimentSettingsService contentExperimentSettingsService, DateTime? expiryDate, bool inUmbracoPreviewMode, ISkinToApplyService skinService=null)
         {
-            if (model == null) throw new ArgumentNullException("model");
-            if (content == null) throw new ArgumentNullException("content");
+            if (model == null) throw new ArgumentNullException(nameof(model));
+            if (content == null) throw new ArgumentNullException(nameof(content));
 
             model.BreadcrumbProvider = new UmbracoBreadcrumbProvider();
 
@@ -48,8 +54,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
             model.Metadata.SystemId = content.Id.ToString(CultureInfo.InvariantCulture);
             model.Metadata.DateCreated = content.CreateDate.ToIso8601Date();
             model.Metadata.DateModified = content.UpdateDate.ToIso8601Date();
-            var expiryDate = content.GetPropertyValue<DateTime>("unpublishAt");
-            if (expiryDate != DateTime.MinValue) model.Metadata.DateReview = expiryDate.ToIso8601Date();
+
+            if (expiryDate.HasValue && expiryDate != DateTime.MinValue && expiryDate != DateTime.MaxValue)
+            {
+                model.Metadata.DateReview = expiryDate.ToIso8601Date();
+            }
 
             model.IsPublicView = !inUmbracoPreviewMode && model.Metadata.PageUrl.Host.ToUpperInvariant() != "LOCALHOST";
             if (contentExperimentSettingsService != null) { model.ContentExperimentPageSettings = contentExperimentSettingsService.LookupSettingsForPage(content.Id); }

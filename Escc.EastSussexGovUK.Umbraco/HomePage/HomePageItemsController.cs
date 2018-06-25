@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Escc.EastSussexGovUK.Umbraco.Models;
-using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Umbraco.Caching;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
 using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
+using Escc.Umbraco.Expiry;
+using Examine;
 
 namespace Escc.EastSussexGovUK.Umbraco.HomePage
 {
@@ -30,7 +31,8 @@ namespace Escc.EastSussexGovUK.Umbraco.HomePage
 
             var viewModel = MapUmbracoContentToViewModel(model.Content);
 
-            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" });
+            var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"]);
+            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new IExpiryDateSource[] { expiryDate, new ExpiryDateFromPropertyValue(model.Content, "latestUnpublishDate_Latest") });
 
             return CurrentTemplate(viewModel);
         }

@@ -14,6 +14,8 @@ using Umbraco.Web.Mvc;
 using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
 using Escc.EastSussexGovUK.Umbraco.Ratings;
 using Escc.EastSussexGovUK.Umbraco.Skins;
+using Examine;
+using Escc.Umbraco.Expiry;
 
 namespace Escc.EastSussexGovUK.Umbraco.PrivacyNotice
 {
@@ -39,8 +41,11 @@ namespace Escc.EastSussexGovUK.Umbraco.PrivacyNotice
                     ).BuildModel();
 
             // Add common properties to the model
+            var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"]);
             var modelBuilder = new BaseViewModelBuilder();
-            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode, new SkinFromUmbraco());
+            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
+                expiryDate.ExpiryDate,
+                UmbracoContext.Current.InPreviewMode, new SkinFromUmbraco());
             modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel, 
                 new UmbracoLatestService(model.Content), 
                 null,
@@ -49,7 +54,7 @@ namespace Escc.EastSussexGovUK.Umbraco.PrivacyNotice
                 null,
                 new RatingSettingsFromUmbraco(model.Content));
 
-            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" });
+            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new IExpiryDateSource[] { expiryDate, new ExpiryDateFromPropertyValue(model.Content, "latestUnpublishDate_Latest") });
 
             return CurrentTemplate(viewModel);
         }

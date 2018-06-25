@@ -14,6 +14,8 @@ using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Api;
 using System.Configuration;
+using Examine;
+using Escc.Umbraco.Expiry;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
@@ -32,8 +34,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             var lookupValuesDataSource = new JobsLookupValuesFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, new MemoryJobCacheStrategy(HttpContext.Cache, Request.QueryString["ForceCacheRefresh"] == "1"));
             modelBuilder.AddLookupValuesToModel(lookupValuesDataSource, viewModel);
 
+            var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"]);
             var baseModelBuilder = new BaseViewModelBuilder();
-            baseModelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode);
+            baseModelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
+                expiryDate.ExpiryDate,
+                UmbracoContext.Current.InPreviewMode);
             baseModelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel,
                 new UmbracoLatestService(model.Content),
                 new UmbracoSocialMediaService(model.Content),
@@ -44,7 +49,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
 
             // Jobs close at midnight, so don't cache beyond then
             var untilMidnightTonight = DateTime.Today.ToUkDateTime().AddDays(1) - DateTime.Now.ToUkDateTime();
-            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" }, (int)untilMidnightTonight.TotalSeconds);
+            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new IExpiryDateSource[] { expiryDate, new ExpiryDateFromPropertyValue(model.Content, "latestUnpublishDate_Latest") }, (int)untilMidnightTonight.TotalSeconds);
 
             return CurrentTemplate(viewModel);
         }

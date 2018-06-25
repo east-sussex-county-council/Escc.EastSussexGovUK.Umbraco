@@ -27,8 +27,5 @@ namespace Escc.EastSussexGovUK.Umbraco.Guide
 
         [UmbracoProperty("Cache", "cache", BuiltInUmbracoDataTypes.DropDown, "Cache", sortOrder: 101, description: "Pages are cached for 24 hours by default.  If this page is particularly time-sensitive, pick shorter time.")]
         public string Cache { get; set; }
-
-        [UmbracoProperty("Copy of unpublished date (do not edit)", "unpublishAt", BuiltInUmbracoDataTypes.DateTime, sortOrder: 103)]
-        public string UnpublishAt { get; set; }
     }
 }

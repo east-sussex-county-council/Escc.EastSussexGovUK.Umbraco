@@ -11,6 +11,8 @@ using Umbraco.Web.Mvc;
 using Task = System.Threading.Tasks.Task;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Api;
 using System.Configuration;
+using Examine;
+using Escc.Umbraco.Expiry;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
@@ -32,8 +34,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             var viewModel = new JobsRssViewModelFromUmbraco(model.Content).BuildModel();
 
             // Add common properties to the model
+            var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"]);
             var modelBuilder = new BaseViewModelBuilder();
-            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode);
+            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
+                expiryDate.ExpiryDate,
+                UmbracoContext.Current.InPreviewMode);
 
             var jobsProvider = new JobsDataFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, viewModel.JobAdvertPage.Url, null);
             var jobs = await jobsProvider.ReadProblemJobs();
@@ -45,7 +50,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
 
             // Jobs close at midnight, so don't cache beyond then
             var untilMidnightTonight = DateTime.Today.ToUkDateTime().AddDays(1) - DateTime.Now.ToUkDateTime();
-            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, null, (int)untilMidnightTonight.TotalSeconds);
+            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new[] { expiryDate }, (int)untilMidnightTonight.TotalSeconds);
+
 
             return CurrentTemplate(viewModel);
         }

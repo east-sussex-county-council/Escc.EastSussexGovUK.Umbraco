@@ -9,6 +9,8 @@ using Umbraco.Web.Mvc;
 using Escc.Umbraco.Caching;
 using Humanizer;
 using System.Linq;
+using Examine;
+using Escc.Umbraco.Expiry;
 
 namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 {
@@ -39,8 +41,11 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
             viewModel.Metadata.Description = "A declaration of rights of way over land " + where + " deposited with East Sussex County Council under Section 31 (6) of the Highways Act 1980";
 
             // Add common properties to the model
+            var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"]);
             var modelBuilder = new BaseViewModelBuilder();
-            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode);
+            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
+                expiryDate.ExpiryDate,
+                UmbracoContext.Current.InPreviewMode);
             modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel, 
                 new UmbracoLatestService(model.Content), 
                 new UmbracoSocialMediaService(model.Content),
@@ -49,7 +54,7 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
                 null);
 
 
-            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache);
+            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new[] { expiryDate });
 
             return CurrentTemplate(viewModel);
         }

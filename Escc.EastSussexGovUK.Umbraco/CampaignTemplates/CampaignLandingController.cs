@@ -9,6 +9,8 @@ using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
 using Escc.Umbraco.PropertyTypes;
 using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
+using Examine;
+using Escc.Umbraco.Expiry;
 
 namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
 {
@@ -31,9 +33,12 @@ namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
 
             // Add common properties to the model
             var modelBuilder = new BaseViewModelBuilder();
-            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode);
+            var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"]);
+                modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
+                expiryDate.ExpiryDate,
+                UmbracoContext.Current.InPreviewMode);
 
-            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" });
+            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new IExpiryDateSource [] { expiryDate, new ExpiryDateFromPropertyValue(model.Content, "latestUnpublishDate_Latest") });
 
             return CurrentTemplate(viewModel);
         }

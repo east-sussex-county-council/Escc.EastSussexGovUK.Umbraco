@@ -1,31 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Globalization;
-using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using System.Web.Caching;
 using Escc.Dates;
-using Escc.EastSussexGovUK.Umbraco.Examine;
-using Escc.EastSussexGovUK.Umbraco.Jobs.Examine;
-using Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink;
-using Escc.EastSussexGovUK.Umbraco.Models;
 using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Net;
 using Escc.Umbraco.Caching;
 using Escc.Umbraco.ContentExperiments;
-using Escc.Umbraco.PropertyTypes;
 using Examine;
-using Exceptionless.Extensions;
-using Umbraco.Core.Models;
 using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
 using Task = System.Threading.Tasks.Task;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Api;
 using System.Configuration;
+using Escc.Umbraco.Expiry;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
@@ -47,8 +35,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             var viewModel = new JobsRssViewModelFromUmbraco(model.Content).BuildModel();
 
             // Add common properties to the model
+            var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"]);
             var modelBuilder = new BaseViewModelBuilder();
-            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode);
+            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
+                expiryDate.ExpiryDate,
+                UmbracoContext.Current.InPreviewMode);
 
             viewModel.Query = new JobSearchQueryConverter().ToQuery(Request.QueryString);
             viewModel.Query.ClosingDateFrom = DateTime.Today;
@@ -67,7 +58,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             var untilMidnightTonight = DateTime.Today.ToUkDateTime().AddDays(1) - DateTime.Now.ToUkDateTime();
             var untilNextReindex = TimeUntilNextReindex();
             var cacheDuration = untilMidnightTonight > untilNextReindex ? untilNextReindex : untilMidnightTonight;
-            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, null, (int)cacheDuration.TotalSeconds);
+            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new[] { expiryDate }, (int)cacheDuration.TotalSeconds);
 
             return CurrentTemplate(viewModel);
         }

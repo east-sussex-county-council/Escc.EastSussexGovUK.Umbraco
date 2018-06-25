@@ -14,6 +14,8 @@ using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
 using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
 using Escc.EastSussexGovUK.Umbraco.Skins;
+using Examine;
+using Escc.Umbraco.Expiry;
 
 namespace Escc.EastSussexGovUK.Umbraco.Guide
 {
@@ -26,16 +28,19 @@ namespace Escc.EastSussexGovUK.Umbraco.Guide
         {
             if (model == null) throw new ArgumentNullException(nameof(model));
 
-            var viewModel = MapUmbracoContentToViewModel(model.Content);
+            var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"]);
+            var viewModel = MapUmbracoContentToViewModel(model.Content, expiryDate.ExpiryDate);
             var modelBuilder = new BaseViewModelBuilder();
-            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode, new SkinFromUmbraco());
+            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
+                expiryDate.ExpiryDate,
+                UmbracoContext.Current.InPreviewMode, new SkinFromUmbraco());
 
             if (!viewModel.Steps.Any())
             {
                 throw new HttpException(404, "Not found");
             }
 
-            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" });
+            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new IExpiryDateSource[] { expiryDate, new ExpiryDateFromPropertyValue(model.Content, "latestUnpublishDate_Latest") });
 
             return CurrentTemplate(viewModel);
         }
@@ -50,7 +55,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Guide
 
             // Add common properties to the model
             var modelBuilder = new BaseViewModelBuilder();
-            modelBuilder.PopulateBaseViewModel(viewModel, content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode, new SkinFromUmbraco());
+            modelBuilder.PopulateBaseViewModel(viewModel, content, new ContentExperimentSettingsService(),
+                new ExpiryDateFromExamine(content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"]).ExpiryDate,
+                UmbracoContext.Current.InPreviewMode, new SkinFromUmbraco());
             modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel,
                 new UmbracoLatestService(content),
                 new UmbracoSocialMediaService(content),
@@ -61,7 +68,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Guide
             return viewModel;
         }
 
-        private static GuideViewModel MapUmbracoContentToViewModel(IPublishedContent content)
+        private static GuideViewModel MapUmbracoContentToViewModel(IPublishedContent content, DateTime? expiryDate)
         {
             var model = new GuideViewModel()
             {

@@ -15,6 +15,7 @@ using Umbraco.Web.Mvc;
 using Escc.NavigationControls.WebForms;
 using Escc.EastSussexGovUK.Umbraco.Examine;
 using Umbraco.Core.Models;
+using Escc.Umbraco.Expiry;
 
 namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 {
@@ -55,8 +56,11 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
             viewModel.LeadingText = new HtmlString(model.Content.GetPropertyValue<string>("leadingText_Content"));
 
             // Add common properties to the model
+            var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"]);
             var modelBuilder = new BaseViewModelBuilder();
-            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode);
+            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
+                expiryDate.ExpiryDate,
+                UmbracoContext.Current.InPreviewMode);
             modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel, 
                 new UmbracoLatestService(model.Content), 
                 new UmbracoSocialMediaService(model.Content),
@@ -77,7 +81,7 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
                 viewModel.CsvUrl = new Uri(csv.Url, UriKind.Relative);
             }
             
-             new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" });
+             new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new IExpiryDateSource[] { expiryDate, new ExpiryDateFromPropertyValue(model.Content, "latestUnpublishDate_Latest") });
 
             return CurrentTemplate(viewModel);
         }

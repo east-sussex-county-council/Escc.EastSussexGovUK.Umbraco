@@ -26,8 +26,5 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         [UmbracoProperty("Author notes", "phDefAuthorNotes", PropertyEditorAliases.RichTextPropertyEditor, dataTypeInstanceName: RichTextAuthorNotesDataType.DataTypeName, sortOrder: 2)]
         public string AuthorNotes { get; set; }
 
-        [UmbracoProperty("Copy of unpublished date (do not edit)", "unpublishAt", BuiltInUmbracoDataTypes.DateTime, sortOrder: 103)]
-        public string UnpublishAt { get; set; }
-
     }
 }

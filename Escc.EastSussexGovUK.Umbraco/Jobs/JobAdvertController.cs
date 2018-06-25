@@ -18,6 +18,7 @@ using Escc.EastSussexGovUK.Umbraco.Errors;
 using Escc.Dates;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Api;
 using System.Configuration;
+using Escc.Umbraco.Expiry;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
@@ -39,8 +40,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             var viewModel = new JobAdvertViewModelFromUmbraco(model.Content).BuildModel();
 
             // Add common properties to the model
+            var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"]);
             var modelBuilder = new BaseViewModelBuilder();
-            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(), UmbracoContext.Current.InPreviewMode);
+            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
+                expiryDate.ExpiryDate,
+                UmbracoContext.Current.InPreviewMode);
             modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel, 
                 new UmbracoLatestService(model.Content), 
                 new UmbracoSocialMediaService(model.Content),
@@ -99,7 +103,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 var secondsToClosingDate = (int)(viewModel.Job.ClosingDate.Value.AddDays(1).Date.ToUkDateTime() - DateTime.Now.ToUkDateTime()).TotalSeconds;
                 if (secondsToClosingDate >= 0) expirySeconds = secondsToClosingDate;
             }
-            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new List<string>() { "latestUnpublishDate_Latest" }, expirySeconds);
+            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new IExpiryDateSource[] { expiryDate, new ExpiryDateFromPropertyValue(model.Content, "latestUnpublishDate_Latest") }, expirySeconds);
 
             return CurrentTemplate(viewModel);
         }

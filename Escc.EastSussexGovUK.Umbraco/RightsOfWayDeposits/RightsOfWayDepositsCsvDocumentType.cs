@@ -19,8 +19,5 @@ namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 
         [UmbracoProperty("Author notes", "authorNotes", PropertyEditorAliases.RichTextPropertyEditor, RichTextAuthorNotesDataType.DataTypeName, sortOrder: 2)]
         public string AuthorNotes { get; set; }
-
-        [UmbracoProperty("Copy of unpublished date (do not edit)", "unpublishAt", BuiltInUmbracoDataTypes.DateTime, sortOrder: 103)]
-        public string UnpublishAt { get; set; }
     }
 }

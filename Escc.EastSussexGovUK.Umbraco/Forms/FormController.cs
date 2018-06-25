@@ -1,7 +1,9 @@
 ﻿using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.EastSussexGovUK.Umbraco.Skins;
 using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
+using Escc.Umbraco.Expiry;
 using Escc.Umbraco.PropertyTypes;
+using Examine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +29,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Forms
             viewModel.FormGuid = model.Content.GetPropertyValue<Guid>("Form_Content");
 
             var modelBuilder = new BaseViewModelBuilder();
-            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, null, UmbracoContext.Current.InPreviewMode, new SkinFromUmbraco());
+            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, null,
+                new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"]).ExpiryDate,
+                UmbracoContext.Current.InPreviewMode, new SkinFromUmbraco());
             modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel,
                 new UmbracoLatestService(model.Content),
                 null, null,

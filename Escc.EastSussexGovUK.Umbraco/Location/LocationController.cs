@@ -21,6 +21,8 @@ using Umbraco.Web.Mvc;
 using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
 using Escc.EastSussexGovUK.Umbraco.Ratings;
 using Escc.EastSussexGovUK.Umbraco.Skins;
+using Examine;
+using Escc.Umbraco.Expiry;
 
 namespace Escc.EastSussexGovUK.Umbraco.Location
 {
@@ -35,8 +37,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Location
         {
             if (model == null) throw new ArgumentNullException("model");
 
+            var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"]);
             var mediaUrlTransformer = new RemoveMediaDomainUrlTransformer();
-            var viewModel = MapUmbracoContentToViewModel(model.Content,
+            var viewModel = MapUmbracoContentToViewModel(model.Content, expiryDate.ExpiryDate,
                     new UmbracoLatestService(model.Content),
                     new UmbracoSocialMediaService(model.Content),
                     new UmbracoEastSussex1SpaceService(model.Content),
@@ -48,15 +51,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Location
                     mediaUrlTransformer, 
                     new SkinFromUmbraco());
 
-            SetupHttpCaching(model, viewModel);
+            SetupHttpCaching(model, viewModel, expiryDate);
 
             return CurrentTemplate(viewModel);
         }
 
-        private void SetupHttpCaching(RenderModel model, LocationViewModel viewModel)
+        private void SetupHttpCaching(RenderModel model, LocationViewModel viewModel, IExpiryDateSource expiryDate)
         {
             var cacheService = new HttpCachingService();
-            var cacheExpiryProperties = new List<string>() {"latestUnpublishDate_Latest"};
+            var cacheExpiryProperties = new IExpiryDateSource[] { expiryDate, new ExpiryDateFromPropertyValue(model.Content, "latestUnpublishDate_Latest") };
             var ukNow = DateTime.Now.ToUkDateTime();
             const int oneHour = 3600;
 
@@ -85,6 +88,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Location
         /// Maps the Umbraco content to the view model.
         /// </summary>
         /// <param name="content">The content.</param>
+        /// <param name="expiryDate">The expiry date.</param>
         /// <param name="latestService">The latest service.</param>
         /// <param name="socialMediaService">The social media service.</param>
         /// <param name="eastSussex1SpaceService">The East Sussex One Space service.</param>
@@ -94,6 +98,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Location
         /// <param name="escisService">The escis service.</param>
         /// <param name="ratingSettings">The rating settings.</param>
         /// <param name="mediaUrlTransformer">The media URL transformer.</param>
+        /// <param name="skinService">The skin service.</param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException">content
         /// or
@@ -122,7 +127,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Location
         /// <remarks>
         /// Method is virtual so that document types which inherit from the 'Location' type can also inherit and extend the controller
         /// </remarks>
-        protected virtual LocationViewModel MapUmbracoContentToViewModel(IPublishedContent content, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IRelatedLinksService relatedLinksService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService, IRatingSettingsProvider ratingSettings, IMediaUrlTransformer mediaUrlTransformer, ISkinToApplyService skinService)
+        protected virtual LocationViewModel MapUmbracoContentToViewModel(IPublishedContent content, DateTime? expiryDate, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IRelatedLinksService relatedLinksService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService, IRatingSettingsProvider ratingSettings, IMediaUrlTransformer mediaUrlTransformer, ISkinToApplyService skinService)
         {
             if (content == null) throw new ArgumentNullException("content");
             if (latestService == null) throw new ArgumentNullException("latestService");
@@ -186,7 +191,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Location
 
             // Add common properties to the model
             var modelBuilder = new BaseViewModelBuilder();
-            modelBuilder.PopulateBaseViewModel(model, content, contentExperimentSettingsService, UmbracoContext.Current.InPreviewMode, skinService);
+            modelBuilder.PopulateBaseViewModel(model, content, contentExperimentSettingsService,
+                expiryDate,
+                UmbracoContext.Current.InPreviewMode, skinService);
             modelBuilder.PopulateBaseViewModelWithInheritedContent(model, latestService, socialMediaService, eastSussex1SpaceService, webChatSettingsService, escisService, ratingSettings);
 
             return model;
