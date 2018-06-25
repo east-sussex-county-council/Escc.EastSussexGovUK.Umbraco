@@ -419,6 +419,31 @@
         <assemblyIdentity name="System.Web.WebPages" publicKeyToken="31bf3856ad364e35" />
         <bindingRedirect oldVersion="0.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
       </dependentAssembly>
+      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='Microsoft.Owin')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="Microsoft.Owin" publicKeyToken="31bf3856ad364e35" />
+        <bindingRedirect oldVersion="0.0.0.0-3.1.0.0" newVersion="3.1.0.0" />
+      </dependentAssembly>
+      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='Microsoft.Owin.Security.OAuth')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="Microsoft.Owin.Security.OAuth" publicKeyToken="31bf3856ad364e35" />
+        <bindingRedirect oldVersion="0.0.0.0-3.1.0.0" newVersion="3.1.0.0" />
+      </dependentAssembly>
+      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='Microsoft.Owin.Security')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="Microsoft.Owin.Security" publicKeyToken="31bf3856ad364e35" />
+        <bindingRedirect oldVersion="0.0.0.0-3.1.0.0" newVersion="3.1.0.0" />
+      </dependentAssembly>
+      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='Microsoft.Owin.Security.Cookies')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="Microsoft.Owin.Security.Cookies" publicKeyToken="31bf3856ad364e35" />
+        <bindingRedirect oldVersion="0.0.0.0-3.1.0.0" newVersion="3.1.0.0" />
+      </dependentAssembly>
+      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='Microsoft.Owin.Host.SystemWeb')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="Microsoft.Owin.Host.SystemWeb" publicKeyToken="31bf3856ad364e35" />
+        <bindingRedirect oldVersion="0.0.0.0-3.1.0.0" newVersion="3.1.0.0" />
+      </dependentAssembly>
     </assemblyBinding>
 
   </runtime>
