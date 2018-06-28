@@ -294,7 +294,7 @@
   <appSettings>
     <!-- START: Configure Umbraco -->
     <add key="umbracoConfigurationStatus" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-    <add key="umbracoConfigurationStatus" value="7.6.12" xdt:Transform="Insert" />
+    <add key="umbracoConfigurationStatus" value="7.6.13" xdt:Transform="Insert" />
 
     <add key="umbracoReservedPaths" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     <add key="umbracoReservedPaths" value="~/umbraco,~/install/,~/escc.eastsussexgovuk/,~/masterpages" xdt:Transform="Insert" />
