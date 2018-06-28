@@ -26,7 +26,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
         public bool IsRequired()
         {
             if (Html == null) return false;
-            return Html.Any(htmlString => Regex.IsMatch(htmlString, @"\.icasework\.com/form", RegexOptions.IgnoreCase));
+            return Html.Any(htmlString => Regex.IsMatch(htmlString, @"\.icasework\.com/(form|servlet\/ep\.appSearch)", RegexOptions.IgnoreCase));
         }
 
         /// <summary>
