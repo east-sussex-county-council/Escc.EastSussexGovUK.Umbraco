@@ -183,8 +183,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.EditorTools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.EditorTools.2.4.2\lib\Escc.Umbraco.EditorTools.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\Escc.Umbraco.EditorTools.2.4.3\lib\Escc.Umbraco.EditorTools.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.Expiry, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.Expiry.1.1.0\lib\net452\Escc.Umbraco.Expiry.dll</HintPath>
@@ -739,25 +738,6 @@
     <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.foundation.js" />
     <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.foundation.min.js" />
     <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.html5.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.html5.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.jqueryui.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.jqueryui.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.print.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.print.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.semanticui.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.semanticui.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.autoFill.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.autoFill.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.bootstrap.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.bootstrap.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.bootstrap4.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.bootstrap4.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.buttons.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.buttons.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.colReorder.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.colReorder.min.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.fixedColumns.js" />
-    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.fixedColumns.min.js" />
     <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.fixedHeader.js" />
     <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.fixedHeader.min.js" />
     <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.foundation.js" />
@@ -1046,41 +1026,6 @@
     <Content Include="Skins\FosterWithTrust\foster-with-trust-large.css" />
     <Content Include="Skins\FosterWithTrust\foster-with-trust-medium.css" />
     <Content Include="Skins\FosterWithTrust\foster-with-trust-small.css" />
-    <Content Include="App_Plugins\EditorTools\Views\Content\Index.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\CSVExport\Index.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\EditorToolsHome\About.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\EditorToolsHome\Help.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\EditorToolsHome\Index.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\ExamineSearch\Index.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\ExpiryBulkUpdate\BrowseSelected.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\ExpiryBulkUpdate\Index.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\InBoundLinkChecker\Index.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\Media\Index.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\MultiMove\ConfirmSelected.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\MultiMove\Index.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\PageExpiry\Index.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\Partials\_DataTable.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\Partials\_ExpiryBulkUpdateChildren.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\Partials\_MultiMoveChildren.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\Partials\_MultiMoveConfirmSelectedChildren.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\Partials\_NoCachedData.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\Partials\_Processing.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\Partials\_RegeneratingCache.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\Shared\_Layout.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\Stats\Index.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\Users\Index.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\web.config" />
-    <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.css.map" />
-    <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.min.css.map" />
-    <Content Include="App_Plugins\EditorTools\Content\bootstrap.css.map" />
-    <Content Include="App_Plugins\EditorTools\Content\bootstrap.min.css.map" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\common.scss" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\mixins.scss" />
-    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\semanticui.scss" />
-    <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Umbraco\Config\Lang\tr.xml" />
     <Content Include="Umbraco\Config\Lang\zh_tw.xml" />
     <Content Include="Umbraco\Js\app.dev.js" />
@@ -1271,6 +1216,41 @@
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PhonePropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\EditorTools\Views\web.config" />
+    <Content Include="App_Plugins\EditorTools\Views\Users\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Stats\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Shared\_Layout.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Partials\_RegeneratingCache.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Partials\_Processing.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Partials\_NoCachedData.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Partials\_MultiMoveConfirmSelectedChildren.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Partials\_MultiMoveChildren.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Partials\_ExpiryBulkUpdateChildren.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Partials\_DataTable.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\PageExpiry\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\MultiMove\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\MultiMove\ConfirmSelected.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Media\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\InBoundLinkChecker\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\ExpiryBulkUpdate\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\ExpiryBulkUpdate\BrowseSelected.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\ExamineSearch\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\EditorToolsHome\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\EditorToolsHome\Help.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\EditorToolsHome\About.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\CSVExport\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\Views\Content\Index.cshtml" />
+    <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\semanticui.scss" />
+    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\mixins.scss" />
+    <Content Include="App_Plugins\EditorTools\Content\DataTables\css\common.scss" />
+    <Content Include="App_Plugins\EditorTools\Content\bootstrap.min.css.map" />
+    <Content Include="App_Plugins\EditorTools\Content\bootstrap.css.map" />
+    <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.min.css.map" />
+    <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.css.map" />
     <None Include="Jobs\Examine\ExamineIndex.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -4773,7 +4753,6 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Umbraco.EditorTools.2.4.2\build\Escc.Umbraco.EditorTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.EditorTools.2.4.2\build\Escc.Umbraco.EditorTools.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\Escc.Registration.RegistrationSkin.1.0.0\build\Escc.Registration.RegistrationSkin.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Registration.RegistrationSkin.1.0.0\build\Escc.Registration.RegistrationSkin.targets'))" />
@@ -4784,6 +4763,7 @@
     <Error Condition="!Exists('..\packages\UmbracoCms.7.6.13\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.6.13\build\UmbracoCms.props'))" />
     <Error Condition="!Exists('..\packages\UmbracoCms.7.6.13\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.6.13\build\UmbracoCms.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.6.2.2\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.6.2.2\build\Escc.Umbraco.PropertyEditors.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.EditorTools.2.4.3\build\Escc.Umbraco.EditorTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.EditorTools.2.4.3\build\Escc.Umbraco.EditorTools.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
@@ -4792,7 +4772,6 @@
     <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
   </Target>
   <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
-  <Import Project="..\packages\Escc.Umbraco.EditorTools.2.4.2\build\Escc.Umbraco.EditorTools.targets" Condition="Exists('..\packages\Escc.Umbraco.EditorTools.2.4.2\build\Escc.Umbraco.EditorTools.targets')" />
   <Import Project="..\packages\Escc.Registration.RegistrationSkin.1.0.0\build\Escc.Registration.RegistrationSkin.targets" Condition="Exists('..\packages\Escc.Registration.RegistrationSkin.1.0.0\build\Escc.Registration.RegistrationSkin.targets')" />
   <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.2\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.2\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
   <Import Project="..\packages\Escc.Umbraco.MediaSync.2.1.1\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.2.1.1\build\Escc.Umbraco.MediaSync.targets')" />
@@ -4800,6 +4779,7 @@
   <Import Project="..\packages\Escc.FindAddress.Mvc.1.0.1\build\Escc.FindAddress.Mvc.targets" Condition="Exists('..\packages\Escc.FindAddress.Mvc.1.0.1\build\Escc.FindAddress.Mvc.targets')" />
   <Import Project="..\packages\UmbracoCms.7.6.13\build\UmbracoCms.targets" Condition="Exists('..\packages\UmbracoCms.7.6.13\build\UmbracoCms.targets')" />
   <Import Project="..\packages\Escc.Umbraco.PropertyEditors.6.2.2\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.6.2.2\build\Escc.Umbraco.PropertyEditors.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.EditorTools.2.4.3\build\Escc.Umbraco.EditorTools.targets" Condition="Exists('..\packages\Escc.Umbraco.EditorTools.2.4.3\build\Escc.Umbraco.EditorTools.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
