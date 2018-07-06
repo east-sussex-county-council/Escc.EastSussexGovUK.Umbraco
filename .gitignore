@@ -74,6 +74,7 @@ dummy.txt
 !*/App_Plugins/UmbracoForms/Backoffice/Common/FieldTypes/AgreeToTerms.html
 !*/App_Plugins/UmbracoForms/Backoffice/Common/FieldTypes/Gender.html
 !*/App_Plugins/UmbracoForms/Backoffice/Common/FieldTypes/Url.html
+!*/App_Plugins/UmbracoForms/Backoffice/Common/FieldTypes/School.html
 !*/App_Plugins/UmbracoForms/Backoffice/Common/RenderTypes
 */App_Plugins/UmbracoForms/Backoffice/Common/RenderTypes/*
 !*/App_Plugins/UmbracoForms/Backoffice/Common/RenderTypes/file.html

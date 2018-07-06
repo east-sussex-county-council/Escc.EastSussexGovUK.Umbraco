@@ -852,6 +852,7 @@
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\fileupload.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\hiddenfield.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\password.html" />
+    <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\School.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\radiobuttonlist.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\recaptcha.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\text.html" />
@@ -995,6 +996,7 @@
     <Content Include="googledb369ad0fa294f54.html" />
     <Content Include="images\forms-email-header.png" />
     <Content Include="js\forms-address.js" />
+    <Content Include="js\forms-school.js" />
     <Content Include="js\forms-url.js" />
     <Content Include="js\icasework-forms.js" />
     <Content Include="js\libs\bootstrap\tab.js" />
@@ -4028,6 +4030,7 @@
     <Content Include="Views\Partials\Grid\Bootstrap3-Fluid.cshtml" />
     <Content Include="Views\Partials\Grid\Bootstrap2.cshtml" />
     <Content Include="Views\Partials\Grid\Bootstrap2-Fluid.cshtml" />
+    <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.School.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -4094,6 +4097,7 @@
     <Compile Include="DocumentTypes\PreValueListDataType.cs" />
     <Compile Include="DocumentTypes\ReadOnlyDateDataType.cs" />
     <Compile Include="Forms\FieldTypes\Address.cs" />
+    <Compile Include="Forms\FieldTypes\School.cs" />
     <Compile Include="Forms\FieldTypes\Url.cs" />
     <Compile Include="Forms\FieldTypes\Gender.cs" />
     <Compile Include="Forms\FieldTypes\Checkbox.cs" />

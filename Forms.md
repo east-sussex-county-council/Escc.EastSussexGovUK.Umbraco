@@ -114,6 +114,22 @@ This issue is logged with Umbraco as [CON-1181](http://issues.umbraco.org/issue/
 
 `Address` lets you collect a UK address using a postcode lookup. It is an Umbraco Forms wrapper around a standard MVC forms partial view from the [Escc.FindAddress.Mvc](https://github.com/east-sussex-county-council/Escc.FindAddress.Mvc) project. It stores its data as a JSON object including latitude, longitude, UPRN and USRN. A custom render view at `~\App_Plugins\UmbracoForms\BackOffice\Common\RenderTypes\address.html` ensures that the JSON is not displayed in the entries viewer. 
 
+`School` lets you pick a school from the autocomplete suggestions or type a school name that's not in the list. When choosing from the autocomplete suggestions, it also saves and submits the school code. The autocomplete connects to a URL which needs to be set in `web.config`. The URL should support a `name` querystring parameter to filter the results by school name:
+
+	<appSettings>
+    	<add key="SchoolApiUrl" value="https://hostname/api/schools" />
+	</appSettings>
+
+and which returns JSON data in the following format:
+
+	[
+		{"SchoolName":"Example School #1","SchoolCode":"1234567"},
+		{"SchoolName":"Example School #2","SchoolCode":"2345678"},
+		...
+	]
+
+A suitable API is published by the `Escc.Schools.Website` project.
+
 **Multiple file uploads** should just use the 'File upload' field type multiple times. A native multiple file upload field type is [expected soon](https://github.com/PerplexInternetmarketing/Perplex-Umbraco-Forms/issues/2), and the next release of Umbraco Forms is due in Q1 2018.
 
 We also **allow paragraphs in question help text**. By default pressing Enter in the help text field will close the 'Edit question' overlay, but `~\App_Plugins\UmbracoFormsEntries\BackOffice\allow-new-lines.js` fixes this by removing the attribute that triggers it. You can now press Enter to get a new line. A change to the way help text is rendered in `~\Views\Partials\Forms\Themes\EastSussex\Form.cshtml` completes the fix by replacing new lines with paragraph tags. 
