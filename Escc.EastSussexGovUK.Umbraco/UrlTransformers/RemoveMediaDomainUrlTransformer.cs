@@ -1,4 +1,5 @@
-﻿using Escc.Umbraco.PropertyTypes;
+﻿using Escc.EastSussexGovUK.Umbraco.Jobs.HtmlFormatters;
+using Escc.Umbraco.PropertyTypes;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -10,7 +11,7 @@ namespace Escc.EastSussexGovUK.Umbraco.UrlTransformers
     /// </summary>
     /// <seealso cref="IMediaUrlTransformer" />
     /// <remarks>This is required to handle absolute URLs pasted in by web authors which should be relative</remarks>
-    public class RemoveMediaDomainUrlTransformer : IMediaUrlTransformer, IUrlTransformer
+    public class RemoveMediaDomainUrlTransformer : IMediaUrlTransformer, IUrlTransformer, IHtmlStringFormatter
     {
         /// <summary>
         /// Transforms the media URL.
@@ -74,6 +75,16 @@ namespace Escc.EastSussexGovUK.Umbraco.UrlTransformers
                 }
             }
             return html;
+        }
+
+        /// <summary>
+        /// Parses HTML and removes the domain from any media urls found.
+        /// </summary>
+        /// <param name="html">The HTML document.</param>
+        /// <returns></returns>
+        string IHtmlStringFormatter.FormatHtml(string html)
+        {
+            return ParseAndTransformMediaUrlsInHtml(html);
         }
     }
 }

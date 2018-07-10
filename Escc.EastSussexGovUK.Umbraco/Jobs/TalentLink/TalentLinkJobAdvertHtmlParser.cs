@@ -8,6 +8,7 @@ using HtmlAgilityPack;
 using Escc.Umbraco.PropertyEditors.RichTextPropertyEditor;
 using Escc.Html;
 using Escc.EastSussexGovUK.Umbraco.Jobs.HtmlFormatters;
+using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
 {
@@ -153,7 +154,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink
 
         private static string ApplyStringFormatters(string parsedHtml)
         {
-            var htmlFormatters = new IHtmlStringFormatter[] { new CloseEmptyElementsFormatter(), new HouseStyleDateFormatter(), new RedeploymentHeaderFormatter() };
+            var htmlFormatters = new IHtmlStringFormatter[] { new CloseEmptyElementsFormatter(), new HouseStyleDateFormatter(), new RedeploymentHeaderFormatter(), new RemoveMediaDomainUrlTransformer() };
             foreach (var formatter in htmlFormatters)
             {
                 parsedHtml = formatter.FormatHtml(parsedHtml);

@@ -145,6 +145,20 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;div id=&quot;tab2content&quot; aria-labelledby=&quot;tab2&quot; role=&quot;tabpanel&quot; aria-hidden=&quot;true&quot;&gt;
+        ///                            &lt;h2 class=&quot;aural&quot;&gt;Equal opportunities&lt;/h2&gt;
+        ///                            &lt;div&gt;
+        ///&lt;p&gt;&lt;small&gt;East Sussex County Council is an equal opportunities employer. We welcome applications from all suitable candidates, regardless of race, gender, sexual orientation, disability or age. All applications are treated on merit.&lt;/small&gt;&lt;/p&gt;
+        ///&lt;/div&gt;
+        ///&lt;p&gt;&lt;small&gt;&lt;img src=&quot;https://example.blob.core.windows.net/media/8880/ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string MediaDomainsInJobHtml {
+            get {
+                return ResourceManager.GetString("MediaDomainsInJobHtml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;tr class=&quot;Lst-BG1&quot;&gt;
         ///&lt;td headers=&quot;th1&quot; class=&quot;Lst-Desc1T&quot;&gt;
         ///&lt;a href=&quot;jsoutputinitrapido.cfm?component=lay9999_jdesc100a&amp;amp;nPostingID=16476&amp;amp;nPostingTargetID=33720&amp;amp;option=52&amp;amp;sort=DESC&amp;amp;respnr=8&amp;amp;ID=PFOFK026203F3VBQB7968LOH0&amp;amp;Resultsperpage=10&amp;amp;lg=UK&amp;amp;mask=esccext&quot; class=&quot;lstA-desc1&quot; title=&quot;Click here to see the job description: Civil Enforcement Officer (NSL Ltd) (ID33720)&quot; tabindex=&quot;6&quot;&gt;Civil Enforcement Officer (NSL Ltd)&lt;/a&gt;

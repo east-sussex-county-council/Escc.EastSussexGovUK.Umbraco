@@ -672,6 +672,15 @@ Countywide
 &lt;p&gt;How to apply: please follow the below link:&lt;br /&gt;&lt;a href="https://www.surreycc.gov.uk/jobs/erecruitment/details.html?nPostingID=19590&amp;nPostingTargetID=44866&amp;option=52&amp;sort=DESC&amp;respnr=1&amp;ID=Q0EFK026203F3VBQB7968LOCX&amp;Resultsperpage=20&amp;lg=UK&amp;mask=surrext"&gt;https://www.surreycc.gov.uk/jobs/erecruitment/details.html?nPostingID=19590&amp;nPostingTargetID=44866&amp;option=52&amp;sort=DESC&amp;respnr=1&amp;ID=Q0EFK026203F3VBQB7968LOCX&amp;Resultsperpage=20&amp;lg=UK&amp;mask=surrext&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;For an informal discussion contact Janet Polley on 0208 541 9088 or by e-mail at &lt;a href="mailto:janet.polley@surreycc.gov.uk"&gt;janet.polley@surreycc.gov.uk&lt;/a&gt;&lt;/p&gt;&lt;/span&gt;</value>
   </data>
+  <data name="MediaDomainsInJobHtml" xml:space="preserve">
+    <value>&lt;div id="tab2content" aria-labelledby="tab2" role="tabpanel" aria-hidden="true"&gt;
+                            &lt;h2 class="aural"&gt;Equal opportunities&lt;/h2&gt;
+                            &lt;div&gt;
+&lt;p&gt;&lt;small&gt;East Sussex County Council is an equal opportunities employer. We welcome applications from all suitable candidates, regardless of race, gender, sexual orientation, disability or age. All applications are treated on merit.&lt;/small&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;small&gt;&lt;img src="https://example.blob.core.windows.net/media/8880/disability-confident-logo.jpg" alt="Positive about disabled people" /&gt; &lt;img src="https://some-domain.example.org/media/9861/defencescheme.png" alt="Positive about disabled people" /&gt;&lt;/small&gt;&lt;/p&gt;
+                        &lt;/div&gt;</value>
+  </data>
   <data name="MultipleJobResults" xml:space="preserve">
     <value>&lt;tr class="Lst-BG1"&gt;
 &lt;td headers="th1" class="Lst-Desc1T"&gt;
