@@ -4,7 +4,7 @@
 angular.module("umbraco").controller("UmbracoForms.RenderTypes.Address",
     function ($scope) {
         if ($scope.field) {
-            $scope.Address = JSON.parse($scope.field);
+            $scope.Address = JSON.parse($scope.field.substring($scope.field.indexOf('{')));
         }
     }
 );

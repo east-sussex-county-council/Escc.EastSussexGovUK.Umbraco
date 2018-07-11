@@ -77,8 +77,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Forms.FieldTypes
                     }
                 }
 
-                // Store the value as a JSON object representing the address
-                return new object[] { JsonConvert.SerializeObject(address) };
+                // Store two values for the field: a human-readable version and a JSON object including metadata
+                return new object[] { address.GetSimpleAddress().ToString(), JsonConvert.SerializeObject(address) };
             }
 
             // There is no value when the control is initially loaded on a GET request
