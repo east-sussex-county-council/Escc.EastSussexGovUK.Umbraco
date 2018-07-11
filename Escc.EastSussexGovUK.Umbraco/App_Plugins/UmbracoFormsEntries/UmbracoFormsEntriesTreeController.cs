@@ -9,6 +9,7 @@ using Umbraco.Web.Models.Trees;
 using Umbraco.Web.Mvc;
 using Umbraco.Web.Trees;
 using Umbraco.Forms.Data.Storage;
+using System.Globalization;
 
 namespace Escc.EastSussexGovUK.Umbraco.App_Plugins.Escc.UmbracoFormsAdmin
 {
@@ -34,6 +35,9 @@ namespace Escc.EastSussexGovUK.Umbraco.App_Plugins.Escc.UmbracoFormsAdmin
                         }
                     }
                 }
+
+                tree.Sort(new TreeNodeComparer());
+
                 return tree;
             }
             // this tree doesn't support rendering more than 1 level
@@ -42,6 +46,14 @@ namespace Escc.EastSussexGovUK.Umbraco.App_Plugins.Escc.UmbracoFormsAdmin
         protected override MenuItemCollection GetMenuForNode(string id, FormDataCollection queryStrings)
         {
             return null;
+        }
+
+        private class TreeNodeComparer : IComparer<TreeNode>
+        {
+            public int Compare(TreeNode x, TreeNode y)
+            {
+                return StringComparer.Create(CultureInfo.CurrentUICulture, true).Compare(x.Name, y.Name);
+            }
         }
     }
 }
