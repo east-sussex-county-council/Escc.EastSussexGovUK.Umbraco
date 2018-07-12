@@ -73,3 +73,14 @@ Alerts are sent by a call to the job alerts API, implemented in `JobAlertsApiCon
 We also store which jobs were sent to which email address, without specifying which alert it matched, so that we do not send the same job to the same person twice even if it matches a different alert to the one we originally sent it for.
 
 The formatting of the alert emails is controlled by a combination of the alert templates `JobAlertConfirmation.html` and `JobAlert.html`, and text entered into an instance of the `Job alerts` document type in Umbraco. The latter allows editors to update the content of the alerts without requiring a developer.
+
+## Embedding a list of jobs in another page
+
+A live list of jobs can be included in any Umbraco page. Work out a search query that lists only the jobs you want to show, then copy the RSS URL from the alerts section on the job search results page. In the Umbraco page create a link to that URL, select the link and apply `RSS` and `Embed jobs RSS feed` from the `Formats` dropdown in the rich text editor. The list of jobs is embedded in the page as a table.
+
+This works because:
+
+1. The `RSS` and `Embed jobs RSS feed` formats are set up in `TinyMCE-StyleSelector-Embed.css`, which is selected for use in the data type for the rich text editor.
+2. Applying those formats creates a `span` around the link with two classes: `rss` and `embed-jobs-rss`.
+3. The script `embed-jobs-rss.js` is included in every page by `UmbracoDesktop.cshtml`. It looks for a `span` using those two classes and replaces it with the content of the RSS feed, found using the link that's inside the `span`.
+4. Since the RSS feed is an Umbraco document type, it can be rendered by multiple templates. `embed-jobs-rss.js` appends `altTemplate=JobsRssAsTable` to the link before downloading it, which renders the data for the RSS feed using `~/Views/JobsRssAsTable.cshtml`. The RSS feed document type returns all matching jobs, not paged data, but the `JobsRssAsTable.cshtml` view formats the jobs in an HTML table ready to be embedded, rather than as an RSS feed.
