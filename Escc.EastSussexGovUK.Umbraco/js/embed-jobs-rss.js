@@ -17,12 +17,12 @@
 
             // Creates a map with the query string parameters
             while (m = re.exec(queryString)) {
-                queryParameters[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+                queryParameters[decodeURIComponent(m[1])] = decodeURIComponent(m[2].replace(/\+/g, ' '));
             }
 
             // Add new parameters or update existing ones
             for (var i = 0; i < parameters.length; i++) {
-                queryParameters[parameters[i].key] = parameters[i].value;
+                queryParameters[parameters[i].key] = parameters[i].value.replace(/\+/g,' ');
             };
 
             /*
