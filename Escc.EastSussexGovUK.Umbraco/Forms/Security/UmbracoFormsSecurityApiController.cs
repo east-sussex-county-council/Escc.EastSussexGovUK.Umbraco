@@ -9,7 +9,7 @@ using Umbraco.Web.WebApi;
 using Umbraco.Core.Models.Membership;
 using System.Web.Http;
 
-namespace Escc.EastSussexGovUK.Umbraco.Forms
+namespace Escc.EastSussexGovUK.Umbraco.Forms.Security
 {
     [Authorize]
     public class UmbracoFormsSecurityApiController : UmbracoApiController

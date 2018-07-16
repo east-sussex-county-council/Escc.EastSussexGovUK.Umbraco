@@ -86,6 +86,7 @@ dummy.txt
 */Views/MacroPartials/*
 */Views/Partials/Forms/*
 !*/Views/Partials/Forms/DatePicker.cshtml
+!*/Views/Partials/Forms/Permissions.cshtml
 !*/Views/Partials/Forms/Emails
 */Views/Partials/Forms/Emails/Example-Template.cshtml
 !*/Views/Partials/Forms/Themes

@@ -48,6 +48,12 @@ When you create a new form you will need to grant access to the form to anyone w
 2. Expand the 'Users' tree, find the user who needs access, and ensure that they have access to the Forms section. If the user is not a web author, this should be the only section selected. 
 3. Next expand 'Forms Security', find the user who needs access again, and tick 'Has Access' next to the form they need to view. 
 
+### Finding out who has access to an existing form
+
+Umbraco Forms shows you what forms a user has access to, but not which users have access to a form. `FormPermissionsEventHandler` adds a 'Permissions' menu item to each form which displays a list of the users who have access, and links each user's name to the edit view for their Umbraco Forms permissions.
+
+This dialog is loaded using a route configured in `FormPermissionsEventHandler` to go to `FormPermissionsController`, which loads the `~\Views\Partials\Forms\Permissions.cshtml` view. 
+
 ## Securing uploads
 
 Umbraco forms uploads files to the same `IFileSystem` as items in the media gallery, which means they are publicly available and insecure even though their contents may be sensitive.

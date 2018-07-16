@@ -4031,6 +4031,7 @@
     <Content Include="Views\Partials\Grid\Bootstrap2.cshtml" />
     <Content Include="Views\Partials\Grid\Bootstrap2-Fluid.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.School.cshtml" />
+    <Content Include="Views\Partials\Forms\Permissions.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -4115,6 +4116,10 @@
     <Compile Include="Forms\FileFromBlobStorageResult.cs" />
     <Compile Include="Forms\FindAddressApiController.cs" />
     <Compile Include="Forms\FormController.cs" />
+    <Compile Include="Forms\Security\FormSecurity.cs" />
+    <Compile Include="Forms\Security\FormUser.cs" />
+    <Compile Include="Forms\Security\FormPermissionsEventHandler.cs" />
+    <Compile Include="Forms\Security\FormPermissionsController.cs" />
     <Compile Include="Forms\Workflows\SaveIdAsFieldWorkflow.cs" />
     <Compile Include="Forms\FormModel.cs" />
     <Compile Include="Forms\FormContentTab.cs" />
@@ -4122,8 +4127,8 @@
     <Compile Include="Forms\FormDataType.cs" />
     <Compile Include="Forms\UmbracoFormsRetentionApiController.cs" />
     <Compile Include="Forms\UmbracoFormsFileUploads.cs" />
-    <Compile Include="Forms\UmbracoFormsSecurity.cs" />
-    <Compile Include="Forms\UmbracoFormsSecurityApiController.cs" />
+    <Compile Include="Forms\Security\UmbracoFormsSecurity.cs" />
+    <Compile Include="Forms\Security\UmbracoFormsSecurityApiController.cs" />
     <Compile Include="Forms\UmbracoFormsUploadsApiController.cs" />
     <Compile Include="Forms\Workflows\RetentionAfterSetDateWorkflow.cs" />
     <Compile Include="Guide\GuideNavigationTab.cs" />

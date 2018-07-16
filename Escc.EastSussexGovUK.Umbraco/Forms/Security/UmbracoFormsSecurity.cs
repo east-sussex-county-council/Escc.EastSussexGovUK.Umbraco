@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using Umbraco.Core.Models.Membership;
 using Umbraco.Core.Services;
 using Umbraco.Forms.Core;
 using Umbraco.Forms.Data.Storage;
 
-namespace Escc.EastSussexGovUK.Umbraco.Forms
+namespace Escc.EastSussexGovUK.Umbraco.Forms.Security
 {
     /// <summary>
     /// Query and update security settings in Umbraco Forms
@@ -82,6 +83,38 @@ namespace Escc.EastSussexGovUK.Umbraco.Forms
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Returns a list of users granted access to an Umbraco Form.
+        /// </summary>
+        /// <param name="userService">The user service.</param>
+        /// <param name="formId">The form identifier.</param>
+        /// <returns></returns>
+        public FormSecurity PermissionsToForm(IUserService userService, Guid formId)
+        {
+            var formSecurity = new FormSecurity();
+            using (FormStorage formStorage = new FormStorage())
+            {
+                var form = formStorage.GetForm(formId);
+                if (form != null) formSecurity.FormName = form.Name;
+            }
+
+            using (UserFormSecurityStorage formSecurityStorage = new UserFormSecurityStorage())
+            {
+                var permissions = formSecurityStorage.GetUserFormSecurityForAllUsers(formId).Where<UserFormSecurity>(permission => permission.HasAccess == true);
+                foreach (var permission in permissions)
+                {
+                    var userId = Int32.Parse(permission.User, CultureInfo.InvariantCulture);
+                    formSecurity.Users.Add(new FormUser()
+                    {
+                        UserId = userId,
+                        UserDisplayName = userService.GetUserById(userId).Name
+                    });
+                }
+            }
+
+            return formSecurity;
         }
 
         /// <summary>
