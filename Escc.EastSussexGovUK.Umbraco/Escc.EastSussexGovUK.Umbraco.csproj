@@ -372,8 +372,8 @@
     <Reference Include="OrigoDb.JsonNetFormatter, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\OrigoDB.JsonNetFormatter.0.1.0\lib\net40\OrigoDb.JsonNetFormatter.dll</HintPath>
     </Reference>
-    <Reference Include="Our.Umbraco.FileSystemProviders.Azure, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoFileSystemProviders.Azure.1.2.1-escc-000000\lib\net45\Our.Umbraco.FileSystemProviders.Azure.dll</HintPath>
+    <Reference Include="Our.Umbraco.FileSystemProviders.Azure, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoFileSystemProviders.Azure.1.2.2-escc-000000\lib\net45\Our.Umbraco.FileSystemProviders.Azure.dll</HintPath>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
@@ -1014,6 +1014,38 @@
     <Content Include="js\libs\bootstrap\util.js" />
     <Content Include="js\libs\find-address.min.js" />
     <Content Include="js\iframeResizer.js" />
+    <Content Include="media\1001\termdates.xml" />
+    <Content Include="media\1012\termdates-lf.xml" />
+    <Content Include="media\1015\kitten.jpg" />
+    <Content Include="media\1015\kitten_thumb.jpg" />
+    <Content Include="media\1016\astronaut-small.jpg" />
+    <Content Include="media\1016\astronaut-small_big-thumb.jpg" />
+    <Content Include="media\1016\astronaut-small_thumb.jpg" />
+    <Content Include="media\1017\astronaut.jpg" />
+    <Content Include="media\1017\astronaut_big-thumb.jpg" />
+    <Content Include="media\1017\astronaut_thumb.jpg" />
+    <Content Include="media\1018\churchill.jpg" />
+    <Content Include="media\1018\churchill_thumb.jpg" />
+    <Content Include="media\1018\council-plan-bubbles.jpg" />
+    <Content Include="media\1018\council-plan-bubbles_big-thumb.jpg" />
+    <Content Include="media\1018\council-plan-bubbles_thumb.jpg" />
+    <Content Include="media\1019\blofeld.jpg" />
+    <Content Include="media\1020\marvin.jpg" />
+    <Content Include="media\1020\marvin_thumb.jpg" />
+    <Content Include="media\1021\140.jpg" />
+    <Content Include="media\1021\140_thumb.jpg" />
+    <Content Include="media\1023\jobs-logo.png" />
+    <Content Include="media\1024\jobs-header.jpg" />
+    <Content Include="media\1024\jobs-header_thumb.jpg" />
+    <Content Include="media\1025\muppets-banner-big.jpg" />
+    <Content Include="media\1025\muppets-banner-big_thumb.jpg" />
+    <Content Include="media\1026\kitten-small.jpg" />
+    <Content Include="media\1026\kitten-small_thumb.jpg" />
+    <Content Include="media\1027\welfare_reform_video.jpg" />
+    <Content Include="media\1027\welfare_reform_video_thumb.jpg" />
+    <Content Include="media\1028\blofeld.jpg" />
+    <Content Include="media\1028\blofeld_thumb.jpg" />
+    <Content Include="media\1029\budget-live.svg" />
     <Content Include="RegistrationSkin\css\min\registration-skin-large.css" />
     <Content Include="RegistrationSkin\css\min\registration-skin-medium.css" />
     <Content Include="RegistrationSkin\css\min\registration-skin-small.css" />
@@ -1303,6 +1335,9 @@
     <Content Include="images\web.config" />
     <Content Include="App_Plugins\SpectrumColorPicker\package.manifest" />
     <Content Include="EastSussexGovUK\Rss\rss-to-html.ashx" />
+    <Content Include="media\1002\this-is-a-test-by-the-web-team.pdf" />
+    <Content Include="media\Web.config" />
+    <Content Include="media\Web.config.bak" />
     <None Include="RightsOfWayDeposits\ExamineIndex.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -4127,12 +4162,15 @@
     <Compile Include="Forms\FieldTypes\TextArea.cs" />
     <Compile Include="Forms\FieldTypes\DatePicker.cs" />
     <Compile Include="Forms\FieldTypes\TextField.cs" />
+    <Compile Include="Forms\FileFromBlobStorageResult.cs" />
     <Compile Include="Forms\FindAddressApiController.cs" />
     <Compile Include="Forms\FormController.cs" />
     <Compile Include="Forms\FormModel.cs" />
     <Compile Include="Forms\FormContentTab.cs" />
     <Compile Include="Forms\FormDocumentType.cs" />
     <Compile Include="Forms\FormDataType.cs" />
+    <Compile Include="Forms\AzureSecureFormUploadsEventHandler.cs" />
+    <Compile Include="Forms\AzureSecureFormUploadsController.cs" />
     <Compile Include="Guide\GuideNavigationTab.cs" />
     <Compile Include="Guide\SectionNavigationDataType.cs" />
     <Compile Include="Jobs\Alerts\JobAlertSettingsTab.cs" />
@@ -4800,8 +4838,23 @@
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
-  </Target>
+  </Target>-->
+  <UsingTask TaskName="ReplaceFileText" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
+    <ParameterGroup>
+      <Filename ParameterType="System.String" Required="true" />
+      <ReplaceThis ParameterType="System.String" Required="true" />
+      <WithThis ParameterType="System.String" Required="true" />
+    </ParameterGroup>
+    <Task>
+      <Reference Include="System.Core" />
+      <Using Namespace="System" />
+      <Using Namespace="System.IO" />
+      <Code Type="Fragment" Language="cs"><![CDATA[
+            File.WriteAllText(Filename, File.ReadAllText(Filename).Replace(ReplaceThis, WithThis));
+          ]]></Code>
+    </Task>
+  </UsingTask>
   <Target Name="AfterBuild">
+    <ReplaceFileText Filename="$(ProjectDir)App_Plugins\UmbracoForms\BackOffice\Common\RenderTypes\file.html" ReplaceThis="secureformuploads" WithThis="azuresecureformuploads" />
   </Target>
-  -->
 </Project>
