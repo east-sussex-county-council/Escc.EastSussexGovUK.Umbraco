@@ -84,9 +84,8 @@
     <Reference Include="EPPlus, Version=4.0.5.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoForms.Core.6.0.8\lib\EPPlus.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.ActiveDirectory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.ActiveDirectory.1.0.0\lib\Escc.ActiveDirectory.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Escc.ActiveDirectory, Version=1.1.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.ActiveDirectory.1.1.2\lib\Escc.ActiveDirectory.dll</HintPath>
     </Reference>
     <Reference Include="Escc.AddressAndPersonalDetails, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.AddressAndPersonalDetails.3.0.0\lib\net20\Escc.AddressAndPersonalDetails.dll</HintPath>
@@ -187,6 +186,18 @@
     </Reference>
     <Reference Include="Escc.Umbraco.Expiry, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.Expiry.1.1.1\lib\net452\Escc.Umbraco.Expiry.dll</HintPath>
+    </Reference>
+    <Reference Include="Escc.Umbraco.Forms.BackOffice, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Umbraco.Forms.BackOffice.1.0.0\lib\Escc.Umbraco.Forms.BackOffice.dll</HintPath>
+    </Reference>
+    <Reference Include="Escc.Umbraco.Forms.FieldTypes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Umbraco.Forms.FieldTypes.1.0.0\lib\Escc.Umbraco.Forms.FieldTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="Escc.Umbraco.Forms.Security, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Umbraco.Forms.Security.1.0.0\lib\Escc.Umbraco.Forms.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Escc.Umbraco.Forms.Workflows, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Umbraco.Forms.Workflows.1.0.0\lib\Escc.Umbraco.Forms.Workflows.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.HeatmapAnalytics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.HeatmapAnalytics.2.0.1\lib\Escc.Umbraco.HeatmapAnalytics.dll</HintPath>
@@ -807,6 +818,12 @@
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\validate.js" />
     <Content Include="App_Plugins\Escc.UmbracoBranding\branding-v2.css" />
     <Content Include="App_Plugins\Escc.UmbracoBranding\poppies.jpg" />
+    <Content Include="App_Plugins\EsccUmbracoFormsBackOffice\allow-new-lines-in-question-help-text.js" />
+    <Content Include="App_Plugins\EsccUmbracoFormsBackOffice\BackOffice\Dashboards\YourForms.html" />
+    <Content Include="App_Plugins\EsccUmbracoFormsBackOffice\BackOffice\FormEntries\controller.js" />
+    <Content Include="App_Plugins\EsccUmbracoFormsBackOffice\BackOffice\FormEntries\edit.html" />
+    <Content Include="App_Plugins\EsccUmbracoFormsBackOffice\BackOffice\FormEntries\umbraco-forms-entries.css" />
+    <Content Include="App_Plugins\EsccUmbracoFormsFieldTypes\rich-text-setting-editor.controller.js" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.controller.js" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.htm" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.resource.js" />
@@ -829,7 +846,7 @@
     <Content Include="App_Plugins\tooorangey.EditorNotes\NotesModePreValueEditor.html" />
     <Content Include="App_Plugins\tooorangey.EditorNotes\RichTextPreValueEditor.controller.js" />
     <Content Include="App_Plugins\tooorangey.EditorNotes\RichTextPreValueEditor.html" />
-    <Content Include="App_Plugins\UmbracoFormsEntries\Backoffice\FieldTypes\address.js" />
+    <Content Include="App_Plugins\Escc.EastSussexGovUK.Umbraco.Forms.FieldTypes\Address.js" />
     <Content Include="App_Plugins\UmbracoForms\Assets\BaremetricsCalendar\public\css\application.css" />
     <Content Include="App_Plugins\UmbracoForms\Assets\BaremetricsCalendar\public\js\Calendar.js" />
     <Content Include="App_Plugins\UmbracoForms\Assets\defaultform.css" />
@@ -859,13 +876,9 @@
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\textarea.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\textfield.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\RenderTypes\address.html" />
-    <Content Include="App_Plugins\UmbracoFormsEntries\Backoffice\allow-new-lines.js" />
-    <Content Include="App_Plugins\UmbracoFormsEntries\Backoffice\FormEntries\edit.html" />
-    <Content Include="App_Plugins\UmbracoFormsEntries\Backoffice\FormEntries\controller.js" />
-    <Content Include="App_Plugins\UmbracoFormsEntries\Backoffice\FormEntries\umbraco-forms-entries.css" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\RenderTypes\date.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\RenderTypes\file.html" />
-    <Content Include="App_Plugins\UmbracoFormsEntries\Backoffice\richdisplayedtext.controller.js" />
+    <Content Include="App_Plugins\Escc.EastSussexGovUK.Umbraco.Forms.FieldTypes\AgreeToTerms.js" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\AgreeToTerms.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\Gender.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\EthnicGroup.html" />
@@ -890,7 +903,7 @@
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\SettingTypes\pickers.datatype.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\SettingTypes\pickers.documenttype.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\SettingTypes\richdisplayedlinks.html" />
-    <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\SettingTypes\richdisplayedtext.html" />
+    <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\SettingTypes\RichTextEditor.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\SettingTypes\textarea.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\SettingTypes\textfield.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\SettingTypes\textstring.html" />
@@ -994,10 +1007,8 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="googledb369ad0fa294f54.html" />
-    <Content Include="images\forms-email-header.png" />
     <Content Include="js\forms-address.js" />
     <Content Include="js\forms-school.js" />
-    <Content Include="js\forms-url.js" />
     <Content Include="js\icasework-forms.js" />
     <Content Include="js\libs\bootstrap\tab.js" />
     <Content Include="js\libs\bootstrap\util.js" />
@@ -1009,6 +1020,7 @@
     <Content Include="RegistrationSkin\img\registration-skin.png" />
     <Content Include="RegistrationSkin\js\min\registration-skin.js" />
     <Content Include="robots.txt" />
+    <Content Include="scripts\Escc.Umbraco.Forms.FieldTypes\FieldType.Url.js" />
     <Content Include="Skins\RegistrationAcademy\academy-logo.png" />
     <Content Include="Skins\RegistrationAcademy\registration-academy-large.css" />
     <Content Include="Skins\RegistrationAcademy\registration-academy-medium.css" />
@@ -1187,7 +1199,7 @@
     <Content Include="images\quote-close.gif" />
     <Content Include="images\quote-open.gif" />
     <Content Include="bin\umbracoForms.lic" />
-    <Content Include="App_Plugins\UmbracoFormsEntries\package.manifest" />
+    <Content Include="App_Plugins\Escc.EastSussexGovUK.Umbraco.Forms.FieldTypes\package.manifest" />
     <Content Include="Config\uMediaSync.config" />
     <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\package.manifest" />
     <Content Include="windows-tile.png" />
@@ -1253,6 +1265,8 @@
     <Content Include="App_Plugins\EditorTools\Content\bootstrap.css.map" />
     <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.min.css.map" />
     <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.css.map" />
+    <Content Include="App_Plugins\EsccUmbracoFormsFieldTypes\package.manifest" />
+    <Content Include="App_Plugins\EsccUmbracoFormsBackOffice\package.manifest" />
     <None Include="Jobs\Examine\ExamineIndex.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -3966,7 +3980,6 @@
     <Content Include="Views\Partials\Forms\Themes\EastSussex\Form.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\EastSussex\Script.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\EastSussex\Submitted.cshtml" />
-    <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.FormattedText.cshtml" />
     <Content Include="Views\Partials\Forms\Emails\Send-A-Link.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.Textarea.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.PasswordField.cshtml" />
@@ -3974,12 +3987,7 @@
     <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.DropDownList.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.CheckBox.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.DatePicker.cshtml" />
-    <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.EthnicGroup.cshtml" />
-    <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.PhoneNumber.cshtml" />
-    <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.Email.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.AgreeToTerms.cshtml" />
-    <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.Gender.cshtml" />
-    <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.Url.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.Address.cshtml" />
     <Content Include="Views\Shared\_FindAddress.cshtml" />
     <Content Include="Views\Alerts.cshtml" />
@@ -4032,6 +4040,12 @@
     <Content Include="Views\Partials\Grid\Bootstrap2-Fluid.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.School.cshtml" />
     <Content Include="Views\Partials\Forms\Permissions.cshtml" />
+    <Content Include="Views\Partials\Forms\Themes\default\Fieldtypes\FieldType.Url.cshtml" />
+    <Content Include="Views\Partials\Forms\Themes\default\Fieldtypes\FieldType.PhoneNumber.cshtml" />
+    <Content Include="Views\Partials\Forms\Themes\default\Fieldtypes\FieldType.Gender.cshtml" />
+    <Content Include="Views\Partials\Forms\Themes\default\Fieldtypes\FieldType.FormattedText.cshtml" />
+    <Content Include="Views\Partials\Forms\Themes\default\Fieldtypes\FieldType.EthnicGroup.cshtml" />
+    <Content Include="Views\Partials\Forms\Themes\default\Fieldtypes\FieldType.Email.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -4081,7 +4095,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Plugins\UmbracoFormsEntries\UmbracoFormsEntriesTreeController.cs" />
     <Compile Include="App_Start\EastSussexGovUK_Mvc.cs" />
     <Compile Include="App_Start\EastSussexGovUK_WebForms.cs" />
     <Compile Include="AzureConfiguration\FrontEndReadOnlyServerRegistrar.cs" />
@@ -4098,7 +4111,9 @@
     <Compile Include="DocumentTypes\PreValueListDataType.cs" />
     <Compile Include="DocumentTypes\ReadOnlyDateDataType.cs" />
     <Compile Include="Forms\FieldTypes\Address.cs" />
+    <Compile Include="Forms\FieldTypes\DoNotUseTitleAndDescription.cs" />
     <Compile Include="Forms\FieldTypes\School.cs" />
+    <Compile Include="Forms\FieldTypes\DoNotUseRecaptcha.cs" />
     <Compile Include="Forms\FieldTypes\Url.cs" />
     <Compile Include="Forms\FieldTypes\Gender.cs" />
     <Compile Include="Forms\FieldTypes\Checkbox.cs" />
@@ -4106,31 +4121,18 @@
     <Compile Include="Forms\FieldTypes\Email.cs" />
     <Compile Include="Forms\FieldTypes\AgreeToTerms.cs" />
     <Compile Include="Forms\FieldTypes\PhoneNumber.cs" />
-    <Compile Include="Forms\FieldTypes\FormattedTextField.cs" />
     <Compile Include="Forms\FieldTypes\FileUpload.cs" />
     <Compile Include="Forms\FieldTypes\DropDownList.cs" />
     <Compile Include="Forms\FieldTypes\Password.cs" />
     <Compile Include="Forms\FieldTypes\TextArea.cs" />
     <Compile Include="Forms\FieldTypes\DatePicker.cs" />
     <Compile Include="Forms\FieldTypes\TextField.cs" />
-    <Compile Include="Forms\FileFromBlobStorageResult.cs" />
     <Compile Include="Forms\FindAddressApiController.cs" />
     <Compile Include="Forms\FormController.cs" />
-    <Compile Include="Forms\Security\FormSecurity.cs" />
-    <Compile Include="Forms\Security\FormUser.cs" />
-    <Compile Include="Forms\Security\FormPermissionsEventHandler.cs" />
-    <Compile Include="Forms\Security\FormPermissionsController.cs" />
-    <Compile Include="Forms\Workflows\SaveIdAsFieldWorkflow.cs" />
     <Compile Include="Forms\FormModel.cs" />
     <Compile Include="Forms\FormContentTab.cs" />
     <Compile Include="Forms\FormDocumentType.cs" />
     <Compile Include="Forms\FormDataType.cs" />
-    <Compile Include="Forms\UmbracoFormsRetentionApiController.cs" />
-    <Compile Include="Forms\UmbracoFormsFileUploads.cs" />
-    <Compile Include="Forms\Security\UmbracoFormsSecurity.cs" />
-    <Compile Include="Forms\Security\UmbracoFormsSecurityApiController.cs" />
-    <Compile Include="Forms\UmbracoFormsUploadsApiController.cs" />
-    <Compile Include="Forms\Workflows\RetentionAfterSetDateWorkflow.cs" />
     <Compile Include="Guide\GuideNavigationTab.cs" />
     <Compile Include="Guide\SectionNavigationDataType.cs" />
     <Compile Include="Jobs\Alerts\JobAlertSettingsTab.cs" />
@@ -4773,6 +4775,9 @@
     <Error Condition="!Exists('..\packages\UmbracoCms.7.6.13\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.6.13\build\UmbracoCms.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.6.2.2\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.6.2.2\build\Escc.Umbraco.PropertyEditors.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.EditorTools.2.4.3\build\Escc.Umbraco.EditorTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.EditorTools.2.4.3\build\Escc.Umbraco.EditorTools.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.Forms.FieldTypes.1.0.0\build\Escc.Umbraco.Forms.FieldTypes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.Forms.FieldTypes.1.0.0\build\Escc.Umbraco.Forms.FieldTypes.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.Forms.BackOffice.1.0.0\build\Escc.Umbraco.Forms.BackOffice.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.Forms.BackOffice.1.0.0\build\Escc.Umbraco.Forms.BackOffice.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.Forms.Security.1.0.0\build\Escc.Umbraco.Forms.Security.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.Forms.Security.1.0.0\build\Escc.Umbraco.Forms.Security.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
@@ -4789,6 +4794,9 @@
   <Import Project="..\packages\UmbracoCms.7.6.13\build\UmbracoCms.targets" Condition="Exists('..\packages\UmbracoCms.7.6.13\build\UmbracoCms.targets')" />
   <Import Project="..\packages\Escc.Umbraco.PropertyEditors.6.2.2\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.6.2.2\build\Escc.Umbraco.PropertyEditors.targets')" />
   <Import Project="..\packages\Escc.Umbraco.EditorTools.2.4.3\build\Escc.Umbraco.EditorTools.targets" Condition="Exists('..\packages\Escc.Umbraco.EditorTools.2.4.3\build\Escc.Umbraco.EditorTools.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.Forms.FieldTypes.1.0.0\build\Escc.Umbraco.Forms.FieldTypes.targets" Condition="Exists('..\packages\Escc.Umbraco.Forms.FieldTypes.1.0.0\build\Escc.Umbraco.Forms.FieldTypes.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.Forms.BackOffice.1.0.0\build\Escc.Umbraco.Forms.BackOffice.targets" Condition="Exists('..\packages\Escc.Umbraco.Forms.BackOffice.1.0.0\build\Escc.Umbraco.Forms.BackOffice.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.Forms.Security.1.0.0\build\Escc.Umbraco.Forms.Security.targets" Condition="Exists('..\packages\Escc.Umbraco.Forms.Security.1.0.0\build\Escc.Umbraco.Forms.Security.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

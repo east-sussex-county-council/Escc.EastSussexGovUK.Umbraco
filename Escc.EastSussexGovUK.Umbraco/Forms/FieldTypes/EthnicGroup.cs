@@ -11,24 +11,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Forms.FieldTypes
     /// An Umbraco Forms field type that displays a dropdown list of ethnic groups
     /// </summary>
     /// <seealso cref="Umbraco.Forms.Core.FieldType" />
-    public class EthnicGroup : FieldType
+    public class EthnicGroup : Escc.Umbraco.Forms.FieldTypes.EthnicGroup
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="EthnicGroup"/> class.
-        /// </summary>
-        public EthnicGroup()
-        {
-            Id = new Guid("a5f62415-bd82-4acf-b2f8-787442327474");
-            Name = "Ethnic group";
-            Description = "A dropdown list of ethnic groups, with an 'other' text field";
-            DataType = FieldDataType.String;
-            FieldTypeViewName = "FieldType.EthnicGroup.cshtml";
-            Icon = "icon-fingerprint";
-            SupportsPrevalues = false;
-            SupportsRegex = false;
-            SortOrder = 100;
-        }
-
         [Setting("Privacy notice", description = "What happens to the data?")]
         public string PrivacyNotice { get; set; }
     }
