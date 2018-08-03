@@ -350,7 +350,6 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="EmailFieldTests.cs" />
     <Compile Include="FakeEmailSender.cs" />
     <Compile Include="FakeJobAlertFormatter.cs" />
     <Compile Include="FakeSearchQueryConverter.cs" />
