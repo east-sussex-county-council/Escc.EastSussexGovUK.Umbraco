@@ -8,7 +8,15 @@
     var value = new BS7666Address();
     if (!String.IsNullOrEmpty(Model.Value))
     {
-        value = JsonConvert.DeserializeObject<BS7666Address>(Model.Value);
+        if (Model.Value.StartsWith("{"))
+        {
+            value = JsonConvert.DeserializeObject<BS7666Address>(Model.Value);
+        }
+        else
+        {
+            // If the postcode is entered but not looked up, then the form is submitted, repopulate the postcode box
+            value = new BS7666Address() { Postcode = Model.Value };
+        }
     }
 }
 @* Delegate the rendering and operation of the Address control to a partial view from the Escc.FindAddress.Mvc NuGet package,
@@ -34,7 +42,7 @@
     <input type="hidden"
            name="@Model.Name"
            id="@Model.Id"
-           value="@Model.ValueAsHtmlString"
+           value="@(value?.Saon?.Trim() + value?.Paon?.Trim() + value?.StreetName?.Trim() + value?.Locality?.Trim() + value?.Town?.Trim() + value?.AdministrativeArea?.Trim())"
            class="umbraco-forms-address-validate"
            data-val="true"
            data-val-required="@Model.RequiredErrorMessage"
