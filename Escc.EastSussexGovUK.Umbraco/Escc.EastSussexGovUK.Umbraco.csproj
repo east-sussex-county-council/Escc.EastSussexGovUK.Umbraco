@@ -77,6 +77,9 @@
       <HintPath>..\packages\Dapper.1.42\lib\net45\Dapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Diplo.LinkChecker, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Diplo.LinkChecker.1.3.0\lib\net45\Diplo.LinkChecker.dll</HintPath>
+    </Reference>
     <Reference Include="EmbeddedResourceVirtualPathProvider, Version=1.0.5918.17881, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.EmbeddedResourceVirtualPathProvider.1.0.0\lib\EmbeddedResourceVirtualPathProvider.dll</HintPath>
       <Private>True</Private>
@@ -558,6 +561,13 @@
     <Content Include="apple-touch-icon-precomposed-72x72.png" />
     <Content Include="apple-touch-icon-precomposed.png" />
     <Content Include="apple-touch-icon.png" />
+    <Content Include="App_Plugins\Diplo.LinkChecker\checker.css" />
+    <Content Include="App_Plugins\Diplo.LinkChecker\checker.html" />
+    <Content Include="App_Plugins\Diplo.LinkChecker\config.js" />
+    <Content Include="App_Plugins\Diplo.LinkChecker\detail.html" />
+    <Content Include="App_Plugins\Diplo.LinkChecker\Diplo.LinkCheckerController.js" />
+    <Content Include="App_Plugins\Diplo.LinkChecker\help.html" />
+    <Content Include="App_Plugins\Diplo.LinkChecker\HttpStatusCodes.js" />
     <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.css" />
     <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.min.css" />
     <Content Include="App_Plugins\EditorTools\Content\bootstrap.css" />
@@ -1267,6 +1277,7 @@
     <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.css.map" />
     <Content Include="App_Plugins\EsccUmbracoFormsFieldTypes\package.manifest" />
     <Content Include="App_Plugins\EsccUmbracoFormsBackOffice\package.manifest" />
+    <Content Include="App_Plugins\Diplo.LinkChecker\package.manifest" />
     <None Include="Jobs\Examine\ExamineIndex.config.xdt">
       <SubType>Designer</SubType>
     </None>
