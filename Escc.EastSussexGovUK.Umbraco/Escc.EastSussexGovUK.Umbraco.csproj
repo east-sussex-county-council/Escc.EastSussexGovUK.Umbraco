@@ -191,7 +191,7 @@
       <HintPath>..\packages\Escc.Umbraco.Expiry.1.1.1\lib\net452\Escc.Umbraco.Expiry.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.Forms.BackOffice, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.Forms.BackOffice.1.0.0\lib\Escc.Umbraco.Forms.BackOffice.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.Forms.BackOffice.1.0.1\lib\Escc.Umbraco.Forms.BackOffice.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.Forms.FieldTypes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.Forms.FieldTypes.1.0.0\lib\Escc.Umbraco.Forms.FieldTypes.dll</HintPath>
@@ -1276,8 +1276,8 @@
     <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.min.css.map" />
     <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.css.map" />
     <Content Include="App_Plugins\EsccUmbracoFormsFieldTypes\package.manifest" />
-    <Content Include="App_Plugins\EsccUmbracoFormsBackOffice\package.manifest" />
     <Content Include="App_Plugins\Diplo.LinkChecker\package.manifest" />
+    <Content Include="App_Plugins\EsccUmbracoFormsBackOffice\package.manifest" />
     <None Include="Jobs\Examine\ExamineIndex.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -4790,8 +4790,8 @@
     <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.6.2.2\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.6.2.2\build\Escc.Umbraco.PropertyEditors.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.EditorTools.2.4.3\build\Escc.Umbraco.EditorTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.EditorTools.2.4.3\build\Escc.Umbraco.EditorTools.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.Forms.FieldTypes.1.0.0\build\Escc.Umbraco.Forms.FieldTypes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.Forms.FieldTypes.1.0.0\build\Escc.Umbraco.Forms.FieldTypes.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Umbraco.Forms.BackOffice.1.0.0\build\Escc.Umbraco.Forms.BackOffice.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.Forms.BackOffice.1.0.0\build\Escc.Umbraco.Forms.BackOffice.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.Forms.Security.1.0.0\build\Escc.Umbraco.Forms.Security.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.Forms.Security.1.0.0\build\Escc.Umbraco.Forms.Security.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.Forms.BackOffice.1.0.1\build\Escc.Umbraco.Forms.BackOffice.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.Forms.BackOffice.1.0.1\build\Escc.Umbraco.Forms.BackOffice.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
@@ -4809,7 +4809,6 @@
   <Import Project="..\packages\Escc.Umbraco.PropertyEditors.6.2.2\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.6.2.2\build\Escc.Umbraco.PropertyEditors.targets')" />
   <Import Project="..\packages\Escc.Umbraco.EditorTools.2.4.3\build\Escc.Umbraco.EditorTools.targets" Condition="Exists('..\packages\Escc.Umbraco.EditorTools.2.4.3\build\Escc.Umbraco.EditorTools.targets')" />
   <Import Project="..\packages\Escc.Umbraco.Forms.FieldTypes.1.0.0\build\Escc.Umbraco.Forms.FieldTypes.targets" Condition="Exists('..\packages\Escc.Umbraco.Forms.FieldTypes.1.0.0\build\Escc.Umbraco.Forms.FieldTypes.targets')" />
-  <Import Project="..\packages\Escc.Umbraco.Forms.BackOffice.1.0.0\build\Escc.Umbraco.Forms.BackOffice.targets" Condition="Exists('..\packages\Escc.Umbraco.Forms.BackOffice.1.0.0\build\Escc.Umbraco.Forms.BackOffice.targets')" />
   <Import Project="..\packages\Escc.Umbraco.Forms.Security.1.0.0\build\Escc.Umbraco.Forms.Security.targets" Condition="Exists('..\packages\Escc.Umbraco.Forms.Security.1.0.0\build\Escc.Umbraco.Forms.Security.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -4833,4 +4832,5 @@
   <Target Name="AfterBuild">
     <ReplaceFileText Filename="$(ProjectDir)App_Plugins\UmbracoForms\BackOffice\Common\RenderTypes\file.html" ReplaceThis="secureformuploads" WithThis="azuresecureformuploads" />
   </Target>
+  <Import Project="..\packages\Escc.Umbraco.Forms.BackOffice.1.0.1\build\Escc.Umbraco.Forms.BackOffice.targets" Condition="Exists('..\packages\Escc.Umbraco.Forms.BackOffice.1.0.1\build\Escc.Umbraco.Forms.BackOffice.targets')" />
 </Project>
