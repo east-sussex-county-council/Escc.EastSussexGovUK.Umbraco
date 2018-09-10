@@ -55,7 +55,8 @@ namespace Escc.EastSussexGovUK.Umbraco.RichTextHtmlFormatters
                         var baseUrl = HttpContext.Current != null ? HttpContext.Current.Request.Url : new Uri("https://www.eastsussex.gov.uk");
                         var emailAddressTransformer = new WebsiteFormEmailAddressTransformer(baseUrl);
                         var formUrl = emailAddressTransformer.TransformEmailAddress(new ContactEmail(email, linkTextForUrl));
-                        return match.Groups[1].Value + HttpUtility.HtmlEncode(formUrl) + match.Groups[4].Value + linkText + "</a>";
+                        if (formUrl != null) formUrl = HttpUtility.HtmlEncode(formUrl);
+                        return match.Groups[1].Value + formUrl + match.Groups[4].Value + linkText + "</a>";
                     });
             return html;
         }
