@@ -1,6 +1,0 @@
-﻿{
-	javascript: [
-	    '~/App_Plugins/Escc.EastSussexGovUK.Umbraco.Forms.FieldTypes/Address.js',
-		"~/App_Plugins/Escc.EastSussexGovUK.Umbraco.Forms.FieldTypes/AgreeToTerms.js"
-		]
-}	

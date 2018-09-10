@@ -67,7 +67,7 @@ This issue is logged with Umbraco as [CON-1181](http://issues.umbraco.org/issue/
 
 ## Custom field types
 
-Several field types in the `Escc.EastSussexGovUK.Umbraco.Forms.FieldTypes` add an extra property for a just-in-time privacy notice to fields which are part of either Umbraco Forms or `Escc.Umbraco.Forms.FieldTypes`. This extra property is used when the field is displayed using the `EastSussex` theme.
+Several field types in the `Escc.EastSussexGovUK.Umbraco.Forms.FieldTypes` namespace add an extra property for a just-in-time privacy notice to fields which are part of either Umbraco Forms or `Escc.Umbraco.Forms.FieldTypes`. This extra property is used when the field is displayed using the `EastSussex` theme.
 
 `AgreeToTerms` lets you create a checkbox with a link to an Umbraco page or document, to create a "I've read and agree to these terms and conditions" question.
 
@@ -90,3 +90,7 @@ and which returns JSON data in the following format:
 A suitable API is published by the `Escc.Schools.Website` project.
 
 **Multiple file uploads** should just use the 'File upload' field type multiple times. A native multiple file upload field type is [expected](https://github.com/PerplexInternetmarketing/Perplex-Umbraco-Forms/issues/2).
+
+## Printing form entries
+
+It can be useful to print form entries directly from the entries viewer. This doesn't work by default as the back-office is not designed for printing. `~\App_Plugins\Escc.EastSussexGovUK.Umbraco.Forms\back-office.css` hides elements that overlap the form data when printing.

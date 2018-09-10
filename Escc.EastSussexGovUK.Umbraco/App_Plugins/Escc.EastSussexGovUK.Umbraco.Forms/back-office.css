@@ -1,0 +1,12 @@
+﻿/* Bibliographic Services want to print entries from the Umbraco Forms entries viewer to use as a warehouse 
+   picking note. This CSS hides elements of the Umbraco back-office UI that overlap the data, and ensures the 
+   data prints correctly across multiple pages. 
+
+   It affects the whole back-office as it's not possible to isolate the entries viewer.
+   However, there is no other apparent use case for printing from the back-office, and it doesn't
+   look as if it's designed for it anyway as the overlapping happens everywhere, and this improves it.
+*/
+@media print {
+   #leftcolumn, #navigation,.umb-editor-drawer { display:none; }
+   .umb-scrollable { overflow: visible; }
+}

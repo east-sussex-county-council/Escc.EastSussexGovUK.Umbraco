@@ -1,0 +1,7 @@
+﻿{
+	css: [ "~/App_Plugins/Escc.EastSussexGovUK.Umbraco.Forms/back-office.css" ],
+	javascript: [
+	    '~/App_Plugins/Escc.EastSussexGovUK.Umbraco.Forms/Address.js',
+		"~/App_Plugins/Escc.EastSussexGovUK.Umbraco.Forms/AgreeToTerms.js"
+		]
+}	
