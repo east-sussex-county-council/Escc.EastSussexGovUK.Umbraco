@@ -3782,7 +3782,6 @@
     <Content Include="Views\Topic\TopicSection_FeaturedImage.ascx" />
     <Content Include="Views\Topic\TopicSection_ImageRowBorderless.ascx" />
     <Content Include="Views\Topic\TopicSection_Normal.ascx" />
-    <Content Include="Views\Topic\TopicSection_SchoolClosures.ascx" />
     <Content Include="Views\Topic\TopicSection_TermDates.ascx" />
     <Content Include="Views\Web.config" />
     <Content Include="Config\tinyMceConfig.config" />
@@ -4721,13 +4720,6 @@
     </Compile>
     <Compile Include="Views\Topic\TopicSection_Normal.ascx.designer.cs">
       <DependentUpon>TopicSection_Normal.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Topic\TopicSection_SchoolClosures.ascx.cs">
-      <DependentUpon>TopicSection_SchoolClosures.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Topic\TopicSection_SchoolClosures.ascx.designer.cs">
-      <DependentUpon>TopicSection_SchoolClosures.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\Topic\TopicSection_TermDates.ascx.cs">
       <DependentUpon>TopicSection_TermDates.ascx</DependentUpon>
