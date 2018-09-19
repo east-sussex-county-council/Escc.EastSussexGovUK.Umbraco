@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\uSync.4.0.5\build\uSync.props" Condition="Exists('..\packages\uSync.4.0.5\build\uSync.props')" />
   <Import Project="..\packages\UmbracoCms.7.6.13\build\UmbracoCms.props" Condition="Exists('..\packages\UmbracoCms.7.6.13\build\UmbracoCms.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" />
@@ -275,6 +276,15 @@
     </Reference>
     <Reference Include="interfaces, Version=1.0.6582.36837, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.6.13\lib\net45\interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Jumoo.uSync.BackOffice, Version=4.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\uSync.4.0.5\lib\net45\Jumoo.uSync.BackOffice.dll</HintPath>
+    </Reference>
+    <Reference Include="Jumoo.uSync.Core, Version=6.0.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\uSync.Core.6.0.7\lib\net45\Jumoo.uSync.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Jumoo.uSync.Snapshots, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\uSync.Snapshots.1.4.1\lib\net45\Jumoo.uSync.Snapshots.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.6.13\lib\net45\log4net.dll</HintPath>
@@ -983,6 +993,15 @@
     <Content Include="App_Plugins\UmbracoForms\Xslt\Templates\Schema2\UmbracoContourListComments.xslt" />
     <Content Include="App_Plugins\UmbracoForms\Xslt\Templates\UmbracoContourListComments.xslt" />
     <Content Include="App_Plugins\UmbracoForms\Xslt\xml.xslt" />
+    <Content Include="App_Plugins\uSyncSnapshots\libs\ng-file-upload-all.js" />
+    <Content Include="App_Plugins\uSyncSnapshots\snapshotdashboard.css" />
+    <Content Include="App_Plugins\uSyncSnapshots\SnapshotDashboard.html" />
+    <Content Include="App_Plugins\uSyncSnapshots\SnapshotDashboardController.js" />
+    <Content Include="App_Plugins\uSyncSnapshots\SnapshotDashboardService.js" />
+    <Content Include="App_Plugins\uSync\uSyncDashboard.css" />
+    <Content Include="App_Plugins\uSync\uSyncDashboard.html" />
+    <Content Include="App_Plugins\uSync\uSyncDashboardController.js" />
+    <Content Include="App_Plugins\uSync\uSyncDashboardService.js" />
     <Content Include="Config\grid.editors.config.js" />
     <Content Include="Config\Lang\cs-CZ.user.xml" />
     <Content Include="Config\Lang\da-DK.user.xml" />
@@ -1279,6 +1298,11 @@
     <Content Include="App_Plugins\EsccUmbracoFormsFieldTypes\package.manifest" />
     <Content Include="App_Plugins\Diplo.LinkChecker\package.manifest" />
     <Content Include="App_Plugins\EsccUmbracoFormsBackOffice\package.manifest" />
+    <Content Include="Config\uSyncCore.Config" />
+    <Content Include="Config\uSyncBackOffice.Config" />
+    <Content Include="App_Plugins\uSync\package.manifest" />
+    <Content Include="Config\uSyncSnapshot.config" />
+    <Content Include="App_Plugins\uSyncSnapshots\package.manifest" />
     <None Include="Jobs\Examine\ExamineIndex.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -4785,6 +4809,8 @@
     <Error Condition="!Exists('..\packages\Escc.Umbraco.Forms.FieldTypes.1.0.0\build\Escc.Umbraco.Forms.FieldTypes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.Forms.FieldTypes.1.0.0\build\Escc.Umbraco.Forms.FieldTypes.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.Forms.Security.1.0.0\build\Escc.Umbraco.Forms.Security.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.Forms.Security.1.0.0\build\Escc.Umbraco.Forms.Security.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.Forms.BackOffice.1.0.1\build\Escc.Umbraco.Forms.BackOffice.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.Forms.BackOffice.1.0.1\build\Escc.Umbraco.Forms.BackOffice.targets'))" />
+    <Error Condition="!Exists('..\packages\uSync.4.0.5\build\uSync.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uSync.4.0.5\build\uSync.props'))" />
+    <Error Condition="!Exists('..\packages\uSync.4.0.5\build\uSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uSync.4.0.5\build\uSync.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
@@ -4826,4 +4852,5 @@
     <ReplaceFileText Filename="$(ProjectDir)App_Plugins\UmbracoForms\BackOffice\Common\RenderTypes\file.html" ReplaceThis="secureformuploads" WithThis="azuresecureformuploads" />
   </Target>
   <Import Project="..\packages\Escc.Umbraco.Forms.BackOffice.1.0.1\build\Escc.Umbraco.Forms.BackOffice.targets" Condition="Exists('..\packages\Escc.Umbraco.Forms.BackOffice.1.0.1\build\Escc.Umbraco.Forms.BackOffice.targets')" />
+  <Import Project="..\packages\uSync.4.0.5\build\uSync.targets" Condition="Exists('..\packages\uSync.4.0.5\build\uSync.targets')" />
 </Project>

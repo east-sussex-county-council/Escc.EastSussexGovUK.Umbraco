@@ -46,7 +46,8 @@ Microsoft.CodeDom.Providers.DotNetCompilerPlatform.*
 [Uu]mbraco_Client/
 [Aa]pp_Data/
 [Aa]pp_Browsers/
-Escc.EastSussexGovUK.Umbraco/App_Plugins/ModelsBuilder
+*/App_Plugins/ModelsBuilder
+*/App_Plugins/uSync*
 Escc.EastSussexGovUK.Umbraco.Tests/App_Plugins/
 [Ii]nstall/
 */[Cc]onfig/
