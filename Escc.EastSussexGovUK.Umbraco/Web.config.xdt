@@ -205,6 +205,8 @@
       <add name="RightsOfWayDeposit" level="*" />
       <add name="Skins" level="*" />
       <add name="Skin" level="*" />
+      <add name="Skin" level="*" />
+      <add name="Form" level="*" />
     </ContentTypes>
     <Paths>
       <add name="/about-this-site/" children="*" />
