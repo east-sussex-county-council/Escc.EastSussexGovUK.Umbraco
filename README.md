@@ -17,7 +17,4 @@ This project is the root of our [Umbraco](http://umbraco.com/) installation for 
 6. In `~\web.config` set the `UmbracoConfigurationStatus` and `umbracoDbDSN`, or run the Umbraco installer.
 8. In `~\web.config` add the contents of `web.config.xdt`
 7. In `~\web.config` uncomment and complete the `Proxy` and `RemoteMasterPage` sections
-8. At a command line, run the following two commands to add the document types to Umbraco. Substitute the hostname and port where you set up this project, and ensure the token matches the `Escc.Umbraco.Inception.AuthToken` value in the `appSettings` section of `web.config`.
-
-		curl --insecure -X POST -d "" https://hostname:port/umbraco/api/UmbracoSetupApi/CreateUmbracoSupportingTypes?token=dev
-		curl --insecure -X POST -d "" https://hostname:port/umbraco/api/UmbracoSetupApi/CreateUmbracoDocumentTypes?token=dev
+8. In the Umbraco back office, go to the Developer > uSync BackOffice > Snapshots and click 'Apply all'

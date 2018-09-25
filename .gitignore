@@ -58,6 +58,7 @@ Escc.EastSussexGovUK.Umbraco.Tests/App_Plugins/
 dummy.txt
 *.config.js
 */Views/Partials/Grid/*
+!*/uSync/**/*
 
 # Umbraco Forms
 */App_Plugins/UmbracoForms/*

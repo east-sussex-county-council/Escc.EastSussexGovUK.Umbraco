@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web;
 using Escc.Umbraco.PropertyTypes;
 using Escc.EastSussexGovUK.Umbraco.Models;
+using Escc.EastSussexGovUK.Umbraco.Landing;
 
 namespace Escc.EastSussexGovUK.Umbraco.Guide
 {

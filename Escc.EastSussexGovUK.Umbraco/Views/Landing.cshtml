@@ -8,16 +8,17 @@
 @using Escc.EastSussexGovUK.Umbraco.Skins.FosterWithTrust
 @using Escc.EastSussexGovUK.Umbraco.Skins.RegistrationAcademy
 @using Escc.EastSussexGovUK.Umbraco.Skins.SupportWithTrust
+@using Escc.EastSussexGovUK.Umbraco.Landing
 @using Escc.EastSussexGovUK.Umbraco.Models
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<LandingViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
     Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] {
-        new RegistrationAcademySkin(Model.EsccWebsiteView, Model.SkinToApply == "Registration Academy"),
-        new RegistrationSkin(Model.EsccWebsiteView, Model.Metadata.PageUrl),
-        new FosterWithTrustSkin(Model.EsccWebsiteView, Model.SkinToApply == "Foster with trust"),
-        new SupportWithTrustSkin(Model.EsccWebsiteView, Model.SkinToApply == "Support with trust")
-        }, new CustomerFocusSkin(Model.EsccWebsiteView));
+new RegistrationAcademySkin(Model.EsccWebsiteView, Model.SkinToApply == "Registration Academy"),
+new RegistrationSkin(Model.EsccWebsiteView, Model.Metadata.PageUrl),
+new FosterWithTrustSkin(Model.EsccWebsiteView, Model.SkinToApply == "Foster with trust"),
+new SupportWithTrustSkin(Model.EsccWebsiteView, Model.SkinToApply == "Support with trust")
+}, new CustomerFocusSkin(Model.EsccWebsiteView));
 
     if (Model.EsccWebsiteView != EsccWebsiteView.Plain)
     {

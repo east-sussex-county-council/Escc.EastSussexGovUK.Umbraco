@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -22,7 +23,7 @@ namespace Escc.EastSussexGovUK.Umbraco.WebApi
         {
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK, WasteTypesDataType.WasteTypes);
+                return Request.CreateResponse(HttpStatusCode.OK, WasteTypes);
             }
             catch (Exception e)
             {
@@ -30,5 +31,49 @@ namespace Escc.EastSussexGovUK.Umbraco.WebApi
                 return Request.CreateResponse(HttpStatusCode.InternalServerError);
             }
         }
+
+        private IEnumerable<string> WasteTypes = new string[] {
+            "Aluminium foil",
+            "Aerosols",
+            "Bonded asbestos",
+            "Books",
+            "Bric-a-brac",
+            "Car batteries",
+            "Cans/Tins",
+            "Cardboard",
+            "Cassettes",
+            "CDs and cases",
+            "Chemicals",
+            "Cooking oil",
+            "Electrical goods",
+            "Engine oil",
+            "Fluorescent tubes/Energy saving bulbs",
+            "Furniture",
+            "Fridges/Freezers",
+            "Glass bottles/Jars",
+            "Green garden waste/Christmas trees",
+            "Hard plastics (for example, plastic toys and furniture)",
+            "Hardcore/Rubble",
+            "Household batteries",
+            "Household waste",
+            "Metal items",
+            "Mobile phones",
+            "Newspapers/Magazines/Junk mail/White Telephone Directories",
+            "Paint – solvent-based",
+            "Paint – water-based emulsion",
+            "Plasterboard",
+            "Plastic bottles",
+            "Plastic carrier bags",
+            "Printer cartridges",
+            "Soil",
+            "Spectacles",
+            "Tetra paks/Food or drink cartons",
+            "Textiles/Shoes",
+            "Timber/Wood",
+            "Trade/Business waste",
+            "TVs/Computer monitors",
+            "Tyres",
+            "Yellow Pages"
+        };
     }
 }
