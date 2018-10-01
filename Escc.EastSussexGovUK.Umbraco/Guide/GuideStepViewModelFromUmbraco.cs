@@ -56,6 +56,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Guide
             };
 
             model.Metadata.IsPartOfUrl = _content.Parent.UrlAbsolute();
+            model.Metadata.IsInSearch = !_content.GetPropertyValue<bool>("hideFromSearchEngines");
 
             var sectionNavigation = _content.Parent.GetPropertyValue<int>("SectionNavigation_Navigation");
             model.StepsHaveAnOrder = (sectionNavigation == 0 || umbraco.library.GetPreValueAsString(sectionNavigation).ToUpperInvariant() != "BULLETED LIST");

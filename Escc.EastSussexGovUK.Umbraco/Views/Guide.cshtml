@@ -33,6 +33,7 @@
 
     // Get the guide title from the first step
     Model.Metadata.Title = Model.Steps.Any() ? Model.Steps.First().GuideTitle : String.Empty;
+    Model.Metadata.IsInSearch = false;
 
     // Embed YouTube videos and Google maps which can print
     var html = Model.Steps.Select(step => step.StepContent.ToString()).ToArray();
@@ -44,11 +45,6 @@ new EmbeddedICaseworkForm() { Html = html }
 });
 
     Html.RequiresJs("~/js/guide.js");
-}
-
-@section Metadata
-{
-    <meta name="robots" content="none" />
 }
 
 <div class="full-page">
