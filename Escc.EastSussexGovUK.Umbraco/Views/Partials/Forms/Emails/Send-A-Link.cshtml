@@ -7,6 +7,9 @@
     {
         siteDomain = ConfigurationManager.AppSettings["BackOfficeBaseUrl"].TrimEnd("/");
     }
+
+    // There is a very strange bug where the domain name intermittently has .. before the top-level domain, even though that is nowhere in the config.
+    siteDomain = siteDomain.Replace("..", ".");
 }
 <!DOCTYPE html>
 <html>
