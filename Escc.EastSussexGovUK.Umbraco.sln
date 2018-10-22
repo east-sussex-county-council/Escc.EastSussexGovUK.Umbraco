@@ -8,6 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution 
 		.gitignore = .gitignore
 		app-setup-dev.cmd = app-setup-dev.cmd
 		app-setup-dev.ps1 = app-setup-dev.ps1
+		Banners.md = Banners.md
 		Forms.md = Forms.md
 		Jobs.md = Jobs.md
 		LICENSE.md = LICENSE.md

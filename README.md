@@ -7,6 +7,7 @@ This project is the root of our [Umbraco](http://umbraco.com/) installation for 
 * [Locations, including libraries and recycling sites](Location.md)
 * [Adding term dates to a topic page](Topic.md)
 * [Service alerts](ServiceAlerts.md)
+* [Banners](Banners.md)
 
 ## Development setup steps
 
