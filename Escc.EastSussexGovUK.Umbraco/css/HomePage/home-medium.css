@@ -17,6 +17,8 @@
 .news .feature1 { width: 49.8%; float: left; margin-right: 4px; }
 .news .feature2 { width: 49.8%; float: left; }
 
+.report-apply-pay.ui-widget { font-size: 1.461538em; }
+
 .schools { padding: .947368em 0;margin: 0; }
 
 /* Get involved box is 5 cols on 10 col grid, wth gutter between. */
