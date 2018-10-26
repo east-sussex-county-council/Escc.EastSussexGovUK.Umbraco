@@ -10,7 +10,7 @@
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<MicrosoftCmsViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
-    Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
+    Model.EsccWebsiteSkin = new CustomerFocusSkin();
 
     Html.RequiresCss(CssFileAlias.Resolve("CouncilPlanSmall"));
     Html.RequiresCss(CssFileAlias.Resolve("MobileControls"));

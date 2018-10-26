@@ -95,16 +95,14 @@
       <HintPath>..\packages\Escc.AddressAndPersonalDetails.3.0.0\lib\net20\Escc.AddressAndPersonalDetails.dll</HintPath>
     </Reference>
     <Reference Include="Escc.AddressAndPersonalDetails.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.AddressAndPersonalDetails.Controls.2.0.1\lib\Escc.AddressAndPersonalDetails.Controls.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\Escc.AddressAndPersonalDetails.Controls.3.0.1\lib\net35\Escc.AddressAndPersonalDetails.Controls.dll</HintPath>
     </Reference>
     <Reference Include="Escc.BasicAuthentication.WebApi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.BasicAuthentication.WebApi.1.0.2\lib\Escc.BasicAuthentication.WebApi.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.ClientDependencyFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.ClientDependencyFramework.2.0.0\lib\Escc.ClientDependencyFramework.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\Escc.ClientDependencyFramework.2.0.1\lib\Escc.ClientDependencyFramework.dll</HintPath>
     </Reference>
     <Reference Include="Escc.ClientDependencyFramework.WebForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.ClientDependencyFramework.WebForms.2.1.1\lib\Escc.ClientDependencyFramework.WebForms.dll</HintPath>
@@ -113,10 +111,10 @@
       <HintPath>..\packages\Escc.Dates.2.1.0\lib\Escc.Dates.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.EastSussexGovUK.2.2.1\lib\net452\Escc.EastSussexGovUK.dll</HintPath>
+      <HintPath>..\packages\Escc.EastSussexGovUK.3.0.0\lib\net452\Escc.EastSussexGovUK.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.EastSussexGovUK.Mvc.3.0.3\lib\net452\Escc.EastSussexGovUK.Mvc.dll</HintPath>
+      <HintPath>..\packages\Escc.EastSussexGovUK.Mvc.4.0.0\lib\net452\Escc.EastSussexGovUK.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.Rss, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.EastSussexGovUK.Rss.2.0.0\lib\Escc.EastSussexGovUK.Rss.dll</HintPath>
@@ -126,7 +124,7 @@
       <HintPath>..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.1\lib\Escc.EastSussexGovUK.TemplateSource.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.WebForms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.EastSussexGovUK.WebForms.1.2.2\lib\net452\Escc.EastSussexGovUK.WebForms.dll</HintPath>
+      <HintPath>..\packages\Escc.EastSussexGovUK.WebForms.2.0.0\lib\net452\Escc.EastSussexGovUK.WebForms.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Elibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Elibrary.1.1.0\lib\Escc.Elibrary.dll</HintPath>
@@ -140,8 +138,7 @@
       <HintPath>..\packages\Escc.FindAddress.Mvc.1.0.1\lib\net452\Escc.FindAddress.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Escc.FormControls.WebForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.FormControls.WebForms.1.1.3\lib\Escc.FormControls.WebForms.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\Escc.FormControls.WebForms.2.1.0\lib\Escc.FormControls.WebForms.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Geo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Geo.1.1.0\lib\Escc.Geo.dll</HintPath>
@@ -151,7 +148,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.NavigationControls.WebForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.NavigationControls.WebForms.1.0.1\lib\Escc.NavigationControls.WebForms.dll</HintPath>
+      <HintPath>..\packages\Escc.NavigationControls.WebForms.1.1.0\lib\Escc.NavigationControls.WebForms.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Net, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Net.1.0.1\lib\Escc.Net.dll</HintPath>
@@ -159,9 +156,6 @@
     </Reference>
     <Reference Include="Escc.Redirects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Redirects.1.1.0\lib\Escc.Redirects.dll</HintPath>
-    </Reference>
-    <Reference Include="Escc.Registration.RegistrationSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Registration.RegistrationSkin.1.0.0\lib\Escc.Registration.RegistrationSkin.dll</HintPath>
     </Reference>
     <Reference Include="Escc.RubbishAndRecycling.SiteFinder.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.2\lib\Escc.RubbishAndRecycling.SiteFinder.Website.dll</HintPath>
@@ -173,7 +167,7 @@
       <HintPath>..\packages\Escc.Services.3.0.1\lib\Escc.Services.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Services.Azure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Services.Azure.2.1.1\lib\Escc.Services.Azure.dll</HintPath>
+      <HintPath>..\packages\Escc.Services.Azure.2.1.2\lib\Escc.Services.Azure.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.5.0.0\lib\net452\Escc.Umbraco.dll</HintPath>
@@ -201,7 +195,7 @@
       <HintPath>..\packages\Escc.Umbraco.Forms.Workflows.1.0.0\lib\Escc.Umbraco.Forms.Workflows.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.HeatmapAnalytics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.HeatmapAnalytics.2.0.1\lib\Escc.Umbraco.HeatmapAnalytics.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.HeatmapAnalytics.3.0.0\lib\net452\Escc.Umbraco.HeatmapAnalytics.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.MediaSync, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.MediaSync.2.1.1\lib\net452\Escc.Umbraco.MediaSync.dll</HintPath>
@@ -1040,11 +1034,6 @@
     <Content Include="js\libs\bootstrap\util.js" />
     <Content Include="js\libs\find-address.min.js" />
     <Content Include="js\iframeResizer.js" />
-    <Content Include="RegistrationSkin\css\min\registration-skin-large.css" />
-    <Content Include="RegistrationSkin\css\min\registration-skin-medium.css" />
-    <Content Include="RegistrationSkin\css\min\registration-skin-small.css" />
-    <Content Include="RegistrationSkin\img\registration-skin.png" />
-    <Content Include="RegistrationSkin\js\min\registration-skin.js" />
     <Content Include="robots.txt" />
     <Content Include="scripts\Escc.Umbraco.Forms.FieldTypes\FieldType.Url.js" />
     <Content Include="Skins\RegistrationAcademy\academy-logo.png" />
@@ -1052,6 +1041,11 @@
     <Content Include="Skins\RegistrationAcademy\registration-academy-medium.css" />
     <Content Include="Skins\RegistrationAcademy\registration-academy-small.css" />
     <Content Include="Skins\RegistrationAcademy\registration-academy.js" />
+    <Content Include="Skins\Registration\registration-skin-large.css" />
+    <Content Include="Skins\Registration\registration-skin-medium.css" />
+    <Content Include="Skins\Registration\registration-skin-small.css" />
+    <Content Include="Skins\Registration\registration-skin.js" />
+    <Content Include="Skins\Registration\registration-skin.png" />
     <Content Include="Skins\SupportWithTrust\background.png" />
     <Content Include="Skins\SupportWithTrust\support-with-trust-large.css" />
     <Content Include="Skins\SupportWithTrust\support-with-trust-medium.css" />
@@ -1346,7 +1340,6 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="RegistrationSkin\img\web.config" />
     <None Include="scripts\jquery-1.7-vsdoc.js" />
     <None Include="scripts\jquery-1.7.js" />
     <None Include="scripts\jquery-1.7.min.js" />
@@ -4571,6 +4564,7 @@
     <Compile Include="Services\AuditLoggingEventHandler.cs" />
     <Compile Include="Services\EmbeddedICaseworkForm.cs" />
     <Compile Include="Skins\RegistrationAcademy\RegistrationAcademySkin.cs" />
+    <Compile Include="Skins\Registration\RegistrationSkin.cs" />
     <Compile Include="Skins\SupportWithTrust\SupportWithTrustSkin.cs" />
     <Compile Include="WebApi\IHtmlStringConverter.cs" />
     <Compile Include="Jobs\Api\BaseJobsApiController.cs" />
@@ -5037,7 +5031,6 @@
     <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-    <Error Condition="!Exists('..\packages\Escc.Registration.RegistrationSkin.1.0.0\build\Escc.Registration.RegistrationSkin.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Registration.RegistrationSkin.1.0.0\build\Escc.Registration.RegistrationSkin.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.2\build\Escc.RubbishAndRecycling.SiteFinder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.2\build\Escc.RubbishAndRecycling.SiteFinder.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.2.1.1\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.2.1.1\build\Escc.Umbraco.MediaSync.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.1\build\Escc.EastSussexGovUK.TemplateSource.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.1\build\Escc.EastSussexGovUK.TemplateSource.targets'))" />
@@ -5059,7 +5052,6 @@
     <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
   </Target>
   <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
-  <Import Project="..\packages\Escc.Registration.RegistrationSkin.1.0.0\build\Escc.Registration.RegistrationSkin.targets" Condition="Exists('..\packages\Escc.Registration.RegistrationSkin.1.0.0\build\Escc.Registration.RegistrationSkin.targets')" />
   <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.2\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.1.1.2\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
   <Import Project="..\packages\Escc.Umbraco.MediaSync.2.1.1\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.2.1.1\build\Escc.Umbraco.MediaSync.targets')" />
   <Import Project="..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.1\build\Escc.EastSussexGovUK.TemplateSource.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.1\build\Escc.EastSussexGovUK.TemplateSource.targets')" />

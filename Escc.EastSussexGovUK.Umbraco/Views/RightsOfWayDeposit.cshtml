@@ -10,7 +10,7 @@
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits.RightsOfWayDepositViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
-    Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
+    Model.EsccWebsiteSkin = new CustomerFocusSkin();
     Model.Metadata.IsInSearch = false;
 
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()

@@ -9,7 +9,7 @@
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Jobs.JobAdvertViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
-    Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
+    Model.EsccWebsiteSkin = new CustomerFocusSkin();
     Model.Metadata.Title = Model.Job?.JobTitle;
     Model.Metadata.DateIssued = Model.Job?.DatePublished == null ? String.Empty : Model.Job.DatePublished.Value.ToIso8601Date();
     Model.Metadata.PageUrl = Model.Job?.Url;

@@ -19,9 +19,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Skins.FosterWithTrust
         /// <summary>
         /// Initializes a new instance of the <see cref="FosterWithTrustSkin"/> class.
         /// </summary>
-        /// <param name="currentView">The current view.</param>
         /// <param name="applySkin">if set to <c>true</c> [apply skin].</param>
-        public FosterWithTrustSkin(EsccWebsiteView currentView, bool applySkin = true) : base(currentView)
+        public FosterWithTrustSkin(bool applySkin = true) : base()
         {
             _isRequired = applySkin;
         }

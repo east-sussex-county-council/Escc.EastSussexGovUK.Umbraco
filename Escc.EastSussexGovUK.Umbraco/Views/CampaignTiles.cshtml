@@ -9,7 +9,7 @@
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.CampaignTemplates.CampaignTilesViewModel>
 @{
     Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
-    Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
+    Model.EsccWebsiteSkin = new CustomerFocusSkin();
 
     Html.RequiresCss(CssFileAlias.Resolve("CampaignSmall"));
     Html.RequiresCss(CssFileAlias.Resolve("NavigationSmall"));

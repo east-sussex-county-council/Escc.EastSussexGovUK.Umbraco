@@ -19,9 +19,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Skins.RegistrationAcademy
         /// <summary>
         /// Initializes a new instance of the <see cref="RegistrationAcademySkin"/> class.
         /// </summary>
-        /// <param name="currentView">The current view.</param>
         /// <param name="applySkin">if set to <c>true</c> [apply skin].</param>
-        public RegistrationAcademySkin(EsccWebsiteView currentView, bool applySkin = true) : base(currentView)
+        public RegistrationAcademySkin(bool applySkin = true) : base()
         {
             _isRequired = applySkin;
         }

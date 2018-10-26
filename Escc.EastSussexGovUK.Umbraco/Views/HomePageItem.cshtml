@@ -8,7 +8,7 @@
     /* Note: This view is intended only for editors using the preview option in Umbraco. 
        This content is normally displayed by HomePage.cshtml. */
 
-    Model.EsccWebsiteSkin = new CustomerFocusSkin(EsccWebsiteView.Desktop);
+    Model.EsccWebsiteSkin = new CustomerFocusSkin();
     Html.RequiresCss(CssFileAlias.Resolve("HomeSmall"));
     Html.RequiresCss(CssFileAlias.Resolve("TilesSmall"));
     Html.RequiresCss(CssFileAlias.Resolve("TilesMedium"), MediaQueryAlias.Resolve("Medium"));

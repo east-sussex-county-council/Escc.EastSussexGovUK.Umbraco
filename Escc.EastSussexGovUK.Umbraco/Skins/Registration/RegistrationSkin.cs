@@ -1,28 +1,30 @@
-﻿using Escc.EastSussexGovUK.Skins;
+﻿using Escc.EastSussexGovUK;
+using Escc.EastSussexGovUK.Skins;
 using Escc.EastSussexGovUK.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Escc.EastSussexGovUK.Umbraco.Skins.SupportWithTrust
+namespace Escc.EastSussexGovUK.Umbraco.Skins.Registration
 {
     /// <summary>
-    /// A website skin for the Support With Trust campaign
+    /// A skin for registration service pages
     /// </summary>
     /// <seealso cref="Escc.EastSussexGovUK.Skins.CustomerFocusSkin" />
-    /// <seealso cref="Escc.EastSussexGovUK.IClientDependencySet" />
-    public class SupportWithTrustSkin : CustomerFocusSkin, IClientDependencySet
+    public class RegistrationSkin : CustomerFocusSkin
     {
-        private bool _isRequired;
+        private readonly Uri _requestUrl;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SupportWithTrustSkin"/> class.
+        /// Initializes a new instance of the <see cref="RegistrationSkin"/> class.
         /// </summary>
-        /// <param name="applySkin">if set to <c>true</c> [apply skin].</param>
-        public SupportWithTrustSkin(bool applySkin = true) : base()
+        /// <param name="requestUrl">The request URL.</param>
+        /// <exception cref="System.ArgumentException">requestUrl must be an absolute URL</exception>
+        public RegistrationSkin(Uri requestUrl) : base()
         {
-            _isRequired = applySkin;
+            if (!requestUrl.IsAbsoluteUri) throw new ArgumentException("requestUrl must be an absolute URL");
+            _requestUrl = requestUrl;
         }
 
         /// <summary>
@@ -33,16 +35,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Skins.SupportWithTrust
         /// </returns>
         public override bool IsRequired()
         {
-            return _isRequired;
-        }
-
-        /// <summary>
-        /// The content security policy aliases required for the skin. These are registered in web.config using <see cref="!:ContentSecurityPolicy" />.
-        /// </summary>
-        /// <returns></returns>
-        public override IEnumerable<ContentSecurityPolicyDependency> RequiresContentSecurityPolicy()
-        {
-            return base.RequiresContentSecurityPolicy();
+            if (_requestUrl != null)
+            {
+                return _requestUrl.AbsolutePath.StartsWith("/community/registration", StringComparison.OrdinalIgnoreCase);
+            }
+            else return true;
         }
 
         /// <summary>
@@ -55,9 +52,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Skins.SupportWithTrust
         {
             return new List<CssFileDependency>(base.RequiresCss())
             {
-                new CssFileDependency() {CssFileAlias =  "SupportWithTrustSkinSmall"},
-                new CssFileDependency() { CssFileAlias = "SupportWithTrustSkinMedium", MediaQueryAlias = "Medium"},
-                new CssFileDependency() { CssFileAlias = "SupportWithTrustSkinLarge", MediaQueryAlias = "Large"}
+                new CssFileDependency() {CssFileAlias = "RegistrationSkinSmall"},
+                new CssFileDependency() { CssFileAlias = "RegistrationSkinMedium", MediaQueryAlias = "Medium"},
+                new CssFileDependency() { CssFileAlias = "RegistrationSkinLarge", MediaQueryAlias = "Large"}
             };
         }
 
@@ -71,7 +68,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Skins.SupportWithTrust
         {
             return new List<JsFileDependency>(base.RequiresJavaScript())
             {
-                new JsFileDependency() {JsFileAlias = "SupportWithTrustSkin"}
+                new JsFileDependency() {JsFileAlias = "RegistrationSkin"}
             };
         }
     }
