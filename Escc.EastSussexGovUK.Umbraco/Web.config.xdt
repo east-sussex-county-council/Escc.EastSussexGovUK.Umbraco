@@ -238,6 +238,7 @@
       <add name="/libraries/online-library-help/" children="*" />
       <add name="/news/" children="" />
       <add name="/menu/" children="" />
+      <add name="/privacy/" children="*" />
       <add name="/roadsandtransport/public/buses/" children="*" />
       <add name="/roadsandtransport/roads/licences/" children="" />
       <add name="/roadsandtransport/roads/maintenance/" children="" />
