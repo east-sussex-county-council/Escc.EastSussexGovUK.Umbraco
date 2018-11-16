@@ -177,7 +177,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Umbraco.EditorTools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.EditorTools.2.4.3\lib\Escc.Umbraco.EditorTools.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.EditorTools.2.4.4\lib\Escc.Umbraco.EditorTools.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.Expiry, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.Expiry.1.1.1\lib\net452\Escc.Umbraco.Expiry.dll</HintPath>
@@ -759,6 +759,25 @@
     <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.foundation.js" />
     <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.foundation.min.js" />
     <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.html5.js" />
+    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.html5.min.js" />
+    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.jqueryui.js" />
+    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.jqueryui.min.js" />
+    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.print.js" />
+    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.print.min.js" />
+    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.semanticui.js" />
+    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\buttons.semanticui.min.js" />
+    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.autoFill.js" />
+    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.autoFill.min.js" />
+    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.bootstrap.js" />
+    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.bootstrap.min.js" />
+    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.bootstrap4.js" />
+    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.bootstrap4.min.js" />
+    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.buttons.js" />
+    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.buttons.min.js" />
+    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.colReorder.js" />
+    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.colReorder.min.js" />
+    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.fixedColumns.js" />
+    <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.fixedColumns.min.js" />
     <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.fixedHeader.js" />
     <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.fixedHeader.min.js" />
     <Content Include="App_Plugins\EditorTools\Scripts\DataTables\dataTables.foundation.js" />
@@ -1250,6 +1269,14 @@
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PhonePropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\EsccUmbracoFormsFieldTypes\package.manifest" />
+    <Content Include="App_Plugins\Diplo.LinkChecker\package.manifest" />
+    <Content Include="App_Plugins\EsccUmbracoFormsBackOffice\package.manifest" />
+    <Content Include="Config\uSyncCore.Config" />
+    <Content Include="Config\uSyncBackOffice.Config" />
+    <Content Include="App_Plugins\uSync\package.manifest" />
+    <Content Include="Config\uSyncSnapshot.config" />
+    <Content Include="App_Plugins\uSyncSnapshots\package.manifest" />
     <Content Include="App_Plugins\EditorTools\Views\web.config" />
     <Content Include="App_Plugins\EditorTools\Views\Users\Index.cshtml" />
     <Content Include="App_Plugins\EditorTools\Views\Stats\Index.cshtml" />
@@ -1285,14 +1312,6 @@
     <Content Include="App_Plugins\EditorTools\Content\bootstrap.css.map" />
     <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.min.css.map" />
     <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.css.map" />
-    <Content Include="App_Plugins\EsccUmbracoFormsFieldTypes\package.manifest" />
-    <Content Include="App_Plugins\Diplo.LinkChecker\package.manifest" />
-    <Content Include="App_Plugins\EsccUmbracoFormsBackOffice\package.manifest" />
-    <Content Include="Config\uSyncCore.Config" />
-    <Content Include="Config\uSyncBackOffice.Config" />
-    <Content Include="App_Plugins\uSync\package.manifest" />
-    <Content Include="Config\uSyncSnapshot.config" />
-    <Content Include="App_Plugins\uSyncSnapshots\package.manifest" />
     <None Include="Jobs\Examine\ExamineIndex.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -5038,12 +5057,12 @@
     <Error Condition="!Exists('..\packages\UmbracoCms.7.6.13\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.6.13\build\UmbracoCms.props'))" />
     <Error Condition="!Exists('..\packages\UmbracoCms.7.6.13\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.6.13\build\UmbracoCms.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.6.2.2\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.6.2.2\build\Escc.Umbraco.PropertyEditors.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Umbraco.EditorTools.2.4.3\build\Escc.Umbraco.EditorTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.EditorTools.2.4.3\build\Escc.Umbraco.EditorTools.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.Forms.FieldTypes.1.0.0\build\Escc.Umbraco.Forms.FieldTypes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.Forms.FieldTypes.1.0.0\build\Escc.Umbraco.Forms.FieldTypes.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.Forms.Security.1.0.0\build\Escc.Umbraco.Forms.Security.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.Forms.Security.1.0.0\build\Escc.Umbraco.Forms.Security.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.Forms.BackOffice.1.0.1\build\Escc.Umbraco.Forms.BackOffice.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.Forms.BackOffice.1.0.1\build\Escc.Umbraco.Forms.BackOffice.targets'))" />
     <Error Condition="!Exists('..\packages\uSync.4.0.5\build\uSync.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uSync.4.0.5\build\uSync.props'))" />
     <Error Condition="!Exists('..\packages\uSync.4.0.5\build\uSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uSync.4.0.5\build\uSync.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.EditorTools.2.4.4\build\Escc.Umbraco.EditorTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.EditorTools.2.4.4\build\Escc.Umbraco.EditorTools.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
@@ -5058,7 +5077,6 @@
   <Import Project="..\packages\Escc.FindAddress.Mvc.1.0.1\build\Escc.FindAddress.Mvc.targets" Condition="Exists('..\packages\Escc.FindAddress.Mvc.1.0.1\build\Escc.FindAddress.Mvc.targets')" />
   <Import Project="..\packages\UmbracoCms.7.6.13\build\UmbracoCms.targets" Condition="Exists('..\packages\UmbracoCms.7.6.13\build\UmbracoCms.targets')" />
   <Import Project="..\packages\Escc.Umbraco.PropertyEditors.6.2.2\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.6.2.2\build\Escc.Umbraco.PropertyEditors.targets')" />
-  <Import Project="..\packages\Escc.Umbraco.EditorTools.2.4.3\build\Escc.Umbraco.EditorTools.targets" Condition="Exists('..\packages\Escc.Umbraco.EditorTools.2.4.3\build\Escc.Umbraco.EditorTools.targets')" />
   <Import Project="..\packages\Escc.Umbraco.Forms.FieldTypes.1.0.0\build\Escc.Umbraco.Forms.FieldTypes.targets" Condition="Exists('..\packages\Escc.Umbraco.Forms.FieldTypes.1.0.0\build\Escc.Umbraco.Forms.FieldTypes.targets')" />
   <Import Project="..\packages\Escc.Umbraco.Forms.Security.1.0.0\build\Escc.Umbraco.Forms.Security.targets" Condition="Exists('..\packages\Escc.Umbraco.Forms.Security.1.0.0\build\Escc.Umbraco.Forms.Security.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -5085,4 +5103,5 @@
   </Target>
   <Import Project="..\packages\Escc.Umbraco.Forms.BackOffice.1.0.1\build\Escc.Umbraco.Forms.BackOffice.targets" Condition="Exists('..\packages\Escc.Umbraco.Forms.BackOffice.1.0.1\build\Escc.Umbraco.Forms.BackOffice.targets')" />
   <Import Project="..\packages\uSync.4.0.5\build\uSync.targets" Condition="Exists('..\packages\uSync.4.0.5\build\uSync.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.EditorTools.2.4.4\build\Escc.Umbraco.EditorTools.targets" Condition="Exists('..\packages\Escc.Umbraco.EditorTools.2.4.4\build\Escc.Umbraco.EditorTools.targets')" />
 </Project>
