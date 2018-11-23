@@ -9,15 +9,14 @@
 }
 @{
     string val = string.Empty;
-    if (Model.ValueAsObject != null && Model.ValueAsObject != "")
+    if (Model.ValueAsObject != null && Model.ValueAsObject.ToString() != string.Empty)
     {
-        try
+        DateTime parsedDate;
+        if (DateTime.TryParse(Model.ValueAsObject.ToString(), out parsedDate))
         {
-            DateTime d;
-            d = (DateTime) Model.ValueAsObject;
-            val = d.ToShortDateString();
+            val = parsedDate.ToShortDateString();
         }
-        catch (Exception ex)
+        else
         {
             val = Model.ValueAsObject.ToString();
         }
@@ -25,7 +24,7 @@
 }
 
 <input type="hidden" name="@Model.Name" id="@Model.Id" class="datepickerfieldshadow" value="@val" />
-<input type="text" class="@className"  name="@Model.Name" id="@(Model.Id)_1" value="@val" 
+<input type="text" autocomplete="off" class="@className"  name="@Model.Name" id="@(Model.Id)_1" value="@val" 
        @{if(Model.AdditionalSettings.ContainsKey("PrivacyNotice") && string.IsNullOrEmpty(Model.AdditionalSettings["PrivacyNotice"]) == false){<text>aria-describedby="@Model.Id-privacy" data-tip-positions="top left right"</text>}}
        @{if (Model.Mandatory) { <text> data-val="true" data-val-required="@Model.RequiredErrorMessage" </text> }} />
 @{if (Model.AdditionalSettings.ContainsKey("PrivacyNotice") && string.IsNullOrEmpty(Model.AdditionalSettings["PrivacyNotice"]) == false)
