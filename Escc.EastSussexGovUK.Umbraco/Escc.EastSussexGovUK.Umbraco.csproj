@@ -186,7 +186,7 @@
       <HintPath>..\packages\Escc.Umbraco.Forms.BackOffice.1.0.1\lib\Escc.Umbraco.Forms.BackOffice.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.Forms.FieldTypes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.Forms.FieldTypes.1.1.0\lib\Escc.Umbraco.Forms.FieldTypes.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.Forms.FieldTypes.1.1.1\lib\Escc.Umbraco.Forms.FieldTypes.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.Forms.Security, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.Forms.Security.1.0.0\lib\Escc.Umbraco.Forms.Security.dll</HintPath>
@@ -5062,7 +5062,7 @@
     <Error Condition="!Exists('..\packages\uSync.4.0.5\build\uSync.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uSync.4.0.5\build\uSync.props'))" />
     <Error Condition="!Exists('..\packages\uSync.4.0.5\build\uSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uSync.4.0.5\build\uSync.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.EditorTools.2.4.4\build\Escc.Umbraco.EditorTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.EditorTools.2.4.4\build\Escc.Umbraco.EditorTools.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Umbraco.Forms.FieldTypes.1.1.0\build\Escc.Umbraco.Forms.FieldTypes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.Forms.FieldTypes.1.1.0\build\Escc.Umbraco.Forms.FieldTypes.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.Forms.FieldTypes.1.1.1\build\Escc.Umbraco.Forms.FieldTypes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.Forms.FieldTypes.1.1.1\build\Escc.Umbraco.Forms.FieldTypes.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
@@ -5103,5 +5103,5 @@
   <Import Project="..\packages\Escc.Umbraco.Forms.BackOffice.1.0.1\build\Escc.Umbraco.Forms.BackOffice.targets" Condition="Exists('..\packages\Escc.Umbraco.Forms.BackOffice.1.0.1\build\Escc.Umbraco.Forms.BackOffice.targets')" />
   <Import Project="..\packages\uSync.4.0.5\build\uSync.targets" Condition="Exists('..\packages\uSync.4.0.5\build\uSync.targets')" />
   <Import Project="..\packages\Escc.Umbraco.EditorTools.2.4.4\build\Escc.Umbraco.EditorTools.targets" Condition="Exists('..\packages\Escc.Umbraco.EditorTools.2.4.4\build\Escc.Umbraco.EditorTools.targets')" />
-  <Import Project="..\packages\Escc.Umbraco.Forms.FieldTypes.1.1.0\build\Escc.Umbraco.Forms.FieldTypes.targets" Condition="Exists('..\packages\Escc.Umbraco.Forms.FieldTypes.1.1.0\build\Escc.Umbraco.Forms.FieldTypes.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.Forms.FieldTypes.1.1.1\build\Escc.Umbraco.Forms.FieldTypes.targets" Condition="Exists('..\packages\Escc.Umbraco.Forms.FieldTypes.1.1.1\build\Escc.Umbraco.Forms.FieldTypes.targets')" />
 </Project>
