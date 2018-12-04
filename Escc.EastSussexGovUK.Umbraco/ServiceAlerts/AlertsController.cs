@@ -77,7 +77,7 @@ namespace Escc.EastSussexGovUK.Umbraco.ServiceAlerts
         /// <returns></returns>
         private bool TooLateForToday()
         {
-            return (DateTime.Now.ToUkDateTime() > DateTime.Today.Date.AddHours(16)); // change display after 4pm
+            return (DateTime.Now.ToUkDateTime() > DateTime.Today.Date.AddHours(15).AddMinutes(30)); // change display after 3.30pm
         }
 
         private static void AddSchoolClosureAlert(List<AlertViewModel> alerts, string alertHtml)
