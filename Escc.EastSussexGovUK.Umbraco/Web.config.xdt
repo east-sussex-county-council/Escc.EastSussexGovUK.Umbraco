@@ -132,6 +132,7 @@
     <sectionGroup name="Escc.Umbraco" xdt:Transform="Remove" xdt:Locator="Match(name)" />
     <sectionGroup name="Escc.Umbraco" xdt:Transform="Insert">
       <section name="GeneralSettings" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+      <section name="MediaIdProviders" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     </sectionGroup>
   </configSections>
   
@@ -140,6 +141,13 @@
     <GeneralSettings>
       <add key="HttpCachingEnabled" value="true" />
     </GeneralSettings>
+    <MediaIdProviders>
+      <add key="MediaPickerIdProvider" value="Umbraco.MediaPicker,Umbraco.MultipleMediaPicker,Umbraco.MultiNodeTreePicker" />
+      <add key="GridHtmlMediaIdProvider" value="Umbraco.Grid" />
+      <add key="HtmlMediaIdProvider" value="Umbraco.TinyMCEv3" />
+      <add key="RelatedLinksIdProvider" value="Umbraco.RelatedLinks" />
+      <add key="UrlMediaIdProvider" value="Escc.Umbraco.PropertyEditors.UrlPropertyEditor" />
+    </MediaIdProviders>
   </Escc.Umbraco>
 
   <configSections>
