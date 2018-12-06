@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Umbrac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Umbraco", "Escc.EastSussexGovUK.Umbraco\Escc.EastSussexGovUK.Umbraco.csproj", "{D893DAC9-C4E3-4118-9346-82BD34E33AF6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.Jobs.SendAlerts", "Escc.Jobs.SendAlerts\Escc.Jobs.SendAlerts.csproj", "{FFF936C0-8FB9-4D25-8844-8A6F44E2CDC8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,12 @@ Global
 		{D893DAC9-C4E3-4118-9346-82BD34E33AF6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D893DAC9-C4E3-4118-9346-82BD34E33AF6}.UAT|Any CPU.ActiveCfg = Release|Any CPU
 		{D893DAC9-C4E3-4118-9346-82BD34E33AF6}.UAT|Any CPU.Build.0 = Release|Any CPU
+		{FFF936C0-8FB9-4D25-8844-8A6F44E2CDC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFF936C0-8FB9-4D25-8844-8A6F44E2CDC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFF936C0-8FB9-4D25-8844-8A6F44E2CDC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFF936C0-8FB9-4D25-8844-8A6F44E2CDC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFF936C0-8FB9-4D25-8844-8A6F44E2CDC8}.UAT|Any CPU.ActiveCfg = Release|Any CPU
+		{FFF936C0-8FB9-4D25-8844-8A6F44E2CDC8}.UAT|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

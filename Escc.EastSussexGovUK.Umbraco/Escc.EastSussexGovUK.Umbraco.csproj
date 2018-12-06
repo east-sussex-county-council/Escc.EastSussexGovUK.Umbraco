@@ -4640,7 +4640,6 @@
     <Compile Include="Jobs\Examine\BaseJobsIndexer.cs" />
     <Compile Include="Jobs\Examine\JobsIndexerApiController.cs" />
     <Compile Include="Jobs\Alerts\JobAlertsSurfaceController.cs" />
-    <Compile Include="Jobs\Alerts\JobAlertsApiController.cs" />
     <Compile Include="Jobs\JobsSet.cs" />
     <Compile Include="Jobs\LocationHashTag.cs" />
     <Compile Include="Jobs\RelativeJobUrlGenerator.cs" />

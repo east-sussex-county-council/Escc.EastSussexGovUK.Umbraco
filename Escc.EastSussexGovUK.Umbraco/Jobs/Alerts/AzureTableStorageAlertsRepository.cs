@@ -30,19 +30,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         /// </summary>
         /// <param name="queryConverter">The query converter.</param>
         /// <exception cref="ArgumentNullException">queryConverter</exception>
-        /// <exception cref="Exception"><connectionStrings><add name=\"Escc.EastSussexGovUK.Umbraco.AzureStorage\" /></connectionStrings> not found in web.config</exception>
-        public AzureTableStorageAlertsRepository(IJobSearchQueryConverter queryConverter)
+        public AzureTableStorageAlertsRepository(IJobSearchQueryConverter queryConverter, string azureStorageConnectionString)
         {
             if (queryConverter == null) throw new ArgumentNullException(nameof(queryConverter));
-            _queryConverter = queryConverter;
-
-            var connectionString = ConfigurationManager.ConnectionStrings["Escc.EastSussexGovUK.Umbraco.AzureStorage"].ConnectionString;
-            if (String.IsNullOrEmpty(connectionString))
+            if (string.IsNullOrEmpty(azureStorageConnectionString))
             {
-                throw new Exception("<connectionStrings><add name=\"Escc.EastSussexGovUK.Umbraco.AzureStorage\" /></connectionStrings> not found in web.config");
+                throw new ArgumentException("azureStorageConnectionString was not specified", nameof(azureStorageConnectionString));
             }
 
-            var storageAccount = CloudStorageAccount.Parse(connectionString);
+            _queryConverter = queryConverter;
+
+            var storageAccount = CloudStorageAccount.Parse(azureStorageConnectionString);
             _tableClient = storageAccount.CreateCloudTableClient();
         }
 

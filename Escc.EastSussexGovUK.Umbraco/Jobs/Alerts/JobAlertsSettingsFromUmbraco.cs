@@ -28,13 +28,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         }
 
         /// <summary>
-        /// Gets the job alert settings for each <see cref="JobsSet" />
+        /// Gets the job alert settings for a <see cref="JobsSet" />
         /// </summary>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
-        public Dictionary<JobsSet, JobAlertSettings> GetJobAlertsSettings()
+        public JobAlertSettings GetJobAlertsSettings(JobsSet jobsSet)
         {
-            var settings = new Dictionary<JobsSet, JobAlertSettings>();
+            JobAlertSettings settings = null;
 
             var jobAlertsSettingsPages = _umbraco.TypedContentAtXPath("//JobAlerts");
             foreach (var jobAlertSettingsPage in jobAlertsSettingsPages)
@@ -42,25 +41,25 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
                 // Get the jobs set selected in the Umbraco page
                 var selectedJobsSet = umbraco.library.GetPreValueAsString(jobAlertSettingsPage.GetPropertyValue<int>("PublicOrRedeployment_Content"));
                 selectedJobsSet = Regex.Replace(selectedJobsSet.ToUpperInvariant(), "[^A-Z]", String.Empty);
-                var jobsSet = (JobsSet)Enum.Parse(typeof(JobsSet), selectedJobsSet, true);
-                if (settings.ContainsKey(jobsSet)) continue;
+                var jobsSetForPage = (JobsSet)Enum.Parse(typeof(JobsSet), selectedJobsSet, true);
+                if (jobsSetForPage != jobsSet) continue;
 
-                // Create a jobs set and populate the settings from the page
-                settings.Add(jobsSet, new JobAlertSettings());
+                // Create settings from the page
+                settings = new JobAlertSettings();
 
-                settings[jobsSet].NewAlertEmailSubject = jobAlertSettingsPage.GetPropertyValue<string>("NewAlertEmailSubject_Alert_settings");
-                settings[jobsSet].NewAlertEmailBodyHtml = jobAlertSettingsPage.GetPropertyValue<string>("NewAlertEmailBody_Alert_settings");
-                settings[jobsSet].AlertEmailSubject = jobAlertSettingsPage.GetPropertyValue<string>("AlertEmailSubject_Alert_settings");
-                settings[jobsSet].AlertEmailBodyHtml = jobAlertSettingsPage.GetPropertyValue<string>("AlertEmailBody_Alert_settings");
+                settings.NewAlertEmailSubject = jobAlertSettingsPage.GetPropertyValue<string>("NewAlertEmailSubject_Alert_settings");
+                settings.NewAlertEmailBodyHtml = jobAlertSettingsPage.GetPropertyValue<string>("NewAlertEmailBody_Alert_settings");
+                settings.AlertEmailSubject = jobAlertSettingsPage.GetPropertyValue<string>("AlertEmailSubject_Alert_settings");
+                settings.AlertEmailBodyHtml = jobAlertSettingsPage.GetPropertyValue<string>("AlertEmailBody_Alert_settings");
 
                 var baseUrl = jobAlertSettingsPage.GetPropertyValue<string>("BaseUrl_Alert_settings");
                 if (!String.IsNullOrEmpty(baseUrl))
                 {
-                    settings[jobsSet].ChangeAlertBaseUrl = new Uri(new Uri(baseUrl), jobAlertSettingsPage.Url());
+                    settings.ChangeAlertBaseUrl = new Uri(new Uri(baseUrl), jobAlertSettingsPage.Url());
                 }
                 else
                 {
-                    settings[jobsSet].ChangeAlertBaseUrl = new Uri(jobAlertSettingsPage.UrlAbsolute());
+                    settings.ChangeAlertBaseUrl = new Uri(jobAlertSettingsPage.UrlAbsolute());
                 }
 
                 var jobAdvertPage = jobAlertSettingsPage.GetPropertyValue<IPublishedContent>("JobAdvertPage_Alert_settings");
@@ -68,11 +67,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
                 {
                     if (!String.IsNullOrEmpty(baseUrl))
                     {
-                        settings[jobsSet].JobAdvertBaseUrl = new Uri(new Uri(baseUrl), jobAdvertPage.Url());
+                        settings.JobAdvertBaseUrl = new Uri(new Uri(baseUrl), jobAdvertPage.Url());
                     }
                     else
                     {
-                        settings[jobsSet].JobAdvertBaseUrl = new Uri(jobAdvertPage.UrlAbsolute());
+                        settings.JobAdvertBaseUrl = new Uri(jobAdvertPage.UrlAbsolute());
                     }
                 }
             }

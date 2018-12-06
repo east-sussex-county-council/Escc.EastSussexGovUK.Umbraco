@@ -1,4 +1,5 @@
-﻿using Exceptionless;
+﻿using Escc.EastSussexGovUK.Umbraco.Jobs.Alerts;
+using Exceptionless;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -134,6 +135,21 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Api
             {
                 e.ToExceptionless().Submit();
                 return new JobsLookupValue[0];
+            }
+        }
+
+        // GET /umbraco/api/redeploymentjobs/jobalertsettings/
+        [HttpGet]
+        public JobAlertSettings JobAlertSettings()
+        {
+            try
+            {
+                return base.JobAlertSettings(JobsSet.RedeploymentJobs);
+            }
+            catch (Exception e)
+            {
+                e.ToExceptionless().Submit();
+                return null;
             }
         }
     }

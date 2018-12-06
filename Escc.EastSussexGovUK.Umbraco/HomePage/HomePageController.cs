@@ -20,6 +20,7 @@ using Escc.EastSussexGovUK.Umbraco.Jobs.Api;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
 using System.Configuration;
 using Escc.Umbraco.Expiry;
+using System.Runtime.Caching;
 
 namespace Escc.EastSussexGovUK.Umbraco.HomePage
 {
@@ -46,7 +47,7 @@ namespace Escc.EastSussexGovUK.Umbraco.HomePage
                 UmbracoContext.Current.InPreviewMode);
             modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel, null, null, null, null, null, new RatingSettingsFromUmbraco(model.Content));
 
-            var jobsData = new JobsLookupValuesFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), JobsSet.PublicJobs, new MemoryJobCacheStrategy(HttpContext.Cache, Request.QueryString["ForceCacheRefresh"] == "1"));
+            var jobsData = new JobsLookupValuesFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), JobsSet.PublicJobs, new MemoryJobCacheStrategy(MemoryCache.Default, Request.QueryString["ForceCacheRefresh"] == "1"));
             viewModel.JobLocations = Task.Run(async() => await jobsData.ReadLocations()).Result;
             viewModel.JobTypes = Task.Run(async () => await jobsData.ReadJobTypes()).Result;
 

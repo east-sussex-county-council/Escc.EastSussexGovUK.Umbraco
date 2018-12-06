@@ -16,6 +16,7 @@ using Escc.EastSussexGovUK.Umbraco.Jobs.Api;
 using System.Configuration;
 using Examine;
 using Escc.Umbraco.Expiry;
+using System.Runtime.Caching;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
@@ -31,7 +32,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
 
             var modelBuilder = new JobsSearchViewModelFromUmbraco(model.Content, new JobsSearchViewModel());
             var viewModel = modelBuilder.BuildModel();
-            var lookupValuesDataSource = new JobsLookupValuesFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, new MemoryJobCacheStrategy(HttpContext.Cache, Request.QueryString["ForceCacheRefresh"] == "1"));
+            var lookupValuesDataSource = new JobsLookupValuesFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, new MemoryJobCacheStrategy(MemoryCache.Default, Request.QueryString["ForceCacheRefresh"] == "1"));
             modelBuilder.AddLookupValuesToModel(lookupValuesDataSource, viewModel);
 
             var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"]);

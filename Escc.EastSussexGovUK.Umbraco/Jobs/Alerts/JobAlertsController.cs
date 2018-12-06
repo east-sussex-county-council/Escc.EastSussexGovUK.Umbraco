@@ -8,6 +8,7 @@ using Escc.Umbraco.PropertyTypes;
 using Examine;
 using System;
 using System.Configuration;
+using System.Runtime.Caching;
 using System.Web;
 using System.Web.Mvc;
 using Umbraco.Web;
@@ -31,14 +32,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         {
             var modelBuilder = new JobsSearchViewModelFromUmbraco(model.Content, new JobAlertsViewModel());
             var viewModel = (JobAlertsViewModel)modelBuilder.BuildModel();
-            var lookupValuesDataSource = new JobsLookupValuesFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, new MemoryJobCacheStrategy(HttpContext.Cache, Request.QueryString["ForceCacheRefresh"] == "1"));
+            var lookupValuesDataSource = new JobsLookupValuesFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, new MemoryJobCacheStrategy(MemoryCache.Default, Request.QueryString["ForceCacheRefresh"] == "1"));
             modelBuilder.AddLookupValuesToModel(lookupValuesDataSource, viewModel);
 
             var converter = new JobSearchQueryConverter();
             var alertId = new JobAlertIdEncoder(converter).ParseIdFromUrl(Request.Url);
             if (!string.IsNullOrEmpty(alertId))
             {
-                var alertsRepo = new AzureTableStorageAlertsRepository(converter);
+                var alertsRepo = new AzureTableStorageAlertsRepository(converter, ConfigurationManager.ConnectionStrings["Escc.EastSussexGovUK.Umbraco.AzureStorage"].ConnectionString);
                 viewModel.Alert = alertsRepo.GetAlertById(alertId);
                 viewModel.Query = viewModel.Alert?.Query;
 

@@ -1,4 +1,5 @@
 ﻿using Escc.EastSussexGovUK.Umbraco.Examine;
+using Escc.EastSussexGovUK.Umbraco.Jobs.Alerts;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Examine;
 using Examine;
 using System;
@@ -127,6 +128,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Api
         {
             var dataSource = new JobsLookupValuesFromExamine(ExamineManager.Instance.SearchProviderCollection[jobsSet + "LookupValuesSearcher"]);
             return await dataSource.ReadWorkPatterns();
+        }
+
+        /// <summary>
+        /// Gets the job alert settings for a <see cref="JobsSet" />
+        /// </summary>
+        /// <param name="jobsSet">The jobs set.</param>
+        protected JobAlertSettings JobAlertSettings(JobsSet jobsSet)
+        {
+            return new JobAlertsSettingsFromUmbraco(Umbraco).GetJobAlertsSettings(jobsSet);
         }
     }
 }

@@ -2,23 +2,19 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Caching;
+using System.Runtime.Caching;
 
-/// <summary>
-/// 
-/// </summary>
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {
     /// <summary>
-    /// Cache jobs in memory for 1 hour, using the ASP.NET application cache
+    /// Cache jobs in memory for 1 hour
     /// </summary>
     /// <remarks>Use absolute expiration rather than sliding expiration as we don't want old jobs to hang around very long</remarks>
     /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Jobs.IJobCacheStrategy" />
     public class MemoryJobCacheStrategy : IJobCacheStrategy
     {
         private const string _cacheKeyPrefix = "MemoryJobCacheStrategy-";
-        private readonly Cache _cache;
+        private readonly ObjectCache _cache;
         private readonly bool _enforceUpdate;
 
         /// <summary>
@@ -27,7 +23,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// <param name="cache">The cache.</param>
         /// <param name="enforceUpdate">if set to <c>true</c> read methods will return <c>null</c> to lead application code to update the cache.</param>
         /// <exception cref="ArgumentNullException">cache</exception>
-        public MemoryJobCacheStrategy(Cache cache, bool enforceUpdate=false)
+        public MemoryJobCacheStrategy(ObjectCache cache, bool enforceUpdate=false)
         {
             this._cache = cache ?? throw new ArgumentNullException(nameof(cache));
             this._enforceUpdate = enforceUpdate;
@@ -48,7 +44,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public void CacheJob(Job job)
         {
             if (job == null || job.Id == 0) return;
-            _cache.Insert(_cacheKeyPrefix + "Job-" + job.Id, job, null, CalculateCacheTime(), Cache.NoSlidingExpiration);
+            _cache.Set(_cacheKeyPrefix + "Job-" + job.Id, job, CalculateCacheTime());
         }
 
         /// <summary>
@@ -59,7 +55,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public void CacheJobs(JobSearchQuery query, JobSearchResult jobs)
         {
             if (query == null || jobs == null) return;
-            _cache.Insert(_cacheKeyPrefix + "Jobs-" + query.ToHash(), jobs, null, CalculateCacheTime(), Cache.NoSlidingExpiration);
+            _cache.Set(_cacheKeyPrefix + "Jobs-" + query.ToHash(), jobs, CalculateCacheTime());
         }
 
         /// <summary>
@@ -70,7 +66,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public void CacheLookupValues(string key, IList<JobsLookupValue> values)
         {
             if (String.IsNullOrEmpty(key) || values == null) return;
-            _cache.Insert(_cacheKeyPrefix + "LookupValues-" + key, values, null, CalculateCacheTime(), Cache.NoSlidingExpiration);
+            _cache.Set(_cacheKeyPrefix + "LookupValues-" + key, values, CalculateCacheTime());
         }
 
         /// <summary>
