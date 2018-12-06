@@ -93,7 +93,7 @@ namespace Escc.Jobs.SendAlerts
             var sender = new JobAlertsByEmailSender(alertSettings, new HtmlJobAlertFormatter(alertSettings, encoder), emailService);
 
             // Get them, sort them and send them
-            _log.Info($"Requesting jobs matching {jobsSet} with freqency {frequency} from Azure Storage");
+            _log.Info($"Requesting jobs matching {jobsSet} with frequency {frequency} from Azure Storage");
             var alerts = alertsRepo.GetAlerts(new JobAlertsQuery() { Frequency = frequency, JobsSet = jobsSet });
             var alertsGroupedByEmail = GroupAlertsByEmail(alerts);
 
