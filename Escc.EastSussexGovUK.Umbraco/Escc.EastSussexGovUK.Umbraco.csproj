@@ -189,10 +189,10 @@
       <HintPath>..\packages\Escc.Umbraco.Forms.FieldTypes.1.1.1\lib\Escc.Umbraco.Forms.FieldTypes.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.Forms.Security, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.Forms.Security.1.0.0\lib\Escc.Umbraco.Forms.Security.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.Forms.Security.2.0.0\lib\Escc.Umbraco.Forms.Security.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.Forms.Workflows, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.Forms.Workflows.1.0.0\lib\Escc.Umbraco.Forms.Workflows.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.Forms.Workflows.2.0.0\lib\Escc.Umbraco.Forms.Workflows.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.HeatmapAnalytics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.HeatmapAnalytics.3.0.0\lib\net452\Escc.Umbraco.HeatmapAnalytics.dll</HintPath>
@@ -912,10 +912,10 @@
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\Url.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\RenderTypes\address.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\RenderTypes\date.html" />
-    <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\RenderTypes\file.html" />
     <Content Include="App_Plugins\Escc.EastSussexGovUK.Umbraco.Forms\AgreeToTerms.js" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\AgreeToTerms.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\FieldTypes\Address.html" />
+    <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\RenderTypes\file.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\RenderTypes\member.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\RenderTypes\text.html" />
     <Content Include="App_Plugins\UmbracoForms\Backoffice\Common\SettingTypes\checkbox.html" />
@@ -4080,7 +4080,6 @@
     <Content Include="Views\Partials\Grid\Bootstrap2.cshtml" />
     <Content Include="Views\Partials\Grid\Bootstrap2-Fluid.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.School.cshtml" />
-    <Content Include="Views\Partials\Forms\Permissions.cshtml" />
     <Content Include="uSync\Snapshots\20180925_124650_usync-initial-snapshot\DataType\alignment\Alignment.config" />
     <Content Include="uSync\Snapshots\20180925_124650_usync-initial-snapshot\DataType\approved-color\ApprovedColor.config" />
     <Content Include="uSync\Snapshots\20180925_124650_usync-initial-snapshot\DataType\cache\Cache.config" />
@@ -4475,6 +4474,7 @@
     <Content Include="Views\Partials\Forms\Themes\default\Fieldtypes\FieldType.EthnicGroup.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\default\Fieldtypes\FieldType.Email.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\default\Fieldtypes\FieldType.DatePicker.cshtml" />
+    <Content Include="Views\Partials\Forms\Permissions.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -5054,13 +5054,13 @@
     <Error Condition="!Exists('..\packages\UmbracoCms.7.6.13\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.6.13\build\UmbracoCms.props'))" />
     <Error Condition="!Exists('..\packages\UmbracoCms.7.6.13\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.6.13\build\UmbracoCms.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.6.2.2\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.6.2.2\build\Escc.Umbraco.PropertyEditors.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Umbraco.Forms.Security.1.0.0\build\Escc.Umbraco.Forms.Security.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.Forms.Security.1.0.0\build\Escc.Umbraco.Forms.Security.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.Forms.BackOffice.1.0.1\build\Escc.Umbraco.Forms.BackOffice.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.Forms.BackOffice.1.0.1\build\Escc.Umbraco.Forms.BackOffice.targets'))" />
     <Error Condition="!Exists('..\packages\uSync.4.0.5\build\uSync.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uSync.4.0.5\build\uSync.props'))" />
     <Error Condition="!Exists('..\packages\uSync.4.0.5\build\uSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uSync.4.0.5\build\uSync.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.EditorTools.2.4.4\build\Escc.Umbraco.EditorTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.EditorTools.2.4.4\build\Escc.Umbraco.EditorTools.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.Forms.FieldTypes.1.1.1\build\Escc.Umbraco.Forms.FieldTypes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.Forms.FieldTypes.1.1.1\build\Escc.Umbraco.Forms.FieldTypes.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.3.0.0\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.3.0.0\build\Escc.Umbraco.MediaSync.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.Forms.Security.2.0.0\build\Escc.Umbraco.Forms.Security.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.Forms.Security.2.0.0\build\Escc.Umbraco.Forms.Security.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
@@ -5074,7 +5074,6 @@
   <Import Project="..\packages\Escc.FindAddress.Mvc.1.0.1\build\Escc.FindAddress.Mvc.targets" Condition="Exists('..\packages\Escc.FindAddress.Mvc.1.0.1\build\Escc.FindAddress.Mvc.targets')" />
   <Import Project="..\packages\UmbracoCms.7.6.13\build\UmbracoCms.targets" Condition="Exists('..\packages\UmbracoCms.7.6.13\build\UmbracoCms.targets')" />
   <Import Project="..\packages\Escc.Umbraco.PropertyEditors.6.2.2\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.6.2.2\build\Escc.Umbraco.PropertyEditors.targets')" />
-  <Import Project="..\packages\Escc.Umbraco.Forms.Security.1.0.0\build\Escc.Umbraco.Forms.Security.targets" Condition="Exists('..\packages\Escc.Umbraco.Forms.Security.1.0.0\build\Escc.Umbraco.Forms.Security.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
@@ -5102,4 +5101,5 @@
   <Import Project="..\packages\Escc.Umbraco.EditorTools.2.4.4\build\Escc.Umbraco.EditorTools.targets" Condition="Exists('..\packages\Escc.Umbraco.EditorTools.2.4.4\build\Escc.Umbraco.EditorTools.targets')" />
   <Import Project="..\packages\Escc.Umbraco.Forms.FieldTypes.1.1.1\build\Escc.Umbraco.Forms.FieldTypes.targets" Condition="Exists('..\packages\Escc.Umbraco.Forms.FieldTypes.1.1.1\build\Escc.Umbraco.Forms.FieldTypes.targets')" />
   <Import Project="..\packages\Escc.Umbraco.MediaSync.3.0.0\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.3.0.0\build\Escc.Umbraco.MediaSync.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.Forms.Security.2.0.0\build\Escc.Umbraco.Forms.Security.targets" Condition="Exists('..\packages\Escc.Umbraco.Forms.Security.2.0.0\build\Escc.Umbraco.Forms.Security.targets')" />
 </Project>
