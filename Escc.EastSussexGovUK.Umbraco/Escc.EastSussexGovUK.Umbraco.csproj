@@ -192,7 +192,7 @@
       <HintPath>..\packages\Escc.Umbraco.Forms.Security.2.0.0\lib\Escc.Umbraco.Forms.Security.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.Forms.Workflows, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.Forms.Workflows.2.0.0\lib\Escc.Umbraco.Forms.Workflows.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.Forms.Workflows.3.0.0\lib\Escc.Umbraco.Forms.Workflows.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.HeatmapAnalytics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.HeatmapAnalytics.3.0.0\lib\net452\Escc.Umbraco.HeatmapAnalytics.dll</HintPath>
