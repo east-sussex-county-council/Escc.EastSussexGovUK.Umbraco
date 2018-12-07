@@ -37,7 +37,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Guide
 
             if (!viewModel.Steps.Any())
             {
-                throw new HttpException(404, "Not found");
+                return new HttpNotFoundResult();
+            }
+
+            // This only has one view, for printing, so if not requested as such, redirect
+            if (Request.Url != null && !Request.Url.AbsolutePath.EndsWith("/print", StringComparison.OrdinalIgnoreCase))
+            {
+                var firstStep = viewModel.Steps.First();
+                if (firstStep != null && firstStep.Steps.Any())
+                {
+                    Response.Headers.Add("Location", new Uri(Request.Url, firstStep.Steps.First().Url).ToString());
+                    return new HttpStatusCodeResult(303);
+                }
             }
 
             new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new IExpiryDateSource[] { expiryDate, new ExpiryDateFromPropertyValue(model.Content, "latestUnpublishDate_Latest") });

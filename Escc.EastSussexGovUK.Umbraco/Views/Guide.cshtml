@@ -21,16 +21,6 @@
         new SupportWithTrustSkin(Model.SkinToApply == "Support with trust")
         }, new CustomerFocusSkin());
 
-    // This is a print view so, if not requested as such, redirect
-    if (Request.Url != null && !Request.Url.AbsolutePath.EndsWith("/print", StringComparison.OrdinalIgnoreCase))
-    {
-        var firstStep = Model.Steps.First();
-        if (firstStep != null && firstStep.Steps.Any())
-        {
-            new HttpStatus().SeeOther(firstStep.Steps.First().Url);
-        }
-    }
-
     // Get the guide title from the first step
     Model.Metadata.Title = Model.Steps.Any() ? Model.Steps.First().GuideTitle : String.Empty;
     Model.Metadata.IsInSearch = false;
