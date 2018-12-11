@@ -34,6 +34,7 @@ namespace Escc.Jobs.SendAlerts
         /// Sends job alerts which are configured for a particular frequency (in days), or any frequency if blank
         /// </summary>
         /// <param name="frequency">The frequency.</param>
+        /// <param name="forceResend">If set to <c>true</c> force resend of alerts already sent (for testing)</param>
         public void SendAlerts(int? frequency, bool forceResend)
         {
             var apiBaseUrl = new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]);

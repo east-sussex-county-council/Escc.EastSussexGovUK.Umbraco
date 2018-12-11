@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CommandLine;
 using Exceptionless;
 using log4net;
 using log4net.Config;
@@ -21,11 +21,33 @@ namespace Escc.Jobs.SendAlerts
 
             try
             {
-                Parser.Default.ParseArguments<Options>(args)
-                       .WithParsed<Options>(o =>
-                       {
-                           new JobAlertSender(log).SendAlerts(o.Frequency, o.ForceResend);
-                       });
+                if (!CheckEnvironmentPrecondition())
+                {
+                    return;
+                }
+
+
+                int? frequency = null;
+                if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["Frequency"]))
+                {
+                    int parsedFrequency;
+                    if (int.TryParse(ConfigurationManager.AppSettings["Frequency"], out parsedFrequency))
+                    {
+                        frequency = parsedFrequency;
+                    }
+                }
+
+                bool forceResend = false;
+                if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["ForceResend"]))
+                {
+                    bool parsedForceResend;
+                    if (bool.TryParse(ConfigurationManager.AppSettings["ForceResend"], out parsedForceResend))
+                    {
+                        forceResend = parsedForceResend;
+                    }
+                }
+                
+                new JobAlertSender(log).SendAlerts(frequency, forceResend);
             }
             catch (Exception ex)
             {
@@ -37,6 +59,20 @@ namespace Escc.Jobs.SendAlerts
             }
         }
 
-
+        private static bool CheckEnvironmentPrecondition()
+        {
+            var precondition = ConfigurationManager.AppSettings["Precondition"];
+            if (!string.IsNullOrEmpty(precondition))
+            {
+                var split = ConfigurationManager.AppSettings["Precondition"].Split('=');
+                if (split.Length == 2)
+                {
+                    var result = (Environment.GetEnvironmentVariable(split[0]).Equals(split[1], StringComparison.OrdinalIgnoreCase));
+                    log.Info("Precondition " + precondition + (result ? " OK." : " failed."));
+                    return result;
+                }
+            }
+            return true;
+        }
     }
 }
