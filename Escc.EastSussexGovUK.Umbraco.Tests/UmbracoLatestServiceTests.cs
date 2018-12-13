@@ -1,4 +1,4 @@
-﻿using Escc.EastSussexGovUK.Umbraco.Services;
+﻿using Escc.EastSussexGovUK.Umbraco.Latest;
 using GDev.Umbraco.Test;
 using Moq;
 using NUnit.Framework;

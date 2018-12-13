@@ -10,6 +10,7 @@ using Umbraco.Web.Mvc;
 using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
 using Examine;
 using Escc.Umbraco.Expiry;
+using Escc.EastSussexGovUK.Umbraco.Latest;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {

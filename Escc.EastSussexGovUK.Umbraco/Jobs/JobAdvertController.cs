@@ -20,6 +20,7 @@ using Escc.EastSussexGovUK.Umbraco.Jobs.Api;
 using System.Configuration;
 using Escc.Umbraco.Expiry;
 using System.Runtime.Caching;
+using Escc.EastSussexGovUK.Umbraco.Latest;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {

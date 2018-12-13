@@ -2,11 +2,10 @@
 using System.Text;
 using System.Web;
 using Escc.Dates;
-using Escc.EastSussexGovUK.Features;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 
-namespace Escc.EastSussexGovUK.Umbraco.Services
+namespace Escc.EastSussexGovUK.Umbraco.Latest
 {
     /// <summary>
     /// Service to aggregate 'latest' content from Umbraco pages

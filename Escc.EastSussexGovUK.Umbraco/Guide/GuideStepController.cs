@@ -16,6 +16,7 @@ using Escc.EastSussexGovUK.Umbraco.Ratings;
 using Escc.EastSussexGovUK.Umbraco.Skins;
 using Examine;
 using Escc.Umbraco.Expiry;
+using Escc.EastSussexGovUK.Umbraco.Latest;
 
 namespace Escc.EastSussexGovUK.Umbraco.Guide
 {

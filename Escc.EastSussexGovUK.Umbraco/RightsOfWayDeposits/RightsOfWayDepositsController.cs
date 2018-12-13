@@ -16,6 +16,7 @@ using Escc.NavigationControls.WebForms;
 using Escc.EastSussexGovUK.Umbraco.Examine;
 using Umbraco.Core.Models;
 using Escc.Umbraco.Expiry;
+using Escc.EastSussexGovUK.Umbraco.Latest;
 
 namespace Escc.EastSussexGovUK.Umbraco.RightsOfWayDeposits
 {

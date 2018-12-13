@@ -9,7 +9,7 @@ using Umbraco.Core.Models;
 using Umbraco.Web;
 using Escc.EastSussexGovUK.Umbraco.Ratings;
 using Escc.EastSussexGovUK.Umbraco.Skins;
-using Escc.Umbraco.Caching;
+using latest = Escc.EastSussexGovUK.Umbraco.Latest;
 
 namespace Escc.EastSussexGovUK.Umbraco.Services
 {
@@ -79,7 +79,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Services
         /// <param name="webChatSettingsService">The web chat settings service.</param>
         /// <param name="escisService">The ESCIS service.</param>
         /// <exception cref="System.ArgumentNullException">model</exception>
-        public void PopulateBaseViewModelWithInheritedContent(BaseViewModel model, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IEscisService escisService, IRatingSettingsProvider ratingSettings=null)
+        public void PopulateBaseViewModelWithInheritedContent(BaseViewModel model, latest.ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IEscisService escisService, IRatingSettingsProvider ratingSettings=null)
         {
             if (model == null) throw new ArgumentNullException("model");
             

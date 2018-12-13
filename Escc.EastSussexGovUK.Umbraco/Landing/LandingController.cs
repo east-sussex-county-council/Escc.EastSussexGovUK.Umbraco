@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Web.Mvc;
 using Escc.EastSussexGovUK.Features;
-using Escc.EastSussexGovUK.Umbraco.Models;
+using latest = Escc.EastSussexGovUK.Umbraco.Latest;
 using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Umbraco.Caching;
 using Escc.Umbraco.ContentExperiments;
@@ -17,6 +17,7 @@ using Escc.EastSussexGovUK.Umbraco.Ratings;
 using Escc.EastSussexGovUK.Umbraco.Skins;
 using Examine;
 using Escc.Umbraco.Expiry;
+using Escc.EastSussexGovUK.Umbraco.Latest;
 
 namespace Escc.EastSussexGovUK.Umbraco.Landing
 {
@@ -51,7 +52,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Landing
             return CurrentTemplate(viewModel);
         }
 
-        private static LandingViewModel MapUmbracoContentToViewModel(IPublishedContent content, DateTime? expiryDate, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IRelatedLinksService relatedLinksService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService, IRatingSettingsProvider ratingSettings, ISkinToApplyService skinService)
+        private static LandingViewModel MapUmbracoContentToViewModel(IPublishedContent content, DateTime? expiryDate, latest.ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IRelatedLinksService relatedLinksService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService, IRatingSettingsProvider ratingSettings, ISkinToApplyService skinService)
         {
             var model = new LandingViewModel();
             model.Navigation.Sections = BuildLandingLinksViewModelFromUmbracoContent(content, relatedLinksService);

@@ -17,6 +17,7 @@ using System.Configuration;
 using Examine;
 using Escc.Umbraco.Expiry;
 using System.Runtime.Caching;
+using Escc.EastSussexGovUK.Umbraco.Latest;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs
 {

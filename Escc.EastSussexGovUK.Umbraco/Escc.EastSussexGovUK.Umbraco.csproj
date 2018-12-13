@@ -4574,6 +4574,8 @@
     <Compile Include="Jobs\Examine\SalaryRangeLuceneQueryBuilder.cs" />
     <Compile Include="Jobs\IJobCacheStrategy.cs" />
     <Compile Include="Jobs\HtmlFormatters\RemoveUnwantedElementsFormatter.cs" />
+    <Compile Include="Latest\ILatestService.cs" />
+    <Compile Include="Latest\LatestSettings.cs" />
     <Compile Include="PrivacyNotice\PrivacyNoticeViewModel.cs" />
     <Compile Include="PrivacyNotice\PrivacyNoticeController.cs" />
     <Compile Include="PrivacyNotice\PrivacyNoticeViewModelFromUmbraco.cs" />
@@ -4833,7 +4835,7 @@
     <Compile Include="Services\TaskViewModelFromUmbraco.cs" />
     <Compile Include="Services\UmbracoEastSussex1SpaceService.cs" />
     <Compile Include="Services\UmbracoEscisService.cs" />
-    <Compile Include="Services\UmbracoLatestService.cs" />
+    <Compile Include="Latest\UmbracoLatestService.cs" />
     <Compile Include="Services\UmbracoSocialMediaService.cs" />
     <Compile Include="Services\UmbracoWebChatSettingsService.cs" />
     <Compile Include="TextSize\RegisterTextSizeRoute.cs" />

@@ -11,6 +11,7 @@ using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
 using Escc.Umbraco.PropertyTypes;
 using Examine;
 using Escc.Umbraco.Expiry;
+using Escc.EastSussexGovUK.Umbraco.Latest;
 
 namespace Escc.EastSussexGovUK.Umbraco.CampaignTemplates
 {

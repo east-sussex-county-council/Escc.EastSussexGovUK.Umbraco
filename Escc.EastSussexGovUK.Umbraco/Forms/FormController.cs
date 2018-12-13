@@ -1,4 +1,5 @@
-﻿using Escc.EastSussexGovUK.Umbraco.Services;
+﻿using Escc.EastSussexGovUK.Umbraco.Latest;
+using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.EastSussexGovUK.Umbraco.Skins;
 using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
 using Escc.Umbraco.Expiry;

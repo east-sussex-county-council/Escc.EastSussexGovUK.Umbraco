@@ -1,6 +1,7 @@
 ﻿using Escc.EastSussexGovUK.Umbraco.Errors;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Api;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Examine;
+using Escc.EastSussexGovUK.Umbraco.Latest;
 using Escc.EastSussexGovUK.Umbraco.Services;
 using Escc.Umbraco.ContentExperiments;
 using Escc.Umbraco.Expiry;

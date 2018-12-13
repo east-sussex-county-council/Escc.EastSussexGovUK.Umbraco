@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Escc.EastSussexGovUK.Features;
-using Escc.EastSussexGovUK.Umbraco.Models;
-using Escc.EastSussexGovUK.Umbraco.Services;
+using latest = Escc.EastSussexGovUK.Umbraco.Latest;
 using Escc.Umbraco.ContentExperiments;
 using Escc.Umbraco.PropertyTypes;
 using Umbraco.Core.Models;
@@ -18,7 +17,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Location
     /// </summary>
     public class RecyclingSiteController : LocationController
     {
-        protected override LocationViewModel MapUmbracoContentToViewModel(IPublishedContent content, DateTime? expiryDate, ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IRelatedLinksService relatedLinksService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService, IRatingSettingsProvider ratingSettings, IMediaUrlTransformer mediaUrlTransformer, ISkinToApplyService skinService)
+        protected override LocationViewModel MapUmbracoContentToViewModel(IPublishedContent content, DateTime? expiryDate, latest.ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IRelatedLinksService relatedLinksService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService, IRatingSettingsProvider ratingSettings, IMediaUrlTransformer mediaUrlTransformer, ISkinToApplyService skinService)
         {
             var model = base.MapUmbracoContentToViewModel(content, expiryDate, latestService, socialMediaService, eastSussex1SpaceService, webChatSettingsService, relatedLinksService, contentExperimentSettingsService, escisService, ratingSettings, mediaUrlTransformer, skinService);
 
