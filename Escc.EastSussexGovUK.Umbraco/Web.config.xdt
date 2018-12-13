@@ -518,12 +518,11 @@
       <add verb="GET" path="*.jsx" name="CombineStaticFilesHandlerJs" type="Escc.ClientDependencyFramework.WebForms.CombineStaticFilesHandler, Escc.ClientDependencyFramework.WebForms" xdt:Transform="Insert" />
       <add name="LocationsAsKml" xdt:Transform="Remove" xdt:Locator="Match(name)" />
       <add name="LocationsAsKml" verb="GET" path="/data/*.kml" type="Escc.EastSussexGovUK.Umbraco.Location.LocationsAsKmlHandler, Escc.EastSussexGovUK.Umbraco" xdt:Transform="Insert" />
+      <add name="MicrosoftCmsUrlRedirection" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+      <add name="MicrosoftCmsUrlRedirection" verb="GET" path="*.htm" type="Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.MicrosoftCmsUrlRedirectionHandler, Escc.EastSussexGovUK.Umbraco" xdt:Transform="Insert" />
     </handlers>
     
     <modules>
-      <add name="MicrosoftCmsUrlRedirectionModule" xdt:Transform="Remove" xdt:Locator="Match(name)" />
-      <add name="MicrosoftCmsUrlRedirectionModule" type="Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration.MicrosoftCmsUrlRedirectionModule, Escc.EastSussexGovUK.Umbraco" xdt:Transform="Insert" />
-
       <add name="ExceptionlessModule" xdt:Transform="Remove" xdt:Locator="Match(name)" />
       <add name="ExceptionlessModule" type="Exceptionless.Mvc.ExceptionlessModule, Exceptionless.Mvc" xdt:Transform="Insert" />
 

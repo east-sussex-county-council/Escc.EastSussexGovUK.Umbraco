@@ -4576,6 +4576,7 @@
     <Compile Include="Jobs\HtmlFormatters\RemoveUnwantedElementsFormatter.cs" />
     <Compile Include="Latest\ILatestService.cs" />
     <Compile Include="Latest\LatestSettings.cs" />
+    <Compile Include="MicrosoftCmsMigration\MicrosoftCmsUrlRedirectionHandler.cs" />
     <Compile Include="PrivacyNotice\PrivacyNoticeViewModel.cs" />
     <Compile Include="PrivacyNotice\PrivacyNoticeController.cs" />
     <Compile Include="PrivacyNotice\PrivacyNoticeViewModelFromUmbraco.cs" />
@@ -4773,7 +4774,6 @@
     <Compile Include="MicrosoftCmsMigration\CmsUtilities.cs" />
     <Compile Include="MicrosoftCmsMigration\CustomProperty.cs" />
     <Compile Include="MicrosoftCmsMigration\MicrosoftCmsPageController.cs" />
-    <Compile Include="MicrosoftCmsMigration\MicrosoftCmsUrlRedirectionModule.cs" />
     <Compile Include="MicrosoftCmsMigration\MicrosoftCmsViewModel.cs" />
     <Compile Include="MicrosoftCmsMigration\Placeholders\AlternativeAttachmentPlaceholderControl.cs" />
     <Compile Include="MicrosoftCmsMigration\Placeholders\FormAttachmentPlaceholderControl.cs" />

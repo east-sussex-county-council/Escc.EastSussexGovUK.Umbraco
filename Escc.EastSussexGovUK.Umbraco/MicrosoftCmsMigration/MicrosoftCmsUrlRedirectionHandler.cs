@@ -1,37 +1,30 @@
-﻿using System;
-using System.Threading;
+﻿using Exceptionless;
+using System;
 using System.Web;
-using Escc.Web;
-using Exceptionless;
 
 namespace Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration
 {
-    /// <summary>
-    /// This Umbraco installation will contain content migrated from Microsoft CMS 2002. This class eases the transition by making old URLs work.
-    /// </summary>
-    /// <remarks>This HTTP module will run before Umbraco's content finders, although .htm requests are not passed to Umbraco anyway</remarks>
-    public class MicrosoftCmsUrlRedirectionModule : IHttpModule
+    public class MicrosoftCmsUrlRedirectionHandler : IHttpHandler
     {
-        #region IHttpModule Members
+        /// <summary>
+        /// You will need to configure this handler in the Web.config file of your 
+        /// web and register it with IIS before being able to use it. For more information
+        /// see the following link: https://go.microsoft.com/?linkid=8101007
+        /// </summary>
+        #region IHttpHandler Members
 
-        public void Dispose()
+        public bool IsReusable
         {
-            //clean-up code here.
+            // Return false in case your Managed Handler cannot be reused for another request.
+            // Usually this would be false in case you have some state information preserved per request.
+            get { return true; }
         }
 
-        public void Init(HttpApplication context)
-        {
-            if (context == null) throw new ArgumentNullException("context");
-
-            context.BeginRequest += context_BeginRequest;
-        }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
-        void context_BeginRequest(object sender, EventArgs args)
+        public void ProcessRequest(HttpContext context)
         {
             try
             {
-                var requestedUrl = HttpContext.Current.Request.Url;
+                var requestedUrl = context.Request.Url;
                 if (requestedUrl.AbsolutePath.EndsWith(".htm", StringComparison.OrdinalIgnoreCase) && !requestedUrl.AbsolutePath.ToUpperInvariant().Contains("APP_PLUGINS"))
                 {
                     // The default page in a Microsoft CMS channel was usually called default.htm, and we took the channel name as the Umbraco page name,
@@ -39,16 +32,15 @@ namespace Escc.EastSussexGovUK.Umbraco.MicrosoftCmsMigration
                     var suffixToRemove = requestedUrl.AbsolutePath.EndsWith("/default.htm", StringComparison.OrdinalIgnoreCase) ? 11 : 4;
                     var rewriteUrl = requestedUrl.AbsolutePath.Substring(0, requestedUrl.AbsolutePath.Length - suffixToRemove);
                     if (requestedUrl.Query.Length > 0) rewriteUrl += requestedUrl.Query;
-                    new HttpStatus().MovedPermanently(rewriteUrl);
+                    context.Response.RedirectPermanent(rewriteUrl);
                 }
             }
             catch (Exception e)
             {
                 e.ToExceptionless().Submit();
-            }   
+            }
         }
 
         #endregion
-
     }
 }
