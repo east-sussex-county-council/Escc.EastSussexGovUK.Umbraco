@@ -1,2 +1,0 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="TopicSection_TermDates.ascx.cs" Inherits="Escc.EastSussexGovUK.Umbraco.Views.Topic.TopicSection_TermDates" %>
-<asp:PlaceHolder runat="server" ID="container" />

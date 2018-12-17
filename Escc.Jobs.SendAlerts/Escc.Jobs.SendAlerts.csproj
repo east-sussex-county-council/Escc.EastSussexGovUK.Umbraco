@@ -144,7 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Escc.EastSussexGovUK.Umbraco\Escc.EastSussexGovUK.Umbraco.csproj">
-      <Project>{d893dac9-c4e3-4118-9346-82bd34e33af6}</Project>
+      <Project>{2102837c-72b0-4687-86ae-f15d9921ba1c}</Project>
       <Name>Escc.EastSussexGovUK.Umbraco</Name>
     </ProjectReference>
   </ItemGroup>

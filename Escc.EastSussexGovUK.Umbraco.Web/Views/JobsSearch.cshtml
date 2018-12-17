@@ -1,0 +1,32 @@
+﻿@using ClientDependency.Core.Mvc
+@using Escc.ClientDependencyFramework
+@using Escc.EastSussexGovUK.Skins
+@using Escc.EastSussexGovUK.Umbraco.Jobs
+@using Escc.EastSussexGovUK.Views
+@using Escc.Web
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.Jobs.JobsSearchViewModel>
+@{
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
+    Model.EsccWebsiteSkin = new CustomerFocusSkin();
+    Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));
+    Html.RequiresCss(CssFileAlias.Resolve("FormsMedium"), MediaQueryAlias.Resolve("Medium"));
+    Html.RequiresCss(CssFileAlias.Resolve("FormsLarge"), MediaQueryAlias.Resolve("Large"));
+    Html.RequiresCss("~/css/jobs/jobs-small.css");
+    Html.RequiresCss("~/css/jobs/jobs-medium.css", MediaQueryAlias.Resolve("Medium"));
+    Html.RequiresCss("~/css/jobs/jobs-large.css", MediaQueryAlias.Resolve("Large"));
+    Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=JobsCss&media-query=small", 101);
+    Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=JobsCss&media-query=medium", 101, MediaQueryAlias.Resolve("Medium"));
+    Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=JobsCss&media-query=large", 101, MediaQueryAlias.Resolve("Large"));
+}
+@section Breadcrumb {}
+@Html.Partial("~/Views/JobsHeader.cshtml", Model)
+<div class="jobs-content full-page">
+    <div class="content text-content">
+        <h1>@Model.Metadata.Title</h1>
+        @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
+        <form method="GET" class="form short-form" action="@(Model.SearchResultsPage?.Url)">
+            @Html.Partial("JobsSearchForm", Model)
+        </form>
+    </div>
+</div>
+

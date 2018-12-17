@@ -1,1 +1,0 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="QuickAnswerMvcProxy.ascx.cs" Inherits=" Escc.EastSussexGovUK.Umbraco.Views.TermDates.QuickAnswerMvcProxy" %>

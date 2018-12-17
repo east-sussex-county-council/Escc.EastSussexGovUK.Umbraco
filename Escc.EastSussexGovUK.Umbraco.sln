@@ -19,9 +19,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Umbraco.Tests", "Escc.EastSussexGovUK.Umbraco.Tests\Escc.EastSussexGovUK.Umbraco.Tests.csproj", "{D89C69B5-1F50-4CF1-83F8-AE317F7D788F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Umbraco", "Escc.EastSussexGovUK.Umbraco\Escc.EastSussexGovUK.Umbraco.csproj", "{D893DAC9-C4E3-4118-9346-82BD34E33AF6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Umbraco.Web", "Escc.EastSussexGovUK.Umbraco.Web\Escc.EastSussexGovUK.Umbraco.Web.csproj", "{D893DAC9-C4E3-4118-9346-82BD34E33AF6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.Jobs.SendAlerts", "Escc.Jobs.SendAlerts\Escc.Jobs.SendAlerts.csproj", "{FFF936C0-8FB9-4D25-8844-8A6F44E2CDC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Umbraco.Api", "Escc.EastSussexGovUK.Umbraco.Api\Escc.EastSussexGovUK.Umbraco.Api.csproj", "{C3A7DE09-4D5C-43F0-9BC5-56192911A84F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Umbraco", "Escc.EastSussexGovUK.Umbraco\Escc.EastSussexGovUK.Umbraco.csproj", "{2102837C-72B0-4687-86AE-F15D9921BA1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Umbraco.Web.Tests", "Escc.EastSussexGovUK.Umbraco.Web.Tests\Escc.EastSussexGovUK.Umbraco.Web.Tests.csproj", "{9285EE2B-E375-4D08-91E5-882CF493BCFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Umbraco.Api.Tests", "Escc.EastSussexGovUK.Umbraco.Api.Tests\Escc.EastSussexGovUK.Umbraco.Api.Tests.csproj", "{AF9E555F-AFFE-4DD9-9C72-4E40FF57B864}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,6 +56,30 @@ Global
 		{FFF936C0-8FB9-4D25-8844-8A6F44E2CDC8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FFF936C0-8FB9-4D25-8844-8A6F44E2CDC8}.UAT|Any CPU.ActiveCfg = Release|Any CPU
 		{FFF936C0-8FB9-4D25-8844-8A6F44E2CDC8}.UAT|Any CPU.Build.0 = Release|Any CPU
+		{C3A7DE09-4D5C-43F0-9BC5-56192911A84F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3A7DE09-4D5C-43F0-9BC5-56192911A84F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3A7DE09-4D5C-43F0-9BC5-56192911A84F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3A7DE09-4D5C-43F0-9BC5-56192911A84F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3A7DE09-4D5C-43F0-9BC5-56192911A84F}.UAT|Any CPU.ActiveCfg = Release|Any CPU
+		{C3A7DE09-4D5C-43F0-9BC5-56192911A84F}.UAT|Any CPU.Build.0 = Release|Any CPU
+		{2102837C-72B0-4687-86AE-F15D9921BA1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2102837C-72B0-4687-86AE-F15D9921BA1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2102837C-72B0-4687-86AE-F15D9921BA1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2102837C-72B0-4687-86AE-F15D9921BA1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2102837C-72B0-4687-86AE-F15D9921BA1C}.UAT|Any CPU.ActiveCfg = Release|Any CPU
+		{2102837C-72B0-4687-86AE-F15D9921BA1C}.UAT|Any CPU.Build.0 = Release|Any CPU
+		{9285EE2B-E375-4D08-91E5-882CF493BCFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9285EE2B-E375-4D08-91E5-882CF493BCFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9285EE2B-E375-4D08-91E5-882CF493BCFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9285EE2B-E375-4D08-91E5-882CF493BCFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9285EE2B-E375-4D08-91E5-882CF493BCFE}.UAT|Any CPU.ActiveCfg = Release|Any CPU
+		{9285EE2B-E375-4D08-91E5-882CF493BCFE}.UAT|Any CPU.Build.0 = Release|Any CPU
+		{AF9E555F-AFFE-4DD9-9C72-4E40FF57B864}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF9E555F-AFFE-4DD9-9C72-4E40FF57B864}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF9E555F-AFFE-4DD9-9C72-4E40FF57B864}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF9E555F-AFFE-4DD9-9C72-4E40FF57B864}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF9E555F-AFFE-4DD9-9C72-4E40FF57B864}.UAT|Any CPU.ActiveCfg = Release|Any CPU
+		{AF9E555F-AFFE-4DD9-9C72-4E40FF57B864}.UAT|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

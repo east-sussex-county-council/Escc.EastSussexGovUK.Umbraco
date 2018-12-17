@@ -1,4 +1,4 @@
-﻿using Escc.EastSussexGovUK.Umbraco.Jobs.HtmlFormatters;
+﻿using Escc.EastSussexGovUK.Umbraco.Jobs;
 using Escc.Umbraco.PropertyTypes;
 using System;
 using System.Collections.Generic;

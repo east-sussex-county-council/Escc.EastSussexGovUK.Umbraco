@@ -34,11 +34,16 @@ Example: C:\>set GIT_ORIGIN_URL=https://example-git-server.com/{0}"
 ### END BOOTSTRAP. #####################################################
 ########################################################################
 
-$projectName = "Escc.EastSussexGovUK.Umbraco"
-
-DownloadProjectIfMissing $parentFolderOfThisScript "Escc.EastSussexGovUK"
+$projectName = "Escc.EastSussexGovUK.Umbraco.Web"
 
 EnableDotNet40InIIS
+CreateApplicationPool $projectName
+CreateWebsite $projectName "$pathOfThisScript\$projectName"
+CreateHTTPSBinding $projectName
+RemoveHTTPBinding $projectName 80
+
+$projectName = "Escc.EastSussexGovUK.Umbraco.Api"
+
 CreateApplicationPool $projectName
 CreateWebsite $projectName "$pathOfThisScript\$projectName"
 CreateHTTPSBinding $projectName

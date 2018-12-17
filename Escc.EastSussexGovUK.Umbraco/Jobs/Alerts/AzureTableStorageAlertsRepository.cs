@@ -17,7 +17,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
     /// <summary>
     /// Stores and retrieves job alerts data in Azure table storage
     /// </summary>
-    /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Jobs.Alerts.IJobAlertsRepository" />
+    /// <seealso cref="Escc.Jobs.Alerts.IJobAlertsRepository" />
     public class AzureTableStorageAlertsRepository : IJobAlertsRepository
     {
         private readonly IJobSearchQueryConverter _queryConverter;

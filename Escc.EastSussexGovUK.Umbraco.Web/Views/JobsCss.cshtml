@@ -1,0 +1,30 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.Jobs.BaseJobsViewModel>
+@{
+    Layout = null;
+    Response.ContentType = "text/css";
+}
+@if (Request.QueryString["media-query"] == "small")
+{
+    if (Model.HeaderBackgroundImageSmall != null)
+    {
+        @:body .body { background-image: url('@Model.HeaderBackgroundImageSmall.ImageUrl'); background-repeat: repeat-x; background-position: center top; }
+        @:.full-page { background: none;}
+        @:.jobs-header { min-height: @{@Model.HeaderBackgroundImageSmall.Height}px; }
+    }
+}
+@if (Request.QueryString["media-query"] == "medium")
+{
+    if (Model.HeaderBackgroundImageMedium != null)
+    {
+        @:body .body { background-image: url('@Model.HeaderBackgroundImageMedium.ImageUrl'); }
+        @:.jobs-header { min-height: @{@Model.HeaderBackgroundImageMedium.Height}px; }
+    }
+}
+@if (Request.QueryString["media-query"] == "large")
+{
+    if (Model.HeaderBackgroundImageLarge != null)
+    {
+        @:body .body { background-image: url('@Model.HeaderBackgroundImageLarge.ImageUrl'); }
+        @:.jobs-header { min-height: @{@Model.HeaderBackgroundImageLarge.Height}px; }
+    }
+}

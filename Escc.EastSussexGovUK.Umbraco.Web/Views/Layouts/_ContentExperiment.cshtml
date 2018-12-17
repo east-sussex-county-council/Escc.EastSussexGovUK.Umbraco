@@ -1,0 +1,45 @@
+﻿@using ClientDependency.Core.Mvc
+@using Escc.Web
+@model Escc.EastSussexGovUK.Mvc.BaseViewModel
+@*
+     Hide content experiment code if being requested by Escc.Net, because it's invalid as XML.
+    This happens when you're experimenting on a page which is parsed for an iCalendar download.
+*@
+@{
+    var contentExperimentModel = Model as Escc.EastSussexGovUK.Umbraco.Web.Models.BaseViewModel;
+    if (contentExperimentModel != null)
+    {
+        var hasContentExperiment = (Request.Url.Host.IndexOf('.') > -1 &&
+                                    Request.Url.Host.IndexOf("escc.gov", StringComparison.Ordinal) == -1 &&
+                                    Model.IsPublicView &&
+                                    contentExperimentModel.ContentExperimentPageSettings != null
+            );
+        var showContentExperimentScript = (hasContentExperiment &&
+                                           Request.UserAgent != "Escc.Net.HttpRequestClient" &&
+                                           !String.IsNullOrWhiteSpace(contentExperimentModel.ContentExperimentPageSettings.ContentExperimentScript.ToString()));
+        if (hasContentExperiment)
+        {
+            // This view uses Google content experiments, so relax the content security policy to allow that
+            var policy = new ContentSecurityPolicyHeaders(Response.Headers);
+            policy.AppendPolicy(new ContentSecurityPolicyFromConfig().Policies["GoogleContentExperiments"]);
+            policy.UpdateHeaders();
+
+            foreach (var scriptUrl in contentExperimentModel.ContentExperimentPageSettings.ScriptUrls)
+            {
+                // 1000 priority loads this script after any others
+                Html.RequiresJs(scriptUrl.ToString(), 1000);
+            }
+
+            foreach (var cssUrl in contentExperimentModel.ContentExperimentPageSettings.StylesheetUrls)
+            {
+                // 1000 priority loads this script after any others
+                Html.RequiresCss(cssUrl.ToString(), 1000);
+            }
+        }
+
+        if (showContentExperimentScript)
+        {
+            @contentExperimentModel.ContentExperimentPageSettings.ContentExperimentScript
+        }
+    }
+}

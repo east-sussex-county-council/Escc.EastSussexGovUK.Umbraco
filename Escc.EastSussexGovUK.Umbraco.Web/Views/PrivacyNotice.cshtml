@@ -1,0 +1,216 @@
+﻿@using ClientDependency.Core.Mvc
+@using Escc.ClientDependencyFramework
+@using Escc.EastSussexGovUK
+@using Escc.EastSussexGovUK.Features
+@using Escc.EastSussexGovUK.Skins
+@using Escc.EastSussexGovUK.Views
+@using Escc.EastSussexGovUK.Umbraco.Web.Skins.Registration
+@using Escc.EastSussexGovUK.Umbraco.Web.Skins.FosterWithTrust
+@using Escc.EastSussexGovUK.Umbraco.Web.Skins.RegistrationAcademy
+@using Escc.EastSussexGovUK.Umbraco.Web.Skins.SupportWithTrust
+@using Escc.EastSussexGovUK.Umbraco.Web.Services
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.PrivacyNotice.PrivacyNoticeViewModel>
+@{
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
+    Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] {
+        new CoronerSkin(Request.Url),
+        new RegistrationAcademySkin(Model.SkinToApply == "Registration Academy"),
+        new RegistrationSkin(Model.Metadata.PageUrl),
+        new FosterWithTrustSkin(Model.SkinToApply == "Foster with trust"),
+        new SupportWithTrustSkin(Model.SkinToApply == "Support with trust")
+    }, new CustomerFocusSkin());
+
+    Html.RequiresCss(CssFileAlias.Resolve("NavigationSmall"));
+    Html.RequiresCss(CssFileAlias.Resolve("NavigationMedium"), MediaQueryAlias.Resolve("Medium"));
+    Html.RequiresCss(CssFileAlias.Resolve("NavigationLarge"), MediaQueryAlias.Resolve("Large"));
+    Html.RequiresCss(CssFileAlias.Resolve("MobileControls"));
+    Html.RequiresJs(JsFileAlias.Resolve("Navigation"));
+    Html.RequiresJs("~/js/libs/bootstrap/util.js", 50);
+    Html.RequiresJs("~/js/libs/bootstrap/tab.js", 60);
+    Html.RequiresCss("~/css/bootstrap-tabs.css");
+
+    var html = new[] {
+
+            Model.WhatIsCovered.ToString(),
+            Model.WhatIsUsed.ToString(),
+            Model.HowItIsUsed.ToString(),
+            Model.AutomatedDecisionMaking.ToString(),
+            Model.LegalBasis.ToString(),
+            Model.HowLong.ToString(),
+            Model.SharingNeedToKnow.ToString(),
+            Model.SharingThirdParties.ToString(),
+            Model.Contact.ToString()
+            };
+    Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
+    {
+        new EmbeddedYouTubeVideos() { Html = html },
+        new EmbeddedGoogleMaps() { Html = html },
+        new EmbeddedICaseworkForm() { Html = html },
+        new WebChat() { WebChatSettings = Model.WebChat }
+    });
+    Model.Metadata.Title = "Privacy notice – " + Model.Metadata.Title;
+    Model.Metadata.IsInSearch = false;
+}
+
+<div class="article">
+    <article>
+        <div class="content text-content">
+
+            <h1>@Model.Metadata.Title</h1>
+
+            @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
+            <ul class="guide-nav nav" role="tablist">
+                <li><a id="overview-tab" href="#overview" aria-controls="overview" data-toggle="tab" role="tab" aria-selected="true" class="active">Overview</a></li>
+                <li><a id="what-tab" href="#what" aria-controls="what" data-toggle="tab" role="tab">What information is being used?</a></li>
+                <li><a id="how-tab" href="#how" aria-controls="how" data-toggle="tab" role="tab">How will your information be used?</a></li>
+                <li><a id="legal-tab" href="#legal" aria-controls="legal" data-toggle="tab" role="tab">What is the legal basis for processing your information?</a></li>
+                <li><a id="how-long-tab" href="#how-long" aria-controls="how-long" data-toggle="tab" role="tab">How long will your information be kept for?</a></li>
+                <li><a id="sharing-tab" href="#sharing" aria-controls="sharing" data-toggle="tab" role="tab">Sharing your information</a></li>
+                <li><a id="rights-tab" href="#rights" aria-controls="rights" data-toggle="tab" role="tab">Your rights</a></li>
+                <li><a id="contact-tab" href="#contact" aria-controls="contact" data-toggle="tab" role="tab">How to find out more or complain</a></li>
+            </ul>
+            <section id="overview" role="tabpanel" aria-labelledby="overview-tab" class="active show">
+                <h2>Overview</h2>
+
+                @Model.WhatIsCovered
+
+                <p>
+                    East Sussex County Council takes data protection seriously. Please be assured that your information will be used
+                    appropriately in line with data protection legislation, will be stored securely and will not be processed unless
+                    the requirements for fair and lawful processing can be met.
+                </p>
+            </section>
+
+            <section id="what" role="tabpanel" aria-labelledby="what-tab">
+                <h2>What information is being used?</h2>
+
+                @Model.WhatIsUsed
+            </section>
+
+            <section id="how" role="tabpanel" aria-labelledby="how-tab">
+                <h2>How will your information be used?</h2>
+
+                @Model.HowItIsUsed
+
+                <p>
+                    We aim to maintain high standards, adopt best practice for our record keeping and regularly check and report
+                    on how we are doing.  Your information is never sold for direct marketing purposes.
+                </p>
+
+                <p>Our staff are trained to handle your information correctly and protect your confidentiality and privacy.</p>
+
+                @if (Model.OutsideEEA)
+        {
+                    <p>Your information is processed outside of the European Economic Area.</p>
+                }
+                else
+                {
+                    <p>Your information is not processed outside of the European Economic Area.</p>
+                }
+
+                @Model.AutomatedDecisionMaking
+            </section>
+
+            <section id="legal" role="tabpanel" aria-labelledby="legal-tab">
+
+                <h2>What is the legal basis for processing your information?</h2>
+
+                @Model.LegalBasis
+            </section>
+
+            <section id="how-long" role="tabpanel" aria-labelledby="how-long-tab">
+
+                <h2>How long will your information be kept for?</h2>
+
+                @Model.HowLong
+            </section>
+
+            <section id="sharing" role="tabpanel" aria-labelledby="sharing-tab">
+                <h2>Sharing your information</h2>
+
+                @Model.SharingNeedToKnow
+
+                <p>Any sharing of personal data is always done:</p>
+                <ul>
+                    <li>on case-by-case basis</li>
+                    <li>using the minimum personal data necessary</li>
+                    <li>with the appropriate security controls in place</li>
+                    <li>in line with legislation.</li>
+                </ul>
+                <p>
+                    Information is only shared with those agencies and bodies who have a "need to know" or where you have consented to
+                    the sharing of your personal data to such persons.
+                </p>
+                <p>
+                    We may use the information we hold about you to assist in the detection and prevention of crime or fraud.
+                    We may also share this information with other bodies that inspect and manage public funds.
+                </p>
+
+                @if (!String.IsNullOrEmpty(Model.SharingThirdParties.ToString()))
+        {
+                    <h3>Use of third party organisations</h3>
+
+                    <p>East Sussex County Council may share your information with trusted external organisations to process your data on our behalf.</p>
+
+                    @Model.SharingThirdParties
+
+                    <p>Any organisation commissioned by the Council will be under contractual obligation to comply with data protection legislation.</p>
+                }
+            </section>
+
+
+
+            <section id="rights" role="tabpanel" aria-labelledby="rights-tab">
+                <h2>Your rights</h2>
+
+                <p>Under data protection legislation, you have the right:</p>
+                <ul>
+                    <li>to be informed why, where and how we use your information</li>
+                    <li>to ask for access to your information</li>
+                    <li>to ask for your information to be corrected if it is inaccurate or incomplete</li>
+                    <li>to ask for your information to be deleted or removed where there is no need for us to continue processing it</li>
+                    <li>to ask us to restrict the use of your information</li>
+                    <li>to ask us to copy or transfer your information from one IT system to another in a safe and secure way, without impacting the quality of the information</li>
+                    <li>to object to how your information is used</li>
+                    <li>to challenge any decisions made without human intervention (automated decision making)</li>
+                </ul>
+                <p>Please visit <a href="https://www.eastsussex.gov.uk/yourcouncil/about/keydocuments/foi/dataprotection/data-subject-rights/">data subject rights</a> for further details.</p>
+            </section>
+
+            <section id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <h2>How to find out more or complain</h2>
+
+                <p>Should you have any further queries on the uses of your information, please speak directly to our service: </p>
+
+                @Model.Contact
+
+                <p>
+                    To complain about the use of your information, please contact our <a href="https://www.eastsussex.gov.uk/contact-us/complaints/corporate-complaints/">Customer Services Team</a>
+                    or our <a href="https://www.eastsussex.gov.uk/yourcouncil/about/keydocuments/foi/dataprotection/data-protection-officer/">Data Protection Officer</a>.
+                </p>
+
+                <p><a href="https://www.eastsussex.gov.uk/contact-us/complaints">Further information on making a complaint</a>.</p>
+
+                <p>You can also contact the <abbr title="Information Commissioner's Office">ICO</abbr> for further information or to make a complaint:</p>
+
+                <p>
+                    Information Commissioner's Office<br />
+                    Wycliffe House<br />
+                    Water Lane<br />
+                    Wilmslow<br />
+                    Cheshire SK9 5AF
+                </p>
+
+                <p>Phone: 0303 123 1113 (local rate) or 01625 545 745 if you prefer to use a national rate number.</p>
+                <p><a href="https://ico.org.uk/global/contact-us/email/">Email ICO</a></p>
+                <p><a href="https://ico.org.uk/concerns/">Report a concern on the ICO website</a></p>
+            </section>
+</div>
+    </article>
+</div>
+
+@Html.Partial("~/Views/EastSussexGovUK/Features/_SupportingContentDesktop.cshtml")
+<div class="text-content content">
+    @Html.Partial("~/Views/EastSussexGovUK/Features/_Share.cshtml")
+    @Html.Partial("~/Views/Layouts/_Rating.cshtml")
+</div>

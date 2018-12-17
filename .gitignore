@@ -30,6 +30,7 @@ _ReSharper*/
 *.config
 !*.example.config
 !packages.config
+!Escc.EastSussexGovUK.Umbraco/app.config
 *.scc
 Properties/PublishProfiles/*
 packages
@@ -56,6 +57,7 @@ Escc.EastSussexGovUK.Umbraco.Tests/App_Plugins/
 [Mm]edia
 *.backup
 dummy.txt
+global.asax
 *.config.js
 */Views/Partials/Grid/*
 !*/uSync/**/*
@@ -95,9 +97,9 @@ _FindAddress.cshtml
 */js/libs/*
 !*/js/libs/bootstrap/
 */EastSussexGovUK/*
-Escc.EastSussexGovUK.Umbraco/App_Plugins/Escc.Umbraco.PropertyEditors.*/*
-Escc.EastSussexGovUK.Umbraco/App_Plugins/Escc.Umbraco.DataTypes.MediaUsage
-Escc.EastSussexGovUK.Umbraco/App_Plugins/EditorTools/*
+Escc.EastSussexGovUK.Umbraco.Web/App_Plugins/Escc.Umbraco.PropertyEditors.*/*
+Escc.EastSussexGovUK.Umbraco.Web/App_Plugins/Escc.Umbraco.DataTypes.MediaUsage
+Escc.EastSussexGovUK.Umbraco.Web/App_Plugins/EditorTools/*
 DataTables
 scripts
 apple-touch-*.png

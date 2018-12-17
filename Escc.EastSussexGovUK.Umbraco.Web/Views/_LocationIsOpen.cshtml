@@ -1,0 +1,30 @@
+﻿@using Escc.Dates
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.Location.LocationViewModel>
+
+@if (Model.OpenUntil.HasValue)
+{
+    var timeToClosing = Model.OpenUntil.Value.TimeOfDay - DateTime.Now.ToUkDateTime().TimeOfDay;
+    if (timeToClosing <= new TimeSpan(0, 1, 0, 0))
+    {
+        if (timeToClosing.Minutes == 0)
+        {
+            <p class="open">Closing now. Next open @Model.NextOpenRelativeTime.</p>
+        }
+        else if (timeToClosing.Minutes == 1)
+        {
+            <p class="open">Closes in @timeToClosing.Minutes minute. Next open @Model.NextOpenRelativeTime.</p>
+        }
+        else
+        {
+            <p class="open">Closes in @timeToClosing.Minutes minutes. Next open @Model.NextOpenRelativeTime.</p>
+        }
+    }
+    else
+    {
+        <p class="open">Open until @Model.OpenUntil.Value.ToBritishTime().</p>
+    }
+}
+else if (Model.NextOpen.HasValue)
+{
+    <p class="closed">Closed. Next open @Model.NextOpenRelativeTime.</p>
+}

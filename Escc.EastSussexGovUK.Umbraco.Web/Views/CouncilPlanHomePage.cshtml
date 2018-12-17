@@ -1,0 +1,58 @@
+﻿@using System.Web.Mvc.Html
+@using ClientDependency.Core.Mvc
+@using Escc.ClientDependencyFramework
+@using Escc.EastSussexGovUK
+@using Escc.EastSussexGovUK.Features
+@using Escc.EastSussexGovUK.Skins
+@using Escc.EastSussexGovUK.Umbraco.Web.Views
+@using Escc.EastSussexGovUK.Umbraco.Web.MicrosoftCmsMigration
+@using Escc.EastSussexGovUK.Views
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<MicrosoftCmsViewModel>
+@{
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
+    Model.EsccWebsiteSkin = new CustomerFocusSkin();
+
+    Html.RequiresCss(CssFileAlias.Resolve("CouncilPlanSmall"));
+    Html.RequiresCss(CssFileAlias.Resolve("MobileControls"));
+    Html.RequiresCss(CssFileAlias.Resolve("CouncilPlanMedium"), MediaQueryAlias.Resolve("Medium"));
+    Html.RequiresCss(CssFileAlias.Resolve("CouncilPlanLarge"), MediaQueryAlias.Resolve("Large"));
+
+    var placeholders = CmsUtilities.Placeholders;
+    var html = new[]
+    {
+        placeholders["phDefContent01"].Value.ToString(),
+        placeholders["phDefContent02"].Value.ToString(),
+        placeholders["phDefContent03"].Value.ToString(),
+        placeholders["phDefContent04"].Value.ToString(),
+        placeholders["phDefContent05"].Value.ToString(),
+        placeholders["phDefContent06"].Value.ToString(),
+        placeholders["phDefContent07"].Value.ToString(),
+        placeholders["phDefContent08"].Value.ToString(),
+        placeholders["phDefContent09"].Value.ToString(),
+        placeholders["phDefContent10"].Value.ToString()
+    };
+    Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
+    {
+        new EmbeddedYouTubeVideos() { Html = html },
+        new EmbeddedGoogleMaps() { Html = html }
+    });
+
+    var selectedClass = CouncilPlanUtility.PriorityClass();
+}
+
+<div class="full-page">
+    <article>
+        <div class="@selectedClass">
+            @Html.Partial("~/views/CouncilPlanHomePage.ascx", Model)
+        </div>
+
+        <div class="content text-content">
+            @Html.Partial("~/Views/EastSussexGovUK/Features/_Share.cshtml")
+        </div>
+</article>
+</div>
+
+@Html.Partial("~/Views/Layouts/_SocialMedia.cshtml")
+@{
+    Html.RequiresJs(JsFileAlias.Resolve("CouncilPlan"));
+}

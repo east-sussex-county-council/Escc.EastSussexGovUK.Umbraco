@@ -1,0 +1,104 @@
+﻿@using Escc.EastSussexGovUK
+@using Escc.EastSussexGovUK.Features
+@using Escc.EastSussexGovUK.Skins
+@using Escc.EastSussexGovUK.Views
+@using Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayDeposits
+@using Escc.Dates
+@using ClientDependency.Core.Mvc
+@using Escc.ClientDependencyFramework
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<RightsOfWayDepositsViewModel>
+@{
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
+    Model.EsccWebsiteSkin = new CustomerFocusSkin();
+
+    Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
+    {
+        new WebChat() { WebChatSettings = Model.WebChat }
+    });
+
+    Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));
+    Html.RequiresCss(CssFileAlias.Resolve("FormsMedium"), MediaQueryAlias.Resolve("Medium"));
+    Html.RequiresCss(CssFileAlias.Resolve("FormsLarge"), MediaQueryAlias.Resolve("Large"));
+    Html.RequiresCss("~/css/rightsofwaydeposits/deposits-small.css");
+    Html.RequiresCss("~/css/rightsofwaydeposits/deposits-medium.css", MediaQueryAlias.Resolve("Medium"));
+}
+
+<div class="article">
+    <article>
+        <div class="content text-content">
+
+            <h1>@Model.Metadata.Title</h1>
+
+            @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
+            
+            @Model.LeadingText
+            
+            <form action="@Request.Url" method="GET" class="form simple-form">
+                <div>
+                    <input type="hidden" name="sort" value="@Request.QueryString["sort"]" />
+                    <label for="search-deposits">Search: </label>
+                    <input type="search" name="q" value="@Request.QueryString["q"]" id="search-deposits" />
+                    <input type="submit" value="Search" />
+                </div>
+            </form>
+            @{
+                var queryWithoutSort = HttpUtility.ParseQueryString(Request.Url.Query);
+                queryWithoutSort.Remove("sort");
+                var urlWithoutSort = Request.Url.AbsolutePath + "?" + queryWithoutSort;
+                if (queryWithoutSort.Count > 0) { urlWithoutSort += "&"; }
+                urlWithoutSort += "sort=";
+
+                Html.RenderPartial("~/Views/_PagingBarControl.ascx", Model.Paging);
+            }
+
+            @if (Model.Deposits.Any())
+            {
+            <table class="deposits">
+                <thead>
+                    <tr>
+                        <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.ReferenceAscending ? "referencedescending" : "referenceascending")">Reference</a></th>
+                        <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.ParishAscending ? "parishdescending" : "parishascending")">Parishes</a></th>
+                        <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.DateDepositedAscending ? "datedepositeddescending" : "datedepositedascending")">Date deposited</a></th>
+                        <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.DateExpiresAscending ? "dateexpiresdescending" : "dateexpiresascending")">Expires</a></th>
+                    </tr>
+                </thead>
+                @foreach (var deposit in Model.Deposits)
+                {
+                    <tr>
+                        <td><a href="@deposit.PageUrl">@deposit.Reference</a></td>
+                        <td><ul class="parishes">
+                        @foreach (var parish in deposit.Parishes)
+                        {
+                            <li>@parish<span> Parish</span></li> 
+                        }
+                        </ul></td>
+                        <td><span>Deposited </span>@deposit.DateDeposited.ToShortBritishDate()</td>
+                        <td><span>Expires </span>@deposit.DateExpires.ToShortBritishDate()</td>
+                    </tr>
+                }
+            </table>
+            }
+            else
+            {
+                <p><strong>No rights of way deposits matched your search</strong>.</p>
+            }
+            @{ Html.RenderPartial("~/Views/_PagingBarControl.ascx", Model.Paging); }
+            @if (Model.RssUrl != null)
+            {
+                var url = String.IsNullOrEmpty(Request.QueryString["q"]) ? Model.RssUrl.ToString() : Model.RssUrl + "?q=" + Request.QueryString["q"];
+                var matching = String.IsNullOrEmpty(Request.QueryString["q"]) ? " ": $" matching '{Request.QueryString["q"]}' ";
+            <p><a href="@url" type="application/rss+xml" rel="alternate" class="rss">Subscribe to new deposits@(matching)by RSS</a></p>
+            }
+            @if (Model.CsvUrl != null)
+            {
+                <p><a href="@Model.CsvUrl" type="text/csv" rel="alternate" class="xls">Download all deposits as CSV</a></p>
+            }
+        </div>
+    </article>
+</div>
+
+@Html.Partial("~/Views/Layouts/_SocialMedia.cshtml")
+@Html.Partial("~/Views/EastSussexGovUK/Features/_SupportingContentDesktop.cshtml")
+<div class="text-content content">
+    @Html.Partial("~/Views/EastSussexGovUK/Features/_Share.cshtml")
+</div>

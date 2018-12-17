@@ -1,0 +1,54 @@
+﻿@using ClientDependency.Core.Mvc
+@using Escc.ClientDependencyFramework
+@using Escc.EastSussexGovUK
+@using Escc.EastSussexGovUK.Features
+@using Escc.EastSussexGovUK.Skins
+@using Escc.EastSussexGovUK.Views
+@using Escc.EastSussexGovUK.Umbraco.Web.Skins.Registration
+@using Escc.EastSussexGovUK.Umbraco.Web.Skins.FosterWithTrust
+@using Escc.EastSussexGovUK.Umbraco.Web.Skins.RegistrationAcademy
+@using Escc.EastSussexGovUK.Umbraco.Web.Skins.SupportWithTrust
+@using Escc.EastSussexGovUK.Umbraco.Web.MicrosoftCmsMigration
+@using Escc.EastSussexGovUK.Umbraco.Web.Services
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<MicrosoftCmsViewModel>
+@{ 
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
+    Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] {
+        new RegistrationAcademySkin(Model.SkinToApply == "Registration Academy"),
+        new RegistrationSkin(Model.Metadata.PageUrl),
+        new FosterWithTrustSkin(Model.SkinToApply == "Foster with trust"),
+        new SupportWithTrustSkin(Model.SkinToApply == "Support with trust")
+    }, new CustomerFocusSkin());
+
+    if (Model.EsccWebsiteView != EsccWebsiteView.Plain)
+    {
+        Html.RequiresCss(CssFileAlias.Resolve("DownloadSmall"));
+    }
+
+    var placeholders = CmsUtilities.Placeholders;
+    Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
+    {
+        new EmbeddedYouTubeVideos() { Html = new [] { placeholders["phDefIntro"].Value.ToString() }},
+        new EmbeddedGoogleMaps() { Html = new [] { placeholders["phDefIntro"].Value.ToString() } },
+        new EmbeddedICaseworkForm() { Html = new [] { placeholders["phDefIntro"].Value.ToString() }},
+        new WebChat() { WebChatSettings = Model.WebChat }
+    });
+}
+
+<div class="article">
+    <article>
+        <div class="content text-content">
+            <h1>@Model.Metadata.Title</h1>
+            @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
+            @Html.Partial("~/Views/StandardDownloadPage.ascx", Model)
+        </div>
+    </article>
+</div>
+
+@Html.Partial("~/MicrosoftCmsMigration/UserControls/RelatedLinksMvc.ascx", Model)
+@Html.Partial("~/Views/Layouts/_SocialMedia.cshtml")
+@Html.Partial("~/Views/EastSussexGovUK/Features/_SupportingContentDesktop.cshtml")
+<div class="text-content content">
+    @Html.Partial("~/Views/EastSussexGovUK/Features/_Share.cshtml")
+    @Html.Partial("~/Views/Layouts/_Rating.cshtml")
+</div>

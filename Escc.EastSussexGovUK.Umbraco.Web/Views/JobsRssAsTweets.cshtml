@@ -1,0 +1,52 @@
+﻿@using System.Text
+@using Escc.Dates
+@using Escc.Web
+@using Escc.EastSussexGovUK.Umbraco.Jobs
+@using Escc.EastSussexGovUK.Umbraco.Web.Jobs
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.Models.RssViewModel<Escc.EastSussexGovUK.Umbraco.Jobs.Job>>
+@{
+    Layout = null;
+    Response.ContentType = "text/csv";
+    Response.AddHeader("Content-disposition", "attachment;filename=job-tweets-" + DateTime.Now.ToUkDateTime().ToIso8601Date() + ".csv");
+    var scheduleTime = DateTime.Today.AddHours(13);
+    if (scheduleTime <= DateTime.Now.ToUkDateTime().AddMinutes(-15)) { scheduleTime = scheduleTime.AddDays(1); }
+}@functions {
+    private string CreateTweet(Job job)
+    {
+        var jobTitle = job.JobTitle.Length > 50 ? job.JobTitle.Substring(0, 49) + "…" : job.JobTitle;
+
+        var contract = String.Empty;
+        if (job.IsFullTime) { contract = ", F/T"; }
+        else if (job.IsPartTime) { contract = ", P/T"; }
+
+        var salary = String.Empty;
+        if (job.Salary.HourlyRate.HasValue)
+        {
+            if (!String.IsNullOrEmpty(contract)) { salary = ","; }
+            salary = $" £{job.Salary.HourlyRate}/hr";
+        }
+        else if (job.Salary.MaximumSalary.HasValue)
+        {
+            if (!String.IsNullOrEmpty(contract)) { salary = ","; }
+            salary = $" up to £{((int)job.Salary.MaximumSalary.Value / 1000)}k";
+        }
+
+        var closingDate = $". Apply by {job.ClosingDate.Value.ToShortBritishDateNoYear()}.";
+        var tweet = new StringBuilder().Append(jobTitle).Append(contract).Append(salary).Append(closingDate).Append(" #jobs #EastSussex #Job ");
+        foreach (var location in job.Locations)
+        {
+            tweet.Append(new LocationHashTag(location)).Append(" ");
+        }
+
+        return tweet.ToString().Trim();
+    }
+}
+@foreach (var job in Model.Items)
+{
+    var date = scheduleTime.ToString("dd/MM/yyyy HH:mm");
+    scheduleTime = scheduleTime.AddMinutes(5);
+    var tweet = CreateTweet(job);
+    var url = job.Url.ToString();
+    var row = $"\"{date}\",\"{ tweet}\",\"{url}\"{Environment.NewLine}";
+    @Html.Raw(row)
+}

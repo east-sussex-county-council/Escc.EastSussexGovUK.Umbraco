@@ -4,7 +4,6 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
-using Exceptionless.Extensions;
 using System.Globalization;
 using Escc.Dates;
 
@@ -125,10 +124,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         private static void AddQueryStringValuesToList(string unvalidatedValue, IList<string> valuesToQuery)
         {
             unvalidatedValue = HttpUtility.UrlDecode(unvalidatedValue);
-            var values = Regex.Replace(unvalidatedValue, "[^A-Za-z0-9-,'’ £]", String.Empty).SplitAndTrim(",");
+            var values = Regex.Replace(unvalidatedValue, "[^A-Za-z0-9-,'’ £]", String.Empty).Split(',');
             foreach (var value in values)
             {
-                valuesToQuery.Add(value);
+                valuesToQuery.Add(value?.Trim());
             }
         }
 

@@ -1,0 +1,67 @@
+﻿@using ClientDependency.Core.Mvc
+@using Escc.ClientDependencyFramework
+@using Escc.EastSussexGovUK
+@using Escc.EastSussexGovUK.Features
+@using Escc.EastSussexGovUK.Skins
+@using Escc.EastSussexGovUK.Views
+@using Escc.EastSussexGovUK.Umbraco.Web.Skins.Registration
+@using Escc.EastSussexGovUK.Umbraco.Web.Skins.FosterWithTrust
+@using Escc.EastSussexGovUK.Umbraco.Web.Skins.RegistrationAcademy
+@using Escc.EastSussexGovUK.Umbraco.Web.Skins.SupportWithTrust
+@using Escc.EastSussexGovUK.Umbraco.Web.Services
+@using Escc.Web
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.Guide.GuideViewModel>
+@{
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
+    Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] {
+        new CoronerSkin(Request.Url),
+        new RegistrationAcademySkin(Model.SkinToApply == "Registration Academy"),
+        new RegistrationSkin(Model.Metadata.PageUrl),
+        new FosterWithTrustSkin(Model.SkinToApply == "Foster with trust"),
+        new SupportWithTrustSkin(Model.SkinToApply == "Support with trust")
+        }, new CustomerFocusSkin());
+
+    // Get the guide title from the first step
+    Model.Metadata.Title = Model.Steps.Any() ? Model.Steps.First().GuideTitle : String.Empty;
+    Model.Metadata.IsInSearch = false;
+
+    // Embed YouTube videos and Google maps which can print
+    var html = Model.Steps.Select(step => step.StepContent.ToString()).ToArray();
+    Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
+{
+new EmbeddedYouTubeVideos() { Html = html },
+new EmbeddedGoogleMaps() { Html = html },
+new EmbeddedICaseworkForm() { Html = html }
+});
+
+    Html.RequiresJs("~/js/guide.js");
+}
+
+<div class="full-page">
+    <article>
+        <div class="content text-content">
+            <h1>@Model.Metadata.Title</h1>
+
+            @{
+                if (Model.StepsHaveAnOrder)
+                {
+                    var stepNumber = 0;
+                    foreach (var step in Model.Steps)
+                    {
+                        stepNumber++;
+                        <h2>@stepNumber. @step.Metadata.Title</h2>
+                        @step.StepContent
+                    }
+                }
+                else
+                {
+                    foreach (var step in Model.Steps)
+                    {
+                        <h2>@step.Metadata.Title</h2>
+                        @step.StepContent
+                    }
+                }
+            }
+        </div>
+    </article>
+</div>

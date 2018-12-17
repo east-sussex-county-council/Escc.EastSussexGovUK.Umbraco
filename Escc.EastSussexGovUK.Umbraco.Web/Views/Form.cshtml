@@ -1,0 +1,50 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.Forms.FormModel>
+@using Escc.Web
+@using ClientDependency.Core.Mvc
+@using Escc.ClientDependencyFramework
+@using Escc.EastSussexGovUK
+@using Escc.EastSussexGovUK.Features
+@using Escc.EastSussexGovUK.Views
+@using Escc.EastSussexGovUK.Skins
+@using Escc.EastSussexGovUK.Umbraco.Web.Skins.Registration
+@using Escc.EastSussexGovUK.Umbraco.Web.Skins.FosterWithTrust
+@using Escc.EastSussexGovUK.Umbraco.Web.Skins.RegistrationAcademy
+@using Escc.EastSussexGovUK.Umbraco.Web.Skins.SupportWithTrust
+@{
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
+    Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] {
+        new CoronerSkin(Request.Url),
+        new RegistrationAcademySkin(Model.SkinToApply == "Registration Academy"),
+        new RegistrationSkin(Model.Metadata.PageUrl),
+        new FosterWithTrustSkin(Model.SkinToApply == "Foster with trust"),
+        new SupportWithTrustSkin(Model.SkinToApply == "Support with trust")
+        }, new CustomerFocusSkin());
+
+    Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
+{
+new WebChat() { WebChatSettings = Model.WebChat }
+});
+}
+@section Metadata {
+    @{
+        Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));
+        Html.RequiresCss(CssFileAlias.Resolve("FormsMedium"), MediaQueryAlias.Resolve("Medium"));
+        Html.RequiresCss(CssFileAlias.Resolve("FormsLarge"), MediaQueryAlias.Resolve("Large"));
+        Html.RequiresJs(JsFileAlias.Resolve("Tips"));
+        Html.RequiresJs(JsFileAlias.Resolve("DescribedByTips"));
+        new ContentSecurityPolicyHeaders(Response.Headers).AppendPolicy("script-src https://ajax.aspnetcdn.com 'sha256-E956b9kmn51IYKZwdmu8RZ0pDopG5GqlqKjLcyMBSRU=' 'sha256-HRbQonOxqy+Ru44v8eS5HV4IXgP6YzNr1UCcRaXR/dE='").UpdateHeaders();
+        Html.RequiresCss("~/css/umbraco-forms.css");
+        @* Include scripts in the <head />. Umbraco Forms makes it possible to include them in the footer, but then client-side validation doesn't work. *@
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js" integrity="sha384-fj9YEHKNa/e0CNquG4NcocjoyMATYo1k2Ff5wGB42C/9AwOlJjDoySPtNJalccfI" crossorigin="anonymous"></script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js" integrity="sha384-sjPkI5PMV07CLe+7G2T7RoXXuInPfKFXLmXMZVObfN+m/3Lcrho/dVnTy2sxAj+k" crossorigin="anonymous"></script>
+        <script src="https://ajax.aspnetcdn.com/ajax/mvc/5.1/jquery.validate.unobtrusive.min.js" integrity="sha384-25k6pBZ2fUhwDc1+3NAKvjzihGFoC8UTFCYCINNm28DqC9bOwTAiLdiGpOuKCe66" crossorigin="anonymous"></script>
+    }
+}
+<div class="full-page">
+    <div class="content text-content">
+        <h1>@Model.Metadata.Title</h1>
+        @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
+        @Model.LeadingText
+        @Umbraco.RenderMacro("renderUmbracoForm", new { FormGuid = Model.FormGuid, FormTheme = "EastSussex", ExcludeScripts = "0" })
+    </div>
+</div>

@@ -1,0 +1,19 @@
+﻿@model IList<Escc.EastSussexGovUK.Umbraco.Web.Landing.LandingSectionViewModel>
+@if (Model.Any())
+{
+    <div class="supporting related-links text-content content-small content-medium">
+        @{
+            foreach (var group in Model)
+            {
+                var heading = (group.Heading == null || String.IsNullOrEmpty(group.Heading.Text)) ? "Related information" : group.Heading.Text;
+                <h2>@heading</h2>
+                <ul>
+                    @foreach (var link in group.Links)
+                    {
+                        <li><a href="@link.Url">@link.Text</a></li>
+                    }
+                </ul>
+            }
+        }
+    </div>
+}
