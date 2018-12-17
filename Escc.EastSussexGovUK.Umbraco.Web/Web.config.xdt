@@ -467,6 +467,14 @@
     <compilation xdt:Transform="RemoveAttributes(debug)" />
     <compilation targetFramework="4.7.2" xdt:Transform="SetAttributes(targetFramework)" />
 
+    <!-- These error pages are used when exceptions are thrown in Umbraco. Child apps use the httpErrors section. -->
+    <customErrors xdt:Transform="Remove" />
+    <customErrors mode="On" redirectMode="ResponseRewrite" xdt:Transform="Insert">
+      <error statusCode="400" redirect="/httpstatus/badrequest" />
+      <error statusCode="403" redirect="/httpstatus/forbidden" />
+      <error statusCode="500" redirect="/httpstatus/internalservererror" />
+    </customErrors>
+
     <globalization xdt:Transform="Remove" />
     <globalization culture="en-GB" uiCulture="en-GB" xdt:Transform="Insert"/>
 
@@ -500,6 +508,20 @@
   </system.webServer>
 
   <system.webServer>
+
+    <!-- Let Umbraco control 404 page at this level, but provide setting for lower levels to inherit -->
+    <httpErrors xdt:Transform="Remove" />
+    <httpErrors existingResponse="PassThrough" errorMode="Custom" xdt:Transform="Insert">
+      <remove statusCode="400" subStatusCode="-1"/>
+      <error statusCode="400" subStatusCode="-1" path="/httpstatus/badrequest" responseMode="ExecuteURL"/>
+      <remove statusCode="403" subStatusCode="-1"/>
+      <error statusCode="403" subStatusCode="-1" path="/httpstatus/forbidden" responseMode="ExecuteURL"/>
+      <remove statusCode="404" subStatusCode="-1"/>
+      <error statusCode="404" subStatusCode="-1" path="/httpstatus/notfound" responseMode="ExecuteURL"/>
+      <remove statusCode="500" subStatusCode="-1"/>
+      <error statusCode="500" subStatusCode="-1" path="/httpstatus/internalservererror" responseMode="ExecuteURL"/>
+    </httpErrors>
+
     <handlers>
       <!-- jsx and cssx are configured at the root because /css and /js are folders within Escc.EastSussexGovUK.Umbraco. Only /css/*.cssx and /css/*.jsx
            requests are routed elsewhere, so putting the config settings in the equivalent folders under Escc.EastSussexGovUK wouldn't work. -->
@@ -514,6 +536,10 @@
     </handlers>
     
     <modules>
+      <!-- Required to support User Access Manager tool on back office, and updating Examine indexes from a WebJob on both -->
+      <add name="BasicAuthHttpModule" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+      <add name="BasicAuthHttpModule" type="Escc.BasicAuthentication.WebApi.Authorisation, Escc.BasicAuthentication.WebApi" xdt:Transform="Insert" />
+
       <add name="ExceptionlessModule" xdt:Transform="Remove" xdt:Locator="Match(name)" />
       <add name="ExceptionlessModule" type="Exceptionless.Mvc.ExceptionlessModule, Exceptionless.Mvc" xdt:Transform="Insert" />
 
