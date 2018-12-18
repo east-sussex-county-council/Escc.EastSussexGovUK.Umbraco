@@ -1,0 +1,3 @@
+$(function(){
+	$(".top-tasks").append('<article class="govdelivery-experiment"><form accept-charset="UTF-8" action="https://public.govdelivery.com/accounts/UKESCC/subscribers/qualify" method="post"><h2>Sign up to email updates</h2><div><label for="email" class="aural">Email </label><input type="email" placeholder="email@domain.com" name="email" id="email" /><input type="submit" value="Subscribe" /> <input name="utf8" type="hidden" value="✓" /><input name="authenticity_token" type="hidden" value="9mhPWnfSulH9jMcPB3xKjXtxuYo28AoqrrVJ1prvUyI=" /></div></form></article>');
+});

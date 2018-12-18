@@ -3,7 +3,7 @@ using System.Web.Hosting;
 using System.Xml.Linq;
 using System.Xml.XPath;
 
-namespace Escc.EastSussexGovUK.Umbraco.Web.Errors
+namespace Escc.EastSussexGovUK.Umbraco.Errors
 {
     /// <summary>
     /// Read settings from the httpErrors section of web.config

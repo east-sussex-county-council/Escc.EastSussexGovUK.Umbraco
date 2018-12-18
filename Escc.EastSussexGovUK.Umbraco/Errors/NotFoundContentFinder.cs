@@ -3,7 +3,7 @@ using System.Web;
 using Exceptionless;
 using Umbraco.Web.Routing;
 
-namespace Escc.EastSussexGovUK.Umbraco.Web.Errors
+namespace Escc.EastSussexGovUK.Umbraco.Errors
 {
     /// <summary>
     /// Deal with 404 errors within Umbraco by passing the URL not found to the 404 page configured in IIS

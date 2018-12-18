@@ -101,8 +101,7 @@ Escc.EastSussexGovUK.Umbraco.Web/App_Plugins/Escc.Umbraco.PropertyEditors.*/*
 Escc.EastSussexGovUK.Umbraco.Web/App_Plugins/Escc.Umbraco.DataTypes.MediaUsage
 Escc.EastSussexGovUK.Umbraco.Web/App_Plugins/EditorTools/*
 DataTables
-scripts
-!*/App_Plugins/OpeningSoon/scripts*
+*/scripts/Escc.*
 apple-touch-*.png
 favicon.ico
 windows-tile.png

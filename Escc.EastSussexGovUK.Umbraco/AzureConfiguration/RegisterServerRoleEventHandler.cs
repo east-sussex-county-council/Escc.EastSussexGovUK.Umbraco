@@ -7,7 +7,7 @@ using System.Web;
 using Umbraco.Core;
 using Umbraco.Core.Sync;
 
-namespace Escc.EastSussexGovUK.Umbraco.Web.AzureConfiguration
+namespace Escc.EastSussexGovUK.Umbraco.AzureConfiguration
 {
     /// <summary>
     /// Explicitly registers back office servers as master and front-end servers as slave in a load-balanced setup

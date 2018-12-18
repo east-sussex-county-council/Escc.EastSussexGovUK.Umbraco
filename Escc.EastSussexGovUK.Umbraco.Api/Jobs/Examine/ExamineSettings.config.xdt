@@ -4,25 +4,25 @@
     <providers>    
       <add name="PublicJobsIndexer" xdt:Transform="RemoveAll" xdt:Locator="Match(name)" />
       <add name="PublicJobsIndexer" type="Examine.LuceneEngine.Providers.SimpleDataIndexer, Examine"
-           dataService="Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink.PublicJobsIndexer, Escc.EastSussexGovUK.Umbraco" 
+           dataService="Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink.PublicJobsIndexer, Escc.EastSussexGovUK.Umbraco.Api" 
            indexTypes="Job" 
            xdt:Transform="Insert" />
 
       <add name="RedeploymentJobsIndexer" xdt:Transform="RemoveAll" xdt:Locator="Match(name)" />
       <add name="RedeploymentJobsIndexer" type="Examine.LuceneEngine.Providers.SimpleDataIndexer, Examine"
-           dataService="Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink.RedeploymentJobsIndexer, Escc.EastSussexGovUK.Umbraco" 
+           dataService="Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink.RedeploymentJobsIndexer, Escc.EastSussexGovUK.Umbraco.Api" 
            indexTypes="Job" 
            xdt:Transform="Insert" />
 
       <add name="PublicJobsLookupValuesIndexer" xdt:Transform="RemoveAll" xdt:Locator="Match(name)" />
       <add name="PublicJobsLookupValuesIndexer" type="Examine.LuceneEngine.Providers.SimpleDataIndexer, Examine"
-           dataService="Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink.PublicJobsLookupValuesIndexer, Escc.EastSussexGovUK.Umbraco"
+           dataService="Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink.PublicJobsLookupValuesIndexer, Escc.EastSussexGovUK.Umbraco.Api"
            indexTypes="JobsLookup"
            xdt:Transform="Insert" />
 
       <add name="RedeploymentJobsLookupValuesIndexer" xdt:Transform="RemoveAll" xdt:Locator="Match(name)" />
       <add name="RedeploymentJobsLookupValuesIndexer" type="Examine.LuceneEngine.Providers.SimpleDataIndexer, Examine"
-           dataService="Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink.RedeploymentJobsLookupValuesIndexer, Escc.EastSussexGovUK.Umbraco"
+           dataService="Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink.RedeploymentJobsLookupValuesIndexer, Escc.EastSussexGovUK.Umbraco.Api"
            indexTypes="JobsLookup"
            xdt:Transform="Insert" />
            

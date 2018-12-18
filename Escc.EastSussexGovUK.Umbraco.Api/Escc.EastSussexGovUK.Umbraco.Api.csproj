@@ -392,9 +392,9 @@
     <None Include="Views\Partials\Grid\Bootstrap3-Fluid.cshtml" />
     <None Include="Views\Partials\Grid\Bootstrap2.cshtml" />
     <None Include="Views\Partials\Grid\Bootstrap2-Fluid.cshtml" />
-    <Content Include="Web.config.xdt">
+    <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />

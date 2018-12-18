@@ -32,7 +32,7 @@
       <dependentAssembly xdt:Transform="Remove" xdt:Locator="Condition(_defaultNamespace:assemblyIdentity/@name='MySql.Data')" />
       <dependentAssembly xdt:Transform="Insert">
         <assemblyIdentity name="MySql.Data" publicKeyToken="c5687fc88969c44d" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-6.9.10.0" newVersion="6.9.10.0" />
+        <bindingRedirect oldVersion="0.0.0.0-6.9.12.0" newVersion="6.9.12.0" />
       </dependentAssembly>
       <dependentAssembly xdt:Transform="Remove" xdt:Locator="Condition(_defaultNamespace:assemblyIdentity/@name='Microsoft.Azure.KeyVault.Core')" />
       <dependentAssembly xdt:Transform="Insert">
@@ -64,11 +64,6 @@
         <assemblyIdentity name="Microsoft.WindowsAzure.Storage" publicKeyToken="31bf3856ad364e35" culture="neutral" />
         <bindingRedirect oldVersion="0.0.0.0-9.1.0.0" newVersion="9.1.0.0" />
       </dependentAssembly>
-      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Net.Http.Formatting')" xdt:Transform="Remove" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="System.Net.Http.Formatting" publicKeyToken="31bf3856ad364e35" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-5.2.4.0" newVersion="5.2.4.0" />
-      </dependentAssembly>
       <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Security.Cryptography.X509Certificates')" xdt:Transform="Remove" />
       <dependentAssembly xdt:Transform="Insert">
         <assemblyIdentity name="System.Security.Cryptography.X509Certificates" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
@@ -89,16 +84,6 @@
         <assemblyIdentity name="System.Web.Helpers" publicKeyToken="31bf3856ad364e35" />
         <bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
       </dependentAssembly>
-      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Web.Http')" xdt:Transform="Remove" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="System.Web.Http" publicKeyToken="31bf3856ad364e35" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-5.2.4.0" newVersion="5.2.4.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Web.Http.WebHost')" xdt:Transform="Remove" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="System.Web.Http.WebHost" publicKeyToken="31bf3856ad364e35" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-5.2.4.0" newVersion="5.2.4.0" />
-      </dependentAssembly>
       <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Web.Mvc')" xdt:Transform="Remove" />
       <dependentAssembly xdt:Transform="Insert">
         <assemblyIdentity name="System.Web.Mvc" publicKeyToken="31bf3856ad364e35" />
@@ -108,31 +93,6 @@
       <dependentAssembly xdt:Transform="Insert">
         <assemblyIdentity name="System.Web.WebPages" publicKeyToken="31bf3856ad364e35" />
         <bindingRedirect oldVersion="0.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='Microsoft.Owin')" xdt:Transform="Remove" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="Microsoft.Owin" publicKeyToken="31bf3856ad364e35" />
-        <bindingRedirect oldVersion="0.0.0.0-3.1.0.0" newVersion="3.1.0.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='Microsoft.Owin.Security.OAuth')" xdt:Transform="Remove" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="Microsoft.Owin.Security.OAuth" publicKeyToken="31bf3856ad364e35" />
-        <bindingRedirect oldVersion="0.0.0.0-3.1.0.0" newVersion="3.1.0.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='Microsoft.Owin.Security')" xdt:Transform="Remove" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="Microsoft.Owin.Security" publicKeyToken="31bf3856ad364e35" />
-        <bindingRedirect oldVersion="0.0.0.0-3.1.0.0" newVersion="3.1.0.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='Microsoft.Owin.Security.Cookies')" xdt:Transform="Remove" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="Microsoft.Owin.Security.Cookies" publicKeyToken="31bf3856ad364e35" />
-        <bindingRedirect oldVersion="0.0.0.0-3.1.0.0" newVersion="3.1.0.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='Microsoft.Owin.Host.SystemWeb')" xdt:Transform="Remove" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="Microsoft.Owin.Host.SystemWeb" publicKeyToken="31bf3856ad364e35" />
-        <bindingRedirect oldVersion="0.0.0.0-3.1.0.0" newVersion="3.1.0.0" />
       </dependentAssembly>
       <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='Escc.ActiveDirectory')" xdt:Transform="Remove" />
       <dependentAssembly xdt:Transform="Insert">
@@ -203,10 +163,10 @@
       <add name="ExceptionlessModule" type="Exceptionless.Mvc.ExceptionlessModule, Exceptionless.Mvc" xdt:Transform="Insert" />
 
       <add name="UmbracoCustomErrorsModule" xdt:Transform="Remove" xdt:Locator="Match(name)" />
-      <add name="UmbracoCustomErrorsModule" type="Escc.EastSussexGovUK.Umbraco.Web.Errors.UmbracoCustomErrorsModule, Escc.EastSussexGovUK.Umbraco.Web" xdt:Transform="Insert" />
+      <add name="UmbracoCustomErrorsModule" type="Escc.EastSussexGovUK.Umbraco.Errors.UmbracoCustomErrorsModule, Escc.EastSussexGovUK.Umbraco" xdt:Transform="Insert" />
 
       <add name="MachineNameModule" xdt:Transform="Remove" xdt:Locator="Match(name)" />
-      <add name="MachineNameModule" type="Escc.EastSussexGovUK.Umbraco.Web.AzureConfiguration.MachineNameModule, Escc.EastSussexGovUK.Umbraco.Web" xdt:Transform="Insert" />
+      <add name="MachineNameModule" type="Escc.EastSussexGovUK.Umbraco.AzureConfiguration.MachineNameModule, Escc.EastSussexGovUK.Umbraco" xdt:Transform="Insert" />
     </modules>
     
     <!-- Ensure SSL is used even when strict transport security is not supported

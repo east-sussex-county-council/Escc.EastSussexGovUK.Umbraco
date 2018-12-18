@@ -1356,9 +1356,6 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="scripts\jquery-1.7-vsdoc.js" />
-    <None Include="scripts\jquery-1.7.js" />
-    <None Include="scripts\jquery-1.7.min.js" />
     <Content Include="scripts\StickyTableHeader.js" />
     <Content Include="Umbraco\Actions\delete.aspx" />
     <Content Include="Umbraco\Actions\editContent.aspx" />
@@ -4524,10 +4521,6 @@
   <ItemGroup>
     <Compile Include="App_Start\EastSussexGovUK_Mvc.cs" />
     <Compile Include="App_Start\EastSussexGovUK_WebForms.cs" />
-    <Compile Include="AzureConfiguration\FrontEndReadOnlyServerRegistrar.cs" />
-    <Compile Include="AzureConfiguration\MachineNameModule.cs" />
-    <Compile Include="AzureConfiguration\MasterServerRegistrar.cs" />
-    <Compile Include="AzureConfiguration\RegisterServerRoleEventHandler.cs" />
     <Compile Include="Banners\Banner.cs" />
     <Compile Include="Banners\BannersController.cs" />
     <Compile Include="Banners\IBannerSettingsService.cs" />
@@ -4579,10 +4572,6 @@
     <Compile Include="Skins\SupportWithTrust\SupportWithTrustSkin.cs" />
     <Compile Include="Ratings\RatingRelationType.cs" />
     <Compile Include="Ratings\RatingRelationEventHandler.cs" />
-    <Compile Include="Errors\HttpStatusFromConfiguration.cs" />
-    <Compile Include="Errors\NotFoundContentFinder.cs" />
-    <Compile Include="Errors\RegisterErrorsEventHandler.cs" />
-    <Compile Include="Errors\UmbracoCustomErrorsModule.cs" />
     <Compile Include="HomePage\HomePageViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\Alerts\JobAlertContentFinder.cs" />
     <Compile Include="Jobs\Alerts\JobAlertsController.cs" />

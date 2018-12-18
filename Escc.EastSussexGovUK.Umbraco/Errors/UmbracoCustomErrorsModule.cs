@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Web;
 
-namespace Escc.EastSussexGovUK.Umbraco.Web.Errors
+namespace Escc.EastSussexGovUK.Umbraco.Errors
 {
     /// <summary>
     /// HTTP module which implements the custom errors settings configured in IIS when running under Umbraco but accessing URLs that end with extensions not normally processed by Umbraco, such as .js or .html

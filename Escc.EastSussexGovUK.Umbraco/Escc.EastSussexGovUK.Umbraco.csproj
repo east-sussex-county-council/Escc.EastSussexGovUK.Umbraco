@@ -177,6 +177,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SqlServerCe, Version=4.0.0.1, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.6.13\lib\net45\System.Data.SqlServerCe.dll</HintPath>
@@ -294,6 +295,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AzureConfiguration\FrontEndReadOnlyServerRegistrar.cs" />
+    <Compile Include="AzureConfiguration\MachineNameModule.cs" />
+    <Compile Include="AzureConfiguration\MasterServerRegistrar.cs" />
+    <Compile Include="AzureConfiguration\RegisterServerRoleEventHandler.cs" />
+    <Compile Include="Errors\HttpStatusFromConfiguration.cs" />
+    <Compile Include="Errors\NotFoundContentFinder.cs" />
+    <Compile Include="Errors\RegisterErrorsEventHandler.cs" />
+    <Compile Include="Errors\UmbracoCustomErrorsModule.cs" />
     <Compile Include="Examine\IQueryBuilder.cs" />
     <Compile Include="Examine\ISearchFilter.cs" />
     <Compile Include="Examine\ISearchTermTokeniser.cs" />

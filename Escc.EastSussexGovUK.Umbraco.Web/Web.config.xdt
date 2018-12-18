@@ -544,10 +544,10 @@
       <add name="ExceptionlessModule" type="Exceptionless.Mvc.ExceptionlessModule, Exceptionless.Mvc" xdt:Transform="Insert" />
 
       <add name="UmbracoCustomErrorsModule" xdt:Transform="Remove" xdt:Locator="Match(name)" />
-      <add name="UmbracoCustomErrorsModule" type="Escc.EastSussexGovUK.Umbraco.Web.Errors.UmbracoCustomErrorsModule, Escc.EastSussexGovUK.Umbraco.Web" xdt:Transform="Insert" />
+      <add name="UmbracoCustomErrorsModule" type="Escc.EastSussexGovUK.Umbraco.Errors.UmbracoCustomErrorsModule, Escc.EastSussexGovUK.Umbraco" xdt:Transform="Insert" />
 
       <add name="MachineNameModule" xdt:Transform="Remove" xdt:Locator="Match(name)" />
-      <add name="MachineNameModule" type="Escc.EastSussexGovUK.Umbraco.Web.AzureConfiguration.MachineNameModule, Escc.EastSussexGovUK.Umbraco.Web" xdt:Transform="Insert" />
+      <add name="MachineNameModule" type="Escc.EastSussexGovUK.Umbraco.AzureConfiguration.MachineNameModule, Escc.EastSussexGovUK.Umbraco" xdt:Transform="Insert" />
     </modules>
     
     <!-- Ensure SSL is used even when strict transport security is not supported

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Web;
 
-namespace Escc.EastSussexGovUK.Umbraco.Web.AzureConfiguration
+namespace Escc.EastSussexGovUK.Umbraco.AzureConfiguration
 {
     /// <summary>
     /// Returns a partial machine name in an HTTP header if the site is requested from a known IP, to aid in debugging when load-balanced on cloud hosting

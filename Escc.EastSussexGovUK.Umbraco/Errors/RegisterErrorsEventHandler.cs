@@ -3,7 +3,7 @@ using Exceptionless;
 using Umbraco.Core;
 using Umbraco.Web.Routing;
 
-namespace Escc.EastSussexGovUK.Umbraco.Web.Errors
+namespace Escc.EastSussexGovUK.Umbraco.Errors
 {
     /// <summary>
     /// Register a last-chance content finder to handle 404s with the Umbraco application scope
@@ -19,7 +19,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Errors
         {
             try
             {
-                ContentLastChanceFinderResolver.Current.SetFinder(new Umbraco.Web.Errors.NotFoundContentFinder());
+                ContentLastChanceFinderResolver.Current.SetFinder(new NotFoundContentFinder());
             }
             catch (Exception e)
             {
