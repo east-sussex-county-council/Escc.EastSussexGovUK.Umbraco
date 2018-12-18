@@ -8,14 +8,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Errors
     /// <summary>
     /// Read settings from the httpErrors section of web.config
     /// </summary>
-    internal class HttpStatusFromConfiguration
+    public class HttpStatusFromConfiguration
     {
         /// <summary>
         /// Gets the custom URL configured for a status code.
         /// </summary>
         /// <param name="statusCode">The status code.</param>
         /// <returns></returns>
-        internal Uri GetCustomUrlForStatusCode(int statusCode)
+        public Uri GetCustomUrlForStatusCode(int statusCode)
         {
             var config = XElement.Load(HostingEnvironment.MapPath("~") + "web.config");
             var configNav = config.CreateNavigator();

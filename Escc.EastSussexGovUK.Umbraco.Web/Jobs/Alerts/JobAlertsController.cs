@@ -1,4 +1,4 @@
-﻿using Escc.EastSussexGovUK.Umbraco.Web.Errors;
+﻿using Escc.EastSussexGovUK.Umbraco.Errors;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Api;
 using Escc.EastSussexGovUK.Umbraco.Web.Latest;
 using Escc.EastSussexGovUK.Umbraco.Web.Services;

@@ -12,7 +12,7 @@ using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
 using Task = System.Threading.Tasks.Task;
-using Escc.EastSussexGovUK.Umbraco.Web.Errors;
+using Escc.EastSussexGovUK.Umbraco.Errors;
 using Escc.Dates;
 using System.Configuration;
 using Escc.Umbraco.Expiry;
