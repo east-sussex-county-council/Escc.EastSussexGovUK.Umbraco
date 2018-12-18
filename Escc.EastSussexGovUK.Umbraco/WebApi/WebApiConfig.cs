@@ -4,6 +4,7 @@ using System.Web.Http;
 using Exceptionless;
 using Umbraco.Core;
 using System.Net.Http.Formatting;
+using System.Net;
 
 namespace Escc.EastSussexGovUK.Umbraco.WebApi
 {
@@ -19,6 +20,9 @@ namespace Escc.EastSussexGovUK.Umbraco.WebApi
         {
             try
             {
+                // Use TLS1.2 when making web requests
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                    
                 // When a browser requests the API, return JSON by default
                 GlobalConfiguration.Configuration.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
 
