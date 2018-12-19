@@ -12,6 +12,7 @@ using Escc.Umbraco.PropertyTypes;
 using Examine;
 using Escc.Umbraco.Expiry;
 using Escc.EastSussexGovUK.Umbraco.Web.Latest;
+using Escc.EastSussexGovUK.Umbraco.Web.Ratings;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.CampaignTemplates
 {
@@ -40,7 +41,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.CampaignTemplates
                 UmbracoContext.Current.InPreviewMode);
             modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel, 
                 new UmbracoLatestService(model.Content), null, null, 
-                new UmbracoWebChatSettingsService(model.Content, new UrlListReader()), null, null);
+                new UmbracoWebChatSettingsService(model.Content, new UrlListReader()), null,
+                new RatingSettingsFromUmbraco(model.Content));
 
             new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new IExpiryDateSource[] { expiryDate, new ExpiryDateFromPropertyValue(model.Content, "latestUnpublishDate_Latest") });
 

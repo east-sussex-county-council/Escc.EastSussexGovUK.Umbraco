@@ -1,2 +1,2 @@
-﻿/* Add one line space above and below the page rating */
-.rating { margin: .947368em 0; }
+﻿/* Add one line space above and below the page rating, and ensure it's below any floated items */
+.rating { margin: .947368em 0; clear: both; }
