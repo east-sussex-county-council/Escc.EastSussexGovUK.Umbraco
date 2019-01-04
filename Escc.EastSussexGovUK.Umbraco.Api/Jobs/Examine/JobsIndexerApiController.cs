@@ -18,19 +18,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
     public class JobsIndexerApiController : UmbracoApiController
     {
         /// <summary>
-        /// Updates the job search by deleting and rebuilding the index from scratch. Search results are unavailable while this is in progress.
+        /// Updates the public job search by deleting and reindexing each job individually. Search results remain available while this is in progress.
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public HttpResponseMessage UpdateJobSearch()
+        public HttpResponseMessage UpdatePublicJobs()
         {
             try
             {
-                ReplaceIndex("PublicJobsIndexer");
-                ReplaceIndex("RedeploymentJobsIndexer");
-                ReplaceIndex("PublicJobsLookupValuesIndexer");
-                ReplaceIndex("RedeploymentJobsLookupValuesIndexer");
-
+                UpdateIndex("PublicJobsSearcher", new PublicJobsIndexer());
                 return Request.CreateResponse(HttpStatusCode.NoContent);
             }
             catch (Exception ex)
@@ -42,19 +38,55 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
         }
 
         /// <summary>
-        /// Updates the job search by deleting and reindexing each job individually. Search results remain available while this is in progress.
+        /// Updates the redeployment job search by deleting and reindexing each job individually. Search results remain available while this is in progress.
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public HttpResponseMessage UpdateJobSearchIncremental()
+        public HttpResponseMessage UpdateRedeploymentJobs()
         {
             try
             {
-                UpdateIndex("PublicJobsSearcher", new PublicJobsIndexer());
                 UpdateIndex("RedeploymentJobsSearcher", new RedeploymentJobsIndexer());
-                ReplaceIndex("PublicJobsLookupValuesIndexer");
-                ReplaceIndex("RedeploymentJobsLookupValuesIndexer");
+                return Request.CreateResponse(HttpStatusCode.NoContent);
+            }
+            catch (Exception ex)
+            {
+                ex.ToExceptionless().Submit();
+                LogHelper.Error<JobsIndexerApiController>("Failed to reindex jobs. There may be another thread currently writing to the index.", ex);
+                return Request.CreateResponse(HttpStatusCode.InternalServerError);
+            }
+        }
 
+        /// <summary>
+        /// Updates the public job search lookup values by reading data from the indexed jobs.
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public HttpResponseMessage ReplacePublicJobsLookupValues()
+        {
+            try
+            {
+                ReplaceIndex("PublicJobsLookupValuesIndexer");
+                return Request.CreateResponse(HttpStatusCode.NoContent);
+            }
+            catch (Exception ex)
+            {
+                ex.ToExceptionless().Submit();
+                LogHelper.Error<JobsIndexerApiController>("Failed to reindex jobs. There may be another thread currently writing to the index.", ex);
+                return Request.CreateResponse(HttpStatusCode.InternalServerError);
+            }
+        }
+
+        /// <summary>
+        /// Updates the redeployment job search lookup values by reading data from the indexed jobs.
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public HttpResponseMessage ReplaceRedeploymentJobsLookupValues()
+        {
+            try
+            {
+                ReplaceIndex("RedeploymentJobsLookupValuesIndexer");
                 return Request.CreateResponse(HttpStatusCode.NoContent);
             }
             catch (Exception ex)

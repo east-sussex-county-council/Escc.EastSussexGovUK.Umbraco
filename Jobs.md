@@ -18,8 +18,8 @@ You can recreate the configuration for these index sets and indexes by applying 
 
 To update the jobs data you need a trigger a reindex for each of the index sets. You can do this in one of the following ways:
 
-* The recommended way is to call `https://hostname/umbraco/api/jobsindexerapi/UpdateJobSearchIncremental`, which rebuilds all of the jobs indexes in the correct order. This requires you to authenticate using the approach documented for  [Escc.BasicAuthentication.WebApi](https://github.com/east-sussex-county-council/Escc.BasicAuthentication.WebApi). 
-* The web API call above is expected to be set up as a scheduled task (or web job on Microsoft Azure), so that jobs data is regularly updated from the external jobs provider. You also have the option of running this task manually to trigger an update. 
+* The recommended way is to run `Escc.Jobs.UpdateIndexes.exe`, which calls the `JobsIndexerApiController`to rebuild all of the jobs indexes in the correct order. This requires you to authenticate using the approach documented for  [Escc.BasicAuthentication.WebApi](https://github.com/east-sussex-county-council/Escc.BasicAuthentication.WebApi). 
+* `Escc.Jobs.UpdateIndexes.exe` is expected to be set up as a scheduled task (or web job on Microsoft Azure), so that jobs data is regularly updated from the external jobs provider. You also have the option of running this task manually to trigger an update. 
 * Sign into Umbraco with administrator permissions and navigate to Developer > Examine Management > Indexers > [select the indexer to update] > Index info & tools > Rebuild index
 
 If the data source is unavailable during a reindex the jobs data we already have will be lost, so we will have no data to display. Unfortunately this behaviour is built into the way Umbraco calls the `ISimpleDataService` interface. 

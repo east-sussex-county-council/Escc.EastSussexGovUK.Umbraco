@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Umbrac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Umbraco.Api.Tests", "Escc.EastSussexGovUK.Umbraco.Api.Tests\Escc.EastSussexGovUK.Umbraco.Api.Tests.csproj", "{AF9E555F-AFFE-4DD9-9C72-4E40FF57B864}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.Jobs.UpdateIndexes", "Escc.Jobs.UpdateIndexes\Escc.Jobs.UpdateIndexes.csproj", "{328E9044-F8BD-462F-A51E-A6211C5ECDE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -80,6 +82,12 @@ Global
 		{AF9E555F-AFFE-4DD9-9C72-4E40FF57B864}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AF9E555F-AFFE-4DD9-9C72-4E40FF57B864}.UAT|Any CPU.ActiveCfg = Release|Any CPU
 		{AF9E555F-AFFE-4DD9-9C72-4E40FF57B864}.UAT|Any CPU.Build.0 = Release|Any CPU
+		{328E9044-F8BD-462F-A51E-A6211C5ECDE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{328E9044-F8BD-462F-A51E-A6211C5ECDE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{328E9044-F8BD-462F-A51E-A6211C5ECDE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{328E9044-F8BD-462F-A51E-A6211C5ECDE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{328E9044-F8BD-462F-A51E-A6211C5ECDE0}.UAT|Any CPU.ActiveCfg = Release|Any CPU
+		{328E9044-F8BD-462F-A51E-A6211C5ECDE0}.UAT|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
