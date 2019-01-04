@@ -25,7 +25,7 @@ namespace Escc.Jobs.UpdateIndexes
             {
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
-                var apiBaseUrl = new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]);
+                var apiBaseUrl = new Uri("https://" + ConfigurationManager.AppSettings[ConfigurationManager.AppSettings["HostnameSetting"]]);
 
                 var apiUser = ConfigurationManager.AppSettings["ApiUser"];
                 if (string.IsNullOrEmpty(apiUser))
@@ -39,6 +39,8 @@ namespace Escc.Jobs.UpdateIndexes
                     throw new ConfigurationErrorsException("appSettings > ApiPassword was not set in app.config");
                 }
 
+                // Note: if this returns 500 Internal Server Error running on Azure it may be because the external IP address of the Azure App Service
+                // where this is running needs to be allowed in the IP restrictions for the API site
                 var request = WebRequest.Create(new Uri($"{apiBaseUrl.ToString().TrimEnd('/')}/umbraco/api/JobsIndexerApi/UpdatePublicJobs/"));
                 request.Credentials = new NetworkCredential(apiUser, apiPassword);
                 request.Timeout = Timeout.Infinite;
