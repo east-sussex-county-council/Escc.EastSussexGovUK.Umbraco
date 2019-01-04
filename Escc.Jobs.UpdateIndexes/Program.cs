@@ -25,7 +25,7 @@ namespace Escc.Jobs.UpdateIndexes
             {
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
-                var apiBaseUrl = new Uri("https://" + ConfigurationManager.AppSettings[ConfigurationManager.AppSettings["HostnameSetting"]]);
+                var apiBaseUrl = new Uri("https://" + Environment.GetEnvironmentVariable(ConfigurationManager.AppSettings["HostnameEnvironmentVariable"]));
 
                 var apiUser = ConfigurationManager.AppSettings["ApiUser"];
                 if (string.IsNullOrEmpty(apiUser))
