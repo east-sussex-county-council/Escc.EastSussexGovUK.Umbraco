@@ -28,5 +28,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         {
             throw new NotImplementedException();
         }
+
+        public string TextOutsideLinks(string text, IHtmlTagSanitiser tagSanitiser)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

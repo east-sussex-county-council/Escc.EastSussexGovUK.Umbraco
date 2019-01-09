@@ -25,7 +25,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Tests
         [TestCase(@"App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\controller.js")]
 
         // Escc.RubbishAndRecycling.SiteFinder package
-        [TestCase(@"Views\Topic\RecyclingSiteFinder.ascx")]
+        [TestCase(@"Views\Topic\RecyclingSiteFinder_Mvc.ascx")]
 
         // Escc.EastSussexGovUK.Rss project
         [TestCase(@"EastSussexGovUK\Rss\rss-to-html.ashx")]

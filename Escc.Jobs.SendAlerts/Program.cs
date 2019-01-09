@@ -16,7 +16,7 @@ namespace Escc.Jobs.SendAlerts
 
         static void Main(string[] args)
         {
-            ExceptionlessClient.Current.Startup();
+            ExceptionlessClient.Default.Startup();
             XmlConfigurator.Configure();
 
             try
