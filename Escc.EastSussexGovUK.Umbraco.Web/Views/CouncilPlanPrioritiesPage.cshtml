@@ -7,9 +7,10 @@
 @using Escc.EastSussexGovUK.Umbraco.Web.Views
 @using Escc.EastSussexGovUK.Umbraco.Web.MicrosoftCmsMigration
 @using Escc.EastSussexGovUK.Views
+@using Escc.EastSussexGovUK.Mvc
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<MicrosoftCmsViewModel>
 @{
-    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
+    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
     Model.EsccWebsiteSkin = new CustomerFocusSkin();
 
     Html.RequiresCss(CssFileAlias.Resolve("CouncilPlanSmall"));
@@ -20,17 +21,17 @@
     var placeholders = CmsUtilities.Placeholders;
     var html = new[]
     {
-        placeholders["phDefContent"].Value.ToString(),
-        placeholders["phDefObjectives1"].Value.ToString(),
-        placeholders["phDefObjectives2"].Value.ToString(),
-        placeholders["phDefObjectives3"].Value.ToString(),
-        placeholders["phDefObjectives4"].Value.ToString()
-    };
+placeholders["phDefContent"].Value.ToString(),
+placeholders["phDefObjectives1"].Value.ToString(),
+placeholders["phDefObjectives2"].Value.ToString(),
+placeholders["phDefObjectives3"].Value.ToString(),
+placeholders["phDefObjectives4"].Value.ToString()
+};
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
-    {
-        new EmbeddedYouTubeVideos() { Html = html },
-        new EmbeddedGoogleMaps() { Html = html }
-    });
+{
+new EmbeddedYouTubeVideos() { Html = html },
+new EmbeddedGoogleMaps() { Html = html }
+});
 
     var selectedClass = CouncilPlanUtility.PriorityClass();
 }

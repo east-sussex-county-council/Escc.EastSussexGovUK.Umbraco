@@ -5,10 +5,11 @@
 @using Escc.EastSussexGovUK.Skins
 @using Escc.EastSussexGovUK.Umbraco.Jobs
 @using Escc.EastSussexGovUK.Umbraco.Web.Services
+@using Escc.EastSussexGovUK.Mvc
 @using Escc.EastSussexGovUK.Views
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.CampaignTemplates.CampaignContentViewModel>
 @{
-    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
+    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
     Model.EsccWebsiteSkin = new CustomerFocusSkin();
 
     Html.RequiresCss(CssFileAlias.Resolve("CampaignSmall"));
@@ -29,13 +30,13 @@
     Html.RequiresJs(JsFileAlias.Resolve("Navigation"));
 
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
-    {
-        new EmbeddedYouTubeVideos() { Html = new [] { Model.ContentPart1.ToString(), Model.ContentPart2.ToString(), Model.ContentPart3.ToString(), Model.ContentPart4.ToString() }},
-        new WebChat() { WebChatSettings = Model.WebChat }
-    });
+{
+new EmbeddedYouTubeVideos() { Html = new [] { Model.ContentPart1.ToString(), Model.ContentPart2.ToString(), Model.ContentPart3.ToString(), Model.ContentPart4.ToString() }},
+new WebChat() { WebChatSettings = Model.WebChat }
+});
 
     var bodyClass = "campaign-content";
-    if (!String.IsNullOrEmpty(Model.FinalQuote)) { bodyClass += " with-final-quote";}
+    if (!String.IsNullOrEmpty(Model.FinalQuote)) { bodyClass += " with-final-quote"; }
 }
 @section Metadata {
     @if (!String.IsNullOrEmpty(Model.QuoteFontFamily))

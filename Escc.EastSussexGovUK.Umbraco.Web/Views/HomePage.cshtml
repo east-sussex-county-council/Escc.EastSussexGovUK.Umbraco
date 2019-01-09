@@ -6,26 +6,26 @@
 @using Escc.EastSussexGovUK.Skins
 @using Escc.EastSussexGovUK.Views
 @using Escc.Umbraco.PropertyTypes
+@using Escc.EastSussexGovUK.Mvc
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.HomePage.HomePageViewModel>
 @{
-    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
+    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
     Model.EsccWebsiteSkin = new CustomerFocusSkin();
 
     Html.RequiresCss(CssFileAlias.Resolve("HomeSmall"));
     Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));
     Html.RequiresCss(CssFileAlias.Resolve("TilesSmall"));
     Html.RequiresJs(JsFileAlias.Resolve("Home"), 100);
-    if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)
-    {
-        Html.RequiresCss(CssFileAlias.Resolve("FormsMedium"), MediaQueryAlias.Resolve("Medium"));
-        Html.RequiresCss(CssFileAlias.Resolve("TilesMedium"), MediaQueryAlias.Resolve("Medium"));
-        Html.RequiresCss(CssFileAlias.Resolve("HomeMedium"), MediaQueryAlias.Resolve("Medium"));
-        Html.RequiresCss(CssFileAlias.Resolve("FormsLarge"), MediaQueryAlias.Resolve("Large"));
-        Html.RequiresCss(CssFileAlias.Resolve("HomeLarge"), MediaQueryAlias.Resolve("Large"));
-        Html.RequiresJs(JsFileAlias.Resolve("HomeTabs"), 90);
-    }
+    Html.RequiresCss(CssFileAlias.Resolve("FormsMedium"), MediaQueryAlias.Resolve("Medium"));
+    Html.RequiresCss(CssFileAlias.Resolve("TilesMedium"), MediaQueryAlias.Resolve("Medium"));
+    Html.RequiresCss(CssFileAlias.Resolve("HomeMedium"), MediaQueryAlias.Resolve("Medium"));
+    Html.RequiresCss(CssFileAlias.Resolve("FormsLarge"), MediaQueryAlias.Resolve("Large"));
+    Html.RequiresCss(CssFileAlias.Resolve("HomeLarge"), MediaQueryAlias.Resolve("Large"));
+    Html.RequiresJs(JsFileAlias.Resolve("HomeTabs"), 90);
+    Html.RequiresJs(JsFileAlias.Resolve("Tips"));
+    Html.RequiresJs(JsFileAlias.Resolve("DescribedByTips"));
 
-    var baseUrl = new HostingEnvironmentContext().BaseUrl?.TrimPathEndSlash();
+    var baseUrl = new HostingEnvironmentContext(Request.Url).BaseUrl?.TrimPathEndSlash();
 
     Model.Metadata.OpenGraphType = "government";
 }
@@ -159,7 +159,7 @@
     <div class="gutters context">
         <section>
             <h2>@Model.RecyclingTitle</h2>
-            @Html.Partial("~/Views/Topic/TopicSection_RecyclingSiteFinder.ascx")
+            @Html.Partial("~/Views/Topic/RecyclingSiteFinder_Mvc.ascx")
         </section>
     </div>
 </div>

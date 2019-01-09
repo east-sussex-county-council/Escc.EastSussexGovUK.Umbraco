@@ -7,7 +7,7 @@
     {
         // Get the custom checkbox label, which we expect to contain a link
         checkboxLabel = Umbraco.Web.Templates.TemplateUtilities.ParseInternalLinks(Model.AdditionalSettings["CheckboxLabel"]);
-        var sanitiser = new Escc.Html.HtmlTagSantiser();
+        var sanitiser = new Escc.Html.HtmlTagSanitiser();
         checkboxLabel = sanitiser.StripTags(checkboxLabel, new[] { "a" });
 
         // Set the link to open with target="_blank" so the reader doesn't lose their form data if they click it.

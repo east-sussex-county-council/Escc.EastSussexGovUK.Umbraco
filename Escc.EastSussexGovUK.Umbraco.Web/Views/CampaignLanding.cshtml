@@ -4,11 +4,12 @@
 @using Escc.EastSussexGovUK.Features
 @using Escc.EastSussexGovUK.Skins
 @using Escc.EastSussexGovUK.Umbraco.Web.Services
+@using Escc.EastSussexGovUK.Mvc
 @using Escc.EastSussexGovUK.Views
 @using Escc.Web
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.CampaignTemplates.CampaignLandingViewModel>
 @{
-    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
+    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
     Model.EsccWebsiteSkin = new CustomerFocusSkin();
 
     Html.RequiresCss(CssFileAlias.Resolve("CampaignSmall"));
@@ -23,9 +24,9 @@
     }
     Html.RequiresCss(CssFileAlias.Resolve("CampaignPrint"), new Dictionary<string, string>() { { "media", "print" } });
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
-    {
-        new EmbeddedYouTubeVideos() { Html = new [] { Model.Content.ToString() }}
-    });
+{
+new EmbeddedYouTubeVideos() { Html = new [] { Model.Content.ToString() }}
+});
 
     if (Model.LandingNavigation.Sections.Count > 0)
     {

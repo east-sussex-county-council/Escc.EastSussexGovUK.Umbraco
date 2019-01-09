@@ -6,10 +6,11 @@
 @using Escc.EastSussexGovUK.Skins
 @using Escc.EastSussexGovUK.Umbraco.Web.Views
 @using Escc.EastSussexGovUK.Umbraco.Web.MicrosoftCmsMigration
+@using Escc.EastSussexGovUK.Mvc
 @using Escc.EastSussexGovUK.Views
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<MicrosoftCmsViewModel>
 @{
-    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
+    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
     Model.EsccWebsiteSkin = new CustomerFocusSkin();
 
     Html.RequiresCss(CssFileAlias.Resolve("CouncilPlanSmall"));
@@ -20,22 +21,22 @@
     var placeholders = CmsUtilities.Placeholders;
     var html = new[]
     {
-        placeholders["phDefContent01"].Value.ToString(),
-        placeholders["phDefContent02"].Value.ToString(),
-        placeholders["phDefContent03"].Value.ToString(),
-        placeholders["phDefContent04"].Value.ToString(),
-        placeholders["phDefContent05"].Value.ToString(),
-        placeholders["phDefContent06"].Value.ToString(),
-        placeholders["phDefContent07"].Value.ToString(),
-        placeholders["phDefContent08"].Value.ToString(),
-        placeholders["phDefContent09"].Value.ToString(),
-        placeholders["phDefContent10"].Value.ToString()
-    };
+placeholders["phDefContent01"].Value.ToString(),
+placeholders["phDefContent02"].Value.ToString(),
+placeholders["phDefContent03"].Value.ToString(),
+placeholders["phDefContent04"].Value.ToString(),
+placeholders["phDefContent05"].Value.ToString(),
+placeholders["phDefContent06"].Value.ToString(),
+placeholders["phDefContent07"].Value.ToString(),
+placeholders["phDefContent08"].Value.ToString(),
+placeholders["phDefContent09"].Value.ToString(),
+placeholders["phDefContent10"].Value.ToString()
+};
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
-    {
-        new EmbeddedYouTubeVideos() { Html = html },
-        new EmbeddedGoogleMaps() { Html = html }
-    });
+{
+new EmbeddedYouTubeVideos() { Html = html },
+new EmbeddedGoogleMaps() { Html = html }
+});
 
     var selectedClass = CouncilPlanUtility.PriorityClass();
 }
@@ -49,7 +50,7 @@
         <div class="content text-content">
             @Html.Partial("~/Views/EastSussexGovUK/Features/_Share.cshtml")
         </div>
-</article>
+    </article>
 </div>
 
 @Html.Partial("~/Views/Layouts/_SocialMedia.cshtml")

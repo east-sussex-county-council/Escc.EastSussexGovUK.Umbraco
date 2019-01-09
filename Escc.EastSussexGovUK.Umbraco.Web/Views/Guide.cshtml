@@ -10,9 +10,10 @@
 @using Escc.EastSussexGovUK.Umbraco.Web.Skins.SupportWithTrust
 @using Escc.EastSussexGovUK.Umbraco.Web.Services
 @using Escc.Web
+@using Escc.EastSussexGovUK.Mvc
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.Guide.GuideViewModel>
 @{
-    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
+    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
     Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] {
         new CoronerSkin(Request.Url),
         new RegistrationAcademySkin(Model.SkinToApply == "Registration Academy"),

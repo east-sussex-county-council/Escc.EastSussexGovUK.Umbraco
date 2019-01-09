@@ -11,9 +11,10 @@
 @using Escc.EastSussexGovUK.Umbraco.Web.Skins.SupportWithTrust
 @using Escc.EastSussexGovUK.Umbraco.Web.MicrosoftCmsMigration
 @using Escc.EastSussexGovUK.Umbraco.Web.Services
+@using Escc.EastSussexGovUK.Mvc
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<MicrosoftCmsViewModel>
 @{
-    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
+    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
     Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] {
         new RegistrationAcademySkin(Model.SkinToApply == "Registration Academy"),
         new RegistrationSkin(Model.Metadata.PageUrl),

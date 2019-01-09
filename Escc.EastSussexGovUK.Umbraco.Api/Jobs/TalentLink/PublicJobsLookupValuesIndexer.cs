@@ -4,6 +4,7 @@ using Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
 using Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink;
 using Escc.Net;
+using Escc.Net.Configuration;
 using Examine;
 
 namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink

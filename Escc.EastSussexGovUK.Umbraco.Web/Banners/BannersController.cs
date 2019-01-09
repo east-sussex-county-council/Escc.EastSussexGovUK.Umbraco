@@ -8,8 +8,6 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Http;
-using Escc.Umbraco.PropertyEditors.DataTypes;
-using Escc.Umbraco.PropertyEditors.RichTextPropertyEditor;
 using Escc.Umbraco.PropertyTypes;
 using Escc.Web;
 using Exceptionless;

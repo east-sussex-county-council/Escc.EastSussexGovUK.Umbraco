@@ -92,7 +92,7 @@ global.asax
 # Files imported by NuGet packages
 **/TinyMCE-*.css
 !**/TinyMCE-StyleSelector-Embed.css
-*RecyclingSiteFinder.ascx
+*RecyclingSiteFinder*.ascx
 _FindAddress.cshtml
 */js/libs/*
 !*/js/libs/bootstrap/

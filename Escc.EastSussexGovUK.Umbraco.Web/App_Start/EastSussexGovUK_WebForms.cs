@@ -1,7 +1,6 @@
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Escc.EastSussexGovUK.Umbraco.Web.EastSussexGovUkWebForms), "PostStart")]
 
-namespace Escc.EastSussexGovUK.Umbraco.Web
-{
+namespace Escc.EastSussexGovUK.Umbraco.Web {
 
     /// <summary>
     /// Register the virtual path provider which makes available the embedded views from Escc.EastSussexGovUK.Mvc

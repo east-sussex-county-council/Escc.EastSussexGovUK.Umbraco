@@ -4,9 +4,10 @@
 @using Escc.EastSussexGovUK.Views
 @using Escc.Umbraco.PropertyTypes
 @using Escc.Web
+@using Escc.EastSussexGovUK.Mvc
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.Jobs.JobsHomeViewModel>
 @{
-    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
+    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
     Model.EsccWebsiteSkin = new CustomerFocusSkin();
     Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));
     Html.RequiresCss(CssFileAlias.Resolve("TilesSmall"));
@@ -50,8 +51,8 @@
                             }
                             if (image == null) { break; }
 
-                            var oddOrEven = (i%2 == 0) ? "odd" : "even"; // because nth-child is IE11+
-                            var group = "group" + ((i%3) + 1);
+                            var oddOrEven = (i % 2 == 0) ? "odd" : "even"; // because nth-child is IE11+
+                            var group = "group" + ((i % 3) + 1);
                             if (link == null)
                             {
                                 <li class="feature-tile @oddOrEven @group"><img src="@image.ImageUrl" alt="@image.AlternativeText" width="@image.Width" /></li>
@@ -89,7 +90,7 @@
                 }
             </div>
         </div>
-        
+
         if (showSocialMedia)
         {
             <div class="supporting supporting-jobs">

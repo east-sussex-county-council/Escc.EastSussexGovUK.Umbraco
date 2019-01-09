@@ -7,9 +7,10 @@
 @using Escc.EastSussexGovUK.Umbraco.Web.Views
 @using Escc.EastSussexGovUK.Umbraco.Web.MicrosoftCmsMigration
 @using Escc.EastSussexGovUK.Views
+@using Escc.EastSussexGovUK.Mvc
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<MicrosoftCmsViewModel>
 @{
-    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
+    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
     Model.EsccWebsiteSkin = new CustomerFocusSkin();
 
     Html.RequiresCss(CssFileAlias.Resolve("CouncilPlanSmall"));
@@ -19,10 +20,10 @@
 
     var placeholders = CmsUtilities.Placeholders;
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
-    {
-        new EmbeddedYouTubeVideos() { Html = new [] { placeholders["phDefContent"].Value.ToString() }},
-        new EmbeddedGoogleMaps() { Html = new [] { placeholders["phDefContent"].Value.ToString() } },
-    });
+{
+new EmbeddedYouTubeVideos() { Html = new [] { placeholders["phDefContent"].Value.ToString() }},
+new EmbeddedGoogleMaps() { Html = new [] { placeholders["phDefContent"].Value.ToString() } },
+});
 
     var selectedClass = CouncilPlanUtility.PriorityClass();
 }
@@ -36,7 +37,7 @@
         <div class="content text-content">
             @Html.Partial("~/Views/EastSussexGovUK/Features/_Share.cshtml")
         </div>
-</article>
+    </article>
 </div>
 
 @Html.Partial("~/Views/Layouts/_SocialMedia.cshtml")

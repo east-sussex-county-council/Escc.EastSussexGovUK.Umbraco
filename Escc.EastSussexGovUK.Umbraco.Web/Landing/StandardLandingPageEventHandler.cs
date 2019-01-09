@@ -60,7 +60,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Landing
                             else
                             {
                                 // Otherwise just strip any HTML from the placeholder, which will be there if pasted from Word - it should be a text description
-                                html = new HtmlTagSantiser().StripTags(html);
+                                html = new HtmlTagSanitiser().StripTags(html);
                             }
 
                             entity.SetValue(propertyAlias, html);

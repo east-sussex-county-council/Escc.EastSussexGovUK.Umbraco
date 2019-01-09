@@ -5,10 +5,11 @@
 @using Escc.EastSussexGovUK.Skins
 @using Escc.EastSussexGovUK.Umbraco.Jobs
 @using Escc.EastSussexGovUK.Umbraco.Web.Services
+@using Escc.EastSussexGovUK.Mvc
 @using Escc.EastSussexGovUK.Views
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.CampaignTemplates.CampaignTilesViewModel>
 @{
-    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
+    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
     Model.EsccWebsiteSkin = new CustomerFocusSkin();
 
     Html.RequiresCss(CssFileAlias.Resolve("CampaignSmall"));
@@ -44,14 +45,14 @@
             @Html.Partial("~/Views/Layouts/_GuideNavigation.cshtml", Model.CampaignPages)
 
             <ul class="tiles">
-                @for (var i = 0 ; i < Model.Tiles.Count; i++)
+                @for (var i = 0; i < Model.Tiles.Count; i++)
                 {
                     var tile = Model.Tiles[i];
                     var oddOrEven = (i % 2 == 0) ? "odd" : "even"; // because nth-child is IE11+
                     var group = "group" + ((i % 3) + 1);
                     <li class="@oddOrEven @group">
                         <a href="@tile.Url">
-                            <img src="@tile.Image.ImageUrl" alt="@tile.Image.AlternativeText" width="@tile.Image.Width"/>
+                            <img src="@tile.Image.ImageUrl" alt="@tile.Image.AlternativeText" width="@tile.Image.Width" />
                             @if (!String.IsNullOrEmpty(tile.Title))
                             {
                                 <h2>@tile.Title</h2>

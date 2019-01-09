@@ -10,6 +10,7 @@ using Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine;
 using Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink;
 using Escc.EastSussexGovUK.Umbraco.Examine;
 using Escc.EastSussexGovUK.Umbraco.Api.Jobs.JobTransformers;
+using Escc.Net.Configuration;
 
 namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
 {
@@ -30,7 +31,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
             new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser(), new TalentLinkWorkPatternParser()), 
             new ConfigurationProxyProvider(), true),
             new LuceneStopWordsRemover(),
-            new HtmlTagSantiser(),
+            new HtmlTagSanitiser(),
             new Dictionary<IEnumerable<IJobMatcher>, IEnumerable<IJobTransformer>>()
             {
                 { new IJobMatcher[] { new JointCommunityRehabilitationMatcher(), new LocationMatcher("Lewes") }, new IJobTransformer[] { new SetJobLocationTransformer(new[] { "Crowborough", "Lewes", "Peacehaven",  "Wadhurst" }) } },

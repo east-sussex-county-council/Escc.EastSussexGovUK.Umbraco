@@ -58,8 +58,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.ServiceAlerts
             }
 
             var closureDataSource = new AzureBlobStorageDataSource(ConfigurationManager.ConnectionStrings["Escc.ServiceClosures.AzureStorage"].ConnectionString, "service-closures");
-            var closureData = closureDataSource.ReadClosureData(new ServiceType("school"));
-            if (closureData != null && (TooLateForToday() ? closureData.EmergencyClosureExistsTomorrow() : closureData.EmergencyClosureExistsToday()))
+            var closureData = closureDataSource.ReadClosureDataAsync(new ServiceType("school")).Result;
+            if (closureData != null && (TooLateForToday() ? closureData.EmergencyClosureExists(DateTime.Today.AddDays(1)) : closureData.EmergencyClosureExists(DateTime.Today)))
             {
                 alertHtml = "<p><a href=\"https://www.eastsussex.gov.uk/educationandlearning/schools/schoolclosures/\">Emergency school closures</a> &#8211; check if your school is affected, and subscribe to alerts.</p>";
 

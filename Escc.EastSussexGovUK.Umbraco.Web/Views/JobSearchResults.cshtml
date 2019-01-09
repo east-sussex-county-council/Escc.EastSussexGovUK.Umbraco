@@ -4,9 +4,10 @@
 @using Escc.EastSussexGovUK.Umbraco.Jobs
 @using Escc.EastSussexGovUK.Umbraco.Web.Jobs.Alerts
 @using Escc.EastSussexGovUK.Views
+@using Escc.EastSussexGovUK.Mvc
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.Jobs.JobSearchResultsViewModel>
 @{
-    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout, ViewEngine.Mvc);
+    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
     Model.EsccWebsiteSkin = new CustomerFocusSkin();
     Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));
     Html.RequiresCss(CssFileAlias.Resolve("FormsMedium"), MediaQueryAlias.Resolve("Medium"));
@@ -29,7 +30,7 @@
     queryWithoutSort.Remove("sort");
     var urlWithoutSort = Request.Url.AbsolutePath + "?" + queryWithoutSort;
     Model.Metadata.PageUrl = new Uri(Request.Url, urlWithoutSort);
-    if (queryWithoutSort.Count > 0) { urlWithoutSort += "&";}
+    if (queryWithoutSort.Count > 0) { urlWithoutSort += "&"; }
     urlWithoutSort += "sort=";
 
     var queryWithoutPage = HttpUtility.ParseQueryString(Request.Url.Query);
@@ -59,13 +60,13 @@
             Html.RenderPartial("~/Views/_PagingBarControl.ascx", Model.Paging);
             <table class="job-results">
                 <thead>
-                <tr>
-                    <th class="job-title"><a href="@urlWithoutSort@(sort == JobSearchQuery.JobsSortOrder.JobTitleAscending ? "jobtitledescending" : "jobtitleascending")">Job title</a></th>
-                    <th class="location"><a href="@urlWithoutSort@(sort == JobSearchQuery.JobsSortOrder.LocationAscending ? "locationdescending" : "locationascending")">Location</a></th>
-                    <th class="salary"><a href="@urlWithoutSort@(sort == JobSearchQuery.JobsSortOrder.SalaryRangeAscending ? "salaryrangedescending" : "salaryrangeascending")">Salary range</a></th>
-                    <th class="work-pattern"><a href="@urlWithoutSort@(sort == JobSearchQuery.JobsSortOrder.WorkPatternAscending ? "workpatterndescending" : "workpatternascending")">Work pattern</a></th>
-                    <th class="closing-date"><a href="@urlWithoutSort@(sort == JobSearchQuery.JobsSortOrder.ClosingDateAscending ? "closingdatedescending" : "closingdateascending")">Closing date</a></th>
-                </tr>
+                    <tr>
+                        <th class="job-title"><a href="@urlWithoutSort@(sort == JobSearchQuery.JobsSortOrder.JobTitleAscending ? "jobtitledescending" : "jobtitleascending")">Job title</a></th>
+                        <th class="location"><a href="@urlWithoutSort@(sort == JobSearchQuery.JobsSortOrder.LocationAscending ? "locationdescending" : "locationascending")">Location</a></th>
+                        <th class="salary"><a href="@urlWithoutSort@(sort == JobSearchQuery.JobsSortOrder.SalaryRangeAscending ? "salaryrangedescending" : "salaryrangeascending")">Salary range</a></th>
+                        <th class="work-pattern"><a href="@urlWithoutSort@(sort == JobSearchQuery.JobsSortOrder.WorkPatternAscending ? "workpatterndescending" : "workpatternascending")">Work pattern</a></th>
+                        <th class="closing-date"><a href="@urlWithoutSort@(sort == JobSearchQuery.JobsSortOrder.ClosingDateAscending ? "closingdatedescending" : "closingdateascending")">Closing date</a></th>
+                    </tr>
                 </thead>
                 @Html.Partial("~/Views/JobsTableBody.cshtml", Model.Jobs)
             </table>
@@ -91,8 +92,8 @@
                 <input type="hidden" name="JobsSet" value="@(Model.Query?.JobsSet)" />
                 <div>
                     <label for="email">Your email address</label>
-                    <input type="email" name="email" id="email" required="required" aria-describedby="email-privacy" class="describedby-tip" data-tip-positions="top bottom"/>
-                    <input type="submit" value="Get job alert &gt;"/>
+                    <input type="email" name="email" id="email" required="required" aria-describedby="email-privacy" class="describedby-tip" data-tip-positions="top bottom" />
+                    <input type="submit" value="Get job alert &gt;" />
                     <p id="email-privacy">
                         We'll only use your email to send you job alerts.
                         @if (Model.JobsPrivacyPage != null)

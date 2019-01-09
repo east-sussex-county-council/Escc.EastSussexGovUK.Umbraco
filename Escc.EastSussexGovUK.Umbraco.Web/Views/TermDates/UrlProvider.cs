@@ -7,6 +7,7 @@ using System.Web.Caching;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using Escc.Net;
+using Escc.Net.Configuration;
 using Exceptionless;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.Views.TermDates
