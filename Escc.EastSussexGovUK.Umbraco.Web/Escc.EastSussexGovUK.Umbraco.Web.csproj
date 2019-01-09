@@ -74,8 +74,8 @@
       <HintPath>..\packages\xmlrpcnet.2.5.0\lib\net20\CookComputing.XmlRpcV2.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Dapper, Version=1.50.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dapper.1.50.0\lib\net451\Dapper.dll</HintPath>
+    <Reference Include="Dapper, Version=1.50.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.5\lib\net451\Dapper.dll</HintPath>
     </Reference>
     <Reference Include="Diplo.LinkChecker, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Diplo.LinkChecker.1.3.0\lib\net45\Diplo.LinkChecker.dll</HintPath>
@@ -109,17 +109,17 @@
       <HintPath>..\packages\Escc.EastSussexGovUK.10.0.0\lib\netstandard2.0\Escc.EastSussexGovUK.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.EastSussexGovUK.Mvc.6.0.1\lib\net462\Escc.EastSussexGovUK.Mvc.dll</HintPath>
+      <HintPath>..\packages\Escc.EastSussexGovUK.Mvc.6.0.2\lib\net462\Escc.EastSussexGovUK.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.Rss, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.EastSussexGovUK.Rss.2.0.0\lib\Escc.EastSussexGovUK.Rss.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.TemplateSource, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.2\lib\Escc.EastSussexGovUK.TemplateSource.dll</HintPath>
+      <HintPath>..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.3\lib\Escc.EastSussexGovUK.TemplateSource.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.WebForms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.EastSussexGovUK.WebForms.5.0.1\lib\net462\Escc.EastSussexGovUK.WebForms.dll</HintPath>
+      <HintPath>..\packages\Escc.EastSussexGovUK.WebForms.5.0.2\lib\net462\Escc.EastSussexGovUK.WebForms.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Elibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Elibrary.1.1.0\lib\Escc.Elibrary.dll</HintPath>
@@ -150,8 +150,11 @@
     <Reference Include="Escc.Net.Configuration, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Net.Configuration.1.0.0\lib\net462\Escc.Net.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.Redirects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Redirects.2.0.0\lib\Escc.Redirects.dll</HintPath>
+    <Reference Include="Escc.Redirects, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Redirects.3.0.0\lib\netstandard2.0\Escc.Redirects.dll</HintPath>
+    </Reference>
+    <Reference Include="Escc.Redirects.Handlers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Redirects.Handlers.1.0.0\lib\Escc.Redirects.Handlers.dll</HintPath>
     </Reference>
     <Reference Include="Escc.RubbishAndRecycling.SiteFinder.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.RubbishAndRecycling.SiteFinder.2.0.0\lib\Escc.RubbishAndRecycling.SiteFinder.Website.dll</HintPath>
@@ -4986,7 +4989,7 @@
     <Error Condition="!Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.2.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.RubbishAndRecycling.SiteFinder.2.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.FindAddress.Mvc.3.0.0\build\Escc.FindAddress.Mvc.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.FindAddress.Mvc.3.0.0\build\Escc.FindAddress.Mvc.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.8.0.0\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.8.0.0\build\Escc.Umbraco.PropertyEditors.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.2\build\Escc.EastSussexGovUK.TemplateSource.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.2\build\Escc.EastSussexGovUK.TemplateSource.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.3\build\Escc.EastSussexGovUK.TemplateSource.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.3\build\Escc.EastSussexGovUK.TemplateSource.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
@@ -5027,5 +5030,5 @@
   <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.2.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.2.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
   <Import Project="..\packages\Escc.FindAddress.Mvc.3.0.0\build\Escc.FindAddress.Mvc.targets" Condition="Exists('..\packages\Escc.FindAddress.Mvc.3.0.0\build\Escc.FindAddress.Mvc.targets')" />
   <Import Project="..\packages\Escc.Umbraco.PropertyEditors.8.0.0\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.8.0.0\build\Escc.Umbraco.PropertyEditors.targets')" />
-  <Import Project="..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.2\build\Escc.EastSussexGovUK.TemplateSource.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.2\build\Escc.EastSussexGovUK.TemplateSource.targets')" />
+  <Import Project="..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.3\build\Escc.EastSussexGovUK.TemplateSource.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.3\build\Escc.EastSussexGovUK.TemplateSource.targets')" />
 </Project>
