@@ -179,12 +179,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
             LogHelper.Info<BaseJobsIndexer>($"Building Examine index item for job '{job.Id}'");
 
             var salary = job.Salary.SalaryRange;
-            if (_tagSanitiser != null) salary = _tagSanitiser.StripTags(salary);
             var salaryWithStopWords = salary;
-            if (_stopWordsRemover != null) {
-                salary = _stopWordsRemover.Filter(salary);
+            if (!String.IsNullOrEmpty(salary))
+            {
+                if (_tagSanitiser != null)
+                {
+                    salary = _tagSanitiser.StripTags(salary);
+                }
+                if (_stopWordsRemover != null)
+                {
+                    salary = _stopWordsRemover.Filter(salary);
+                }
             }
-
             var simpleDataSet = new SimpleDataSet { NodeDefinition = new IndexedNode(), RowData = new Dictionary<string, string>() };
 
             simpleDataSet.NodeDefinition.NodeId = job.Id;
@@ -209,9 +215,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
             simpleDataSet.RowData.Add("contractType", _stopWordsRemover != null ? _stopWordsRemover.Filter(job.ContractType) : job.ContractType);
             simpleDataSet.RowData.Add("department", _stopWordsRemover != null ? _stopWordsRemover.Filter(job.Department) : job.Department);
             simpleDataSet.RowData.Add("departmentDisplay", job.Department);
-            simpleDataSet.RowData.Add("fullTime", job.WorkPattern.IsFullTime.ToString());
-            simpleDataSet.RowData.Add("partTime", job.WorkPattern.IsPartTime.ToString());
-            simpleDataSet.RowData.Add("workPattern", job.WorkPattern.ToString());
+            simpleDataSet.RowData.Add("fullTime", job.WorkPattern?.IsFullTime.ToString());
+            simpleDataSet.RowData.Add("partTime", job.WorkPattern?.IsPartTime.ToString());
+            simpleDataSet.RowData.Add("workPattern", job.WorkPattern?.ToString());
             simpleDataSet.RowData.Add("datePublished", DateTime.UtcNow.ToIso8601DateTime());
 
             var locationsList = string.Join(", ", job.Locations.ToArray<string>());
