@@ -445,6 +445,11 @@
         <assemblyIdentity name="Escc.ActiveDirectory" publicKeyToken="06fad7304560ae6f" culture="neutral" />
         <bindingRedirect oldVersion="0.0.0.0-1.1.0.0" newVersion="1.1.0.0" />
       </dependentAssembly>
+      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Data.SqlClient')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="System.Data.SqlClient" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.5.0.0" newVersion="4.5.0.0" />
+      </dependentAssembly>
     </assemblyBinding>
 
   </runtime>
