@@ -49,7 +49,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         /// </summary>
         /// <param name="jobId"></param>
         /// <returns></returns>
-        /// <exception cref="System.NotImplementedException"></exception>
         public async Task<Job> ReadJob(string jobId)
         {
             if (String.IsNullOrEmpty(jobId)) return null;

@@ -223,9 +223,39 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to &lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot; http://www.w3.org/TR/html4/strict.dtd&quot;&gt;&lt;html lang=&quot;en-GB&quot; xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xmlns:addthis=&quot;http://www.addthis.com/help/api-spec&quot; &gt;&lt;head&gt;&lt;meta name=&quot;GENERATOR&quot; content=&quot;MrTed&quot;&gt;&lt;meta name=&quot;TEMPLATEBASE&quot; content=&quot;Accessible HTML&quot;&gt;&lt;meta name=&quot;LASTUPDATED&quot; content=&quot;18/08/05 10:05:33&quot;&gt;&lt;meta name=&quot;author&quot; content=&quot;MrTed&quot;&gt;&lt;meta name=&quot;keywords&quot; content=&quot;Jobs, Career Section, Candidate Portal&quot;&gt;&lt;meta name=&quot;description&quot; content=&quot;Mrted Talentlink syn [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string SearchFieldsOuterHtml {
+        internal static string TalentLinkSearchFieldsOuterHtml {
             get {
-                return ResourceManager.GetString("SearchFieldsOuterHtml", resourceCulture);
+                return ResourceManager.GetString("TalentLinkSearchFieldsOuterHtml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+        ///&lt;job_options&gt;&lt;custom_fields&gt;&lt;question_id&gt;12&lt;/question_id&gt;&lt;label&gt;Reason for Fixed Term/Secondment?&lt;/label&gt;&lt;type&gt;text&lt;/type&gt;&lt;required&gt;&lt;/required&gt;&lt;/custom_fields&gt;&lt;custom_fields&gt;&lt;question_id&gt;13&lt;/question_id&gt;&lt;label&gt;Working Pattern&lt;/label&gt;&lt;type&gt;select&lt;/type&gt;&lt;required&gt;&lt;/required&gt;&lt;options&gt;&lt;id&gt;15&lt;/id&gt;&lt;label&gt;Annualised Hours&lt;/label&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;/options&gt;&lt;options&gt;&lt;id&gt;16&lt;/id&gt;&lt;label&gt;Full Time&lt;/label&gt;&lt;has_jobs&gt;1&lt;/has_jobs&gt;&lt;/options&gt;&lt;options&gt;&lt;id&gt;17&lt;/id&gt;&lt;label&gt;Part Time&lt;/la [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TribePadCustomFieldsXml {
+            get {
+                return ResourceManager.GetString("TribePadCustomFieldsXml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+        ///&lt;job_options&gt;&lt;job_categories&gt;&lt;job_category&gt;&lt;id&gt;1&lt;/id&gt;&lt;has_jobs&gt;1&lt;/has_jobs&gt;&lt;name&gt;Administration &amp;amp;amp; Clerical&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;2&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Adult Learning&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;3&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Analyst&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;4&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Apprenticeships &amp;amp;amp; Trainee&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;5&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Architec [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TribePadJobOptionsXml {
+            get {
+                return ResourceManager.GetString("TribePadJobOptionsXml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+        ///&lt;jobs&gt;&lt;job&gt;&lt;job_id&gt;142&lt;/job_id&gt;&lt;job_title&gt;Job&lt;/job_title&gt;&lt;reference&gt;orbis/TP/12/142&lt;/reference&gt;&lt;language_code&gt;en&lt;/language_code&gt;&lt;no_of_positions&gt;1&lt;/no_of_positions&gt;&lt;status&gt;1&lt;/status&gt;&lt;status_social&gt;0&lt;/status_social&gt;&lt;open_date&gt;2019-01-11&lt;/open_date&gt;&lt;expiry_date&gt;2019-02-11&lt;/expiry_date&gt;&lt;salary_currency&gt;1&lt;/salary_currency&gt;&lt;salary_frequency&gt;1&lt;/salary_frequency&gt;&lt;salary_from&gt;34&lt;/salary_from&gt;&lt;salary_to&gt;35&lt;/salary_to&gt;&lt;salary_from_text&gt;34&lt;/salary_from_text&gt;&lt;salary_to_text&gt;35&lt;/s [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TribePadJobXml {
+            get {
+                return ResourceManager.GetString("TribePadJobXml", resourceCulture);
             }
         }
         

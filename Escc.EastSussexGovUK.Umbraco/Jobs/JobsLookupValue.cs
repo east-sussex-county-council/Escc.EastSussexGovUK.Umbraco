@@ -11,9 +11,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
     public class JobsLookupValue
     {
         /// <summary>
-        /// Gets or sets the identifier.
+        /// Gets or sets the identifier of the field the lookup value can be found in
         /// </summary>
-        public string Id { get; set; }
+        public string FieldId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the identifier of the lookup value.
+        /// </summary>
+        public string LookupValueId { get; set; }
 
         /// <summary>
         /// Gets or sets the text.

@@ -6,7 +6,7 @@ using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web;
+using Humanizer;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
 using Escc.Net;
 
@@ -19,22 +19,28 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
     {
         private readonly Uri _lookupValuesApiUrl;
         private readonly IProxyProvider _proxy;
-        private readonly IJobLookupValuesParser _lookupValuesParser;
+        private readonly IJobLookupValuesParser _builtInLookupValuesParser;
+        private readonly IJobLookupValuesParser _customFieldLookupValuesParser;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="JobsDataFromTribePad" /> class.
         /// </summary>
         /// <param name="lookupValuesApiUrl">The search URL.</param>
-        /// <param name="lookupValuesParser">The parser for lookup values in the TribePad HTML.</param>
+        /// <param name="builtInLookupValuesParser">The parser for lookup values in built-in fields in the TribePad XML.</param>
+        /// <param name="customFieldLookupValuesParser">The parser for lookup values in custom fields in the TribePad XML.</param>
         /// <param name="proxy">The proxy (optional).</param>
-        /// <exception cref="System.ArgumentNullException">sourceUrl</exception>
-        public JobsLookupValuesFromTribePad(Uri lookupValuesApiUrl, IJobLookupValuesParser lookupValuesParser, IProxyProvider proxy)
+        /// <exception cref="System.ArgumentNullException">lookupValuesApiUrl</exception>
+        /// <exception cref="System.ArgumentNullException">builtInLookupValuesParser</exception>
+        /// <exception cref="System.ArgumentNullException">customFieldLookupValuesParser</exception>
+        public JobsLookupValuesFromTribePad(Uri lookupValuesApiUrl, IJobLookupValuesParser builtInLookupValuesParser, IJobLookupValuesParser customFieldLookupValuesParser, IProxyProvider proxy)
         {
             if (lookupValuesApiUrl == null) throw new ArgumentNullException(nameof(lookupValuesApiUrl));
-            if (lookupValuesParser == null) throw new ArgumentNullException(nameof(lookupValuesParser));
+            if (builtInLookupValuesParser == null) throw new ArgumentNullException(nameof(builtInLookupValuesParser));
+            if (customFieldLookupValuesParser == null) throw new ArgumentNullException(nameof(customFieldLookupValuesParser));
 
             _lookupValuesApiUrl = lookupValuesApiUrl;
-            _lookupValuesParser = lookupValuesParser;
+            _builtInLookupValuesParser = builtInLookupValuesParser;
+            _customFieldLookupValuesParser = customFieldLookupValuesParser;
             _proxy = proxy;
         }
 
@@ -54,17 +60,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         /// <returns></returns>
         public async Task<IList<JobsLookupValue>> ReadJobTypes()
         {
-            return await ReadLookupValuesFromApi(_lookupValuesParser, "job_categories");
+            return await ReadLookupValuesFromApi(_builtInLookupValuesParser, "job_categories");
         }
 
         /// <summary>
         /// Reads the organisations advertising jobs
         /// </summary>
         /// <returns></returns>
-        /// <exception cref="System.NotImplementedException"></exception>
         public async Task<IList<JobsLookupValue>> ReadOrganisations()
         {
-            return await ReadLookupValuesFromApi(_lookupValuesParser, "business_units");
+            return await ReadLookupValuesFromApi(_builtInLookupValuesParser, "business_units");
         }
 
         /// <summary>
@@ -82,7 +87,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         /// <returns></returns>
         public async Task<IList<JobsLookupValue>> ReadWorkPatterns()
         {
-            return new List<JobsLookupValue>();
+            var results = await ReadLookupValuesFromApi(_customFieldLookupValuesParser, "Working Pattern");
+            for (var i = 0; i<results.Count;i++)
+            {
+                results[i].Text = results[i].Text.Humanize(LetterCasing.Sentence);
+            }
+            return results;
         }
 
         private async Task<IList<JobsLookupValue>> ReadLookupValuesFromApi(IJobLookupValuesParser parser, string fieldName)

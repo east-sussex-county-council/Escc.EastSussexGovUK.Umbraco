@@ -20,13 +20,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
     {
         private static readonly Uri ResultsUrl = new Uri(ConfigurationManager.AppSettings["TribePadPublicJobsResultsUrl"]);
         private static readonly Uri AdvertUrl = new Uri(ConfigurationManager.AppSettings["TribePadPublicJobsAdvertUrl"]);
+        private static readonly Uri LookupValuesApiUrl = new Uri(ConfigurationManager.AppSettings["TribePadPublicJobsLookupValuesUrl"]);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PublicJobsIndexer"/> class.
         /// </summary>
-        public PublicJobsIndexer() : base(new JobsDataFromTribePad(ResultsUrl, AdvertUrl,
-            new TribePadJobParser(),
-            new TribePadJobParser(), 
+        public PublicJobsIndexer() : base(new JobsDataFromTribePad(ResultsUrl, AdvertUrl, 
+            new TribePadJobParser(new JobsLookupValuesFromTribePad(LookupValuesApiUrl, new LookupValuesFromTribePadBuiltInFieldParser(), new LookupValuesFromTribePadCustomFieldParser(), new ConfigurationProxyProvider())),
+            new TribePadJobParser(new JobsLookupValuesFromTribePad(LookupValuesApiUrl, new LookupValuesFromTribePadBuiltInFieldParser(), new LookupValuesFromTribePadCustomFieldParser(), new ConfigurationProxyProvider())), 
             new ConfigurationProxyProvider(), true), 
             new LuceneStopWordsRemover(), 
             new HtmlTagSanitiser(),

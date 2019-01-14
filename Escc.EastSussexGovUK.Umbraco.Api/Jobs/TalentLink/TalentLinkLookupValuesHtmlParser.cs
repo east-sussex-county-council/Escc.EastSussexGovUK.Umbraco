@@ -56,7 +56,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
             value = Regex.Replace(value, @" \([0-9]+\)$", String.Empty);
             int parsedCount;
             Int32.TryParse(count.Groups[1].Value, out parsedCount);
-            lookupValues.Add(new JobsLookupValue() { Id = matchedKey, Text = value, Count = parsedCount});
+            lookupValues.Add(new JobsLookupValue() { LookupValueId = matchedKey, Text = value, Count = parsedCount});
         }
     }
 }
