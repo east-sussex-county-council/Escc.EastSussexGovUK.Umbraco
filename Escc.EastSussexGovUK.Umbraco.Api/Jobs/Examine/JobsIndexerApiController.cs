@@ -9,8 +9,10 @@ using Umbraco.Core.Logging;
 using Umbraco.Web.WebApi;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink;
+using System.Linq;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
+using System.Xml.Linq;
+using System.Web.Hosting;
 
 namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
 {
@@ -26,7 +28,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
         {
             try
             {
-                UpdateIndex("PublicJobsSearcher", new PublicJobsIndexer());
+                UpdateIndex("PublicJobsIndexer", "PublicJobsSearcher");
                 return Request.CreateResponse(HttpStatusCode.NoContent);
             }
             catch (Exception ex)
@@ -46,7 +48,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
         {
             try
             {
-                UpdateIndex("RedeploymentJobsSearcher", new RedeploymentJobsIndexer());
+                UpdateIndex("RedeploymentJobsIndexer", "RedeploymentJobsSearcher");
                 return Request.CreateResponse(HttpStatusCode.NoContent);
             }
             catch (Exception ex)
@@ -97,7 +99,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
             }
         }
 
-        private static void UpdateIndex(string searcherName, BaseJobsIndexer indexer)
+        private static void UpdateIndex(string indexerName, string searcherName)
         {
             var jobsSearcher = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[searcherName], null, null, null);
             var jobs = jobsSearcher.ReadJobs(new JobSearchQuery()).Result;
@@ -107,7 +109,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
                 if (!jobIds.ContainsKey(job.Id)) jobIds.Add(job.Id, job.DatePublished);
             }
 
-            indexer.UpdateIndex(jobIds);
+            var examineConfig = XDocument.Load(HostingEnvironment.MapPath("~/config/ExamineSettings.config"));
+            var indexerConfig = examineConfig.Root.Element("ExamineIndexProviders").Element("providers").Elements("add").SingleOrDefault(x => x.Attribute("name").Value == indexerName);
+            if (indexerConfig != null)
+            {
+                var indexer = (BaseJobsIndexer)Activator.CreateInstance(Type.GetType(indexerConfig.Attribute("dataService").Value));
+                indexer.UpdateIndex(jobIds);
+            }
         }
 
         [HttpGet]
