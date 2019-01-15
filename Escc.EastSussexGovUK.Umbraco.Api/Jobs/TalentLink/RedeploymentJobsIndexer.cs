@@ -26,9 +26,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
         /// <summary>
         /// Initializes a new instance of the <see cref="RedeploymentJobsIndexer"/> class.
         /// </summary>
-        public RedeploymentJobsIndexer() : base(new JobsDataFromTalentLink(ResultsUrl, AdvertUrl, 
-            new TalentLinkJobResultsHtmlParser(new TalentLinkSalaryParser()), 
-            new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser(), new TalentLinkWorkPatternParser()), 
+        public RedeploymentJobsIndexer()
+        {
+            var salaryParser = new TalentLinkSalaryParser();
+
+            InitialiseDependencies(new JobsDataFromTalentLink(ResultsUrl, AdvertUrl,
+            new TalentLinkJobResultsHtmlParser(salaryParser),
+            new TalentLinkJobAdvertHtmlParser(salaryParser, new TalentLinkWorkPatternParser()),
             new ConfigurationProxyProvider(), true),
             new LuceneStopWordsRemover(),
             new HtmlTagSanitiser(),
@@ -37,8 +41,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
                 { new IJobMatcher[] { new JointCommunityRehabilitationMatcher(), new LocationMatcher("Lewes") }, new IJobTransformer[] { new SetJobLocationTransformer(new[] { "Crowborough", "Lewes", "Peacehaven",  "Wadhurst" }) } },
                 { new IJobMatcher[] { new JointCommunityRehabilitationMatcher(), new LocationMatcher("Eastbourne") }, new IJobTransformer[] { new SetJobLocationTransformer(new[] { "Eastbourne", "Hailsham", "Polegate", "Seaford" }) } },
                 { new IJobMatcher[] { new JointCommunityRehabilitationMatcher(), new LocationMatcher("Bexhill-on-Sea") }, new IJobTransformer[] { new SetJobLocationTransformer(new[] { "Bexhill-on-Sea", "Hastings", "Rural Rother" }) } }
-            })
-        {
+            });
         }
 
         /// <summary>

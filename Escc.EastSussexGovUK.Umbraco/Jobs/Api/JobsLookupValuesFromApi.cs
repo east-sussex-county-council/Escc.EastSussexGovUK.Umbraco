@@ -70,6 +70,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Api
         }
 
         /// <summary>
+        /// Reads the salary frequencies, eg hourly, weekly, annually
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IList<JobsLookupValue>> ReadSalaryFrequencies()
+        {
+            return await ReadLookupValuesFromApi("salaryfrequencies");
+        }
+
+        /// <summary>
         /// Reads the work patterns, eg full time or part time
         /// </summary>
         /// <returns></returns>

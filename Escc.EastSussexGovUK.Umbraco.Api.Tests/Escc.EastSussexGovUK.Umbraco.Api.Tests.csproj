@@ -95,6 +95,7 @@
     <Compile Include="TalentLinkLookupValuesHtmlParserTests.cs" />
     <Compile Include="TalentLinkSalaryParserTests.cs" />
     <Compile Include="TalentLinkWorkPatternParserTests.cs" />
+    <Compile Include="TribePadSalaryParserTests.cs" />
     <Compile Include="TruncateLongLinksFormatterTests.cs" />
   </ItemGroup>
   <ItemGroup>

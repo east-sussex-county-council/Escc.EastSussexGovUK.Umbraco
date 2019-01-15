@@ -27,21 +27,20 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
     /// </summary>
     public abstract class BaseJobsIndexer : ISimpleDataService
     {
-        private readonly IJobsDataProvider _jobsProvider;
-        private readonly ISearchFilter _stopWordsRemover;
-        private readonly IHtmlTagSanitiser _tagSanitiser;
-        private readonly Dictionary<IEnumerable<IJobMatcher>, IEnumerable<IJobTransformer>> _jobTransformers;
+        private IJobsDataProvider _jobsProvider;
+        private ISearchFilter _stopWordsRemover;
+        private IHtmlTagSanitiser _tagSanitiser;
+        private Dictionary<IEnumerable<IJobMatcher>, IEnumerable<IJobTransformer>> _jobTransformers;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BaseJobsIndexer" /> class.
+        /// 
         /// </summary>
         /// <param name="jobsProvider">The jobs provider.</param>
         /// <param name="stopWordsRemover">The stop words remover.</param>
         /// <param name="tagSanitiser">The tag sanitiser.</param>
         /// <param name="jobTransformers">Transforms to apply to specific jobs.</param>
         /// <exception cref="ArgumentNullException">jobsProvider</exception>
-        /// <exception cref="System.ArgumentNullException">stopWordsRemover</exception>
-        protected BaseJobsIndexer(IJobsDataProvider jobsProvider, ISearchFilter stopWordsRemover, IHtmlTagSanitiser tagSanitiser, Dictionary<IEnumerable<IJobMatcher>, IEnumerable<IJobTransformer>> jobTransformers)
+        protected void InitialiseDependencies(IJobsDataProvider jobsProvider, ISearchFilter stopWordsRemover, IHtmlTagSanitiser tagSanitiser, Dictionary<IEnumerable<IJobMatcher>, IEnumerable<IJobTransformer>> jobTransformers)
         {
             if (jobsProvider == null) throw new ArgumentNullException(nameof(jobsProvider));
             _jobsProvider = jobsProvider;
@@ -57,6 +56,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
 
         public IEnumerable<SimpleDataSet> GetAllData(string indexType)
         {
+            if (_jobsProvider == null) throw new InvalidOperationException("You must call InitialiseDependencies before using this instance");
+
             var dataSets = new List<SimpleDataSet>();
 
             try

@@ -17,16 +17,20 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
     public class TribePadJobParser : IJobAdvertParser, IJobResultsParser
     {
         private readonly IJobsLookupValuesProvider _lookupValuesProvider;
+        private readonly ISalaryParser _salaryParser;
         private IEnumerable<JobsLookupValue> _workPatterns;
         private IEnumerable<JobsLookupValue> _contractTypes;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TribePadJobParser"/> class.
         /// </summary>
+        /// <param name="lookupValuesProvider">A method of supplying lookup values for identifiers referenced by the job data</param>
+        /// <param name="salaryParser">A method of parsing salary information for the job</param>
         /// <exception cref="ArgumentNullException">lookupValuesProvider</exception>
-        public TribePadJobParser(IJobsLookupValuesProvider lookupValuesProvider)
+        public TribePadJobParser(IJobsLookupValuesProvider lookupValuesProvider, ISalaryParser salaryParser)
         {
             _lookupValuesProvider = lookupValuesProvider ?? throw new ArgumentNullException(nameof(lookupValuesProvider));
+            _salaryParser = salaryParser ?? throw new ArgumentNullException(nameof(salaryParser));
         }
 
         /// <summary>
@@ -44,7 +48,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
                 var xml = XDocument.Parse(sourceData);
                 var jobXml = xml.Root.Element("job");
 
-                return ParseJob(jobXml, _workPatterns, _contractTypes);
+                return ParseJob(jobXml);
             }
             catch (Exception exception)
             {
@@ -83,13 +87,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
 
             foreach (var jobXml in jobsXml)
             {
-                parseResult.Jobs.Add(ParseJob(jobXml,_workPatterns, _contractTypes));
+                parseResult.Jobs.Add(ParseJob(jobXml));
             }
 
             return parseResult;
         }
 
-        private static Job ParseJob(XElement jobXml, IEnumerable<JobsLookupValue> workPatterns, IEnumerable<JobsLookupValue> contractTypes)
+        private Job ParseJob(XElement jobXml)
         {
             var job = new Job()
             {
@@ -98,11 +102,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
                 JobTitle = jobXml.Element("job_title").Value.Trim(),
                 Department= jobXml.Element("business_unit").Value.Trim().Replace("ESCC: ", string.Empty),
                 Organisation = jobXml.Element("region")?.Value.Trim(),
-                Salary = new Salary()
-                {
-                    MinimumSalary = Int32.Parse(jobXml.Element("salary_from").Value, CultureInfo.InvariantCulture),
-                    MaximumSalary = Int32.Parse(jobXml.Element("salary_to").Value, CultureInfo.InvariantCulture)
-                },
                 DatePublished = new DateTime(Int32.Parse(jobXml.Element("open_date").Value.Substring(0, 4), CultureInfo.InvariantCulture),
                                                             Int32.Parse(jobXml.Element("open_date").Value.Substring(5, 2), CultureInfo.InvariantCulture),
                                                             Int32.Parse(jobXml.Element("open_date").Value.Substring(8, 2), CultureInfo.InvariantCulture)),
@@ -115,20 +114,42 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             job.AdditionalInformationHtml = new HtmlString(HttpUtility.HtmlDecode(jobXml.Element("ideal_candidate")?.Value));
             job.EqualOpportunitiesHtml = new HtmlString(HttpUtility.HtmlDecode(jobXml.Element("about_company")?.Value));
             job.JobType = HttpUtility.HtmlDecode(jobXml.Element("category_name")?.Value);
+            job.Salary = _salaryParser.ParseSalaryFromJobAdvert(jobXml.ToString());
+            var salaryFrom = Int32.Parse(jobXml.Element("salary_from").Value, CultureInfo.InvariantCulture);
+            var salaryTo = Int32.Parse(jobXml.Element("salary_to").Value, CultureInfo.InvariantCulture);
+
+            job.Salary = new Salary()
+            {
+                MinimumSalary = salaryFrom,
+                MaximumSalary = salaryTo
+            };
+
+            if (salaryFrom == 0 && salaryTo == 0)
+            {
+                job.Salary.SalaryRange = "Voluntary";
+            }
+            else if (salaryFrom == salaryTo)
+            {
+                job.Salary.SalaryRange = $"£{salaryFrom.ToString("n0")} per annum";
+            }
+            else
+            {
+                job.Salary.SalaryRange = $"£{salaryFrom.ToString("n0")} to £{salaryTo.ToString("n0")} per annum";
+            }
 
             var contractTypeId = jobXml.Element("job_type")?.Value;
             if (!String.IsNullOrEmpty(contractTypeId))
             {
-                job.ContractType = contractTypes?.SingleOrDefault(x => x.LookupValueId == contractTypeId)?.Text;
+                job.ContractType = _contractTypes?.SingleOrDefault(x => x.LookupValueId == contractTypeId)?.Text;
             }
 
-            var exampleWorkPattern = workPatterns?.FirstOrDefault();
+            var exampleWorkPattern = _workPatterns?.FirstOrDefault();
             if (exampleWorkPattern != null)
             {
                 var workPatternId = jobXml.Element("custom_" + exampleWorkPattern.FieldId)?.Element("answer")?.Value;
                 if (!String.IsNullOrEmpty(workPatternId))
                 {
-                    var workPattern = workPatterns.SingleOrDefault(x => x.LookupValueId == workPatternId);
+                    var workPattern = _workPatterns.SingleOrDefault(x => x.LookupValueId == workPatternId);
                     if (workPattern != null)
                     {
                         var workPatternComparable = workPattern.Text.ToUpperInvariant();

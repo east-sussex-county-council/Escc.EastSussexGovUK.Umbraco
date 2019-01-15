@@ -82,6 +82,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
         }
 
         /// <summary>
+        /// Reads the salary frequencies, eg hourly, weekly, annually
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IList<JobsLookupValue>> ReadSalaryFrequencies()
+        {
+            return new List<JobsLookupValue>();
+        }
+
+        /// <summary>
         /// Reads the work patterns, eg full time or part time
         /// </summary>
         /// <returns></returns>
@@ -94,9 +103,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
         /// Reads the contract types, eg fixed term or permanent
         /// </summary>
         /// <returns></returns>
-        public Task<IList<JobsLookupValue>> ReadContractTypes()
+        public async Task<IList<JobsLookupValue>> ReadContractTypes()
         {
-            throw new PlatformNotSupportedException();
+            return new List<JobsLookupValue>();
         }
 
         private async Task<IList<JobsLookupValue>> ReadLookupValuesFromTalentLink(IJobLookupValuesParser parser, string fieldName)

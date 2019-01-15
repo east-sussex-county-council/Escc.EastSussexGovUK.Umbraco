@@ -942,32 +942,32 @@ Countywide
 &lt;/body&gt;
 &lt;/html&gt;</value>
   </data>
-  <data name="SalaryInBodyText1" xml:space="preserve">
+  <data name="TalentLinkSalaryInBodyText1" xml:space="preserve">
     <value>&lt;p&gt;Location: Hastings&lt;br&gt;Start date: 01 May 2017&lt;br&gt;Salary: Ark Leadership Scale L1 – L5 (£38, 984 - £43, 022)&lt;br&gt;Closing date: 9am on Monday 20 February 2017&lt;br&gt;Interview date: Thursday 23 February 2017&lt;br&gt;&lt;br&gt;Ark Blacklands and Ark Little Ridge Primary Academies are committed to safeguarding children; successful candidates will be subject to an enhanced Disclosure &amp;amp; Barring Service check.&lt;/p&gt;</value>
   </data>
-  <data name="SalaryInBodyText2" xml:space="preserve">
+  <data name="TalentLinkSalaryInBodyText2" xml:space="preserve">
     <value>&lt;span class="JD-FieldText" id="JDText-Field2"&gt;&lt;p&gt;QUALITY OFFICER &lt;br&gt;&lt;br&gt;£16,692 - £17,808 per annum&amp;nbsp;(Full-time/full year).&lt;/p&gt;
 &lt;p&gt;We are looking for a well-qualified, enthusiastic team player with excellent communication, administration and IT skills.&amp;nbsp; Key elements of this role will be managing the administration of the College’s quality management systems, preparing reports, setting up online surveys and other quality measures; and providing an analysis of the results.&amp;nbsp; You will need to have excellent communications skills and be effective in working with people across the organisation at all levels as well as having a sharp eye for detail and be meticulously organised.&lt;/p&gt;
 &lt;p&gt;Closing date:&amp;nbsp;&amp;nbsp; Monday 30 January 2017 (by noon).&lt;/p&gt;&lt;/span&gt;</value>
   </data>
-  <data name="SalaryInBodyText3" xml:space="preserve">
+  <data name="TalentLinkSalaryInBodyText3" xml:space="preserve">
     <value>&lt;p&gt;Salary: To be negotiated&lt;br&gt;Contract type: Permanent&lt;br&gt;Working pattern: Part time&lt;/p&gt;</value>
   </data>
-  <data name="SalaryInBodyText4" xml:space="preserve">
+  <data name="TalentLinkSalaryInBodyText4" xml:space="preserve">
     <value>&lt;h5 class="JD-FieldLabel" id="JDLabel-Field1"&gt;Job Details&lt;/h5&gt;
 &lt;span class="JD-FieldText" id="JDText-Field1"&gt;&lt;p&gt;Salary: Dependant on experience, knowledge and qualifications&lt;br /&gt;Contract type: Part Time&lt;br /&gt;Working pattern: 20-30 hours per week&lt;/p&gt;
 &lt;p&gt;Closing date: Thursday 31 August 2017&lt;/p&gt;
 &lt;p&gt;&lt;span&gt;Applicants can send their CV to &lt;a href="mailto:director@twigletsforestschoolnursery.com"&gt;director@twigletsforestschoolnursery.com&lt;/a&gt;&amp;nbsp;Once CV is received, an application form will be emailed.&lt;br /&gt;&lt;br /&gt;If you have any questions please &lt;/span&gt;&lt;span&gt;contact Shirley Zhang, Director if they have any questions via email or telephone 01273 515 971.&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;/span&gt;</value>
   </data>
-  <data name="SalaryInBodyText5" xml:space="preserve">
+  <data name="TalentLinkSalaryInBodyText5" xml:space="preserve">
     <value>&lt;h5 class="JD-FieldLabel" id="JDLabel-Field1"&gt;Job Details&lt;/h5&gt;
 &lt;span class="JD-FieldText" id="JDText-Field1"&gt;&lt;p&gt;Salary: £11.79 - £12.51 per hour&lt;br /&gt;Contract type: Part Time&lt;br /&gt;Working pattern: 20-30 hours per week&lt;/p&gt;
 &lt;p&gt;Closing date: Thursday 31 August 2017&lt;/p&gt;
 &lt;p&gt;&lt;span&gt;Applicants can send their CV to &lt;a href="mailto:director@twigletsforestschoolnursery.com"&gt;director@twigletsforestschoolnursery.com&lt;/a&gt;&amp;nbsp;Once CV is received, an application form will be emailed.&lt;br /&gt;&lt;br /&gt;If you have any questions please &lt;/span&gt;&lt;span&gt;contact Shirley Zhang, Director if they have any questions via email or telephone 01273 515 971.&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;/span&gt;</value>
   </data>
-  <data name="SalaryInBodyText6" xml:space="preserve">
+  <data name="TalentLinkSalaryInBodyText6" xml:space="preserve">
     <value>&lt;span class="JD-FieldText" id="JDText-Field1"&gt;&lt;p&gt;Salary: £22,912 rising to £33,487 per annum (Gildredge House Main Pay Scale points M1-M6, 2018-19) Note: salary figures include a cost of living increase of 1% which is subject to variation. Upper Pay Scale may be accessible to the suitable applicant. The Teacher Responsible for KS4 Mathematics position attracts a further Leadership Allowance point on the GH Scale of £4,204 per annum.  &lt;br /&gt;&lt;br /&gt;Working pattern: Full-Time&lt;/p&gt;
 &lt;p&gt;Closing date:  Thursday 15 March 2018 at 9am&lt;br /&gt;Interview date: Thursday 22 March 2018&lt;/p&gt;</value>
   </data>
@@ -1144,6 +1144,56 @@ ESCC: Orbis (BSD)&lt;/business_unit&gt;&lt;business_unit_id&gt;200&lt;/business_
 &amp;#13;
 &amp;amp;lt;p&amp;amp;gt; &amp;amp;lt;/p&amp;amp;gt;&amp;#13;
 &lt;/about_company&gt;&lt;created_user_id&gt;112&lt;/created_user_id&gt;&lt;created_user_name&gt;ESCC Recruiter&lt;/created_user_name&gt;&lt;hiring_manager_id&gt;12&lt;/hiring_manager_id&gt;&lt;hiring_manager_name&gt;John Smith&lt;/hiring_manager_name&gt;&lt;recruiter_id&gt;12&lt;/recruiter_id&gt;&lt;recruiter_name&gt;John Smith&lt;/recruiter_name&gt;&lt;resourcer_id&gt;103&lt;/resourcer_id&gt;&lt;resourcer_name&gt;Testy Testerson&lt;/resourcer_name&gt;&lt;hr_contact_id&gt;12&lt;/hr_contact_id&gt;&lt;hr_contact_name&gt;John Smith&lt;/hr_contact_name&gt;&lt;dateGap&gt;&lt;/dateGap&gt;&lt;show_in_reports&gt;Y&lt;/show_in_reports&gt;&lt;diversity_id&gt;300&lt;/diversity_id&gt;&lt;mji_id&gt;0&lt;/mji_id&gt;&lt;talentq_id&gt;0&lt;/talentq_id&gt;&lt;talentq_auto_invite&gt;&lt;/talentq_auto_invite&gt;&lt;dateGapType&gt;&lt;/dateGapType&gt;&lt;evergreen&gt;0&lt;/evergreen&gt;&lt;hlistValue&gt;850&lt;/hlistValue&gt;&lt;anonymous_candidates&gt;1&lt;/anonymous_candidates&gt;&lt;anonymous_candidates_ats&gt;1&lt;/anonymous_candidates_ats&gt;&lt;email_pack_id&gt;3&lt;/email_pack_id&gt;&lt;application_grace_expiry_date&gt;2019-02-11&lt;/application_grace_expiry_date&gt;&lt;collections&gt;&lt;/collections&gt;&lt;custom_12&gt;&lt;id&gt;1082&lt;/id&gt;&lt;field_id&gt;12&lt;/field_id&gt;&lt;job_id&gt;142&lt;/job_id&gt;&lt;answer&gt;&lt;/answer&gt;&lt;flags&gt;0&lt;/flags&gt;&lt;modified_time&gt;2019-01-11 16:15:01&lt;/modified_time&gt;&lt;/custom_12&gt;&lt;custom_13&gt;&lt;id&gt;1083&lt;/id&gt;&lt;field_id&gt;13&lt;/field_id&gt;&lt;job_id&gt;142&lt;/job_id&gt;&lt;answer&gt;16&lt;/answer&gt;&lt;flags&gt;0&lt;/flags&gt;&lt;modified_time&gt;2019-01-11 16:15:01&lt;/modified_time&gt;&lt;/custom_13&gt;&lt;custom_14&gt;&lt;id&gt;1084&lt;/id&gt;&lt;field_id&gt;14&lt;/field_id&gt;&lt;job_id&gt;142&lt;/job_id&gt;&lt;answer&gt;52&lt;/answer&gt;&lt;flags&gt;0&lt;/flags&gt;&lt;modified_time&gt;2019-01-11 16:15:01&lt;/modified_time&gt;&lt;/custom_14&gt;&lt;custom_15&gt;&lt;id&gt;1085&lt;/id&gt;&lt;field_id&gt;15&lt;/field_id&gt;&lt;job_id&gt;142&lt;/job_id&gt;&lt;answer&gt;24&lt;/answer&gt;&lt;flags&gt;0&lt;/flags&gt;&lt;modified_time&gt;2019-01-11 16:15:01&lt;/modified_time&gt;&lt;/custom_15&gt;&lt;custom_16&gt;&lt;id&gt;1086&lt;/id&gt;&lt;field_id&gt;16&lt;/field_id&gt;&lt;job_id&gt;142&lt;/job_id&gt;&lt;answer&gt;john.smith@example.org&lt;/answer&gt;&lt;flags&gt;0&lt;/flags&gt;&lt;modified_time&gt;2019-01-11 16:15:01&lt;/modified_time&gt;&lt;/custom_16&gt;&lt;custom_19&gt;&lt;id&gt;1087&lt;/id&gt;&lt;field_id&gt;19&lt;/field_id&gt;&lt;job_id&gt;142&lt;/job_id&gt;&lt;answer&gt;&lt;/answer&gt;&lt;flags&gt;0&lt;/flags&gt;&lt;modified_time&gt;2019-01-11 16:15:01&lt;/modified_time&gt;&lt;/custom_19&gt;&lt;custom_20&gt;&lt;id&gt;1088&lt;/id&gt;&lt;field_id&gt;20&lt;/field_id&gt;&lt;job_id&gt;142&lt;/job_id&gt;&lt;answer&gt;65&lt;/answer&gt;&lt;flags&gt;0&lt;/flags&gt;&lt;modified_time&gt;2019-01-11 16:15:01&lt;/modified_time&gt;&lt;/custom_20&gt;&lt;custom_21&gt;&lt;id&gt;1089&lt;/id&gt;&lt;field_id&gt;21&lt;/field_id&gt;&lt;job_id&gt;142&lt;/job_id&gt;&lt;answer&gt;54&lt;/answer&gt;&lt;flags&gt;0&lt;/flags&gt;&lt;modified_time&gt;2019-01-11 16:15:01&lt;/modified_time&gt;&lt;/custom_21&gt;&lt;custom_23&gt;&lt;id&gt;1090&lt;/id&gt;&lt;field_id&gt;23&lt;/field_id&gt;&lt;job_id&gt;142&lt;/job_id&gt;&lt;answer&gt;&lt;/answer&gt;&lt;flags&gt;0&lt;/flags&gt;&lt;modified_time&gt;2019-01-11 16:15:01&lt;/modified_time&gt;&lt;/custom_23&gt;&lt;custom_17&gt;&lt;id&gt;1091&lt;/id&gt;&lt;field_id&gt;17&lt;/field_id&gt;&lt;job_id&gt;142&lt;/job_id&gt;&lt;answer&gt;N/A&lt;/answer&gt;&lt;flags&gt;0&lt;/flags&gt;&lt;modified_time&gt;2019-01-11 16:15:01&lt;/modified_time&gt;&lt;/custom_17&gt;&lt;custom_0&gt;&lt;id&gt;1092&lt;/id&gt;&lt;field_id&gt;0&lt;/field_id&gt;&lt;job_id&gt;142&lt;/job_id&gt;&lt;answer&gt;&lt;/answer&gt;&lt;flags&gt;0&lt;/flags&gt;&lt;modified_time&gt;2019-01-11 16:15:01&lt;/modified_time&gt;&lt;/custom_0&gt;&lt;applicationSettings&gt;&lt;education&gt;1&lt;/education&gt;&lt;applicationSettings&gt;1&lt;/applicationSettings&gt;&lt;education_required&gt;1&lt;/education_required&gt;&lt;applicationSettings&gt;1&lt;/applicationSettings&gt;&lt;career&gt;1&lt;/career&gt;&lt;applicationSettings&gt;1&lt;/applicationSettings&gt;&lt;career_required&gt;1&lt;/career_required&gt;&lt;applicationSettings&gt;1&lt;/applicationSettings&gt;&lt;skills&gt;0&lt;/skills&gt;&lt;applicationSettings&gt;0&lt;/applicationSettings&gt;&lt;cv&gt;0&lt;/cv&gt;&lt;applicationSettings&gt;0&lt;/applicationSettings&gt;&lt;cv_required&gt;1&lt;/cv_required&gt;&lt;applicationSettings&gt;1&lt;/applicationSettings&gt;&lt;cv_description&gt;Please detail how you meet the essential and desirable criteria (maximum 10000 characters)&lt;/cv_description&gt;&lt;applicationSettings&gt;Please detail how you meet the essential and desirable criteria (maximum 10000 characters)&lt;/applicationSettings&gt;&lt;portfolio&gt;0&lt;/portfolio&gt;&lt;applicationSettings&gt;0&lt;/applicationSettings&gt;&lt;portfolio_required&gt;0&lt;/portfolio_required&gt;&lt;applicationSettings&gt;0&lt;/applicationSettings&gt;&lt;portfolio_description&gt;Ask portfolio description&lt;/portfolio_description&gt;&lt;applicationSettings&gt;Ask portfolio description&lt;/applicationSettings&gt;&lt;docs&gt;0&lt;/docs&gt;&lt;applicationSettings&gt;0&lt;/applicationSettings&gt;&lt;docs_required&gt;0&lt;/docs_required&gt;&lt;applicationSettings&gt;0&lt;/applicationSettings&gt;&lt;docs_description&gt;Ask docs description&lt;/docs_description&gt;&lt;applicationSettings&gt;Ask docs description&lt;/applicationSettings&gt;&lt;diversity&gt;1&lt;/diversity&gt;&lt;applicationSettings&gt;1&lt;/applicationSettings&gt;&lt;diversity_required&gt;1&lt;/diversity_required&gt;&lt;applicationSettings&gt;1&lt;/applicationSettings&gt;&lt;registration_address&gt;0&lt;/registration_address&gt;&lt;applicationSettings&gt;0&lt;/applicationSettings&gt;&lt;registration_phone&gt;0&lt;/registration_phone&gt;&lt;applicationSettings&gt;0&lt;/applicationSettings&gt;&lt;registration_questionnaire&gt;0&lt;/registration_questionnaire&gt;&lt;applicationSettings&gt;0&lt;/applicationSettings&gt;&lt;profile_order&gt;1&lt;/profile_order&gt;&lt;applicationSettings&gt;1&lt;/applicationSettings&gt;&lt;questionnaire_order&gt;11&lt;/questionnaire_order&gt;&lt;applicationSettings&gt;11&lt;/applicationSettings&gt;&lt;dategap_order&gt;12&lt;/dategap_order&gt;&lt;applicationSettings&gt;12&lt;/applicationSettings&gt;&lt;dategap_defer&gt;0&lt;/dategap_defer&gt;&lt;applicationSettings&gt;0&lt;/applicationSettings&gt;&lt;cv_order&gt;13&lt;/cv_order&gt;&lt;applicationSettings&gt;13&lt;/applicationSettings&gt;&lt;portfolio_order&gt;14&lt;/portfolio_order&gt;&lt;applicationSettings&gt;14&lt;/applicationSettings&gt;&lt;docs_order&gt;15&lt;/docs_order&gt;&lt;applicationSettings&gt;15&lt;/applicationSettings&gt;&lt;diversity_order&gt;2&lt;/diversity_order&gt;&lt;applicationSettings&gt;2&lt;/applicationSettings&gt;&lt;rtw_order&gt;12&lt;/rtw_order&gt;&lt;applicationSettings&gt;12&lt;/applicationSettings&gt;&lt;other&gt;1&lt;/other&gt;&lt;applicationSettings&gt;1&lt;/applicationSettings&gt;&lt;progress_bar&gt;1&lt;/progress_bar&gt;&lt;applicationSettings&gt;1&lt;/applicationSettings&gt;&lt;progress_bar_extended&gt;0&lt;/progress_bar_extended&gt;&lt;applicationSettings&gt;0&lt;/applicationSettings&gt;&lt;locked&gt;0&lt;/locked&gt;&lt;applicationSettings&gt;0&lt;/applicationSettings&gt;&lt;order&gt;&lt;profile&gt;1&lt;/profile&gt;&lt;questionnaire&gt;11&lt;/questionnaire&gt;&lt;dategap&gt;12&lt;/dategap&gt;&lt;rtw&gt;12&lt;/rtw&gt;&lt;cv&gt;13&lt;/cv&gt;&lt;portfolio&gt;14&lt;/portfolio&gt;&lt;docs&gt;15&lt;/docs&gt;&lt;/order&gt;&lt;/applicationSettings&gt;&lt;hcm_oracle_line_manager_id&gt;&lt;/hcm_oracle_line_manager_id&gt;&lt;hcm_oracle_position_id&gt;&lt;/hcm_oracle_position_id&gt;&lt;workflowId&gt;2&lt;/workflowId&gt;&lt;/job&gt;&lt;/jobs&gt;</value>
+  </data>
+  <data name="TribePadSalaryExact" xml:space="preserve">
+    <value>&lt;job&gt;
+&lt;job_id&gt;134&lt;/job_id&gt;
+&lt;job_title&gt;New Worker&lt;/job_title&gt;
+&lt;salary_currency&gt;1&lt;/salary_currency&gt;
+&lt;salary_frequency&gt;1&lt;/salary_frequency&gt;
+&lt;salary_from&gt;23000&lt;/salary_from&gt;
+&lt;salary_to&gt;23000&lt;/salary_to&gt;
+&lt;salary_from_text&gt;23000&lt;/salary_from_text&gt;
+&lt;salary_to_text&gt;23000&lt;/salary_to_text&gt;
+&lt;salaryDisplay&gt;£23000 - £23000&lt;/salaryDisplay&gt;
+&lt;/job&gt;</value>
+  </data>
+  <data name="TribePadSalaryHourlyExact" xml:space="preserve">
+    <value>&lt;job&gt;
+&lt;job_id&gt;134&lt;/job_id&gt;
+&lt;job_title&gt;New Worker&lt;/job_title&gt;
+&lt;salary_currency&gt;1&lt;/salary_currency&gt;
+&lt;salary_frequency&gt;2&lt;/salary_frequency&gt;
+&lt;salary_from&gt;19.22&lt;/salary_from&gt;
+&lt;salary_to&gt;19.22&lt;/salary_to&gt;
+&lt;salaryDisplay&gt;£19.22 per hour&lt;/salaryDisplay&gt;
+&lt;/job&gt;</value>
+  </data>
+  <data name="TribePadSalaryRange" xml:space="preserve">
+    <value>&lt;job&gt;
+&lt;job_id&gt;134&lt;/job_id&gt;
+&lt;job_title&gt;New Worker&lt;/job_title&gt;
+&lt;salary_currency&gt;1&lt;/salary_currency&gt;
+&lt;salary_frequency&gt;1&lt;/salary_frequency&gt;
+&lt;salary_from&gt;15000&lt;/salary_from&gt;
+&lt;salary_to&gt;19999&lt;/salary_to&gt;
+&lt;salary_from_text&gt;15000&lt;/salary_from_text&gt;
+&lt;salary_to_text&gt;19999&lt;/salary_to_text&gt;
+&lt;salaryDisplay&gt;£15000 - £19999&lt;/salaryDisplay&gt;
+&lt;/job&gt;</value>
+  </data>
+  <data name="TribePadSalaryVoluntary" xml:space="preserve">
+    <value>&lt;job&gt;
+&lt;job_id&gt;134&lt;/job_id&gt;
+&lt;job_title&gt;New Worker&lt;/job_title&gt;
+&lt;salary_currency&gt;1&lt;/salary_currency&gt;
+&lt;salary_frequency&gt;1&lt;/salary_frequency&gt;
+&lt;salary_from&gt;0&lt;/salary_from&gt;
+&lt;salary_to&gt;0&lt;/salary_to&gt;
+&lt;salary_from_text/&gt;
+&lt;salary_to_text/&gt;
+&lt;salaryDisplay/&gt;
+&lt;/job&gt;</value>
   </data>
   <data name="WorkPatternInBodyText1" xml:space="preserve">
     <value>&lt;span class="JD-FieldText" id="JDText-Field1"&gt;&lt;p&gt;Salary: £31,383 to £41,373 per annum&lt;br&gt;Contract type: Permanent&lt;br&gt;Working pattern: Full time&lt;/p&gt;

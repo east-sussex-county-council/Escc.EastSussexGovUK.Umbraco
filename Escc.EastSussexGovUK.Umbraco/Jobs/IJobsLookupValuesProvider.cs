@@ -28,6 +28,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         Task<IList<JobsLookupValue>> ReadOrganisations();
 
         /// <summary>
+        /// Reads the salary frequencies, eg hourly, weekly, annually
+        /// </summary>
+        /// <returns></returns>
+        Task<IList<JobsLookupValue>> ReadSalaryFrequencies();
+
+        /// <summary>
         /// Reads the salary ranges that jobs can be categorised as
         /// </summary>
         /// <returns></returns>

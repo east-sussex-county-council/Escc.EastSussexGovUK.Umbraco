@@ -78,7 +78,26 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         /// <returns></returns>
         public async Task<IList<JobsLookupValue>> ReadSalaryRanges()
         {
-            return new List<JobsLookupValue>();
+            return new List<JobsLookupValue>()
+            {
+                new JobsLookupValue() { Text = "£0 to £9,999" },
+                new JobsLookupValue() { Text = "£10,000 to £14,999" }, 
+                new JobsLookupValue() { Text = "£15,000 to £19,999" },
+                new JobsLookupValue() { Text = "£20,000 to £24,999" },
+                new JobsLookupValue() { Text = "£25,000 to £34,999" },
+                new JobsLookupValue() { Text = "£35,000 to £49,999" },
+                new JobsLookupValue() { Text = "£50,000 and over" }
+            };
+        }
+
+
+        /// <summary>
+        /// Reads the salary frequencies, eg hourly, weekly, annually
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IList<JobsLookupValue>> ReadSalaryFrequencies()
+        {
+            return await ReadLookupValuesFromApi(_builtInLookupValuesParser, "salary_frequencies");
         }
 
         /// <summary>

@@ -3,7 +3,6 @@ using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Web;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
-using Exceptionless.Extensions;
 using HtmlAgilityPack;
 
 namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
@@ -19,12 +18,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
         /// </summary>
         /// <param name="jobAdvertHtml">The raw HTML of a TalentLink job advert</param>
         /// <returns></returns>
-        public Salary ParseSalaryFromHtml(HtmlDocument jobAdvertHtml)
+        public Salary ParseSalaryFromJobAdvert(string sourceData)
         {
             Salary salary = null;
 
             // Look for a salary entered into a specific field
-            var salaryText = ParseValueFromElementById(jobAdvertHtml, "span", "JDText-salary");
+            var salaryText = ParseValueFromElementById(sourceData, "span", "JDText-salary");
             if (!String.IsNullOrEmpty(salaryText))
             {
                 salary = ParseSalaryFromDescription(salaryText);
@@ -32,7 +31,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
 
             if (salary == null)
             {
-                var matchInBodyText = Regex.Match(jobAdvertHtml.DocumentNode.OuterHtml, $@"Salary:\s+(.*?)([0-9]+)(.*?)(<br>|<br />|</p>|{Environment.NewLine})");
+                var matchInBodyText = Regex.Match(sourceData, $@"Salary:\s+(.*?)([0-9]+)(.*?)(<br>|<br />|</p>|{Environment.NewLine})");
                 if (matchInBodyText.Success)
                 {
                     salary = ParseSalaryFromDescription(HttpUtility.HtmlDecode(matchInBodyText.Groups[1].Value + matchInBodyText.Groups[2].Value + matchInBodyText.Groups[3].Value).Trim());
@@ -41,7 +40,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
 
             if (salary == null)
             {
-                var matchInBodyText = Regex.Match(jobAdvertHtml.DocumentNode.OuterHtml, "£[0-9,]+ ?- ?£[0-9,]+ per annum");
+                var matchInBodyText = Regex.Match(sourceData, "£[0-9,]+ ?- ?£[0-9,]+ per annum");
                 if (matchInBodyText.Success)
                 {
                     salary = ParseSalaryFromDescription(HttpUtility.HtmlDecode(matchInBodyText.Groups[0].Value).Trim());
@@ -51,7 +50,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
             // There are no numbers to parse, so just take the first line of text
             if (salary == null)
             {
-                var matchInBodyText = Regex.Match(jobAdvertHtml.DocumentNode.OuterHtml, $@"Salary:\s+(.+?)(<br>|<br />|</p>|{Environment.NewLine})");
+                var matchInBodyText = Regex.Match(sourceData, $@"Salary:\s+(.+?)(<br>|<br />|</p>|{Environment.NewLine})");
                 if (matchInBodyText.Success)
                 {
                     salary = new Salary()
@@ -64,7 +63,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
             // If still no salary found, is it clearly a volunteer role?
             if (salary == null)
             {
-                var jobTitle = ParseValueFromElementById(jobAdvertHtml, "h3", "JDText-Title");
+                var jobTitle = ParseValueFromElementById(sourceData, "h3", "JDText-Title");
                 if (jobTitle.ToUpperInvariant().Contains("VOLUNTEER"))
                 {
                     salary = new Salary()
@@ -82,7 +81,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
             }
 
             // Is there an hourly rate, which might be in addition to a salary?
-            var matchHourlyRateInBodyText = Regex.Match(HttpUtility.HtmlDecode(jobAdvertHtml.DocumentNode.OuterHtml), $@"hourly rate is £([0-9]+\.[0-9][0-9])");
+            var matchHourlyRateInBodyText = Regex.Match(HttpUtility.HtmlDecode(sourceData), $@"hourly rate is £([0-9]+\.[0-9][0-9])");
             if (matchHourlyRateInBodyText.Success)
             {
                 salary.HourlyRate = Decimal.Parse(matchHourlyRateInBodyText.Groups[1].Value);
@@ -200,8 +199,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
             return (int)Math.Floor(salary);
         }
 
-        private static string ParseValueFromElementById(HtmlDocument htmlDocument, string elementName, string elementId)
+        private static string ParseValueFromElementById(string sourceData, string elementName, string elementId)
         {
+            HtmlDocument htmlDocument = new HtmlDocument();
+            htmlDocument.OptionFixNestedTags = true;
+            htmlDocument.LoadHtml(sourceData);
+
             var node = htmlDocument.DocumentNode.SelectSingleNode($"//{elementName}[@id='{elementId}']");
             if (node != null)
             {

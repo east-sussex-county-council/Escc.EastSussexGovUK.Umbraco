@@ -161,9 +161,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to &lt;p&gt;Location: Hastings&lt;br&gt;Start date: 01 May 2017&lt;br&gt;Salary: Ark Leadership Scale L1 – L5 (£38, 984 - £43, 022)&lt;br&gt;Closing date: 9am on Monday 20 February 2017&lt;br&gt;Interview date: Thursday 23 February 2017&lt;br&gt;&lt;br&gt;Ark Blacklands and Ark Little Ridge Primary Academies are committed to safeguarding children; successful candidates will be subject to an enhanced Disclosure &amp;amp; Barring Service check.&lt;/p&gt;.
         /// </summary>
-        internal static string SalaryInBodyText1 {
+        internal static string TalentLinkSalaryInBodyText1 {
             get {
-                return ResourceManager.GetString("SalaryInBodyText1", resourceCulture);
+                return ResourceManager.GetString("TalentLinkSalaryInBodyText1", resourceCulture);
             }
         }
         
@@ -171,18 +171,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests.Properties {
         ///   Looks up a localized string similar to &lt;span class=&quot;JD-FieldText&quot; id=&quot;JDText-Field2&quot;&gt;&lt;p&gt;QUALITY OFFICER &lt;br&gt;&lt;br&gt;£16,692 - £17,808 per annum&amp;nbsp;(Full-time/full year).&lt;/p&gt;
         ///&lt;p&gt;We are looking for a well-qualified, enthusiastic team player with excellent communication, administration and IT skills.&amp;nbsp; Key elements of this role will be managing the administration of the College’s quality management systems, preparing reports, setting up online surveys and other quality measures; and providing an analysis of the results.&amp;nbsp; You will need to ha [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string SalaryInBodyText2 {
+        internal static string TalentLinkSalaryInBodyText2 {
             get {
-                return ResourceManager.GetString("SalaryInBodyText2", resourceCulture);
+                return ResourceManager.GetString("TalentLinkSalaryInBodyText2", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to &lt;p&gt;Salary: To be negotiated&lt;br&gt;Contract type: Permanent&lt;br&gt;Working pattern: Part time&lt;/p&gt;.
         /// </summary>
-        internal static string SalaryInBodyText3 {
+        internal static string TalentLinkSalaryInBodyText3 {
             get {
-                return ResourceManager.GetString("SalaryInBodyText3", resourceCulture);
+                return ResourceManager.GetString("TalentLinkSalaryInBodyText3", resourceCulture);
             }
         }
         
@@ -192,9 +192,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests.Properties {
         ///&lt;p&gt;Closing date: Thursday 31 August 2017&lt;/p&gt;
         ///&lt;p&gt;&lt;span&gt;Applicants can send their CV to &lt;a href=&quot;mailto:director@twigletsforestschoolnursery.com&quot;&gt;director@twigletsforestschoolnursery.com&lt;/a&gt;&amp;nbsp;Once CV is received, an application form will be emailed.&lt;br /&gt;&lt; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string SalaryInBodyText4 {
+        internal static string TalentLinkSalaryInBodyText4 {
             get {
-                return ResourceManager.GetString("SalaryInBodyText4", resourceCulture);
+                return ResourceManager.GetString("TalentLinkSalaryInBodyText4", resourceCulture);
             }
         }
         
@@ -204,9 +204,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests.Properties {
         ///&lt;p&gt;Closing date: Thursday 31 August 2017&lt;/p&gt;
         ///&lt;p&gt;&lt;span&gt;Applicants can send their CV to &lt;a href=&quot;mailto:director@twigletsforestschoolnursery.com&quot;&gt;director@twigletsforestschoolnursery.com&lt;/a&gt;&amp;nbsp;Once CV is received, an application form will be emailed.&lt;br /&gt;&lt;br /&gt;If you have any question [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string SalaryInBodyText5 {
+        internal static string TalentLinkSalaryInBodyText5 {
             get {
-                return ResourceManager.GetString("SalaryInBodyText5", resourceCulture);
+                return ResourceManager.GetString("TalentLinkSalaryInBodyText5", resourceCulture);
             }
         }
         
@@ -214,9 +214,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests.Properties {
         ///   Looks up a localized string similar to &lt;span class=&quot;JD-FieldText&quot; id=&quot;JDText-Field1&quot;&gt;&lt;p&gt;Salary: £22,912 rising to £33,487 per annum (Gildredge House Main Pay Scale points M1-M6, 2018-19) Note: salary figures include a cost of living increase of 1% which is subject to variation. Upper Pay Scale may be accessible to the suitable applicant. The Teacher Responsible for KS4 Mathematics position attracts a further Leadership Allowance point on the GH Scale of £4,204 per annum.  &lt;br /&gt;&lt;br /&gt;Working pattern: Full-Time&lt;/p&gt;
         ///&lt;p&gt;Closing date:  Thursday 15  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string SalaryInBodyText6 {
+        internal static string TalentLinkSalaryInBodyText6 {
             get {
-                return ResourceManager.GetString("SalaryInBodyText6", resourceCulture);
+                return ResourceManager.GetString("TalentLinkSalaryInBodyText6", resourceCulture);
             }
         }
         
@@ -256,6 +256,80 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests.Properties {
         internal static string TribePadJobXml {
             get {
                 return ResourceManager.GetString("TribePadJobXml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;job&gt;
+        ///&lt;job_id&gt;134&lt;/job_id&gt;
+        ///&lt;job_title&gt;New Worker&lt;/job_title&gt;
+        ///&lt;salary_currency&gt;1&lt;/salary_currency&gt;
+        ///&lt;salary_frequency&gt;1&lt;/salary_frequency&gt;
+        ///&lt;salary_from&gt;23000&lt;/salary_from&gt;
+        ///&lt;salary_to&gt;23000&lt;/salary_to&gt;
+        ///&lt;salary_from_text&gt;23000&lt;/salary_from_text&gt;
+        ///&lt;salary_to_text&gt;23000&lt;/salary_to_text&gt;
+        ///&lt;salaryDisplay&gt;£23000 - £23000&lt;/salaryDisplay&gt;
+        ///&lt;/job&gt;.
+        /// </summary>
+        internal static string TribePadSalaryExact {
+            get {
+                return ResourceManager.GetString("TribePadSalaryExact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;job&gt;
+        ///&lt;job_id&gt;134&lt;/job_id&gt;
+        ///&lt;job_title&gt;New Worker&lt;/job_title&gt;
+        ///&lt;salary_currency&gt;1&lt;/salary_currency&gt;
+        ///&lt;salary_frequency&gt;2&lt;/salary_frequency&gt;
+        ///&lt;salary_from&gt;19.22&lt;/salary_from&gt;
+        ///&lt;salary_to&gt;19.22&lt;/salary_to&gt;
+        ///&lt;salaryDisplay&gt;£19.22 per hour&lt;/salaryDisplay&gt;
+        ///&lt;/job&gt;.
+        /// </summary>
+        internal static string TribePadSalaryHourlyExact {
+            get {
+                return ResourceManager.GetString("TribePadSalaryHourlyExact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;job&gt;
+        ///&lt;job_id&gt;134&lt;/job_id&gt;
+        ///&lt;job_title&gt;New Worker&lt;/job_title&gt;
+        ///&lt;salary_currency&gt;1&lt;/salary_currency&gt;
+        ///&lt;salary_frequency&gt;1&lt;/salary_frequency&gt;
+        ///&lt;salary_from&gt;15000&lt;/salary_from&gt;
+        ///&lt;salary_to&gt;19999&lt;/salary_to&gt;
+        ///&lt;salary_from_text&gt;15000&lt;/salary_from_text&gt;
+        ///&lt;salary_to_text&gt;19999&lt;/salary_to_text&gt;
+        ///&lt;salaryDisplay&gt;£15000 - £19999&lt;/salaryDisplay&gt;
+        ///&lt;/job&gt;.
+        /// </summary>
+        internal static string TribePadSalaryRange {
+            get {
+                return ResourceManager.GetString("TribePadSalaryRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;job&gt;
+        ///&lt;job_id&gt;134&lt;/job_id&gt;
+        ///&lt;job_title&gt;New Worker&lt;/job_title&gt;
+        ///&lt;salary_currency&gt;1&lt;/salary_currency&gt;
+        ///&lt;salary_frequency&gt;1&lt;/salary_frequency&gt;
+        ///&lt;salary_from&gt;0&lt;/salary_from&gt;
+        ///&lt;salary_to&gt;0&lt;/salary_to&gt;
+        ///&lt;salary_from_text/&gt;
+        ///&lt;salary_to_text/&gt;
+        ///&lt;salaryDisplay/&gt;
+        ///&lt;/job&gt;.
+        /// </summary>
+        internal static string TribePadSalaryVoluntary {
+            get {
+                return ResourceManager.GetString("TribePadSalaryVoluntary", resourceCulture);
             }
         }
         

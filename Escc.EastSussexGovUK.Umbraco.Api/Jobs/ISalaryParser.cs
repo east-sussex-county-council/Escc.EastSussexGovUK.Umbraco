@@ -4,16 +4,16 @@ using HtmlAgilityPack;
 namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs
 {
     /// <summary>
-    /// Parse salary details from a text description or surrounding HTML
+    /// Parse salary details from a text description or source data
     /// </summary>
     public interface ISalaryParser
     {
         /// <summary>
-        /// Parses salary details from a its surrounding HTML.
+        /// Parses salary details from the source data of a job advert.
         /// </summary>
-        /// <param name="jobAdvertHtml">The raw HTML of a TalentLink job advert</param>
+        /// <param name="sourceData">The source data of a job advert, eg XML or JSON</param>
         /// <returns></returns>
-        Salary ParseSalaryFromHtml(HtmlDocument jobAdvertHtml);
+        Salary ParseSalaryFromJobAdvert(string sourceData);
 
         /// <summary>
         /// Parses a salary from a description of the salary.

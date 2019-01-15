@@ -80,7 +80,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
                         job.Department = ParseValueFromElementById(htmlDocument, "span", "JDText-Param5");
                         job.ContractType = ParseValueFromElementById(htmlDocument, "span", "JDText-Param6");
                         job.JobType = ParseValueFromElementById(htmlDocument, "span", "JDText-Param7");
-                        job.Salary = _salaryParser.ParseSalaryFromHtml(htmlDocument);
+                        job.Salary = _salaryParser.ParseSalaryFromJobAdvert(htmlDocument.DocumentNode.OuterHtml);
 
                         DateTime closingDate;
                         DateTime.TryParse(ParseValueFromElementById(htmlDocument, "span", "JDText-Param9"), new CultureInfo("en-GB"), DateTimeStyles.AssumeLocal, out closingDate);

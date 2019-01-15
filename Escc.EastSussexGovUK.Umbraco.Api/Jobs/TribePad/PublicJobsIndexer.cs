@@ -18,26 +18,30 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
     /// <seealso cref="BaseJobsIndexer" />
     public class PublicJobsIndexer : BaseJobsIndexer
     {
-        private static readonly Uri ResultsUrl = new Uri(ConfigurationManager.AppSettings["TribePadPublicJobsResultsUrl"]);
-        private static readonly Uri AdvertUrl = new Uri(ConfigurationManager.AppSettings["TribePadPublicJobsAdvertUrl"]);
-        private static readonly Uri LookupValuesApiUrl = new Uri(ConfigurationManager.AppSettings["TribePadPublicJobsLookupValuesUrl"]);
-
         /// <summary>
         /// Initializes a new instance of the <see cref="PublicJobsIndexer"/> class.
         /// </summary>
-        public PublicJobsIndexer() : base(new JobsDataFromTribePad(ResultsUrl, AdvertUrl, 
-            new TribePadJobParser(new JobsLookupValuesFromTribePad(LookupValuesApiUrl, new LookupValuesFromTribePadBuiltInFieldParser(), new LookupValuesFromTribePadCustomFieldParser(), new ConfigurationProxyProvider())),
-            new TribePadJobParser(new JobsLookupValuesFromTribePad(LookupValuesApiUrl, new LookupValuesFromTribePadBuiltInFieldParser(), new LookupValuesFromTribePadCustomFieldParser(), new ConfigurationProxyProvider())), 
-            new ConfigurationProxyProvider(), true), 
-            new LuceneStopWordsRemover(), 
-            new HtmlTagSanitiser(),
-            new Dictionary<IEnumerable<IJobMatcher>, IEnumerable<IJobTransformer>>()
-            {
-                { new IJobMatcher[] { new JointCommunityRehabilitationMatcher(), new LocationMatcher("Lewes") }, new IJobTransformer[] { new SetJobLocationTransformer(new[] { "Crowborough", "Lewes", "Peacehaven",  "Wadhurst" }) } },
-                { new IJobMatcher[] { new JointCommunityRehabilitationMatcher(), new LocationMatcher("Eastbourne") }, new IJobTransformer[] { new SetJobLocationTransformer(new[] { "Eastbourne", "Hailsham", "Polegate", "Seaford" }) } },
-                { new IJobMatcher[] { new JointCommunityRehabilitationMatcher(), new LocationMatcher("Bexhill-on-Sea") }, new IJobTransformer[] { new SetJobLocationTransformer(new[] { "Bexhill-on-Sea", "Hastings", "Rural Rother" }) } }
-            })
+        public PublicJobsIndexer() 
         {
+            var resultsUrl = new Uri(ConfigurationManager.AppSettings["TribePadPublicJobsResultsUrl"]);
+            var advertUrl = new Uri(ConfigurationManager.AppSettings["TribePadPublicJobsAdvertUrl"]);
+            var lookupValuesApiUrl = new Uri(ConfigurationManager.AppSettings["TribePadPublicJobsLookupValuesUrl"]);
+
+            var proxyProvider = new ConfigurationProxyProvider();
+            var lookupValuesProvider = new JobsLookupValuesFromTribePad(lookupValuesApiUrl, new LookupValuesFromTribePadBuiltInFieldParser(), new LookupValuesFromTribePadCustomFieldParser(), proxyProvider);
+            var jobParser = new TribePadJobParser(lookupValuesProvider, new TribePadSalaryParser(lookupValuesProvider));
+
+            InitialiseDependencies(
+                new JobsDataFromTribePad(resultsUrl, advertUrl, jobParser, jobParser, proxyProvider, true),
+                new LuceneStopWordsRemover(),
+                new HtmlTagSanitiser(),
+                new Dictionary<IEnumerable<IJobMatcher>, IEnumerable<IJobTransformer>>()
+                {
+                    { new IJobMatcher[] { new JointCommunityRehabilitationMatcher(), new LocationMatcher("Lewes") }, new IJobTransformer[] { new SetJobLocationTransformer(new[] { "Crowborough", "Lewes", "Peacehaven",  "Wadhurst" }) } },
+                    { new IJobMatcher[] { new JointCommunityRehabilitationMatcher(), new LocationMatcher("Eastbourne") }, new IJobTransformer[] { new SetJobLocationTransformer(new[] { "Eastbourne", "Hailsham", "Polegate", "Seaford" }) } },
+                    { new IJobMatcher[] { new JointCommunityRehabilitationMatcher(), new LocationMatcher("Bexhill-on-Sea") }, new IJobTransformer[] { new SetJobLocationTransformer(new[] { "Bexhill-on-Sea", "Hastings", "Rural Rother" }) } }
+                }
+            );
         }
 
         /// <summary>

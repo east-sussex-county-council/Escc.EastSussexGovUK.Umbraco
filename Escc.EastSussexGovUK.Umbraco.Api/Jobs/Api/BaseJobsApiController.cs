@@ -121,6 +121,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Api
         }
 
         /// <summary>
+        /// Reads the salary frequencies.
+        /// </summary>
+        /// <param name="jobsSet">The jobs set.</param>
+        /// <returns></returns>
+        protected async Task<IList<JobsLookupValue>> ReadSalaryFrequencies(JobsSet jobsSet)
+        {
+            var dataSource = new JobsLookupValuesFromExamine(ExamineManager.Instance.SearchProviderCollection[jobsSet + "LookupValuesSearcher"]);
+            return await dataSource.ReadSalaryFrequencies();
+        }
+
+        /// <summary>
         /// Reads the work patterns.
         /// </summary>
         /// <param name="jobsSet">The jobs set.</param>

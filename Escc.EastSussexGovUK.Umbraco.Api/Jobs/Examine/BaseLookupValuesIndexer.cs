@@ -100,6 +100,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
                     i++;
                 }
 
+                var salaryFrequencies = Task.Run(async () => await _lookupValuesProvider.ReadSalaryFrequencies()).Result;
+                foreach (var lookupValue in salaryFrequencies)
+                {
+                    var simpleDataSet = Task.Run(async () => await CreateDataSetFromLookup(i, indexType, "SalaryFrequency", null, lookupValue, null)).Result;
+                    dataSets.Add(simpleDataSet);
+                    i++;
+                }
+
                 var organisations = Task.Run(async () => await _lookupValuesProvider.ReadOrganisations()).Result;
                 foreach (var lookupValue in organisations)
                 {
@@ -118,6 +126,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
                     query.WorkPatterns.Add(lookupValue.Text);
                     query.ClosingDateFrom = DateTime.Today;
                     var simpleDataSet = Task.Run(async () => await CreateDataSetFromLookup(i, indexType, "WorkPattern", query, lookupValue, jobsDataProvider)).Result;
+                    dataSets.Add(simpleDataSet);
+                    i++;
+                }
+
+                var contractTypes = Task.Run(async () => await _lookupValuesProvider.ReadContractTypes()).Result;
+                foreach (var lookupValue in contractTypes)
+                {
+                    var simpleDataSet = Task.Run(async () => await CreateDataSetFromLookup(i, indexType, "ContractType", null, lookupValue, null)).Result;
                     dataSets.Add(simpleDataSet);
                     i++;
                 }

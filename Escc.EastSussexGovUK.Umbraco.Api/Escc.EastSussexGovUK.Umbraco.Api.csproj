@@ -394,6 +394,7 @@
     <Compile Include="Jobs\TribePad\RedeploymentJobsLookupValuesIndexer.cs" />
     <Compile Include="Jobs\TribePad\LookupValuesFromTribePadBuiltInFieldParser.cs" />
     <Compile Include="Jobs\TribePad\TribePadJobParser.cs" />
+    <Compile Include="Jobs\TribePad\TribePadSalaryParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Jobs\TalentLink\JobsDataFromTalentLink.cs" />
     <Compile Include="Jobs\TalentLink\JobsLookupValuesFromTalentLink.cs" />
