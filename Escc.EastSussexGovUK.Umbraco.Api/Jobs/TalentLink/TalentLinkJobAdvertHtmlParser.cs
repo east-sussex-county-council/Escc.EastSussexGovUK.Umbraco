@@ -9,6 +9,7 @@ using Escc.Html;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
 using Escc.EastSussexGovUK.Umbraco.Api.Jobs.HtmlFormatters;
 using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
+using System.Threading.Tasks;
 
 namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
 {
@@ -40,7 +41,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
         /// </summary>
         /// <param name="sourceData">The source data for the job.</param>
         /// <returns></returns>
-        public Job ParseJob(string sourceData, string jobId)
+        public async Task<Job> ParseJob(string sourceData, string jobId)
         {
             try
             {
@@ -80,7 +81,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
                         job.Department = ParseValueFromElementById(htmlDocument, "span", "JDText-Param5");
                         job.ContractType = ParseValueFromElementById(htmlDocument, "span", "JDText-Param6");
                         job.JobType = ParseValueFromElementById(htmlDocument, "span", "JDText-Param7");
-                        job.Salary = _salaryParser.ParseSalaryFromJobAdvert(htmlDocument.DocumentNode.OuterHtml);
+                        job.Salary = await _salaryParser.ParseSalaryFromJobAdvert(htmlDocument.DocumentNode.OuterHtml);
 
                         DateTime closingDate;
                         DateTime.TryParse(ParseValueFromElementById(htmlDocument, "span", "JDText-Param9"), new CultureInfo("en-GB"), DateTimeStyles.AssumeLocal, out closingDate);

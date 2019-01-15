@@ -49,9 +49,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         /// Reads the locations where jobs can be based
         /// </summary>
         /// <returns></returns>
-        public async Task<IList<JobsLookupValue>> ReadLocations()
+        public Task<IList<JobsLookupValue>> ReadLocations()
         {
-            return new List<JobsLookupValue>();
+            return Task.FromResult((IList<JobsLookupValue>)new List<JobsLookupValue>());
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         /// <returns></returns>
         public async Task<IList<JobsLookupValue>> ReadJobTypes()
         {
-            return await ReadLookupValuesFromApi(_builtInLookupValuesParser, "job_categories");
+            return await ReadLookupValuesFromApi(_builtInLookupValuesParser, "job_categories").ConfigureAwait(false);
         }
 
         /// <summary>
@@ -69,16 +69,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         /// <returns></returns>
         public async Task<IList<JobsLookupValue>> ReadOrganisations()
         {
-            return await ReadLookupValuesFromApi(_builtInLookupValuesParser, "business_units");
+            return await ReadLookupValuesFromApi(_builtInLookupValuesParser, "business_units").ConfigureAwait(false);
         }
 
         /// <summary>
         /// Reads the salary ranges that jobs can be categorised as
         /// </summary>
         /// <returns></returns>
-        public async Task<IList<JobsLookupValue>> ReadSalaryRanges()
+        public Task<IList<JobsLookupValue>> ReadSalaryRanges()
         {
-            return new List<JobsLookupValue>()
+            return Task.FromResult((IList<JobsLookupValue>)new List<JobsLookupValue>()
             {
                 new JobsLookupValue() { Text = "£0 to £9,999" },
                 new JobsLookupValue() { Text = "£10,000 to £14,999" }, 
@@ -87,7 +87,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
                 new JobsLookupValue() { Text = "£25,000 to £34,999" },
                 new JobsLookupValue() { Text = "£35,000 to £49,999" },
                 new JobsLookupValue() { Text = "£50,000 and over" }
-            };
+            });
         }
 
 
@@ -97,7 +97,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         /// <returns></returns>
         public async Task<IList<JobsLookupValue>> ReadSalaryFrequencies()
         {
-            return await ReadLookupValuesFromApi(_builtInLookupValuesParser, "salary_frequencies");
+            return await ReadLookupValuesFromApi(_builtInLookupValuesParser, "salary_frequencies").ConfigureAwait(false);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         /// <returns></returns>
         public async Task<IList<JobsLookupValue>> ReadWorkPatterns()
         {
-            var results = await ReadLookupValuesFromApi(_customFieldLookupValuesParser, "Working Pattern");
+            var results = await ReadLookupValuesFromApi(_customFieldLookupValuesParser, "Working Pattern").ConfigureAwait(false);
             for (var i = 0; i<results.Count;i++)
             {
                 results[i].Text = results[i].Text.Humanize(LetterCasing.Sentence);
@@ -120,12 +120,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         /// <returns></returns>
         public async Task<IList<JobsLookupValue>> ReadContractTypes()
         {
-            return await ReadLookupValuesFromApi(_builtInLookupValuesParser, "job_types");
+            return await ReadLookupValuesFromApi(_builtInLookupValuesParser, "job_types").ConfigureAwait(false);
         }
 
         private async Task<IList<JobsLookupValue>> ReadLookupValuesFromApi(IJobLookupValuesParser parser, string fieldName)
         {
-            var htmlStream = await ReadXml(_lookupValuesApiUrl, _proxy);
+            var htmlStream = await ReadXml(_lookupValuesApiUrl, _proxy).ConfigureAwait(false);
 
             using (var reader = new StreamReader(htmlStream))
             {
@@ -144,7 +144,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
                 Proxy = proxy?.CreateProxy()
             };
             var client = new HttpClient(handler);
-            return await client.GetStreamAsync(url);
+            return await client.GetStreamAsync(url).ConfigureAwait(false);
         }
     }
 }

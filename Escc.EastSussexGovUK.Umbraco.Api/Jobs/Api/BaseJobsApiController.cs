@@ -27,14 +27,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Api
         /// <param name="query">The query.</param>
         /// <param name="baseUrl">The base URL.</param>
         /// <returns></returns>
-        protected JobSearchResult Jobs(JobsSet jobsSet, JobSearchQuery query, Uri baseUrl)
+        protected async Task<JobSearchResult> Jobs(JobsSet jobsSet, JobSearchQuery query, Uri baseUrl)
         {
             var jobsProvider = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[jobsSet + "Searcher"], 
                 new QueryBuilder(new LuceneTokenisedQueryBuilder(), new KeywordsTokeniser(), new LuceneStopWordsRemover(), new WildcardSuffixFilter()), 
                 new SalaryRangeLuceneQueryBuilder(), 
                 new RelativeJobUrlGenerator(baseUrl));
 
-            var jobs = Task.Run(async () => await jobsProvider.ReadJobs(query)).Result;
+            var jobs = await jobsProvider.ReadJobs(query);
             foreach (var job in jobs.Jobs)
             {
                 // Remove these unnecessary and large fields to significantly reduce the amount that's serialised and sent to the client

@@ -21,11 +21,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Api
     {
         // GET /umbraco/api/publicjobs/jobs/
         [HttpGet]
-        public JobSearchResult Jobs([FromUri] string baseUrl)
+        public async Task<JobSearchResult> Jobs([FromUri] string baseUrl)
         {
             try
             {
-                return base.Jobs(JobsSet.PublicJobs, new JobSearchQueryConverter().ToQuery(HttpUtility.ParseQueryString(Request.RequestUri.Query)), new Uri(baseUrl));
+                return await base.Jobs(JobsSet.PublicJobs, new JobSearchQueryConverter().ToQuery(HttpUtility.ParseQueryString(Request.RequestUri.Query)), new Uri(baseUrl));
             }
             catch (Exception e)
             {

@@ -16,6 +16,7 @@ using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Alerts;
+using System.Threading.Tasks;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs.Alerts
 {
@@ -30,12 +31,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs.Alerts
         /// </summary>
         /// <param name="model"/>
         /// <returns/>
-        public override ActionResult Index(RenderModel model)
+        public async new Task<ActionResult> Index(RenderModel model)
         {
             var modelBuilder = new JobsSearchViewModelFromUmbraco(model.Content, new JobAlertsViewModel());
             var viewModel = (JobAlertsViewModel)modelBuilder.BuildModel();
             var lookupValuesDataSource = new JobsLookupValuesFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, new MemoryJobCacheStrategy(MemoryCache.Default, Request.QueryString["ForceCacheRefresh"] == "1"));
-            modelBuilder.AddLookupValuesToModel(lookupValuesDataSource, viewModel);
+            await modelBuilder.AddLookupValuesToModel(lookupValuesDataSource, viewModel);
 
             var converter = new JobSearchQueryConverter();
             var alertId = new JobAlertIdEncoder(converter).ParseIdFromUrl(Request.Url);

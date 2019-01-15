@@ -1,6 +1,7 @@
 using System;
 using System.Globalization;
 using System.IO;
+using System.Threading.Tasks;
 using System.Web;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
 using HtmlAgilityPack;
@@ -28,7 +29,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
         /// </summary>
         /// <param name="htmlStream">The HTML stream.</param>
         /// <returns></returns>
-        public JobsParseResult Parse(Stream htmlStream)
+        public Task<JobsParseResult> Parse(Stream htmlStream)
         {
             var parsedHtml = new HtmlDocument();
             parsedHtml.Load(htmlStream);
@@ -37,7 +38,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
             ParseIsLastPage(parsedHtml, parseResult);
             ParseJobs(parsedHtml, parseResult);
 
-            return parseResult;
+            return Task.FromResult(parseResult);
         }
 
         private void ParseIsLastPage(HtmlDocument parsedHtml, JobsParseResult parseResult)

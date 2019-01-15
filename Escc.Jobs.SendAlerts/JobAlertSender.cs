@@ -35,7 +35,7 @@ namespace Escc.Jobs.SendAlerts
         /// </summary>
         /// <param name="frequency">The frequency.</param>
         /// <param name="forceResend">If set to <c>true</c> force resend of alerts already sent (for testing)</param>
-        public void SendAlerts(int? frequency, bool forceResend)
+        public async Task SendAlerts(int? frequency, bool forceResend)
         {
             var apiBaseUrl = new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]);
             var cacheStrategy = new MemoryJobCacheStrategy(MemoryCache.Default);
@@ -44,14 +44,14 @@ namespace Escc.Jobs.SendAlerts
             if (publicAlertsSettings != null)
             {
                 var publicJobsProvider = new JobsDataFromApi(apiBaseUrl, JobsSet.PublicJobs, publicAlertsSettings.JobAdvertBaseUrl, cacheStrategy);
-                SendAlertsForJobSet(publicJobsProvider, JobsSet.PublicJobs, frequency, publicAlertsSettings, forceResend);
+                await SendAlertsForJobSet(publicJobsProvider, JobsSet.PublicJobs, frequency, publicAlertsSettings, forceResend);
             }
 
             var redeploymentAlertsSettings = JobAlertSettings(apiBaseUrl, JobsSet.RedeploymentJobs);
             if (redeploymentAlertsSettings != null)
             {
                 var redeploymentJobsProvider = new JobsDataFromApi(apiBaseUrl, JobsSet.RedeploymentJobs, redeploymentAlertsSettings.JobAdvertBaseUrl, cacheStrategy);
-                SendAlertsForJobSet(redeploymentJobsProvider, JobsSet.RedeploymentJobs, frequency, redeploymentAlertsSettings, forceResend);
+                await SendAlertsForJobSet(redeploymentJobsProvider, JobsSet.RedeploymentJobs, frequency, redeploymentAlertsSettings, forceResend);
             }
         }
 
@@ -74,7 +74,7 @@ namespace Escc.Jobs.SendAlerts
             }
         }
 
-        private void SendAlertsForJobSet(IJobsDataProvider jobsProvider, JobsSet jobsSet, int? frequency, JobAlertSettings alertSettings, bool forceResend)
+        private async Task SendAlertsForJobSet(IJobsDataProvider jobsProvider, JobsSet jobsSet, int? frequency, JobAlertSettings alertSettings, bool forceResend)
         {
             // No point sending alerts without links to the jobs
             if (alertSettings.JobAdvertBaseUrl == null)
@@ -95,7 +95,7 @@ namespace Escc.Jobs.SendAlerts
 
             // Get them, sort them and send them
             _log.Info($"Requesting jobs matching {jobsSet} with frequency {frequency} from Azure Storage");
-            var alerts = alertsRepo.GetAlerts(new JobAlertsQuery() { Frequency = frequency, JobsSet = jobsSet });
+            var alerts = await alertsRepo.GetAlerts(new JobAlertsQuery() { Frequency = frequency, JobsSet = jobsSet });
             var alertsGroupedByEmail = GroupAlertsByEmail(alerts);
 
             _log.Info($"{alerts.Count()} alerts found for {alertsGroupedByEmail.Count()} email addresses");
@@ -103,7 +103,7 @@ namespace Escc.Jobs.SendAlerts
             {
                 foreach (var alert in alertsForAnEmail)
                 {
-                    var jobsSentForThisEmail = forceResend ? new List<int>() : alertsRepo.GetJobsSentForEmail(alert.JobsSet, alert.Email);
+                    var jobsSentForThisEmail = forceResend ? new List<int>() : await alertsRepo.GetJobsSentForEmail(alert.JobsSet, alert.Email);
                     LookupJobsForAlert(jobsProvider, alert, jobsSentForThisEmail);
                 }
             }

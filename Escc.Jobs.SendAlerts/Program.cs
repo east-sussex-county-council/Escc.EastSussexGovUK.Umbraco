@@ -47,7 +47,7 @@ namespace Escc.Jobs.SendAlerts
                     }
                 }
                 
-                new JobAlertSender(log).SendAlerts(frequency, forceResend);
+                new JobAlertSender(log).SendAlerts(frequency, forceResend).RunSynchronously();
             }
             catch (Exception ex)
             {

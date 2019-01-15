@@ -20,6 +20,7 @@ using System.Runtime.Caching;
 using Escc.EastSussexGovUK.Umbraco.Web.Latest;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Api;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
+using System.Threading.Tasks;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
 {
@@ -34,7 +35,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
         /// </summary>
         /// <param name="model"/>
         /// <returns/>
-        public override ActionResult Index(RenderModel model)
+        public async new Task<ActionResult> Index(RenderModel model)
         {
             if (model == null) throw new ArgumentNullException(nameof(model));
 
@@ -57,7 +58,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
             if (!String.IsNullOrEmpty(Request.QueryString["nPostingTargetID"]))
             {
                 var jobsProvider = new JobsDataFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, new Uri(model.Content.UrlAbsolute()), new MemoryJobCacheStrategy(MemoryCache.Default, Request.QueryString["ForceCacheRefresh"] == "1"));
-                viewModel.Job = Task.Run(async () => await jobsProvider.ReadJob(Request.QueryString["nPostingTargetID"])).Result;
+                viewModel.Job = await jobsProvider.ReadJob(Request.QueryString["nPostingTargetID"]);
                 if (viewModel.Job.Id > 0)
                 {
                     return new RedirectResult(viewModel.Job.Url.ToString(), true);
@@ -70,12 +71,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
                 if (jobUrlSegment.Success)
                 {
                     var jobsProvider = new JobsDataFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, new Uri(model.Content.UrlAbsolute()), new MemoryJobCacheStrategy(MemoryCache.Default, Request.QueryString["ForceCacheRefresh"] == "1"));
-                    viewModel.Job = Task.Run(async () => await jobsProvider.ReadJob(jobUrlSegment.Groups[1].Value)).Result;
+                    viewModel.Job = await jobsProvider.ReadJob(jobUrlSegment.Groups[1].Value);
                     if (viewModel.Job.Id == 0 || viewModel.Job.ClosingDate < DateTime.Today)
                     {
                         // The job URL looks valid but the job isn't in the index, so it's probably closed.
                         // Find some similar jobs to suggest the user may want to apply for instead.
-                        FindSimilarJobs(jobsProvider, viewModel);
+                        await FindSimilarJobs(jobsProvider, viewModel);
                     }
                 }
                 else
@@ -109,14 +110,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
             return CurrentTemplate(viewModel);
         }
 
-        private void FindSimilarJobs(IJobsDataProvider jobsProvider, JobAdvertViewModel model)
+        private async Task FindSimilarJobs(IJobsDataProvider jobsProvider, JobAdvertViewModel model)
         {
             // Get the job title from the URL and use it as keywords to search for jobs that might be similar
             var urlPath = Request.Url.AbsolutePath.TrimEnd('/');
             var lastSlash = urlPath.LastIndexOf('/');
             if (lastSlash > -1) urlPath = urlPath.Substring(lastSlash + 1);
 
-            var jobs = Task.Run(async () => await jobsProvider.ReadJobs(new JobSearchQuery() { KeywordsInTitle = urlPath.Replace("-", " ") })).Result;
+            var jobs = await jobsProvider.ReadJobs(new JobSearchQuery() { KeywordsInTitle = urlPath.Replace("-", " ") });
             foreach (var job in jobs.Jobs)
             {
                 if (model.SimilarJobs.Count >= 10) break;

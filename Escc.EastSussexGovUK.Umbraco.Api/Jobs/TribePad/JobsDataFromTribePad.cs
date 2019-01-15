@@ -61,7 +61,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
 
             using (var reader = new StreamReader(stream))
             {
-                return _jobAdvertParser.ParseJob(reader.ReadToEnd(), jobId);
+                return await _jobAdvertParser.ParseJob(reader.ReadToEnd(), jobId);
             }
         }
 
@@ -75,8 +75,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
 
             var jobs = new JobSearchResult() { Jobs = new List<Job>() };
 
-            var stream = await ReadXml(_resultsUrl, _proxy);
-            jobs.Jobs.AddRange(_jobResultsParser.Parse(stream).Jobs);
+            var stream = await ReadXml(_resultsUrl, _proxy).ConfigureAwait(false);
+            jobs.Jobs.AddRange((await _jobResultsParser.Parse(stream)).Jobs);
             return jobs;
         }
 
@@ -92,7 +92,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
                 Proxy = proxy?.CreateProxy()
             };
             var client = new HttpClient(handler);
-            return await client.GetStreamAsync(url);
+            return await client.GetStreamAsync(url).ConfigureAwait(false);
         }
     }
 }

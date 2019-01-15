@@ -14,12 +14,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
     public class TribePadSalaryParserTests
     {
         [Test]
-        public void SalaryRangeIsParsed()
+        public async Task SalaryRangeIsParsed()
         {
             var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
             var parser = new TribePadSalaryParser(lookupValuesProvider.Object);
 
-            var salary = parser.ParseSalaryFromJobAdvert(Properties.Resources.TribePadSalaryRange);
+            var salary = await parser.ParseSalaryFromJobAdvert(Properties.Resources.TribePadSalaryRange);
 
             Assert.AreEqual(15000, salary.MinimumSalary);
             Assert.AreEqual(19999, salary.MaximumSalary);
@@ -27,12 +27,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         }
 
         [Test]
-        public void ExactSalaryIsParsed()
+        public async Task ExactSalaryIsParsed()
         {
             var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
             var parser = new TribePadSalaryParser(lookupValuesProvider.Object);
 
-            var salary = parser.ParseSalaryFromJobAdvert(Properties.Resources.TribePadSalaryExact);
+            var salary = await parser.ParseSalaryFromJobAdvert(Properties.Resources.TribePadSalaryExact);
 
             Assert.AreEqual(23000, salary.MinimumSalary);
             Assert.AreEqual(23000, salary.MaximumSalary);
@@ -40,12 +40,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         }
 
         [Test]
-        public void VoluntaryRoleIsParsed()
+        public async Task VoluntaryRoleIsParsed()
         {
             var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
             var parser = new TribePadSalaryParser(lookupValuesProvider.Object);
 
-            var salary = parser.ParseSalaryFromJobAdvert(Properties.Resources.TribePadSalaryVoluntary);
+            var salary = await parser.ParseSalaryFromJobAdvert(Properties.Resources.TribePadSalaryVoluntary);
 
             Assert.AreEqual(0, salary.MinimumSalary);
             Assert.AreEqual(0, salary.MaximumSalary);
@@ -53,18 +53,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         }
 
         [Test]
-        public void HourlyRateIsNullIfNotFound()
+        public async Task HourlyRateIsNullIfNotFound()
         {
             var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
             var parser = new TribePadSalaryParser(lookupValuesProvider.Object);
 
-            var salary = parser.ParseSalaryFromJobAdvert(Properties.Resources.TribePadSalaryExact);
+            var salary = await parser.ParseSalaryFromJobAdvert(Properties.Resources.TribePadSalaryExact);
 
             Assert.IsNull(salary.HourlyRate);
         }
 
         [Test]
-        public void HourlyRateExactIsParsed()
+        public async Task HourlyRateExactIsParsed()
         {
             var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
             lookupValuesProvider.Setup(x => x.ReadSalaryFrequencies()).Returns(Task.FromResult(new List<JobsLookupValue>()
@@ -73,7 +73,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
             } as IList<JobsLookupValue>));
             var parser = new TribePadSalaryParser(lookupValuesProvider.Object);
 
-            var salary = parser.ParseSalaryFromJobAdvert(Properties.Resources.TribePadSalaryHourlyExact);
+            var salary = await parser.ParseSalaryFromJobAdvert(Properties.Resources.TribePadSalaryHourlyExact);
 
             Assert.IsNull(salary.MinimumSalary);
             Assert.IsNull(salary.MaximumSalary);

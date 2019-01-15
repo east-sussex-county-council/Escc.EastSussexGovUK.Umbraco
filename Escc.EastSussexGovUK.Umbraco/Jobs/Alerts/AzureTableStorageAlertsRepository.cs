@@ -49,7 +49,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         /// </summary>
         /// <param name="query">The query.</param>
         /// <returns></returns>
-        public IEnumerable<JobAlert> GetAlerts(JobAlertsQuery query)
+        public async Task<IEnumerable<JobAlert>> GetAlerts(JobAlertsQuery query)
         {
             var table = _tableClient.GetTableReference(_alertsTable);
             table.CreateIfNotExistsAsync().Wait();
@@ -67,7 +67,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             }
 
             var tableQuery = new TableQuery<JobAlertTableEntity>().Where(filter);
-            var results = ReadAllResults(table, tableQuery, entity => BuildAlertFromEntity(entity));
+            var results = await ReadAllResults(table, tableQuery, entity => BuildAlertFromEntity(entity));
 
             return results;
         }
@@ -170,7 +170,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         /// <param name="alertId">The alert identifier.</param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException">alertId</exception>
-        public bool CancelAlert(string alertId)
+        public async Task<bool> CancelAlert(string alertId)
         {
             if (String.IsNullOrEmpty(alertId)) throw new ArgumentNullException(nameof(alertId));
 
@@ -200,15 +200,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
                 }
             }
 
-            DeleteRecordOfAlertsSent(jobsSet, emailAddress);
+            await DeleteRecordOfAlertsSent(jobsSet, emailAddress);
 
             return true;
         }
 
-        private void DeleteRecordOfAlertsSent(JobsSet jobsSet, string emailAddress)
+        private async Task DeleteRecordOfAlertsSent(JobsSet jobsSet, string emailAddress)
         {
             // Only remove data if there are no more alerts set up for this email, otherwise we may still send jobs they've already seen
-            var alertsForThisEmail = GetAlerts(new JobAlertsQuery { JobsSet = jobsSet, EmailAddress = emailAddress });
+            var alertsForThisEmail = await GetAlerts(new JobAlertsQuery { JobsSet = jobsSet, EmailAddress = emailAddress });
             if (alertsForThisEmail.Any()) return;
 
             // Delete the record of alerts sent
@@ -305,7 +305,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         /// <param name="jobsSet">The jobs set.</param>
         /// <param name="emailAddress">The email address.</param>
         /// <returns></returns>
-        public IList<int> GetJobsSentForEmail(JobsSet jobsSet, string emailAddress)
+        public async Task<IList<int>> GetJobsSentForEmail(JobsSet jobsSet, string emailAddress)
         {
             // Create the table query.
             var table = _tableClient.GetTableReference(_alertsSentTable);
@@ -317,10 +317,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
                     TableQuery.GenerateFilterCondition("JobsSet", QueryComparisons.Equal, jobsSet.ToString()))
                     );
 
-            return ReadAllResults<int>(table, tableQuery, entity => Int32.Parse(entity.RowKey));
+            return await ReadAllResults<int>(table, tableQuery, entity => Int32.Parse(entity.RowKey));
         }
 
-        private static IList<ItemType> ReadAllResults<ItemType>(CloudTable table, TableQuery<TableEntity> tableQuery, Func<TableEntity, ItemType> buildItem)
+        private static async Task<IList<ItemType>> ReadAllResults<ItemType>(CloudTable table, TableQuery<TableEntity> tableQuery, Func<TableEntity, ItemType> buildItem)
         {
             // Initialize the continuation token to null to start from the beginning of the table.
             TableContinuationToken continuationToken = null;
@@ -330,7 +330,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             do
             {
                 // Retrieve a segment (up to 1,000 entities).
-                var tableQueryResult = Task.Run(() => table.ExecuteQuerySegmentedAsync(tableQuery, continuationToken)).Result;
+                var tableQueryResult = await table.ExecuteQuerySegmentedAsync(tableQuery, continuationToken);
 
                 // Assign the new continuation token to tell the service where to
                 // continue on the next iteration (or null if it has reached the end).
@@ -347,7 +347,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             return results;
         }
 
-        private static IList<ItemType> ReadAllResults<ItemType>(CloudTable table, TableQuery<JobAlertTableEntity> tableQuery, Func<JobAlertTableEntity, ItemType> buildItem)
+        private async static Task<IList<ItemType>> ReadAllResults<ItemType>(CloudTable table, TableQuery<JobAlertTableEntity> tableQuery, Func<JobAlertTableEntity, ItemType> buildItem)
         {
             // Initialize the continuation token to null to start from the beginning of the table.
             TableContinuationToken continuationToken = null;
@@ -357,7 +357,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             do
             {
                 // Retrieve a segment (up to 1,000 entities).
-                var tableQueryResult = Task.Run(() => table.ExecuteQuerySegmentedAsync(tableQuery, continuationToken)).Result;
+                var tableQueryResult = await table.ExecuteQuerySegmentedAsync(tableQuery, continuationToken);
 
                 // Assign the new continuation token to tell the service where to
                 // continue on the next iteration (or null if it has reached the end).

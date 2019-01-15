@@ -7,6 +7,7 @@ using Escc.EastSussexGovUK.Umbraco.Jobs;
 using System.Xml.Linq;
 using System.IO;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
 {
@@ -39,16 +40,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         /// <param name="sourceData">The source data for the job.</param>
         /// <param name="jobId">The job identifier.</param>
         /// <returns></returns>
-        public Job ParseJob(string sourceData, string jobId)
+        public async Task<Job> ParseJob(string sourceData, string jobId)
         {
             try
             {
-                EnsureLookupValues();
+                await EnsureLookupValues();
 
                 var xml = XDocument.Parse(sourceData);
                 var jobXml = xml.Root.Element("job");
 
-                return ParseJob(jobXml);
+                return await ParseJob(jobXml);
             }
             catch (Exception exception)
             {
@@ -58,16 +59,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             }
         }
 
-        private void EnsureLookupValues()
+        private async Task EnsureLookupValues()
         {
             if (_workPatterns == null)
             {
-                _workPatterns = _lookupValuesProvider.ReadWorkPatterns().Result;
+                _workPatterns = await _lookupValuesProvider.ReadWorkPatterns();
             }
 
             if (_contractTypes == null)
             {
-                _contractTypes = _lookupValuesProvider.ReadContractTypes().Result;
+                _contractTypes = await _lookupValuesProvider.ReadContractTypes();
             }
         }
 
@@ -76,9 +77,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         /// </summary>
         /// <param name="stream">The stream.</param>
         /// <returns></returns>
-        public JobsParseResult Parse(Stream stream)
+        public async Task<JobsParseResult> Parse(Stream stream)
         {
-            EnsureLookupValues();
+            await EnsureLookupValues();
 
             var xml = XDocument.Load(stream);
             var parseResult = new JobsParseResult();
@@ -87,13 +88,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
 
             foreach (var jobXml in jobsXml)
             {
-                parseResult.Jobs.Add(ParseJob(jobXml));
+                parseResult.Jobs.Add(await ParseJob(jobXml));
             }
 
             return parseResult;
         }
 
-        private Job ParseJob(XElement jobXml)
+        private async Task<Job> ParseJob(XElement jobXml)
         {
             var job = new Job()
             {
@@ -114,7 +115,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             job.AdditionalInformationHtml = new HtmlString(HttpUtility.HtmlDecode(jobXml.Element("ideal_candidate")?.Value));
             job.EqualOpportunitiesHtml = new HtmlString(HttpUtility.HtmlDecode(jobXml.Element("about_company")?.Value));
             job.JobType = HttpUtility.HtmlDecode(jobXml.Element("category_name")?.Value);
-            job.Salary = _salaryParser.ParseSalaryFromJobAdvert(jobXml.ToString());
+            job.Salary = await _salaryParser.ParseSalaryFromJobAdvert(jobXml.ToString());
             var salaryFrom = Int32.Parse(jobXml.Element("salary_from").Value, CultureInfo.InvariantCulture);
             var salaryTo = Int32.Parse(jobXml.Element("salary_to").Value, CultureInfo.InvariantCulture);
 

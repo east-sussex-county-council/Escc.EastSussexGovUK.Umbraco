@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
 
@@ -24,13 +25,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             return new Salary();
         }
 
-        public Salary ParseSalaryFromJobAdvert(string sourceData)
+        public async Task<Salary> ParseSalaryFromJobAdvert(string sourceData)
         {
             var jobXml = XDocument.Parse(sourceData);
 
             var salary = new Salary();
 
-            var salaryFrequencies = _lookupValuesProvider.ReadSalaryFrequencies().Result;
+            var salaryFrequencies = await _lookupValuesProvider.ReadSalaryFrequencies();
             var hourlyFrequencyId = salaryFrequencies?.SingleOrDefault(x => x.Text == "Hourly").LookupValueId;
             var frequencyId = jobXml.Root.Element("salary_frequency")?.Value;
 

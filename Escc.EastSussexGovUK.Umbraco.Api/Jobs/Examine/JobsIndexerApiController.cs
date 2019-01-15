@@ -99,10 +99,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
             }
         }
 
-        private static void UpdateIndex(string indexerName, string searcherName)
+        private async static Task UpdateIndex(string indexerName, string searcherName)
         {
             var jobsSearcher = new JobsDataFromExamine(ExamineManager.Instance.SearchProviderCollection[searcherName], null, null, null);
-            var jobs = jobsSearcher.ReadJobs(new JobSearchQuery()).Result;
+            var jobs = await jobsSearcher.ReadJobs(new JobSearchQuery());
             var jobIds = new Dictionary<int,DateTime?>();
             foreach (var job in jobs.Jobs)
             {
@@ -119,15 +119,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
         }
 
         [HttpGet]
-        public HttpResponseMessage UpdateJobsLookupValues()
+        public async Task<HttpResponseMessage> UpdateJobsLookupValues()
         {
             try
             {
                 // If the lookups index is built before the jobs index then it will be be full of 0 values.
                 // This happens often when Azure moves the site to a new machine and the indexes are rebuilt in parallel,
                 // so provide a way to check for missing values and rebuild the lookups index
-                UpdateIndexIfNoLookups("PublicJobsLookupValues");
-                UpdateIndexIfNoLookups("RedeploymentJobsLookupValues");
+                await UpdateIndexIfNoLookups("PublicJobsLookupValues");
+                await UpdateIndexIfNoLookups("RedeploymentJobsLookupValues");
 
                 return Request.CreateResponse(HttpStatusCode.NoContent);
             }
@@ -139,12 +139,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
             }
         }
 
-        private static void UpdateIndexIfNoLookups(string indexPrefix)
+        private static async Task UpdateIndexIfNoLookups(string indexPrefix)
         {
             var dataSource = new JobsLookupValuesFromExamine(ExamineManager.Instance.SearchProviderCollection[indexPrefix + "Searcher"]);
-            var lookupValues = Task.Run(async () => await dataSource.ReadJobTypes());
+            var lookupValues = await dataSource.ReadJobTypes();
             var jobFound = false;
-            foreach (var lookupValue in lookupValues.Result)
+            foreach (var lookupValue in lookupValues)
             {
                 if (lookupValue.Count > 0)
                 {

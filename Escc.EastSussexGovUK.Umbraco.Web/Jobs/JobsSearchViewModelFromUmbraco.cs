@@ -38,28 +38,28 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
             return _model;
         }
 
-        public void AddLookupValuesToModel(IJobsLookupValuesProvider lookupValuesDataSource, JobsSearchViewModel viewModel)
+        public async System.Threading.Tasks.Task AddLookupValuesToModel(IJobsLookupValuesProvider lookupValuesDataSource, JobsSearchViewModel viewModel)
         {
-            var locations = System.Threading.Tasks.Task.Run(async () => await lookupValuesDataSource.ReadLocations());
-            foreach (var location in locations.Result)
+            var locations = await lookupValuesDataSource.ReadLocations();
+            foreach (var location in locations)
             {
                 viewModel.Locations.Add(location);
             }
 
-            var jobTypes = System.Threading.Tasks.Task.Run(async () => await lookupValuesDataSource.ReadJobTypes());
-            foreach (var jobType in jobTypes.Result)
+            var jobTypes = await lookupValuesDataSource.ReadJobTypes();
+            foreach (var jobType in jobTypes)
             {
                 viewModel.JobTypes.Add(jobType);
             }
 
-            var salaryRanges = System.Threading.Tasks.Task.Run(async () => await lookupValuesDataSource.ReadSalaryRanges());
-            foreach (var salaryRange in salaryRanges.Result)
+            var salaryRanges = await lookupValuesDataSource.ReadSalaryRanges();
+            foreach (var salaryRange in salaryRanges)
             {
                 viewModel.SalaryRanges.Add(salaryRange);
             }
 
-            var workPatterns = System.Threading.Tasks.Task.Run(async () => await lookupValuesDataSource.ReadWorkPatterns());
-            foreach (var workPattern in workPatterns.Result)
+            var workPatterns = await lookupValuesDataSource.ReadWorkPatterns();
+            foreach (var workPattern in workPatterns)
             {
                 viewModel.WorkPatterns.Add(workPattern);
             }

@@ -45,7 +45,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
         /// <returns></returns>
         public async Task<IList<JobsLookupValue>> ReadLocations()
         {
-            return await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV39");
+            return await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV39").ConfigureAwait(false);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
         /// <returns></returns>
         public async Task<IList<JobsLookupValue>> ReadJobTypes()
         {
-            return await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV40");
+            return await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV40").ConfigureAwait(false);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
         /// <exception cref="System.NotImplementedException"></exception>
         public async Task<IList<JobsLookupValue>> ReadOrganisations()
         {
-            return await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV52");
+            return await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV52").ConfigureAwait(false);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
         /// <returns></returns>
         public async Task<IList<JobsLookupValue>> ReadSalaryRanges()
         {
-            var salaryRanges = await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV46");
+            var salaryRanges = await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV46").ConfigureAwait(false);
             foreach (var salaryRange in salaryRanges)
             {
                 salaryRange.Text = salaryRange.Text.Replace(" to ", " - ");
@@ -85,9 +85,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
         /// Reads the salary frequencies, eg hourly, weekly, annually
         /// </summary>
         /// <returns></returns>
-        public async Task<IList<JobsLookupValue>> ReadSalaryFrequencies()
+        public Task<IList<JobsLookupValue>> ReadSalaryFrequencies()
         {
-            return new List<JobsLookupValue>();
+            return Task.FromResult((IList<JobsLookupValue>)new List<JobsLookupValue>());
         }
 
         /// <summary>
@@ -96,21 +96,21 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
         /// <returns></returns>
         public async Task<IList<JobsLookupValue>> ReadWorkPatterns()
         {
-            return await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV50");
+            return await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV50").ConfigureAwait(false);
         }
 
         /// <summary>
         /// Reads the contract types, eg fixed term or permanent
         /// </summary>
         /// <returns></returns>
-        public async Task<IList<JobsLookupValue>> ReadContractTypes()
+        public Task<IList<JobsLookupValue>> ReadContractTypes()
         {
-            return new List<JobsLookupValue>();
+            return Task.FromResult((IList<JobsLookupValue>)new List<JobsLookupValue>());
         }
 
         private async Task<IList<JobsLookupValue>> ReadLookupValuesFromTalentLink(IJobLookupValuesParser parser, string fieldName)
         {
-            var htmlStream = await ReadHtml(_searchUrl, _proxy);
+            var htmlStream = await ReadHtml(_searchUrl, _proxy).ConfigureAwait(false);
 
             using (var reader = new StreamReader(htmlStream))
             {
@@ -129,7 +129,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
                 Proxy = proxy?.CreateProxy()
             };
             var client = new HttpClient(handler);
-            return await client.GetStreamAsync(url);
+            return await client.GetStreamAsync(url).ConfigureAwait(false);
         }
     }
 }

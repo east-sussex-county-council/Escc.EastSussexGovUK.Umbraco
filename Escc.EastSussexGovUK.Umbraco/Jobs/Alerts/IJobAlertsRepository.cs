@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
 {
@@ -12,7 +13,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         /// </summary>
         /// <param name="query">The query.</param>
         /// <returns></returns>
-        IEnumerable<JobAlert> GetAlerts(JobAlertsQuery query);
+        Task<IEnumerable<JobAlert>> GetAlerts(JobAlertsQuery query);
 
         /// <summary>
         /// Gets a single alert by its identifier.
@@ -21,7 +22,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         /// <returns></returns>
         JobAlert GetAlertById(string alertId);
 
-        IList<int> GetJobsSentForEmail(JobsSet jobsSet, string emailAddress);
+        Task<IList<int>> GetJobsSentForEmail(JobsSet jobsSet, string emailAddress);
 
         /// <summary>
         /// Saves a new or updated alert.
@@ -34,7 +35,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         /// </summary>
         /// <param name="alertId">The alert identifier.</param>
         /// <returns></returns>
-        bool CancelAlert(string alertId);
+        Task<bool> CancelAlert(string alertId);
 
         /// <summary>
         /// Records that an alert has been sent to a given email address.

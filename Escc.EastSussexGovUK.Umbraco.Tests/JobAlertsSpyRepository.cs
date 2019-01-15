@@ -12,7 +12,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
     {
         private List<int> _jobsSent = new List<int>();
 
-        public bool CancelAlert(string alertId)
+        public Task<bool> CancelAlert(string alertId)
         {
             throw new NotImplementedException();
         }
@@ -22,12 +22,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             throw new NotImplementedException();
         }
 
-        public IEnumerable<JobAlert> GetAlerts(JobAlertsQuery query)
+        public Task<IEnumerable<JobAlert>> GetAlerts(JobAlertsQuery query)
         {
             throw new NotImplementedException();
         }
 
-        public IList<int> GetJobsSentForEmail(JobsSet jobsSet, string emailAddress)
+        public Task<IList<int>> GetJobsSentForEmail(JobsSet jobsSet, string emailAddress)
         {
             throw new NotImplementedException();
         }

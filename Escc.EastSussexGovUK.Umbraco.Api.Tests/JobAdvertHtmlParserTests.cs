@@ -13,96 +13,96 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
     public class JobAdvertHtmlParserTests
     {
         [Test]
-        public void JobTitleParsedFromHtml()
+        public async Task JobTitleParsedFromHtml()
         {
             var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser(), new TalentLinkWorkPatternParser());
 
-            var job = parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
+            var job = await parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
 
             Assert.AreEqual("Ceremonies Hosts", job.JobTitle);
         }
 
         [Test]
-        public void JobReferenceParsedFromHtml()
+        public async Task JobReferenceParsedFromHtml()
         {
             var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser(), new TalentLinkWorkPatternParser());
 
-            var job = parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
+            var job = await parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
 
             Assert.AreEqual("CET01739", job.Reference);
         }
 
 
         [Test]
-        public void LocationParsedFromHtml()
+        public async Task LocationParsedFromHtml()
         {
             var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser(), new TalentLinkWorkPatternParser());
 
-            var job = parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
+            var job = await parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
 
             Assert.AreEqual("Lewes", job.Locations[0]);
         }
 
 
         [Test]
-        public void OrganisationParsedFromHtml()
+        public async Task OrganisationParsedFromHtml()
         {
             var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser(), new TalentLinkWorkPatternParser());
 
-            var job = parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
+            var job = await parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
 
             Assert.AreEqual("East Sussex County Council", job.Organisation);
         }
 
 
         [Test]
-        public void DepartmentParsedFromHtml()
+        public async Task DepartmentParsedFromHtml()
         {
             var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser(), new TalentLinkWorkPatternParser());
 
-            var job = parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
+            var job = await parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
 
             Assert.AreEqual("Communities, Economy and Transport", job.Department);
         }
 
 
         [Test]
-        public void ContractTypeParsedFromHtml()
+        public async Task ContractTypeParsedFromHtml()
         {
             var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser(), new TalentLinkWorkPatternParser());
 
-            var job = parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
+            var job = await parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
 
             Assert.AreEqual("Casual", job.ContractType);
         }
 
 
         [Test]
-        public void JobTypeParsedFromHtml()
+        public async Task JobTypeParsedFromHtml()
         {
             var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser(), new TalentLinkWorkPatternParser());
 
-            var job = parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
+            var job = await parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
 
             Assert.AreEqual("Customer Services", job.JobType);
         }
 
         [Test]
-        public void ClosingDateParsedFromHtml()
+        public async Task ClosingDateParsedFromHtml()
         {
             var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser(), new TalentLinkWorkPatternParser());
 
-            var job = parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
+            var job = await parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
 
             Assert.AreEqual(new DateTime(2017,01,29), job.ClosingDate);
         }
 
         [Test]
-        public void AdvertTextParsedFromHtml()
+        public async Task AdvertTextParsedFromHtml()
         {
             var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser(), new TalentLinkWorkPatternParser());
 
-            var job = parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
+            var job = await parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
 
             Assert.IsTrue(job.AdvertHtml.ToHtmlString().Contains("Casual hours"));
             Assert.IsTrue(job.AdvertHtml.ToHtmlString().Contains("East Sussex Registration Service"));
@@ -112,13 +112,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
 
 
         [Test]
-        public void ApplyUrlParsedFromHtml()
+        public async Task ApplyUrlParsedFromHtml()
         {
             var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser(), new TalentLinkWorkPatternParser());
 
-            var job = parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
+            var job = await parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
 
-            Assert.AreEqual("https://emea3.recruitmentplatform.com/syndicated/private/syd_apply.cfm?id=PFOFK026203F3VBQB7968LOH0&nPostingTargetID=37054&mask=esccext&jdescurl=https:%2F%2Femea3.recruitmentplatform.com%2Fsyndicated%2Flay%2Fjsoutputinitrapido.cfm%3Fcomponent%3Dlay9999_jdesc100a%26ID%3DPFOFK026203F3VBQB7968LOH0%26LG%3DUK%26mask%3Desccext%26browserchk%3Dno%26nPostingTargetID%3D37054", job.ApplyUrl.ToString());
+            Assert.AreEqual("https://emea3.recruitmentplatform.com/syndicated/private/syd_apply.cfm?id=PFOFK026203F3VBQB7968LOH0&nPostingTargetID=37054&mask=esccext&jdescurl=https%3A%2F%2Femea3.recruitmentplatform.com%2Fsyndicated%2Flay%2Fjsoutputinitrapido.cfm%3Fcomponent%3Dlay9999_jdesc100a%26ID%3DPFOFK026203F3VBQB7968LOH0%26LG%3DUK%26mask%3Desccext%26browserchk%3Dno%26nPostingTargetID%3D37054", job.ApplyUrl.ToString());
         }
     }
 }

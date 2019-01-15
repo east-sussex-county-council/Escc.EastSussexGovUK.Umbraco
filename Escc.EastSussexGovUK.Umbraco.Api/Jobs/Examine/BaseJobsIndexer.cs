@@ -56,6 +56,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
 
         public IEnumerable<SimpleDataSet> GetAllData(string indexType)
         {
+            // Because this calls Task<T>.Result to get the result of an async method, every await call from here down
+            // has to be suffixed with .ConfigureAwait(false) to avoid deadlocks
+            // https://stackoverflow.com/questions/10343632/httpclient-getasync-never-returns-when-using-await-async
+            return GetAllDataAsync(indexType).Result;
+        }
+
+        public async Task<IEnumerable<SimpleDataSet>> GetAllDataAsync(string indexType)
+        {
             if (_jobsProvider == null) throw new InvalidOperationException("You must call InitialiseDependencies before using this instance");
 
             var dataSets = new List<SimpleDataSet>();
@@ -66,14 +74,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
                 // we can't just continue with the existing data.  If we try to check the data source in the constructor, 
                 // the only way to prevent execution proceeding to wiping the index is to throw an exception, and in a cold-boot
                 // scenario where indexes need to be rebuilt that crashes all Umbraco pages.
-                var jobs = Task.Run(async () => await _jobsProvider.ReadJobs(new JobSearchQuery())).Result;
+                var jobs = await _jobsProvider.ReadJobs(new JobSearchQuery()).ConfigureAwait(false);
 
                 //Looping all the raw models and adding them to the dataset
                 foreach (var job in jobs.Jobs)
                 {
                     try
                     {
-                        var jobAdvert = Task.Run(async () => await _jobsProvider.ReadJob(job.Id.ToString(CultureInfo.InvariantCulture))).Result;
+                        var jobAdvert = await _jobsProvider.ReadJob(job.Id.ToString(CultureInfo.InvariantCulture)).ConfigureAwait(false);
                         jobAdvert.Id = job.Id;
                         if (String.IsNullOrEmpty(jobAdvert.JobTitle)) jobAdvert.JobTitle = job.JobTitle;
                         if (jobAdvert.Locations == null || jobAdvert.Locations.Count == 0) jobAdvert.Locations = job.Locations;

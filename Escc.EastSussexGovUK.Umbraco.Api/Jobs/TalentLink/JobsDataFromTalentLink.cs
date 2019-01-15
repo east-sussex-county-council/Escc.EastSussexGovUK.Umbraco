@@ -66,7 +66,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
 
             using (var reader = new StreamReader(htmlStream))
             {
-                return _jobAdvertParser.ParseJob(reader.ReadToEnd(), jobId);
+                return await _jobAdvertParser.ParseJob(reader.ReadToEnd(), jobId);
             }
         }
 
@@ -86,14 +86,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
                 Stream stream = null;
                 try
                 {
-                    stream = await ReadJobsFromTalentLink(currentPage, query);
+                    stream = await ReadJobsFromTalentLink(currentPage, query).ConfigureAwait(false);
 
                     if (_saveHtml)
                     {
                         stream = SaveHtml(query, currentPage, stream);
                     }
 
-                    var parseResult = _jobResultsParser.Parse(stream);
+                    var parseResult = await _jobResultsParser.Parse(stream).ConfigureAwait(false);
 
                     if (parseResult.Jobs.Count > 0)
                     {
@@ -165,7 +165,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
 
             var pagedSourceUrl = new StringBuilder(_resultsUrl.Scheme).Append("://").Append(_resultsUrl.Authority).Append(_resultsUrl.AbsolutePath).Append("?").Append(queryString);
 
-            return await ReadHtml(new Uri(pagedSourceUrl.ToString()), _proxy);
+            return await ReadHtml(new Uri(pagedSourceUrl.ToString()), _proxy).ConfigureAwait(false);
         }
 
         private void AddSortOrderToQueryString(NameValueCollection queryString, JobSearchQuery.JobsSortOrder sortBy)
@@ -235,7 +235,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
                 Proxy = proxy?.CreateProxy()
             };
             var client = new HttpClient(handler);
-            return await client.GetStreamAsync(url);
+            return await client.GetStreamAsync(url).ConfigureAwait(false);
         }
     }
 }

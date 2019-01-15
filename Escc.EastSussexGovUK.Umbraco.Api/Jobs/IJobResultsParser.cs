@@ -1,4 +1,5 @@
 using System.IO;
+using System.Threading.Tasks;
 
 namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs
 {
@@ -9,6 +10,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs
         /// </summary>
         /// <param name="htmlStream">The HTML stream.</param>
         /// <returns></returns>
-        JobsParseResult Parse(Stream htmlStream);
+        Task<JobsParseResult> Parse(Stream htmlStream);
     }
 }

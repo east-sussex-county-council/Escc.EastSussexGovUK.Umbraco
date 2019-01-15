@@ -43,6 +43,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
 
         public IEnumerable<SimpleDataSet> GetAllData(string indexType)
         {
+            // Because this calls Task<T>.Result to get the result of an async method, every await call from here down
+            // has to be suffixed with .ConfigureAwait(false) to avoid deadlocks
+            // https://stackoverflow.com/questions/10343632/httpclient-getasync-never-returns-when-using-await-async
+            return GetAllDataAsync(indexType).Result;
+        }
+
+        public async Task<IEnumerable<SimpleDataSet>> GetAllDataAsync(string indexType)
+        {
             //Ensure that an Umbraco context is available
             if (UmbracoContext.Current == null)
             {
@@ -65,29 +73,29 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
 
                 var i = 1;
 
-                var locations = Task.Run(async () => await _lookupValuesProvider.ReadLocations()).Result;
+                var locations = await _lookupValuesProvider.ReadLocations().ConfigureAwait(false);
                 foreach (var lookupValue in locations)
                 {
                     var query = new JobSearchQuery();
                     query.Locations.Add(lookupValue.Text);
                     query.ClosingDateFrom = DateTime.Today;
-                    var simpleDataSet = Task.Run(async () => await CreateDataSetFromLookup(i, indexType, "Location", query, lookupValue, jobsDataProvider)).Result;
+                    var simpleDataSet = await CreateDataSetFromLookup(i, indexType, "Location", query, lookupValue, jobsDataProvider).ConfigureAwait(false);
                     dataSets.Add(simpleDataSet);
                     i++;
                 }
 
-                var jobTypes = Task.Run(async () => await _lookupValuesProvider.ReadJobTypes()).Result;
+                var jobTypes = await _lookupValuesProvider.ReadJobTypes().ConfigureAwait(false);
                 foreach (var lookupValue in jobTypes)
                 {
                     var query = new JobSearchQuery();
                     query.JobTypes.Add(lookupValue.Text);
                     query.ClosingDateFrom = DateTime.Today;
-                    var simpleDataSet = Task.Run(async () => await CreateDataSetFromLookup(i, indexType, "JobType", query, lookupValue, jobsDataProvider)).Result;
+                    var simpleDataSet = await CreateDataSetFromLookup(i, indexType, "JobType", query, lookupValue, jobsDataProvider).ConfigureAwait(false);
                     dataSets.Add(simpleDataSet);
                     i++;
                 }
 
-                var salaryRanges = Task.Run(async () => await _lookupValuesProvider.ReadSalaryRanges()).Result;
+                var salaryRanges = await _lookupValuesProvider.ReadSalaryRanges().ConfigureAwait(false);
                 foreach (var lookupValue in salaryRanges)
                 {
                     lookupValue.Text = lookupValue.Text.Replace(" - ", " to "); // East Sussex County Council house style
@@ -95,45 +103,45 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
                     var query = new JobSearchQuery();
                     query.SalaryRanges.Add(lookupValue.Text.Replace(",",String.Empty));
                     query.ClosingDateFrom = DateTime.Today;
-                    var simpleDataSet = Task.Run(async () => await CreateDataSetFromLookup(i, indexType, "SalaryRange", query, lookupValue, jobsDataProvider)).Result;
+                    var simpleDataSet = await CreateDataSetFromLookup(i, indexType, "SalaryRange", query, lookupValue, jobsDataProvider).ConfigureAwait(false);
                     dataSets.Add(simpleDataSet);
                     i++;
                 }
 
-                var salaryFrequencies = Task.Run(async () => await _lookupValuesProvider.ReadSalaryFrequencies()).Result;
+                var salaryFrequencies = await _lookupValuesProvider.ReadSalaryFrequencies().ConfigureAwait(false);
                 foreach (var lookupValue in salaryFrequencies)
                 {
-                    var simpleDataSet = Task.Run(async () => await CreateDataSetFromLookup(i, indexType, "SalaryFrequency", null, lookupValue, null)).Result;
+                    var simpleDataSet = await CreateDataSetFromLookup(i, indexType, "SalaryFrequency", null, lookupValue, null).ConfigureAwait(false);
                     dataSets.Add(simpleDataSet);
                     i++;
                 }
 
-                var organisations = Task.Run(async () => await _lookupValuesProvider.ReadOrganisations()).Result;
+                var organisations = await _lookupValuesProvider.ReadOrganisations().ConfigureAwait(false);
                 foreach (var lookupValue in organisations)
                 {
                     var query = new JobSearchQuery();
                     query.Organisations.Add(lookupValue.Text);
                     query.ClosingDateFrom = DateTime.Today;
-                    var simpleDataSet = Task.Run(async () => await CreateDataSetFromLookup(i, indexType, "Organisation", query, lookupValue, jobsDataProvider)).Result;
+                    var simpleDataSet = await CreateDataSetFromLookup(i, indexType, "Organisation", query, lookupValue, jobsDataProvider).ConfigureAwait(false);
                     dataSets.Add(simpleDataSet);
                     i++;
                 }
 
-                var workPatterns = Task.Run(async () => await _lookupValuesProvider.ReadWorkPatterns()).Result;
+                var workPatterns = await _lookupValuesProvider.ReadWorkPatterns().ConfigureAwait(false);
                 foreach (var lookupValue in workPatterns)
                 {
                     var query = new JobSearchQuery();
                     query.WorkPatterns.Add(lookupValue.Text);
                     query.ClosingDateFrom = DateTime.Today;
-                    var simpleDataSet = Task.Run(async () => await CreateDataSetFromLookup(i, indexType, "WorkPattern", query, lookupValue, jobsDataProvider)).Result;
+                    var simpleDataSet = await CreateDataSetFromLookup(i, indexType, "WorkPattern", query, lookupValue, jobsDataProvider).ConfigureAwait(false);
                     dataSets.Add(simpleDataSet);
                     i++;
                 }
 
-                var contractTypes = Task.Run(async () => await _lookupValuesProvider.ReadContractTypes()).Result;
+                var contractTypes = await _lookupValuesProvider.ReadContractTypes().ConfigureAwait(false);
                 foreach (var lookupValue in contractTypes)
                 {
-                    var simpleDataSet = Task.Run(async () => await CreateDataSetFromLookup(i, indexType, "ContractType", null, lookupValue, null)).Result;
+                    var simpleDataSet = await CreateDataSetFromLookup(i, indexType, "ContractType", null, lookupValue, null).ConfigureAwait(false);
                     dataSets.Add(simpleDataSet);
                     i++;
                 }
@@ -161,7 +169,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
 
             if (jobsDataProvider != null)
             {
-                var jobs = await jobsDataProvider.ReadJobs(query);
+                var jobs = await jobsDataProvider.ReadJobs(query).ConfigureAwait(false);
                 simpleDataSet.RowData.Add("count", jobs.TotalJobs.ToString(CultureInfo.CurrentCulture));
             }
             return simpleDataSet;

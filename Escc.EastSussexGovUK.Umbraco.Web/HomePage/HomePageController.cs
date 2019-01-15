@@ -35,7 +35,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.HomePage
         /// <param name="model"></param>
         /// <returns></returns>
         /// <exception cref="System.ArgumentNullException">model</exception>
-        public override ActionResult Index(RenderModel model)
+        public async new Task<ActionResult> Index(RenderModel model)
         {
             if (model == null) throw new ArgumentNullException(nameof(model));
 
@@ -50,8 +50,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.HomePage
             try
             {
                 var jobsData = new JobsLookupValuesFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), JobsSet.PublicJobs, new MemoryJobCacheStrategy(MemoryCache.Default, Request.QueryString["ForceCacheRefresh"] == "1"));
-                viewModel.JobLocations = Task.Run(async () => await jobsData.ReadLocations()).Result;
-                viewModel.JobTypes = Task.Run(async () => await jobsData.ReadJobTypes()).Result;
+                viewModel.JobLocations = await jobsData.ReadLocations();
+                viewModel.JobTypes = await jobsData.ReadJobTypes();
             }
             catch (Exception ex)
             {

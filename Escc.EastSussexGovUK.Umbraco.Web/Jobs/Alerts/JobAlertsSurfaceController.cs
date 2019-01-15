@@ -10,6 +10,7 @@ using Escc.Services;
 using System.Configuration;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Alerts;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
+using System.Threading.Tasks;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs.Alerts
 {
@@ -45,21 +46,21 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs.Alerts
 
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult CancelAlert()
+        public async Task<ActionResult> CancelAlert()
         {
             var converter = new JobSearchQueryConverter();
             var encoder = new JobAlertIdEncoder(converter);
             var absoluteUrl = new Uri(Request.Url, Request.RawUrl);
             var alertId = encoder.ParseIdFromUrl(absoluteUrl);
             var alertsRepo = new AzureTableStorageAlertsRepository(converter, ConfigurationManager.ConnectionStrings["Escc.EastSussexGovUK.Umbraco.AzureStorage"].ConnectionString);
-            var success = alertsRepo.CancelAlert(alertId);
+            var success = await alertsRepo.CancelAlert(alertId);
 
             return new RedirectResult(absoluteUrl.AbsolutePath + "?cancelled=" + (success ? "1" : "0"));
         }
 
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult ReplaceAlert(JobSearchQuery searchQuery)
+        public async Task<ActionResult> ReplaceAlert(JobSearchQuery searchQuery)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +88,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs.Alerts
                 {
                     // The alert id, and therefore the criteria, changed, so save the new alert and delete the old one
                     repo.SaveAlert(newAlert);
-                    repo.CancelAlert(oldAlert.AlertId);
+                    await repo.CancelAlert(oldAlert.AlertId);
                 }
 
                 var urlWithoutQueryString = new Uri(Request.Url, new Uri(Request.Url, Request.RawUrl).AbsolutePath);

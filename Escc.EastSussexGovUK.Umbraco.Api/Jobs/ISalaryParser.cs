@@ -1,5 +1,5 @@
-﻿using Escc.EastSussexGovUK.Umbraco.Jobs;
-using HtmlAgilityPack;
+﻿using System.Threading.Tasks;
+using Escc.EastSussexGovUK.Umbraco.Jobs;
 
 namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs
 {
@@ -13,7 +13,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs
         /// </summary>
         /// <param name="sourceData">The source data of a job advert, eg XML or JSON</param>
         /// <returns></returns>
-        Salary ParseSalaryFromJobAdvert(string sourceData);
+        Task<Salary> ParseSalaryFromJobAdvert(string sourceData);
 
         /// <summary>
         /// Parses a salary from a description of the salary.

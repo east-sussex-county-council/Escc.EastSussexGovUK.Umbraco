@@ -19,6 +19,7 @@ using System.Runtime.Caching;
 using Escc.EastSussexGovUK.Umbraco.Web.Latest;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Api;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
+using System.Threading.Tasks;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
 {
@@ -32,7 +33,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
         /// </summary>
         /// <param name="model"/>
         /// <returns/>
-        public override ActionResult Index(RenderModel model)
+        public async new Task<ActionResult> Index(RenderModel model)
         {
             if (model == null) throw new ArgumentNullException(nameof(model));
 
@@ -65,7 +66,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
 
                 var jobsProvider = new JobsDataFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, viewModel.JobAdvertPage?.Url, new MemoryJobCacheStrategy(MemoryCache.Default, Request.QueryString["ForceCacheRefresh"] == "1"));
 
-                var jobs = Task.Run(async () => await jobsProvider.ReadJobs(viewModel.Query)).Result;
+                var jobs = await jobsProvider.ReadJobs(viewModel.Query);
                 viewModel.Jobs = jobs.Jobs;
                 viewModel.Paging.TotalResults = jobs.TotalJobs;
                 if (Request.QueryString["page"]?.ToUpperInvariant() == "ALL")

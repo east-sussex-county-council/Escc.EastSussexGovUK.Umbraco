@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
 
 namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs
@@ -14,6 +15,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs
         /// <param name="sourceData">The source data for the job.</param>
         /// <param name="jobId">The job identifier.</param>
         /// <returns></returns>
-        Job ParseJob(string sourceData, string jobId);
+        Task<Job> ParseJob(string sourceData, string jobId);
     }
 }

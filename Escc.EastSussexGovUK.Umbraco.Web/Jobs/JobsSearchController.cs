@@ -28,14 +28,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
     public class JobsSearchController : RenderMvcController
     {
         // GET: TalentLinkComponent
-        public override ActionResult Index(RenderModel model)
+        public async new Task<ActionResult> Index(RenderModel model)
         {
             if (model == null) throw new ArgumentNullException(nameof(model));
 
             var modelBuilder = new JobsSearchViewModelFromUmbraco(model.Content, new JobsSearchViewModel());
             var viewModel = modelBuilder.BuildModel();
             var lookupValuesDataSource = new JobsLookupValuesFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, new MemoryJobCacheStrategy(MemoryCache.Default, Request.QueryString["ForceCacheRefresh"] == "1"));
-            modelBuilder.AddLookupValuesToModel(lookupValuesDataSource, viewModel);
+            await modelBuilder.AddLookupValuesToModel(lookupValuesDataSource, viewModel);
 
             var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"]);
             var baseModelBuilder = new BaseViewModelBuilder();

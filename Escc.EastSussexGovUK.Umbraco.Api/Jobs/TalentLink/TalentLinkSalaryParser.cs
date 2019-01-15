@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Web;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
+using Exceptionless.Extensions;
 using HtmlAgilityPack;
 
 namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
@@ -18,7 +20,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
         /// </summary>
         /// <param name="jobAdvertHtml">The raw HTML of a TalentLink job advert</param>
         /// <returns></returns>
-        public Salary ParseSalaryFromJobAdvert(string sourceData)
+        public Task<Salary> ParseSalaryFromJobAdvert(string sourceData)
         {
             Salary salary = null;
 
@@ -87,7 +89,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
                 salary.HourlyRate = Decimal.Parse(matchHourlyRateInBodyText.Groups[1].Value);
             }
 
-            return salary;
+            return Task.FromResult(salary);
         }
 
         /// <summary>
