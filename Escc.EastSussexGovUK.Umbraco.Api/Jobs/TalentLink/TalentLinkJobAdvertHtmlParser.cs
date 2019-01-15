@@ -85,6 +85,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
                         DateTime closingDate;
                         DateTime.TryParse(ParseValueFromElementById(htmlDocument, "span", "JDText-Param9"), new CultureInfo("en-GB"), DateTimeStyles.AssumeLocal, out closingDate);
                         job.ClosingDate = closingDate;
+                        job.DatePublished = DateTime.UtcNow;
 
                         var agilityPackFormatters = new IHtmlAgilityPackHtmlFormatter[]
                         {

@@ -103,6 +103,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
                     MinimumSalary = Int32.Parse(jobXml.Element("salary_from").Value, CultureInfo.InvariantCulture),
                     MaximumSalary = Int32.Parse(jobXml.Element("salary_to").Value, CultureInfo.InvariantCulture)
                 },
+                DatePublished = new DateTime(Int32.Parse(jobXml.Element("open_date").Value.Substring(0, 4), CultureInfo.InvariantCulture),
+                                                            Int32.Parse(jobXml.Element("open_date").Value.Substring(5, 2), CultureInfo.InvariantCulture),
+                                                            Int32.Parse(jobXml.Element("open_date").Value.Substring(8, 2), CultureInfo.InvariantCulture)),
                 ClosingDate = new DateTime(Int32.Parse(jobXml.Element("expiry_date").Value.Substring(0, 4), CultureInfo.InvariantCulture),
                                                             Int32.Parse(jobXml.Element("expiry_date").Value.Substring(5, 2), CultureInfo.InvariantCulture),
                                                             Int32.Parse(jobXml.Element("expiry_date").Value.Substring(8, 2), CultureInfo.InvariantCulture))

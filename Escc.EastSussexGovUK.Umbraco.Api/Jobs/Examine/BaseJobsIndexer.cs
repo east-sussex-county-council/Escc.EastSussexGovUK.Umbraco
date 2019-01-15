@@ -105,7 +105,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
                         }
 
                         var simpleDataSet = CreateIndexItemFromJob(jobAdvert, indexType);
-                        dataSets.Add(simpleDataSet);
+                        if (simpleDataSet != null)
+                        {
+                            dataSets.Add(simpleDataSet);
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -176,6 +179,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
 
         private SimpleDataSet CreateIndexItemFromJob(Job job, string indexType)
         {
+            if (job.DatePublished > DateTime.UtcNow)
+            {
+                LogHelper.Info<BaseJobsIndexer>($"Ignoring job '{job.Id}' because it's publish date {job.DatePublished.ToIso8601DateTime()} is in the future.");
+                return null;
+            }
+
             LogHelper.Info<BaseJobsIndexer>($"Building Examine index item for job '{job.Id}'");
 
             var salary = job.Salary.SalaryRange;
@@ -218,7 +227,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
             simpleDataSet.RowData.Add("fullTime", job.WorkPattern?.IsFullTime.ToString());
             simpleDataSet.RowData.Add("partTime", job.WorkPattern?.IsPartTime.ToString());
             simpleDataSet.RowData.Add("workPattern", job.WorkPattern?.ToString());
-            simpleDataSet.RowData.Add("datePublished", DateTime.UtcNow.ToIso8601DateTime());
+            simpleDataSet.RowData.Add("datePublished", job.DatePublished.ToIso8601DateTime());
 
             var locationsList = string.Join(", ", job.Locations.ToArray<string>());
             simpleDataSet.RowData.Add("location", _stopWordsRemover != null ? _stopWordsRemover.Filter(locationsList) : locationsList);
