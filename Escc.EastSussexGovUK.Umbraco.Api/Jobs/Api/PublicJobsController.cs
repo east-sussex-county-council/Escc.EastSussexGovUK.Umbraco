@@ -139,6 +139,20 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Api
             }
         }
 
+        // GET /umbraco/api/publicjobs/contracttypes/
+        [HttpGet]
+        public async Task<IList<JobsLookupValue>> ContractTypes()
+        {
+            try
+            {
+                return await base.ReadContractTypes(JobsSet.PublicJobs);
+            }
+            catch (Exception e)
+            {
+                e.ToExceptionless().Submit();
+                return new JobsLookupValue[0];
+            }
+        }
 
         // GET /umbraco/api/publicjobs/jobalertsettings/
         [HttpGet]

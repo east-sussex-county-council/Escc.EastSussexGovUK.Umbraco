@@ -72,18 +72,22 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
             Assert.AreEqual("Orbis (BSD)", job.Department);
         }
 
-        /*
+        
         [Test]
         public void ContractTypeParsed()
         {
             var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
+            lookupValuesProvider.Setup(x => x.ReadContractTypes()).Returns(Task.FromResult(new List<JobsLookupValue>()
+            {
+                new JobsLookupValue() { LookupValueId = "2", Text = "Permanent" }
+            } as IList<JobsLookupValue>));
             var parser = new TribePadJobParser(lookupValuesProvider.Object);
 
             var job = parser.ParseJob(Properties.Resources.TribePadJobXml, "142");
 
-            Assert.AreEqual("Casual", job.ContractType);
+            Assert.AreEqual("Permanent", job.ContractType);
         }
-        */
+        
 
         [Test]
         public void JobTypeParsed()

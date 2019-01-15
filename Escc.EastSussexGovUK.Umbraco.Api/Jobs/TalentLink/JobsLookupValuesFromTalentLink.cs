@@ -90,6 +90,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
             return await ReadLookupValuesFromTalentLink(_lookupValuesParser, "LOV50");
         }
 
+        /// <summary>
+        /// Reads the contract types, eg fixed term or permanent
+        /// </summary>
+        /// <returns></returns>
+        public Task<IList<JobsLookupValue>> ReadContractTypes()
+        {
+            throw new PlatformNotSupportedException();
+        }
+
         private async Task<IList<JobsLookupValue>> ReadLookupValuesFromTalentLink(IJobLookupValuesParser parser, string fieldName)
         {
             var htmlStream = await ReadHtml(_searchUrl, _proxy);

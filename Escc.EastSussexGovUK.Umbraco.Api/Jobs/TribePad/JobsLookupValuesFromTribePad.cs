@@ -95,6 +95,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             return results;
         }
 
+        /// <summary>
+        /// Reads the contract types, eg fixed term or permanent
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IList<JobsLookupValue>> ReadContractTypes()
+        {
+            return await ReadLookupValuesFromApi(_builtInLookupValuesParser, "job_types");
+        }
+
         private async Task<IList<JobsLookupValue>> ReadLookupValuesFromApi(IJobLookupValuesParser parser, string fieldName)
         {
             var htmlStream = await ReadXml(_lookupValuesApiUrl, _proxy);

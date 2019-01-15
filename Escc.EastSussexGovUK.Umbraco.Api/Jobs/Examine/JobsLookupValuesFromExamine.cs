@@ -42,6 +42,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
             return Task.FromResult(ReadLookupValues("WorkPattern"));
         }
 
+        public Task<IList<JobsLookupValue>> ReadContractTypes()
+        {
+            return Task.FromResult(ReadLookupValues("ContractType"));
+        }
+
         private IList<JobsLookupValue> ReadLookupValues(string group)
         {
             var lookups = new List<JobsLookupValue>() as IList<JobsLookupValue>;

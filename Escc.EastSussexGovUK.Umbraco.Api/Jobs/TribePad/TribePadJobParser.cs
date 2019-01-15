@@ -18,6 +18,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
     {
         private readonly IJobsLookupValuesProvider _lookupValuesProvider;
         private IEnumerable<JobsLookupValue> _workPatterns;
+        private IEnumerable<JobsLookupValue> _contractTypes;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TribePadJobParser"/> class.
@@ -38,21 +39,31 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         {
             try
             {
-                if (_workPatterns == null)
-                {
-                    _workPatterns = _lookupValuesProvider.ReadWorkPatterns().Result;
-                }
+                EnsureLookupValues();
 
                 var xml = XDocument.Parse(sourceData);
                 var jobXml = xml.Root.Element("job");
 
-                return ParseJob(jobXml, _workPatterns);
+                return ParseJob(jobXml, _workPatterns, _contractTypes);
             }
             catch (Exception exception)
             {
                 exception.Data.Add("Job ID", jobId);
                 exception.ToExceptionless().Submit();
                 return null;
+            }
+        }
+
+        private void EnsureLookupValues()
+        {
+            if (_workPatterns == null)
+            {
+                _workPatterns = _lookupValuesProvider.ReadWorkPatterns().Result;
+            }
+
+            if (_contractTypes == null)
+            {
+                _contractTypes = _lookupValuesProvider.ReadContractTypes().Result;
             }
         }
 
@@ -63,10 +74,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         /// <returns></returns>
         public JobsParseResult Parse(Stream stream)
         {
-            if (_workPatterns == null)
-            {
-                _workPatterns = _lookupValuesProvider.ReadWorkPatterns().Result;
-            }
+            EnsureLookupValues();
 
             var xml = XDocument.Load(stream);
             var parseResult = new JobsParseResult();
@@ -75,13 +83,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
 
             foreach (var jobXml in jobsXml)
             {
-                parseResult.Jobs.Add(ParseJob(jobXml,_workPatterns));
+                parseResult.Jobs.Add(ParseJob(jobXml,_workPatterns, _contractTypes));
             }
 
             return parseResult;
         }
 
-        private static Job ParseJob(XElement jobXml, IEnumerable<JobsLookupValue> workPatterns)
+        private static Job ParseJob(XElement jobXml, IEnumerable<JobsLookupValue> workPatterns, IEnumerable<JobsLookupValue> contractTypes)
         {
             var job = new Job()
             {
@@ -104,6 +112,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             job.AdditionalInformationHtml = new HtmlString(HttpUtility.HtmlDecode(jobXml.Element("ideal_candidate")?.Value));
             job.EqualOpportunitiesHtml = new HtmlString(HttpUtility.HtmlDecode(jobXml.Element("about_company")?.Value));
             job.JobType = HttpUtility.HtmlDecode(jobXml.Element("category_name")?.Value);
+
+            var contractTypeId = jobXml.Element("job_type")?.Value;
+            if (!String.IsNullOrEmpty(contractTypeId))
+            {
+                job.ContractType = contractTypes?.SingleOrDefault(x => x.LookupValueId == contractTypeId)?.Text;
+            }
 
             var exampleWorkPattern = workPatterns?.FirstOrDefault();
             if (exampleWorkPattern != null)

@@ -78,6 +78,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Api
             return await ReadLookupValuesFromApi("workpatterns");
         }
 
+        /// <summary>
+        /// Reads the contract types, eg fixed term or permanent
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IList<JobsLookupValue>> ReadContractTypes()
+        {
+            return await ReadLookupValuesFromApi("contracttypes");
+        }
+
         private async Task<IList<JobsLookupValue>> ReadLookupValuesFromApi(string apiMethod)
         {
             if (_jobsCache != null)

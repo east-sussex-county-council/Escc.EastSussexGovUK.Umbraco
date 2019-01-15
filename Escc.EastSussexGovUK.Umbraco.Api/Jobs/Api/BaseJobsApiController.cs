@@ -132,6 +132,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Api
         }
 
         /// <summary>
+        /// Reads the contract types.
+        /// </summary>
+        /// <param name="jobsSet">The jobs set.</param>
+        /// <returns></returns>
+        protected async Task<IList<JobsLookupValue>> ReadContractTypes(JobsSet jobsSet)
+        {
+            var dataSource = new JobsLookupValuesFromExamine(ExamineManager.Instance.SearchProviderCollection[jobsSet + "LookupValuesSearcher"]);
+            return await dataSource.ReadContractTypes();
+        }
+
+        /// <summary>
         /// Gets the job alert settings for a <see cref="JobsSet" />
         /// </summary>
         /// <param name="jobsSet">The jobs set.</param>

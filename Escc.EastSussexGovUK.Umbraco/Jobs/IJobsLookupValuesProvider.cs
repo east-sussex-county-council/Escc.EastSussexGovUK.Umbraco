@@ -16,7 +16,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         Task<IList<JobsLookupValue>> ReadLocations();
 
         /// <summary>
-        /// Reads the job types or categories
+        /// Reads the job types or categories, eg social care or education
         /// </summary>
         /// <returns></returns>
         Task<IList<JobsLookupValue>> ReadJobTypes();
@@ -38,5 +38,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// </summary>
         /// <returns></returns>
         Task<IList<JobsLookupValue>> ReadWorkPatterns();
-    }
+
+        /// <summary>
+        /// Reads the contract types, eg fixed term or permanent
+        /// </summary>
+        /// <returns></returns>
+        Task<IList<JobsLookupValue>> ReadContractTypes();
+     }
 }
