@@ -379,6 +379,7 @@
     <Compile Include="Jobs\ISalaryParser.cs" />
     <Compile Include="Jobs\IWorkPatternParser.cs" />
     <Compile Include="Jobs\JobsParseResult.cs" />
+    <Compile Include="Jobs\JobTransformers\MediaUrlTransformer.cs" />
     <Compile Include="Jobs\JobTransformers\YouTubeVideoTransformer.cs" />
     <Compile Include="Jobs\JobTransformers\IJobMatcher.cs" />
     <Compile Include="Jobs\JobTransformers\IJobTransformer.cs" />

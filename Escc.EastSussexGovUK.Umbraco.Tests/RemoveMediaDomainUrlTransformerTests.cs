@@ -52,6 +52,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         }
 
         [TestCase("<p><img src=\"/media/1234/some-media-item-in-umbraco.jpg\" alt=\"Test\" /></p>", "<p><img src=\"/media/1234/some-media-item-in-umbraco.jpg\" alt=\"Test\" /></p>")]
+        [TestCase("<p><img src=\"/media/1234/some-media-item-in-umbraco.jpg\" alt=\"Test\"></p>", "<p><img src=\"/media/1234/some-media-item-in-umbraco.jpg\" alt=\"Test\"></p>")]
         [TestCase("<p><a href=\"/media/1234/some-media-item-in-umbraco.pdf\">Some text</a></p>", "<p><a href=\"/media/1234/some-media-item-in-umbraco.pdf\">Some text</a></p>")]
         public void RelativeUrlIsNotUpdatedInHtml(string before, string expected)
         {
@@ -63,6 +64,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         }
 
         [TestCase("<p><img src=\"/mediafiles/1234/some-other-media-item.jpg\" alt=\"Test\" /></p>", "<p><img src=\"/mediafiles/1234/some-other-media-item.jpg\" alt=\"Test\" /></p>")]
+        [TestCase("<p><img src=\"/mediafiles/1234/some-other-media-item.jpg\" alt=\"Test\"></p>", "<p><img src=\"/mediafiles/1234/some-other-media-item.jpg\" alt=\"Test\"></p>")]
         [TestCase("<p><a href=\"/mediafiles/1234/some-other-media-item.pdf\">Some text</a></p>", "<p><a href=\"/mediafiles/1234/some-other-media-item.pdf\">Some text</a></p>")]
         public void UnrelatedRelativeUrlIsNotUpdatedInHtml(string before, string expected)
         {
@@ -74,6 +76,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         }
 
         [TestCase("<p><img src=\"https://different-site.blob.core.windows.net/media/1234/some-media-item-in-umbraco.jpg\" alt=\"Test\" /></p>", "<p><img src=\"/media/1234/some-media-item-in-umbraco.jpg\" alt=\"Test\" /></p>")]
+        [TestCase("<p><img src=\"https://different-site.blob.core.windows.net/media/1234/some-media-item-in-umbraco.jpg\" alt=\"Test\"></p>", "<p><img src=\"/media/1234/some-media-item-in-umbraco.jpg\" alt=\"Test\"></p>")]
         [TestCase("<p><a href=\"https://different-site.blob.core.windows.net/media/1234/some-media-item-in-umbraco.pdf\">Some text</a></p>", "<p><a href=\"/media/1234/some-media-item-in-umbraco.pdf\">Some text</a></p>")]
         public void AbsoluteUrlIsUpdatedInHtml(string before, string expected)
         {

@@ -118,7 +118,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
 
             var job = await parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
 
-            Assert.AreEqual("https://emea3.recruitmentplatform.com/syndicated/private/syd_apply.cfm?id=PFOFK026203F3VBQB7968LOH0&nPostingTargetID=37054&mask=esccext&jdescurl=https%3A%2F%2Femea3.recruitmentplatform.com%2Fsyndicated%2Flay%2Fjsoutputinitrapido.cfm%3Fcomponent%3Dlay9999_jdesc100a%26ID%3DPFOFK026203F3VBQB7968LOH0%26LG%3DUK%26mask%3Desccext%26browserchk%3Dno%26nPostingTargetID%3D37054", job.ApplyUrl.ToString());
+            // The final .Replace() is included because this test seems to switch between encoding and not encoding the : in the querystring parameter
+            Assert.AreEqual("https://emea3.recruitmentplatform.com/syndicated/private/syd_apply.cfm?id=PFOFK026203F3VBQB7968LOH0&nPostingTargetID=37054&mask=esccext&jdescurl=https%3A%2F%2Femea3.recruitmentplatform.com%2Fsyndicated%2Flay%2Fjsoutputinitrapido.cfm%3Fcomponent%3Dlay9999_jdesc100a%26ID%3DPFOFK026203F3VBQB7968LOH0%26LG%3DUK%26mask%3Desccext%26browserchk%3Dno%26nPostingTargetID%3D37054", job.ApplyUrl.ToString().Replace(":%2F", "%3A%2F"));
         }
     }
 }

@@ -64,13 +64,13 @@ namespace Escc.EastSussexGovUK.Umbraco.UrlTransformers
 
         private string ReplaceImageUrlsInHtml(string html)
         {
-            var matchesImages = Regex.Matches(html, @"<img(?<attr1>.*?)src=""(?<url>[^""]*/media/.*?)""(?<attr2>.*?)/>");
+            var matchesImages = Regex.Matches(html, @"<img(?<attr1>.*?)src=""(?<url>[^""]*/media/.*?)""(?<attr2>.*?)(?<empty>/)?>");
             foreach (Match match in matchesImages)
             {
                 var url = new Uri(match.Groups["url"].Value, UriKind.RelativeOrAbsolute);
                 if (url.IsAbsoluteUri)
                 {
-                    var outputLink = string.Format(@"<img{0}src=""{1}""{2}/>", match.Groups["attr1"].Value, url.PathAndQuery, match.Groups["attr2"].Value);
+                    var outputLink = string.Format(@"<img{0}src=""{1}""{2}{3}>", match.Groups["attr1"].Value, url.PathAndQuery, match.Groups["attr2"].Value, match.Groups["empty"].Value);
                     html = html.Replace(match.Groups[0].Value, outputLink);
                 }
             }

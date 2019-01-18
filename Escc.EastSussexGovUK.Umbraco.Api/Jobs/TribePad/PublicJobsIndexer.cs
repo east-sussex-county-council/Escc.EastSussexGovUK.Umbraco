@@ -8,6 +8,7 @@ using Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine;
 using Escc.EastSussexGovUK.Umbraco.Examine;
 using Escc.EastSussexGovUK.Umbraco.Api.Jobs.JobTransformers;
 using Escc.Net.Configuration;
+using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
 
 namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
 {
@@ -42,6 +43,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
                     { new IJobMatcher[] { /* No matcher - apply to all jobs */ }, new IJobTransformer[] {
                         new RemoveUnwantedAttributesTransformer(new string[] { "style" }),
                         new YouTubeVideoTransformer(),
+                        //new MediaUrlTransformer(new RemoveMediaDomainUrlTransformer()),
                         new TruncateLongLinksTransformer(new HtmlLinkFormatter())
                     } }
                 }
