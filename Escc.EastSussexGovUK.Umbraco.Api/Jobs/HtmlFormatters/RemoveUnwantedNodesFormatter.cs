@@ -7,22 +7,22 @@ using HtmlAgilityPack;
 namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.HtmlFormatters
 {
     /// <summary>
-    /// Removes unwanted elements from the DOM, optionally leaving their content
+    /// Removes unwanted nodes from the DOM, optionally leaving their content
     /// </summary>
     /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Jobs.IHtmlAgilityPackHtmlFormatter" />
-    public class RemoveUnwantedElementsFormatter : IHtmlAgilityPackHtmlFormatter
+    public class RemoveUnwantedNodesFormatter : IHtmlAgilityPackHtmlFormatter
     {
-        private readonly IEnumerable<string> _elementsToRemove;
+        private readonly IEnumerable<string> _nodesToRemove;
         private readonly bool _removeChildNodes;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RemoveUnwantedElementsFormatter" /> class.
+        /// Initializes a new instance of the <see cref="RemoveUnwantedNodesFormatter" /> class.
         /// </summary>
-        /// <param name="elementsToRemove">The elements to remove.</param>
+        /// <param name="nodesToRemove">XPath selector for the nodes to remove, eg my-element or comment().</param>
         /// <param name="removeChildNodes"><c>true</c> if child nodes including text nodes should be removed; <c>false</c> otherwise</param>
-        public RemoveUnwantedElementsFormatter(IEnumerable<string> elementsToRemove, bool removeChildNodes=false)
+        public RemoveUnwantedNodesFormatter(IEnumerable<string> nodesToRemove, bool removeChildNodes=false)
         {
-            _elementsToRemove = elementsToRemove ?? throw new ArgumentNullException(nameof(elementsToRemove));
+            _nodesToRemove = nodesToRemove ?? throw new ArgumentNullException(nameof(nodesToRemove));
             _removeChildNodes = removeChildNodes;
         }
 
@@ -34,21 +34,21 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.HtmlFormatters
         {
             if (htmlDocument == null) return;
 
-            foreach (var elementToRemove in _elementsToRemove)
+            foreach (var nodeToRemove in _nodesToRemove)
             {
-                var matchedElements = htmlDocument.DocumentNode.SelectNodes("//" + elementToRemove);
-                if (matchedElements != null)
+                var matchedNodes = htmlDocument.DocumentNode.SelectNodes("//" + nodeToRemove);
+                if (matchedNodes != null)
                 {
-                    foreach (var element in matchedElements)
+                    foreach (var node in matchedNodes)
                     {
                         if (!_removeChildNodes)
                         {
-                            foreach (var child in element.ChildNodes)
+                            foreach (var child in node.ChildNodes)
                             {
-                                element.ParentNode.InsertAfter(child, element);
+                                node.ParentNode.InsertAfter(child, node);
                             }
                         }
-                        element.ParentNode.RemoveChild(element);
+                        node.ParentNode.RemoveChild(node);
                     }
                 }
             }

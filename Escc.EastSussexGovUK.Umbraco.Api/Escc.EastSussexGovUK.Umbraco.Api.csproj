@@ -369,7 +369,7 @@
     <Compile Include="Jobs\HtmlFormatters\RemoveElementByNameAndContentFormatter.cs" />
     <Compile Include="Jobs\HtmlFormatters\RemoveElementsWithNoContentFormatter.cs" />
     <Compile Include="Jobs\HtmlFormatters\RemoveUnwantedAttributesFormatter.cs" />
-    <Compile Include="Jobs\HtmlFormatters\RemoveUnwantedElementsFormatter.cs" />
+    <Compile Include="Jobs\HtmlFormatters\RemoveUnwantedNodesFormatter.cs" />
     <Compile Include="Jobs\HtmlFormatters\ReplaceElementNameFormatter.cs" />
     <Compile Include="Jobs\HtmlFormatters\TruncateLongLinksFormatter.cs" />
     <Compile Include="Jobs\IJobAdvertParser.cs" />

@@ -10,7 +10,7 @@ using NUnit.Framework;
 namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
 {
     [TestFixture]
-    public class RemoveUnwantedElementsFormatterTests
+    public class RemoveUnwantedNodesFormatterTests
     {
         [Test]
         public void DefaultIsToLeaveChildNodes()
@@ -18,7 +18,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
             var htmlDocument = new HtmlDocument();
             htmlDocument.LoadHtml("<p>this is a <u>test</u>.</p>");
 
-            new RemoveUnwantedElementsFormatter(new[] { "u" }).FormatHtml(htmlDocument);
+            new RemoveUnwantedNodesFormatter(new[] { "u" }).FormatHtml(htmlDocument);
 
             Assert.AreEqual("<p>this is a test.</p>", htmlDocument.DocumentNode.OuterHtml);
         }
@@ -28,7 +28,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         {
             var htmlDocument = new HtmlDocument();
             htmlDocument.LoadHtml("<p>this is a <u>test</u>.</p>");
-            var transformer = new RemoveUnwantedElementsFormatter(new[] { "u" }, false);
+            var transformer = new RemoveUnwantedNodesFormatter(new[] { "u" }, false);
 
             transformer.FormatHtml(htmlDocument);
 
@@ -40,7 +40,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         {
             var htmlDocument = new HtmlDocument();
             htmlDocument.LoadHtml("<p>this is a <u>test</u>.</p>");
-            var transformer = new RemoveUnwantedElementsFormatter(new[] { "u" }, true);
+            var transformer = new RemoveUnwantedNodesFormatter(new[] { "u" }, true);
 
             transformer.FormatHtml(htmlDocument);
 
@@ -52,11 +52,24 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         {
             var htmlDocument = new HtmlDocument();
             htmlDocument.LoadHtml("<p>this is a <u>test</u>.</p>");
-            var transformer = new RemoveUnwantedElementsFormatter(new[] { "b" }, true);
+            var transformer = new RemoveUnwantedNodesFormatter(new[] { "b" }, true);
 
             transformer.FormatHtml(htmlDocument);
 
             Assert.AreEqual("<p>this is a <u>test</u>.</p>", htmlDocument.DocumentNode.OuterHtml);
+        }
+
+
+        [Test]
+        public void CommentIsRemoved()
+        {
+            var htmlDocument = new HtmlDocument();
+            htmlDocument.LoadHtml("<p>this is a <!-- comment -->.</p>");
+            var transformer = new RemoveUnwantedNodesFormatter(new[] { "comment()" });
+
+            transformer.FormatHtml(htmlDocument);
+
+            Assert.AreEqual("<p>this is a .</p>", htmlDocument.DocumentNode.OuterHtml);
         }
     }
 }

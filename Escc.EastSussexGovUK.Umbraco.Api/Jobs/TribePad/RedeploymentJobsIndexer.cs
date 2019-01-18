@@ -46,8 +46,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
                     { new IJobMatcher[] { /* No matcher - apply to all jobs */ }, new IJobTransformer[] {
                         new HtmlAgilityPackFormatterAdapter(new IHtmlAgilityPackHtmlFormatter[] {
                             new RemoveUnwantedAttributesFormatter(new string[] { "style" }),
-                            new RemoveUnwantedElementsFormatter(new[] { "u" }, false),
-                            new RemoveUnwantedElementsFormatter(new[] { "style" }, true),
+                            new RemoveUnwantedNodesFormatter(new[] { "u", "comment()" }, false),
+                            new RemoveUnwantedNodesFormatter(new[] { "style" }, true),
                             new RemoveElementsWithNoContentFormatter(new[] { "strong", "p" }),
                             new TruncateLongLinksFormatter(new HtmlLinkFormatter()),
                             new EmbeddedYouTubeVideosFormatter()

@@ -87,7 +87,7 @@
     <Compile Include="RemoveDuplicateTextFormatterTests.cs" />
     <Compile Include="RemoveElementByNameAndContentFormatterTests.cs" />
     <Compile Include="RemoveElementsWithNoContentFormatterTests.cs" />
-    <Compile Include="RemoveUnwantedElementsFormatterTests.cs" />
+    <Compile Include="RemoveUnwantedNodesFormatterTests.cs" />
     <Compile Include="SalaryRangeLuceneQueryBuilderTests.cs" />
     <Compile Include="SetJobLocationTransformerTests.cs" />
     <Compile Include="LookupValuesFromTribePadCustomFieldParserTests.cs" />
