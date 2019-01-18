@@ -8,6 +8,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.HtmlFormatters
     /// Look for link text that looks like a URL, and abbreviate it to prevent non-wrapping text overflowing its container
     /// </summary>
     /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Jobs.IHtmlAgilityPackHtmlFormatter" />
+    [Obsolete("Use TruncateLongLinksTransformer")]
     public class TruncateLongLinksFormatter : IHtmlAgilityPackHtmlFormatter
     {
         private readonly IHtmlLinkFormatter _linkFormatter;

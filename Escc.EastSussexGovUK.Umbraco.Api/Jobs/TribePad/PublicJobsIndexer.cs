@@ -41,7 +41,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
                     { new IJobMatcher[] { new JointCommunityRehabilitationMatcher(), new LocationMatcher("Bexhill-on-Sea") }, new IJobTransformer[] { new SetJobLocationTransformer(new[] { "Bexhill-on-Sea", "Hastings", "Rural Rother" }) } },
                     { new IJobMatcher[] { /* No matcher - apply to all jobs */ }, new IJobTransformer[] {
                         new RemoveUnwantedAttributesTransformer(new string[] { "style" }),
-                        new YouTubeVideoTransformer()
+                        new YouTubeVideoTransformer(),
+                        new TruncateLongLinksTransformer(new HtmlLinkFormatter())
                     } }
                 }
             );

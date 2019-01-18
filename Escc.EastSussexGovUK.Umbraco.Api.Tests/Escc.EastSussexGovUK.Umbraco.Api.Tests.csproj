@@ -77,7 +77,6 @@
     <Compile Include="LocationMatcherTests.cs" />
     <Compile Include="RemoveUnwantedAttributesTransformerTests.cs" />
     <Compile Include="TribePadJobParserTests.cs" />
-    <Compile Include="MockLinkFormatter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -97,6 +96,7 @@
     <Compile Include="TalentLinkSalaryParserTests.cs" />
     <Compile Include="TalentLinkWorkPatternParserTests.cs" />
     <Compile Include="TribePadSalaryParserTests.cs" />
+    <Compile Include="TruncateLongLinksTransformerTests.cs" />
     <Compile Include="TruncateLongLinksFormatterTests.cs" />
     <Compile Include="YouTubeVideoTransformerTests.cs" />
   </ItemGroup>
