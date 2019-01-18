@@ -13,7 +13,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
     public class RemoveUnwantedElementsFormatterTests
     {
         [Test]
-        public void UnwantedElementIsRemoved()
+        public void DefaultIsToLeaveChildNodes()
         {
             var htmlDocument = new HtmlDocument();
             htmlDocument.LoadHtml("<p>this is a <u>test</u>.</p>");
@@ -21,6 +21,42 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
             new RemoveUnwantedElementsFormatter(new[] { "u" }).FormatHtml(htmlDocument);
 
             Assert.AreEqual("<p>this is a test.</p>", htmlDocument.DocumentNode.OuterHtml);
+        }
+
+        [Test]
+        public void UnwantedElementIsRemovedButChildNodesRemain()
+        {
+            var htmlDocument = new HtmlDocument();
+            htmlDocument.LoadHtml("<p>this is a <u>test</u>.</p>");
+            var transformer = new RemoveUnwantedElementsFormatter(new[] { "u" }, false);
+
+            transformer.FormatHtml(htmlDocument);
+
+            Assert.AreEqual("<p>this is a test.</p>", htmlDocument.DocumentNode.OuterHtml);
+        }
+
+        [Test]
+        public void UnwantedElementIsRemovedIncludingChildNodes()
+        {
+            var htmlDocument = new HtmlDocument();
+            htmlDocument.LoadHtml("<p>this is a <u>test</u>.</p>");
+            var transformer = new RemoveUnwantedElementsFormatter(new[] { "u" }, true);
+
+            transformer.FormatHtml(htmlDocument);
+
+            Assert.AreEqual("<p>this is a .</p>", htmlDocument.DocumentNode.OuterHtml);
+        }
+
+        [Test]
+        public void OtherElementIsNotAffected()
+        {
+            var htmlDocument = new HtmlDocument();
+            htmlDocument.LoadHtml("<p>this is a <u>test</u>.</p>");
+            var transformer = new RemoveUnwantedElementsFormatter(new[] { "b" }, true);
+
+            transformer.FormatHtml(htmlDocument);
+
+            Assert.AreEqual("<p>this is a <u>test</u>.</p>", htmlDocument.DocumentNode.OuterHtml);
         }
     }
 }

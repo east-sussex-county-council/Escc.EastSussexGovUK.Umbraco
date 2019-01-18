@@ -10,7 +10,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.HtmlFormatters
     /// <summary>
     /// Format HTML using the HTML Agility Pack library
     /// </summary>
-    interface IHtmlAgilityPackHtmlFormatter
+    public interface IHtmlAgilityPackHtmlFormatter
     {
         /// <summary>
         /// Formats the HTML.

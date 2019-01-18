@@ -45,5 +45,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
 
             Assert.AreEqual("<p><a href=\"https://www.example.org/youtu.be\">Watch</a> our video</p>", htmlDocument.DocumentNode.OuterHtml);
         }
+
+        [Test]
+        public void YouTubeIFrameIsTransformed()
+        {
+            var htmlDocument = new HtmlDocument();
+            htmlDocument.LoadHtml(Properties.Resources.YouTubeIFrame);
+
+            new EmbeddedYouTubeVideosFormatter().FormatHtml(htmlDocument);
+
+            Assert.IsTrue(htmlDocument.DocumentNode.OuterHtml.Contains("<p><a class=\"embed\" href=\"https://www.youtube.com/watch?v=1JOsjWX56Kg\">Watch the video on YouTube</a></p>"));
+        }
     }
 }

@@ -9,6 +9,8 @@ using Escc.EastSussexGovUK.Umbraco.Examine;
 using Escc.EastSussexGovUK.Umbraco.Api.Jobs.JobTransformers;
 using Escc.Net.Configuration;
 using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
+using Escc.EastSussexGovUK.Umbraco.Api.Jobs.HtmlFormatters;
+using Escc.EastSussexGovUK.Umbraco.Jobs;
 
 namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
 {
@@ -41,10 +43,19 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
                     { new IJobMatcher[] { new JointCommunityRehabilitationMatcher(), new LocationMatcher("Eastbourne") }, new IJobTransformer[] { new SetJobLocationTransformer(new[] { "Eastbourne", "Hailsham", "Polegate", "Seaford" }) } },
                     { new IJobMatcher[] { new JointCommunityRehabilitationMatcher(), new LocationMatcher("Bexhill-on-Sea") }, new IJobTransformer[] { new SetJobLocationTransformer(new[] { "Bexhill-on-Sea", "Hastings", "Rural Rother" }) } },
                     { new IJobMatcher[] { /* No matcher - apply to all jobs */ }, new IJobTransformer[] {
-                        new RemoveUnwantedAttributesTransformer(new string[] { "style" }),
-                        new YouTubeVideoTransformer(),
-                        //new MediaUrlTransformer(new RemoveMediaDomainUrlTransformer()),
-                        new TruncateLongLinksTransformer(new HtmlLinkFormatter())
+                        new HtmlAgilityPackFormatterAdapter(new IHtmlAgilityPackHtmlFormatter[] {
+                            new RemoveUnwantedAttributesFormatter(new string[] { "style" }),
+                            new RemoveUnwantedElementsFormatter(new[] { "u" }, false),
+                            new RemoveUnwantedElementsFormatter(new[] { "style" }, true),
+                            new RemoveElementsWithNoContentFormatter(new[] { "strong", "p" }),
+                            new TruncateLongLinksFormatter(new HtmlLinkFormatter()),
+                            new EmbeddedYouTubeVideosFormatter()
+                        }),
+                        new HtmlStringFormatterAdapter(new IHtmlStringFormatter[] {
+                            new CloseEmptyElementsFormatter(),
+                            new HouseStyleDateFormatter(),
+                            new RemoveMediaDomainUrlTransformer()
+                        })
                     } }
                 }
             );

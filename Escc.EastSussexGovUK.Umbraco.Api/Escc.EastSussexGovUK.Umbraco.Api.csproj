@@ -379,13 +379,11 @@
     <Compile Include="Jobs\ISalaryParser.cs" />
     <Compile Include="Jobs\IWorkPatternParser.cs" />
     <Compile Include="Jobs\JobsParseResult.cs" />
-    <Compile Include="Jobs\JobTransformers\MediaUrlTransformer.cs" />
-    <Compile Include="Jobs\JobTransformers\YouTubeVideoTransformer.cs" />
+    <Compile Include="Jobs\JobTransformers\HtmlStringFormatterAdapter.cs" />
     <Compile Include="Jobs\JobTransformers\IJobMatcher.cs" />
     <Compile Include="Jobs\JobTransformers\IJobTransformer.cs" />
     <Compile Include="Jobs\JobTransformers\JointCommunityRehabilitationMatcher.cs" />
     <Compile Include="Jobs\JobTransformers\LocationMatcher.cs" />
-    <Compile Include="Jobs\JobTransformers\RemoveUnwantedAttributesTransformer.cs" />
     <Compile Include="Jobs\JobTransformers\SetJobLocationTransformer.cs" />
     <Compile Include="Jobs\RelativeJobUrlGenerator.cs" />
     <Compile Include="Jobs\TribePad\JobsDataFromTribePad.cs" />
@@ -398,7 +396,7 @@
     <Compile Include="Jobs\TribePad\LookupValuesFromTribePadBuiltInFieldParser.cs" />
     <Compile Include="Jobs\TribePad\TribePadJobParser.cs" />
     <Compile Include="Jobs\TribePad\TribePadSalaryParser.cs" />
-    <Compile Include="Jobs\JobTransformers\TruncateLongLinksTransformer.cs" />
+    <Compile Include="Jobs\JobTransformers\HtmlAgilityPackFormatterAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Jobs\TalentLink\JobsDataFromTalentLink.cs" />
     <Compile Include="Jobs\TalentLink\JobsLookupValuesFromTalentLink.cs" />

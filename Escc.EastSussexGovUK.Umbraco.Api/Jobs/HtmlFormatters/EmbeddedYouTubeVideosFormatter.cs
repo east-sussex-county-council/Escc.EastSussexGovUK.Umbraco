@@ -11,7 +11,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.HtmlFormatters
     /// Adds an 'embed' class to YouTube video links which can be picked up by JavaScript embed code
     /// </summary>
     /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Jobs.IHtmlAgilityPackHtmlFormatter" />
-    [Obsolete("Use YouTubeVideoTransformer")]
     public class EmbeddedYouTubeVideosFormatter : IHtmlAgilityPackHtmlFormatter
     {
         /// <summary>
@@ -22,15 +21,44 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.HtmlFormatters
         {
             if (htmlDocument == null) return;
 
-            var matchedElements = htmlDocument.DocumentNode.SelectNodes("//a");
-            if (matchedElements != null)
+            var matchedLinks = htmlDocument.DocumentNode.SelectNodes("//a");
+            if (matchedLinks != null)
             {
-                foreach (var element in matchedElements)
+                foreach (var link in matchedLinks)
                 {
-                    if (Regex.IsMatch(element.GetAttributeValue("href",string.Empty), @"https?:\/\/(youtu.be\/|www.youtube.com\/watch\?v=)([A-Za-z0-9_-]+)", RegexOptions.IgnoreCase))
+                    if (Regex.IsMatch(link.GetAttributeValue("href",string.Empty), @"https?:\/\/(youtu.be\/|www.youtube.com\/watch\?v=)([A-Za-z0-9_-]+)", RegexOptions.IgnoreCase))
                     {
-                        var className = (element.GetAttributeValue("class", string.Empty) + " embed").TrimStart();
-                        element.SetAttributeValue("class", className);
+                        var className = (link.GetAttributeValue("class", string.Empty) + " embed").TrimStart();
+                        link.SetAttributeValue("class", className);
+                    }
+                }
+            }
+
+
+            var matchedWrappers = htmlDocument.DocumentNode.SelectNodes("//div[@class='video-embed-wrapper']");
+            if (matchedWrappers != null)
+            {
+                foreach (var wrapper in matchedWrappers)
+                {
+                    var matchedIframes = wrapper.SelectNodes("./iframe");
+                    if (matchedIframes != null)
+                    {
+                        foreach (var iframe in matchedIframes)
+                        {
+                            var match = Regex.Match(iframe.GetAttributeValue("src", string.Empty), @"(https?:)?\/\/(youtu.be\/|www.youtube.com\/)(watch\?v=|embed/)(?<VideoId>[A-Za-z0-9_-]+)(\?[^" + "\"]+)?", RegexOptions.IgnoreCase);
+                            if (match.Success)
+                            {
+                                var replaceWith = htmlDocument.CreateElement("p");
+                                var replaceWithLink = htmlDocument.CreateElement("a");
+                                replaceWithLink.SetAttributeValue("class", "embed");
+                                replaceWithLink.SetAttributeValue("href", "https://www.youtube.com/watch?v=" + match.Groups["VideoId"].Value);
+                                replaceWithLink.InnerHtml = "Watch the video on YouTube";
+                                replaceWith.ChildNodes.Add(replaceWithLink);
+
+                                wrapper.ParentNode.InsertBefore(replaceWith, wrapper);
+                                wrapper.Remove();
+                            }
+                        }
                     }
                 }
             }

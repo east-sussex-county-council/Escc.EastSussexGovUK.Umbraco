@@ -10,7 +10,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.HtmlFormatters
     /// Removes the specified attributes wherever they occur in the supplied HTML document
     /// </summary>
     /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Jobs.IHtmlAgilityPackHtmlFormatter" />
-    [Obsolete("Use RemoveUnwantedAttributesTransformer")]
     public class RemoveUnwantedAttributesFormatter : IHtmlAgilityPackHtmlFormatter
     {
         private readonly IEnumerable<string> _attributesToRemove;
@@ -35,9 +34,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.HtmlFormatters
             foreach (var attribute in _attributesToRemove)
             {
                 var nodes = htmlDocument.DocumentNode.SelectNodes($"//*[@{attribute}]");
-                foreach (var node in nodes)
+                if (nodes != null)
                 {
-                    node.Attributes.Remove(attribute);
+                    foreach (var node in nodes)
+                    {
+                        node.Attributes.Remove(attribute);
+                    }
                 }
             }
         }

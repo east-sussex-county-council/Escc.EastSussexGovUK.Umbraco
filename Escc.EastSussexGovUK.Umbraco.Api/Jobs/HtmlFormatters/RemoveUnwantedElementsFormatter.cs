@@ -7,20 +7,23 @@ using HtmlAgilityPack;
 namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.HtmlFormatters
 {
     /// <summary>
-    /// Removes unwanted elements from the DOM but leaves their content
+    /// Removes unwanted elements from the DOM, optionally leaving their content
     /// </summary>
     /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Jobs.IHtmlAgilityPackHtmlFormatter" />
     public class RemoveUnwantedElementsFormatter : IHtmlAgilityPackHtmlFormatter
     {
         private readonly IEnumerable<string> _elementsToRemove;
+        private readonly bool _removeChildNodes;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RemoveUnwantedElementsFormatter" /> class.
         /// </summary>
         /// <param name="elementsToRemove">The elements to remove.</param>
-        public RemoveUnwantedElementsFormatter(IEnumerable<string> elementsToRemove)
+        /// <param name="removeChildNodes"><c>true</c> if child nodes including text nodes should be removed; <c>false</c> otherwise</param>
+        public RemoveUnwantedElementsFormatter(IEnumerable<string> elementsToRemove, bool removeChildNodes=false)
         {
             _elementsToRemove = elementsToRemove ?? throw new ArgumentNullException(nameof(elementsToRemove));
+            _removeChildNodes = removeChildNodes;
         }
 
         /// <summary>
@@ -38,9 +41,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.HtmlFormatters
                 {
                     foreach (var element in matchedElements)
                     {
-                        foreach (var child in element.ChildNodes)
+                        if (!_removeChildNodes)
                         {
-                            element.ParentNode.InsertAfter(child, element);
+                            foreach (var child in element.ChildNodes)
+                            {
+                                element.ParentNode.InsertAfter(child, element);
+                            }
                         }
                         element.ParentNode.RemoveChild(element);
                     }
