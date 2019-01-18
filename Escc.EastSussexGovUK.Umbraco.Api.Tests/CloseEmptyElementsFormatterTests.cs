@@ -9,7 +9,7 @@ using NUnit.Framework;
 namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
 {
     [TestFixture]
-    public class HtmlStringFormatterTests
+    public class CloseEmptyElementsFormatterTests
     {
         [Test]
         public void EmptyElementWithoutAttributesIsClosed()

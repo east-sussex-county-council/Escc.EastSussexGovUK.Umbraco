@@ -68,9 +68,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmbeddedYouTubeVideosFormatterTests.cs" />
+    <Compile Include="FakeListFormatterTests.cs" />
     <Compile Include="HouseStyleDateFormatterTests.cs" />
     <Compile Include="HtmlAgilityPackFormatterTests.cs" />
-    <Compile Include="HtmlStringFormatterTests.cs" />
+    <Compile Include="CloseEmptyElementsFormatterTests.cs" />
     <Compile Include="JobAdvertHtmlParserTests.cs" />
     <Compile Include="JobResultsParserTests.cs" />
     <Compile Include="JointCommunityRehabilitationMatcherTests.cs" />

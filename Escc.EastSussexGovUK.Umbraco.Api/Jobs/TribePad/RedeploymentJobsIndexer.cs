@@ -50,7 +50,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
                             new RemoveUnwantedNodesFormatter(new[] { "style" }, true),
                             new RemoveElementsWithNoContentFormatter(new[] { "strong", "p" }),
                             new TruncateLongLinksFormatter(new HtmlLinkFormatter()),
-                            new EmbeddedYouTubeVideosFormatter()
+                            new EmbeddedYouTubeVideosFormatter(),
+                            new FakeListFormatter()
                         }),
                         new HtmlStringFormatterAdapter(new IHtmlStringFormatter[] {
                             new CloseEmptyElementsFormatter(),

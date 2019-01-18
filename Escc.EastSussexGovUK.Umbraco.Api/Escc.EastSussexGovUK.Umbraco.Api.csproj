@@ -362,6 +362,7 @@
     <Compile Include="Jobs\Examine\SalaryRangeLuceneQueryBuilder.cs" />
     <Compile Include="Jobs\HtmlFormatters\CloseEmptyElementsFormatter.cs" />
     <Compile Include="Jobs\HtmlFormatters\EmbeddedYouTubeVideosFormatter.cs" />
+    <Compile Include="Jobs\HtmlFormatters\FakeListFormatter.cs" />
     <Compile Include="Jobs\HtmlFormatters\HouseStyleDateFormatter.cs" />
     <Compile Include="Jobs\HtmlFormatters\IHtmlAgilityPackHtmlFormatter.cs" />
     <Compile Include="Jobs\HtmlFormatters\RedeploymentHeaderFormatter.cs" />
