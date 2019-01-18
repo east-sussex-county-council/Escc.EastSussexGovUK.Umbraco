@@ -464,5 +464,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests.Properties {
                 return ResourceManager.GetString("WorkPatternInBodyText9", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;div&gt;
+        ///&lt;div class=&quot;video-embed-wrapper&quot; contenteditable=&quot;false&quot;&gt;&lt;iframe allowfullscreen=&quot;&quot; frameborder=&quot;0&quot; height=&quot;100%&quot; mozallowfullscreen=&quot;&quot; src=&quot;//www.youtube.com/embed/1JOsjWX56Kg?showinfo=0&amp;controls=0&amp;rel=0&quot; webkitallowfullscreen=&quot;&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/div&gt;.
+        /// </summary>
+        internal static string YouTubeIFrame {
+            get {
+                return ResourceManager.GetString("YouTubeIFrame", resourceCulture);
+            }
+        }
     }
 }

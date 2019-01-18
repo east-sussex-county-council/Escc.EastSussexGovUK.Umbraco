@@ -379,10 +379,12 @@
     <Compile Include="Jobs\ISalaryParser.cs" />
     <Compile Include="Jobs\IWorkPatternParser.cs" />
     <Compile Include="Jobs\JobsParseResult.cs" />
+    <Compile Include="Jobs\JobTransformers\YouTubeVideoTransformer.cs" />
     <Compile Include="Jobs\JobTransformers\IJobMatcher.cs" />
     <Compile Include="Jobs\JobTransformers\IJobTransformer.cs" />
     <Compile Include="Jobs\JobTransformers\JointCommunityRehabilitationMatcher.cs" />
     <Compile Include="Jobs\JobTransformers\LocationMatcher.cs" />
+    <Compile Include="Jobs\JobTransformers\RemoveUnwantedAttributesTransformer.cs" />
     <Compile Include="Jobs\JobTransformers\SetJobLocationTransformer.cs" />
     <Compile Include="Jobs\RelativeJobUrlGenerator.cs" />
     <Compile Include="Jobs\TribePad\JobsDataFromTribePad.cs" />

@@ -11,6 +11,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.HtmlFormatters
     /// Adds an 'embed' class to YouTube video links which can be picked up by JavaScript embed code
     /// </summary>
     /// <seealso cref="Escc.EastSussexGovUK.Umbraco.Jobs.IHtmlAgilityPackHtmlFormatter" />
+    [Obsolete("Use YouTubeVideoTransformer")]
     public class EmbeddedYouTubeVideosFormatter : IHtmlAgilityPackHtmlFormatter
     {
         /// <summary>

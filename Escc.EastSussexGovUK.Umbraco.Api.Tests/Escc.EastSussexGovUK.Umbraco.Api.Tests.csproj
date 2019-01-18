@@ -75,6 +75,7 @@
     <Compile Include="JobResultsParserTests.cs" />
     <Compile Include="JointCommunityRehabilitationMatcherTests.cs" />
     <Compile Include="LocationMatcherTests.cs" />
+    <Compile Include="RemoveUnwantedAttributesTransformerTests.cs" />
     <Compile Include="TribePadJobParserTests.cs" />
     <Compile Include="MockLinkFormatter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="TalentLinkWorkPatternParserTests.cs" />
     <Compile Include="TribePadSalaryParserTests.cs" />
     <Compile Include="TruncateLongLinksFormatterTests.cs" />
+    <Compile Include="YouTubeVideoTransformerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

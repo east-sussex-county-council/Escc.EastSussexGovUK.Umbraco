@@ -1304,4 +1304,8 @@ ESCC: Orbis (BSD)&lt;/business_unit&gt;&lt;business_unit_id&gt;200&lt;/business_
 &lt;/div&gt;
 &lt;/div&gt;</value>
   </data>
+  <data name="YouTubeIFrame" xml:space="preserve">
+    <value>&lt;div&gt;
+&lt;div class="video-embed-wrapper" contenteditable="false"&gt;&lt;iframe allowfullscreen="" frameborder="0" height="100%" mozallowfullscreen="" src="//www.youtube.com/embed/1JOsjWX56Kg?showinfo=0&amp;controls=0&amp;rel=0" webkitallowfullscreen="" width="100%"&gt;&lt;/iframe&gt;&lt;/div&gt;</value>
+  </data>
 </root>

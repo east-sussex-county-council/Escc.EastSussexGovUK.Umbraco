@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Configuration;
 using Escc.Html;
-using Escc.Net;
 using Examine.Providers;
 using Examine;
 using System.Collections.Generic;
@@ -39,7 +38,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
                 {
                     { new IJobMatcher[] { new JointCommunityRehabilitationMatcher(), new LocationMatcher("Lewes") }, new IJobTransformer[] { new SetJobLocationTransformer(new[] { "Crowborough", "Lewes", "Peacehaven",  "Wadhurst" }) } },
                     { new IJobMatcher[] { new JointCommunityRehabilitationMatcher(), new LocationMatcher("Eastbourne") }, new IJobTransformer[] { new SetJobLocationTransformer(new[] { "Eastbourne", "Hailsham", "Polegate", "Seaford" }) } },
-                    { new IJobMatcher[] { new JointCommunityRehabilitationMatcher(), new LocationMatcher("Bexhill-on-Sea") }, new IJobTransformer[] { new SetJobLocationTransformer(new[] { "Bexhill-on-Sea", "Hastings", "Rural Rother" }) } }
+                    { new IJobMatcher[] { new JointCommunityRehabilitationMatcher(), new LocationMatcher("Bexhill-on-Sea") }, new IJobTransformer[] { new SetJobLocationTransformer(new[] { "Bexhill-on-Sea", "Hastings", "Rural Rother" }) } },
+                    { new IJobMatcher[] { /* No matcher - apply to all jobs */ }, new IJobTransformer[] {
+                        new RemoveUnwantedAttributesTransformer(new string[] { "style" }),
+                        new YouTubeVideoTransformer()
+                    } }
                 }
             );
         }
