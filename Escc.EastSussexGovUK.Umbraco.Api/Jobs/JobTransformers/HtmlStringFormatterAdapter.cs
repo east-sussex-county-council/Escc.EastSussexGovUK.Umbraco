@@ -34,6 +34,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.JobTransformers
 
             foreach (var formatter in _formatters)
             {
+                if (formatter == null) continue;
                 formattedHtml = formatter.FormatHtml(formattedHtml);
             }
 

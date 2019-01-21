@@ -14,6 +14,12 @@ We have a second set of jobs which are open only to applicants who are eligible 
 
 You can recreate the configuration for these index sets and indexes by applying the `ExamineIndex.config.xdt` and `ExamineSettings.config.xdt` transforms to your own installation of this project.
 
+The domain is automatically removed from image URLs in job adverts, as images are expected to be loaded from the same domain as the website. However, this is a problem in test environments where the images are not present, so you can disable this behaviour in `web.config`:
+
+	<appSettings>
+	    <add key="DoNotRemoveMediaDomainInJobAdverts" value="true"/>
+	</appSettings>
+
 ### Updating the data
 
 To update the jobs data you need a trigger a reindex for each of the index sets. You can do this in one of the following ways:

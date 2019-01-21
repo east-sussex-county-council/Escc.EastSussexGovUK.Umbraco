@@ -31,6 +31,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             var lookupValuesApiUrl = new Uri(ConfigurationManager.AppSettings["TribePadRedeploymentJobsLookupValuesUrl"]);
             var applyUrl = new Uri(ConfigurationManager.AppSettings["TribePadApplyUrl"]);
 
+            // This setting is useful in a test environment where images are not present on the test domain
+            var disableMediaDomainTransformer = ConfigurationManager.AppSettings["DoNotRemoveMediaDomainInJobAdverts"]?.ToUpperInvariant() == "TRUE";
+
             var proxyProvider = new ConfigurationProxyProvider();
             var lookupValuesProvider = new JobsLookupValuesFromTribePad(lookupValuesApiUrl, new LookupValuesFromTribePadBuiltInFieldParser(), new LookupValuesFromTribePadCustomFieldParser(), proxyProvider);
             var jobParser = new TribePadJobParser(lookupValuesProvider, new TribePadSalaryParser(lookupValuesProvider),applyUrl);
@@ -57,7 +60,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
                         new HtmlStringFormatterAdapter(new IHtmlStringFormatter[] {
                             new CloseEmptyElementsFormatter(),
                             new HouseStyleDateFormatter(),
-                            new RemoveMediaDomainUrlTransformer()
+                            disableMediaDomainTransformer ? null : new RemoveMediaDomainUrlTransformer()
                         })
                     } }
                 }
