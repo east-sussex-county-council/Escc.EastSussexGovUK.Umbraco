@@ -48,15 +48,22 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
 
             if (Regex.IsMatch(parseThis, "Full or part( |-)time", RegexOptions.IgnoreCase))
             {
-                return new WorkPattern() { IsFullTime = true, IsPartTime = true };
+                var workPattern = new WorkPattern();
+                workPattern.WorkPatterns.Add(WorkPattern.FULL_TIME);
+                workPattern.WorkPatterns.Add(WorkPattern.PART_TIME);
+                return workPattern;
             }
             if (Regex.IsMatch(parseThis, "Full( |-)time", RegexOptions.IgnoreCase))
             {
-                return new WorkPattern() { IsFullTime = true };
+                var workPattern = new WorkPattern();
+                workPattern.WorkPatterns.Add(WorkPattern.FULL_TIME);
+                return workPattern;
             }
             if (Regex.IsMatch(parseThis, "(Casual|Part( |-)time)", RegexOptions.IgnoreCase))
             {
-                return new WorkPattern() { IsPartTime = true };
+                var workPattern = new WorkPattern();
+                workPattern.WorkPatterns.Add(WorkPattern.PART_TIME);
+                return workPattern;
             }
 
             var match = Regex.Match(parseThis, @"(([0-9]*)\s*?-\s*)?([0-9]+) hours per week", RegexOptions.IgnoreCase);
@@ -69,8 +76,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
 
                     var workPattern = new WorkPattern();
                     const int fullTimeThreshold = 35;
-                    if (maxHours >= fullTimeThreshold) workPattern.IsFullTime = true;
-                    if (minHours < fullTimeThreshold) workPattern.IsPartTime = true;
+                    if (maxHours >= fullTimeThreshold) workPattern.WorkPatterns.Add(WorkPattern.FULL_TIME);
+                    if (minHours < fullTimeThreshold) workPattern.WorkPatterns.Add(WorkPattern.PART_TIME);
                     return workPattern;
                 }
                 catch (FormatException)

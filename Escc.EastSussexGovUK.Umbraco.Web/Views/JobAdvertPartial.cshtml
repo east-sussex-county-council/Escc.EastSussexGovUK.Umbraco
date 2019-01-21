@@ -1,6 +1,7 @@
 ﻿@using System.Text
 @using System.Linq
 @using Escc.Dates
+@using Escc.EastSussexGovUK.Umbraco.Jobs
 @model Escc.EastSussexGovUK.Umbraco.Web.Jobs.JobAdvertViewModel
 @{
     var jobSummaryHtml = new StringBuilder("<dl class=\"job-summary\">");
@@ -36,6 +37,11 @@
     if (!String.IsNullOrEmpty(Model.Job.ContractType))
     {
         jobSummaryHtml.Append("<dt>Contract type</dt><dd>").Append(Model.Job.ContractType).Append("</dd>");
+    }
+    var workPattern = Model.Job.WorkPattern.ToString();
+    if (!String.IsNullOrEmpty(workPattern))
+    {
+        jobSummaryHtml.Append("<dt>Work pattern</dt><dd>").Append(workPattern).Append("</dd>");
     }
     if (!String.IsNullOrEmpty(Model.Job.JobType))
     {
@@ -117,8 +123,8 @@
 <script type="application/ld+json">
 @{ 
     var employmentTypes = new List<string>();
-    if (Model.Job.IsFullTime) { employmentTypes.Add("FULL_TIME"); }
-    if (Model.Job.IsPartTime) { employmentTypes.Add("PART_TIME"); }
+    if (Model.Job.WorkPattern.WorkPatterns.Contains(WorkPattern.FULL_TIME)) { employmentTypes.Add("FULL_TIME"); }
+    if (Model.Job.WorkPattern.WorkPatterns.Contains(WorkPattern.PART_TIME)) { employmentTypes.Add("PART_TIME"); }
 
     var employmentType = employmentTypes.Count > 0 ? "\"employmentType\": [\"" + String.Join("\", \"", employmentTypes.ToArray()) + "\"]," : String.Empty;
 }{

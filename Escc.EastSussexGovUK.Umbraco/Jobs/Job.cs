@@ -114,22 +114,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public string ContractType { get; set; }
 
         /// <summary>
-        /// Gets or sets whether this job is full time.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if this job is full time; otherwise, <c>false</c>.
-        /// </value>
-        public bool IsFullTime { get; set; }
-
-        /// <summary>
-        /// Gets or sets whether this job is part time.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if this job is part time; otherwise, <c>false</c>.
-        /// </value>
-        public bool IsPartTime { get; set; }
-
-        /// <summary>
         /// Gets or sets the part of the organisation that's advertising the job.
         /// </summary>
         /// <value>

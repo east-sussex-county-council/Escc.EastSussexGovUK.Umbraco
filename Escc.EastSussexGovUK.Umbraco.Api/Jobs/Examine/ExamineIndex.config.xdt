@@ -26,8 +26,6 @@
       <add Name="jobType" />
       <add Name="jobTypeDisplay" />
       <add Name="contractType" />
-      <add Name="fullTime" />
-      <add Name="partTime" />
       <add Name="workPattern" EnableSorting="true" Type="STRING" />
       <add Name="department" />
       <add Name="departmentDisplay" />

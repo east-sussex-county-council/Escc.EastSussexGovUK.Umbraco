@@ -233,10 +233,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
             simpleDataSet.RowData.Add("contractType", _stopWordsRemover != null ? _stopWordsRemover.Filter(job.ContractType) : job.ContractType);
             simpleDataSet.RowData.Add("department", _stopWordsRemover != null ? _stopWordsRemover.Filter(job.Department) : job.Department);
             simpleDataSet.RowData.Add("departmentDisplay", job.Department);
-            simpleDataSet.RowData.Add("fullTime", job.WorkPattern?.IsFullTime.ToString());
-            simpleDataSet.RowData.Add("partTime", job.WorkPattern?.IsPartTime.ToString());
-            simpleDataSet.RowData.Add("workPattern", job.WorkPattern?.ToString());
             simpleDataSet.RowData.Add("datePublished", job.DatePublished.ToIso8601DateTime());
+
+            var workPatternList = string.Join(", ", job.WorkPattern.WorkPatterns.ToArray<string>());
+            simpleDataSet.RowData.Add("workPattern", workPatternList);
 
             var locationsList = string.Join(", ", job.Locations.ToArray<string>());
             simpleDataSet.RowData.Add("location", _stopWordsRemover != null ? _stopWordsRemover.Filter(locationsList) : locationsList);

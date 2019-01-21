@@ -154,11 +154,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
                     if (workPattern != null)
                     {
                         var workPatternComparable = workPattern.Text.ToUpperInvariant();
-                        job.WorkPattern = new WorkPattern()
-                        {
-                            IsFullTime = (workPatternComparable == "FULL TIME"),
-                            IsPartTime = (workPatternComparable == "PART TIME")
-                        };
+                        if (workPatternComparable == "FULL TIME") job.WorkPattern.WorkPatterns.Add(WorkPattern.FULL_TIME);
+                        if (workPatternComparable == "PART TIME") job.WorkPattern.WorkPatterns.Add(WorkPattern.PART_TIME);
                     }
                 }
             }

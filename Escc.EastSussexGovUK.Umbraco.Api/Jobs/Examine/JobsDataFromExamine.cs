@@ -73,6 +73,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
             var examineQuery = _searcher.CreateSearchCriteria(BooleanOperation.And);
 
             examineQuery.GroupedOr(new[] { "location" }, query.Locations.ToArray())
+                        .And().GroupedOr(new[] {  "workPattern"}, query.WorkPatterns.ToArray())
                         .And().GroupedOr(new[] { "jobType" }, query.JobTypes.ToArray())
                         .And().GroupedOr(new[] { "organisation" }, query.Organisations.ToArray());
 
@@ -110,7 +111,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
             }
 
             // For the working patterns we also need to build the raw Lucene query
-            modifiedQuery += BuildWorkPatternLuceneQuery(query.WorkPatterns);
+            // modifiedQuery += BuildWorkPatternLuceneQuery(query.WorkPatterns);
 
             // Append a requirement that the job must not have closed
             if (query.ClosingDateFrom.HasValue)
@@ -239,19 +240,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
                         Locations = result.Fields.ContainsKey("locationDisplay") ? result["locationDisplay"].Split(',') : new string[0],
                         JobType = result.Fields.ContainsKey("jobTypeDisplay") ? result["jobTypeDisplay"] : String.Empty,
                         ContractType = result.Fields.ContainsKey("contractType") ? result["contractType"] : String.Empty,
-                        IsPartTime = result.Fields.ContainsKey("partTime") ? Boolean.Parse(result["partTime"]) : false,
-                        IsFullTime = result.Fields.ContainsKey("fullTime") ? Boolean.Parse(result["fullTime"]) : false,
                         Department = result.Fields.ContainsKey("departmentDisplay") ? result["departmentDisplay"] : String.Empty,
-                        WorkPattern = new WorkPattern()
-                        {
-                            IsFullTime = result.Fields.ContainsKey("fullTime") && result["fullTime"].ToUpperInvariant() == "TRUE",
-                            IsPartTime = result.Fields.ContainsKey("partTime") && result["partTime"].ToUpperInvariant() == "TRUE"
-                        },
                         AdvertHtml = new HtmlString(result.Fields.ContainsKey("fullHtml") ? result["fullHtml"] : String.Empty),
                         AdditionalInformationHtml = new HtmlString(result.Fields.ContainsKey("additionalInfo") ? result["additionalInfo"] : String.Empty),
                         EqualOpportunitiesHtml = new HtmlString(result.Fields.ContainsKey("equalOpportunities") ? result["equalOpportunities"] : String.Empty),
                         ApplyUrl = (result.Fields.ContainsKey("applyUrl") && !String.IsNullOrEmpty(result["applyUrl"])) ? new Uri(result["applyUrl"]) : null
                     };
+
+                    if (result.Fields.ContainsKey("workPattern"))
+                    {
+                        var patterns = result["workPattern"].Split(',');
+                        foreach (var pattern in patterns) job.WorkPattern.WorkPatterns.Add(pattern);
+                    }
 
                     job.Salary.SalaryRange = result.Fields.ContainsKey("salaryDisplay") ? result["salaryDisplay"] : String.Empty;
                     job.Salary.SearchRange = result.Fields.ContainsKey("salaryRange") ? result["salaryRange"] : String.Empty;
@@ -325,7 +325,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
         {
             const string noSalary = " (*:* -salaryMax:[0 TO 99999]) ";
             const string fallbackSalary = " (salaryMax:0009999 salaryMax:0014999 salaryMax:0019999 salaryMax:0024999 salaryMax:0034999 salaryMax:0049999) ";
-            const string noWorkPattern = " (+fullTime:false +partTime:false) ";
+            const string noWorkPattern = " *:* -workPattern:[* TO \"z*\"] ";
 
             try
             {

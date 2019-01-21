@@ -6,9 +6,9 @@ using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Humanizer;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
 using Escc.Net;
+using System.Text.RegularExpressions;
 
 namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
 {
@@ -187,9 +187,21 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             var results = await ReadLookupValuesFromApi(_customFieldLookupValuesParser, "Working Pattern").ConfigureAwait(false);
             for (var i = 0; i<results.Count;i++)
             {
-                results[i].Text = results[i].Text.Humanize(LetterCasing.Sentence);
+                // By replacing initial caps with a lowercase letter only where they follow straight after another word,
+                // we get values in sentence case that still have an initial cap after any punctuation.
+                results[i].Text = Regex.Replace(results[i].Text, @"[a-z]\s[A-Z]", ToLower);
             }
             return results;
+        }
+
+        /// <summary>
+        /// MatchEvaluator for a regular expression in <see cref="ReadWorkPatterns"/>
+        /// </summary>
+        /// <param name="m"></param>
+        /// <returns></returns>
+        private string ToLower(Match m)
+        {
+            return m.Value.ToLower(CultureInfo.CurrentCulture);
         }
 
         /// <summary>

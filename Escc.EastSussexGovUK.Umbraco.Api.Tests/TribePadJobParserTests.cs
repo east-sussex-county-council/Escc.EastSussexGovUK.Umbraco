@@ -134,8 +134,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
             var parsedJob = await parser.ParseJob(Properties.Resources.TribePadJobXml, "142");
 
             Assert.IsNotNull(parsedJob.WorkPattern);
-            Assert.IsTrue(parsedJob.WorkPattern.IsFullTime);
-            Assert.IsFalse(parsedJob.WorkPattern.IsPartTime);
+            Assert.IsTrue(parsedJob.WorkPattern.WorkPatterns.Contains(WorkPattern.FULL_TIME));
+            Assert.IsFalse(parsedJob.WorkPattern.WorkPatterns.Contains(WorkPattern.PART_TIME));
         }
     }
 
