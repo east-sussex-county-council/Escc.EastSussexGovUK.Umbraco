@@ -28,10 +28,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             var resultsUrl = new Uri(ConfigurationManager.AppSettings["TribePadPublicJobsResultsUrl"]);
             var advertUrl = new Uri(ConfigurationManager.AppSettings["TribePadPublicJobsAdvertUrl"]);
             var lookupValuesApiUrl = new Uri(ConfigurationManager.AppSettings["TribePadPublicJobsLookupValuesUrl"]);
+            var applyUrl = new Uri(ConfigurationManager.AppSettings["TribePadApplyUrl"]);
 
             var proxyProvider = new ConfigurationProxyProvider();
             var lookupValuesProvider = new JobsLookupValuesFromTribePad(lookupValuesApiUrl, new LookupValuesFromTribePadBuiltInFieldParser(), new LookupValuesFromTribePadCustomFieldParser(), proxyProvider);
-            var jobParser = new TribePadJobParser(lookupValuesProvider, new TribePadSalaryParser(lookupValuesProvider));
+            var jobParser = new TribePadJobParser(lookupValuesProvider, new TribePadSalaryParser(lookupValuesProvider), applyUrl);
 
             InitialiseDependencies(
                 new JobsDataFromTribePad(resultsUrl, advertUrl, jobParser, jobParser, proxyProvider, true),

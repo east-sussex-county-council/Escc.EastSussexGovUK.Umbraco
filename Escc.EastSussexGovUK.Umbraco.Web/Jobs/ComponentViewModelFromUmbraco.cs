@@ -4,6 +4,7 @@ using Umbraco.Core.Models;
 using Umbraco.Web;
 using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
 using Escc.EastSussexGovUK.Umbraco.Jobs.TalentLink;
+using System;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
 {
@@ -36,6 +37,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
                 JobsLogo = BuildImage("JobsLogo_Content"),
                 JobsHomePage = BuildLinkToPage("JobsHomePage_Content"),
                 LoginPage = BuildLinkToPage("LoginPage_Content"),
+                LoginUrl = !string.IsNullOrEmpty(UmbracoContent.GetPropertyValue<string>("loginURL")) ? new Uri(UmbracoContent.GetPropertyValue<string>("loginURL"), UriKind.RelativeOrAbsolute) : null,
                 HeaderBackgroundImageSmall = BuildImage("HeaderBackgroundImage_Content"),
                 HeaderBackgroundImageMedium = BuildImage("HeaderBackgroundImageMedium_Content"),
                 HeaderBackgroundImageLarge = BuildImage("HeaderBackgroundImageLarge_Content"),

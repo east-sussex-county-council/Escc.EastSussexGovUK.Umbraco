@@ -1,6 +1,7 @@
 using System;
 using Escc.EastSussexGovUK.Umbraco.Web.Services;
 using Umbraco.Core.Models;
+using Umbraco.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
 {
@@ -32,6 +33,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
                 HeaderBackgroundImageLarge = BuildImage("HeaderBackgroundImageLarge_Content"),
                 JobsHomePage = BuildLinkToPage("JobsHomePage_Content"),
                 LoginPage = BuildLinkToPage("LoginPage_Content"),
+                LoginUrl = !string.IsNullOrEmpty(UmbracoContent.GetPropertyValue<string>("loginURL")) ? new Uri(UmbracoContent.GetPropertyValue<string>("loginURL"), UriKind.RelativeOrAbsolute) : null,
                 SearchResultsPageForClosedJobs = BuildLinkToPage("SearchResultsPage_Content"),
                 JobsSet = ParseJobsSet("PublicOrRedeployment_Content")
             };

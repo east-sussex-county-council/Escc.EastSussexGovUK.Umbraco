@@ -4692,6 +4692,14 @@
     <Content Include="uSync\Snapshots\20190121_131239_fix-heatmap-aliases\Template\standardlandingpage\standardLandingPage.config" />
     <Content Include="uSync\Snapshots\20190121_131239_fix-heatmap-aliases\Template\standardtopicpage\standardTopicPage.config" />
     <Content Include="uSync\Snapshots\20190121_131239_fix-heatmap-aliases\Template\task\Task.config" />
+    <Content Include="uSync\Snapshots\20190121_161823_add-jobs-login-url\DocumentType\customer-focus-base\job-advert\def.config" />
+    <Content Include="uSync\Snapshots\20190121_161823_add-jobs-login-url\DocumentType\customer-focus-base\job-alerts\def.config" />
+    <Content Include="uSync\Snapshots\20190121_161823_add-jobs-login-url\DocumentType\customer-focus-base\job-search-results\def.config" />
+    <Content Include="uSync\Snapshots\20190121_161823_add-jobs-login-url\DocumentType\customer-focus-base\jobs-component\def.config" />
+    <Content Include="uSync\Snapshots\20190121_161823_add-jobs-login-url\DocumentType\customer-focus-base\jobs-search\def.config" />
+    <Content Include="uSync\Snapshots\20190121_161823_add-jobs-login-url\DocumentType\customer-focus-base\jobs\def.config" />
+    <Content Include="uSync\Snapshots\20190121_161823_add-jobs-login-url\Template\form\Form.config" />
+    <Content Include="uSync\Snapshots\20190121_161823_add-jobs-login-url\Template\privacynotice\PrivacyNotice.config" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>

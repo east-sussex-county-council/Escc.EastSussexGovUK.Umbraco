@@ -49,7 +49,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
         /// <summary>
         /// Gets or sets the login page
         /// </summary>
+        [Obsolete("Use LoginUrl")]
         public HtmlLink LoginPage { get; set; }
+
+        /// <summary>
+        /// Gets or sets the login URL
+        /// </summary>
+        public Uri LoginUrl { get; set; }
 
         /// <summary>
         /// Gets or sets the search page

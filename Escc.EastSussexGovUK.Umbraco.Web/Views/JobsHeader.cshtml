@@ -22,6 +22,12 @@
                     <a href="@Model.LoginPage.Url" rel="nofollow">Log in &gt;</a>
                 </p>
             }
+            else if (Model.LoginUrl != null)
+            {
+                <p class="login">
+                    <a href="@Model.LoginUrl" rel="nofollow">Log in &gt;</a>
+                </p>
+            }
         </div>
         @if (Model.SearchResultsPageForHeader != null)
         {

@@ -19,6 +19,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
     {
         private readonly IJobsLookupValuesProvider _lookupValuesProvider;
         private readonly ISalaryParser _salaryParser;
+        private readonly Uri _applyUrl;
         private IEnumerable<JobsLookupValue> _workPatterns;
         private IEnumerable<JobsLookupValue> _contractTypes;
 
@@ -27,11 +28,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         /// </summary>
         /// <param name="lookupValuesProvider">A method of supplying lookup values for identifiers referenced by the job data</param>
         /// <param name="salaryParser">A method of parsing salary information for the job</param>
+        /// <param name="applyUrl">The URL to apply for a job, with {0} to represent where the job id should be used</param>
         /// <exception cref="ArgumentNullException">lookupValuesProvider</exception>
-        public TribePadJobParser(IJobsLookupValuesProvider lookupValuesProvider, ISalaryParser salaryParser)
+        public TribePadJobParser(IJobsLookupValuesProvider lookupValuesProvider, ISalaryParser salaryParser, Uri applyUrl)
         {
             _lookupValuesProvider = lookupValuesProvider ?? throw new ArgumentNullException(nameof(lookupValuesProvider));
             _salaryParser = salaryParser ?? throw new ArgumentNullException(nameof(salaryParser));
+            _applyUrl = applyUrl ?? throw new ArgumentNullException(nameof(applyUrl));
         }
 
         /// <summary>
@@ -115,6 +118,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             job.AdditionalInformationHtml = new HtmlString(HttpUtility.HtmlDecode(jobXml.Element("ideal_candidate")?.Value));
             job.EqualOpportunitiesHtml = new HtmlString(HttpUtility.HtmlDecode(jobXml.Element("about_company")?.Value));
             job.JobType = HttpUtility.HtmlDecode(jobXml.Element("category_name")?.Value);
+
+            if (jobXml.Element("no_apply")?.Value == "0")
+            {
+                job.ApplyUrl = new Uri(String.Format(CultureInfo.InvariantCulture, _applyUrl.ToString(), job.Id), UriKind.RelativeOrAbsolute);
+            }
+
             job.Salary = await _salaryParser.ParseSalaryFromJobAdvert(jobXml.ToString());
             var salaryFrom = Int32.Parse(jobXml.Element("salary_from").Value, CultureInfo.InvariantCulture);
             var salaryTo = Int32.Parse(jobXml.Element("salary_to").Value, CultureInfo.InvariantCulture);

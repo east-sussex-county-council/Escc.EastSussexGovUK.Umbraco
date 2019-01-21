@@ -65,6 +65,8 @@
             <p class="main-action"><a href="@Model.Job.ApplyUrl" class="apply">Apply</a>
             @if (Model.LoginPage != null) {
                 @:<span class="login-continue">or <a href="@Model.LoginPage.Url">continue an application you've started</a></span>
+            } else if (Model.LoginUrl != null) {
+                @:<span class="login-continue">or <a href="@Model.LoginUrl">continue an application you've started</a></span>
             }
             </p>
         }
