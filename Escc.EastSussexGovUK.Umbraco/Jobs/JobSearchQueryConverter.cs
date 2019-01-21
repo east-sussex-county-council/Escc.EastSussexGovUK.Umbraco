@@ -76,6 +76,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 query.JobReference = collection["ref"];
             }
 
+            if (!String.IsNullOrEmpty(collection["contracttypes"]))
+            {
+                AddQueryStringValuesToList(collection["contracttypes"], query.ContractTypes);
+            }
+
             if (!String.IsNullOrEmpty(collection["workpatterns"]))
             {
                 AddQueryStringValuesToList(collection["workpatterns"], query.WorkPatterns);
@@ -153,6 +158,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 foreach (var value in query.Locations) queryString.Add("locations", value);
                 foreach (var value in query.Organisations) queryString.Add("org", value);
                 foreach (var value in query.SalaryRanges) queryString.Add("salaryranges", value.Replace(",",String.Empty));
+                foreach (var value in query.ContractTypes) queryString.Add("contracttypes", value);
                 foreach (var value in query.WorkPatterns) queryString.Add("workpatterns", value);
             }
             return queryString;

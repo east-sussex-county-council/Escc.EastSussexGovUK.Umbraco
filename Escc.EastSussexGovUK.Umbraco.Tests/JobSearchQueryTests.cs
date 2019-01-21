@@ -27,6 +27,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             // Format is [Work pattern] [type] jobs [in location] [paying salary range] [advertised by organisation] [and matching keywords/reference]
             var query = new JobSearchQuery();
             query.WorkPatterns.Add("part time");
+            query.ContractTypes.Add("Permanent");
             query.JobTypes.Add("Care and social work");
             query.Locations.Add("Eastbourne");
             query.SalaryRanges.Add("£20000 - £30000");
@@ -35,16 +36,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
 
             var result = query.ToString();
 
-            Assert.AreEqual("Part time care and social work jobs in Eastbourne paying £20000 - £30000 advertised by East Sussex County Council and matching 'test query'", result);
+            Assert.AreEqual("Part time permanent care and social work jobs in Eastbourne paying £20000 - £30000 advertised by East Sussex County Council and matching 'test query'", result);
         }
 
         [Test]
         public void AllFiltersMultipleValues()
         {
-            // Format is [Work pattern] [type] jobs [in location] [paying salary range] [advertised by organisation] [and matching keywords/reference]
+            // Format is [Work pattern] [contract type] [type] jobs [in location] [paying salary range] [advertised by organisation] [and matching keywords/reference]
             var query = new JobSearchQuery();
             query.WorkPatterns.Add("Part time");
             query.WorkPatterns.Add("Full time");
+            query.ContractTypes.Add("Permanent");
+            query.ContractTypes.Add("Fixed term");
             query.JobTypes.Add("Care and social work");
             query.JobTypes.Add("Personnel and HR");
             query.Locations.Add("Eastbourne");
@@ -58,7 +61,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
 
             var result = query.ToString();
 
-            Assert.AreEqual("Care and social work and personnel and HR jobs in Eastbourne or Lewes paying £20000 - £30000 or £40000 - £50000 advertised by East Sussex County Council or Sussex Downs College and matching 'test query' or 'ABC1234'", result);
+            Assert.AreEqual("Part time and full time permanent and fixed term care and social work and personnel and HR jobs in Eastbourne or Lewes paying £20000 - £30000 or £40000 - £50000 advertised by East Sussex County Council or Sussex Downs College and matching 'test query' or 'ABC1234'", result);
         }
 
         [Test]

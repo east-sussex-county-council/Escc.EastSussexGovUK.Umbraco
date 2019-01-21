@@ -55,6 +55,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public IList<string> WorkPatterns { get; set; } = new List<string>();
 
         /// <summary>
+        /// Gets the contract types, eg permanent or fixed-term
+        /// </summary>
+        /// <value>
+        /// The contract types.
+        /// </value>
+        public IList<string> ContractTypes { get; set; } = new List<string>();
+
+        /// <summary>
         /// Gets or sets the organisation advertising the job
         /// </summary>
         /// <value>
@@ -147,6 +155,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             foreach (var value in JobTypes) allContent.Append(value);
             allContent.Append("workpatterns");
             foreach (var value in WorkPatterns) allContent.Append(value);
+            allContent.Append("contracttypes");
+            foreach (var value in ContractTypes) allContent.Append(value);
             allContent.Append("closingdatefrom").Append(ClosingDateFrom.HasValue ? ClosingDateFrom.ToIso8601DateTime() : String.Empty);
             allContent.Append("sort").Append(SortBy);
             allContent.Append("frequency").Append(Frequency);
@@ -181,18 +191,24 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// </returns>
         public string ToString(bool startWithACapitalLetter)
         {
-            // Format is [Work pattern] [type] jobs [in location] [paying salary range] [advertised by organisation] [and matching keywords/reference]
+            // Format is [Work pattern] [contract type] [job type] jobs [in location] [paying salary range] [advertised by organisation] [and matching keywords/reference]
             const string defaultDescription = "all jobs";
             var description = new StringBuilder();
+            var lowerCaseTransformer = new LowerCaseExceptAcronyms();
 
-            if (WorkPatterns.Count == 1) // because we only support two patterns, and both patterns means all jobs
+            if (WorkPatterns.Count > 0)
             {
-                description.Append(ListOfThings(String.Empty, WorkPatterns, To.SentenceCase, String.Empty));
+                description.Append(ListOfThings(String.Empty, WorkPatterns, lowerCaseTransformer, "and"));
+            }
+
+            if (ContractTypes.Count > 0)
+            {
+                description.Append(ListOfThings(String.Empty, ContractTypes, lowerCaseTransformer, "and"));
             }
 
             if (JobTypes.Count > 0)
             {
-                description.Append(ListOfThings(String.Empty, JobTypes, new LowerCaseExceptAcronyms(), "and"));
+                description.Append(ListOfThings(String.Empty, JobTypes, lowerCaseTransformer, "and"));
             }
 
             description.Append(" jobs");

@@ -141,7 +141,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
                 var contractTypes = await _lookupValuesProvider.ReadContractTypes().ConfigureAwait(false);
                 foreach (var lookupValue in contractTypes)
                 {
-                    var simpleDataSet = await CreateDataSetFromLookup(i, indexType, "ContractType", null, lookupValue, null).ConfigureAwait(false);
+                    var query = new JobSearchQuery();
+                    query.ContractTypes.Add(lookupValue.Text);
+                    query.ClosingDateFrom = DateTime.Today;
+                    var simpleDataSet = await CreateDataSetFromLookup(i, indexType, "ContractType", query, lookupValue, jobsDataProvider).ConfigureAwait(false);
                     dataSets.Add(simpleDataSet);
                     i++;
                 }

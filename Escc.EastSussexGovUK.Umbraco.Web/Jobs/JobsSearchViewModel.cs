@@ -41,10 +41,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
         /// <summary>
         /// Gets the work patterns.
         /// </summary>
-        /// <value>
-        /// The work patterns.
-        /// </value>
         public IList<JobsLookupValue> WorkPatterns { get; } = new List<JobsLookupValue>();
+
+        /// <summary>
+        /// Gets the contract types.
+        /// </summary>
+        public IList<JobsLookupValue> ContractTypes { get; } = new List<JobsLookupValue>();
 
         /// <summary>
         /// Gets or sets the search results page

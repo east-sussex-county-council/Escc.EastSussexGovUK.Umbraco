@@ -65,6 +65,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
             {
                 viewModel.WorkPatterns.Add(workPattern);
             }
+
+            var contractTypes = await lookupValuesDataSource.ReadContractTypes();
+            foreach (var contractType in contractTypes)
+            {
+                viewModel.ContractTypes.Add(contractType);
+            }
         }
 
     }

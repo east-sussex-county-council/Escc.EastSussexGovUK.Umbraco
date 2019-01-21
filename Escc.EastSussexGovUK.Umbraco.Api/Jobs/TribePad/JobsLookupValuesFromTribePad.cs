@@ -185,13 +185,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         public async Task<IList<JobsLookupValue>> ReadWorkPatterns()
         {
             var results = await ReadLookupValuesFromApi(_customFieldLookupValuesParser, "Working Pattern").ConfigureAwait(false);
-            for (var i = 0; i<results.Count;i++)
+            ConvertResultsToSentenceCase(results);
+            return results;
+        }
+
+        private void ConvertResultsToSentenceCase(IList<JobsLookupValue> results)
+        {
+            for (var i = 0; i < results.Count; i++)
             {
                 // By replacing initial caps with a lowercase letter only where they follow straight after another word,
                 // we get values in sentence case that still have an initial cap after any punctuation.
                 results[i].Text = Regex.Replace(results[i].Text, @"[a-z]\s[A-Z]", ToLower);
             }
-            return results;
         }
 
         /// <summary>
@@ -210,7 +215,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         /// <returns></returns>
         public async Task<IList<JobsLookupValue>> ReadContractTypes()
         {
-            return await ReadLookupValuesFromApi(_builtInLookupValuesParser, "job_types").ConfigureAwait(false);
+            var results = await ReadLookupValuesFromApi(_builtInLookupValuesParser, "job_types").ConfigureAwait(false);
+            ConvertResultsToSentenceCase(results);
+            return results;
         }
 
         private async Task<IList<JobsLookupValue>> ReadLookupValuesFromApi(IJobLookupValuesParser parser, string fieldName)

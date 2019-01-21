@@ -167,6 +167,30 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         }
 
         [Test]
+        public void ContractTypeIsPopulatedFromCollection()
+        {
+            var collection = new NameValueCollection();
+            collection["contracttypes"] = "Contract type";
+            var converter = new JobSearchQueryConverter();
+
+            var query = converter.ToQuery(collection);
+
+            Assert.AreEqual("Contract type", query.ContractTypes[0]);
+        }
+
+        [Test]
+        public void ContractTypeIsPopulatedFromQuery()
+        {
+            var query = new JobSearchQuery();
+            query.ContractTypes.Add("Contract type");
+            var converter = new JobSearchQueryConverter();
+
+            var collection = converter.ToCollection(query);
+
+            Assert.AreEqual("Contract type", collection["contracttypes"]);
+        }
+
+        [Test]
         public void WorkingPatternIsPopulatedFromCollection()
         {
             var collection = new NameValueCollection();

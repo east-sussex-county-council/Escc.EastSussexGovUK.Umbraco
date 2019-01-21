@@ -73,7 +73,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
             var examineQuery = _searcher.CreateSearchCriteria(BooleanOperation.And);
 
             examineQuery.GroupedOr(new[] { "location" }, query.Locations.ToArray())
-                        .And().GroupedOr(new[] {  "workPattern"}, query.WorkPatterns.ToArray())
+                        .And().GroupedOr(new[] { "contractType"}, query.ContractTypes.ToArray())
+                        .And().GroupedOr(new[] { "workPattern"}, query.WorkPatterns.ToArray())
                         .And().GroupedOr(new[] { "jobType" }, query.JobTypes.ToArray())
                         .And().GroupedOr(new[] { "organisation" }, query.Organisations.ToArray());
 
@@ -109,9 +110,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
             {
                 modifiedQuery += _salaryQueryBuilder.SalaryIsWithinAnyOfTheseRanges(query.SalaryRanges);
             }
-
-            // For the working patterns we also need to build the raw Lucene query
-            // modifiedQuery += BuildWorkPatternLuceneQuery(query.WorkPatterns);
 
             // Append a requirement that the job must not have closed
             if (query.ClosingDateFrom.HasValue)
@@ -203,6 +201,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
                 exception.Data.Add("Locations", String.Join(",", query.Locations.ToArray()));
                 exception.Data.Add("Organisations", String.Join(",", query.Organisations.ToArray()));
                 exception.Data.Add("Salary ranges", String.Join(",", query.SalaryRanges.ToArray()));
+                exception.Data.Add("Contract types", String.Join(",", query.ContractTypes.ToArray()));
                 exception.Data.Add("Work patterns", String.Join(",", query.WorkPatterns.ToArray()));
                 exception.Data.Add("Sort", query.SortBy);
                 exception.Data.Add("Generated query", modifiedQuery);
@@ -216,6 +215,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
                     .Append("Locations:").Append(String.Join(",", query.Locations.ToArray())).Append(Environment.NewLine)
                     .Append("Organisations:").Append(String.Join(",", query.Organisations.ToArray())).Append(Environment.NewLine)
                     .Append("Salary ranges:").Append(String.Join(",", query.SalaryRanges.ToArray())).Append(Environment.NewLine)
+                    .Append("Contract types:").Append(String.Join(",", query.ContractTypes.ToArray())).Append(Environment.NewLine)
                     .Append("Work patterns:").Append(String.Join(",", query.WorkPatterns.ToArray())).Append(Environment.NewLine)
                     .Append("Sort:").Append(query.SortBy).Append(Environment.NewLine);
                 _log.Error(errorForLog.ToString());
@@ -292,29 +292,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
 
             return jobs;
 
-        }
-
-        private string BuildWorkPatternLuceneQuery(IList<string> workPatterns)
-        {
-            var fullTime = workPatterns.Contains("Full time");
-            var partTime = workPatterns.Contains("Part time");
-
-            var workPatternQueries = new List<string>();
-            if (fullTime)
-            {
-                workPatternQueries.Add("fullTime:True");
-            }
-            if (partTime)
-            {
-                workPatternQueries.Add("partTime:True");
-            }
-
-            var query = String.Empty;
-            if (workPatternQueries.Count > 0)
-            {
-                query = " +(" + String.Join(" ", workPatternQueries.ToArray()) + ")";
-            }
-            return query;
         }
 
         /// <summary>
