@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Exceptionless;
 using log4net;
@@ -14,7 +12,7 @@ namespace Escc.Jobs.SendAlerts
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
 
-        static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             ExceptionlessClient.Default.Startup();
             XmlConfigurator.Configure();
@@ -46,8 +44,9 @@ namespace Escc.Jobs.SendAlerts
                         forceResend = parsedForceResend;
                     }
                 }
-                
-                new JobAlertSender(log).SendAlerts(frequency, forceResend).RunSynchronously();
+
+                var sender = new JobAlertSender(log);
+                await sender.SendAlerts(frequency, forceResend);
             }
             catch (Exception ex)
             {
