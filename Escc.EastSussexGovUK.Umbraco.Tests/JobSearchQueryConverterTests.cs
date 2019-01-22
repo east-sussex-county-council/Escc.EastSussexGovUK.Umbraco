@@ -83,6 +83,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         }
 
         [Test]
+        public void ObsoleteJobTypeIsTranslated()
+        {
+            var collection = new NameValueCollection();
+            collection["jobtypes"] = "Personnel and HR";
+            var converter = new JobSearchQueryConverter();
+
+            var query = converter.ToQuery(collection);
+
+            Assert.AreEqual("Human Resources", query.JobTypes[0]);
+        }
+
+        [Test]
         public void LocationIsPopulatedFromCollection()
         {
             var collection = new NameValueCollection();

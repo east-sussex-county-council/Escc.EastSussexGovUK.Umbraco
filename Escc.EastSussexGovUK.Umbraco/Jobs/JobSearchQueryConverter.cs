@@ -50,6 +50,21 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 AddQueryStringValuesToList(collection["type"], query.JobTypes);
             }
 
+            // Convert obsolete job types to their replacements. These are no longer available but may 
+            // be saved in old job alert subscriptions.
+            TranslateOldJobType("Apprenticeships", new[] { "Apprenticeships and Trainee" }, query.JobTypes);
+            TranslateOldJobType("Care and Social Work", new[] { "Bereavement", "Safeguarding", "Social Work - Childrens", "Social Work - Adults" }, query.JobTypes);
+            TranslateOldJobType("Children’s - Social Work", new[] { "Social Work - Childrens" }, query.JobTypes);
+            TranslateOldJobType("Children’s - Social Work Managers", new[] { "Social Work - Childrens" }, query.JobTypes);
+            TranslateOldJobType("Education", new[] { "Education and Learning" }, query.JobTypes);
+            TranslateOldJobType("ICT", new[] { "Information Technology" }, query.JobTypes);
+            TranslateOldJobType("Personnel and HR", new[] { "Human Resources" }, query.JobTypes);
+            TranslateOldJobType("Teaching", new[] { "Teaching and Leadership" }, query.JobTypes);
+            TranslateOldJobType("Teaching - Leadership", new[] { "Teaching and Leadership" }, query.JobTypes);
+            TranslateOldJobType("Transport", new[] { "Transportation and Highways","Drivers Transport", "Highway Maintenance" }, query.JobTypes);
+            TranslateOldJobType("Youth Services", new[] { "Youth and Community Workers" }, query.JobTypes);
+            TranslateOldJobType("Youth Work", new[] { "Youth and Community Workers" }, query.JobTypes);
+
             if (!String.IsNullOrEmpty(collection["org"]))
             {
                 AddQueryStringValuesToList(collection["org"], query.Organisations);
@@ -118,6 +133,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             }
 
             return query;
+        }
+
+        private void TranslateOldJobType(string obsoleteJobType, IEnumerable<string> replacementJobTypes, IList<string> jobTypes)
+        {
+            if (jobTypes.Contains(obsoleteJobType))
+            {
+                jobTypes.Remove(obsoleteJobType);
+                foreach (var replacement in replacementJobTypes) jobTypes.Add(replacement);
+            }
         }
 
         private string FormatSalary_MatchEvaluator(Match match)

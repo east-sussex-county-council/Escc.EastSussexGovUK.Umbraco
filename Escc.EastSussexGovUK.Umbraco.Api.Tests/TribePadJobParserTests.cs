@@ -111,7 +111,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
 
             var job = await parser.ParseJob(Properties.Resources.TribePadJobXml, "142");
 
-            Assert.AreEqual("Administration & Clerical", job.JobType);
+            Assert.AreEqual("Administration and Clerical", job.JobType);
         }
 
         [Test]

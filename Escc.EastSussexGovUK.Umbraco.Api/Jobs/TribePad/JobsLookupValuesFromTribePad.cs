@@ -138,7 +138,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         /// <returns></returns>
         public async Task<IList<JobsLookupValue>> ReadJobTypes()
         {
-            return await ReadLookupValuesFromApi(_builtInLookupValuesParser, "job_categories").ConfigureAwait(false);
+            var results = await ReadLookupValuesFromApi(_builtInLookupValuesParser, "job_categories").ConfigureAwait(false);
+            ReplaceAmpersands(results);
+            return results;
         }
 
         /// <summary>
@@ -187,6 +189,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             var results = await ReadLookupValuesFromApi(_customFieldLookupValuesParser, "Working Pattern").ConfigureAwait(false);
             ConvertResultsToSentenceCase(results);
             return results;
+        }
+
+        private void ReplaceAmpersands(IList<JobsLookupValue> results)
+        {
+            for (var i = 0; i < results.Count; i++)
+            {
+                results[i].Text = results[i].Text.Replace(" & ", " and ");
+            }
         }
 
         private void ConvertResultsToSentenceCase(IList<JobsLookupValue> results)
