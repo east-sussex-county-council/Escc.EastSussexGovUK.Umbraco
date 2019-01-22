@@ -141,5 +141,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// The date published.
         /// </value>
         public DateTime? DatePublished { get; set; }
+
+        /// <summary>
+        /// Gets how many people are required to fill this job vacancy
+        /// </summary>
+        public int? NumberOfPositions { get; set; }
     }
 }

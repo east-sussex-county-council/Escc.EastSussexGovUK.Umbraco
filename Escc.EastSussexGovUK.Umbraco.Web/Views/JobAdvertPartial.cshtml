@@ -10,6 +10,10 @@
     {
         jobSummaryHtml.Append("<dt>Job reference</dt><dd id=\"job-reference\">").Append(Model.Job.Reference).Append("</dd>");
     }
+    if (Model.Job.NumberOfPositions.HasValue)
+    {
+        jobSummaryHtml.Append("<dt>Number of positions</dt><dd>").Append(Model.Job.NumberOfPositions).Append("</dd>");
+    }
     if (Model.Job.Locations !=null && Model.Job.Locations.Count > 0)
     {
         jobSummaryHtml.Append("<dt>Location</dt><dd>").Append(string.Join(", ", Model.Job.Locations.ToArray<string>())).Append("</dd>");
@@ -42,6 +46,10 @@
     if (!String.IsNullOrEmpty(workPattern))
     {
         jobSummaryHtml.Append("<dt>Work pattern</dt><dd>").Append(workPattern).Append("</dd>");
+    }
+    if (Model.Job.WorkPattern.HoursPerWeek.HasValue)
+    {
+        jobSummaryHtml.Append("<dt>Hours per week</dt><dd>").Append(Model.Job.WorkPattern.HoursPerWeek).Append("</dd>");
     }
     if (!String.IsNullOrEmpty(Model.Job.JobType))
     {

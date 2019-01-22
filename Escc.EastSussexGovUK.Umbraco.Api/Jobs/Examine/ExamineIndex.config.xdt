@@ -8,6 +8,7 @@
     <IndexUserFields>
       <add Name="id" />
       <add Name="reference" />
+      <add Name="numberOfPositions" />
       <add Name="title" />
       <add Name="titleDisplay" EnableSorting="true" Type="STRING" />
       <add Name="organisation" />
@@ -21,6 +22,7 @@
       <add Name="salaryMin" />
       <add Name="salarySort" EnableSorting="true" Type="STRING" />
       <add Name="hourlyRate" />
+      <add Name="hoursPerWeek" />
       <add Name="closingDate" EnableSorting="true" Type="DATE" />
       <add Name="closingDateDisplay" />
       <add Name="jobType" />

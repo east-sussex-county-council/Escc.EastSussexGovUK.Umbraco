@@ -81,7 +81,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
                         job.Department = ParseValueFromElementById(htmlDocument, "span", "JDText-Param5");
                         job.ContractType = ParseValueFromElementById(htmlDocument, "span", "JDText-Param6");
                         job.JobType = ParseValueFromElementById(htmlDocument, "span", "JDText-Param7");
-                        job.Salary = await _salaryParser.ParseSalaryFromJobAdvert(htmlDocument.DocumentNode.OuterHtml);
+                        job.Salary = await _salaryParser.ParseSalary(htmlDocument.DocumentNode.OuterHtml);
 
                         DateTime closingDate;
                         DateTime.TryParse(ParseValueFromElementById(htmlDocument, "span", "JDText-Param9"), new CultureInfo("en-GB"), DateTimeStyles.AssumeLocal, out closingDate);
@@ -131,7 +131,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
                         parsedHtml = new RemoveDuplicateTextFormatter("Contract type: " + job.ContractType).FormatHtml(parsedHtml);
 
                         job.AdvertHtml = new HtmlString(parsedHtml);
-                        job.WorkPattern = _workPatternParser.ParseWorkPatternFromHtml(parsedHtml);
+                        job.WorkPattern = await _workPatternParser.ParseWorkPattern(parsedHtml);
 
                         var applyLink = htmlDocument.DocumentNode.SelectSingleNode($"//div[@id='JD-ActApplyDirect']/a");
                         if (applyLink != null)

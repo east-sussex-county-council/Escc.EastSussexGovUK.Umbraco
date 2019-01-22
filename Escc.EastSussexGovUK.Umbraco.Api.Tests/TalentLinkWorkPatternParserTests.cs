@@ -17,7 +17,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         {
             var parser = new TalentLinkWorkPatternParser();
 
-            var result = parser.ParseWorkPatternFromHtml(Properties.Resources.WorkPatternInBodyText3);
+            var result = parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText3).Result;
 
             Assert.AreEqual(true, result.WorkPatterns.Contains(WorkPattern.FULL_TIME));
             Assert.AreEqual(false, result.WorkPatterns.Contains(WorkPattern.PART_TIME));
@@ -28,7 +28,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         {
             var parser = new TalentLinkWorkPatternParser();
 
-            var result = parser.ParseWorkPatternFromHtml(Properties.Resources.WorkPatternInBodyText1);
+            var result = parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText1).Result;
 
             Assert.AreEqual(true, result.WorkPatterns.Contains(WorkPattern.FULL_TIME));
             Assert.AreEqual(false, result.WorkPatterns.Contains(WorkPattern.PART_TIME));
@@ -39,7 +39,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         {
             var parser = new TalentLinkWorkPatternParser();
 
-            var result = parser.ParseWorkPatternFromHtml(Properties.Resources.JobAdvert1Html);
+            var result = parser.ParseWorkPattern(Properties.Resources.JobAdvert1Html).Result;
 
             Assert.AreEqual(false, result.WorkPatterns.Contains(WorkPattern.FULL_TIME));
             Assert.AreEqual(true, result.WorkPatterns.Contains(WorkPattern.PART_TIME));
@@ -50,7 +50,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         {
             var parser = new TalentLinkWorkPatternParser();
 
-            var result = parser.ParseWorkPatternFromHtml(Properties.Resources.WorkPatternInBodyText7);
+            var result = parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText7).Result;
 
             Assert.AreEqual(false, result.WorkPatterns.Contains(WorkPattern.FULL_TIME));
             Assert.AreEqual(true, result.WorkPatterns.Contains(WorkPattern.PART_TIME));
@@ -61,7 +61,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         {
             var parser = new TalentLinkWorkPatternParser();
 
-            var result = parser.ParseWorkPatternFromHtml(Properties.Resources.WorkPatternInBodyText5);
+            var result = parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText5).Result;
 
             Assert.AreEqual(false, result.WorkPatterns.Contains(WorkPattern.FULL_TIME));
             Assert.AreEqual(true, result.WorkPatterns.Contains(WorkPattern.PART_TIME));
@@ -72,7 +72,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         {
             var parser = new TalentLinkWorkPatternParser();
 
-            var result = parser.ParseWorkPatternFromHtml(Properties.Resources.WorkPatternInBodyText9);
+            var result = parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText9).Result;
 
             Assert.AreEqual(true, result.WorkPatterns.Contains(WorkPattern.FULL_TIME));
             Assert.AreEqual(false, result.WorkPatterns.Contains(WorkPattern.PART_TIME));
@@ -83,7 +83,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         {
             var parser = new TalentLinkWorkPatternParser();
 
-            var result = parser.ParseWorkPatternFromHtml(Properties.Resources.WorkPatternInBodyText4);
+            var result = parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText4).Result;
 
             Assert.AreEqual(true, result.WorkPatterns.Contains(WorkPattern.FULL_TIME));
             Assert.AreEqual(false, result.WorkPatterns.Contains(WorkPattern.PART_TIME));
@@ -94,7 +94,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         {
             var parser = new TalentLinkWorkPatternParser();
 
-            var result = parser.ParseWorkPatternFromHtml(Properties.Resources.WorkPatternInBodyText10);
+            var result = parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText10).Result;
 
             Assert.AreEqual(true, result.WorkPatterns.Contains(WorkPattern.FULL_TIME));
             Assert.AreEqual(false, result.WorkPatterns.Contains(WorkPattern.PART_TIME));
@@ -105,7 +105,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         {
             var parser = new TalentLinkWorkPatternParser();
 
-            var result = parser.ParseWorkPatternFromHtml(Properties.Resources.WorkPatternInBodyText2);
+            var result = parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText2).Result;
 
             Assert.AreEqual(true, result.WorkPatterns.Contains(WorkPattern.FULL_TIME));
             Assert.AreEqual(true, result.WorkPatterns.Contains(WorkPattern.PART_TIME));
@@ -116,7 +116,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         {
             var parser = new TalentLinkWorkPatternParser();
 
-            var result = parser.ParseWorkPatternFromHtml(Properties.Resources.WorkPatternInBodyText6);
+            var result = parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText6).Result;
 
             Assert.AreEqual(true, result.WorkPatterns.Contains(WorkPattern.FULL_TIME));
             Assert.AreEqual(true, result.WorkPatterns.Contains(WorkPattern.PART_TIME));
@@ -127,7 +127,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         {
             var parser = new TalentLinkWorkPatternParser();
 
-            var result = parser.ParseWorkPatternFromHtml(Properties.Resources.WorkPatternInBodyText8);
+            var result = parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText8).Result;
 
             Assert.AreEqual(false, result.WorkPatterns.Contains(WorkPattern.FULL_TIME));
             Assert.AreEqual(true, result.WorkPatterns.Contains(WorkPattern.PART_TIME));

@@ -27,6 +27,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public const string PART_TIME = "Part time";
 
         /// <summary>
+        /// How many hours per week does this work pattern expect?
+        /// </summary>
+        public decimal? HoursPerWeek { get; set; }
+
+        /// <summary>
         /// Gets a phrase describing the work pattern.
         /// </summary>
         public override string ToString()

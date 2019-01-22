@@ -27,11 +27,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
         /// </summary>
         public PublicJobsIndexer() 
         {
-            var salaryParser = new TalentLinkSalaryParser();
+            var salaryDescriptionParser = new TalentLinkSalaryFromDescriptionParser();
+            var salaryHtmlParser = new TalentLinkSalaryFromHtmlParser(salaryDescriptionParser);
 
             InitialiseDependencies(new JobsDataFromTalentLink(ResultsUrl, AdvertUrl,
-            new TalentLinkJobResultsHtmlParser(salaryParser),
-            new TalentLinkJobAdvertHtmlParser(salaryParser, new TalentLinkWorkPatternParser()),
+            new TalentLinkJobResultsHtmlParser(salaryDescriptionParser),
+            new TalentLinkJobAdvertHtmlParser(salaryHtmlParser, new TalentLinkWorkPatternParser()),
             new ConfigurationProxyProvider(), true),
             new LuceneStopWordsRemover(),
             new HtmlTagSanitiser(),

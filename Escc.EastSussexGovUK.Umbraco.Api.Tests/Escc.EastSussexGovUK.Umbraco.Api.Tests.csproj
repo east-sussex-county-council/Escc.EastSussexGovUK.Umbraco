@@ -72,7 +72,7 @@
     <Compile Include="HouseStyleDateFormatterTests.cs" />
     <Compile Include="HtmlAgilityPackFormatterTests.cs" />
     <Compile Include="CloseEmptyElementsFormatterTests.cs" />
-    <Compile Include="JobAdvertHtmlParserTests.cs" />
+    <Compile Include="TalentLinkJobAdvertHtmlParserTests.cs" />
     <Compile Include="JobResultsParserTests.cs" />
     <Compile Include="JointCommunityRehabilitationMatcherTests.cs" />
     <Compile Include="LocationMatcherTests.cs" />
@@ -97,6 +97,7 @@
     <Compile Include="TalentLinkSalaryParserTests.cs" />
     <Compile Include="TalentLinkWorkPatternParserTests.cs" />
     <Compile Include="TribePadSalaryParserTests.cs" />
+    <Compile Include="TribePadWorkPatternParserTests.cs" />
     <Compile Include="TruncateLongLinksFormatterTests.cs" />
   </ItemGroup>
   <ItemGroup>

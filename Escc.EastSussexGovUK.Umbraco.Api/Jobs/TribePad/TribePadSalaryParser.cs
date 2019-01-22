@@ -20,12 +20,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             _lookupValuesProvider = lookupValuesProvider ?? throw new ArgumentNullException(nameof(lookupValuesProvider));
         }
 
-        public Salary ParseSalaryFromDescription(string salaryDescription)
-        {
-            return new Salary();
-        }
-
-        public async Task<Salary> ParseSalaryFromJobAdvert(string sourceData)
+        /// <summary>
+        /// Parse salary information from the XML of a single TribePad job advert
+        /// </summary>
+        /// <param name="sourceData">XML for a single job, with a root element of &lt;job&gt;</param>
+        /// <returns></returns>
+        public async Task<Salary> ParseSalary(string sourceData)
         {
             var jobXml = XDocument.Parse(sourceData);
 

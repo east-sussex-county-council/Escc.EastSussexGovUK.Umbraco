@@ -387,6 +387,7 @@
     <Compile Include="Jobs\JobTransformers\LocationMatcher.cs" />
     <Compile Include="Jobs\JobTransformers\SetJobLocationTransformer.cs" />
     <Compile Include="Jobs\RelativeJobUrlGenerator.cs" />
+    <Compile Include="Jobs\TalentLink\TalentLinkSalaryFromDescriptionParser.cs" />
     <Compile Include="Jobs\TribePad\JobsDataFromTribePad.cs" />
     <Compile Include="Jobs\TribePad\JobsLookupValuesFromTribePad.cs" />
     <Compile Include="Jobs\TribePad\LookupValuesFromTribePadCustomFieldParser.cs" />
@@ -398,6 +399,7 @@
     <Compile Include="Jobs\TribePad\TribePadJobParser.cs" />
     <Compile Include="Jobs\TribePad\TribePadSalaryParser.cs" />
     <Compile Include="Jobs\JobTransformers\HtmlAgilityPackFormatterAdapter.cs" />
+    <Compile Include="Jobs\TribePad\TribePadWorkPatternParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Jobs\TalentLink\JobsDataFromTalentLink.cs" />
     <Compile Include="Jobs\TalentLink\JobsLookupValuesFromTalentLink.cs" />
@@ -408,7 +410,7 @@
     <Compile Include="Jobs\TalentLink\TalentLinkJobAdvertHtmlParser.cs" />
     <Compile Include="Jobs\TalentLink\TalentLinkJobResultsHtmlParser.cs" />
     <Compile Include="Jobs\TalentLink\TalentLinkLookupValuesHtmlParser.cs" />
-    <Compile Include="Jobs\TalentLink\TalentLinkSalaryParser.cs" />
+    <Compile Include="Jobs\TalentLink\TalentLinkSalaryFromHtmlParser.cs" />
     <Compile Include="Jobs\TalentLink\TalentLinkWorkPatternParser.cs" />
   </ItemGroup>
   <ItemGroup>

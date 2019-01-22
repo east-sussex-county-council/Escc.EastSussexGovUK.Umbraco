@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Web;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
 
@@ -17,7 +18,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
         /// </summary>
         /// <param name="jobAdvertHtml">The raw HTML of a TalentLink job advert</param>
         /// <returns></returns>
-        public WorkPattern ParseWorkPatternFromHtml(string jobAdvertHtml)
+        public Task<WorkPattern> ParseWorkPattern(string jobAdvertHtml)
         {
             // The info could be in a line starting "Working pattern:" or "Hours of work:". Prefer the first one because,
             // when both are present, the words "part time" or "full time" are more likely to be there. Can't just search the
@@ -25,16 +26,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
             var matchInBodyText = Regex.Match(jobAdvertHtml, $@"Working pattern:\s*(.*?)(<br>|<br />|</p>|{Environment.NewLine})", RegexOptions.IgnoreCase);
             if (matchInBodyText.Success)
             {
-                return ParseWorkPatternFromDescription(matchInBodyText.Groups[1].Value);
+                return Task.FromResult(ParseWorkPatternFromDescription(matchInBodyText.Groups[1].Value));
             }
 
             matchInBodyText = Regex.Match(jobAdvertHtml, $@"Hours of work:\s*(.*?)(<br>|<br />|</p>|{Environment.NewLine})", RegexOptions.IgnoreCase);
             if (matchInBodyText.Success)
             {
-                return ParseWorkPatternFromDescription(matchInBodyText.Groups[1].Value);
+                return Task.FromResult(ParseWorkPatternFromDescription(matchInBodyText.Groups[1].Value));
             }
             
-            return new WorkPattern();
+            return Task.FromResult(new WorkPattern());
         }
 
         /// <summary>
@@ -42,7 +43,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
         /// </summary>
         /// <param name="workPatternDescription">The description.</param>
         /// <returns></returns>
-        public WorkPattern ParseWorkPatternFromDescription(string workPatternDescription)
+        private WorkPattern ParseWorkPatternFromDescription(string workPatternDescription)
         {
             var parseThis = HttpUtility.HtmlDecode(workPatternDescription.Trim());
 

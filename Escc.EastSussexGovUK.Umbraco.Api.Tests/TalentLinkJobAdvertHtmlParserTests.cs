@@ -4,18 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using Escc.EastSussexGovUK.Umbraco.Jobs;
+using Escc.EastSussexGovUK.Umbraco.Api.Jobs;
 using Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink;
+using Moq;
 using NUnit.Framework;
 
 namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
 {
     [TestFixture]
-    public class JobAdvertHtmlParserTests
+    public class TalentLinkJobAdvertHtmlParserTests
     {
         [Test]
         public async Task JobTitleParsedFromHtml()
         {
-            var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser(), new TalentLinkWorkPatternParser());
+            var salaryParser = new Mock<ISalaryParser>();
+            salaryParser.Setup(x => x.ParseSalary(It.IsAny<string>())).Returns(Task.FromResult(new Salary()));
+            var workPatternParser = new Mock<IWorkPatternParser>();
+            var parser = new TalentLinkJobAdvertHtmlParser(salaryParser.Object, workPatternParser.Object);
 
             var job = await parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
 
@@ -25,7 +31,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         [Test]
         public async Task JobReferenceParsedFromHtml()
         {
-            var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser(), new TalentLinkWorkPatternParser());
+            var salaryParser = new Mock<ISalaryParser>();
+            salaryParser.Setup(x => x.ParseSalary(It.IsAny<string>())).Returns(Task.FromResult(new Salary()));
+            var workPatternParser = new Mock<IWorkPatternParser>();
+            var parser = new TalentLinkJobAdvertHtmlParser(salaryParser.Object, workPatternParser.Object);
 
             var job = await parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
 
@@ -36,7 +45,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         [Test]
         public async Task LocationParsedFromHtml()
         {
-            var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser(), new TalentLinkWorkPatternParser());
+            var salaryParser = new Mock<ISalaryParser>();
+            salaryParser.Setup(x => x.ParseSalary(It.IsAny<string>())).Returns(Task.FromResult(new Salary()));
+            var workPatternParser = new Mock<IWorkPatternParser>();
+            var parser = new TalentLinkJobAdvertHtmlParser(salaryParser.Object, workPatternParser.Object);
 
             var job = await parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
 
@@ -47,7 +59,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         [Test]
         public async Task OrganisationParsedFromHtml()
         {
-            var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser(), new TalentLinkWorkPatternParser());
+            var salaryParser = new Mock<ISalaryParser>();
+            salaryParser.Setup(x => x.ParseSalary(It.IsAny<string>())).Returns(Task.FromResult(new Salary()));
+            var workPatternParser = new Mock<IWorkPatternParser>();
+            var parser = new TalentLinkJobAdvertHtmlParser(salaryParser.Object, workPatternParser.Object);
 
             var job = await parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
 
@@ -58,7 +73,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         [Test]
         public async Task DepartmentParsedFromHtml()
         {
-            var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser(), new TalentLinkWorkPatternParser());
+            var salaryParser = new Mock<ISalaryParser>();
+            salaryParser.Setup(x => x.ParseSalary(It.IsAny<string>())).Returns(Task.FromResult(new Salary()));
+            var workPatternParser = new Mock<IWorkPatternParser>();
+            var parser = new TalentLinkJobAdvertHtmlParser(salaryParser.Object, workPatternParser.Object);
 
             var job = await parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
 
@@ -69,7 +87,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         [Test]
         public async Task ContractTypeParsedFromHtml()
         {
-            var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser(), new TalentLinkWorkPatternParser());
+            var salaryParser = new Mock<ISalaryParser>();
+            salaryParser.Setup(x => x.ParseSalary(It.IsAny<string>())).Returns(Task.FromResult(new Salary()));
+            var workPatternParser = new Mock<IWorkPatternParser>();
+            var parser = new TalentLinkJobAdvertHtmlParser(salaryParser.Object, workPatternParser.Object);
 
             var job = await parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
 
@@ -80,7 +101,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         [Test]
         public async Task JobTypeParsedFromHtml()
         {
-            var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser(), new TalentLinkWorkPatternParser());
+            var salaryParser = new Mock<ISalaryParser>();
+            salaryParser.Setup(x => x.ParseSalary(It.IsAny<string>())).Returns(Task.FromResult(new Salary()));
+            var workPatternParser = new Mock<IWorkPatternParser>();
+            var parser = new TalentLinkJobAdvertHtmlParser(salaryParser.Object, workPatternParser.Object);
 
             var job = await parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
 
@@ -90,7 +114,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         [Test]
         public async Task ClosingDateParsedFromHtml()
         {
-            var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser(), new TalentLinkWorkPatternParser());
+            var salaryParser = new Mock<ISalaryParser>();
+            salaryParser.Setup(x => x.ParseSalary(It.IsAny<string>())).Returns(Task.FromResult(new Salary()));
+            var workPatternParser = new Mock<IWorkPatternParser>();
+            var parser = new TalentLinkJobAdvertHtmlParser(salaryParser.Object, workPatternParser.Object);
 
             var job = await parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
 
@@ -100,7 +127,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         [Test]
         public async Task AdvertTextParsedFromHtml()
         {
-            var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser(), new TalentLinkWorkPatternParser());
+            var salaryParser = new Mock<ISalaryParser>();
+            salaryParser.Setup(x => x.ParseSalary(It.IsAny<string>())).Returns(Task.FromResult(new Salary()));
+            var workPatternParser = new Mock<IWorkPatternParser>();
+            var parser = new TalentLinkJobAdvertHtmlParser(salaryParser.Object, workPatternParser.Object);
 
             var job = await parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
 
@@ -114,7 +144,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         [Test]
         public async Task ApplyUrlParsedFromHtml()
         {
-            var parser = new TalentLinkJobAdvertHtmlParser(new TalentLinkSalaryParser(), new TalentLinkWorkPatternParser());
+            var salaryParser = new Mock<ISalaryParser>();
+            salaryParser.Setup(x => x.ParseSalary(It.IsAny<string>())).Returns(Task.FromResult(new Salary()));
+            var workPatternParser = new Mock<IWorkPatternParser>();
+            var parser = new TalentLinkJobAdvertHtmlParser(salaryParser.Object, workPatternParser.Object);
 
             var job = await parser.ParseJob(Properties.Resources.JobAdvert1Html, "example");
 

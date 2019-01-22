@@ -247,10 +247,27 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
                         ApplyUrl = (result.Fields.ContainsKey("applyUrl") && !String.IsNullOrEmpty(result["applyUrl"])) ? new Uri(result["applyUrl"]) : null
                     };
 
+                    if (result.Fields.ContainsKey("numberOfPositions") && !String.IsNullOrEmpty(result["numberOfPositions"]))
+                    {
+                        int numberOfPositions;
+                        if (Int32.TryParse(result["numberOfPositions"], out numberOfPositions))
+                        {
+                            job.NumberOfPositions = numberOfPositions;
+                        }
+                    }
+
                     if (result.Fields.ContainsKey("workPattern"))
                     {
                         var patterns = result["workPattern"].Split(',');
                         foreach (var pattern in patterns) job.WorkPattern.WorkPatterns.Add(pattern);
+                    }
+                    if (result.Fields.ContainsKey("hoursPerWeek") && !String.IsNullOrEmpty(result["hoursPerWeek"]))
+                    {
+                        decimal hoursPerWeek;
+                        if (Decimal.TryParse(result["hoursPerWeek"], out hoursPerWeek))
+                        {
+                            job.WorkPattern.HoursPerWeek = hoursPerWeek;
+                        }
                     }
 
                     job.Salary.SalaryRange = result.Fields.ContainsKey("salaryDisplay") ? result["salaryDisplay"] : String.Empty;
@@ -258,20 +275,26 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
                     if (result.Fields.ContainsKey("salaryMin") && !String.IsNullOrEmpty(result["salaryMin"]))
                     {
                         int minimumSalary;
-                        Int32.TryParse(result["salaryMin"], out minimumSalary);
-                        job.Salary.MinimumSalary = minimumSalary;
+                        if (Int32.TryParse(result["salaryMin"], out minimumSalary))
+                        {
+                            job.Salary.MinimumSalary = minimumSalary;
+                        }
                     }
                     if (result.Fields.ContainsKey("salaryMax") && !String.IsNullOrEmpty(result["salaryMax"]))
                     {
                         int maximumSalary;
-                        Int32.TryParse(result["salaryMax"], out maximumSalary);
-                        job.Salary.MaximumSalary = maximumSalary;
+                        if (Int32.TryParse(result["salaryMax"], out maximumSalary))
+                        {
+                            job.Salary.MaximumSalary = maximumSalary;
+                        }
                     }
                     if (result.Fields.ContainsKey("hourlyRate") && !String.IsNullOrEmpty(result["hourlyRate"]))
                     {
                         decimal hourlyRate;
-                        Decimal.TryParse(result["hourlyRate"], out hourlyRate);
-                        job.Salary.HourlyRate = hourlyRate;
+                        if (Decimal.TryParse(result["hourlyRate"], out hourlyRate))
+                        {
+                            job.Salary.HourlyRate = hourlyRate;
+                        }
                     }
 
                     if (_urlGenerator != null)

@@ -19,8 +19,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
     {
         private readonly IJobsLookupValuesProvider _lookupValuesProvider;
         private readonly ISalaryParser _salaryParser;
+        private readonly IWorkPatternParser _workPatternParser;
         private readonly Uri _applyUrl;
-        private IEnumerable<JobsLookupValue> _workPatterns;
         private IEnumerable<JobsLookupValue> _contractTypes;
 
         /// <summary>
@@ -28,12 +28,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         /// </summary>
         /// <param name="lookupValuesProvider">A method of supplying lookup values for identifiers referenced by the job data</param>
         /// <param name="salaryParser">A method of parsing salary information for the job</param>
+        /// <param name="workPatternParser">A method of parsing work pattern information for the job</param>
         /// <param name="applyUrl">The URL to apply for a job, with {0} to represent where the job id should be used</param>
-        /// <exception cref="ArgumentNullException">lookupValuesProvider</exception>
-        public TribePadJobParser(IJobsLookupValuesProvider lookupValuesProvider, ISalaryParser salaryParser, Uri applyUrl)
+        /// <exception cref="ArgumentNullException">lookupValuesProvider or salaryParser or workPatternParser or applyUrl</exception>
+        public TribePadJobParser(IJobsLookupValuesProvider lookupValuesProvider, ISalaryParser salaryParser, IWorkPatternParser workPatternParser, Uri applyUrl)
         {
             _lookupValuesProvider = lookupValuesProvider ?? throw new ArgumentNullException(nameof(lookupValuesProvider));
             _salaryParser = salaryParser ?? throw new ArgumentNullException(nameof(salaryParser));
+            _workPatternParser = workPatternParser ?? throw new ArgumentNullException(nameof(workPatternParser));
             _applyUrl = applyUrl ?? throw new ArgumentNullException(nameof(applyUrl));
         }
 
@@ -64,11 +66,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
 
         private async Task EnsureLookupValues()
         {
-            if (_workPatterns == null)
-            {
-                _workPatterns = await _lookupValuesProvider.ReadWorkPatterns();
-            }
-
             if (_contractTypes == null)
             {
                 _contractTypes = await _lookupValuesProvider.ReadContractTypes();
@@ -103,6 +100,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             {
                 Id = Int32.Parse(jobXml.Element("job_id").Value.Trim(), CultureInfo.InvariantCulture),
                 Reference = jobXml.Element("reference")?.Value.Trim(),
+                NumberOfPositions = Int32.Parse(jobXml.Element("no_of_positions").Value, CultureInfo.InvariantCulture),
                 JobTitle = jobXml.Element("job_title").Value.Trim(),
                 Department= jobXml.Element("business_unit").Value.Trim().Replace("ESCC: ", string.Empty),
                 Organisation = jobXml.Element("region")?.Value.Trim(),
@@ -124,49 +122,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
                 job.ApplyUrl = new Uri(String.Format(CultureInfo.InvariantCulture, _applyUrl.ToString(), job.Id), UriKind.RelativeOrAbsolute);
             }
 
-            job.Salary = await _salaryParser.ParseSalaryFromJobAdvert(jobXml.ToString());
-            var salaryFrom = Int32.Parse(jobXml.Element("salary_from").Value, CultureInfo.InvariantCulture);
-            var salaryTo = Int32.Parse(jobXml.Element("salary_to").Value, CultureInfo.InvariantCulture);
-
-            job.Salary = new Salary()
-            {
-                MinimumSalary = salaryFrom,
-                MaximumSalary = salaryTo
-            };
-
-            if (salaryFrom == 0 && salaryTo == 0)
-            {
-                job.Salary.SalaryRange = "Voluntary";
-            }
-            else if (salaryFrom == salaryTo)
-            {
-                job.Salary.SalaryRange = $"£{salaryFrom.ToString("n0")} per annum";
-            }
-            else
-            {
-                job.Salary.SalaryRange = $"£{salaryFrom.ToString("n0")} to £{salaryTo.ToString("n0")} per annum";
-            }
+            job.Salary = await _salaryParser.ParseSalary(jobXml.ToString());
+            job.WorkPattern = await _workPatternParser.ParseWorkPattern(jobXml.ToString());
 
             var contractTypeId = jobXml.Element("job_type")?.Value;
             if (!String.IsNullOrEmpty(contractTypeId))
             {
                 job.ContractType = _contractTypes?.SingleOrDefault(x => x.LookupValueId == contractTypeId)?.Text;
-            }
-
-            var exampleWorkPattern = _workPatterns?.FirstOrDefault();
-            if (exampleWorkPattern != null)
-            {
-                var workPatternId = jobXml.Element("custom_" + exampleWorkPattern.FieldId)?.Element("answer")?.Value;
-                if (!String.IsNullOrEmpty(workPatternId))
-                {
-                    var workPattern = _workPatterns.SingleOrDefault(x => x.LookupValueId == workPatternId);
-                    if (workPattern != null)
-                    {
-                        var workPatternComparable = workPattern.Text.ToUpperInvariant();
-                        if (workPatternComparable == "FULL TIME") job.WorkPattern.WorkPatterns.Add(WorkPattern.FULL_TIME);
-                        if (workPatternComparable == "PART TIME") job.WorkPattern.WorkPatterns.Add(WorkPattern.PART_TIME);
-                    }
-                }
             }
 
             return job;
