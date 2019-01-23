@@ -111,6 +111,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
                                                             Int32.Parse(jobXml.Element("expiry_date").Value.Substring(5, 2), CultureInfo.InvariantCulture),
                                                             Int32.Parse(jobXml.Element("expiry_date").Value.Substring(8, 2), CultureInfo.InvariantCulture))
             };
+
+            if (job.Department.ToUpperInvariant() == "PARTNERSHIP")
+            {
+                job.Organisation = job.Department;
+                job.Department = string.Empty;
+            }
+
             job.Locations.Add(jobXml.Element("location_city").Value.Trim());
             job.AdvertHtml = new HtmlString(HttpUtility.HtmlDecode(jobXml.Element("package_description")?.Value + jobXml.Element("summary_external")?.Value));
             job.AdditionalInformationHtml = new HtmlString(HttpUtility.HtmlDecode(jobXml.Element("ideal_candidate")?.Value));

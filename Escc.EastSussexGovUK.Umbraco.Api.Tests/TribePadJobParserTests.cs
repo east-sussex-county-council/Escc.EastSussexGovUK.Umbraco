@@ -139,6 +139,21 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
 
             Assert.AreEqual(2, parsedJob.NumberOfPositions);
         }
+
+
+        [Test]
+        public async Task BusinessUnitSetToPartnershipSetsOrganisationToPartnership()
+        {
+            var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
+            var salaryParser = new Mock<ISalaryParser>();
+            var workPatternParser = new Mock<IWorkPatternParser>();
+            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, new Uri("https://www.example.org"));
+
+            var parsedJob = await parser.ParseJob(Properties.Resources.TribePadPartnershipJobXml, "142");
+
+            Assert.AreEqual(string.Empty, parsedJob.Department);
+            Assert.AreEqual("Partnership", parsedJob.Organisation);
+        }
     }
 
 }
