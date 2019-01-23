@@ -156,18 +156,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         /// Reads the salary ranges that jobs can be categorised as
         /// </summary>
         /// <returns></returns>
-        public Task<IList<JobsLookupValue>> ReadSalaryRanges()
+        public async Task<IList<JobsLookupValue>> ReadSalaryRanges()
         {
-            return Task.FromResult((IList<JobsLookupValue>)new List<JobsLookupValue>()
-            {
-                new JobsLookupValue() { Text = "£0 to £9,999" },
-                new JobsLookupValue() { Text = "£10,000 to £14,999" }, 
-                new JobsLookupValue() { Text = "£15,000 to £19,999" },
-                new JobsLookupValue() { Text = "£20,000 to £24,999" },
-                new JobsLookupValue() { Text = "£25,000 to £34,999" },
-                new JobsLookupValue() { Text = "£35,000 to £49,999" },
-                new JobsLookupValue() { Text = "£50,000 and over" }
-            });
+            return await ReadLookupValuesFromApi(_customFieldLookupValuesParser, "Salary Range").ConfigureAwait(false);
         }
 
 
