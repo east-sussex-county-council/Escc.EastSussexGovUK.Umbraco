@@ -40,6 +40,20 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         }
 
         [Test]
+        public async Task SalaryFromIsIgnoredIfLowerThanSalaryTo()
+        {
+            // Note: this happens if the "Salary to" field is left blank - the API sets it to 0
+            var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
+            var parser = new TribePadSalaryParser(lookupValuesProvider.Object);
+
+            var salary = await parser.ParseSalary(Properties.Resources.TribePadSalaryToZero);
+
+            Assert.AreEqual(23000, salary.MinimumSalary);
+            Assert.AreEqual(0, salary.MaximumSalary);
+            Assert.AreEqual("£23,000 per annum", salary.SalaryRange);
+        }
+
+        [Test]
         public async Task VoluntaryRoleIsParsed()
         {
             var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();

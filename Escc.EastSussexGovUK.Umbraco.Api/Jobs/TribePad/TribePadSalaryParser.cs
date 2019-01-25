@@ -47,7 +47,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
                 {
                     salary.SalaryRange = "Voluntary";
                 }
-                else if (salary.MinimumSalary == salary.MaximumSalary)
+                else if (salary.MinimumSalary == salary.MaximumSalary || salary.MaximumSalary < salary.MinimumSalary)
                 {
                     salary.SalaryRange = $"£{salary.MinimumSalary?.ToString("n0")} per annum";
                 }
