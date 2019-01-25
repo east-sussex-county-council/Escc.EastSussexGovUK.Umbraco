@@ -1,5 +1,6 @@
 ﻿using Exceptionless;
 using System;
+using System.Threading;
 using System.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.MicrosoftCmsMigration
@@ -34,6 +35,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.MicrosoftCmsMigration
                     if (requestedUrl.Query.Length > 0) rewriteUrl += requestedUrl.Query;
                     context.Response.RedirectPermanent(rewriteUrl);
                 }
+            }
+            catch (ThreadAbortException)
+            {
+                Thread.ResetAbort();
             }
             catch (Exception e)
             {
