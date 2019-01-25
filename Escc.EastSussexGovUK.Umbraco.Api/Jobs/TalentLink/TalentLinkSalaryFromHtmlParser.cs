@@ -97,7 +97,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
             var matchHourlyRateInBodyText = Regex.Match(HttpUtility.HtmlDecode(sourceData), $@"hourly rate is £([0-9]+\.[0-9][0-9])");
             if (matchHourlyRateInBodyText.Success)
             {
-                salary.HourlyRate = Decimal.Parse(matchHourlyRateInBodyText.Groups[1].Value);
+                salary.MinimumHourlyRate = Decimal.Parse(matchHourlyRateInBodyText.Groups[1].Value);
+                salary.MaximumHourlyRate = salary.MinimumHourlyRate;
+                salary.SalaryRange = $"£{salary.MinimumHourlyRate} per hour";
             }
 
             return salary;

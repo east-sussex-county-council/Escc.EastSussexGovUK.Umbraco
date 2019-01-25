@@ -13,7 +13,6 @@
 @foreach (var job in Model.Items)
 {
     var location = string.Join(", ", job.Locations.ToArray<string>());
-    var salary = job.Salary.HourlyRate.HasValue ? $"£{job.Salary.HourlyRate} per hour" : job.Salary.SalaryRange;
     <job>
         <title><![CDATA[@Html.Raw(job.JobTitle)]]></title>
         <date><![CDATA[@Html.Raw(job.DatePublished?.ToRfc822DateTime())]]></date>
@@ -23,7 +22,7 @@
         <city><![CDATA[@Html.Raw(location)]]></city>
         <country><![CDATA[GB]]></country>
         <description><![CDATA[@Html.Raw(job.AdvertHtml)]]></description>
-        <salary><![CDATA[@Html.Raw(salary)]]></salary>
+        <salary><![CDATA[@Html.Raw(job.Salary.SalaryRange)]]></salary>
         <jobtype><![CDATA[@Html.Raw(job.WorkPattern)]]></jobtype>
         <closingdate><![CDATA[@Html.Raw(job.ClosingDate?.ToRfc822DateTime())]]></closingdate>
     </job>

@@ -29,8 +29,7 @@
     @foreach (var job in Model.Items)
     {
         var url = "<link>" + HttpUtility.HtmlEncode($"{job.Url}?utm_source=jobs-rss&utm_medium=job-advert-{HttpUtility.UrlEncode(job.Organisation)}&utm_content={job.Reference}&utm_campaign=General-Recruitment") + "</link>";
-        var salary = job.Salary.HourlyRate.HasValue ? $"£{job.Salary.HourlyRate} per hour" : job.Salary.SalaryRange;
-        var description = $"{job.WorkPattern} {job.ContractType.ToLower(CultureInfo.CurrentCulture)} {salary} in {string.Join(",",job.Locations.ToArray<string>())}. Closing date {job.ClosingDate.Value.ToBritishDate()}. {job.Organisation} / {job.JobType} vacancy.".TrimStart();
+        var description = $"{job.WorkPattern} {job.ContractType.ToLower(CultureInfo.CurrentCulture)} {job.Salary.SalaryRange} in {string.Join(",",job.Locations.ToArray<string>())}. Closing date {job.ClosingDate.Value.ToBritishDate()}. {job.Organisation} / {job.JobType} vacancy.".TrimStart();
         description = description.Substring(0, 1).ToUpper(CultureInfo.CurrentCulture) + description.Substring(1);
         <item>
             <title>@job.JobTitle</title>

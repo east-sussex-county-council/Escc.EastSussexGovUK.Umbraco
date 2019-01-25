@@ -15,14 +15,7 @@
                 <td class="job-title">@job.JobTitle</td>
             }
             <td class="location">@(string.Join(", ", job.Locations.ToArray<string>()))</td>
-            <td class="salary">@if (job.Salary.HourlyRate.HasValue)
-            {
-                @:£@job.Salary.HourlyRate per hour
-            }
-            else
-            {
-                @job.Salary.SalaryRange
-            }</td>
+            <td class="salary">@job.Salary.SalaryRange</td>
             <td class="work-pattern">@job.WorkPattern</td>
             <td class="closing-date"><span>Closes </span>@(job.ClosingDate.HasValue ? job.ClosingDate.Value.ToShortBritishDate() : String.Empty)</td>
         </tr>

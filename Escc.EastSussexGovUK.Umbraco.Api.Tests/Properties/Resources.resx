@@ -1209,6 +1209,19 @@ Partnership&lt;/business_unit&gt;&lt;business_unit_id&gt;212&lt;/business_unit_i
 &lt;salaryDisplay&gt;£19.22 per hour&lt;/salaryDisplay&gt;
 &lt;/job&gt;</value>
   </data>
+  <data name="TribePadSalaryHourlyRange" xml:space="preserve">
+    <value>&lt;job&gt;
+&lt;job_id&gt;134&lt;/job_id&gt;
+&lt;job_title&gt;New Worker&lt;/job_title&gt;
+&lt;salary_currency&gt;1&lt;/salary_currency&gt;
+&lt;salary_frequency&gt;2&lt;/salary_frequency&gt;
+&lt;salary_from&gt;9.68&lt;/salary_from&gt;
+&lt;salary_to&gt;11.2&lt;/salary_to&gt;
+&lt;salary_from_text&gt;9.68&lt;/salary_from_text&gt;
+&lt;salary_to_text&gt;11.2&lt;/salary_to_text&gt;
+&lt;salaryDisplay&gt;£9.68 - £11.20&lt;/salaryDisplay&gt;
+&lt;/job&gt;</value>
+  </data>
   <data name="TribePadSalaryRange" xml:space="preserve">
     <value>&lt;job&gt;
 &lt;job_id&gt;134&lt;/job_id&gt;

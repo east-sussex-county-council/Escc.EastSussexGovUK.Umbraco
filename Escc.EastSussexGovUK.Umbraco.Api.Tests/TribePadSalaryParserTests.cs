@@ -74,7 +74,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
 
             var salary = await parser.ParseSalary(Properties.Resources.TribePadSalaryExact);
 
-            Assert.IsNull(salary.HourlyRate);
+            Assert.IsNull(salary.MinimumHourlyRate);
         }
 
         [Test]
@@ -91,7 +91,26 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
 
             Assert.IsNull(salary.MinimumSalary);
             Assert.IsNull(salary.MaximumSalary);
-            Assert.AreEqual(19.22, salary.HourlyRate);
+            Assert.AreEqual(19.22, salary.MinimumHourlyRate);
+        }
+
+
+        [Test]
+        public async Task HourlyRateRangeIsParsed()
+        {
+            var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
+            lookupValuesProvider.Setup(x => x.ReadSalaryFrequencies()).Returns(Task.FromResult(new List<JobsLookupValue>()
+            {
+                new JobsLookupValue() { LookupValueId="2", Text = "Hourly" }
+            } as IList<JobsLookupValue>));
+            var parser = new TribePadSalaryParser(lookupValuesProvider.Object);
+
+            var salary = await parser.ParseSalary(Properties.Resources.TribePadSalaryHourlyRange);
+
+            Assert.IsNull(salary.MinimumSalary);
+            Assert.IsNull(salary.MaximumSalary);
+            Assert.AreEqual(9.68, salary.MinimumHourlyRate);
+            Assert.AreEqual(11.2, salary.MaximumHourlyRate);
         }
     }
 }

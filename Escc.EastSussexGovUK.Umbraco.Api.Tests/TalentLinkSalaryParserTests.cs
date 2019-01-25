@@ -162,7 +162,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
             var parser = new TalentLinkSalaryFromHtmlParser(new TalentLinkSalaryFromDescriptionParser());
             var result = await parser.ParseSalary(Properties.Resources.TalentLinkSalaryInBodyText6);
 
-            Assert.IsNull(result.HourlyRate);
+            Assert.IsNull(result.MinimumHourlyRate);
         }
 
         [Test]
@@ -171,7 +171,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
             var parser = new TalentLinkSalaryFromHtmlParser(new TalentLinkSalaryFromDescriptionParser());
             var result = await parser.ParseSalary(Properties.Resources.HourlyRateInBodyText1);
 
-            Assert.AreEqual(9.68, result.HourlyRate);
+            Assert.AreEqual(9.68, result.MinimumHourlyRate);
         }
     }
 }

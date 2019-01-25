@@ -310,6 +310,25 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests.Properties {
         ///&lt;job_id&gt;134&lt;/job_id&gt;
         ///&lt;job_title&gt;New Worker&lt;/job_title&gt;
         ///&lt;salary_currency&gt;1&lt;/salary_currency&gt;
+        ///&lt;salary_frequency&gt;2&lt;/salary_frequency&gt;
+        ///&lt;salary_from&gt;9.68&lt;/salary_from&gt;
+        ///&lt;salary_to&gt;11.2&lt;/salary_to&gt;
+        ///&lt;salary_from_text&gt;9.68&lt;/salary_from_text&gt;
+        ///&lt;salary_to_text&gt;11.2&lt;/salary_to_text&gt;
+        ///&lt;salaryDisplay&gt;£9.68 - £11.20&lt;/salaryDisplay&gt;
+        ///&lt;/job&gt;.
+        /// </summary>
+        internal static string TribePadSalaryHourlyRange {
+            get {
+                return ResourceManager.GetString("TribePadSalaryHourlyRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;job&gt;
+        ///&lt;job_id&gt;134&lt;/job_id&gt;
+        ///&lt;job_title&gt;New Worker&lt;/job_title&gt;
+        ///&lt;salary_currency&gt;1&lt;/salary_currency&gt;
         ///&lt;salary_frequency&gt;1&lt;/salary_frequency&gt;
         ///&lt;salary_from&gt;15000&lt;/salary_from&gt;
         ///&lt;salary_to&gt;19999&lt;/salary_to&gt;

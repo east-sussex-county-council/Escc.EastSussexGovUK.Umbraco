@@ -18,13 +18,9 @@
     {
         jobSummaryHtml.Append("<dt>Location</dt><dd>").Append(string.Join(", ", Model.Job.Locations.ToArray<string>())).Append("</dd>");
     }
-    if (Model.Job.Salary.HourlyRate.HasValue)
-    {
-        jobSummaryHtml.Append("<dt>Hourly rate</dt><dd>£").Append(Model.Job.Salary.HourlyRate).Append("</dd>");
-    }
     if (!String.IsNullOrEmpty(Model.Job.Salary.SalaryRange))
     {
-        jobSummaryHtml.Append("<dt>Salary</dt><dd>").Append(Model.Job.Salary.SalaryRange).Append("</dd>");
+        jobSummaryHtml.Append("<dt>").Append(Model.Job.Salary.SalaryRange.Contains("per hour") ? "Hourly rate" : "Salary").Append("</dt><dd>").Append(Model.Job.Salary.SalaryRange).Append("</dd>");
     }
     if (Model.Job.ClosingDate.HasValue)
     {

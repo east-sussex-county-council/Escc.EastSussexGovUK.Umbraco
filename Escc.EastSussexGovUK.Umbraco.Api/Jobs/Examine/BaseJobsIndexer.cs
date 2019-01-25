@@ -226,7 +226,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
             simpleDataSet.RowData.Add("salaryMin", job.Salary.MinimumSalary?.ToString("D7") ?? String.Empty);
             simpleDataSet.RowData.Add("salaryMax", job.Salary.MaximumSalary?.ToString("D7") ?? String.Empty);
             simpleDataSet.RowData.Add("salarySort", (job.Salary.MinimumSalary?.ToString("D7") ?? String.Empty) + " " + (job.Salary.MaximumSalary?.ToString("D7") ?? String.Empty) + " " + (_stopWordsRemover != null ? _stopWordsRemover.Filter(job.Salary.SalaryRange) : job.Salary.SalaryRange));
-            simpleDataSet.RowData.Add("hourlyRate", job.Salary.HourlyRate?.ToString(CultureInfo.CurrentCulture));
+            simpleDataSet.RowData.Add("hourlyRate", job.Salary.MinimumHourlyRate?.ToString(CultureInfo.CurrentCulture));
             simpleDataSet.RowData.Add("hoursPerWeek", job.WorkPattern.HoursPerWeek?.ToString(CultureInfo.CurrentCulture));
             simpleDataSet.RowData.Add("closingDate", job.ClosingDate.Value.ToIso8601DateTime());
             simpleDataSet.RowData.Add("closingDateDisplay", job.ClosingDate.Value.ToIso8601DateTime());

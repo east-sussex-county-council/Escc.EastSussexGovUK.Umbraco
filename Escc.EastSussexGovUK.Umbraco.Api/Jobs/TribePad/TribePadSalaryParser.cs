@@ -37,12 +37,27 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
 
             if (frequencyId == hourlyFrequencyId)
             {
-                salary.HourlyRate = Decimal.Parse(jobXml.Root.Element("salary_from").Value);
+                salary.MinimumHourlyRate = Decimal.Parse(jobXml.Root.Element("salary_from").Value);
+                salary.MaximumHourlyRate = Decimal.Parse(jobXml.Root.Element("salary_to").Value);
+
+                if (salary.MinimumHourlyRate == 0 && salary.MaximumHourlyRate == 0)
+                {
+                    salary.SalaryRange = "Voluntary";
+                }
+                else if (salary.MinimumHourlyRate == salary.MaximumHourlyRate || salary.MaximumHourlyRate < salary.MinimumHourlyRate)
+                {
+                    salary.SalaryRange = $"£{salary.MinimumHourlyRate?.ToString("n2")} per annum";
+                }
+                else
+                {
+                    salary.SalaryRange = $"£{salary.MinimumHourlyRate?.ToString("n2")} to £{salary.MaximumHourlyRate?.ToString("n2")} per hour";
+                }
             }
             else
             {
                 salary.MinimumSalary = Int32.Parse(jobXml.Root.Element("salary_from").Value, CultureInfo.InvariantCulture);
                 salary.MaximumSalary = Int32.Parse(jobXml.Root.Element("salary_to").Value, CultureInfo.InvariantCulture);
+
                 if (salary.MinimumSalary == 0 && salary.MaximumSalary == 0)
                 {
                     salary.SalaryRange = "Voluntary";

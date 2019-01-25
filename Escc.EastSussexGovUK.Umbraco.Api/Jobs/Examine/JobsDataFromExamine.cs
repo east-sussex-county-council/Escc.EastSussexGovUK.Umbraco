@@ -293,7 +293,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
                         decimal hourlyRate;
                         if (Decimal.TryParse(result["hourlyRate"], out hourlyRate))
                         {
-                            job.Salary.HourlyRate = hourlyRate;
+                            job.Salary.MinimumHourlyRate = hourlyRate;
                         }
                     }
 
