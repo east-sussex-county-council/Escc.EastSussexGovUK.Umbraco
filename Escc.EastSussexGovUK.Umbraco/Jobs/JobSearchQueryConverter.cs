@@ -53,15 +53,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             // Convert obsolete job types to their replacements. These are no longer available but may 
             // be saved in old job alert subscriptions.
             TranslateOldJobType("Apprenticeships", new[] { "Apprenticeships and Trainee" }, query.JobTypes);
-            TranslateOldJobType("Care and Social Work", new[] { "Bereavement", "Safeguarding", "Social Work - Childrens", "Social Work - Adults" }, query.JobTypes);
+            TranslateOldJobType("Care and Social Work", new[] { "Bereavement", "Care - Adults", "Safeguarding", "Social Work - Childrens", "Social Work - Adults" }, query.JobTypes);
             TranslateOldJobType("Children’s - Social Work", new[] { "Social Work - Childrens" }, query.JobTypes);
             TranslateOldJobType("Children’s - Social Work Managers", new[] { "Social Work - Childrens" }, query.JobTypes);
             TranslateOldJobType("Education", new[] { "Education and Learning" }, query.JobTypes);
             TranslateOldJobType("ICT", new[] { "Information Technology" }, query.JobTypes);
             TranslateOldJobType("Personnel and HR", new[] { "Human Resources" }, query.JobTypes);
+            TranslateOldJobType("Support Staff", new[] { "Support Staff - Education" }, query.JobTypes);
             TranslateOldJobType("Teaching", new[] { "Teaching and Leadership" }, query.JobTypes);
             TranslateOldJobType("Teaching - Leadership", new[] { "Teaching and Leadership" }, query.JobTypes);
-            TranslateOldJobType("Transport", new[] { "Transportation and Highways","Drivers Transport", "Highway Maintenance" }, query.JobTypes);
+            TranslateOldJobType("Transport", new[] { "Transportation and Highways","Drivers", "Highway Maintenance" }, query.JobTypes);
             TranslateOldJobType("Youth Services", new[] { "Youth and Community Workers" }, query.JobTypes);
             TranslateOldJobType("Youth Work", new[] { "Youth and Community Workers" }, query.JobTypes);
 
