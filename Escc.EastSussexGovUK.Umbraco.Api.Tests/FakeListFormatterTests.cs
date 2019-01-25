@@ -98,5 +98,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
                             PARAGRAPH,
                             htmlDocument.DocumentNode.OuterHtml);
         }
+
+        [Test]
+        public void SingleParagraphListSplitByBrIsTransformed()
+        {
+            var htmlDocument = new HtmlDocument();
+            htmlDocument.LoadHtml("<p>- example list item<br />" + Environment.NewLine + "- example list item<br />" + Environment.NewLine + "- example list item</p>");
+            var formatter = new FakeListFormatter();
+
+            formatter.FormatHtml(htmlDocument);
+
+            Assert.AreEqual("<ul>" + LIST_ITEM + LIST_ITEM + LIST_ITEM + "</ul>", htmlDocument.DocumentNode.OuterHtml);
+        }
     }
 }

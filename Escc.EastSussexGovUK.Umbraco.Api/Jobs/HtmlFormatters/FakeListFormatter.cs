@@ -21,21 +21,52 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.HtmlFormatters
 
         private static void FormatHtmlListWithBullet(HtmlDocument htmlDocument, string bullet)
         {
-            while (FormatHtmlList(htmlDocument, bullet)) { };
+            while (FormatHtmlMultiParagraphList(htmlDocument, bullet)) { };
 
-            var nodesWithTemporaryAttribute = htmlDocument.DocumentNode.SelectNodes("//p[@data-ignore-list-item]");
-            if (nodesWithTemporaryAttribute != null)
+            FormatHtmlSingleParagraphLists(htmlDocument, bullet);
+        }
+
+        private static void FormatHtmlSingleParagraphLists(HtmlDocument htmlDocument, string bullet)
+        {
+            var potentialSingleParaList = htmlDocument.DocumentNode.SelectNodes("//p[@potential-single-paragraph-list]");
+            if (potentialSingleParaList != null)
             {
-                foreach (var node in nodesWithTemporaryAttribute)
+                foreach (var node in potentialSingleParaList)
                 {
-                    node.Attributes.Remove("data-ignore-list-item");
+                    node.Attributes.Remove("potential-single-paragraph-list");
+                    FormatHtmlSingleParagraphList(node, bullet);
                 }
             }
         }
 
-        private static bool FormatHtmlList(HtmlDocument htmlDocument, string bullet)
+        private static void FormatHtmlSingleParagraphList(HtmlNode node, string bullet)
         {
-            var firstListItem = htmlDocument.DocumentNode.SelectSingleNode($"//p[starts-with(.,'{bullet}') and not(@data-ignore-list-item)]");
+            // If the paragraph starts with the bullet, contains at least one <br />, 
+            // and every <br /> is followed by the bullet, then it's a list
+            if (!node.InnerHtml.StartsWith(bullet)) return;
+
+            var lineBreaks = node.SelectNodes("./br");
+            if (lineBreaks == null || lineBreaks.Count == 0) return;
+            foreach (var lineBreak in lineBreaks)
+            {
+                if (lineBreak.NextSibling == null) return;
+                if (lineBreak.NextSibling.NodeType != HtmlNodeType.Text) return;
+                if (!lineBreak.NextSibling.InnerHtml.StartsWith(bullet) &&
+                    !lineBreak.NextSibling.InnerHtml.StartsWith(Environment.NewLine + bullet)) return;
+            }
+
+            // If we're still going, it's a list.
+            // Do a string replace instead of updating each lineBreak, because that doesn't update node.OuterHtml
+            node.Name = "ul";
+            node.InnerHtml = "<li>" + node.InnerHtml.Substring(bullet.Length)
+                .Replace("<br>" + Environment.NewLine + bullet, "</li><li>")
+                .Replace("<br>" + bullet, "</li><li>")
+                + "</li>";
+        }
+
+        private static bool FormatHtmlMultiParagraphList(HtmlDocument htmlDocument, string bullet)
+        {
+            var firstListItem = htmlDocument.DocumentNode.SelectSingleNode($"//p[starts-with(.,'{bullet}') and not(@potential-single-paragraph-list)]");
             if (firstListItem != null)
             {
                 var list = new List<HtmlNode>() { firstListItem };
@@ -48,8 +79,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.HtmlFormatters
 
                 if (list.Count == 1)
                 {
-                    // No list, but mark it as such so that we don't try to process it again
-                    firstListItem.SetAttributeValue("data-ignore-list-item", "false");
+                    // No multi-paragraph list, but mark it as such so that we don't try to check again
+                    firstListItem.SetAttributeValue("potential-single-paragraph-list", "false");
                 }
                 else
                 {
