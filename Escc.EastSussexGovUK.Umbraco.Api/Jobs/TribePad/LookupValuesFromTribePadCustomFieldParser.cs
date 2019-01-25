@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Xml.Linq;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
 using Exceptionless;
@@ -21,7 +22,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             {
                 var xml = XDocument.Parse(sourceData);
                 var lookupValues = new List<JobsLookupValue>();
-                var lookupValuesXml = xml.Root.Elements("custom_fields").SingleOrDefault(x => x.Element("label").Value == fieldName);
+                var lookupValuesXml = xml.Root.Elements("custom_fields").SingleOrDefault(x => HttpUtility.HtmlDecode(x.Element("label").Value) == fieldName);
 
                 if (lookupValuesXml != null)
                 {
@@ -31,7 +32,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
                         {
                             FieldId = lookupValuesXml.Element("question_id")?.Value,
                             LookupValueId = optionsXml.Element("id").Value,
-                            Text = optionsXml.Element("label").Value
+                            Text = HttpUtility.HtmlDecode(optionsXml.Element("label").Value)
                         });
                     }
                 }

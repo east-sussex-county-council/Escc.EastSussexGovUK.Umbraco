@@ -99,11 +99,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             var job = new Job()
             {
                 Id = Int32.Parse(jobXml.Element("job_id").Value.Trim(), CultureInfo.InvariantCulture),
-                Reference = jobXml.Element("reference")?.Value.Trim(),
+                Reference = HttpUtility.HtmlDecode(jobXml.Element("reference")?.Value).Trim(),
                 NumberOfPositions = Int32.Parse(jobXml.Element("no_of_positions").Value, CultureInfo.InvariantCulture),
-                JobTitle = jobXml.Element("job_title").Value.Trim(),
-                Department= jobXml.Element("business_unit").Value.Trim().Replace("ESCC: ", string.Empty),
-                Organisation = jobXml.Element("region")?.Value.Trim(),
+                JobTitle = HttpUtility.HtmlDecode(jobXml.Element("job_title").Value).Trim(),
+                Department= HttpUtility.HtmlDecode(jobXml.Element("business_unit").Value).Trim().Replace("ESCC: ", string.Empty),
+                Organisation = HttpUtility.HtmlDecode(jobXml.Element("region").Value).Trim(),
                 DatePublished = new DateTime(Int32.Parse(jobXml.Element("open_date").Value.Substring(0, 4), CultureInfo.InvariantCulture),
                                                             Int32.Parse(jobXml.Element("open_date").Value.Substring(5, 2), CultureInfo.InvariantCulture),
                                                             Int32.Parse(jobXml.Element("open_date").Value.Substring(8, 2), CultureInfo.InvariantCulture)),
@@ -118,7 +118,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
                 job.Department = string.Empty;
             }
 
-            job.Locations.Add(jobXml.Element("location_city").Value.Trim());
+            job.Locations.Add(HttpUtility.HtmlDecode(jobXml.Element("location_city").Value).Trim());
             job.AdvertHtml = new HtmlString(HttpUtility.HtmlDecode(jobXml.Element("package_description")?.Value + jobXml.Element("summary_external")?.Value));
             job.AdditionalInformationHtml = new HtmlString(HttpUtility.HtmlDecode(jobXml.Element("ideal_candidate")?.Value));
             job.EqualOpportunitiesHtml = new HtmlString(HttpUtility.HtmlDecode(jobXml.Element("about_company")?.Value));
