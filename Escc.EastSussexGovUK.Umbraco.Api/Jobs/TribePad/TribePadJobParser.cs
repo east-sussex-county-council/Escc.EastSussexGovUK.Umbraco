@@ -119,7 +119,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             }
 
             job.Locations.Add(HttpUtility.HtmlDecode(jobXml.Element("location_city").Value).Trim());
-            job.AdvertHtml = new HtmlString(HttpUtility.HtmlDecode(jobXml.Element("package_description")?.Value + jobXml.Element("summary_external")?.Value));
+            job.AdvertHtml = new HtmlString(HttpUtility.HtmlDecode(jobXml.Element("package_description")?.Value + jobXml.Element("summary_external")?.Value + jobXml.Element("main_responsibilities")?.Value));
             job.AdditionalInformationHtml = new HtmlString(HttpUtility.HtmlDecode(jobXml.Element("ideal_candidate")?.Value));
             job.EqualOpportunitiesHtml = new HtmlString(HttpUtility.HtmlDecode(jobXml.Element("about_company")?.Value));
             job.JobType = HttpUtility.HtmlDecode(jobXml.Element("category_name")?.Value).Replace(" & ", " and ");
