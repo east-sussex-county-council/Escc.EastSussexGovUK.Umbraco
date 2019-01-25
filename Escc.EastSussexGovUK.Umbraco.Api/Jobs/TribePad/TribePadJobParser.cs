@@ -114,7 +114,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
 
             if (job.Department.ToUpperInvariant() == "PARTNERSHIP")
             {
-                job.Organisation = job.Department;
+                if (job.JobTitle.Contains("(") && job.JobTitle.EndsWith(")"))
+                {
+                    var orgStarts = job.JobTitle.LastIndexOf("(");
+                    job.Organisation = job.JobTitle.Substring(orgStarts + 1).TrimEnd(')');
+                    job.JobTitle = job.JobTitle.Substring(0, orgStarts).TrimEnd();
+                }
+                else
+                {
+                    job.Organisation = job.Department;
+                }
                 job.Department = string.Empty;
             }
 

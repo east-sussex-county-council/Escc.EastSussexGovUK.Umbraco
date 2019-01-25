@@ -263,9 +263,19 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests.Properties {
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
         ///&lt;jobs&gt;&lt;job&gt;&lt;job_id&gt;142&lt;/job_id&gt;&lt;job_title&gt;Job&lt;/job_title&gt;&lt;reference&gt;orbis/TP/12/142&lt;/reference&gt;&lt;language_code&gt;en&lt;/language_code&gt;&lt;no_of_positions&gt;2&lt;/no_of_positions&gt;&lt;status&gt;1&lt;/status&gt;&lt;status_social&gt;0&lt;/status_social&gt;&lt;open_date&gt;2019-01-11&lt;/open_date&gt;&lt;expiry_date&gt;2019-02-11&lt;/expiry_date&gt;&lt;salary_currency&gt;1&lt;/salary_currency&gt;&lt;salary_frequency&gt;1&lt;/salary_frequency&gt;&lt;salary_from&gt;34&lt;/salary_from&gt;&lt;salary_to&gt;35&lt;/salary_to&gt;&lt;salary_from_text&gt;34&lt;/salary_from_text&gt;&lt;salary_to_text&gt;35&lt;/s [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string TribePadPartnershipJobXml {
+        internal static string TribePadPartnershipJobXmlOrganisationMissing {
             get {
-                return ResourceManager.GetString("TribePadPartnershipJobXml", resourceCulture);
+                return ResourceManager.GetString("TribePadPartnershipJobXmlOrganisationMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+        ///&lt;jobs&gt;&lt;job&gt;&lt;job_id&gt;142&lt;/job_id&gt;&lt;job_title&gt;Job (Example Organisation)&lt;/job_title&gt;&lt;reference&gt;orbis/TP/12/142&lt;/reference&gt;&lt;language_code&gt;en&lt;/language_code&gt;&lt;no_of_positions&gt;2&lt;/no_of_positions&gt;&lt;status&gt;1&lt;/status&gt;&lt;status_social&gt;0&lt;/status_social&gt;&lt;open_date&gt;2019-01-11&lt;/open_date&gt;&lt;expiry_date&gt;2019-02-11&lt;/expiry_date&gt;&lt;salary_currency&gt;1&lt;/salary_currency&gt;&lt;salary_frequency&gt;1&lt;/salary_frequency&gt;&lt;salary_from&gt;34&lt;/salary_from&gt;&lt;salary_to&gt;35&lt;/salary_to&gt;&lt;salary_from_text&gt;34&lt;/salary_from_tex [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TribePadPartnershipJobXmlWithOrganisation {
+            get {
+                return ResourceManager.GetString("TribePadPartnershipJobXmlWithOrganisation", resourceCulture);
             }
         }
         

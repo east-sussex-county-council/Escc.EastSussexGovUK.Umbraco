@@ -142,14 +142,29 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
 
 
         [Test]
-        public async Task BusinessUnitSetToPartnershipSetsOrganisationToPartnership()
+        public async Task BusinessUnitSetToPartnershipSetsOrganisationFromTitle()
         {
             var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
             var salaryParser = new Mock<ISalaryParser>();
             var workPatternParser = new Mock<IWorkPatternParser>();
             var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, new Uri("https://www.example.org"));
 
-            var parsedJob = await parser.ParseJob(Properties.Resources.TribePadPartnershipJobXml, "142");
+            var parsedJob = await parser.ParseJob(Properties.Resources.TribePadPartnershipJobXmlWithOrganisation, "142");
+
+            Assert.AreEqual(string.Empty, parsedJob.Department);
+            Assert.AreEqual("Example Organisation", parsedJob.Organisation);
+            Assert.AreEqual("Job", parsedJob.JobTitle);
+        }
+
+        [Test]
+        public async Task BusinessUnitSetToPartnershipSetsOrganisationToPartnershipIfOrganisationNotInTitle()
+        {
+            var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
+            var salaryParser = new Mock<ISalaryParser>();
+            var workPatternParser = new Mock<IWorkPatternParser>();
+            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, new Uri("https://www.example.org"));
+
+            var parsedJob = await parser.ParseJob(Properties.Resources.TribePadPartnershipJobXmlOrganisationMissing, "142");
 
             Assert.AreEqual(string.Empty, parsedJob.Department);
             Assert.AreEqual("Partnership", parsedJob.Organisation);
