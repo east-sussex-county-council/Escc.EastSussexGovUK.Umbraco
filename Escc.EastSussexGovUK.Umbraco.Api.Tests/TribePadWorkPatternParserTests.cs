@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Escc.EastSussexGovUK.Umbraco.Api.Jobs;
 using Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
 using Moq;
@@ -17,12 +18,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         public async Task FullTimeWorkPatternParsed()
         {
             var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
-            lookupValuesProvider.Setup(x => x.ReadWorkPatterns()).Returns(Task.FromResult(new List<JobsLookupValue>()
+            var workPatternList = new List<JobsLookupValue>()
             {
                 new JobsLookupValue() { FieldId = "13", LookupValueId = "16", Text = "Full Time" }
-            } as IList<JobsLookupValue>));
+            } as IList<JobsLookupValue>;
+            lookupValuesProvider.Setup(x => x.ReadWorkPatterns()).Returns(Task.FromResult(workPatternList));
+            var splitter = new Mock<IWorkPatternSplitter>();
+            splitter.Setup(x => x.SplitWorkPatterns(It.IsAny<IList<JobsLookupValue>>())).Returns(workPatternList);
 
-            var parser = new TribePadWorkPatternParser(lookupValuesProvider.Object);
+            var parser = new TribePadWorkPatternParser(lookupValuesProvider.Object, splitter.Object);
 
             var result = await parser.ParseWorkPattern(Properties.Resources.TribePadWorkPatternFullTime);
 
@@ -32,10 +36,33 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         }
 
         [Test]
+        public async Task OtherWorkPatternParsed()
+        {
+            var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
+            var workPatternList = new List<JobsLookupValue>()
+            {
+                new JobsLookupValue() { FieldId = "13", LookupValueId = "16", Text = "Other" }
+            } as IList<JobsLookupValue>;
+            lookupValuesProvider.Setup(x => x.ReadWorkPatterns()).Returns(Task.FromResult(workPatternList));
+            var splitter = new Mock<IWorkPatternSplitter>();
+            splitter.Setup(x => x.SplitWorkPatterns(It.IsAny<IList<JobsLookupValue>>())).Returns(workPatternList);
+
+            var parser = new TribePadWorkPatternParser(lookupValuesProvider.Object, splitter.Object);
+
+            var result = await parser.ParseWorkPattern(Properties.Resources.TribePadWorkPatternFullTime);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(1, result.WorkPatterns.Count);
+            Assert.IsTrue(result.WorkPatterns.Contains("Other"));
+        }
+
+        [Test]
         public async Task WorkPatternMissingHoursIndicateFullTimeParsed()
         {
             var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
-            var parser = new TribePadWorkPatternParser(lookupValuesProvider.Object);
+            var splitter = new Mock<IWorkPatternSplitter>();
+            splitter.Setup(x => x.SplitWorkPatterns(It.IsAny<IList<JobsLookupValue>>())).Returns(new List<JobsLookupValue>());
+            var parser = new TribePadWorkPatternParser(lookupValuesProvider.Object, splitter.Object);
 
             var result = await parser.ParseWorkPattern(Properties.Resources.TribePadWorkPatternMissing37Hours);
 
@@ -48,7 +75,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         public async Task HoursPerWeekParsed()
         {
             var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
-            var parser = new TribePadWorkPatternParser(lookupValuesProvider.Object);
+            var splitter = new Mock<IWorkPatternSplitter>();
+            splitter.Setup(x => x.SplitWorkPatterns(It.IsAny<IList<JobsLookupValue>>())).Returns(new List<JobsLookupValue>());
+            var parser = new TribePadWorkPatternParser(lookupValuesProvider.Object, splitter.Object);
 
             var result = await parser.ParseWorkPattern(Properties.Resources.TribePadWorkPatternFullTime);
 

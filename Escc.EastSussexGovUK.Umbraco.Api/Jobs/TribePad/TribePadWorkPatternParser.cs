@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
+using Humanizer;
 
 namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
 {
@@ -13,16 +14,19 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
     public class TribePadWorkPatternParser : IWorkPatternParser
     {
         private readonly IJobsLookupValuesProvider _lookupValuesProvider;
+        private readonly IWorkPatternSplitter _workPatternSplitter;
         private IEnumerable<JobsLookupValue> _workPatterns;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TribePadWorkPatternParser"/> class.
         /// </summary>
         /// <param name="lookupValuesProvider">A method of supplying lookup values for identifiers referenced by the job data</param>
-        /// <exception cref="ArgumentNullException">lookupValuesProvider</exception>
-        public TribePadWorkPatternParser(IJobsLookupValuesProvider lookupValuesProvider)
+        /// <param name="workPatternSplitter">A method of splitting apart multiple work patterns encoded into one work pattern</param>
+        /// <exception cref="ArgumentNullException">lookupValuesProvider or workPatternSplitter</exception>
+        public TribePadWorkPatternParser(IJobsLookupValuesProvider lookupValuesProvider, IWorkPatternSplitter workPatternSplitter)
         {
             _lookupValuesProvider = lookupValuesProvider ?? throw new ArgumentNullException(nameof(lookupValuesProvider));
+            _workPatternSplitter = workPatternSplitter ?? throw new ArgumentNullException(nameof(workPatternSplitter));
         }
 
         /// <summary>
@@ -47,18 +51,24 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
                 workPattern.HoursPerWeek = hoursPerWeek;
             }
 
+            // Get any work pattern because we want the field id, and they all have it
             var exampleWorkPattern = _workPatterns?.FirstOrDefault();
             if (exampleWorkPattern != null)
             {
+                // Use that field id to look up the work pattern id in the jobs XML
                 var workPatternId = jobXml.Root.Element("custom_" + exampleWorkPattern.FieldId)?.Element("answer")?.Value;
                 if (!String.IsNullOrEmpty(workPatternId))
                 {
                     var matchingWorkPattern = _workPatterns.SingleOrDefault(x => x.LookupValueId == workPatternId);
                     if (matchingWorkPattern != null)
                     {
-                        var workPatternComparable = matchingWorkPattern.Text.ToUpperInvariant();
-                        if (workPatternComparable == "FULL TIME") workPattern.WorkPatterns.Add(WorkPattern.FULL_TIME);
-                        if (workPatternComparable == "PART TIME") workPattern.WorkPatterns.Add(WorkPattern.PART_TIME);
+                        // TribePad doesn't support multiple work patterns, so extra work patterns have been set up 
+                        // which are actually a combination of two work patterns - split them here
+                        var individualWorkPatterns = matchingWorkPattern.Text.Split(new[] { " or "," - " }, StringSplitOptions.RemoveEmptyEntries);
+                        foreach (var individualWorkPattern in individualWorkPatterns)
+                        {
+                            workPattern.WorkPatterns.Add(individualWorkPattern.ToLowerInvariant().Humanize(LetterCasing.Sentence));
+                        }
                     }
                 }
             }

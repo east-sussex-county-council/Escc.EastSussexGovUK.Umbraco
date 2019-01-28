@@ -37,14 +37,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public override string ToString()
         {
             var text = new StringBuilder();
-            if (WorkPatterns.Contains(FULL_TIME) && WorkPatterns.Contains(PART_TIME)) text.Append("Full or part time");
-            else if (WorkPatterns.Contains(FULL_TIME)) text.Append("Full time");
-            else if (WorkPatterns.Contains(PART_TIME)) text.Append("Part time");
 
-            foreach (var pattern in this.WorkPatterns)
+            var sortedCopy = new List<string>(WorkPatterns);
+            if (sortedCopy.Contains(FULL_TIME) && sortedCopy.Contains(PART_TIME))
             {
-                if (pattern == FULL_TIME || pattern == PART_TIME) continue;
+                sortedCopy.Remove(FULL_TIME);
+                sortedCopy.Remove(PART_TIME);
+                sortedCopy.Add("Full or part time");
+            }
+            sortedCopy.Sort();
 
+            foreach (var pattern in sortedCopy)
+            {
                 if (text.Length > 0) text.Append(", ");
                 text.Append(pattern);
             }

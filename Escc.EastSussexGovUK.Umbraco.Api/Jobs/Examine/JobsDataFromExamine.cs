@@ -259,7 +259,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
                     if (result.Fields.ContainsKey("workPattern"))
                     {
                         var patterns = result["workPattern"].Split(',');
-                        foreach (var pattern in patterns) job.WorkPattern.WorkPatterns.Add(pattern);
+                        foreach (var pattern in patterns) job.WorkPattern.WorkPatterns.Add(pattern.Trim());
                     }
                     if (result.Fields.ContainsKey("hoursPerWeek") && !String.IsNullOrEmpty(result["hoursPerWeek"]))
                     {

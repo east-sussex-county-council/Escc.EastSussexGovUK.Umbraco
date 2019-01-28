@@ -37,7 +37,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
 
 
         [Test]
-        public void PartTimeAndOthersCombined()
+        public void PartTimeAndOthersCombinedAndSorted()
         {
             var workPattern = new WorkPattern();
             workPattern.WorkPatterns.Add(WorkPattern.PART_TIME);
@@ -46,7 +46,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
 
             var result = workPattern.ToString();
 
-            Assert.AreEqual("Part time, Other, Another", result);
+            Assert.AreEqual("Another, Other, Part time", result);
         }
     }
 }

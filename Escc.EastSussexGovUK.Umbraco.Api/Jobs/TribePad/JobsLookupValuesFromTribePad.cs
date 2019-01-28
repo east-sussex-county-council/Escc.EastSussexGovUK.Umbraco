@@ -4,7 +4,7 @@ using System.Collections.Specialized;
 using System.Globalization;
 using System.IO;
 using System.Net.Http;
-using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
 using Escc.Net;
@@ -21,6 +21,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         private readonly IProxyProvider _proxy;
         private readonly IJobLookupValuesParser _builtInLookupValuesParser;
         private readonly IJobLookupValuesParser _customFieldLookupValuesParser;
+        private readonly IWorkPatternSplitter _workPatternSplitter;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="JobsDataFromTribePad" /> class.
@@ -28,11 +29,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         /// <param name="lookupValuesApiUrl">The search URL.</param>
         /// <param name="builtInLookupValuesParser">The parser for lookup values in built-in fields in the TribePad XML.</param>
         /// <param name="customFieldLookupValuesParser">The parser for lookup values in custom fields in the TribePad XML.</param>
+        /// <param name="workPatternSplitter">A way to return work patterns that represent multiple values as multiple patterns; <c>null</c> if not required</param>
         /// <param name="proxy">The proxy (optional).</param>
         /// <exception cref="System.ArgumentNullException">lookupValuesApiUrl</exception>
         /// <exception cref="System.ArgumentNullException">builtInLookupValuesParser</exception>
         /// <exception cref="System.ArgumentNullException">customFieldLookupValuesParser</exception>
-        public JobsLookupValuesFromTribePad(Uri lookupValuesApiUrl, IJobLookupValuesParser builtInLookupValuesParser, IJobLookupValuesParser customFieldLookupValuesParser, IProxyProvider proxy)
+        public JobsLookupValuesFromTribePad(Uri lookupValuesApiUrl, IJobLookupValuesParser builtInLookupValuesParser, IJobLookupValuesParser customFieldLookupValuesParser, IWorkPatternSplitter workPatternSplitter, IProxyProvider proxy)
         {
             if (lookupValuesApiUrl == null) throw new ArgumentNullException(nameof(lookupValuesApiUrl));
             if (builtInLookupValuesParser == null) throw new ArgumentNullException(nameof(builtInLookupValuesParser));
@@ -41,6 +43,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             _lookupValuesApiUrl = lookupValuesApiUrl;
             _builtInLookupValuesParser = builtInLookupValuesParser;
             _customFieldLookupValuesParser = customFieldLookupValuesParser;
+            _workPatternSplitter = workPatternSplitter;
             _proxy = proxy;
         }
 
@@ -179,7 +182,20 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         {
             var results = await ReadLookupValuesFromApi(_customFieldLookupValuesParser, "Working Pattern").ConfigureAwait(false);
             ConvertResultsToSentenceCase(results);
-            return results;
+
+            if (_workPatternSplitter != null)
+            {
+                // Split work patterns like "Full time or part time" into the multiple work patterns that they
+                // represent, but which TribePad can't handle natively. This is optional because we want to do
+                // this when getting a list of unique work patterns, but we don't want to when we're using the 
+                // returned collection to match the single work pattern assigned to a job (which may represent 
+                // multiple patterns relevant for that job).
+                return _workPatternSplitter.SplitWorkPatterns(results);
+            }
+            else
+            {
+                return results;
+            }
         }
 
         private void ReplaceAmpersands(IList<JobsLookupValue> results)

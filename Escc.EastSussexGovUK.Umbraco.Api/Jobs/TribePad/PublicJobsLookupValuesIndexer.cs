@@ -19,7 +19,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         /// <summary>
         /// Initializes a new instance of the <see cref="PublicJobsLookupValuesIndexer"/> class.
         /// </summary>
-        public PublicJobsLookupValuesIndexer() : base(new JobsLookupValuesFromTribePad(LookupValuesApiUrl, new LookupValuesFromTribePadBuiltInFieldParser(), new LookupValuesFromTribePadCustomFieldParser(), new ConfigurationProxyProvider()))
+        public PublicJobsLookupValuesIndexer() : base(new JobsLookupValuesFromTribePad(LookupValuesApiUrl, new LookupValuesFromTribePadBuiltInFieldParser(), new LookupValuesFromTribePadCustomFieldParser(), new TribePadWorkPatternSplitter(), new ConfigurationProxyProvider()))
         {
         }
 

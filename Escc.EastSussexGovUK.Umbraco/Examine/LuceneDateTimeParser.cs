@@ -27,7 +27,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Examine
                                     Int32.Parse(luceneDateTime.Substring(12, 2), CultureInfo.InvariantCulture));
 
             }
-            catch (FormatException ex)
+            catch (FormatException)
             {
                 return null;
             }

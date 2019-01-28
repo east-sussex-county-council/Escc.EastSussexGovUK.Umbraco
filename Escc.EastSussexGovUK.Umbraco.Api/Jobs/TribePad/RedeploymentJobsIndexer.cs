@@ -35,8 +35,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             var disableMediaDomainTransformer = ConfigurationManager.AppSettings["DoNotRemoveMediaDomainInJobAdverts"]?.ToUpperInvariant() == "TRUE";
 
             var proxyProvider = new ConfigurationProxyProvider();
-            var lookupValuesProvider = new JobsLookupValuesFromTribePad(lookupValuesApiUrl, new LookupValuesFromTribePadBuiltInFieldParser(), new LookupValuesFromTribePadCustomFieldParser(), proxyProvider);
-            var jobParser = new TribePadJobParser(lookupValuesProvider, new TribePadSalaryParser(lookupValuesProvider), new TribePadWorkPatternParser(lookupValuesProvider), applyUrl);
+            var lookupValuesProvider = new JobsLookupValuesFromTribePad(lookupValuesApiUrl, new LookupValuesFromTribePadBuiltInFieldParser(), new LookupValuesFromTribePadCustomFieldParser(), null, proxyProvider);
+            var jobParser = new TribePadJobParser(lookupValuesProvider, new TribePadSalaryParser(lookupValuesProvider), new TribePadWorkPatternParser(lookupValuesProvider, new TribePadWorkPatternSplitter()), applyUrl);
 
             InitialiseDependencies(
                 new JobsDataFromTribePad(resultsUrl, advertUrl, jobParser, jobParser, proxyProvider, true),
