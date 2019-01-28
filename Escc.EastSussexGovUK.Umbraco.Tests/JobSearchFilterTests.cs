@@ -84,6 +84,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         }
 
         [Test]
+        public void PayGradeChangesHash()
+        {
+            var filter = new JobSearchQuery();
+
+            var hashBefore = filter.ToHash();
+            filter.PayGrades = new[] { "test" };
+            var hashAfter = filter.ToHash();
+
+            Assert.AreNotEqual(hashBefore, hashAfter);
+        }
+
+        [Test]
         public void JobReferenceChangesHash()
         {
             var filter = new JobSearchQuery();
@@ -107,6 +119,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             var hashLocation = locationFilter.ToHash();
 
             Assert.AreNotEqual(hashKeywords, hashLocation);
+        }
+
+        [Test]
+        public void ContractTypeChangesHash()
+        {
+            var filter = new JobSearchQuery();
+
+            var hashBefore = filter.ToHash();
+            filter.ContractTypes = new[] { "test" };
+            var hashAfter = filter.ToHash();
+
+            Assert.AreNotEqual(hashBefore, hashAfter);
         }
     }
 }

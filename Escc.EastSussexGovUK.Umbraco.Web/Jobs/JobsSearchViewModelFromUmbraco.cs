@@ -54,6 +54,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
                 viewModel.JobTypes.Add(jobType);
             }
 
+
+            var payGrades = await lookupValuesDataSource.ReadPayGrades();
+            foreach (var payGrade in payGrades)
+            {
+                viewModel.PayGrades.Add(payGrade);
+            }
+
             var salaryRanges = await lookupValuesDataSource.ReadSalaryRanges();
             foreach (var salaryRange in salaryRanges)
             {

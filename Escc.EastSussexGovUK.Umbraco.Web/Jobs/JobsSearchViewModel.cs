@@ -34,6 +34,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
         public IList<JobsLookupValue> JobTypes { get; } = new List<JobsLookupValue>();
 
         /// <summary>
+        /// Gets the pay grades.
+        /// </summary>
+        public IList<JobsLookupValue> PayGrades { get; } = new List<JobsLookupValue>();
+
+        /// <summary>
         /// Gets the salary ranges.
         /// </summary>
         public IList<JobsLookupValue> SalaryRanges { get; } = new List<JobsLookupValue>();

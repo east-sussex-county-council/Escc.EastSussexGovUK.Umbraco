@@ -61,7 +61,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Api
         }
 
         /// <summary>
-        /// Reads the salary ranges that jobs can be categorised as
+        /// Reads the numeric salary ranges that jobs can be categorised as
         /// </summary>
         /// <returns></returns>
         public async Task<IList<JobsLookupValue>> ReadSalaryRanges()
@@ -76,6 +76,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Api
         public async Task<IList<JobsLookupValue>> ReadSalaryFrequencies()
         {
             return await ReadLookupValuesFromApi("salaryfrequencies");
+        }
+
+        /// <summary>
+        /// Reads the non-numeric named pay grades that jobs can be categorised as
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IList<JobsLookupValue>> ReadPayGrades()
+        {
+            return await ReadLookupValuesFromApi("paygrades");
         }
 
         /// <summary>

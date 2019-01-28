@@ -1262,6 +1262,27 @@ Partnership&lt;/business_unit&gt;&lt;business_unit_id&gt;212&lt;/business_unit_i
 &lt;salaryDisplay&gt;£9.68 - £11.20&lt;/salaryDisplay&gt;
 &lt;/job&gt;</value>
   </data>
+  <data name="TribePadSalaryPayGradeOnly" xml:space="preserve">
+    <value>&lt;job&gt;
+&lt;job_id&gt;134&lt;/job_id&gt;
+&lt;job_title&gt;New Worker&lt;/job_title&gt;
+&lt;salary_currency&gt;1&lt;/salary_currency&gt;
+&lt;salary_frequency&gt;1&lt;/salary_frequency&gt;
+&lt;salary_from&gt;0&lt;/salary_from&gt;
+&lt;salary_to&gt;0&lt;/salary_to&gt;
+&lt;salary_from_text/&gt;
+&lt;salary_to_text/&gt;
+&lt;salaryText /&gt;
+&lt;custom_15&gt;
+&lt;id&gt;1384&lt;/id&gt;
+&lt;field_id&gt;15&lt;/field_id&gt;
+&lt;job_id&gt;134&lt;/job_id&gt;
+&lt;answer&gt;36&lt;/answer&gt;
+&lt;flags&gt;0&lt;/flags&gt;
+&lt;modified_time&gt;2019-01-28 14:54:37&lt;/modified_time&gt;
+&lt;/custom_15&gt;
+&lt;/job&gt;</value>
+  </data>
   <data name="TribePadSalaryRange" xml:space="preserve">
     <value>&lt;job&gt;
 &lt;job_id&gt;134&lt;/job_id&gt;
@@ -1273,6 +1294,27 @@ Partnership&lt;/business_unit&gt;&lt;business_unit_id&gt;212&lt;/business_unit_i
 &lt;salary_from_text&gt;15000&lt;/salary_from_text&gt;
 &lt;salary_to_text&gt;19999&lt;/salary_to_text&gt;
 &lt;salaryDisplay&gt;£15000 - £19999&lt;/salaryDisplay&gt;
+&lt;/job&gt;</value>
+  </data>
+  <data name="TribePadSalaryTextOnly" xml:space="preserve">
+    <value>&lt;job&gt;
+&lt;job_id&gt;134&lt;/job_id&gt;
+&lt;job_title&gt;New Worker&lt;/job_title&gt;
+&lt;salary_currency&gt;1&lt;/salary_currency&gt;
+&lt;salary_frequency&gt;1&lt;/salary_frequency&gt;
+&lt;salary_from&gt;0&lt;/salary_from&gt;
+&lt;salary_to&gt;0&lt;/salary_to&gt;
+&lt;salary_from_text/&gt;
+&lt;salary_to_text/&gt;
+&lt;salaryText&gt;Competitive&lt;/salaryText&gt;
+&lt;custom_15&gt;
+&lt;id&gt;1384&lt;/id&gt;
+&lt;field_id&gt;15&lt;/field_id&gt;
+&lt;job_id&gt;134&lt;/job_id&gt;
+&lt;answer&gt;36&lt;/answer&gt;
+&lt;flags&gt;0&lt;/flags&gt;
+&lt;modified_time&gt;2019-01-28 14:54:37&lt;/modified_time&gt;
+&lt;/custom_15&gt;
 &lt;/job&gt;</value>
   </data>
   <data name="TribePadSalaryToZero" xml:space="preserve">

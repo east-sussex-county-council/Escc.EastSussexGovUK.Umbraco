@@ -53,6 +53,54 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
             Assert.AreEqual("£23,000 per annum", salary.SalaryRange);
         }
 
+
+        [Test]
+        public async Task PayGradeIsParsed()
+        {
+            var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
+            lookupValuesProvider.Setup(x => x.ReadPayGrades()).Returns(Task.FromResult(new List<JobsLookupValue>()
+            {
+                new JobsLookupValue() { FieldId = "15", LookupValueId = "36", Text = "Single Status" }
+            } as IList<JobsLookupValue>));
+            var parser = new TribePadSalaryParser(lookupValuesProvider.Object);
+
+            var salary = await parser.ParseSalary(Properties.Resources.TribePadSalaryPayGradeOnly);
+
+            Assert.IsNull(salary.MinimumSalary);
+            Assert.IsNull(salary.MaximumSalary);
+            Assert.AreEqual("Single Status", salary.SalaryRange);
+        }
+
+        [Test]
+        public async Task DisplayTextOnlyIsParsed()
+        {
+            var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
+            var parser = new TribePadSalaryParser(lookupValuesProvider.Object);
+
+            var salary = await parser.ParseSalary(Properties.Resources.TribePadSalaryTextOnly);
+
+            Assert.IsNull(salary.MinimumSalary);
+            Assert.IsNull(salary.MaximumSalary);
+            Assert.AreEqual("Competitive", salary.SalaryRange);
+        }
+
+        [Test]
+        public async Task DisplayTextIsParsedBeforePayGrade()
+        {
+            var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
+            lookupValuesProvider.Setup(x => x.ReadPayGrades()).Returns(Task.FromResult(new List<JobsLookupValue>()
+            {
+                new JobsLookupValue() { FieldId = "15", LookupValueId = "36", Text = "Single Status" }
+            } as IList<JobsLookupValue>));
+            var parser = new TribePadSalaryParser(lookupValuesProvider.Object);
+
+            var salary = await parser.ParseSalary(Properties.Resources.TribePadSalaryTextOnly);
+
+            Assert.IsNull(salary.MinimumSalary);
+            Assert.IsNull(salary.MaximumSalary);
+            Assert.AreEqual("Competitive", salary.SalaryRange);
+        }
+
         [Test]
         public async Task VoluntaryRoleIsParsed()
         {

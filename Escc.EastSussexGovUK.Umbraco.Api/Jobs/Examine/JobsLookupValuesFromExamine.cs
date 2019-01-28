@@ -42,6 +42,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
             return Task.FromResult(ReadLookupValues("SalaryFrequency"));
         }
 
+        public Task<IList<JobsLookupValue>> ReadPayGrades()
+        {
+            return Task.FromResult(ReadLookupValues("PayGrade"));
+        }
+
         public Task<IList<JobsLookupValue>> ReadWorkPatterns()
         {
             return Task.FromResult(ReadLookupValues("WorkPattern"));
@@ -70,6 +75,5 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
             }
             return lookups;
         }
-
     }
 }

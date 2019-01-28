@@ -34,10 +34,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         Task<IList<JobsLookupValue>> ReadSalaryFrequencies();
 
         /// <summary>
-        /// Reads the salary ranges that jobs can be categorised as
+        /// Reads the numeric salary ranges that jobs can be categorised as
         /// </summary>
         /// <returns></returns>
         Task<IList<JobsLookupValue>> ReadSalaryRanges();
+
+        /// <summary>
+        /// Reads the non-numeric named pay grades that jobs can be categorised as
+        /// </summary>
+        /// <returns></returns>
+        Task<IList<JobsLookupValue>> ReadPayGrades();
 
         /// <summary>
         /// Reads the work patterns, eg full time or part time

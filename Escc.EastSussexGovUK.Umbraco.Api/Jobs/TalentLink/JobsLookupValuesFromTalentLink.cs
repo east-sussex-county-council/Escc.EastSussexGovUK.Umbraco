@@ -90,6 +90,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
             return Task.FromResult((IList<JobsLookupValue>)new List<JobsLookupValue>());
         }
 
+         /// <summary>
+        /// Reads the non-numeric named pay grades that jobs can be categorised as
+        /// </summary>
+        /// <returns></returns>
+        public Task<IList<JobsLookupValue>> ReadPayGrades()
+        {
+            return Task.FromResult((IList<JobsLookupValue>)new List<JobsLookupValue>());
+        }
+
         /// <summary>
         /// Reads the work patterns, eg full time or part time
         /// </summary>

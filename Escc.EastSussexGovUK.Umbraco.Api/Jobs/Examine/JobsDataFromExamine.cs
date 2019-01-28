@@ -74,6 +74,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
 
             examineQuery.GroupedOr(new[] { "location" }, query.Locations.ToArray())
                         .And().GroupedOr(new[] { "contractType"}, query.ContractTypes.ToArray())
+                        .And().GroupedOr(new[] { "salaryDisplay" }, query.PayGrades.ToArray())
                         .And().GroupedOr(new[] { "workPattern"}, query.WorkPatterns.ToArray())
                         .And().GroupedOr(new[] { "jobType" }, query.JobTypes.ToArray())
                         .And().GroupedOr(new[] { "organisation" }, query.Organisations.ToArray());

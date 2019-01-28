@@ -156,14 +156,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         }
 
         /// <summary>
-        /// Reads the salary ranges that jobs can be categorised as
+        /// Reads the numeric salary ranges that jobs can be categorised as
         /// </summary>
         /// <returns></returns>
         public async Task<IList<JobsLookupValue>> ReadSalaryRanges()
         {
             return await ReadLookupValuesFromApi(_customFieldLookupValuesParser, "Salary Range").ConfigureAwait(false);
         }
-
 
         /// <summary>
         /// Reads the salary frequencies, eg hourly, weekly, annually
@@ -172,6 +171,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         public async Task<IList<JobsLookupValue>> ReadSalaryFrequencies()
         {
             return await ReadLookupValuesFromApi(_builtInLookupValuesParser, "salary_frequencies").ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Reads the non-numeric named pay grades that jobs can be categorised as
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IList<JobsLookupValue>> ReadPayGrades()
+        {
+            return await ReadLookupValuesFromApi(_customFieldLookupValuesParser, "Pay Grade").ConfigureAwait(false);
         }
 
         /// <summary>

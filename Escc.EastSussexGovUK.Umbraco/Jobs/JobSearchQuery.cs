@@ -79,6 +79,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public IList<string> SalaryRanges { get; set; } = new List<string>();
 
         /// <summary>
+        /// Gets or sets the pay grades.
+        /// </summary>
+        public IList<string> PayGrades { get; set; } = new List<string>();
+
+        /// <summary>
         /// Gets or sets the job reference.
         /// </summary>
         /// <value>
@@ -150,6 +155,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             foreach (var value in Organisations) allContent.Append(value);
             allContent.Append("salary");
             foreach (var value in SalaryRanges) allContent.Append(value);
+            allContent.Append("paygrade");
+            foreach (var value in PayGrades) allContent.Append(value);
             allContent.Append("ref").Append(JobReference);
             allContent.Append("types");
             foreach (var value in JobTypes) allContent.Append(value);
@@ -221,9 +228,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 anythingAfterJobs = true;
             }
 
-            if (SalaryRanges.Count > 0)
+            if (SalaryRanges.Count > 0 || PayGrades.Count > 0)
             {
-                description.Append(ListOfThings("paying", SalaryRanges, null, "or"));
+                var allPayLevels = new List<string>();
+                allPayLevels.AddRange(SalaryRanges);
+                allPayLevels.AddRange(PayGrades);
+                description.Append(ListOfThings("paying", allPayLevels, null, "or"));
                 anythingAfterJobs = true;
             }
 

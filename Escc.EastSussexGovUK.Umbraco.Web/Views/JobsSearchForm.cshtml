@@ -43,8 +43,20 @@
     {
         // Remove the comma from the value to be submitted, as if multiple values are selected they will be separated by commas
         var salaryRangeValue = salaryRange.Text.Replace(",", String.Empty);
+
         var selected = (Model.Query != null && Model.Query.SalaryRanges.Contains(salaryRange.Text)) ? " checked=\"checked\"" : String.Empty;
-        <label><input type="checkbox" value="@salaryRangeValue" name="salaryranges"@selected /> @salaryRange.Text (@salaryRange.Count)</label>
+        <label><input type="checkbox" value="@salaryRangeValue" name="salaryranges" @selected /> @salaryRange.Text (@salaryRange.Count)</label>
+    }
+    @foreach (var payGrade in Model.PayGrades)
+    {
+        // Don't display all pay grades - only if there are results or we're editing an alert - because there are lots but 
+        // usually with no results because they're just a fallback for a missing salary range
+        var selected = (Model.Query != null && Model.Query.PayGrades.Contains(payGrade.Text));
+        if (selected || payGrade.Count > 0)
+        {
+            var selectedAttribute = selected ? " checked=\"checked\"" : String.Empty;
+            <label><input type="checkbox" value="@payGrade.Text" name="paygrades" @selected /> @payGrade.Text (@payGrade.Count)</label>
+        }
     }
 </fieldset>
 }

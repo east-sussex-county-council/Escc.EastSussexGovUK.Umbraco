@@ -340,6 +340,33 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests.Properties {
         ///&lt;job_title&gt;New Worker&lt;/job_title&gt;
         ///&lt;salary_currency&gt;1&lt;/salary_currency&gt;
         ///&lt;salary_frequency&gt;1&lt;/salary_frequency&gt;
+        ///&lt;salary_from&gt;0&lt;/salary_from&gt;
+        ///&lt;salary_to&gt;0&lt;/salary_to&gt;
+        ///&lt;salary_from_text/&gt;
+        ///&lt;salary_to_text/&gt;
+        ///&lt;salaryText /&gt;
+        ///&lt;custom_15&gt;
+        ///&lt;id&gt;1384&lt;/id&gt;
+        ///&lt;field_id&gt;15&lt;/field_id&gt;
+        ///&lt;job_id&gt;134&lt;/job_id&gt;
+        ///&lt;answer&gt;36&lt;/answer&gt;
+        ///&lt;flags&gt;0&lt;/flags&gt;
+        ///&lt;modified_time&gt;2019-01-28 14:54:37&lt;/modified_time&gt;
+        ///&lt;/custom_15&gt;
+        ///&lt;/job&gt;.
+        /// </summary>
+        internal static string TribePadSalaryPayGradeOnly {
+            get {
+                return ResourceManager.GetString("TribePadSalaryPayGradeOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;job&gt;
+        ///&lt;job_id&gt;134&lt;/job_id&gt;
+        ///&lt;job_title&gt;New Worker&lt;/job_title&gt;
+        ///&lt;salary_currency&gt;1&lt;/salary_currency&gt;
+        ///&lt;salary_frequency&gt;1&lt;/salary_frequency&gt;
         ///&lt;salary_from&gt;15000&lt;/salary_from&gt;
         ///&lt;salary_to&gt;19999&lt;/salary_to&gt;
         ///&lt;salary_from_text&gt;15000&lt;/salary_from_text&gt;
@@ -350,6 +377,33 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests.Properties {
         internal static string TribePadSalaryRange {
             get {
                 return ResourceManager.GetString("TribePadSalaryRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;job&gt;
+        ///&lt;job_id&gt;134&lt;/job_id&gt;
+        ///&lt;job_title&gt;New Worker&lt;/job_title&gt;
+        ///&lt;salary_currency&gt;1&lt;/salary_currency&gt;
+        ///&lt;salary_frequency&gt;1&lt;/salary_frequency&gt;
+        ///&lt;salary_from&gt;0&lt;/salary_from&gt;
+        ///&lt;salary_to&gt;0&lt;/salary_to&gt;
+        ///&lt;salary_from_text/&gt;
+        ///&lt;salary_to_text/&gt;
+        ///&lt;salaryText&gt;Competitive&lt;/salaryText&gt;
+        ///&lt;custom_15&gt;
+        ///&lt;id&gt;1384&lt;/id&gt;
+        ///&lt;field_id&gt;15&lt;/field_id&gt;
+        ///&lt;job_id&gt;134&lt;/job_id&gt;
+        ///&lt;answer&gt;36&lt;/answer&gt;
+        ///&lt;flags&gt;0&lt;/flags&gt;
+        ///&lt;modified_time&gt;2019-01-28 14:54:37&lt;/modified_time&gt;
+        ///&lt;/custom_15&gt;
+        ///&lt;/job&gt;.
+        /// </summary>
+        internal static string TribePadSalaryTextOnly {
+            get {
+                return ResourceManager.GetString("TribePadSalaryTextOnly", resourceCulture);
             }
         }
         

@@ -52,7 +52,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
         public async Task<IEnumerable<SimpleDataSet>> GetAllDataAsync(string indexType)
         {
             //Ensure that an Umbraco context is available
-            if (UmbracoContext.Current == null)
+            if (UmbracoContext.Current == null && ApplicationContext.Current != null)
             {
                 var dummyContext =
                     new HttpContextWrapper(
@@ -74,80 +74,43 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
                 var i = 1;
 
                 var locations = await _lookupValuesProvider.ReadLocations().ConfigureAwait(false);
-                foreach (var lookupValue in locations)
-                {
-                    var query = new JobSearchQuery();
-                    query.Locations.Add(lookupValue.Text);
-                    query.ClosingDateFrom = DateTime.Today;
-                    var simpleDataSet = await CreateDataSetFromLookup(i, indexType, "Location", query, lookupValue, jobsDataProvider).ConfigureAwait(false);
-                    dataSets.Add(simpleDataSet);
-                    i++;
-                }
+                dataSets.AddRange(await CreateDataSetFromLookupValues(indexType, "Location", i, locations, (lookup, query) => query.Locations.Add(lookup.Text), jobsDataProvider).ConfigureAwait(false));
+                if (locations != null) i = i + locations.Count;
 
                 var jobTypes = await _lookupValuesProvider.ReadJobTypes().ConfigureAwait(false);
-                foreach (var lookupValue in jobTypes)
-                {
-                    var query = new JobSearchQuery();
-                    query.JobTypes.Add(lookupValue.Text);
-                    query.ClosingDateFrom = DateTime.Today;
-                    var simpleDataSet = await CreateDataSetFromLookup(i, indexType, "JobType", query, lookupValue, jobsDataProvider).ConfigureAwait(false);
-                    dataSets.Add(simpleDataSet);
-                    i++;
-                }
+                dataSets.AddRange(await CreateDataSetFromLookupValues(indexType, "JobType", i, jobTypes, (lookup, query) => query.JobTypes.Add(lookup.Text), jobsDataProvider).ConfigureAwait(false));
+                if (jobTypes != null) i = i + jobTypes.Count;
 
                 var salaryRanges = await _lookupValuesProvider.ReadSalaryRanges().ConfigureAwait(false);
-                foreach (var lookupValue in salaryRanges)
+                if (salaryRanges != null)
                 {
-                    lookupValue.Text = lookupValue.Text.Replace(" - ", " to "); // East Sussex County Council house style
-
-                    var query = new JobSearchQuery();
-                    query.SalaryRanges.Add(lookupValue.Text.Replace(",",String.Empty));
-                    query.ClosingDateFrom = DateTime.Today;
-                    var simpleDataSet = await CreateDataSetFromLookup(i, indexType, "SalaryRange", query, lookupValue, jobsDataProvider).ConfigureAwait(false);
-                    dataSets.Add(simpleDataSet);
-                    i++;
+                    foreach (var lookupValue in salaryRanges)
+                    {
+                        lookupValue.Text = lookupValue.Text.Replace(" - ", " to "); // East Sussex County Council house style
+                    }
                 }
+                dataSets.AddRange(await CreateDataSetFromLookupValues(indexType, "SalaryRange", i, salaryRanges, (lookup, query) => query.SalaryRanges.Add(lookup.Text.Replace(",", String.Empty)), jobsDataProvider).ConfigureAwait(false));
+                if (salaryRanges != null) i = i + salaryRanges.Count;
 
                 var salaryFrequencies = await _lookupValuesProvider.ReadSalaryFrequencies().ConfigureAwait(false);
-                foreach (var lookupValue in salaryFrequencies)
-                {
-                    var simpleDataSet = await CreateDataSetFromLookup(i, indexType, "SalaryFrequency", null, lookupValue, null).ConfigureAwait(false);
-                    dataSets.Add(simpleDataSet);
-                    i++;
-                }
+                dataSets.AddRange(await CreateDataSetFromLookupValues(indexType, "SalaryFrequency", i, salaryFrequencies, null, null).ConfigureAwait(false));
+                if (salaryFrequencies != null) i = i + salaryFrequencies.Count;
+
+                var payGrades = await _lookupValuesProvider.ReadPayGrades().ConfigureAwait(false);
+                dataSets.AddRange(await CreateDataSetFromLookupValues(indexType, "PayGrade", i, payGrades, (lookup, query) => query.PayGrades.Add(lookup.Text), jobsDataProvider).ConfigureAwait(false));
+                if (payGrades != null) i = i + payGrades.Count;
 
                 var organisations = await _lookupValuesProvider.ReadOrganisations().ConfigureAwait(false);
-                foreach (var lookupValue in organisations)
-                {
-                    var query = new JobSearchQuery();
-                    query.Organisations.Add(lookupValue.Text);
-                    query.ClosingDateFrom = DateTime.Today;
-                    var simpleDataSet = await CreateDataSetFromLookup(i, indexType, "Organisation", query, lookupValue, jobsDataProvider).ConfigureAwait(false);
-                    dataSets.Add(simpleDataSet);
-                    i++;
-                }
+                dataSets.AddRange(await CreateDataSetFromLookupValues(indexType, "Organisation", i, organisations, (lookup, query) => query.Organisations.Add(lookup.Text), jobsDataProvider).ConfigureAwait(false));
+                if (organisations != null) i = i + organisations.Count;
 
                 var workPatterns = await _lookupValuesProvider.ReadWorkPatterns().ConfigureAwait(false);
-                foreach (var lookupValue in workPatterns)
-                {
-                    var query = new JobSearchQuery();
-                    query.WorkPatterns.Add(lookupValue.Text);
-                    query.ClosingDateFrom = DateTime.Today;
-                    var simpleDataSet = await CreateDataSetFromLookup(i, indexType, "WorkPattern", query, lookupValue, jobsDataProvider).ConfigureAwait(false);
-                    dataSets.Add(simpleDataSet);
-                    i++;
-                }
+                dataSets.AddRange(await CreateDataSetFromLookupValues(indexType, "WorkPattern", i, workPatterns, (lookup, query) => query.WorkPatterns.Add(lookup.Text), jobsDataProvider).ConfigureAwait(false));
+                if (workPatterns != null) i = i + workPatterns.Count;
 
                 var contractTypes = await _lookupValuesProvider.ReadContractTypes().ConfigureAwait(false);
-                foreach (var lookupValue in contractTypes)
-                {
-                    var query = new JobSearchQuery();
-                    query.ContractTypes.Add(lookupValue.Text);
-                    query.ClosingDateFrom = DateTime.Today;
-                    var simpleDataSet = await CreateDataSetFromLookup(i, indexType, "ContractType", query, lookupValue, jobsDataProvider).ConfigureAwait(false);
-                    dataSets.Add(simpleDataSet);
-                    i++;
-                }
+                dataSets.AddRange(await CreateDataSetFromLookupValues(indexType, "ContractType", i, contractTypes, (lookup, query) => query.ContractTypes.Add(lookup.Text), jobsDataProvider).ConfigureAwait(false));
+                if (contractTypes != null) i = i + contractTypes.Count;
             }
             catch (Exception ex)
             {
@@ -160,22 +123,39 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
             return dataSets;
         }
 
-        private static async Task<SimpleDataSet> CreateDataSetFromLookup(int fakeNodeId, string indexType, string group, JobSearchQuery query, JobsLookupValue lookupValue, IJobsDataProvider jobsDataProvider)
+        private static async Task<IEnumerable<SimpleDataSet>> CreateDataSetFromLookupValues(string indexType, string groupKey, int fakeNodeId, IList<JobsLookupValue> lookupValues, Action<JobsLookupValue, JobSearchQuery> addLookupToQuery, IJobsDataProvider jobsDataProvider)
         {
-            var simpleDataSet = new SimpleDataSet {NodeDefinition = new IndexedNode(), RowData = new Dictionary<string, string>()};
-
-            simpleDataSet.NodeDefinition.NodeId = fakeNodeId;
-            simpleDataSet.NodeDefinition.Type = indexType;
-            simpleDataSet.RowData.Add("id", lookupValue.LookupValueId);
-            simpleDataSet.RowData.Add("group", group);
-            simpleDataSet.RowData.Add("text", lookupValue.Text);
-
-            if (jobsDataProvider != null)
+            var dataSets = new List<SimpleDataSet>();
+            if (lookupValues != null)
             {
-                var jobs = await jobsDataProvider.ReadJobs(query).ConfigureAwait(false);
-                simpleDataSet.RowData.Add("count", jobs.TotalJobs.ToString(CultureInfo.CurrentCulture));
+                foreach (var lookupValue in lookupValues)
+                {
+                    JobSearchQuery query = null;
+                    if (addLookupToQuery != null)
+                    {
+                        query = new JobSearchQuery();
+                        addLookupToQuery(lookupValue, query);
+                        query.ClosingDateFrom = DateTime.Today;
+                    }
+
+                    var simpleDataSet = new SimpleDataSet { NodeDefinition = new IndexedNode(), RowData = new Dictionary<string, string>() };
+
+                    simpleDataSet.NodeDefinition.NodeId = fakeNodeId;
+                    simpleDataSet.NodeDefinition.Type = indexType;
+                    simpleDataSet.RowData.Add("id", lookupValue.LookupValueId);
+                    simpleDataSet.RowData.Add("group", groupKey);
+                    simpleDataSet.RowData.Add("text", lookupValue.Text);
+
+                    if (jobsDataProvider != null)
+                    {
+                        var jobs = await jobsDataProvider.ReadJobs(query).ConfigureAwait(false);
+                        simpleDataSet.RowData.Add("count", jobs.TotalJobs.ToString(CultureInfo.CurrentCulture));
+                    }
+
+                    dataSets.Add(simpleDataSet);
+                }
             }
-            return simpleDataSet;
+            return dataSets;
         }
     }
 }

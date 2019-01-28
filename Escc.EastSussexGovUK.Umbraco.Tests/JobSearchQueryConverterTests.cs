@@ -178,6 +178,31 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             Assert.AreEqual("£50000 and over", collection["salaryranges"]);
         }
 
+
+        [Test]
+        public void PayGradeIsPopulatedFromCollection()
+        {
+            var collection = new NameValueCollection();
+            collection["paygrades"] = "Single Status";
+            var converter = new JobSearchQueryConverter();
+
+            var query = converter.ToQuery(collection);
+
+            Assert.AreEqual("Single Status", query.PayGrades[0]);
+        }
+
+        [Test]
+        public void PayGradeIsPopulatedFromQuery()
+        {
+            var query = new JobSearchQuery();
+            query.PayGrades.Add("Single Status");
+            var converter = new JobSearchQueryConverter();
+
+            var collection = converter.ToCollection(query);
+
+            Assert.AreEqual("Single Status", collection["paygrades"]);
+        }
+
         [Test]
         public void ContractTypeIsPopulatedFromCollection()
         {
