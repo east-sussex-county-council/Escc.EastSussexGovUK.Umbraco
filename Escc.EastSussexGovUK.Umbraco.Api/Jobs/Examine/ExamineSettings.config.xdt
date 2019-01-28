@@ -1,37 +1,5 @@
 <?xml version="1.0"?>
 <Examine xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
-  <ExamineIndexProviders>
-    <providers>    
-      <add name="PublicJobsIndexer" xdt:Transform="RemoveAll" xdt:Locator="Match(name)" />
-      <add name="PublicJobsIndexer" type="Examine.LuceneEngine.Providers.SimpleDataIndexer, Examine"
-           dataService="Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink.PublicJobsIndexer, Escc.EastSussexGovUK.Umbraco.Api" 
-           indexTypes="Job" 
-           xdt:Transform="Insert" />
-
-      <add name="RedeploymentJobsIndexer" xdt:Transform="RemoveAll" xdt:Locator="Match(name)" />
-      <add name="RedeploymentJobsIndexer" type="Examine.LuceneEngine.Providers.SimpleDataIndexer, Examine"
-           dataService="Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink.RedeploymentJobsIndexer, Escc.EastSussexGovUK.Umbraco.Api" 
-           indexTypes="Job" 
-           xdt:Transform="Insert" />
-
-      <add name="PublicJobsLookupValuesIndexer" xdt:Transform="RemoveAll" xdt:Locator="Match(name)" />
-      <add name="PublicJobsLookupValuesIndexer" type="Examine.LuceneEngine.Providers.SimpleDataIndexer, Examine"
-           dataService="Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink.PublicJobsLookupValuesIndexer, Escc.EastSussexGovUK.Umbraco.Api"
-           indexTypes="JobsLookup"
-           xdt:Transform="Insert" />
-
-      <add name="RedeploymentJobsLookupValuesIndexer" xdt:Transform="RemoveAll" xdt:Locator="Match(name)" />
-      <add name="RedeploymentJobsLookupValuesIndexer" type="Examine.LuceneEngine.Providers.SimpleDataIndexer, Examine"
-           dataService="Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink.RedeploymentJobsLookupValuesIndexer, Escc.EastSussexGovUK.Umbraco.Api"
-           indexTypes="JobsLookup"
-           xdt:Transform="Insert" />
-           
-      <!-- Add a directoryFactory to all indexers. 
-           https://our.umbraco.org/Documentation/Getting-Started/Setup/Server-Setup/Load-Balancing/flexible -->
-      <add directoryFactory="Examine.LuceneEngine.Directories.TempEnvDirectoryFactory,Examine" xdt:Transform="SetAttributes(directoryFactory)" />
-    </providers>
-  </ExamineIndexProviders>
-
   <ExamineSearchProviders>
     <providers>
       <add name="PublicJobsSearcher" xdt:Transform="RemoveAll" xdt:Locator="Match(name)" />
@@ -61,5 +29,4 @@
            xdt:Transform="Insert" />
     </providers>
   </ExamineSearchProviders>
-
 </Examine>

@@ -26,8 +26,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         public PublicJobsIndexer() 
         {
             var resultsUrl = new Uri(ConfigurationManager.AppSettings["TribePadPublicJobsResultsUrl"]);
-            var advertUrl = new Uri(ConfigurationManager.AppSettings["TribePadPublicJobsAdvertUrl"]);
-            var lookupValuesApiUrl = new Uri(ConfigurationManager.AppSettings["TribePadPublicJobsLookupValuesUrl"]);
+            var advertUrl = new Uri(ConfigurationManager.AppSettings["TribePadAdvertUrl"]);
+            var lookupValuesApiUrl = new Uri(ConfigurationManager.AppSettings["TribePadLookupValuesUrl"]);
             var applyUrl = new Uri(ConfigurationManager.AppSettings["TribePadApplyUrl"]);
 
             // This setting is useful in a test environment where images are not present on the test domain

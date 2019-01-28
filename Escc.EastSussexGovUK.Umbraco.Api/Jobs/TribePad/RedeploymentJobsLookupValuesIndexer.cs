@@ -14,7 +14,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
     /// <seealso cref="BaseLookupValuesIndexer" />
     public class RedeploymentJobsLookupValuesIndexer : BaseLookupValuesIndexer
     {
-        private static readonly Uri LookupValuesApiUrl = new Uri(ConfigurationManager.AppSettings["TribePadRedeploymentJobsLookupValuesUrl"]);
+        private static readonly Uri LookupValuesApiUrl = new Uri(ConfigurationManager.AppSettings["TribePadLookupValuesUrl"]);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RedeploymentJobsLookupValuesIndexer"/> class.

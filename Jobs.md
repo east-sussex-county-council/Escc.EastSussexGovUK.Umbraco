@@ -6,13 +6,13 @@ The job search section of our website is powered by [Examine](https://github.com
 
 The first step is to get the data from our external jobs provider into Examine. This happens by configuring an index set called `PublicJobsIndexSet` in `~\config\ExamineIndex.config`, and an index provider called `PublicJobsIndexer` in `~\config\ExamineSettings.config`. 
 
-The `PublicJobsIndexer` index provider configuration points to the `PublicJobsIndexer` class, which is instantiated by Umbraco to build or rebuild the index. It fetches the data from our external jobs provider (which is just an instance of `IJobsDataProvider`), using source URLs that come from `TalentLinkPublicJobs*Url` settings in the `appSettings` section of `web.config`, and puts it into Examine.
+The `PublicJobsIndexer` index provider configuration points to the `PublicJobsIndexer` class, which is instantiated by Umbraco to build or rebuild the index. It fetches the data from our external jobs provider (which is just an instance of `IJobsDataProvider`), using source URLs that come from settings in the `appSettings` section of `web.config` that are unique to the specific `IJobsDataProvider`, and puts it into Examine.
 
 We then have a second index set called `PublicJobsLookupValuesIndexSet` and an index provider called `PublicJobsLookupValuesIndexer` with a matching class. This reads lookup values from our external jobs provider, such as the list of towns where jobs can be based, but also searches the `PublicJobsIndexSet` for each one and records how many results it finds. For this reason the `PublicJobsLookupValuesIndexSet` must *always* be built or rebuilt after `PublicJobsIndexSet`.
 
 We have a second set of jobs which are open only to applicants who are eligible for redeployment, so we repeat the above process to create two more index sets and indexers with the prefix `RedeploymentJobs` instead of `PublicJobs`. These work in exactly the same way but based on a different data source.
 
-You can recreate the configuration for these index sets and indexes by applying the `ExamineIndex.config.xdt` and `ExamineSettings.config.xdt` transforms to your own installation of this project.
+You can recreate the configuration for these index sets and indexes by applying the `ExamineIndex.config.xdt` and `ExamineSettings.config.xdt` transforms to your own installation of this project. You will need both files from `Escc.EastSussexGovUK.Jobs.Api\Jobs\Examine` and another `ExamineSettings.config.xdt` from a provider-specific sibling folder.
 
 The domain is automatically removed from image URLs in job adverts, as images are expected to be loaded from the same domain as the website. However, this is a problem in test environments where the images are not present, so you can disable this behaviour in `web.config`:
 
@@ -30,11 +30,19 @@ To update the jobs data you need a trigger a reindex for each of the index sets.
 
 If the data source is unavailable during a reindex the jobs data we already have will be lost, so we will have no data to display. Unfortunately this behaviour is built into the way Umbraco calls the `ISimpleDataService` interface. 
 
+## Searching the data
+
+A `PublicJobsSearcher` and `PublicJobsLookupValuesSearcher` are configured in `~\config\ExamineSettings.config` linking to the index sets set up above. Equivalent searchers are also created for redeployment jobs.
+
+The `JobsDataFromExamine` class implements `IJobsDataProvider` and provides methods to query the jobs data in Examine. You need to provide it a reference to either the `PublicJobsSearcher` or the `RedeploymentJobsSearcher` so that it knows which index set to search.
+
+Searching this data in Examine rather than directly from our external jobs provider allows us to adjust the way the search behaves by writing our own queries in Lucene syntax.
+
 ### Read from an API to support load-balancing
 
 When Umbraco updates its internal Examine indexes it does so across all load-balanced servers. This doesn't happen with the `ISimpleDataService` interface used by jobs, so only the local index is updated. This is a problem in a load-balanced scenario unless you are able to trigger an update on every load-balanced server in the farm.
 
-To allow load-balancing to be used, the jobs API built into the `Escc.EastSussexGovUK.Umbraco.Api` project should be hosted on a non-load-balanced server, and the jobs data on that server should be kept up-to-date as described above. Load-balanced front-end servers should specify the API server URL in `web.config`:
+To allow load-balancing to be used, the jobs API built into the `Escc.EastSussexGovUK.Umbraco.Api` project should be hosted on a non-load-balanced server, and the jobs data on that server should be kept up-to-date as described above. Load-balanced front-end servers should read data using `JobsDataFromApi` and specify the API server URL in `web.config`:
 
 	<appSettings>
 	    <add key="JobsApiBaseUrl" value="https://hostname"/>
@@ -46,14 +54,6 @@ We don't want the overhead of reading from a remote API all the time though, so 
 *  the `Problem jobs` RSS feed (see below) is not cached, as the query is not expected to be run frequently
 *  adding `ForceCacheRefresh=1` to the querystring of a page will force new data to be fetched from the API and inserted into the cache
 
-## Searching the data
-
-A `PublicJobsSearcher` and `PublicJobsLookupValuesSearcher` are configured in `~\config\ExamineSettings.config` linking to the index sets set up above. Equivalent searchers are also created for redeployment jobs.
-
-The `JobsDataFromExamine` class implements `IJobsDataProvider` and provides methods to query the jobs data in Examine. You need to provide it a reference to either the `PublicJobsSearcher` or the `RedeploymentJobsSearcher` so that it knows which index set to search.
-
-Searching this data in Examine rather than directly from our external jobs provider allows us to adjust the way the search behaves by writing our own queries in Lucene syntax.
-
 ## Umbraco document types for jobs
 
 A series of Umbraco document types and templates can be used to build up a jobs site from Umbraco content. These have properties to connect one page to another (for example, the search page to the search results page) rather than hard-coding the connections between them. This has three advantages:
@@ -64,7 +64,7 @@ A series of Umbraco document types and templates can be used to build up a jobs 
 
 Just one instance of the `Job advert` document type is required to display any job. This works because the `JobAdvertContentFinder`, hooked up in `JobAdvertEventHandler`, recognises the URL of this page when it has an id and job title appended. For example when `/job-advert` is accessed as `/job-advert/12345/teacher-at-example-school`. The id is used to look up and display the job, and the job title is there purely for SEO.
 
-Most of the templates could work with any implementation of `IJobsDataProvider`, but there is also a `Jobs component` template which is designed specifically to host code provided by our external jobs provider. This is used for features we cannot replicate in Examine such as logging in to view job applications. 
+Most of the templates could work with any implementation of `IJobsDataProvider`, but there is also a `Jobs component` template which is designed specifically to host code provided by Lumesse TalentLink. This is used for features we cannot replicate in Examine such as logging in to view job applications. 
 
 ## Reporting problems with missing data
 

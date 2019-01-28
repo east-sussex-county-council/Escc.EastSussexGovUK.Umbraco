@@ -440,6 +440,8 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Jobs\Examine\ExamineSettings.config.xdt" />
+    <Content Include="Jobs\TribePad\ExamineSettings.config.xdt" />
+    <Content Include="Jobs\TalentLink\ExamineSettings.config.xdt" />
     <None Include="packages.config" />
     <Content Include="Views\Web.config" />
     <None Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
