@@ -153,6 +153,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
                     }
 
                     dataSets.Add(simpleDataSet);
+
+                    fakeNodeId++;
                 }
             }
             return dataSets;
