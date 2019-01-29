@@ -24,11 +24,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public HttpResponseMessage UpdatePublicJobs()
+        public async Task<HttpResponseMessage> UpdatePublicJobs()
         {
             try
             {
-                UpdateIndex("PublicJobsIndexer", "PublicJobsSearcher");
+                await UpdateIndex("PublicJobsIndexer", "PublicJobsSearcher");
                 return Request.CreateResponse(HttpStatusCode.NoContent);
             }
             catch (Exception ex)
@@ -44,11 +44,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public HttpResponseMessage UpdateRedeploymentJobs()
+        public async Task<HttpResponseMessage> UpdateRedeploymentJobs()
         {
             try
             {
-                UpdateIndex("RedeploymentJobsIndexer", "RedeploymentJobsSearcher");
+                await UpdateIndex("RedeploymentJobsIndexer", "RedeploymentJobsSearcher");
                 return Request.CreateResponse(HttpStatusCode.NoContent);
             }
             catch (Exception ex)
