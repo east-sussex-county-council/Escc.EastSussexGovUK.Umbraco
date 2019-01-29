@@ -8,6 +8,7 @@
 @using Escc.EastSussexGovUK.Mvc.Views.EastSussexGovUK
 @using Escc.Dates
 @using Escc.Net.Configuration
+@using Escc.Web
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.Jobs.JobAdvertViewModel>
 @{
     Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
@@ -41,9 +42,12 @@
     }
 
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
-{
-new EmbeddedYouTubeVideos() { Html = new [] { Model.Job?.AdvertHtml?.ToHtmlString(), Model.Job?.AdditionalInformationHtml?.ToHtmlString(), Model.Job?.EqualOpportunitiesHtml?.ToHtmlString() }}
-});
+    {
+    new EmbeddedYouTubeVideos() { Html = new [] { Model.Job?.AdvertHtml?.ToHtmlString(), Model.Job?.AdditionalInformationHtml?.ToHtmlString(), Model.Job?.EqualOpportunitiesHtml?.ToHtmlString() }}
+    });
+
+    // Allow images uploaded to TribePad
+    new ContentSecurityPolicyHeaders(Response.Headers).AppendPolicy("img-src https://tp-uploads.s3.amazonaws.com").UpdateHeaders();
 }
 @section Metadata{
     @if (jobGone)

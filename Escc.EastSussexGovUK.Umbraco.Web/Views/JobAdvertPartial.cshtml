@@ -54,7 +54,7 @@
     jobSummaryHtml.Append("</dl>");
 }
 <div class="content text-content">
-    <h1>@Model.Metadata.Title</h1>
+    <h1>@if (Model.Job.LogoUrl != null) {<img src="@Model.Job.LogoUrl" alt="Logo representing this job" class="job-advert-logo" />}@Model.Metadata.Title</h1>
 </div>
 @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
 <div class="supporting content-small content-medium text-content">

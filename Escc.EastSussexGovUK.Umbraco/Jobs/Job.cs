@@ -24,6 +24,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// The job title.
         /// </value>
         public string JobTitle { get; set; }
+
+        /// <summary>
+        /// Gets or sets the URL of a logo representing the job
+        /// </summary>
+        public Uri LogoUrl { get; set; }
         
         /// <summary>
         /// Gets or sets the organisation advertising the job.

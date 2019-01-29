@@ -50,6 +50,7 @@ ul.job-tiles { margin: 0; padding: 0; }
    - 'continue an application' links to login to discourage duplicate applications, but has to undo styles of .main-action
 */
 .job-advert img { margin: 0 1.125em 1.125em 0; }
+.job-advert .job-advert-logo { margin: 0 10px 0 0; max-height: 1em; display: inline-block; transform: translateY(5px);}
 
 .login-continue { font-size: .75em; display: block; margin-top: -1em; }
 .login-continue > a:link, .login-continue > a:focus, .login-continue > a:hover, .login-continue > a:active { color: #003c69; background: none; border: none; padding: 0; text-decoration: underline; }

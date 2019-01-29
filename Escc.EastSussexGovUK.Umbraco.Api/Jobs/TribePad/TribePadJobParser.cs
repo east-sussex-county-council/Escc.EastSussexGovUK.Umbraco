@@ -8,6 +8,7 @@ using System.Xml.Linq;
 using System.IO;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Text;
 
 namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
 {
@@ -128,9 +129,23 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             }
 
             job.Locations.Add(HttpUtility.HtmlDecode(jobXml.Element("location_city").Value).Trim());
-            job.AdvertHtml = new HtmlString(HttpUtility.HtmlDecode(jobXml.Element("package_description")?.Value + jobXml.Element("summary_external")?.Value + jobXml.Element("main_responsibilities")?.Value));
+
+            var logo = jobXml.Element("media")?.Element("logo")?.Element("url")?.Value;
+            if (!String.IsNullOrEmpty(logo))
+            {
+                // Ignore width and height from TribePad as they can be wrong!
+                job.LogoUrl = new Uri(logo);
+            }
+
+            var advertHtml = new StringBuilder();
+            advertHtml.Append(HttpUtility.HtmlDecode(jobXml.Element("package_description")?.Value));
+            advertHtml.Append(HttpUtility.HtmlDecode(jobXml.Element("summary_external")?.Value));
+            advertHtml.Append(HttpUtility.HtmlDecode(jobXml.Element("main_responsibilities")?.Value));
+            job.AdvertHtml = new HtmlString(advertHtml.ToString());
+
             job.AdditionalInformationHtml = new HtmlString(HttpUtility.HtmlDecode(jobXml.Element("ideal_candidate")?.Value));
             job.EqualOpportunitiesHtml = new HtmlString(HttpUtility.HtmlDecode(jobXml.Element("about_company")?.Value));
+
             job.JobType = HttpUtility.HtmlDecode(jobXml.Element("category_name")?.Value).Replace(" & ", " and ");
 
             if (jobXml.Element("no_apply")?.Value == "0")

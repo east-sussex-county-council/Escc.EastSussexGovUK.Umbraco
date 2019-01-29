@@ -27,27 +27,25 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
     /// </summary>
     public abstract class BaseJobsIndexer : ISimpleDataService
     {
-        private IJobsDataProvider _jobsProvider;
-        private ISearchFilter _stopWordsRemover;
-        private IHtmlTagSanitiser _tagSanitiser;
-        private Dictionary<IEnumerable<IJobMatcher>, IEnumerable<IJobTransformer>> _jobTransformers;
+        /// <summary>
+        /// Gets or sets the method of getting job information to be indexed
+        /// </summary>
+        public virtual IJobsDataProvider JobsProvider { get; set; }
 
         /// <summary>
-        /// 
+        ///  Gets or sets the method of removing stop words during indexing
         /// </summary>
-        /// <param name="jobsProvider">The jobs provider.</param>
-        /// <param name="stopWordsRemover">The stop words remover.</param>
-        /// <param name="tagSanitiser">The tag sanitiser.</param>
-        /// <param name="jobTransformers">Transforms to apply to specific jobs.</param>
-        /// <exception cref="ArgumentNullException">jobsProvider</exception>
-        protected void InitialiseDependencies(IJobsDataProvider jobsProvider, ISearchFilter stopWordsRemover, IHtmlTagSanitiser tagSanitiser, Dictionary<IEnumerable<IJobMatcher>, IEnumerable<IJobTransformer>> jobTransformers)
-        {
-            if (jobsProvider == null) throw new ArgumentNullException(nameof(jobsProvider));
-            _jobsProvider = jobsProvider;
-            _stopWordsRemover = stopWordsRemover;
-            _tagSanitiser = tagSanitiser;
-            _jobTransformers = jobTransformers;
-        }
+        public virtual ISearchFilter StopWordsRemover { get; set; }
+
+        /// <summary>
+        ///  Gets or sets the method of removing HTML during indexing
+        /// </summary>
+        public virtual IHtmlTagSanitiser TagSanitiser { get; set; }
+
+        /// <summary>
+        /// Gets or sets transforms to apply to specific jobs during indexing
+        /// </summary>
+        public virtual Dictionary<IEnumerable<IJobMatcher>, IEnumerable<IJobTransformer>> JobTransformers { get; set; }
 
         /// <summary>
         /// Gets the index provider.
@@ -64,7 +62,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
 
         public async Task<IEnumerable<SimpleDataSet>> GetAllDataAsync(string indexType)
         {
-            if (_jobsProvider == null) throw new InvalidOperationException("You must call InitialiseDependencies before using this instance");
+            if (JobsProvider == null) throw new InvalidOperationException("You must set the JobsProvider property before using this instance");
 
             var dataSets = new List<SimpleDataSet>();
 
@@ -74,14 +72,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
                 // we can't just continue with the existing data.  If we try to check the data source in the constructor, 
                 // the only way to prevent execution proceeding to wiping the index is to throw an exception, and in a cold-boot
                 // scenario where indexes need to be rebuilt that crashes all Umbraco pages.
-                var jobs = await _jobsProvider.ReadJobs(new JobSearchQuery()).ConfigureAwait(false);
+                var jobs = await JobsProvider.ReadJobs(new JobSearchQuery()).ConfigureAwait(false);
 
                 //Looping all the raw models and adding them to the dataset
                 foreach (var job in jobs.Jobs)
                 {
                     try
                     {
-                        var jobAdvert = await _jobsProvider.ReadJob(job.Id.ToString(CultureInfo.InvariantCulture)).ConfigureAwait(false);
+                        var jobAdvert = await JobsProvider.ReadJob(job.Id.ToString(CultureInfo.InvariantCulture)).ConfigureAwait(false);
                         jobAdvert.Id = job.Id;
                         if (String.IsNullOrEmpty(jobAdvert.JobTitle)) jobAdvert.JobTitle = job.JobTitle;
                         if (jobAdvert.Locations == null || jobAdvert.Locations.Count == 0) jobAdvert.Locations = job.Locations;
@@ -93,9 +91,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
 
                         if (!jobAdvert.ClosingDate.HasValue) jobAdvert.ClosingDate = job.ClosingDate;
 
-                        if (_jobTransformers != null)
+                        if (JobTransformers != null)
                         {
-                            foreach (var matchers in _jobTransformers.Keys)
+                            foreach (var matchers in JobTransformers.Keys)
                             {
                                 var match = true;
                                 foreach (var matcher in matchers)
@@ -105,7 +103,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
 
                                 if (match)
                                 {
-                                    foreach (var transformer in _jobTransformers[matchers])
+                                    foreach (var transformer in JobTransformers[matchers])
                                     {
                                         transformer.TransformJob(jobAdvert);
                                     }
@@ -200,13 +198,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
             var salaryWithStopWords = salary;
             if (!String.IsNullOrEmpty(salary))
             {
-                if (_tagSanitiser != null)
+                if (TagSanitiser != null)
                 {
-                    salary = _tagSanitiser.StripTags(salary);
+                    salary = TagSanitiser.StripTags(salary);
                 }
-                if (_stopWordsRemover != null)
+                if (StopWordsRemover != null)
                 {
-                    salary = _stopWordsRemover.Filter(salary);
+                    salary = StopWordsRemover.Filter(salary);
                 }
             }
             var simpleDataSet = new SimpleDataSet { NodeDefinition = new IndexedNode(), RowData = new Dictionary<string, string>() };
@@ -216,39 +214,44 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
             simpleDataSet.RowData.Add("id", job.Id.ToString(CultureInfo.InvariantCulture));
             simpleDataSet.RowData.Add("reference", job.Reference);
             simpleDataSet.RowData.Add("numberOfPositions", job.NumberOfPositions?.ToString(CultureInfo.CurrentCulture));
-            simpleDataSet.RowData.Add("title", _stopWordsRemover != null ? _stopWordsRemover.Filter(job.JobTitle) : job.JobTitle);
+            simpleDataSet.RowData.Add("title", StopWordsRemover != null ? StopWordsRemover.Filter(job.JobTitle) : job.JobTitle);
             simpleDataSet.RowData.Add("titleDisplay", job.JobTitle);
-            simpleDataSet.RowData.Add("organisation", _stopWordsRemover != null ? _stopWordsRemover.Filter(job.Organisation) : job.Organisation);
+            simpleDataSet.RowData.Add("logoUrl", job.LogoUrl?.ToString());
+            simpleDataSet.RowData.Add("organisation", StopWordsRemover != null ? StopWordsRemover.Filter(job.Organisation) : job.Organisation);
             simpleDataSet.RowData.Add("organisationDisplay", job.Organisation);
             simpleDataSet.RowData.Add("salary", salary);
             simpleDataSet.RowData.Add("salaryDisplay", salaryWithStopWords); // so that it's not displayed with stop words removed
-            simpleDataSet.RowData.Add("salaryRange", _stopWordsRemover != null ? _stopWordsRemover.Filter(job.Salary.SearchRange) : job.Salary.SearchRange);
+            simpleDataSet.RowData.Add("salaryRange", StopWordsRemover != null ? StopWordsRemover.Filter(job.Salary.SearchRange) : job.Salary.SearchRange);
             simpleDataSet.RowData.Add("salaryMin", job.Salary.MinimumSalary?.ToString("D7") ?? String.Empty);
             simpleDataSet.RowData.Add("salaryMax", job.Salary.MaximumSalary?.ToString("D7") ?? String.Empty);
-            simpleDataSet.RowData.Add("salarySort", (job.Salary.MinimumSalary?.ToString("D7") ?? String.Empty) + " " + (job.Salary.MaximumSalary?.ToString("D7") ?? String.Empty) + " " + (_stopWordsRemover != null ? _stopWordsRemover.Filter(job.Salary.SalaryRange) : job.Salary.SalaryRange));
+            simpleDataSet.RowData.Add("salarySort", (job.Salary.MinimumSalary?.ToString("D7") ?? String.Empty) + " " + (job.Salary.MaximumSalary?.ToString("D7") ?? String.Empty) + " " + (StopWordsRemover != null ? StopWordsRemover.Filter(job.Salary.SalaryRange) : job.Salary.SalaryRange));
             simpleDataSet.RowData.Add("hourlyRate", job.Salary.MinimumHourlyRate?.ToString(CultureInfo.CurrentCulture));
             simpleDataSet.RowData.Add("hoursPerWeek", job.WorkPattern.HoursPerWeek?.ToString(CultureInfo.CurrentCulture));
-            simpleDataSet.RowData.Add("closingDate", job.ClosingDate.Value.ToIso8601DateTime());
-            simpleDataSet.RowData.Add("closingDateDisplay", job.ClosingDate.Value.ToIso8601DateTime());
-            simpleDataSet.RowData.Add("jobType", _stopWordsRemover != null ? _stopWordsRemover.Filter(job.JobType) : job.JobType);
+            simpleDataSet.RowData.Add("jobType", StopWordsRemover != null ? StopWordsRemover.Filter(job.JobType) : job.JobType);
             simpleDataSet.RowData.Add("jobTypeDisplay", job.JobType);
-            simpleDataSet.RowData.Add("contractType", _stopWordsRemover != null ? _stopWordsRemover.Filter(job.ContractType) : job.ContractType);
-            simpleDataSet.RowData.Add("department", _stopWordsRemover != null ? _stopWordsRemover.Filter(job.Department) : job.Department);
+            simpleDataSet.RowData.Add("contractType", StopWordsRemover != null ? StopWordsRemover.Filter(job.ContractType) : job.ContractType);
+            simpleDataSet.RowData.Add("department", StopWordsRemover != null ? StopWordsRemover.Filter(job.Department) : job.Department);
             simpleDataSet.RowData.Add("departmentDisplay", job.Department);
             simpleDataSet.RowData.Add("datePublished", job.DatePublished.ToIso8601DateTime());
+
+            if (job.ClosingDate.HasValue)
+            {
+                simpleDataSet.RowData.Add("closingDate", job.ClosingDate.Value.ToIso8601DateTime());
+                simpleDataSet.RowData.Add("closingDateDisplay", job.ClosingDate.Value.ToIso8601DateTime());
+            }
 
             var workPatternList = string.Join(", ", job.WorkPattern.WorkPatterns.ToArray<string>());
             simpleDataSet.RowData.Add("workPattern", workPatternList);
 
             var locationsList = string.Join(", ", job.Locations.ToArray<string>());
-            simpleDataSet.RowData.Add("location", _stopWordsRemover != null ? _stopWordsRemover.Filter(locationsList) : locationsList);
+            simpleDataSet.RowData.Add("location", StopWordsRemover != null ? StopWordsRemover.Filter(locationsList) : locationsList);
             simpleDataSet.RowData.Add("locationDisplay", locationsList); // because Somewhere-on-Sea needs to lose the "on" for searching but keep it for display
 
 
             if (job.AdvertHtml != null)
             {
                 var fullText = job.AdvertHtml.ToHtmlString();
-                if (_tagSanitiser != null) fullText = _tagSanitiser.StripTags(fullText);
+                if (TagSanitiser != null) fullText = TagSanitiser.StripTags(fullText);
 
                 // Append other fields as keywords, otherwise a search term that's a good match will not be found if it has terms from two fields,
                 // eg Job Title (full time)

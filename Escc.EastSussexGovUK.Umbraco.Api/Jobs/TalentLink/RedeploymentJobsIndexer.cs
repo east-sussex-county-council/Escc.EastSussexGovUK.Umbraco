@@ -31,18 +31,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
             var salaryDescriptionParser = new TalentLinkSalaryFromDescriptionParser();
             var salaryHtmlParser = new TalentLinkSalaryFromHtmlParser(salaryDescriptionParser);
 
-            InitialiseDependencies(new JobsDataFromTalentLink(ResultsUrl, AdvertUrl,
-            new TalentLinkJobResultsHtmlParser(salaryDescriptionParser),
-            new TalentLinkJobAdvertHtmlParser(salaryHtmlParser, new TalentLinkWorkPatternParser()),
-            new ConfigurationProxyProvider(), true),
-            new LuceneStopWordsRemover(),
-            new HtmlTagSanitiser(),
-            new Dictionary<IEnumerable<IJobMatcher>, IEnumerable<IJobTransformer>>()
+            JobsProvider = new JobsDataFromTalentLink(ResultsUrl, AdvertUrl,
+                new TalentLinkJobResultsHtmlParser(salaryDescriptionParser),
+                new TalentLinkJobAdvertHtmlParser(salaryHtmlParser, new TalentLinkWorkPatternParser()),
+                new ConfigurationProxyProvider(), true);
+            StopWordsRemover = new LuceneStopWordsRemover();
+            TagSanitiser = new HtmlTagSanitiser();
+            JobTransformers = new Dictionary<IEnumerable<IJobMatcher>, IEnumerable<IJobTransformer>>()
             {
                 { new IJobMatcher[] { new JointCommunityRehabilitationMatcher(), new LocationMatcher("Lewes") }, new IJobTransformer[] { new SetJobLocationTransformer(new[] { "Crowborough", "Lewes", "Peacehaven",  "Wadhurst" }) } },
                 { new IJobMatcher[] { new JointCommunityRehabilitationMatcher(), new LocationMatcher("Eastbourne") }, new IJobTransformer[] { new SetJobLocationTransformer(new[] { "Eastbourne", "Hailsham", "Polegate", "Seaford" }) } },
                 { new IJobMatcher[] { new JointCommunityRehabilitationMatcher(), new LocationMatcher("Bexhill-on-Sea") }, new IJobTransformer[] { new SetJobLocationTransformer(new[] { "Bexhill-on-Sea", "Hastings", "Rural Rother" }) } }
-            });
+            };
         }
 
         /// <summary>

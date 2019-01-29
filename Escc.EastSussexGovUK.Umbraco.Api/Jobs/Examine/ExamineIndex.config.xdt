@@ -11,6 +11,7 @@
       <add Name="numberOfPositions" />
       <add Name="title" />
       <add Name="titleDisplay" EnableSorting="true" Type="STRING" />
+      <add Name="logoUrl" />
       <add Name="organisation" />
       <add Name="organisationDisplay" />
       <add Name="location" />
@@ -45,8 +46,10 @@
     <IndexUserFields>
       <add Name="id" />
       <add Name="reference" />
+      <add Name="numberOfPositions" />
       <add Name="title" />
       <add Name="titleDisplay" EnableSorting="true" Type="STRING" />
+      <add Name="logoUrl" />
       <add Name="organisation" />
       <add Name="organisationDisplay" />
       <add Name="location" />
@@ -57,13 +60,13 @@
       <add Name="salaryMax" />
       <add Name="salaryMin" />
       <add Name="salarySort" EnableSorting="true" Type="STRING" />
+      <add Name="hourlyRate" />
+      <add Name="hoursPerWeek" />
       <add Name="closingDate" EnableSorting="true" Type="DATE" />
       <add Name="closingDateDisplay" />
       <add Name="jobType" />
       <add Name="jobTypeDisplay" />
       <add Name="contractType" />
-      <add Name="fullTime" />
-      <add Name="partTime" />
       <add Name="workPattern" EnableSorting="true" Type="STRING" />
       <add Name="department" />
       <add Name="departmentDisplay" />

@@ -40,6 +40,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
             Assert.AreEqual("orbis/TP/12/142", job.Reference);
         }
 
+        [Test]
+        public async Task LogoUrlParsed()
+        {
+            var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
+            var salaryParser = new Mock<ISalaryParser>();
+            var workPatternParser = new Mock<IWorkPatternParser>();
+            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, new Uri("https://www.example.org"));
+
+            var job = await parser.ParseJob(Properties.Resources.TribePadJobXml, "142");
+
+            Assert.AreEqual("https://www.example.org/image.png", job.LogoUrl.ToString());
+        }
 
         [Test]
         public async Task LocationParsed()

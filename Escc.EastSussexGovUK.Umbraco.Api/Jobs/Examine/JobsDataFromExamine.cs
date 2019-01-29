@@ -237,6 +237,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
                         Id = result.Fields.ContainsKey("id") ? Int32.Parse(result["id"], CultureInfo.InvariantCulture) : 0,
                         Reference = result.Fields.ContainsKey("reference") ? result["reference"] : String.Empty,
                         JobTitle = result.Fields.ContainsKey("titleDisplay") ? result["titleDisplay"] : String.Empty,
+                        LogoUrl = (result.Fields.ContainsKey("logoUrl") && !String.IsNullOrEmpty(result["logoUrl"])) ? new Uri(result["logoUrl"]) : null,
                         Organisation = result.Fields.ContainsKey("organisationDisplay") ? result["organisationDisplay"] : String.Empty,
                         Locations = result.Fields.ContainsKey("locationDisplay") ? result["locationDisplay"].Split(',') : new string[0],
                         JobType = result.Fields.ContainsKey("jobTypeDisplay") ? result["jobTypeDisplay"] : String.Empty,

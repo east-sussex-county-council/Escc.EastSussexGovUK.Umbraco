@@ -37,33 +37,31 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             var lookupValuesProvider = new JobsLookupValuesFromTribePad(lookupValuesApiUrl, new LookupValuesFromTribePadBuiltInFieldParser(), new LookupValuesFromTribePadCustomFieldParser(), null, proxyProvider);
             var jobParser = new TribePadJobParser(lookupValuesProvider, new TribePadSalaryParser(lookupValuesProvider), new TribePadWorkPatternParser(lookupValuesProvider, new TribePadWorkPatternSplitter()), applyUrl);
 
-            InitialiseDependencies(
-                new JobsDataFromTribePad(resultsUrl, advertUrl, jobParser, jobParser, proxyProvider, true),
-                new LuceneStopWordsRemover(),
-                new HtmlTagSanitiser(),
-                new Dictionary<IEnumerable<IJobMatcher>, IEnumerable<IJobTransformer>>()
-                {
-                    { new IJobMatcher[] { new JointCommunityRehabilitationMatcher(), new LocationMatcher("Lewes") }, new IJobTransformer[] { new SetJobLocationTransformer(new[] { "Crowborough", "Lewes", "Peacehaven",  "Wadhurst" }) } },
-                    { new IJobMatcher[] { new JointCommunityRehabilitationMatcher(), new LocationMatcher("Eastbourne") }, new IJobTransformer[] { new SetJobLocationTransformer(new[] { "Eastbourne", "Hailsham", "Polegate", "Seaford" }) } },
-                    { new IJobMatcher[] { new JointCommunityRehabilitationMatcher(), new LocationMatcher("Bexhill-on-Sea") }, new IJobTransformer[] { new SetJobLocationTransformer(new[] { "Bexhill-on-Sea", "Hastings", "Rural Rother" }) } },
-                    { new IJobMatcher[] { /* No matcher - apply to all jobs */ }, new IJobTransformer[] {
-                        new HtmlAgilityPackFormatterAdapter(new IHtmlAgilityPackHtmlFormatter[] {
-                            new RemoveUnwantedAttributesFormatter(new string[] { "style" }),
-                            new RemoveUnwantedNodesFormatter(new[] { "u", "comment()" }, false),
-                            new RemoveUnwantedNodesFormatter(new[] { "style" }, true),
-                            new RemoveElementsWithNoContentFormatter(new[] { "strong", "p" }),
-                            new TruncateLongLinksFormatter(new HtmlLinkFormatter()),
-                            new EmbeddedYouTubeVideosFormatter(),
-                            new FakeListFormatter()
-                        }),
-                        new HtmlStringFormatterAdapter(new IHtmlStringFormatter[] {
-                            new CloseEmptyElementsFormatter(),
-                            new HouseStyleDateFormatter(),
-                            disableMediaDomainTransformer ? null : new RemoveMediaDomainUrlTransformer()
-                        })
-                    } }
-                }
-            );
+            JobsProvider = new JobsDataFromTribePad(resultsUrl, advertUrl, jobParser, jobParser, proxyProvider, true);
+            StopWordsRemover = new LuceneStopWordsRemover();
+            TagSanitiser = new HtmlTagSanitiser();
+            JobTransformers = new Dictionary<IEnumerable<IJobMatcher>, IEnumerable<IJobTransformer>>()
+            {
+                { new IJobMatcher[] { new JointCommunityRehabilitationMatcher(), new LocationMatcher("Lewes") }, new IJobTransformer[] { new SetJobLocationTransformer(new[] { "Crowborough", "Lewes", "Peacehaven",  "Wadhurst" }) } },
+                { new IJobMatcher[] { new JointCommunityRehabilitationMatcher(), new LocationMatcher("Eastbourne") }, new IJobTransformer[] { new SetJobLocationTransformer(new[] { "Eastbourne", "Hailsham", "Polegate", "Seaford" }) } },
+                { new IJobMatcher[] { new JointCommunityRehabilitationMatcher(), new LocationMatcher("Bexhill-on-Sea") }, new IJobTransformer[] { new SetJobLocationTransformer(new[] { "Bexhill-on-Sea", "Hastings", "Rural Rother" }) } },
+                { new IJobMatcher[] { /* No matcher - apply to all jobs */ }, new IJobTransformer[] {
+                    new HtmlAgilityPackFormatterAdapter(new IHtmlAgilityPackHtmlFormatter[] {
+                        new RemoveUnwantedAttributesFormatter(new string[] { "style" }),
+                        new RemoveUnwantedNodesFormatter(new[] { "u", "comment()" }, false),
+                        new RemoveUnwantedNodesFormatter(new[] { "style" }, true),
+                        new RemoveElementsWithNoContentFormatter(new[] { "strong", "p" }),
+                        new TruncateLongLinksFormatter(new HtmlLinkFormatter()),
+                        new EmbeddedYouTubeVideosFormatter(),
+                        new FakeListFormatter()
+                    }),
+                    new HtmlStringFormatterAdapter(new IHtmlStringFormatter[] {
+                        new CloseEmptyElementsFormatter(),
+                        new HouseStyleDateFormatter(),
+                        disableMediaDomainTransformer ? null : new RemoveMediaDomainUrlTransformer()
+                    })
+                } }
+            };
         }
 
         /// <summary>
