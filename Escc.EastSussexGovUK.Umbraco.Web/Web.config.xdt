@@ -492,6 +492,10 @@
     <globalization xdt:Transform="Remove" />
     <globalization culture="en-GB" uiCulture="en-GB" xdt:Transform="Insert"/>
 
+    <!-- Setting fcnMode to Disabled means that the website will not restart when files other than web.config are unmodified, 
+         but it helps to prevent unnecessary app restarts when large numbers of files being accessed cause a buffer to overflow. -->
+    <httpRuntime fcnMode="Disabled" xdt:Transform="SetAttributes(fcnMode)" />
+
     <pages>
       <controls>
         <add tagPrefix="CmsPlaceholders" xdt:Transform="Remove" xdt:Locator="Match(tagPrefix)" />
