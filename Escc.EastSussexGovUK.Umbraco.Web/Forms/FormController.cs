@@ -31,7 +31,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Forms
 
             var modelBuilder = new BaseViewModelBuilder();
             modelBuilder.PopulateBaseViewModel(viewModel, model.Content, null,
-                new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"]).ExpiryDate,
+                new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1))).ExpiryDate,
                 UmbracoContext.Current.InPreviewMode, new SkinFromUmbraco());
             modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel,
                 new UmbracoLatestService(model.Content),

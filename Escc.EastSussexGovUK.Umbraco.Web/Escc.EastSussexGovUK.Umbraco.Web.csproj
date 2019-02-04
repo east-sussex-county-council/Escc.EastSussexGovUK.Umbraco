@@ -178,7 +178,7 @@
       <HintPath>..\packages\Escc.Umbraco.EditorTools.2.4.4\lib\Escc.Umbraco.EditorTools.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.Expiry, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.Expiry.1.1.3\lib\net452\Escc.Umbraco.Expiry.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.Expiry.1.1.4\lib\net452\Escc.Umbraco.Expiry.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.Forms.BackOffice, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.Forms.BackOffice.1.0.1\lib\Escc.Umbraco.Forms.BackOffice.dll</HintPath>

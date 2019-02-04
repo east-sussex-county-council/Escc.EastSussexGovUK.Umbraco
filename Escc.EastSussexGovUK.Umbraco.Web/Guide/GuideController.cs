@@ -29,7 +29,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Guide
         {
             if (model == null) throw new ArgumentNullException(nameof(model));
 
-            var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"]);
+            var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1)));
             var viewModel = MapUmbracoContentToViewModel(model.Content, expiryDate.ExpiryDate);
             var modelBuilder = new BaseViewModelBuilder();
             modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
@@ -68,7 +68,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Guide
             // Add common properties to the model
             var modelBuilder = new BaseViewModelBuilder();
             modelBuilder.PopulateBaseViewModel(viewModel, content, new ContentExperimentSettingsService(),
-                new ExpiryDateFromExamine(content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"]).ExpiryDate,
+                new ExpiryDateFromExamine(content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1))).ExpiryDate,
                 UmbracoContext.Current.InPreviewMode, new SkinFromUmbraco());
             modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel,
                 new UmbracoLatestService(content),

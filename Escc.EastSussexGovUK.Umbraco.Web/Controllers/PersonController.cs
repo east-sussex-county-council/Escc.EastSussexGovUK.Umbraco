@@ -33,7 +33,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Controllers
             if (model == null) throw new ArgumentNullException("model");
 
             var mediaUrlTransformer = new RemoveMediaDomainUrlTransformer();
-            var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"]);
+            var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1)));
             var viewModel = MapUmbracoContentToViewModel(model.Content, expiryDate.ExpiryDate,
                     new UmbracoLatestService(model.Content),
                     new UmbracoSocialMediaService(model.Content),

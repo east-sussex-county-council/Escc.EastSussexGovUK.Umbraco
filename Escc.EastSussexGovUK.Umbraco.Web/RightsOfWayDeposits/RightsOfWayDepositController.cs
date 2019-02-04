@@ -42,7 +42,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayDeposits
             viewModel.Metadata.Description = "A declaration of rights of way over land " + where + " deposited with East Sussex County Council under Section 31 (6) of the Highways Act 1980";
 
             // Add common properties to the model
-            var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"]);
+            var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1)));
             var modelBuilder = new BaseViewModelBuilder();
             modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
                 expiryDate.ExpiryDate,

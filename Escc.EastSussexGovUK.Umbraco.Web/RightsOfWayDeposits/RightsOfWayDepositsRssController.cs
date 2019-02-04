@@ -32,7 +32,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayDeposits
             var rss = new RssViewModel<RightsOfWayDepositViewModel>();
             foreach (var deposit in viewModel.Deposits) rss.Items.Add(deposit);
 
-            var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"]);
+            var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1)));
             var modelBuilder = new BaseViewModelBuilder();
             modelBuilder.PopulateBaseViewModel(rss, model.Content, null,
                 expiryDate.ExpiryDate,

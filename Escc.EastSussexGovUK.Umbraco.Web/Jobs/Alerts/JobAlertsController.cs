@@ -60,7 +60,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs.Alerts
 
             var baseModelBuilder = new BaseViewModelBuilder();
             baseModelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
-                new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"]).ExpiryDate,
+                new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1))).ExpiryDate,
                 UmbracoContext.Current.InPreviewMode);
             baseModelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel,
                   new UmbracoLatestService(model.Content),

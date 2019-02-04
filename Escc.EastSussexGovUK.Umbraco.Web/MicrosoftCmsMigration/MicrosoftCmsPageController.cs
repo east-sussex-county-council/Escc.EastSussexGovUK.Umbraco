@@ -25,7 +25,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.MicrosoftCmsMigration
         {
             if (model == null) throw new ArgumentNullException("model");
 
-            var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"]);
+            var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1)));
             var landingModel = MapUmbracoContentToViewModel(model.Content, expiryDate.ExpiryDate,
                 new UmbracoLatestService(model.Content),
                 new UmbracoSocialMediaService(model.Content),

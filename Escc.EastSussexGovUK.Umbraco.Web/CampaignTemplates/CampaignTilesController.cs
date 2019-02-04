@@ -33,7 +33,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.CampaignTemplates
 
             // Add common properties to the model
             var modelBuilder = new BaseViewModelBuilder();
-            var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"]);
+            var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1)));
             modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
                 expiryDate.ExpiryDate,
                 UmbracoContext.Current.InPreviewMode);
