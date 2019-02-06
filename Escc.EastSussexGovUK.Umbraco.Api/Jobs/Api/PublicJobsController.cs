@@ -4,6 +4,7 @@ using Exceptionless;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -25,7 +26,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Api
         {
             try
             {
-                return await base.Jobs(JobsSet.PublicJobs, new JobSearchQueryConverter().ToQuery(HttpUtility.ParseQueryString(Request.RequestUri.Query)), new Uri(baseUrl));
+                return await base.Jobs(JobsSet.PublicJobs, new JobSearchQueryConverter(ConfigurationManager.AppSettings["TranslateObsoleteJobTypes"]?.ToUpperInvariant() == "TRUE").ToQuery(HttpUtility.ParseQueryString(Request.RequestUri.Query)), new Uri(baseUrl));
             }
             catch (Exception e)
             {

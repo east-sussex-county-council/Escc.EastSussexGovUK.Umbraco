@@ -80,6 +80,14 @@ We also store which jobs were sent to which email address, without specifying wh
 
 The formatting of the alert emails is controlled by a combination of the alert templates `JobAlertConfirmation.html` and `JobAlert.html`, and text entered into an instance of the `Job alerts` document type in Umbraco. The latter allows editors to update the content of the alerts without requiring a developer.
 
+### Translating obsolete job types
+Job alerts can contain searches for job types that have become obsolete, so to keep old searches working we need to support a list of translations from old job types to new. However, when preparing to transfer to a new jobs provider it can be useful to delay activating this feature so that it does not apply to the old provider. Therefore this feature is only active when the following setting is in `web.config` of both the `Escc.EastSussexGovUK.Umbraco.Api` and `Escc.EastSussexGovUK.Umbraco.Web` projects.
+
+	<appSettings>
+    	<add key="TranslateObsoleteJobTypes" value="true" />
+    </appSettings>
+
+
 ## Embedding a list of jobs in another page
 
 A live list of jobs can be included in any Umbraco page. Work out a search query that lists only the jobs you want to show, then copy the RSS URL from the alerts section on the job search results page. In the Umbraco page create a link to that URL, select the link and apply `RSS` and `Embed jobs RSS feed` from the `Formats` dropdown in the rich text editor. The list of jobs is embedded in the page as a table.

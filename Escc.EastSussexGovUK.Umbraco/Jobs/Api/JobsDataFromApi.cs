@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -79,7 +80,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Api
                 if (cached != null) return cached;
             }
 
-            var queryString = new JobSearchQueryConverter().ToCollection(query).ToString();
+            var queryString = new JobSearchQueryConverter(ConfigurationManager.AppSettings["TranslateObsoleteJobTypes"]?.ToUpperInvariant() == "TRUE").ToCollection(query).ToString();
             var request = WebRequest.Create(new Uri($"{_apiBaseUrl.ToString().TrimEnd('/')}/umbraco/api/{_jobsSet}/jobs/?baseUrl={HttpUtility.UrlEncode(_jobAdvertBaseUrl.ToString())}&{queryString}"));
             using (var response = await request.GetResponseAsync())
             {

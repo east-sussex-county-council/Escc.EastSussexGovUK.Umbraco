@@ -23,7 +23,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs.Alerts
             var query = HttpUtility.ParseQueryString(Request.Url.Query);
             if (ModelState.IsValid)
             {
-                var converter = new JobSearchQueryConverter();
+                var converter = new JobSearchQueryConverter(ConfigurationManager.AppSettings["TranslateObsoleteJobTypes"]?.ToUpperInvariant() == "TRUE");
                 var encoder = new JobAlertIdEncoder(converter);
                 var alertsRepo = new AzureTableStorageAlertsRepository(converter, ConfigurationManager.ConnectionStrings["Escc.EastSussexGovUK.Umbraco.AzureStorage"].ConnectionString);
                 alert.Query = converter.ToQuery(query);
@@ -48,7 +48,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs.Alerts
         [HttpPost]
         public async Task<ActionResult> CancelAlert()
         {
-            var converter = new JobSearchQueryConverter();
+            var converter = new JobSearchQueryConverter(ConfigurationManager.AppSettings["TranslateObsoleteJobTypes"]?.ToUpperInvariant() == "TRUE");
             var encoder = new JobAlertIdEncoder(converter);
             var absoluteUrl = new Uri(Request.Url, Request.RawUrl);
             var alertId = encoder.ParseIdFromUrl(absoluteUrl);
@@ -64,7 +64,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs.Alerts
         {
             if (ModelState.IsValid)
             {
-                var converter = new JobSearchQueryConverter();
+                var converter = new JobSearchQueryConverter(ConfigurationManager.AppSettings["TranslateObsoleteJobTypes"]?.ToUpperInvariant() == "TRUE");
                 var encoder = new JobAlertIdEncoder(converter);
                 var alertId = encoder.ParseIdFromUrl(new Uri(Request.Url, Request.RawUrl));
                 var repo = new AzureTableStorageAlertsRepository(converter, ConfigurationManager.ConnectionStrings["Escc.EastSussexGovUK.Umbraco.AzureStorage"].ConnectionString);

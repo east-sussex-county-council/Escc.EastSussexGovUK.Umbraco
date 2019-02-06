@@ -39,7 +39,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs.Alerts
             var lookupValuesDataSource = new JobsLookupValuesFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, new MemoryJobCacheStrategy(MemoryCache.Default, Request.QueryString["ForceCacheRefresh"] == "1"));
             await modelBuilder.AddLookupValuesToModel(lookupValuesDataSource, viewModel);
 
-            var converter = new JobSearchQueryConverter();
+            var converter = new JobSearchQueryConverter(ConfigurationManager.AppSettings["TranslateObsoleteJobTypes"]?.ToUpperInvariant() == "TRUE");
             var alertId = new JobAlertIdEncoder(converter).ParseIdFromUrl(Request.Url);
             if (!string.IsNullOrEmpty(alertId))
             {

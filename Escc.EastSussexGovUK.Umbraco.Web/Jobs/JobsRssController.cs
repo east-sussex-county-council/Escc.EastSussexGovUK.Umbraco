@@ -44,7 +44,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
                 expiryDate.ExpiryDate,
                 UmbracoContext.Current.InPreviewMode);
 
-            viewModel.Query = new JobSearchQueryConverter().ToQuery(Request.QueryString);
+            viewModel.Query = new JobSearchQueryConverter(ConfigurationManager.AppSettings["TranslateObsoleteJobTypes"]?.ToUpperInvariant() == "TRUE").ToQuery(Request.QueryString);
             viewModel.Query.ClosingDateFrom = DateTime.Today;
             viewModel.Query.JobsSet = viewModel.JobsSet;
 

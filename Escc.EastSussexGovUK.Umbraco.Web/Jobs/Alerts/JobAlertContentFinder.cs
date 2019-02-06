@@ -6,6 +6,7 @@ using Umbraco.Web;
 using Umbraco.Web.Routing;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Alerts;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
+using System.Configuration;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
 {
@@ -26,7 +27,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
             {
                 if (contentRequest == null) throw new ArgumentNullException(nameof(contentRequest));
 
-                var converter = new JobSearchQueryConverter();
+                var converter = new JobSearchQueryConverter(ConfigurationManager.AppSettings["TranslateObsoleteJobTypes"]?.ToUpperInvariant() == "TRUE");
                 var encoder = new JobAlertIdEncoder(converter);
                 var alertId = encoder.ParseIdFromUrl(contentRequest.Uri);
                 if (String.IsNullOrEmpty(alertId))
