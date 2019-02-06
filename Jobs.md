@@ -81,7 +81,7 @@ We also store which jobs were sent to which email address, without specifying wh
 The formatting of the alert emails is controlled by a combination of the alert templates `JobAlertConfirmation.html` and `JobAlert.html`, and text entered into an instance of the `Job alerts` document type in Umbraco. The latter allows editors to update the content of the alerts without requiring a developer.
 
 ### Translating obsolete job types
-Job alerts can contain searches for job types that have become obsolete, so to keep old searches working we need to support a list of translations from old job types to new. However, when preparing to transfer to a new jobs provider it can be useful to delay activating this feature so that it does not apply to the old provider. Therefore this feature is only active when the following setting is in `web.config` of both the `Escc.EastSussexGovUK.Umbraco.Api` and `Escc.EastSussexGovUK.Umbraco.Web` projects.
+Job alerts can contain searches for job types that have become obsolete, so to keep old searches working we need to support a list of translations from old job types to new. However, when preparing to transfer to a new jobs provider it can be useful to delay activating this feature so that it does not apply to the old provider. Therefore this feature is only active when the following setting is in `web.config` of the `Escc.EastSussexGovUK.Umbraco.Api`, `Escc.EastSussexGovUK.Umbraco.Web` and `Escc.Jobs.SendAlerts` projects.
 
 	<appSettings>
     	<add key="TranslateObsoleteJobTypes" value="true" />

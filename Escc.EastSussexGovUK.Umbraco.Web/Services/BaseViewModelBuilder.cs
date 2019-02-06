@@ -12,6 +12,7 @@ using Escc.EastSussexGovUK.Umbraco.Web.Skins;
 using tasks = System.Threading.Tasks;
 using latest = Escc.EastSussexGovUK.Umbraco.Web.Latest;
 using Escc.EastSussexGovUK.Mvc;
+using Exceptionless;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.Services
 {
@@ -74,8 +75,24 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Services
 
             if (_templateRequest != null)
             {
-                model.WebChat = await _templateRequest.RequestWebChatSettingsAsync();
-                model.TemplateHtml = await _templateRequest.RequestTemplateHtmlAsync();
+                try
+                {
+                    model.WebChat = await _templateRequest.RequestWebChatSettingsAsync();
+                }
+                catch (Exception ex)
+                {
+                    // Catch and report exceptions - don't throw them and cause the page to fail
+                    ex.ToExceptionless().Submit();
+                }
+                try
+                {
+                    model.TemplateHtml = await _templateRequest.RequestTemplateHtmlAsync();
+                }
+                catch (Exception ex)
+                {
+                    // Catch and report exceptions - don't throw them and cause the page to fail
+                    ex.ToExceptionless().Submit();
+                }
             }
 
             if (skinService != null)

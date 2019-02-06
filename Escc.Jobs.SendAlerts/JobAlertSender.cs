@@ -84,7 +84,7 @@ namespace Escc.Jobs.SendAlerts
             }
 
             // We need somewhere to get the alerts from...
-            var converter = new JobSearchQueryConverter();
+            var converter = new JobSearchQueryConverter(ConfigurationManager.AppSettings["TranslateObsoleteJobTypes"]?.ToUpperInvariant() == "TRUE");
             var encoder = new JobAlertIdEncoder(converter);
             IJobAlertsRepository alertsRepo = new AzureTableStorageAlertsRepository(converter, ConfigurationManager.ConnectionStrings["JobAlerts.AzureStorage"].ConnectionString);
 

@@ -17,7 +17,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             var collection = new NameValueCollection();
             collection["keywords"] = "this is a test";
-            var converter = new JobSearchQueryConverter();
+            var converter = new JobSearchQueryConverter(false);
 
             var query = converter.ToQuery(collection);
 
@@ -28,7 +28,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         public void KeywordsArePopulatedFromQuery()
         {
             var query = new JobSearchQuery() { Keywords = "this is a test" };
-            var converter = new JobSearchQueryConverter();
+            var converter = new JobSearchQueryConverter(false);
 
             var collection = converter.ToCollection(query);
 
@@ -40,7 +40,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             var collection = new NameValueCollection();
             collection["ref"] = "ABC1234";
-            var converter = new JobSearchQueryConverter();
+            var converter = new JobSearchQueryConverter(false);
 
             var query = converter.ToQuery(collection);
 
@@ -51,7 +51,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         public void ReferenceIsPopulatedFromQuery()
         {
             var query = new JobSearchQuery() { JobReference = "ABC1234" };
-            var converter = new JobSearchQueryConverter();
+            var converter = new JobSearchQueryConverter(false);
 
             var collection = converter.ToCollection(query);
 
@@ -63,7 +63,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             var collection = new NameValueCollection();
             collection["jobtypes"] = "Example job type";
-            var converter = new JobSearchQueryConverter();
+            var converter = new JobSearchQueryConverter(false);
 
             var query = converter.ToQuery(collection);
 
@@ -75,7 +75,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             var query = new JobSearchQuery();
             query.JobTypes.Add("Example job type");
-            var converter = new JobSearchQueryConverter();
+            var converter = new JobSearchQueryConverter(false);
 
             var collection = converter.ToCollection(query);
 
@@ -87,7 +87,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             var collection = new NameValueCollection();
             collection["jobtypes"] = "Personnel and HR";
-            var converter = new JobSearchQueryConverter();
+            var converter = new JobSearchQueryConverter(true);
 
             var query = converter.ToQuery(collection);
 
@@ -99,7 +99,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             var collection = new NameValueCollection();
             collection["locations"] = "Example location";
-            var converter = new JobSearchQueryConverter();
+            var converter = new JobSearchQueryConverter(false);
 
             var query = converter.ToQuery(collection);
 
@@ -111,7 +111,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             var query = new JobSearchQuery();
             query.Locations.Add("Example location");
-            var converter = new JobSearchQueryConverter();
+            var converter = new JobSearchQueryConverter(false);
 
             var collection = converter.ToCollection(query);
 
@@ -123,7 +123,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             var collection = new NameValueCollection();
             collection["org"] = "Example organisation";
-            var converter = new JobSearchQueryConverter();
+            var converter = new JobSearchQueryConverter(false);
 
             var query = converter.ToQuery(collection);
 
@@ -135,7 +135,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             var query = new JobSearchQuery();
             query.Organisations.Add("Example organisation");
-            var converter = new JobSearchQueryConverter();
+            var converter = new JobSearchQueryConverter(false);
 
             var collection = converter.ToCollection(query);
 
@@ -147,7 +147,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             var collection = new NameValueCollection();
             collection["salaryranges"] = "£10000 to £20000";
-            var converter = new JobSearchQueryConverter();
+            var converter = new JobSearchQueryConverter(false);
 
             var query = converter.ToQuery(collection);
 
@@ -159,7 +159,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             var query = new JobSearchQuery();
             query.SalaryRanges.Add("£10000 to £20000");
-            var converter = new JobSearchQueryConverter();
+            var converter = new JobSearchQueryConverter(false);
 
             var collection = converter.ToCollection(query);
 
@@ -171,7 +171,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             var query = new JobSearchQuery();
             query.SalaryRanges.Add("£50000 and over");
-            var converter = new JobSearchQueryConverter();
+            var converter = new JobSearchQueryConverter(false);
 
             var collection = converter.ToCollection(query);
 
@@ -184,7 +184,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             var collection = new NameValueCollection();
             collection["paygrades"] = "Single Status";
-            var converter = new JobSearchQueryConverter();
+            var converter = new JobSearchQueryConverter(false);
 
             var query = converter.ToQuery(collection);
 
@@ -196,7 +196,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             var query = new JobSearchQuery();
             query.PayGrades.Add("Single Status");
-            var converter = new JobSearchQueryConverter();
+            var converter = new JobSearchQueryConverter(false);
 
             var collection = converter.ToCollection(query);
 
@@ -208,7 +208,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             var collection = new NameValueCollection();
             collection["contracttypes"] = "Contract type";
-            var converter = new JobSearchQueryConverter();
+            var converter = new JobSearchQueryConverter(false);
 
             var query = converter.ToQuery(collection);
 
@@ -220,7 +220,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             var query = new JobSearchQuery();
             query.ContractTypes.Add("Contract type");
-            var converter = new JobSearchQueryConverter();
+            var converter = new JobSearchQueryConverter(false);
 
             var collection = converter.ToCollection(query);
 
@@ -232,7 +232,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             var collection = new NameValueCollection();
             collection["workpatterns"] = "Working pattern";
-            var converter = new JobSearchQueryConverter();
+            var converter = new JobSearchQueryConverter(false);
 
             var query = converter.ToQuery(collection);
 
@@ -244,7 +244,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         {
             var query = new JobSearchQuery();
             query.WorkPatterns.Add("Working pattern");
-            var converter = new JobSearchQueryConverter();
+            var converter = new JobSearchQueryConverter(false);
 
             var collection = converter.ToCollection(query);
 
