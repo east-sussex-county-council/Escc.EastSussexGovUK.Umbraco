@@ -114,7 +114,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
             if (indexerConfig != null)
             {
                 var indexer = (BaseJobsIndexer)Activator.CreateInstance(Type.GetType(indexerConfig.Attribute("dataService").Value));
-                indexer.UpdateIndex(jobIds);
+                await indexer.UpdateIndex(jobIds);
             }
         }
 

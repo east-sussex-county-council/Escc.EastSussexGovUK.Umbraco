@@ -17,6 +17,7 @@ using Umbraco.Web.Mvc;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Alerts;
 using System.Threading.Tasks;
+using Escc.EastSussexGovUK.Mvc;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs.Alerts
 {
@@ -58,11 +59,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs.Alerts
                 }
             }
 
-            var baseModelBuilder = new BaseViewModelBuilder();
-            baseModelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
+            var baseModelBuilder = new BaseViewModelBuilder(new EastSussexGovUKTemplateRequest(Request));
+            await baseModelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
                 new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1))).ExpiryDate,
                 UmbracoContext.Current.InPreviewMode);
-            baseModelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel,
+            await baseModelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel,
                   new UmbracoLatestService(model.Content),
                   new UmbracoSocialMediaService(model.Content),
                   null,

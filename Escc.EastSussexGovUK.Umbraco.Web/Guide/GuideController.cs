@@ -17,6 +17,8 @@ using Escc.EastSussexGovUK.Umbraco.Web.Skins;
 using Examine;
 using Escc.Umbraco.Expiry;
 using Escc.EastSussexGovUK.Umbraco.Web.Latest;
+using Escc.EastSussexGovUK.Mvc;
+using System.Threading.Tasks;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.Guide
 {
@@ -25,14 +27,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Guide
     /// </summary>
     public class GuideController : RenderMvcController
     {
-        public override ActionResult Index(RenderModel model)
+        public new async Task<ActionResult> Index(RenderModel model)
         {
             if (model == null) throw new ArgumentNullException(nameof(model));
 
             var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1)));
-            var viewModel = MapUmbracoContentToViewModel(model.Content, expiryDate.ExpiryDate);
-            var modelBuilder = new BaseViewModelBuilder();
-            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
+            var templateRequest = new EastSussexGovUKTemplateRequest(Request);
+            var viewModel = await MapUmbracoContentToViewModel(model.Content, expiryDate.ExpiryDate, templateRequest);
+            var modelBuilder = new BaseViewModelBuilder(templateRequest);
+            await modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
                 expiryDate.ExpiryDate,
                 UmbracoContext.Current.InPreviewMode, new SkinFromUmbraco());
 
@@ -57,7 +60,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Guide
             return CurrentTemplate(viewModel);
         }
 
-        private static GuideStepViewModel MapUmbracoContentToGuideStepViewModel(IPublishedContent content)
+        private async static Task<GuideStepViewModel> MapUmbracoContentToGuideStepViewModel(IPublishedContent content, IEastSussexGovUKTemplateRequest templateRequest)
         {
             var mediaUrlTransformer = new RemoveMediaDomainUrlTransformer();
             var viewModel = new GuideStepViewModelFromUmbraco(content,
@@ -66,11 +69,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Guide
                     ).BuildModel();
 
             // Add common properties to the model
-            var modelBuilder = new BaseViewModelBuilder();
-            modelBuilder.PopulateBaseViewModel(viewModel, content, new ContentExperimentSettingsService(),
+            var modelBuilder = new BaseViewModelBuilder(templateRequest);
+            await modelBuilder.PopulateBaseViewModel(viewModel, content, new ContentExperimentSettingsService(),
                 new ExpiryDateFromExamine(content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1))).ExpiryDate,
                 UmbracoContext.Current.InPreviewMode, new SkinFromUmbraco());
-            modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel,
+            await modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel,
                 new UmbracoLatestService(content),
                 new UmbracoSocialMediaService(content),
                 new UmbracoEastSussex1SpaceService(content),
@@ -80,14 +83,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Guide
             return viewModel;
         }
 
-        private static GuideViewModel MapUmbracoContentToViewModel(IPublishedContent content, DateTime? expiryDate)
+        private async static Task<GuideViewModel> MapUmbracoContentToViewModel(IPublishedContent content, DateTime? expiryDate, IEastSussexGovUKTemplateRequest templateRequest)
         {
-            var model = new GuideViewModel()
+            var stepPages = content.Children<IPublishedContent>().Where(child => child.ContentType.Alias == "GuideStep");
+            var steps = new List<GuideStepViewModel>();
+            foreach (var step in stepPages)
             {
-                Steps = new List<GuideStepViewModel>(content.Children<IPublishedContent>()
-                    .Where(child => child.ContentType.Alias == "GuideStep")
-                    .Select(MapUmbracoContentToGuideStepViewModel))
-            };
+                steps.Add(await MapUmbracoContentToGuideStepViewModel(step, templateRequest));
+            }
+            var model = new GuideViewModel() { Steps = steps };
 
             var sectionNavigation = content.GetPropertyValue<int>("SectionNavigation_Navigation");
             model.StepsHaveAnOrder = (sectionNavigation == 0 || umbraco.library.GetPreValueAsString(sectionNavigation).ToUpperInvariant() != "BULLETED LIST");

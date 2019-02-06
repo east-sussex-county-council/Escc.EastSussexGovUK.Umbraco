@@ -9,6 +9,7 @@ using Umbraco.Web;
 using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
 using Escc.EastSussexGovUK.Umbraco.Web.Ratings;
 using Escc.EastSussexGovUK.Umbraco.Web.Skins;
+using System.Threading.Tasks;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.Location
 {
@@ -17,9 +18,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Location
     /// </summary>
     public class RecyclingSiteController : LocationController
     {
-        protected override LocationViewModel MapUmbracoContentToViewModel(IPublishedContent content, DateTime? expiryDate, latest.ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IRelatedLinksService relatedLinksService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService, IRatingSettingsProvider ratingSettings, IMediaUrlTransformer mediaUrlTransformer, ISkinToApplyService skinService)
+        protected override async Task<LocationViewModel> MapUmbracoContentToViewModel(IPublishedContent content, DateTime? expiryDate, latest.ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IRelatedLinksService relatedLinksService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService, IRatingSettingsProvider ratingSettings, IMediaUrlTransformer mediaUrlTransformer, ISkinToApplyService skinService)
         {
-            var model = base.MapUmbracoContentToViewModel(content, expiryDate, latestService, socialMediaService, eastSussex1SpaceService, webChatSettingsService, relatedLinksService, contentExperimentSettingsService, escisService, ratingSettings, mediaUrlTransformer, skinService);
+            var model = await base.MapUmbracoContentToViewModel(content, expiryDate, latestService, socialMediaService, eastSussex1SpaceService, webChatSettingsService, relatedLinksService, contentExperimentSettingsService, escisService, ratingSettings, mediaUrlTransformer, skinService);
 
             // Get the types of waste which have been selected for this recycling site
             var recycledTypes = content.GetPropertyValue<IEnumerable<string>>("wasteTypes_Content");

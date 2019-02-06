@@ -21,6 +21,7 @@ using Escc.EastSussexGovUK.Umbraco.Web.Latest;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Api;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
 using System.Threading.Tasks;
+using Escc.EastSussexGovUK.Mvc;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
 {
@@ -43,11 +44,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
 
             // Add common properties to the model
             var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1)));
-            var modelBuilder = new BaseViewModelBuilder();
-            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
+            var modelBuilder = new BaseViewModelBuilder(new EastSussexGovUKTemplateRequest(Request));
+            await modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
                 expiryDate.ExpiryDate,
                 UmbracoContext.Current.InPreviewMode);
-            modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel, 
+            await modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel, 
                 new UmbracoLatestService(model.Content), 
                 new UmbracoSocialMediaService(model.Content),
                 null,

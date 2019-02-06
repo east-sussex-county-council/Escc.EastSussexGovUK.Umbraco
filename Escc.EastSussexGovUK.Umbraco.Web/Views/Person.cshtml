@@ -1,16 +1,8 @@
-﻿@using ClientDependency.Core.Mvc
-@using Escc.ClientDependencyFramework
-@using Escc.EastSussexGovUK
+﻿@using Escc.EastSussexGovUK
 @using Escc.EastSussexGovUK.Features
-@using Escc.EastSussexGovUK.Skins
-@using Escc.EastSussexGovUK.Views
 @using Escc.EastSussexGovUK.Umbraco.Web.Services
-@using Escc.EastSussexGovUK.Mvc
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.Models.PersonViewModel>
 @{
-    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
-    Model.EsccWebsiteSkin = new CustomerFocusSkin();
-
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
     {
         new EmbeddedYouTubeVideos() { Html = new [] { Model.LeadingText.ToString(), Model.Content1.ToString(), Model.Content2.ToString(), Model.Contact.ToString() }},

@@ -19,8 +19,8 @@ using System.Configuration;
 using Escc.Umbraco.Expiry;
 using System.Runtime.Caching;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Api;
-using System.Net;
 using Exceptionless;
+using Escc.EastSussexGovUK.Mvc;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.HomePage
 {
@@ -41,11 +41,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.HomePage
 
             var viewModel = new HomePageViewModelFromUmbraco(model.Content, new RelatedLinksService(new RemoveMediaDomainUrlTransformer(), new ElibraryUrlTransformer(), new RemoveAzureDomainUrlTransformer())).BuildModel();
             var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1)));
-            var modelBuilder = new BaseViewModelBuilder();
-            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
+
+            var modelBuilder = new BaseViewModelBuilder(new EastSussexGovUKTemplateRequest(Request));
+            await modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
                 expiryDate.ExpiryDate,
                 UmbracoContext.Current.InPreviewMode);
-            modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel, null, null, null, null, null, new RatingSettingsFromUmbraco(model.Content));
+            await modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel, null, null, null, null, null, new RatingSettingsFromUmbraco(model.Content));
 
             try
             {

@@ -1,13 +1,8 @@
 ﻿@using ClientDependency.Core.Mvc
 @using Escc.ClientDependencyFramework
-@using Escc.EastSussexGovUK.Skins
-@using Escc.EastSussexGovUK.Views
-@using Escc.EastSussexGovUK.Mvc
 @using Escc.Web
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.Jobs.JobsComponentViewModel>
 @{
-    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
-    Model.EsccWebsiteSkin = new CustomerFocusSkin();
     if (Model.IsForm)
     {
         Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));

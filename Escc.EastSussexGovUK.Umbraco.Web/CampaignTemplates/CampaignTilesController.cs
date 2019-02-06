@@ -11,6 +11,8 @@ using Umbraco.Web.Mvc;
 using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
 using Examine;
 using Escc.Umbraco.Expiry;
+using Escc.EastSussexGovUK.Mvc;
+using System.Threading.Tasks;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.CampaignTemplates
 {
@@ -24,7 +26,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.CampaignTemplates
         /// </summary>
         /// <param name="model"/>
         /// <returns/>
-        public override ActionResult Index(RenderModel model)
+        public new async Task<ActionResult> Index(RenderModel model)
         {
             if (model == null) throw new ArgumentNullException(nameof(model));
 
@@ -32,9 +34,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.CampaignTemplates
             var viewModel = new CampaignTilesViewModelFromUmbraco(model.Content, new RelatedLinksService(urlTransformer, new ElibraryUrlTransformer(), new RemoveAzureDomainUrlTransformer()), urlTransformer).BuildModel();
 
             // Add common properties to the model
-            var modelBuilder = new BaseViewModelBuilder();
+            var modelBuilder = new BaseViewModelBuilder(new EastSussexGovUKTemplateRequest(Request));
             var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1)));
-            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
+            await modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
                 expiryDate.ExpiryDate,
                 UmbracoContext.Current.InPreviewMode);
 

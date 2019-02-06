@@ -9,7 +9,9 @@ using Umbraco.Core.Models;
 using Umbraco.Web;
 using Escc.EastSussexGovUK.Umbraco.Web.Ratings;
 using Escc.EastSussexGovUK.Umbraco.Web.Skins;
+using tasks = System.Threading.Tasks;
 using latest = Escc.EastSussexGovUK.Umbraco.Web.Latest;
+using Escc.EastSussexGovUK.Mvc;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.Services
 {
@@ -18,6 +20,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Services
     /// </summary>
     public class BaseViewModelBuilder
     {
+        private readonly IEastSussexGovUKTemplateRequest _templateRequest;
+
+        public BaseViewModelBuilder(IEastSussexGovUKTemplateRequest templateRequest)
+        {
+            _templateRequest = templateRequest;
+        }
+
         /// <summary>
         /// Populates the properties of <see cref="BaseViewModel" />
         /// </summary>
@@ -33,7 +42,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Services
         /// <exception cref="System.ArgumentNullException">model
         /// or
         /// content</exception>
-        public void PopulateBaseViewModel(BaseViewModel model, IPublishedContent content, IContentExperimentSettingsService contentExperimentSettingsService, DateTime? expiryDate, bool inUmbracoPreviewMode, ISkinToApplyService skinService=null)
+        public async tasks.Task PopulateBaseViewModel(Models.BaseViewModel model, IPublishedContent content, IContentExperimentSettingsService contentExperimentSettingsService, DateTime? expiryDate, bool inUmbracoPreviewMode, ISkinToApplyService skinService=null)
         {
             if (model == null) throw new ArgumentNullException(nameof(model));
             if (content == null) throw new ArgumentNullException(nameof(content));
@@ -63,6 +72,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Services
             model.IsPublicView = !inUmbracoPreviewMode && model.Metadata.PageUrl.Host.ToUpperInvariant() != "LOCALHOST";
             if (contentExperimentSettingsService != null) { model.ContentExperimentPageSettings = contentExperimentSettingsService.LookupSettingsForPage(content.Id); }
 
+            if (_templateRequest != null)
+            {
+                model.WebChat = await _templateRequest.RequestWebChatSettingsAsync();
+                model.TemplateHtml = await _templateRequest.RequestTemplateHtmlAsync();
+            }
+
             if (skinService != null)
             {
                 model.SkinToApply = skinService.LookupSkinForPage(content);
@@ -79,7 +94,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Services
         /// <param name="webChatSettingsService">The web chat settings service.</param>
         /// <param name="escisService">The ESCIS service.</param>
         /// <exception cref="System.ArgumentNullException">model</exception>
-        public void PopulateBaseViewModelWithInheritedContent(BaseViewModel model, latest.ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IEscisService escisService, IRatingSettingsProvider ratingSettings=null)
+        public async tasks.Task PopulateBaseViewModelWithInheritedContent(Models.BaseViewModel model, latest.ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IEscisService escisService, IRatingSettingsProvider ratingSettings=null)
         {
             if (model == null) throw new ArgumentNullException("model");
             
@@ -87,7 +102,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Services
             if (eastSussex1SpaceService != null) model.ShowEastSussex1SpaceWidget = eastSussex1SpaceService.ShowSearch();
             if (escisService != null) model.ShowEscisWidget = escisService.ShowSearch();
             if (socialMediaService != null) model.SocialMedia = socialMediaService.ReadSocialMediaSettings();
-            if (webChatSettingsService!= null) model.WebChat = webChatSettingsService.ReadWebChatSettings();
+            if (webChatSettingsService!= null) model.WebChat = await webChatSettingsService.ReadWebChatSettings();
             if (ratingSettings != null) model.RatingSettings = ratingSettings.ReadRatingSettings();
         }
     }

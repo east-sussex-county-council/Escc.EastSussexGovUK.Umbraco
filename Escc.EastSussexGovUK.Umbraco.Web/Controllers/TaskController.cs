@@ -17,6 +17,8 @@ using Escc.EastSussexGovUK.Umbraco.Web.Skins;
 using Examine;
 using Escc.Umbraco.Expiry;
 using Escc.EastSussexGovUK.Umbraco.Web.Latest;
+using Escc.EastSussexGovUK.Mvc;
+using System.Threading.Tasks;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.Controllers
 {
@@ -27,7 +29,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Controllers
         /// </summary>
         /// <param name="model"/>
         /// <returns/>
-        public override ActionResult Index(RenderModel model)
+        public new async Task<ActionResult> Index(RenderModel model)
         {
             if (model == null) throw new ArgumentNullException("model");
 
@@ -39,12 +41,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Controllers
                     ).BuildModel();
 
             // Add common properties to the model
-            var modelBuilder = new BaseViewModelBuilder();
+            var modelBuilder = new BaseViewModelBuilder(new EastSussexGovUKTemplateRequest(Request));
             var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1)));
-            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
+            await modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
                 expiryDate.ExpiryDate,
                 UmbracoContext.Current.InPreviewMode, new SkinFromUmbraco());
-            modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel, 
+            await modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel, 
                 new UmbracoLatestService(model.Content), 
                 new UmbracoSocialMediaService(model.Content),
                 new UmbracoEastSussex1SpaceService(model.Content),

@@ -11,6 +11,8 @@ using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
 using Examine;
 using Escc.Umbraco.Expiry;
 using Escc.EastSussexGovUK.Umbraco.Web.Latest;
+using Escc.EastSussexGovUK.Mvc;
+using System.Threading.Tasks;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
 {
@@ -19,17 +21,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
     /// </summary>
     public class JobsComponentController : RenderMvcController
     {
-        public override ActionResult Index(RenderModel model)
+        public new async Task<ActionResult> Index(RenderModel model)
         {
             if (model == null) throw new ArgumentNullException(nameof(model));
 
             var viewModel = new ComponentViewModelFromUmbraco(model.Content, new RemoveMediaDomainUrlTransformer()).BuildModel();
 
-            var modelBuilder = new BaseViewModelBuilder();
-            modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
+            var modelBuilder = new BaseViewModelBuilder(new EastSussexGovUKTemplateRequest(Request));
+            await modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
                 new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1))).ExpiryDate,
                 UmbracoContext.Current.InPreviewMode);
-            modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel,
+            await modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel,
                   new UmbracoLatestService(model.Content),
                   new UmbracoSocialMediaService(model.Content),
                   null,

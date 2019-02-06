@@ -12,7 +12,6 @@
 @using Escc.EastSussexGovUK.Umbraco.Web.Skins.SupportWithTrust
 @using Escc.EastSussexGovUK.Mvc
 @{
-    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
     Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] {
         new CoronerSkin(Request.Url),
         new RegistrationAcademySkin(Model.SkinToApply == "Registration Academy"),

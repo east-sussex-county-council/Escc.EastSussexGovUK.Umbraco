@@ -2,7 +2,6 @@
 @using Escc.ClientDependencyFramework
 @using Escc.EastSussexGovUK
 @using Escc.EastSussexGovUK.Features
-@using Escc.EastSussexGovUK.Skins
 @using Escc.EastSussexGovUK.Views
 @using Escc.EastSussexGovUK.Mvc
 @using Escc.EastSussexGovUK.Mvc.Views.EastSussexGovUK
@@ -11,8 +10,6 @@
 @using Escc.Web
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.Jobs.JobAdvertViewModel>
 @{
-    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
-    Model.EsccWebsiteSkin = new CustomerFocusSkin();
     Model.Metadata.Title = Model.Job?.JobTitle;
     Model.Metadata.DateIssued = Model.Job?.DatePublished == null ? String.Empty : Model.Job.DatePublished.Value.ToIso8601Date();
     Model.Metadata.PageUrl = Model.Job?.Url;
@@ -120,24 +117,16 @@
 @section Footer {
     @if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)
     {
-        // Configure the client that loads elements of the remote master page
-        var textSize = new TextSize(Request.Cookies?["textsize"]?.Value, Request.QueryString).CurrentTextSize();
-        var isLibraryCatalogueRequest = new LibraryCatalogueContext(Request.UserAgent).RequestIsFromLibraryCatalogueMachine();
-        var proxyProvider = new ConfigurationProxyProvider();
-        var masterPageSettings = new RemoteMasterPageSettingsFromConfig();
-        var forceCacheRefresh = (Request.QueryString["ForceCacheRefresh"] == "1"); // Provide a way to force an immediate update of the cache
-        var masterPageControlProvider = new RemoteMasterPageHtmlProvider(masterPageSettings.MasterPageControlUrl(), proxyProvider, Request.UserAgent, masterPageSettings.RequestTimeout(), new RemoteMasterPageMemoryCacheProvider(masterPageSettings.CacheTimeout()), forceCacheRefresh);
-
         if (Model.Job?.ApplyUrl != null)
         {
             <p class="mobile-nav main-action small"><a href="@Model.Job.ApplyUrl" class="apply apply-mobile">Apply</a></p>
             <div class="footer-with-mobile-nav">
-                @{ Html.RenderPartial("~/Views/EastSussexGovUK/_MasterPageControl.cshtml", new MasterPageControlData { Control = "FooterDesktop", BreadcrumbProvider = Model.BreadcrumbProvider, HtmlControlProvider = masterPageControlProvider, TextSize = textSize, IsLibraryCatalogueRequest = isLibraryCatalogueRequest }); }
+                @Html.Raw(Model.TemplateHtml.Footer)
             </div>
         }
         else
         {
-            Html.RenderPartial("~/Views/EastSussexGovUK/_MasterPageControl.cshtml", new MasterPageControlData { Control = "FooterDesktop", BreadcrumbProvider = Model.BreadcrumbProvider, HtmlControlProvider = masterPageControlProvider, TextSize = textSize, IsLibraryCatalogueRequest = isLibraryCatalogueRequest });
+            @Html.Raw(Model.TemplateHtml.Footer);
         }
     }
 }

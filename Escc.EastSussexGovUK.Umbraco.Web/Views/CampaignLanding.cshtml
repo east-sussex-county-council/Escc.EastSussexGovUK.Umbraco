@@ -2,16 +2,11 @@
 @using Escc.ClientDependencyFramework
 @using Escc.EastSussexGovUK
 @using Escc.EastSussexGovUK.Features
-@using Escc.EastSussexGovUK.Skins
 @using Escc.EastSussexGovUK.Umbraco.Web.Services
-@using Escc.EastSussexGovUK.Mvc
 @using Escc.EastSussexGovUK.Views
 @using Escc.Web
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.CampaignTemplates.CampaignLandingViewModel>
 @{
-    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
-    Model.EsccWebsiteSkin = new CustomerFocusSkin();
-
     Html.RequiresCss(CssFileAlias.Resolve("CampaignSmall"));
     Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=CampaignLandingCss&media-query=small", 101);
     if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)

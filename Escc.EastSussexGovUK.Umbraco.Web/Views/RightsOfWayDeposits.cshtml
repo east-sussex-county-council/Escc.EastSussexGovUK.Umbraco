@@ -1,17 +1,11 @@
 ﻿@using Escc.EastSussexGovUK
 @using Escc.EastSussexGovUK.Features
-@using Escc.EastSussexGovUK.Skins
-@using Escc.EastSussexGovUK.Views
-@using Escc.EastSussexGovUK.Mvc
 @using Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayDeposits
 @using Escc.Dates
 @using ClientDependency.Core.Mvc
 @using Escc.ClientDependencyFramework
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<RightsOfWayDepositsViewModel>
 @{
-    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
-    Model.EsccWebsiteSkin = new CustomerFocusSkin();
-
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
     {
         new WebChat() { WebChatSettings = Model.WebChat }

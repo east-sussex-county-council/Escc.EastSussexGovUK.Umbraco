@@ -9,6 +9,7 @@ using Escc.Umbraco.Caching;
 using Examine;
 using Escc.Umbraco.Expiry;
 using Escc.EastSussexGovUK.Umbraco.Examine;
+using System.Threading.Tasks;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayDeposits
 {
@@ -23,7 +24,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayDeposits
         /// </summary>
         /// <param name="model"/>
         /// <returns/>
-        public override ActionResult Index(RenderModel model)
+        public new async Task<ActionResult> Index(RenderModel model)
         {
             if (model == null) throw new ArgumentNullException(nameof(model));
 
@@ -33,8 +34,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayDeposits
             foreach (var deposit in viewModel.Deposits) rss.Items.Add(deposit);
 
             var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1)));
-            var modelBuilder = new BaseViewModelBuilder();
-            modelBuilder.PopulateBaseViewModel(rss, model.Content, null,
+            var modelBuilder = new BaseViewModelBuilder(null);
+            await modelBuilder.PopulateBaseViewModel(rss, model.Content, null,
                 expiryDate.ExpiryDate,
                 UmbracoContext.Current.InPreviewMode);
 

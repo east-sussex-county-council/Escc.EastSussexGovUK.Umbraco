@@ -22,6 +22,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.WebApi
         /// </summary>
         /// <param name="pageId">The page identifier.</param>
         /// <returns></returns>
+        /// <remarks>Do NOT add a using statement around the response - it causes a 500 error with no error message to debug it</remarks>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         public HttpResponseMessage GetMediaOnPage([FromUri] int pageId)
         {
             try

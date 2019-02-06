@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Escc.EastSussexGovUK.Features;
 using Escc.Umbraco.PropertyTypes;
 using Umbraco.Core.Models;
@@ -35,7 +36,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Services
         /// </summary>
         /// <returns></returns>
         /// <exception cref="System.ArgumentNullException">content</exception>
-        public WebChatSettings ReadWebChatSettings()
+        public Task<WebChatSettings> ReadWebChatSettings()
         {
             if (_content == null) throw new ArgumentNullException("content");
 
@@ -45,11 +46,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Services
             };
 
             var webChatSettings = _content.AncestorOrSelf(1).Siblings().FirstOrDefault(sibling => sibling.DocumentTypeAlias == "WebChat");
-            if (webChatSettings == null) return model;
+            if (webChatSettings == null) return System.Threading.Tasks.Task.FromResult(model);
 
             ((List<Uri>) model.WebChatUrls).AddRange(_targetUrlReader.ReadUrls(webChatSettings, "whereToDisplayIt_Content", "whereElseToDisplayIt_Content"));
             ((List<Uri>) model.ExcludedUrls).AddRange(_targetUrlReader.ReadUrls(webChatSettings, "whereToExclude_Content", "whereElseToExclude_Content"));
-            return model;
+            return System.Threading.Tasks.Task.FromResult(model);
         }
     }
 }

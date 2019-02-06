@@ -25,6 +25,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Banners
         /// Gets the settings for where to display promotional banners
         /// </summary>
         /// <returns></returns>
+        /// <remarks>Do NOT add a using statement around the response - it causes a 500 error with no error message to debug it</remarks>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         public HttpResponseMessage GetBanners()
         {

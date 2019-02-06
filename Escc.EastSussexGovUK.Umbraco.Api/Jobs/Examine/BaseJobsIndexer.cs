@@ -141,12 +141,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
         /// </summary>
         /// <param name="indexer">The indexer.</param>
         /// <param name="currentIndexedJobs">The job ids and publication dates in the current version of the index (for comparison with the new data).</param>
-        public void UpdateIndex(Dictionary<int,DateTime?> currentIndexedJobs)
+        public async Task UpdateIndex(Dictionary<int,DateTime?> currentIndexedJobs)
         {
             var jobsToDelete = new List<int>(currentIndexedJobs.Keys);
 
             // Delete and recreate any job still in the index, or add it if it's new
-            var jobsData = GetAllData("Job");
+            var jobsData = await GetAllDataAsync("Job");
             foreach (var job in jobsData)
             {
                 try

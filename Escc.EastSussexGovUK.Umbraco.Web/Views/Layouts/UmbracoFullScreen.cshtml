@@ -1,20 +1,6 @@
-﻿@using Escc.EastSussexGovUK
-@using Escc.EastSussexGovUK.Features
-@using Escc.EastSussexGovUK.Views
-@using Escc.EastSussexGovUK.Mvc
-@using Escc.EastSussexGovUK.Mvc.Views.EastSussexGovUK
-@using Escc.Net.Configuration
-@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Mvc.BaseViewModel>
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Mvc.BaseViewModel>
 @{
     Layout = "~/Views/EastSussexGovUK/fullscreen.cshtml";
-
-    // Configure the client that loads elements of the remote master page
-    var textSize = new TextSize(Request.Cookies?["textsize"]?.Value, Request.QueryString).CurrentTextSize();
-    var isLibraryCatalogueRequest = new LibraryCatalogueContext(Request.UserAgent).RequestIsFromLibraryCatalogueMachine();
-    var proxyProvider = new ConfigurationProxyProvider();
-    var masterPageSettings = new RemoteMasterPageSettingsFromConfig();
-    var forceCacheRefresh = (Request.QueryString["ForceCacheRefresh"] == "1"); // Provide a way to force an immediate update of the cache
-    var masterPageControlProvider = new RemoteMasterPageHtmlProvider(masterPageSettings.MasterPageControlUrl(), proxyProvider, Request.UserAgent, masterPageSettings.RequestTimeout(), new RemoteMasterPageMemoryCacheProvider(masterPageSettings.CacheTimeout()), forceCacheRefresh);
 }
 @section ContentExperiment {
     @{ Html.RenderPartial("~/Views/Layouts/_ContentExperiment.cshtml", Model); }
@@ -36,7 +22,7 @@
         @:
         <header>
             <div class="header context">
-                @{ Html.RenderPartial("~/Views/EastSussexGovUK/_MasterPageControl.cshtml", new MasterPageControlData { Control = "HeaderFullScreen", BreadcrumbProvider = Model.BreadcrumbProvider, HtmlControlProvider = masterPageControlProvider, TextSize = textSize, IsLibraryCatalogueRequest = isLibraryCatalogueRequest }); }
+                @Html.Raw(Model.TemplateHtml.Header)
                 <div class="full-screen-bar">
                     <h1>@RenderSection("FullScreenHeading", required: false)</h1>
                     @RenderSection("FullScreenLinks", required: false)

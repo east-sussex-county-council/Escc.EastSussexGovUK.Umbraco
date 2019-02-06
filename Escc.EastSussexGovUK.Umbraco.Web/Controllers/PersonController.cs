@@ -18,6 +18,8 @@ using Examine;
 using Escc.Umbraco.Expiry;
 using latest = Escc.EastSussexGovUK.Umbraco.Web.Latest;
 using Escc.EastSussexGovUK.Umbraco.Web.Latest;
+using Escc.EastSussexGovUK.Mvc;
+using System.Threading.Tasks;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.Controllers
 {
@@ -28,13 +30,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Controllers
         /// </summary>
         /// <param name="model"/>
         /// <returns/>
-        public override ActionResult Index(RenderModel model)
+        public new async Task<ActionResult> Index(RenderModel model)
         {
             if (model == null) throw new ArgumentNullException("model");
 
             var mediaUrlTransformer = new RemoveMediaDomainUrlTransformer();
             var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1)));
-            var viewModel = MapUmbracoContentToViewModel(model.Content, expiryDate.ExpiryDate,
+            var viewModel = await MapUmbracoContentToViewModel(model.Content, expiryDate.ExpiryDate,
                     new UmbracoLatestService(model.Content),
                     new UmbracoSocialMediaService(model.Content),
                     new UmbracoEastSussex1SpaceService(model.Content),
@@ -50,7 +52,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Controllers
             return CurrentTemplate(viewModel);
         }
 
-        private PersonViewModel MapUmbracoContentToViewModel(IPublishedContent content, DateTime? expiryDate, latest.ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IRelatedLinksService relatedLinksService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService, IRatingSettingsProvider ratingSettings, IMediaUrlTransformer mediaUrlTransformer)
+        private async Task<PersonViewModel> MapUmbracoContentToViewModel(IPublishedContent content, DateTime? expiryDate, latest.ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IRelatedLinksService relatedLinksService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService, IRatingSettingsProvider ratingSettings, IMediaUrlTransformer mediaUrlTransformer)
         {
             var model = new PersonViewModel
             {
@@ -94,11 +96,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Controllers
             }
 
             // Add common properties to the model
-            var modelBuilder = new BaseViewModelBuilder();
-            modelBuilder.PopulateBaseViewModel(model, content, contentExperimentSettingsService,
+            var modelBuilder = new BaseViewModelBuilder(new EastSussexGovUKTemplateRequest(Request));
+            await modelBuilder.PopulateBaseViewModel(model, content, contentExperimentSettingsService,
                 expiryDate,
                 UmbracoContext.Current.InPreviewMode);
-            modelBuilder.PopulateBaseViewModelWithInheritedContent(model, latestService, socialMediaService, eastSussex1SpaceService, webChatSettingsService, escisService, ratingSettings);
+            await modelBuilder.PopulateBaseViewModelWithInheritedContent(model, latestService, socialMediaService, eastSussex1SpaceService, webChatSettingsService, escisService, ratingSettings);
 
             return model;
         }

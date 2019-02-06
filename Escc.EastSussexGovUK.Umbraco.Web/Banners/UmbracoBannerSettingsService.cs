@@ -19,16 +19,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Banners
         /// <summary>
         /// Initializes a new instance of the <see cref="UmbracoBannerSettingsService" /> class.
         /// </summary>
-        /// <param name="content">An Umbraco page using the <see cref="BannersDocumentType"/> document type.</param>
+        /// <param name="content">An Umbraco page using the 'Banners' document type.</param>
         /// <param name="targetUrlReader">The URL list reader.</param>
         /// <exception cref="System.ArgumentNullException">
-        /// content
-        /// or
         /// targetUrlReader
         /// </exception>
         public UmbracoBannerSettingsService(IPublishedContent content, IUrlListReader targetUrlReader)
         {
-            if (content == null) throw new ArgumentNullException("content");
             if (targetUrlReader == null) throw new ArgumentNullException("targetUrlReader");
             _content = content;
             _targetUrlReader = targetUrlReader;
@@ -42,12 +39,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Banners
         {
             var model = new List<Banner>();
 
-            foreach (var bannerPage in _content.Children)
+            if (_content != null)
             {
-                var banner = ReadBannerFromUmbraco(bannerPage, _targetUrlReader);
-                if (banner != null)
+                foreach (var bannerPage in _content.Children)
                 {
-                    model.Add(banner);
+                    var banner = ReadBannerFromUmbraco(bannerPage, _targetUrlReader);
+                    if (banner != null)
+                    {
+                        model.Add(banner);
+                    }
                 }
             }
 
@@ -99,7 +99,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Banners
                         model.BannerLink = new Uri(urlString, UriKind.RelativeOrAbsolute);
                     }
                 }
-                catch (UriFormatException) { 
+                catch (UriFormatException)
+                {
                     // ignore invalid URLs
                 }
             }

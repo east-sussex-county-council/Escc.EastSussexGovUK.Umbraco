@@ -1,17 +1,10 @@
 @using System.Text
-@using System.Web.Hosting
 @using ClientDependency.Core.Mvc
 @using Escc.ClientDependencyFramework
-@using Escc.EastSussexGovUK
-@using Escc.EastSussexGovUK.Skins
-@using Escc.EastSussexGovUK.Views
 @using Escc.Umbraco.PropertyTypes
 @using Escc.EastSussexGovUK.Mvc
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.HomePage.HomePageViewModel>
 @{
-    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
-    Model.EsccWebsiteSkin = new CustomerFocusSkin();
-
     Html.RequiresCss(CssFileAlias.Resolve("HomeSmall"));
     Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));
     Html.RequiresCss(CssFileAlias.Resolve("TilesSmall"));
