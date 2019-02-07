@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Caching;
 using System.Web.Mvc;
 using Escc.Dates;
-using Escc.Net;
+using tasks = System.Threading.Tasks;
 using Escc.Umbraco.PropertyTypes;
 using Escc.Web;
 using Exceptionless;
@@ -23,12 +23,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.ServiceAlerts
         //
         // GET: /Alerts/
 
-        public override ActionResult Index(RenderModel model)
+        public new async tasks.Task<ActionResult> Index(RenderModel model)
         {
             var alerts = new List<AlertViewModel>();
 
             AddAlertsFromUmbraco(model, alerts, new UrlListReader());
-            AddSchoolClosureAlerts(alerts);
+            await AddSchoolClosureAlerts(alerts);
 
             // Cache for speed, but not for long because content is time-sensitive
             new HttpCacheHeaders().CacheUntil(Response.Cache, DateTime.Now.ToUkDateTime().AddMinutes(5));
@@ -40,7 +40,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.ServiceAlerts
         /// Temporary method to get schools closures alert as HTTP request from old hosting. To be rewritten once school closures available locally.
         /// </summary>
         /// <param name="alerts"></param>
-        private void AddSchoolClosureAlerts(List<AlertViewModel> alerts)
+        private async tasks.Task AddSchoolClosureAlerts(List<AlertViewModel> alerts)
         {
             const string cacheKey = "Escc.EastSussexGovUK.Umbraco.SchoolClosures";
             var alertHtml = String.Empty;
@@ -58,7 +58,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.ServiceAlerts
             }
 
             var closureDataSource = new AzureBlobStorageDataSource(ConfigurationManager.ConnectionStrings["Escc.ServiceClosures.AzureStorage"].ConnectionString, "service-closures");
-            var closureData = closureDataSource.ReadClosureDataAsync(new ServiceType("school")).Result;
+            var closureData = await closureDataSource.ReadClosureDataAsync(new ServiceType("school"));
             if (closureData != null && (TooLateForToday() ? closureData.EmergencyClosureExists(DateTime.Today.AddDays(1)) : closureData.EmergencyClosureExists(DateTime.Today)))
             {
                 alertHtml = "<p><a href=\"https://www.eastsussex.gov.uk/educationandlearning/schools/schoolclosures/\">Emergency school closures</a> &#8211; check if your school is affected, and subscribe to alerts.</p>";
