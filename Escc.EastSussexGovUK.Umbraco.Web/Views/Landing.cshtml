@@ -2,6 +2,7 @@
 @using Escc.ClientDependencyFramework
 @using Escc.EastSussexGovUK
 @using Escc.EastSussexGovUK.Features
+@using Escc.EastSussexGovUK.Mvc
 @using Escc.EastSussexGovUK.Skins
 @using Escc.EastSussexGovUK.Views
 @using Escc.EastSussexGovUK.Umbraco.Web.Skins.Registration
@@ -11,6 +12,7 @@
 @using Escc.EastSussexGovUK.Umbraco.Web.Landing
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<LandingViewModel>
 @{
+    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
     Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] {
         new RegistrationAcademySkin(Model.SkinToApply == "Registration Academy"),
         new RegistrationSkin(Model.Metadata.PageUrl),

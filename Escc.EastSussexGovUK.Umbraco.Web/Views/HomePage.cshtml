@@ -5,6 +5,8 @@
 @using Escc.EastSussexGovUK.Mvc
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.HomePage.HomePageViewModel>
 @{
+    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
+
     Html.RequiresCss(CssFileAlias.Resolve("HomeSmall"));
     Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));
     Html.RequiresCss(CssFileAlias.Resolve("TilesSmall"));

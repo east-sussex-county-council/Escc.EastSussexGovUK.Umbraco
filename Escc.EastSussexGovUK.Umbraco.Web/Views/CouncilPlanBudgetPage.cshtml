@@ -3,10 +3,13 @@
 @using Escc.ClientDependencyFramework
 @using Escc.EastSussexGovUK
 @using Escc.EastSussexGovUK.Features
+@using Escc.EastSussexGovUK.Mvc
 @using Escc.EastSussexGovUK.Umbraco.Web.Views
 @using Escc.EastSussexGovUK.Umbraco.Web.MicrosoftCmsMigration
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<MicrosoftCmsViewModel>
 @{
+    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
+
     Html.RequiresCss(CssFileAlias.Resolve("CouncilPlanSmall"));
     Html.RequiresCss(CssFileAlias.Resolve("MobileControls"));
     Html.RequiresCss(CssFileAlias.Resolve("CouncilPlanMedium"), MediaQueryAlias.Resolve("Medium"));

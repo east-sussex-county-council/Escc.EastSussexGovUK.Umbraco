@@ -2,6 +2,7 @@
 @using Escc.ClientDependencyFramework
 @using Escc.EastSussexGovUK
 @using Escc.EastSussexGovUK.Features
+@using Escc.EastSussexGovUK.Mvc
 @using Escc.EastSussexGovUK.Skins
 @using Escc.EastSussexGovUK.Umbraco.Web.Skins.Registration
 @using Escc.EastSussexGovUK.Umbraco.Web.Skins.FosterWithTrust
@@ -10,6 +11,7 @@
 @using Escc.EastSussexGovUK.Umbraco.Web.Services
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.PrivacyNotice.PrivacyNoticeViewModel>
 @{
+    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
     Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] {
         new CoronerSkin(Request.Url),
         new RegistrationAcademySkin(Model.SkinToApply == "Registration Academy"),

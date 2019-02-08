@@ -13,6 +13,7 @@
 @using Escc.EastSussexGovUK.Mvc
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.Guide.GuideViewModel>
 @{
+    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
     Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] {
         new CoronerSkin(Request.Url),
         new RegistrationAcademySkin(Model.SkinToApply == "Registration Academy"),

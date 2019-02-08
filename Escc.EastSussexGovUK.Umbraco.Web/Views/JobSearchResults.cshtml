@@ -1,9 +1,12 @@
 ﻿@using ClientDependency.Core.Mvc
 @using Escc.ClientDependencyFramework
+@using Escc.EastSussexGovUK.Mvc
 @using Escc.EastSussexGovUK.Umbraco.Jobs
 @using Escc.EastSussexGovUK.Umbraco.Web.Jobs.Alerts
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.Jobs.JobSearchResultsViewModel>
 @{
+    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
+
     Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));
     Html.RequiresCss(CssFileAlias.Resolve("FormsMedium"), MediaQueryAlias.Resolve("Medium"));
     Html.RequiresCss(CssFileAlias.Resolve("FormsLarge"), MediaQueryAlias.Resolve("Large"));

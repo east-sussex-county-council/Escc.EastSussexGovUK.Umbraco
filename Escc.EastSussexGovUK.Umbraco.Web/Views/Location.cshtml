@@ -5,7 +5,6 @@
 @using Escc.EastSussexGovUK
 @using Escc.EastSussexGovUK.Features
 @using Escc.EastSussexGovUK.Skins
-@using Escc.EastSussexGovUK.Views
 @using Escc.EastSussexGovUK.Umbraco.Web.Skins.Registration
 @using Escc.EastSussexGovUK.Umbraco.Web.Skins.FosterWithTrust
 @using Escc.EastSussexGovUK.Umbraco.Web.Skins.RegistrationAcademy
@@ -16,6 +15,7 @@
 @using Humanizer
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.Location.LocationViewModel>
 @{
+    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
     Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] {
         new RegistrationAcademySkin(Model.SkinToApply == "Registration Academy"),
         new RegistrationSkin(Model.Metadata.PageUrl),
@@ -56,62 +56,59 @@
             @Html.Partial("~/Views/_LocationIsOpen.cshtml")
             @Html.Partial("~/Views/_LocationOpeningTimes.cshtml")
 
-            @if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)
-            {
-                <div class="large">
-                    @if (!String.IsNullOrEmpty(Model.Content.ToString()))
-                    {
-                        @Model.Content
-                    }
+            <div class="large">
+                @if (!String.IsNullOrEmpty(Model.Content.ToString()))
+                {
+                    @Model.Content
+                }
 
-                    @if (!String.IsNullOrEmpty(Model.Tab1Title) || !String.IsNullOrEmpty(Model.Tab2Title) || !String.IsNullOrEmpty(Model.Tab3Title))
-                    {
-                        <div class="tablist" role="application">
-                            <ul role="tablist">
-                                @if (!String.IsNullOrEmpty(Model.Tab1Title))
-                                {
-                                    <li id="tab1" aria-controls="tab1content" role="tab">@Model.Tab1Title</li>
-                                }
-
-                                @if (!String.IsNullOrEmpty(Model.Tab2Title))
-                                {
-                                    <li id="tab2" aria-controls="tab2content" role="tab">@Model.Tab2Title</li>
-                                }
-
-                                @if (!String.IsNullOrEmpty(Model.Tab3Title))
-                                {
-                                    <li id="tab3" aria-controls="tab3content" role="tab">@Model.Tab3Title</li>
-                                }
-                            </ul>
-
-                            @* When the location is a recycling site, the first tab will contain the waste types. For other locations it's free text. *@
-                            @if (!String.IsNullOrEmpty(Model.Tab1Content.ToString()) || Model.WasteTypesRecycled.Any() || Model.WasteTypesAccepted.Any())
+                @if (!String.IsNullOrEmpty(Model.Tab1Title) || !String.IsNullOrEmpty(Model.Tab2Title) || !String.IsNullOrEmpty(Model.Tab3Title))
+                {
+                    <div class="tablist" role="application">
+                        <ul role="tablist">
+                            @if (!String.IsNullOrEmpty(Model.Tab1Title))
                             {
-                                <div id="tab1content" aria-labelledby="tab1" role="tabpanel">
-                                    <h2 class="aural">@Model.Tab1Title</h2>
-                                    @Html.Partial("~/Views/_LocationTab1Content.cshtml")
-                                </div>
+                                <li id="tab1" aria-controls="tab1content" role="tab">@Model.Tab1Title</li>
                             }
 
-                            @if (!String.IsNullOrEmpty(Model.Tab2Content.ToString()))
+                            @if (!String.IsNullOrEmpty(Model.Tab2Title))
                             {
-                                <div id="tab2content" aria-labelledby="tab2" role="tabpanel">
-                                    <h2 class="aural">@Model.Tab2Title</h2>
-                                    @Model.Tab2Content
-                                </div>
+                                <li id="tab2" aria-controls="tab2content" role="tab">@Model.Tab2Title</li>
                             }
 
-                            @if (!String.IsNullOrEmpty(Model.Tab3Content.ToString()))
+                            @if (!String.IsNullOrEmpty(Model.Tab3Title))
                             {
-                                <div id="tab3content" aria-labelledby="tab3" role="tabpanel">
-                                    <h2 class="aural">@Model.Tab3Title</h2>
-                                    @Model.Tab3Content
-                                </div>
+                                <li id="tab3" aria-controls="tab3content" role="tab">@Model.Tab3Title</li>
                             }
-                        </div>
-                    }
-                </div>
-            }
+                        </ul>
+
+                        @* When the location is a recycling site, the first tab will contain the waste types. For other locations it's free text. *@
+                        @if (!String.IsNullOrEmpty(Model.Tab1Content.ToString()) || Model.WasteTypesRecycled.Any() || Model.WasteTypesAccepted.Any())
+                        {
+                            <div id="tab1content" aria-labelledby="tab1" role="tabpanel">
+                                <h2 class="aural">@Model.Tab1Title</h2>
+                                @Html.Partial("~/Views/_LocationTab1Content.cshtml")
+                            </div>
+                        }
+
+                        @if (!String.IsNullOrEmpty(Model.Tab2Content.ToString()))
+                        {
+                            <div id="tab2content" aria-labelledby="tab2" role="tabpanel">
+                                <h2 class="aural">@Model.Tab2Title</h2>
+                                @Model.Tab2Content
+                            </div>
+                        }
+
+                        @if (!String.IsNullOrEmpty(Model.Tab3Content.ToString()))
+                        {
+                            <div id="tab3content" aria-labelledby="tab3" role="tabpanel">
+                                <h2 class="aural">@Model.Tab3Title</h2>
+                                @Model.Tab3Content
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
         </div>
     </article>
 

@@ -2,10 +2,12 @@
 @using Escc.ClientDependencyFramework
 @using Escc.EastSussexGovUK
 @using Escc.EastSussexGovUK.Features
+@using Escc.EastSussexGovUK.Mvc
 @using Escc.Dates
 @using Escc.Web
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayDeposits.RightsOfWayDepositViewModel>
 @{
+    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
     Model.Metadata.IsInSearch = false;
 
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()

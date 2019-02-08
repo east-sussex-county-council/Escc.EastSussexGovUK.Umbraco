@@ -4,8 +4,11 @@
 @using Escc.EastSussexGovUK.Features
 @using Escc.EastSussexGovUK.Umbraco.Web.Services
 @using Escc.EastSussexGovUK.Views
+@using Escc.EastSussexGovUK.Mvc
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.CampaignTemplates.CampaignContentViewModel>
 @{
+    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
+
     Html.RequiresCss(CssFileAlias.Resolve("CampaignSmall"));
     Html.RequiresCss(CssFileAlias.Resolve("NavigationSmall"));
     Html.RequiresCss(CssFileAlias.Resolve("MobileControls"));

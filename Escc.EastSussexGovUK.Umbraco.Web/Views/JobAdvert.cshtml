@@ -4,12 +4,12 @@
 @using Escc.EastSussexGovUK.Features
 @using Escc.EastSussexGovUK.Views
 @using Escc.EastSussexGovUK.Mvc
-@using Escc.EastSussexGovUK.Mvc.Views.EastSussexGovUK
 @using Escc.Dates
-@using Escc.Net.Configuration
 @using Escc.Web
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.Jobs.JobAdvertViewModel>
 @{
+    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
+
     Model.Metadata.Title = Model.Job?.JobTitle;
     Model.Metadata.DateIssued = Model.Job?.DatePublished == null ? String.Empty : Model.Job.DatePublished.Value.ToIso8601Date();
     Model.Metadata.PageUrl = Model.Job?.Url;
