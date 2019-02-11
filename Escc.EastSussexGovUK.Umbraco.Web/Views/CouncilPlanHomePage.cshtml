@@ -8,7 +8,7 @@
 @using Escc.EastSussexGovUK.Umbraco.Web.MicrosoftCmsMigration
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<MicrosoftCmsViewModel>
 @{
-    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
+    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(Layout);
 
     Html.RequiresCss(CssFileAlias.Resolve("CouncilPlanSmall"));
     Html.RequiresCss(CssFileAlias.Resolve("MobileControls"));

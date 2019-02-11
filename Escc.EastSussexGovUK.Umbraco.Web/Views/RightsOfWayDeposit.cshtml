@@ -7,7 +7,7 @@
 @using Escc.Web
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayDeposits.RightsOfWayDepositViewModel>
 @{
-    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
+    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(Layout);
     Model.Metadata.IsInSearch = false;
 
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()

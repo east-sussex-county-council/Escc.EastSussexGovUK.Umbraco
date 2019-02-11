@@ -7,7 +7,7 @@
 @using Escc.ClientDependencyFramework
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<RightsOfWayDepositsViewModel>
 @{
-    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
+    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(Layout);
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
     {
         new WebChat() { WebChatSettings = Model.WebChat }

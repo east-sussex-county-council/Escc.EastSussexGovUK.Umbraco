@@ -14,7 +14,7 @@
 @using Escc.EastSussexGovUK.Umbraco.Web.Services
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<MicrosoftCmsViewModel>
 @{ 
-    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
+    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(Layout);
     Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] {
         new RegistrationAcademySkin(Model.SkinToApply == "Registration Academy"),
         new RegistrationSkin(Model.Metadata.PageUrl),

@@ -5,7 +5,7 @@
 @using Escc.Web
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.Jobs.JobsHomeViewModel>
 @{
-    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
+    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(Layout);
 
     Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));
     Html.RequiresCss(CssFileAlias.Resolve("TilesSmall"));

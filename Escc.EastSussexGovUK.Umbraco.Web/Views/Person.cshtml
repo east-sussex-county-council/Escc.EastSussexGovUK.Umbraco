@@ -4,7 +4,7 @@
 @using Escc.EastSussexGovUK.Umbraco.Web.Services
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.Models.PersonViewModel>
 @{
-    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
+    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(Layout);
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
     {
         new EmbeddedYouTubeVideos() { Html = new [] { Model.LeadingText.ToString(), Model.Content1.ToString(), Model.Content2.ToString(), Model.Contact.ToString() }},

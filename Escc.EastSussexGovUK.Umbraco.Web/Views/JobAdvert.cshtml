@@ -8,7 +8,7 @@
 @using Escc.Web
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.Jobs.JobAdvertViewModel>
 @{
-    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Layout);
+    Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(Layout);
 
     Model.Metadata.Title = Model.Job?.JobTitle;
     Model.Metadata.DateIssued = Model.Job?.DatePublished == null ? String.Empty : Model.Job.DatePublished.Value.ToIso8601Date();
