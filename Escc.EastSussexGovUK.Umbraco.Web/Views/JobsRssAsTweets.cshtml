@@ -20,10 +20,10 @@
         else if (job.WorkPattern.WorkPatterns.Contains(WorkPattern.PART_TIME)) { contract = ", P/T"; }
 
         var salary = String.Empty;
-        if (job.Salary.HourlyRate.HasValue)
+        if (job.Salary.MaximumHourlyRate.HasValue)
         {
             if (!String.IsNullOrEmpty(contract)) { salary = ","; }
-            salary = $" £{job.Salary.HourlyRate}/hr";
+            salary = $" up to £{job.Salary.MaximumHourlyRate}/hr";
         }
         else if (job.Salary.MaximumSalary.HasValue)
         {
