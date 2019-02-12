@@ -154,7 +154,7 @@
       <HintPath>..\packages\Escc.Redirects.Handlers.1.0.0\lib\Escc.Redirects.Handlers.dll</HintPath>
     </Reference>
     <Reference Include="Escc.RubbishAndRecycling.SiteFinder.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.RubbishAndRecycling.SiteFinder.2.0.0\lib\Escc.RubbishAndRecycling.SiteFinder.Website.dll</HintPath>
+      <HintPath>..\packages\Escc.RubbishAndRecycling.SiteFinder.3.0.0\lib\Escc.RubbishAndRecycling.SiteFinder.Website.dll</HintPath>
     </Reference>
     <Reference Include="Escc.ServiceClosures, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.ServiceClosures.5.0.0\lib\netstandard2.0\Escc.ServiceClosures.dll</HintPath>
@@ -1266,8 +1266,6 @@
     <Content Include="images\quote-open.gif" />
     <Content Include="bin\umbracoForms.lic" />
     <Content Include="App_Plugins\Escc.EastSussexGovUK.Umbraco.Forms\package.manifest" />
-    <Content Include="Views\Topic\RecyclingSiteFinder_Mvc.ascx" />
-    <Content Include="Views\Topic\TopicSection_RecyclingSiteFinder.ascx" />
     <Content Include="App_Plugins\tooorangey.EditorNotes\package.manifest" />
     <Content Include="App_Plugins\UmbracoForms\version" />
     <Content Include="App_Plugins\UmbracoForms\UmbracoForms.config">
@@ -1340,6 +1338,7 @@
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PhonePropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\package.manifest" />
+    <Content Include="Views\Topic\TopicSection_RecyclingSiteFinder.ascx" />
     <Content Include="windows-tile.png" />
     <None Include="Jobs\Images\East Sussex Jobs logo colour.png" />
     <None Include="Jobs\Images\East Sussex Jobs logo white.png" />
@@ -4697,6 +4696,7 @@
     <Content Include="uSync\Snapshots\20190121_161823_add-jobs-login-url\DocumentType\customer-focus-base\jobs\def.config" />
     <Content Include="uSync\Snapshots\20190121_161823_add-jobs-login-url\Template\form\Form.config" />
     <Content Include="uSync\Snapshots\20190121_161823_add-jobs-login-url\Template\privacynotice\PrivacyNotice.config" />
+    <Content Include="Views\Shared\_RecyclingSiteFinder.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -5186,10 +5186,10 @@
     <Error Condition="!Exists('..\packages\Escc.Umbraco.Forms.Security.2.0.0\build\Escc.Umbraco.Forms.Security.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.Forms.Security.2.0.0\build\Escc.Umbraco.Forms.Security.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.3.0.1\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.3.0.1\build\Escc.Umbraco.MediaSync.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.2.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.RubbishAndRecycling.SiteFinder.2.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.FindAddress.Mvc.3.0.0\build\Escc.FindAddress.Mvc.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.FindAddress.Mvc.3.0.0\build\Escc.FindAddress.Mvc.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.8.0.0\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.8.0.0\build\Escc.Umbraco.PropertyEditors.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.3\build\Escc.EastSussexGovUK.TemplateSource.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.3\build\Escc.EastSussexGovUK.TemplateSource.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.3.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.RubbishAndRecycling.SiteFinder.3.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
@@ -5227,8 +5227,8 @@
   <Import Project="..\packages\Escc.Umbraco.Forms.FieldTypes.1.1.1\build\Escc.Umbraco.Forms.FieldTypes.targets" Condition="Exists('..\packages\Escc.Umbraco.Forms.FieldTypes.1.1.1\build\Escc.Umbraco.Forms.FieldTypes.targets')" />
   <Import Project="..\packages\Escc.Umbraco.Forms.Security.2.0.0\build\Escc.Umbraco.Forms.Security.targets" Condition="Exists('..\packages\Escc.Umbraco.Forms.Security.2.0.0\build\Escc.Umbraco.Forms.Security.targets')" />
   <Import Project="..\packages\Escc.Umbraco.MediaSync.3.0.1\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.3.0.1\build\Escc.Umbraco.MediaSync.targets')" />
-  <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.2.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.2.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
   <Import Project="..\packages\Escc.FindAddress.Mvc.3.0.0\build\Escc.FindAddress.Mvc.targets" Condition="Exists('..\packages\Escc.FindAddress.Mvc.3.0.0\build\Escc.FindAddress.Mvc.targets')" />
   <Import Project="..\packages\Escc.Umbraco.PropertyEditors.8.0.0\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.8.0.0\build\Escc.Umbraco.PropertyEditors.targets')" />
   <Import Project="..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.3\build\Escc.EastSussexGovUK.TemplateSource.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.3\build\Escc.EastSussexGovUK.TemplateSource.targets')" />
+  <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.3.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.3.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
 </Project>

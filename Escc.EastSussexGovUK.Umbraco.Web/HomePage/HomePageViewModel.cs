@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
 using Escc.EastSussexGovUK.Umbraco.Web.Models;
+using Escc.RubbishAndRecycling.SiteFinder.Website;
 using Escc.Umbraco.PropertyTypes;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.HomePage
@@ -22,6 +23,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.HomePage
             InvolvedItems = new List<HomePageItemViewModel>();
             InvolvedLinks = new List<HtmlLink>();
             NewsItems = new List<HomePageItemViewModel>();
+            RecyclingSiteSearch = new RecyclingViewModel();
         }
 
         public string TopTasksTitle { get; set; }
@@ -33,6 +35,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.HomePage
 
         public string NewsTitle { get; set; }
         public IList<HomePageItemViewModel> NewsItems { get; set; }
+        public RecyclingViewModel RecyclingSiteSearch { get; }
         public Uri NewsRssUrl { get; set; }
 
         public Uri TermDatesDataUrl { get; set; }

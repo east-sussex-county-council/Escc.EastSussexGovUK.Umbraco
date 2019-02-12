@@ -93,7 +93,7 @@ global.asax
 **/TinyMCE-*.css
 !**/TinyMCE-StyleSelector-Embed.css
 *RecyclingSiteFinder*.ascx
-_FindAddress.cshtml
+*/Views/Shared
 */js/libs/*
 !*/js/libs/bootstrap/
 */EastSussexGovUK/*

@@ -21,6 +21,8 @@ using System.Runtime.Caching;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Api;
 using Exceptionless;
 using Escc.EastSussexGovUK.Mvc;
+using Escc.RubbishAndRecycling.SiteFinder.Website;
+using Escc.Net.Configuration;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.HomePage
 {
@@ -50,13 +52,24 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.HomePage
 
             try
             {
-                var jobsData = new JobsLookupValuesFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), JobsSet.PublicJobs, new MemoryJobCacheStrategy(MemoryCache.Default, Request.QueryString["ForceCacheRefresh"] == "1"));
-                viewModel.JobLocations = await jobsData.ReadLocations();
-                viewModel.JobTypes = await jobsData.ReadJobTypes();
+                var forceCacheRefresh = Request.QueryString["ForceCacheRefresh"] == "1";
+
+                var jobsData = new JobsLookupValuesFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), JobsSet.PublicJobs, new MemoryJobCacheStrategy(MemoryCache.Default, forceCacheRefresh));
+                var locationsTask = jobsData.ReadLocations();
+                var jobTypesTask = jobsData.ReadJobTypes();
+
+                var wasteTypesDataSource = new UmbracoWasteTypesDataSource(new Uri(ConfigurationManager.AppSettings["WasteTypesDataUrl"]), new ConfigurationProxyProvider(), forceCacheRefresh ? null : new ApplicationCacheStrategy<List<string>>(TimeSpan.FromDays(1)));
+                var wasteTypesTask = wasteTypesDataSource.LoadWasteTypes();
+
+                await Task.WhenAll(locationsTask, jobTypesTask, wasteTypesTask);
+
+                viewModel.JobLocations = locationsTask.Result;
+                viewModel.JobTypes = jobTypesTask.Result;
+                viewModel.RecyclingSiteSearch.WasteTypes = wasteTypesTask.Result;
             }
             catch (Exception ex)
             {
-                // Report an error fetching jobs data, but don't cause the page to fail to load
+                // Report an error fetching jobs or waste site data, but don't cause the page to fail to load
                 ex.ToExceptionless().Submit();
             }
 
