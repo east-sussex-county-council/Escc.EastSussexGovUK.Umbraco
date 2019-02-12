@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Runtime.Caching;
 using System.Web.Http;
 using Escc.EastSussexGovUK.Umbraco.Web.Models;
 using Escc.Umbraco.Media;
@@ -28,23 +29,31 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.WebApi
         {
             try
             {
-                var results = new List<UmbracoMediaApiResult>();
-
-                var uMediaSyncRelations = ApplicationContext.Services.RelationService.GetByParentId(pageId).Where(r => r.RelationType.Alias == "uMediaSyncFileRelation");
-                var mediaItemIds = uMediaSyncRelations.Select(r => r.ChildId);
-                foreach (var id in mediaItemIds)
+                // This API hits the database. Although Umbraco caches the result, we can cache it more aggressively.
+                var resultsArray = MemoryCache.Default.Get($"GetMediaOnPage-{pageId}");
+                if (resultsArray == null)
                 {
-                    var media = MediaHelper.GetUmbracoMedia(id);
-                    results.Add(new UmbracoMediaApiResult()
+
+                    var results = new List<UmbracoMediaApiResult>();
+
+                    var uMediaSyncRelations = ApplicationContext.Services.RelationService.GetByParentId(pageId).Where(r => r.RelationType.Alias == "uMediaSyncFileRelation");
+                    var mediaItemIds = uMediaSyncRelations.Select(r => r.ChildId);
+                    foreach (var id in mediaItemIds)
                     {
-                        Size = MediaHelper.GetFileSizeInKilobytes(media),
-                        Extension= media.Values["umbracoExtension"],
-                        Url = new Uri(media.Values["umbracoFile"], UriKind.Relative)
-                    });
+                        var media = MediaHelper.GetUmbracoMedia(id);
+                        results.Add(new UmbracoMediaApiResult()
+                        {
+                            Size = MediaHelper.GetFileSizeInKilobytes(media),
+                            Extension = media.Values["umbracoExtension"],
+                            Url = new Uri(media.Values["umbracoFile"], UriKind.Relative)
+                        });
+                    }
+                    resultsArray = results.ToArray();
+                    MemoryCache.Default.Add($"GetMediaOnPage-{pageId}", resultsArray, DateTimeOffset.UtcNow.AddDays(1));
                 }
 
-                // This API hits the database, although it caches the result, so cache at the HTTP level too.
-                var response = Request.CreateResponse(HttpStatusCode.OK, results.ToArray());
+                // Cache at the HTTP level too.
+                var response = Request.CreateResponse(HttpStatusCode.OK, resultsArray);
                 response.Headers.CacheControl = new CacheControlHeaderValue()
                 {
                     Public = true,
@@ -59,11 +68,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.WebApi
                 e.ToExceptionless().Submit();
                 return Request.CreateResponse(HttpStatusCode.InternalServerError);
             }
-
         }
-
-
-
-
     }
 }
