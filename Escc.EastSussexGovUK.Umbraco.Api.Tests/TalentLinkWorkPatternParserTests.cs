@@ -13,121 +13,121 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
     public class TalentLinkWorkPatternParserTests
     {
         [Test]
-        public void WorkingPatternFullTimeWithHyphenIsParsed()
+        public async Task WorkingPatternFullTimeWithHyphenIsParsed()
         {
             var parser = new TalentLinkWorkPatternParser();
 
-            var result = parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText3).Result;
+            var result = await parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText3);
 
             Assert.AreEqual(true, result.WorkPatterns.Contains(WorkPattern.FULL_TIME));
             Assert.AreEqual(false, result.WorkPatterns.Contains(WorkPattern.PART_TIME));
         }
 
         [Test]
-        public void WorkingPatternFullTimeWithoutHyphenIsParsed()
+        public async Task WorkingPatternFullTimeWithoutHyphenIsParsed()
         {
             var parser = new TalentLinkWorkPatternParser();
 
-            var result = parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText1).Result;
+            var result = await parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText1);
 
             Assert.AreEqual(true, result.WorkPatterns.Contains(WorkPattern.FULL_TIME));
             Assert.AreEqual(false, result.WorkPatterns.Contains(WorkPattern.PART_TIME));
         }
 
         [Test]
-        public void WorkingPatternPartTimeWithHyphenIsParsed()
+        public async Task WorkingPatternPartTimeWithHyphenIsParsed()
         {
             var parser = new TalentLinkWorkPatternParser();
 
-            var result = parser.ParseWorkPattern(Properties.Resources.JobAdvert1Html).Result;
+            var result = await parser.ParseWorkPattern(Properties.Resources.JobAdvert1Html);
 
             Assert.AreEqual(false, result.WorkPatterns.Contains(WorkPattern.FULL_TIME));
             Assert.AreEqual(true, result.WorkPatterns.Contains(WorkPattern.PART_TIME));
         }
 
         [Test]
-        public void WorkingPatternPartTimeWithoutHyphenIsParsed()
+        public async Task WorkingPatternPartTimeWithoutHyphenIsParsed()
         {
             var parser = new TalentLinkWorkPatternParser();
 
-            var result = parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText7).Result;
+            var result = await parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText7);
 
             Assert.AreEqual(false, result.WorkPatterns.Contains(WorkPattern.FULL_TIME));
             Assert.AreEqual(true, result.WorkPatterns.Contains(WorkPattern.PART_TIME));
         }
 
         [Test]
-        public void WorkingPatternPartTimeWithHyphenWithSurroundingTextIsParsed()
+        public async Task WorkingPatternPartTimeWithHyphenWithSurroundingTextIsParsed()
         {
             var parser = new TalentLinkWorkPatternParser();
 
-            var result = parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText5).Result;
+            var result = await parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText5);
 
             Assert.AreEqual(false, result.WorkPatterns.Contains(WorkPattern.FULL_TIME));
             Assert.AreEqual(true, result.WorkPatterns.Contains(WorkPattern.PART_TIME));
         }
 
         [Test]
-        public void HoursOfWorkFullTimeWithoutHyphenWithSurroundingTextIsParsed()
+        public async Task HoursOfWorkFullTimeWithoutHyphenWithSurroundingTextIsParsed()
         {
             var parser = new TalentLinkWorkPatternParser();
 
-            var result = parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText9).Result;
+            var result = await parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText9);
 
             Assert.AreEqual(true, result.WorkPatterns.Contains(WorkPattern.FULL_TIME));
             Assert.AreEqual(false, result.WorkPatterns.Contains(WorkPattern.PART_TIME));
         }
 
         [Test]
-        public void HoursOfWorkHoursPerWeekIsParsed()
+        public async Task HoursOfWorkHoursPerWeekIsParsed()
         {
             var parser = new TalentLinkWorkPatternParser();
 
-            var result = parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText4).Result;
+            var result = await parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText4);
 
             Assert.AreEqual(true, result.WorkPatterns.Contains(WorkPattern.FULL_TIME));
             Assert.AreEqual(false, result.WorkPatterns.Contains(WorkPattern.PART_TIME));
         }
 
         [Test]
-        public void HoursOfWorkHoursPerWeekWithSurroundingTextIsParsed()
+        public async Task HoursOfWorkHoursPerWeekWithSurroundingTextIsParsed()
         {
             var parser = new TalentLinkWorkPatternParser();
 
-            var result = parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText10).Result;
+            var result = await parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText10);
 
             Assert.AreEqual(true, result.WorkPatterns.Contains(WorkPattern.FULL_TIME));
             Assert.AreEqual(false, result.WorkPatterns.Contains(WorkPattern.PART_TIME));
         }
 
         [Test]
-        public void WorkingPatternHoursPerWeekRangeIsParsed()
+        public async Task WorkingPatternHoursPerWeekRangeIsParsed()
         {
             var parser = new TalentLinkWorkPatternParser();
 
-            var result = parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText2).Result;
+            var result = await parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText2);
 
             Assert.AreEqual(true, result.WorkPatterns.Contains(WorkPattern.FULL_TIME));
             Assert.AreEqual(true, result.WorkPatterns.Contains(WorkPattern.PART_TIME));
         }
 
         [Test]
-        public void FullOrPartTimeIsParsed()
+        public async Task FullOrPartTimeIsParsed()
         {
             var parser = new TalentLinkWorkPatternParser();
 
-            var result = parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText6).Result;
+            var result = await parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText6);
 
             Assert.AreEqual(true, result.WorkPatterns.Contains(WorkPattern.FULL_TIME));
             Assert.AreEqual(true, result.WorkPatterns.Contains(WorkPattern.PART_TIME));
         }
 
         [Test]
-        public void CasualIsParsedAsPartTime()
+        public async Task CasualIsParsedAsPartTime()
         {
             var parser = new TalentLinkWorkPatternParser();
 
-            var result = parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText8).Result;
+            var result = await parser.ParseWorkPattern(Properties.Resources.WorkPatternInBodyText8);
 
             Assert.AreEqual(false, result.WorkPatterns.Contains(WorkPattern.FULL_TIME));
             Assert.AreEqual(true, result.WorkPatterns.Contains(WorkPattern.PART_TIME));

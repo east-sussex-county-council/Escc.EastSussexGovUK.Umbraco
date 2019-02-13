@@ -13,48 +13,48 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
     public class TalentLinkSalaryParserTests
     {
         [Test]
-        public void TwoNumbersGbpYearIsParsed()
+        public async Task TwoNumbersGbpYearIsParsed()
         {
             var parseThis = "16875 - 17891 GBP Year";
 
             var parser = new TalentLinkSalaryFromDescriptionParser();
-            var result = parser.ParseSalary(parseThis).Result;
+            var result = await parser.ParseSalary(parseThis);
 
             Assert.AreEqual(16875, result.MinimumSalary);
             Assert.AreEqual(17891, result.MaximumSalary);
         }
 
         [Test]
-        public void OneNumberGbpYearIsParsed()
+        public async Task OneNumberGbpYearIsParsed()
         {
             var parseThis = "29033  GBP Year";
 
             var parser = new TalentLinkSalaryFromDescriptionParser();
-            var result = parser.ParseSalary(parseThis).Result;
+            var result = await parser.ParseSalary(parseThis);
 
             Assert.AreEqual(29033, result.MinimumSalary);
             Assert.AreEqual(29033, result.MaximumSalary);
         }
 
         [Test]
-        public void PrefixThenOneNumberGbpYearIsParsed()
+        public async Task PrefixThenOneNumberGbpYearIsParsed()
         {
             var parseThis = "To 29033  GBP Year";
 
             var parser = new TalentLinkSalaryFromDescriptionParser();
-            var result = parser.ParseSalary(parseThis).Result;
+            var result = await parser.ParseSalary(parseThis);
 
             Assert.AreEqual(29033, result.MinimumSalary);
             Assert.AreEqual(29033, result.MaximumSalary);
         }
 
         [Test]
-        public void SalaryWithPenceIsParsed()
+        public async Task SalaryWithPenceIsParsed()
         {
             var parseThis = "6752.5  - 6752.5  GBP  Year";
 
             var parser = new TalentLinkSalaryFromDescriptionParser();
-            var result = parser.ParseSalary(parseThis).Result;
+            var result = await parser.ParseSalary(parseThis);
 
             Assert.AreEqual(6752, result.MinimumSalary);
             Assert.AreEqual(6752, result.MaximumSalary);
@@ -62,34 +62,34 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
 
         [TestCase("£20,000 to £24,999", 20000, 24999)]
         [TestCase("£25,000 - £34,999", 25000, 34999)]
-        public void TwoNumbersWithCurrencyIsParsed(string parseThis, int minimum, int maximum)
+        public async Task TwoNumbersWithCurrencyIsParsed(string parseThis, int minimum, int maximum)
         {
             var parser = new TalentLinkSalaryFromDescriptionParser();
-            var result = parser.ParseSalary(parseThis).Result;
+            var result = await parser.ParseSalary(parseThis);
 
             Assert.AreEqual(minimum, result.MinimumSalary);
             Assert.AreEqual(maximum, result.MaximumSalary);
         }
 
         [Test]
-        public void TwoNumbersAndOverIsParsed()
+        public async Task TwoNumbersAndOverIsParsed()
         {
             var parseThis = "£50,000 and over";
 
             var parser = new TalentLinkSalaryFromDescriptionParser();
-            var result = parser.ParseSalary(parseThis).Result;
+            var result = await parser.ParseSalary(parseThis);
 
             Assert.AreEqual(50000, result.MinimumSalary);
             Assert.AreEqual(null, result.MaximumSalary);
         }
 
         [Test]
-        public void UnrecognisedTextAssumedToBeScaleName()
+        public async Task UnrecognisedTextAssumedToBeScaleName()
         {
             var parseThis = "Teachers' Pay Scale";
 
             var parser = new TalentLinkSalaryFromDescriptionParser();
-            var result = parser.ParseSalary(parseThis).Result;
+            var result = await parser.ParseSalary(parseThis);
 
             Assert.AreEqual("Teachers' Pay Scale", result.SalaryRange);
         }

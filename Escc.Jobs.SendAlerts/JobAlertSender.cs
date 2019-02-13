@@ -104,7 +104,7 @@ namespace Escc.Jobs.SendAlerts
                 foreach (var alert in alertsForAnEmail)
                 {
                     var jobsSentForThisEmail = forceResend ? new List<int>() : await alertsRepo.GetJobsSentForEmail(alert.JobsSet, alert.Email);
-                    LookupJobsForAlert(jobsProvider, alert, jobsSentForThisEmail);
+                    await LookupJobsForAlert(jobsProvider, alert, jobsSentForThisEmail);
                 }
             }
 
@@ -127,11 +127,11 @@ namespace Escc.Jobs.SendAlerts
             return groupedByEmail.Values;
         }
 
-        private void LookupJobsForAlert(IJobsDataProvider jobsData, JobAlert alert, IList<int> jobsSentForThisAlert)
+        private async Task LookupJobsForAlert(IJobsDataProvider jobsData, JobAlert alert, IList<int> jobsSentForThisAlert)
         {
             alert.Query.ClosingDateFrom = DateTime.Today;
             _log.Info($"Requesting {alert.Query.ToString()}");
-            var jobs = jobsData.ReadJobs(alert.Query).Result;
+            var jobs = await jobsData.ReadJobs(alert.Query);
 
             foreach (var job in jobs.Jobs)
             {

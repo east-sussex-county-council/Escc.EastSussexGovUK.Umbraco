@@ -29,16 +29,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
         /// </summary>
         /// <param name="htmlStream">The HTML stream.</param>
         /// <returns></returns>
-        public Task<JobsParseResult> Parse(Stream htmlStream)
+        public async Task<JobsParseResult> Parse(Stream htmlStream)
         {
             var parsedHtml = new HtmlDocument();
             parsedHtml.Load(htmlStream);
 
             var parseResult = new JobsParseResult();
             ParseIsLastPage(parsedHtml, parseResult);
-            ParseJobs(parsedHtml, parseResult);
+            await ParseJobs(parsedHtml, parseResult);
 
-            return Task.FromResult(parseResult);
+            return parseResult;
         }
 
         private void ParseIsLastPage(HtmlDocument parsedHtml, JobsParseResult parseResult)
@@ -69,7 +69,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
             }
         }
 
-        private void ParseJobs(HtmlDocument parsedHtml, JobsParseResult jobs)
+        private async Task ParseJobs(HtmlDocument parsedHtml, JobsParseResult jobs)
         {
             var links = parsedHtml.DocumentNode.SelectNodes("//td[@headers='th1']/a");
             if (links != null)
@@ -85,7 +85,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink
                     job.JobTitle = HttpUtility.HtmlDecode(link.InnerText);
                     job.Organisation = HttpUtility.HtmlDecode(link.ParentNode.ParentNode.SelectSingleNode("./td[@headers='th2']")?.InnerText?.Trim());
                     job.Locations.Add(HttpUtility.HtmlDecode(link.ParentNode.ParentNode.SelectSingleNode("./td[@headers='th3']")?.InnerText?.Trim()));
-                    job.Salary = _salaryParser.ParseSalary(HttpUtility.HtmlDecode(link.ParentNode.ParentNode.SelectSingleNode("./td[@headers='th4']")?.InnerText?.Trim())).Result;
+                    job.Salary = await _salaryParser.ParseSalary(HttpUtility.HtmlDecode(link.ParentNode.ParentNode.SelectSingleNode("./td[@headers='th4']")?.InnerText?.Trim()));
                     job.Salary.SearchRange = job.Salary.SalaryRange;
                     job.ClosingDate = DateTime.Parse(link.ParentNode.ParentNode.SelectSingleNode("./td[@headers='th5']")?.InnerText?.Trim(), new CultureInfo("en-GB"));
                     jobs.Jobs.Add(job);
