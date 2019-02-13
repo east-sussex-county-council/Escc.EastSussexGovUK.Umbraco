@@ -58,7 +58,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.HomePage
                 var locationsTask = jobsData.ReadLocations();
                 var jobTypesTask = jobsData.ReadJobTypes();
 
-                var wasteTypesDataSource = new UmbracoWasteTypesDataSource(new Uri(ConfigurationManager.AppSettings["WasteTypesDataUrl"]), new ConfigurationProxyProvider(), forceCacheRefresh ? null : new ApplicationCacheStrategy<List<string>>(TimeSpan.FromDays(1)));
+                var wasteTypesDataSource = new UmbracoWasteTypesDataSource(new Uri(Request.Url, ConfigurationManager.AppSettings["WasteTypesDataUrl"]), new ConfigurationProxyProvider(), forceCacheRefresh ? null : new ApplicationCacheStrategy<List<string>>(TimeSpan.FromDays(1)));
                 var wasteTypesTask = wasteTypesDataSource.LoadWasteTypes();
 
                 await Task.WhenAll(locationsTask, jobTypesTask, wasteTypesTask);
