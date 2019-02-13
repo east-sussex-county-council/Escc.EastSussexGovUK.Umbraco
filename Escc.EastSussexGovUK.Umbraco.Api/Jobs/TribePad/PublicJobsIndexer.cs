@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Linq;
 using Escc.Html;
 using Examine.Providers;
 using Examine;
@@ -25,7 +26,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         /// </summary>
         public PublicJobsIndexer() 
         {
-            var resultsUrl = new Uri(ConfigurationManager.AppSettings["TribePadPublicJobsResultsUrl"]);
+            var resultsUrls = ConfigurationManager.AppSettings["TribePadPublicJobsResultsUrls"]?.Split(',').Select(x => new Uri(x));
             var advertUrl = new Uri(ConfigurationManager.AppSettings["TribePadAdvertUrl"]);
             var lookupValuesApiUrl = new Uri(ConfigurationManager.AppSettings["TribePadLookupValuesUrl"]);
             var applyUrl = new Uri(ConfigurationManager.AppSettings["TribePadApplyUrl"]);
@@ -37,7 +38,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             var lookupValuesProvider = new JobsLookupValuesFromTribePad(lookupValuesApiUrl, new LookupValuesFromTribePadBuiltInFieldParser(), new LookupValuesFromTribePadCustomFieldParser(), null, proxyProvider);
             var jobParser = new TribePadJobParser(lookupValuesProvider, new TribePadSalaryParser(lookupValuesProvider), new TribePadWorkPatternParser(lookupValuesProvider, new TribePadWorkPatternSplitter()), applyUrl);
 
-            JobsProvider = new JobsDataFromTribePad(resultsUrl, advertUrl, jobParser, jobParser, proxyProvider, true);
+            JobsProvider = new JobsDataFromTribePad(resultsUrls, advertUrl, jobParser, jobParser, proxyProvider, true);
             StopWordsRemover = new LuceneStopWordsRemover();
             TagSanitiser = new HtmlTagSanitiser();
             JobTransformers = new Dictionary<IEnumerable<IJobMatcher>, IEnumerable<IJobTransformer>>()

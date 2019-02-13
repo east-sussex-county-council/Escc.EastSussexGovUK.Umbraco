@@ -16,7 +16,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
     /// </summary>
     public class JobsDataFromTribePad : IJobsDataProvider
     {
-        private readonly Uri _resultsUrl;
+        private readonly IEnumerable<Uri> _resultsUrls;
         private readonly Uri _advertUrl;
         private readonly IProxyProvider _proxy;
         private readonly IJobResultsParser _jobResultsParser;
@@ -26,16 +26,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         /// <summary>
         /// Initializes a new instance of the <see cref="JobsDataFromTribePad" /> class.
         /// </summary>
-        /// <param name="resultsUrl">The source URL.</param>
+        /// <param name="resultsUrls">One or more source URLs.</param>
         /// <param name="advertUrl">The advert URL.</param>
         /// <param name="jobResultsParser">The job results parser.</param>
         /// <param name="jobAdvertParser">The job advert parser.</param>
         /// <param name="proxy">The proxy (optional).</param>
         /// <param name="saveHtml">Save a copy of the TalentLink HTML to App_Data</param>
         /// <exception cref="System.ArgumentNullException">sourceUrl</exception>
-        public JobsDataFromTribePad(Uri resultsUrl, Uri advertUrl, IJobResultsParser jobResultsParser, IJobAdvertParser jobAdvertParser, IProxyProvider proxy, bool saveHtml)
+        public JobsDataFromTribePad(IEnumerable<Uri> resultsUrls, Uri advertUrl, IJobResultsParser jobResultsParser, IJobAdvertParser jobAdvertParser, IProxyProvider proxy, bool saveHtml)
         {
-            _resultsUrl = resultsUrl;
+            _resultsUrls = resultsUrls;
             _advertUrl = advertUrl;
             _proxy = proxy;
             _jobResultsParser = jobResultsParser;
@@ -75,8 +75,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
 
             var jobs = new JobSearchResult() { Jobs = new List<Job>() };
 
-            var stream = await ReadXml(_resultsUrl, _proxy).ConfigureAwait(false);
-            jobs.Jobs.AddRange((await _jobResultsParser.Parse(stream)).Jobs);
+            foreach (var resultsUrl in _resultsUrls)
+            {
+                var stream = await ReadXml(resultsUrl, _proxy).ConfigureAwait(false);
+                jobs.Jobs.AddRange((await _jobResultsParser.Parse(stream)).Jobs);
+            }
             return jobs;
         }
 
