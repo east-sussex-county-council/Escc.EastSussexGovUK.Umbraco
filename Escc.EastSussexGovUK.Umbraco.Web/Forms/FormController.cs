@@ -24,7 +24,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Forms
     /// <seealso cref="Umbraco.Web.Mvc.RenderMvcController" />
     public class FormController : RenderMvcController
     {
-        public new async Task<ActionResult> Index(RenderModel model)
+        public override ActionResult Index(RenderModel model)
         {
             var viewModel = new FormModel();
             var mediaUrlTransformer = new RemoveMediaDomainUrlTransformer();
@@ -32,14 +32,19 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Forms
             viewModel.FormGuid = model.Content.GetPropertyValue<Guid>("Form_Content");
 
             var modelBuilder = new BaseViewModelBuilder(new EastSussexGovUKTemplateRequest(Request));
-            await modelBuilder.PopulateBaseViewModel(viewModel, model.Content, null,
+
+            // Unfortunately we can't use async/await in this action as it causes an error when navigating multi-page forms, or when using the default submit message.
+            // As a workaround, add a return value to the following two methods purely so that .Result can be used to run them synchronously in this controller.
+            // https://github.com/umbraco/Umbraco.Forms.Issues/issues/86
+            var asyncMethodCompletedSynchronously = modelBuilder.PopulateBaseViewModel(viewModel, model.Content, null,
                 new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1))).ExpiryDate,
-                UmbracoContext.Current.InPreviewMode, new SkinFromUmbraco());
-            await modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel,
+                UmbracoContext.Current.InPreviewMode, new SkinFromUmbraco()).Result;
+            
+            asyncMethodCompletedSynchronously = modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel,
                 new UmbracoLatestService(model.Content),
                 null, null,
                 new UmbracoWebChatSettingsService(model.Content, new UrlListReader()),
-                null, null);
+                null, null).Result;
 
             return CurrentTemplate(viewModel);
         }
