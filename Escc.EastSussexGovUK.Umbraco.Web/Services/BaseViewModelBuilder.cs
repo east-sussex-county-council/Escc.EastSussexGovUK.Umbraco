@@ -111,10 +111,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Services
         /// <param name="latestService">The latest service.</param>
         /// <param name="socialMediaService">The social media service.</param>
         /// <param name="eastSussex1SpaceService">The east sussex1 space service.</param>
-        /// <param name="webChatSettingsService">The web chat settings service.</param>
         /// <param name="escisService">The ESCIS service.</param>
         /// <exception cref="System.ArgumentNullException">model</exception>
-        public async tasks.Task<bool> PopulateBaseViewModelWithInheritedContent(Models.BaseViewModel model, latest.ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IEscisService escisService, IRatingSettingsProvider ratingSettings=null)
+        public void PopulateBaseViewModelWithInheritedContent(Models.BaseViewModel model, latest.ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IEscisService escisService, IRatingSettingsProvider ratingSettings=null)
         {
             if (model == null) throw new ArgumentNullException("model");
             
@@ -122,11 +121,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Services
             if (eastSussex1SpaceService != null) model.ShowEastSussex1SpaceWidget = eastSussex1SpaceService.ShowSearch();
             if (escisService != null) model.ShowEscisWidget = escisService.ShowSearch();
             if (socialMediaService != null) model.SocialMedia = socialMediaService.ReadSocialMediaSettings();
-            if (webChatSettingsService!= null) model.WebChat = await webChatSettingsService.ReadWebChatSettings().ConfigureAwait(false);
             if (ratingSettings != null) model.RatingSettings = ratingSettings.ReadRatingSettings();
-
-            // Return a value (any value) so that this async method can be run synchronously by the controller for Umbraco Forms
-            return true;
         }
     }
 }

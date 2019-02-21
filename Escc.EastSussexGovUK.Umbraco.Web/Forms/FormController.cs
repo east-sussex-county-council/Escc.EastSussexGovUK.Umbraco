@@ -31,7 +31,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Forms
             viewModel.LeadingText = new HtmlString(mediaUrlTransformer.ParseAndTransformMediaUrlsInHtml(model.Content.GetPropertyValue<string>("LeadingText_Content")));
             viewModel.FormGuid = model.Content.GetPropertyValue<Guid>("Form_Content");
 
-            var modelBuilder = new BaseViewModelBuilder(new EastSussexGovUKTemplateRequest(Request));
+            var modelBuilder = new BaseViewModelBuilder(new EastSussexGovUKTemplateRequest(Request, webChatSettingsService: new UmbracoWebChatSettingsService(model.Content, new UrlListReader())));
 
             // Unfortunately we can't use async/await in this action as it causes an error when navigating multi-page forms, or when using the default submit message.
             // As a workaround, add a return value to the following two methods purely so that .Result can be used to run them synchronously in this controller.
@@ -40,11 +40,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Forms
                 new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1))).ExpiryDate,
                 UmbracoContext.Current.InPreviewMode, new SkinFromUmbraco()).Result;
             
-            asyncMethodCompletedSynchronously = modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel,
+            modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel,
                 new UmbracoLatestService(model.Content),
-                null, null,
-                new UmbracoWebChatSettingsService(model.Content, new UrlListReader()),
-                null, null).Result;
+                null, null, null, null);
 
             return CurrentTemplate(viewModel);
         }

@@ -44,11 +44,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.HomePage
             var viewModel = new HomePageViewModelFromUmbraco(model.Content, new RelatedLinksService(new RemoveMediaDomainUrlTransformer(), new ElibraryUrlTransformer(), new RemoveAzureDomainUrlTransformer())).BuildModel();
             var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1)));
 
-            var modelBuilder = new BaseViewModelBuilder(new EastSussexGovUKTemplateRequest(Request));
+            var modelBuilder = new BaseViewModelBuilder(new EastSussexGovUKTemplateRequest(Request, webChatSettingsService: new UmbracoWebChatSettingsService(model.Content, new UrlListReader())));
             await modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
                 expiryDate.ExpiryDate,
                 UmbracoContext.Current.InPreviewMode);
-            await modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel, null, null, null, null, null, new RatingSettingsFromUmbraco(model.Content));
+            modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel, null, null, null, null, new RatingSettingsFromUmbraco(model.Content));
 
             try
             {

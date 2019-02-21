@@ -48,11 +48,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.MicrosoftCmsMigration
         {
             var model = new MicrosoftCmsViewModel();
 
-            var modelBuilder = new BaseViewModelBuilder(new EastSussexGovUKTemplateRequest(request));
+            var modelBuilder = new BaseViewModelBuilder(new EastSussexGovUKTemplateRequest(request, webChatSettingsService: webChatSettingsService));
             await modelBuilder.PopulateBaseViewModel(model, content, contentExperimentSettingsService,
                 expiryDate,
                 UmbracoContext.Current.InPreviewMode, skinService);
-            await modelBuilder.PopulateBaseViewModelWithInheritedContent(model, latestService, socialMediaService, eastSussex1SpaceService, webChatSettingsService, escisService, ratingSettings);
+            modelBuilder.PopulateBaseViewModelWithInheritedContent(model, latestService, socialMediaService, eastSussex1SpaceService, escisService, ratingSettings);
 
             return model;
         }

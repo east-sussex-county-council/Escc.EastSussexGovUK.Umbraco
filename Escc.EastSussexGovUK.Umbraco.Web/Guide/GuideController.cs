@@ -32,7 +32,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Guide
             if (model == null) throw new ArgumentNullException(nameof(model));
 
             var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1)));
-            var templateRequest = new EastSussexGovUKTemplateRequest(Request);
+            var templateRequest = new EastSussexGovUKTemplateRequest(Request, webChatSettingsService: new UmbracoWebChatSettingsService(model.Content, new UrlListReader()));
             var viewModel = await MapUmbracoContentToViewModel(model.Content, expiryDate.ExpiryDate, templateRequest);
             var modelBuilder = new BaseViewModelBuilder(templateRequest);
             await modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
@@ -73,11 +73,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Guide
             await modelBuilder.PopulateBaseViewModel(viewModel, content, new ContentExperimentSettingsService(),
                 new ExpiryDateFromExamine(content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1))).ExpiryDate,
                 UmbracoContext.Current.InPreviewMode, new SkinFromUmbraco());
-            await modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel,
+            modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel,
                 new UmbracoLatestService(content),
                 new UmbracoSocialMediaService(content),
                 new UmbracoEastSussex1SpaceService(content),
-                new UmbracoWebChatSettingsService(content, new UrlListReader()),
                 new UmbracoEscisService(content));
 
             return viewModel;

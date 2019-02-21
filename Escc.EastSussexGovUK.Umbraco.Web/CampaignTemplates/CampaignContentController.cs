@@ -36,14 +36,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.CampaignTemplates
             var viewModel = new CampaignContentViewModelFromUmbraco(model.Content, urlTransformer).BuildModel();
 
             // Add common properties to the model
-            var modelBuilder = new BaseViewModelBuilder(new EastSussexGovUKTemplateRequest(Request));
+            var modelBuilder = new BaseViewModelBuilder(new EastSussexGovUKTemplateRequest(Request, webChatSettingsService: new UmbracoWebChatSettingsService(model.Content, new UrlListReader())));
             var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1)));
             await modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(), 
                 expiryDate.ExpiryDate, 
                 UmbracoContext.Current.InPreviewMode);
-            await modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel, 
-                new UmbracoLatestService(model.Content), null, null, 
-                new UmbracoWebChatSettingsService(model.Content, new UrlListReader()), null,
+            modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel, 
+                new UmbracoLatestService(model.Content), null, null, null,
                 new RatingSettingsFromUmbraco(model.Content));
 
             new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new IExpiryDateSource[] { expiryDate, new ExpiryDateFromPropertyValue(model.Content, "latestUnpublishDate_Latest") });

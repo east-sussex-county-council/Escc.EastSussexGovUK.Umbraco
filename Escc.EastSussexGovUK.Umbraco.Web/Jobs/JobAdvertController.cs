@@ -44,16 +44,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
 
             // Add common properties to the model
             var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1)));
-            var modelBuilder = new BaseViewModelBuilder(new EastSussexGovUKTemplateRequest(Request));
+            var modelBuilder = new BaseViewModelBuilder(new EastSussexGovUKTemplateRequest(Request, webChatSettingsService: new UmbracoWebChatSettingsService(model.Content, new UrlListReader())));
             await modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
                 expiryDate.ExpiryDate,
                 UmbracoContext.Current.InPreviewMode);
-            await modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel, 
+            modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel, 
                 new UmbracoLatestService(model.Content), 
                 new UmbracoSocialMediaService(model.Content),
-                null,
-                new UmbracoWebChatSettingsService(model.Content, new UrlListReader()),
-                null);
+                null, null);
 
             // Redirect non-preferred URL - these are sent out in job alerts until May 2018, and linked from the TalentLink back office
             if (!String.IsNullOrEmpty(Request.QueryString["nPostingTargetID"]))
