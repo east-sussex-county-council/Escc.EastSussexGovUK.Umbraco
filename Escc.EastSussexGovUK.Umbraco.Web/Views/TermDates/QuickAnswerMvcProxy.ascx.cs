@@ -2,6 +2,7 @@
 using System.Web;
 using System.Web.Mvc;
 using Escc.EastSussexGovUK.Umbraco.Web.HomePage;
+using Escc.Net.Configuration;
 using Umbraco.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.Views.TermDates
@@ -14,7 +15,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Views.TermDates
             {
                 var cache = UmbracoContext.Current.InPreviewMode ? null : HttpContext.Current.Cache;
                 var control = (QuickAnswer) LoadControl("~/Views/TermDates/QuickAnswer.ascx");
-                control.TermDatesDataProvider = new UrlProvider(new Uri(Request.Url, Model.TermDatesDataUrl), cache);
+                control.TermDatesDataProvider = new UrlProvider(new Uri(Request.Url, Model.TermDatesDataUrl), cache, new ConfigurationProxyProvider());
                 this.Controls.Add(control);
             }
         }

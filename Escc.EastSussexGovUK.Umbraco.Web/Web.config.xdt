@@ -14,6 +14,9 @@
 
     <section name="UnpublishOverridesSection" xdt:Transform="Remove" xdt:Locator="Match(name)" />
     <section name="UnpublishOverridesSection" type="Escc.Umbraco.Expiry.Configuration.UnpublishOverridesSection, Escc.Umbraco.Expiry" requirePermission="false" xdt:Transform="Insert" />
+
+    <section name="exceptionless" type="Exceptionless.ExceptionlessSection, Exceptionless" xdt:Transform="Insert" />
+    <section name="exceptionless" xdt:Transform="Remove" xdt:Locator="XPath(/configuration/configSections/sectionGroup[@name='exceptionless'][2])" />
   </configSections>
   <configSections xdt:Transform="RemoveAll" xdt:Locator="Condition(count(*)=0)" />
 
@@ -326,6 +329,12 @@
     <!-- Escc.Umbraco.UserAccessWebService -->
     <add key="HomeContentTypeAlias" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     <add key="HomeContentTypeAlias" value="HomePage" xdt:Transform="Insert" />
+
+    <!-- For recycling sites included on a standard topic page -->
+    <add key="RecyclingSiteFinderBaseUrl" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    <add key="RecyclingSiteFinderBaseUrl" value="/environment/rubbishandrecycling/recyclingsites/find/" xdt:Transform="Insert" />
+    <add key="WasteTypesDataUrl" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    <add key="WasteTypesDataUrl" value="/umbraco/api/wastetypes/list" xdt:Transform="Insert" />
   </appSettings>
 
   <runtime>

@@ -1,4 +1,5 @@
 ﻿using Escc.EastSussexGovUK.Umbraco.Web.Views.TermDates;
+using Escc.Net.Configuration;
 using System;
 using System.Web;
 using Umbraco.Core.Models;
@@ -26,7 +27,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Views.Topic
             {
                 var cache = UmbracoContext.Current.InPreviewMode ? null : HttpContext.Current.Cache;
                 var termDatesDataUrl = new Uri(termDates.Url, UriKind.Relative);
-                var provider = new UrlProvider(new Uri(Request.Url, termDatesDataUrl), cache);
+                var provider = new UrlProvider(new Uri(Request.Url, termDatesDataUrl), cache, new ConfigurationProxyProvider());
 
                 var quickAnswer = (QuickAnswer)LoadControl("~/Views/TermDates/QuickAnswer.ascx");
                 quickAnswer.TermDatesDataProvider = provider;

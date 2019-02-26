@@ -2,7 +2,17 @@
 <configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
     <!-- There's no command for "insert if missing" so this transform uses a workaround to ensure it'll work on any config file that has at least the root <configuration /> element.
        The workaround is to insert the element you want regardless of whether it's already there, and if there are now two remove the second one. 
+       
+       The configSections element uses a similar but different workaround from http://stackoverflow.com/questions/18737022/xdt-transform-insertbefore-locator-condition-is-ignored
+       which ensures that it's the first child of <configuration />
        -->
+  <configSections xdt:Transform="InsertBefore(/configuration/*[1])" />
+  <configSections xdt:Locator="XPath(/configuration/configSections[last()])">
+    <section name="exceptionless" type="Exceptionless.ExceptionlessSection, Exceptionless" xdt:Transform="Insert" />
+    <section name="exceptionless" xdt:Transform="Remove" xdt:Locator="XPath(/configuration/configSections/sectionGroup[@name='exceptionless'][2])" />
+  </configSections>
+  <configSections xdt:Transform="RemoveAll" xdt:Locator="Condition(count(*)=0)" />
+
   <appSettings xdt:Transform="Insert" />
   <appSettings xdt:Transform="Remove" xdt:Locator="XPath(/configuration/appSettings[2])" />
 
