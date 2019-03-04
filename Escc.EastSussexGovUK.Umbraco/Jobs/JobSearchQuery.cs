@@ -63,6 +63,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public IList<string> ContractTypes { get; set; } = new List<string>();
 
         /// <summary>
+        /// Gets or sets the departments advertising the job within the <see cref="Organisations"/>
+        /// </summary>
+        public IList<string> Departments { get; set; } = new List<string>();
+
+        /// <summary>
         /// Gets or sets the organisation advertising the job
         /// </summary>
         /// <value>
@@ -151,6 +156,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
             allContent.Append("keywordsintitle").Append(KeywordsInTitle);
             allContent.Append("location");
             foreach (var value in Locations) allContent.Append(value);
+            allContent.Append("department");
+            foreach (var value in Departments) allContent.Append(value);
             allContent.Append("organisation");
             foreach (var value in Organisations) allContent.Append(value);
             allContent.Append("salary");
@@ -234,6 +241,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 allPayLevels.AddRange(SalaryRanges);
                 allPayLevels.AddRange(PayGrades);
                 description.Append(ListOfThings("paying", allPayLevels, null, "or"));
+                anythingAfterJobs = true;
+            }
+
+            if (Departments.Count > 0)
+            {
+                description.Append(ListOfThings("working for", Departments, null, "or"));
                 anythingAfterJobs = true;
             }
 

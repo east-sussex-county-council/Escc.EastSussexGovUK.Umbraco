@@ -11,6 +11,7 @@ using Escc.EastSussexGovUK.Umbraco.Jobs;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Alerts;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Api;
 using Escc.EastSussexGovUK.Umbraco.WebApi;
+using Escc.Net;
 using Escc.Services;
 using log4net;
 using Newtonsoft.Json;
@@ -43,14 +44,14 @@ namespace Escc.Jobs.SendAlerts
             var publicAlertsSettings = JobAlertSettings(apiBaseUrl, JobsSet.PublicJobs);
             if (publicAlertsSettings != null)
             {
-                var publicJobsProvider = new JobsDataFromApi(apiBaseUrl, JobsSet.PublicJobs, publicAlertsSettings.JobAdvertBaseUrl, cacheStrategy);
+                var publicJobsProvider = new JobsDataFromApi(apiBaseUrl, JobsSet.PublicJobs, publicAlertsSettings.JobAdvertBaseUrl, new HttpClientProvider(), cacheStrategy);
                 await SendAlertsForJobSet(publicJobsProvider, JobsSet.PublicJobs, frequency, publicAlertsSettings, forceResend);
             }
 
             var redeploymentAlertsSettings = JobAlertSettings(apiBaseUrl, JobsSet.RedeploymentJobs);
             if (redeploymentAlertsSettings != null)
             {
-                var redeploymentJobsProvider = new JobsDataFromApi(apiBaseUrl, JobsSet.RedeploymentJobs, redeploymentAlertsSettings.JobAdvertBaseUrl, cacheStrategy);
+                var redeploymentJobsProvider = new JobsDataFromApi(apiBaseUrl, JobsSet.RedeploymentJobs, redeploymentAlertsSettings.JobAdvertBaseUrl, new HttpClientProvider(), cacheStrategy);
                 await SendAlertsForJobSet(redeploymentJobsProvider, JobsSet.RedeploymentJobs, frequency, redeploymentAlertsSettings, forceResend);
             }
         }

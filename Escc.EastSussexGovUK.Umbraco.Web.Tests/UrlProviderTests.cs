@@ -15,7 +15,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Tests
         [Test]
         public void ResponseOtherThanOkReturnsEmptyXml()
         {
-            var provider = new UrlProvider(new Uri("https://example.org/not-found"), null);
+            var provider = new UrlProvider(new Uri("https://example.org/not-found"), null, null);
 
             var data = provider.GetXPathData();
             

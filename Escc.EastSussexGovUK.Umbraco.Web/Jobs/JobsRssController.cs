@@ -48,7 +48,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
             viewModel.Query.ClosingDateFrom = DateTime.Today;
             viewModel.Query.JobsSet = viewModel.JobsSet;
 
-            var jobsProvider = new JobsDataFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, viewModel.JobAdvertPage.Url, new MemoryJobCacheStrategy(MemoryCache.Default, Request.QueryString["ForceCacheRefresh"] == "1"));
+            var jobsProvider = new JobsDataFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, viewModel.JobAdvertPage.Url, new HttpClientProvider(), new MemoryJobCacheStrategy(MemoryCache.Default, Request.QueryString["ForceCacheRefresh"] == "1"));
             var jobs = await jobsProvider.ReadJobs(viewModel.Query);
 
             foreach (var job in jobs.Jobs)

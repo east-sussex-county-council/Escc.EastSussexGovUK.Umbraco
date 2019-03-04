@@ -80,6 +80,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
                 TranslateOldJobType("Youth Work", new[] { "Youth and Community Workers" }, query.JobTypes);
             }
 
+            if (!String.IsNullOrEmpty(collection["department"]))
+            {
+                AddQueryStringValuesToList(collection["department"], query.Departments);
+            }
+
             if (!String.IsNullOrEmpty(collection["org"]))
             {
                 AddQueryStringValuesToList(collection["org"], query.Organisations);
@@ -200,6 +205,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
 
                 foreach (var value in query.JobTypes) queryString.Add("jobtypes", value);
                 foreach (var value in query.Locations) queryString.Add("locations", value);
+                foreach (var value in query.Departments) queryString.Add("department", value);
                 foreach (var value in query.Organisations) queryString.Add("org", value);
                 foreach (var value in query.SalaryRanges) queryString.Add("salaryranges", value.Replace(",",String.Empty));
                 foreach (var value in query.PayGrades) queryString.Add("paygrades", value);

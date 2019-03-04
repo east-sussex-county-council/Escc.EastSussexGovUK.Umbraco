@@ -32,12 +32,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             query.Locations.Add("Eastbourne");
             query.SalaryRanges.Add("£20000 - £30000");
             query.PayGrades.Add("Pay grade");
+            query.Departments.Add("Adult Social Care");
             query.Organisations.Add("East Sussex County Council");
             query.Keywords = "test query";
 
             var result = query.ToString();
 
-            Assert.AreEqual("Part time permanent care and social work jobs in Eastbourne paying £20000 - £30000 or Pay grade advertised by East Sussex County Council and matching 'test query'", result);
+            Assert.AreEqual("Part time permanent care and social work jobs in Eastbourne paying £20000 - £30000 or Pay grade working for Adult Social Care advertised by East Sussex County Council and matching 'test query'", result);
         }
 
         [Test]
@@ -57,6 +58,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             query.SalaryRanges.Add("£40000 - £50000");
             query.PayGrades.Add("Grade One");
             query.PayGrades.Add("Grade Two");
+            query.Departments.Add("Adult Social Care");
+            query.Departments.Add("Governance Services");
             query.Organisations.Add("East Sussex County Council");
             query.Organisations.Add("Sussex Downs College");
             query.Keywords = "test query";
@@ -64,7 +67,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
 
             var result = query.ToString();
 
-            Assert.AreEqual("Part time and full time permanent and fixed term care and social work and personnel and HR jobs in Eastbourne or Lewes paying £20000 - £30000, £40000 - £50000, Grade One or Grade Two advertised by East Sussex County Council or Sussex Downs College and matching 'test query' or 'ABC1234'", result);
+            Assert.AreEqual("Part time and full time permanent and fixed term care and social work and personnel and HR jobs in Eastbourne or Lewes paying £20000 - £30000, £40000 - £50000, Grade One or Grade Two working for Adult Social Care or Governance Services advertised by East Sussex County Council or Sussex Downs College and matching 'test query' or 'ABC1234'", result);
         }
 
         [Test]

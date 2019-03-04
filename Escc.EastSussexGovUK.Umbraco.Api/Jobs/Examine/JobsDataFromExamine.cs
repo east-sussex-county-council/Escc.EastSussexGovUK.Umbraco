@@ -77,6 +77,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
                         .And().GroupedOr(new[] { "salaryDisplay" }, query.PayGrades.ToArray())
                         .And().GroupedOr(new[] { "workPattern"}, query.WorkPatterns.ToArray())
                         .And().GroupedOr(new[] { "jobType" }, query.JobTypes.ToArray())
+                        .And().GroupedOr(new[] { "department" }, query.Departments.ToArray())
                         .And().GroupedOr(new[] { "organisation" }, query.Organisations.ToArray());
 
             // If any of the GroupedOr values are empty, Examine generates a Lucene query that requires no field set to no value: +()

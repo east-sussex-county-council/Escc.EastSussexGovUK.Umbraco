@@ -22,6 +22,7 @@ using Escc.EastSussexGovUK.Umbraco.Jobs.Api;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
 using System.Threading.Tasks;
 using Escc.EastSussexGovUK.Mvc;
+using Escc.Net;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
 {
@@ -56,7 +57,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
             // Redirect non-preferred URL - these are sent out in job alerts until May 2018, and linked from the TalentLink back office
             if (!String.IsNullOrEmpty(Request.QueryString["nPostingTargetID"]))
             {
-                var jobsProvider = new JobsDataFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, new Uri(model.Content.UrlAbsolute()), new MemoryJobCacheStrategy(MemoryCache.Default, Request.QueryString["ForceCacheRefresh"] == "1"));
+                var jobsProvider = new JobsDataFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, new Uri(model.Content.UrlAbsolute()), new HttpClientProvider(), new MemoryJobCacheStrategy(MemoryCache.Default, Request.QueryString["ForceCacheRefresh"] == "1"));
                 viewModel.Job = await jobsProvider.ReadJob(Request.QueryString["nPostingTargetID"]);
                 if (viewModel.Job.Id > 0)
                 {
@@ -69,7 +70,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
                 var jobUrlSegment = Regex.Match(Request.Url.AbsolutePath, "/([0-9]+)/");
                 if (jobUrlSegment.Success)
                 {
-                    var jobsProvider = new JobsDataFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, new Uri(model.Content.UrlAbsolute()), new MemoryJobCacheStrategy(MemoryCache.Default, Request.QueryString["ForceCacheRefresh"] == "1"));
+                    var jobsProvider = new JobsDataFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, new Uri(model.Content.UrlAbsolute()), new HttpClientProvider(), new MemoryJobCacheStrategy(MemoryCache.Default, Request.QueryString["ForceCacheRefresh"] == "1"));
                     viewModel.Job = await jobsProvider.ReadJob(jobUrlSegment.Groups[1].Value);
                     if (viewModel.Job.Id == 0 || viewModel.Job.ClosingDate < DateTime.Today)
                     {

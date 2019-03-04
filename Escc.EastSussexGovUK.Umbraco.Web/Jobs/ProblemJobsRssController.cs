@@ -12,6 +12,7 @@ using Escc.EastSussexGovUK.Umbraco.Jobs.Api;
 using System.Configuration;
 using Examine;
 using Escc.Umbraco.Expiry;
+using Escc.Net;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
 {
@@ -39,7 +40,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
                 expiryDate.ExpiryDate,
                 UmbracoContext.Current.InPreviewMode);
 
-            var jobsProvider = new JobsDataFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, viewModel.JobAdvertPage.Url, null);
+            var jobsProvider = new JobsDataFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, viewModel.JobAdvertPage.Url, new HttpClientProvider(), null);
             var jobs = await jobsProvider.ReadProblemJobs();
 
             foreach (var job in jobs)

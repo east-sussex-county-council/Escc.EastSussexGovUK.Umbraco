@@ -12,7 +12,6 @@ using Examine;
 using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
-using Task = System.Threading.Tasks.Task;
 using System.Configuration;
 using Escc.Umbraco.Expiry;
 using System.Runtime.Caching;
@@ -21,6 +20,7 @@ using Escc.EastSussexGovUK.Umbraco.Jobs.Api;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
 using System.Threading.Tasks;
 using Escc.EastSussexGovUK.Mvc;
+using Escc.Net;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
 {
@@ -63,7 +63,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
                 }
                 viewModel.Metadata.Title = viewModel.Query.ToString();
 
-                var jobsProvider = new JobsDataFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, viewModel.JobAdvertPage?.Url, new MemoryJobCacheStrategy(MemoryCache.Default, Request.QueryString["ForceCacheRefresh"] == "1"));
+                var jobsProvider = new JobsDataFromApi(
+                    new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), 
+                    viewModel.JobsSet, 
+                    viewModel.JobAdvertPage?.Url, 
+                    new HttpClientProvider(),
+                    new MemoryJobCacheStrategy(MemoryCache.Default, Request.QueryString["ForceCacheRefresh"] == "1")
+                    );
 
                 var jobs = await jobsProvider.ReadJobs(viewModel.Query);
                 viewModel.Jobs = jobs.Jobs;

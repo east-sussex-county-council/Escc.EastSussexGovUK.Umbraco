@@ -119,6 +119,30 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
         }
 
         [Test]
+        public void DepartmentIsPopulatedFromCollection()
+        {
+            var collection = new NameValueCollection();
+            collection["department"] = "Example department";
+            var converter = new JobSearchQueryConverter(false);
+
+            var query = converter.ToQuery(collection);
+
+            Assert.AreEqual("Example department", query.Departments[0]);
+        }
+
+        [Test]
+        public void DepartmentIsPopulatedFromQuery()
+        {
+            var query = new JobSearchQuery();
+            query.Departments.Add("Example department");
+            var converter = new JobSearchQueryConverter(false);
+
+            var collection = converter.ToCollection(query);
+
+            Assert.AreEqual("Example department", collection["department"]);
+        }
+
+        [Test]
         public void OrganisationIsPopulatedFromCollection()
         {
             var collection = new NameValueCollection();
