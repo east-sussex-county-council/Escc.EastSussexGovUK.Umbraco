@@ -4,12 +4,3 @@
 
 /* Image which goes with the intro */
 .intro { float: right; margin: .692308em 0 .692308em 1.863354%; }
-
-/*********************************************
- * CMS TEMPLATE - LANDING PAGE WITH PICTURES *
- *********************************************/
-
-/* Place images on the right. Top margin matches that of h2 to line up. Bottom and left are one line space. 
-   Use overflow: hidden to contain floats. */
-.text-content .imageOdd { float: right; margin: 1.421053em 0 .947368em .947368em; }
-.landingPic { overflow: hidden; width: 100%; }

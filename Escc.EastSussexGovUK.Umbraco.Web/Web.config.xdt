@@ -57,8 +57,6 @@
       <add key="CouncilPlanLarge" value="/css/CouncilPlan/council-plan-large.css" xdt:Transform="Insert" />
       <add key="DownloadSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="DownloadSmall" value="/css/StandardDownloadPage/download-small.css" xdt:Transform="Insert" />
-      <add key="FormDownload" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="FormDownload" value="/css/FormDownloadPage/form-download.css" xdt:Transform="Insert" />
       <add key="HomeSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="HomeSmall" value="/css/HomePage/home-small.css" xdt:Transform="Insert" />
       <add key="HomeMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
