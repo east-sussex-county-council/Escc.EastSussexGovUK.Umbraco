@@ -4886,6 +4886,7 @@
     <Content Include="uSync\Snapshots\20190313_152623_delete-landing-with-pictures-and-form-download\Template\standardtopicpage\standardTopicPage.config" />
     <Content Include="uSync\Snapshots\20190313_152623_delete-landing-with-pictures-and-form-download\Template\task\Task.config" />
     <Content Include="uSync\Snapshots\20190313_152623_delete-landing-with-pictures-and-form-download\uSyncActions.config" />
+    <Content Include="uSync\Snapshots\20190315_102042_landing-should-allow-council-plan\DocumentType\customer-focus-base\landing\def.config" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
