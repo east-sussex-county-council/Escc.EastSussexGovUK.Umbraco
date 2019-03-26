@@ -113,8 +113,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
                                                             Int32.Parse(jobXml.Element("expiry_date").Value.Substring(8, 2), CultureInfo.InvariantCulture))
             };
 
-            if (job.Department.ToUpperInvariant() == "PARTNERSHIP")
+            var canApplyForThisJob = true;
+            var comparableDepartment = job.Department.ToUpperInvariant();
+            if (comparableDepartment == "PARTNERSHIP")
             {
+                canApplyForThisJob = false;
                 if (job.JobTitle.Contains("(") && job.JobTitle.EndsWith(")"))
                 {
                     var orgStarts = job.JobTitle.LastIndexOf("(");
@@ -126,6 +129,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
                     job.Organisation = job.Department;
                 }
                 job.Department = string.Empty;
+            }
+            else if (comparableDepartment == "ESCC SCHOOLS" || comparableDepartment == "ESCC ACADEMIES")
+            {
+                canApplyForThisJob = false;
             }
 
             job.Locations.Add(HttpUtility.HtmlDecode(jobXml.Element("location_city").Value).Trim());
@@ -148,7 +155,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
 
             job.JobType = HttpUtility.HtmlDecode(jobXml.Element("category_name")?.Value).Replace(" & ", " and ");
 
-            if (jobXml.Element("no_apply")?.Value == "0")
+            if (jobXml.Element("no_apply")?.Value == "0" && canApplyForThisJob)
             {
                 job.ApplyUrl = new Uri(String.Format(CultureInfo.InvariantCulture, _applyUrl.ToString(), job.Id), UriKind.RelativeOrAbsolute);
             }
