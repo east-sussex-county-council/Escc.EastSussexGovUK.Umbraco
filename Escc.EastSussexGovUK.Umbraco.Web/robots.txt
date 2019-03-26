@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /search/search.aspx
+Disallow: /umbraco/
+
+User-agent: Atomic_Email_Hunter
+Disallow: /
+
+User-agent: Mozilla/5.0 DV/2.09b
+Disallow: /
