@@ -17,14 +17,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Examine
         /// </summary>
         /// <param name="searchTerm">The search term.</param>
         /// <returns></returns>
-        /// <exception cref="System.NotImplementedException"></exception>
         public IList<string> Tokenise(string searchTerm)
         {
             var terms = new List<string>();
 
             // sanitise the search term
             searchTerm = searchTerm.Trim();
-            searchTerm = Regex.Replace(searchTerm, @"[^\w\s" + "\"-]", String.Empty);
+            searchTerm = Regex.Replace(searchTerm, @"[^\w\s" + "\"/-]", String.Empty);
 
             if (!String.IsNullOrEmpty(searchTerm))
             {
