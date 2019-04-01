@@ -45,7 +45,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs
 
             var jobTitle = NormaliseSegment(job.JobTitle);
             var location = NormaliseSegment(string.Join("-", job.Locations.ToArray<string>()));
-            return new Uri($"{normalisedBaseUrl}/{job.Id}/{job.Reference}/{jobTitle}/{location}", UriKind.RelativeOrAbsolute);
+            var reference = NormaliseSegment(job.Reference);
+            var department = NormaliseSegment(job.Department);
+            return new Uri($"{normalisedBaseUrl}/{job.Id}/{reference}/{jobTitle}/{department}/{location}", UriKind.RelativeOrAbsolute);
         }
 
         public string NormaliseSegment(string text)
