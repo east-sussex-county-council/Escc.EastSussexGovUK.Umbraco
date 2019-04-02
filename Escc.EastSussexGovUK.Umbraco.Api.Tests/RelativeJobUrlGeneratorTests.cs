@@ -16,24 +16,24 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         public void SpacesAreConvertedToDashes()
         {
             var baseUrl = new Uri("https://www.example.org/job");
-            var job = new Job() { Id = 12345, JobTitle = "Example job title", Locations = new List<string>() { "Lewes" }, Reference = "ABC123"};
+            var job = new Job() { Id = 12345, JobTitle = "Example job title", Department = "Department", Locations = new List<string>() { "Lewes" }, Reference = "ABC123"};
             var generator = new RelativeJobUrlGenerator(baseUrl);
 
             job.Url = generator.GenerateUrl(job);
 
-            Assert.AreEqual("https://www.example.org/job/12345/ABC123/example-job-title/lewes", job.Url.ToString());
+            Assert.AreEqual("https://www.example.org/job/12345/abc123/example-job-title/department/lewes", job.Url.ToString());
         }
 
         [Test]
         public void SlashesAreRemovedFromTheUrl()
         {
             var baseUrl = new Uri("https://www.example.org/job");
-            var job = new Job() { Id = 12345, JobTitle = "Example job / Typical title", Locations = new List<string>() { "Lewes" }, Reference = "ABC123" };
+            var job = new Job() { Id = 12345, JobTitle = "Example job / Typical title", Department = "Department", Locations = new List<string>() { "Lewes" }, Reference = "ABC123" };
             var generator = new RelativeJobUrlGenerator(baseUrl);
 
             job.Url = generator.GenerateUrl(job);
 
-            Assert.AreEqual("https://www.example.org/job/12345/ABC123/example-job-typical-title/lewes", job.Url.ToString());
+            Assert.AreEqual("https://www.example.org/job/12345/abc123/example-job-typical-title/department/lewes", job.Url.ToString());
         }
     }
 }

@@ -47,14 +47,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs
             var location = NormaliseSegment(string.Join("-", job.Locations.ToArray<string>()));
             var reference = NormaliseSegment(job.Reference);
             var department = NormaliseSegment(job.Department);
-            return new Uri($"{normalisedBaseUrl}/{job.Id}/{reference}/{jobTitle}/{department}/{location}", UriKind.RelativeOrAbsolute);
+            if (!String.IsNullOrEmpty(department)) { department += "/"; };
+            return new Uri($"{normalisedBaseUrl}/{job.Id}/{reference}/{jobTitle}/{department}{location}", UriKind.RelativeOrAbsolute);
         }
 
         public string NormaliseSegment(string text)
         {
-            text = text.ToLower(CultureInfo.CurrentCulture).Replace("&", "and").Replace(" ", "-");
-            text = Regex.Replace(text, "[^a-z0-9-]", String.Empty);
-            text = Regex.Replace(text, "-+", "-");
+            if (!String.IsNullOrEmpty(text))
+            {
+                text = text.ToLower(CultureInfo.CurrentCulture).Replace("&", "and").Replace(" ", "-");
+                text = Regex.Replace(text, "[^a-z0-9-]", String.Empty);
+                text = Regex.Replace(text, "-+", "-");
+            }
             return text;
         }
     }
