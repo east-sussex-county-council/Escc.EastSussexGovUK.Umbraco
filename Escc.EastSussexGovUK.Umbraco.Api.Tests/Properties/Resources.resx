@@ -1105,6 +1105,83 @@ Countywide
     <value>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;job_options&gt;&lt;job_categories&gt;&lt;job_category&gt;&lt;id&gt;1&lt;/id&gt;&lt;has_jobs&gt;1&lt;/has_jobs&gt;&lt;name&gt;Administration &amp;amp;amp; Clerical&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;2&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Adult Learning&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;3&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Analyst&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;4&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Apprenticeships &amp;amp;amp; Trainee&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;5&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Architects&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;6&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Audit&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;7&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Bereavement&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;8&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Building Control&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;9&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Caretaking &amp;amp;amp; Cleaning&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;10&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Catering&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;11&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Childcare&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;12&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Commissioning &amp;amp;amp; Prevention&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;13&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Communications&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;14&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Community Development&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;15&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Community Safety&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;16&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Cultural Services&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;17&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Customer Services&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;18&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Democratic Services&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;19&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Drivers Transport&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;105&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Education &amp;amp;amp; Learning&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;106&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Energy&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;107&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Enforcement &amp;amp;amp; Regulations&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;108&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Engineering Technical&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;109&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Environmental &amp;amp;amp; Conservation&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;110&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Environmental &amp;amp;amp; Regulatory Services&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;111&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Equalities&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;112&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Estates Planning and Management&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;113&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Fire &amp;amp;amp; Rescue&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;114&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Fundraising&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;115&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Health &amp;amp;amp; Safety&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;116&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Highway Maintenance&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;117&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Housing&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;118&lt;/id&gt;&lt;has_jobs&gt;1&lt;/has_jobs&gt;&lt;name&gt;Human Resources&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;119&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Information Technology&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;120&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Learning and Development&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;121&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Legal&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;122&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Libraries&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;123&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Licensing&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;124&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Lifeguards&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;125&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Management&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;126&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Occupational Therapy&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;127&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Planning&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;128&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Policy&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;129&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Procurement&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;130&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Project Management&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;131&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Property&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;132&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Public Health&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;133&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Registrars&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;134&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Revenues &amp;amp;amp; Benefits&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;135&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Safeguarding&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;136&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Seafront&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;137&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Security&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;138&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Social Work - Childrens&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;139&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Teaching &amp;amp;amp; Leadership&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;140&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Tourism&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;141&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Trading Standards&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;142&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Transportation and Highways&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;143&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Volunteers&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;144&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Waste Management&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;145&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Youth and Community Workers&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;202&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Executive Senior Management&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;203&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Finance&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;204&lt;/id&gt;&lt;has_jobs&gt;1&lt;/has_jobs&gt;&lt;name&gt;Social Work - Adults&lt;/name&gt;&lt;/job_category&gt;&lt;/job_categories&gt;&lt;/job_options&gt;</value>
   </data>
+  <data name="TribePadJobWith1File" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;jobs&gt;
+    &lt;job&gt;
+        &lt;job_id&gt;550&lt;/job_id&gt;
+        &lt;job_title&gt;Newly Qualified Social Worker (Children's Services)&lt;/job_title&gt;
+        &lt;reference&gt;orbis/TP/12/550&lt;/reference&gt;
+        &lt;language_code&gt;en&lt;/language_code&gt;
+        &lt;no_of_positions&gt;30&lt;/no_of_positions&gt;
+        &lt;open_date&gt;2019-04-01&lt;/open_date&gt;
+        &lt;expiry_date&gt;2019-05-12&lt;/expiry_date&gt;
+        &lt;salary_currency&gt;1&lt;/salary_currency&gt;
+        &lt;salary_frequency&gt;1&lt;/salary_frequency&gt;
+        &lt;salary_from&gt;28802&lt;/salary_from&gt;
+        &lt;salary_to&gt;31112&lt;/salary_to&gt;
+        &lt;salary_from_text&gt;28802&lt;/salary_from_text&gt;
+        &lt;salary_to_text&gt;31112&lt;/salary_to_text&gt;
+        &lt;salaryText&gt;£28802 - £31112&lt;/salaryText&gt;
+        &lt;location_city&gt;Countywide&lt;/location_city&gt;
+        &lt;region&gt;East Sussex County Council&lt;/region&gt;
+        &lt;region_id&gt;55&lt;/region_id&gt;
+        &lt;business_unit&gt;ESCC: Children Services&lt;/business_unit&gt;
+        &lt;files&gt;
+            &lt;file&gt;
+                &lt;id&gt;628&lt;/id&gt;
+                &lt;url&gt;https://recruitment.orbispartnership.co.uk/members/modules/jobV2/fdownload.php?j=ca8c44cac39a5740&amp;amp;amp;f=63f515371f7149b8&lt;/url&gt;
+                &lt;filename&gt;CSD03672 - Newly Qualified Social Worker JD.doc&lt;/filename&gt;
+                &lt;extension&gt;doc&lt;/extension&gt;
+                &lt;description&gt;Job Description and Person Specification&lt;/description&gt;
+            &lt;/file&gt;
+        &lt;/files&gt;
+    &lt;/job&gt;
+&lt;/jobs&gt;</value>
+  </data>
+  <data name="TribePadJobWith2Files" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;jobs&gt;
+    &lt;job&gt;
+        &lt;job_id&gt;550&lt;/job_id&gt;
+        &lt;job_title&gt;Newly Qualified Social Worker (Children's Services)&lt;/job_title&gt;
+        &lt;reference&gt;orbis/TP/12/550&lt;/reference&gt;
+        &lt;language_code&gt;en&lt;/language_code&gt;
+        &lt;no_of_positions&gt;30&lt;/no_of_positions&gt;
+        &lt;open_date&gt;2019-04-01&lt;/open_date&gt;
+        &lt;expiry_date&gt;2019-05-12&lt;/expiry_date&gt;
+        &lt;salary_currency&gt;1&lt;/salary_currency&gt;
+        &lt;salary_frequency&gt;1&lt;/salary_frequency&gt;
+        &lt;salary_from&gt;28802&lt;/salary_from&gt;
+        &lt;salary_to&gt;31112&lt;/salary_to&gt;
+        &lt;salary_from_text&gt;28802&lt;/salary_from_text&gt;
+        &lt;salary_to_text&gt;31112&lt;/salary_to_text&gt;
+        &lt;salaryText&gt;£28802 - £31112&lt;/salaryText&gt;
+        &lt;location_city&gt;Countywide&lt;/location_city&gt;
+        &lt;region&gt;East Sussex County Council&lt;/region&gt;
+        &lt;region_id&gt;55&lt;/region_id&gt;
+        &lt;business_unit&gt;ESCC: Children Services&lt;/business_unit&gt;
+        &lt;files&gt;
+            &lt;file&gt;
+                &lt;id&gt;628&lt;/id&gt;
+                &lt;url&gt;https://recruitment.orbispartnership.co.uk/members/modules/jobV2/fdownload.php?j=ca8c44cac39a5740&amp;amp;amp;f=63f515371f7149b8&lt;/url&gt;
+                &lt;filename&gt;CSD03672 - Newly Qualified Social Worker JD.doc&lt;/filename&gt;
+                &lt;extension&gt;doc&lt;/extension&gt;
+                &lt;description&gt;Job Description and Person Specification&lt;/description&gt;
+            &lt;/file&gt;
+&lt;file&gt;
+&lt;id&gt;941&lt;/id&gt;
+&lt;url&gt;
+https://recruitment.orbispartnership.co.uk/members/modules/jobV2/fdownload.php?j=ca8c44cac39a5740&amp;amp;amp;f=011389ada6f8a430
+&lt;/url&gt;
+&lt;filename&gt;Staff benefits handout 2019.pdf&lt;/filename&gt;
+&lt;extension&gt;pdf&lt;/extension&gt;
+&lt;description&gt;Staff Benefits&lt;/description&gt;
+&lt;/file&gt;
+        &lt;/files&gt;
+    &lt;/job&gt;
+&lt;/jobs&gt;</value>
+  </data>
   <data name="TribePadJobXml" xml:space="preserve">
     <value>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;jobs&gt;&lt;job&gt;&lt;job_id&gt;142&lt;/job_id&gt;&lt;job_title&gt;Job&lt;/job_title&gt;&lt;reference&gt;orbis/TP/12/142&lt;/reference&gt;&lt;language_code&gt;en&lt;/language_code&gt;&lt;no_of_positions&gt;2&lt;/no_of_positions&gt;&lt;status&gt;1&lt;/status&gt;&lt;status_social&gt;0&lt;/status_social&gt;&lt;open_date&gt;2019-01-11&lt;/open_date&gt;&lt;expiry_date&gt;2019-02-11&lt;/expiry_date&gt;&lt;salary_currency&gt;1&lt;/salary_currency&gt;&lt;salary_frequency&gt;1&lt;/salary_frequency&gt;&lt;salary_from&gt;34&lt;/salary_from&gt;&lt;salary_to&gt;35&lt;/salary_to&gt;&lt;salary_from_text&gt;34&lt;/salary_from_text&gt;&lt;salary_to_text&gt;35&lt;/salary_to_text&gt;&lt;salaryText&gt;£34 to £35&lt;/salaryText&gt;&lt;package_description&gt;&amp;amp;lt;div&amp;amp;gt;&amp;#13;

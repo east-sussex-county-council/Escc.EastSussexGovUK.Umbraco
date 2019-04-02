@@ -181,6 +181,33 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
             Assert.AreEqual(string.Empty, parsedJob.Department);
             Assert.AreEqual("Partnership", parsedJob.Organisation);
         }
+
+        [Test]
+        public async Task SingleAttachmentIsAddedToJobAdvertHtml()
+        {
+            var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
+            var salaryParser = new Mock<ISalaryParser>();
+            var workPatternParser = new Mock<IWorkPatternParser>();
+            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, new Uri("https://www.example.org"));
+
+            var parsedJob = await parser.ParseJob(Properties.Resources.TribePadJobWith1File, "550");
+
+            Assert.IsTrue(parsedJob.AdvertHtml.ToHtmlString().Contains("https://recruitment.orbispartnership.co.uk/members/modules/jobV2/fdownload.php?j=ca8c44cac39a5740&amp;f=63f515371f7149b8"));
+        }
+
+        [Test]
+        public async Task MultipleAttachmentsAreAddedToJobAdvertHtml()
+        {
+            var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
+            var salaryParser = new Mock<ISalaryParser>();
+            var workPatternParser = new Mock<IWorkPatternParser>();
+            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, new Uri("https://www.example.org"));
+
+            var parsedJob = await parser.ParseJob(Properties.Resources.TribePadJobWith2Files, "550");
+
+            Assert.IsTrue(parsedJob.AdvertHtml.ToHtmlString().Contains("https://recruitment.orbispartnership.co.uk/members/modules/jobV2/fdownload.php?j=ca8c44cac39a5740&amp;f=63f515371f7149b8"));
+            Assert.IsTrue(parsedJob.AdvertHtml.ToHtmlString().Contains("https://recruitment.orbispartnership.co.uk/members/modules/jobV2/fdownload.php?j=ca8c44cac39a5740&amp;f=011389ada6f8a430"));
+        }
     }
 
 }

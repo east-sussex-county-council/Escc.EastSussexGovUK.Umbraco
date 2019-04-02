@@ -148,12 +148,31 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             advertHtml.Append(HttpUtility.HtmlDecode(jobXml.Element("package_description")?.Value));
             advertHtml.Append(HttpUtility.HtmlDecode(jobXml.Element("summary_external")?.Value));
             advertHtml.Append(HttpUtility.HtmlDecode(jobXml.Element("main_responsibilities")?.Value));
+
+            var files = jobXml.Element("files")?.Elements("file");
+            if (files != null)
+            {
+                if (files.Count() == 1)
+                {
+                    advertHtml.Append("<h2>Documents</h2><p>").AppendLinkToFile(files.First()).Append("</p>");
+                }
+                else
+                {
+                    advertHtml.Append("<h2>Documents</h2><ul>");
+                    foreach (var file in files)
+                    {
+                        advertHtml.Append("<li>").AppendLinkToFile(file).Append("</li>");
+                    }
+                    advertHtml.Append("</ul>");
+                }
+            }
+
             job.AdvertHtml = new HtmlString(advertHtml.ToString());
 
             job.AdditionalInformationHtml = new HtmlString(HttpUtility.HtmlDecode(jobXml.Element("ideal_candidate")?.Value));
             job.EqualOpportunitiesHtml = new HtmlString(HttpUtility.HtmlDecode(jobXml.Element("about_company")?.Value));
 
-            job.JobType = HttpUtility.HtmlDecode(jobXml.Element("category_name")?.Value).Replace(" & ", " and ");
+            job.JobType = HttpUtility.HtmlDecode(jobXml.Element("category_name")?.Value)?.Replace(" & ", " and ");
 
             if (jobXml.Element("no_apply")?.Value == "0" && canApplyForThisJob)
             {
@@ -170,6 +189,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             }
 
             return job;
+        }
+    }
+
+    internal static class JobParserExtensionMethods
+    {
+        internal static StringBuilder AppendLinkToFile(this StringBuilder advertHtml, XElement file)
+        {
+            return advertHtml.Append("<a href=\"").Append(file.Element("url").Value.Trim()).Append("\">").Append(HttpUtility.HtmlDecode(file.Element("description").Value.Trim())).Append("</a>");
         }
     }
 }
