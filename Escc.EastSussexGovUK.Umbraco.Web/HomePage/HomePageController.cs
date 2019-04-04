@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using Tasks = System.Threading.Tasks;
 using System.Web.Mvc;
 using Escc.Dates;
 using Escc.EastSussexGovUK.Umbraco.Web.Services;
@@ -37,7 +37,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.HomePage
         /// <param name="model"></param>
         /// <returns></returns>
         /// <exception cref="System.ArgumentNullException">model</exception>
-        public async new Task<ActionResult> Index(RenderModel model)
+        public async new Tasks.Task<ActionResult> Index(RenderModel model)
         {
             if (model == null) throw new ArgumentNullException(nameof(model));
 
@@ -61,7 +61,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.HomePage
                 var wasteTypesDataSource = new UmbracoWasteTypesDataSource(new Uri(Request.Url, ConfigurationManager.AppSettings["WasteTypesDataUrl"]), new ConfigurationProxyProvider(), forceCacheRefresh ? null : new ApplicationCacheStrategy<List<string>>(TimeSpan.FromDays(1)));
                 var wasteTypesTask = wasteTypesDataSource.LoadWasteTypes();
 
-                await Task.WhenAll(locationsTask, jobTypesTask, wasteTypesTask);
+                await Tasks.Task.WhenAll(locationsTask, jobTypesTask, wasteTypesTask);
 
                 viewModel.JobLocations = locationsTask.Result;
                 viewModel.JobTypes = jobTypesTask.Result;

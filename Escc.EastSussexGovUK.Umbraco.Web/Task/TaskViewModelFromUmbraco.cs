@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Escc.EastSussexGovUK.Umbraco.Web.Models;
 using Escc.Elibrary;
 using Escc.Umbraco.PropertyTypes;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
+using Escc.EastSussexGovUK.Umbraco.Web.Services;
 
-namespace Escc.EastSussexGovUK.Umbraco.Web.Services
+namespace Escc.EastSussexGovUK.Umbraco.Web.Task
 {
     /// <summary>
     /// Builds a <see cref="TaskViewModel"/> from an Umbraco node based on <see cref="TaskDocumentType"/>

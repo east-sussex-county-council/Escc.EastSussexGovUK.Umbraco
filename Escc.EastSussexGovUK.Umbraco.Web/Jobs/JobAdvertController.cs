@@ -11,7 +11,7 @@ using Examine;
 using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
-using Task = System.Threading.Tasks.Task;
+using Tasks = System.Threading.Tasks;
 using Escc.EastSussexGovUK.Umbraco.Errors;
 using Escc.Dates;
 using System.Configuration;
@@ -110,7 +110,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
             return CurrentTemplate(viewModel);
         }
 
-        private async Task FindSimilarJobs(IJobsDataProvider jobsProvider, JobAdvertViewModel model)
+        private async Tasks.Task FindSimilarJobs(IJobsDataProvider jobsProvider, JobAdvertViewModel model)
         {
             // Get the job title from the URL and use it as keywords to search for jobs that might be similar
             var urlPath = Request.Url.AbsolutePath.TrimEnd('/');

@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Web;
 using Escc.EastSussexGovUK.Umbraco.Web.Landing;
+using Escc.EastSussexGovUK.Umbraco.Web.Models;
 using Escc.Umbraco.PropertyTypes;
 
-namespace Escc.EastSussexGovUK.Umbraco.Web.Models
+namespace Escc.EastSussexGovUK.Umbraco.Web.Task
 {
     public class TaskViewModel : BaseViewModel
     {

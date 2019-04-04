@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Escc.EastSussexGovUK.Umbraco.Web.Models
+namespace Escc.EastSussexGovUK.Umbraco.Web.Location
 {
     [DataContract]
     public class OpeningTimes

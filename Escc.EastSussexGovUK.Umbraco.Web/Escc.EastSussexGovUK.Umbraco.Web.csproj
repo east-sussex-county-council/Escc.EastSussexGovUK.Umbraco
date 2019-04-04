@@ -5076,7 +5076,7 @@
     <Compile Include="Controllers\StandardDownloadPageController.cs" />
     <Compile Include="Landing\StandardLandingPageController.cs" />
     <Compile Include="Controllers\StandardTopicPageController.cs" />
-    <Compile Include="Controllers\TaskController.cs" />
+    <Compile Include="Task\TaskController.cs" />
     <Compile Include="Landing\StandardLandingPageEventHandler.cs" />
     <Compile Include="MicrosoftCmsMigration\CmsUtilities.cs" />
     <Compile Include="MicrosoftCmsMigration\CustomProperty.cs" />
@@ -5122,10 +5122,10 @@
     <Compile Include="Landing\LandingViewModel.cs" />
     <Compile Include="Location\LocationApiResult.cs" />
     <Compile Include="Location\LocationViewModel.cs" />
-    <Compile Include="Models\OpeningTimes.cs" />
+    <Compile Include="Location\OpeningTimes.cs" />
     <Compile Include="Models\PersonViewModel.cs" />
     <Compile Include="Models\RssViewModel.cs" />
-    <Compile Include="Models\TaskViewModel.cs" />
+    <Compile Include="Task\TaskViewModel.cs" />
     <Compile Include="Models\UmbracoMediaApiResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RichTextHtmlFormatters\ElibraryLinkFormatter.cs" />
@@ -5135,7 +5135,7 @@
     <Compile Include="Services\IPageTitleFilter.cs" />
     <Compile Include="Services\RelatedLinksModelBuilder.cs" />
     <Compile Include="Services\RemoveUmbracoNumericSuffixFilter.cs" />
-    <Compile Include="Services\TaskViewModelFromUmbraco.cs" />
+    <Compile Include="Task\TaskViewModelFromUmbraco.cs" />
     <Compile Include="Services\UmbracoEastSussex1SpaceService.cs" />
     <Compile Include="Services\UmbracoEscisService.cs" />
     <Compile Include="Latest\UmbracoLatestService.cs" />

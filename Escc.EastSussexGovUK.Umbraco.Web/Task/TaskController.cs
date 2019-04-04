@@ -7,7 +7,6 @@ using Escc.Elibrary;
 using Escc.Umbraco.Caching;
 using Escc.Umbraco.ContentExperiments;
 using Escc.Umbraco.PropertyTypes;
-using Umbraco.Core.Models;
 using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
@@ -20,7 +19,7 @@ using Escc.EastSussexGovUK.Umbraco.Web.Latest;
 using Escc.EastSussexGovUK.Mvc;
 using System.Threading.Tasks;
 
-namespace Escc.EastSussexGovUK.Umbraco.Web.Controllers
+namespace Escc.EastSussexGovUK.Umbraco.Web.Task
 {
     public class TaskController : RenderMvcController
     {

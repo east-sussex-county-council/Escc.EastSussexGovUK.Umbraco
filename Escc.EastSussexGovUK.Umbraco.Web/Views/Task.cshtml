@@ -10,7 +10,7 @@
 @using Escc.EastSussexGovUK.Umbraco.Web.Skins.RegistrationAcademy
 @using Escc.EastSussexGovUK.Umbraco.Web.Skins.SupportWithTrust
 @using Escc.EastSussexGovUK.Umbraco.Web.Services
-@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.Models.TaskViewModel>
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.Task.TaskViewModel>
 @{
     Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(Layout);
     Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] {
