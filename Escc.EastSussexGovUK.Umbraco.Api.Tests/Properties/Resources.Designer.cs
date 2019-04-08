@@ -61,6 +61,25 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;p&gt;Hours of work: 32.25 hours per week&lt;br /&gt;
+        /// Working pattern: Part-time, Term-time only.&lt;br /&gt;
+        /// (As the position is part-time/term-time only, the above salary will be pro rata)&lt;br /&gt;
+        /// Fixed term until: July 2019 initially, however may be extended based on nursery pupil numbers.&lt;/p&gt;
+        /// 
+        /// &lt;p&gt;This role may be filled by two applicants as a job share.&lt;/p&gt;
+        /// 
+        /// &lt;p&gt;Closing date: Friday 26 April 2019, noon&lt;br /&gt;
+        /// Interview date: Week commencing Monday 29 April 2019&lt;/p&gt;
+        /// 
+        /// &lt;p&gt;For more information and to apply [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string BadLinkInHtml {
+            get {
+                return ResourceManager.GetString("BadLinkInHtml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;span class=&quot;JD-FieldText&quot; id=&quot;JDText-Field1&quot;&gt;&lt;div&gt;
         ///&lt;p&gt;&lt;span&gt;&lt;span&gt;Hours of work: Variable/Flexible&lt;/span&gt;&lt;span&gt;&lt;br /&gt;&lt;/span&gt;&lt;span&gt;Working pattern: Variable/Flexible&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
         ///&lt;p&gt;&lt;span&gt;&lt;span&gt;Closing date: Sunday 23 April 2017&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;

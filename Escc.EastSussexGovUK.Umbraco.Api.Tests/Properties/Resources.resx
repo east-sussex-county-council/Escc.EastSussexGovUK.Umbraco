@@ -117,6 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BadLinkInHtml" xml:space="preserve">
+    <value>&lt;p&gt;Hours of work: 32.25 hours per week&lt;br /&gt;
+ Working pattern: Part-time, Term-time only.&lt;br /&gt;
+ (As the position is part-time/term-time only, the above salary will be pro rata)&lt;br /&gt;
+ Fixed term until: July 2019 initially, however may be extended based on nursery pupil numbers.&lt;/p&gt;
+ 
+ &lt;p&gt;This role may be filled by two applicants as a job share.&lt;/p&gt;
+ 
+ &lt;p&gt;Closing date: Friday 26 April 2019, noon&lt;br /&gt;
+ Interview date: Week commencing Monday 29 April 2019&lt;/p&gt;
+ 
+ &lt;p&gt;For more information and to apply for the above post, please contact:&lt;/p&gt;
+ 
+ &lt;p&gt;East Hoathly CE Primary School and Nursery&lt;br /&gt;
+ Church Marks Lane&lt;br /&gt;
+ East Hoathly&lt;br /&gt;
+ Lewes&lt;br /&gt;
+ East Sussex&lt;br /&gt;
+ BN8 6EQ&lt;/p&gt;
+ 
+ &lt;p&gt;Phone: 01825 840247&lt;br /&gt;
+ Email: &lt;a href="mailto:office@easthoathly.e-sussex.sch.uk"&gt;office@easthoathly.e-sussex.sch.uk&lt;/a&gt;&lt;br /&gt;
+ Website: &lt;a href="http://www.easthoathlynursery.co uk" target="_blank"&gt;http://www.easthoathlynursery.co uk&lt;/a&gt;&lt;br /&gt;
+  &lt;br /&gt;
+ Please note, we do not accept CVs.&lt;/p&gt;</value>
+  </data>
   <data name="ClosingDateInBody1" xml:space="preserve">
     <value>&lt;span class="JD-FieldText" id="JDText-Field1"&gt;&lt;div&gt;
 &lt;p&gt;&lt;span&gt;&lt;span&gt;Hours of work: Variable/Flexible&lt;/span&gt;&lt;span&gt;&lt;br /&gt;&lt;/span&gt;&lt;span&gt;Working pattern: Variable/Flexible&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;

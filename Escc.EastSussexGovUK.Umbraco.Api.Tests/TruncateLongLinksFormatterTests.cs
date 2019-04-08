@@ -27,5 +27,20 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
 
             Assert.IsTrue(htmlDocument.DocumentNode.OuterHtml.Contains("replaced link"));
         }
+
+        [Test]
+        public void BadLinkIsIgnored()
+        {
+            var linkFormatter = new Mock<IHtmlLinkFormatter>();
+
+            var htmlDocument = new HtmlDocument();
+            htmlDocument.LoadHtml(Properties.Resources.BadLinkInHtml);
+
+            new TruncateLongLinksFormatter(linkFormatter.Object).FormatHtml(htmlDocument);
+
+            // Assert that the link text (same as the bad URL in this example) is still there but no longer linked
+            Assert.IsTrue(htmlDocument.DocumentNode.OuterHtml.Contains("http://www.easthoathlynursery.co uk"));
+            Assert.IsFalse(htmlDocument.DocumentNode.OuterHtml.Contains("http://www.easthoathlynursery.co uk</a>"));
+        }
     }
 }

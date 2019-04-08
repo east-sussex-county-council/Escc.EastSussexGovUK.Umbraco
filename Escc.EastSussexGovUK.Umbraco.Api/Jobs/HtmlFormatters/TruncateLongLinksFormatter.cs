@@ -1,6 +1,7 @@
 ﻿using Escc.Html;
 using HtmlAgilityPack;
 using System;
+using System.Collections.Generic;
 
 namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.HtmlFormatters
 {
@@ -33,12 +34,26 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.HtmlFormatters
             var links = htmlDocument.DocumentNode.SelectNodes("//a");
             if (links == null) return;
 
+            var badLinks = new List<HtmlNode>();
             foreach (var link in links)
             {
                 if (link.InnerHtml.StartsWith("http:") || link.InnerHtml.StartsWith("https:"))
                 {
-                    link.InnerHtml = _linkFormatter.AbbreviateUrl(new Uri(link.InnerHtml, UriKind.RelativeOrAbsolute));
+                    try
+                    {
+                        link.InnerHtml = _linkFormatter.AbbreviateUrl(new Uri(link.InnerHtml, UriKind.RelativeOrAbsolute));
+                    }
+                    catch (UriFormatException)
+                    {
+                        // It's a bad link - save it for delinking
+                        badLinks.Add(link);
+                    }
                 }
+            }
+            foreach (var link in badLinks)
+            {
+                // Delink bad links
+                link.ParentNode.ReplaceChild(htmlDocument.CreateTextNode(link.InnerHtml), link);
             }
         }
     }
