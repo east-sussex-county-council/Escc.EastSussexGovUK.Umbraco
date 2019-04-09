@@ -20,12 +20,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// <summary>
         /// Gets or sets the minimum annual salary in pounds.
         /// </summary>
-        public int? MinimumSalary { get; set; }
+        public decimal? MinimumSalary { get; set; }
 
         /// <summary>
         /// Gets or sets the maximum annual salary in pounds.
         /// </summary>
-        public int? MaximumSalary { get; set; }
+        public decimal? MaximumSalary { get; set; }
 
         /// <summary>
         /// Gets or sets a description of the salary based on <see cref="MinimumHourlyRate"/>, <see cref="MaximumHourlyRate"/>, <see cref="MinimumSalary"/> and <see cref="MaximumSalary"/>

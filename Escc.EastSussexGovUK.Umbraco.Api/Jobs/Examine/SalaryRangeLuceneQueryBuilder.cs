@@ -107,13 +107,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
             return false;
         }
 
+        /// <remarks>
+        /// Searches are supported in whole pounds, but the values are stored in pounds and pence - hence the added 00 and 99
+        /// </remarks>
         private static string NumericRangeInLuceneSyntax(int from, int to)
         {
-            var query = $"(+(+salaryMin:[{@from.ToString("D7")} TO 9999999] +salaryMin:[0000000 TO {to.ToString("D7")}]))" + // minimum within
-                    $" (+(+salaryMax:[{@from.ToString("D7")} TO 9999999] +salaryMax:[0000000 TO {to.ToString("D7")}]))"; // maximum within
+            var query = $"(+(+salaryMin:[{@from.ToString("D7")}00 TO 999999999] +salaryMin:[000000000 TO {to.ToString("D7")}99]))" + // minimum within
+                    $" (+(+salaryMax:[{@from.ToString("D7")}00 TO 999999999] +salaryMax:[000000000 TO {to.ToString("D7")}99]))"; // maximum within
             if (to < 9999999)
             {
-                query += $" (+(+salaryMin:[0000000 TO {@from.ToString("D7")}] +salaryMax:[{to.ToString("D7")} TO 9999999]))"; // spans the entire range
+                query += $" (+(+salaryMin:[000000000 TO {@from.ToString("D7")}99] +salaryMax:[{to.ToString("D7")}00 TO 999999999]))"; // spans the entire range
             }
             return query;
         }

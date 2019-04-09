@@ -19,7 +19,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
 
             var query = builder.SalaryIsWithinAnyOfTheseRanges(new List<string>() { range });
 
-            Assert.AreEqual(" +(+((+(+salaryMin:[0025000 TO 9999999] +salaryMin:[0000000 TO 0034999])) (+(+salaryMax:[0025000 TO 9999999] +salaryMax:[0000000 TO 0034999])) (+(+salaryMin:[0000000 TO 0025000] +salaryMax:[0034999 TO 9999999]))))", query);
+            Assert.AreEqual(" +(+((+(+salaryMin:[002500000 TO 999999999] +salaryMin:[000000000 TO 003499999])) (+(+salaryMax:[002500000 TO 999999999] +salaryMax:[000000000 TO 003499999])) (+(+salaryMin:[000000000 TO 002500099] +salaryMax:[003499900 TO 999999999]))))", query);
         }
 
         [Test]
@@ -30,7 +30,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
 
             var query = builder.SalaryIsWithinAnyOfTheseRanges(new List<string>() { range });
 
-            Assert.AreEqual(" +(+((+(+salaryMin:[0050000 TO 9999999] +salaryMin:[0000000 TO 9999999])) (+(+salaryMax:[0050000 TO 9999999] +salaryMax:[0000000 TO 9999999]))))", query);
+            Assert.AreEqual(" +(+((+(+salaryMin:[005000000 TO 999999999] +salaryMin:[000000000 TO 999999999])) (+(+salaryMax:[005000000 TO 999999999] +salaryMax:[000000000 TO 999999999]))))", query);
         }
 
         [Test]
@@ -41,7 +41,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
 
             var query = builder.SalaryIsWithinAnyOfTheseRanges(ranges);
 
-            Assert.AreEqual(" +(+((+(+salaryMin:[0025000 TO 9999999] +salaryMin:[0000000 TO 0034999])) (+(+salaryMax:[0025000 TO 9999999] +salaryMax:[0000000 TO 0034999])) (+(+salaryMin:[0000000 TO 0025000] +salaryMax:[0034999 TO 9999999])) (+(+salaryMin:[0050000 TO 9999999] +salaryMin:[0000000 TO 9999999])) (+(+salaryMax:[0050000 TO 9999999] +salaryMax:[0000000 TO 9999999]))))", query);
+            Assert.AreEqual(" +(+((+(+salaryMin:[002500000 TO 999999999] +salaryMin:[000000000 TO 003499999])) (+(+salaryMax:[002500000 TO 999999999] +salaryMax:[000000000 TO 003499999])) (+(+salaryMin:[000000000 TO 002500099] +salaryMax:[003499900 TO 999999999])) (+(+salaryMin:[005000000 TO 999999999] +salaryMin:[000000000 TO 999999999])) (+(+salaryMax:[005000000 TO 999999999] +salaryMax:[000000000 TO 999999999]))))", query);
         }
     }
 }

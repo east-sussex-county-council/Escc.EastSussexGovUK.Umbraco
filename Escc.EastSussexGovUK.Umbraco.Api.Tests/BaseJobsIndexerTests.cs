@@ -110,6 +110,46 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
             Assert.AreEqual(job.JobTitle, dataSets.First().RowData["title"]);
         }
 
+        [Test]
+        public async Task SalaryFromWithPenceIsIndexed()
+        {
+            var job = new Job();
+            job.Salary.MinimumSalary = 20000.5m;
+
+            var jobsProvider = new Mock<IJobsDataProvider>();
+            jobsProvider.Setup(x => x.ReadJobs(It.IsAny<JobSearchQuery>())).Returns(Task.FromResult(new JobSearchResult() { Jobs = new List<Job>() { job } }));
+            jobsProvider.Setup(x => x.ReadJob(It.IsAny<string>())).Returns(Task.FromResult(job));
+
+            var indexer = new Mock<BaseJobsIndexer>();
+            indexer.CallBase = true;
+            indexer.SetupGet(x => x.JobsProvider).Returns(jobsProvider.Object);
+
+            var dataSets = await indexer.Object.GetAllDataAsync("Jobs");
+
+            Assert.AreEqual(1, dataSets.Count());
+            Assert.AreEqual("002000050", dataSets.First().RowData["salaryMin"]);
+        }
+
+
+        [Test]
+        public async Task SalaryToWithPenceIsIndexed()
+        {
+            var job = new Job();
+            job.Salary.MaximumSalary = 20000.5m;
+
+            var jobsProvider = new Mock<IJobsDataProvider>();
+            jobsProvider.Setup(x => x.ReadJobs(It.IsAny<JobSearchQuery>())).Returns(Task.FromResult(new JobSearchResult() { Jobs = new List<Job>() { job } }));
+            jobsProvider.Setup(x => x.ReadJob(It.IsAny<string>())).Returns(Task.FromResult(job));
+
+            var indexer = new Mock<BaseJobsIndexer>();
+            indexer.CallBase = true;
+            indexer.SetupGet(x => x.JobsProvider).Returns(jobsProvider.Object);
+
+            var dataSets = await indexer.Object.GetAllDataAsync("Jobs");
+
+            Assert.AreEqual(1, dataSets.Count());
+            Assert.AreEqual("002000050", dataSets.First().RowData["salaryMax"]);
+        }
 
         [Test]
         public async Task SalaryRangeIsIndexed()

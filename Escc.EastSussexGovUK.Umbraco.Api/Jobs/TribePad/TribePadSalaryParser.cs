@@ -41,8 +41,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
 
             if (frequencyId == hourlyFrequencyId)
             {
-                salary.MinimumHourlyRate = Decimal.Parse(jobXml.Root.Element("salary_from").Value);
-                salary.MaximumHourlyRate = Decimal.Parse(jobXml.Root.Element("salary_to").Value);
+                if (Decimal.TryParse(jobXml.Root.Element("salary_from").Value, out var salaryFrom))
+                {
+                    salary.MinimumHourlyRate = salaryFrom;
+                }
+                if (Decimal.TryParse(jobXml.Root.Element("salary_to").Value, out var salaryTo))
+                {
+                    salary.MaximumHourlyRate = salaryTo;
+                }
 
                 SetSalaryFromData(jobXml, salary, 
                     x => x.MinimumHourlyRate == 0 && x.MaximumHourlyRate == 0,
@@ -53,14 +59,20 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             }
             else
             {
-                salary.MinimumSalary = Int32.Parse(jobXml.Root.Element("salary_from").Value, CultureInfo.InvariantCulture);
-                salary.MaximumSalary = Int32.Parse(jobXml.Root.Element("salary_to").Value, CultureInfo.InvariantCulture);
+                if (Decimal.TryParse(jobXml.Root.Element("salary_from").Value, out var salaryFrom))
+                {
+                    salary.MinimumSalary = salaryFrom;
+                }
+                if (Decimal.TryParse(jobXml.Root.Element("salary_to").Value, out var salaryTo))
+                {
+                    salary.MaximumSalary = salaryTo;
+                }
 
                 SetSalaryFromData(jobXml, salary,
                    x => x.MinimumSalary == 0 && x.MaximumSalary == 0,
                    x => (x.MinimumSalary == x.MaximumSalary || x.MaximumSalary < x.MinimumSalary),
-                   x => $"£{x.MinimumSalary?.ToString("n0")} per annum",
-                   x => $"£{x.MinimumSalary?.ToString("n0")} to £{x.MaximumSalary?.ToString("n0")} per annum"
+                   x => $"£{x.MinimumSalary?.ToString("n2").Replace(".00", string.Empty)} per annum",
+                   x => $"£{x.MinimumSalary?.ToString("n2").Replace(".00", string.Empty)} to £{x.MaximumSalary?.ToString("n2").Replace(".00", string.Empty)} per annum"
                    );
             }
 

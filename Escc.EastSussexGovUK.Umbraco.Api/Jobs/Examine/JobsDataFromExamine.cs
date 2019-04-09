@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 using Escc.EastSussexGovUK.Umbraco.Examine;
@@ -277,16 +278,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
                     job.Salary.SearchRange = result.Fields.ContainsKey("salaryRange") ? result["salaryRange"] : String.Empty;
                     if (result.Fields.ContainsKey("salaryMin") && !String.IsNullOrEmpty(result["salaryMin"]))
                     {
-                        int minimumSalary;
-                        if (Int32.TryParse(result["salaryMin"], out minimumSalary))
+                        var salaryToParse = Regex.Replace(result["salaryMin"], @"^(\d{7})(\d{2})$", "$1.$2"); // restore the decimal point
+                        if (decimal.TryParse(salaryToParse, out var minimumSalary))
                         {
                             job.Salary.MinimumSalary = minimumSalary;
                         }
                     }
                     if (result.Fields.ContainsKey("salaryMax") && !String.IsNullOrEmpty(result["salaryMax"]))
                     {
-                        int maximumSalary;
-                        if (Int32.TryParse(result["salaryMax"], out maximumSalary))
+                        var salaryToParse = Regex.Replace(result["salaryMax"], @"^(\d{7})(\d{2})$", "$1.$2"); // restore the decimal point
+                        if (decimal.TryParse(salaryToParse, out var maximumSalary))
                         {
                             job.Salary.MaximumSalary = maximumSalary;
                         }
@@ -326,8 +327,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
         /// <returns></returns>
         public Task<IEnumerable<Job>> ReadProblemJobs()
         {
-            const string noSalary = " (*:* -salaryMax:[0 TO 99999]) ";
-            const string fallbackSalary = " (salaryMax:0009999 salaryMax:0014999 salaryMax:0019999 salaryMax:0024999 salaryMax:0034999 salaryMax:0049999) ";
+            const string noSalary = " (*:* -salaryMax:[0 TO 999999999]) ";
+            const string fallbackSalary = " (salaryMax:000999900 salaryMax:001499900 salaryMax:001999900 salaryMax:002499900 salaryMax:003499900 salaryMax:004999900) ";
             const string noWorkPattern = " *:* -workPattern:[* TO \"z*\"] ";
 
             try

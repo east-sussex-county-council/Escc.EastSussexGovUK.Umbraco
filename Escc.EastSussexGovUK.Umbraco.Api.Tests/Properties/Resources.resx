@@ -1348,6 +1348,19 @@ Partnership&lt;/business_unit&gt;&lt;business_unit_id&gt;212&lt;/business_unit_i
 &lt;salaryDisplay&gt;£23000 - £23000&lt;/salaryDisplay&gt;
 &lt;/job&gt;</value>
   </data>
+  <data name="TribePadSalaryFromBadData" xml:space="preserve">
+    <value>&lt;job&gt;
+&lt;job_id&gt;134&lt;/job_id&gt;
+&lt;job_title&gt;New Worker&lt;/job_title&gt;
+&lt;salary_currency&gt;1&lt;/salary_currency&gt;
+&lt;salary_frequency&gt;1&lt;/salary_frequency&gt;
+&lt;salary_from&gt;bad&lt;/salary_from&gt;
+&lt;salary_to&gt;7503&lt;/salary_to&gt;
+&lt;salary_from_text&gt;7503.6&lt;/salary_from_text&gt;
+&lt;salary_to_text&gt;7503.6&lt;/salary_to_text&gt;
+&lt;salaryDisplay&gt;£7,503.60 per annum&lt;/salaryDisplay&gt;
+&lt;/job&gt;</value>
+  </data>
   <data name="TribePadSalaryHourlyExact" xml:space="preserve">
     <value>&lt;job&gt;
 &lt;job_id&gt;134&lt;/job_id&gt;
@@ -1427,6 +1440,19 @@ Partnership&lt;/business_unit&gt;&lt;business_unit_id&gt;212&lt;/business_unit_i
 &lt;/custom_15&gt;
 &lt;/job&gt;</value>
   </data>
+  <data name="TribePadSalaryToBadData" xml:space="preserve">
+    <value>&lt;job&gt;
+&lt;job_id&gt;134&lt;/job_id&gt;
+&lt;job_title&gt;New Worker&lt;/job_title&gt;
+&lt;salary_currency&gt;1&lt;/salary_currency&gt;
+&lt;salary_frequency&gt;1&lt;/salary_frequency&gt;
+&lt;salary_from&gt;7503&lt;/salary_from&gt;
+&lt;salary_to&gt;bad&lt;/salary_to&gt;
+&lt;salary_from_text&gt;7503.6&lt;/salary_from_text&gt;
+&lt;salary_to_text&gt;7503.6&lt;/salary_to_text&gt;
+&lt;salaryDisplay&gt;£7,503.60 per annum&lt;/salaryDisplay&gt;
+&lt;/job&gt;</value>
+  </data>
   <data name="TribePadSalaryToZero" xml:space="preserve">
     <value>&lt;job&gt;
 &lt;job_id&gt;134&lt;/job_id&gt;
@@ -1451,6 +1477,19 @@ Partnership&lt;/business_unit&gt;&lt;business_unit_id&gt;212&lt;/business_unit_i
 &lt;salary_from_text/&gt;
 &lt;salary_to_text/&gt;
 &lt;salaryDisplay/&gt;
+&lt;/job&gt;</value>
+  </data>
+  <data name="TribePadSalaryWithPence" xml:space="preserve">
+    <value>&lt;job&gt;
+&lt;job_id&gt;134&lt;/job_id&gt;
+&lt;job_title&gt;New Worker&lt;/job_title&gt;
+&lt;salary_currency&gt;1&lt;/salary_currency&gt;
+&lt;salary_frequency&gt;1&lt;/salary_frequency&gt;
+&lt;salary_from&gt;7503.6&lt;/salary_from&gt;
+&lt;salary_to&gt;7503.6&lt;/salary_to&gt;
+&lt;salary_from_text&gt;7503.6&lt;/salary_from_text&gt;
+&lt;salary_to_text&gt;7503.6&lt;/salary_to_text&gt;
+&lt;salaryDisplay&gt;£7,503.60 per annum&lt;/salaryDisplay&gt;
 &lt;/job&gt;</value>
   </data>
   <data name="TribePadWorkPatternFullTime" xml:space="preserve">

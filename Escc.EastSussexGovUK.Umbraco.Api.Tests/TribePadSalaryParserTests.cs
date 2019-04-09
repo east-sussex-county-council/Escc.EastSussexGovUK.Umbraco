@@ -36,6 +36,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
 
             Assert.AreEqual(23000, salary.MinimumSalary);
             Assert.AreEqual(23000, salary.MaximumSalary);
+        }
+
+
+        [Test]
+        public async Task ExactSalaryInWholePoundsDisplaysOneValueInWholePounds()
+        {
+            var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
+            var parser = new TribePadSalaryParser(lookupValuesProvider.Object);
+
+            var salary = await parser.ParseSalary(Properties.Resources.TribePadSalaryExact);
+
             Assert.AreEqual("£23,000 per annum", salary.SalaryRange);
         }
 
@@ -53,6 +64,51 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
             Assert.AreEqual("£23,000 per annum", salary.SalaryRange);
         }
 
+        [Test]
+        public async Task SalaryFromWithPenceIsParsed()
+        {
+            var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
+            var parser = new TribePadSalaryParser(lookupValuesProvider.Object);
+
+            var salary = await parser.ParseSalary(Properties.Resources.TribePadSalaryWithPence);
+
+            Assert.AreEqual(7503.6, salary.MinimumSalary);
+            Assert.AreEqual(7503.6, salary.MaximumSalary);
+        }
+
+        [Test]
+        public async Task ExactSalaryWithPenceHasPenceDisplayed()
+        {
+            var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
+            var parser = new TribePadSalaryParser(lookupValuesProvider.Object);
+
+            var salary = await parser.ParseSalary(Properties.Resources.TribePadSalaryWithPence);
+
+            Assert.AreEqual("£7,503.60 per annum", salary.SalaryRange);
+        }
+
+
+        [Test]
+        public async Task SalaryFromBadDataIsIgnored()
+        {
+            var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
+            var parser = new TribePadSalaryParser(lookupValuesProvider.Object);
+
+            var salary = await parser.ParseSalary(Properties.Resources.TribePadSalaryFromBadData);
+
+            Assert.IsNull(salary.MinimumSalary);
+        }
+
+        [Test]
+        public async Task SalaryToBadDataIsIgnored()
+        {
+            var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
+            var parser = new TribePadSalaryParser(lookupValuesProvider.Object);
+
+            var salary = await parser.ParseSalary(Properties.Resources.TribePadSalaryToBadData);
+
+            Assert.IsNull(salary.MaximumSalary);
+        }
 
         [Test]
         public async Task PayGradeIsParsed()

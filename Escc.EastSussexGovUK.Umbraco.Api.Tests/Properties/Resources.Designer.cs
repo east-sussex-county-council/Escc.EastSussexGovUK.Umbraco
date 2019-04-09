@@ -19,7 +19,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -364,6 +364,25 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests.Properties {
         ///&lt;job_id&gt;134&lt;/job_id&gt;
         ///&lt;job_title&gt;New Worker&lt;/job_title&gt;
         ///&lt;salary_currency&gt;1&lt;/salary_currency&gt;
+        ///&lt;salary_frequency&gt;1&lt;/salary_frequency&gt;
+        ///&lt;salary_from&gt;bad&lt;/salary_from&gt;
+        ///&lt;salary_to&gt;7503&lt;/salary_to&gt;
+        ///&lt;salary_from_text&gt;7503.6&lt;/salary_from_text&gt;
+        ///&lt;salary_to_text&gt;7503.6&lt;/salary_to_text&gt;
+        ///&lt;salaryDisplay&gt;£7,503.60 per annum&lt;/salaryDisplay&gt;
+        ///&lt;/job&gt;.
+        /// </summary>
+        internal static string TribePadSalaryFromBadData {
+            get {
+                return ResourceManager.GetString("TribePadSalaryFromBadData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;job&gt;
+        ///&lt;job_id&gt;134&lt;/job_id&gt;
+        ///&lt;job_title&gt;New Worker&lt;/job_title&gt;
+        ///&lt;salary_currency&gt;1&lt;/salary_currency&gt;
         ///&lt;salary_frequency&gt;2&lt;/salary_frequency&gt;
         ///&lt;salary_from&gt;19.22&lt;/salary_from&gt;
         ///&lt;salary_to&gt;19.22&lt;/salary_to&gt;
@@ -474,6 +493,25 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests.Properties {
         ///&lt;job_title&gt;New Worker&lt;/job_title&gt;
         ///&lt;salary_currency&gt;1&lt;/salary_currency&gt;
         ///&lt;salary_frequency&gt;1&lt;/salary_frequency&gt;
+        ///&lt;salary_from&gt;7503&lt;/salary_from&gt;
+        ///&lt;salary_to&gt;bad&lt;/salary_to&gt;
+        ///&lt;salary_from_text&gt;7503.6&lt;/salary_from_text&gt;
+        ///&lt;salary_to_text&gt;7503.6&lt;/salary_to_text&gt;
+        ///&lt;salaryDisplay&gt;£7,503.60 per annum&lt;/salaryDisplay&gt;
+        ///&lt;/job&gt;.
+        /// </summary>
+        internal static string TribePadSalaryToBadData {
+            get {
+                return ResourceManager.GetString("TribePadSalaryToBadData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;job&gt;
+        ///&lt;job_id&gt;134&lt;/job_id&gt;
+        ///&lt;job_title&gt;New Worker&lt;/job_title&gt;
+        ///&lt;salary_currency&gt;1&lt;/salary_currency&gt;
+        ///&lt;salary_frequency&gt;1&lt;/salary_frequency&gt;
         ///&lt;salary_from&gt;23000&lt;/salary_from&gt;
         ///&lt;salary_to&gt;0&lt;/salary_to&gt;
         ///&lt;salary_from_text&gt;23000&lt;/salary_from_text&gt;
@@ -503,6 +541,25 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests.Properties {
         internal static string TribePadSalaryVoluntary {
             get {
                 return ResourceManager.GetString("TribePadSalaryVoluntary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;job&gt;
+        ///&lt;job_id&gt;134&lt;/job_id&gt;
+        ///&lt;job_title&gt;New Worker&lt;/job_title&gt;
+        ///&lt;salary_currency&gt;1&lt;/salary_currency&gt;
+        ///&lt;salary_frequency&gt;1&lt;/salary_frequency&gt;
+        ///&lt;salary_from&gt;7503.6&lt;/salary_from&gt;
+        ///&lt;salary_to&gt;7503.6&lt;/salary_to&gt;
+        ///&lt;salary_from_text&gt;7503.6&lt;/salary_from_text&gt;
+        ///&lt;salary_to_text&gt;7503.6&lt;/salary_to_text&gt;
+        ///&lt;salaryDisplay&gt;£7,503.60 per annum&lt;/salaryDisplay&gt;
+        ///&lt;/job&gt;.
+        /// </summary>
+        internal static string TribePadSalaryWithPence {
+            get {
+                return ResourceManager.GetString("TribePadSalaryWithPence", resourceCulture);
             }
         }
         

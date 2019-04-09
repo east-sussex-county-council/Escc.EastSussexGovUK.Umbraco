@@ -222,9 +222,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
             simpleDataSet.RowData.Add("salary", salary);
             simpleDataSet.RowData.Add("salaryDisplay", salaryWithStopWords); // so that it's not displayed with stop words removed
             simpleDataSet.RowData.Add("salaryRange", StopWordsRemover != null ? StopWordsRemover.Filter(job.Salary.SearchRange) : job.Salary.SearchRange);
-            simpleDataSet.RowData.Add("salaryMin", job.Salary.MinimumSalary?.ToString("D7") ?? String.Empty);
-            simpleDataSet.RowData.Add("salaryMax", job.Salary.MaximumSalary?.ToString("D7") ?? String.Empty);
-            simpleDataSet.RowData.Add("salarySort", (job.Salary.MinimumSalary?.ToString("D7") ?? String.Empty) + " " + (job.Salary.MaximumSalary?.ToString("D7") ?? String.Empty) + " " + (StopWordsRemover != null ? StopWordsRemover.Filter(job.Salary.SalaryRange) : job.Salary.SalaryRange));
+            simpleDataSet.RowData.Add("salaryMin", job.Salary.MinimumSalary?.ToString("0000000.00").Replace(".", string.Empty) ?? String.Empty);
+            simpleDataSet.RowData.Add("salaryMax", job.Salary.MaximumSalary?.ToString("0000000.00").Replace(".", string.Empty) ?? String.Empty);
+            simpleDataSet.RowData.Add("salarySort", (job.Salary.MinimumSalary?.ToString("0000000.00").Replace(".", string.Empty) ?? String.Empty) + " " + (job.Salary.MaximumSalary?.ToString("0000000.00").Replace(".", string.Empty) ?? String.Empty) + " " + (StopWordsRemover != null ? StopWordsRemover.Filter(job.Salary.SalaryRange) : job.Salary.SalaryRange));
             simpleDataSet.RowData.Add("hourlyRate", job.Salary.MinimumHourlyRate?.ToString(CultureInfo.CurrentCulture));
             simpleDataSet.RowData.Add("hoursPerWeek", job.WorkPattern.HoursPerWeek?.ToString(CultureInfo.CurrentCulture));
             simpleDataSet.RowData.Add("jobType", StopWordsRemover != null ? StopWordsRemover.Filter(job.JobType) : job.JobType);
