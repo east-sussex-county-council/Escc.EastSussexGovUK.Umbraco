@@ -32,7 +32,7 @@
     }
     if (!String.IsNullOrEmpty(Model.Job.Department))
     {
-        jobSummaryHtml.Append("<dt>Department</dt><dd>").Append(Model.Job.Department).Append("</dd>");
+        jobSummaryHtml.Append("<dt>Department</dt><dd id=\"department\">").Append(Model.Job.Department).Append("</dd>");
     }
     if (!String.IsNullOrEmpty(Model.Job.ContractType))
     {
