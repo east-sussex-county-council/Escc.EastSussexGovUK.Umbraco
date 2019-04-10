@@ -4887,6 +4887,7 @@
     <Content Include="uSync\Snapshots\20190313_152623_delete-old-templates\uSyncActions.config" />
     <Content Include="uSync\Snapshots\20190315_102042_landing-should-allow-council-plan\DocumentType\customer-focus-base\landing\def.config" />
     <Content Include="Views\Shared\_FindAddress.cshtml" />
+    <Content Include="uSync\Snapshots\20190410_142657_add-form-to-location\DocumentType\customer-focus-base\location\def.config" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -4967,6 +4968,7 @@
     <Compile Include="Forms\AzureSecureFormUploadsController.cs" />
     <Compile Include="Latest\ILatestService.cs" />
     <Compile Include="Latest\LatestSettings.cs" />
+    <Compile Include="Location\LocationViewModelFromUmbraco.cs" />
     <Compile Include="MicrosoftCmsMigration\MicrosoftCmsUrlRedirectionHandler.cs" />
     <Compile Include="MicrosoftCmsMigration\Placeholders\PlaceholderResources.Designer.cs">
       <AutoGen>True</AutoGen>

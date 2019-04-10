@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using Escc.EastSussexGovUK.Features;
-using latest = Escc.EastSussexGovUK.Umbraco.Web.Latest;
-using Escc.Umbraco.ContentExperiments;
-using Escc.Umbraco.PropertyTypes;
+﻿using System.Collections.Generic;
 using Umbraco.Core.Models;
 using Umbraco.Web;
-using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
-using Escc.EastSussexGovUK.Umbraco.Web.Ratings;
-using Escc.EastSussexGovUK.Umbraco.Web.Skins;
-using System.Threading.Tasks;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.Location
 {
@@ -18,10 +9,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Location
     /// </summary>
     public class RecyclingSiteController : LocationController
     {
-        protected override async Task<LocationViewModel> MapUmbracoContentToViewModel(IPublishedContent content, DateTime? expiryDate, latest.ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IWebChatSettingsService webChatSettingsService, IRelatedLinksService relatedLinksService, IContentExperimentSettingsService contentExperimentSettingsService, IEscisService escisService, IRatingSettingsProvider ratingSettings, IMediaUrlTransformer mediaUrlTransformer, ISkinToApplyService skinService)
+        protected override LocationViewModel UpdateLocationViewModel(IPublishedContent content, LocationViewModel model)
         {
-            var model = await base.MapUmbracoContentToViewModel(content, expiryDate, latestService, socialMediaService, eastSussex1SpaceService, webChatSettingsService, relatedLinksService, contentExperimentSettingsService, escisService, ratingSettings, mediaUrlTransformer, skinService);
-
             // Get the types of waste which have been selected for this recycling site
             var recycledTypes = content.GetPropertyValue<IEnumerable<string>>("wasteTypes_Content");
             if (recycledTypes != null)
