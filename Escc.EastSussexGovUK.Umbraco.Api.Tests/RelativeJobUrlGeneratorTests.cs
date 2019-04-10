@@ -21,7 +21,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
 
             job.Url = generator.GenerateUrl(job);
 
-            Assert.AreEqual("https://www.example.org/job/12345/abc123/example-job-title/department/lewes", job.Url.ToString());
+            Assert.AreEqual("https://www.example.org/job/12345/ABC123/example-job-title/department/lewes", job.Url.ToString());
         }
 
         [Test]
@@ -33,7 +33,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
 
             job.Url = generator.GenerateUrl(job);
 
-            Assert.AreEqual("https://www.example.org/job/12345/abc123/example-job-typical-title/department/lewes", job.Url.ToString());
+            Assert.AreEqual("https://www.example.org/job/12345/ABC123/example-job-typical-title/department/lewes", job.Url.ToString());
         }
     }
 }
