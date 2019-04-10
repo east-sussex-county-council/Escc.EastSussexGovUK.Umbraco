@@ -15,7 +15,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
     {
         private const string _cacheKeyPrefix = "MemoryJobCacheStrategy-";
         private readonly ObjectCache _cache;
-        private readonly bool _enforceUpdate;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MemoryJobCacheStrategy"/> class.
@@ -26,7 +25,27 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         public MemoryJobCacheStrategy(ObjectCache cache, bool enforceUpdate=false)
         {
             this._cache = cache ?? throw new ArgumentNullException(nameof(cache));
-            this._enforceUpdate = enforceUpdate;
+
+            if (enforceUpdate)
+            {
+                ClearAllEntries();
+            }
+        }
+
+        private void ClearAllEntries()
+        {
+            var keysToRemove = new List<string>();
+            foreach (var cacheEntry in _cache)
+            {
+                if (cacheEntry.Key.StartsWith(_cacheKeyPrefix))
+                {
+                    keysToRemove.Add(cacheEntry.Key);
+                }
+            }
+            foreach (var keyToRemove in keysToRemove)
+            {
+                _cache.Remove(keyToRemove);
+            }
         }
 
         private DateTime CalculateCacheTime()
@@ -78,7 +97,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// </returns>
         public Job ReadJob(string jobId)
         {
-            if (String.IsNullOrEmpty(jobId) || _enforceUpdate) return null;
+            if (String.IsNullOrEmpty(jobId)) return null;
             if (_cache[_cacheKeyPrefix + "Job-" + jobId] != null)
             {
                 return _cache[_cacheKeyPrefix + "Job-" + jobId] as Job;
@@ -95,7 +114,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// </returns>
         public JobSearchResult ReadJobs(JobSearchQuery query)
         {
-            if (query == null || _enforceUpdate) return null;
+            if (query == null) return null;
             var hash = query.ToHash();
             if (_cache[_cacheKeyPrefix + "Jobs-" + hash] != null)
             {
@@ -113,7 +132,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs
         /// </returns>
         public IList<JobsLookupValue> ReadLookupValues(string key)
         {
-            if (String.IsNullOrEmpty(key) || _enforceUpdate) return null;
+            if (String.IsNullOrEmpty(key)) return null;
             if (_cache[_cacheKeyPrefix + "LookupValues-" + key] != null)
             {
                 return _cache[_cacheKeyPrefix + "LookupValues-" + key] as IList<JobsLookupValue>;
