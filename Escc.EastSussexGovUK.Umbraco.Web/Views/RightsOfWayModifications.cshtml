@@ -1,11 +1,11 @@
 ﻿@using Escc.EastSussexGovUK
 @using Escc.EastSussexGovUK.Features
 @using Escc.EastSussexGovUK.Mvc
-@using Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayDeposits
+@using Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayModifications
 @using Escc.Dates
 @using ClientDependency.Core.Mvc
 @using Escc.ClientDependencyFramework
-@inherits Umbraco.Web.Mvc.UmbracoViewPage<RightsOfWayDepositsViewModel>
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<RightsOfWayModificationsViewModel>
 @{
     Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(Layout);
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
@@ -33,8 +33,8 @@
             <form action="@Request.Url" method="GET" class="form simple-form">
                 <div>
                     <input type="hidden" name="sort" value="@Request.QueryString["sort"]" />
-                    <label for="search-deposits">Search: </label>
-                    <input type="search" name="q" value="@Request.QueryString["q"]" id="search-deposits" />
+                    <label for="search-modification-orders">Search: </label>
+                    <input type="search" name="q" value="@Request.QueryString["q"]" id="search-modification-orders" />
                     <input type="submit" value="Search" />
                 </div>
             </form>
@@ -48,47 +48,47 @@
                 Html.RenderPartial("~/Views/_PagingBarControl.ascx", Model.Paging);
             }
 
-            @if (Model.Deposits.Any())
+            @if (Model.ModificationOrderApplications.Any())
             {
-            <table class="rights-of-way-applications deposits">
+            <table class="rights-of-way-applications modification-orders">
                 <thead>
                     <tr>
-                        <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.ReferenceAscending ? "referencedescending" : "referenceascending")">Reference</a></th>
-                        <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.ParishAscending ? "parishdescending" : "parishascending")">Parishes</a></th>
-                        <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.DateDepositedAscending ? "datedepositeddescending" : "datedepositedascending")">Date deposited</a></th>
-                        <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayDepositsSortOrder.DateExpiresAscending ? "dateexpiresdescending" : "dateexpiresascending")">Expires</a></th>
+                        <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayModificationsSortOrder.ReferenceAscending ? "referencedescending" : "referenceascending")">Reference</a></th>
+                        <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayModificationsSortOrder.ParishAscending ? "parishdescending" : "parishascending")">Parishes</a></th>
+                        <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayModificationsSortOrder.DateReceivedAscending ? "datereceiveddescending" : "datereceivedascending")">Date received</a></th>
+                        <th scope="col"><a href="@urlWithoutSort@(Model.SortOrder == RightsOfWayModificationsSortOrder.StatusAscending ? "statusdescending" : "statusascending")">Status</a></th>
                     </tr>
                 </thead>
-                @foreach (var deposit in Model.Deposits)
+                @foreach (var modificationOrder in Model.ModificationOrderApplications)
                 {
                     <tr>
-                        <td><a href="@deposit.PageUrl">@deposit.Reference</a></td>
+                        <td><a href="@modificationOrder.PageUrl">@modificationOrder.Reference</a></td>
                         <td><ul class="parishes">
-                        @foreach (var parish in deposit.Parishes)
+                        @foreach (var parish in modificationOrder.Parishes)
                         {
                             <li>@parish<span> Parish</span></li> 
                         }
                         </ul></td>
-                        <td><span>Deposited </span>@deposit.DateDeposited.ToShortBritishDate()</td>
-                        <td><span>Expires </span>@deposit.DateExpires.ToShortBritishDate()</td>
+                        <td><span>Received </span>@modificationOrder.DateReceived.ToShortBritishDate()</td>
+                        <td>@modificationOrder.ApplicationStatus</td>
                     </tr>
                 }
             </table>
             }
             else
             {
-                <p><strong>No rights of way deposits matched your search</strong>.</p>
+                <p><strong>No rights of way definitive map modification orders matched your search</strong>.</p>
             }
             @{ Html.RenderPartial("~/Views/_PagingBarControl.ascx", Model.Paging); }
             @if (Model.RssUrl != null)
             {
                 var url = String.IsNullOrEmpty(Request.QueryString["q"]) ? Model.RssUrl.ToString() : Model.RssUrl + "?q=" + Request.QueryString["q"];
                 var matching = String.IsNullOrEmpty(Request.QueryString["q"]) ? " ": $" matching '{Request.QueryString["q"]}' ";
-            <p><a href="@url" type="application/rss+xml" rel="alternate" class="rss">Subscribe to new deposits@(matching)by RSS</a></p>
+            <p><a href="@url" type="application/rss+xml" rel="alternate" class="rss">Subscribe to new definitive map modification orders@(matching)by RSS</a></p>
             }
             @if (Model.CsvUrl != null)
             {
-                <p><a href="@Model.CsvUrl" type="text/csv" rel="alternate" class="xls">Download all deposits as CSV</a></p>
+                <p><a href="@Model.CsvUrl" type="text/csv" rel="alternate" class="xls">Download all definitive map modification orders as CSV</a></p>
             }
         </div>
     </article>

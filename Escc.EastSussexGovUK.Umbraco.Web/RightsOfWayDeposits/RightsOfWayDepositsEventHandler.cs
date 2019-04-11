@@ -21,7 +21,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayDeposits
     /// Register handlers used by the rights of way deposits pages
     /// </summary>
     /// <seealso cref="Umbraco.Core.IApplicationEventHandler" />
-    public class RightsOfWayEventHandler : IApplicationEventHandler
+    public class RightsOfWayDepositsEventHandler : IApplicationEventHandler
     {
         public void OnApplicationInitialized(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
         {

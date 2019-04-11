@@ -5,7 +5,7 @@
 @using Escc.EastSussexGovUK.Mvc
 @using Escc.Dates
 @using Escc.Web
-@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayDeposits.RightsOfWayDepositViewModel>
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayModifications.RightsOfWayModificationViewModel>
 @{
     Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(Layout);
     Model.Metadata.IsInSearch = false;
@@ -33,7 +33,7 @@
 
             @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
 
-            <table class="rights-of-way-application deposit">
+            <table class="rights-of-way-application modification-order">
                 <tbody>
                     <tr><th scope="row">Reference</th><td>@Model.Reference</td></tr>
                     @if (Model.IndividualOwners.Any() || Model.OrganisationalOwners.Any())
@@ -50,19 +50,23 @@
                         </ul></td></tr>
                         }
                     }
-                   @if (Model.Addresses.Any())
+                    @if (Model.Addresses.Any())
                     {
                         if (Model.Addresses.Count() == 1)
                         {
-                            <tr><th scope="row">Address</th><td>@Model.Addresses.First().BS7666Address</td></tr>
+                            <tr><th scope="row">Address of property affected</th><td>@Model.Addresses.First().BS7666Address</td></tr>
                         }
                         else
                         {
-                            <tr><th scope="row">Addresses</th>
+                            <tr><th scope="row">Addresses of properties affected</th>
                             <td><ul class="addresses">
                             @foreach (var address in Model.Addresses) {  <li>@address.BS7666Address</li> }
                             </ul></td></tr>
                         }
+                    }
+                    @if (!String.IsNullOrEmpty(Model.NearestTownOrVillage))
+                    {
+                        <tr><th scope="row">Nearest town or village</th><td>@Model.NearestTownOrVillage</td></tr>
                     }
                     @if (Model.Parishes.Any())
                     {
@@ -77,26 +81,57 @@
                             </ul></td></tr>
                         }
                     }
-                    @if (!String.IsNullOrEmpty(Model.Description))
+                    @if (!String.IsNullOrEmpty(Model.DescriptionOfRoute))
                     {
-                    <tr><th scope="row">Description</th><td>@Model.Description</td></tr>
+                    <tr><th scope="row">Description of route</th><td>@Model.DescriptionOfRoute</td></tr>
+                    }
+                    @if (!String.IsNullOrEmpty(Model.StatusClaimed))
+                    {
+                    <tr><th scope="row">Status claimed</th><td>@Model.StatusClaimed</td></tr>
                     }
                     @if (!String.IsNullOrEmpty(Model.OrdnanceSurveyGridReference))
                     {
                     <tr><th scope="row">Ordnance Survey grid reference(s)</th><td>@Model.OrdnanceSurveyGridReference</td></tr>
                     }
-                    <tr><th scope="row">Date deposited</th><td>@Model.DateDeposited.ToBritishDateWithDay()</td></tr>
-                    <tr><th scope="row">Expires</th><td>@Model.DateExpires.ToBritishDateWithDay()</td></tr>
+                    <tr><th scope="row">Date received</th><td>@Model.DateReceived.ToBritishDateWithDay()</td></tr>
+                    @if (Model.IndividualApplicant != null)
+                    {
+                        <tr><th scope="row">Applicant</th><td>@Model.IndividualApplicant</td></tr>
+                    }
+                    @if (!String.IsNullOrEmpty(Model.OrganisationalApplicant))
+                    {
+                        <tr><th scope="row">Applicant</th><td>@Model.OrganisationalApplicant</td></tr>
+                    }
+                    @if (Model.CouncilOfficerAssigned != null)
+                    {
+                        <tr><th scope="row">Council officer assigned</th><td>@Model.CouncilOfficerAssigned</td></tr>
+                    }
+                    @if (!String.IsNullOrEmpty(Model.ApplicationStatus))
+                    {
+                        <tr><th scope="row">Status of application</th><td>@Model.ApplicationStatus</td></tr>
+                    }
+                    @if (!String.IsNullOrEmpty(Model.Decision))
+                    {
+                        <tr><th scope="row">Decision</th><td>@Model.Decision</td></tr>
+                    }
+                    @if (Model.DateDetermined.HasValue)
+                    {
+                    <tr><th scope="row">Date decision determined</th><td>@Model.DateDetermined.ToBritishDateWithDay()</td></tr>
+                    }
+                    @if (Model.DateModificationOrderConfirmed.HasValue)
+                    {
+                    <tr><th scope="row">Date definitive map modification order confirmed</th><td>@Model.DateModificationOrderConfirmed.ToBritishDateWithDay()</td></tr>
+                    }
                 </tbody>
             </table>
 
-            @if (Model.DepositDocuments.Any())
+            @if (Model.ApplicationDocuments.Any())
             {
-                <h2>Deposit documents</h2>
+                <h2>Application documents</h2>
                 <ul>
-                    @foreach (var depositDocument in Model.DepositDocuments)
+                    @foreach (var document in Model.ApplicationDocuments)
                     {
-                    <li class="download"><a href="@depositDocument.Url">@depositDocument.Text</a></li>
+                    <li class="download"><a href="@document.Url">@document.Text</a></li>
                     }
                 </ul>
             }

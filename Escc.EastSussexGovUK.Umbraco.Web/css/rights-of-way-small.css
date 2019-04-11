@@ -1,0 +1,11 @@
+﻿table.rights-of-way-applications, .rights-of-way-applications tbody {display:block;}
+table.rights-of-way-applications { border-top: 1px solid #ccc; padding-top: 1em;}
+.rights-of-way-applications thead { display: none; }
+.rights-of-way-applications tr { display: block; padding-bottom: 1em; margin-bottom: 1em; border-bottom: 1px solid #ccc; }
+.rights-of-way-applications td { display: block; border: none; padding: 0; }
+
+.rights-of-way-application { width: 100%; }
+.rights-of-way-application th { width: 8em; }
+.rights-of-way-applications .parishes, .rights-of-way-application .parishes, .rights-of-way-application .owners, .rights-of-way-application .addresses { margin: 0; list-style: none; }
+
+.deposits-map { height: 400px; }

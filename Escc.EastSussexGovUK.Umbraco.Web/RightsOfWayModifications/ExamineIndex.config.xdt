@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<ExamineLuceneIndexSets xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+
+  <!-- We are using Examine 0.1.82 where the recommendation is to add a {machinename} token when auto-scaling. This will change with the next Examine update.
+       https://our.umbraco.org/Documentation/Getting-Started/Setup/Server-Setup/Load-Balancing/flexible -->
+  <IndexSet SetName="RightsOfWayModificationsIndexSet" xdt:Transform="RemoveAll" xdt:Locator="Match(SetName)" />
+  <IndexSet SetName="RightsOfWayModificationsIndexSet" IndexPath="~/App_Data/TEMP/ExamineIndexes/RightsOfWayModifications/" xdt:Transform="Insert">
+    <IndexAttributeFields>
+      <add Name="nodeName" EnableSorting="true" Type="STRING"/>
+      <add Name="nodeTypeAlias" />
+      <add Name="urlName" />
+      <add Name="parentID" />
+    </IndexAttributeFields>
+    <IndexUserFields>
+      <add Name="Documents" />
+      <add Name="Owner1_Content" />
+      <add Name="Owner2_Content" />
+      <add Name="Owner3_Content" />
+      <add Name="Owner4_Content" />
+      <add Name="Owner5_Content" />
+      <add Name="OrganisationalOwner1_Content" />
+      <add Name="OrganisationalOwner2_Content" />
+      <add Name="OrganisationalOwner3_Content" />
+      <add Name="OrganisationalOwner4_Content" />
+      <add Name="OrganisationalOwner5_Content" />
+      <add Name="Location_Content" />
+      <add Name="Location2_Content" />
+      <add Name="Location3_Content" />
+      <add Name="Location4_Content" />
+      <add Name="Location5_Content" />
+      <add Name="GridReference_Content" />
+      <add Name="Parish_Content" EnableSorting="true" Type="STRING" />
+      <add Name="pageDescription_Content" />
+      <add Name="DateReceived" EnableSorting="true" Type="DATE" />
+      <add Name="DateDetermined" EnableSorting="true" Type="DATE" />
+    </IndexUserFields>
+    <IncludeNodeTypes>
+      <add Name="RightsOfWayModification"/>
+    </IncludeNodeTypes>
+  </IndexSet>
+</ExamineLuceneIndexSets>

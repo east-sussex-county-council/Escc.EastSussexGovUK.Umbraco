@@ -21,13 +21,13 @@ using Escc.EastSussexGovUK.Mvc;
 using System.Threading.Tasks;
 using System.Configuration;
 
-namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayDeposits
+namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayModifications
 {
     /// <summary>
-    /// Controller for pages based on the 'Rights of way Section 31 deposits' Umbraco document type
+    /// Controller for pages based on the 'Rights of way definitive map modifications' Umbraco document type
     /// </summary>
     /// <seealso cref="Umbraco.Web.Mvc.RenderMvcController" />
-    public class RightsOfWayDepositsController : RenderMvcController
+    public class RightsOfWayModificationsController : RenderMvcController
     {
         /// <summary>
         /// The default action to render the front-end view
@@ -37,31 +37,31 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayDeposits
         public new async Task<ActionResult> Index(RenderModel model)
         {
             if (model == null) throw new ArgumentNullException(nameof(model));
-            if (ExamineManager.Instance.SearchProviderCollection["RightsOfWayDepositsSearcher"] == null)
+            if (ExamineManager.Instance.SearchProviderCollection["RightsOfWayModificationsSearcher"] == null)
             {
-                throw new ConfigurationErrorsException("The RightsOfWayDepositsSearcher is not configured in Examine config");
+                throw new ConfigurationErrorsException("The RightsOfWayModificationsSearcher is not configured in Examine config");
             }
 
             var paging = new PagingController()
             {
-                ResultsTextSingular = "deposit",
-                ResultsTextPlural = "deposits",
+                ResultsTextSingular = "order",
+                ResultsTextPlural = "orders",
                 PageSize = 30
             };
 
             var query = HttpUtility.ParseQueryString(Request.Url.Query);
-            var sort = RightsOfWayDepositsSortOrder.DateDepositedDescending;
-            RightsOfWayDepositsSortOrder parsedSort;
+            var sort = RightsOfWayModificationsSortOrder.DateReceivedDescending;
+            RightsOfWayModificationsSortOrder parsedSort;
             if (Enum.TryParse(query["sort"], true, out parsedSort))
             {
                 sort = parsedSort;
             }
 
-            var viewModel = new RightsOfWayDepositsViewModelFromExamine(model.Content.Id, Request.Url, ExamineManager.Instance.SearchProviderCollection["RightsOfWayDepositsSearcher"], Request.QueryString["q"], new ISearchFilter[] { new SearchTermSanitiser() }, paging.CurrentPage, paging.PageSize, sort).BuildModel();
+            var viewModel = new RightsOfWayModificationsViewModelFromExamine(model.Content.Id, Request.Url, ExamineManager.Instance.SearchProviderCollection["RightsOfWayModificationsSearcher"], Request.QueryString["q"], new ISearchFilter[] { new SearchTermSanitiser() }, paging.CurrentPage, paging.PageSize, sort).BuildModel();
             viewModel.Paging = paging;
-            viewModel.Paging.TotalResults = viewModel.TotalDeposits;
+            viewModel.Paging.TotalResults = viewModel.TotalModificationOrderApplications;
             viewModel.SortOrder = sort;
-            viewModel.LeadingText = new HtmlString(model.Content.GetPropertyValue<string>("leadingText_Content"));
+            viewModel.LeadingText = new HtmlString(model.Content.GetPropertyValue<string>("leadingText"));
 
             // Add common properties to the model
             var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1)));
@@ -75,13 +75,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayDeposits
                 null, null);
 
             // Look for an RSS feed and CSV download
-            var rss = model.Content.Children.Where<IPublishedContent>(child => child.DocumentTypeAlias == "RightsOfWayDepositsRss").FirstOrDefault();
+            var rss = model.Content.Children.Where<IPublishedContent>(child => child.DocumentTypeAlias == "RightsOfWayModificationsRss").FirstOrDefault();
             if (rss != null)
             {
                 viewModel.RssUrl = new Uri(rss.Url, UriKind.Relative);
             }
 
-            var csv = model.Content.Children.Where<IPublishedContent>(child => child.DocumentTypeAlias == "RightsOfWayDepositsCsv").FirstOrDefault();
+            var csv = model.Content.Children.Where<IPublishedContent>(child => child.DocumentTypeAlias == "RightsOfWayModificationsCsv").FirstOrDefault();
             if (csv != null)
             {
                 viewModel.CsvUrl = new Uri(csv.Url, UriKind.Relative);

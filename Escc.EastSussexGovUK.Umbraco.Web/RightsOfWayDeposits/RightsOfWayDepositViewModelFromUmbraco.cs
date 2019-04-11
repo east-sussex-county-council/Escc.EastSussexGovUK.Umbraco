@@ -73,9 +73,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayDeposits
             }
             
             var parishes = UmbracoContent.GetPropertyValue<IEnumerable<string>>("Parish_Content");
-            foreach (var parish in parishes)
+            if (parishes != null)
             {
-                model.Parishes.Add(parish);
+                foreach (var parish in parishes)
+                {
+                    model.Parishes.Add(parish);
+                }
             }
 
             model.Description = UmbracoContent.GetPropertyValue<string>("pageDescription_Content");

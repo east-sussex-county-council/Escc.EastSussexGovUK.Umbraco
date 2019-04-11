@@ -1,0 +1,7 @@
+﻿table.rights-of-way-applications {display:table; width: 100%;}
+.rights-of-way-applications tbody { display: table-row-group; }
+table.rights-of-way-applications { border: none; padding: 0;}
+.rights-of-way-applications thead { display: table-header-group; }
+.rights-of-way-applications tr { display: table-row; border: none; }
+.rights-of-way-applications td { display: table-cell; border: .052631em solid #ccc; padding: .421053em; }
+.rights-of-way-applications td span { display: none; }

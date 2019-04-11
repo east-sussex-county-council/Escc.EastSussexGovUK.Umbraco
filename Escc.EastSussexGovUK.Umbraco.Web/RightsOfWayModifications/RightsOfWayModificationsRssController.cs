@@ -12,13 +12,13 @@ using Escc.EastSussexGovUK.Umbraco.Examine;
 using System.Threading.Tasks;
 using System.Configuration;
 
-namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayDeposits
+namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayModifications
 {
     /// <summary>
-    /// Controller for pages based on the 'Rights of way Section 31 deposits RSS feed' Umbraco document type
+    /// Controller for pages based on the 'Rights of way Section 31 definitive map modifications RSS feed' Umbraco document type
     /// </summary>
     /// <seealso cref="Umbraco.Web.Mvc.RenderMvcController" />
-    public class RightsOfWayDepositsRssController : RenderMvcController
+    public class RightsOfWayModificationsRssController : RenderMvcController
     {
         /// <summary>
         /// The default action to render the front-end view
@@ -28,15 +28,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayDeposits
         public new async Task<ActionResult> Index(RenderModel model)
         {
             if (model == null) throw new ArgumentNullException(nameof(model));
-            if (ExamineManager.Instance.SearchProviderCollection["RightsOfWayDepositsSearcher"] == null)
+            if (ExamineManager.Instance.SearchProviderCollection["RightsOfWayModificationsSearcher"] == null)
             {
-                throw new ConfigurationErrorsException("The RightsOfWayDepositsSearcher is not configured in Examine config");
+                throw new ConfigurationErrorsException("The RightsOfWayModificationsSearcher is not configured in Examine config");
             }
 
-            var viewModel = new RightsOfWayDepositsViewModelFromExamine(model.Content.Parent.Id, new Uri(model.Content.Parent.UrlAbsolute()), ExamineManager.Instance.SearchProviderCollection["RightsOfWayDepositsSearcher"], Request.QueryString["q"], new ISearchFilter[] { new SearchTermSanitiser() }, Umbraco).BuildModel();
+            var viewModel = new RightsOfWayModificationsViewModelFromExamine(model.Content.Parent.Id, new Uri(model.Content.Parent.UrlAbsolute()), ExamineManager.Instance.SearchProviderCollection["RightsOfWayModificationsSearcher"], Request.QueryString["q"], new ISearchFilter[] { new SearchTermSanitiser() }, Umbraco).BuildModel();
 
-            var rss = new RssViewModel<RightsOfWayDepositViewModel>();
-            foreach (var deposit in viewModel.Deposits) rss.Items.Add(deposit);
+            var rss = new RssViewModel<RightsOfWayModificationViewModel>();
+            foreach (var modificationOrder in viewModel.ModificationOrderApplications) rss.Items.Add(modificationOrder);
 
             var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1)));
             var modelBuilder = new BaseViewModelBuilder(null);

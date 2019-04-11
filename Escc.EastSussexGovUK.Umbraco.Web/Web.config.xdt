@@ -212,6 +212,10 @@
       <add name="RightsOfWayDepositsRss" level="*" />
       <add name="RightsOfWayDepositsCsv" level="*" />
       <add name="RightsOfWayDeposit" level="*" />
+      <add name="RightsOfWayModifications" level="*" />
+      <add name="RightsOfWayModificationsRss" level="*" />
+      <add name="RightsOfWayModificationsCsv" level="*" />
+      <add name="RightsOfWayModification" level="*" />
       <add name="Skins" level="*" />
       <add name="Skin" level="*" />
       <add name="Skin" level="*" />

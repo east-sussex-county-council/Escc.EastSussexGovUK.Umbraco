@@ -1245,8 +1245,8 @@
     <Content Include="css\Jobs\jobs-large.css" />
     <Content Include="css\Jobs\jobs-medium.css" />
     <Content Include="css\Jobs\jobs-small.css" />
-    <Content Include="css\RightsOfWayDeposits\deposits-medium.css" />
-    <Content Include="css\RightsOfWayDeposits\deposits-small.css" />
+    <Content Include="css\rights-of-way-medium.css" />
+    <Content Include="css\rights-of-way-small.css" />
     <Content Include="css\rating-medium.css" />
     <Content Include="css\rating-small.css" />
     <Content Include="css\StandardDownloadPage\download-small.css" />
@@ -1352,7 +1352,7 @@
     <Content Include="js\GovDelivery\ESCC.js" />
     <Content Include="js\GovDelivery\Libraries.js" />
     <Content Include="js\job-results.js" />
-    <Content Include="js\rights-of-way-deposit.js" />
+    <Content Include="js\rights-of-way-map.js" />
     <Content Include="js\location.js" />
     <Content Include="js\document-metadata.js" />
     <Content Include="js\embed-jobs-rss.js" />
@@ -1369,6 +1369,10 @@
     <Content Include="images\web.config" />
     <Content Include="App_Plugins\SpectrumColorPicker\package.manifest" />
     <Content Include="EastSussexGovUK\Rss\rss-to-html.ashx" />
+    <Content Include="RightsOfWayModifications\ExamineIndex.config.xdt">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="RightsOfWayModifications\ExamineSettings.config.xdt" />
     <None Include="RightsOfWayDeposits\ExamineIndex.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -4888,6 +4892,10 @@
     <Content Include="uSync\Snapshots\20190315_102042_landing-should-allow-council-plan\DocumentType\customer-focus-base\landing\def.config" />
     <Content Include="Views\Shared\_FindAddress.cshtml" />
     <Content Include="uSync\Snapshots\20190410_142657_add-form-to-location\DocumentType\customer-focus-base\location\def.config" />
+    <Content Include="Views\RightsOfWayModification.cshtml" />
+    <Content Include="Views\RightsOfWayModifications.cshtml" />
+    <Content Include="Views\RightsOfWayModificationsCsv.cshtml" />
+    <Content Include="Views\RightsOfWayModificationsRss.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -4978,6 +4986,16 @@
     <Compile Include="PrivacyNotice\PrivacyNoticeViewModel.cs" />
     <Compile Include="PrivacyNotice\PrivacyNoticeController.cs" />
     <Compile Include="PrivacyNotice\PrivacyNoticeViewModelFromUmbraco.cs" />
+    <Compile Include="RightsOfWayModifications\RightsOfWayModificationController.cs" />
+    <Compile Include="RightsOfWayModifications\RightsOfWayModificationsController.cs" />
+    <Compile Include="RightsOfWayModifications\RightsOfWayModificationsCsvController.cs" />
+    <Compile Include="RightsOfWayModifications\RightsOfWayModificationsRssController.cs" />
+    <Compile Include="RightsOfWayModifications\RightsOfWayModificationsSortOrder.cs" />
+    <Compile Include="RightsOfWayModifications\RightsOfWayModificationsViewModel.cs" />
+    <Compile Include="RightsOfWayModifications\RightsOfWayModificationsViewModelFromExamine.cs" />
+    <Compile Include="RightsOfWayModifications\RightsOfWayModificationViewModel.cs" />
+    <Compile Include="RightsOfWayModifications\RightsOfWayModificationViewModelFromUmbraco.cs" />
+    <Compile Include="RightsOfWayModifications\RightsOfWayModificationsEventHandler.cs" />
     <Compile Include="ServiceAlerts\AlertsController.cs" />
     <Compile Include="ServiceAlerts\AlertViewModel.cs" />
     <Compile Include="Services\AuditLoggingEventHandler.cs" />
@@ -5045,7 +5063,7 @@
     <Compile Include="RightsOfWayDeposits\RightsOfWayDepositViewModel.cs" />
     <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsViewModelFromExamine.cs" />
     <Compile Include="RightsOfWayDeposits\RightsOfWayDepositViewModelFromUmbraco.cs" />
-    <Compile Include="RightsOfWayDeposits\RightsOfWayEventHandler.cs" />
+    <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsEventHandler.cs" />
     <Compile Include="Services\BaseViewModelFromUmbracoBuilder.cs" />
     <Compile Include="Jobs\JobSearchResultsViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\ComponentViewModelFromUmbraco.cs" />
