@@ -4896,6 +4896,36 @@
     <Content Include="Views\RightsOfWayModifications.cshtml" />
     <Content Include="Views\RightsOfWayModificationsCsv.cshtml" />
     <Content Include="Views\RightsOfWayModificationsRss.cshtml" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\DocumentType\campaign-content-page\def.config" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\DocumentType\campaign-landing-page\def.config" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\DocumentType\campaign-tiles\def.config" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\DocumentType\customer-focus-base\escc-employee\def.config" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\DocumentType\customer-focus-base\landing\def.config" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\DocumentType\customer-focus-base\location\childcare-setting\def.config" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\DocumentType\customer-focus-base\location\council-office\def.config" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\DocumentType\customer-focus-base\location\day-centre\def.config" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\DocumentType\customer-focus-base\location\def.config" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\DocumentType\customer-focus-base\location\library\def.config" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\DocumentType\customer-focus-base\location\park-or-open-space\def.config" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\DocumentType\customer-focus-base\location\recycling-site\def.config" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\DocumentType\customer-focus-base\location\registration-office\def.config" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\DocumentType\customer-focus-base\location\sport-venue\def.config" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\DocumentType\customer-focus-base\task\def.config" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\DocumentType\form\def.config" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\DocumentType\home-page\def.config" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\DocumentType\legacy-base\map\def.config" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\DocumentType\legacy-base\standard-download-page\def.config" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\DocumentType\legacy-base\standard-landing-page\def.config" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\DocumentType\legacy-base\standard-topic-page\def.config" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\DocumentType\rights-of-way-definitive-map-modifications-csv-download\def.config" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\DocumentType\rights-of-way-definitive-map-modifications-rss-feed\def.config" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\DocumentType\rights-of-way-definitive-map-modifications\def.config" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\DocumentType\rights-of-way-definitive-map-modification\def.config" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\Template\rightsofwaymodificationscsv\RightsOfWayModificationsCsv.config" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\Template\rightsofwaymodificationsrss\RightsOfWayModificationsRss.config" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\Template\rightsofwaymodifications\RightsOfWayModifications.config" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\Template\rightsofwaymodification\RightsOfWayModification.config" />
+    <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\uSyncActions.config" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
