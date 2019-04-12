@@ -8,6 +8,7 @@
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<RightsOfWayModificationsViewModel>
 @{
     Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(Layout);
+    Model.Metadata.PageUrl = new Uri(Request.Url.Scheme + "://" + Request.Url.Authority + Request.Url.AbsolutePath);
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
     {
         new WebChat() { WebChatSettings = Model.WebChat }
@@ -31,10 +32,15 @@
             @Model.LeadingText
             
             <form action="@Request.Url" method="GET" class="form simple-form">
-                <div>
-                    <input type="hidden" name="sort" value="@Request.QueryString["sort"]" />
-                    <label for="search-modification-orders">Search: </label>
-                    <input type="search" name="q" value="@Request.QueryString["q"]" id="search-modification-orders" />
+                <div class="fields-with-checkbox">
+                    <div class="fields">
+                        <input type="hidden" name="sort" value="@Request.QueryString["sort"]" />
+                        <label for="search-modification-orders">Search: </label>
+                        <input type="search" name="q" value="@Request.QueryString["q"]" id="search-modification-orders" />
+                        <span class="checkbox">
+                            <input id="completed" name="completed" value="1" type="checkbox" @(Request.QueryString["completed"] == "1" ? " checked=\"checked\"" : string.Empty)><label for="completed">Include completed applications</label>
+                        </span>
+                    </div>
                     <input type="submit" value="Search" />
                 </div>
             </form>
@@ -84,11 +90,11 @@
             {
                 var url = String.IsNullOrEmpty(Request.QueryString["q"]) ? Model.RssUrl.ToString() : Model.RssUrl + "?q=" + Request.QueryString["q"];
                 var matching = String.IsNullOrEmpty(Request.QueryString["q"]) ? " ": $" matching '{Request.QueryString["q"]}' ";
-            <p><a href="@url" type="application/rss+xml" rel="alternate" class="rss">Subscribe to new definitive map modification orders@(matching)by RSS</a></p>
+            <p><a href="@url" type="application/rss+xml" rel="alternate" class="rss">Subscribe to new definitive map modification order applications@(matching)by RSS</a></p>
             }
             @if (Model.CsvUrl != null)
             {
-                <p><a href="@Model.CsvUrl" type="text/csv" rel="alternate" class="xls">Download all definitive map modification orders as CSV</a></p>
+                <p><a href="@Model.CsvUrl" type="text/csv" rel="alternate" class="xls">Download all definitive map modification order applications as CSV</a></p>
             }
         </div>
     </article>

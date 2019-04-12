@@ -44,8 +44,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayModifications
 
             var paging = new PagingController()
             {
-                ResultsTextSingular = "order",
-                ResultsTextPlural = "orders",
+                ResultsTextSingular = "application",
+                ResultsTextPlural = "applications",
                 PageSize = 30
             };
 
@@ -57,7 +57,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayModifications
                 sort = parsedSort;
             }
 
-            var viewModel = new RightsOfWayModificationsViewModelFromExamine(model.Content.Id, Request.Url, ExamineManager.Instance.SearchProviderCollection["RightsOfWayModificationsSearcher"], Request.QueryString["q"], new ISearchFilter[] { new SearchTermSanitiser() }, paging.CurrentPage, paging.PageSize, sort).BuildModel();
+            var viewModel = new RightsOfWayModificationsViewModelFromExamine(
+                model.Content.Id, 
+                Request.Url, 
+                ExamineManager.Instance.SearchProviderCollection["RightsOfWayModificationsSearcher"], 
+                Request.QueryString["q"], 
+                new ISearchFilter[] { new SearchTermSanitiser() },
+                query["completed"] == "1",
+                paging.CurrentPage, 
+                paging.PageSize, 
+                sort
+                ).BuildModel();
             viewModel.Paging = paging;
             viewModel.Paging.TotalResults = viewModel.TotalModificationOrderApplications;
             viewModel.SortOrder = sort;

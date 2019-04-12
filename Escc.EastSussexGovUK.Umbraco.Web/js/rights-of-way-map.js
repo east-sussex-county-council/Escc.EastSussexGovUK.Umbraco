@@ -15,7 +15,7 @@
             if (!locationsWithCoordinates.length) return;
 
             var sectionHeading = $("<h2>Map of the area affected</h2>" +
-                "<p>For a detailed map of the site boundary, download the deposit documents.</p>").insertBefore(element);
+                "<p>For a detailed map of the site, download the associated documents.</p>").insertBefore(element);
             element.addClass("deposits-map");
 
             // Set up a map centred on the mid-point of all the locations

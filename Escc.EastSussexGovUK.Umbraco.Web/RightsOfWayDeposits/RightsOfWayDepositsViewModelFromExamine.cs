@@ -42,7 +42,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayDeposits
         /// <param name="baseUrl">The base URL for linking to details of each deposit - expected to be the URL of the deposits listings page.</param>
         /// <param name="searcher">The Examine searcher for rights of way deposits</param>
         /// <param name="searchTerm">The search term.</param>
-        /// <param name="searchFilters">The search filters.</param>
+        /// <param name="searchFilters">Search filters which modify the search term.</param>
         /// <param name="umbracoHelper">The Umbraco helper.</param>
         /// <exception cref="ArgumentNullException">baseUrl</exception>
         /// <exception cref="System.ArgumentNullException">baseUrl</exception>

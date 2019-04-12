@@ -29,6 +29,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayModifications
         private readonly UmbracoHelper _umbracoHelper;
         private int _umbracoParentNodeId;
         private string _searchTerm;
+        private readonly bool _includeCompleted;
         private int _currentPage;
         private int _pageSize;
         private RightsOfWayModificationsSortOrder _sortOrder;
@@ -52,6 +53,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayModifications
             _umbracoParentNodeId = umbracoParentNodeId;
             _baseUrl = baseUrl;
             _searcher = searcher ?? throw new ArgumentNullException(nameof(searcher));
+            _includeCompleted = true;
             _umbracoHelper = umbracoHelper;
             AddFilteredSearchTerm(searchTerm, searchFilters);
         }
@@ -63,13 +65,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayModifications
         /// <param name="baseUrl">The base URL for linking to details of each modification order - expected to be the URL of the modification orders listings page.</param>
         /// <param name="searcher">The Examine searcher for rights of way deposits</param>
         /// <param name="searchTerm">The search term.</param>
-        /// <param name="searchFilters">The search filters.</param>
+        /// <param name="searchFilters">Search filters which modify the search term.</param>
+        /// <param name="includeCompleted">Sets whether completed applications should be included in the results</param>
         /// <param name="currentPage">The current page in paged search results.</param>
         /// <param name="pageSize">Size of the page in paged search results.</param>
         /// <param name="sortOrder">The sort order applied to search results.</param>
         /// <exception cref="System.ArgumentNullException">baseUrl</exception>
-        public RightsOfWayModificationsViewModelFromExamine(int umbracoParentNodeId, Uri baseUrl, ISearcher searcher, string searchTerm, IEnumerable<ISearchFilter> searchFilters, int currentPage, int pageSize, RightsOfWayModificationsSortOrder sortOrder) : this(umbracoParentNodeId, baseUrl, searcher, searchTerm, searchFilters, null)
+        public RightsOfWayModificationsViewModelFromExamine(int umbracoParentNodeId, Uri baseUrl, ISearcher searcher, string searchTerm, IEnumerable<ISearchFilter> searchFilters, bool includeCompleted, int currentPage, int pageSize, RightsOfWayModificationsSortOrder sortOrder) : this(umbracoParentNodeId, baseUrl, searcher, searchTerm, searchFilters, null)
         {
+            _includeCompleted = includeCompleted;
             _currentPage = currentPage;
             _pageSize = pageSize;
             _sortOrder = sortOrder;
@@ -101,7 +105,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayModifications
             {
                 criteria.Field("RightsOfWayModificationSearch", _searchTerm);
             }
-
+            if (!_includeCompleted)
+            {
+                criteria.Field("RightsOfWayModificationComplete", "false");
+            }
             if (_sortResults)
             {
                 switch (_sortOrder)
@@ -119,16 +126,16 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayModifications
                         criteria.OrderByDescending("Parish");
                         break;
                     case RightsOfWayModificationsSortOrder.DateReceivedAscending:
-                        criteria.OrderBy("DateReceived");
+                        criteria.OrderByDescending("DateReceived");
                         break;
                     case RightsOfWayModificationsSortOrder.StatusAscending:
-                        criteria.OrderBy("Status");
+                        criteria.OrderBy("applicationStatus");
                         break;
                     case RightsOfWayModificationsSortOrder.StatusDescending:
-                        criteria.OrderByDescending("Status");
+                        criteria.OrderByDescending("applicationStatus");
                         break;
                     default:
-                        criteria.OrderByDescending("DateReceived");
+                        criteria.OrderBy("DateReceived");
                         break;
                 }
             }
@@ -147,9 +154,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayModifications
 
             foreach (var result in selectedResults)
             {
-                var modificationOrder = new RightsOfWayModificationViewModel();
-                modificationOrder.Reference = result.Fields["nodeName"];
-                modificationOrder.PageUrl = new Uri(_baseUrl, result.Fields["urlName"]);
+                var application = new RightsOfWayModificationViewModel
+                {
+                    Reference = result.Fields["nodeName"],
+                    PageUrl = new Uri(_baseUrl, result.Fields["urlName"])                    
+                };
 
                 if (result.Fields.Keys.Contains("Documents") &&_umbracoHelper != null)
                 {
@@ -161,7 +170,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayModifications
                     }
 
                     foreach (var media in multiMediaPicker) { 
-                        modificationOrder.ApplicationDocuments.Add(new HtmlLink() { Text = media.Name, Url = new Uri(_baseUrl, media.Url) });
+                        application.ApplicationDocuments.Add(new HtmlLink() { Text = media.Name, Url = new Uri(_baseUrl, media.Url) });
                     }
                 }
 
@@ -172,13 +181,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayModifications
                     if (result.Fields.Keys.Contains($"Owner{i}"))
                     {
                         var owner = nameConverter.ConvertDataToSource(null, result.Fields[$"Owner{i}"], false) as PersonName;
-                        if (owner != null) { modificationOrder.IndividualOwners.Add(owner); }
+                        if (owner != null) { application.IndividualOwners.Add(owner); }
                     }
 
                     if (result.Fields.Keys.Contains($"OrganisationalOwner{i}"))
                     {
                         var org = result.Fields[$"OrganisationalOwner{i}"];
-                        if (!String.IsNullOrEmpty(org)) { modificationOrder.OrganisationalOwners.Add(org); }
+                        if (!String.IsNullOrEmpty(org)) { application.OrganisationalOwners.Add(org); }
                     }
 
                     if (result.Fields.Keys.Contains($"Location{i}"))
@@ -187,7 +196,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayModifications
                         if (addressInfo != null && addressInfo.BS7666Address.HasAddress() && addressInfo.BS7666Address.ToString() != addressInfo.BS7666Address.AdministrativeArea)
                         {
                             if (addressInfo.GeoCoordinate.Latitude == 0 && addressInfo.GeoCoordinate.Longitude == 0) addressInfo.GeoCoordinate = null;
-                            modificationOrder.Addresses.Add(addressInfo);
+                            application.Addresses.Add(addressInfo);
                         }
                     }
                 }
@@ -200,30 +209,72 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayModifications
                         var parishes = parishData.Split(',');
                         foreach (var parish in parishes)
                         {
-                            modificationOrder.Parishes.Add(parish);
+                            application.Parishes.Add(parish);
                         }
                     }
                 }
 
+                if (result.Fields.Keys.Contains("nearestTownOrVillage"))
+                {
+                    application.NearestTownOrVillage = result.Fields["nearestTownOrVillage"];
+                }
+
+                if (result.Fields.Keys.Contains("statusClaimed"))
+                {
+                    application.StatusClaimed = result.Fields["statusClaimed"];
+                }
+
                 if (result.Fields.Keys.Contains("GridReference"))
                 {
-                    modificationOrder.OrdnanceSurveyGridReference = result.Fields["GridReference"];
+                    application.OrdnanceSurveyGridReference = result.Fields["GridReference"];
                 }
 
                 if (result.Fields.Keys.Contains("pageDescription"))
                 {
-                    modificationOrder.DescriptionOfRoute = result.Fields["pageDescription"];
+                    application.DescriptionOfRoute = result.Fields["pageDescription"];
                 }
 
                 if (result.Fields.Keys.Contains("DateReceived"))
                 {
-                    modificationOrder.DateReceived = new DateTime(Int32.Parse(result.Fields["DateReceived"].Substring(0, 4)), Int32.Parse(result.Fields["DateReceived"].Substring(4, 2)), Int32.Parse(result.Fields["DateReceived"].Substring(6, 2)));
+                    application.DateReceived = new DateTime(Int32.Parse(result.Fields["DateReceived"].Substring(0, 4)), Int32.Parse(result.Fields["DateReceived"].Substring(4, 2)), Int32.Parse(result.Fields["DateReceived"].Substring(6, 2)));
                 }
+
+                if (result.Fields.Keys.Contains("nameOfApplicant"))
+                {
+                    application.IndividualApplicant = nameConverter.ConvertDataToSource(null, result.Fields["nameOfApplicant"], false) as PersonName;
+                }
+
+                if (result.Fields.Keys.Contains("nameOfApplicantOrganisation"))
+                {
+                    application.OrganisationalApplicant = result.Fields["nameOfApplicantOrganisation"];
+                }
+
+                if (result.Fields.Keys.Contains("councilOfficerAssigned"))
+                {
+                    application.CouncilOfficerAssigned = nameConverter.ConvertDataToSource(null, result.Fields["councilOfficerAssigned"], false) as PersonName;
+                }
+
+                if (result.Fields.Keys.Contains("applicationStatus"))
+                {
+                    application.ApplicationStatus = result.Fields["applicationStatus"];
+                }
+
+                if (result.Fields.Keys.Contains("decision"))
+                {
+                    application.Decision = result.Fields["decision"];
+                }
+
                 if (result.Fields.Keys.Contains("DateDetermined"))
                 {
-                    modificationOrder.DateDetermined = new DateTime(Int32.Parse(result.Fields["DateDetermined"].Substring(0, 4)), Int32.Parse(result.Fields["DateDetermined"].Substring(4, 2)), Int32.Parse(result.Fields["DateDetermined"].Substring(6, 2)));
+                    application.DateDetermined = new DateTime(Int32.Parse(result.Fields["DateDetermined"].Substring(0, 4)), Int32.Parse(result.Fields["DateDetermined"].Substring(4, 2)), Int32.Parse(result.Fields["DateDetermined"].Substring(6, 2)));
                 }
-                model.ModificationOrderApplications.Add(modificationOrder);
+
+                if (result.Fields.Keys.Contains("orderConfirmedDate"))
+                {
+                    application.DateModificationOrderConfirmed = new DateTime(Int32.Parse(result.Fields["orderConfirmedDate"].Substring(0, 4)), Int32.Parse(result.Fields["orderConfirmedDate"].Substring(4, 2)), Int32.Parse(result.Fields["orderConfirmedDate"].Substring(6, 2)));
+                }
+
+                model.ModificationOrderApplications.Add(application);
             }
 
             return model;

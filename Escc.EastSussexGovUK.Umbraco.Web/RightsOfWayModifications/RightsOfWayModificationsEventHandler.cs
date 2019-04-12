@@ -84,6 +84,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayModifications
                         if (e.Fields.ContainsKey("applicationStatus"))
                         {
                             combinedFields.AppendLine(e.Fields["applicationStatus"]);
+
+                            // Add an extra field based on application status which tracks whether the application is completed
+                            e.Fields.Add("RightsOfWayModificationComplete", (!string.IsNullOrEmpty(e.Fields["applicationStatus"]) && e.Fields["applicationStatus"].ToUpperInvariant().StartsWith("COMPLETE")).ToString().ToLowerInvariant());
+                        }
+                        else
+                        {
+                            e.Fields.Add("RightsOfWayModificationComplete", "false");
                         }
 
                         if (e.Fields.ContainsKey("decision"))

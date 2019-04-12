@@ -12,27 +12,35 @@
       <add Name="parentID" />
     </IndexAttributeFields>
     <IndexUserFields>
-      <add Name="Documents" />
-      <add Name="Owner1_Content" />
-      <add Name="Owner2_Content" />
-      <add Name="Owner3_Content" />
-      <add Name="Owner4_Content" />
-      <add Name="Owner5_Content" />
-      <add Name="OrganisationalOwner1_Content" />
-      <add Name="OrganisationalOwner2_Content" />
-      <add Name="OrganisationalOwner3_Content" />
-      <add Name="OrganisationalOwner4_Content" />
-      <add Name="OrganisationalOwner5_Content" />
-      <add Name="Location_Content" />
-      <add Name="Location2_Content" />
-      <add Name="Location3_Content" />
-      <add Name="Location4_Content" />
-      <add Name="Location5_Content" />
-      <add Name="GridReference_Content" />
-      <add Name="Parish_Content" EnableSorting="true" Type="STRING" />
-      <add Name="pageDescription_Content" />
+      <add Name="Parish" EnableSorting="true" Type="STRING" />
+      <add Name="nearestTownOrVillage" />
+      <add Name="Owner1" />
+      <add Name="Owner2" />
+      <add Name="Owner3" />
+      <add Name="Owner4" />
+      <add Name="Owner5" />
+      <add Name="OrganisationalOwner1" />
+      <add Name="OrganisationalOwner2" />
+      <add Name="OrganisationalOwner3" />
+      <add Name="OrganisationalOwner4" />
+      <add Name="OrganisationalOwner5" />
+      <add Name="Location1" />
+      <add Name="Location2" />
+      <add Name="Location3" />
+      <add Name="Location4" />
+      <add Name="Location5" />
+      <add Name="pageDescription" />
+      <add Name="statusClaimed" />
+      <add Name="GridReference" />
       <add Name="DateReceived" EnableSorting="true" Type="DATE" />
-      <add Name="DateDetermined" EnableSorting="true" Type="DATE" />
+      <add Name="nameOfApplicant" />
+      <add Name="nameOfApplicantOrganisation" />
+      <add Name="councilOfficerAssigned" />
+      <add Name="applicationStatus" EnableSorting="true" Type="STRING" />
+      <add Name="decision" />
+      <add Name="DateDetermined" Type="DATE" />
+      <add Name="orderConfirmedDate" Type="DATE" />
+      <add Name="Documents" />
     </IndexUserFields>
     <IncludeNodeTypes>
       <add Name="RightsOfWayModification"/>
