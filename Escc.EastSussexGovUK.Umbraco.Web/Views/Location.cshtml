@@ -135,10 +135,10 @@
         <h3>Address</h3>
         <p>@Model.Location.BS7666Address.GetSimpleAddress().ToString()</p>
     }
-    @if (!String.IsNullOrEmpty(Model.Email1) || !String.IsNullOrEmpty(Model.Email2))
+    @if (!String.IsNullOrEmpty(Model.Email1) || !String.IsNullOrEmpty(Model.Email2) || Model.ContactFormUrl != null)
     {
         var emailTransformer = new WebsiteFormEmailAddressTransformer(Request.Url);
-        <h3>Email</h3>
+        <h3>Contact us online</h3>
         if (!String.IsNullOrEmpty(Model.Email1))
         {
             var label = String.IsNullOrEmpty(Model.Email1Label) ? "Send email" : Model.Email1Label;
@@ -152,6 +152,11 @@
             <p>
                 <a href="@emailTransformer.TransformEmailAddress(new ContactEmail(Model.Email2, Model.Metadata.Title))">@label</a>
             </p>
+        }
+        if (Model.ContactFormUrl != null)
+        {
+            var label = string.IsNullOrEmpty(Model.ContactFormLabel) ? "Contact us online" : Model.ContactFormLabel;
+            <p><a href="@Model.ContactFormUrl">@label</a></p>
         }
     }
     @if (!String.IsNullOrEmpty(Model.Phone1) || !String.IsNullOrEmpty(Model.Phone2))

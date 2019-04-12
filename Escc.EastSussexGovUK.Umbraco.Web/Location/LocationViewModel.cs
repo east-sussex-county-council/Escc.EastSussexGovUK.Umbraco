@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Web;
 using Escc.AddressAndPersonalDetails;
 using Escc.EastSussexGovUK.Umbraco.Web.Landing;
@@ -11,6 +12,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Location
     /// <summary>
     /// A model of a service location to be displayed using the Location view
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class LocationViewModel : BaseViewModel
     {
         public LocationViewModel()
@@ -38,6 +40,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Location
         public string Email2Label { get; set; }
         public string Email1 { get; set; }
         public string Email2 { get; set; }
+        public Uri ContactFormUrl { get; set; }
+        public string ContactFormLabel { get; set; }
         public string Phone1Label { get; set; }
         public string Phone2Label { get; set; }
         public string Phone1 { get; set; }
