@@ -32,16 +32,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Tests
             throw new NotImplementedException();
         }
 
-        public void MarkAlertAsSent(JobsSet jobsSet, int jobId, string emailAddress)
+        public Task MarkAlertAsSent(JobsSet jobsSet, int jobId, string emailAddress)
         {
             if (!_jobsSent.Contains(jobId))
             {
                 _jobsSent.Add(jobId);
                 UniqueJobCount++;
             }
+            return Task.CompletedTask;
         }
 
-        public void SaveAlert(JobAlert alert)
+        public Task SaveAlert(JobAlert alert)
         {
             throw new NotImplementedException();
         }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
@@ -47,7 +48,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         /// </summary>
         /// <param name="groupedAlerts">The grouped alerts.</param>
         /// <param name="repo">The alerts repository where sent alerts can be recorded.</param>
-        public void SendGroupedAlerts(IEnumerable<IList<JobAlert>> groupedAlerts, IJobAlertsRepository repo)
+        public async Task SendGroupedAlerts(IEnumerable<IList<JobAlert>> groupedAlerts, IJobAlertsRepository repo)
         {
             if (groupedAlerts == null) throw new ArgumentNullException(nameof(groupedAlerts));
             if (repo == null) throw new ArgumentNullException(nameof(repo));
@@ -65,7 +66,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
                 {
                     foreach (var job in alert.MatchingJobs)
                     {
-                        repo.MarkAlertAsSent(alert.JobsSet, job.Id, alert.Email);
+                        await repo.MarkAlertAsSent(alert.JobsSet, job.Id, alert.Email);
                     }
                 }
             }

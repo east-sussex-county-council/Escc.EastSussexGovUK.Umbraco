@@ -28,7 +28,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         /// Saves a new or updated alert.
         /// </summary>
         /// <param name="alert">The alert.</param>
-        void SaveAlert(JobAlert alert);
+        Task SaveAlert(JobAlert alert);
 
         /// <summary>
         /// Cancels an alert. If it's the last alert for an email address, also removes all data for that email address within that <see cref="JobsSet"/>.
@@ -43,6 +43,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         /// <param name="jobsSet">The jobs set.</param>
         /// <param name="jobId">The job identifier.</param>
         /// <param name="emailAddress">The email address.</param>
-        void MarkAlertAsSent(JobsSet jobsSet, int jobId, string emailAddress);
+        Task MarkAlertAsSent(JobsSet jobsSet, int jobId, string emailAddress);
     }
 }
