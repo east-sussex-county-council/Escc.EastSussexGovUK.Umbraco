@@ -130,7 +130,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
                 {
                     job.Department = string.Empty;
                 }
-                else job.Department = job.Department.Substring(5); // If school not found, at least remove "ESCC "
+                else
+                {
+                    // If it's a school job but the school name is not in the job title, it's unknown
+                    job.Organisation = string.Empty;
+                    job.Department = string.Empty;
+                }
                 canApplyForThisJob = false;
             }
             else if (comparableDepartment == "CHILDREN SERVICES")
