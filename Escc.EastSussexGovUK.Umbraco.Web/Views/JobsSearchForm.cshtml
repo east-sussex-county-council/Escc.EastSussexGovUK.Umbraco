@@ -11,7 +11,7 @@
 {
 <div>
 <label for="location">Location</label>
-<select multiple="multiple" name="locations" id="location">
+<select multiple="multiple" name="locations" id="location" size="10">
     @foreach (var location in Model.Locations)
     {
         var selected = (Model.Query != null && Model.Query.Locations.Contains(location.Text)) ? " selected=\"selected\"" : String.Empty;
@@ -25,7 +25,7 @@
 {
 <div>
     <label for="type">Category</label>
-    <select multiple="multiple" name="jobtypes" id="type">
+    <select multiple="multiple" name="jobtypes" id="type" size="10">
         @foreach (var jobType in Model.JobTypes)
         {
             var selected = (Model.Query != null && Model.Query.JobTypes.Contains(jobType.Text)) ? " selected=\"selected\"" : String.Empty;
