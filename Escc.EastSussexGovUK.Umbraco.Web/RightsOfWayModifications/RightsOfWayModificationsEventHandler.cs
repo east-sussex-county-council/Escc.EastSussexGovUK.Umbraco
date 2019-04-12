@@ -152,7 +152,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayModifications
                         var organisationApplicant = contentItem.GetValue<string>("nameOfApplicantOrganisation");
                         if (individualApplicant == null && string.IsNullOrEmpty(organisationApplicant))
                         {
-                            e.CancelOperation(new EventMessage("Invalid", "The applicant's name is required – either an individual or an organisation", EventMessageType.Error));
+                            e.CancelOperation(new EventMessage("Validation", "The applicant's name is required – either an individual or an organisation", EventMessageType.Error));
                         }
                     }
                 }
