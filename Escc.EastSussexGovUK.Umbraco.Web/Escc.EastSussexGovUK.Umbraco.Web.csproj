@@ -172,7 +172,7 @@
       <HintPath>..\packages\Escc.Umbraco.ContentExperiments.5.0.0\lib\Escc.Umbraco.ContentExperiments.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.EditorTools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.EditorTools.2.4.4\lib\Escc.Umbraco.EditorTools.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.EditorTools.3.0.1\lib\Escc.Umbraco.EditorTools.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.Expiry, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.Expiry.1.1.4\lib\net452\Escc.Umbraco.Expiry.dll</HintPath>
@@ -1293,9 +1293,19 @@
     <Content Include="App_Plugins\uSync\package.manifest" />
     <Content Include="Config\uSyncSnapshot.config" />
     <Content Include="App_Plugins\uSyncSnapshots\package.manifest" />
+    <Content Include="App_Plugins\EsccUmbracoFormsFieldTypes\package.manifest" />
+    <Content Include="Config\uMediaSync.config" />
+    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PhonePropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\package.manifest" />
+    <Content Include="Views\Topic\TopicSection_RecyclingSiteFinder.ascx" />
+    <Content Include="windows-tile.png" />
     <Content Include="App_Plugins\EditorTools\Views\web.config" />
     <Content Include="App_Plugins\EditorTools\Views\Users\Index.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\Stats\Index.cshtml" />
     <Content Include="App_Plugins\EditorTools\Views\Shared\_Layout.cshtml" />
     <Content Include="App_Plugins\EditorTools\Views\Partials\_RegeneratingCache.cshtml" />
     <Content Include="App_Plugins\EditorTools\Views\Partials\_Processing.cshtml" />
@@ -1308,13 +1318,8 @@
     <Content Include="App_Plugins\EditorTools\Views\MultiMove\Index.cshtml" />
     <Content Include="App_Plugins\EditorTools\Views\MultiMove\ConfirmSelected.cshtml" />
     <Content Include="App_Plugins\EditorTools\Views\Media\Index.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\InBoundLinkChecker\Index.cshtml" />
     <Content Include="App_Plugins\EditorTools\Views\ExpiryBulkUpdate\Index.cshtml" />
     <Content Include="App_Plugins\EditorTools\Views\ExpiryBulkUpdate\BrowseSelected.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\ExamineSearch\Index.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\EditorToolsHome\Index.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\EditorToolsHome\Help.cshtml" />
-    <Content Include="App_Plugins\EditorTools\Views\EditorToolsHome\About.cshtml" />
     <Content Include="App_Plugins\EditorTools\Views\CSVExport\Index.cshtml" />
     <Content Include="App_Plugins\EditorTools\Views\Content\Index.cshtml" />
     <Content Include="App_Plugins\EditorTools\fonts\glyphicons-halflings-regular.woff2" />
@@ -1328,17 +1333,6 @@
     <Content Include="App_Plugins\EditorTools\Content\bootstrap.css.map" />
     <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.min.css.map" />
     <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.css.map" />
-    <Content Include="App_Plugins\EsccUmbracoFormsFieldTypes\package.manifest" />
-    <Content Include="Config\uMediaSync.config" />
-    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PhonePropertyEditor\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\package.manifest" />
-    <Content Include="Views\Topic\TopicSection_RecyclingSiteFinder.ascx" />
-    <Content Include="windows-tile.png" />
     <None Include="Jobs\Images\East Sussex Jobs logo colour.png" />
     <None Include="Jobs\Images\East Sussex Jobs logo white.png" />
     <None Include="Jobs\Images\header.png" />
@@ -5391,7 +5385,6 @@
     <Error Condition="!Exists('..\packages\Escc.Umbraco.Forms.BackOffice.1.0.1\build\Escc.Umbraco.Forms.BackOffice.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.Forms.BackOffice.1.0.1\build\Escc.Umbraco.Forms.BackOffice.targets'))" />
     <Error Condition="!Exists('..\packages\uSync.4.0.5\build\uSync.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uSync.4.0.5\build\uSync.props'))" />
     <Error Condition="!Exists('..\packages\uSync.4.0.5\build\uSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uSync.4.0.5\build\uSync.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Umbraco.EditorTools.2.4.4\build\Escc.Umbraco.EditorTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.EditorTools.2.4.4\build\Escc.Umbraco.EditorTools.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.Forms.FieldTypes.1.1.1\build\Escc.Umbraco.Forms.FieldTypes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.Forms.FieldTypes.1.1.1\build\Escc.Umbraco.Forms.FieldTypes.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.Forms.Security.2.0.0\build\Escc.Umbraco.Forms.Security.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.Forms.Security.2.0.0\build\Escc.Umbraco.Forms.Security.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props'))" />
@@ -5400,6 +5393,7 @@
     <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.3\build\Escc.EastSussexGovUK.TemplateSource.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.3\build\Escc.EastSussexGovUK.TemplateSource.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.3.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.RubbishAndRecycling.SiteFinder.3.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.FindAddress.Mvc.3.0.1\build\Escc.FindAddress.Mvc.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.FindAddress.Mvc.3.0.1\build\Escc.FindAddress.Mvc.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.EditorTools.3.0.1\build\Escc.Umbraco.EditorTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.EditorTools.3.0.1\build\Escc.Umbraco.EditorTools.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
@@ -5433,7 +5427,6 @@
   </Target>
   <Import Project="..\packages\Escc.Umbraco.Forms.BackOffice.1.0.1\build\Escc.Umbraco.Forms.BackOffice.targets" Condition="Exists('..\packages\Escc.Umbraco.Forms.BackOffice.1.0.1\build\Escc.Umbraco.Forms.BackOffice.targets')" />
   <Import Project="..\packages\uSync.4.0.5\build\uSync.targets" Condition="Exists('..\packages\uSync.4.0.5\build\uSync.targets')" />
-  <Import Project="..\packages\Escc.Umbraco.EditorTools.2.4.4\build\Escc.Umbraco.EditorTools.targets" Condition="Exists('..\packages\Escc.Umbraco.EditorTools.2.4.4\build\Escc.Umbraco.EditorTools.targets')" />
   <Import Project="..\packages\Escc.Umbraco.Forms.FieldTypes.1.1.1\build\Escc.Umbraco.Forms.FieldTypes.targets" Condition="Exists('..\packages\Escc.Umbraco.Forms.FieldTypes.1.1.1\build\Escc.Umbraco.Forms.FieldTypes.targets')" />
   <Import Project="..\packages\Escc.Umbraco.Forms.Security.2.0.0\build\Escc.Umbraco.Forms.Security.targets" Condition="Exists('..\packages\Escc.Umbraco.Forms.Security.2.0.0\build\Escc.Umbraco.Forms.Security.targets')" />
   <Import Project="..\packages\Escc.Umbraco.MediaSync.3.0.1\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.3.0.1\build\Escc.Umbraco.MediaSync.targets')" />
@@ -5441,4 +5434,5 @@
   <Import Project="..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.3\build\Escc.EastSussexGovUK.TemplateSource.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.3\build\Escc.EastSussexGovUK.TemplateSource.targets')" />
   <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.3.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.3.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
   <Import Project="..\packages\Escc.FindAddress.Mvc.3.0.1\build\Escc.FindAddress.Mvc.targets" Condition="Exists('..\packages\Escc.FindAddress.Mvc.3.0.1\build\Escc.FindAddress.Mvc.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.EditorTools.3.0.1\build\Escc.Umbraco.EditorTools.targets" Condition="Exists('..\packages\Escc.Umbraco.EditorTools.3.0.1\build\Escc.Umbraco.EditorTools.targets')" />
 </Project>

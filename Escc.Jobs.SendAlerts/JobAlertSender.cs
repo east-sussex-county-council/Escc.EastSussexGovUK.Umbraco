@@ -110,7 +110,7 @@ namespace Escc.Jobs.SendAlerts
             }
 
             _log.Info("Sending alerts");
-            sender.SendGroupedAlerts(alertsGroupedByEmail, alertsRepo);
+            await sender.SendGroupedAlerts(alertsGroupedByEmail, alertsRepo);
         }
 
         private IEnumerable<IList<JobAlert>> GroupAlertsByEmail(IEnumerable<JobAlert> alerts)

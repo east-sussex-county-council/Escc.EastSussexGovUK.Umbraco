@@ -525,19 +525,13 @@
     <modules xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer/modules[2])" />
     <rewrite xdt:Transform="Insert" />
     <rewrite xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer/rewrite[2])" />
+    <security xdt:Transform="Insert" />
+    <security xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer/security[2])" />
     <staticContent xdt:Transform="Insert" />
     <staticContent xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer/staticContent[2])" />
   </system.webServer>
 
   <system.webServer>
-    <rewrite>
-      <rules xdt:Transform="Insert" />
-      <rules xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer/rewrite/rules[2])" />
-    </rewrite>
-  </system.webServer>
-
-  <system.webServer>
-
     <!-- Let Umbraco control 404 page at this level, but provide setting for lower levels to inherit -->
     <httpErrors xdt:Transform="Remove" />
     <httpErrors existingResponse="PassThrough" errorMode="Custom" xdt:Transform="Insert">
@@ -578,9 +572,18 @@
       <add name="MachineNameModule" xdt:Transform="Remove" xdt:Locator="Match(name)" />
       <add name="MachineNameModule" type="Escc.EastSussexGovUK.Umbraco.AzureConfiguration.MachineNameModule, Escc.EastSussexGovUK.Umbraco" xdt:Transform="Insert" />
     </modules>
-    
+
+    <rewrite>
+      <rules xdt:Transform="Insert" />
+      <rules xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer/rewrite/rules[2])" />
+    </rewrite>
+
     <!-- Ensure SSL is used even when strict transport security is not supported
-           https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples#redirect-http-traffic-to-https -->
+           https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples#redirect-http-traffic-to-https 
+           
+         The checks for {WARMUP_REQUEST} and {REMOTE_ADDR} ensure that <applicationInitialization /> executes correctly when swapping between deployment slots on Azure.
+         https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/
+           -->
     <rewrite>
       <rules>
         <rule name="Force HTTPS" xdt:Transform="Remove" xdt:Locator="Match(name)" />
@@ -589,40 +592,57 @@
           <conditions>
             <add input="{HTTPS}" pattern="off" />
             <add input="{WARMUP_REQUEST}" pattern="1" negate="true" />
+            <add input="{REMOTE_ADDR}" pattern="^100?\." negate="true" />
           </conditions>
           <action type="Redirect" url="https://{HTTP_HOST}/{R:1}" appendQueryString="true" redirectType="Permanent" />
         </rule>
         <rule name="Make new.eastsussex.gov.uk obsolete" xdt:Transform="Remove" xdt:Locator="Match(name)" />
         <rule name="Make new.eastsussex.gov.uk obsolete" stopProcessing="true" xdt:Transform="Insert">
-            <match url="(.*)" />
-            <conditions>
-                <add input="{HTTP_HOST}" pattern="^new.eastsussex.gov.uk$" />
-            </conditions>
-            <action type="Redirect" url="https://www.eastsussex.gov.uk/{R:1}" appendQueryString="true" redirectType="Permanent" />
+          <match url="(.*)" />
+          <conditions>
+            <add input="{HTTP_HOST}" pattern="^new.eastsussex.gov.uk$" />
+            <add input="{WARMUP_REQUEST}" pattern="1" negate="true" />
+            <add input="{REMOTE_ADDR}" pattern="^100?\." negate="true" />
+          </conditions>
+          <action type="Redirect" url="https://www.eastsussex.gov.uk/{R:1}" appendQueryString="true" redirectType="Permanent" />
         </rule>
         <rule name="Redirect bare domain to www" xdt:Transform="Remove" xdt:Locator="Match(name)" />
         <rule name="Redirect bare domain to www" stopProcessing="true" xdt:Transform="Insert">
           <match url="(.*)" />
           <conditions>
             <add input="{HTTP_HOST}" pattern="^eastsussex.gov.uk$" />
+            <add input="{WARMUP_REQUEST}" pattern="1" negate="true" />
+            <add input="{REMOTE_ADDR}" pattern="^100?\." negate="true" />
           </conditions>
           <action type="Redirect" url="https://www.eastsussex.gov.uk/{R:1}" appendQueryString="true" redirectType="Permanent" />
         </rule>
         <rule name="Make www.accesseastsussex.org obsolete" xdt:Transform="Remove" xdt:Locator="Match(name)" />
         <rule name="Make www.accesseastsussex.org obsolete" stopProcessing="true" xdt:Transform="Insert">
-            <match url="(.*)" />
-            <conditions>
-                <add input="{HTTP_HOST}" pattern="^www.accesseastsussex.org$" />
-            </conditions>
-            <action type="Redirect" url="https://www.eastsussex.gov.uk/{R:1}" appendQueryString="true" redirectType="Permanent" />
+          <match url="(.*)" />
+          <conditions>
+            <add input="{HTTP_HOST}" pattern="^www.accesseastsussex.org$" />
+            <add input="{WARMUP_REQUEST}" pattern="1" negate="true" />
+            <add input="{REMOTE_ADDR}" pattern="^100?\." negate="true" />
+          </conditions>
+          <action type="Redirect" url="https://www.eastsussex.gov.uk/{R:1}" appendQueryString="true" redirectType="Permanent" />
         </rule>
         <rule name="Location template *.vcf download" xdt:Transform="Remove" xdt:Locator="Match(name)" />
         <rule name="Location template *.vcf download" stopProcessing="true" xdt:Transform="Insert">
           <match url="(.*).vcf" />
+          <conditions>
+            <add input="{WARMUP_REQUEST}" pattern="1" negate="true" />
+            <add input="{REMOTE_ADDR}" pattern="^100?\." negate="true" />
+          </conditions>
           <action type="Rewrite" url="/{R:1}?alttemplate=LocationVCard" />
         </rule>
       </rules>
     </rewrite>
+
+    <security>
+      <requestFiltering xdt:Transform="Insert" />
+      <requestFiltering xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer/security/requestFiltering[2])" />
+      <requestFiltering removeServerHeader="true" xdt:Transform="SetAttributes(removeServerHeader)" />
+    </security>
 
     <staticContent>
       <remove fileExtension=".pdf" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />

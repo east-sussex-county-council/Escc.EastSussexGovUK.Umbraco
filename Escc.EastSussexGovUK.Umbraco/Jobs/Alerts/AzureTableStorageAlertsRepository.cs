@@ -52,7 +52,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         public async Task<IEnumerable<JobAlert>> GetAlerts(JobAlertsQuery query)
         {
             var table = _tableClient.GetTableReference(_alertsTable);
-            table.CreateIfNotExistsAsync().Wait();
+            await table.CreateIfNotExistsAsync();
 
             var filter = TableQuery.GenerateFilterCondition("JobsSet", QueryComparisons.Equal, query.JobsSet.ToString());
 
@@ -120,13 +120,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         /// <param name="alert">The alert.</param>
         /// <exception cref="ArgumentNullException">alert</exception>
         /// <exception cref="ArgumentException">The alert must have an AlertId - alert</exception>
-        public void SaveAlert(JobAlert alert)
+        public async Task SaveAlert(JobAlert alert)
         {
             if (alert == null) throw new ArgumentNullException(nameof(alert));
             if (String.IsNullOrEmpty(alert.AlertId)) throw new ArgumentException("The alert must have an AlertId", nameof(alert));
 
             var table = _tableClient.GetTableReference(_alertsTable);
-            table.CreateIfNotExistsAsync().Wait();
+            await table.CreateIfNotExistsAsync();
 
             var query = _queryConverter.ToCollection(alert.Query);
             query.Remove("page");
@@ -175,7 +175,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
             if (String.IsNullOrEmpty(alertId)) throw new ArgumentNullException(nameof(alertId));
 
             var alertsTable = _tableClient.GetTableReference(_alertsTable);
-            alertsTable.CreateIfNotExistsAsync().Wait();
+            await alertsTable.CreateIfNotExistsAsync();
 
             var alertEntity = ReadAlertEntity(alertId);
             if (alertEntity == null) return false;
@@ -213,7 +213,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
 
             // Delete the record of alerts sent
             var table = _tableClient.GetTableReference(_alertsSentTable);
-            table.CreateIfNotExistsAsync().Wait();
+            await table.CreateIfNotExistsAsync();
 
             var tableQuery = new TableQuery<TableEntity>().Where(TableQuery.CombineFilters(
                 TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, emailAddress),
@@ -269,10 +269,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         /// <param name="jobsSet">The jobs set.</param>
         /// <param name="jobId">The job identifier.</param>
         /// <param name="emailAddress">The email address.</param>
-        public void MarkAlertAsSent(JobsSet jobsSet, int jobId, string emailAddress)
+        public async Task MarkAlertAsSent(JobsSet jobsSet, int jobId, string emailAddress)
         {
             var table = _tableClient.GetTableReference(_alertsSentTable);
-            table.CreateIfNotExistsAsync().Wait();
+            await table.CreateIfNotExistsAsync();
 
             var entity = new JobAlertSentTableEntity()
             {

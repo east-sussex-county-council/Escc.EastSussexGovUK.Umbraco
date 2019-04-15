@@ -118,13 +118,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             if (comparableDepartment == "PARTNERSHIP")
             {
                 canApplyForThisJob = false;
-                if (job.JobTitle.Contains("(") && job.JobTitle.EndsWith(")"))
-                {
-                    var orgStarts = job.JobTitle.LastIndexOf("(");
-                    job.Organisation = job.JobTitle.Substring(orgStarts + 1).TrimEnd(')');
-                    job.JobTitle = job.JobTitle.Substring(0, orgStarts).TrimEnd();
-                }
-                else
+                if (!ParseAndMoveOrganisationFromJobTitle(job))
                 {
                     job.Organisation = job.Department;
                 }
@@ -132,7 +126,21 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             }
             else if (comparableDepartment == "ESCC SCHOOLS" || comparableDepartment == "ESCC ACADEMIES")
             {
+                if (ParseAndMoveOrganisationFromJobTitle(job))
+                {
+                    job.Department = string.Empty;
+                }
+                else
+                {
+                    // If it's a school job but the school name is not in the job title, it's unknown
+                    job.Organisation = string.Empty;
+                    job.Department = string.Empty;
+                }
                 canApplyForThisJob = false;
+            }
+            else if (comparableDepartment == "CHILDREN SERVICES")
+            {
+                job.Department = "Children's Services";
             }
 
             job.Locations.Add(HttpUtility.HtmlDecode(jobXml.Element("location_city").Value).Trim());
@@ -189,6 +197,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             }
 
             return job;
+        }
+
+        private static bool ParseAndMoveOrganisationFromJobTitle(Job job)
+        {
+            if (job.JobTitle.Contains("(") && job.JobTitle.EndsWith(")"))
+            {
+                var orgStarts = job.JobTitle.LastIndexOf("(");
+                job.Organisation = job.JobTitle.Substring(orgStarts + 1).TrimEnd(')');
+                job.JobTitle = job.JobTitle.Substring(0, orgStarts).TrimEnd();
+                return true;
+            }
+            return false;
         }
     }
 

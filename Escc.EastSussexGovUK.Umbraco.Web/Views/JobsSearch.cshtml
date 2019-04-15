@@ -22,7 +22,10 @@
         <h1>@Model.Metadata.Title</h1>
         @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
         <form method="GET" class="form short-form" action="@(Model.SearchResultsPage?.Url)">
-            @Html.Partial("JobsSearchForm", Model)
+            <div>
+                @Html.Partial("JobsSearchForm", Model)
+                <input type="hidden" name="source" value="eastsussexgovuk-jobs-search" />
+            </div>
         </form>
     </div>
 </div>
