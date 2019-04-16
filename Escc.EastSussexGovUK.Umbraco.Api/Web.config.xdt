@@ -146,19 +146,13 @@
     <modules xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer/modules[2])" />
     <rewrite xdt:Transform="Insert" />
     <rewrite xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer/rewrite[2])" />
+    <security xdt:Transform="Insert" />
+    <security xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer/security[2])" />
     <staticContent xdt:Transform="Insert" />
     <staticContent xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer/staticContent[2])" />
   </system.webServer>
 
-  <system.webServer>
-    <rewrite>
-      <rules xdt:Transform="Insert" />
-      <rules xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer/rewrite/rules[2])" />
-    </rewrite>
-  </system.webServer>
-
-  <system.webServer>
-
+  <system.webServer> 
     <!-- Let Umbraco control 404 page at this level, but provide setting for lower levels to inherit -->
     <httpErrors xdt:Transform="Remove" />
     <httpErrors existingResponse="PassThrough" errorMode="Custom" xdt:Transform="Insert">
@@ -186,7 +180,12 @@
       <add name="MachineNameModule" xdt:Transform="Remove" xdt:Locator="Match(name)" />
       <add name="MachineNameModule" type="Escc.EastSussexGovUK.Umbraco.AzureConfiguration.MachineNameModule, Escc.EastSussexGovUK.Umbraco" xdt:Transform="Insert" />
     </modules>
-    
+
+    <rewrite>
+      <rules xdt:Transform="Insert" />
+      <rules xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer/rewrite/rules[2])" />
+    </rewrite>
+
     <!-- Ensure SSL is used even when strict transport security is not supported
            https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples#redirect-http-traffic-to-https -->
     <rewrite>
@@ -202,5 +201,11 @@
         </rule>
       </rules>
     </rewrite>
+
+    <security>
+      <requestFiltering xdt:Transform="Insert" />
+      <requestFiltering xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer/security/requestFiltering[2])" />
+      <requestFiltering removeServerHeader="true" xdt:Transform="SetAttributes(removeServerHeader)" />
+    </security>
   </system.webServer>
 </configuration>

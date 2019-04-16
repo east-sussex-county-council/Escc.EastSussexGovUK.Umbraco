@@ -22,6 +22,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Jobs.Alerts
         /// </summary>
         /// <param name="groupedAlerts">The grouped alerts.</param>
         /// <param name="repo">The alerts repository where sent alerts can be recorded.</param>
-        void SendGroupedAlerts(IEnumerable<IList<JobAlert>> groupedAlerts, IJobAlertsRepository repo);
+        Task SendGroupedAlerts(IEnumerable<IList<JobAlert>> groupedAlerts, IJobAlertsRepository repo);
     }
 }

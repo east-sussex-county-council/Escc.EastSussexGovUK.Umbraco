@@ -18,7 +18,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs.Alerts
     {
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult CreateAlert(JobAlert alert)
+        public async Task<ActionResult> CreateAlert(JobAlert alert)
         {
             var query = HttpUtility.ParseQueryString(Request.Url.Query);
             if (ModelState.IsValid)
@@ -28,7 +28,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs.Alerts
                 var alertsRepo = new AzureTableStorageAlertsRepository(converter, ConfigurationManager.ConnectionStrings["Escc.EastSussexGovUK.Umbraco.AzureStorage"].ConnectionString);
                 alert.Query = converter.ToQuery(query);
                 alert.AlertId = encoder.GenerateId(alert);
-                alertsRepo.SaveAlert(alert);
+                await alertsRepo.SaveAlert(alert);
 
                 var jobAlertsSettings = new JobAlertsSettingsFromUmbraco(Umbraco).GetJobAlertsSettings(alert.JobsSet);
                 if (jobAlertsSettings != null && !String.IsNullOrEmpty(jobAlertsSettings.NewAlertEmailSubject))
@@ -82,12 +82,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs.Alerts
                 if (oldAlert.AlertId == newAlert.AlertId)
                 {
                     // The alert id didn't change but the frequency may have, so update the existing alert
-                    repo.SaveAlert(newAlert);
+                    await repo.SaveAlert(newAlert);
                 }
                 else
                 {
                     // The alert id, and therefore the criteria, changed, so save the new alert and delete the old one
-                    repo.SaveAlert(newAlert);
+                    await repo.SaveAlert(newAlert);
                     await repo.CancelAlert(oldAlert.AlertId);
                 }
 
