@@ -29,14 +29,12 @@
         }
 
         var closingDate = $"Apply by {job.ClosingDate.Value.ToShortBritishDateNoYear()}.";
-        var tweet = new StringBuilder().Append(job.JobTitle).Append(contract).Append(salary).Append(".").AppendLine()
-            .AppendLine(closingDate)
-            .Append(" #jobs #EastSussex #Job ");
+        var tweet = new StringBuilder().Append(job.JobTitle).Append(contract).Append(salary).Append(". ").Append(closingDate).Append(" #jobs #EastSussex #Job ");
         foreach (var location in job.Locations)
         {
             tweet.Append(new LocationHashTag(location)).Append(" ");
         }
-        tweet.AppendLine().Append("Ref: ").Append(job.Reference);
+        tweet.Append("Ref: ").Append(job.Reference);
 
         return tweet.ToString().Trim();
     }
