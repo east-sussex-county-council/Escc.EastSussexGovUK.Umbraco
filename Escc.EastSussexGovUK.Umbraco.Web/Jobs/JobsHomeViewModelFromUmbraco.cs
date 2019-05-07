@@ -37,7 +37,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
                 HeaderBackgroundImageMedium = BuildImage("HeaderBackgroundImageMedium_Content"),
                 HeaderBackgroundImageLarge = BuildImage("HeaderBackgroundImageLarge_Content"),
                 HeaderBackgroundImageCaption = UmbracoContent.GetPropertyValue<string>("HeaderBackgroundImageCaption_Content"),
-                LoginPage = BuildUri("LoginPage_Content"),
                 LoginUrl = !string.IsNullOrEmpty(UmbracoContent.GetPropertyValue<string>("loginURL")) ? new Uri(UmbracoContent.GetPropertyValue<string>("loginURL"), UriKind.RelativeOrAbsolute) : null,
                 SearchPage = BuildUri("SearchPage_Content"),
                 SearchResultsPageForHeader = BuildUri("SearchResultsPage_Content"),

@@ -56,15 +56,13 @@ We don't want the overhead of reading from a remote API all the time though, so 
 
 ## Umbraco document types for jobs
 
-A series of Umbraco document types and templates can be used to build up a jobs site from Umbraco content. These have properties to connect one page to another (for example, the search page to the search results page) rather than hard-coding the connections between them. This has three advantages:
+A series of Umbraco document types and templates can be used to build up a jobs site from Umbraco content. These could work with any implementation of `IJobsDataProvider` and have properties to connect one page to another (for example, the search page to the search results page) rather than hard-coding the connections between them. This has three advantages:
 
 * Umbraco users can create their own information architecture for jobs
 * Parallel sites can be created for public jobs and redeployment jobs
 * Features are be turned on or off on each page depending on which connections have been made. For example, linking from the search results page to the RSS feed enables a link to the results of the same search as RSS.
 
 Just one instance of the `Job advert` document type is required to display any job. This works because the `JobAdvertContentFinder`, hooked up in `JobAdvertEventHandler`, recognises the URL of this page when it has an id and job title appended. For example when `/job-advert` is accessed as `/job-advert/12345/teacher-at-example-school`. The id is used to look up and display the job, and the job title is there purely for SEO.
-
-Most of the templates could work with any implementation of `IJobsDataProvider`, but there is also a `Jobs component` template which is designed specifically to host code provided by Lumesse TalentLink. This is used for features we cannot replicate in Examine such as logging in to view job applications. 
 
 ## Reporting problems with missing data
 

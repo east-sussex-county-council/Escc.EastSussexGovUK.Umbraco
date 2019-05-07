@@ -365,7 +365,6 @@
     <Compile Include="Jobs\JobsSet.cs" />
     <Compile Include="Jobs\MemoryJobCacheStrategy.cs" />
     <Compile Include="Jobs\Salary.cs" />
-    <Compile Include="Jobs\TalentLink\TalentLinkUrl.cs" />
     <Compile Include="Jobs\WorkPattern.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UrlTransformers\CampaignTrackingUrlTransformer.cs" />

@@ -32,7 +32,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
             _model.HeaderBackgroundImageMedium = BuildImage("HeaderBackgroundImageMedium_Content");
             _model.HeaderBackgroundImageLarge = BuildImage("HeaderBackgroundImageLarge_Content");
             _model.JobsHomePage = BuildLinkToPage("JobsHomePage_Content");
-            _model.LoginPage = BuildLinkToPage("LoginPage_Content");
             _model.LoginUrl = !string.IsNullOrEmpty(UmbracoContent.GetPropertyValue<string>("loginURL")) ? new Uri(UmbracoContent.GetPropertyValue<string>("loginURL"), UriKind.RelativeOrAbsolute) : null;
             _model.SearchResultsPage = BuildLinkToPage("SearchResultsPage_Content");
             _model.JobsSet = ParseJobsSet("PublicOrRedeployment_Content");

@@ -21,7 +21,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         private readonly IProxyProvider _proxy;
         private readonly IJobResultsParser _jobResultsParser;
         private readonly IJobAdvertParser _jobAdvertParser;
-        private readonly bool _saveHtml;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="JobsDataFromTribePad" /> class.
@@ -31,16 +30,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         /// <param name="jobResultsParser">The job results parser.</param>
         /// <param name="jobAdvertParser">The job advert parser.</param>
         /// <param name="proxy">The proxy (optional).</param>
-        /// <param name="saveHtml">Save a copy of the TalentLink HTML to App_Data</param>
         /// <exception cref="System.ArgumentNullException">sourceUrl</exception>
-        public JobsDataFromTribePad(IEnumerable<Uri> resultsUrls, Uri advertUrl, IJobResultsParser jobResultsParser, IJobAdvertParser jobAdvertParser, IProxyProvider proxy, bool saveHtml)
+        public JobsDataFromTribePad(IEnumerable<Uri> resultsUrls, Uri advertUrl, IJobResultsParser jobResultsParser, IJobAdvertParser jobAdvertParser, IProxyProvider proxy)
         {
             _resultsUrls = resultsUrls;
             _advertUrl = advertUrl;
             _proxy = proxy;
             _jobResultsParser = jobResultsParser;
             _jobAdvertParser = jobAdvertParser;
-            _saveHtml = saveHtml;
         }
 
 

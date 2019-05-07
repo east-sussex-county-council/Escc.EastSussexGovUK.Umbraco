@@ -16,7 +16,7 @@ using Escc.EastSussexGovUK.Umbraco.Jobs;
 namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
 {
     /// <summary>
-    /// Creates an Examine indexes of jobs posted to a TalentLink site, based on the TalentLink URLs in the 'TalentLinkRedeploymentJobs...' configuration settings
+    /// Creates an Examine indexes of jobs posted to TribePad, based on the TribePad URLs in the 'TribePad...' configuration settings
     /// </summary>
     /// <seealso cref="BaseJobsIndexer" />
     public class RedeploymentJobsIndexer : BaseJobsIndexer
@@ -38,7 +38,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             var lookupValuesProvider = new JobsLookupValuesFromTribePad(lookupValuesApiUrl, new LookupValuesFromTribePadBuiltInFieldParser(), new LookupValuesFromTribePadCustomFieldParser(), null, proxyProvider);
             var jobParser = new TribePadJobParser(lookupValuesProvider, new TribePadSalaryParser(lookupValuesProvider), new TribePadWorkPatternParser(lookupValuesProvider, new TribePadWorkPatternSplitter()), applyUrl);
 
-            JobsProvider = new JobsDataFromTribePad(resultsUrls, advertUrl, jobParser, jobParser, proxyProvider, true);
+            JobsProvider = new JobsDataFromTribePad(resultsUrls, advertUrl, jobParser, jobParser, proxyProvider);
             StopWordsRemover = new LuceneStopWordsRemover();
             TagSanitiser = new HtmlTagSanitiser();
             JobTransformers = new Dictionary<IEnumerable<IJobMatcher>, IEnumerable<IJobTransformer>>()

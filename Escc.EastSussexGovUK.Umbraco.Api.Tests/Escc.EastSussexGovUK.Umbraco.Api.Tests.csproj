@@ -86,8 +86,6 @@
     <Compile Include="HouseStyleDateFormatterTests.cs" />
     <Compile Include="HtmlAgilityPackFormatterTests.cs" />
     <Compile Include="CloseEmptyElementsFormatterTests.cs" />
-    <Compile Include="TalentLinkJobAdvertHtmlParserTests.cs" />
-    <Compile Include="JobResultsParserTests.cs" />
     <Compile Include="JointCommunityRehabilitationMatcherTests.cs" />
     <Compile Include="LocationMatcherTests.cs" />
     <Compile Include="RemoveUnwantedAttributesFormatterTests.cs" />
@@ -107,9 +105,6 @@
     <Compile Include="SetJobLocationTransformerTests.cs" />
     <Compile Include="LookupValuesFromTribePadCustomFieldParserTests.cs" />
     <Compile Include="LookupValuesFromTribePadBuiltInFieldParserTests.cs" />
-    <Compile Include="TalentLinkLookupValuesHtmlParserTests.cs" />
-    <Compile Include="TalentLinkSalaryParserTests.cs" />
-    <Compile Include="TalentLinkWorkPatternParserTests.cs" />
     <Compile Include="TribePadSalaryParserTests.cs" />
     <Compile Include="TribePadWorkPatternParserTests.cs" />
     <Compile Include="TribePadWorkPatternSplitterTests.cs" />

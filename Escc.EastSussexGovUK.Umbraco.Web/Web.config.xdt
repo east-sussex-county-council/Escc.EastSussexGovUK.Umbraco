@@ -292,8 +292,6 @@
     <ContentSecurityPolicies xdt:Transform="Remove" xdt:Locator="XPath(/configuration/Escc.Web/ContentSecurityPolicies[2])" />
 
     <ContentSecurityPolicies>
-      <add key="TalentLink" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="TalentLink" value="script-src https://emea3.recruitmentplatform.com 'unsafe-inline'" xdt:Transform="Insert" />
       <add key="iCaseWork" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="iCaseWork" value="frame-src https://*.icasework.com" xdt:Transform="Insert" />
     </ContentSecurityPolicies>
