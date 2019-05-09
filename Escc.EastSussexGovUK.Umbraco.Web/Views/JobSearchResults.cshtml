@@ -3,6 +3,7 @@
 @using Escc.EastSussexGovUK.Mvc
 @using Escc.EastSussexGovUK.Umbraco.Jobs
 @using Escc.EastSussexGovUK.Umbraco.Web.Jobs.Alerts
+@using Escc.Web
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.Jobs.JobSearchResultsViewModel>
 @{
     Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(Layout);
@@ -36,6 +37,9 @@
     var urlWithoutPage = Request.Url.AbsolutePath + "?" + queryWithoutPage;
     if (queryWithoutPage.Count > 0) { urlWithoutPage += "&"; }
     urlWithoutPage += "page=";
+    
+    // Allow gtag.js Google Analytics
+    new ContentSecurityPolicyHeaders(Response.Headers).AppendPolicy("script-src https://www.googletagmanager.com").UpdateHeaders();
 }
 @section Breadcrumb {}
 @Html.Partial("~/Views/JobsHeader.cshtml", Model)
@@ -114,3 +118,8 @@
         }
     </div>
 </div>
+@section JavaScript
+{
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-22393101-30"></script>
+    <script src="~/js/job-analytics.js"></script>
+}

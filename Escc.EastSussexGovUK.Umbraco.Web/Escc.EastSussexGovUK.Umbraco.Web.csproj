@@ -1078,6 +1078,7 @@
     <Content Include="js\forms-address.js" />
     <Content Include="js\forms-school.js" />
     <Content Include="js\icasework-forms.js" />
+    <Content Include="js\job-analytics.js" />
     <Content Include="js\libs\bootstrap\tab.js" />
     <Content Include="js\libs\bootstrap\util.js" />
     <Content Include="js\iframeResizer.js" />

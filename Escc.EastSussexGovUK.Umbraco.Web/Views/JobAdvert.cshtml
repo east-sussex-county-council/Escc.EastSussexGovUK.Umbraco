@@ -39,12 +39,12 @@
     }
 
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
-    {
+{
     new EmbeddedYouTubeVideos() { Html = new [] { Model.Job?.AdvertHtml?.ToHtmlString(), Model.Job?.AdditionalInformationHtml?.ToHtmlString(), Model.Job?.EqualOpportunitiesHtml?.ToHtmlString() }}
     });
 
-    // Allow images uploaded to TribePad
-    new ContentSecurityPolicyHeaders(Response.Headers).AppendPolicy("img-src https://tp-uploads.s3.amazonaws.com").UpdateHeaders();
+    // Allow images uploaded to TribePad, and gtag.js Google Analytics
+    new ContentSecurityPolicyHeaders(Response.Headers).AppendPolicy("img-src https://tp-uploads.s3.amazonaws.com; script-src https://www.googletagmanager.com").UpdateHeaders();
 }
 @section Metadata{
     @if (jobGone)
@@ -129,4 +129,9 @@
             @Html.Raw(Model.TemplateHtml.Footer);
         }
     }
+}
+@section JavaScript
+{
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-22393101-30"></script>
+    <script src="~/js/job-analytics.js"></script>
 }
