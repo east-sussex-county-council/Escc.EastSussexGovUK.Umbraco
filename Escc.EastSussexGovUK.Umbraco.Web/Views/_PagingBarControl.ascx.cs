@@ -23,6 +23,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Views
         protected void Page_Load(object sender, EventArgs e)
         {
             pagingBar.PagingController = Model;
+            pagingBar.ID = Guid.NewGuid().ToString(); // Ensure multiple instances on a single page get unique ids
         }
     }
 }
