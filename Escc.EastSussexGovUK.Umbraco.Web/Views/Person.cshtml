@@ -13,7 +13,7 @@
         new WebChat() { WebChatSettings = Model.WebChat }
     });
 
-    Model.Metadata.Title = Model.JobTitle + " – " + Model.Metadata.PersonAbout.Name;
+    Model.Metadata.Title = Model.JobTitle + " – " + Model.Person.Name;
 }
 
 <div class="article task">
@@ -42,17 +42,17 @@
                 <h2>@Model.Subheading2</h2>
             }
             @Model.Content2
-            @if (Model.Metadata.PersonAbout.EmailAddresses.Any() || Model.Metadata.PersonAbout.TelephoneNumbers.Any() || !String.IsNullOrEmpty(Model.Contact.ToHtmlString()))
+            @if (Model.Person.EmailAddresses.Any() || Model.Person.TelephoneNumbers.Any() || !String.IsNullOrEmpty(Model.Contact.ToHtmlString()))
             {
                 <h2>Contact</h2>
-                if (Model.Metadata.PersonAbout.TelephoneNumbers.Any())
+                if (Model.Person.TelephoneNumbers.Any())
                 {
-                     <p>Phone: @Model.Metadata.PersonAbout.TelephoneNumbers[0].NationalNumber</p>
+                     <p>Phone: @Model.Person.TelephoneNumbers[0].NationalNumber</p>
                 }
-                if (Model.Metadata.PersonAbout.EmailAddresses.Any())
+                if (Model.Person.EmailAddresses.Any())
                 {
                     var transformer = new WebsiteFormEmailAddressTransformer(Request.Url);
-                    <p>Email: <a href="@transformer.TransformEmailAddress(Model.Metadata.PersonAbout.EmailAddresses[0])">@Model.Metadata.PersonAbout.Name</a></p>
+                    <p>Email: <a href="@transformer.TransformEmailAddress(Model.Person.EmailAddresses[0])">@Model.Person.Name</a></p>
                 }
                 @Model.Contact
             }
@@ -78,18 +78,18 @@
 {
 "@@context": "http://schema.org",
 "@@type": "Person",
-"honorificPrefix": "@Model.Metadata.PersonAbout.Name.Titles",
-"givenName": "@Model.Metadata.PersonAbout.Name.GivenNames",
-"familyName": "@Model.Metadata.PersonAbout.Name.FamilyName",
-"honorificSuffix": "@Model.Metadata.PersonAbout.Name.Suffixes",
-"name": "@Model.Metadata.PersonAbout.Name",
-@if (Model.Metadata.PersonAbout.EmailAddresses.Any())
+"honorificPrefix": "@Model.Person.Name.Titles",
+"givenName": "@Model.Person.Name.GivenNames",
+"familyName": "@Model.Person.Name.FamilyName",
+"honorificSuffix": "@Model.Person.Name.Suffixes",
+"name": "@Model.Person.Name",
+@if (Model.Person.EmailAddresses.Any())
 {
-@:"email": "@Model.Metadata.PersonAbout.EmailAddresses[0]",
+@:"email": "@Model.Person.EmailAddresses[0]",
 }
-@if (Model.Metadata.PersonAbout.TelephoneNumbers.Any())
+@if (Model.Person.TelephoneNumbers.Any())
 {
-@:"telephone": "@Model.Metadata.PersonAbout.TelephoneNumbers[0]",
+@:"telephone": "@Model.Person.TelephoneNumbers[0]",
 }
 "jobTitle": "@Model.JobTitle",
 "worksFor": {

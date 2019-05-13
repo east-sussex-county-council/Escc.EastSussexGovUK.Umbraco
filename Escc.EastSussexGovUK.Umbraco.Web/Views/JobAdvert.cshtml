@@ -11,10 +11,9 @@
     Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(Layout);
 
     Model.Metadata.Title = Model.Job?.JobTitle;
-    Model.Metadata.DateIssued = Model.Job?.DatePublished == null ? String.Empty : Model.Job.DatePublished.Value.ToIso8601Date();
-    Model.Metadata.PageUrl = Model.Job?.Url;
-    Model.Metadata.DateAutoRemove = Model.Job?.ClosingDate.ToIso8601Date();
-    Model.Metadata.DateReview = String.Empty;
+    Model.Metadata.DateIssued = Model.Job?.DatePublished;
+    Model.Metadata.CanonicalPageUrl = Model.Job?.Url;
+    Model.Metadata.DateExpires = Model.Job?.ClosingDate;
     Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));
     Html.RequiresCss(CssFileAlias.Resolve("FormsMedium"), MediaQueryAlias.Resolve("Medium"));
     Html.RequiresCss(CssFileAlias.Resolve("FormsLarge"), MediaQueryAlias.Resolve("Large"));

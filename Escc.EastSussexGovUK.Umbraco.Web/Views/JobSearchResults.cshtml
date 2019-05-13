@@ -28,7 +28,7 @@
     var queryWithoutSort = HttpUtility.ParseQueryString(Request.Url.Query);
     queryWithoutSort.Remove("sort");
     var urlWithoutSort = Request.Url.AbsolutePath + "?" + queryWithoutSort;
-    Model.Metadata.PageUrl = new Uri(Request.Url, urlWithoutSort);
+    Model.Metadata.CanonicalPageUrl = new Uri(Request.Url, urlWithoutSort);
     if (queryWithoutSort.Count > 0) { urlWithoutSort += "&"; }
     urlWithoutSort += "sort=";
 
@@ -37,9 +37,12 @@
     var urlWithoutPage = Request.Url.AbsolutePath + "?" + queryWithoutPage;
     if (queryWithoutPage.Count > 0) { urlWithoutPage += "&"; }
     urlWithoutPage += "page=";
-    
+
     // Allow gtag.js Google Analytics
     new ContentSecurityPolicyHeaders(Response.Headers).AppendPolicy("script-src https://www.googletagmanager.com").UpdateHeaders();
+}
+@section Metadata {
+    @if (Model.RssFeedUrl != null) {<link rel="alternative" type="application/rss+xml" href="@Model.RssFeedUrl" title="@Model.RssFeedTitle" />}
 }
 @section Breadcrumb {}
 @Html.Partial("~/Views/JobsHeader.cshtml", Model)
@@ -105,9 +108,9 @@
                     </p>
                 </div>
 
-                if (!String.IsNullOrEmpty(Model.Metadata.RssFeedUrl))
+                if (Model.RssFeedUrl != null)
                 {
-                    <p class="note"><a href="@Model.Metadata.RssFeedUrl" type="application/rss+xml" rel="alternate" class="rss">Subscribe by RSS to jobs like these</a></p>
+                    <p class="note"><a href="@Model.RssFeedUrl" type="application/rss+xml" rel="alternate" class="rss" title="@Model.RssFeedTitle">Subscribe by RSS to jobs like these</a></p>
                 }
             }
         }

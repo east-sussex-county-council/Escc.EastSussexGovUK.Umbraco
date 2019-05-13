@@ -79,13 +79,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
                     viewModel.Paging.PageSize = viewModel.Paging.TotalResults;
                 }
 
-                if (!String.IsNullOrEmpty(viewModel.Metadata.RssFeedUrl))
+                if (viewModel.RssFeedUrl != null)
                 {
                     var queryString = HttpUtility.ParseQueryString(Request.Url.Query);
                     queryString.Remove("page");
                     if (queryString.HasKeys())
                     {
-                        viewModel.Metadata.RssFeedUrl = viewModel.Metadata.RssFeedUrl + "?" + queryString;
+                        viewModel.RssFeedTitle = "RSS feed for " + viewModel.Metadata.Title;
+                        if (!String.IsNullOrEmpty(viewModel.Metadata.TitlePattern))
+                        {
+                            viewModel.RssFeedTitle = string.Format(viewModel.Metadata.TitlePattern, viewModel.RssFeedTitle);
+                        }
+                        viewModel.RssFeedUrl = new Uri(viewModel.RssFeedUrl + "?" + queryString, UriKind.RelativeOrAbsolute);
                     }
                 }
             }

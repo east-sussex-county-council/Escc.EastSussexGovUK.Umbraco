@@ -13,7 +13,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Views
 
             // Get the parent page
             var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
-            var currentPage = umbracoHelper.TypedContent(Model.Metadata.SystemId);
+            var currentPage = umbracoHelper.TypedContent(Model.SystemId);
             var parentPage = currentPage.Parent;
 
             aimsLink1.HRef = parentPage.Url;

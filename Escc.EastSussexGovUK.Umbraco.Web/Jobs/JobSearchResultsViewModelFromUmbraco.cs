@@ -47,8 +47,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
             var rss = BuildLinkToPage("JobsRssFeed_Content");
             if (rss != null)
             {
-                model.Metadata.RssFeedTitle = rss.Text;
-                model.Metadata.RssFeedUrl = rss.Url.ToString();
+                model.RssFeedTitle = rss.Text;
+                model.RssFeedUrl = rss.Url;
             }
 
             return model;

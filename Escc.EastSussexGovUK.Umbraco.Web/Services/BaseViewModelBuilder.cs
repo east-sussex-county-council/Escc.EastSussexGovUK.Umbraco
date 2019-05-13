@@ -55,22 +55,17 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Services
                 model.Metadata.Title = content.Name;
                 model.Metadata.Title = new RemoveUmbracoNumericSuffixFilter().Apply(model.Metadata.Title);
             }
-            model.Metadata.PageUrl = new Uri(content.UrlAbsolute());
+            model.Metadata.CanonicalPageUrl = new Uri(content.UrlAbsolute());
             if (String.IsNullOrEmpty(model.Metadata.Description))
             {
                 model.Metadata.Description = content.GetPropertyValue<string>("pageDescription") ?? String.Empty;
             }
             model.PageType = content.DocumentTypeAlias;
-            model.Metadata.SystemId = content.Id.ToString(CultureInfo.InvariantCulture);
-            model.Metadata.DateCreated = content.CreateDate.ToIso8601Date();
-            model.Metadata.DateModified = content.UpdateDate.ToIso8601Date();
+            model.SystemId = content.Id.ToString(CultureInfo.InvariantCulture);
+            model.Metadata.DateCreated = content.CreateDate;
+            model.Metadata.DateModified = content.UpdateDate;
 
-            if (expiryDate.HasValue && expiryDate != DateTime.MinValue && expiryDate != DateTime.MaxValue)
-            {
-                model.Metadata.DateReview = expiryDate.ToIso8601Date();
-            }
-
-            model.IsPublicView = !inUmbracoPreviewMode && model.Metadata.PageUrl.Host.ToUpperInvariant() != "LOCALHOST";
+            model.IsPublicView = !inUmbracoPreviewMode && model.Metadata.CanonicalPageUrl.Host.ToUpperInvariant() != "LOCALHOST";
             if (contentExperimentSettingsService != null) { model.ContentExperimentPageSettings = contentExperimentSettingsService.LookupSettingsForPage(content.Id); }
 
             if (_templateRequest != null)

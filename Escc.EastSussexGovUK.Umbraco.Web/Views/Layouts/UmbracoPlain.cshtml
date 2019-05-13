@@ -1,7 +1,7 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Mvc.BaseViewModel>
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.Models.BaseViewModel>
 @using Escc.EastSussexGovUK.Views
 @{
-    if (Model == null) { throw new NotSupportedException("This view requires a model based on Escc.EastSussexGovUK.Mvc.BaseViewModel"); }
+    if (Model == null) { throw new NotSupportedException("This view requires a model based on Escc.EastSussexGovUK.Umbraco.Web.Models.BaseViewModel"); }
     Model.EsccWebsiteView = EsccWebsiteView.Plain;
 }
 <!DOCTYPE html>
@@ -10,11 +10,16 @@
 <head>
     @{ Html.RenderPartial("~/Views/Layouts/_ContentExperiment.cshtml", Model); }
     <meta charset="UTF-8" />
-    @{ Html.RenderPartial("~/Views/EastSussexGovUK/MetadataControl.ascx", Model.Metadata); }
+    @{
+        if (Model.Metadata.CanonicalPageUrl == null) { Model.Metadata.CanonicalPageUrl = Request.Url; }
+        Html.RenderPartial("~/Views/Shared/_Metadata_Head.cshtml", Model.Metadata);
+    }
     @RenderSection("Metadata", required: false)
+    <meta name="eGMS.systemID" content="@Model.SystemId" />
 </head>
 <body>
     @RenderBody()
+    @{ Html.RenderPartial("~/Views/Shared/_Metadata_Body.cshtml", Model.Metadata); }
 </body>
 </html>
 

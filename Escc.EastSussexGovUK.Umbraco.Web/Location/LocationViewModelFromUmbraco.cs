@@ -92,7 +92,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Location
                     Width = imageData.GetPropertyValue<int>("umbracoWidth"),
                     Height = imageData.GetPropertyValue<int>("umbracoHeight")
                 };
-                model.Metadata.PageImageUrl = new Uri(new Uri(_content.UrlWithDomain()), model.Photo.ImageUrl).ToString();
+                model.Metadata.PageImage.ImageUrl = new Uri(new Uri(_content.UrlWithDomain()), model.Photo.ImageUrl);
+                model.Metadata.PageImage.AlternativeText = model.Photo.AlternativeText;
             }
 
             return model;

@@ -30,5 +30,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Models
         /// Gets or sets the name of a skin to apply.
         /// </summary>
         public string SkinToApply { get; set; }
+
+        /// <summary>
+        /// Gets or sets a unique id that identifies the page
+        /// </summary>
+        public string SystemId { get; set; }
     }
 }
