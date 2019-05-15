@@ -66,7 +66,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayModifications
 
 
             model.DateReceived = UmbracoContent.GetPropertyValue<DateTime>("DateReceived");
-            model.Metadata.DateCreated = model.DateReceived.ToIso8601Date();
+            model.Metadata.DateCreated = model.DateReceived;
             model.DateDetermined = UmbracoContent.GetPropertyValue<DateTime>("DateDetermined");
             if (model.DateDetermined == DateTime.MinValue) { model.DateDetermined = null; }
             model.DateModificationOrderConfirmed = UmbracoContent.GetPropertyValue<DateTime>("orderConfirmedDate");
