@@ -16,13 +16,7 @@
                     <img src="@Model.JobsLogo.ImageUrl" alt="@Model.Metadata.Title" width="@Model.JobsLogo.Width" class="jobs-logo" />
                 }
             }
-            @if (Model.LoginPage != null)
-            {
-                <p class="login">
-                    <a href="@Model.LoginPage.Url" rel="nofollow">Log in &gt;</a>
-                </p>
-            }
-            else if (Model.LoginUrl != null)
+            @if (Model.LoginUrl != null)
             {
                 <p class="login">
                     <a href="@Model.LoginUrl" rel="nofollow">Log in &gt;</a>

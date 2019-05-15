@@ -13,11 +13,11 @@
             {
                 if (Model.JobsHomePage != null)
                 {
-                    <h2><a href="@Model.JobsHomePage.Url"><img src="@Model.JobsLogo.ImageUrl" width="@Model.JobsLogo.Width" height="@Model.JobsLogo.Height" alt="Search for jobs" /></a></h2>
+                    <h2><a href="@Model.JobsHomePage.Url"><img src="@Model.JobsLogo.ImageUrl" width="@Model.JobsLogo.Width" height="@Model.JobsLogo.Height" alt="Search for jobs" /><span class="aural">Search for jobs</span></a></h2>
                 }
                 else
                 {
-                    <h2><img src="@Model.JobsLogo.ImageUrl" width="@Model.JobsLogo.Width" height="@Model.JobsLogo.Height" alt="Search for jobs" /></h2>
+                    <h2><img src="@Model.JobsLogo.ImageUrl" width="@Model.JobsLogo.Width" height="@Model.JobsLogo.Height" alt="Search for jobs" /><span class="aural">Search for jobs</span></h2>
                 }
             }
             <label for="keywords">Search for jobs</label>

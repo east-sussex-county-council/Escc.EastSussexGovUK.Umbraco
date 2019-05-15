@@ -1,6 +1,6 @@
 ﻿@using ClientDependency.Core.Mvc
 @using Escc.ClientDependencyFramework
-@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Mvc.BaseViewModel>
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.Models.BaseViewModel>
 @{
     Layout = "~/Views/EastSussexGovUK/desktop.cshtml";
     Html.RequiresJs(JsFileAlias.Resolve("DocumentMetadata"));
@@ -14,6 +14,7 @@
 {
     @{ Html.RenderPartial("~/Views/Layouts/_CmsPreview.cshtml", Model); }
     @RenderSection("Metadata", required: false)
+    <meta name="eGMS.systemID" content="@Model.SystemId" />
 }
 @section BodyClass{@RenderSection("BodyClass", required: false)}
 @section Header {

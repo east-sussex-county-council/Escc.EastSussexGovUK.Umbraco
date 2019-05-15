@@ -15,7 +15,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
     public class TruncateLongLinksFormatterTests
     {
         [Test]
-        public void SurreyTalentLinkUrlIsTruncated()
+        public void LongUrlInBodyIsTruncated()
         {
             var linkFormatter = new Mock<IHtmlLinkFormatter>();
             linkFormatter.Setup(x => x.AbbreviateUrl(Moq.It.IsAny<Uri>())).Returns("replaced link");

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.3
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{732E47C7-E861-4587-8400-33116C479A53}"
 	ProjectSection(SolutionItems) = preProject
@@ -13,8 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution 
 		Jobs.md = Jobs.md
 		LICENSE.md = LICENSE.md
 		Location.md = Location.md
+		MicrosoftCms.md = MicrosoftCms.md
 		README.md = README.md
-		Topic.md = Topic.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Umbraco.Tests", "Escc.EastSussexGovUK.Umbraco.Tests\Escc.EastSussexGovUK.Umbraco.Tests.csproj", "{D89C69B5-1F50-4CF1-83F8-AE317F7D788F}"

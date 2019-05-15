@@ -16,11 +16,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         public void ElementIsRemoved()
         {
             var htmlDocument = new HtmlDocument();
-            htmlDocument.LoadHtml(Properties.Resources.JobDetailInHtml1);
+            htmlDocument.LoadHtml(Properties.Resources.ClosingDateInBody1);
 
-            new RemoveElementByNameAndContentFormatter("h5", "Job Details").FormatHtml(htmlDocument);
+            new RemoveElementByNameAndContentFormatter("span", "Closing date: Sunday 23 April 2017").FormatHtml(htmlDocument);
 
-            var expected = Properties.Resources.JobDetailInHtml1.Replace("<h5 class=\"JD-FieldLabel\" id=\"JDLabel-Field1\">Job Details</h5>", String.Empty);
+            var expected = Properties.Resources.ClosingDateInBody1.Replace("<span>Closing date: Sunday 23 April 2017</span>", String.Empty);
             Assert.AreEqual(expected, htmlDocument.DocumentNode.OuterHtml);
         }
     }

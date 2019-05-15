@@ -28,7 +28,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
     /// </summary>
     public class JobsSearchController : RenderMvcController
     {
-        // GET: TalentLinkComponent
         public async new Task<ActionResult> Index(RenderModel model)
         {
             if (model == null) throw new ArgumentNullException(nameof(model));

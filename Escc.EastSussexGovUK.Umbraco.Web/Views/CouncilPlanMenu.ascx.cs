@@ -17,7 +17,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Views
         protected void Page_Load(object sender, EventArgs e)
         {
             var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
-            var currentPage = umbracoHelper.TypedContent(Model.Metadata.SystemId);
+            var currentPage = umbracoHelper.TypedContent(Model.SystemId);
 
             // Create a list of visible pages, including the home page
             var pages = new List<IPublishedContent>();

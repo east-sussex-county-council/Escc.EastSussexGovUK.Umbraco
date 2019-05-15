@@ -22,7 +22,7 @@
 
     var baseUrl = new HostingEnvironmentContext(Request.Url).BaseUrl?.TrimPathEndSlash();
 
-    Model.Metadata.OpenGraphType = "government";
+    Model.Metadata.Facebook.OpenGraphType = "government";
 }
 @functions{
 
@@ -53,8 +53,8 @@
 }
 @section Metadata
 {
-    <link rel="alternate" type="application/rss+xml" href="@Request.Url.Scheme://@Request.Url.Authority/home-news-items/>" title="News - East Sussex County Council" />
-    <link rel="alternate" type="application/rss+xml" href="@Request.Url.Scheme://@Request.Url.Authority/home-get-involved/>" title="Get involved - East Sussex County Council" />
+    <link rel="alternate" type="application/rss+xml" href="@Request.Url.Scheme://@Request.Url.Authority/home-news-items/" title="News - East Sussex County Council" />
+    <link rel="alternate" type="application/rss+xml" href="@Request.Url.Scheme://@Request.Url.Authority/home-get-involved/" title="Get involved - East Sussex County Council" />
 }
 @section Breadcrumb{}
 <h1 class="aural">East Sussex County Council</h1>
@@ -96,7 +96,7 @@
 
             @if (Model.NewsRssUrl != null)
             {
-                <a class="feed screen" rel="alternate" type="application/rss+xml" id="rss1" href="@Model.NewsRssUrl"><img src="@baseUrl/img/body/rss-27px.gif" alt="RSS feed" width="27" height="27" id="rssIcon1" /></a>
+                <a class="feed screen" rel="alternate" type="application/rss+xml" id="rss1" href="@Model.NewsRssUrl"><img src="@baseUrl/img/body/rss-27px.gif" alt="RSS feed for News - East Sussex County Council" width="27" height="27" id="rssIcon1" /></a>
             }
 
             <ol>
@@ -169,7 +169,7 @@
                 <h2>@Model.InvolvedTitle</h2></header>
             @if (Model.InvolvedRssUrl != null)
             {
-                <a class="feed screen" rel="alternate" type="application/rss+xml" id="rss4" href="@Model.InvolvedRssUrl"><img src="@baseUrl/img/body/rss-27px.gif" alt="RSS feed" width="27" height="27"/></a>
+                <a class="feed screen" rel="alternate" type="application/rss+xml" id="rss4" href="@Model.InvolvedRssUrl"><img src="@baseUrl/img/body/rss-27px.gif" alt="RSS feed for Get involved - East Sussex County Council" width="27" height="27"/></a>
             }
             @if (Model.InvolvedItems.Any())
             {

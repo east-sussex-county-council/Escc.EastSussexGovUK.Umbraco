@@ -15,7 +15,7 @@
     Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(Layout);
     Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] {
         new RegistrationAcademySkin(Model.SkinToApply == "Registration Academy"),
-        new RegistrationSkin(Model.Metadata.PageUrl),
+        new RegistrationSkin(Model.Metadata.CanonicalPageUrl),
         new FosterWithTrustSkin(Model.SkinToApply == "Foster with trust"),
         new SupportWithTrustSkin(Model.SkinToApply == "Support with trust")
         }, new CustomerFocusSkin());

@@ -20,8 +20,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.TextSize
                 {
                     Title = "Text size changed",
                     IsInSearch = false,
-                    IpsvPreferredTerms = "Visual impairment support",
-                    DateIssued = "2010-04-19"
+                    DateIssued = new DateTimeOffset(new DateTime(2010, 4, 19))
                 }
             };
 

@@ -23,6 +23,7 @@ using Exceptionless;
 using Escc.EastSussexGovUK.Mvc;
 using Escc.RubbishAndRecycling.SiteFinder.Website;
 using Escc.Net.Configuration;
+using Escc.Net;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.HomePage
 {
@@ -58,7 +59,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.HomePage
                 var locationsTask = jobsData.ReadLocations();
                 var jobTypesTask = jobsData.ReadJobTypes();
 
-                var wasteTypesDataSource = new UmbracoWasteTypesDataSource(new Uri(Request.Url, ConfigurationManager.AppSettings["WasteTypesDataUrl"]), new ConfigurationProxyProvider(), forceCacheRefresh ? null : new ApplicationCacheStrategy<List<string>>(TimeSpan.FromDays(1)));
+                var wasteTypesDataSource = new UmbracoWasteTypesDataSource(new Uri(Request.Url, ConfigurationManager.AppSettings["WasteTypesDataUrl"]), new HttpClientProvider(new ConfigurationProxyProvider()), forceCacheRefresh ? null : new ApplicationCacheStrategy<List<string>> { CacheDuration = TimeSpan.FromDays(1) });
                 var wasteTypesTask = wasteTypesDataSource.LoadWasteTypes();
 
                 await Tasks.Task.WhenAll(locationsTask, jobTypesTask, wasteTypesTask);

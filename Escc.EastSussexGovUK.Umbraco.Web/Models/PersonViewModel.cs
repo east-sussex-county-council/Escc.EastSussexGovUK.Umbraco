@@ -10,9 +10,10 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Models
     {
         public PersonViewModel()
         {
-            Metadata.PersonAbout = new Person();
             RelatedLinksGroups = new List<LandingSectionViewModel>();
         }
+
+        public Person Person { get; set; } = new Person();
 
         public string JobTitle { get; set; }
 

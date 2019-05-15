@@ -55,7 +55,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Guide
                 StepContent = new HtmlString(_mediaUrlTransformer.ParseAndTransformMediaUrlsInHtml(_content.GetPropertyValue<string>("content_Content")))
             };
 
-            model.Metadata.IsPartOfUrl = _content.Parent.UrlAbsolute();
             model.Metadata.IsInSearch = !_content.GetPropertyValue<bool>("hideFromSearchEngines");
 
             var sectionNavigation = _content.Parent.GetPropertyValue<int>("SectionNavigation_Navigation");

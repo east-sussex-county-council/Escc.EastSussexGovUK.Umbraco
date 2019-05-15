@@ -87,7 +87,7 @@
       <HintPath>..\packages\UmbracoForms.Core.6.0.8\lib\EPPlus.dll</HintPath>
     </Reference>
     <Reference Include="Escc.ActiveDirectory, Version=1.1.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.ActiveDirectory.2.1.0\lib\Escc.ActiveDirectory.dll</HintPath>
+      <HintPath>..\packages\Escc.ActiveDirectory.2.1.1\lib\Escc.ActiveDirectory.dll</HintPath>
     </Reference>
     <Reference Include="Escc.AddressAndPersonalDetails, Version=4.0.1.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.AddressAndPersonalDetails.4.0.1\lib\netstandard2.0\Escc.AddressAndPersonalDetails.dll</HintPath>
@@ -105,18 +105,18 @@
     <Reference Include="Escc.Dates, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Dates.3.0.0\lib\netstandard2.0\Escc.Dates.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.EastSussexGovUK, Version=13.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.EastSussexGovUK.13.0.1\lib\netstandard2.0\Escc.EastSussexGovUK.dll</HintPath>
+    <Reference Include="Escc.EastSussexGovUK, Version=15.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.EastSussexGovUK.15.0.0\lib\netstandard2.0\Escc.EastSussexGovUK.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.EastSussexGovUK.Mvc.9.0.0\lib\net462\Escc.EastSussexGovUK.Mvc.dll</HintPath>
+      <HintPath>..\packages\Escc.EastSussexGovUK.Mvc.10.0.1\lib\net472\Escc.EastSussexGovUK.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.Rss, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.EastSussexGovUK.Rss.2.0.0\lib\Escc.EastSussexGovUK.Rss.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.TemplateSource, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.3\lib\Escc.EastSussexGovUK.TemplateSource.dll</HintPath>
+      <HintPath>..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.4\lib\Escc.EastSussexGovUK.TemplateSource.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Elibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Elibrary.1.1.0\lib\Escc.Elibrary.dll</HintPath>
@@ -138,6 +138,9 @@
     <Reference Include="Escc.Html, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Html.3.0.0\lib\netstandard2.0\Escc.Html.dll</HintPath>
     </Reference>
+    <Reference Include="Escc.Metadata, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Metadata.1.0.0\lib\netstandard2.0\Escc.Metadata.dll</HintPath>
+    </Reference>
     <Reference Include="Escc.NavigationControls.WebForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.NavigationControls.WebForms.1.1.0\lib\Escc.NavigationControls.WebForms.dll</HintPath>
     </Reference>
@@ -147,14 +150,14 @@
     <Reference Include="Escc.Net.Configuration, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Net.Configuration.2.0.0\lib\net462\Escc.Net.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.Redirects, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Redirects.3.0.1\lib\netstandard2.0\Escc.Redirects.dll</HintPath>
+    <Reference Include="Escc.Redirects, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Redirects.4.0.0\lib\netstandard2.0\Escc.Redirects.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Redirects.Handlers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Redirects.Handlers.1.0.0\lib\Escc.Redirects.Handlers.dll</HintPath>
     </Reference>
     <Reference Include="Escc.RubbishAndRecycling.SiteFinder.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.RubbishAndRecycling.SiteFinder.3.0.0\lib\Escc.RubbishAndRecycling.SiteFinder.Website.dll</HintPath>
+      <HintPath>..\packages\Escc.RubbishAndRecycling.SiteFinder.4.0.0\lib\Escc.RubbishAndRecycling.SiteFinder.Website.dll</HintPath>
     </Reference>
     <Reference Include="Escc.ServiceClosures, Version=5.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.ServiceClosures.5.0.1\lib\netstandard2.0\Escc.ServiceClosures.dll</HintPath>
@@ -193,7 +196,7 @@
       <HintPath>..\packages\Escc.Umbraco.HeatmapAnalytics.4.0.0\lib\net452\Escc.Umbraco.HeatmapAnalytics.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.MediaSync, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.MediaSync.3.0.1\lib\net452\Escc.Umbraco.MediaSync.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.MediaSync.3.0.3\lib\net452\Escc.Umbraco.MediaSync.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.PropertyEditors, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.PropertyEditors.8.0.0\lib\net452\Escc.Umbraco.PropertyEditors.dll</HintPath>
@@ -211,14 +214,11 @@
     <Reference Include="Escc.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Web.1.1.2\lib\Escc.Web.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.Web.Metadata, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Web.Metadata.2.0.1\lib\Escc.Web.Metadata.dll</HintPath>
-    </Reference>
     <Reference Include="Examine, Version=0.1.89.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Examine.0.1.89\lib\net45\Examine.dll</HintPath>
     </Reference>
-    <Reference Include="Exceptionless, Version=4.3.2012.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Exceptionless.4.3.2012\lib\net45\Exceptionless.dll</HintPath>
+    <Reference Include="Exceptionless, Version=4.3.2027.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Exceptionless.4.3.2027\lib\net45\Exceptionless.dll</HintPath>
     </Reference>
     <Reference Include="Exceptionless.Mvc, Version=4.3.2012.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Exceptionless.Mvc.4.3.2012\lib\net45\Exceptionless.Mvc.dll</HintPath>
@@ -287,6 +287,12 @@
     <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Features, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.Features.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.Features.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Azure.KeyVault.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.2.0.4\lib\net45\Microsoft.Azure.KeyVault.Core.dll</HintPath>
     </Reference>
@@ -303,14 +309,14 @@
     <Reference Include="Microsoft.Data.Services.Client, Version=5.8.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Data.Services.Client.5.8.4\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Options, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Options.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Options, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Primitives, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Primitives.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.2.2\lib\net45\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
@@ -389,6 +395,9 @@
     <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.5.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Configuration.ConfigurationManager, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Configuration.ConfigurationManager.4.5.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
@@ -461,6 +470,9 @@
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Spatial, Version=5.8.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Spatial.5.8.4\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.4.5.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Tasks.Dataflow, Version=4.6.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Dataflow.4.7.0\lib\portable-net45+win8+wpa81\System.Threading.Tasks.Dataflow.dll</HintPath>
@@ -554,9 +566,6 @@
     </Reference>
     <Reference Include="Umbraco.Forms.Web.XmlSerializers, Version=6.0.8.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoForms.Core.6.0.8\lib\Umbraco.Forms.Web.XmlSerializers.dll</HintPath>
-    </Reference>
-    <Reference Include="Umbraco.Inception, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.Inception.3.1.3\lib\Umbraco.Inception.dll</HintPath>
     </Reference>
     <Reference Include="Umbraco.Licensing, Version=2.0.33.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoForms.Core.6.0.8\lib\Umbraco.Licensing.dll</HintPath>
@@ -1078,6 +1087,7 @@
     <Content Include="js\forms-address.js" />
     <Content Include="js\forms-school.js" />
     <Content Include="js\icasework-forms.js" />
+    <Content Include="js\job-analytics.js" />
     <Content Include="js\libs\bootstrap\tab.js" />
     <Content Include="js\libs\bootstrap\util.js" />
     <Content Include="js\iframeResizer.js" />
@@ -1294,8 +1304,6 @@
     <Content Include="Config\uSyncSnapshot.config" />
     <Content Include="App_Plugins\uSyncSnapshots\package.manifest" />
     <Content Include="App_Plugins\EsccUmbracoFormsFieldTypes\package.manifest" />
-    <Content Include="Config\uMediaSync.config" />
-    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\package.manifest" />
@@ -1303,7 +1311,6 @@
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor\package.manifest" />
     <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\package.manifest" />
     <Content Include="Views\Topic\TopicSection_RecyclingSiteFinder.ascx" />
-    <Content Include="windows-tile.png" />
     <Content Include="App_Plugins\EditorTools\Views\web.config" />
     <Content Include="App_Plugins\EditorTools\Views\Users\Index.cshtml" />
     <Content Include="App_Plugins\EditorTools\Views\Shared\_Layout.cshtml" />
@@ -1333,6 +1340,9 @@
     <Content Include="App_Plugins\EditorTools\Content\bootstrap.css.map" />
     <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.min.css.map" />
     <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.css.map" />
+    <Content Include="Config\uMediaSync.config" />
+    <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\package.manifest" />
+    <Content Include="windows-tile.png" />
     <None Include="Jobs\Images\East Sussex Jobs logo colour.png" />
     <None Include="Jobs\Images\East Sussex Jobs logo white.png" />
     <None Include="Jobs\Images\header.png" />
@@ -3844,7 +3854,6 @@
     <Content Include="Views\Layouts\UmbracoFullScreen.cshtml" />
     <Content Include="Views\TextSize\Change.cshtml" />
     <Content Include="Views\JobSearchResults.cshtml" />
-    <Content Include="Views\JobsComponent.cshtml" />
     <Content Include="Views\JobsCss.cshtml" />
     <Content Include="Views\Layouts\_SocialMedia.cshtml" />
     <Content Include="Views\JobsRss.cshtml" />
@@ -4690,7 +4699,6 @@
     <Content Include="uSync\Snapshots\20190121_161823_add-jobs-login-url\DocumentType\customer-focus-base\jobs\def.config" />
     <Content Include="uSync\Snapshots\20190121_161823_add-jobs-login-url\Template\form\Form.config" />
     <Content Include="uSync\Snapshots\20190121_161823_add-jobs-login-url\Template\privacynotice\PrivacyNotice.config" />
-    <Content Include="Views\Shared\_RecyclingSiteFinder.cshtml" />
     <Content Include="uSync\Snapshots\20190313_152623_delete-old-templates\DataType\alignment\Alignment.config" />
     <Content Include="uSync\Snapshots\20190313_152623_delete-old-templates\DataType\approved-color\ApprovedColor.config" />
     <Content Include="uSync\Snapshots\20190313_152623_delete-old-templates\DataType\cache\Cache.config" />
@@ -4920,6 +4928,42 @@
     <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\Template\rightsofwaymodifications\RightsOfWayModifications.config" />
     <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\Template\rightsofwaymodification\RightsOfWayModification.config" />
     <Content Include="uSync\Snapshots\20190412_121530_rights-of-way-dmmo\uSyncActions.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\campaign-content-page\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\campaign-landing-page\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\campaign-tiles\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\customer-focus-base\escc-employee\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\customer-focus-base\job-advert\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\customer-focus-base\job-alerts\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\customer-focus-base\job-search-results\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\customer-focus-base\jobs-search\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\customer-focus-base\jobs\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\customer-focus-base\landing\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\customer-focus-base\location\childcare-setting\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\customer-focus-base\location\council-office\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\customer-focus-base\location\day-centre\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\customer-focus-base\location\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\customer-focus-base\location\library\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\customer-focus-base\location\park-or-open-space\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\customer-focus-base\location\recycling-site\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\customer-focus-base\location\registration-office\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\customer-focus-base\location\sport-venue\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\customer-focus-base\task\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\form\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\home-page\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\legacy-base\map\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\legacy-base\standard-download-page\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\legacy-base\standard-landing-page\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\legacy-base\standard-topic-page\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\rights-of-way-definitive-map-modifications-csv-download\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\rights-of-way-definitive-map-modifications-rss-feed\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\rights-of-way-definitive-map-modifications\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\DocumentType\rights-of-way-definitive-map-modification\def.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\Template\rightsofwaymodificationscsv\RightsOfWayModificationsCsv.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\Template\rightsofwaymodificationsrss\RightsOfWayModificationsRss.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\Template\rightsofwaymodifications\RightsOfWayModifications.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\Template\rightsofwaymodification\RightsOfWayModification.config" />
+    <Content Include="uSync\Snapshots\20190507_162324_delete-talentlink-add-rights-of-way\uSyncActions.config" />
+    <Content Include="Views\Shared\_RecyclingSiteFinder.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -5069,10 +5113,8 @@
     <Compile Include="HomePage\HomePageController.cs" />
     <Compile Include="HomePage\HomePageItemController.cs" />
     <Compile Include="HomePage\HomePageItemsController.cs" />
-    <Compile Include="Jobs\JobsComponentController.cs" />
     <Compile Include="Jobs\JobSearchResultsController.cs" />
     <Compile Include="Jobs\JobsHomeController.cs" />
-    <Compile Include="Jobs\JobsComponentViewModel.cs" />
     <Compile Include="Jobs\JobSearchResultsViewModel.cs" />
     <Compile Include="Location\LocationsAsKmlHandler.cs" />
     <Compile Include="Ratings\RatingSettings.cs" />
@@ -5090,7 +5132,6 @@
     <Compile Include="RightsOfWayDeposits\RightsOfWayDepositsEventHandler.cs" />
     <Compile Include="Services\BaseViewModelFromUmbracoBuilder.cs" />
     <Compile Include="Jobs\JobSearchResultsViewModelFromUmbraco.cs" />
-    <Compile Include="Jobs\ComponentViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\JobsHomeViewModelFromUmbraco.cs" />
     <Compile Include="Jobs\JobsHomeViewModel.cs" />
     <Compile Include="Ratings\IRatingSettingsProvider.cs" />
@@ -5388,12 +5429,12 @@
     <Error Condition="!Exists('..\packages\Escc.Umbraco.Forms.FieldTypes.1.1.1\build\Escc.Umbraco.Forms.FieldTypes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.Forms.FieldTypes.1.1.1\build\Escc.Umbraco.Forms.FieldTypes.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.Forms.Security.2.0.0\build\Escc.Umbraco.Forms.Security.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.Forms.Security.2.0.0\build\Escc.Umbraco.Forms.Security.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props'))" />
-    <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.3.0.1\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.3.0.1\build\Escc.Umbraco.MediaSync.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.8.0.0\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.8.0.0\build\Escc.Umbraco.PropertyEditors.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.3\build\Escc.EastSussexGovUK.TemplateSource.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.3\build\Escc.EastSussexGovUK.TemplateSource.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.3.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.RubbishAndRecycling.SiteFinder.3.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.FindAddress.Mvc.3.0.1\build\Escc.FindAddress.Mvc.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.FindAddress.Mvc.3.0.1\build\Escc.FindAddress.Mvc.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.EditorTools.3.0.1\build\Escc.Umbraco.EditorTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.EditorTools.3.0.1\build\Escc.Umbraco.EditorTools.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.4.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.RubbishAndRecycling.SiteFinder.4.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.3.0.3\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.3.0.3\build\Escc.Umbraco.MediaSync.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.4\build\Escc.EastSussexGovUK.TemplateSource.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.4\build\Escc.EastSussexGovUK.TemplateSource.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
@@ -5429,10 +5470,10 @@
   <Import Project="..\packages\uSync.4.0.5\build\uSync.targets" Condition="Exists('..\packages\uSync.4.0.5\build\uSync.targets')" />
   <Import Project="..\packages\Escc.Umbraco.Forms.FieldTypes.1.1.1\build\Escc.Umbraco.Forms.FieldTypes.targets" Condition="Exists('..\packages\Escc.Umbraco.Forms.FieldTypes.1.1.1\build\Escc.Umbraco.Forms.FieldTypes.targets')" />
   <Import Project="..\packages\Escc.Umbraco.Forms.Security.2.0.0\build\Escc.Umbraco.Forms.Security.targets" Condition="Exists('..\packages\Escc.Umbraco.Forms.Security.2.0.0\build\Escc.Umbraco.Forms.Security.targets')" />
-  <Import Project="..\packages\Escc.Umbraco.MediaSync.3.0.1\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.3.0.1\build\Escc.Umbraco.MediaSync.targets')" />
   <Import Project="..\packages\Escc.Umbraco.PropertyEditors.8.0.0\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.8.0.0\build\Escc.Umbraco.PropertyEditors.targets')" />
-  <Import Project="..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.3\build\Escc.EastSussexGovUK.TemplateSource.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.3\build\Escc.EastSussexGovUK.TemplateSource.targets')" />
-  <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.3.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.3.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
   <Import Project="..\packages\Escc.FindAddress.Mvc.3.0.1\build\Escc.FindAddress.Mvc.targets" Condition="Exists('..\packages\Escc.FindAddress.Mvc.3.0.1\build\Escc.FindAddress.Mvc.targets')" />
   <Import Project="..\packages\Escc.Umbraco.EditorTools.3.0.1\build\Escc.Umbraco.EditorTools.targets" Condition="Exists('..\packages\Escc.Umbraco.EditorTools.3.0.1\build\Escc.Umbraco.EditorTools.targets')" />
+  <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.4.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.4.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.MediaSync.3.0.3\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.3.0.3\build\Escc.Umbraco.MediaSync.targets')" />
+  <Import Project="..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.4\build\Escc.EastSussexGovUK.TemplateSource.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.4\build\Escc.EastSussexGovUK.TemplateSource.targets')" />
 </Project>

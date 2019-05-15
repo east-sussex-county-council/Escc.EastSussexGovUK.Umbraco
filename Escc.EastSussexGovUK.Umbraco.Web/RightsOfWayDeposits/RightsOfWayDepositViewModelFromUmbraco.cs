@@ -56,7 +56,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayDeposits
             model.OrdnanceSurveyGridReference = UmbracoContent.GetPropertyValue<string>("GridReference_Content");
 
             model.DateDeposited = UmbracoContent.GetPropertyValue<DateTime>("DateDeposited_Content");
-            model.Metadata.DateIssued = model.DateDeposited.ToIso8601Date();
+            model.Metadata.DateIssued = model.DateDeposited;
             model.DateExpires = UmbracoContent.GetPropertyValue<DateTime>("DateExpires_Content");
 
             var depositDocuments = UmbracoContent.GetPropertyValue<IEnumerable<IPublishedContent>>("DepositDocument_Content");

@@ -38,7 +38,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
                 HeaderBackgroundImageLarge = BuildImage("HeaderBackgroundImageLarge_Content"),
                 JobsHomePage = BuildLinkToPage("JobsHomePage_Content"),
                 JobAdvertPage = BuildLinkToPage("JobDetailPage_Content"),
-                LoginPage = BuildLinkToPage("LoginPage_Content"),
                 LoginUrl = !string.IsNullOrEmpty(UmbracoContent.GetPropertyValue<string>("loginURL")) ? new Uri(UmbracoContent.GetPropertyValue<string>("loginURL"), UriKind.RelativeOrAbsolute) : null,
                 JobsSearchPage = BuildLinkToPage("JobsSearchPage_Content"),
                 JobsPrivacyPage = BuildLinkToPage("JobsPrivacyPage_Content"),
@@ -48,8 +47,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
             var rss = BuildLinkToPage("JobsRssFeed_Content");
             if (rss != null)
             {
-                model.Metadata.RssFeedTitle = rss.Text;
-                model.Metadata.RssFeedUrl = rss.Url.ToString();
+                model.RssFeedTitle = rss.Text;
+                model.RssFeedUrl = rss.Url;
             }
 
             return model;

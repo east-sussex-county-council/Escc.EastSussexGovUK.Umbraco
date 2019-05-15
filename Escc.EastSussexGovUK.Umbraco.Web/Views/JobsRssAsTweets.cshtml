@@ -1,6 +1,5 @@
 ﻿@using System.Text
 @using Escc.Dates
-@using Escc.Web
 @using Escc.EastSussexGovUK.Umbraco.Jobs
 @using Escc.EastSussexGovUK.Umbraco.Web.Jobs
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.Models.RssViewModel<Escc.EastSussexGovUK.Umbraco.Jobs.Job>>
@@ -13,8 +12,6 @@
 }@functions {
     private string CreateTweet(Job job)
     {
-        var jobTitle = job.JobTitle.Length > 50 ? job.JobTitle.Substring(0, 49) + "…" : job.JobTitle;
-
         var contract = String.Empty;
         if (job.WorkPattern.WorkPatterns.Contains(WorkPattern.FULL_TIME)) { contract = ", F/T"; }
         else if (job.WorkPattern.WorkPatterns.Contains(WorkPattern.PART_TIME)) { contract = ", P/T"; }
@@ -31,12 +28,13 @@
             salary = $" up to £{((int)job.Salary.MaximumSalary.Value / 1000)}k";
         }
 
-        var closingDate = $". Apply by {job.ClosingDate.Value.ToShortBritishDateNoYear()}.";
-        var tweet = new StringBuilder().Append(jobTitle).Append(contract).Append(salary).Append(closingDate).Append(" #jobs #EastSussex #Job ");
+        var closingDate = $"Apply by {job.ClosingDate.Value.ToShortBritishDateNoYear()}.";
+        var tweet = new StringBuilder().Append(job.JobTitle).Append(contract).Append(salary).Append(". ").Append(closingDate).Append(" #jobs #EastSussex #Job ");
         foreach (var location in job.Locations)
         {
             tweet.Append(new LocationHashTag(location)).Append(" ");
         }
+        tweet.Append("Ref: ").Append(job.Reference);
 
         return tweet.ToString().Trim();
     }

@@ -17,13 +17,14 @@
     Model.EsccWebsiteSkin = SkinSelector.SelectSkin(new IEsccWebsiteSkin[] {
         new CoronerSkin(Request.Url),
         new RegistrationAcademySkin(Model.SkinToApply == "Registration Academy"),
-        new RegistrationSkin(Model.Metadata.PageUrl),
+        new RegistrationSkin(Model.Metadata.CanonicalPageUrl),
         new FosterWithTrustSkin(Model.SkinToApply == "Foster with trust"),
         new SupportWithTrustSkin(Model.SkinToApply == "Support with trust")
         }, new CustomerFocusSkin());
 
-    // Get the guide title from the first step
+    // Get the guide metadata from the first step
     Model.Metadata.Title = Model.Steps.Any() ? Model.Steps.First().GuideTitle : String.Empty;
+    Model.Metadata.Description = Model.Steps.Any() ? Model.Steps.First().Metadata.Description : String.Empty;
     Model.Metadata.IsInSearch = false;
 
     // Embed YouTube videos and Google maps which can print

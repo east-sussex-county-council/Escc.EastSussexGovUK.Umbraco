@@ -9,7 +9,7 @@ using Examine;
 namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
 {
     /// <summary>
-    /// Creates an Examine indexes of lookup values jobs posted to a TalentLink site, based on the TalentLink URLs in the 'TalentLinkRedeploymentJobs...' configuration settings
+    /// Creates an Examine indexes of lookup values jobs posted to TribePad, based on the TribePad URLs in the 'TribePad...' configuration settings
     /// </summary>
     /// <seealso cref="BaseLookupValuesIndexer" />
     public class RedeploymentJobsLookupValuesIndexer : BaseLookupValuesIndexer

@@ -5,9 +5,9 @@ This project is the root of our [Umbraco](http://umbraco.com/) installation for 
 * [Jobs](Jobs.md)
 * [Forms](Forms.md)
 * [Locations, including libraries and recycling sites](Location.md)
-* [Adding term dates to a topic page](Topic.md)
 * [Service alerts](ServiceAlerts.md)
 * [Banners](Banners.md)
+* [Old templates migrated from Microsoft CMS](MicrosoftCms.md)
 
 The solution is broken up into several subprojects:
 

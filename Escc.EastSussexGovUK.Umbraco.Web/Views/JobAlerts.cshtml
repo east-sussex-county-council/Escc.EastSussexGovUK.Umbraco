@@ -2,6 +2,7 @@
 @using Escc.ClientDependencyFramework
 @using Escc.EastSussexGovUK.Mvc
 @using Escc.EastSussexGovUK.Umbraco.Web.Jobs.Alerts
+@using Escc.Web
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.Jobs.Alerts.JobAlertsViewModel>
 @{
     Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(Layout);
@@ -15,6 +16,9 @@
     Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=JobsCss&media-query=small", 101);
     Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=JobsCss&media-query=medium", 101, MediaQueryAlias.Resolve("Medium"));
     Html.RequiresCss(Request.Url.AbsolutePath + "?alttemplate=JobsCss&media-query=large", 101, MediaQueryAlias.Resolve("Large"));
+
+    // Allow gtag.js Google Analytics
+    new ContentSecurityPolicyHeaders(Response.Headers).AppendPolicy("script-src https://www.googletagmanager.com").UpdateHeaders();
 }
 @section Breadcrumb {}
 @Html.Partial("~/Views/JobsHeader.cshtml", Model)
@@ -52,3 +56,8 @@
     </div>
 </div>
 
+@section JavaScript
+{
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-22393101-30"></script>
+    <script src="~/js/job-analytics.js"></script>
+}

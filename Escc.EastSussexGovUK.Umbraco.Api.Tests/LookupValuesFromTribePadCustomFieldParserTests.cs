@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Escc.EastSussexGovUK.Umbraco.Api.Jobs.TalentLink;
 using Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
-using HtmlAgilityPack;
 using NUnit.Framework;
 
 namespace Escc.EastSussexGovUK.Umbraco.Api.Tests

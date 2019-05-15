@@ -335,7 +335,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="TalentLinkUrlTests.cs" />
     <Compile Include="LuceneTokenisedQueryBuilderTests.cs" />
     <Compile Include="WildcardSuffixFilterTests.cs" />
     <Compile Include="WorkPatternTests.cs" />

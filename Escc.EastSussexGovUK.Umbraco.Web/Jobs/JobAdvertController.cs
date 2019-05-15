@@ -54,46 +54,33 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
                 new UmbracoSocialMediaService(model.Content),
                 null, null);
 
-            // Redirect non-preferred URL - these are sent out in job alerts until May 2018, and linked from the TalentLink back office
-            if (!String.IsNullOrEmpty(Request.QueryString["nPostingTargetID"]))
+            // Show page for preferred URL
+            var jobUrlSegment = Regex.Match(Request.Url.AbsolutePath, "/([0-9]+)/");
+            if (jobUrlSegment.Success)
             {
                 var jobsProvider = new JobsDataFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, new Uri(model.Content.UrlAbsolute()), new HttpClientProvider(), new MemoryJobCacheStrategy(MemoryCache.Default, Request.QueryString["ForceCacheRefresh"] == "1"));
-                viewModel.Job = await jobsProvider.ReadJob(Request.QueryString["nPostingTargetID"]);
-                if (viewModel.Job.Id > 0)
+                viewModel.Job = await jobsProvider.ReadJob(jobUrlSegment.Groups[1].Value);
+                if (viewModel.Job.Id == 0 || viewModel.Job.ClosingDate < DateTime.Today)
                 {
-                    return new RedirectResult(viewModel.Job.Url.ToString(), true);
+                    // The job URL looks valid but the job isn't in the index, so it's probably closed.
+                    // Find some similar jobs to suggest the user may want to apply for instead.
+                    await FindSimilarJobs(jobsProvider, viewModel);
                 }
             }
             else
             {
-                // Show page for preferred URL
-                var jobUrlSegment = Regex.Match(Request.Url.AbsolutePath, "/([0-9]+)/");
-                if (jobUrlSegment.Success)
+                // The page was accessed by its default Umbraco URL with no parameters. Returning HttpNotFoundResult() ends up with a generic browser 404, 
+                // so to get our custom one we need to look it up and transfer control to it.
+
+                // However, we need to check for "alttemplate" because a link to the default Umbraco URL with just a querystring that doesn't match any data
+                // will in turn want to load the jobs CSS for a job that matches nothing, and that request ends up here. We want it to continue and return 
+                // the JobsCss view, not our 404 page.
+                if (String.IsNullOrEmpty(Request.QueryString["alttemplate"]))
                 {
-                    var jobsProvider = new JobsDataFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), viewModel.JobsSet, new Uri(model.Content.UrlAbsolute()), new HttpClientProvider(), new MemoryJobCacheStrategy(MemoryCache.Default, Request.QueryString["ForceCacheRefresh"] == "1"));
-                    viewModel.Job = await jobsProvider.ReadJob(jobUrlSegment.Groups[1].Value);
-                    if (viewModel.Job.Id == 0 || viewModel.Job.ClosingDate < DateTime.Today)
+                    var notFoundUrl = new HttpStatusFromConfiguration().GetCustomUrlForStatusCode(404);
+                    if (notFoundUrl != null && Server != null)
                     {
-                        // The job URL looks valid but the job isn't in the index, so it's probably closed.
-                        // Find some similar jobs to suggest the user may want to apply for instead.
-                        await FindSimilarJobs(jobsProvider, viewModel);
-                    }
-                }
-                else
-                {
-                    // The page was accessed by its default Umbraco URL with no parameters. Returning HttpNotFoundResult() ends up with a generic browser 404, 
-                    // so to get our custom one we need to look it up and transfer control to it.
-                    
-                    // However, we need to check for "alttemplate" because a link from a TalentLink job alert or the TalentLink back office to an expired job
-                    // is a link to the default Umbraco URL with just a querystring that doesn't match any data. That in turn will want to load the jobs CSS for
-                    // a job that matches nothing, and that request ends up here. We want it to continue and return the JobsCss view, not our 404 page.
-                    if (String.IsNullOrEmpty(Request.QueryString["alttemplate"]))
-                    {
-                        var notFoundUrl = new HttpStatusFromConfiguration().GetCustomUrlForStatusCode(404);
-                        if (notFoundUrl != null && Server != null)
-                        {
-                            Server.TransferRequest(notFoundUrl + "?404;" + HttpUtility.UrlEncode(Request.Url.ToString()));
-                        }
+                        Server.TransferRequest(notFoundUrl + "?404;" + HttpUtility.UrlEncode(Request.Url.ToString()));
                     }
                 }
             }

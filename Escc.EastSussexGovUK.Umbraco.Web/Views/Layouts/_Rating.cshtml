@@ -25,7 +25,7 @@ if (Model.RatingSettings?.ExcellentUrl != null) { ratingsSupported++; }
         query.Remove("c9");
         query.Remove("c10");
         query.Remove("t");
-        query["c1"] = HttpUtility.UrlEncode(Model.Metadata.PageUrl.ToString());
+        query["c1"] = HttpUtility.UrlEncode(Model.Metadata.CanonicalPageUrl.ToString());
         query["c2"] = HttpUtility.UrlEncode(Model.Metadata.Title);
         return new Uri(url.Scheme + "://" + url.Authority + url.AbsolutePath + "?" + query);
     }
