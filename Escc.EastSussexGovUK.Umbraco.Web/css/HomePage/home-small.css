@@ -21,10 +21,10 @@
 .report-apply-pay h2 { position: absolute; left: -999px; top: -999px; }
 .no-js .tabs { display: none; }
 
-/* 9px above and below lists is one line space. */
-.report-apply-pay ul, .top-tasks ul.first, .report-apply-pay ul.first, .library-search ul.first { margin: .692308em 0 0; }
-.top-tasks ul.second, .report-apply-pay ul.second, .library-search ul.second { margin: 0 2.953586% .692308em 0; position: relative; }
-.top-tasks li, .report-apply-pay li, .library-search li { list-style: none; background: url(/img/body/item-type.png?v=2) no-repeat 0 -992px; padding-left: 16px; }
+/* 9px above and below lists is one line space. 
+   overflow: hidden is solely for IE11, which otherwise displays the default bullet as well as the graphical one. */
+.top-tasks ul, .report-apply-pay .ui-tabs-panel ul, .library-search ul { margin: .692308em 0 0; }
+.top-tasks li, .report-apply-pay .ui-tabs-panel li, .library-search li { list-style: none; background: url(/img/body/item-type.png?v=2) no-repeat 0 -992px; padding-left: 16px; overflow: hidden; }
 
 
 /*************

@@ -1,7 +1,5 @@
-@using System.Text
 @using ClientDependency.Core.Mvc
 @using Escc.ClientDependencyFramework
-@using Escc.Umbraco.PropertyTypes
 @using Escc.EastSussexGovUK.Mvc
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.HomePage.HomePageViewModel>
 @{
@@ -24,33 +22,6 @@
 
     Model.Metadata.Facebook.OpenGraphType = "government";
 }
-@functions{
-
-    public string DisplayAsTwoUnorderedLists(IList<HtmlLink> links)
-    {
-        var html = new StringBuilder();
-        var newList = Math.Ceiling((decimal)links.Count / 2);
-        for (var i = 0; i < links.Count; i++)
-        {
-            var link = links[i];
-            if (i == 0)
-            {
-                html.Append("<ul class=\"first\">");
-            }
-            if (i == newList)
-            {
-                html.Append("<ul class=\"second\">");
-            }
-            html.Append("<li><a href=\"").Append(HttpUtility.HtmlEncode(link.Url)).Append("\">").Append(HttpUtility.HtmlEncode(link.Text)).Append("</a></li>");
-            if (i == newList - 1 || i == links.Count - 1)
-            {
-                html.Append("</ul>");
-            }
-        }
-        return html.ToString();
-    }
-
-}
 @section Metadata
 {
     <link rel="alternate" type="application/rss+xml" href="@Request.Url.Scheme://@Request.Url.Authority/home-news-items/" title="News - East Sussex County Council" />
@@ -62,7 +33,12 @@
     <div class="top-tasks text-content">
         <section class="gutters">
             <h2>@Model.TopTasksTitle</h2>
-            @Html.Raw(DisplayAsTwoUnorderedLists(Model.TopTasksLinks))
+            <ul>
+                @foreach (var link in Model.TopTasksLinks)
+                {
+                    <li><a href="@link.Url">@link.Text</a></li>
+                }
+            </ul>
         </section>
     </div>
 
@@ -75,15 +51,30 @@
             </ul>
             <div id="rap-1" class="gutters">
                 <h2>Report</h2>
-                @Html.Raw(DisplayAsTwoUnorderedLists(Model.ReportLinks))
+                <ul>
+                    @foreach (var link in Model.ReportLinks)
+                    {
+                        <li><a href="@link.Url">@link.Text</a></li>
+                    }
+                </ul>
             </div>
             <div id="rap-2" class="gutters">
                 <h2>Apply</h2>
-                @Html.Raw(DisplayAsTwoUnorderedLists(Model.ApplyLinks))
+                <ul>
+                    @foreach (var link in Model.ApplyLinks)
+                    {
+                        <li><a href="@link.Url">@link.Text</a></li>
+                    }
+                </ul>
             </div>
             <div id="rap-3" class="gutters">
                 <h2>Pay</h2>
-                @Html.Raw(DisplayAsTwoUnorderedLists(Model.PayLinks))
+                <ul>
+                    @foreach (var link in Model.PayLinks)
+                    {
+                        <li><a href="@link.Url">@link.Text</a></li>
+                    }
+                </ul>
             </div>
         </section>
     </div>
@@ -114,6 +105,7 @@
 
     <section>
         <div class="schools text-content">
+            <h2 class="aural">School term dates</h2>
             @Html.Partial("~/Views/TermDates/QuickAnswerMvcProxy.ascx", Model)
 
             @if (Model.SchoolLinks.Any())
@@ -126,7 +118,7 @@
                         }
                     }
                 </ul>
-                        }
+            }
         </div>
     </section>
 
@@ -140,7 +132,12 @@
                 <input id="libraryTerm" type="search" name="ENTRY" />
                 <input type="submit" value="Search" />
             </form>
-            @Html.Raw(DisplayAsTwoUnorderedLists(Model.LibrariesContent))
+            <ul>
+                @foreach (var link in Model.LibrariesContent)
+                {
+                    <li><a href="@link.Url">@link.Text</a></li>
+                }
+            </ul>
         </div>
     </section>
 </div>

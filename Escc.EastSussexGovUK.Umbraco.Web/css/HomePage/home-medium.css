@@ -1,12 +1,11 @@
 ﻿/* Now inside 10 cols, so adjust spacing */
 .top-tasks .gutters, .report-apply-pay .gutters, .library-search.gutters, .features.gutters { padding: 0 2.244389%; }
 
-/* Inside top task boxes, two 3 col wide lists of links, but widths adjusted to allow margins on lists which give 14px padding with 18px gutter between. 
+/* Inside top task boxes, two 3 col wide lists of links, with 18px gutter between. 
    9px above and below lists is one line space. */
 .top-tasks, .report-apply-pay, .library-search { overflow: hidden; }
 .top-tasks li, .report-apply-pay li, .library-search li { background-position: 0 -990px; }
-.top-tasks ul.first, .report-apply-pay ul.first, .library-search ul.first { float: left; width: 48.10127%; margin: .692308em 0; }
-.top-tasks ul.second, .report-apply-pay ul.second, .library-search ul.second { float: right; width: 45.147684%; margin: .692308em 2.953586% .692308em 0; }
+.top-tasks ul, .report-apply-pay .ui-tabs-panel ul, .library-search ul { columns: 2; column-gap: 18px; margin: .692308em 0; }
 
 /* If there are 2 features, these styles are applied to place them side-by-side rather than in a stack. 
    Under 50% width leaves a white border between the two. Left margin adjusted for 10 col grid. */

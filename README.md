@@ -26,3 +26,4 @@ The solution is broken up into several subprojects:
 8. In `~\web.config` add the contents of `web.config.xdt`
 7. In `~\web.config` uncomment and complete the `Proxy` and `RemoteMasterPage` sections
 8. In the Umbraco back office, go to the Developer > uSync BackOffice > Snapshots and click 'Apply all'
+9. Create an IIS virtual directory called `~/img/` which points to the `img` folder of the [Escc.EastSussexGovUK.TemplateSource](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK) project.

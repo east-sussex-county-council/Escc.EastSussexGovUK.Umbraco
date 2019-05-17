@@ -32,7 +32,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.WebApi
             }
         }
 
-        private IEnumerable<string> WasteTypes = new string[] {
+        internal static IEnumerable<string> WasteTypes = new string[] {
             "Aluminium foil",
             "Aerosols",
             "Bonded asbestos",

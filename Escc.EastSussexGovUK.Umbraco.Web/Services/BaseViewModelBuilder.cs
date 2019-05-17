@@ -110,13 +110,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Services
         /// <exception cref="System.ArgumentNullException">model</exception>
         public void PopulateBaseViewModelWithInheritedContent(Models.BaseViewModel model, latest.ILatestService latestService, ISocialMediaService socialMediaService, IEastSussex1SpaceService eastSussex1SpaceService, IEscisService escisService, IRatingSettingsProvider ratingSettings=null)
         {
-            if (model == null) throw new ArgumentNullException("model");
+            if (model == null) throw new ArgumentNullException(nameof(model));
             
             if (latestService != null) model.Latest = latestService.ReadLatestSettings().LatestHtml;
             if (eastSussex1SpaceService != null) model.ShowEastSussex1SpaceWidget = eastSussex1SpaceService.ShowSearch();
             if (escisService != null) model.ShowEscisWidget = escisService.ShowSearch();
             if (socialMediaService != null) model.SocialMedia = socialMediaService.ReadSocialMediaSettings();
-            if (ratingSettings != null) model.RatingSettings = ratingSettings.ReadRatingSettings();
+            if (ratingSettings != null) model.RatingSettings  = ratingSettings.ReadRatingSettings();
         }
     }
 }

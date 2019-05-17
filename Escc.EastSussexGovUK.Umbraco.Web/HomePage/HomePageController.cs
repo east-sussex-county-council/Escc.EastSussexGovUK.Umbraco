@@ -24,6 +24,7 @@ using Escc.EastSussexGovUK.Mvc;
 using Escc.RubbishAndRecycling.SiteFinder.Website;
 using Escc.Net.Configuration;
 using Escc.Net;
+using Escc.EastSussexGovUK.Umbraco.Web.WebApi;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.HomePage
 {
@@ -48,35 +49,33 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.HomePage
             var modelBuilder = new BaseViewModelBuilder(new EastSussexGovUKTemplateRequest(Request, webChatSettingsService: new UmbracoWebChatSettingsService(model.Content, new UrlListReader())));
             await modelBuilder.PopulateBaseViewModel(viewModel, model.Content, new ContentExperimentSettingsService(),
                 expiryDate.ExpiryDate,
-                UmbracoContext.Current.InPreviewMode);
+                UmbracoContext.Current.InPreviewMode).ConfigureAwait(true);
             modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel, null, null, null, null, new RatingSettingsFromUmbraco(model.Content));
 
             try
             {
+                // Jobs close at midnight, so don't cache beyond then
+                var untilMidnightTonight = DateTime.Today.ToUkDateTime().AddDays(1) - DateTime.Now.ToUkDateTime();
+                new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new IExpiryDateSource[] { expiryDate, new ExpiryDateFromPropertyValue(model.Content, "latestUnpublishDate_Latest") }, (int)untilMidnightTonight.TotalSeconds);
+
                 var forceCacheRefresh = Request.QueryString["ForceCacheRefresh"] == "1";
 
                 var jobsData = new JobsLookupValuesFromApi(new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]), JobsSet.PublicJobs, new MemoryJobCacheStrategy(MemoryCache.Default, forceCacheRefresh));
                 var locationsTask = jobsData.ReadLocations();
                 var jobTypesTask = jobsData.ReadJobTypes();
 
-                var wasteTypesDataSource = new UmbracoWasteTypesDataSource(new Uri(Request.Url, ConfigurationManager.AppSettings["WasteTypesDataUrl"]), new HttpClientProvider(new ConfigurationProxyProvider()), forceCacheRefresh ? null : new ApplicationCacheStrategy<List<string>> { CacheDuration = TimeSpan.FromDays(1) });
-                var wasteTypesTask = wasteTypesDataSource.LoadWasteTypes();
-
-                await Tasks.Task.WhenAll(locationsTask, jobTypesTask, wasteTypesTask);
+                await Tasks.Task.WhenAll(locationsTask, jobTypesTask).ConfigureAwait(false);
 
                 viewModel.JobLocations = locationsTask.Result;
                 viewModel.JobTypes = jobTypesTask.Result;
-                viewModel.RecyclingSiteSearch.WasteTypes = wasteTypesTask.Result;
             }
             catch (Exception ex)
             {
-                // Report an error fetching jobs or waste site data, but don't cause the page to fail to load
+                // Report an error fetching jobs, but don't cause the page to fail to load
                 ex.ToExceptionless().Submit();
             }
 
-            // Jobs close at midnight, so don't cache beyond then
-            var untilMidnightTonight = DateTime.Today.ToUkDateTime().AddDays(1) - DateTime.Now.ToUkDateTime();
-            new HttpCachingService().SetHttpCacheHeadersFromUmbracoContent(model.Content, UmbracoContext.Current.InPreviewMode, Response.Cache, new IExpiryDateSource[] { expiryDate, new ExpiryDateFromPropertyValue(model.Content, "latestUnpublishDate_Latest") }, (int)untilMidnightTonight.TotalSeconds);
+            viewModel.RecyclingSiteSearch.WasteTypes = new List<string>(WasteTypesController.WasteTypes);
 
             return CurrentTemplate(viewModel);
         }
