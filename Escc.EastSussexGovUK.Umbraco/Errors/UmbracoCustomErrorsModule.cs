@@ -36,7 +36,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Errors
                 // Check for the 404 page itself because the request for the 404 comes back here and needs to be ignored.
                 var pathRequested = HttpContext.Current.Request.Url.AbsolutePath;
                 var extensionRequested = VirtualPathUtility.GetExtension(pathRequested);
-                var extensionsHandledByUmbraco = new List<string> {String.Empty, ".aspx"};
+                var extensionsHandledByUmbraco = new List<string> {string.Empty, ".aspx"};
                 if (!pathRequested.StartsWith(notFoundUrl.ToString()) && !extensionsHandledByUmbraco.Contains(extensionRequested))
                 {
                     HttpContext.Current.Server.TransferRequest(notFoundUrl + "?404;" + HttpUtility.UrlEncode(HttpContext.Current.Request.Url.ToString()));

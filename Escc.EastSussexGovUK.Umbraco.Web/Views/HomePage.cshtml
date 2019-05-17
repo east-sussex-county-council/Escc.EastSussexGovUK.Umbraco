@@ -10,13 +10,13 @@
     Html.RequiresCss(CssFileAlias.Resolve("HomeSmall"));
     Html.RequiresCss(CssFileAlias.Resolve("FormsSmall"));
     Html.RequiresCss(CssFileAlias.Resolve("TilesSmall"));
-    Html.RequiresJs(JsFileAlias.Resolve("Home"), 100);
+    Html.RequiresJs("~/js/HomePage/homepage.js", 100);
     Html.RequiresCss(CssFileAlias.Resolve("FormsMedium"), MediaQueryAlias.Resolve("Medium"));
     Html.RequiresCss(CssFileAlias.Resolve("TilesMedium"), MediaQueryAlias.Resolve("Medium"));
     Html.RequiresCss(CssFileAlias.Resolve("HomeMedium"), MediaQueryAlias.Resolve("Medium"));
     Html.RequiresCss(CssFileAlias.Resolve("FormsLarge"), MediaQueryAlias.Resolve("Large"));
     Html.RequiresCss(CssFileAlias.Resolve("HomeLarge"), MediaQueryAlias.Resolve("Large"));
-    Html.RequiresJs(JsFileAlias.Resolve("HomeTabs"), 90);
+    Html.RequiresJs("~/js/HomePage/jquery-ui-1.10.4.custom.min.js", 90);
     Html.RequiresJs(JsFileAlias.Resolve("Tips"));
     Html.RequiresJs(JsFileAlias.Resolve("DescribedByTips"));
 

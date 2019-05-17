@@ -1,3 +1,5 @@
+using Escc.EastSussexGovUK.Umbraco.Jobs;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -10,6 +12,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs
         /// </summary>
         /// <param name="htmlStream">The HTML stream.</param>
         /// <returns></returns>
-        Task<JobsParseResult> Parse(Stream htmlStream);
+        Task<IList<Job>> Parse(Stream htmlStream);
     }
 }

@@ -12,9 +12,6 @@
     <sectionGroup name="Escc.ClientDependencyFramework" xdt:Transform="Insert" />
     <sectionGroup name="Escc.ClientDependencyFramework" xdt:Transform="Remove" xdt:Locator="XPath(/configuration/configSections/sectionGroup[@name='Escc.ClientDependencyFramework'][2])" />
 
-    <section name="UnpublishOverridesSection" xdt:Transform="Remove" xdt:Locator="Match(name)" />
-    <section name="UnpublishOverridesSection" type="Escc.Umbraco.Expiry.Configuration.UnpublishOverridesSection, Escc.Umbraco.Expiry" requirePermission="false" xdt:Transform="Insert" />
-
     <section name="exceptionless" type="Exceptionless.ExceptionlessSection, Exceptionless" xdt:Transform="Insert" />
     <section name="exceptionless" xdt:Transform="Remove" xdt:Locator="XPath(/configuration/configSections/sectionGroup[@name='exceptionless'][2])" />
   </configSections>
@@ -107,12 +104,6 @@
     <ScriptFiles>
       <add key="CouncilPlan" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="CouncilPlan" value="/js/CouncilPlan/council-plan.js" xdt:Transform="Insert" />
-      <add key="DocumentMetadata" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="DocumentMetadata" value="/js/document-metadata.js" xdt:Transform="Insert" />
-      <add key="Home" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="Home" value="/js/HomePage/homepage.js" xdt:Transform="Insert" />
-      <add key="HomeTabs" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="HomeTabs" value="/js/HomePage/jquery-ui-1.10.4.custom.min.js" xdt:Transform="Insert" />
       <add key="iCaseWork" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="iCaseWork" value="/js/icasework-forms.js" xdt:Transform="Insert" />
       <add key="iFrameResizer" xdt:Transform="Remove" xdt:Locator="Match(key)" />
@@ -189,85 +180,6 @@
     </TopicSectionLayouts>
   </Escc.EastSussexGovUK.Umbraco>
   
-  <UnpublishOverridesSection xdt:Transform="Remove" />
-  <UnpublishOverridesSection xdt:Transform="Insert">
-    <ContentTypes>
-      <add name="HomePage" level="*" />
-      <add name="HomePageItems" level="*" />
-      <add name="HomePageItem" level="*" />
-      <add name="Banner" level="*" />
-      <add name="alerts" level="*" />
-      <add name="standardLandingPage" level="2" />
-      <add name="Landing" level="2" />
-      <add name="JobsHome" level="*" />
-      <add name="JobSearchResults" level="*" />
-      <add name="JobsComponent" level="*" />
-      <add name="JobsRss" level="*" />
-      <add name="ProblemJobsRss" level="*" />
-      <add name="JobsSearch" level="*" />
-      <add name="JobAdvert" level="*" />
-      <add name="Ratings" level="*" />
-      <add name="Rating" level="*" />
-      <add name="RightsOfWayDeposits" level="*" />
-      <add name="RightsOfWayDepositsRss" level="*" />
-      <add name="RightsOfWayDepositsCsv" level="*" />
-      <add name="RightsOfWayDeposit" level="*" />
-      <add name="RightsOfWayModifications" level="*" />
-      <add name="RightsOfWayModificationsRss" level="*" />
-      <add name="RightsOfWayModificationsCsv" level="*" />
-      <add name="RightsOfWayModification" level="*" />
-      <add name="Skins" level="*" />
-      <add name="Skin" level="*" />
-      <add name="Skin" level="*" />
-      <add name="Form" level="*" />
-    </ContentTypes>
-    <Paths>
-      <add name="/about-this-site/" children="*" />
-      <add name="/banners/" children="" />
-      <add name="/childrenandfamilies/childcare/" children="*" />
-      <add name="/childrenandfamilies/childcare/parentsandcarers/childrencentres/" children="" />
-      <add name="/childrenandfamilies/familysupport/info-for-families/" children="" />
-      <add name="/childrenandfamilies/keypolicies/complaints-process/" children="*" />
-      <add name="/childrenandfamilies/worried-about-a-child/" children="" />
-      <add name="/childrenandfamilies/youngpeople/safety-welfare/" children="*" />
-      <add name="/contact-us/" children="" />
-      <add name="/contact-us/report-a-problem/" children="*" />
-      <add name="/community/emergencyplanningandcommunitysafety/" children="" />
-      <add name="/educationandlearning/schools/" children="" />
-      <add name="/educationandlearning/schools/findingaschool/" children="*" />
-      <add name="/educationandlearning/schools/schoolclosurealerts/" children="" />
-      <add name="/educationandlearning/schools/termdates/" children="" />
-      <add name="/environment/rubbishandrecycling/" children="" />
-      <add name="/environment/rubbishandrecycling/recyclingsites/" children="*" />
-      <add name="/environment/rubbishandrecycling/rubbishcollection/" children="" />
-      <add name="/google-analytics-experiments/" children="" />
-      <add name="/heatmap-analytics/" children="" />
-      <add name="/jobs/" children="" />
-      <add name="/leisureandtourism/calendar/" children="" />
-      <add name="/leisureandtourism/countryside/walks/" children="*" />
-      <add name="/libraries/library-cards/" children="*" />
-      <add name="/libraries/locations/" children="*" />
-      <add name="/libraries/maintenance/" children="" />
-      <add name="/libraries/online-library-help/" children="*" />
-      <add name="/news/" children="" />
-      <add name="/menu/" children="" />
-      <add name="/privacy/" children="*" />
-      <add name="/roadsandtransport/public/buses/" children="*" />
-      <add name="/roadsandtransport/roads/licences/" children="" />
-      <add name="/roadsandtransport/roads/maintenance/" children="" />
-      <add name="/roadsandtransport/roads/maintenance/potholes/" children="" />
-      <add name="/roadsandtransport/roads/maintenance/saltingandgritting/" children="*" />
-      <add name="/roadsandtransport/roads/maintenance/verges/" children="" />
-      <add name="/socialcare/getting-help-from-us/contact-adult-social-care/" children="" />
-      <add name="/socialcare/worried/report/" children="" />
-      <add name="/web-chat/" children="" />
-      <add name="/yourcouncil/about/districtandborough/" children="" />
-      <add name="/yourcouncil/about/keydocuments/constitution/" children="" />
-      <add name="/yourcouncil/about/keydocuments/councilplan/" children="" />
-      <add name="/yourcouncil/finance/guide/fraud/" children="" />
-    </Paths>
-  </UnpublishOverridesSection>
-  
   <configSections>
     <sectionGroup name="Escc.Services" xdt:Transform="Remove" xdt:Locator="Match(name)" />
     <sectionGroup name="Escc.Services" xdt:Transform="Insert">
@@ -307,7 +219,7 @@
   <appSettings>
     <!-- START: Configure Umbraco -->
     <add key="umbracoConfigurationStatus" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-    <add key="umbracoConfigurationStatus" value="7.6.13" xdt:Transform="Insert" />
+    <add key="umbracoConfigurationStatus" value="7.14.0" xdt:Transform="Insert" />
 
     <add key="umbracoReservedPaths" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     <add key="umbracoReservedPaths" value="~/umbraco,~/install/,~/escc.eastsussexgovuk/,~/masterpages" xdt:Transform="Insert" />
@@ -326,48 +238,33 @@
     <add key="sitemapMediaFilesExclusions" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     <add key="sitemapMediaFilesExclusions" value="jpeg, jpg, png, gif, bmp, svg" xdt:Transform="Insert" />
 
-    <!-- Escc.Umbraco.UserAccessWebService -->
-    <add key="HomeContentTypeAlias" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-    <add key="HomeContentTypeAlias" value="HomePage" xdt:Transform="Insert" />
-
     <!-- For recycling sites included on a standard topic page -->
     <add key="RecyclingSiteFinderBaseUrl" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     <add key="RecyclingSiteFinderBaseUrl" value="/environment/rubbishandrecycling/recyclingsites/find/" xdt:Transform="Insert" />
     <add key="WasteTypesDataUrl" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     <add key="WasteTypesDataUrl" value="/umbraco/api/wastetypes/list" xdt:Transform="Insert" />
+
+    <!-- Jobs -->
+    <add key="TranslateObsoleteJobTypes" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    <add key="TranslateObsoleteJobTypes" value="true" xdt:Transform="Insert" />
   </appSettings>
 
   <runtime>
     <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1">
-      <dependentAssembly xdt:Transform="Remove" xdt:Locator="Condition(_defaultNamespace:assemblyIdentity/@name='Escc.AddressAndPersonalDetails')" />
+      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Web.Mvc')" xdt:Transform="Remove" />
       <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="Escc.AddressAndPersonalDetails" publicKeyToken="06fad7304560ae6f" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-4.0.1.0" newVersion="4.0.1.0" />
+        <assemblyIdentity name="System.Web.Mvc" publicKeyToken="31bf3856ad364e35" />
+        <bindingRedirect oldVersion="0.0.0.0-5.2.7.0" newVersion="5.2.7.0" />
       </dependentAssembly>
-      <dependentAssembly xdt:Transform="Remove" xdt:Locator="Condition(_defaultNamespace:assemblyIdentity/@name='MySql.Data')" />
+      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Web.Http')" xdt:Transform="Remove" />
       <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="MySql.Data" publicKeyToken="c5687fc88969c44d" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-6.9.10.0" newVersion="6.9.10.0" />
+        <assemblyIdentity name="System.Web.Http" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-5.2.7.0" newVersion="5.2.7.0" />
       </dependentAssembly>
-      <dependentAssembly xdt:Transform="Remove" xdt:Locator="Condition(_defaultNamespace:assemblyIdentity/@name='Microsoft.Azure.KeyVault.Core')" />
+      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Web.Http.WebHost')" xdt:Transform="Remove" />
       <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="Microsoft.Azure.KeyVault.Core" publicKeyToken="31bf3856ad364e35" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-2.0.0.0" newVersion="2.0.0.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Transform="Remove" xdt:Locator="Condition(_defaultNamespace:assemblyIdentity/@name='Microsoft.Data.Edm')" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="Microsoft.Data.Edm" publicKeyToken="31bf3856ad364e35" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-5.8.3.0" newVersion="5.8.3.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Transform="Remove" xdt:Locator="Condition(_defaultNamespace:assemblyIdentity/@name='Microsoft.Data.OData')" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="Microsoft.Data.OData" publicKeyToken="31bf3856ad364e35" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-5.8.3.0" newVersion="5.8.3.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Transform="Remove" xdt:Locator="Condition(_defaultNamespace:assemblyIdentity/@name='Microsoft.Data.Services.Client')" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="Microsoft.Data.Services.Client" publicKeyToken="31bf3856ad364e35" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-5.8.3.0" newVersion="5.8.3.0" />
+        <assemblyIdentity name="System.Web.Http.WebHost" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-5.2.7.0" newVersion="5.2.7.0" />
       </dependentAssembly>
       <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='Microsoft.Win32.Primitives')" xdt:Transform="Remove" />
       <dependentAssembly xdt:Transform="Insert">
@@ -379,70 +276,30 @@
         <assemblyIdentity name="Microsoft.WindowsAzure.Storage" publicKeyToken="31bf3856ad364e35" culture="neutral" />
         <bindingRedirect oldVersion="0.0.0.0-9.3.2.0" newVersion="9.3.2.0" />
       </dependentAssembly>
-      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Net.Http.Formatting')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Remove" xdt:Locator="Condition(_defaultNamespace:assemblyIdentity/@name='Microsoft.Data.Services.Client')" />
       <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="System.Net.Http.Formatting" publicKeyToken="31bf3856ad364e35" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-5.2.4.0" newVersion="5.2.4.0" />
+        <assemblyIdentity name="Microsoft.Data.Services.Client" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-5.8.3.0" newVersion="5.8.3.0" />
       </dependentAssembly>
-      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Security.Cryptography.X509Certificates')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Remove" xdt:Locator="Condition(_defaultNamespace:assemblyIdentity/@name='Microsoft.Data.OData')" />
       <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="System.Security.Cryptography.X509Certificates" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-4.1.0.0" newVersion="4.1.0.0" />
+        <assemblyIdentity name="Microsoft.Data.OData" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-5.8.3.0" newVersion="5.8.3.0" />
       </dependentAssembly>
-      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Web.Extensions')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Remove" xdt:Locator="Condition(_defaultNamespace:assemblyIdentity/@name='Microsoft.Data.Edm')" />
       <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="System.Web.Extensions" publicKeyToken="31bf3856ad364e35" />
-        <bindingRedirect oldVersion="1.0.0.0-1.1.0.0" newVersion="4.0.0.0" />
+        <assemblyIdentity name="Microsoft.Data.Edm" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-5.8.3.0" newVersion="5.8.3.0" />
       </dependentAssembly>
-      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Web.Extensions.Design')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Remove" xdt:Locator="Condition(_defaultNamespace:assemblyIdentity/@name='Microsoft.Azure.KeyVault.Core')" />
       <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="System.Web.Extensions.Design" publicKeyToken="31bf3856ad364e35" />
-        <bindingRedirect oldVersion="1.0.0.0-1.1.0.0" newVersion="4.0.0.0" />
+        <assemblyIdentity name="Microsoft.Azure.KeyVault.Core" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-2.0.0.0" newVersion="2.0.0.0" />
       </dependentAssembly>
-      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Web.Helpers')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Remove" xdt:Locator="Condition(_defaultNamespace:assemblyIdentity/@name='MySql.Data')" />
       <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="System.Web.Helpers" publicKeyToken="31bf3856ad364e35" />
-        <bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Web.Http')" xdt:Transform="Remove" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="System.Web.Http" publicKeyToken="31bf3856ad364e35" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-5.2.4.0" newVersion="5.2.4.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Web.Http.WebHost')" xdt:Transform="Remove" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="System.Web.Http.WebHost" publicKeyToken="31bf3856ad364e35" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-5.2.4.0" newVersion="5.2.4.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Web.Mvc')" xdt:Transform="Remove" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="System.Web.Mvc" publicKeyToken="31bf3856ad364e35" />
-        <bindingRedirect oldVersion="0.0.0.0-5.2.6.0" newVersion="5.2.6.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Web.WebPages')" xdt:Transform="Remove" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="System.Web.WebPages" publicKeyToken="31bf3856ad364e35" />
-        <bindingRedirect oldVersion="0.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='Microsoft.Owin')" xdt:Transform="Remove" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="Microsoft.Owin" publicKeyToken="31bf3856ad364e35" />
-        <bindingRedirect oldVersion="0.0.0.0-3.1.0.0" newVersion="3.1.0.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='Microsoft.Owin.Security.OAuth')" xdt:Transform="Remove" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="Microsoft.Owin.Security.OAuth" publicKeyToken="31bf3856ad364e35" />
-        <bindingRedirect oldVersion="0.0.0.0-3.1.0.0" newVersion="3.1.0.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='Microsoft.Owin.Security')" xdt:Transform="Remove" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="Microsoft.Owin.Security" publicKeyToken="31bf3856ad364e35" />
-        <bindingRedirect oldVersion="0.0.0.0-3.1.0.0" newVersion="3.1.0.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='Microsoft.Owin.Security.Cookies')" xdt:Transform="Remove" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="Microsoft.Owin.Security.Cookies" publicKeyToken="31bf3856ad364e35" />
-        <bindingRedirect oldVersion="0.0.0.0-3.1.0.0" newVersion="3.1.0.0" />
+        <assemblyIdentity name="MySql.Data" publicKeyToken="c5687fc88969c44d" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-6.9.10.0" newVersion="6.9.10.0" />
       </dependentAssembly>
       <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='Microsoft.Owin.Host.SystemWeb')" xdt:Transform="Remove" />
       <dependentAssembly xdt:Transform="Insert">
@@ -454,6 +311,11 @@
         <assemblyIdentity name="Escc.ActiveDirectory" publicKeyToken="06fad7304560ae6f" culture="neutral" />
         <bindingRedirect oldVersion="0.0.0.0-1.1.0.0" newVersion="1.1.0.0" />
       </dependentAssembly>
+      <dependentAssembly xdt:Transform="Remove" xdt:Locator="Condition(_defaultNamespace:assemblyIdentity/@name='Escc.AddressAndPersonalDetails')" />
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="Escc.AddressAndPersonalDetails" publicKeyToken="06fad7304560ae6f" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.0.1.0" newVersion="4.0.1.0" />
+      </dependentAssembly>
       <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Data.SqlClient')" xdt:Transform="Remove" />
       <dependentAssembly xdt:Transform="Insert">
         <assemblyIdentity name="System.Data.SqlClient" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
@@ -463,6 +325,42 @@
       <dependentAssembly xdt:Transform="Insert">
         <assemblyIdentity name="Microsoft.Extensions.Options" publicKeyToken="adb9793829ddae60" culture="neutral" />
         <bindingRedirect oldVersion="0.0.0.0-2.2.0.0" newVersion="2.2.0.0" />
+      </dependentAssembly>
+      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Web.Cors')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="System.Web.Cors" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-5.2.7.0" newVersion="5.2.7.0" />
+      </dependentAssembly>
+      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Web.Cors')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="System.Web.Http.Cors" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-5.2.7.0" newVersion="5.2.7.0" />
+      </dependentAssembly>
+      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='Microsoft.ApplicationInsights')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="Microsoft.ApplicationInsights" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-2.9.1.0" newVersion="2.9.1.0" />
+      </dependentAssembly>
+      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='Microsoft.CodeAnalysis')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="Microsoft.CodeAnalysis" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='Microsoft.CodeAnalysis.CSharp')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="Microsoft.CodeAnalysis.CSharp" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Collections.Immutable')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="System.Collections.Immutable" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-1.2.3.0" newVersion="1.2.3.0" />
+      </dependentAssembly>
+      <!-- The order of these is important, and System.Net.Http.Formatting has to come late in the list -->
+      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Net.Http.Formatting')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="System.Net.Http.Formatting" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-5.2.7.0" newVersion="5.2.7.0" />
       </dependentAssembly>
     </assemblyBinding>
 
@@ -544,6 +442,8 @@
       <error statusCode="403" subStatusCode="-1" path="/httpstatus/forbidden" responseMode="ExecuteURL"/>
       <remove statusCode="404" subStatusCode="-1"/>
       <error statusCode="404" subStatusCode="-1" path="/httpstatus/notfound" responseMode="ExecuteURL"/>
+      <remove statusCode="410" subStatusCode="-1"/>
+      <error statusCode="410" subStatusCode="-1" path="/httpstatus/gone" responseMode="ExecuteURL"/>
       <remove statusCode="500" subStatusCode="-1"/>
       <error statusCode="500" subStatusCode="-1" path="/httpstatus/internalservererror" responseMode="ExecuteURL"/>
     </httpErrors>
@@ -758,7 +658,7 @@
   <system.codedom xdt:Transform="Remove" />
   <system.codedom xdt:Transform="Insert">
     <compilers>
-      <compiler language="c#;cs;csharp" extension=".cs" type="Microsoft.CodeDom.Providers.DotNetCompilerPlatform.CSharpCodeProvider, Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" warningLevel="4" compilerOptions="/langversion:default /nowarn:1659;1699;1701" />
+      <compiler language="c#;cs;csharp" extension=".cs" type="Microsoft.CodeDom.Providers.DotNetCompilerPlatform.CSharpCodeProvider, Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" warningLevel="4" compilerOptions="/langversion:default /nowarn:1659;1699;1701" />
     </compilers>
   </system.codedom>
   

@@ -1,5 +1,6 @@
 @inherits System.Web.Mvc.WebViewPage<Umbraco.Forms.Mvc.Models.FormViewModel>
 @using ClientDependency.Core.Mvc
+@using Newtonsoft.Json
 @using Umbraco.Forms.Mvc
 @using Umbraco.Forms.MVC.Extensions
 @using Umbraco.Forms.Web
@@ -9,28 +10,14 @@
     var nonce = Guid.NewGuid().ToString().Replace("-", String.Empty);
     new ContentSecurityPolicyHeaders(Response.Headers).AppendPolicy("script-src 'nonce-" + nonce + "'").UpdateHeaders();
 
-    var fieldsNotDisplayed = Model.Pages
-        .Select((x, index) => new { item = x, index = index })
-        .Where(x => x.index != Model.FormStep).Select(x => x.item)
-        .SelectMany(x => x.Fieldsets)
-        .SelectMany(x => x.Containers)
-        .SelectMany(x => x.Fields)
-        .ToDictionary(f => f.Id, f => string.IsNullOrWhiteSpace(f.Value) == false ? f.ValueAsHtmlString.ToHtmlString() : string.Empty);
-
-    var fieldSetConditions = Html.Raw(Model.FieldsetConditionsAsJson());
-    var fieldConditions = Html.Raw(Model.FieldConditionsAsJson());
-    var formId = Model.FormClientId;
-    var dateFormat = Html.ConvertDateFormat();
-    var recordValues = Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(fieldsNotDisplayed));
-
     // START: Ethnic group field
     //
-    // The 'Ethnic group' field type has two fields in the HTML returned to the client, 
+    // The 'Ethnic group' field type has two fields in the HTML returned to the client,
     // and the second is only needed if specific values are selected in the first.
     //
-    // Inject extra JSON into the conditions setup for this page of the form to cause the Umbraco Forms 
+    // Inject an extra condition for this page of the form to cause the Umbraco Forms
     // conditional code to handle that for us, so that we can be sure it behaves consistently.
-    var ethnicConditions = new List<string>();
+
     foreach (var fieldset in Model.CurrentPage.Fieldsets)
     {
         foreach (var group in fieldset.Containers)
@@ -39,74 +26,43 @@
             {
                 if (field.FieldTypeName == "Ethnic group")
                 {
-                    ethnicConditions.Add("'" + field.Id + @"-other': {
-    'id': '00000000-0000-0000-0000-000000000000',
-    'actionType': 'Show',
-    'logicType': 'Any',
-    'rules': [
-      {
-        'id': '00000000-0000-0000-0000-000000000000',
-        'fieldsetId': '" + fieldset.Id + @"',
-        'field': '" + field.Id + @"',
-        'operator': 'Contains',
-        'value': 'other'
-      },{
-        'id': '00000000-0000-0000-0000-000000000000',
-        'fieldsetId': '" + fieldset.Id + @"',
-        'field': '" + field.Id + @"',
-        'operator': 'Contains',
-        'value': 'Other'
-      }
-    ]
-  }");
+                    var rules = new List<Umbraco.Forms.Web.Models.ConditionRuleViewModel>();
+                    rules.Add(new Umbraco.Forms.Web.Models.ConditionRuleViewModel
+                    {
+                        Field = new Guid(field.Id),
+                        FieldsetId = new Guid(fieldset.Id),
+                        Operator = Umbraco.Forms.Core.FieldConditionRuleOperator.Contains,
+                        Value = "other"
+                    });
+                    var condition = new Umbraco.Forms.Web.Models.ConditionViewModel
+                    {
+                        ActionType = Umbraco.Forms.Core.FieldConditionActionType.Show,
+                        LogicType = Umbraco.Forms.Core.FieldConditionLogicType.All,
+                        Rules = rules
+                    };
+
+                    Model.FieldConditions.Add(new Guid("12345678-" + field.Id.Substring(9)), condition);
                 }
             }
         }
     }
-
-    if (ethnicConditions.Count > 0) {
-        var fieldConditionsJson = fieldConditions.ToHtmlString();
-        var ethnicConditionsJson = String.Join(",", ethnicConditions.ToArray<string>());
-        if (fieldConditionsJson == "{}")
-        {
-            fieldConditions = new HtmlString("{" + ethnicConditionsJson + "}");
-        }
-        else
-        {
-            fieldConditions = new HtmlString("{" + ethnicConditionsJson + "," + fieldConditionsJson.Substring(1));
-        }
-    }
     // END: Ethnic group field
 
-    var jsCommand = string.Format(@"
+    var formJsObj = new
+    {
+        formId = Model.FormClientId,
+        fieldSetConditions = Model.FieldsetConditions,
+        fieldConditions = Model.FieldConditions,
+        recordValues = Model.GetFieldsNotDisplayed()
+    };
 
-            var contourDateFormat = '{0}',
-                formId = '{1}',
-                fieldSetConditions = {2},
-                fieldConditions = {3},
-                recordvalues = {4};
-            
-            umbracoForms.dependencyCheck(formId);
-
-            var form = $('#umbraco_form_' + formId + ' .umbraco-forms-page');
-            var conditions = new umbracoForms.conditions(form, fieldSetConditions, fieldConditions, recordvalues);
-            conditions.watch();",
-
-            dateFormat,
-            formId,
-            fieldSetConditions,
-            fieldConditions,
-            recordValues);
-
-
-
-    Html.AddFormThemeScriptFile(Model, "~/App_Plugins/UmbracoForms/Assets/Themes/Default/umbracoforms-dependencies.js");
     Html.AddFormThemeScriptFile(Model, "~/App_Plugins/UmbracoForms/Assets/Themes/Default/umbracoforms.js");
-    Html.AddFormThemeScriptFile(Model, "~/App_Plugins/UmbracoForms/Assets/Themes/Default/umbracoforms-conditions.js");
-
-    Html.AddFormThemeScriptCommand(Model, jsCommand);
 }
 
+<script nonce="@nonce">
+    if (typeof umbracoFormsCollection === 'undefined') var umbracoFormsCollection = [];
+    umbracoFormsCollection.push(@Html.Raw(JsonConvert.SerializeObject(formJsObj)));
+</script>
 
 @* Only render out scripts on the page if the form has not been submitted yet *@
 @if (Model.SubmitHandled == false)
@@ -119,37 +75,29 @@
     {
         foreach (var partial in Model.CurrentPage.PartialViewFiles)
         {
-                @Html.Partial(partial.Value)
+            @Html.Partial(partial.Value)
         }
     }
 
 
-   @* Render references to javascript files needed by fields on the current page*@
-   foreach (var script in Html.GetThemeScriptFiles(Model))
-   {
-        if (Model.UseClientDependency)
-        {
-            Html.RequiresJs(script.Value);
-        }
-        else
-        {
-            <script type="text/javascript" src="@Url.Content(script.Value)"></script>
-        }
-    }
-    
-
-    var commands = Html.GetFormThemeScriptCommands(Model);
-   
-    @* Render javascript commands to initialise fields *@
-    if (commands.Count > 0)
+    @* Render references to javascript files needed by fields on the current page*@
+    if (Model.UseClientDependency)
     {
-        <script type="text/javascript" nonce="@nonce">
-            (function () {
-            @foreach (var cmd in commands.Values)
-            {
-          <text>@Html.Raw(cmd)</text>
-            }
-            }());
-        </script>
+        foreach (var script in Html.GetThemeScriptFiles(Model))
+        {
+            Html.RequiresJs(script.Value, Model.JavaScriptTagAttributes);
+        }
+
+        foreach (var css in Html.GetThemeCssFiles(Model))
+        {
+            Html.RequiresCss(css.Value);
+        }
     }
+    else
+    {
+        @Html.RenderFormsScripts(Url, Model, Model.JavaScriptTagAttributes)
+        @Html.RenderFormsStylesheets(Url, Model)
+    }
+
+    @Html.RenderFormsScriptCommands(Model)
 }

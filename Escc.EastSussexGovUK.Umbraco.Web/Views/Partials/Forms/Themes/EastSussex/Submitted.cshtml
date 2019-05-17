@@ -2,4 +2,9 @@
 
 <p class="umbraco-forms-submitmessage">
     @Model.MessageOnSubmit
-</p>	
+</p>
+
+@if (!ViewData.ModelState.IsValid || Model.SubmitHandled)
+{
+    @Html.Partial("Forms/Themes/default/ScrollToFormScript")
+}

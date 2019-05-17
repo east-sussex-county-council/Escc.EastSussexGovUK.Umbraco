@@ -82,7 +82,6 @@ global.asax
 */App_Plugins/EsccUmbracoForms*
 */Views/MacroPartials/*
 */Views/Partials/Forms/*
-!*/Views/Partials/Forms/DatePicker.cshtml
 !*/Views/Partials/Forms/Emails
 */Views/Partials/Forms/Emails/Example-Template.cshtml
 !*/Views/Partials/Forms/Themes
@@ -100,6 +99,7 @@ global.asax
 Escc.EastSussexGovUK.Umbraco.Web/App_Plugins/Escc.Umbraco.PropertyEditors.*/*
 Escc.EastSussexGovUK.Umbraco.Web/App_Plugins/Escc.Umbraco.DataTypes.MediaUsage
 Escc.EastSussexGovUK.Umbraco.Web/App_Plugins/EditorTools/*
+DocumentTypePicker
 DataTables
 */scripts/Escc.*
 apple-touch-*.png

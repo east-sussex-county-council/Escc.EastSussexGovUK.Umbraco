@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0"?>
 <configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
-    <!-- There's no command for "insert if missing" so this transform uses a workaround to ensure it'll work on any config file that has at least the root <configuration /> element.
+  <!-- There's no command for "insert if missing" so this transform uses a workaround to ensure it'll work on any config file that has at least the root <configuration /> element.
        The workaround is to insert the element you want regardless of whether it's already there, and if there are now two remove the second one. 
        
        The configSections element uses a similar but different workaround from http://stackoverflow.com/questions/18737022/xdt-transform-insertbefore-locator-condition-is-ignored
@@ -32,80 +32,6 @@
     <!-- END: Configure Umbraco -->
   </appSettings>
 
-  <runtime>
-    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1">
-      <dependentAssembly xdt:Transform="Remove" xdt:Locator="Condition(_defaultNamespace:assemblyIdentity/@name='MySql.Data')" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="MySql.Data" publicKeyToken="c5687fc88969c44d" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-6.9.12.0" newVersion="6.9.12.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Transform="Remove" xdt:Locator="Condition(_defaultNamespace:assemblyIdentity/@name='Microsoft.Azure.KeyVault.Core')" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="Microsoft.Azure.KeyVault.Core" publicKeyToken="31bf3856ad364e35" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-2.0.0.0" newVersion="2.0.0.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Transform="Remove" xdt:Locator="Condition(_defaultNamespace:assemblyIdentity/@name='Microsoft.Data.Edm')" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="Microsoft.Data.Edm" publicKeyToken="31bf3856ad364e35" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-5.8.3.0" newVersion="5.8.3.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Transform="Remove" xdt:Locator="Condition(_defaultNamespace:assemblyIdentity/@name='Microsoft.Data.OData')" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="Microsoft.Data.OData" publicKeyToken="31bf3856ad364e35" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-5.8.3.0" newVersion="5.8.3.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Transform="Remove" xdt:Locator="Condition(_defaultNamespace:assemblyIdentity/@name='Microsoft.Data.Services.Client')" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="Microsoft.Data.Services.Client" publicKeyToken="31bf3856ad364e35" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-5.8.3.0" newVersion="5.8.3.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='Microsoft.Win32.Primitives')" xdt:Transform="Remove" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="Microsoft.Win32.Primitives" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-4.0.1.0" newVersion="4.0.1.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Transform="Remove" xdt:Locator="Condition(_defaultNamespace:assemblyIdentity/@name='Microsoft.WindowsAzure.Storage')" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="Microsoft.WindowsAzure.Storage" publicKeyToken="31bf3856ad364e35" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-9.1.0.0" newVersion="9.1.0.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Security.Cryptography.X509Certificates')" xdt:Transform="Remove" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="System.Security.Cryptography.X509Certificates" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-4.1.0.0" newVersion="4.1.0.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Web.Extensions')" xdt:Transform="Remove" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="System.Web.Extensions" publicKeyToken="31bf3856ad364e35" />
-        <bindingRedirect oldVersion="1.0.0.0-1.1.0.0" newVersion="4.0.0.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Web.Extensions.Design')" xdt:Transform="Remove" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="System.Web.Extensions.Design" publicKeyToken="31bf3856ad364e35" />
-        <bindingRedirect oldVersion="1.0.0.0-1.1.0.0" newVersion="4.0.0.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Web.Helpers')" xdt:Transform="Remove" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="System.Web.Helpers" publicKeyToken="31bf3856ad364e35" />
-        <bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Web.Mvc')" xdt:Transform="Remove" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="System.Web.Mvc" publicKeyToken="31bf3856ad364e35" />
-        <bindingRedirect oldVersion="0.0.0.0-5.2.4.0" newVersion="5.2.4.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Web.WebPages')" xdt:Transform="Remove" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="System.Web.WebPages" publicKeyToken="31bf3856ad364e35" />
-        <bindingRedirect oldVersion="0.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
-      </dependentAssembly>
-      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='Escc.ActiveDirectory')" xdt:Transform="Remove" />
-      <dependentAssembly xdt:Transform="Insert">
-        <assemblyIdentity name="Escc.ActiveDirectory" publicKeyToken="06fad7304560ae6f" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-1.1.0.0" newVersion="1.1.0.0" />
-      </dependentAssembly>
-    </assemblyBinding>
-  </runtime>
   <system.web xdt:Transform="Insert" />
   <system.web xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.web[2])" />
 
@@ -127,6 +53,7 @@
     <customErrors mode="On" redirectMode="ResponseRewrite" xdt:Transform="Insert">
       <error statusCode="400" redirect="/httpstatus/badrequest" />
       <error statusCode="403" redirect="/httpstatus/forbidden" />
+      <error statusCode="410" redirect="/httpstatus/gone" />
       <error statusCode="500" redirect="/httpstatus/internalservererror" />
     </customErrors>
 
@@ -152,7 +79,7 @@
     <staticContent xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer/staticContent[2])" />
   </system.webServer>
 
-  <system.webServer> 
+  <system.webServer>
     <!-- Let Umbraco control 404 page at this level, but provide setting for lower levels to inherit -->
     <httpErrors xdt:Transform="Remove" />
     <httpErrors existingResponse="PassThrough" errorMode="Custom" xdt:Transform="Insert">
@@ -162,6 +89,8 @@
       <error statusCode="403" subStatusCode="-1" path="/httpstatus/forbidden" responseMode="ExecuteURL"/>
       <remove statusCode="404" subStatusCode="-1"/>
       <error statusCode="404" subStatusCode="-1" path="/httpstatus/notfound" responseMode="ExecuteURL"/>
+      <remove statusCode="410" subStatusCode="-1"/>
+      <error statusCode="410" subStatusCode="-1" path="/httpstatus/gone" responseMode="ExecuteURL"/>
       <remove statusCode="500" subStatusCode="-1"/>
       <error statusCode="500" subStatusCode="-1" path="/httpstatus/internalservererror" responseMode="ExecuteURL"/>
     </httpErrors>
@@ -208,4 +137,76 @@
       <requestFiltering removeServerHeader="true" xdt:Transform="SetAttributes(removeServerHeader)" />
     </security>
   </system.webServer>
+
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Web.Mvc')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="System.Web.Mvc" publicKeyToken="31bf3856ad364e35" />
+        <bindingRedirect oldVersion="0.0.0.0-5.2.7.0" newVersion="5.2.7.0" />
+      </dependentAssembly>
+      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Web.Http')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="System.Web.Http" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-5.2.7.0" newVersion="5.2.7.0" />
+      </dependentAssembly>
+      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Net.Http.Formatting')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="System.Net.Http.Formatting" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-5.2.7.0" newVersion="5.2.7.0" />
+      </dependentAssembly>
+      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='Microsoft.Owin.Host.SystemWeb')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="Microsoft.Owin.Host.SystemWeb" publicKeyToken="31BF3856AD364E35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-3.1.0.0" newVersion="3.1.0.0" />
+      </dependentAssembly>
+      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Web.Cors')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="System.Web.Cors" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-5.2.7.0" newVersion="5.2.7.0" />
+      </dependentAssembly>
+      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Web.Http.Cors')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="System.Web.Http.Cors" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-5.2.7.0" newVersion="5.2.7.0" />
+      </dependentAssembly>
+      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Web.Http.WebHost')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="System.Web.Http.WebHost" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-5.2.7.0" newVersion="5.2.7.0" />
+      </dependentAssembly>
+      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='Microsoft.Extensions.DependencyInjection.Abstractions')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="Microsoft.Extensions.DependencyInjection.Abstractions" publicKeyToken="adb9793829ddae60" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-2.2.0.0" newVersion="2.2.0.0" />
+      </dependentAssembly>
+      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='Microsoft.Extensions.Options')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="Microsoft.Extensions.Options" publicKeyToken="adb9793829ddae60" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-2.2.0.0" newVersion="2.2.0.0" />
+      </dependentAssembly>
+      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='Microsoft.CodeAnalysis')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="Microsoft.CodeAnalysis" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='Microsoft.CodeAnalysis.CSharp')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="Microsoft.CodeAnalysis.CSharp" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly xdt:Locator="Condition(asmv1:assemblyIdentity/@name='System.Collections.Immutable')" xdt:Transform="Remove" />
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="System.Collections.Immutable" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-1.2.3.0" newVersion="1.2.3.0" />
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+
+  <system.codedom xdt:Transform="Remove" />
+  <system.codedom xdt:Transform="Insert">
+    <compilers>
+      <compiler language="c#;cs;csharp" extension=".cs" type="Microsoft.CodeDom.Providers.DotNetCompilerPlatform.CSharpCodeProvider, Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" warningLevel="4" compilerOptions="/langversion:default /nowarn:1659;1699;1701" />
+    </compilers>
+  </system.codedom>
 </configuration>

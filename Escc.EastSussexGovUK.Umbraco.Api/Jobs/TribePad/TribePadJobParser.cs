@@ -78,21 +78,21 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         /// </summary>
         /// <param name="stream">The stream.</param>
         /// <returns></returns>
-        public async Task<JobsParseResult> Parse(Stream stream)
+        public async Task<IList<Job>> Parse(Stream stream)
         {
             await EnsureLookupValues();
 
             var xml = XDocument.Load(stream);
-            var parseResult = new JobsParseResult();
+            var jobs = new List<Job>();
 
             var jobsXml = xml.Root.Element("jobs").Elements("job");
 
             foreach (var jobXml in jobsXml)
             {
-                parseResult.Jobs.Add(await ParseJob(jobXml));
+                jobs.Add(await ParseJob(jobXml));
             }
 
-            return parseResult;
+            return jobs;
         }
 
         private async Task<Job> ParseJob(XElement jobXml)

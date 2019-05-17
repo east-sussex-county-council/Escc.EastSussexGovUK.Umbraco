@@ -3,7 +3,7 @@
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Escc.EastSussexGovUK.Umbraco.Web.Models.BaseViewModel>
 @{
     Layout = "~/Views/EastSussexGovUK/desktop.cshtml";
-    Html.RequiresJs(JsFileAlias.Resolve("DocumentMetadata"));
+    Html.RequiresJs("~/js/document-metadata.js");
     Html.RequiresJs("~/js/embed-jobs-rss.js");
 }
 @section ContentExperiment {
