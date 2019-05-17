@@ -75,7 +75,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             foreach (var resultsUrl in _resultsUrls)
             {
                 var stream = await ReadXml(resultsUrl, _proxy).ConfigureAwait(false);
-                jobs.Jobs.AddRange((await _jobResultsParser.Parse(stream)).Jobs);
+                jobs.Jobs.AddRange((await _jobResultsParser.Parse(stream)));
             }
             return jobs;
         }
