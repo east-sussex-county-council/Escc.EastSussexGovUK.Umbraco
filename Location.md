@@ -21,7 +21,6 @@ Data is published at the following URLs:
 * [https://www.eastsussex.gov.uk/data/counciloffices.kml](https://www.eastsussex.gov.uk/data/counciloffices.kml)
 * [https://www.eastsussex.gov.uk/data/daycentres.kml](https://www.eastsussex.gov.uk/data/daycentres.kml)
 * [https://www.eastsussex.gov.uk/data/libraries.kml](https://www.eastsussex.gov.uk/data/libraries.kml)
-* [https://www.eastsussex.gov.uk/data/mobilelibrarystops.kml](https://www.eastsussex.gov.uk/data/mobilelibrarystops.kml) 
 * [https://www.eastsussex.gov.uk/data/parks.kml](https://www.eastsussex.gov.uk/data/parks.kml)
 * [https://www.eastsussex.gov.uk/data/recyclingsites.kml](https://www.eastsussex.gov.uk/data/recyclingsites.kml)
 * [https://www.eastsussex.gov.uk/data/registrationoffices.kml](https://www.eastsussex.gov.uk/data/registrationoffices.kml)

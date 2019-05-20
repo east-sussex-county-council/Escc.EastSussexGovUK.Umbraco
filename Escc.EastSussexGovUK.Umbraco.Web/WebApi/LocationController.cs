@@ -23,10 +23,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.WebApi
         /// Lists locations filtered by the specified location types
         /// </summary>
         /// <param name="type">The types.</param>
-        /// <param name="acceptsWaste">If present, matching locations must accept one or more of these waste types.</param>
         /// <returns></returns>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes"), AcceptVerbs("GET")]
-        public HttpResponseMessage List([FromUri] string[] type, [FromUri] string[] acceptsWaste)
+        public HttpResponseMessage List([FromUri] string[] type)
         {
             if (type.Length == 0)
             {
@@ -37,30 +36,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.WebApi
             {
                 var model = new List<LocationApiResult>();
                 var types = new List<string>(type);
-                var requiredWasteTypes = new List<string>(acceptsWaste);
 
                 var homePage = Umbraco.TypedContentAtRoot().FirstOrDefault(child => child.DocumentTypeAlias == "HomePage");
                 if (homePage != null)
                 {
                     // Match on the document type alias
                     var locationPages = homePage.Descendants().Where(child => types.Contains(child.DocumentTypeAlias));
-
-                    // Match on the accepted waste type - any one of the required waste types is enough
-                    if (requiredWasteTypes.Count > 0)
-                    {
-                        locationPages = locationPages.Where(content =>
-                        {
-                            var allowedWasteTypes = new List<string>();
-
-                            var recycledWasteTypes = content.GetPropertyValue<IEnumerable<string>>("wasteTypes_Content");
-                            allowedWasteTypes.AddRange(recycledWasteTypes);
-
-                            var nonRecycledWasteTypes = content.GetPropertyValue<IEnumerable<string>>("acceptedWasteTypes_Content");
-                            allowedWasteTypes.AddRange(nonRecycledWasteTypes);
-
-                            return requiredWasteTypes.Any(wasteType => allowedWasteTypes.Contains(wasteType, StringComparer.OrdinalIgnoreCase));
-                        });
-                    }
 
                     // Return a result for each matching template
                     model.AddRange(locationPages.Select(content =>
