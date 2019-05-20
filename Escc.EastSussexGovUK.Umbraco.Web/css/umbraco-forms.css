@@ -1,6 +1,12 @@
 ﻿/* Umbraco Forms does this with an inline style, so move it here */
 .umbraco-forms-id, .condition-not-matched { display: none; }
 
+/* By default .service-form is overflow: hidden to keep the bottom margin of the last field inside the form container, but 
+   Umbraco Forms does that with extra divs. Meanwhile overflow: hidden creates a problem with pop-up privacy notices getting
+   cut off (particularly with the checkbox field type), so set it back to visible to allow those to show.
+*/
+.service-form { overflow: visible; }
+
 /* .radioButtonList is not normally within .formPart, but in Umbraco Forms it is */
 .formPart .radioButtonList { margin-top: 0; }
 .formPart .radioButtonList label { font-weight: normal; }

@@ -72,6 +72,10 @@
 
 
 
+
+
+
+
                 <div class="row-fluid columns-@(fs.Containers.Count)">
 
                     @foreach (var c in fs.Containers)
@@ -124,6 +128,10 @@
 
 
 
+
+
+
+
         }
     </div>
 
@@ -170,5 +178,5 @@
 
 @if (!ViewData.ModelState.IsValid || Model.SubmitHandled)
 {
-    @Html.Partial("Forms/Themes/default/ScrollToFormScript")
+    <script src="~/js/forms-scroll-to-script.js"></script>
 }

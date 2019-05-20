@@ -15,6 +15,7 @@ using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
 using Escc.EastSussexGovUK.Mvc;
 using System.Threading.Tasks;
+using HtmlAgilityPack;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.Forms
 {
@@ -43,6 +44,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Forms
             modelBuilder.PopulateBaseViewModelWithInheritedContent(viewModel,
                 new UmbracoLatestService(model.Content),
                 null, null, null, null);
+
+            // Prevent the sitewide JQuery from loading because Umbraco Forms needs a newer one, and can't cope with both being on the same page.
+            // The version loaded for use by Umbraco Forms handles the sitewide requirements.
+            var sitewideScripts = new HtmlDocument();
+            sitewideScripts.LoadHtml(viewModel.TemplateHtml.Scripts.ToHtmlString());
+            var jquery = sitewideScripts.DocumentNode.ChildNodes.FirstOrDefault(x => x.Attributes["src"] != null && x.Attributes["src"].Value.EndsWith("jquery.min.js", StringComparison.OrdinalIgnoreCase));
+            if (jquery != null) { jquery.ParentNode.RemoveChild(jquery); }
+            viewModel.TemplateHtml.Scripts = new HtmlString(sitewideScripts.DocumentNode.OuterHtml);
 
             return CurrentTemplate(viewModel);
         }
