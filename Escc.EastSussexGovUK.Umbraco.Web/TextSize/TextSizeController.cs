@@ -1,7 +1,10 @@
 using System;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Escc.EastSussexGovUK.Mvc;
 using Escc.Web;
+using Exceptionless;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.TextSize
 {
@@ -12,7 +15,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.TextSize
     public class TextSizeController : Controller
     {
         // GET: Sets a cookie based on a querystring parameter, which has the effect of changing the sitewide text size
-        public ActionResult Change()
+        public async Task<ActionResult> Change()
         {
             var model = new TextSizeViewModel
             {
@@ -40,6 +43,18 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.TextSize
                 referrerQuery.Add("nocache", Guid.NewGuid().ToString());
                 var redirectTo = new Uri(Request.UrlReferrer.Scheme + "://" + Request.UrlReferrer.Authority + Request.UrlReferrer.AbsolutePath + "?" + referrerQuery);
                 new HttpStatus().SeeOther(redirectTo);
+            }
+
+            var templateRequest = new EastSussexGovUKTemplateRequest(Request);
+            try
+            {
+                // Do this to load the template controls.
+                model.TemplateHtml = await templateRequest.RequestTemplateHtmlAsync().ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                // Catch and report exceptions - don't throw them and cause the page to fail
+                ex.ToExceptionless().Submit();
             }
 
             return View(model);
