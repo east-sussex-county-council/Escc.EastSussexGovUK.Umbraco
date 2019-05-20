@@ -8,7 +8,7 @@
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<RightsOfWayModificationsViewModel>
 @{
     Model.EsccWebsiteView = new MvcViewSelector().CurrentViewIs(Layout);
-    Model.Metadata.PageUrl = new Uri(Request.Url.Scheme + "://" + Request.Url.Authority + Request.Url.AbsolutePath);
+    Model.Metadata.CanonicalPageUrl = new Uri(Request.Url.Scheme + "://" + Request.Url.Authority + Request.Url.AbsolutePath);
     Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
     {
         new WebChat() { WebChatSettings = Model.WebChat }
