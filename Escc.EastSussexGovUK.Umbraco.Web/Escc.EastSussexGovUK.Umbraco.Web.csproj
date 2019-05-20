@@ -1095,6 +1095,7 @@
     <Content Include="css\TinyMCE-Content.css" />
     <Content Include="css\TinyMCE-StyleSelector-Headings.css" />
     <Content Include="css\umbraco-forms.css" />
+    <Content Include="css\umbraco-preview.css" />
     <Content Include="default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -1108,6 +1109,7 @@
     <Content Include="js\iframeResizer.js" />
     <Content Include="js\libs\find-address.min.js" />
     <Content Include="js\forms-scroll-to-script.js" />
+    <Content Include="js\umbraco-preview.js" />
     <Content Include="robots.txt" />
     <Content Include="scripts\Escc.Umbraco.Forms.FieldTypes\FieldType.Url.js" />
     <Content Include="Skins\RegistrationAcademy\academy-logo.png" />
