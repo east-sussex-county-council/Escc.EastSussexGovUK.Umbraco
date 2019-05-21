@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
 using Escc.EastSussexGovUK.Umbraco.Web.MicrosoftCmsMigration.Placeholders;
-using Escc.Umbraco.Media;
 using Humanizer;
-using Umbraco.Core.Models;
 using Umbraco.Web;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.MicrosoftCmsMigration
@@ -93,50 +88,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.MicrosoftCmsMigration
                 
                 return collection;
             }
-        }
-
-        /// <summary>
-        /// Shows the caption.
-        /// </summary>
-        /// <param name="imagePlaceholderName">Name of the image placeholder.</param>
-        /// <param name="altAsCaptionPlaceholderName">Name of the alt as caption placeholder.</param>
-        /// <param name="captionControl">The caption control.</param>
-        /// <param name="altTextControl">The alt text control.</param>
-        public static void ShowCaption(string imagePlaceholderName, string altAsCaptionPlaceholderName, Control captionControl, HtmlContainerControl altTextControl)
-        {
-            if (captionControl == null) throw new ArgumentNullException("captionControl");
-            if (altTextControl == null) throw new ArgumentNullException("altTextControl");
-
-            captionControl.Visible = false;
-            altTextControl.Visible = false;
-            
-            if (UmbracoContext.Current == null || !UmbracoContext.Current.PageId.HasValue) return;
-
-            var content = UmbracoContext.Current.ContentCache.GetById(UmbracoContext.Current.PageId.Value);
-            if (content == null) return;
-
-            var imageData = content.GetPropertyValue<IPublishedContent>(imagePlaceholderName + "_Content");
-            if (imageData == null) return;
-
-            var useAltAsCaption = content.GetPropertyValue<bool>(altAsCaptionPlaceholderName + "_Content");
-            
-            if (useAltAsCaption)
-            {
-                    altTextControl.InnerText = HttpUtility.HtmlDecode(imageData.Name);
-            }
-            //copy alt text
-            captionControl.Visible = (!useAltAsCaption);
-            altTextControl.Visible = (useAltAsCaption);
-        }
-
-        /// <summary>
-        /// Get the size (in kilobytes) of an item in the Resource Gallery
-        /// </summary>
-        /// <param name="res">The resource to return the size of</param>
-        /// <returns>string with the size in kilobytes followed by a lowercase k, eg 123k</returns>
-        public static string GetResourceFileSize(MediaValues res)
-        {
-            return MediaHelper.GetFileSizeInKilobytes(res);
         }
     }
 }

@@ -35,7 +35,3 @@ This is an example of the XML format, showing the three possible time periods: t
 3. In the same section, select the term dates data in the 'Section [number]: image 1' field. All other fields in the section are ignored.
 
 If no term dates data is selected, the term dates section is left blank. If the wrong kind of file is selected an `XmlException` is thrown with the message "Invalid character in the given encoding. Line 1, position 1."
-
-## Standard download page - file descriptions
-
-In Microsoft CMS files uploaded to the Resource Gallery could have a description, and this was used by the Standard Download Page template. To preserve this functionality you need to add a `Description` property with the alias `Description` to the `File` media type that comes with Umbraco, using the `Textbox multiple` data type.
