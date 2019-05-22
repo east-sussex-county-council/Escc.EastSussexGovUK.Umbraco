@@ -2,6 +2,7 @@
 
 This project is the root of our [Umbraco](http://umbraco.com/) installation for [www.eastsussex.gov.uk](https://www.eastsussex.gov.uk) and includes:
 
+* [Home page](HomePage.md)
 * [Jobs](Jobs.md)
 * [Forms](Forms.md)
 * [Locations, including libraries and recycling sites](Location.md)
