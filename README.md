@@ -12,10 +12,11 @@ This project is the root of our [Umbraco](http://umbraco.com/) installation for 
 
 The solution is broken up into several subprojects:
 
-* `Escc.EastSussexGovUK.Umbraco.Web` is the main Umbraco website. 
-* `Escc.EastSussexGovUK.Umbraco.Api` is a separate copy of Umbraco which hosts the Examine index for jobs data. See [Jobs](Jobs.md). 
-* `Escc.Jobs.SendAlerts` sends job alerts when run as a scheduled task.
-* `Escc.EastSussexGovUK.Umbraco` contains any code which needs to be shared between two or more of the above projects.
+*  `Escc.EastSussexGovUK.Umbraco.Web` is the main Umbraco website. 
+*  `Escc.EastSussexGovUK.Umbraco.Api` is a separate copy of Umbraco which hosts the Examine index for jobs data. See [Jobs](Jobs.md). 
+*  `Escc.Jobs.UpdateIndexes` updates the Examine indexes for jobs when run as a scheduled task. 
+*  `Escc.Jobs.SendAlerts` sends job alerts when run as a scheduled task.
+*  `Escc.EastSussexGovUK.Umbraco` contains any code which needs to be shared between two or more of the above projects.
 
 ## Development setup steps
 
