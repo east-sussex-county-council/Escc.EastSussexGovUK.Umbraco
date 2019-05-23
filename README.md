@@ -4,7 +4,8 @@ This project is the root of our [Umbraco](http://umbraco.com/) installation for 
 
 * [Home page](HomePage.md)
 * [Jobs](Jobs.md)
-* [Forms](Forms.md)
+* [Umbraco Forms](UmbracoForms.md)
+* [iCasework Forms](ICasework.md)
 * [Locations, including libraries and recycling sites](Location.md)
 * [Service alerts](ServiceAlerts.md)
 * [Banners](Banners.md)

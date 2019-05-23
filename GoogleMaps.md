@@ -1,6 +1,6 @@
 # Embedding Google Maps
 
-Any property using an instance of the rich text property editor that's configured to load `TinyMCE-StyleSelector-Embed.css` will offer the ability to select a link an apply an `Embed link (eg video, map)` option. This applies a `.embed` class. 
+Any property using an instance of the rich text property editor that's configured to load `TinyMCE-StyleSelector-Embed.css` will offer the ability to select a link and apply an `Embed link (eg video, map)` option. This applies a `.embed` class. 
 
 `embed-googlemaps.js` in the `Escc.EastSussexGovUK.TemplateSource` project looks for the `.embed` class surrounding a link format that it knows how to convert to a Google Map, and converts it.
 
