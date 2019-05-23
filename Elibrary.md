@@ -1,6 +1,4 @@
-# Common features across all Umbraco document types
-
-## Transforming Elibrary links
+# Transforming Elibrary links
 
 Our website may contain many hundreds of links to the elibrary, and when the provider for the elibrary changes all of those links need to be replaced at once. To make that manageable we instead recommend linking to our own consistent URLs in the back-office, which are then transformed to the format required by the current elibrary provider before they are displayed to users.
 
