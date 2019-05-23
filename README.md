@@ -9,6 +9,7 @@ This project is the root of our [Umbraco](http://umbraco.com/) installation for 
 * [Service alerts](ServiceAlerts.md)
 * [Banners](Banners.md)
 * [Old templates migrated from Microsoft CMS](MicrosoftCms.md)
+* [Common features across all Umbraco document types](Common.md)
 
 The solution is broken up into several subprojects:
 
