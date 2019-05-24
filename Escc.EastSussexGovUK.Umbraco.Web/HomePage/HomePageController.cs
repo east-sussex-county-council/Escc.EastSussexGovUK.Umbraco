@@ -76,6 +76,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.HomePage
             }
 
             viewModel.RecyclingSiteSearch.WasteTypes = new List<string>(WasteTypesController.WasteTypes);
+            viewModel.RecyclingSiteSearch.WasteTypes.Insert(0, string.Empty);
 
             return CurrentTemplate(viewModel);
         }
