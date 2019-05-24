@@ -66,14 +66,14 @@
     <Reference Include="Escc.Dates, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Dates.3.0.0\lib\netstandard2.0\Escc.Dates.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.Elibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Elibrary.1.1.0\lib\Escc.Elibrary.dll</HintPath>
+    <Reference Include="Escc.Elibrary, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Elibrary.1.2.0\lib\netstandard2.0\Escc.Elibrary.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Net, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Net.3.0.0\lib\netstandard2.0\Escc.Net.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Services, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Services.3.0.1\lib\Escc.Services.dll</HintPath>
+      <HintPath>..\packages\Escc.Services.3.0.2\lib\Escc.Services.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.7.0.2\lib\net452\Escc.Umbraco.dll</HintPath>

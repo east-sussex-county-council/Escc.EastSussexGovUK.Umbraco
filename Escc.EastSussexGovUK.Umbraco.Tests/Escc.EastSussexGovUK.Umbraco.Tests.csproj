@@ -76,7 +76,7 @@
       <HintPath>..\packages\Escc.Html.3.0.0\lib\netstandard2.0\Escc.Html.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Services, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Services.3.0.1\lib\Escc.Services.dll</HintPath>
+      <HintPath>..\packages\Escc.Services.3.0.2\lib\Escc.Services.dll</HintPath>
     </Reference>
     <Reference Include="Examine, Version=0.1.89.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Examine.0.1.89\lib\net45\Examine.dll</HintPath>

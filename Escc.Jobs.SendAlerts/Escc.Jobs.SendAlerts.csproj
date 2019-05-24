@@ -39,10 +39,10 @@
       <HintPath>..\packages\Escc.Net.3.0.0\lib\netstandard2.0\Escc.Net.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Services, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Services.3.0.1\lib\Escc.Services.dll</HintPath>
+      <HintPath>..\packages\Escc.Services.3.0.2\lib\Escc.Services.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Services.Azure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Services.Azure.2.1.2\lib\Escc.Services.Azure.dll</HintPath>
+      <HintPath>..\packages\Escc.Services.Azure.2.1.4\lib\Escc.Services.Azure.dll</HintPath>
     </Reference>
     <Reference Include="Exceptionless, Version=4.3.2027.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Exceptionless.4.3.2027\lib\net45\Exceptionless.dll</HintPath>
