@@ -3192,6 +3192,7 @@
     <Content Include="uSync\Snapshots\20190517_131718_umbraco-upgraded-714.0\Template\standardlandingpage\standardLandingPage.config" />
     <Content Include="uSync\Snapshots\20190517_131718_umbraco-upgraded-714.0\Template\standardtopicpage\standardTopicPage.config" />
     <Content Include="uSync\Snapshots\20190517_131718_umbraco-upgraded-714.0\Template\task\Task.config" />
+    <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.DataConsent.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
