@@ -80,12 +80,7 @@
                         <td bgcolor="#ffffff" style="padding: 10px 30px 40px 30px; color: #303033; font-family: Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
                             @{ var ukNow = DateTime.Now.ToUkDateTime(); }
                             <p>Someone filled in your form at @ukNow.ToBritishTime() on @ukNow.ToBritishDateWithDay().</p>
-                            @{ 
-                                var formEntryId = Model.Fields.FirstOrDefault(field => field.Alias.ToUpperInvariant() == "FORMENTRYID");
-                                var formEntry = (formEntryId != null ? "edit/" + String.Join("?entry=", formEntryId.FieldValue) : String.Empty);
-                                <p><a href="@siteDomain/umbraco/#/forms/FormEntries/@formEntry" style="color:#003c69">View the new form entry</a></p>
-                            }
-
+                            <p><a href="@siteDomain/umbraco/#/forms/FormEntries/edit/@Model.FormId?entry=@Model.EntryUniqueId" style="color:#003c69">View the new form entry</a></p>
                         </td>
                     </tr>
                 </table>
