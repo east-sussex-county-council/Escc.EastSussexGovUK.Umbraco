@@ -137,8 +137,8 @@
     <Reference Include="Escc.FormControls.WebForms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.FormControls.WebForms.4.0.0\lib\Escc.FormControls.WebForms.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.Geo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Geo.1.1.0\lib\Escc.Geo.dll</HintPath>
+    <Reference Include="Escc.Geo, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Geo.1.2.0\lib\netstandard2.0\Escc.Geo.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Html, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Html.3.0.0\lib\netstandard2.0\Escc.Html.dll</HintPath>
@@ -153,7 +153,7 @@
       <HintPath>..\packages\Escc.Net.3.0.0\lib\netstandard2.0\Escc.Net.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Net.Configuration, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Net.Configuration.2.0.0\lib\net462\Escc.Net.Configuration.dll</HintPath>
+      <HintPath>..\packages\Escc.Net.Configuration.2.0.1\lib\net462\Escc.Net.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Redirects, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Redirects.4.0.0\lib\netstandard2.0\Escc.Redirects.dll</HintPath>
