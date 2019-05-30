@@ -134,7 +134,7 @@
     <MediaIdProviders>
       <add key="MediaPickerIdProvider" value="Umbraco.MediaPicker,Umbraco.MultipleMediaPicker,Umbraco.MultiNodeTreePicker" />
       <add key="GridHtmlMediaIdProvider" value="Umbraco.Grid" />
-      <add key="HtmlMediaIdProvider" value="Umbraco.TinyMCEv3" />
+      <add key="HtmlMediaIdProvider" value="Umbraco.TinyMCEv3,Escc.Umbraco.PropertyEditors.RichTextPropertyEditor" />
       <add key="RelatedLinksIdProvider" value="Umbraco.RelatedLinks" />
       <add key="UrlMediaIdProvider" value="Escc.Umbraco.PropertyEditors.UrlPropertyEditor" />
     </MediaIdProviders>
