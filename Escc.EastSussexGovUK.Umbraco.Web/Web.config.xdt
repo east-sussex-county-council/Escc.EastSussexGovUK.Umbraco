@@ -298,6 +298,8 @@
     <ContentSecurityPolicies>
       <add key="iCaseWork" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="iCaseWork" value="frame-src https://*.icasework.com" xdt:Transform="Insert" />
+      <add key="CouncilPlan" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="CouncilPlan" value="object-src https://eastsussexgovuk.blob.core.windows.net; frame-src 'self' https://eastsussexgovuk.blob.core.windows.net https://new.eastsussex.gov.uk;" xdt:Transform="Insert"/>
     </ContentSecurityPolicies>
   </Escc.Web>
 
