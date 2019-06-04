@@ -126,10 +126,6 @@
     <Reference Include="Escc.Elibrary, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Elibrary.1.2.0\lib\netstandard2.0\Escc.Elibrary.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.Exceptions.Soap, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Exceptions.Soap.1.0.0\lib\Escc.Exceptions.Soap.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Escc.FindAddress.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.FindAddress.Mvc.3.0.1\lib\net452\Escc.FindAddress.Mvc.dll</HintPath>
     </Reference>
