@@ -18,6 +18,7 @@
 .checkbox { position: relative; }
 .checkbox label { padding-left: 20px; }
 .checkbox input { position: absolute; top: .5em; left: 0; }
+.checkbox .field-validation-error { font-weight: normal; }
 
 /* Umbraco Forms renders inline errors with this class */
 .field-validation-error { color: #b21313; }
