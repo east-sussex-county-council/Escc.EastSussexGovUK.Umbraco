@@ -16,17 +16,20 @@
         htmlDoc.LoadHtml(checkboxLabel);
 
         var links = htmlDoc.DocumentNode.SelectNodes("//a");
-        foreach (var link in links)
+        if (links != null)
         {
-            link.SetAttributeValue("target", "_blank");
-            if (!link.GetAttributeValue("data-udi", String.Empty).StartsWith("umb://media"))
+            foreach (var link in links)
             {
-                link.InnerHtml = link.InnerHtml += "<span class=\"aural\"> (opens new window)</span>";
-                var surrounding = new HtmlNode(HtmlNodeType.Element, htmlDoc, 0);
-                surrounding.Name = "span";
-                surrounding.SetAttributeValue("class", "new-window");
-                link.ParentNode.ReplaceChild(surrounding, link);
-                surrounding.PrependChild(link);
+                link.SetAttributeValue("target", "_blank");
+                if (!link.GetAttributeValue("data-udi", String.Empty).StartsWith("umb://media"))
+                {
+                    link.InnerHtml = link.InnerHtml += "<span class=\"aural\"> (opens new window)</span>";
+                    var surrounding = new HtmlNode(HtmlNodeType.Element, htmlDoc, 0);
+                    surrounding.Name = "span";
+                    surrounding.SetAttributeValue("class", "new-window");
+                    link.ParentNode.ReplaceChild(surrounding, link);
+                    surrounding.PrependChild(link);
+                }
             }
         }
 
