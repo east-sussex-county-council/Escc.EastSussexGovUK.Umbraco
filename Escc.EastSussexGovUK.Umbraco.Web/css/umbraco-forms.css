@@ -28,7 +28,12 @@
 .validation-summary-valid { display: none; }
 
 /* By default the error message for fields with maximum widths displays inline after the field, which means it wraps awkwardly below it */
-.phonenumber .field-validation-error, .emailaddress .field-validation-error, .url .field-validation-error { display: block; }
+.phonenumber .field-validation-error,
+.datepicker .field-validation-error,
+.emailaddress .field-validation-error,
+.url .field-validation-error {
+    display: block;
+}
 
 /* URL fields need to be as long as possible, but not have a set width which causes it to overflow the containing box */
 .umbraco-forms-field.url input[type=text],.umbraco-forms-field.url input[type=url] { width: 100%; }
