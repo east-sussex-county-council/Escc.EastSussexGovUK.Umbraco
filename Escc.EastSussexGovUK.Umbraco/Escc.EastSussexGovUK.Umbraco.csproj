@@ -78,8 +78,8 @@
     <Reference Include="Escc.Umbraco, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.7.0.2\lib\net452\Escc.Umbraco.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Web.1.1.2\lib\Escc.Web.dll</HintPath>
+    <Reference Include="Escc.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Web.2.0.0\lib\Escc.Web.dll</HintPath>
     </Reference>
     <Reference Include="Examine, Version=0.1.89.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Examine.0.1.89\lib\net45\Examine.dll</HintPath>

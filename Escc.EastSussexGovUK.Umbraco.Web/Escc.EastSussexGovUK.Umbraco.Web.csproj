@@ -92,11 +92,11 @@
     <Reference Include="EPPlus, Version=4.0.5.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoForms.Core.7.1.1\lib\EPPlus.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.ActiveDirectory, Version=1.1.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.ActiveDirectory.2.1.1\lib\Escc.ActiveDirectory.dll</HintPath>
+    <Reference Include="Escc.ActiveDirectory, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.ActiveDirectory.3.0.0\lib\Escc.ActiveDirectory.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.AddressAndPersonalDetails, Version=4.0.1.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.AddressAndPersonalDetails.4.0.1\lib\netstandard2.0\Escc.AddressAndPersonalDetails.dll</HintPath>
+    <Reference Include="Escc.AddressAndPersonalDetails, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.AddressAndPersonalDetails.5.0.0\lib\netstandard2.0\Escc.AddressAndPersonalDetails.dll</HintPath>
     </Reference>
     <Reference Include="Escc.BasicAuthentication.WebApi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.BasicAuthentication.WebApi.1.0.3\lib\net45\Escc.BasicAuthentication.WebApi.dll</HintPath>
@@ -104,33 +104,33 @@
     <Reference Include="Escc.ClientDependencyFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.ClientDependencyFramework.2.0.1\lib\Escc.ClientDependencyFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.ClientDependencyFramework.WebForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.ClientDependencyFramework.WebForms.2.1.2\lib\Escc.ClientDependencyFramework.WebForms.dll</HintPath>
+    <Reference Include="Escc.ClientDependencyFramework.WebForms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.ClientDependencyFramework.WebForms.3.0.0\lib\Escc.ClientDependencyFramework.WebForms.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Dates, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Dates.3.0.0\lib\netstandard2.0\Escc.Dates.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.EastSussexGovUK, Version=15.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.EastSussexGovUK.15.0.0\lib\netstandard2.0\Escc.EastSussexGovUK.dll</HintPath>
+    <Reference Include="Escc.EastSussexGovUK, Version=16.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.EastSussexGovUK.16.0.0\lib\netstandard2.0\Escc.EastSussexGovUK.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.EastSussexGovUK.Mvc.10.0.2\lib\net472\Escc.EastSussexGovUK.Mvc.dll</HintPath>
+      <HintPath>..\packages\Escc.EastSussexGovUK.Mvc.11.0.0\lib\net472\Escc.EastSussexGovUK.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.Rss, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.EastSussexGovUK.Rss.2.0.0\lib\Escc.EastSussexGovUK.Rss.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.TemplateSource, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.4\lib\Escc.EastSussexGovUK.TemplateSource.dll</HintPath>
+      <HintPath>..\packages\Escc.EastSussexGovUK.TemplateSource.2.0.0\lib\Escc.EastSussexGovUK.TemplateSource.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Elibrary, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Elibrary.1.2.0\lib\netstandard2.0\Escc.Elibrary.dll</HintPath>
     </Reference>
     <Reference Include="Escc.FindAddress.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.FindAddress.Mvc.3.0.1\lib\net452\Escc.FindAddress.Mvc.dll</HintPath>
+      <HintPath>..\packages\Escc.FindAddress.Mvc.4.0.0\lib\net452\Escc.FindAddress.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Escc.FormControls.WebForms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.FormControls.WebForms.4.0.0\lib\Escc.FormControls.WebForms.dll</HintPath>
+      <HintPath>..\packages\Escc.FormControls.WebForms.5.0.0\lib\Escc.FormControls.WebForms.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Geo, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Geo.1.2.0\lib\netstandard2.0\Escc.Geo.dll</HintPath>
@@ -141,8 +141,8 @@
     <Reference Include="Escc.Metadata, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Metadata.1.0.0\lib\netstandard2.0\Escc.Metadata.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.NavigationControls.WebForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.NavigationControls.WebForms.1.1.0\lib\Escc.NavigationControls.WebForms.dll</HintPath>
+    <Reference Include="Escc.NavigationControls.WebForms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.NavigationControls.WebForms.2.0.0\lib\Escc.NavigationControls.WebForms.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Net, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Net.3.0.0\lib\netstandard2.0\Escc.Net.dll</HintPath>
@@ -154,10 +154,10 @@
       <HintPath>..\packages\Escc.Redirects.4.0.0\lib\netstandard2.0\Escc.Redirects.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Redirects.Handlers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Redirects.Handlers.1.0.0\lib\Escc.Redirects.Handlers.dll</HintPath>
+      <HintPath>..\packages\Escc.Redirects.Handlers.2.0.0\lib\Escc.Redirects.Handlers.dll</HintPath>
     </Reference>
     <Reference Include="Escc.RubbishAndRecycling.SiteFinder.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.RubbishAndRecycling.SiteFinder.4.0.0\lib\Escc.RubbishAndRecycling.SiteFinder.Website.dll</HintPath>
+      <HintPath>..\packages\Escc.RubbishAndRecycling.SiteFinder.5.0.0\lib\Escc.RubbishAndRecycling.SiteFinder.Website.dll</HintPath>
     </Reference>
     <Reference Include="Escc.ServiceClosures, Version=5.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.ServiceClosures.5.0.1\lib\netstandard2.0\Escc.ServiceClosures.dll</HintPath>
@@ -187,19 +187,19 @@
       <HintPath>..\packages\Escc.Umbraco.Forms.FieldTypes.2.0.0\lib\Escc.Umbraco.Forms.FieldTypes.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.Forms.Security, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.Forms.Security.2.0.0\lib\Escc.Umbraco.Forms.Security.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.Forms.Security.3.0.0\lib\Escc.Umbraco.Forms.Security.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.Forms.Workflows, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.Forms.Workflows.4.0.0\lib\Escc.Umbraco.Forms.Workflows.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.HeatmapAnalytics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.HeatmapAnalytics.4.0.0\lib\net452\Escc.Umbraco.HeatmapAnalytics.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.HeatmapAnalytics.5.0.0\lib\net472\Escc.Umbraco.HeatmapAnalytics.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.MediaSync, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.MediaSync.4.0.0\lib\net452\Escc.Umbraco.MediaSync.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.PropertyEditors, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.PropertyEditors.8.0.0\lib\net452\Escc.Umbraco.PropertyEditors.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.PropertyEditors.9.0.0\lib\net452\Escc.Umbraco.PropertyEditors.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.RecycleBinManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.RecycleBinManager.2.0.0\lib\Escc.Umbraco.RecycleBinManager.dll</HintPath>
@@ -208,8 +208,8 @@
       <HintPath>..\packages\Escc.Umbraco.SiteMap.1.2.3\lib\Escc.Umbraco.SiteMap.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Escc.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Web.1.1.2\lib\Escc.Web.dll</HintPath>
+    <Reference Include="Escc.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Web.2.0.0\lib\Escc.Web.dll</HintPath>
     </Reference>
     <Reference Include="Examine, Version=0.1.89.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Examine.0.1.89\lib\net45\Examine.dll</HintPath>
@@ -1101,8 +1101,8 @@
     <Content Include="js\libs\bootstrap\tab.js" />
     <Content Include="js\libs\bootstrap\util.js" />
     <Content Include="js\iframeResizer.js" />
-    <Content Include="js\libs\find-address.min.js" />
     <Content Include="js\forms-scroll-to-script.js" />
+    <Content Include="js\libs\find-address.min.js" />
     <Content Include="js\umbraco-preview.js" />
     <Content Include="robots.txt" />
     <Content Include="scripts\Escc.Umbraco.Forms.FieldTypes\FieldType.Url.js" />
@@ -1183,12 +1183,6 @@
     <Content Include="Config\uSyncBackOffice.Config" />
     <Content Include="Config\uSyncSnapshot.config" />
     <Content Include="App_Plugins\uSyncSnapshots\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PhonePropertyEditor\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor\package.manifest" />
-    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\package.manifest" />
     <Content Include="Umbraco\Actions\delete.aspx" />
     <Content Include="Umbraco\Actions\editContent.aspx" />
     <Content Include="Umbraco\Actions\preview.aspx" />
@@ -2583,8 +2577,6 @@
     <Content Include="Umbraco_Client\Ui\json2.js" />
     <Content Include="Umbraco_Client\Ui\knockout.js" />
     <Content Include="Umbraco_Client\Ui\knockout.mapping.js" />
-    <Content Include="Views\Topic\TopicSection_RecyclingSiteFinder.ascx" />
-    <Content Include="windows-tile.png" />
     <Content Include="App_Plugins\ModelsBuilder\package.manifest" />
     <Content Include="Config\scripting.config" />
     <Content Include="Config\log4net.config" />
@@ -2640,6 +2632,14 @@
     <Content Include="App_Plugins\EditorTools\Content\bootstrap-theme.css.map" />
     <Content Include="Config\uMediaSync.config" />
     <Content Include="App_Plugins\Escc.Umbraco.DataTypes.MediaUsage\package.manifest" />
+    <Content Include="Views\Topic\TopicSection_RecyclingSiteFinder.ascx" />
+    <Content Include="windows-tile.png" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UrlPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.UkLocationPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.RichTextPropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PhonePropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.PersonNamePropertyEditor\package.manifest" />
+    <Content Include="App_Plugins\Escc.Umbraco.PropertyEditors.EmailAddressPropertyEditor\package.manifest" />
     <None Include="Jobs\Images\East Sussex Jobs logo colour.png" />
     <None Include="Jobs\Images\East Sussex Jobs logo white.png" />
     <None Include="Jobs\Images\header.png" />
@@ -2759,13 +2759,10 @@
     <Content Include="Views\Alerts.cshtml" />
     <Content Include="Views\PrivacyNotice.cshtml" />
     <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.School.cshtml" />
-    <Content Include="Views\Partials\Forms\Permissions.cshtml" />
-    <Content Include="Views\Shared\_FindAddress.cshtml" />
     <Content Include="Views\RightsOfWayModification.cshtml" />
     <Content Include="Views\RightsOfWayModifications.cshtml" />
     <Content Include="Views\RightsOfWayModificationsCsv.cshtml" />
     <Content Include="Views\RightsOfWayModificationsRss.cshtml" />
-    <Content Include="Views\Shared\_RecyclingSiteFinder.cshtml" />
     <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
     <Content Include="Views\Partials\Grid\Editors\Rte.cshtml" />
     <Content Include="Views\Partials\Grid\Editors\Media.cshtml" />
@@ -3188,6 +3185,9 @@
     <Content Include="uSync\Snapshots\20190517_131718_umbraco-upgraded-714.0\Template\standardtopicpage\standardTopicPage.config" />
     <Content Include="uSync\Snapshots\20190517_131718_umbraco-upgraded-714.0\Template\task\Task.config" />
     <Content Include="Views\Partials\Forms\Themes\EastSussex\FieldTypes\FieldType.DataConsent.cshtml" />
+    <Content Include="Views\Shared\_RecyclingSiteFinder.cshtml" />
+    <Content Include="Views\Shared\_FindAddress.cshtml" />
+    <Content Include="Views\Partials\Forms\Permissions.cshtml" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -3629,11 +3629,6 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Umbraco.Forms.Security.2.0.0\build\Escc.Umbraco.Forms.Security.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.Forms.Security.2.0.0\build\Escc.Umbraco.Forms.Security.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.8.0.0\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.8.0.0\build\Escc.Umbraco.PropertyEditors.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.FindAddress.Mvc.3.0.1\build\Escc.FindAddress.Mvc.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.FindAddress.Mvc.3.0.1\build\Escc.FindAddress.Mvc.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.4.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.RubbishAndRecycling.SiteFinder.4.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets'))" />
-    <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.4\build\Escc.EastSussexGovUK.TemplateSource.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.4\build\Escc.EastSussexGovUK.TemplateSource.targets'))" />
     <Error Condition="!Exists('..\packages\UmbracoCms.7.14.0\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.14.0\build\UmbracoCms.props'))" />
     <Error Condition="!Exists('..\packages\UmbracoCms.7.14.0\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.14.0\build\UmbracoCms.targets'))" />
     <Error Condition="!Exists('..\packages\uSync.4.0.10\build\uSync.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uSync.4.0.10\build\uSync.props'))" />
@@ -3651,6 +3646,11 @@
     <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.2\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.2\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.EditorTools.4.0.1\build\Escc.Umbraco.EditorTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.EditorTools.4.0.1\build\Escc.Umbraco.EditorTools.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Umbraco.MediaSync.4.0.0\build\Escc.Umbraco.MediaSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.MediaSync.4.0.0\build\Escc.Umbraco.MediaSync.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.2.0.0\build\Escc.EastSussexGovUK.TemplateSource.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.EastSussexGovUK.TemplateSource.2.0.0\build\Escc.EastSussexGovUK.TemplateSource.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.5.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.RubbishAndRecycling.SiteFinder.5.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.FindAddress.Mvc.4.0.0\build\Escc.FindAddress.Mvc.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.FindAddress.Mvc.4.0.0\build\Escc.FindAddress.Mvc.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.PropertyEditors.9.0.0\build\Escc.Umbraco.PropertyEditors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.PropertyEditors.9.0.0\build\Escc.Umbraco.PropertyEditors.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Umbraco.Forms.Security.3.0.0\build\Escc.Umbraco.Forms.Security.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Umbraco.Forms.Security.3.0.0\build\Escc.Umbraco.Forms.Security.targets'))" />
   </Target>
   <Import Project="..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.Rss.2.0.0\build\Escc.EastSussexGovUK.Rss.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
@@ -3681,11 +3681,6 @@
   <Target Name="AfterBuild">
     <ReplaceFileText Filename="$(ProjectDir)App_Plugins\UmbracoForms\BackOffice\Common\RenderTypes\file.html" ReplaceThis="secureformuploads" WithThis="azuresecureformuploads" />
   </Target>
-  <Import Project="..\packages\Escc.Umbraco.Forms.Security.2.0.0\build\Escc.Umbraco.Forms.Security.targets" Condition="Exists('..\packages\Escc.Umbraco.Forms.Security.2.0.0\build\Escc.Umbraco.Forms.Security.targets')" />
-  <Import Project="..\packages\Escc.Umbraco.PropertyEditors.8.0.0\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.8.0.0\build\Escc.Umbraco.PropertyEditors.targets')" />
-  <Import Project="..\packages\Escc.FindAddress.Mvc.3.0.1\build\Escc.FindAddress.Mvc.targets" Condition="Exists('..\packages\Escc.FindAddress.Mvc.3.0.1\build\Escc.FindAddress.Mvc.targets')" />
-  <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.4.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.4.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
-  <Import Project="..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.4\build\Escc.EastSussexGovUK.TemplateSource.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.1.1.4\build\Escc.EastSussexGovUK.TemplateSource.targets')" />
   <Import Project="..\packages\UmbracoCms.7.14.0\build\UmbracoCms.targets" Condition="Exists('..\packages\UmbracoCms.7.14.0\build\UmbracoCms.targets')" />
   <Import Project="..\packages\uSync.4.0.10\build\uSync.targets" Condition="Exists('..\packages\uSync.4.0.10\build\uSync.targets')" />
   <Import Project="..\packages\Escc.Umbraco.Forms.FieldTypes.2.0.0\build\Escc.Umbraco.Forms.FieldTypes.targets" Condition="Exists('..\packages\Escc.Umbraco.Forms.FieldTypes.2.0.0\build\Escc.Umbraco.Forms.FieldTypes.targets')" />
@@ -3693,4 +3688,9 @@
   <Import Project="..\packages\Our.Umbraco.DocumentTypePicker.1.0.0\build\Our.Umbraco.DocumentTypePicker.targets" Condition="Exists('..\packages\Our.Umbraco.DocumentTypePicker.1.0.0\build\Our.Umbraco.DocumentTypePicker.targets')" />
   <Import Project="..\packages\Escc.Umbraco.EditorTools.4.0.1\build\Escc.Umbraco.EditorTools.targets" Condition="Exists('..\packages\Escc.Umbraco.EditorTools.4.0.1\build\Escc.Umbraco.EditorTools.targets')" />
   <Import Project="..\packages\Escc.Umbraco.MediaSync.4.0.0\build\Escc.Umbraco.MediaSync.targets" Condition="Exists('..\packages\Escc.Umbraco.MediaSync.4.0.0\build\Escc.Umbraco.MediaSync.targets')" />
+  <Import Project="..\packages\Escc.EastSussexGovUK.TemplateSource.2.0.0\build\Escc.EastSussexGovUK.TemplateSource.targets" Condition="Exists('..\packages\Escc.EastSussexGovUK.TemplateSource.2.0.0\build\Escc.EastSussexGovUK.TemplateSource.targets')" />
+  <Import Project="..\packages\Escc.RubbishAndRecycling.SiteFinder.5.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets" Condition="Exists('..\packages\Escc.RubbishAndRecycling.SiteFinder.5.0.0\build\Escc.RubbishAndRecycling.SiteFinder.targets')" />
+  <Import Project="..\packages\Escc.FindAddress.Mvc.4.0.0\build\Escc.FindAddress.Mvc.targets" Condition="Exists('..\packages\Escc.FindAddress.Mvc.4.0.0\build\Escc.FindAddress.Mvc.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.PropertyEditors.9.0.0\build\Escc.Umbraco.PropertyEditors.targets" Condition="Exists('..\packages\Escc.Umbraco.PropertyEditors.9.0.0\build\Escc.Umbraco.PropertyEditors.targets')" />
+  <Import Project="..\packages\Escc.Umbraco.Forms.Security.3.0.0\build\Escc.Umbraco.Forms.Security.targets" Condition="Exists('..\packages\Escc.Umbraco.Forms.Security.3.0.0\build\Escc.Umbraco.Forms.Security.targets')" />
 </Project>

@@ -342,7 +342,6 @@
     <Compile Include="WorkPatternTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="App_Plugins\Escc.Umbraco.PropertyEditors.BooleanPropertyEditor\package.manifest" />
     <None Include="packages.config" />
   </ItemGroup>
