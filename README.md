@@ -11,6 +11,7 @@ This project is the root of our [Umbraco](http://umbraco.com/) installation for 
 * [Banners](Banners.md)
 * [Old templates migrated from Microsoft CMS](MicrosoftCms.md)
 * [Embedding Google Maps](GoogleMaps.md)
+* [Skins](Skins.md)
 
 The solution is broken up into several subprojects:
 

@@ -43,7 +43,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Skins.Registration
         }
 
         /// <summary>
-        /// The CSS which is required for the skin. These are registered in web.config using <see cref="!:Escc.ClientDependencyFramework" />.
+        /// The CSS which is required for the skin. These are registered in web.config using <see cref="Escc.ClientDependencyFramework" />.
         /// </summary>
         /// <returns>
         /// A set of CSS file aliases, optionally qualified by media query aliases
@@ -59,7 +59,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Skins.Registration
         }
 
         /// <summary>
-        /// The JavaScript which is required for the skin. These are registered in web.config using <see cref="!:Escc.ClientDependencyFramework" />.
+        /// The JavaScript which is required for the skin. These are registered in web.config using <see cref="Escc.ClientDependencyFramework" />.
         /// </summary>
         /// <returns>
         /// A set of JS file aliases, qualified by a priority value which defaults to 100
