@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
 using Escc.EastSussexGovUK.Umbraco.Web.Services;
-using Escc.Elibrary;
 using Escc.Umbraco.Caching;
 using Escc.Umbraco.ContentExperiments;
 using Escc.Umbraco.PropertyTypes;
@@ -30,12 +29,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Task
         /// <returns/>
         public new async Task<ActionResult> Index(RenderModel model)
         {
-            if (model == null) throw new ArgumentNullException("model");
+            if (model == null) throw new ArgumentNullException(nameof(model));
 
             var mediaUrlTransformer = new RemoveMediaDomainUrlTransformer();
             var viewModel = new TaskViewModelFromUmbraco(model.Content,
-                    new RelatedLinksService(mediaUrlTransformer, new ElibraryUrlTransformer(), new RemoveAzureDomainUrlTransformer()),
-                    new ElibraryProxyLinkConverter(new SpydusUrlBuilder()),
+                    new RelatedLinksService(mediaUrlTransformer, new RemoveAzureDomainUrlTransformer()),
                     mediaUrlTransformer
                     ).BuildModel();
 

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Escc.Elibrary;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 using Escc.EastSussexGovUK.Umbraco.UrlTransformers;
@@ -17,25 +16,21 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.PrivacyNotice
     public class PrivacyNoticeViewModelFromUmbraco : IViewModelBuilder<PrivacyNoticeViewModel>
     {
         private readonly IPublishedContent _umbracoContent;
-        private readonly IElibraryProxyLinkConverter _elibraryLinkConverter;
         private readonly IMediaUrlTransformer _mediaUrlTransformer;
 
         /// <summary>
         /// Builds a <see cref="PrivacyNoticeViewModel"/> from Umbraco content
         /// </summary>
         /// <param name="umbracoContent">Content from Umbraco.</param>
-        /// <param name="elibraryLinkConverter">The elibrary link converter.</param>
         /// <param name="mediaUrlTransformer">A service to update links to items in the media library</param>
         /// <exception cref="ArgumentNullException">
         /// </exception>
-        public PrivacyNoticeViewModelFromUmbraco(IPublishedContent umbracoContent, IElibraryProxyLinkConverter elibraryLinkConverter, IMediaUrlTransformer mediaUrlTransformer)
+        public PrivacyNoticeViewModelFromUmbraco(IPublishedContent umbracoContent, IMediaUrlTransformer mediaUrlTransformer)
         {
             _umbracoContent = umbracoContent;
-            _elibraryLinkConverter = elibraryLinkConverter;
             _mediaUrlTransformer = mediaUrlTransformer;
 
             if (umbracoContent == null) throw new ArgumentNullException(nameof(umbracoContent));
-            if (elibraryLinkConverter == null) throw new ArgumentNullException(nameof(elibraryLinkConverter));
             if (mediaUrlTransformer == null) throw new ArgumentNullException(nameof(mediaUrlTransformer));
         }
 
@@ -68,7 +63,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.PrivacyNotice
             if (!String.IsNullOrEmpty(html))
             {
                 html = _mediaUrlTransformer.ParseAndTransformMediaUrlsInHtml(html);
-                html = _elibraryLinkConverter.ParseAndRewriteElibraryLinks(html);
             }
             return new HtmlString(html);
         }

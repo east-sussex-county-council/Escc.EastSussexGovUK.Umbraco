@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
 using Escc.EastSussexGovUK.Umbraco.Web.Services;
-using Escc.Elibrary;
 using Escc.Umbraco.Caching;
 using Escc.Umbraco.ContentExperiments;
 using Escc.Umbraco.PropertyTypes;
@@ -39,7 +38,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.PrivacyNotice
 
             var mediaUrlTransformer = new RemoveMediaDomainUrlTransformer();
             var viewModel = new PrivacyNoticeViewModelFromUmbraco(model.Content,
-                    new ElibraryProxyLinkConverter(new SpydusUrlBuilder()),
                     mediaUrlTransformer
                     ).BuildModel();
 

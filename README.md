@@ -11,7 +11,6 @@ This project is the root of our [Umbraco](http://umbraco.com/) installation for 
 * [Banners](Banners.md)
 * [Old templates migrated from Microsoft CMS](MicrosoftCms.md)
 * [Embedding Google Maps](GoogleMaps.md)
-* [Transforming Elibrary links](Elibrary.md)
 
 The solution is broken up into several subprojects:
 

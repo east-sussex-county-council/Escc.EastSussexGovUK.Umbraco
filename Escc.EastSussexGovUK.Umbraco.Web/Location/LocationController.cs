@@ -29,13 +29,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Location
         /// <returns/>
         public new async Task<ActionResult> Index(RenderModel model)
         {
-            if (model == null) throw new ArgumentNullException("model");
+            if (model == null) throw new ArgumentNullException(nameof(model));
 
             var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1)));
             var mediaUrlTransformer = new RemoveMediaDomainUrlTransformer();
             var viewModel = new LocationViewModelFromUmbraco(model.Content, 
                     mediaUrlTransformer,
-                    new RelatedLinksService(mediaUrlTransformer, new ElibraryUrlTransformer(), new RemoveAzureDomainUrlTransformer())
+                    new RelatedLinksService(mediaUrlTransformer, new RemoveAzureDomainUrlTransformer())
                     ).BuildModel();
 
             // Add common properties to the model

@@ -34,7 +34,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs
 
             var mediaUrlTransformer = new RemoveMediaDomainUrlTransformer();
             var viewModel = new JobsHomeViewModelFromUmbraco(model.Content,
-                new RelatedLinksService(mediaUrlTransformer, new ElibraryUrlTransformer(), new RemoveAzureDomainUrlTransformer())).BuildModel();
+                new RelatedLinksService(mediaUrlTransformer, new RemoveAzureDomainUrlTransformer())).BuildModel();
 
             // Add common properties to the model
             var expiryDate = new ExpiryDateFromExamine(model.Content.Id, ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"], new ExpiryDateMemoryCache(TimeSpan.FromHours(1)));

@@ -64,7 +64,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Guide
         {
             var mediaUrlTransformer = new RemoveMediaDomainUrlTransformer();
             var viewModel = new GuideStepViewModelFromUmbraco(content,
-                    new RelatedLinksService(mediaUrlTransformer, new ElibraryUrlTransformer(), new RemoveAzureDomainUrlTransformer()),
+                    new RelatedLinksService(mediaUrlTransformer, new RemoveAzureDomainUrlTransformer()),
                     mediaUrlTransformer
                     ).BuildModel();
 
