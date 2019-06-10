@@ -175,7 +175,7 @@
       <HintPath>..\packages\Escc.Umbraco.EditorTools.4.0.1\lib\Escc.Umbraco.EditorTools.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.Expiry, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Umbraco.Expiry.8.0.0\lib\net462\Escc.Umbraco.Expiry.dll</HintPath>
+      <HintPath>..\packages\Escc.Umbraco.Expiry.9.0.0\lib\net462\Escc.Umbraco.Expiry.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Umbraco.Forms.BackOffice, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Umbraco.Forms.BackOffice.2.0.0\lib\Escc.Umbraco.Forms.BackOffice.dll</HintPath>
@@ -3211,6 +3211,7 @@
     <Content Include="uSync\Snapshots\20190521_163156_delete-standard-download\DocumentType\legacy-base\standard-topic-page\def.config" />
     <Content Include="uSync\Snapshots\20190521_163156_delete-standard-download\MediaType\file\def.config" />
     <Content Include="uSync\Snapshots\20190521_163156_delete-standard-download\uSyncActions.config" />
+    <Content Include="uSync\Snapshots\20190610_173139_rename-level-field\DocumentType\document-type-expiry-rule\def.config" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>
