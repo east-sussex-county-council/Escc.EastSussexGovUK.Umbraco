@@ -21,6 +21,7 @@ The solution is broken up into several subprojects:
 * [Latest section](Latest.md)
 * [Embedding iCasework Forms](ICasework.md)
 * [Embedding Google Maps](GoogleMaps.md)
+* [Making changes to HTML before it's displayed](ChangingHTML.md)
 
 ## Sitewide features configured in Umbraco
 * [Service alerts](ServiceAlerts.md)
