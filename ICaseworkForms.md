@@ -1,4 +1,4 @@
-# iCaseworkForms
+# Embedding iCaseworkForms
 
 [iCasework](https://www.icasework.com/) is case management software which includes its own form builder. Links to the forms can be recognised an embedded into Umbraco pages.
 

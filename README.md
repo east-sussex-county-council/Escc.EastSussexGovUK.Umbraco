@@ -1,17 +1,6 @@
 # Escc.EastSussexGovUK.Umbraco
 
-This project is the root of our [Umbraco](http://umbraco.com/) installation for [www.eastsussex.gov.uk](https://www.eastsussex.gov.uk) and includes:
-
-* [Home page](HomePage.md)
-* [Jobs](Jobs.md)
-* [Umbraco Forms](UmbracoForms.md)
-* [iCasework Forms](ICasework.md)
-* [Locations, including libraries and recycling sites](Location.md)
-* [Service alerts](ServiceAlerts.md)
-* [Banners](Banners.md)
-* [Old templates migrated from Microsoft CMS](MicrosoftCms.md)
-* [Embedding Google Maps](GoogleMaps.md)
-* [Skins](Skins.md)
+This repository is the root of our [Umbraco](http://umbraco.com/) installation for [www.eastsussex.gov.uk](https://www.eastsussex.gov.uk).
 
 The solution is broken up into several subprojects:
 
@@ -20,6 +9,25 @@ The solution is broken up into several subprojects:
 *  `Escc.Jobs.UpdateIndexes` updates the Examine indexes for jobs when run as a scheduled task. 
 *  `Escc.Jobs.SendAlerts` sends job alerts when run as a scheduled task.
 *  `Escc.EastSussexGovUK.Umbraco` contains any code which needs to be shared between two or more of the above projects.
+
+## Specific templates
+* [Home page](HomePage.md)
+* [Jobs](Jobs.md)
+* [Locations, including libraries and recycling sites](Location.md)
+* [Old templates migrated from Microsoft CMS](MicrosoftCms.md)
+
+## Features available on most templates
+* [Skins](Skins.md)
+* [Latest section](Latest.md)
+* [Embedding iCasework Forms](ICasework.md)
+* [Embedding Google Maps](GoogleMaps.md)
+
+## Sitewide features configured in Umbraco
+* [Service alerts](ServiceAlerts.md)
+* [Banners](Banners.md)
+
+## Forms
+* [Umbraco Forms](UmbracoForms.md)
 
 ## Development setup steps
 
