@@ -19,8 +19,9 @@ The solution is broken up into several subprojects:
 ## Features available on most templates
 * [Skins](Skins.md)
 * [Latest section](Latest.md)
-* [Embedding iCasework Forms](ICasework.md)
+* [Embedding iCasework Forms](ICaseworkForms.md)
 * [Embedding Google Maps](GoogleMaps.md)
+* [Embedding YouTube videos](YouTuve.md)
 * [Making changes to HTML before it's displayed](ChangingHTML.md)
 
 ## Sitewide features configured in Umbraco
