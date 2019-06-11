@@ -11,25 +11,24 @@ The solution is broken up into several subprojects:
 *  `Escc.EastSussexGovUK.Umbraco` contains any code which needs to be shared between two or more of the above projects.
 
 ## Specific templates
-* [Home page](HomePage.md)
-* [Jobs](Jobs.md)
-* [Locations, including libraries and recycling sites](Location.md)
-* [Old templates migrated from Microsoft CMS](MicrosoftCms.md)
+*  [Home page](HomePage.md)
+*  [Jobs](Jobs.md)
+*  [Locations, including libraries and recycling sites](Location.md)
+*  [Old templates migrated from Microsoft CMS](MicrosoftCms.md)
 
 ## Features available on most templates
-* [Skins](Skins.md)
-* [Latest section](Latest.md)
-* [Embedding iCasework Forms](ICaseworkForms.md)
-* [Embedding Google Maps](GoogleMaps.md)
-* [Embedding YouTube videos](YouTuve.md)
-* [Making changes to HTML before it's displayed](ChangingHTML.md)
-
-## Sitewide features configured in Umbraco
-* [Service alerts](ServiceAlerts.md)
-* [Banners](Banners.md)
+*  [Skins](Skins.md)
+*  [Service alerts](ServiceAlerts.md)
+*  [Latest section](Latest.md)
+*  [Banners](Banners.md)
+*  [Embedding iCasework Forms](ICaseworkForms.md)
+*  [Embedding Google Maps](GoogleMaps.md)
+*  [Embedding YouTube videos](YouTuve.md)
+*  [Making changes to HTML before it's displayed](ChangingHTML.md)
+*  [Social media, East Sussex 1Space and ESCIS support](SocialMedia.md)
 
 ## Forms
-* [Umbraco Forms](UmbracoForms.md)
+*  [Umbraco Forms](UmbracoForms.md)
 
 ## Development setup steps
 

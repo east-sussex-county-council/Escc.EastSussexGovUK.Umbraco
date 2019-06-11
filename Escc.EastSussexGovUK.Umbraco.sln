@@ -9,16 +9,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution 
 		app-setup-dev.cmd = app-setup-dev.cmd
 		app-setup-dev.ps1 = app-setup-dev.ps1
 		Banners.md = Banners.md
+		ChangingHTML.md = ChangingHTML.md
 		GoogleMaps.md = GoogleMaps.md
 		HomePage.md = HomePage.md
 		ICaseworkForms.md = ICaseworkForms.md
 		Jobs.md = Jobs.md
+		Latest.md = Latest.md
 		LICENSE.md = LICENSE.md
 		Location.md = Location.md
 		MicrosoftCms.md = MicrosoftCms.md
 		README.md = README.md
+		ServiceAlerts.md = ServiceAlerts.md
 		Skins.md = Skins.md
+		SocialMedia.md = SocialMedia.md
 		UmbracoForms.md = UmbracoForms.md
+		YouTube.md = YouTube.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Umbraco.Tests", "Escc.EastSussexGovUK.Umbraco.Tests\Escc.EastSussexGovUK.Umbraco.Tests.csproj", "{D89C69B5-1F50-4CF1-83F8-AE317F7D788F}"
