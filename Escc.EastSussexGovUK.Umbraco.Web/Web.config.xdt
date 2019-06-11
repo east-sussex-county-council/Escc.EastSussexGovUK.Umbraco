@@ -542,6 +542,10 @@
       <requestFiltering removeServerHeader="true" xdt:Transform="SetAttributes(removeServerHeader)" />
     </security>
 
+    <!-- Add mappings from file extensions to MIME types, in addition to those included in the web.config which is supplied with the UmbracoCms NuGet package. 
+         This is important when storing files in Azure blob storage because it does not recognise these MIME types by default, and so without setting the MIME
+         type explicitly it serves files as a generic binary response. The UmbracoFileSystemProviders.Azure NuGet package reads MIME types from web.config as 
+         it uploads files to blob storage. -->
     <staticContent>
       <remove fileExtension=".pdf" xdt:Transform="Remove" xdt:Locator="Match(fileExtension)" />
       <remove fileExtension=".pdf" xdt:Transform="Insert" />
