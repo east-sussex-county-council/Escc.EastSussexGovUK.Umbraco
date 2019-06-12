@@ -25,7 +25,8 @@ The solution is broken up into several subprojects:
 *  [Embedding Google Maps](GoogleMaps.md)
 *  [Embedding YouTube videos](YouTuve.md)
 *  [Making changes to HTML before it's displayed](ChangingHTML.md)
-*  [Social media, East Sussex 1Space and ESCIS support](SocialMedia.md)
+*  [East Sussex 1Space and ESCIS support](1SpaceESCIS.md)
+*  [Social media support](SocialMedia.md)
 
 ## Forms
 *  [Umbraco Forms](UmbracoForms.md)
