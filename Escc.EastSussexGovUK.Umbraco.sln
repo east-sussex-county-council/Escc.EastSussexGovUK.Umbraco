@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{732E47C7-E861-4587-8400-33116C479A53}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		1SpaceESCIS.md = 1SpaceESCIS.md
 		app-setup-dev.cmd = app-setup-dev.cmd
 		app-setup-dev.ps1 = app-setup-dev.ps1
 		Banners.md = Banners.md
@@ -23,6 +24,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution 
 		Skins.md = Skins.md
 		SocialMedia.md = SocialMedia.md
 		UmbracoForms.md = UmbracoForms.md
+		WebChat.md = WebChat.md
 		YouTube.md = YouTube.md
 	EndProjectSection
 EndProject

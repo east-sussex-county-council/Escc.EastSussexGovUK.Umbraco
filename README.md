@@ -1,6 +1,6 @@
 # Escc.EastSussexGovUK.Umbraco
 
-This repository is the root of our [Umbraco](http://umbraco.com/) installation for [www.eastsussex.gov.uk](https://www.eastsussex.gov.uk).
+This project is the root of our [Umbraco](http://umbraco.com/) installation for [www.eastsussex.gov.uk](https://www.eastsussex.gov.uk). It is tightly coupled with the [Escc.EastSussexGovUK](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK/) project, which contains the template elements shared by this and every other branded part of our website. If a feature is not documented here, it may be because it is implemented in the shared template.
 
 The solution is broken up into several subprojects:
 
@@ -27,6 +27,7 @@ The solution is broken up into several subprojects:
 *  [Making changes to HTML before it's displayed](ChangingHTML.md)
 *  [East Sussex 1Space and ESCIS support](1SpaceESCIS.md)
 *  [Social media support](SocialMedia.md)
+*  [Web chat](WebChat.md)
 
 ## Forms
 *  [Umbraco Forms](UmbracoForms.md)
