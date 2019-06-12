@@ -172,14 +172,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             {
                 if (files.Count() == 1)
                 {
-                    advertHtml.Append("<h2>Documents</h2><p>").AppendLinkToFile(files.First()).Append("</p>");
+                    advertHtml.Append("<h2>Documents</h2><p>").AppendLinkToFile(files.First(), job.Id).Append("</p>");
                 }
                 else
                 {
                     advertHtml.Append("<h2>Documents</h2><ul>");
                     foreach (var file in files)
                     {
-                        advertHtml.Append("<li>").AppendLinkToFile(file).Append("</li>");
+                        advertHtml.Append("<li>").AppendLinkToFile(file, job.Id).Append("</li>");
                     }
                     advertHtml.Append("</ul>");
                 }
@@ -224,9 +224,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
 
     internal static class JobParserExtensionMethods
     {
-        internal static StringBuilder AppendLinkToFile(this StringBuilder advertHtml, XElement file)
+        internal static StringBuilder AppendLinkToFile(this StringBuilder advertHtml, XElement file, int jobId)
         {
-            return advertHtml.Append("<a href=\"").Append(file.Element("url").Value.Trim()).Append("\">").Append(HttpUtility.HtmlDecode(file.Element("description").Value.Trim())).Append("</a>");
+            return advertHtml.Append("<a href=\"").Append(file.Element("url").Value.Trim()).Append("&amp;job=").Append(jobId).Append("\">").Append(HttpUtility.HtmlDecode(file.Element("description").Value.Trim())).Append("</a>");
         }
     }
 }
