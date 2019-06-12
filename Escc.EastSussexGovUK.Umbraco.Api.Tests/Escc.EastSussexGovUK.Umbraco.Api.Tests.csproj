@@ -105,6 +105,7 @@
     <Compile Include="SetJobLocationTransformerTests.cs" />
     <Compile Include="LookupValuesFromTribePadCustomFieldParserTests.cs" />
     <Compile Include="LookupValuesFromTribePadBuiltInFieldParserTests.cs" />
+    <Compile Include="TribePadLocationParserTests.cs" />
     <Compile Include="TribePadSalaryParserTests.cs" />
     <Compile Include="TribePadWorkPatternParserTests.cs" />
     <Compile Include="TribePadWorkPatternSplitterTests.cs" />

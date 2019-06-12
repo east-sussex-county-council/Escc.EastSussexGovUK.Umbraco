@@ -116,11 +116,51 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+        ///    &lt;job&gt;
+        ///        &lt;job_id&gt;550&lt;/job_id&gt;
+        ///        &lt;job_title&gt;Newly Qualified Social Worker (Children&apos;s Services)&lt;/job_title&gt;
+        ///        &lt;reference&gt;orbis/TP/12/550&lt;/reference&gt;
+        ///        &lt;language_code&gt;en&lt;/language_code&gt;
+        ///        &lt;no_of_positions&gt;30&lt;/no_of_positions&gt;
+        ///        &lt;open_date&gt;2019-04-01&lt;/open_date&gt;
+        ///        &lt;expiry_date&gt;2019-05-12&lt;/expiry_date&gt;
+        ///        &lt;salary_currency&gt;1&lt;/salary_currency&gt;
+        ///        &lt;salary_frequency&gt;1&lt;/salary_frequency&gt;
+        ///        &lt;salary_from&gt;2880 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TribePadJobMultipleLocationsSeparatedByCommaSpace {
+            get {
+                return ResourceManager.GetString("TribePadJobMultipleLocationsSeparatedByCommaSpace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
         ///&lt;job_options&gt;&lt;job_categories&gt;&lt;job_category&gt;&lt;id&gt;1&lt;/id&gt;&lt;has_jobs&gt;1&lt;/has_jobs&gt;&lt;name&gt;Administration &amp;amp;amp; Clerical&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;2&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Adult Learning&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;3&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Analyst&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;4&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Apprenticeships &amp;amp;amp; Trainee&lt;/name&gt;&lt;/job_category&gt;&lt;job_category&gt;&lt;id&gt;5&lt;/id&gt;&lt;has_jobs&gt;0&lt;/has_jobs&gt;&lt;name&gt;Architec [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string TribePadJobOptionsXml {
             get {
                 return ResourceManager.GetString("TribePadJobOptionsXml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+        ///    &lt;job&gt;
+        ///        &lt;job_id&gt;550&lt;/job_id&gt;
+        ///        &lt;job_title&gt;Newly Qualified Social Worker (Children&apos;s Services)&lt;/job_title&gt;
+        ///        &lt;reference&gt;orbis/TP/12/550&lt;/reference&gt;
+        ///        &lt;language_code&gt;en&lt;/language_code&gt;
+        ///        &lt;no_of_positions&gt;30&lt;/no_of_positions&gt;
+        ///        &lt;open_date&gt;2019-04-01&lt;/open_date&gt;
+        ///        &lt;expiry_date&gt;2019-05-12&lt;/expiry_date&gt;
+        ///        &lt;salary_currency&gt;1&lt;/salary_currency&gt;
+        ///        &lt;salary_frequency&gt;1&lt;/salary_frequency&gt;
+        ///        &lt;salary_from&gt;2880 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TribePadJobSingleLocation {
+            get {
+                return ResourceManager.GetString("TribePadJobSingleLocation", resourceCulture);
             }
         }
         

@@ -20,7 +20,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
             var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
             var salaryParser = new Mock<ISalaryParser>();
             var workPatternParser = new Mock<IWorkPatternParser>();
-            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, new Uri("https://www.example.org"));
+            var locationParser = new Mock<ILocationParser>();
+            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, locationParser.Object, new Uri("https://www.example.org"));
 
             var job = await parser.ParseJob(Properties.Resources.TribePadJobXml, "142");
 
@@ -33,7 +34,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
             var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
             var salaryParser = new Mock<ISalaryParser>();
             var workPatternParser = new Mock<IWorkPatternParser>();
-            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, new Uri("https://www.example.org"));
+            var locationParser = new Mock<ILocationParser>();
+            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, locationParser.Object, new Uri("https://www.example.org"));
 
             var job = await parser.ParseJob(Properties.Resources.TribePadJobXml, "142");
 
@@ -46,7 +48,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
             var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
             var salaryParser = new Mock<ISalaryParser>();
             var workPatternParser = new Mock<IWorkPatternParser>();
-            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, new Uri("https://www.example.org"));
+            var locationParser = new Mock<ILocationParser>();
+            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, locationParser.Object, new Uri("https://www.example.org"));
 
             var job = await parser.ParseJob(Properties.Resources.TribePadJobXml, "142");
 
@@ -54,26 +57,13 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         }
 
         [Test]
-        public async Task LocationParsed()
-        {
-            var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
-            var salaryParser = new Mock<ISalaryParser>();
-            var workPatternParser = new Mock<IWorkPatternParser>();
-            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, new Uri("https://www.example.org"));
-
-            var job = await parser.ParseJob(Properties.Resources.TribePadJobXml, "142");
-
-            Assert.AreEqual("Lewes", job.Locations[0]);
-        }
-
-
-        [Test]
         public async Task OrganisationParsed()
         {
             var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
             var salaryParser = new Mock<ISalaryParser>();
             var workPatternParser = new Mock<IWorkPatternParser>();
-            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, new Uri("https://www.example.org"));
+            var locationParser = new Mock<ILocationParser>();
+            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, locationParser.Object, new Uri("https://www.example.org"));
 
             var job = await parser.ParseJob(Properties.Resources.TribePadJobXml, "142");
 
@@ -87,7 +77,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
             var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
             var salaryParser = new Mock<ISalaryParser>();
             var workPatternParser = new Mock<IWorkPatternParser>();
-            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, new Uri("https://www.example.org"));
+            var locationParser = new Mock<ILocationParser>();
+            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, locationParser.Object, new Uri("https://www.example.org"));
 
             var job = await parser.ParseJob(Properties.Resources.TribePadJobXml, "142");
 
@@ -105,7 +96,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
             } as IList<JobsLookupValue>));
             var salaryParser = new Mock<ISalaryParser>();
             var workPatternParser = new Mock<IWorkPatternParser>();
-            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, new Uri("https://www.example.org"));
+            var locationParser = new Mock<ILocationParser>();
+            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, locationParser.Object, new Uri("https://www.example.org"));
 
             var job = await parser.ParseJob(Properties.Resources.TribePadJobXml, "142");
 
@@ -119,7 +111,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
             var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
             var salaryParser = new Mock<ISalaryParser>();
             var workPatternParser = new Mock<IWorkPatternParser>();
-            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, new Uri("https://www.example.org"));
+            var locationParser = new Mock<ILocationParser>();
+            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, locationParser.Object, new Uri("https://www.example.org"));
 
             var job = await parser.ParseJob(Properties.Resources.TribePadJobXml, "142");
 
@@ -132,7 +125,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
             var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
             var salaryParser = new Mock<ISalaryParser>();
             var workPatternParser = new Mock<IWorkPatternParser>();
-            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, new Uri("https://www.example.org"));
+            var locationParser = new Mock<ILocationParser>();
+            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, locationParser.Object, new Uri("https://www.example.org"));
 
             var job = await parser.ParseJob(Properties.Resources.TribePadJobXml, "142");
 
@@ -145,7 +139,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
             var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
             var salaryParser = new Mock<ISalaryParser>();
             var workPatternParser = new Mock<IWorkPatternParser>();
-            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, new Uri("https://www.example.org"));
+            var locationParser = new Mock<ILocationParser>();
+            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, locationParser.Object, new Uri("https://www.example.org"));
 
             var parsedJob = await parser.ParseJob(Properties.Resources.TribePadJobXml, "142");
 
@@ -159,7 +154,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
             var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
             var salaryParser = new Mock<ISalaryParser>();
             var workPatternParser = new Mock<IWorkPatternParser>();
-            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, new Uri("https://www.example.org"));
+            var locationParser = new Mock<ILocationParser>();
+            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, locationParser.Object, new Uri("https://www.example.org"));
 
             var parsedJob = await parser.ParseJob(Properties.Resources.TribePadPartnershipJobXmlWithOrganisation, "142");
 
@@ -174,7 +170,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
             var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
             var salaryParser = new Mock<ISalaryParser>();
             var workPatternParser = new Mock<IWorkPatternParser>();
-            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, new Uri("https://www.example.org"));
+            var locationParser = new Mock<ILocationParser>();
+            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, locationParser.Object, new Uri("https://www.example.org"));
 
             var parsedJob = await parser.ParseJob(Properties.Resources.TribePadPartnershipJobXmlOrganisationMissing, "142");
 
@@ -188,7 +185,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
             var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
             var salaryParser = new Mock<ISalaryParser>();
             var workPatternParser = new Mock<IWorkPatternParser>();
-            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, new Uri("https://www.example.org"));
+            var locationParser = new Mock<ILocationParser>();
+            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, locationParser.Object, new Uri("https://www.example.org"));
 
             var parsedJob = await parser.ParseJob(Properties.Resources.TribePadJobWith1File, "550");
 
@@ -201,7 +199,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
             var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
             var salaryParser = new Mock<ISalaryParser>();
             var workPatternParser = new Mock<IWorkPatternParser>();
-            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, new Uri("https://www.example.org"));
+            var locationParser = new Mock<ILocationParser>();
+            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, locationParser.Object, new Uri("https://www.example.org"));
 
             var parsedJob = await parser.ParseJob(Properties.Resources.TribePadJobWith2Files, "550");
 

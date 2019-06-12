@@ -36,7 +36,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
 
             var proxyProvider = new ConfigurationProxyProvider();
             var lookupValuesProvider = new JobsLookupValuesFromTribePad(lookupValuesApiUrl, new LookupValuesFromTribePadBuiltInFieldParser(), new LookupValuesFromTribePadCustomFieldParser(), null, proxyProvider);
-            var jobParser = new TribePadJobParser(lookupValuesProvider, new TribePadSalaryParser(lookupValuesProvider), new TribePadWorkPatternParser(lookupValuesProvider, new TribePadWorkPatternSplitter()), applyUrl);
+            var jobParser = new TribePadJobParser(lookupValuesProvider, new TribePadSalaryParser(lookupValuesProvider), new TribePadWorkPatternParser(lookupValuesProvider, new TribePadWorkPatternSplitter()), new TribePadLocationParser(), applyUrl);
 
             JobsProvider = new JobsDataFromTribePad(resultsUrls, advertUrl, jobParser, jobParser, proxyProvider);
             StopWordsRemover = new LuceneStopWordsRemover();

@@ -21,6 +21,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         private readonly IJobsLookupValuesProvider _lookupValuesProvider;
         private readonly ISalaryParser _salaryParser;
         private readonly IWorkPatternParser _workPatternParser;
+        private readonly ILocationParser _locationParser;
         private readonly Uri _applyUrl;
         private IEnumerable<JobsLookupValue> _contractTypes;
 
@@ -30,13 +31,15 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         /// <param name="lookupValuesProvider">A method of supplying lookup values for identifiers referenced by the job data</param>
         /// <param name="salaryParser">A method of parsing salary information for the job</param>
         /// <param name="workPatternParser">A method of parsing work pattern information for the job</param>
+        /// <param name="locationParser">A method of parsing locations for a job</param>
         /// <param name="applyUrl">The URL to apply for a job, with {0} to represent where the job id should be used</param>
         /// <exception cref="ArgumentNullException">lookupValuesProvider or salaryParser or workPatternParser or applyUrl</exception>
-        public TribePadJobParser(IJobsLookupValuesProvider lookupValuesProvider, ISalaryParser salaryParser, IWorkPatternParser workPatternParser, Uri applyUrl)
+        public TribePadJobParser(IJobsLookupValuesProvider lookupValuesProvider, ISalaryParser salaryParser, IWorkPatternParser workPatternParser, ILocationParser locationParser, Uri applyUrl)
         {
             _lookupValuesProvider = lookupValuesProvider ?? throw new ArgumentNullException(nameof(lookupValuesProvider));
             _salaryParser = salaryParser ?? throw new ArgumentNullException(nameof(salaryParser));
             _workPatternParser = workPatternParser ?? throw new ArgumentNullException(nameof(workPatternParser));
+            _locationParser = locationParser ?? throw new ArgumentNullException(nameof(locationParser));
             _applyUrl = applyUrl ?? throw new ArgumentNullException(nameof(applyUrl));
         }
 
@@ -143,7 +146,14 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
                 job.Department = "Children's Services";
             }
 
-            job.Locations.Add(HttpUtility.HtmlDecode(jobXml.Element("location_city").Value).Trim());
+            var locations = _locationParser.ParseLocations(jobXml.ToString());
+            if (locations != null)
+            {
+                foreach (var location in locations)
+                {
+                    job.Locations.Add(location);
+                }
+            }
 
             var logo = jobXml.Element("media")?.Element("logo")?.Element("url")?.Value;
             if (!String.IsNullOrEmpty(logo))

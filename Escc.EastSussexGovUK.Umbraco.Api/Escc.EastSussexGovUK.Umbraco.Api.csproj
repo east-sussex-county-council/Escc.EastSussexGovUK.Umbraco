@@ -1808,6 +1808,7 @@
     <Compile Include="Jobs\JobTransformers\SetJobLocationTransformer.cs" />
     <Compile Include="Jobs\RelativeJobUrlGenerator.cs" />
     <Compile Include="Jobs\IWorkPatternSplitter.cs" />
+    <Compile Include="Jobs\ILocationParser.cs" />
     <Compile Include="Jobs\TribePad\JobsDataFromTribePad.cs" />
     <Compile Include="Jobs\TribePad\JobsLookupValuesFromTribePad.cs" />
     <Compile Include="Jobs\TribePad\LookupValuesFromTribePadCustomFieldParser.cs" />
@@ -1819,6 +1820,7 @@
     <Compile Include="Jobs\TribePad\TribePadJobParser.cs" />
     <Compile Include="Jobs\TribePad\TribePadSalaryParser.cs" />
     <Compile Include="Jobs\JobTransformers\HtmlAgilityPackFormatterAdapter.cs" />
+    <Compile Include="Jobs\TribePad\TribePadLocationParser.cs" />
     <Compile Include="Jobs\TribePad\TribePadWorkPatternParser.cs" />
     <Compile Include="Jobs\TribePad\TribePadWorkPatternSplitter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
