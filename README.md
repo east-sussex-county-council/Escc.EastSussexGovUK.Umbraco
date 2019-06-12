@@ -17,6 +17,7 @@ The solution is broken up into several subprojects:
 *  [Old templates migrated from Microsoft CMS](MicrosoftCms.md)
 
 ## Features available on most templates
+*  [A/B testing](ABTesting.md)
 *  [Skins](Skins.md)
 *  [Service alerts](ServiceAlerts.md)
 *  [Latest section](Latest.md)
