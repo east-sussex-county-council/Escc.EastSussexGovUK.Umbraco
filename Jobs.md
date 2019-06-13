@@ -98,6 +98,12 @@ A series of Umbraco document types and templates can be used to build up a jobs 
 
 Just one instance of the `Job advert` document type is required to display any job. This works because the `JobAdvertContentFinder`, hooked up in `JobAdvertEventHandler`, recognises the URL of this page when it has an id and job title appended. For example when `/job-advert` is accessed as `/job-advert/12345/teacher-at-example-school`. The id is used to look up and display the job, and the job title (and anything else after the id) is there purely for SEO and use in analytics.
 
+### Tabs on job adverts
+
+The `Job advert` template includes tabs at the bottom of the page. If you resize your browser you will see this change to an accordion at small screen sizes. This works using `accordion-and-tabs.js` in the [Escc.EastSussexGovUK](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK) project. 
+
+`JobAdvert.cshtml` uses [Escc.ClientDependencyFramework](https://github.com/east-sussex-county-council/Escc.ClientDependencyFramework) to locate this file in `web.config`. The entry in `web.config` comes from the `Escc.EastSussexGovUK.ClientDependency` NuGet package in the [Escc.EastSussexGovUK](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK) project.
+
 ### Showing similar jobs when a job has expired
 
 If the `JobAdvertContentFinder` recognises a URL as a job advert but the job cannot be found, it is assumed that the closing date has passed and the job has expired. Rather than presenting a standard 404 page, this is an opportunity to target someone who is looking for a particular kind of job, so we return a 410 to indicate the job has gone but show them a list of similar jobs based on the job information we can see in the URL they requested. This happens in the `JobAdvertController` and `~\Views\JobAdvert.cshtml` view.  

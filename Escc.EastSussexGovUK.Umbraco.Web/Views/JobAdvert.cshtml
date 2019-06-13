@@ -118,6 +118,7 @@
     {
         if (Model.Job?.ApplyUrl != null)
         {
+            @* Create a second 'Apply' button visible only at small screen sizes, which is designed to be easy to reach with a thumb on a typical mobile device. *@
             <p class="mobile-nav main-action small"><a href="@Model.Job.ApplyUrl" class="apply apply-mobile">Apply</a></p>
             <div class="footer-with-mobile-nav">
                 @Html.Raw(Model.TemplateHtml.Footer)
