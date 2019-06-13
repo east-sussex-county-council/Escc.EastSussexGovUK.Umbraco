@@ -28,7 +28,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayModifications
         /// <summary>
         /// Gets or sets data on the current page of modification order applications
         /// </summary>
-        public IList<RightsOfWayModificationViewModel> ModificationOrderApplications = new List<RightsOfWayModificationViewModel>();
+        public IList<RightsOfWayModificationViewModel> ModificationOrderApplications { get; } = new List<RightsOfWayModificationViewModel>();
 
         /// <summary>
         /// Gets or sets the sort order currently applied to modification order applications

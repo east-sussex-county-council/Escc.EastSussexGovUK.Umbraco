@@ -31,7 +31,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayDeposits
         /// <summary>
         /// Gets or sets data on the current page of deposits
         /// </summary>
-        public IList<RightsOfWayDepositViewModel> Deposits = new List<RightsOfWayDepositViewModel>();
+        public IList<RightsOfWayDepositViewModel> Deposits { get; } = new List<RightsOfWayDepositViewModel>();
 
         /// <summary>
         /// Gets or sets the sort order currently applied to deposits

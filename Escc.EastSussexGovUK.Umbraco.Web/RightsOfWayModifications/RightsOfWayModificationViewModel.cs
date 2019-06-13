@@ -31,7 +31,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayModifications
         /// <summary>
         /// Gets or sets the location(s) affected by the claim
         /// </summary>
-        public IList<AddressInfo> Addresses { get; set; } = new List<AddressInfo>();
+        public IList<AddressInfo> Addresses { get; } = new List<AddressInfo>();
 
         /// <summary>
         /// Gets or sets a comma-separated list of OS grid references affected by the claim

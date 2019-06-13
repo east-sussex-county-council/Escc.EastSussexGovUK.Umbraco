@@ -19,7 +19,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayDeposits
 
         public IList<string> OrganisationalOwners { get; private set; } = new List<string>();
 
-        public IList<AddressInfo> Addresses { get; set; } = new List<AddressInfo>();
+        public IList<AddressInfo> Addresses { get; } = new List<AddressInfo>();
 
         public string OrdnanceSurveyGridReference { get; set; }
 

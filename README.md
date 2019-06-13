@@ -14,7 +14,8 @@ The solution is broken up into several subprojects:
 *  [Home page](HomePage.md)
 *  [Jobs](Jobs.md)
 *  [Locations, including libraries and recycling sites](Location.md)
-*  [Old templates migrated from Microsoft CMS](MicrosoftCms.md)
+*  [Rights of way - Section 31 deposits and definitive map modifications](RightsOfWay.md)
+*  [WebForms templates migrated from Microsoft CMS](MicrosoftCms.md)
 
 ## Features available on most templates
 *  [A/B testing](ABTesting.md)

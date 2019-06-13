@@ -1,4 +1,4 @@
-# Old templates migrated from Microsoft CMS
+# WebForms templates migrated from Microsoft CMS
 
 This site used to use WebForms templates in Microsoft CMS. For the conversion to Umbraco the existing templates were converted to ASCX usercontrols which can be loaded by the Razor view for the equivalent Umbraco template. 
 
