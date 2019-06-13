@@ -16,7 +16,43 @@ The handler must be configured in `web.config` as follows:
 	  </handlers>
 	</system.webServer>
   
-## Standard topic page - displaying term dates
+## Standard topic page 
+
+The standard topic page is a general purpose template that tries to offer similar flexibility to the Umbraco grid data type, but it was built within the limitations of Microsoft CMS which was not designed to work that way.
+
+Sections 1 to 6 of the 'Standard topic page' contain a repeated set of properties that support a number of different layouts. Not every layout will use all of the properties. The first property in each section is a choice of which layout to apply:
+
+![A selection of layouts which can be applied](StandardTopicPage-Layouts.png)
+
+This list of layouts is read from `web.config`:
+
+	<configuration>
+	  <configSections>
+		<sectionGroup name="Escc.EastSussexGovUK.Umbraco">
+	      <section name="TopicSectionLayouts" type="Escc.EastSussexGovUK.Umbraco.Web.Views.Topic.SectionLayoutConfigurationSection, Escc.EastSussexGovUK.Umbraco.Web" />
+	    </sectionGroup>
+	  </configSections>
+	  <Escc.EastSussexGovUK.Umbraco>
+	    <TopicSectionLayouts>
+	      <SectionLayouts>
+	        <add name="Normal" displayName="Image on right" displayControl="~/Views/Topic/TopicSection_Normal.ascx" />
+	        <add name="Alternative" displayName="Image on left" displayControl="~/Views/Topic/TopicSection_Alternative.ascx" />
+	        <add name="FeaturedImage" displayName="Large image" displayControl="~/Views/Topic/TopicSection_FeaturedImage.ascx" />
+	        <add name="ImageRowBorderless" displayName="Row of images without borders" displayControl="~/Views/Topic/TopicSection_ImageRowBorderless.ascx" />
+	        <add name="TermDates" displayName="School term dates" displayControl="~/Views/Topic/TopicSection_TermDates.ascx" />
+	        <add name="RecyclingSiteSearch" displayName="Find a recycling site" displayControl="~/Views/Topic/TopicSection_RecyclingSiteFinder.ascx" />
+	      </SectionLayouts>
+	    </TopicSectionLayouts>
+	  </Escc.EastSussexGovUK.Umbraco>
+	</configuration>
+
+The `web.config` entry for each layout points to a WebForms usercontrol which renders the section, using some or all of the remaining properties in the section. Also in the `~\Views\Topic` folder are several classes to support this choice of sections.
+
+'**School term dates**' and '**Find a recycling site**' are special cases, as they completely ignore all the other properties in the section. These are designed to include some very specific code intended only to be used once on the whole website, in the middle of an otherwise generic template. 'Find a recycling site' does not even belong to this project - it is imported by the `Escc.RubbishAndRecycling.SiteFinder` NuGet package from the [Escc.RubbishAndRecycling.SiteFinder](https://github.com/east-sussex-county-council/Escc.RubbishAndRecycling.SiteFinder) project.
+
+Sections 7 to 20 of the 'Standard topic page' are simply a heading and rich text box for additional content with standard formatting. It was decided that 6 customisable sections were enough.
+
+### School term dates
 
 Term dates are stored as XML so that they can be [made available as open data](http://data.gov.uk/dataset/east-sussex-county-council-term-dates).
 
@@ -35,6 +71,16 @@ This is an example of the XML format, showing the three possible time periods: t
 3. In the same section, select the term dates data in the 'Section [number]: image 1' field. All other fields in the section are ignored.
 
 If no term dates data is selected, the term dates section is left blank. If the wrong kind of file is selected an `XmlException` is thrown with the message "Invalid character in the given encoding. Line 1, position 1."
+
+### Pull quotes on the 'Standard topic page'
+
+'Standard topic page' supports pull quotes in a way not supported by any other template.
+
+![An example of a pull quote in a Standard topic page](StandardTopicPage-Quote.png)
+
+All of the rich text editor properties on the 'Standard topic page' document type use a dedicated 'Rich text: Standard topic page' data type. Installing the [Escc.Umbraco.PropertyEditors](https://github.com/east-sussex-county-council/Escc.Umbraco.PropertyEditors) NuGet package from our private feed makes available the the `Rich text editor (ESCC)` property editor, which is used on all rich text data types. 
+
+However, it also updates `~\config\tinymceconfig.config` to make a custom Blockquote button available to the TinyMCE editor, and only the 'Rich text: Standard topic page' data type has this button enabled. The pull quote is a standard `<blockquote>` element inserted into the page and styled by `topic-small.css` and `topic-medium.css`.
 
 ## Map
 

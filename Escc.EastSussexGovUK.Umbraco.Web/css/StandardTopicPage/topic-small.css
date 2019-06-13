@@ -5,9 +5,6 @@
 /* Image is centred within text, no wrapping. Combined top/bottom margin is one line space. */
 .text-content .topicImageOdd, .text-content .topicImageEven { margin: .5625em 0; }
 
-/* Set position for IE6/7, otherwise images sometimes disappear */
-.ie67 .topicImageNoWrap img { position: relative; }
-
 /* Image captions */
 .text-content figcaption { margin: 0 0 1.125em; }
 

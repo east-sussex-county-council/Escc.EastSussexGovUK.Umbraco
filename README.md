@@ -16,7 +16,7 @@ The solution is broken up into several subprojects:
 *  [Jobs](Jobs.md)
 *  [Locations, including libraries and recycling sites](Location.md)
 *  [Rights of way - Section 31 deposits and definitive map modifications](RightsOfWay.md)
-*  [WebForms templates migrated from Microsoft CMS](MicrosoftCms.md)
+*  [WebForms templates migrated from Microsoft CMS](MicrosoftCms.md) (includes details of the 'Standard topic page' and 'Map' templates and displaying school term dates)
 
 ## Features available on most templates
 *  [A/B testing](ABTesting.md)
