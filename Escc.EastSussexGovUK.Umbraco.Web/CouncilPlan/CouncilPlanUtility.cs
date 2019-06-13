@@ -3,7 +3,7 @@ using System.Web;
 using Escc.Web;
 using Umbraco.Web;
 
-namespace Escc.EastSussexGovUK.Umbraco.Web.Views
+namespace Escc.EastSussexGovUK.Umbraco.Web.CouncilPlan
 {
     public static class CouncilPlanUtility
     {

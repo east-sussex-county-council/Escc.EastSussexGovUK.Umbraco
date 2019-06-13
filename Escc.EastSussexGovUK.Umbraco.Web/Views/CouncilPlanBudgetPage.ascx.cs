@@ -4,7 +4,7 @@ using System.Text;
 using System.Web.Mvc;
 using Escc.EastSussexGovUK.Umbraco.Web.MicrosoftCmsMigration;
 using Umbraco.Core.Models;
-using Escc.Web;
+using Escc.EastSussexGovUK.Umbraco.Web.CouncilPlan;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.Views
 {
@@ -29,13 +29,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Views
             html.Append("</div>");
 
             objectTag.Text = html.ToString();
-        }
-
-        private static string FormatImageTag(string imageUrl, string altText, bool imgMap)
-        {
-            var imgMapStr = imgMap ? " usemap=\"#map\" class=\"image-map\"" : "";
-
-            return string.Format(CultureInfo.InvariantCulture, "<img src=\"{0}\" alt=\"{1}\"{2} />", imageUrl, altText, imgMapStr);
         }
     }
 }

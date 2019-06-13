@@ -3344,11 +3344,11 @@
     <Compile Include="CampaignTemplates\CampaignLandingController.cs" />
     <Compile Include="Location\ChildcareController.cs" />
     <Compile Include="Location\CouncilOfficeController.cs" />
-    <Compile Include="Controllers\CouncilPlanBudgetPageController.cs" />
-    <Compile Include="Controllers\CouncilPlanHomePageController.cs" />
-    <Compile Include="Controllers\CouncilPlanMonitoringPageController.cs" />
-    <Compile Include="Controllers\CouncilPlanPrioritiesPageController.cs" />
-    <Compile Include="Controllers\CouncilPlanTopicPageController.cs" />
+    <Compile Include="CouncilPlan\CouncilPlanBudgetPageController.cs" />
+    <Compile Include="CouncilPlan\CouncilPlanHomePageController.cs" />
+    <Compile Include="CouncilPlan\CouncilPlanMonitoringPageController.cs" />
+    <Compile Include="CouncilPlan\CouncilPlanPrioritiesPageController.cs" />
+    <Compile Include="CouncilPlan\CouncilPlanTopicPageController.cs" />
     <Compile Include="Location\DayCentreController.cs" />
     <Compile Include="Guide\GuideController.cs" />
     <Compile Include="Guide\GuideStepController.cs" />
@@ -3515,7 +3515,7 @@
     <Compile Include="Views\CouncilPlanTopicPage.ascx.designer.cs">
       <DependentUpon>CouncilPlanTopicPage.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Views\CouncilPlanUtility.cs" />
+    <Compile Include="CouncilPlan\CouncilPlanUtility.cs" />
     <Compile Include="Views\Layouts\UmbracoBreadcrumbProvider.cs" />
     <Compile Include="Views\Map.ascx.cs">
       <DependentUpon>Map.ascx</DependentUpon>
