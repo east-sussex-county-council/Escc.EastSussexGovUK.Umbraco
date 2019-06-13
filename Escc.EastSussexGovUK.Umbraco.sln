@@ -13,6 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution 
 		Banners.md = Banners.md
 		ChangingHTML.md = ChangingHTML.md
 		GoogleMaps.md = GoogleMaps.md
+		Guide.md = Guide.md
 		HomePage.md = HomePage.md
 		ICaseworkForms.md = ICaseworkForms.md
 		Jobs.md = Jobs.md

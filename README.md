@@ -12,6 +12,7 @@ The solution is broken up into several subprojects:
 
 ## Specific templates
 *  [Home page](HomePage.md)
+*  [Guide](Guide.md)
 *  [Jobs](Jobs.md)
 *  [Locations, including libraries and recycling sites](Location.md)
 *  [Rights of way - Section 31 deposits and definitive map modifications](RightsOfWay.md)
