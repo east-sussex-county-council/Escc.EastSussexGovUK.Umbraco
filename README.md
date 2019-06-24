@@ -13,10 +13,11 @@ The solution is broken up into several subprojects:
 ## Configuring the Umbraco application
 
 *  [Auditing and debugging](Debugging.md)
-*  Configuring custom error pages is documented in [Redirects and custom errors](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK/blob/master/RedirectsAndCustomErrors.md) in the Escc.EastSussexGovUK project.
-*  Document types, media types, data types and template definitions are all managed using [uSync snapshots](https://usync.readthedocs.io/).
+*  Configuring redirects and custom error pages is documented in [Redirects and custom errors](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK/blob/master/RedirectsAndCustomErrors.md) in the Escc.EastSussexGovUK project
+*  Document types, media types, data types and template definitions are all managed using [uSync snapshots](https://usync.readthedocs.io/)
 *  [Branding the login screen](Branding.md)
 *  A sitemap of media items is published by [Escc.Umbraco.SiteMap](https://github.com/east-sussex-county-council/Escc.Umbraco.SiteMap) to enable search engines to better index documents uploaded to Umbraco. This means that items uploaded to the media library can be discovered by search engines even if they are not linked from a page.
+*  The content and media recycle bins are cleared of old items on a regular basis by [Escc.Umbraco.RecycleBinManager](https://github.com/east-sussex-county-council/Escc.Umbraco.RecycleBinManager)
 
 ## Specific templates
 *  [Home page](HomePage.md)
@@ -38,6 +39,7 @@ The solution is broken up into several subprojects:
 *  [Embedding YouTube videos](YouTuve.md)
 *  [Making changes to HTML before it's displayed](ChangingHTML.md)
 *  [East Sussex 1Space and ESCIS support](1SpaceESCIS.md)
+*  [Ratings](Ratings.md) (also known as Customer Thermometer)
 *  [Social media support](SocialMedia.md)
 *  [Web chat](WebChat.md)
 *  Alternative text is required for images by the inclusion of [Escc.Umbraco](https://github.com/east-sussex-county-council/Escc.Umbraco)
