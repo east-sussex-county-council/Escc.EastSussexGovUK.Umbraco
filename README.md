@@ -42,6 +42,7 @@ The solution is broken up into several subprojects:
 *  [Ratings](Ratings.md) (also known as Customer Thermometer)
 *  [Social media support](SocialMedia.md)
 *  [Web chat](WebChat.md)
+*  Changing the [text size](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK/blob/master/TextSize.md) for the site is documented in the `Escc.EastSussexGovUK` project, but this project implements the API that sets the cookie it requires, using `RegisterTextSizeRoute` to wire up a controller and a view that do not require an Umbraco document type and content node. 
 *  Alternative text is required for images by the inclusion of [Escc.Umbraco](https://github.com/east-sussex-county-council/Escc.Umbraco)
 *  Validation and automatic formatting of rich text fields is provided by [Escc.Umbraco.PropertyEditors](https://github.com/east-sussex-county-council/Escc.Umbraco.PropertyEditors/)
 *  A media folder is maintained for each page, and media usage is tracked, by [Escc.Umbraco.MediaSync](https://github.com/east-sussex-county-council/Escc.Umbraco.MediaSync/)
