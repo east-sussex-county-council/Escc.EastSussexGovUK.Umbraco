@@ -40,6 +40,11 @@ The solution is broken up into several subprojects:
 ## Forms
 *  [Umbraco Forms](UmbracoForms.md)
 
+## Auditing and debugging
+
+*  [Auditing and debugging](Debugging.md)
+*  Configuring custom error pages is documented in [Redirects and custom errors](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK/blob/master/RedirectsAndCustomErrors.md) in the Escc.EastSussexGovUK project.
+
 ## Development setup steps
 
 1. From an Administrator command prompt, run `app-setup-dev.cmd` to set up a site in IIS.
