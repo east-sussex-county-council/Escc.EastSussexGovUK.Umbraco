@@ -24,6 +24,7 @@ The solution is broken up into several subprojects:
 *  [Home page](HomePage.md)
 *  [Guide](Guide.md)
 *  [Jobs](Jobs.md)
+*  [Campaigns](Campaigns.md)
 *  [Locations, including libraries and recycling sites](Location.md)
 *  [Privacy notice](PrivacyNotice.md)
 *  [Rights of way - Section 31 deposits and definitive map modifications](RightsOfWay.md)
@@ -31,6 +32,7 @@ The solution is broken up into several subprojects:
 
 ## Features available on most templates
 *  [A/B testing](ABTesting.md)
+*  Web analytics support using heatmaps is provided by [Escc.Umbraco.HeatmapAnalytics](https://github.com/east-sussex-county-council/Escc.Umbraco.HeatmapAnalytics)
 *  [Skins](Skins.md)
 *  [Service alerts](ServiceAlerts.md)
 *  [Latest section](Latest.md)

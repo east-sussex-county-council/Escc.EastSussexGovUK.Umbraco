@@ -12,6 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution 
 		app-setup-dev.ps1 = app-setup-dev.ps1
 		Banners.md = Banners.md
 		Branding.md = Branding.md
+		Campaigns.md = Campaigns.md
 		ChangingHTML.md = ChangingHTML.md
 		Debugging.md = Debugging.md
 		GoogleMaps.md = GoogleMaps.md
