@@ -37,7 +37,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.ServiceAlerts
         }
 
         /// <summary>
-        /// Temporary method to get schools closures alert as HTTP request from old hosting. To be rewritten once school closures available locally.
+        /// Get schools closures data from Azure storage.
         /// </summary>
         /// <param name="alerts"></param>
         private async tasks.Task AddSchoolClosureAlerts(List<AlertViewModel> alerts)

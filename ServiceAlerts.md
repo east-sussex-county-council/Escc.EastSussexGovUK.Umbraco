@@ -4,9 +4,9 @@ Alerts about disruptions to council services which appear across sections of www
 
 Alerts are created as pages in Umbraco using the `Alert` document type. They are aggregated under a page using the `Alerts` document type, which is a list view document type. This allows permissions to be restricted for that part of the content tree.
 
-The `Alerts` document type has a view which returns JSON data for all alerts. This includes an alert for school closures, which is current read using an HTTP request but will be updated to read from school closures data directly once it is available locally.
+The `Alerts` document type uses `AlertsController` to load the data, and `~\Views\Alerts.cshtml` to return JSON data for all alerts. This includes an alert for school closures, which is read from an XML file in Azure storage using code from [Escc.ServiceClosures](https://github.com/east-sussex-county-council/Escc.ServiceClosures).
 
-The JSON data is consumed by `alerts.js` which is loaded on all sitewide master pages and MVC layouts from the `Scripts*.ascx` files in the `Escc.EastSussexGovUK` project. `alerts.js` also lives in `Escc.EastSussexGovUK`.
+The JSON data is consumed by `alerts.js` which is loaded on all sitewide master pages and MVC layouts from the `Scripts*.ascx` files in the [Escc.EastSussexGovUK](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK) project. `alerts.js` also lives in `Escc.EastSussexGovUK`.
 
 ## Caching of alerts
 
