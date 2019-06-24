@@ -14,6 +14,7 @@ The solution is broken up into several subprojects:
 
 *  [Auditing and debugging](Debugging.md)
 *  Configuring custom error pages is documented in [Redirects and custom errors](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK/blob/master/RedirectsAndCustomErrors.md) in the Escc.EastSussexGovUK project.
+*  Document types, media types, data types and template definitions are all managed using [uSync snapshots](https://usync.readthedocs.io/).
 *  [Branding the login screen](Branding.md)
 
 ## Specific templates
