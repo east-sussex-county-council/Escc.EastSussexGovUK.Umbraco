@@ -16,6 +16,7 @@ The solution is broken up into several subprojects:
 *  Configuring custom error pages is documented in [Redirects and custom errors](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK/blob/master/RedirectsAndCustomErrors.md) in the Escc.EastSussexGovUK project.
 *  Document types, media types, data types and template definitions are all managed using [uSync snapshots](https://usync.readthedocs.io/).
 *  [Branding the login screen](Branding.md)
+*  A sitemap of media items is published by [Escc.Umbraco.SiteMap](https://github.com/east-sussex-county-council/Escc.Umbraco.SiteMap) to enable search engines to better index documents uploaded to Umbraco. This means that items uploaded to the media library can be discovered by search engines even if they are not linked from a page.
 
 ## Specific templates
 *  [Home page](HomePage.md)
