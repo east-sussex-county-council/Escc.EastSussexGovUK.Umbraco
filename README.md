@@ -10,11 +10,18 @@ The solution is broken up into several subprojects:
 *  `Escc.Jobs.SendAlerts` sends job alerts when run as a scheduled task.
 *  `Escc.EastSussexGovUK.Umbraco` contains any code which needs to be shared between two or more of the above projects.
 
+## Configuring the Umbraco application
+
+*  [Auditing and debugging](Debugging.md)
+*  Configuring custom error pages is documented in [Redirects and custom errors](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK/blob/master/RedirectsAndCustomErrors.md) in the Escc.EastSussexGovUK project.
+*  [Branding the login screen](Branding.md)
+
 ## Specific templates
 *  [Home page](HomePage.md)
 *  [Guide](Guide.md)
 *  [Jobs](Jobs.md)
 *  [Locations, including libraries and recycling sites](Location.md)
+*  [Privacy notice](PrivacyNotice.md)
 *  [Rights of way - Section 31 deposits and definitive map modifications](RightsOfWay.md)
 *  [WebForms templates migrated from Microsoft CMS](MicrosoftCms.md) (includes details of the 'Standard topic page' and 'Map' templates and displaying school term dates)
 
@@ -39,11 +46,6 @@ The solution is broken up into several subprojects:
 
 ## Forms
 *  [Umbraco Forms](UmbracoForms.md)
-
-## Auditing and debugging
-
-*  [Auditing and debugging](Debugging.md)
-*  Configuring custom error pages is documented in [Redirects and custom errors](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK/blob/master/RedirectsAndCustomErrors.md) in the Escc.EastSussexGovUK project.
 
 ## Development setup steps
 
