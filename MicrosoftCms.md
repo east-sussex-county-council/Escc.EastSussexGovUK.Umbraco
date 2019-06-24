@@ -15,7 +15,11 @@ The handler must be configured in `web.config` as follows:
       	<add name="MicrosoftCmsUrlRedirection" verb="GET" path="*.htm" type="Escc.EastSussexGovUK.Umbraco.Web.MicrosoftCmsMigration.MicrosoftCmsUrlRedirectionHandler, Escc.EastSussexGovUK.Umbraco.Web" />
 	  </handlers>
 	</system.webServer>
-  
+
+## Standard landing page
+
+The 'Standard landing page' includes help text when previewing a page to show where the displayed information is read from. This is formatted using `umbraco-preview.css` - see [Customising Umbraco page previews](UmbracoPreview.md),
+
 ## Standard topic page 
 
 The standard topic page is a general purpose template that tries to offer similar flexibility to the Umbraco grid data type, but it was built within the limitations of Microsoft CMS which was not designed to work that way.
