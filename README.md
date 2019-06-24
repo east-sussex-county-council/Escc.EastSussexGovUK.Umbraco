@@ -35,6 +35,7 @@ The solution is broken up into several subprojects:
 *  Validation and automatic formatting of rich text fields is provided by [Escc.Umbraco.PropertyEditors](https://github.com/east-sussex-county-council/Escc.Umbraco.PropertyEditors/)
 *  A media folder is maintained for each page, and media usage is tracked, by [Escc.Umbraco.MediaSync](https://github.com/east-sussex-county-council/Escc.Umbraco.MediaSync/)
 *  Media is stored in Azure blob storage by [our fork of UmbracoFileSystemProviders.Azure](https://github.com/east-sussex-county-council/UmbracoFileSystemProviders.Azure)
+*  Page expiry is controlled and notifications are sent to editors by [Escc.Umbraco.Expiry](https://github.com/east-sussex-county-council/Escc.Umbraco.Expiry)
 
 ## Forms
 *  [Umbraco Forms](UmbracoForms.md)
