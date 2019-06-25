@@ -31,18 +31,30 @@ Background images should be tested at the full range of sizes by resizing the br
 *  Landing navigation - these are the same links on a blue background that are used on the 'Landing' template, though here they can have the colour and background changed.
 *  Button navigation - these are individually coloured buttons with descriptions which expand to fill the width of the page. 
 
+### Google Ads campaign tracking
+
+Campaigns are sometimes promoted using [Google Ads](https://ads.google.com), so to track the success of an advert the Google Ads tag code can be pasted into the `Google AdWords tag` property on the 'Properties' tab of the 'Campaign landing' document type. 
+
+The Google Ads tag code is parsed by `GoogleAdWordsTagParser` so that the standard `<script />` element can be replaced with one that specifies a nonce for the Content Security Policy, then the Content Security Policy is updated and the amended tag code is inserted into the page.
+
 ## Campaign content
 
 Background images on this template will be displayed as a header above the breadcrumb trail and `h1` element. The image widths should be the same as the background images for the 'Campaign landing' template above.
 
-This template is designed to display pull quotes alongside text-based content. 
+This template is designed to display pull quotes alongside text-based content. Colours are customisable for the pull quotes and any font from [Google Fonts](https://fonts.google.com) can be used. To specify a custom font copy the family name (for example `Oleo+Script:700`) from the 'Embed' code supplied once you select a font on Google Fonts, and paste it into the `Quotes: font-family` Umbraco property for the page.
 
-Upper and lower pull quotes appear within the text on small screens, but alongside the text in the right column on large screens. Colours are customisable colours and any font from Google Fonts can be used:
+![The highlighted family name of a font on Google Fonts](GoogleFonts.png)
+
+Upper and lower pull quotes appear within the text on small screens, but alongside the text in the right column on large screens:
 ![An example of an upper or lower pull quote on the 'Campaign content' template](CampaignContentQuote1.png)
 
-The central pull quote fills the width of the page. On larger screens the image expands outside the top of its container. Colours are customisable colours and any font from Google Fonts can be used:
+The central pull quote fills the width of the page. On larger screens the image expands outside the top of its container:
 
 ![An example of a central pull quote on the 'Campaign content' template](CampaignContentQuote2.png)
+
+The lower pull quote is designed to work with a cutout image of the speaker, 310px wide, which is aligned to the page footer:
+
+![An example of a final pull quote on the 'Campaign content' template](CampaignContentQuote3.png)
 
 ## Campaign tiles 
 
