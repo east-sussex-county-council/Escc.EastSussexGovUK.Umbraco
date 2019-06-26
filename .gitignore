@@ -60,7 +60,7 @@ dummy.txt
 global.asax
 *.config.js
 */Views/Partials/Grid/*
-!*/uSync/**/*
+!*/uSync/snapshots/*
 
 # Umbraco Forms
 */App_Plugins/UmbracoForms/*
