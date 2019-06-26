@@ -9,7 +9,7 @@
   <configSections xdt:Transform="InsertBefore(/configuration/*[1])" />
   <configSections xdt:Locator="XPath(/configuration/configSections[last()])">
     <section name="exceptionless" type="Exceptionless.ExceptionlessSection, Exceptionless" xdt:Transform="Insert" />
-    <section name="exceptionless" xdt:Transform="Remove" xdt:Locator="XPath(/configuration/configSections/sectionGroup[@name='exceptionless'][2])" />
+    <section name="exceptionless" xdt:Transform="Remove" xdt:Locator="XPath(/configuration/configSections/section[@name='exceptionless'][2])" />
   </configSections>
   <configSections xdt:Transform="RemoveAll" xdt:Locator="Condition(count(*)=0)" />
 

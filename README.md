@@ -57,12 +57,10 @@ The solution is broken up into several subprojects:
 
 ## Development setup steps
 
-1. From an Administrator command prompt, run `app-setup-dev.cmd` to set up a site in IIS.
+1. Ensure that [Escc.WebApplicationSetupScripts](https://github.com/east-sussex-county-council/Escc.WebApplicationSetupScripts) and [Escc.EastSussexGovUK](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK) are already set up in folders alongside this repository. 
+1. From an Administrator command prompt, run `app-setup-dev.cmd` to set up a site in IIS and prepare the Umbraco configuration files.
 2. Build the solution
-3. Grant modify permissions to the application pool account on the web root folder and all children
-4. Copy `packages\Umbraco*\Content\config\*.config` into `~\config`
-6. In `~\web.config` set the `UmbracoConfigurationStatus` and `umbracoDbDSN`, or run the Umbraco installer.
-8. In `~\web.config` add the contents of `web.config.xdt`
-7. In `~\web.config` uncomment and complete the `Proxy` and `RemoteMasterPage` sections
+3. Obtain an Umbraco Forms licence file called `umbracoForms.lic` and copy it into both `~\Escc.EastSussexGovUK.Umbraco.Web\bin` and `~\Escc.EastSussexGovUK.Umbraco.Api\bin`
+6. Go to `https://localhost:port/umbraco` in a browser to run the Umbraco installer (where `port` is the one you chose for the web application when you ran `app-setup-dev.cmd`). Alternatively, if you already have an database, in both `~\Escc.EastSussexGovUK.Umbraco.Web\web.config` and `~\Escc.EastSussexGovUK.Umbraco.Api\web.config` set the `umbracoConfigurationStatus` and `umbracoDbDSN` values.
+7. In `~\Escc.EastSussexGovUK.Umbraco.Web\web.config` add the `Proxy` and `RemoteMasterPage` sections
 8. In the Umbraco back office, go to the Developer > uSync BackOffice > Snapshots and click 'Apply all'
-9. Create an IIS virtual directory called `~/img/` which points to the `img` folder of the [Escc.EastSussexGovUK.TemplateSource](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK) project.
