@@ -100,12 +100,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayModifications
 
                         for (var i = 1; i <= 5; i++)
                         {
-                            if (e.Fields.ContainsKey($"Owner{i}"))
-                            {
-                                var owner = nameConverter.ConvertDataToSource(null, e.Fields[$"Owner{i}"], false);
-                                if (owner != null) combinedFields.AppendLine(owner.ToString());
-                            }
-
                             if (e.Fields.ContainsKey($"OrganisationalOwner{i}"))
                             {
                                 combinedFields.AppendLine(e.Fields[$"OrganisationalOwner{i}"]);

@@ -19,11 +19,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayModifications
         public string Reference { get; set; }
 
         /// <summary>
-        /// Gets the individuals who wholly or partly own the land affected by the claim
-        /// </summary>
-        public IList<PersonName> IndividualOwners { get; private set; } = new List<PersonName>();
-
-        /// <summary>
         /// Gets the groups or organisations which wholly or partly own the land affected by the claim
         /// </summary>
         public IList<string> OrganisationalOwners { get; private set; } = new List<string>();

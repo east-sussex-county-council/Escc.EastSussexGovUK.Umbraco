@@ -3212,6 +3212,7 @@
     <Content Include="uSync\Snapshots\20190521_163156_delete-standard-download\MediaType\file\def.config" />
     <Content Include="uSync\Snapshots\20190521_163156_delete-standard-download\uSyncActions.config" />
     <Content Include="uSync\Snapshots\20190610_173139_rename-level-field\DocumentType\document-type-expiry-rule\def.config" />
+    <Content Include="uSync\Snapshots\20190626_152810_delete-row-map-owners\DocumentType\rights-of-way-definitive-map-modification\def.config" />
     <None Include="Web.config.xdt">
       <SubType>Designer</SubType>
     </None>

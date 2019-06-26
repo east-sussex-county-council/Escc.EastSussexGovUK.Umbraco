@@ -14,11 +14,6 @@
     <IndexUserFields>
       <add Name="Parish" EnableSorting="true" Type="STRING" />
       <add Name="nearestTownOrVillage" />
-      <add Name="Owner1" />
-      <add Name="Owner2" />
-      <add Name="Owner3" />
-      <add Name="Owner4" />
-      <add Name="Owner5" />
       <add Name="OrganisationalOwner1" />
       <add Name="OrganisationalOwner2" />
       <add Name="OrganisationalOwner3" />
