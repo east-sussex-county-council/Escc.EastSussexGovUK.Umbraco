@@ -50,9 +50,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayModifications
 
             for (var i = 1; i <= 5; i++)
             {
-                var owner = UmbracoContent.GetPropertyValue<PersonName>($"Owner{i}");
-                if (owner != null) { model.IndividualOwners.Add(owner); }
-
                 var org = UmbracoContent.GetPropertyValue<string>($"OrganisationalOwner{i}");
                 if (!String.IsNullOrEmpty(org)) { model.OrganisationalOwners.Add(org); }
 

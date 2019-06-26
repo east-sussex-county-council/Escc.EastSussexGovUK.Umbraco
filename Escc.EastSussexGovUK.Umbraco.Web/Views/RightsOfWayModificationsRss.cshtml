@@ -28,15 +28,12 @@
     @foreach (var modificationOrder in Model.Items)
     {
         var url = "<link>" + HttpUtility.HtmlEncode(modificationOrder.PageUrl) + "</link>";
-        var owners = new List<string>();
-        foreach (var owner in modificationOrder.IndividualOwners) { owners.Add(owner.ToString()); }
-        owners.AddRange(modificationOrder.OrganisationalOwners);
         var ownerName = new StringBuilder();
-        for (var i = 0; i < owners.Count; i++)
+        for (var i = 0; i < modificationOrder.OrganisationalOwners.Count; i++)
         {
-            if (i > 0 && i < owners.Count-1) { ownerName.Append(", "); }
-            else if (i > 0 && i == owners.Count-1) { ownerName.Append(" and "); }
-            ownerName.Append(owners[i]);
+            if (i > 0 && i < modificationOrder.OrganisationalOwners.Count-1) { ownerName.Append(", "); }
+            else if (i > 0 && i == modificationOrder.OrganisationalOwners.Count-1) { ownerName.Append(" and "); }
+            ownerName.Append(modificationOrder.OrganisationalOwners[i]);
         }
         var parish = new StringBuilder();
         for (var i = 0; i < modificationOrder.Parishes.Count; i++)

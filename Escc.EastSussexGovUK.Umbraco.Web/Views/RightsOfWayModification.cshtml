@@ -36,16 +36,15 @@
             <table class="rights-of-way-application modification-order">
                 <tbody>
                     <tr><th scope="row">Reference</th><td>@Model.Reference</td></tr>
-                    @if (Model.IndividualOwners.Any() || Model.OrganisationalOwners.Any())
+                    @if (Model.OrganisationalOwners.Any())
                     {
-                        if (Model.IndividualOwners.Count() + Model.OrganisationalOwners.Count() == 1)
+                        if (Model.OrganisationalOwners.Count() == 1)
                         {
-                            <tr><th scope="row">Owner</th><td>@Model.IndividualOwners.FirstOrDefault()@Model.OrganisationalOwners.FirstOrDefault()</td></tr>
+                            <tr><th scope="row">Owner</th><td>@Model.OrganisationalOwners.FirstOrDefault()</td></tr>
                         }
                         else
                         { 
                         <tr><th scope="row">Owners</th><td><ul class="owners">
-                            @foreach (var owner in Model.IndividualOwners) { <li>@owner</li> }
                             @foreach (var owner in Model.OrganisationalOwners) { <li>@owner</li> }
                         </ul></td></tr>
                         }

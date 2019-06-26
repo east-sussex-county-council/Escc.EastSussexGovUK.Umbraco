@@ -178,12 +178,6 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.RightsOfWayModifications
                 var addressConverter = new UkLocationPropertyValueConverter();
                 for (var i = 1; i <= 5; i++)
                 {
-                    if (result.Fields.Keys.Contains($"Owner{i}"))
-                    {
-                        var owner = nameConverter.ConvertDataToSource(null, result.Fields[$"Owner{i}"], false) as PersonName;
-                        if (owner != null) { application.IndividualOwners.Add(owner); }
-                    }
-
                     if (result.Fields.Keys.Contains($"OrganisationalOwner{i}"))
                     {
                         var org = result.Fields[$"OrganisationalOwner{i}"];
