@@ -415,6 +415,7 @@
     <customErrors mode="On" redirectMode="ResponseRewrite" xdt:Transform="Insert">
       <error statusCode="400" redirect="/httpstatus/badrequest" />
       <error statusCode="403" redirect="/httpstatus/forbidden" />
+      <error statusCode="410" redirect="/httpstatus/gone" />
       <error statusCode="500" redirect="/httpstatus/internalservererror" />
     </customErrors>
 
