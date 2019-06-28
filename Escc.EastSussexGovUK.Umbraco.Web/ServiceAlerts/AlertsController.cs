@@ -15,6 +15,7 @@ using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
 using Escc.ServiceClosures;
+using Umbraco.Core.Logging;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.ServiceAlerts
 {
@@ -53,7 +54,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.ServiceAlerts
 
             if (ConfigurationManager.ConnectionStrings["Escc.ServiceClosures.AzureStorage"] == null || String.IsNullOrEmpty(ConfigurationManager.ConnectionStrings["Escc.ServiceClosures.AzureStorage"].ConnectionString))
             {
-                new ConfigurationErrorsException("The Escc.ServiceClosures.AzureStorage connection string is missing from web.config").ToExceptionless().Submit();
+                var error = new ConfigurationErrorsException("The Escc.ServiceClosures.AzureStorage connection string is missing from web.config");
+                LogHelper.Error<AlertsController>(error.Message, error);
+                error.ToExceptionless().Submit();
                 return;
             }
 

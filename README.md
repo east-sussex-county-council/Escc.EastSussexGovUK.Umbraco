@@ -12,6 +12,12 @@ The solution is broken up into several subprojects:
 
 ## Configuring the Umbraco application
 
+*  Master and slave roles for Umbraco instances are configured by `RegisterServerRoleEventHandler`. Add the following setting to `web.config` on the back-office site only to ensure that the correct roles are assigned:
+
+		<appSettings>
+	      <add key="IsUmbracoBackOffice" value="true" />
+		<appSettings>
+ 
 *  [Auditing and debugging](Debugging.md)
 *  Configuring redirects and custom error pages is documented in [Redirects and custom errors](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK/blob/master/RedirectsAndCustomErrors.md) in the Escc.EastSussexGovUK project
 *  Document types, media types, data types and template definitions are all managed using [uSync snapshots](https://usync.readthedocs.io/)
@@ -57,10 +63,74 @@ The solution is broken up into several subprojects:
 
 ## Development setup steps
 
-1. Ensure that [Escc.WebApplicationSetupScripts](https://github.com/east-sussex-county-council/Escc.WebApplicationSetupScripts) and [Escc.EastSussexGovUK](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK) are already set up in folders alongside this repository. 
-2. From an Administrator command prompt, run `app-setup-dev.cmd` to set up a site in IIS and prepare the Umbraco configuration files.
-3. Build the solution
-4. Obtain an Umbraco Forms licence file called `umbracoForms.lic` and copy it into both `~\Escc.EastSussexGovUK.Umbraco.Web\bin` and `~\Escc.EastSussexGovUK.Umbraco.Api\bin`
-5. Go to `https://localhost:port/umbraco` in a browser to run the Umbraco installer (where `port` is the one you chose for the web application when you ran `app-setup-dev.cmd`). Alternatively, if you already have an database, in both `~\Escc.EastSussexGovUK.Umbraco.Web\web.config` and `~\Escc.EastSussexGovUK.Umbraco.Api\web.config` set the `umbracoConfigurationStatus` and `umbracoDbDSN` values.
-6. In the Umbraco back office, go to the Developer > uSync BackOffice > Snapshots and click 'Apply all'
-7. In `~\Escc.EastSussexGovUK.Umbraco.Web\web.config` add the `Proxy` and `RemoteMasterPage` sections
+1.  Create an Azure storage account or get the [Azure storage emulator](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator).
+
+2.  Ensure that [Escc.WebApplicationSetupScripts](https://github.com/east-sussex-county-council/Escc.WebApplicationSetupScripts) and [Escc.EastSussexGovUK](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK) are already set up in folders alongside this repository.
+
+3.  Get the `Web.Debug.config` files for `Escc.EastSussexGovUK.Umbraco.Web` and `Escc.EastSussexGovUK.Umbraco.Api` from our secrets store and place them in the  `Escc.EastSussexGovUK.Umbraco.Web` and `Escc.EastSussexGovUK.Umbraco.Api` folders. If you don't have access to these files, follow the manual steps later. 
+
+4.  From an Administrator command prompt, run `app-setup-dev.cmd` to set up a site in IIS and prepare the Umbraco configuration files.
+
+5.  Build the solution.
+
+6.  Obtain an Umbraco Forms licence file called `umbracoForms.lic` and copy it into `~\Escc.EastSussexGovUK.Umbraco.Web\bin`.
+
+7.  Go to `https://localhost:port/umbraco` in a browser to run the Umbraco installer (where `port` is the one you chose for the web application when you ran `app-setup-dev.cmd`). Use a SQL Server database as you'll need to connect to the same one from the API project. Alternatively, if you already have an database, in `~\Escc.EastSussexGovUK.Umbraco.Web\web.config` set the `umbracoConfigurationStatus` and `umbracoDbDSN` values.
+
+8.  Copy the `umbracoDbDSN` value from `~\Escc.EastSussexGovUK.Umbraco.Web\web.config` to `~\Escc.EastSussexGovUK.Umbraco.Api\web.config`.
+
+9.  If you didn't have `Web.Debug.config` earlier, configure the `system.net/mailSettings` section in `~\Escc.EastSussexGovUK.Umbraco.Web\web.config` with a `from` address and details of your SMTP server.
+
+10.  If you didn't have `Web.Debug.config` earlier, add proxy server and web API credentials to `~\Escc.EastSussexGovUK.Umbraco.Web\web.config` using [Escc.Net](https://github.com/east-sussex-county-council/Escc.Net) (if a page loads slowly and without template elements such as the header and footer, you  need to configure the proxy).
+
+11.  Configure `~\Escc.EastSussexGovUK.Umbraco.Web\config\FileSystemProviders.config` and `~\Escc.EastSussexGovUK.Umbraco.Web\config\imageprocessor\security.config` as described in the documentation for [our fork of UmbracoFileSystemProviders.Azure](https://github.com/east-sussex-county-council/UmbracoFileSystemProviders.Azure/tree/escc). Be sure to read the documentation on the `escc` branch as there are extra fields to configure for Umbraco Forms.
+
+12.  Configure a project in Exceptionless to report errors to, and enter the details in  `~\Escc.EastSussexGovUK.Umbraco.Web\web.config`, `~\Escc.EastSussexGovUK.Umbraco.Api\web.config`, `~\Escc.Jobs.SendAlerts\app.config` and `~\Escc.Jobs.UpdateIndexes\app.config`: 
+
+	`<exceptionless apiKey="API_KEY_HERE" serverUrl="https://hostname" />` 
+
+13.  In the Umbraco back office for the web application project, go to the Developer > uSync BackOffice > Snapshots and click 'Apply all'.
+
+14.  You should now have a working back-office site with no content. Go to the content section and create a home page. 
+
+### Additional steps to set up redirects
+
+1.  Add a SQL Server connection string named `RedirectsReader` in the `connectionStrings` section of `~\Escc.EastSussexGovUK.Umbraco.Web\web.config`.
+
+For more detail see [Escc.Redirects](https://github.com/east-sussex-county-council/Escc.Redirects).
+
+
+### Additional steps to set up Umbraco Forms
+
+1.  If you didn't have `Web.Debug.config` earlier, add the `SchoolApiUrl` to `~\Escc.EastSussexGovUK.Umbraco.Web\web.config`
+
+For more detail see [Umbraco Forms](UmbracoForms.md).
+
+### Additional steps to set up the jobs pages
+
+1.  Set an Azure storage connection string in the `connectionStrings` section of `~\Escc.EastSussexGovUK.Umbraco.Web\web.config` and `~\Escc.Jobs.SendAlerts\app.config`.
+
+2.  Copy the `system.net/mailSettings` section in `~\Escc.EastSussexGovUK.Umbraco.Web\web.config` to `~\Escc.Jobs.SendAlerts\app.config`.
+
+3.  If you didn't have `Web.Debug.config` earlier, add proxy server credentials to `~\Escc.EastSussexGovUK.Umbraco.Api\web.config` using [Escc.Net](https://github.com/east-sussex-county-council/Escc.Net) to connect to our external jobs provider.
+
+4.  If you didn't have `Web.Debug.config` earlier, add the URLs for our external jobs provider to `~\Escc.EastSussexGovUK.Umbraco.Api\web.config`.
+
+5.  Create the jobs pages in Umbraco using the dedicated document types for jobs. 
+
+For more detail see [Jobs](Jobs.md).
+
+### Additional steps to set up service alerts
+
+1.  Set an Azure storage connection string named `Escc.ServiceClosures.AzureStorage` in the `connectionStrings` section of `~\Escc.EastSussexGovUK.Umbraco.Web\web.config`. This enables support for school closure alerts.
+
+For more detail see [Service Alerts](ServiceAlerts.md). 
+
+
+### Additional steps to set up the recycling site finder
+
+The recycling site finder can appear on the 'Home page' and 'Standard Topic Page' templates.
+
+1.  If you didn't have `Web.Debug.config` earlier, add `LocateApi*` settings to `~\Escc.EastSussexGovUK.Umbraco.Web\web.config`. 
+
+For more detail see [Escc.RubbishAndRecycling.SiteFinder](https://github.com/east-sussex-county-council/Escc.RubbishAndRecycling.SiteFinder). 

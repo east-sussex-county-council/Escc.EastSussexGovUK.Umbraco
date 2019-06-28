@@ -18,6 +18,8 @@ using Escc.EastSussexGovUK.Umbraco.Jobs;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Alerts;
 using System.Threading.Tasks;
 using Escc.EastSussexGovUK.Mvc;
+using Umbraco.Core.Logging;
+using Exceptionless;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs.Alerts
 {
@@ -43,18 +45,27 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs.Alerts
             var alertId = new JobAlertIdEncoder(converter).ParseIdFromUrl(Request.Url);
             if (!string.IsNullOrEmpty(alertId))
             {
-                var alertsRepo = new AzureTableStorageAlertsRepository(converter, ConfigurationManager.ConnectionStrings["Escc.EastSussexGovUK.Umbraco.AzureStorage"].ConnectionString);
-                viewModel.Alert = alertsRepo.GetAlertById(alertId);
-                viewModel.Query = viewModel.Alert?.Query;
-
-                if (viewModel.Alert == null && Request.QueryString["cancelled"] != "1" && string.IsNullOrEmpty(Request.QueryString["altTemplate"]))
+                if (ConfigurationManager.ConnectionStrings["Escc.EastSussexGovUK.Umbraco.AzureStorage"] == null || String.IsNullOrEmpty(ConfigurationManager.ConnectionStrings["Escc.EastSussexGovUK.Umbraco.AzureStorage"].ConnectionString))
                 {
-                    // Returning HttpNotFoundResult() ends up with a generic browser 404, 
-                    // so to get our custom one we need to look it up and transfer control to it.
-                    var notFoundUrl = new HttpStatusFromConfiguration().GetCustomUrlForStatusCode(404);
-                    if (notFoundUrl != null && Server != null)
+                    var error = new ConfigurationErrorsException("The Escc.EastSussexGovUK.Umbraco.AzureStorage connection string is missing from web.config");
+                    LogHelper.Error<JobAlertsController>(error.Message, error);
+                    error.ToExceptionless().Submit();
+                }
+                else
+                {
+                    var alertsRepo = new AzureTableStorageAlertsRepository(converter, ConfigurationManager.ConnectionStrings["Escc.EastSussexGovUK.Umbraco.AzureStorage"].ConnectionString);
+                    viewModel.Alert = alertsRepo.GetAlertById(alertId);
+                    viewModel.Query = viewModel.Alert?.Query;
+
+                    if (viewModel.Alert == null && Request.QueryString["cancelled"] != "1" && string.IsNullOrEmpty(Request.QueryString["altTemplate"]))
                     {
-                        Server.TransferRequest(notFoundUrl + "?404;" + HttpUtility.UrlEncode(Request.Url.ToString()));
+                        // Returning HttpNotFoundResult() ends up with a generic browser 404, 
+                        // so to get our custom one we need to look it up and transfer control to it.
+                        var notFoundUrl = new HttpStatusFromConfiguration().GetCustomUrlForStatusCode(404);
+                        if (notFoundUrl != null && Server != null)
+                        {
+                            Server.TransferRequest(notFoundUrl + "?404;" + HttpUtility.UrlEncode(Request.Url.ToString()));
+                        }
                     }
                 }
             }

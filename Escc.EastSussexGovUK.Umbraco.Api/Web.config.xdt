@@ -21,6 +21,9 @@
     <add key="umbracoConfigurationStatus" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     <add key="umbracoConfigurationStatus" value="7.14.0" xdt:Transform="Insert" />
 
+    <add key="umbracoDefaultUILanguage" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    <add key="umbracoDefaultUILanguage" value="en-GB" xdt:Transform="Insert" />
+
     <add key="umbracoUseSSL" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     <add key="umbracoUseSSL" value="true" xdt:Transform="Insert" />
 
@@ -30,7 +33,14 @@
     <add key="Umbraco.ModelsBuilder.ModelsMode" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     <add key="Umbraco.ModelsBuilder.ModelsMode" value="Nothing" xdt:Transform="Insert" />
     <!-- END: Configure Umbraco -->
+
+    <!-- Jobs -->
+    <add key="TranslateObsoleteJobTypes" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    <add key="TranslateObsoleteJobTypes" value="true" xdt:Transform="Insert" />
   </appSettings>
+
+  <exceptionless xdt:Transform="Remove" />
+  <exceptionless apiKey="" serverUrl="" xdt:Transform="Insert" />
 
   <system.web xdt:Transform="Insert" />
   <system.web xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.web[2])" />
@@ -62,7 +72,7 @@
 
     <!-- Setting fcnMode to Disabled means that the website will not restart when files other than web.config are unmodified, 
          but it helps to prevent unnecessary app restarts when large numbers of files being accessed cause a buffer to overflow. -->
-    <httpRuntime fcnMode="Disabled" xdt:Transform="SetAttributes(fcnMode)" />
+    <httpRuntime targetFramework="4.7.2" fcnMode="Disabled" xdt:Transform="SetAttributes(fcnMode,targetFramework)" />
   </system.web>
 
   <system.webServer xdt:Transform="Insert" />

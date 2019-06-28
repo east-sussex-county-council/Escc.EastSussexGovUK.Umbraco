@@ -23,7 +23,20 @@ namespace Escc.Jobs.UpdateIndexes
 
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
-            var apiBaseUrl = new Uri("https://" + Environment.GetEnvironmentVariable(ConfigurationManager.AppSettings["HostnameEnvironmentVariable"]));
+            Uri apiBaseUrl = null;
+            if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["HostnameEnvironmentVariable"]) && !string.IsNullOrEmpty(Environment.GetEnvironmentVariable(ConfigurationManager.AppSettings["HostnameEnvironmentVariable"])))
+            {
+                apiBaseUrl = new Uri("https://" + Environment.GetEnvironmentVariable(ConfigurationManager.AppSettings["HostnameEnvironmentVariable"]));
+            }
+            else if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["JobsApiBaseUrl"]))
+            {
+                apiBaseUrl = new Uri(ConfigurationManager.AppSettings["JobsApiBaseUrl"]);
+            }
+
+            if (apiBaseUrl == null)
+            {
+                throw new ConfigurationErrorsException("appSettings > HostnameEnvironmentVariable was not set in app.config, or the environment variable was not set. The backup value appSettings > JobsApiBaseUrl was not set in app.config.");
+            }
 
             var apiUser = ConfigurationManager.AppSettings["ApiUser"];
             if (string.IsNullOrEmpty(apiUser))

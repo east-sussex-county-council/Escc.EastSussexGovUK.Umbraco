@@ -1,9 +1,36 @@
 <?xml version="1.0"?>
 <Examine xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <ExamineIndexProviders>
+    <providers>
+      <add name="PublicJobsIndexer" xdt:Transform="RemoveAll" xdt:Locator="Match(name)" />
+      <add name="PublicJobsIndexer" type="Examine.LuceneEngine.Providers.SimpleDataIndexer, Examine"
+           dataService="Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad.PublicJobsIndexer, Escc.EastSussexGovUK.Umbraco.Api"
+           indexTypes="Job"
+           xdt:Transform="Insert" />
+
+      <add name="RedeploymentJobsIndexer" xdt:Transform="RemoveAll" xdt:Locator="Match(name)" />
+      <add name="RedeploymentJobsIndexer" type="Examine.LuceneEngine.Providers.SimpleDataIndexer, Examine"
+           dataService="Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad.RedeploymentJobsIndexer, Escc.EastSussexGovUK.Umbraco.Api"
+           indexTypes="Job"
+           xdt:Transform="Insert" />
+
+      <add name="PublicJobsLookupValuesIndexer" xdt:Transform="RemoveAll" xdt:Locator="Match(name)" />
+      <add name="PublicJobsLookupValuesIndexer" type="Examine.LuceneEngine.Providers.SimpleDataIndexer, Examine"
+           dataService="Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad.PublicJobsLookupValuesIndexer, Escc.EastSussexGovUK.Umbraco.Api"
+           indexTypes="JobsLookup"
+           xdt:Transform="Insert" />
+
+      <add name="RedeploymentJobsLookupValuesIndexer" xdt:Transform="RemoveAll" xdt:Locator="Match(name)" />
+      <add name="RedeploymentJobsLookupValuesIndexer" type="Examine.LuceneEngine.Providers.SimpleDataIndexer, Examine"
+           dataService="Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad.RedeploymentJobsLookupValuesIndexer, Escc.EastSussexGovUK.Umbraco.Api"
+           indexTypes="JobsLookup"
+           xdt:Transform="Insert" />
+    </providers>
+  </ExamineIndexProviders>
   <ExamineSearchProviders>
     <providers>
       <add name="PublicJobsSearcher" xdt:Transform="RemoveAll" xdt:Locator="Match(name)" />
-      <add name="PublicJobsSearcher" type="Examine.LuceneEngine.Providers.LuceneSearcher, Examine" 
+      <add name="PublicJobsSearcher" type="Examine.LuceneEngine.Providers.LuceneSearcher, Examine"
            analyzer="Lucene.Net.Analysis.Standard.StandardAnalyzer, Lucene.Net"
            enableLeadingWildcards="true"
            indexSets="PublicJobsIndexSet"

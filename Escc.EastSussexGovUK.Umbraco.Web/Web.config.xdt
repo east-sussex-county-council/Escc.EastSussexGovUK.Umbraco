@@ -43,7 +43,7 @@
     <ScriptFiles xdt:Transform="Remove" xdt:Locator="XPath(/configuration/Escc.ClientDependencyFramework/ScriptFiles[2])" />
   </Escc.ClientDependencyFramework>
 
-    <Escc.ClientDependencyFramework>
+  <Escc.ClientDependencyFramework>
     <CssFiles>
       <add key="CampaignSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="CampaignSmall" value="/css/campaigntemplates/campaign-small.css" xdt:Transform="Insert" />
@@ -151,6 +151,7 @@
     <sectionGroup name="Escc.EastSussexGovUK" xdt:Transform="Remove" xdt:Locator="Match(name)" />
     <sectionGroup name="Escc.EastSussexGovUK" xdt:Transform="Insert">
       <section name="GeneralSettings" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+      <section name="RemoteMasterPage" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     </sectionGroup>
   </configSections>
 
@@ -162,6 +163,10 @@
       <add key="FullScreenMvcLayout" value="~/views/layouts/umbracofullscreen.cshtml" />
       <add key="PlainMvcLayout" value="~/views/layouts/umbracoplain.cshtml" />
     </GeneralSettings>
+    <RemoteMasterPage>
+      <add key="CacheMinutes" value="60" />
+      <add key="MasterPageControlUrl" value="https://www.eastsussex.gov.uk/masterpages/remote/control.aspx?control={0}" />
+    </RemoteMasterPage>
   </Escc.EastSussexGovUK>
 
   <configSections>
@@ -201,7 +206,7 @@
 
     <ServiceRegistry>
       <add key="Escc.Services.IEmailSender" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="Escc.Services.IEmailSender" value="Escc.Services.Azure.AzureQueuedEmailSender, Escc.Services.Azure" xdt:Transform="Insert" />
+      <add key="Escc.Services.IEmailSender" value="Escc.Services.SmtpEmailSender, Escc.Services" xdt:Transform="Insert" />
     </ServiceRegistry>
   </Escc.Services>
 
@@ -228,8 +233,11 @@
     <add key="umbracoConfigurationStatus" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     <add key="umbracoConfigurationStatus" value="7.14.0" xdt:Transform="Insert" />
 
-    <add key="umbracoReservedPaths" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-    <add key="umbracoReservedPaths" value="~/umbraco,~/install/,~/escc.eastsussexgovuk/,~/masterpages" xdt:Transform="Insert" />
+    <add key="umbracoUseSSL" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    <add key="umbracoUseSSL" value="true" xdt:Transform="Insert" />
+
+    <add key="umbracoDefaultUILanguage" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    <add key="umbracoDefaultUILanguage" value="en-GB" xdt:Transform="Insert" />
 
     <add key="umbracoUseSSL" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     <add key="umbracoUseSSL" value="true" xdt:Transform="Insert" />
@@ -241,13 +249,17 @@
     <add key="Umbraco.ModelsBuilder.ModelsMode" value="Nothing" xdt:Transform="Insert" />
     <!-- END: Configure Umbraco -->
 
+    <!-- Escc.Umbraco.RecycleBinManager -->
+    <add key="CleanRecycleBinsDaysOlderThan" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    <add key="CleanRecycleBinsDaysOlderThan" value="90" xdt:Transform="Insert" />
+
     <!-- Escc.Umbraco.SiteMap -->
     <add key="sitemapMediaFilesExclusions" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     <add key="sitemapMediaFilesExclusions" value="jpeg, jpg, png, gif, bmp, svg" xdt:Transform="Insert" />
 
-    <!-- For recycling sites included on a standard topic page -->
+    <!-- For recycling sites included on a home or standard topic page -->
     <add key="RecyclingSiteFinderBaseUrl" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-    <add key="RecyclingSiteFinderBaseUrl" value="/environment/rubbishandrecycling/recyclingsites/find/" xdt:Transform="Insert" />
+    <add key="RecyclingSiteFinderBaseUrl" value="https://www.eastsussex.gov.uk/environment/rubbishandrecycling/recyclingsites/find/" xdt:Transform="Insert" />
     <add key="WasteTypesDataUrl" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     <add key="WasteTypesDataUrl" value="/umbraco/api/wastetypes/list" xdt:Transform="Insert" />
 
@@ -255,6 +267,9 @@
     <add key="TranslateObsoleteJobTypes" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     <add key="TranslateObsoleteJobTypes" value="true" xdt:Transform="Insert" />
   </appSettings>
+
+  <exceptionless xdt:Transform="Remove" />
+  <exceptionless apiKey="" serverUrl="" xdt:Transform="Insert" />
 
   <runtime>
     <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1">
@@ -408,7 +423,7 @@
 
     <!-- Setting fcnMode to Disabled means that the website will not restart when files other than web.config are unmodified, 
          but it helps to prevent unnecessary app restarts when large numbers of files being accessed cause a buffer to overflow. -->
-    <httpRuntime fcnMode="Disabled" xdt:Transform="SetAttributes(fcnMode)" />
+    <httpRuntime targetFramework="4.7.2" fcnMode="Disabled" xdt:Transform="SetAttributes(fcnMode,targetFramework)" />
 
     <pages>
       <controls>

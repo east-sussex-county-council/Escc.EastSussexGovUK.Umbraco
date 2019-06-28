@@ -11,6 +11,8 @@ using System.Configuration;
 using Escc.EastSussexGovUK.Umbraco.Jobs.Alerts;
 using Escc.EastSussexGovUK.Umbraco.Jobs;
 using System.Threading.Tasks;
+using Umbraco.Core.Logging;
+using Exceptionless;
 
 namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs.Alerts
 {
@@ -25,21 +27,31 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Jobs.Alerts
             {
                 var converter = new JobSearchQueryConverter(ConfigurationManager.AppSettings["TranslateObsoleteJobTypes"]?.ToUpperInvariant() == "TRUE");
                 var encoder = new JobAlertIdEncoder(converter);
-                var alertsRepo = new AzureTableStorageAlertsRepository(converter, ConfigurationManager.ConnectionStrings["Escc.EastSussexGovUK.Umbraco.AzureStorage"].ConnectionString);
-                alert.Query = converter.ToQuery(query);
-                alert.AlertId = encoder.GenerateId(alert);
-                await alertsRepo.SaveAlert(alert);
 
-                var jobAlertsSettings = new JobAlertsSettingsFromUmbraco(Umbraco).GetJobAlertsSettings(alert.JobsSet);
-                if (jobAlertsSettings != null && !String.IsNullOrEmpty(jobAlertsSettings.NewAlertEmailSubject))
+                if (ConfigurationManager.ConnectionStrings["Escc.EastSussexGovUK.Umbraco.AzureStorage"] == null || String.IsNullOrEmpty(ConfigurationManager.ConnectionStrings["Escc.EastSussexGovUK.Umbraco.AzureStorage"].ConnectionString))
                 {
-                    var emailService = ServiceContainer.LoadService<IEmailSender>(new ConfigurationServiceRegistry(), new HttpContextCacheStrategy());
-                    var sender = new JobAlertsByEmailSender(jobAlertsSettings, new HtmlJobAlertFormatter(jobAlertsSettings, encoder), emailService);
-
-                    sender.SendNewAlertConfirmation(alert);
+                    var error = new ConfigurationErrorsException("The Escc.EastSussexGovUK.Umbraco.AzureStorage connection string is missing from web.config");
+                    LogHelper.Error<JobAlertsController>(error.Message, error);
+                    error.ToExceptionless().Submit();
                 }
+                else
+                {
+                    var alertsRepo = new AzureTableStorageAlertsRepository(converter, ConfigurationManager.ConnectionStrings["Escc.EastSussexGovUK.Umbraco.AzureStorage"].ConnectionString);
+                    alert.Query = converter.ToQuery(query);
+                    alert.AlertId = encoder.GenerateId(alert);
+                    await alertsRepo.SaveAlert(alert);
 
-                query.Add("subscribed", "1");
+                    var jobAlertsSettings = new JobAlertsSettingsFromUmbraco(Umbraco).GetJobAlertsSettings(alert.JobsSet);
+                    if (jobAlertsSettings != null && !String.IsNullOrEmpty(jobAlertsSettings.NewAlertEmailSubject))
+                    {
+                        var emailService = ServiceContainer.LoadService<IEmailSender>(new ConfigurationServiceRegistry(), new HttpContextCacheStrategy());
+                        var sender = new JobAlertsByEmailSender(jobAlertsSettings, new HtmlJobAlertFormatter(jobAlertsSettings, encoder), emailService);
+
+                        sender.SendNewAlertConfirmation(alert);
+                    }
+
+                    query.Add("subscribed", "1");
+                }
             }
             return new RedirectToUmbracoPageResult(CurrentPage, query);
         }

@@ -51,7 +51,7 @@ $rule = New-Object System.Security.AccessControl.FileSystemAccessRule("IIS AppPo
 $acl.SetAccessRule($rule)
 Set-Acl "$pathOfThisScript\$projectName" $acl
 
-# Run NuGet restore on this project so that the Umbraco package is available
+# Run NuGet restore on this project so that packages are available to copy files from
 if (Get-Command "nuget.exe" -ErrorAction SilentlyContinue) 
 {
 	Write-Host "Restoring NuGet packages for $pathOfThisScript\$projectName"
@@ -62,58 +62,116 @@ if (Get-Command "nuget.exe" -ErrorAction SilentlyContinue)
 
 # Get the installed versions of Umbraco and relevant packages
 $xml = [xml](Get-Content "$pathOfThisScript\$projectName\packages.config")
-$element = $xml.SelectSingleNode("/packages/package[@id='UmbracoCms']")
-$umbracoVersion = $element.GetAttribute("version");
+$umbracoVersion = $xml.SelectSingleNode("/packages/package[@id='UmbracoCms']").GetAttribute("version");
 Write-Host "UmbracoCms $umbracoVersion detected"
 
-$element = $xml.SelectSingleNode("/packages/package[@id='Escc.EastSussexGovUK.SecurityConfig']")
-$securityConfigVersion = $element.GetAttribute("version");
-Write-Host "Escc.EastSussexGovUK.SecurityConfig $securityConfigVersion detected"
+$modelsBuilderVersion = $xml.SelectSingleNode("/packages/package[@id='Umbraco.ModelsBuilder']").GetAttribute("version");
+Write-Host "Umbraco.ModelsBuilder $modelsBuilderVersion detected"
 
-$element = $xml.SelectSingleNode("/packages/package[@id='ImageProcessor.Web.Config']")
-$imageProcessorConfigVersion = $element.GetAttribute("version");
+$formsVersion = $xml.SelectSingleNode("/packages/package[@id='UmbracoForms']").GetAttribute("version");
+Write-Host "UmbracoForms $formsVersion detected"
+
+$securityConfigVersion = $xml.SelectSingleNode("/packages/package[@id='Escc.Web.SecurityConfig']").GetAttribute("version");
+Write-Host "Escc.Web.SecurityConfig $securityConfigVersion detected"
+
+$egukSecurityConfigVersion = $xml.SelectSingleNode("/packages/package[@id='Escc.EastSussexGovUK.SecurityConfig']").GetAttribute("version");
+Write-Host "Escc.EastSussexGovUK.SecurityConfig $egukSecurityConfigVersion detected"
+
+$egukClientDependencyVersion = $xml.SelectSingleNode("/packages/package[@id='Escc.EastSussexGovUK.ClientDependency']").GetAttribute("version");
+Write-Host "Escc.EastSussexGovUK.ClientDependency $egukClientDependencyVersion detected"
+
+$propertyEditorsVersion = $xml.SelectSingleNode("/packages/package[@id='Escc.Umbraco.PropertyEditors']").GetAttribute("version");
+Write-Host "Escc.Umbraco.PropertyEditors $propertyEditorsVersion detected"
+
+$imageProcessorConfigVersion = $xml.SelectSingleNode("/packages/package[@id='ImageProcessor.Web.Config']").GetAttribute("version");
 Write-Host "ImageProcessor.Web.Config $securityConfigVersion detected"
 
-$element = $xml.SelectSingleNode("/packages/package[@id='uSync.Core']")
-$uSyncCoreVersion = $element.GetAttribute("version");
+$uSyncCoreVersion = $xml.SelectSingleNode("/packages/package[@id='uSync.Core']").GetAttribute("version");
 Write-Host "uSync.Core $uSyncCoreVersion detected"
 
-$element = $xml.SelectSingleNode("/packages/package[@id='uSync']")
-$uSyncVersion = $element.GetAttribute("version");
+$uSyncVersion = $xml.SelectSingleNode("/packages/package[@id='uSync']").GetAttribute("version");
 Write-Host "uSync $uSyncVersion detected"
 
-$element = $xml.SelectSingleNode("/packages/package[@id='uSync.Snapshots']")
-$uSyncSnapshotsVersion = $element.GetAttribute("version");
+$uSyncSnapshotsVersion = $xml.SelectSingleNode("/packages/package[@id='uSync.Snapshots']").GetAttribute("version");
 Write-Host "uSync.Snapshots $uSyncSnapshotsVersion detected"
 
 # Copy files from the Umbraco package if missing
 & robocopy "packages\UmbracoCms.$umbracoVersion\Content\" "$pathOfThisScript\$projectName\" /E /XC /XN /XO /XF *.transform *.xdt
 CopyConfig "packages\UmbracoCms.$umbracoVersion\UmbracoFiles\web.config" "$projectName\web.config"
+& robocopy "packages\Umbraco.ModelsBuilder.$modelsBuilderVersion\Content\App_Plugins\" "$pathOfThisScript\$projectName\App_Plugins\" /E /XC /XN /XO
+& robocopy "packages\UmbracoForms.$formsVersion\content\App_Plugins\" "$pathOfThisScript\$projectName\App_Plugins\" /E /XC /XN /XO /XF *.xdt
 
-# Transform the web.config with the XDT for the project, via a temp file to avoid locking issues
-TransformConfig "$pathOfThisScript\$projectName\web.config" "$pathOfThisScript\$projectName\web.temp.config" "$pathOfThisScript\$projectName\web.config.xdt"
-copy "$pathOfThisScript\$projectName\web.temp.config" "$pathOfThisScript\$projectName\web.config"
-del "$pathOfThisScript\$projectName\web.temp.config"
+# Transform the web.config with the XDT for the project
+TransformConfig "$pathOfThisScript\$projectName\web.config" "$pathOfThisScript\$projectName\web.config" "$pathOfThisScript\$projectName\web.config.xdt"
+
+# If a debug-only transform for web.config is found, apply it
+if (Test-Path "$pathOfThisScript\$projectName\Web.Debug.config")
+{
+	TransformConfig "$pathOfThisScript\$projectName\web.config" "$pathOfThisScript\$projectName\web.config" "$pathOfThisScript\$projectName\Web.Debug.config"
+}
+
+# Update web.config with settings only appropriate for development
+$xml = [xml](Get-Content "$pathOfThisScript\$projectName\web.config")
 
 # Remove the removeServerHeader attribute, which will cause the site to fail to load under IIS < 10 (likely in development)
+$requestFilteringElement = $xml.SelectSingleNode("/configuration/system.webServer/security/requestFiltering")
+$requestFilteringElement.RemoveAttribute("removeServerHeader")
+
 # Remove the umbracoConfigurationStatus so that the Umbraco installer is triggered. If umbracoConfigurationStatus is set but umbracoDbDSN is not, you just get a login that doesn't work.
-$xml = [xml](Get-Content "$pathOfThisScript\$projectName\web.config")
-$element = $xml.SelectSingleNode("/configuration/system.webServer/security/requestFiltering")
-$element.RemoveAttribute("removeServerHeader")
-$element = $xml.SelectSingleNode("/configuration/connectionStrings/add[@name='umbracoDbDSN']")
-$umbracoDbDSN = $element.GetAttribute("connectionString")
+$umbracoDbDSNElement = $xml.SelectSingleNode("/configuration/connectionStrings/add[@name='umbracoDbDSN']")
+$umbracoDbDSN = $umbracoDbDSNElement.GetAttribute("connectionString")
 if (!$umbracoDbDSN) {
-    $element = $xml.SelectSingleNode("/configuration/appSettings/add[@key='umbracoConfigurationStatus']")
-    $element.SetAttribute("value", "")
+    $xml.SelectSingleNode("/configuration/appSettings/add[@key='umbracoConfigurationStatus']").SetAttribute("value", "")
 }
+
+# Reset fcnMode to Single which is the recommended value for Umbraco. We use the Disabled setting on Azure to avoid application restarts, but in development you want it to restart when you modify files.
+$xml.SelectSingleNode("/configuration/system.web/httpRuntime").SetAttribute("fcnMode", "Single")
+
+# Set debug=true and disable custom errors and caching for development
+$xml.SelectSingleNode("/configuration/system.web/compilation").SetAttribute("debug", "true")
+$xml.SelectSingleNode("/configuration/system.web/customErrors").SetAttribute("mode", "Off")
+$xml.SelectSingleNode("/configuration/system.webServer/httpErrors").SetAttribute("errorMode", "Detailed")
+$xml.SelectSingleNode("/configuration/Escc.Umbraco/GeneralSettings/add[@key='HttpCachingEnabled']").SetAttribute("value", "false")
+
+# Always set IsUmbracoBackOffice as development is unlikely to be load-balanced, but this ensures RegisterServerRoleEventHandler sets the web project as master and the API project as slave
+if (!$xml.SelectSingleNode("/configuration/appSettings/add[@key='IsUmbracoBackOffice']"))
+{
+	$isUmbracoBackOfficeElement = $xml.CreateElement("add")
+	$isUmbracoBackOfficeElement.SetAttribute("key", "IsUmbracoBackOffice")
+	$isUmbracoBackOfficeElement.SetAttribute("value", "true")
+	$appSettings = $xml.SelectSingleNode("/configuration/appSettings")
+	$appSettings.AppendChild($isUmbracoBackOfficeElement)
+}
+
+# Set ApiUser and ApiKey to simple values for development. These are used by Escc.BasicAuthentication.WebApi when connecting to some custom Umbraco web apis.
+if (!$xml.SelectSingleNode("/configuration/appSettings/add[@key='ApiUser']"))
+{
+	$apiUserElement = $xml.CreateElement("add")
+	$apiUserElement.SetAttribute("key", "ApiUser")
+	$apiUserElement.SetAttribute("value", "dev")
+	$appSettings = $xml.SelectSingleNode("/configuration/appSettings")
+	$appSettings.AppendChild($apiUserElement)
+}
+
+if (!$xml.SelectSingleNode("/configuration/appSettings/add[@key='ApiKey']"))
+{
+	$apiUserElement = $xml.CreateElement("add")
+	$apiUserElement.SetAttribute("key", "ApiKey")
+	$apiUserElement.SetAttribute("value", "dev")
+	$appSettings = $xml.SelectSingleNode("/configuration/appSettings")
+	$appSettings.AppendChild($apiUserElement)
+}
+
 $xml.Save("$pathOfThisScript\$projectName\web.temp.config")
 copy "$pathOfThisScript\$projectName\web.temp.config" "$pathOfThisScript\$projectName\web.config"
 del "$pathOfThisScript\$projectName\web.temp.config"
 
-# Apply content security policy to project
-TransformConfig "$pathOfThisScript\$projectName\web.config" "$pathOfThisScript\$projectName\web.temp.config" "$pathOfThisScript\packages\Escc.EastSussexGovUK.SecurityConfig.$securityConfigVersion\Content\web.config.install.xdt"
-copy "$pathOfThisScript\$projectName\web.temp.config" "$pathOfThisScript\$projectName\web.config"
-del "$pathOfThisScript\$projectName\web.temp.config"
+# Apply security headers and content security policy to project
+TransformConfig "$pathOfThisScript\$projectName\web.config" "$pathOfThisScript\$projectName\web.config" "$pathOfThisScript\packages\Escc.Web.SecurityConfig.$securityConfigVersion\Content\web.config.install.xdt"
+TransformConfig "$pathOfThisScript\$projectName\web.config" "$pathOfThisScript\$projectName\web.config" "$pathOfThisScript\packages\Escc.EastSussexGovUK.SecurityConfig.$egukSecurityConfigVersion\Content\web.config.install.xdt"
+
+# Configure sitewide CSS and JS files for project
+TransformConfig "$pathOfThisScript\$projectName\web.config" "$pathOfThisScript\$projectName\web.config" "$pathOfThisScript\packages\Escc.EastSussexGovUK.ClientDependency.$egukClientDependencyVersion\Content\web.config.install.xdt"
 
 # Copy files into /config if not already present
 & robocopy "packages\UmbracoCms.$umbracoVersion\Content\Config" "$pathOfThisScript\$projectName\config" /E /XC /XN /XO /XF *.xdt
@@ -122,17 +180,56 @@ if ((Test-Path "$pathOfThisScript\$projectName\config\imageprocessor\cache.confi
 	& robocopy "packages\ImageProcessor.Web.Config.$imageProcessorConfigVersion\content\config\imageprocessor" "$pathOfThisScript\$projectName\config\imageprocessor" /E /XC /XN /XO
 	Get-ChildItem "$pathOfThisScript\$projectName\config\imageprocessor\*.config.transform" | Rename-Item -NewName { $_.Name.Replace('.config.transform','.config') }
 }
+TransformConfig "$pathOfThisScript\$projectName\config\imageprocessor\cache.config" "$pathOfThisScript\$projectName\config\imageprocessor\cache.config" "$pathOfThisScript\packages\UmbracoCms.$umbracoVersion\Content\Config\imageprocessor\cache.config.install.xdt"
+TransformConfig "$pathOfThisScript\$projectName\config\imageprocessor\processing.config" "$pathOfThisScript\$projectName\config\imageprocessor\processing.config" "$pathOfThisScript\packages\UmbracoCms.$umbracoVersion\Content\Config\imageprocessor\processing.config.install.xdt"
 CopyConfig "packages\uSync.Core.$uSyncCoreVersion\content\config\uSyncCore.Config" "$pathOfThisScript\$projectName\config\uSyncCore.Config"
 & robocopy "packages\uSync.$uSyncVersion\content\" "$pathOfThisScript\$projectName\" /E /XC /XN /XO /XF *.xdt
 & robocopy "packages\uSync.Snapshots.$uSyncSnapshotsVersion\content\" "$pathOfThisScript\$projectName\" /E /XC /XN /XO
 
-TransformConfig "$pathOfThisScript\$projectName\config\dashboard.config" "$pathOfThisScript\$projectName\config\dashboard.temp.config" "$pathOfThisScript\packages\uSync.$uSyncVersion\content\config\dashboard.config.install.xdt"
-copy "$pathOfThisScript\$projectName\config\dashboard.temp.config" "$pathOfThisScript\$projectName\config\dashboard.config"
-del "$pathOfThisScript\$projectName\config\dashboard.temp.config"
+TransformConfig "$pathOfThisScript\$projectName\config\dashboard.config" "$pathOfThisScript\$projectName\config\dashboard.config" "$pathOfThisScript\packages\uSync.$uSyncVersion\content\config\dashboard.config.install.xdt"
+
+# Change the dashboard used for Umbraco Forms to the version from Escc.Umbraco.Forms.BackOffice
+$xml = [xml](Get-Content "$pathOfThisScript\$projectName\config\Dashboard.config")
+$yourFormsElement = $xml.SelectSingleNode("/dashBoard/section[@alias='StartupFormsDashboardSection']/tab[@caption='Dashboard']/control[contains(text(),'yourforms.html')]")
+$yourFormsElement."#text" = "/app_plugins/EsccUmbracoFormsBackOffice/backoffice/dashboards/yourforms.html"
+$xml.Save("$pathOfThisScript\$projectName\config\Dashboard.temp.config")
+copy "$pathOfThisScript\$projectName\config\Dashboard.temp.config" "$pathOfThisScript\$projectName\config\Dashboard.config"
+del "$pathOfThisScript\$projectName\config\Dashboard.temp.config"
+
+# Configure custom Examine indexes
+TransformConfig "$pathOfThisScript\$projectName\config\ExamineIndex.config" "$pathOfThisScript\$projectName\config\ExamineIndex.config" "$pathOfThisScript\$projectName\RightsOfWayDeposits\ExamineIndex.config.xdt"
+TransformConfig "$pathOfThisScript\$projectName\config\ExamineSettings.config" "$pathOfThisScript\$projectName\config\ExamineSettings.config" "$pathOfThisScript\$projectName\RightsOfWayDeposits\ExamineSettings.config.xdt"
+TransformConfig "$pathOfThisScript\$projectName\config\ExamineIndex.config" "$pathOfThisScript\$projectName\config\ExamineIndex.config" "$pathOfThisScript\$projectName\RightsOfWayModifications\ExamineIndex.config.xdt"
+TransformConfig "$pathOfThisScript\$projectName\config\ExamineSettings.config" "$pathOfThisScript\$projectName\config\ExamineSettings.config" "$pathOfThisScript\$projectName\RightsOfWayModifications\ExamineSettings.config.xdt"
+
+# Configure file types which can be uploaded - use a whitelist rather than blacklist as it's more secure, and remove .xml from the blacklist to allow school term dates to be uploaded
+$xml = [xml](Get-Content "$pathOfThisScript\$projectName\config\umbracoSettings.config")
+$contentElement = $xml.SelectSingleNode("/settings/content")
+$contentElement.SelectSingleNode("disallowedUploadFiles")."#text" = "ashx,aspx,ascx,config,cshtml,vbhtml,asmx,air,axd,swf,html,htm,php,htaccess"
+$allowedUploads = $contentElement.SelectSingleNode("allowedUploadFiles")
+if (!$allowedUploads) {
+	$allowedUploads = $xml.CreateElement("allowedUploadFiles")
+	$allowedUploads."#text" = "csv,doc,docx,gif,jpg,pdf,png,ppsx,ppt,pptx,rtf,svg,xls,xlsm,xlsx,xml"
+	$contentElement.AppendChild($allowedUploads)
+}
+$xml.Save("$pathOfThisScript\$projectName\config\umbracoSettings.temp.config")
+copy "$pathOfThisScript\$projectName\config\umbracoSettings.temp.config" "$pathOfThisScript\$projectName\config\umbracoSettings.config"
+del "$pathOfThisScript\$projectName\config\umbracoSettings.temp.config"
+
+# Configure TinyMCE editor, including adding the blockquote button used only by 'Standard topic page'
+TransformConfig "$pathOfThisScript\$projectName\config\tinyMceConfig.config" "$pathOfThisScript\$projectName\config\tinyMceConfig.config" "$pathOfThisScript\packages\Escc.Umbraco.PropertyEditors.$propertyEditorsVersion\Content\config\tinymceconfig.config.install.xdt" 
 
 # Create an /img virtual directory to load template elements from the tightly-coupled Escc.EastSussexGovUK.TemplateSource project
 CheckApplicationExists "$pathOfThisScript\.." "Escc.EastSussexGovUK"
-CreateVirtualDirectory $projectName "img" "$pathOfThisScript\..\Escc.EastSussexGovUK\Escc.EastSussexGovUK.TemplateSource\img" true
+if (Test-Path "IIS:\Sites\$projectName\img") 
+{
+    Write-Host "Virtual directory img already exists"
+} 
+else 
+{
+    Write-Host "Creating virtual directory img"
+    New-WebVirtualDirectory -Site $projectName -Name "img" -PhysicalPath "$pathOfThisScript\..\Escc.EastSussexGovUK\Escc.EastSussexGovUK.TemplateSource\img"
+}
 
 
 ### 2. Setup API project ###
@@ -151,7 +248,7 @@ $rule = New-Object System.Security.AccessControl.FileSystemAccessRule("IIS AppPo
 $acl.SetAccessRule($rule)
 Set-Acl "$pathOfThisScript\$projectName" $acl
 
-# Run NuGet restore on this project so that the Umbraco package is available
+# Run NuGet restore on this project so that packages are available to copy files from
 if (Get-Command "nuget.exe" -ErrorAction SilentlyContinue) 
 {
 	Write-Host "Restoring NuGet packages for $pathOfThisScript\$projectName"
@@ -162,29 +259,66 @@ if (Get-Command "nuget.exe" -ErrorAction SilentlyContinue)
 
 # Get the installed Umbraco version
 $xml = [xml](Get-Content "$pathOfThisScript\$projectName\packages.config")
-$element = $xml.SelectSingleNode("/packages/package[@id='UmbracoCms']")
-$umbracoVersion = $element.GetAttribute("version");
-Write-Host "Umbraco $umbracoVersion detected"
+$umbracoVersion = $xml.SelectSingleNode("/packages/package[@id='UmbracoCms']").GetAttribute("version");
+Write-Host "UmbracoCms $umbracoVersion detected"
+
+$modelsBuilderVersion = $xml.SelectSingleNode("/packages/package[@id='Umbraco.ModelsBuilder']").GetAttribute("version");
+Write-Host "Umbraco.ModelsBuilder $modelsBuilderVersion detected"
 
 # Copy files from the Umbraco package if missing
 & robocopy "packages\UmbracoCms.$umbracoVersion\Content\" "$pathOfThisScript\$projectName\" /E /XC /XN /XO /XF *.transform *.xdt
 CopyConfig "packages\UmbracoCms.$umbracoVersion\UmbracoFiles\web.config" "$projectName\web.config"
+& robocopy "packages\Umbraco.ModelsBuilder.$modelsBuilderVersion\Content\App_Plugins\" "$pathOfThisScript\$projectName\App_Plugins\" /E /XC /XN /XO
 
 # Transform the web.config with the XDT for the project, via a temp file to avoid locking issues
-TransformConfig "$pathOfThisScript\$projectName\web.config" "$pathOfThisScript\$projectName\web.temp.config" "$pathOfThisScript\$projectName\web.config.xdt"
-copy "$pathOfThisScript\$projectName\web.temp.config" "$pathOfThisScript\$projectName\web.config"
-del "$pathOfThisScript\$projectName\web.temp.config"
+TransformConfig "$pathOfThisScript\$projectName\web.config" "$pathOfThisScript\$projectName\web.config" "$pathOfThisScript\$projectName\web.config.xdt"
 
-# Remove the umbracoConfigurationStatus so that the Umbraco installer is triggered. If umbracoConfigurationStatus is set but umbracoDbDSN is not, you just get a login that doesn't work.
-$xml = [xml](Get-Content "$pathOfThisScript\$projectName\web.config")
-$element = $xml.SelectSingleNode("/configuration/system.webServer/security/requestFiltering")
-$element.RemoveAttribute("removeServerHeader")
-$element = $xml.SelectSingleNode("/configuration/connectionStrings/add[@name='umbracoDbDSN']")
-$umbracoDbDSN = $element.GetAttribute("connectionString")
-if (!$umbracoDbDSN) {
-    $element = $xml.SelectSingleNode("/configuration/appSettings/add[@key='umbracoConfigurationStatus']")
-    $element.SetAttribute("value", "")
+# If a debug-only transform for web.config is found, apply it
+if (Test-Path "$pathOfThisScript\$projectName\Web.Debug.config")
+{
+	TransformConfig "$pathOfThisScript\$projectName\web.config" "$pathOfThisScript\$projectName\web.config" "$pathOfThisScript\$projectName\Web.Debug.config"
 }
+
+# Update web.config with settings only appropriate for development
+$xml = [xml](Get-Content "$pathOfThisScript\$projectName\web.config")
+
+# Reset fcnMode to Single which is the recommended value for Umbraco. We use the Disabled setting on Azure to avoid application restarts, but in development you want it to restart when you modify files.
+$xml.SelectSingleNode("/configuration/system.web/httpRuntime").SetAttribute("fcnMode", "Single")
+
+# Set debug=true and disable custom errors for development
+$xml.SelectSingleNode("/configuration/system.web/compilation").SetAttribute("debug", "true")
+$xml.SelectSingleNode("/configuration/system.web/customErrors").SetAttribute("mode", "Off")
+$xml.SelectSingleNode("/configuration/system.webServer/httpErrors").SetAttribute("errorMode", "Detailed")
+
+# Set ApiUser and ApiKey to simple values for development. These are used by Escc.BasicAuthentication.WebApi when connecting to some custom Umbraco web apis.
+if (!$xml.SelectSingleNode("/configuration/appSettings/add[@key='ApiUser']"))
+{
+	$apiUserElement = $xml.CreateElement("add")
+	$apiUserElement.SetAttribute("key", "ApiUser")
+	$apiUserElement.SetAttribute("value", "dev")
+	$appSettings = $xml.SelectSingleNode("/configuration/appSettings")
+	$appSettings.AppendChild($apiUserElement)
+}
+
+if (!$xml.SelectSingleNode("/configuration/appSettings/add[@key='ApiKey']"))
+{
+	$apiUserElement = $xml.CreateElement("add")
+	$apiUserElement.SetAttribute("key", "ApiKey")
+	$apiUserElement.SetAttribute("value", "dev")
+	$appSettings = $xml.SelectSingleNode("/configuration/appSettings")
+	$appSettings.AppendChild($apiUserElement)
+}
+
+# Leave media links in job adverts as absolute URLs, because they'll point at media on the live site but this application will point at a development account for media
+if (!$xml.SelectSingleNode("/configuration/appSettings/add[@key='DoNotRemoveMediaDomainInJobAdverts']"))
+{
+	$apiUserElement = $xml.CreateElement("add")
+	$apiUserElement.SetAttribute("key", "DoNotRemoveMediaDomainInJobAdverts")
+	$apiUserElement.SetAttribute("value", "true")
+	$appSettings = $xml.SelectSingleNode("/configuration/appSettings")
+	$appSettings.AppendChild($apiUserElement)
+}
+
 $xml.Save("$pathOfThisScript\$projectName\web.temp.config")
 copy "$pathOfThisScript\$projectName\web.temp.config" "$pathOfThisScript\$projectName\web.config"
 del "$pathOfThisScript\$projectName\web.temp.config"
@@ -196,11 +330,69 @@ if ((Test-Path "$pathOfThisScript\$projectName\config\imageprocessor\cache.confi
 	& robocopy "packages\ImageProcessor.Web.Config.$imageProcessorConfigVersion\content\config\imageprocessor" "$pathOfThisScript\$projectName\config\imageprocessor" /E /XC /XN /XO
 	Get-ChildItem "$pathOfThisScript\$projectName\config\imageprocessor\*.config.transform" | Rename-Item -NewName { $_.Name.Replace('.config.transform','.config') }
 }
+TransformConfig "$pathOfThisScript\$projectName\config\imageprocessor\cache.config" "$pathOfThisScript\$projectName\config\imageprocessor\cache.config" "$pathOfThisScript\packages\UmbracoCms.$umbracoVersion\Content\Config\imageprocessor\cache.config.install.xdt"
+TransformConfig "$pathOfThisScript\$projectName\config\imageprocessor\processing.config" "$pathOfThisScript\$projectName\config\imageprocessor\processing.config" "$pathOfThisScript\packages\UmbracoCms.$umbracoVersion\Content\Config\imageprocessor\processing.config.install.xdt"
 
-### 3. Setup console apps ###
+# Configure custom Examine indexes
+TransformConfig "$pathOfThisScript\$projectName\config\ExamineIndex.config" "$pathOfThisScript\$projectName\config\ExamineIndex.config" "$pathOfThisScript\$projectName\Jobs\Examine\ExamineIndex.config.xdt"
+TransformConfig "$pathOfThisScript\$projectName\config\ExamineSettings.config" "$pathOfThisScript\$projectName\config\ExamineSettings.config" "$pathOfThisScript\$projectName\Jobs\Examine\ExamineSettings.config.xdt"
 
-CopyConfig "Escc.Jobs.SendAlerts\app.example.config" "Escc.Jobs.SendAlerts\app.config"
-CopyConfig "Escc.Jobs.UpdateIndexes\app.example.config" "Escc.Jobs.UpdateIndexes\app.config"
-#>
+### 3. Connect web application to API ### 
+
+$xml = [xml](Get-Content "$pathOfThisScript\Escc.EastSussexGovUK.Umbraco.Web\web.config")
+$apiBaseUrlElement = $xml.SelectSingleNode("/configuration/appSettings/add[@key='JobsApiBaseUrl']")
+if (!$apiBaseUrlElement)
+{
+	Write-Host Connecting web application to API
+	$apiPort = @(Get-WebBinding -Name "Escc.EastSussexGovUK.Umbraco.Api" -Protocol https)[0].BindingInformation -replace "[^0-9]", ""
+		
+	$apiBaseUrlElement = $xml.CreateElement("add")
+	$apiBaseUrlElement.SetAttribute("key", "JobsApiBaseUrl")
+	$apiBaseUrlElement.SetAttribute("value", "https://localhost:$apiPort")
+	$appSettings = $xml.SelectSingleNode("/configuration/appSettings")
+	$appSettings.AppendChild($apiBaseUrlElement)
+
+	$xml.Save("$pathOfThisScript\$projectName\web.temp.config")
+	copy "$pathOfThisScript\$projectName\web.temp.config" "$pathOfThisScript\$projectName\web.config"
+	del "$pathOfThisScript\$projectName\web.temp.config"
+}
+$apiBaseUrl = $apiBaseUrlElement.GetAttribute("value")
+
+### 4. Setup console apps ###
+
+$projectName = "Escc.Jobs.SendAlerts"
+
+CopyConfig "$projectName\app.example.config" "$projectName\app.config"
+$xml = [xml](Get-Content "$pathOfThisScript\$projectName\app.config")
+$xml.SelectSingleNode("/configuration/appSettings/add[@key='JobsApiBaseUrl']").SetAttribute("value", $apiBaseUrl)
+$xml.SelectSingleNode("/configuration/appSettings/add[@key='Frequency']").SetAttribute("value", "1")
+$xml.SelectSingleNode("/configuration/appSettings/add[@key='Precondition']").SetAttribute("value", "")
+
+$xml.Save("$pathOfThisScript\$projectName\app.temp.config")
+copy "$pathOfThisScript\$projectName\app.temp.config" "$pathOfThisScript\$projectName\app.config"
+del "$pathOfThisScript\$projectName\app.temp.config"
+
+
+$projectName = "Escc.Jobs.UpdateIndexes"
+
+CopyConfig "$projectName\app.example.config" "$projectName\app.config"
+$xml = [xml](Get-Content "$pathOfThisScript\$projectName\app.config")
+$xml.SelectSingleNode("/configuration/appSettings/add[@key='HostnameEnvironmentVariable']").SetAttribute("value", "")
+$xml.SelectSingleNode("/configuration/appSettings/add[@key='ApiUser']").SetAttribute("value", "dev")
+$xml.SelectSingleNode("/configuration/appSettings/add[@key='ApiKey']").SetAttribute("value", "dev")
+$apiBaseUrlElement = $xml.SelectSingleNode("/configuration/appSettings/add[@key='JobsApiBaseUrl']")
+if (!$apiBaseUrlElement)
+{
+	Write-Host Connecting Escc.Jobs.UpdateIndexes to API
+	$apiBaseUrlElement = $xml.CreateElement("add")
+	$apiBaseUrlElement.SetAttribute("key", "JobsApiBaseUrl")
+	$apiBaseUrlElement.SetAttribute("value", $apiBaseUrl)
+	$appSettings = $xml.SelectSingleNode("/configuration/appSettings")
+	$appSettings.AppendChild($apiBaseUrlElement)
+}
+$xml.Save("$pathOfThisScript\$projectName\app.temp.config")
+copy "$pathOfThisScript\$projectName\app.temp.config" "$pathOfThisScript\$projectName\app.config"
+del "$pathOfThisScript\$projectName\app.temp.config"
+
 Write-Host
 Write-Host "Done." -ForegroundColor "Green"

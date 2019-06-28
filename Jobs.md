@@ -17,6 +17,16 @@ The first step is to get the data from our external jobs provider into Examine. 
 
 The `PublicJobsIndexer` index provider configuration points to the `PublicJobsIndexer` class, which is instantiated by Umbraco to build or rebuild the index. It fetches the data from our external jobs provider (which is just an instance of `IJobsDataProvider`), using source URLs that come from settings in the `appSettings` section of `web.config` that are unique to the specific `IJobsDataProvider`, and puts it into Examine.
 
+The settings for the current provider, TribePad, are:
+
+	<appSettings>
+	    <add key="TribePadLookupValuesUrl" value="https://hostname/example" />
+	    <add key="TribePadPublicJobsResultsUrls" value="https://hostname/example,https://hostname/example" />
+	    <add key="TribePadAdvertUrl" value="https://hostname/example" />
+	    <add key="TribePadRedeploymentJobsResultsUrls" value="https://hostname/example,https://hostname/example"/>
+	    <add key="TribePadApplyUrl" value="https://hostname/example" />
+	  </appSettings>
+
 We then have a second index set called `PublicJobsLookupValuesIndexSet` and an index provider called `PublicJobsLookupValuesIndexer` with a matching class. This reads lookup values from our external jobs provider, such as the list of towns where jobs can be based, but also searches the `PublicJobsIndexSet` for each one and records how many results it finds. For this reason the `PublicJobsLookupValuesIndexSet` must *always* be built or rebuilt after `PublicJobsIndexSet`.
 
 We have a second set of jobs which are open only to applicants who are eligible for redeployment, so we repeat the above process to create two more index sets and indexers with the prefix `RedeploymentJobs` instead of `PublicJobs`. These work in exactly the same way but based on a different data source.
@@ -112,13 +122,21 @@ If the `JobAdvertContentFinder` recognises a URL as a job advert but the job can
 
 Subscriptions to job alerts are saved in a `IJobAlertsRepository`, with the current implementation using Azure table storage. Each alert consists of a search query (serialised as a query string), an email address, and the frequency with which to send the alert.
 
-Alerts are sent by a console application, `Escc.Jobs.SendAlerts.exe`, which can be called by a scheduled task such as an Azure web job. 
+You need to set an Azure storage connection string in `~\Escc.EastSussexGovUK.Umbraco.Web\web.config` otherwise alerts will not be saved correctly:
+
+	<configuration>
+		<connectionStrings>
+		    <add name="Escc.EastSussexGovUK.Umbraco.AzureStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=YOURACCOUNTNAME;AccountKey=YOURACCOUNTKEY" />
+	  	</connectionStrings>
+	</configuration>
+
+### Sending alerts
+
+Alerts are sent by a console application, `Escc.Jobs.SendAlerts.exe`, which can be called by a scheduled task such as an Azure web job. This requires the same Azure storage connection string in its `app.config` file, except that the connection string should be called `JobAlerts.AzureStorage`. 
 
 We also store which jobs were sent to which email address, without specifying which alert it matched, so that we do not send the same job to the same person twice even if it matches a different alert to the one we originally sent it for.
 
 The formatting of the alert emails is controlled by a combination of the alert templates `JobAlertConfirmation.html` and `JobAlert.html`, and text entered into an instance of the `Job alerts` document type in Umbraco. The latter allows editors to update the content of the alerts without requiring a developer.
-
-### Sending alerts
 
 Because Azure does not support SMTP by default, sending email is done using the approach described in [Escc.AzureEmailForwarder](https://github.com/east-sussex-county-council/Escc.AzureEmailForwarder).
 

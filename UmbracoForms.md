@@ -69,6 +69,16 @@ The built-in file `~\Views\Partials\Forms\DatePicker.cshtml` needed modification
 
 This issue was dismissed by Umbraco as [#16](https://github.com/umbraco/Umbraco.Forms.Issues/issues/16). (Updating the JavaScript for them and resubmitting the issue might get a better response.)
 
+## Implementing a more secure email workflow
+
+The email workflows that come with Umbraco Forms are designed to send the form data as part of the email. However, the data may be sensitive and email is not a secure medium, so it is better to send a link to the form in the back office where the data is protected by TLS and authentication.
+
+This is implemented by `~\Escc.EastSussexGovUK.Umbraco.Web\Views\Partials\Forms\Emails\Send_A_Link.cshtml` using a workflow from [Escc.Umbraco.Forms.Workflows](https://github.com/east-sussex-county-council/Escc.Umbraco.Forms/blob/master/Escc.Umbraco.Forms.Workflows/README.md). However, in a load-balanced setup it requires an extra setting in `~\Escc.EastSussexGovUK.Umbraco.Web\web.config` on the front-end servers to ensure that form owners are directed to the back office:
+
+	<appSettings>
+		<add key="BackOfficeBaseUrl" value="https://hostname" />
+	</appSettings>
+
 ## Custom field types
 
 Several field types in the `Escc.EastSussexGovUK.Umbraco.Forms.FieldTypes` namespace add an extra property for a just-in-time privacy notice to fields which are part of either Umbraco Forms or `Escc.Umbraco.Forms.FieldTypes`. This extra property is used when the field is displayed using the `EastSussex` theme.
