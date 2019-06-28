@@ -73,7 +73,7 @@ The solution is broken up into several subprojects:
 
 5.  Build the solution.
 
-6.  Obtain an Umbraco Forms licence file called `umbracoForms.lic` and copy it into `~\Escc.EastSussexGovUK.Umbraco.Web\bin`.
+6.  Download our Umbraco Forms licence file for `*.eastsussex.gov.uk` called `umbracoForms.lic` from our [umbraco.com account](https://shop.umbraco.com/profile/sign-in) and copy it into `~\Escc.EastSussexGovUK.Umbraco.Web\bin`.
 
 7.  Go to `https://localhost:port/umbraco` in a browser to run the Umbraco installer (where `port` is the one you chose for the web application when you ran `app-setup-dev.cmd`). Use a SQL Server database as you'll need to connect to the same one from the API project. Alternatively, if you already have an database, in `~\Escc.EastSussexGovUK.Umbraco.Web\web.config` set the `umbracoConfigurationStatus` and `umbracoDbDSN` values.
 
@@ -103,6 +103,8 @@ For more detail see [Escc.Redirects](https://github.com/east-sussex-county-counc
 ### Additional steps to set up Umbraco Forms
 
 1.  If you didn't have `Web.Debug.config` earlier, add the `SchoolApiUrl` to `~\Escc.EastSussexGovUK.Umbraco.Web\web.config`
+
+2.  In `~\Escc.EastSussexGovUK.Umbraco.Web\config\Dashboard.config` replace the URL of `yourforms.html` with `/app_plugins/EsccUmbracoFormsBackOffice/backoffice/dashboards/yourforms.html`.
 
 For more detail see [Umbraco Forms](UmbracoForms.md).
 
