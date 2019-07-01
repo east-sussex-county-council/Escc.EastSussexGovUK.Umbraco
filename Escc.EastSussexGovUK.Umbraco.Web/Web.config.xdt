@@ -233,6 +233,9 @@
     <add key="umbracoConfigurationStatus" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     <add key="umbracoConfigurationStatus" value="7.14.0" xdt:Transform="Insert" />
 
+    <add key="umbracoReservedPaths" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    <add key="umbracoReservedPaths" value="~/umbraco,~/install/,~/escc.eastsussexgovuk/,~/masterpages" xdt:Transform="Insert" />
+    
     <add key="umbracoUseSSL" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     <add key="umbracoUseSSL" value="true" xdt:Transform="Insert" />
 
