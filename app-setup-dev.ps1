@@ -101,6 +101,7 @@ CopyConfig "packages\UmbracoCms.$umbracoVersion\UmbracoFiles\web.config" "$proje
 CopyConfig "packages\UmbracoCms.$umbracoVersion\Content\Views\web.config.transform" "$projectName\Views\web.config"
 & robocopy "packages\Umbraco.ModelsBuilder.$modelsBuilderVersion\Content\App_Plugins\" "$pathOfThisScript\$projectName\App_Plugins\" /E /XC /XN /XO
 & robocopy "packages\UmbracoForms.$formsVersion\content\App_Plugins\" "$pathOfThisScript\$projectName\App_Plugins\" /E /XC /XN /XO /XF *.xdt
+& robocopy "packages\UmbracoForms.$formsVersion\content\Views\" "$pathOfThisScript\$projectName\Views\" /E /XC /XN /XO /XF *.xdt
 
 # Transform the web.config with the XDT for the project
 TransformConfig "$pathOfThisScript\$projectName\web.config" "$pathOfThisScript\$projectName\web.config" "$pathOfThisScript\$projectName\web.config.xdt"

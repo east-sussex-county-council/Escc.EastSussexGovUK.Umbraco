@@ -75,7 +75,14 @@ The solution is broken up into several subprojects:
 
 6.  Download our Umbraco Forms licence file for `*.eastsussex.gov.uk` called `umbracoForms.lic` from our [umbraco.com account](https://shop.umbraco.com/profile/sign-in) and copy it into `~\Escc.EastSussexGovUK.Umbraco.Web\bin`.
 
-7.  Go to `https://localhost:port/umbraco` in a browser to run the Umbraco installer (where `port` is the one you chose for the web application when you ran `app-setup-dev.cmd`). Use a SQL Server database as you'll need to connect to the same one from the API project. Alternatively, if you already have an database, in `~\Escc.EastSussexGovUK.Umbraco.Web\web.config` set the `umbracoConfigurationStatus` and `umbracoDbDSN` values.
+7.  Set up the Umbraco database:
+
+	*  Create a new blank database in SQL Server. Create a database user with the `db_owner` database role.
+	*  Go to `https://localhost:port/umbraco` in a browser to run the Umbraco installer (where `port` is the one you chose for the web application when you ran `app-setup-dev.cmd`). 
+	*  Click 'Customise' on the first dialog, select SQL Server, and enter the details of your new database and user.
+	*  Do **not** install a starter website when prompted.
+	
+	Alternatively, if you already have an database, in `~\Escc.EastSussexGovUK.Umbraco.Web\web.config` set the `umbracoConfigurationStatus` and `umbracoDbDSN` values.
 
 8.  Copy the `umbracoDbDSN` value from `~\Escc.EastSussexGovUK.Umbraco.Web\web.config` to `~\Escc.EastSussexGovUK.Umbraco.Api\web.config`.
 
@@ -110,7 +117,7 @@ For more detail see [Umbraco Forms](UmbracoForms.md).
 
 ### Additional steps to set up the jobs pages
 
-1.  Set an Azure storage connection string in the `connectionStrings` section of `~\Escc.EastSussexGovUK.Umbraco.Web\web.config` and `~\Escc.Jobs.SendAlerts\app.config`.
+1.  Set an Azure storage connection string in the `connectionStrings` section of `~\Escc.EastSussexGovUK.Umbraco.Web\web.config` (named `Escc.EastSussexGovUK.Umbraco.AzureStorage`) and `~\Escc.Jobs.SendAlerts\app.config` (here named `JobAlerts.AzureStorage`).
 
 2.  Copy the `system.net/mailSettings` section in `~\Escc.EastSussexGovUK.Umbraco.Web\web.config` to `~\Escc.Jobs.SendAlerts\app.config`.
 
@@ -125,14 +132,6 @@ For more detail see [Jobs](Jobs.md).
 ### Additional steps to set up service alerts
 
 1.  Set an Azure storage connection string named `Escc.ServiceClosures.AzureStorage` in the `connectionStrings` section of `~\Escc.EastSussexGovUK.Umbraco.Web\web.config`. This enables support for school closure alerts.
+2.  Create a page next to the home page based on the 'Alerts' document type.
 
 For more detail see [Service Alerts](ServiceAlerts.md). 
-
-
-### Additional steps to set up the recycling site finder
-
-The recycling site finder can appear on the 'Home page' and 'Standard Topic Page' templates.
-
-1.  If you didn't have `Web.Debug.config` earlier, add `LocateApi*` settings to `~\Escc.EastSussexGovUK.Umbraco.Web\web.config`. 
-
-For more detail see [Escc.RubbishAndRecycling.SiteFinder](https://github.com/east-sussex-county-council/Escc.RubbishAndRecycling.SiteFinder). 

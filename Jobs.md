@@ -106,6 +106,20 @@ A series of Umbraco document types and templates can be used to build up a jobs 
 * Parallel sites can be created for public jobs and redeployment jobs
 * Features are be turned on or off on each page depending on which connections have been made. For example, linking from the search results page to the RSS feed enables a link to the results of the same search as RSS.
 
+A typical structure for a set of jobs pages would be:
+
+*  Home
+   *  Jobs ('Jobs' document type)
+   	  *  Search for jobs ('Jobs search' document type)
+   	     *  Job search results ('Jobs search results' document type)
+   	  *  Job advert ('Job advert' document type)
+   	  *  Jobs RSS ('Jobs feed' document type using 'Jobs RSS feed' template)
+   	  *  Report missing jobs data ('Problem jobs RSS feed' document type)
+   	  *  Feed for Indeed.com ('Jobs feed' document type using 'Jobs feed as Indeed XML' template)
+   	  *  Change or cancel a job alert ('Job alerts' document type)
+
+For this structure to work you must remember to connect the pages together by completing the appropriate properties (for example, the 'Search for jobs' page has a 'Search results page' property where you need to select the 'Job search results' page).
+
 Just one instance of the `Job advert` document type is required to display any job. This works because the `JobAdvertContentFinder`, hooked up in `JobAdvertEventHandler`, recognises the URL of this page when it has an id and job title appended. For example when `/job-advert` is accessed as `/job-advert/12345/teacher-at-example-school`. The id is used to look up and display the job, and the job title (and anything else after the id) is there purely for SEO and use in analytics.
 
 ### Tabs on job adverts

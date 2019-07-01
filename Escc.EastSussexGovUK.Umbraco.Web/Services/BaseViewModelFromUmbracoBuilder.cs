@@ -53,9 +53,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Web.Services
         {
             var imagesData = UmbracoContent.GetPropertyValue<IEnumerable<IPublishedContent>>(alias);
             var images = new List<Image>();
-            foreach (var imageData in imagesData)
+            if (imagesData != null)
             {
-                images.Add(BuildImageFromMediaItem(imageData));
+                foreach (var imageData in imagesData)
+                {
+                    images.Add(BuildImageFromMediaItem(imageData));
+                }
             }
             return images;
         }
