@@ -282,6 +282,17 @@ $xml = [xml](Get-Content "$pathOfThisScript\$projectName\web.config")
 $requestFilteringElement = $xml.SelectSingleNode("/configuration/system.webServer/security/requestFiltering")
 $requestFilteringElement.RemoveAttribute("removeServerHeader")
 
+# Set useUnsafeHeaderParsing="true" in development, otherwise calling the job provider's API can return "The server committed a protocol violation. Section=ResponseHeader Detail=CR must be followed by LF."
+$systemNet = $xml.SelectSingleNode("/configuration/system.net")
+if (!$xml.SelectSingleNode("/configuration/system.net/settings"))
+{
+	$systemNetSettings = $xml.CreateElement("settings")
+	$systemNet.AppendChild($systemNetSettings)
+	$httpWebRequest = $xml.CreateElement("httpWebRequest")
+	$httpWebRequest.SetAttribute("useUnsafeHeaderParsing", "true")
+	$systemNetSettings.AppendChild($httpWebRequest)
+}
+
 # Reset fcnMode to Single which is the recommended value for Umbraco. We use the Disabled setting on Azure to avoid application restarts, but in development you want it to restart when you modify files.
 $xml.SelectSingleNode("/configuration/system.web/httpRuntime").SetAttribute("fcnMode", "Single")
 
