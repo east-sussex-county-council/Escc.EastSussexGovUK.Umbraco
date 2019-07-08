@@ -60,7 +60,7 @@
 
         @Html.Partial("~/Views/EastSussexGovUK/Features/_Latest.cshtml")
 
-        @if (Model.Jobs.Count > 0)
+        @if (Model.Jobs != null && Model.Jobs.Count > 0)
         {
             Html.RenderPartial("~/Views/_PagingBarControl.ascx", Model.Paging);
             <table class="job-results">
