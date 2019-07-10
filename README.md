@@ -80,6 +80,7 @@ The solution is broken up into several subprojects:
 	*  Create a new blank database in SQL Server. Create a database user with the `db_owner` database role.
 	*  Go to `https://localhost:port/umbraco` in a browser to run the Umbraco installer (where `port` is the one you chose for the web application when you ran `app-setup-dev.cmd`). 
 	*  Click 'Customise' on the first dialog, select SQL Server, and enter the details of your new database and user.
+	*  Click 'Continue' when prompted for a machine key.
 	*  Do **not** install a starter website when prompted.
 	
 	Alternatively, if you already have an database, in `~\Escc.EastSussexGovUK.Umbraco.Web\web.config` set the `umbracoConfigurationStatus` and `umbracoDbDSN` values.
