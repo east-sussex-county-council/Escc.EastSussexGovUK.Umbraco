@@ -205,6 +205,8 @@ if (!$allowedUploads) {
 	$allowedUploads.AppendChild($xml.CreateTextNode("csv,doc,docx,gif,jpg,pdf,png,ppsx,ppt,pptx,rtf,svg,xls,xlsm,xlsx,xml"))
 	$contentElement.AppendChild($allowedUploads)
 }
+$securityElement = $xml.SelectSingleNode("/settings/security")
+$securityElement.SelectSingleNode("usernameIsEmail")."#text" = "false"
 $xml.Save("$pathOfThisScript\$projectName\config\umbracoSettings.temp.config")
 copy "$pathOfThisScript\$projectName\config\umbracoSettings.temp.config" "$pathOfThisScript\$projectName\config\umbracoSettings.config"
 del "$pathOfThisScript\$projectName\config\umbracoSettings.temp.config"
