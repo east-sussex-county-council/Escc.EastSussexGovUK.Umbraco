@@ -239,6 +239,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
                 simpleDataSet.RowData.Add("closingDate", job.ClosingDate.Value.ToIso8601DateTime());
                 simpleDataSet.RowData.Add("closingDateDisplay", job.ClosingDate.Value.ToIso8601DateTime());
             }
+            else
+            {
+                // Examine queries are simpler if there is always a closing date, so set a far-future closing date to represent never,
+                // and don't have a version of the closing date for display.
+                simpleDataSet.RowData.Add("closingDate", DateTime.MaxValue.ToIso8601DateTime());
+            }
 
             var workPatternList = string.Join(", ", job.WorkPattern.WorkPatterns.ToArray<string>());
             simpleDataSet.RowData.Add("workPattern", workPatternList);

@@ -134,6 +134,20 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Tests
         }
 
         [Test]
+        public async Task NoClosingDateParsed()
+        {
+            var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();
+            var salaryParser = new Mock<ISalaryParser>();
+            var workPatternParser = new Mock<IWorkPatternParser>();
+            var locationParser = new Mock<ILocationParser>();
+            var parser = new TribePadJobParser(lookupValuesProvider.Object, salaryParser.Object, workPatternParser.Object, locationParser.Object, new Uri("https://www.example.org"));
+
+            var job = await parser.ParseJob(Properties.Resources.TribePadNoClosingDate, "134");
+
+            Assert.IsNull(job.ClosingDate);
+        }
+
+        [Test]
         public async Task NumberOfPositionsParsed()
         {
             var lookupValuesProvider = new Mock<IJobsLookupValuesProvider>();

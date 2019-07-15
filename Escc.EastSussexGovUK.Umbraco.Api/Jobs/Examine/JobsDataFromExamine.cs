@@ -117,7 +117,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
             // Append a requirement that the job must not have closed
             if (query.ClosingDateFrom.HasValue)
             {
-                modifiedQuery += " +closingDate:[" + query.ClosingDateFrom.Value.ToString("yyyyMMdd000000000") + " TO 30000000000000000]";
+                // The range of closing dates must include DateTime.MaxValue which is used to represent a job that never closes
+                modifiedQuery += " +closingDate:[" + query.ClosingDateFrom.Value.ToString("yyyyMMdd000000000", CultureInfo.InvariantCulture) + " TO 99999999999999999]";
             }
 
             var luceneQuery = _searcher.CreateSearchCriteria(BooleanOperation.And);

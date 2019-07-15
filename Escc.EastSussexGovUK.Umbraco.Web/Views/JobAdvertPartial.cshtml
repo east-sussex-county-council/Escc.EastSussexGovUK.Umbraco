@@ -166,12 +166,14 @@
         "name": "@Model.Job.Organisation"
         },
     "datePosted": "@Model.Job.DatePublished.ToIso8601DateTime()",
-    "validThrough": "@Model.Job.ClosingDate.Value.ToIso8601DateTime()",
+@if (Model.Job.ClosingDate.HasValue) {
+    @:"validThrough": "@Model.Job.ClosingDate.Value.ToIso8601DateTime()",
+}
     "url": "@Model.Job.Url",
     "identifier": {
-            "@@type": "PropertyValue",
+        "@@type": "PropertyValue",
         "name": "Reference",
         "value": "@Model.Job.Reference"
     }
-    }
+}
 </script>
