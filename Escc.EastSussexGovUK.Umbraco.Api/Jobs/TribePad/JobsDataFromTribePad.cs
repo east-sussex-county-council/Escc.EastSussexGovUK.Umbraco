@@ -54,11 +54,11 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
 
             var advertUrl = new Uri(String.Format(CultureInfo.InvariantCulture, _advertUrl.ToString(), jobId));
 
-            var stream = await ReadXml(advertUrl, _proxy);
+            var stream = await ReadXml(advertUrl, _proxy).ConfigureAwait(false);
 
             using (var reader = new StreamReader(stream))
             {
-                return await _jobAdvertParser.ParseJob(reader.ReadToEnd(), jobId);
+                return await _jobAdvertParser.ParseJob(reader.ReadToEnd(), jobId).ConfigureAwait(false);
             }
         }
 
@@ -75,7 +75,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
             foreach (var resultsUrl in _resultsUrls)
             {
                 var stream = await ReadXml(resultsUrl, _proxy).ConfigureAwait(false);
-                jobs.Jobs.AddRange((await _jobResultsParser.Parse(stream)));
+                jobs.Jobs.AddRange((await _jobResultsParser.Parse(stream).ConfigureAwait(false)));
             }
             return jobs;
         }

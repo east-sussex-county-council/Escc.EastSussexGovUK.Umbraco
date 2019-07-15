@@ -53,12 +53,12 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         {
             try
             {
-                await EnsureLookupValues();
+                await EnsureLookupValues().ConfigureAwait(false);
 
                 var xml = XDocument.Parse(sourceData);
                 var jobXml = xml.Root.Element("job");
 
-                return await ParseJob(jobXml);
+                return await ParseJob(jobXml).ConfigureAwait(false);
             }
             catch (Exception exception)
             {
@@ -72,7 +72,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         {
             if (_contractTypes == null)
             {
-                _contractTypes = await _lookupValuesProvider.ReadContractTypes();
+                _contractTypes = await _lookupValuesProvider.ReadContractTypes().ConfigureAwait(false);
             }
         }
 
@@ -83,7 +83,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
         /// <returns></returns>
         public async Task<IList<Job>> Parse(Stream stream)
         {
-            await EnsureLookupValues();
+            await EnsureLookupValues().ConfigureAwait(false);
 
             var xml = XDocument.Load(stream);
             var jobs = new List<Job>();
@@ -92,7 +92,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
 
             foreach (var jobXml in jobsXml)
             {
-                jobs.Add(await ParseJob(jobXml));
+                jobs.Add(await ParseJob(jobXml).ConfigureAwait(false));
             }
 
             return jobs;
@@ -202,8 +202,8 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
                 job.ApplyUrl = new Uri(String.Format(CultureInfo.InvariantCulture, _applyUrl.ToString(), job.Id), UriKind.RelativeOrAbsolute);
             }
 
-            job.Salary = await _salaryParser.ParseSalary(jobXml.ToString());
-            job.WorkPattern = await _workPatternParser.ParseWorkPattern(jobXml.ToString());
+            job.Salary = await _salaryParser.ParseSalary(jobXml.ToString()).ConfigureAwait(false);
+            job.WorkPattern = await _workPatternParser.ParseWorkPattern(jobXml.ToString()).ConfigureAwait(false);
 
             var contractTypeId = jobXml.Element("job_type")?.Value;
             if (!String.IsNullOrEmpty(contractTypeId))
@@ -216,9 +216,9 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.TribePad
 
         private static bool ParseAndMoveOrganisationFromJobTitle(Job job)
         {
-            if (job.JobTitle.Contains("(") && job.JobTitle.EndsWith(")"))
+            if (job.JobTitle.Contains("(") && job.JobTitle.EndsWith(")", StringComparison.OrdinalIgnoreCase))
             {
-                var orgStarts = job.JobTitle.LastIndexOf("(");
+                var orgStarts = job.JobTitle.LastIndexOf("(", StringComparison.OrdinalIgnoreCase);
                 job.Organisation = job.JobTitle.Substring(orgStarts + 1).TrimEnd(')');
                 job.JobTitle = job.JobTitle.Substring(0, orgStarts).TrimEnd();
                 return true;

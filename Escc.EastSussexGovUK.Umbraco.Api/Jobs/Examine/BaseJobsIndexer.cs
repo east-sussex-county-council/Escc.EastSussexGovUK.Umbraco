@@ -146,7 +146,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
             var jobsToDelete = new List<int>(currentIndexedJobs.Keys);
 
             // Delete and recreate any job still in the index, or add it if it's new
-            var jobsData = await GetAllDataAsync("Job");
+            var jobsData = await GetAllDataAsync("Job").ConfigureAwait(false);
             foreach (var job in jobsData)
             {
                 try
@@ -157,7 +157,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
                         job.RowData["datePublished"] = ((DateTime)currentIndexedJobs[job.NodeDefinition.NodeId]).ToIso8601DateTime();
                     }
 
-                    IndexProvider.DeleteFromIndex(job.NodeDefinition.NodeId.ToString());
+                    IndexProvider.DeleteFromIndex(job.NodeDefinition.NodeId.ToString(CultureInfo.InvariantCulture));
                     IndexProvider.ReIndexNode(job.RowData.ToExamineXml(job.NodeDefinition.NodeId, "Job"), "Job");
                     jobsToDelete.Remove(job.NodeDefinition.NodeId);
                 }
@@ -174,7 +174,7 @@ namespace Escc.EastSussexGovUK.Umbraco.Api.Jobs.Examine
                 try
                 { 
                     LogHelper.Info<BaseJobsIndexer>($"Deleting job '{jobId}' from Examine index");
-                    IndexProvider.DeleteFromIndex(jobId.ToString());
+                    IndexProvider.DeleteFromIndex(jobId.ToString(CultureInfo.InvariantCulture));
                 }
                 catch (Exception ex)
                 {
